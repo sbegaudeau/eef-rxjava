@@ -95,22 +95,12 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
 				result.insert(0, "::"); //$NON-NLS-1$
-				result.insert(0, ((IdentifiedElement) container)
-						.getQualifiedIdentifier());
+				result.insert(0, ((IdentifiedElement) container).getQualifiedIdentifier());
 				return result.toString();
 			}
 			container = container.eContainer();
 		}
 		return result.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
-		// Nothing to do
 	}
 
 	/**
@@ -131,9 +121,7 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		boolean oldReadOnly = readOnly;
 		readOnly = newReadOnly;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.ELEMENT_EDITOR__READ_ONLY, oldReadOnly,
-					readOnly));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.ELEMENT_EDITOR__READ_ONLY, oldReadOnly, readOnly));
 	}
 
 	/**
@@ -160,9 +148,6 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier((String) newValue);
-			return;
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			setReadOnly((Boolean) newValue);
 			return;
@@ -178,9 +163,6 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
-			return;
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			setReadOnly(READ_ONLY_EDEFAULT);
 			return;
@@ -197,9 +179,7 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-					: !QUALIFIED_IDENTIFIER_EDEFAULT
-							.equals(getQualifiedIdentifier());
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null : !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			return readOnly != READ_ONLY_EDEFAULT;
 		}

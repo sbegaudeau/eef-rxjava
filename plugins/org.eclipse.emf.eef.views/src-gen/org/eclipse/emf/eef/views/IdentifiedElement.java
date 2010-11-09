@@ -38,21 +38,10 @@ public interface IdentifiedElement extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Qualified Identifier</em>' attribute.
-	 * @see #setQualifiedIdentifier(String)
 	 * @see org.eclipse.emf.eef.views.ViewsPackage#getIdentifiedElement_QualifiedIdentifier()
-	 * @model required="true" transient="true" volatile="true" derived="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	String getQualifiedIdentifier();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.views.IdentifiedElement#getQualifiedIdentifier <em>Qualified Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Qualified Identifier</em>' attribute.
-	 * @see #getQualifiedIdentifier()
-	 * @generated
-	 */
-	void setQualifiedIdentifier(String value);
 
 } // IdentifiedElement

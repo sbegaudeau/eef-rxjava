@@ -30,7 +30,6 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#getQualifiedIdentifier <em>Qualified Identifier</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#getRepository <em>Repository</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#isExplicit <em>Explicit</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewImpl#getCategory <em>Category</em>}</li>
@@ -40,16 +39,6 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * @generated
  */
 public class ViewImpl extends ContainerImpl implements View {
-	/**
-	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifiedIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String QUALIFIED_IDENTIFIER_EDEFAULT = null;
-
 	/**
 	 * The default value of the '{@link #isExplicit() <em>Explicit</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -100,22 +89,12 @@ public class ViewImpl extends ContainerImpl implements View {
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
 				result.insert(0, "::"); //$NON-NLS-1$
-				result.insert(0, ((IdentifiedElement) container)
-						.getQualifiedIdentifier());
+				result.insert(0, ((IdentifiedElement) container).getQualifiedIdentifier());
 				return result.toString();
 			}
 			container = container.eContainer();
 		}
 		return result.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void setQualifiedIdentifier(String newQualifiedIdentifier) {
-		// Nothing to do
 	}
 
 	/**
@@ -134,10 +113,8 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRepository(ViewsRepository newRepository,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newRepository,
-				ViewsPackage.VIEW__REPOSITORY, msgs);
+	public NotificationChain basicSetRepository(ViewsRepository newRepository, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newRepository, ViewsPackage.VIEW__REPOSITORY, msgs);
 		return msgs;
 	}
 
@@ -147,24 +124,19 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	public void setRepository(ViewsRepository newRepository) {
-		if (newRepository != eInternalContainer()
-				|| (eContainerFeatureID() != ViewsPackage.VIEW__REPOSITORY && newRepository != null)) {
+		if (newRepository != eInternalContainer() || (eContainerFeatureID() != ViewsPackage.VIEW__REPOSITORY && newRepository != null)) {
 			if (EcoreUtil.isAncestor(this, newRepository))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newRepository != null)
-				msgs = ((InternalEObject) newRepository).eInverseAdd(this,
-						ViewsPackage.VIEWS_REPOSITORY__VIEWS,
-						ViewsRepository.class, msgs);
+				msgs = ((InternalEObject) newRepository).eInverseAdd(this, ViewsPackage.VIEWS_REPOSITORY__VIEWS, ViewsRepository.class, msgs);
 			msgs = basicSetRepository(newRepository, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.VIEW__REPOSITORY, newRepository, newRepository));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW__REPOSITORY, newRepository, newRepository));
 	}
 
 	/**
@@ -185,8 +157,7 @@ public class ViewImpl extends ContainerImpl implements View {
 		boolean oldExplicit = explicit;
 		explicit = newExplicit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.VIEW__EXPLICIT, oldExplicit, explicit));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW__EXPLICIT, oldExplicit, explicit));
 	}
 
 	/**
@@ -205,10 +176,8 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCategory(Category newCategory,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newCategory,
-				ViewsPackage.VIEW__CATEGORY, msgs);
+	public NotificationChain basicSetCategory(Category newCategory, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newCategory, ViewsPackage.VIEW__CATEGORY, msgs);
 		return msgs;
 	}
 
@@ -218,23 +187,19 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	public void setCategory(Category newCategory) {
-		if (newCategory != eInternalContainer()
-				|| (eContainerFeatureID() != ViewsPackage.VIEW__CATEGORY && newCategory != null)) {
+		if (newCategory != eInternalContainer() || (eContainerFeatureID() != ViewsPackage.VIEW__CATEGORY && newCategory != null)) {
 			if (EcoreUtil.isAncestor(this, newCategory))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newCategory != null)
-				msgs = ((InternalEObject) newCategory).eInverseAdd(this,
-						ViewsPackage.CATEGORY__VIEWS, Category.class, msgs);
+				msgs = ((InternalEObject) newCategory).eInverseAdd(this, ViewsPackage.CATEGORY__VIEWS, Category.class, msgs);
 			msgs = basicSetCategory(newCategory, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.VIEW__CATEGORY, newCategory, newCategory));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW__CATEGORY, newCategory, newCategory));
 	}
 
 	/**
@@ -243,8 +208,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ViewsPackage.VIEW__REPOSITORY:
 			if (eInternalContainer() != null)
@@ -264,8 +228,7 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ViewsPackage.VIEW__REPOSITORY:
 			return basicSetRepository(null, msgs);
@@ -281,16 +244,12 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ViewsPackage.VIEW__REPOSITORY:
-			return eInternalContainer().eInverseRemove(this,
-					ViewsPackage.VIEWS_REPOSITORY__VIEWS,
-					ViewsRepository.class, msgs);
+			return eInternalContainer().eInverseRemove(this, ViewsPackage.VIEWS_REPOSITORY__VIEWS, ViewsRepository.class, msgs);
 		case ViewsPackage.VIEW__CATEGORY:
-			return eInternalContainer().eInverseRemove(this,
-					ViewsPackage.CATEGORY__VIEWS, Category.class, msgs);
+			return eInternalContainer().eInverseRemove(this, ViewsPackage.CATEGORY__VIEWS, Category.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -303,8 +262,6 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-			return getQualifiedIdentifier();
 		case ViewsPackage.VIEW__REPOSITORY:
 			return getRepository();
 		case ViewsPackage.VIEW__EXPLICIT:
@@ -323,9 +280,6 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier((String) newValue);
-			return;
 		case ViewsPackage.VIEW__REPOSITORY:
 			setRepository((ViewsRepository) newValue);
 			return;
@@ -347,9 +301,6 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
-			return;
 		case ViewsPackage.VIEW__REPOSITORY:
 			setRepository((ViewsRepository) null);
 			return;
@@ -371,10 +322,6 @@ public class ViewImpl extends ContainerImpl implements View {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-					: !QUALIFIED_IDENTIFIER_EDEFAULT
-							.equals(getQualifiedIdentifier());
 		case ViewsPackage.VIEW__REPOSITORY:
 			return getRepository() != null;
 		case ViewsPackage.VIEW__EXPLICIT:
@@ -383,42 +330,6 @@ public class ViewImpl extends ContainerImpl implements View {
 			return getCategory() != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == IdentifiedElement.class) {
-			switch (derivedFeatureID) {
-			case ViewsPackage.VIEW__QUALIFIED_IDENTIFIER:
-				return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
-			default:
-				return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == IdentifiedElement.class) {
-			switch (baseFeatureID) {
-			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-				return ViewsPackage.VIEW__QUALIFIED_IDENTIFIER;
-			default:
-				return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

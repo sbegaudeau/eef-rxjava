@@ -110,9 +110,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	public EList<View> getViews() {
 		if (views == null) {
-			views = new EObjectContainmentWithInverseEList<View>(View.class,
-					this, ViewsPackage.CATEGORY__VIEWS,
-					ViewsPackage.VIEW__CATEGORY);
+			views = new EObjectContainmentWithInverseEList<View>(View.class, this, ViewsPackage.CATEGORY__VIEWS, ViewsPackage.VIEW__CATEGORY);
 		}
 		return views;
 	}
@@ -135,8 +133,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.CATEGORY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.CATEGORY__NAME, oldName, name));
 	}
 
 	/**
@@ -155,10 +152,8 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRepository(ViewsRepository newRepository,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newRepository,
-				ViewsPackage.CATEGORY__REPOSITORY, msgs);
+	public NotificationChain basicSetRepository(ViewsRepository newRepository, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newRepository, ViewsPackage.CATEGORY__REPOSITORY, msgs);
 		return msgs;
 	}
 
@@ -168,25 +163,19 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	public void setRepository(ViewsRepository newRepository) {
-		if (newRepository != eInternalContainer()
-				|| (eContainerFeatureID() != ViewsPackage.CATEGORY__REPOSITORY && newRepository != null)) {
+		if (newRepository != eInternalContainer() || (eContainerFeatureID() != ViewsPackage.CATEGORY__REPOSITORY && newRepository != null)) {
 			if (EcoreUtil.isAncestor(this, newRepository))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newRepository != null)
-				msgs = ((InternalEObject) newRepository).eInverseAdd(this,
-						ViewsPackage.VIEWS_REPOSITORY__CATEGORIES,
-						ViewsRepository.class, msgs);
+				msgs = ((InternalEObject) newRepository).eInverseAdd(this, ViewsPackage.VIEWS_REPOSITORY__CATEGORIES, ViewsRepository.class, msgs);
 			msgs = basicSetRepository(newRepository, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.CATEGORY__REPOSITORY, newRepository,
-					newRepository));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.CATEGORY__REPOSITORY, newRepository, newRepository));
 	}
 
 	/**
@@ -196,8 +185,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	public EList<Category> getCategories() {
 		if (categories == null) {
-			categories = new EObjectContainmentEList<Category>(Category.class,
-					this, ViewsPackage.CATEGORY__CATEGORIES);
+			categories = new EObjectContainmentEList<Category>(Category.class, this, ViewsPackage.CATEGORY__CATEGORIES);
 		}
 		return categories;
 	}
@@ -209,12 +197,10 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ViewsPackage.CATEGORY__VIEWS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getViews())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getViews()).basicAdd(otherEnd, msgs);
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
@@ -229,16 +215,14 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ViewsPackage.CATEGORY__VIEWS:
 			return ((InternalEList<?>) getViews()).basicRemove(otherEnd, msgs);
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			return basicSetRepository(null, msgs);
 		case ViewsPackage.CATEGORY__CATEGORIES:
-			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -249,13 +233,10 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ViewsPackage.CATEGORY__REPOSITORY:
-			return eInternalContainer().eInverseRemove(this,
-					ViewsPackage.VIEWS_REPOSITORY__CATEGORIES,
-					ViewsRepository.class, msgs);
+			return eInternalContainer().eInverseRemove(this, ViewsPackage.VIEWS_REPOSITORY__CATEGORIES, ViewsRepository.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -342,8 +323,7 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 		case ViewsPackage.CATEGORY__VIEWS:
 			return views != null && !views.isEmpty();
 		case ViewsPackage.CATEGORY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			return getRepository() != null;
 		case ViewsPackage.CATEGORY__CATEGORIES:

@@ -33,7 +33,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//ViewElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//ViewElement #//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//ViewElement" containment="true" eOpposite="#//ViewElement/container"/>
   </eClassifiers>
@@ -53,8 +53,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdentifiedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedIdentifier" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" volatile="true"
-        transient="true" derived="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eSubpackages name="toolkits" nsURI="http://www.eclipse.org/emf/eef/views/toolkits/1.0.0"
       nsPrefix="eef-views">

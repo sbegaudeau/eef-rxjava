@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
   <notation:Diagram xmi:id="_USlFYKEUEd2AHMZKEcVVmw" type="EcoreTools" measurementUnit="Pixel">
     <children xmi:type="notation:Node" xmi:id="_USmTgKEUEd2AHMZKEcVVmw" type="1001">
       <children xmi:type="notation:Node" xmi:id="_USm6kKEUEd2AHMZKEcVVmw" type="4001"/>
@@ -40,14 +40,6 @@
     <children xmi:type="notation:Node" xmi:id="_USovwqEUEd2AHMZKEcVVmw" type="1001">
       <children xmi:type="notation:Node" xmi:id="_USovxaEUEd2AHMZKEcVVmw" type="4001"/>
       <children xmi:type="notation:Node" xmi:id="_USovxqEUEd2AHMZKEcVVmw" type="5001">
-        <children xmi:type="notation:Node" xmi:id="_USpW0KEUEd2AHMZKEcVVmw" type="2001">
-          <element xmi:type="ecore:EAttribute" href="views.ecore#//ElementEditor/name"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_USpW0aEUEd2AHMZKEcVVmw"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_8yhPgKcVEd2St_MHpApMXw" type="2001">
-          <element xmi:type="ecore:EAttribute" href="views.ecore#//ElementEditor/required"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_8yhPgacVEd2St_MHpApMXw"/>
-        </children>
         <children xmi:type="notation:Node" xmi:id="_AB0dEKcWEd2St_MHpApMXw" type="2001">
           <element xmi:type="ecore:EAttribute" href="views.ecore#//ElementEditor/readOnly"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_AB0dEacWEd2St_MHpApMXw"/>
@@ -100,10 +92,6 @@
     <children xmi:type="notation:Node" xmi:id="_sDlWoKZdEd2Mw8dGut_bPQ" type="1001">
       <children xmi:type="notation:Node" xmi:id="_sEjnAKZdEd2Mw8dGut_bPQ" type="4001"/>
       <children xmi:type="notation:Node" xmi:id="_sEk1IKZdEd2Mw8dGut_bPQ" type="5001">
-        <children xmi:type="notation:Node" xmi:id="_JxETMKZeEd2Mw8dGut_bPQ" type="2001">
-          <element xmi:type="ecore:EAttribute" href="views.ecore#//Container/title"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_JxETMaZeEd2Mw8dGut_bPQ"/>
-        </children>
         <styles xmi:type="notation:DrawerStyle" xmi:id="_sEk1IaZdEd2Mw8dGut_bPQ"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_sEk1IqZdEd2Mw8dGut_bPQ"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_sEk1I6ZdEd2Mw8dGut_bPQ"/>

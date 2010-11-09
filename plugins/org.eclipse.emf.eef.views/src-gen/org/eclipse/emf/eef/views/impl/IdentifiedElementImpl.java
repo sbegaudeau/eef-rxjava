@@ -28,8 +28,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  *
  * @generated
  */
-public abstract class IdentifiedElementImpl extends EObjectImpl implements
-		IdentifiedElement {
+public abstract class IdentifiedElementImpl extends EObjectImpl implements IdentifiedElement {
 	/**
 	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,42 +92,10 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier((String) newValue);
-			return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
-			return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-					: !QUALIFIED_IDENTIFIER_EDEFAULT
-							.equals(getQualifiedIdentifier());
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null : !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 		}
 		return super.eIsSet(featureID);
 	}

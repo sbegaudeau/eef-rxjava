@@ -88,22 +88,22 @@ public class ToolkitsSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ToolkitsPackage.TOOLKIT: {
-				Toolkit toolkit = (Toolkit)theEObject;
-				T result = caseToolkit(toolkit);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case ToolkitsPackage.WIDGET: {
-				Widget widget = (Widget)theEObject;
-				T result = caseWidget(widget);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			default:
-				return defaultCase(theEObject);
+		case ToolkitsPackage.TOOLKIT: {
+			Toolkit toolkit = (Toolkit) theEObject;
+			T result = caseToolkit(toolkit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ToolkitsPackage.WIDGET: {
+			Widget widget = (Widget) theEObject;
+			T result = caseWidget(widget);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 

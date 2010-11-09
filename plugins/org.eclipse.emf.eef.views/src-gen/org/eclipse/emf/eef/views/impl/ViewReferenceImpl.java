@@ -72,8 +72,7 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 			view = (ViewElement) eResolveProxy(oldView);
 			if (view != oldView) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ViewsPackage.VIEW_REFERENCE__VIEW, oldView, view));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewsPackage.VIEW_REFERENCE__VIEW, oldView, view));
 			}
 		}
 		return view;
@@ -97,8 +96,7 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 		ViewElement oldView = view;
 		view = newView;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.VIEW_REFERENCE__VIEW, oldView, view));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_REFERENCE__VIEW, oldView, view));
 	}
 
 	/**

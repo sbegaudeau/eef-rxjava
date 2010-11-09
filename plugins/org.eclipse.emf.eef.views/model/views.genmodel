@@ -8,7 +8,8 @@
     complianceLevel="5.0" copyrightFields="false" language="">
   <foreignModel>views.ecore</foreignModel>
   <genPackages prefix="Views" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
-      multipleEditorPages="false" ecorePackage="views.ecore#/">
+      multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="views.ecore#/">
     <genClasses ecoreClass="views.ecore#//ViewsRepository">
       <genFeatures property="None" children="true" createChild="true" propertyDescription="The views of the repository"
           ecoreFeature="ecore:EReference views.ecore#//ViewsRepository/views"/>

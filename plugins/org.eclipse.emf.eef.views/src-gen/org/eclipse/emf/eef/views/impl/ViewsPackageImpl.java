@@ -154,22 +154,15 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 */
 	public static ViewsPackage init() {
 		if (isInited)
-			return (ViewsPackage) EPackage.Registry.INSTANCE
-					.getEPackage(ViewsPackage.eNS_URI);
+			return (ViewsPackage) EPackage.Registry.INSTANCE.getEPackage(ViewsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI)
-				: new ViewsPackageImpl());
+		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ViewsPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(ToolkitsPackage.eNS_URI) instanceof ToolkitsPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(ToolkitsPackage.eNS_URI)
-				: ToolkitsPackage.eINSTANCE);
+		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolkitsPackage.eNS_URI) instanceof ToolkitsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ToolkitsPackage.eNS_URI) : ToolkitsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theViewsPackage.createPackageContents();
@@ -202,8 +195,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EReference getViewsRepository_Views() {
-		return (EReference) viewsRepositoryEClass.getEStructuralFeatures().get(
-				0);
+		return (EReference) viewsRepositoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -212,8 +204,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EAttribute getViewsRepository_RepositoryKind() {
-		return (EAttribute) viewsRepositoryEClass.getEStructuralFeatures().get(
-				1);
+		return (EAttribute) viewsRepositoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -222,8 +213,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EReference getViewsRepository_Categories() {
-		return (EReference) viewsRepositoryEClass.getEStructuralFeatures().get(
-				2);
+		return (EReference) viewsRepositoryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -232,8 +222,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EAttribute getViewsRepository_Name() {
-		return (EAttribute) viewsRepositoryEClass.getEStructuralFeatures().get(
-				3);
+		return (EAttribute) viewsRepositoryEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -422,8 +411,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EAttribute getDocumentedElement_Documentation() {
-		return (EAttribute) documentedElementEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) documentedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -459,8 +447,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EAttribute getIdentifiedElement_QualifiedIdentifier() {
-		return (EAttribute) identifiedElementEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) identifiedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -494,8 +481,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		// Create classes and their features
 		viewsRepositoryEClass = createEClass(VIEWS_REPOSITORY);
 		createEReference(viewsRepositoryEClass, VIEWS_REPOSITORY__VIEWS);
-		createEAttribute(viewsRepositoryEClass,
-				VIEWS_REPOSITORY__REPOSITORY_KIND);
+		createEAttribute(viewsRepositoryEClass, VIEWS_REPOSITORY__REPOSITORY_KIND);
 		createEReference(viewsRepositoryEClass, VIEWS_REPOSITORY__CATEGORIES);
 		createEAttribute(viewsRepositoryEClass, VIEWS_REPOSITORY__NAME);
 
@@ -526,15 +512,13 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		customViewEClass = createEClass(CUSTOM_VIEW);
 
 		documentedElementEClass = createEClass(DOCUMENTED_ELEMENT);
-		createEAttribute(documentedElementEClass,
-				DOCUMENTED_ELEMENT__DOCUMENTATION);
+		createEAttribute(documentedElementEClass, DOCUMENTED_ELEMENT__DOCUMENTATION);
 
 		viewReferenceEClass = createEClass(VIEW_REFERENCE);
 		createEReference(viewReferenceEClass, VIEW_REFERENCE__VIEW);
 
 		identifiedElementEClass = createEClass(IDENTIFIED_ELEMENT);
-		createEAttribute(identifiedElementEClass,
-				IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER);
+		createEAttribute(identifiedElementEClass, IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER);
 	}
 
 	/**
@@ -562,8 +546,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ToolkitsPackage theToolkitsPackage = (ToolkitsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ToolkitsPackage.eNS_URI);
+		ToolkitsPackage theToolkitsPackage = (ToolkitsPackage) EPackage.Registry.INSTANCE.getEPackage(ToolkitsPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theToolkitsPackage);
@@ -581,153 +564,53 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		elementEditorEClass.getESuperTypes().add(this.getIdentifiedElement());
 		categoryEClass.getESuperTypes().add(this.getDocumentedElement());
 		containerEClass.getESuperTypes().add(this.getViewElement());
+		containerEClass.getESuperTypes().add(this.getIdentifiedElement());
 		viewElementEClass.getESuperTypes().add(this.getDocumentedElement());
 		customElementEditorEClass.getESuperTypes().add(this.getElementEditor());
 		customViewEClass.getESuperTypes().add(this.getView());
 		viewReferenceEClass.getESuperTypes().add(this.getViewElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				viewsRepositoryEClass,
-				ViewsRepository.class,
-				"ViewsRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getViewsRepository_Views(),
-				this.getView(),
-				this.getView_Repository(),
-				"views", null, 0, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getViewsRepository_RepositoryKind(),
-				ecorePackage.getEString(),
-				"RepositoryKind", null, 1, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getViewsRepository_Categories(),
-				this.getCategory(),
-				this.getCategory_Repository(),
-				"categories", null, 0, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getViewsRepository_Name(),
-				ecorePackage.getEString(),
-				"name", null, 1, 1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(viewsRepositoryEClass, ViewsRepository.class, "ViewsRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getViewsRepository_Views(), this.getView(), this.getView_Repository(), "views", null, 0, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getViewsRepository_RepositoryKind(), ecorePackage.getEString(), "RepositoryKind", null, 1, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getViewsRepository_Categories(), this.getCategory(), this.getCategory_Repository(), "categories", null, 0, -1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getViewsRepository_Name(), ecorePackage.getEString(), "name", null, 1, 1, ViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				viewEClass,
-				View.class,
-				"View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getView_Repository(),
-				this.getViewsRepository(),
-				this.getViewsRepository_Views(),
-				"repository", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getView_Explicit(),
-				ecorePackage.getEBoolean(),
-				"explicit", "true", 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEReference(
-				getView_Category(),
-				this.getCategory(),
-				this.getCategory_Views(),
-				"category", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getView_Repository(), this.getViewsRepository(), this.getViewsRepository_Views(), "repository", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getView_Explicit(), ecorePackage.getEBoolean(), "explicit", "true", 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEReference(getView_Category(), this.getCategory(), this.getCategory_Views(), "category", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				elementEditorEClass,
-				ElementEditor.class,
-				"ElementEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getElementEditor_ReadOnly(),
-				ecorePackage.getEBoolean(),
-				"readOnly", null, 1, 1, ElementEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(elementEditorEClass, ElementEditor.class, "ElementEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getElementEditor_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", null, 1, 1, ElementEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				categoryEClass,
-				Category.class,
-				"Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getCategory_Views(),
-				this.getView(),
-				this.getView_Category(),
-				"views", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getCategory_Name(),
-				ecorePackage.getEString(),
-				"name", null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getCategory_Repository(),
-				this.getViewsRepository(),
-				this.getViewsRepository_Categories(),
-				"repository", null, 0, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getCategory_Categories(),
-				this.getCategory(),
-				null,
-				"categories", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getCategory_Views(), this.getView(), this.getView_Category(), "views", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name", null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCategory_Repository(), this.getViewsRepository(), this.getViewsRepository_Categories(), "repository", null, 0, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCategory_Categories(), this.getCategory(), null, "categories", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				containerEClass,
-				org.eclipse.emf.eef.views.Container.class,
-				"Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getContainer_Elements(),
-				this.getViewElement(),
-				this.getViewElement_Container(),
-				"elements", null, 0, -1, org.eclipse.emf.eef.views.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(containerEClass, org.eclipse.emf.eef.views.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getContainer_Elements(), this.getViewElement(), this.getViewElement_Container(), "elements", null, 0, -1, org.eclipse.emf.eef.views.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				viewElementEClass,
-				ViewElement.class,
-				"ViewElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getViewElement_Representation(),
-				theToolkitsPackage.getWidget(),
-				null,
-				"representation", null, 0, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getViewElement_Container(),
-				this.getContainer(),
-				this.getContainer_Elements(),
-				"container", null, 0, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getViewElement_Name(),
-				ecorePackage.getEString(),
-				"name", null, 1, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(viewElementEClass, ViewElement.class, "ViewElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getViewElement_Representation(), theToolkitsPackage.getWidget(), null, "representation", null, 0, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getViewElement_Container(), this.getContainer(), this.getContainer_Elements(), "container", null, 0, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getViewElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				customElementEditorEClass,
-				CustomElementEditor.class,
-				"CustomElementEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(customElementEditorEClass, CustomElementEditor.class, "CustomElementEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(
-				customViewEClass,
-				CustomView.class,
-				"CustomView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(customViewEClass, CustomView.class, "CustomView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(
-				documentedElementEClass,
-				DocumentedElement.class,
-				"DocumentedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getDocumentedElement_Documentation(),
-				ecorePackage.getEString(),
-				"documentation", null, 0, 1, DocumentedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(documentedElementEClass, DocumentedElement.class, "DocumentedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getDocumentedElement_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, DocumentedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				viewReferenceEClass,
-				ViewReference.class,
-				"ViewReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getViewReference_View(),
-				this.getViewElement(),
-				null,
-				"view", null, 1, 1, ViewReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(viewReferenceEClass, ViewReference.class, "ViewReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getViewReference_View(), this.getViewElement(), null, "view", null, 1, 1, ViewReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				identifiedElementEClass,
-				IdentifiedElement.class,
-				"IdentifiedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getIdentifiedElement_QualifiedIdentifier(),
-				ecorePackage.getEString(),
-				"qualifiedIdentifier", null, 1, 1, IdentifiedElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(identifiedElementEClass, IdentifiedElement.class, "IdentifiedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getIdentifiedElement_QualifiedIdentifier(), ecorePackage.getEString(), "qualifiedIdentifier", null, 1, 1, IdentifiedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);

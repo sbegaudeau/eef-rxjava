@@ -96,9 +96,7 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	 */
 	public EList<Widget> getWidgets() {
 		if (widgets == null) {
-			widgets = new EObjectContainmentWithInverseEList<Widget>(
-					Widget.class, this, ToolkitsPackage.TOOLKIT__WIDGETS,
-					ToolkitsPackage.WIDGET__TOOLKIT);
+			widgets = new EObjectContainmentWithInverseEList<Widget>(Widget.class, this, ToolkitsPackage.TOOLKIT__WIDGETS, ToolkitsPackage.WIDGET__TOOLKIT);
 		}
 		return widgets;
 	}
@@ -121,8 +119,7 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolkitsPackage.TOOLKIT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.TOOLKIT__NAME, oldName, name));
 	}
 
 	/**
@@ -132,12 +129,10 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getWidgets())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getWidgets()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -148,12 +143,10 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			return ((InternalEList<?>) getWidgets())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getWidgets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -223,8 +216,7 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 		case ToolkitsPackage.TOOLKIT__WIDGETS:
 			return widgets != null && !widgets.isEmpty();
 		case ToolkitsPackage.TOOLKIT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -30,8 +30,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  *
  * @generated
  */
-public abstract class DocumentedElementImpl extends EObjectImpl implements
-		DocumentedElement {
+public abstract class DocumentedElementImpl extends EObjectImpl implements DocumentedElement {
 	/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,9 +88,7 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 		String oldDocumentation = documentation;
 		documentation = newDocumentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION,
-					oldDocumentation, documentation));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
 	/**
@@ -147,8 +144,7 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-			return DOCUMENTATION_EDEFAULT == null ? documentation != null
-					: !DOCUMENTATION_EDEFAULT.equals(documentation);
+			return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
 		}
 		return super.eIsSet(featureID);
 	}

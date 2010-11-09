@@ -44,8 +44,7 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  *
  * @generated
  */
-public class ViewsRepositoryImpl extends DocumentedElementImpl implements
-		ViewsRepository {
+public class ViewsRepositoryImpl extends DocumentedElementImpl implements ViewsRepository {
 	/**
 	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -150,9 +149,7 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	 */
 	public EList<View> getViews() {
 		if (views == null) {
-			views = new EObjectContainmentWithInverseEList<View>(View.class,
-					this, ViewsPackage.VIEWS_REPOSITORY__VIEWS,
-					ViewsPackage.VIEW__REPOSITORY);
+			views = new EObjectContainmentWithInverseEList<View>(View.class, this, ViewsPackage.VIEWS_REPOSITORY__VIEWS, ViewsPackage.VIEW__REPOSITORY);
 		}
 		return views;
 	}
@@ -164,8 +161,7 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	 */
 	public EList<String> getRepositoryKind() {
 		if (repositoryKind == null) {
-			repositoryKind = new EDataTypeUniqueEList<String>(String.class,
-					this, ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND);
+			repositoryKind = new EDataTypeUniqueEList<String>(String.class, this, ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND);
 		}
 		return repositoryKind;
 	}
@@ -177,10 +173,7 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	 */
 	public EList<Category> getCategories() {
 		if (categories == null) {
-			categories = new EObjectContainmentWithInverseEList<Category>(
-					Category.class, this,
-					ViewsPackage.VIEWS_REPOSITORY__CATEGORIES,
-					ViewsPackage.CATEGORY__REPOSITORY);
+			categories = new EObjectContainmentWithInverseEList<Category>(Category.class, this, ViewsPackage.VIEWS_REPOSITORY__CATEGORIES, ViewsPackage.CATEGORY__REPOSITORY);
 		}
 		return categories;
 	}
@@ -203,8 +196,7 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ViewsPackage.VIEWS_REPOSITORY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEWS_REPOSITORY__NAME, oldName, name));
 	}
 
 	/**
@@ -214,15 +206,12 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getViews())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getViews()).basicAdd(otherEnd, msgs);
 		case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getCategories())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getCategories()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -233,14 +222,12 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 			return ((InternalEList<?>) getViews()).basicRemove(otherEnd, msgs);
 		case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
-			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -276,9 +263,6 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier((String) newValue);
-			return;
 		case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 			getViews().clear();
 			getViews().addAll((Collection<? extends View>) newValue);
@@ -306,9 +290,6 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
-			setQualifiedIdentifier(QUALIFIED_IDENTIFIER_EDEFAULT);
-			return;
 		case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 			getViews().clear();
 			return;
@@ -334,9 +315,7 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
-			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-					: !QUALIFIED_IDENTIFIER_EDEFAULT
-							.equals(getQualifiedIdentifier());
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null : !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 		case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
 			return views != null && !views.isEmpty();
 		case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
@@ -344,8 +323,7 @@ public class ViewsRepositoryImpl extends DocumentedElementImpl implements
 		case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
 			return categories != null && !categories.isEmpty();
 		case ViewsPackage.VIEWS_REPOSITORY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
