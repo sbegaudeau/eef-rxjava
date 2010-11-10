@@ -23,6 +23,7 @@ import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclispe.emf.eef.views.helpers.NamingHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,6 +85,7 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 */
 	public String getQualifiedIdentifier() {
 		StringBuilder result = new StringBuilder(name);
+		result.append(NamingHelper.nameDiscriminator(this));
 		EObject container = this.eContainer();
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {

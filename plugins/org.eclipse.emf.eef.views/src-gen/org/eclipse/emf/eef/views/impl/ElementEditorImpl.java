@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
+import org.eclispe.emf.eef.views.helpers.NamingHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,6 +92,7 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		if (name == null)
 			setName("");
 		StringBuilder result = new StringBuilder(name);
+		result.append(NamingHelper.nameDiscriminator(this));
 		EObject container = this.eContainer();
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
