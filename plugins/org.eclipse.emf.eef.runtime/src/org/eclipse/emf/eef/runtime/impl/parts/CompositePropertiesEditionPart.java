@@ -14,11 +14,12 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.IMessageManager;
 
 /**
@@ -39,6 +40,11 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	protected Composite view;
 
 	/**
+	 * Helper to use to create the part. 
+	 */
+	protected PartComposer composer;
+	
+	/**
 	 * The message manager.
 	 */
 	protected IMessageManager messageManager;
@@ -46,8 +52,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	/**
 	 * The adapter factory.
 	 */
-	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(
-			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+	protected AdapterFactory adapterFactory;
 
 	/**
 	 * The edited element
@@ -72,6 +77,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 */
 	public CompositePropertiesEditionPart(IPropertiesEditionComponent editionComponent) {
 		this.propertiesEditionComponent = editionComponent;
+		this.adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
 	}
 	
 	/**
@@ -91,6 +97,13 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 */
 	public Composite getFigure() {
 		return view;
+	}
+
+	/**
+	 * @return the composer
+	 */
+	public PartComposer getComposer() {
+		return composer;
 	}
 
 	/**
@@ -123,6 +136,25 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 */
 	public ISWTObservableValue getObserver(String key) {
 		return null;
+	}
+	
+	/**
+	 * Refresh the part
+	 */
+	public void refresh() {
+		clear();
+		composer.compose(view);
+		view.layout();
+	}
+
+	/**
+	 * Clear all the graphical elements of the view
+	 */
+	private void clear() {
+		for (int i = 0; i < view.getChildren().length; i++) {
+			Control next = view.getChildren()[i];
+			next.dispose();
+		}
 	}
 	
 }

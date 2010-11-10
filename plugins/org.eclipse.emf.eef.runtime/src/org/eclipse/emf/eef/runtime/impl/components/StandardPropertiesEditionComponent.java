@@ -155,20 +155,20 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
 			Diagnostic valueDiagnostic = validateValue(event);
-			if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
-				updateSemanticModel(event);
-			}
-			else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-				liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
-					
-					public void execute() {
-						updateSemanticModel(event);
-					}
-				});			
-			}
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				propagateEvent(new PropertiesValidationEditionEvent(event, valueDiagnostic));
 			else {
+				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+					updateSemanticModel(event);
+				}
+				else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+					liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+
+						public void execute() {
+							updateSemanticModel(event);
+						}
+					});			
+				}
 				Diagnostic validate = validate();
 				propagateEvent(new PropertiesValidationEditionEvent(event, validate));
 			}
