@@ -96,7 +96,6 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 		return result.toString();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

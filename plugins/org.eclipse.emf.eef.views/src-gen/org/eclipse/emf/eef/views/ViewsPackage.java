@@ -749,13 +749,22 @@ public interface ViewsPackage extends EPackage {
 	int VIEW_REFERENCE__NAME = VIEW_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Qualified Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_REFERENCE__QUALIFIED_IDENTIFIER = VIEW_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>View</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_REFERENCE__VIEW = VIEW_ELEMENT_FEATURE_COUNT + 0;
+	int VIEW_REFERENCE__VIEW = VIEW_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>View Reference</em>' class.
@@ -764,7 +773,7 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_REFERENCE_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 1;
+	int VIEW_REFERENCE_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.IdentifiedElementImpl <em>Identified Element</em>}' class.

@@ -569,6 +569,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 		customElementEditorEClass.getESuperTypes().add(this.getElementEditor());
 		customViewEClass.getESuperTypes().add(this.getView());
 		viewReferenceEClass.getESuperTypes().add(this.getViewElement());
+		viewReferenceEClass.getESuperTypes().add(this.getIdentifiedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(viewsRepositoryEClass, ViewsRepository.class, "ViewsRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

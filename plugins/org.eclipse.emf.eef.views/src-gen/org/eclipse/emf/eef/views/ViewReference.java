@@ -26,7 +26,7 @@ package org.eclipse.emf.eef.views;
  * @model
  * @generated
  */
-public interface ViewReference extends ViewElement {
+public interface ViewReference extends ViewElement, IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>View</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -12,8 +12,10 @@ package org.eclipse.emf.eef.views.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -25,6 +27,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eef.views.impl.ViewReferenceImpl#getQualifiedIdentifier <em>Qualified Identifier</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ViewReferenceImpl#getView <em>View</em>}</li>
  * </ul>
  * </p>
@@ -32,6 +35,15 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * @generated
  */
 public class ViewReferenceImpl extends ViewElementImpl implements ViewReference {
+	/**
+	 * The default value of the '{@link #getQualifiedIdentifier() <em>Qualified Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiedIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUALIFIED_IDENTIFIER_EDEFAULT = null;
 	/**
 	 * The cached value of the '{@link #getView() <em>View</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -59,6 +71,27 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	protected EClass eStaticClass() {
 		return ViewsPackage.Literals.VIEW_REFERENCE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getQualifiedIdentifier() {
+		if (name == null)
+			setName("");
+		StringBuilder result = new StringBuilder(name);
+		EObject container = this.eContainer();
+		while (container != null) {
+			if (container instanceof IdentifiedElement) {
+				result.insert(0, "::"); //$NON-NLS-1$
+				result.insert(0, ((IdentifiedElement) container).getQualifiedIdentifier());
+				return result.toString();
+			}
+			container = container.eContainer();
+		}
+		return result.toString();
 	}
 
 	/**
@@ -107,6 +140,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+			return getQualifiedIdentifier();
 		case ViewsPackage.VIEW_REFERENCE__VIEW:
 			if (resolve)
 				return getView();
@@ -153,10 +188,48 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null : !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 		case ViewsPackage.VIEW_REFERENCE__VIEW:
 			return view != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (derivedFeatureID) {
+			case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IdentifiedElement.class) {
+			switch (baseFeatureID) {
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //ViewReferenceImpl
