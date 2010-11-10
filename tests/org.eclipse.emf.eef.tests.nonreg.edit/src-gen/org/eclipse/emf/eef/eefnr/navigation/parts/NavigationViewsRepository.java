@@ -26,12 +26,16 @@ public class NavigationViewsRepository {
 	 * 
 	 */
 	public static class DeferedFlatReferencesTableSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::DeferedFlatReferencesTableSample::properties::name";
+			
+			
+			public static String flatReferencesTableSampleEditor = "navigation::DeferedFlatReferencesTableSample::properties::flatReferencesTableSampleEditor";
+			
 		
-		public static String name = "navigation::DeferedFlatReferencesTableSample::name";
-		
-		
-		public static String flatReferencesTableSampleEditor = "navigation::DeferedFlatReferencesTableSample::flatReferencesTableSampleEditor";
-		
+		}
 	
 	}
 
@@ -40,12 +44,16 @@ public class NavigationViewsRepository {
 	 * 
 	 */
 	public static class DeferedReferencesTableSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::DeferedReferencesTableSample::properties::name";
+			
+			
+			public static String referencesTableSampleEditor = "navigation::DeferedReferencesTableSample::properties::referencesTableSampleEditor";
+			
 		
-		public static String name = "navigation::DeferedReferencesTableSample::name";
-		
-		
-		public static String referencesTableSampleEditor = "navigation::DeferedReferencesTableSample::referencesTableSampleEditor";
-		
+		}
 	
 	}
 

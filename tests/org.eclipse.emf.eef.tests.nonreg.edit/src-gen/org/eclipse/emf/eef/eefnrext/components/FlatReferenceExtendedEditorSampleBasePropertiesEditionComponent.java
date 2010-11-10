@@ -97,8 +97,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 		}
 		// init values for referenced views
@@ -120,7 +120,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)semanticObject;
-		if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample == event.getAffectedEditor()) {
+		if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
 				flatReferenceEditorSampleSettings.setToReference((List<EObject>) event.getNewValue());
 		}
@@ -145,7 +145,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo;
+		return key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo;
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
+				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newValue);
 				}

@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -90,19 +92,36 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createPropertiesGroup(widgetFactory, view);
-
-		createCheckBoxExtendedEditorSample(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence flatReferenceExtendedEditorSampleStep = new CompositionSequence();
+		flatReferenceExtendedEditorSampleStep
+			.addStep(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.class)
+			.addStep(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
 		
-		// End of user code
+		flatReferenceExtendedEditorSampleStep.addStep(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.checkboxSampleReference);
+		
+		composer = new PartComposer(flatReferenceExtendedEditorSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample) {
+					return createFlatReferenceEditorSampleFlatReferencesTable(widgetFactory, parent);
+				}
+				if (key == EefnrextViewsRepository.FlatReferenceExtendedEditorSample.checkboxSampleReference) {
+					return createCheckBoxExtendedEditorSample(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
@@ -111,16 +130,16 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createFlatReferenceEditorSampleFlatReferencesTable(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	/**
 	 * @param parent
 	 * 
 	 */
-	protected void createFlatReferenceEditorSampleFlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample, EefnrextViewsRepository.FORM_KIND));
+	protected Composite createFlatReferenceEditorSampleFlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.FORM_KIND));
 		flatReferenceEditorSample = new FlatReferencesTable(parent);
 		flatReferenceEditorSample.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -128,21 +147,23 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (event.getSelection() instanceof StructuredSelection) 
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FlatReferenceExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FlatReferenceExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
 			}
 
 		});
 		GridData flatReferenceEditorSampleData = new GridData(GridData.FILL_HORIZONTAL);
 		flatReferenceEditorSample.setLayoutData(flatReferenceEditorSampleData);
-		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.flatReferenceEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 
-	protected void createCheckBoxExtendedEditorSample(FormToolkit widgetFactory, Composite container) {
+	protected Composite createCheckBoxExtendedEditorSample(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrextViewsRepository.class);
 		checkBoxExtendedEditorSamplePropertiesEditionPart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, EefnrextViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)checkBoxExtendedEditorSamplePropertiesEditionPart).createControls(widgetFactory, container);
+		return container;
 	}
 
 

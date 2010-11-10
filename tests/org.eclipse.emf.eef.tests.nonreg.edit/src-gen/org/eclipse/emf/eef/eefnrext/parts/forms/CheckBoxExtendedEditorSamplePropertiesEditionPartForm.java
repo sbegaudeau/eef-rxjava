@@ -24,6 +24,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
@@ -88,19 +90,36 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createPropertiesGroup(widgetFactory, view);
-
-		createAbstractSample(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence checkBoxExtendedEditorSampleStep = new CompositionSequence();
+		checkBoxExtendedEditorSampleStep
+			.addStep(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.class)
+			.addStep(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample);
 		
-		// End of user code
+		checkBoxExtendedEditorSampleStep.addStep(EefnrextViewsRepository.CheckBoxExtendedEditorSample.abstractSampleReference);
+		
+		composer = new PartComposer(checkBoxExtendedEditorSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample) {
+					return createCheckboxEditorSampleCheckbox(widgetFactory, parent);
+				}
+				if (key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.abstractSampleReference) {
+					return createAbstractSample(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
@@ -109,12 +128,12 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createCheckboxEditorSampleCheckbox(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createCheckboxEditorSampleCheckbox(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createCheckboxEditorSampleCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxEditorSample = widgetFactory.createButton(parent, EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel, SWT.CHECK);
 		checkboxEditorSample.addSelectionListener(new SelectionAdapter() {
 
@@ -126,22 +145,24 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CheckBoxExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(checkboxEditorSample.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CheckBoxExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(checkboxEditorSample.getSelection())));
 			}
 
 		});
 		GridData checkboxEditorSampleData = new GridData(GridData.FILL_HORIZONTAL);
 		checkboxEditorSampleData.horizontalSpan = 2;
 		checkboxEditorSample.setLayoutData(checkboxEditorSampleData);
-		EditingUtils.setID(checkboxEditorSample, EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample);
+		EditingUtils.setID(checkboxEditorSample, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample);
 		EditingUtils.setEEFtype(checkboxEditorSample, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createAbstractSample(FormToolkit widgetFactory, Composite container) {
+	protected Composite createAbstractSample(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
 		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)abstractSamplePropertiesEditionPart).createControls(widgetFactory, container);
+		return container;
 	}
 
 

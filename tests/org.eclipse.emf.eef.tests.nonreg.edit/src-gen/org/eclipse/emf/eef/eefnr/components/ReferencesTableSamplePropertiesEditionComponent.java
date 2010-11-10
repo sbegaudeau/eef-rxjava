@@ -100,8 +100,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -119,8 +119,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 		}
 		// init values for referenced views
@@ -141,7 +141,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ReferencesTableSample referencesTableSample = (ReferencesTableSample)semanticObject;
-		if (EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
@@ -150,7 +150,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 					referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
@@ -182,7 +182,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty;
+		return key == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty;
 	}
 
 	/**

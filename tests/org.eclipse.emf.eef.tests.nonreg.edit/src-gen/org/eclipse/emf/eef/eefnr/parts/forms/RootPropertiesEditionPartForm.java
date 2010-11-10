@@ -31,6 +31,8 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
@@ -94,17 +96,32 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createPropertiesGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence rootStep = new CompositionSequence();
+		rootStep
+			.addStep(EefnrViewsRepository.Root.Properties.class)
+			.addStep(EefnrViewsRepository.Root.Properties.samples);
 		
-		// End of user code
+		
+		composer = new PartComposer(rootStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EefnrViewsRepository.Root.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.Root.Properties.samples) {
+					return createSamplesTableComposition(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(EefnrMessages.RootPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
@@ -113,15 +130,15 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createSamplesTableComposition(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	/**
 	 * @param container
 	 * 
 	 */
-	protected void createSamplesTableComposition(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createSamplesTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.samples = new ReferencesTable<AbstractSample>(EefnrMessages.RootPropertiesEditionPart_SamplesLabel, new ReferencesTableListener<AbstractSample>() {			
 			public void handleAdd() { addToSamples();}
 			public void handleEdit(AbstractSample element) { editSamples(element); }
@@ -129,15 +146,16 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			public void handleRemove(AbstractSample element) { removeFromSamples(element); }
 			public void navigateTo(AbstractSample element) { }
 		});
-		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.samples, EefnrViewsRepository.FORM_KIND));
+		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.FORM_KIND));
 		this.samples.createControls(parent, widgetFactory);
 		GridData samplesData = new GridData(GridData.FILL_HORIZONTAL);
 		samplesData.horizontalSpan = 3;
 		this.samples.setLayoutData(samplesData);
 		this.samples.setLowerBound(0);
 		this.samples.setUpperBound(-1);
-		samples.setID(EefnrViewsRepository.Root.samples);
+		samples.setID(EefnrViewsRepository.Root.Properties.samples);
 		samples.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
@@ -158,7 +176,7 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 				policy.execute();
 				EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
 				if (resultEObject != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
 					samples.refresh();
 				}
 			}
@@ -170,7 +188,7 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 * 
 	 */
 	protected void removeFromSamples(AbstractSample element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				samples.refresh();
 		
 	}

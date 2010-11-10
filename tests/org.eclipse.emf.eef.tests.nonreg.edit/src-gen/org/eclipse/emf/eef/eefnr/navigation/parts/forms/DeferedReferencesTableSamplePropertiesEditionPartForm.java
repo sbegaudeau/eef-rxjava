@@ -26,6 +26,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -109,17 +112,35 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createPropertiesGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence deferedReferencesTableSampleStep = new CompositionSequence();
+		CompositionStep propertiesStep = deferedReferencesTableSampleStep.addStep(NavigationViewsRepository.DeferedReferencesTableSample.Properties.class);
+		propertiesStep.addStep(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
+		propertiesStep.addStep(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		
-		// End of user code
+		
+		composer = new PartComposer(deferedReferencesTableSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.name) {
+					return 		createNameText(widgetFactory, parent);
+				}
+				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor) {
+					return createReferencesTableSampleEditorReferencesTable(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
@@ -128,14 +149,13 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createNameText(widgetFactory, propertiesGroup);
-		createReferencesTableSampleEditorReferencesTable(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.name, NavigationViewsRepository.FORM_KIND));
+	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -150,7 +170,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -163,20 +183,21 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.name);
+		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createReferencesTableSampleEditorReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label referencesTableSampleEditorLabel = FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor, NavigationViewsRepository.FORM_KIND));
+	protected Composite createReferencesTableSampleEditorReferencesTable(FormToolkit widgetFactory, Composite parent) {
+		Label referencesTableSampleEditorLabel = FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationViewsRepository.FORM_KIND));
 		GridData referencesTableSampleEditorLabelData = new GridData();
 		referencesTableSampleEditorLabelData.horizontalSpan = 3;
 		referencesTableSampleEditorLabel.setLayoutData(referencesTableSampleEditorLabelData);
@@ -186,9 +207,10 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 		referencesTableSampleEditorData.minimumHeight = 120;
 		referencesTableSampleEditorData.heightHint = 120;
 		referencesTableSampleEditor.getTable().setLayoutData(referencesTableSampleEditorData);
-		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor);
+		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
 		createReferencesTableSampleEditorControlPanel(parent, widgetFactory);
+		return parent;
 	}
 
 	/**
@@ -274,7 +296,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 			}
 
 		});
-		EditingUtils.setID(addReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor);
+		EditingUtils.setID(addReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(addReferencesTableSampleEditor, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencesTableSampleEditor = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -294,7 +316,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 			}
 
 		});
-		EditingUtils.setID(removeReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor);
+		EditingUtils.setID(removeReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(removeReferencesTableSampleEditor, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
 	
@@ -307,7 +329,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 			}
 
@@ -323,7 +345,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 	protected void removeReferencesTableSampleEditor(IStructuredSelection selection) {
 		for (Iterator iter = selection.iterator(); iter.hasNext();) {
 			EObject elem = (EObject) iter.next();
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartForm.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
 		referencesTableSampleEditor.refresh();
 	}

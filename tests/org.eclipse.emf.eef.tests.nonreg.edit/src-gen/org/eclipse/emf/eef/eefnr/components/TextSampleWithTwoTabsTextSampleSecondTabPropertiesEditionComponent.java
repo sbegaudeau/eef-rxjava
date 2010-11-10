@@ -95,10 +95,10 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)semanticObject;
-		if (EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab == event.getAffectedEditor()) {
 			textSampleWithTwoTabs.setTextOptionalPropertyInSecondTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab == event.getAffectedEditor()) {
 			textSampleWithTwoTabs.setTextRequiredPropertyInSecondTab((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -134,7 +134,7 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab || key == EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab;
+		return key == EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab || key == EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab;
 	}
 
 	/**
@@ -148,11 +148,11 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().getEAttributeType(), newValue);
 				}
-				if (EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().getEAttributeType(), newValue);
 				}

@@ -26,9 +26,13 @@ public class EefnrextViewsRepository {
 	 * 
 	 */
 	public static class TableCompositionTargetExtensionEditorSample {
+		public static class Properties {
+	
+			
+			public static String name = "eefnrext::TableCompositionTargetExtensionEditorSample::properties::name";
+			
 		
-		public static String name = "eefnrext::TableCompositionTargetExtensionEditorSample::name";
-		
+		}
 	
 	}
 
@@ -37,10 +41,16 @@ public class EefnrextViewsRepository {
 	 * 
 	 */
 	public static class FlatReferenceExtendedEditorSample {
-		
-		public static String flatReferenceEditorSample = "eefnrext::FlatReferenceExtendedEditorSample::flatReferenceEditorSample";
-		
+		public static class Properties {
 	
+			
+			public static String flatReferenceEditorSample = "eefnrext::FlatReferenceExtendedEditorSample::properties::flatReferenceEditorSample";
+			
+		
+		}
+	
+	
+	public static String checkboxSampleReference = "eefnrext::FlatReferenceExtendedEditorSample::checkboxSampleReference";
 	
 	}
 
@@ -49,12 +59,16 @@ public class EefnrextViewsRepository {
 	 * 
 	 */
 	public static class SecondFlatReferenceExtendedEditorSample {
+		public static class Extended {
+	
+			
+			public static String demo = "eefnrext::SecondFlatReferenceExtendedEditorSample::extended::demo";
+			
+			
+			public static String size = "eefnrext::SecondFlatReferenceExtendedEditorSample::extended::size";
+			
 		
-		public static String demo = "eefnrext::SecondFlatReferenceExtendedEditorSample::demo";
-		
-		
-		public static String size = "eefnrext::SecondFlatReferenceExtendedEditorSample::size";
-		
+		}
 	
 	}
 
@@ -63,10 +77,16 @@ public class EefnrextViewsRepository {
 	 * 
 	 */
 	public static class CheckBoxExtendedEditorSample {
-		
-		public static String checkboxEditorSample = "eefnrext::CheckBoxExtendedEditorSample::checkboxEditorSample";
-		
+		public static class Properties {
 	
+			
+			public static String checkboxEditorSample = "eefnrext::CheckBoxExtendedEditorSample::properties::checkboxEditorSample";
+			
+		
+		}
+	
+	
+	public static String abstractSampleReference = "eefnrext::CheckBoxExtendedEditorSample::abstractSampleReference";
 	
 	}
 

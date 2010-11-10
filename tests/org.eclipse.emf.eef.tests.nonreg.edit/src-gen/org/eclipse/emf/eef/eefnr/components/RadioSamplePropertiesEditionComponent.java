@@ -92,10 +92,10 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		RadioSample radioSample = (RadioSample)semanticObject;
-		if (EefnrViewsRepository.RadioSample.radioRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty == event.getAffectedEditor()) {
 			radioSample.setRadioRequiredProperty((ENUM_SAMPLE)((EEnumLiteral)event.getNewValue()).getInstance());
 		}
-		if (EefnrViewsRepository.RadioSample.radioOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty == event.getAffectedEditor()) {
 			radioSample.setRadioOptionalProperty((ENUM_SAMPLE)((EEnumLiteral)event.getNewValue()).getInstance());
 		}
 	}
@@ -123,7 +123,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.RadioSample.radioRequiredProperty;
+		return key == EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty;
 	}
 
 	/**
@@ -137,11 +137,11 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrViewsRepository.RadioSample.radioRequiredProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().getEAttributeType(), newValue);
 				}
-				if (EefnrViewsRepository.RadioSample.radioOptionalProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), newValue);
 				}

@@ -94,10 +94,10 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)semanticObject;
-		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
+		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo == event.getAffectedEditor()) {
 			flatReferenceExtendedEditorSample.setDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
+		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size == event.getAffectedEditor()) {
 			flatReferenceExtendedEditorSample.setSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
 		}
 	}
@@ -133,7 +133,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo;
+		return key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo;
 	}
 
 	/**
@@ -147,11 +147,11 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo == event.getAffectedEditor()) {
+				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().getEAttributeType(), newValue);
 				}
-				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size == event.getAffectedEditor()) {
+				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().getEAttributeType(), newValue);
 				}

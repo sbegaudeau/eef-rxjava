@@ -19,6 +19,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -80,18 +83,35 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createExtendedGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence secondFlatReferenceExtendedEditorSampleStep = new CompositionSequence();
+		CompositionStep extendedStep = secondFlatReferenceExtendedEditorSampleStep.addStep(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.class);
+		extendedStep.addStep(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
+		extendedStep.addStep(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
 		
-		// End of user code
+		
+		composer = new PartComposer(secondFlatReferenceExtendedEditorSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.class) {
+					return createExtendedGroup(parent);
+				}
+				if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo) {
+					return createDemoText(parent);
+				}
+				if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size) {
+					return createSizeText(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createExtendedGroup(Composite parent) {
+	protected Composite createExtendedGroup(Composite parent) {
 		Group extendedGroup = new Group(parent, SWT.NONE);
 		extendedGroup.setText(EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_ExtendedGroupLabel);
 		GridData extendedGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -100,13 +120,12 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		GridLayout extendedGroupLayout = new GridLayout();
 		extendedGroupLayout.numColumns = 3;
 		extendedGroup.setLayout(extendedGroupLayout);
-		createDemoText(extendedGroup);
-		createSizeText(extendedGroup);
+		return extendedGroup;
 	}
 
 	
-	protected void createDemoText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo, EefnrextViewsRepository.SWT_KIND));
+	protected Composite createDemoText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextViewsRepository.SWT_KIND));
 		demo = new Text(parent, SWT.BORDER);
 		GridData demoData = new GridData(GridData.FILL_HORIZONTAL);
 		demo.setLayoutData(demoData);
@@ -122,7 +141,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, demo.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, demo.getText()));
 			}
 
 		});
@@ -139,19 +158,20 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, demo.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, demo.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(demo, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo);
+		EditingUtils.setID(demo, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
 		EditingUtils.setEEFtype(demo, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.demo, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createSizeText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size, EefnrextViewsRepository.SWT_KIND));
+	protected Composite createSizeText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextViewsRepository.SWT_KIND));
 		size = new Text(parent, SWT.BORDER);
 		GridData sizeData = new GridData(GridData.FILL_HORIZONTAL);
 		size.setLayoutData(sizeData);
@@ -167,7 +187,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, size.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, size.getText()));
 			}
 
 		});
@@ -184,14 +204,15 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, size.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, size.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(size, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size);
+		EditingUtils.setID(size, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
 		EditingUtils.setEEFtype(size, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.size, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

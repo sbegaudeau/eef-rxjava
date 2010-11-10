@@ -102,8 +102,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 			
@@ -118,8 +118,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 		}
 		// init values for referenced views
@@ -140,10 +140,10 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)semanticObject;
-		if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
 			eobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
 		}
-		if (EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
 			eobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
 		}
 	}
@@ -169,7 +169,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery;
+		return key == EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery;
 	}
 
 	/**

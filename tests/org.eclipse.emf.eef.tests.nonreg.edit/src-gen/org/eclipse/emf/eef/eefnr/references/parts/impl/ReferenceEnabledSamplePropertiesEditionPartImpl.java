@@ -33,6 +33,8 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
@@ -97,20 +99,36 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createPropertiesGroup(view);
-
-		createAbstractEnabledSample(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence referenceEnabledSampleStep = new CompositionSequence();
+		referenceEnabledSampleStep
+			.addStep(ReferencesViewsRepository.ReferenceEnabledSample.Properties.class)
+			.addStep(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference);
 		
-		// End of user code
+		referenceEnabledSampleStep.addStep(ReferencesViewsRepository.ReferenceEnabledSample.abstractEnabledSampleReference);
+		
+		composer = new PartComposer(referenceEnabledSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ReferencesViewsRepository.ReferenceEnabledSample.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference) {
+					return createReferenceAdvancedReferencesTable(parent);
+				}
+				if (key == ReferencesViewsRepository.ReferenceEnabledSample.abstractEnabledSampleReference) {
+					return createAbstractEnabledSample(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(Composite parent) {
+	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -119,13 +137,13 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createReferenceAdvancedReferencesTable(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createReferenceAdvancedReferencesTable(Composite parent) {
+	protected Composite createReferenceAdvancedReferencesTable(Composite parent) {
 		this.reference = new ReferencesTable<TotalSample>(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<TotalSample> dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referenceFilters, referenceBusinessFilters,
@@ -134,7 +152,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference,
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference,
 								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
 						reference.refresh();
@@ -148,21 +166,22 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 			public void handleRemove(TotalSample element) { removeFromReference(element); }
 			public void navigateTo(TotalSample element) { }
 		});
-		this.reference.setHelpText(propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.ReferenceEnabledSample.reference, ReferencesViewsRepository.SWT_KIND));
+		this.reference.setHelpText(propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, ReferencesViewsRepository.SWT_KIND));
 		this.reference.createControls(parent);
 		GridData referenceData = new GridData(GridData.FILL_HORIZONTAL);
 		referenceData.horizontalSpan = 3;
 		this.reference.setLayoutData(referenceData);
 		this.reference.disableMove();
-		reference.setID(ReferencesViewsRepository.ReferenceEnabledSample.reference);
+		reference.setID(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference);
 		reference.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
 	protected void moveReference(TotalSample element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		reference.refresh();
 	}
 
@@ -170,7 +189,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	protected void removeFromReference(TotalSample element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		reference.refresh();		
 	}
 
@@ -189,10 +208,11 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		}		
 	}
 
-	protected void createAbstractEnabledSample(Composite container) {
+	protected Composite createAbstractEnabledSample(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
 		abstractEnabledSamplePropertiesEditionPart = (AbstractEnabledSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractEnabledSample.class, ReferencesViewsRepository.SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)abstractEnabledSamplePropertiesEditionPart).createControls(container);
+		return container;
 	}
 
 

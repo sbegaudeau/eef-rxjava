@@ -101,8 +101,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 			basePart.addFilterToFlatreferencetableOptionalProperty(new ViewerFilter() {
 			
@@ -120,8 +120,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 		}
 		// init values for referenced views
@@ -142,11 +142,11 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)semanticObject;
-		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
 				flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
-		if (EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
 				flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
@@ -173,7 +173,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty;
+		return key == EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty;
 	}
 
 	/**

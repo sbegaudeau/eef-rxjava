@@ -90,7 +90,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TableCompositionTargetExtensionEditorSample tableCompositionTargetExtensionEditorSample = (TableCompositionTargetExtensionEditorSample)semanticObject;
-		if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name == event.getAffectedEditor()) {
+		if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name == event.getAffectedEditor()) {
 			tableCompositionTargetExtensionEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -123,7 +123,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.name == event.getAffectedEditor()) {
+				if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}

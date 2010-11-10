@@ -91,7 +91,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)semanticObject;
-		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
+		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample == event.getAffectedEditor()) {
 			checkBoxExtendedEditorSample.setCheckboxEditorSample((Boolean)event.getNewValue());	
 		}
 	}
@@ -120,11 +120,11 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.checkboxEditorSample == event.getAffectedEditor()) {
+				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newValue);
 				}
-				if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
+				if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}

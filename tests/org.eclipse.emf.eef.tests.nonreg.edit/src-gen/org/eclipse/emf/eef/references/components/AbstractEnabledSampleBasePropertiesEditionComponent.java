@@ -90,7 +90,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)semanticObject;
-		if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
+		if (ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled == event.getAffectedEditor()) {
 			abstractEnabledSample.setEnabled((Boolean)event.getNewValue());	
 		}
 	}
@@ -119,11 +119,11 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ReferencesViewsRepository.AbstractEnabledSample.enabled == event.getAffectedEditor()) {
+				if (ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), newValue);
 				}
-				if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
+				if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}

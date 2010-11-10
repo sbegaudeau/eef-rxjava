@@ -90,7 +90,7 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AbstractSample abstractSample = (AbstractSample)semanticObject;
-		if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
+		if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
 			abstractSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -123,7 +123,7 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ReferencesViewsRepository.AbstractSample.name == event.getAffectedEditor()) {
+				if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}

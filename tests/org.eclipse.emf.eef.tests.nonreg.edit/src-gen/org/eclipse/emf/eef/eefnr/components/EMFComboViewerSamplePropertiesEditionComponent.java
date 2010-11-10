@@ -92,10 +92,10 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFComboViewerSample eMFComboViewerSample = (EMFComboViewerSample)semanticObject;
-		if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
 			eMFComboViewerSample.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)event.getNewValue());
 		}
-		if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
 			eMFComboViewerSample.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 		}
 	}
@@ -123,7 +123,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty;
+		return key == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty;
 	}
 
 	/**
@@ -137,11 +137,11 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEAttributeType(), newValue);
 				}
-				if (EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), newValue);
 				}

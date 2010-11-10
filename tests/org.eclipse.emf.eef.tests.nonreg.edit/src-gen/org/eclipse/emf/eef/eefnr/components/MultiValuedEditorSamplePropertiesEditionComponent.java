@@ -96,13 +96,13 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)semanticObject;
-		if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
 				multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
 			}
 		}
-		if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				multiValuedEditorSample.getMultivaluededitorOptionalProperty().clear();
 				multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
@@ -141,7 +141,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty;
+		return key == EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty;
 	}
 
 	/**
@@ -155,11 +155,11 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().getEAttributeType(), newValue);
 				}
-				if (EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEAttributeType(), newValue);
 				}

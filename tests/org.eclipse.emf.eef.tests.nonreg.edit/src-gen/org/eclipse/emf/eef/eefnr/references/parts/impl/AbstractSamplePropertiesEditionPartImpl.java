@@ -19,6 +19,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -79,18 +81,32 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createNamePropertiesGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence abstractSampleStep = new CompositionSequence();
+		abstractSampleStep
+			.addStep(ReferencesViewsRepository.AbstractSample.NameProperties.class)
+			.addStep(ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		
-		// End of user code
+		
+		composer = new PartComposer(abstractSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ReferencesViewsRepository.AbstractSample.NameProperties.class) {
+					return createNamePropertiesGroup(parent);
+				}
+				if (key == ReferencesViewsRepository.AbstractSample.NameProperties.name) {
+					return createNameText(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createNamePropertiesGroup(Composite parent) {
+	protected Composite createNamePropertiesGroup(Composite parent) {
 		Group namePropertiesGroup = new Group(parent, SWT.NONE);
 		namePropertiesGroup.setText(ReferencesMessages.AbstractSamplePropertiesEditionPart_NamePropertiesGroupLabel);
 		GridData namePropertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -99,12 +115,12 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 		GridLayout namePropertiesGroupLayout = new GridLayout();
 		namePropertiesGroupLayout.numColumns = 3;
 		namePropertiesGroup.setLayout(namePropertiesGroupLayout);
-		createNameText(namePropertiesGroup);
+		return namePropertiesGroup;
 	}
 
 	
-	protected void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ReferencesViewsRepository.AbstractSample.name, ReferencesViewsRepository.SWT_KIND));
+	protected Composite createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -120,7 +136,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -137,14 +153,15 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.name);
+		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.name, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

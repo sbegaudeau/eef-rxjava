@@ -95,10 +95,10 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TextSample textSample = (TextSample)semanticObject;
-		if (EefnrViewsRepository.TextSample.textRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.TextSample.Properties.textRequiredProperty == event.getAffectedEditor()) {
 			textSample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EefnrViewsRepository.TextSample.textOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.TextSample.Properties.textOptionalProperty == event.getAffectedEditor()) {
 			textSample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -134,7 +134,7 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.TextSample.textRequiredProperty;
+		return key == EefnrViewsRepository.TextSample.Properties.textRequiredProperty;
 	}
 
 	/**
@@ -148,11 +148,11 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrViewsRepository.TextSample.textRequiredProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.TextSample.Properties.textRequiredProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().getEAttributeType(), newValue);
 				}
-				if (EefnrViewsRepository.TextSample.textOptionalProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.TextSample.Properties.textOptionalProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().getEAttributeType(), newValue);
 				}

@@ -26,6 +26,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -105,18 +108,35 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createPropertiesGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence deferedReferencesTableSampleStep = new CompositionSequence();
+		CompositionStep propertiesStep = deferedReferencesTableSampleStep.addStep(NavigationViewsRepository.DeferedReferencesTableSample.Properties.class);
+		propertiesStep.addStep(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
+		propertiesStep.addStep(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		
-		// End of user code
+		
+		composer = new PartComposer(deferedReferencesTableSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.name) {
+					return createNameText(parent);
+				}
+				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor) {
+					return createReferencesTableSampleEditorReferencesTable(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(Composite parent) {
+	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -125,13 +145,12 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createNameText(propertiesGroup);
-		createReferencesTableSampleEditorReferencesTable(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.name, NavigationViewsRepository.SWT_KIND));
+	protected Composite createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -147,7 +166,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -164,22 +183,23 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.name);
+		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * @param parent
 	 * 
 	 */
-	protected void createReferencesTableSampleEditorReferencesTable(Composite parent) {
-		Label referencesTableSampleEditorLabel = SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor, NavigationViewsRepository.SWT_KIND));
+	protected Composite createReferencesTableSampleEditorReferencesTable(Composite parent) {
+		Label referencesTableSampleEditorLabel = SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationViewsRepository.SWT_KIND));
 		GridData referencesTableSampleEditorLabelData = new GridData();
 		referencesTableSampleEditorLabelData.horizontalSpan = 3;
 		referencesTableSampleEditorLabel.setLayoutData(referencesTableSampleEditorLabelData);
@@ -189,9 +209,10 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		referencesTableSampleEditorData.minimumHeight = 120;
 		referencesTableSampleEditorData.heightHint = 120;
 		referencesTableSampleEditor.getTable().setLayoutData(referencesTableSampleEditorData);
-		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor);
+		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
 		createReferencesTableSampleEditorControlPanel(parent);
+		return parent;
 	}
 
 	/**
@@ -277,7 +298,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			}
 
 		});
-		EditingUtils.setID(addReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor);
+		EditingUtils.setID(addReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(addReferencesTableSampleEditor, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencesTableSampleEditor = new Button(result, SWT.NONE);
 		removeReferencesTableSampleEditor.setText(NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel);
@@ -298,7 +319,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			}
 
 		});
-		EditingUtils.setID(removeReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor);
+		EditingUtils.setID(removeReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(removeReferencesTableSampleEditor, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
 
@@ -310,7 +331,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 			}
 
@@ -326,7 +347,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	protected void removeReferencesTableSampleEditor(IStructuredSelection selection) {
 		for (Iterator iter = selection.iterator(); iter.hasNext();) {
 			EObject elem = (EObject) iter.next();
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
 		referencesTableSampleEditor.refresh();
 	}

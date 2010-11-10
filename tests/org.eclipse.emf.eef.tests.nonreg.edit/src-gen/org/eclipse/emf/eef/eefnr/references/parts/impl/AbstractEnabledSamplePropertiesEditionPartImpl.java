@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -82,20 +84,36 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createEnabledPropertiesGroup(view);
-
-		createAbstractSample(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence abstractEnabledSampleStep = new CompositionSequence();
+		abstractEnabledSampleStep
+			.addStep(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.class)
+			.addStep(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		
-		// End of user code
+		abstractEnabledSampleStep.addStep(ReferencesViewsRepository.AbstractEnabledSample.abstractReference);
+		
+		composer = new PartComposer(abstractEnabledSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.class) {
+					return createEnabledPropertiesGroup(parent);
+				}
+				if (key == ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled) {
+					return createEnabledCheckbox(parent);
+				}
+				if (key == ReferencesViewsRepository.AbstractEnabledSample.abstractReference) {
+					return createAbstractSample(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createEnabledPropertiesGroup(Composite parent) {
+	protected Composite createEnabledPropertiesGroup(Composite parent) {
 		Group enabledPropertiesGroup = new Group(parent, SWT.NONE);
 		enabledPropertiesGroup.setText(ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledPropertiesGroupLabel);
 		GridData enabledPropertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -104,11 +122,11 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		GridLayout enabledPropertiesGroupLayout = new GridLayout();
 		enabledPropertiesGroupLayout.numColumns = 3;
 		enabledPropertiesGroup.setLayout(enabledPropertiesGroupLayout);
-		createEnabledCheckbox(enabledPropertiesGroup);
+		return enabledPropertiesGroup;
 	}
 
 	
-	protected void createEnabledCheckbox(Composite parent) {
+	protected Composite createEnabledCheckbox(Composite parent) {
 		enabled = new Button(parent, SWT.CHECK);
 		enabled.setText(ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel);
 		enabled.addSelectionListener(new SelectionAdapter() {
@@ -121,22 +139,24 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractEnabledSample.enabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(enabled.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(enabled.getSelection())));
 			}
 
 		});
 		GridData enabledData = new GridData(GridData.FILL_HORIZONTAL);
 		enabledData.horizontalSpan = 2;
 		enabled.setLayoutData(enabledData);
-		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.enabled);
+		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.enabled, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createAbstractSample(Composite container) {
+	protected Composite createAbstractSample(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
 		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)abstractSamplePropertiesEditionPart).createControls(container);
+		return container;
 	}
 
 

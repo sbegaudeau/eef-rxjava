@@ -19,6 +19,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
@@ -83,17 +85,32 @@ public class AbstractSamplePropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createNamePropertiesGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence abstractSampleStep = new CompositionSequence();
+		abstractSampleStep
+			.addStep(ReferencesViewsRepository.AbstractSample.NameProperties.class)
+			.addStep(ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		
-		// End of user code
+		
+		composer = new PartComposer(abstractSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ReferencesViewsRepository.AbstractSample.NameProperties.class) {
+					return createNamePropertiesGroup(widgetFactory, parent);
+				}
+				if (key == ReferencesViewsRepository.AbstractSample.NameProperties.name) {
+					return 		createNameText(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createNamePropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section namePropertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createNamePropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section namePropertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		namePropertiesSection.setText(ReferencesMessages.AbstractSamplePropertiesEditionPart_NamePropertiesGroupLabel);
 		GridData namePropertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		namePropertiesSectionData.horizontalSpan = 3;
@@ -102,13 +119,13 @@ public class AbstractSamplePropertiesEditionPartForm extends CompositeProperties
 		GridLayout namePropertiesGroupLayout = new GridLayout();
 		namePropertiesGroupLayout.numColumns = 3;
 		namePropertiesGroup.setLayout(namePropertiesGroupLayout);
-		createNameText(widgetFactory, namePropertiesGroup);
 		namePropertiesSection.setClient(namePropertiesGroup);
+		return namePropertiesGroup;
 	}
 
 	
-	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ReferencesViewsRepository.AbstractSample.name, ReferencesViewsRepository.FORM_KIND));
+	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -123,7 +140,7 @@ public class AbstractSamplePropertiesEditionPartForm extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -136,13 +153,14 @@ public class AbstractSamplePropertiesEditionPartForm extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractSample.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.name);
+		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.name, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

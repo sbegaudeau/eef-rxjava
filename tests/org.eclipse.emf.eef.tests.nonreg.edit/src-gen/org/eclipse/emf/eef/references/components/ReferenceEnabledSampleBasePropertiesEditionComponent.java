@@ -95,8 +95,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 			});
 			basePart.addFilterToReference(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for reference
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 		}
 		// init values for referenced views
@@ -116,7 +116,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)semanticObject;
-		if (ReferencesViewsRepository.ReferenceEnabledSample.reference == event.getAffectedEditor()) {
+		if (ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					referenceSettings.addToReference((EObject) event.getNewValue());

@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
@@ -87,19 +89,36 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createEnabledPropertiesGroup(widgetFactory, view);
-
-		createAbstractSample(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence abstractEnabledSampleStep = new CompositionSequence();
+		abstractEnabledSampleStep
+			.addStep(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.class)
+			.addStep(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		
-		// End of user code
+		abstractEnabledSampleStep.addStep(ReferencesViewsRepository.AbstractEnabledSample.abstractReference);
+		
+		composer = new PartComposer(abstractEnabledSampleStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.class) {
+					return createEnabledPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled) {
+					return createEnabledCheckbox(widgetFactory, parent);
+				}
+				if (key == ReferencesViewsRepository.AbstractEnabledSample.abstractReference) {
+					return createAbstractSample(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createEnabledPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section enabledPropertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createEnabledPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section enabledPropertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		enabledPropertiesSection.setText(ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledPropertiesGroupLabel);
 		GridData enabledPropertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		enabledPropertiesSectionData.horizontalSpan = 3;
@@ -108,12 +127,12 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 		GridLayout enabledPropertiesGroupLayout = new GridLayout();
 		enabledPropertiesGroupLayout.numColumns = 3;
 		enabledPropertiesGroup.setLayout(enabledPropertiesGroupLayout);
-		createEnabledCheckbox(widgetFactory, enabledPropertiesGroup);
 		enabledPropertiesSection.setClient(enabledPropertiesGroup);
+		return enabledPropertiesGroup;
 	}
 
 	
-	protected void createEnabledCheckbox(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createEnabledCheckbox(FormToolkit widgetFactory, Composite parent) {
 		enabled = widgetFactory.createButton(parent, ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel, SWT.CHECK);
 		enabled.addSelectionListener(new SelectionAdapter() {
 
@@ -125,22 +144,24 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractEnabledSample.enabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(enabled.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(enabled.getSelection())));
 			}
 
 		});
 		GridData enabledData = new GridData(GridData.FILL_HORIZONTAL);
 		enabledData.horizontalSpan = 2;
 		enabled.setLayoutData(enabledData);
-		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.enabled);
+		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.enabled, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createAbstractSample(FormToolkit widgetFactory, Composite container) {
+	protected Composite createAbstractSample(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
 		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)abstractSamplePropertiesEditionPart).createControls(widgetFactory, container);
+		return container;
 	}
 
 

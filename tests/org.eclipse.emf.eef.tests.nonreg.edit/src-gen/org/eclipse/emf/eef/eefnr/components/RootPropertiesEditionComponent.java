@@ -89,8 +89,8 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for samples
-																																																																											
-																																																																											// End of user code
+																																																																																																																											
+																																																																																																																											// End of user code
 			
 		}
 		// init values for referenced views
@@ -110,7 +110,7 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Root root = (Root)semanticObject;
-		if (EefnrViewsRepository.Root.samples == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.Root.Properties.samples == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof AbstractSample) {
 					samplesSettings.addToReference((EObject) event.getNewValue());

@@ -91,10 +91,10 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CheckboxSample checkboxSample = (CheckboxSample)semanticObject;
-		if (EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty == event.getAffectedEditor()) {
 			checkboxSample.setCheckboxRequiredProperty((Boolean)event.getNewValue());	
 		}
-		if (EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty == event.getAffectedEditor()) {
+		if (EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty == event.getAffectedEditor()) {
 			checkboxSample.setCheckboxOptionalProperty((Boolean)event.getNewValue());	
 		}
 	}
@@ -122,7 +122,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty;
+		return key == EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty;
 	}
 
 	/**
@@ -136,11 +136,11 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().getEAttributeType(), newValue);
 				}
-				if (EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty == event.getAffectedEditor()) {
+				if (EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), newValue);
 				}

@@ -26,10 +26,16 @@ public class ReferencesViewsRepository {
 	 * 
 	 */
 	public static class ReferenceEnabledSample {
-		
-		public static String reference = "references::ReferenceEnabledSample::reference";
-		
+		public static class Properties {
 	
+			
+			public static String reference = "references::ReferenceEnabledSample::properties::reference";
+			
+		
+		}
+	
+	
+	public static String abstractEnabledSampleReference = "references::ReferenceEnabledSample::abstractEnabledSampleReference";
 	
 	}
 
@@ -38,10 +44,16 @@ public class ReferencesViewsRepository {
 	 * 
 	 */
 	public static class AbstractEnabledSample {
-		
-		public static String enabled = "references::AbstractEnabledSample::enabled";
-		
+		public static class EnabledProperties {
 	
+			
+			public static String enabled = "references::AbstractEnabledSample::enabled properties::enabled";
+			
+		
+		}
+	
+	
+	public static String abstractReference = "references::AbstractEnabledSample::abstractReference";
 	
 	}
 
@@ -50,9 +62,13 @@ public class ReferencesViewsRepository {
 	 * 
 	 */
 	public static class AbstractSample {
+		public static class NameProperties {
+	
+			
+			public static String name = "references::AbstractSample::name properties::name";
+			
 		
-		public static String name = "references::AbstractSample::name";
-		
+		}
 	
 	}
 
