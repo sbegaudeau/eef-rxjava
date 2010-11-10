@@ -25,8 +25,8 @@ public class NamingHelper {
 		while (container instanceof ViewElement) {
 			if (((ViewElement)container).getName().equals(baseName)) {
 				buffer.append('_');
-				container = container.eContainer();
 			}
+			container = container.eContainer();
 		}
 		ViewsRepository repository = repository(container);
 		if (repository != null) {
