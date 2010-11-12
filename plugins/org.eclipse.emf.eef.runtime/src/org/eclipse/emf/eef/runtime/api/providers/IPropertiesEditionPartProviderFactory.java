@@ -24,7 +24,7 @@ public interface IPropertiesEditionPartProviderFactory {
 	 * @param key the ViewRepository to provide
 	 * @return <code>true</code> if this provider provides the ViewRepository; <code>false</code> otherwise.
 	 */
-	public abstract boolean provides(Class key);
+	public abstract boolean provides(Object key);
 
 	/**
 	 * Register a new {@link IPropertiesEditionPartProvider} in the factory.
@@ -39,6 +39,6 @@ public interface IPropertiesEditionPartProviderFactory {
 	 * @param the ViewRepository to provide
 	 * @return the {@link IPropertiesEditionPartProvider} for the specified ViewRepository.
 	 */
-	public abstract IPropertiesEditionPartProvider getProvider(Class key);
+	public abstract IPropertiesEditionPartProvider getProvider(Object key);
 
 }

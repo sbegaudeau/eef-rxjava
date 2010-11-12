@@ -26,7 +26,7 @@ public interface IPropertiesEditionPartProvider {
 	 * @param key the key identifing the ViewRepository to check 
 	 * @return <code>true</code> if this provider provides for this ; <code>false</code> otherwise.
 	 */
-	public abstract boolean provides(Class key);
+	public abstract boolean provides(Object key);
 
 	/**
 	 * @param key the key identifing the expected View.
@@ -34,6 +34,6 @@ public interface IPropertiesEditionPartProvider {
 	 * @param component the {@link IPropertiesEditionComponent} that manages this view
 	 * @return the expected view
 	 */
-	public abstract IPropertiesEditionPart getPropertiesEditionPart(Class key, int kind, IPropertiesEditionComponent component);
+	public abstract IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component);
 
 }

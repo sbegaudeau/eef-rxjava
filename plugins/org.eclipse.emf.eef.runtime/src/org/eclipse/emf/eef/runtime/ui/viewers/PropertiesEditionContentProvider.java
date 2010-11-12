@@ -151,7 +151,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	 *            the part name
 	 * @return the key identifying the part
 	 */
-	public Class translatePart(String key) {
+	public Object translatePart(String key) {
 		if (propertiesEditionComponent != null)
 			return propertiesEditionComponent.translatePart(key);
 		return null;
@@ -165,7 +165,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	 * @param element
 	 *            the element which initialize the part
 	 */
-	public void initPart(Class key, int kind, EObject element) {
+	public void initPart(Object key, int kind, EObject element) {
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.initPart(key, kind, element);
 	}
@@ -180,7 +180,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	 * @param allResources
 	 *            the resource where the part has to process
 	 */
-	public void initPart(Class key, int kind, EObject element, ResourceSet allResources) {
+	public void initPart(Object key, int kind, EObject element, ResourceSet allResources) {
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.initPart(key, kind, element, allResources);
 	}

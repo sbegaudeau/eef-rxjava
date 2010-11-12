@@ -37,9 +37,9 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#getProvider(java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#getProvider(java.lang.Object)
 	 */
-	public IPropertiesEditionPartProvider getProvider(Class key) {
+	public IPropertiesEditionPartProvider getProvider(Object key) {
 		for (IPropertiesEditionPartProvider editPropertiesPartProvider : editPropertiesPartProviders) {
 			if (editPropertiesPartProvider.provides(key))
 				return editPropertiesPartProvider;
@@ -50,9 +50,9 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#provides(java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#provides(java.lang.Object)
 	 */
-	public boolean provides(Class key) {
+	public boolean provides(Object key) {
 		for (IPropertiesEditionPartProvider editPropertiesPartProvider : editPropertiesPartProviders) {
 			if (editPropertiesPartProvider.provides(key))
 				return true;

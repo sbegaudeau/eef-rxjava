@@ -38,12 +38,12 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	/**
 	 * Key to use to get the Part provider
 	 */
-	protected java.lang.Class repositoryKey;
+	protected java.lang.Object repositoryKey;
 
 	/**
 	 * Key to use to get the Part
 	 */
-	protected java.lang.Class partKey;
+	protected java.lang.Object partKey;
 
 	/**
 	 * Default constructor
@@ -72,7 +72,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
 	 * 
 	 */
-	public java.lang.Class translatePart(String key) {
+	public java.lang.Object translatePart(String key) {
 		if (partID().equals(key))
 			return partKey;
 		return super.translatePart(key);
@@ -82,10 +82,10 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 *      setPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 * 
 	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (key == partKey) {
 			this.editingPart = propertiesEditionPart;
 			if (semanticAdapter != null)

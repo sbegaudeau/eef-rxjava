@@ -65,10 +65,10 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
 	 *      int, org.eclipse.emf.ecore.EObject)
 	 */
-	public void initPart(Class key, int kind, EObject element) {
+	public void initPart(Object key, int kind, EObject element) {
 		this.initPart(key, kind, element, element.eResource().getResourceSet());
 	}
 	
@@ -185,17 +185,17 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Object,
 	 *      int)
 	 */
-	public boolean mustBeComposed(Class key, int kind) {
+	public boolean mustBeComposed(Object key, int kind) {
 		return true;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.String,
 	 *      int)
 	 */
 	public boolean isRequired(String key, int kind) {
@@ -217,7 +217,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
-	public Class translatePart(String key) {
+	public Object translatePart(String key) {
 		return null;
 	}
 	
@@ -238,10 +238,10 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Object,
 	 *      int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
-	public void setPropertiesEditionPart(Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		// Default case : nothing to do
 	}
 

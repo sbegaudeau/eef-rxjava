@@ -62,7 +62,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param allResource
 	 *            the resource where the part has to process
 	 */
-	public abstract void initPart(Class key, int kind, EObject element, ResourceSet allResource);
+	public abstract void initPart(Object key, int kind, EObject element, ResourceSet allResource);
 
 	/**
 	 * @param key
@@ -72,7 +72,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param element
 	 *            the element which initialize the part
 	 */
-	public abstract void initPart(Class key, int kind, EObject element);
+	public abstract void initPart(Object key, int kind, EObject element);
 
 	/**
 	 * Return the diagnostic object linked to the current state validation.
@@ -127,7 +127,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param propertiesEditionPart
 	 *            the part to set
 	 */
-	public void setPropertiesEditionPart(Class key, int kind, IPropertiesEditionPart propertiesEditionPart);
+	public void setPropertiesEditionPart(Object key, int kind, IPropertiesEditionPart propertiesEditionPart);
 
 	/**
 	 * In dynamic case, managed PropertiesEditionPart can ask the component do decide if they compose a
@@ -139,7 +139,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the of the view
 	 * @return <code>true</code> if the sub-view must be composed
 	 */
-	public boolean mustBeComposed(Class key, int kind);
+	public boolean mustBeComposed(Object key, int kind);
 
 	/**
 	 * This method allow managed PropertiesEditionPart to ask the component if a elementEditor is required or
@@ -172,7 +172,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the part name
 	 * @return the key identifying the part
 	 */
-	public Class translatePart(String key);
+	public Object translatePart(String key);
 
 	/**
 	 * Returns the internationalized text for the specified tab ( in wizards )

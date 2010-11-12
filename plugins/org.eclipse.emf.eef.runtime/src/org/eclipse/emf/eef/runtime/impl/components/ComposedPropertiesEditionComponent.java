@@ -109,10 +109,10 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
 	 *      int, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
-	public void initPart(Class key, int kind, EObject element, ResourceSet allResource) {
+	public void initPart(Object key, int kind, EObject element, ResourceSet allResource) {
 		for (IPropertiesEditionComponent component : subComponents) {
 			component.initPart(key, kind, element, allResource);
 		}
@@ -121,10 +121,10 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
 	 *      int, org.eclipse.emf.ecore.EObject)
 	 */
-	public void initPart(Class key, int kind, EObject element) {
+	public void initPart(Object key, int kind, EObject element) {
 		this.initPart(key, kind, element, element.eResource().getResourceSet());
 	}
 
@@ -259,10 +259,10 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#mustBeComposed(java.lang.Object,
 	 *      int) Very strange case ... shouldn't be invoke ...
 	 */
-	public boolean mustBeComposed(Class key, int kind) {
+	public boolean mustBeComposed(Object key, int kind) {
 		for (IPropertiesEditionComponent component : subComponents) {
 			if (!component.mustBeComposed(key, kind))
 				return false;
@@ -273,7 +273,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Object,
 	 *      int)
 	 */
 	public boolean isRequired(String key, int kind) {
@@ -303,7 +303,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#translatePart(java.lang.String)
 	 */
-	public Class translatePart(String key) {
+	public Object translatePart(String key) {
 		for (IPropertiesEditionComponent component : subComponents) {
 			if (component.translatePart(key) != null)
 				return component.translatePart(key);
@@ -314,10 +314,10 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Class,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#setPropertiesEditionPart(java.lang.Object,
 	 *      int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
-	public void setPropertiesEditionPart(Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		for (IPropertiesEditionComponent component : subComponents) {
 			component.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 		}
