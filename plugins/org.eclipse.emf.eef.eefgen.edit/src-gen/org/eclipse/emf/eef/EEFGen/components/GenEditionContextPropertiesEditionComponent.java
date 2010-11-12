@@ -113,8 +113,8 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for propertiesEditionContext
-																														
-																														// End of user code
+																																	
+																																	// End of user code
 			
 			
 		}
@@ -198,20 +198,20 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == EEFGenViewsRepository.GenEditionContext.Parameters.basePackage)
 			return "The base package for all the generated code"; //$NON-NLS-1$
 		if (key == EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext)
