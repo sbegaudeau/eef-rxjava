@@ -23,6 +23,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -96,22 +99,62 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createReferenceGroup(view);
-
-		createParametersGroup(view);
-
-		createActivationGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence genEditionContextStep = new CompositionSequence();
+		genEditionContextStep
+			.addStep(EEFGenViewsRepository.GenEditionContext.Reference.class)
+			.addStep(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext);
 		
-		// End of user code
+		CompositionStep parametersStep = genEditionContextStep.addStep(EEFGenViewsRepository.GenEditionContext.Parameters.class);
+		parametersStep.addStep(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage);
+		parametersStep.addStep(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID);
+		
+		CompositionStep activationStep = genEditionContextStep.addStep(EEFGenViewsRepository.GenEditionContext.Activation.class);
+		activationStep.addStep(EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors);
+		activationStep.addStep(EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews);
+		activationStep.addStep(EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases);
+		
+		
+		composer = new PartComposer(genEditionContextStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EEFGenViewsRepository.GenEditionContext.Reference.class) {
+					return createReferenceGroup(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext) {
+					return createPropertiesEditionContextFlatComboViewer(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Parameters.class) {
+					return createParametersGroup(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Parameters.basePackage) {
+					return createBasePackageText(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID) {
+					return createDescriptorsContributorIDText(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Activation.class) {
+					return createActivationGroup(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors) {
+					return createGenericPropertiesViewsDescriptorsCheckbox(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews) {
+					return createGMFSpecificPropertiesViewsCheckbox(parent);
+				}
+				if (key == EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases) {
+					return createJUnitTestCasesCheckbox(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createReferenceGroup(Composite parent) {
+	protected Composite createReferenceGroup(Composite parent) {
 		Group referenceGroup = new Group(parent, SWT.NONE);
 		referenceGroup.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -120,35 +163,36 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		GridLayout referenceGroupLayout = new GridLayout();
 		referenceGroupLayout.numColumns = 3;
 		referenceGroup.setLayout(referenceGroupLayout);
-		createPropertiesEditionContextFlatComboViewer(referenceGroup);
+		return referenceGroup;
 	}
 
 	/**
-	 * @param referenceGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createPropertiesEditionContextFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND));
+	protected Composite createPropertiesEditionContextFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND));
 		propertiesEditionContext = new EObjectFlatComboViewer(parent, false);
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		propertiesEditionContext.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getPropertiesEditionContext()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getPropertiesEditionContext()));
 			}
 
 		});
 		GridData propertiesEditionContextData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesEditionContext.setLayoutData(propertiesEditionContextData);
-		propertiesEditionContext.setID(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		propertiesEditionContext.setID(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createParametersGroup(Composite parent) {
+	protected Composite createParametersGroup(Composite parent) {
 		Group parametersGroup = new Group(parent, SWT.NONE);
 		parametersGroup.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ParametersGroupLabel);
 		GridData parametersGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -157,13 +201,12 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		GridLayout parametersGroupLayout = new GridLayout();
 		parametersGroupLayout.numColumns = 3;
 		parametersGroup.setLayout(parametersGroupLayout);
-		createBasePackageText(parametersGroup);
-		createDescriptorsContributorIDText(parametersGroup);
+		return parametersGroup;
 	}
 
 	
-	protected void createBasePackageText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.SWT_KIND));
+	protected Composite createBasePackageText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenViewsRepository.SWT_KIND));
 		basePackage = new Text(parent, SWT.BORDER);
 		GridData basePackageData = new GridData(GridData.FILL_HORIZONTAL);
 		basePackage.setLayoutData(basePackageData);
@@ -179,7 +222,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
 			}
 
 		});
@@ -196,19 +239,20 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basePackage.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(basePackage, EEFGenViewsRepository.GenEditionContext.basePackage);
+		EditingUtils.setID(basePackage, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage);
 		EditingUtils.setEEFtype(basePackage, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.basePackage, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createDescriptorsContributorIDText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND));
+	protected Composite createDescriptorsContributorIDText(Composite parent) {
+		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND));
 		descriptorsContributorID = new Text(parent, SWT.BORDER);
 		GridData descriptorsContributorIDData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptorsContributorID.setLayoutData(descriptorsContributorIDData);
@@ -224,7 +268,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
 			}
 
 		});
@@ -241,20 +285,21 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, descriptorsContributorID.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(descriptorsContributorID, EEFGenViewsRepository.GenEditionContext.descriptorsContributorID);
+		EditingUtils.setID(descriptorsContributorID, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID);
 		EditingUtils.setEEFtype(descriptorsContributorID, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createActivationGroup(Composite parent) {
+	protected Composite createActivationGroup(Composite parent) {
 		Group activationGroup = new Group(parent, SWT.NONE);
 		activationGroup.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_ActivationGroupLabel);
 		GridData activationGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -263,13 +308,11 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		GridLayout activationGroupLayout = new GridLayout();
 		activationGroupLayout.numColumns = 3;
 		activationGroup.setLayout(activationGroupLayout);
-		createGenericPropertiesViewsDescriptorsCheckbox(activationGroup);
-		createGMFSpecificPropertiesViewsCheckbox(activationGroup);
-		createJUnitTestCasesCheckbox(activationGroup);
+		return activationGroup;
 	}
 
 	
-	protected void createGenericPropertiesViewsDescriptorsCheckbox(Composite parent) {
+	protected Composite createGenericPropertiesViewsDescriptorsCheckbox(Composite parent) {
 		genericPropertiesViewsDescriptors = new Button(parent, SWT.CHECK);
 		genericPropertiesViewsDescriptors.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel);
 		genericPropertiesViewsDescriptors.addSelectionListener(new SelectionAdapter() {
@@ -282,20 +325,21 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(genericPropertiesViewsDescriptors.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(genericPropertiesViewsDescriptors.getSelection())));
 			}
 
 		});
 		GridData genericPropertiesViewsDescriptorsData = new GridData(GridData.FILL_HORIZONTAL);
 		genericPropertiesViewsDescriptorsData.horizontalSpan = 2;
 		genericPropertiesViewsDescriptors.setLayoutData(genericPropertiesViewsDescriptorsData);
-		EditingUtils.setID(genericPropertiesViewsDescriptors, EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors);
+		EditingUtils.setID(genericPropertiesViewsDescriptors, EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors);
 		EditingUtils.setEEFtype(genericPropertiesViewsDescriptors, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createGMFSpecificPropertiesViewsCheckbox(Composite parent) {
+	protected Composite createGMFSpecificPropertiesViewsCheckbox(Composite parent) {
 		gMFSpecificPropertiesViews = new Button(parent, SWT.CHECK);
 		gMFSpecificPropertiesViews.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel);
 		gMFSpecificPropertiesViews.addSelectionListener(new SelectionAdapter() {
@@ -308,20 +352,21 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(gMFSpecificPropertiesViews.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(gMFSpecificPropertiesViews.getSelection())));
 			}
 
 		});
 		GridData gMFSpecificPropertiesViewsData = new GridData(GridData.FILL_HORIZONTAL);
 		gMFSpecificPropertiesViewsData.horizontalSpan = 2;
 		gMFSpecificPropertiesViews.setLayoutData(gMFSpecificPropertiesViewsData);
-		EditingUtils.setID(gMFSpecificPropertiesViews, EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews);
+		EditingUtils.setID(gMFSpecificPropertiesViews, EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews);
 		EditingUtils.setEEFtype(gMFSpecificPropertiesViews, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createJUnitTestCasesCheckbox(Composite parent) {
+	protected Composite createJUnitTestCasesCheckbox(Composite parent) {
 		jUnitTestCases = new Button(parent, SWT.CHECK);
 		jUnitTestCases.setText(EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel);
 		jUnitTestCases.addSelectionListener(new SelectionAdapter() {
@@ -334,16 +379,17 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.jUnitTestCases, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(jUnitTestCases.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenEditionContextPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(jUnitTestCases.getSelection())));
 			}
 
 		});
 		GridData jUnitTestCasesData = new GridData(GridData.FILL_HORIZONTAL);
 		jUnitTestCasesData.horizontalSpan = 2;
 		jUnitTestCases.setLayoutData(jUnitTestCasesData);
-		EditingUtils.setID(jUnitTestCases, EEFGenViewsRepository.GenEditionContext.jUnitTestCases);
+		EditingUtils.setID(jUnitTestCases, EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases);
 		EditingUtils.setEEFtype(jUnitTestCases, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.jUnitTestCases, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

@@ -27,26 +27,38 @@ public class EEFGenViewsRepository {
 	 * 
 	 */
 	public static class GenEditionContext {
-		
-		public static String propertiesEditionContext = "EEFGen::GenEditionContext::properties Edition Context";
-		
+		public static class Reference {
 	
+			
+			public static String propertiesEditionContext = "EEFGen::GenEditionContext::Reference::properties Edition Context";
+			
 		
-		public static String basePackage = "EEFGen::GenEditionContext::Base package";
-		
-		
-		public static String descriptorsContributorID = "EEFGen::GenEditionContext::Descriptors contributorID";
-		
+		}
 	
+		public static class Parameters {
+	
+			
+			public static String basePackage = "EEFGen::GenEditionContext::Parameters::Base package";
+			
+			
+			public static String descriptorsContributorID = "EEFGen::GenEditionContext::Parameters::Descriptors contributorID";
+			
 		
-		public static String genericPropertiesViewsDescriptors = "EEFGen::GenEditionContext::Generic properties views descriptors";
+		}
+	
+		public static class Activation {
+	
+			
+			public static String genericPropertiesViewsDescriptors = "EEFGen::GenEditionContext::Activation::Generic properties views descriptors";
+			
+			
+			public static String gMFSpecificPropertiesViews = "EEFGen::GenEditionContext::Activation::GMF specific properties views";
+			
+			
+			public static String jUnitTestCases = "EEFGen::GenEditionContext::Activation::JUnit test cases";
+			
 		
-		
-		public static String gMFSpecificPropertiesViews = "EEFGen::GenEditionContext::GMF specific properties views";
-		
-		
-		public static String jUnitTestCases = "EEFGen::GenEditionContext::JUnit test cases";
-		
+		}
 	
 	}
 
@@ -55,9 +67,13 @@ public class EEFGenViewsRepository {
 	 * 
 	 */
 	public static class EEFGenModelReference {
+		public static class Reference {
+	
+			
+			public static String referencedEEFGenModel = "EEFGen::EEFGenModelReference::Reference::Referenced EEFGenModel";
+			
 		
-		public static String referencedEEFGenModel = "EEFGen::EEFGenModelReference::Referenced EEFGenModel";
-		
+		}
 	
 	}
 
@@ -66,22 +82,30 @@ public class EEFGenViewsRepository {
 	 * 
 	 */
 	public static class EEFGenModel {
-		
-		public static String generationDirectory = "EEFGen::EEFGenModel::Generation directory";
-		
-		
-		public static String testsGenerationDirectory = "EEFGen::EEFGenModel::Tests generation directory";
-		
-		
-		public static String useJMergeToManageUserCode = "EEFGen::EEFGenModel::Use JMerge to manage user code";
-		
+		public static class Parameters {
 	
+			
+			public static String generationDirectory = "EEFGen::EEFGenModel::Parameters::Generation directory";
+			
+			
+			public static String testsGenerationDirectory = "EEFGen::EEFGenModel::Parameters::Tests generation directory";
+			
+			
+			public static String useJMergeToManageUserCode = "EEFGen::EEFGenModel::Parameters::Use JMerge to manage user code";
+			
 		
-		public static String author = "EEFGen::EEFGenModel::author";
+		}
+	
+		public static class Legal {
+	
+			
+			public static String author = "EEFGen::EEFGenModel::Legal::author";
+			
+			
+			public static String license = "EEFGen::EEFGenModel::Legal::license";
+			
 		
-		
-		public static String license = "EEFGen::EEFGenModel::license";
-		
+		}
 	
 	}
 
@@ -90,23 +114,35 @@ public class EEFGenViewsRepository {
 	 * 
 	 */
 	public static class GenViewsRepository {
-		
-		public static String viewsRepository = "EEFGen::GenViewsRepository::Views repository";
-		
+		public static class Reference {
 	
+			
+			public static String viewsRepository = "EEFGen::GenViewsRepository::Reference::Views repository";
+			
 		
-		public static String basePackage = "EEFGen::GenViewsRepository::Base package";
-		
-		
-		public static String helpStrategy = "EEFGen::GenViewsRepository::Help strategy";
-		
+		}
 	
+		public static class Parameters {
+	
+			
+			public static String basePackage = "EEFGen::GenViewsRepository::Parameters::Base package";
+			
+			
+			public static String helpStrategy = "EEFGen::GenViewsRepository::Parameters::Help strategy";
+			
 		
-		public static String sWTViews = "EEFGen::GenViewsRepository::SWT views";
+		}
+	
+		public static class Activation {
+	
+			
+			public static String sWTViews = "EEFGen::GenViewsRepository::Activation::SWT views";
+			
+			
+			public static String formsViews = "EEFGen::GenViewsRepository::Activation::Forms views";
+			
 		
-		
-		public static String formsViews = "EEFGen::GenViewsRepository::Forms views";
-		
+		}
 	
 	}
 

@@ -109,19 +109,19 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EEFGenModel eEFGenModel = (EEFGenModel)semanticObject;
-		if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory == event.getAffectedEditor()) {
 			eEFGenModel.setGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.EEFGenModel.Legal.author == event.getAffectedEditor()) {
 			eEFGenModel.setAuthor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.EEFGenModel.Legal.license == event.getAffectedEditor()) {
 			eEFGenModel.setLicense((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory == event.getAffectedEditor()) {
 			eEFGenModel.setTestsGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode == event.getAffectedEditor()) {
 			eEFGenModel.setUseJMergeForUserCode((Boolean)event.getNewValue());	
 		}
 	}
@@ -174,7 +174,7 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EEFGenViewsRepository.EEFGenModel.generationDirectory;
+		return key == EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory;
 	}
 
 	/**
@@ -188,23 +188,23 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EEFGenViewsRepository.EEFGenModel.generationDirectory == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.EEFGenModel.author == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.EEFGenModel.Legal.author == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.EEFGenModel.license == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.EEFGenModel.Legal.license == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), newValue);
 				}

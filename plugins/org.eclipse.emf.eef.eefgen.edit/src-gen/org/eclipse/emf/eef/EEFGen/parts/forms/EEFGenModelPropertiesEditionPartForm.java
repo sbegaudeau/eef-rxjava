@@ -21,6 +21,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
@@ -92,19 +95,52 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createParametersGroup(widgetFactory, view);
-
-		createLegalGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence eEFGenModelStep = new CompositionSequence();
+		CompositionStep parametersStep = eEFGenModelStep.addStep(EEFGenViewsRepository.EEFGenModel.Parameters.class);
+		parametersStep.addStep(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory);
+		parametersStep.addStep(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory);
+		parametersStep.addStep(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode);
 		
-		// End of user code
+		CompositionStep legalStep = eEFGenModelStep.addStep(EEFGenViewsRepository.EEFGenModel.Legal.class);
+		legalStep.addStep(EEFGenViewsRepository.EEFGenModel.Legal.author);
+		legalStep.addStep(EEFGenViewsRepository.EEFGenModel.Legal.license);
+		
+		
+		composer = new PartComposer(eEFGenModelStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.class) {
+					return createParametersGroup(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory) {
+					return 		createGenerationDirectoryText(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory) {
+					return 		createTestsGenerationDirectoryText(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode) {
+					return createUseJMergeToManageUserCodeCheckbox(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModel.Legal.class) {
+					return createLegalGroup(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModel.Legal.author) {
+					return 		createAuthorText(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModel.Legal.license) {
+					return createLicenseTextarea(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createParametersGroup(FormToolkit widgetFactory, final Composite view) {
-		Section parametersSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createParametersGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section parametersSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		parametersSection.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_ParametersGroupLabel);
 		GridData parametersSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		parametersSectionData.horizontalSpan = 3;
@@ -113,15 +149,13 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		GridLayout parametersGroupLayout = new GridLayout();
 		parametersGroupLayout.numColumns = 3;
 		parametersGroup.setLayout(parametersGroupLayout);
-		createGenerationDirectoryText(widgetFactory, parametersGroup);
-		createTestsGenerationDirectoryText(widgetFactory, parametersGroup);
-		createUseJMergeToManageUserCodeCheckbox(widgetFactory, parametersGroup);
 		parametersSection.setClient(parametersGroup);
+		return parametersGroup;
 	}
 
 	
-	protected void createGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND));
+	protected Composite createGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenViewsRepository.FORM_KIND));
 		generationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		generationDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -136,7 +170,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.generationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
 			}
 		});
 		generationDirectory.addKeyListener(new KeyAdapter() {
@@ -149,18 +183,19 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.generationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, generationDirectory.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(generationDirectory, EEFGenViewsRepository.EEFGenModel.generationDirectory);
+		EditingUtils.setID(generationDirectory, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory);
 		EditingUtils.setEEFtype(generationDirectory, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.generationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createTestsGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND));
+	protected Composite createTestsGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND));
 		testsGenerationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		testsGenerationDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -175,7 +210,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
 			}
 		});
 		testsGenerationDirectory.addKeyListener(new KeyAdapter() {
@@ -188,17 +223,18 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, testsGenerationDirectory.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(testsGenerationDirectory, EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory);
+		EditingUtils.setID(testsGenerationDirectory, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory);
 		EditingUtils.setEEFtype(testsGenerationDirectory, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createUseJMergeToManageUserCodeCheckbox(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createUseJMergeToManageUserCodeCheckbox(FormToolkit widgetFactory, Composite parent) {
 		useJMergeToManageUserCode = widgetFactory.createButton(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel, SWT.CHECK);
 		useJMergeToManageUserCode.addSelectionListener(new SelectionAdapter() {
 
@@ -210,23 +246,24 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(useJMergeToManageUserCode.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(useJMergeToManageUserCode.getSelection())));
 			}
 
 		});
 		GridData useJMergeToManageUserCodeData = new GridData(GridData.FILL_HORIZONTAL);
 		useJMergeToManageUserCodeData.horizontalSpan = 2;
 		useJMergeToManageUserCode.setLayoutData(useJMergeToManageUserCodeData);
-		EditingUtils.setID(useJMergeToManageUserCode, EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode);
+		EditingUtils.setID(useJMergeToManageUserCode, EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode);
 		EditingUtils.setEEFtype(useJMergeToManageUserCode, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.useJMergeToManageUserCode, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createLegalGroup(FormToolkit widgetFactory, final Composite view) {
-		Section legalSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createLegalGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section legalSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		legalSection.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_LegalGroupLabel);
 		GridData legalSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		legalSectionData.horizontalSpan = 3;
@@ -235,14 +272,13 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		GridLayout legalGroupLayout = new GridLayout();
 		legalGroupLayout.numColumns = 3;
 		legalGroup.setLayout(legalGroupLayout);
-		createAuthorText(widgetFactory, legalGroup);
-		createLicenseTextarea(widgetFactory, legalGroup);
 		legalSection.setClient(legalGroup);
+		return legalGroup;
 	}
 
 	
-	protected void createAuthorText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND));
+	protected Composite createAuthorText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenViewsRepository.FORM_KIND));
 		author = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		author.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -257,7 +293,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.author, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, author.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Legal.author, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, author.getText()));
 			}
 		});
 		author.addKeyListener(new KeyAdapter() {
@@ -270,18 +306,19 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.author, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, author.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Legal.author, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, author.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(author, EEFGenViewsRepository.EEFGenModel.author);
+		EditingUtils.setID(author, EEFGenViewsRepository.EEFGenModel.Legal.author);
 		EditingUtils.setEEFtype(author, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createLicenseTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label licenseLabel = FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND));
+	protected Composite createLicenseTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label licenseLabel = FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Legal.license, EEFGenViewsRepository.FORM_KIND));
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);
@@ -301,13 +338,14 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Legal.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
 			}
 
 		});
-		EditingUtils.setID(license, EEFGenViewsRepository.EEFGenModel.license);
+		EditingUtils.setID(license, EEFGenViewsRepository.EEFGenModel.Legal.license);
 		EditingUtils.setEEFtype(license, "eef::Textarea"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModel.Legal.license, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

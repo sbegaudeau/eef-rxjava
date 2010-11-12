@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -86,17 +88,32 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createReferenceGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence eEFGenModelReferenceStep = new CompositionSequence();
+		eEFGenModelReferenceStep
+			.addStep(EEFGenViewsRepository.EEFGenModelReference.Reference.class)
+			.addStep(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
 		
-		// End of user code
+		
+		composer = new PartComposer(eEFGenModelReferenceStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EEFGenViewsRepository.EEFGenModelReference.Reference.class) {
+					return createReferenceGroup(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel) {
+					return createReferencedEEFGenModelFlatComboViewer(parent, widgetFactory);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
-		Section referenceSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createReferenceGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section referenceSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referenceSection.setText(EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		referenceSectionData.horizontalSpan = 3;
@@ -105,16 +122,17 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 		GridLayout referenceGroupLayout = new GridLayout();
 		referenceGroupLayout.numColumns = 3;
 		referenceGroup.setLayout(referenceGroupLayout);
-		createReferencedEEFGenModelFlatComboViewer(referenceGroup, widgetFactory);
 		referenceSection.setClient(referenceGroup);
+		return referenceGroup;
 	}
 
 	/**
-	 * @param referenceGroup
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * 
 	 */
-	protected void createReferencedEEFGenModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND));
+	protected Composite createReferencedEEFGenModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND));
 		referencedEEFGenModel = new EObjectFlatComboViewer(parent, false);
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData referencedEEFGenModelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -128,12 +146,13 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends CompositeProp
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelReferencePropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getReferencedEEFGenModel()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelReferencePropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getReferencedEEFGenModel()));
 			}
 
 		});
-		referencedEEFGenModel.setID(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		referencedEEFGenModel.setID(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

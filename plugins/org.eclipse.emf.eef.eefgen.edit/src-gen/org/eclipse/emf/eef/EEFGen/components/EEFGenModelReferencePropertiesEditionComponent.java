@@ -93,8 +93,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for reference
-															
-															// End of user code
+																								
+																								// End of user code
 			
 		}
 		// init values for referenced views
@@ -114,7 +114,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)semanticObject;
-		if (EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel == event.getAffectedEditor()) {
 			referencedContextSettings.setToReference((EEFGenModel)event.getNewValue());
 		}
 	}
@@ -138,7 +138,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel;
+		return key == EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel;
 	}
 
 	/**

@@ -113,8 +113,8 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for propertiesEditionContext
-															
-															// End of user code
+																								
+																								// End of user code
 			
 			
 		}
@@ -140,22 +140,22 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		GenEditionContext genEditionContext = (GenEditionContext)semanticObject;
-		if (EEFGenViewsRepository.GenEditionContext.basePackage == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.GenEditionContext.Parameters.basePackage == event.getAffectedEditor()) {
 			genEditionContext.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EEFGenViewsRepository.GenEditionContext.descriptorsContributorID == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID == event.getAffectedEditor()) {
 			genEditionContext.setDescriptorsContributorID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
 			genEditionContext.setDescriptorsGenericPropertiesViews((Boolean)event.getNewValue());	
 		}
-		if (EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
 			genEditionContext.setGmfPropertiesViews((Boolean)event.getNewValue());	
 		}
-		if (EEFGenViewsRepository.GenEditionContext.propertiesEditionContext == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext == event.getAffectedEditor()) {
 			propertiesEditionContextSettings.setToReference((PropertiesEditionContext)event.getNewValue());
 		}
-		if (EEFGenViewsRepository.GenEditionContext.jUnitTestCases == event.getAffectedEditor()) {
+		if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
 			genEditionContext.setGenerateJunitTestCases((Boolean)event.getNewValue());	
 		}
 	}
@@ -202,7 +202,7 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == EEFGenViewsRepository.GenEditionContext.propertiesEditionContext;
+		return key == EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext;
 	}
 
 	/**
@@ -212,9 +212,9 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == EEFGenViewsRepository.GenEditionContext.basePackage)
+		if (key == EEFGenViewsRepository.GenEditionContext.Parameters.basePackage)
 			return "The base package for all the generated code"; //$NON-NLS-1$
-		if (key == EEFGenViewsRepository.GenEditionContext.propertiesEditionContext)
+		if (key == EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext)
 			return "The PropertiesEditioContext to describe"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -230,23 +230,23 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (EEFGenViewsRepository.GenEditionContext.basePackage == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenEditionContext.Parameters.basePackage == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.GenEditionContext.descriptorsContributorID == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.GenEditionContext.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.GenEditionContext.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), newValue);
 				}
-				if (EEFGenViewsRepository.GenEditionContext.jUnitTestCases == event.getAffectedEditor()) {
+				if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newValue);
 				}

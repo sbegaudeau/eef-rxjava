@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -82,18 +84,32 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createReferenceGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence eEFGenModelReferenceStep = new CompositionSequence();
+		eEFGenModelReferenceStep
+			.addStep(EEFGenViewsRepository.EEFGenModelReference.Reference.class)
+			.addStep(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
 		
-		// End of user code
+		
+		composer = new PartComposer(eEFGenModelReferenceStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == EEFGenViewsRepository.EEFGenModelReference.Reference.class) {
+					return createReferenceGroup(parent);
+				}
+				if (key == EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel) {
+					return createReferencedEEFGenModelFlatComboViewer(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createReferenceGroup(Composite parent) {
+	protected Composite createReferenceGroup(Composite parent) {
 		Group referenceGroup = new Group(parent, SWT.NONE);
 		referenceGroup.setText(EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -102,29 +118,30 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		GridLayout referenceGroupLayout = new GridLayout();
 		referenceGroupLayout.numColumns = 3;
 		referenceGroup.setLayout(referenceGroupLayout);
-		createReferencedEEFGenModelFlatComboViewer(referenceGroup);
+		return referenceGroup;
 	}
 
 	/**
-	 * @param referenceGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createReferencedEEFGenModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND));
+	protected Composite createReferencedEEFGenModelFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND));
 		referencedEEFGenModel = new EObjectFlatComboViewer(parent, false);
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		referencedEEFGenModel.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelReferencePropertiesEditionPartImpl.this, EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getReferencedEEFGenModel()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelReferencePropertiesEditionPartImpl.this, EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getReferencedEEFGenModel()));
 			}
 
 		});
 		GridData referencedEEFGenModelData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedEEFGenModel.setLayoutData(referencedEEFGenModelData);
-		referencedEEFGenModel.setID(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModelReference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		referencedEEFGenModel.setID(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 
