@@ -155,11 +155,11 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 [for (view : View | pec.views) ? (view.explicit)]
 		if ([view.editorID()/].class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
@@ -172,11 +172,11 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
+	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 [for (view : View | pec.views)]
 		if (key == [view.editorID()/].class) {
 			super.initPart(key, kind, element, allResource);
