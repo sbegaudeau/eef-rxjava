@@ -93,8 +93,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																			
-																																																			// End of user code
+																																																						
+																																																						// End of user code
 			
 		}
 		// init values for referenced views
@@ -134,20 +134,20 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == ComponentsViewsRepository.PropertiesEditionContext.Binding.model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.model)
 			return "The GenPackage for this edition context"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);

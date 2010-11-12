@@ -82,7 +82,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	protected Button removeModel;
 	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
-	protected ReferencesTable<? extends EObject> views;
+	protected ReferencesTable views;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
@@ -443,9 +443,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable<ElementEditor>(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
+		this.views = new ReferencesTable(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(resourceSet, viewsFilters, viewsBusinessFilters,
 				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor(), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
@@ -479,7 +479,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
-	protected void moveViews(ElementEditor element, int oldIndex, int newIndex) {
+	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		views.refresh();
 	}
@@ -487,7 +487,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
-	protected void removeFromViews(ElementEditor element) {
+	protected void removeFromViews(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		views.refresh();		
 	}
@@ -495,7 +495,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
-	protected void editViews(ElementEditor element) {
+	protected void editViews(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {

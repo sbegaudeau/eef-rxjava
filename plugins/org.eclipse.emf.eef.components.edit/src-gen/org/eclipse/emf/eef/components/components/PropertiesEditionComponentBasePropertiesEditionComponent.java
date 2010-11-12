@@ -123,8 +123,8 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-																																																			
-																																										// End of user code
+																																																						
+																																													// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -139,8 +139,8 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																			
-																																										// End of user code
+																																																						
+																																													// End of user code
 			
 			
 			
@@ -223,20 +223,20 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.name || key == ComponentsViewsRepository.PropertiesEditionComponent.Binding.views || key == ComponentsViewsRepository.PropertiesEditionComponent.Binding.model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.name)
 			return "The name of this element binding"; //$NON-NLS-1$
 		if (key == ComponentsViewsRepository.PropertiesEditionComponent.Binding.views)
