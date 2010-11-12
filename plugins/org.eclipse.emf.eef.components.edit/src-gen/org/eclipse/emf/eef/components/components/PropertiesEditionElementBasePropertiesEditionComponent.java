@@ -141,8 +141,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 							}
 						});
 			// Start of user code for additional businessfilters for views
-																																										
-																																										// End of user code
+																																																			
+																																																			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -157,8 +157,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																										
-																																										// End of user code
+																																																			
+																																																			// End of user code
 			
 			
 		}

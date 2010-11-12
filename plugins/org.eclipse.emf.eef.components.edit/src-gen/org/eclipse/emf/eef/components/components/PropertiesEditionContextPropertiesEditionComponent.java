@@ -88,11 +88,11 @@ public class PropertiesEditionContextPropertiesEditionComponent extends Composed
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Class, int,
+	 *      setPropertiesEditionPart(java.lang.Object, int,
 	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 * 
 	 */
-	public void setPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (ComponentsViewsRepository.PropertiesEditionContext.class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			basePart = (PropertiesEditionContextPropertiesEditionPart)propertiesEditionPart;
@@ -103,11 +103,11 @@ public class PropertiesEditionContextPropertiesEditionComponent extends Composed
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject,
+	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(java.lang.Class key, int kind, EObject element, ResourceSet allResource) {
+	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == ComponentsViewsRepository.PropertiesEditionContext.class) {
 			super.initPart(key, kind, element, allResource);
 		}
