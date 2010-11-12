@@ -71,7 +71,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 
 	protected Text name;
 	protected EObjectFlatComboViewer model;
-	protected ReferencesTable<? extends EObject> views;
+	protected ReferencesTable views;
 	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
@@ -248,9 +248,9 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable<View>(MappingMessages.StandardElementBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
+		this.views = new ReferencesTable(MappingMessages.StandardElementBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<View> dialog = new TabElementTreeSelectionDialog<View>(resourceSet, viewsFilters, viewsBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(resourceSet, viewsFilters, viewsBusinessFilters,
 				"View", ViewsPackage.eINSTANCE.getView(), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
@@ -284,7 +284,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * 
 	 */
-	protected void moveViews(View element, int oldIndex, int newIndex) {
+	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardElementBindingPropertiesEditionPartImpl.this, MappingViewsRepository.StandardElementBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		views.refresh();
 	}
@@ -292,7 +292,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * 
 	 */
-	protected void removeFromViews(View element) {
+	protected void removeFromViews(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardElementBindingPropertiesEditionPartImpl.this, MappingViewsRepository.StandardElementBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		views.refresh();		
 	}
@@ -300,7 +300,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * 
 	 */
-	protected void editViews(View element) {
+	protected void editViews(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {

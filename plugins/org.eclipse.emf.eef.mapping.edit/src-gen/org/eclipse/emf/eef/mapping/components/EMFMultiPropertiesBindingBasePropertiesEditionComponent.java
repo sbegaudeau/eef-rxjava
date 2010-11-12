@@ -112,8 +112,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-																																																									
-																																																									// End of user code
+																																																												
+																																																												// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -131,8 +131,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToModel(new EObjectFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-																																																									
-																																																									// End of user code
+																																																												
+																																																												// End of user code
 			
 		}
 		// init values for referenced views
@@ -201,20 +201,20 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name || key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views || key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name)
 			return "The name of this property binding"; //$NON-NLS-1$
 		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views)

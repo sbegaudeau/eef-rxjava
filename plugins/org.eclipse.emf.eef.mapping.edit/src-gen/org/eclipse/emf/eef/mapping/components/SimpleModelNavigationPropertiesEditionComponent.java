@@ -111,8 +111,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for feature
-																																																									
-																																																									// End of user code
+																																																												
+																																																												// End of user code
 			
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 			
@@ -127,8 +127,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for discriminatorType
-																																																									
-																																																									// End of user code
+																																																												
+																																																												// End of user code
 			
 		}
 		// init values for referenced views
@@ -185,10 +185,10 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == MappingViewsRepository.SimpleModelNavigation.Properties.feature;
 	}
 

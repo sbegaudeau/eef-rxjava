@@ -74,7 +74,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 
 	protected Text name;
 	protected EObjectFlatComboViewer model;
-		protected ReferencesTable<? extends EObject> views;
+		protected ReferencesTable views;
 		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
@@ -256,9 +256,9 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
+		this.views = new ReferencesTable(MappingMessages.EMFPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
 				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -291,7 +291,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * 
 	 */
-	protected void moveViews(ElementEditor element, int oldIndex, int newIndex) {
+	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		views.refresh();
 	}
@@ -299,7 +299,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * 
 	 */
-	protected void removeFromViews(ElementEditor element) {
+	protected void removeFromViews(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		views.refresh();
 	}
@@ -307,7 +307,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * 
 	 */
-	protected void editViews(ElementEditor element) {
+	protected void editViews(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
