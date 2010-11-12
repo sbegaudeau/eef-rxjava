@@ -54,7 +54,7 @@
       </guard>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="implementation" visibility="Public">
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;create"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="create"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/toJavaClassifier"/>
@@ -66,18 +66,7 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Checkbox(widgetFactory, "/>
-      <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/trim">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="mtl:TemplateInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="../../../services/viewCommon.emtl#/0/widgetContainer"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="editor" referredVariable="/0/implementation/editor">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-          </argument>
-        </source>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Checkbox(widgetFactory, parent);"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -118,7 +107,7 @@
           </argument>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;protected void create"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;protected Composite create"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/toJavaClassifier"/>
@@ -263,7 +252,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".this, "/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/naming.emtl#/0/editorID"/>
+        <definition href="../../../services/naming.emtl#/0/editorID.1"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="editor" referredVariable="/0/additionalImplementation/editor">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </argument>
@@ -343,7 +332,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=", "/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/naming.emtl#/0/editorID"/>
+        <definition href="../../../services/naming.emtl#/0/editorID.1"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="editor" referredVariable="/0/additionalImplementation/editor">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </argument>
@@ -375,7 +364,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;); //$NON-NLS-1$&#xA;&#x9;&#x9;FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent("/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/naming.emtl#/0/editorID"/>
+        <definition href="../../../services/naming.emtl#/0/editorID.1"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="editor" referredVariable="/0/additionalImplementation/editor">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </argument>
@@ -392,7 +381,7 @@
           </argument>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".FORM_KIND), null); //$NON-NLS-1$&#xA;&#x9;}"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".FORM_KIND), null); //$NON-NLS-1$&#xA;&#x9;&#x9;return parent;&#xA;&#x9;}"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -997,63 +986,6 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
       </eOperations>
-      <eOperations name="involvedPropertiesEditionElement">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="element">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-        </eParameters>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-        </eParameters>
-      </eOperations>
-      <eOperations name="involvedPropertiesEditionElement">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="element">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-        </eParameters>
-      </eOperations>
-      <eOperations name="involvedPropertiesEditionElement">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="view">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
-        </eParameters>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-        </eParameters>
-      </eOperations>
-      <eOperations name="involvedPropertiesEditionElement">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="peElement">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        </eParameters>
-        <eParameters name="f">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-        </eParameters>
-      </eOperations>
       <eOperations name="relatedComponent">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -1258,18 +1190,6 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
       </eOperations>
-      <eOperations name="involvedPropertiesEditionComponent">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionComponent"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-        <eParameters name="view">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-        </eParameters>
-      </eOperations>
       <eOperations name="mustBeGenerated">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -1435,7 +1355,19 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="editorElement">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//IdentifiedElement"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="identifiedElementKey">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/identifiedElementKey"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="editorElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//IdentifiedElement"/>
         </eParameters>
       </eOperations>
       <eOperations name="hasModelNavigation">
@@ -2044,6 +1976,75 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
         </eParameters>
       </eOperations>
+      <eOperations name="involvedPropertiesEditionElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="element">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
+        </eParameters>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="involvedPropertiesEditionElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="element">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="involvedPropertiesEditionElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="view">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
+        </eParameters>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="involvedPropertiesEditionElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="peElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        </eParameters>
+        <eParameters name="f">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="involvedPropertiesEditionComponent">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionComponent"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        <eParameters name="view">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+        </eParameters>
+      </eOperations>
       <eOperations name="contextPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -2646,8 +2647,8 @@
           <references href="../../../services/naming.emtl#/0/editorID"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="editor">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
+        <eParameters name="viewElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
         </eParameters>
       </eOperations>
       <eOperations name="editorID">
@@ -2658,8 +2659,44 @@
           <references href="../../../services/naming.emtl#/0/editorID.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="editor">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="editorID">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/editorID.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="containerElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//Container"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="editorID">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/editorID.3"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="editorID">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/editorID.4"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="reference">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewReference"/>
         </eParameters>
       </eOperations>
       <eOperations name="genDeclaration">
@@ -2746,16 +2783,76 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
         </eParameters>
       </eOperations>
-      <eOperations name="widgetContainer">
+      <eOperations name="compositionStepName">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/viewCommon.emtl#/0/widgetContainer"/>
+          <references href="../../../services/viewCommon.emtl#/0/compositionStepName"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="element">
+        <eParameters name="view">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//IdentifiedElement"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="view">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="viewElement">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="containerElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//Container"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.3"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="reference">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewReference"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.4"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="editor">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </eParameters>
       </eOperations>
       <eOperations name="partGetterAddSignature">
@@ -2864,18 +2961,6 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="editor">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        </eParameters>
-      </eOperations>
-      <eOperations name="updaterForViewReference">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/viewCommon.emtl#/0/updaterForViewReference"/>
-        </eAnnotations>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="view">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         </eParameters>
       </eOperations>
       <eOperations name="elementEditorGetterSettersForViewReference">
@@ -3326,21 +3411,12 @@
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
       </eOperations>
-      <eOperations name="editorIDSequence">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/editorIDSequence"/>
-        </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
-      </eOperations>
       <eOperations name="editorID">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/naming.emtl#/0/editorID"/>
+          <references href="../../../services/naming.emtl#/0/editorID.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -3350,6 +3426,15 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="../../../services/viewCommon.emtl#/0/genDeclaration"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.4"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -3612,18 +3697,6 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         </eParameters>
       </eOperations>
-      <eOperations name="involvedPropertiesEditionElement">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-        </eParameters>
-      </eOperations>
       <eOperations name="representationName">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -3690,6 +3763,18 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
+      <eOperations name="involvedPropertiesEditionElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        </eParameters>
+      </eOperations>
       <eOperations name="groupKey">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -3714,6 +3799,15 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         </eParameters>
       </eOperations>
+      <eOperations name="editorID">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/editorID"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
       <eOperations name="genImports">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -3723,12 +3817,12 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
-      <eOperations name="widgetContainer">
+      <eOperations name="compositionSequence">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/viewCommon.emtl#/0/widgetContainer"/>
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -3818,15 +3912,6 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
-      <eOperations name="involvedPropertiesEditionComponent">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionComponent"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
-      </eOperations>
       <eOperations name="mustBeGenerated">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -3850,6 +3935,15 @@
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
+      </eOperations>
+      <eOperations name="involvedPropertiesEditionComponent">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionComponent"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
       </eOperations>
       <eOperations name="partsPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -3982,7 +4076,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/naming.emtl#/0/editorID.1"/>
+          <references href="../../../services/naming.emtl#/0/editorID.3"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -4031,12 +4125,12 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
-      <eOperations name="updaterForViewReference">
+      <eOperations name="compositionSequence">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/viewCommon.emtl#/0/updaterForViewReference"/>
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -4162,18 +4256,6 @@
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
       </eAnnotations>
-      <eOperations name="involvedPropertiesEditionElement">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="f">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-        </eParameters>
-      </eOperations>
       <eOperations name="associatedGenFeature">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -4239,6 +4321,18 @@
           <references href="../../../services/common.emtl#/0/metamodelGetter.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="involvedPropertiesEditionElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="f">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+        </eParameters>
       </eOperations>
       <eOperations name="editionElementPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -4677,6 +4771,24 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
+      <eOperations name="editorID">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/editorID.4"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.3"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
       <eOperations name="widgetDeclaration">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -4784,6 +4896,38 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="../../../services/common.emtl#/0/ecorePackageSignature"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IdentifiedElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/eef/views/1.0.0#//IdentifiedElement"/>
+      </eAnnotations>
+      <eOperations name="editorIDSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/editorIDSequence"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eOperations>
+      <eOperations name="identifiedElementKey">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/identifiedElementKey"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="compositionStepName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionStepName"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -4988,6 +5132,29 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Container_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/eef/views/1.0.0#//Container"/>
+      </eAnnotations>
+      <eOperations name="editorID">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/editorID.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="compositionSequence">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/viewCommon.emtl#/0/compositionSequence.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Widget_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -5041,9 +5208,6 @@
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -5207,627 +5371,607 @@
     </eAnnotations>
     <eAnnotations source="positions.12" references="/0/implementation">
       <details key="start" value="1121"/>
-      <details key="end" value="1360"/>
+      <details key="end" value="1330"/>
       <details key="line" value="26"/>
     </eAnnotations>
     <eAnnotations source="positions.13" references="/0/implementation/@body.0">
       <details key="start" value="1247"/>
-      <details key="end" value="1255"/>
+      <details key="end" value="1253"/>
       <details key="line" value="27"/>
     </eAnnotations>
     <eAnnotations source="positions.14" references="/0/implementation/@body.1">
-      <details key="start" value="1256"/>
-      <details key="end" value="1286"/>
+      <details key="start" value="1254"/>
+      <details key="end" value="1284"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.15" references="/0/implementation/@body.1/@argument.0">
-      <details key="start" value="1256"/>
-      <details key="end" value="1267"/>
+      <details key="start" value="1254"/>
+      <details key="end" value="1265"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.16" references="/0/implementation/@body.1/@argument.0/editor">
-      <details key="start" value="1256"/>
-      <details key="end" value="1262"/>
+      <details key="start" value="1254"/>
+      <details key="end" value="1260"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/implementation/@body.2">
-      <details key="start" value="1288"/>
-      <details key="end" value="1312"/>
+      <details key="start" value="1286"/>
+      <details key="end" value="1318"/>
       <details key="line" value="27"/>
     </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/implementation/@body.3">
-      <details key="start" value="1313"/>
-      <details key="end" value="1344"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/implementation/@body.3/@source">
-      <details key="start" value="1313"/>
-      <details key="end" value="1337"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/implementation/@body.3/@source/editor">
-      <details key="start" value="1313"/>
-      <details key="end" value="1319"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/implementation/@body.4">
-      <details key="start" value="1346"/>
-      <details key="end" value="1348"/>
-      <details key="line" value="27"/>
-    </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/implementation/editor">
+    <eAnnotations source="positions.18" references="/0/implementation/editor">
       <details key="start" value="1153"/>
       <details key="end" value="1175"/>
       <details key="line" value="26"/>
     </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/implementation/@guard">
+    <eAnnotations source="positions.19" references="/0/implementation/@guard">
       <details key="start" value="1205"/>
       <details key="end" value="1244"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/implementation/@guard/@source">
+    <eAnnotations source="positions.20" references="/0/implementation/@guard/@source">
       <details key="start" value="1205"/>
       <details key="end" value="1231"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/implementation/@guard/@source/@source">
+    <eAnnotations source="positions.21" references="/0/implementation/@guard/@source/@source">
       <details key="start" value="1205"/>
       <details key="end" value="1226"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/implementation/@guard/@source/@source/editor">
+    <eAnnotations source="positions.22" references="/0/implementation/@guard/@source/@source/editor">
       <details key="start" value="1205"/>
       <details key="end" value="1211"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/implementation/@guard/@argument.0">
+    <eAnnotations source="positions.23" references="/0/implementation/@guard/@argument.0">
       <details key="start" value="1234"/>
       <details key="end" value="1244"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/additionalImplementation">
-      <details key="start" value="1362"/>
-      <details key="end" value="3496"/>
+    <eAnnotations source="positions.24" references="/0/additionalImplementation">
+      <details key="start" value="1332"/>
+      <details key="end" value="3488"/>
       <details key="line" value="30"/>
     </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/additionalImplementation/@body.0">
-      <details key="start" value="1580"/>
-      <details key="end" value="1581"/>
+    <eAnnotations source="positions.25" references="/0/additionalImplementation/@body.0">
+      <details key="start" value="1550"/>
+      <details key="end" value="1551"/>
       <details key="line" value="31"/>
     </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/additionalImplementation/@body.1">
-      <details key="start" value="1582"/>
+    <eAnnotations source="positions.26" references="/0/additionalImplementation/@body.1">
+      <details key="start" value="1552"/>
+      <details key="end" value="1623"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/additionalImplementation/@body.1/@argument.0">
+      <details key="start" value="1552"/>
+      <details key="end" value="1603"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/additionalImplementation/@body.1/@argument.0/@argument.0">
+      <details key="start" value="1552"/>
+      <details key="end" value="1582"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/additionalImplementation/@body.1/@argument.0/@argument.0/editor">
+      <details key="start" value="1552"/>
+      <details key="end" value="1558"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/additionalImplementation/@body.2">
+      <details key="start" value="1625"/>
       <details key="end" value="1653"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/additionalImplementation/@body.1/@argument.0">
-      <details key="start" value="1582"/>
-      <details key="end" value="1633"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/additionalImplementation/@body.1/@argument.0/@argument.0">
-      <details key="start" value="1582"/>
-      <details key="end" value="1612"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/additionalImplementation/@body.1/@argument.0/@argument.0/editor">
-      <details key="start" value="1582"/>
-      <details key="end" value="1588"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/additionalImplementation/@body.2">
-      <details key="start" value="1655"/>
-      <details key="end" value="1678"/>
       <details key="line" value="32"/>
     </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/additionalImplementation/@body.3">
-      <details key="start" value="1679"/>
-      <details key="end" value="1709"/>
+    <eAnnotations source="positions.31" references="/0/additionalImplementation/@body.3">
+      <details key="start" value="1654"/>
+      <details key="end" value="1684"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/additionalImplementation/@body.3/@argument.0">
-      <details key="start" value="1679"/>
-      <details key="end" value="1690"/>
+    <eAnnotations source="positions.32" references="/0/additionalImplementation/@body.3/@argument.0">
+      <details key="start" value="1654"/>
+      <details key="end" value="1665"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/additionalImplementation/@body.3/@argument.0/editor">
-      <details key="start" value="1679"/>
-      <details key="end" value="1685"/>
+    <eAnnotations source="positions.33" references="/0/additionalImplementation/@body.3/@argument.0/editor">
+      <details key="start" value="1654"/>
+      <details key="end" value="1660"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.38" references="/0/additionalImplementation/@body.4">
-      <details key="start" value="1711"/>
-      <details key="end" value="1769"/>
+    <eAnnotations source="positions.34" references="/0/additionalImplementation/@body.4">
+      <details key="start" value="1686"/>
+      <details key="end" value="1744"/>
       <details key="line" value="32"/>
     </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/additionalImplementation/@body.5">
-      <details key="start" value="1770"/>
-      <details key="end" value="1800"/>
+    <eAnnotations source="positions.35" references="/0/additionalImplementation/@body.5">
+      <details key="start" value="1745"/>
+      <details key="end" value="1775"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/additionalImplementation/@body.5/@argument.0">
-      <details key="start" value="1770"/>
-      <details key="end" value="1781"/>
+    <eAnnotations source="positions.36" references="/0/additionalImplementation/@body.5/@argument.0">
+      <details key="start" value="1745"/>
+      <details key="end" value="1756"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/additionalImplementation/@body.5/@argument.0/editor">
-      <details key="start" value="1770"/>
-      <details key="end" value="1776"/>
+    <eAnnotations source="positions.37" references="/0/additionalImplementation/@body.5/@argument.0/editor">
+      <details key="start" value="1745"/>
+      <details key="end" value="1751"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/additionalImplementation/@body.6">
-      <details key="start" value="1802"/>
-      <details key="end" value="1840"/>
+    <eAnnotations source="positions.38" references="/0/additionalImplementation/@body.6">
+      <details key="start" value="1777"/>
+      <details key="end" value="1815"/>
       <details key="line" value="33"/>
     </eAnnotations>
-    <eAnnotations source="positions.43" references="/0/additionalImplementation/@body.7">
-      <details key="start" value="1841"/>
-      <details key="end" value="1890"/>
+    <eAnnotations source="positions.39" references="/0/additionalImplementation/@body.7">
+      <details key="start" value="1816"/>
+      <details key="end" value="1865"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/additionalImplementation/@body.7/@argument.0">
-      <details key="start" value="1841"/>
-      <details key="end" value="1871"/>
+    <eAnnotations source="positions.40" references="/0/additionalImplementation/@body.7/@argument.0">
+      <details key="start" value="1816"/>
+      <details key="end" value="1846"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.45" references="/0/additionalImplementation/@body.7/@argument.0/editor">
-      <details key="start" value="1841"/>
-      <details key="end" value="1847"/>
+    <eAnnotations source="positions.41" references="/0/additionalImplementation/@body.7/@argument.0/editor">
+      <details key="start" value="1816"/>
+      <details key="end" value="1822"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.46" references="/0/additionalImplementation/@body.8">
-      <details key="start" value="1892"/>
-      <details key="end" value="1893"/>
+    <eAnnotations source="positions.42" references="/0/additionalImplementation/@body.8">
+      <details key="start" value="1867"/>
+      <details key="end" value="1868"/>
       <details key="line" value="33"/>
     </eAnnotations>
-    <eAnnotations source="positions.47" references="/0/additionalImplementation/@body.9">
-      <details key="start" value="1894"/>
-      <details key="end" value="1931"/>
+    <eAnnotations source="positions.43" references="/0/additionalImplementation/@body.9">
+      <details key="start" value="1869"/>
+      <details key="end" value="1906"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.48" references="/0/additionalImplementation/@body.9/editor">
-      <details key="start" value="1894"/>
-      <details key="end" value="1900"/>
+    <eAnnotations source="positions.44" references="/0/additionalImplementation/@body.9/editor">
+      <details key="start" value="1869"/>
+      <details key="end" value="1875"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.49" references="/0/additionalImplementation/@body.9/@argument.1">
-      <details key="start" value="1911"/>
-      <details key="end" value="1930"/>
+    <eAnnotations source="positions.45" references="/0/additionalImplementation/@body.9/@argument.1">
+      <details key="start" value="1886"/>
+      <details key="end" value="1905"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.50" references="/0/additionalImplementation/@body.9/@argument.1/editor">
-      <details key="start" value="1911"/>
-      <details key="end" value="1917"/>
+    <eAnnotations source="positions.46" references="/0/additionalImplementation/@body.9/@argument.1/editor">
+      <details key="start" value="1886"/>
+      <details key="end" value="1892"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.51" references="/0/additionalImplementation/@body.10">
-      <details key="start" value="1933"/>
-      <details key="end" value="1947"/>
+    <eAnnotations source="positions.47" references="/0/additionalImplementation/@body.10">
+      <details key="start" value="1908"/>
+      <details key="end" value="1922"/>
       <details key="line" value="33"/>
     </eAnnotations>
-    <eAnnotations source="positions.52" references="/0/additionalImplementation/@body.11">
-      <details key="start" value="1949"/>
-      <details key="end" value="2178"/>
+    <eAnnotations source="positions.48" references="/0/additionalImplementation/@body.11">
+      <details key="start" value="1924"/>
+      <details key="end" value="2153"/>
       <details key="line" value="34"/>
     </eAnnotations>
-    <eAnnotations source="positions.53" references="/0/additionalImplementation/@body.11/@body.0">
-      <details key="start" value="1972"/>
-      <details key="end" value="1974"/>
+    <eAnnotations source="positions.49" references="/0/additionalImplementation/@body.11/@body.0">
+      <details key="start" value="1947"/>
+      <details key="end" value="1949"/>
       <details key="line" value="35"/>
     </eAnnotations>
-    <eAnnotations source="positions.54" references="/0/additionalImplementation/@body.11/@body.1">
-      <details key="start" value="1975"/>
-      <details key="end" value="2005"/>
+    <eAnnotations source="positions.50" references="/0/additionalImplementation/@body.11/@body.1">
+      <details key="start" value="1950"/>
+      <details key="end" value="1980"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.55" references="/0/additionalImplementation/@body.11/@body.1/@argument.0">
-      <details key="start" value="1975"/>
-      <details key="end" value="1986"/>
+    <eAnnotations source="positions.51" references="/0/additionalImplementation/@body.11/@body.1/@argument.0">
+      <details key="start" value="1950"/>
+      <details key="end" value="1961"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.56" references="/0/additionalImplementation/@body.11/@body.1/@argument.0/editor">
-      <details key="start" value="1975"/>
-      <details key="end" value="1981"/>
+    <eAnnotations source="positions.52" references="/0/additionalImplementation/@body.11/@body.1/@argument.0/editor">
+      <details key="start" value="1950"/>
+      <details key="end" value="1956"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.57" references="/0/additionalImplementation/@body.11/@body.2">
-      <details key="start" value="2007"/>
-      <details key="end" value="2029"/>
+    <eAnnotations source="positions.53" references="/0/additionalImplementation/@body.11/@body.2">
+      <details key="start" value="1982"/>
+      <details key="end" value="2004"/>
       <details key="line" value="35"/>
     </eAnnotations>
-    <eAnnotations source="positions.58" references="/0/additionalImplementation/@body.11/@body.3">
-      <details key="start" value="2030"/>
+    <eAnnotations source="positions.54" references="/0/additionalImplementation/@body.11/@body.3">
+      <details key="start" value="2005"/>
+      <details key="end" value="2035"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/additionalImplementation/@body.11/@body.3/@argument.0">
+      <details key="start" value="2005"/>
+      <details key="end" value="2016"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/additionalImplementation/@body.11/@body.3/@argument.0/editor">
+      <details key="start" value="2005"/>
+      <details key="end" value="2011"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/additionalImplementation/@body.11/@body.4">
+      <details key="start" value="2037"/>
+      <details key="end" value="2053"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/additionalImplementation/@body.11/@body.5">
+      <details key="start" value="2054"/>
+      <details key="end" value="2103"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/additionalImplementation/@body.11/@body.5/@argument.0">
+      <details key="start" value="2054"/>
+      <details key="end" value="2084"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/additionalImplementation/@body.11/@body.5/@argument.0/editor">
+      <details key="start" value="2054"/>
       <details key="end" value="2060"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.59" references="/0/additionalImplementation/@body.11/@body.3/@argument.0">
-      <details key="start" value="2030"/>
-      <details key="end" value="2041"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.60" references="/0/additionalImplementation/@body.11/@body.3/@argument.0/editor">
-      <details key="start" value="2030"/>
-      <details key="end" value="2036"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.61" references="/0/additionalImplementation/@body.11/@body.4">
-      <details key="start" value="2062"/>
-      <details key="end" value="2078"/>
+    <eAnnotations source="positions.61" references="/0/additionalImplementation/@body.11/@body.6">
+      <details key="start" value="2105"/>
+      <details key="end" value="2106"/>
       <details key="line" value="36"/>
     </eAnnotations>
-    <eAnnotations source="positions.62" references="/0/additionalImplementation/@body.11/@body.5">
-      <details key="start" value="2079"/>
-      <details key="end" value="2128"/>
+    <eAnnotations source="positions.62" references="/0/additionalImplementation/@body.11/@body.7">
+      <details key="start" value="2107"/>
+      <details key="end" value="2132"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.63" references="/0/additionalImplementation/@body.11/@body.5/@argument.0">
-      <details key="start" value="2079"/>
-      <details key="end" value="2109"/>
+    <eAnnotations source="positions.63" references="/0/additionalImplementation/@body.11/@body.7/editor">
+      <details key="start" value="2107"/>
+      <details key="end" value="2113"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.64" references="/0/additionalImplementation/@body.11/@body.5/@argument.0/editor">
-      <details key="start" value="2079"/>
-      <details key="end" value="2085"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.65" references="/0/additionalImplementation/@body.11/@body.6">
-      <details key="start" value="2130"/>
-      <details key="end" value="2131"/>
+    <eAnnotations source="positions.64" references="/0/additionalImplementation/@body.11/@body.8">
+      <details key="start" value="2134"/>
+      <details key="end" value="2146"/>
       <details key="line" value="36"/>
     </eAnnotations>
-    <eAnnotations source="positions.66" references="/0/additionalImplementation/@body.11/@body.7">
-      <details key="start" value="2132"/>
-      <details key="end" value="2157"/>
+    <eAnnotations source="positions.65" references="/0/additionalImplementation/@body.11/@ifExpr">
+      <details key="start" value="1928"/>
+      <details key="end" value="1945"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.67" references="/0/additionalImplementation/@body.11/@body.7/editor">
-      <details key="start" value="2132"/>
-      <details key="end" value="2138"/>
+    <eAnnotations source="positions.66" references="/0/additionalImplementation/@body.11/@ifExpr/editor">
+      <details key="start" value="1929"/>
+      <details key="end" value="1935"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.68" references="/0/additionalImplementation/@body.11/@body.8">
-      <details key="start" value="2159"/>
-      <details key="end" value="2171"/>
-      <details key="line" value="36"/>
-    </eAnnotations>
-    <eAnnotations source="positions.69" references="/0/additionalImplementation/@body.11/@ifExpr">
-      <details key="start" value="1953"/>
-      <details key="end" value="1970"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.70" references="/0/additionalImplementation/@body.11/@ifExpr/editor">
-      <details key="start" value="1954"/>
-      <details key="end" value="1960"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.71" references="/0/additionalImplementation/@body.12">
-      <details key="start" value="2179"/>
-      <details key="end" value="2181"/>
+    <eAnnotations source="positions.67" references="/0/additionalImplementation/@body.12">
+      <details key="start" value="2154"/>
+      <details key="end" value="2156"/>
       <details key="line" value="38"/>
     </eAnnotations>
-    <eAnnotations source="positions.72" references="/0/additionalImplementation/@body.13">
-      <details key="start" value="2182"/>
-      <details key="end" value="2212"/>
+    <eAnnotations source="positions.68" references="/0/additionalImplementation/@body.13">
+      <details key="start" value="2157"/>
+      <details key="end" value="2187"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.73" references="/0/additionalImplementation/@body.13/@argument.0">
-      <details key="start" value="2182"/>
-      <details key="end" value="2193"/>
+    <eAnnotations source="positions.69" references="/0/additionalImplementation/@body.13/@argument.0">
+      <details key="start" value="2157"/>
+      <details key="end" value="2168"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.74" references="/0/additionalImplementation/@body.13/@argument.0/editor">
-      <details key="start" value="2182"/>
-      <details key="end" value="2188"/>
+    <eAnnotations source="positions.70" references="/0/additionalImplementation/@body.13/@argument.0/editor">
+      <details key="start" value="2157"/>
+      <details key="end" value="2163"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.75" references="/0/additionalImplementation/@body.14">
-      <details key="start" value="2214"/>
-      <details key="end" value="2407"/>
+    <eAnnotations source="positions.71" references="/0/additionalImplementation/@body.14">
+      <details key="start" value="2189"/>
+      <details key="end" value="2382"/>
       <details key="line" value="38"/>
     </eAnnotations>
-    <eAnnotations source="positions.76" references="/0/additionalImplementation/@body.15">
-      <details key="start" value="2408"/>
-      <details key="end" value="2476"/>
+    <eAnnotations source="positions.72" references="/0/additionalImplementation/@body.15">
+      <details key="start" value="2383"/>
+      <details key="end" value="2451"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.77" references="/0/additionalImplementation/@body.15/@argument.0">
-      <details key="start" value="2408"/>
-      <details key="end" value="2459"/>
+    <eAnnotations source="positions.73" references="/0/additionalImplementation/@body.15/@argument.0">
+      <details key="start" value="2383"/>
+      <details key="end" value="2434"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.78" references="/0/additionalImplementation/@body.15/@argument.0/@argument.0">
-      <details key="start" value="2408"/>
-      <details key="end" value="2438"/>
+    <eAnnotations source="positions.74" references="/0/additionalImplementation/@body.15/@argument.0/@argument.0">
+      <details key="start" value="2383"/>
+      <details key="end" value="2413"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.79" references="/0/additionalImplementation/@body.15/@argument.0/@argument.0/editor">
-      <details key="start" value="2408"/>
-      <details key="end" value="2414"/>
+    <eAnnotations source="positions.75" references="/0/additionalImplementation/@body.15/@argument.0/@argument.0/editor">
+      <details key="start" value="2383"/>
+      <details key="end" value="2389"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.80" references="/0/additionalImplementation/@body.16">
-      <details key="start" value="2478"/>
-      <details key="end" value="2661"/>
+    <eAnnotations source="positions.76" references="/0/additionalImplementation/@body.16">
+      <details key="start" value="2453"/>
+      <details key="end" value="2636"/>
       <details key="line" value="45"/>
     </eAnnotations>
-    <eAnnotations source="positions.81" references="/0/additionalImplementation/@body.17">
-      <details key="start" value="2662"/>
-      <details key="end" value="2682"/>
+    <eAnnotations source="positions.77" references="/0/additionalImplementation/@body.17">
+      <details key="start" value="2637"/>
+      <details key="end" value="2657"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.82" references="/0/additionalImplementation/@body.17/editor">
-      <details key="start" value="2662"/>
-      <details key="end" value="2668"/>
+    <eAnnotations source="positions.78" references="/0/additionalImplementation/@body.17/editor">
+      <details key="start" value="2637"/>
+      <details key="end" value="2643"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.83" references="/0/additionalImplementation/@body.18">
-      <details key="start" value="2684"/>
-      <details key="end" value="2691"/>
+    <eAnnotations source="positions.79" references="/0/additionalImplementation/@body.18">
+      <details key="start" value="2659"/>
+      <details key="end" value="2666"/>
       <details key="line" value="48"/>
     </eAnnotations>
-    <eAnnotations source="positions.84" references="/0/additionalImplementation/@body.19">
-      <details key="start" value="2692"/>
-      <details key="end" value="2709"/>
+    <eAnnotations source="positions.80" references="/0/additionalImplementation/@body.19">
+      <details key="start" value="2667"/>
+      <details key="end" value="2684"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.85" references="/0/additionalImplementation/@body.19/editor">
-      <details key="start" value="2692"/>
-      <details key="end" value="2698"/>
+    <eAnnotations source="positions.81" references="/0/additionalImplementation/@body.19/editor">
+      <details key="start" value="2667"/>
+      <details key="end" value="2673"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.86" references="/0/additionalImplementation/@body.20">
-      <details key="start" value="2711"/>
-      <details key="end" value="2790"/>
+    <eAnnotations source="positions.82" references="/0/additionalImplementation/@body.20">
+      <details key="start" value="2686"/>
+      <details key="end" value="2765"/>
       <details key="line" value="48"/>
     </eAnnotations>
-    <eAnnotations source="positions.87" references="/0/additionalImplementation/@body.21">
-      <details key="start" value="2791"/>
-      <details key="end" value="2821"/>
+    <eAnnotations source="positions.83" references="/0/additionalImplementation/@body.21">
+      <details key="start" value="2766"/>
+      <details key="end" value="2796"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.88" references="/0/additionalImplementation/@body.21/@argument.0">
-      <details key="start" value="2791"/>
-      <details key="end" value="2802"/>
+    <eAnnotations source="positions.84" references="/0/additionalImplementation/@body.21/@argument.0">
+      <details key="start" value="2766"/>
+      <details key="end" value="2777"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.89" references="/0/additionalImplementation/@body.21/@argument.0/editor">
-      <details key="start" value="2791"/>
-      <details key="end" value="2797"/>
+    <eAnnotations source="positions.85" references="/0/additionalImplementation/@body.21/@argument.0/editor">
+      <details key="start" value="2766"/>
+      <details key="end" value="2772"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.90" references="/0/additionalImplementation/@body.22">
-      <details key="start" value="2823"/>
-      <details key="end" value="2866"/>
+    <eAnnotations source="positions.86" references="/0/additionalImplementation/@body.22">
+      <details key="start" value="2798"/>
+      <details key="end" value="2841"/>
       <details key="line" value="48"/>
     </eAnnotations>
-    <eAnnotations source="positions.91" references="/0/additionalImplementation/@body.23">
-      <details key="start" value="2867"/>
-      <details key="end" value="2897"/>
+    <eAnnotations source="positions.87" references="/0/additionalImplementation/@body.23">
+      <details key="start" value="2842"/>
+      <details key="end" value="2872"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.92" references="/0/additionalImplementation/@body.23/@argument.0">
-      <details key="start" value="2867"/>
-      <details key="end" value="2878"/>
+    <eAnnotations source="positions.88" references="/0/additionalImplementation/@body.23/@argument.0">
+      <details key="start" value="2842"/>
+      <details key="end" value="2853"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.93" references="/0/additionalImplementation/@body.23/@argument.0/editor">
-      <details key="start" value="2867"/>
-      <details key="end" value="2873"/>
+    <eAnnotations source="positions.89" references="/0/additionalImplementation/@body.23/@argument.0/editor">
+      <details key="start" value="2842"/>
+      <details key="end" value="2848"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.94" references="/0/additionalImplementation/@body.24">
-      <details key="start" value="2899"/>
-      <details key="end" value="2948"/>
+    <eAnnotations source="positions.90" references="/0/additionalImplementation/@body.24">
+      <details key="start" value="2874"/>
+      <details key="end" value="2923"/>
       <details key="line" value="52"/>
     </eAnnotations>
-    <eAnnotations source="positions.95" references="/0/additionalImplementation/@body.25">
-      <details key="start" value="2949"/>
-      <details key="end" value="2979"/>
+    <eAnnotations source="positions.91" references="/0/additionalImplementation/@body.25">
+      <details key="start" value="2924"/>
+      <details key="end" value="2954"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.96" references="/0/additionalImplementation/@body.25/@argument.0">
-      <details key="start" value="2949"/>
-      <details key="end" value="2960"/>
+    <eAnnotations source="positions.92" references="/0/additionalImplementation/@body.25/@argument.0">
+      <details key="start" value="2924"/>
+      <details key="end" value="2935"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.97" references="/0/additionalImplementation/@body.25/@argument.0/editor">
-      <details key="start" value="2949"/>
-      <details key="end" value="2955"/>
+    <eAnnotations source="positions.93" references="/0/additionalImplementation/@body.25/@argument.0/editor">
+      <details key="start" value="2924"/>
+      <details key="end" value="2930"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.98" references="/0/additionalImplementation/@body.26">
-      <details key="start" value="2981"/>
-      <details key="end" value="3008"/>
+    <eAnnotations source="positions.94" references="/0/additionalImplementation/@body.26">
+      <details key="start" value="2956"/>
+      <details key="end" value="2983"/>
       <details key="line" value="53"/>
     </eAnnotations>
-    <eAnnotations source="positions.99" references="/0/additionalImplementation/@body.27">
-      <details key="start" value="3009"/>
-      <details key="end" value="3039"/>
+    <eAnnotations source="positions.95" references="/0/additionalImplementation/@body.27">
+      <details key="start" value="2984"/>
+      <details key="end" value="3014"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.100" references="/0/additionalImplementation/@body.27/@argument.0">
-      <details key="start" value="3009"/>
-      <details key="end" value="3020"/>
+    <eAnnotations source="positions.96" references="/0/additionalImplementation/@body.27/@argument.0">
+      <details key="start" value="2984"/>
+      <details key="end" value="2995"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.101" references="/0/additionalImplementation/@body.27/@argument.0/editor">
-      <details key="start" value="3009"/>
-      <details key="end" value="3015"/>
+    <eAnnotations source="positions.97" references="/0/additionalImplementation/@body.27/@argument.0/editor">
+      <details key="start" value="2984"/>
+      <details key="end" value="2990"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.102" references="/0/additionalImplementation/@body.28">
-      <details key="start" value="3041"/>
-      <details key="end" value="3056"/>
+    <eAnnotations source="positions.98" references="/0/additionalImplementation/@body.28">
+      <details key="start" value="3016"/>
+      <details key="end" value="3031"/>
       <details key="line" value="54"/>
     </eAnnotations>
-    <eAnnotations source="positions.103" references="/0/additionalImplementation/@body.29">
-      <details key="start" value="3057"/>
-      <details key="end" value="3087"/>
+    <eAnnotations source="positions.99" references="/0/additionalImplementation/@body.29">
+      <details key="start" value="3032"/>
+      <details key="end" value="3062"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.104" references="/0/additionalImplementation/@body.29/@argument.0">
-      <details key="start" value="3057"/>
-      <details key="end" value="3068"/>
+    <eAnnotations source="positions.100" references="/0/additionalImplementation/@body.29/@argument.0">
+      <details key="start" value="3032"/>
+      <details key="end" value="3043"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.105" references="/0/additionalImplementation/@body.29/@argument.0/editor">
-      <details key="start" value="3057"/>
-      <details key="end" value="3063"/>
+    <eAnnotations source="positions.101" references="/0/additionalImplementation/@body.29/@argument.0/editor">
+      <details key="start" value="3032"/>
+      <details key="end" value="3038"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.106" references="/0/additionalImplementation/@body.30">
-      <details key="start" value="3089"/>
-      <details key="end" value="3117"/>
+    <eAnnotations source="positions.102" references="/0/additionalImplementation/@body.30">
+      <details key="start" value="3064"/>
+      <details key="end" value="3092"/>
       <details key="line" value="54"/>
     </eAnnotations>
-    <eAnnotations source="positions.107" references="/0/additionalImplementation/@body.31">
-      <details key="start" value="3118"/>
-      <details key="end" value="3148"/>
+    <eAnnotations source="positions.103" references="/0/additionalImplementation/@body.31">
+      <details key="start" value="3093"/>
+      <details key="end" value="3123"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.108" references="/0/additionalImplementation/@body.31/@argument.0">
-      <details key="start" value="3118"/>
-      <details key="end" value="3129"/>
+    <eAnnotations source="positions.104" references="/0/additionalImplementation/@body.31/@argument.0">
+      <details key="start" value="3093"/>
+      <details key="end" value="3104"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.109" references="/0/additionalImplementation/@body.31/@argument.0/editor">
-      <details key="start" value="3118"/>
-      <details key="end" value="3124"/>
+    <eAnnotations source="positions.105" references="/0/additionalImplementation/@body.31/@argument.0/editor">
+      <details key="start" value="3093"/>
+      <details key="end" value="3099"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.110" references="/0/additionalImplementation/@body.32">
-      <details key="start" value="3150"/>
-      <details key="end" value="3152"/>
+    <eAnnotations source="positions.106" references="/0/additionalImplementation/@body.32">
+      <details key="start" value="3125"/>
+      <details key="end" value="3127"/>
       <details key="line" value="55"/>
     </eAnnotations>
-    <eAnnotations source="positions.111" references="/0/additionalImplementation/@body.33">
-      <details key="start" value="3153"/>
-      <details key="end" value="3170"/>
+    <eAnnotations source="positions.107" references="/0/additionalImplementation/@body.33">
+      <details key="start" value="3128"/>
+      <details key="end" value="3145"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.112" references="/0/additionalImplementation/@body.33/editor">
-      <details key="start" value="3153"/>
-      <details key="end" value="3159"/>
+    <eAnnotations source="positions.108" references="/0/additionalImplementation/@body.33/editor">
+      <details key="start" value="3128"/>
+      <details key="end" value="3134"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.113" references="/0/additionalImplementation/@body.34">
-      <details key="start" value="3172"/>
-      <details key="end" value="3201"/>
+    <eAnnotations source="positions.109" references="/0/additionalImplementation/@body.34">
+      <details key="start" value="3147"/>
+      <details key="end" value="3176"/>
       <details key="line" value="55"/>
     </eAnnotations>
-    <eAnnotations source="positions.114" references="/0/additionalImplementation/@body.35">
-      <details key="start" value="3202"/>
-      <details key="end" value="3232"/>
+    <eAnnotations source="positions.110" references="/0/additionalImplementation/@body.35">
+      <details key="start" value="3177"/>
+      <details key="end" value="3207"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.115" references="/0/additionalImplementation/@body.35/@argument.0">
-      <details key="start" value="3202"/>
-      <details key="end" value="3213"/>
+    <eAnnotations source="positions.111" references="/0/additionalImplementation/@body.35/@argument.0">
+      <details key="start" value="3177"/>
+      <details key="end" value="3188"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.116" references="/0/additionalImplementation/@body.35/@argument.0/editor">
-      <details key="start" value="3202"/>
-      <details key="end" value="3208"/>
+    <eAnnotations source="positions.112" references="/0/additionalImplementation/@body.35/@argument.0/editor">
+      <details key="start" value="3177"/>
+      <details key="end" value="3183"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.117" references="/0/additionalImplementation/@body.36">
-      <details key="start" value="3234"/>
-      <details key="end" value="3242"/>
+    <eAnnotations source="positions.113" references="/0/additionalImplementation/@body.36">
+      <details key="start" value="3209"/>
+      <details key="end" value="3217"/>
       <details key="line" value="56"/>
     </eAnnotations>
-    <eAnnotations source="positions.118" references="/0/additionalImplementation/@body.37">
-      <details key="start" value="3243"/>
-      <details key="end" value="3269"/>
+    <eAnnotations source="positions.114" references="/0/additionalImplementation/@body.37">
+      <details key="start" value="3218"/>
+      <details key="end" value="3244"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.119" references="/0/additionalImplementation/@body.37/@source">
-      <details key="start" value="3243"/>
-      <details key="end" value="3264"/>
+    <eAnnotations source="positions.115" references="/0/additionalImplementation/@body.37/@source">
+      <details key="start" value="3218"/>
+      <details key="end" value="3239"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.120" references="/0/additionalImplementation/@body.37/@source/editor">
-      <details key="start" value="3243"/>
-      <details key="end" value="3249"/>
+    <eAnnotations source="positions.116" references="/0/additionalImplementation/@body.37/@source/editor">
+      <details key="start" value="3218"/>
+      <details key="end" value="3224"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.121" references="/0/additionalImplementation/@body.38">
-      <details key="start" value="3271"/>
-      <details key="end" value="3383"/>
+    <eAnnotations source="positions.117" references="/0/additionalImplementation/@body.38">
+      <details key="start" value="3246"/>
+      <details key="end" value="3358"/>
       <details key="line" value="56"/>
     </eAnnotations>
-    <eAnnotations source="positions.122" references="/0/additionalImplementation/@body.39">
-      <details key="start" value="3384"/>
-      <details key="end" value="3401"/>
+    <eAnnotations source="positions.118" references="/0/additionalImplementation/@body.39">
+      <details key="start" value="3359"/>
+      <details key="end" value="3376"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.123" references="/0/additionalImplementation/@body.39/editor">
-      <details key="start" value="3384"/>
-      <details key="end" value="3390"/>
+    <eAnnotations source="positions.119" references="/0/additionalImplementation/@body.39/editor">
+      <details key="start" value="3359"/>
+      <details key="end" value="3365"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.124" references="/0/additionalImplementation/@body.40">
-      <details key="start" value="3403"/>
-      <details key="end" value="3405"/>
+    <eAnnotations source="positions.120" references="/0/additionalImplementation/@body.40">
+      <details key="start" value="3378"/>
+      <details key="end" value="3380"/>
       <details key="line" value="57"/>
     </eAnnotations>
-    <eAnnotations source="positions.125" references="/0/additionalImplementation/@body.41">
-      <details key="start" value="3406"/>
-      <details key="end" value="3446"/>
+    <eAnnotations source="positions.121" references="/0/additionalImplementation/@body.41">
+      <details key="start" value="3381"/>
+      <details key="end" value="3421"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.126" references="/0/additionalImplementation/@body.41/@argument.0">
-      <details key="start" value="3406"/>
-      <details key="end" value="3436"/>
+    <eAnnotations source="positions.122" references="/0/additionalImplementation/@body.41/@argument.0">
+      <details key="start" value="3381"/>
+      <details key="end" value="3411"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.127" references="/0/additionalImplementation/@body.41/@argument.0/editor">
-      <details key="start" value="3406"/>
-      <details key="end" value="3412"/>
+    <eAnnotations source="positions.123" references="/0/additionalImplementation/@body.41/@argument.0/editor">
+      <details key="start" value="3381"/>
+      <details key="end" value="3387"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.128" references="/0/additionalImplementation/@body.42">
-      <details key="start" value="3448"/>
-      <details key="end" value="3484"/>
+    <eAnnotations source="positions.124" references="/0/additionalImplementation/@body.42">
+      <details key="start" value="3423"/>
+      <details key="end" value="3476"/>
       <details key="line" value="57"/>
     </eAnnotations>
-    <eAnnotations source="positions.129" references="/0/additionalImplementation/editor">
-      <details key="start" value="1404"/>
-      <details key="end" value="1426"/>
+    <eAnnotations source="positions.125" references="/0/additionalImplementation/editor">
+      <details key="start" value="1374"/>
+      <details key="end" value="1396"/>
       <details key="line" value="30"/>
     </eAnnotations>
-    <eAnnotations source="positions.130" references="/0/additionalImplementation/pec">
-      <details key="start" value="1428"/>
-      <details key="end" value="1460"/>
+    <eAnnotations source="positions.126" references="/0/additionalImplementation/pec">
+      <details key="start" value="1398"/>
+      <details key="end" value="1430"/>
       <details key="line" value="30"/>
     </eAnnotations>
-    <eAnnotations source="positions.131" references="/0/additionalImplementation/inputPEC">
-      <details key="start" value="1462"/>
-      <details key="end" value="1498"/>
+    <eAnnotations source="positions.127" references="/0/additionalImplementation/inputPEC">
+      <details key="start" value="1432"/>
+      <details key="end" value="1468"/>
       <details key="line" value="30"/>
     </eAnnotations>
-    <eAnnotations source="positions.132" references="/0/additionalImplementation/@guard">
-      <details key="start" value="1538"/>
-      <details key="end" value="1577"/>
+    <eAnnotations source="positions.128" references="/0/additionalImplementation/@guard">
+      <details key="start" value="1508"/>
+      <details key="end" value="1547"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.133" references="/0/additionalImplementation/@guard/@source">
-      <details key="start" value="1538"/>
-      <details key="end" value="1564"/>
+    <eAnnotations source="positions.129" references="/0/additionalImplementation/@guard/@source">
+      <details key="start" value="1508"/>
+      <details key="end" value="1534"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.134" references="/0/additionalImplementation/@guard/@source/@source">
-      <details key="start" value="1538"/>
-      <details key="end" value="1559"/>
+    <eAnnotations source="positions.130" references="/0/additionalImplementation/@guard/@source/@source">
+      <details key="start" value="1508"/>
+      <details key="end" value="1529"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.135" references="/0/additionalImplementation/@guard/@source/@source/editor">
-      <details key="start" value="1538"/>
-      <details key="end" value="1544"/>
+    <eAnnotations source="positions.131" references="/0/additionalImplementation/@guard/@source/@source/editor">
+      <details key="start" value="1508"/>
+      <details key="end" value="1514"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.136" references="/0/additionalImplementation/@guard/@argument.0">
-      <details key="start" value="1567"/>
-      <details key="end" value="1577"/>
+    <eAnnotations source="positions.132" references="/0/additionalImplementation/@guard/@argument.0">
+      <details key="start" value="1537"/>
+      <details key="end" value="1547"/>
       <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>
