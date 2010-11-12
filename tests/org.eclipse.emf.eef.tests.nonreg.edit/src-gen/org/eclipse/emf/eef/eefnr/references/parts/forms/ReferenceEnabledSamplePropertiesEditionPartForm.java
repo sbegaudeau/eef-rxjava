@@ -60,7 +60,7 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ReferenceEnabledSamplePropertiesEditionPart {
 
-		protected ReferencesTable<? extends EObject> reference;
+		protected ReferencesTable reference;
 		protected List<ViewerFilter> referenceBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> referenceFilters = new ArrayList<ViewerFilter>();
 	private AbstractEnabledSamplePropertiesEditionPart abstractEnabledSamplePropertiesEditionPart;
@@ -148,9 +148,9 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 * 
 	 */
 	protected Composite createReferenceReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.reference = new ReferencesTable<TotalSample>(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener<TotalSample>() {
+		this.reference = new ReferencesTable(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<TotalSample> dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referenceFilters, referenceBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referenceFilters, referenceBusinessFilters,
 				"TotalSample", EefnrPackage.eINSTANCE.getTotalSample(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -183,7 +183,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * 
 	 */
-	protected void moveReference(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveReference(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		reference.refresh();
 	}
@@ -191,7 +191,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * 
 	 */
-	protected void removeFromReference(TotalSample element) {
+	protected void removeFromReference(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		reference.refresh();
 	}
@@ -199,7 +199,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * 
 	 */
-	protected void editReference(TotalSample element) {
+	protected void editReference(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {

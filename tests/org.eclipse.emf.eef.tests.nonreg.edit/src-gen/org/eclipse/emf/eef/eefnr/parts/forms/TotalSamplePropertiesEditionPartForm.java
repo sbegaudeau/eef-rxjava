@@ -104,10 +104,10 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	protected EMFComboViewer radioOptionalProperty;
 	protected EObjectFlatComboViewer eobjectflatcomboviewerRequiredProperty;
 	protected EObjectFlatComboViewer eobjectflatcomboviewerOptionalProperty;
-		protected ReferencesTable<? extends EObject> referencestableRequiredProperty;
+		protected ReferencesTable referencestableRequiredProperty;
 		protected List<ViewerFilter> referencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> referencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable<? extends EObject> referencestableOptionalProperty;
+		protected ReferencesTable referencestableOptionalProperty;
 		protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer emfcomboviewerRequiredProperty;
@@ -124,18 +124,18 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		protected TableViewer tablecompositionOptionalProperty;
 		protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable<? extends EObject> advancedreferencestableRequiredProperty;
+		protected ReferencesTable advancedreferencestableRequiredProperty;
 		protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable<? extends EObject> advancedreferencestableOptionalProperty;
+		protected ReferencesTable advancedreferencestableOptionalProperty;
 		protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer advancedeobjectflatcomboviewerRequiredPropery;
 	protected EObjectFlatComboViewer advancedeobjectflatcomboviewerOptionalPropery;
-	protected ReferencesTable<? extends EObject> advancedtablecompositionRequiredProperty;
+	protected ReferencesTable advancedtablecompositionRequiredProperty;
 	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-	protected ReferencesTable<? extends EObject> advancedtablecompositionOptionalProperty;
+	protected ReferencesTable advancedtablecompositionOptionalProperty;
 	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected Text name;
@@ -638,9 +638,9 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createReferencestableRequiredPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.referencestableRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
+		this.referencestableRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<TotalSample> dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referencestableRequiredPropertyFilters, referencestableRequiredPropertyBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referencestableRequiredPropertyFilters, referencestableRequiredPropertyBusinessFilters,
 				"TotalSample", EefnrPackage.eINSTANCE.getTotalSample(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -673,7 +673,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveReferencestableRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveReferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		referencestableRequiredProperty.refresh();
 	}
@@ -681,7 +681,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromReferencestableRequiredProperty(TotalSample element) {
+	protected void removeFromReferencestableRequiredProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		referencestableRequiredProperty.refresh();
 	}
@@ -689,7 +689,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editReferencestableRequiredProperty(TotalSample element) {
+	protected void editReferencestableRequiredProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
@@ -705,9 +705,9 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createReferencestableOptionalPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.referencestableOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
+		this.referencestableOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<TotalSample> dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referencestableOptionalPropertyFilters, referencestableOptionalPropertyBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, referencestableOptionalPropertyFilters, referencestableOptionalPropertyBusinessFilters,
 				"TotalSample", EefnrPackage.eINSTANCE.getTotalSample(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -740,7 +740,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveReferencestableOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveReferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		referencestableOptionalProperty.refresh();
 	}
@@ -748,7 +748,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromReferencestableOptionalProperty(TotalSample element) {
+	protected void removeFromReferencestableOptionalProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		referencestableOptionalProperty.refresh();
 	}
@@ -756,7 +756,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editReferencestableOptionalProperty(TotalSample element) {
+	protected void editReferencestableOptionalProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
@@ -1310,9 +1310,9 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createAdvancedreferencestableRequiredPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.advancedreferencestableRequiredProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
+		this.advancedreferencestableRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableRequiredPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<TotalSample> dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, advancedreferencestableRequiredPropertyFilters, advancedreferencestableRequiredPropertyBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, advancedreferencestableRequiredPropertyFilters, advancedreferencestableRequiredPropertyBusinessFilters,
 				"TotalSample", EefnrPackage.eINSTANCE.getTotalSample(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -1345,7 +1345,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveAdvancedreferencestableRequiredProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		advancedreferencestableRequiredProperty.refresh();
 	}
@@ -1353,7 +1353,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromAdvancedreferencestableRequiredProperty(TotalSample element) {
+	protected void removeFromAdvancedreferencestableRequiredProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		advancedreferencestableRequiredProperty.refresh();
 	}
@@ -1361,7 +1361,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editAdvancedreferencestableRequiredProperty(TotalSample element) {
+	protected void editAdvancedreferencestableRequiredProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
@@ -1377,9 +1377,9 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createAdvancedreferencestableOptionalPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.advancedreferencestableOptionalProperty = new ReferencesTable<TotalSample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
+		this.advancedreferencestableOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableOptionalPropertyLabel, new ReferencesTableListener<TotalSample>() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog<TotalSample> dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, advancedreferencestableOptionalPropertyFilters, advancedreferencestableOptionalPropertyBusinessFilters,
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<TotalSample>(resourceSet, advancedreferencestableOptionalPropertyFilters, advancedreferencestableOptionalPropertyBusinessFilters,
 				"TotalSample", EefnrPackage.eINSTANCE.getTotalSample(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -1412,7 +1412,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveAdvancedreferencestableOptionalProperty(TotalSample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		advancedreferencestableOptionalProperty.refresh();
 	}
@@ -1420,7 +1420,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromAdvancedreferencestableOptionalProperty(TotalSample element) {
+	protected void removeFromAdvancedreferencestableOptionalProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		advancedreferencestableOptionalProperty.refresh();
 	}
@@ -1428,7 +1428,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editAdvancedreferencestableOptionalProperty(TotalSample element) {
+	protected void editAdvancedreferencestableOptionalProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
@@ -1503,7 +1503,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.advancedtablecompositionRequiredProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
+		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToAdvancedtablecompositionRequiredProperty();}
 			public void handleEdit(Sample element) { editAdvancedtablecompositionRequiredProperty(element); }
 			public void handleMove(Sample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionRequiredProperty(element, oldIndex, newIndex); }
@@ -1525,7 +1525,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveAdvancedtablecompositionRequiredProperty(Sample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 		advancedtablecompositionRequiredProperty.refresh();
 	}
@@ -1551,7 +1551,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromAdvancedtablecompositionRequiredProperty(Sample element) {
+	protected void removeFromAdvancedtablecompositionRequiredProperty(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 		
@@ -1560,7 +1560,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editAdvancedtablecompositionRequiredProperty(Sample element) {
+	protected void editAdvancedtablecompositionRequiredProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
@@ -1577,7 +1577,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.advancedtablecompositionOptionalProperty = new ReferencesTable<Sample>(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
+		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToAdvancedtablecompositionOptionalProperty();}
 			public void handleEdit(Sample element) { editAdvancedtablecompositionOptionalProperty(element); }
 			public void handleMove(Sample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionOptionalProperty(element, oldIndex, newIndex); }
@@ -1599,7 +1599,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void moveAdvancedtablecompositionOptionalProperty(Sample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 		advancedtablecompositionOptionalProperty.refresh();
 	}
@@ -1625,7 +1625,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void removeFromAdvancedtablecompositionOptionalProperty(Sample element) {
+	protected void removeFromAdvancedtablecompositionOptionalProperty(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 		
@@ -1634,7 +1634,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	/**
 	 * 
 	 */
-	protected void editAdvancedtablecompositionOptionalProperty(Sample element) {
+	protected void editAdvancedtablecompositionOptionalProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {

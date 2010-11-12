@@ -97,8 +97,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
-																																																																																																																																																												
-																																																																																																																																																												// End of user code
+																																																																																																																																																																					
+																																																																																																																																																																					// End of user code
 			
 		}
 		// init values for referenced views
@@ -141,10 +141,10 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo;
 	}
 

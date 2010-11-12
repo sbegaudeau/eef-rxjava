@@ -54,7 +54,7 @@ import org.eclipse.swt.widgets.Group;
  */
 public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RootPropertiesEditionPart {
 
-protected ReferencesTable<? extends EObject> samples;
+protected ReferencesTable samples;
 protected List<ViewerFilter> samplesBusinessFilters = new ArrayList<ViewerFilter>();
 protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 
@@ -135,7 +135,7 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	protected Composite createSamplesAdvancedTableComposition(Composite parent) {
-		this.samples = new ReferencesTable<AbstractSample>(EefnrMessages.RootPropertiesEditionPart_SamplesLabel, new ReferencesTableListener<AbstractSample>() {			
+		this.samples = new ReferencesTable(EefnrMessages.RootPropertiesEditionPart_SamplesLabel, new ReferencesTableListener<AbstractSample>() {			
 			public void handleAdd() { addToSamples();}
 			public void handleEdit(AbstractSample element) { editSamples(element); }
 			public void handleMove(AbstractSample element, int oldIndex, int newIndex) { moveSamples(element, oldIndex, newIndex); }
@@ -157,7 +157,7 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 *  
 	 */
-	protected void moveSamples(AbstractSample element, int oldIndex, int newIndex) {
+	protected void moveSamples(EObject element, int oldIndex, int newIndex) {
 	}
 
 	/**
@@ -183,7 +183,7 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 *  
 	 */
-	protected void removeFromSamples(AbstractSample element) {
+	protected void removeFromSamples(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				samples.refresh();
 		
@@ -192,7 +192,7 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 *  
 	 */
-	protected void editSamples(AbstractSample element) {
+	protected void editSamples(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {

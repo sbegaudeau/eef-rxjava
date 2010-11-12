@@ -53,10 +53,10 @@ import org.eclipse.swt.widgets.Group;
  */
 public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 
-protected ReferencesTable<? extends EObject> advancedtablecompositionRequiredProperty;
+protected ReferencesTable advancedtablecompositionRequiredProperty;
 protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable<? extends EObject> advancedtablecompositionOptionalProperty;
+protected ReferencesTable advancedtablecompositionOptionalProperty;
 protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
@@ -140,7 +140,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionRequiredPropertyAdvancedTableComposition(Composite parent) {
-		this.advancedtablecompositionRequiredProperty = new ReferencesTable<Sample>(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
+		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToAdvancedtablecompositionRequiredProperty();}
 			public void handleEdit(Sample element) { editAdvancedtablecompositionRequiredProperty(element); }
 			public void handleMove(Sample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionRequiredProperty(element, oldIndex, newIndex); }
@@ -162,7 +162,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 *  
 	 */
-	protected void moveAdvancedtablecompositionRequiredProperty(Sample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 		advancedtablecompositionRequiredProperty.refresh();
 	}
@@ -188,7 +188,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 *  
 	 */
-	protected void removeFromAdvancedtablecompositionRequiredProperty(Sample element) {
+	protected void removeFromAdvancedtablecompositionRequiredProperty(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 		
@@ -197,7 +197,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 *  
 	 */
-	protected void editAdvancedtablecompositionRequiredProperty(Sample element) {
+	protected void editAdvancedtablecompositionRequiredProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
@@ -214,7 +214,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(Composite parent) {
-		this.advancedtablecompositionOptionalProperty = new ReferencesTable<Sample>(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
+		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener<Sample>() {			
 			public void handleAdd() { addToAdvancedtablecompositionOptionalProperty();}
 			public void handleEdit(Sample element) { editAdvancedtablecompositionOptionalProperty(element); }
 			public void handleMove(Sample element, int oldIndex, int newIndex) { moveAdvancedtablecompositionOptionalProperty(element, oldIndex, newIndex); }
@@ -236,7 +236,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 *  
 	 */
-	protected void moveAdvancedtablecompositionOptionalProperty(Sample element, int oldIndex, int newIndex) {
+	protected void moveAdvancedtablecompositionOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 		advancedtablecompositionOptionalProperty.refresh();
 	}
@@ -262,7 +262,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 *  
 	 */
-	protected void removeFromAdvancedtablecompositionOptionalProperty(Sample element) {
+	protected void removeFromAdvancedtablecompositionOptionalProperty(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 		
@@ -271,7 +271,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 *  
 	 */
-	protected void editAdvancedtablecompositionOptionalProperty(Sample element) {
+	protected void editAdvancedtablecompositionOptionalProperty(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {

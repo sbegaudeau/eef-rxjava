@@ -129,10 +129,10 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo;
 	}
 

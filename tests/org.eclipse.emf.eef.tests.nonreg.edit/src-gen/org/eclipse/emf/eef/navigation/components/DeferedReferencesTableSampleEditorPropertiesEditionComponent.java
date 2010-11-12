@@ -99,8 +99,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			
 			});
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-																																																																																																																																																												
-																																																																																																																																																												// End of user code
+																																																																																																																																																																					
+																																																																																																																																																																					// End of user code
 			
 		}
 		// init values for referenced views
@@ -157,10 +157,10 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor;
 	}
 
