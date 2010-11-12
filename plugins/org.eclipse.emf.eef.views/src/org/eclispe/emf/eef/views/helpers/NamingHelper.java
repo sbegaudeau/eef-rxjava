@@ -23,18 +23,26 @@ public class NamingHelper {
 		StringBuffer buffer = new StringBuffer();
 		EObject container = element.eContainer();
 		while (container instanceof ViewElement) {
-			if (((ViewElement)container).getName().equals(baseName)) {
+			if (equalsIngnoreWhiteSpacesAndCase(((ViewElement)container).getName(),baseName)) {
 				buffer.append('_');
 			}
 			container = container.eContainer();
 		}
 		ViewsRepository repository = repository(container);
 		if (repository != null) {
-			if (repository.getName().equals(baseName)) {
+			if (equalsIngnoreWhiteSpacesAndCase(repository.getName(),baseName)) {
 				buffer.append('_');
 			}
 		}
 		return buffer.toString();
+	}
+
+	private static boolean equalsIngnoreWhiteSpacesAndCase(String name1, String name2) {
+		return removeWhiteSpaces(name1).equalsIgnoreCase(removeWhiteSpaces(name2));
+	}
+	
+	private static String removeWhiteSpaces(String name) {
+		return name.replaceAll("\\s", "").trim();
 	}
 	
 	private static ViewsRepository repository(EObject obj) {
