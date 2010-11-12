@@ -111,8 +111,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for feature
-																																																						
-																																																						// End of user code
+																																																									
+																																																									// End of user code
 			
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 			
@@ -127,8 +127,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for discriminatorType
-																																																						
-																																																						// End of user code
+																																																									
+																																																									// End of user code
 			
 		}
 		// init values for referenced views
