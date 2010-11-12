@@ -56,7 +56,7 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class ReferencesTable<T extends EObject> implements
+public class ReferencesTable implements
 		IPropertiesFilteredWidget {
 
 	/**
@@ -147,7 +147,7 @@ public class ReferencesTable<T extends EObject> implements
 	 * The listener used by the client to handle business events (Add, Remove,
 	 * Move, NavigateTo)
 	 */
-	private ReferencesTableListener<T> referencesTableListener;
+	private ReferencesTableListener referencesTableListener;
 
 	private String labelToDisplay;
 
@@ -192,8 +192,7 @@ public class ReferencesTable<T extends EObject> implements
 	 * @param the
 	 *            listener to handle Add, Remove, Move and NavigateTo events
 	 */
-	public ReferencesTable(String labeltoDisplay,
-			ReferencesTableListener<T> referenceListener) {
+	public ReferencesTable(String labeltoDisplay, ReferencesTableListener referenceListener) {
 		this.labelToDisplay = labeltoDisplay;
 		this.addButtonlistener = new AddButtonlistener();
 		this.removeButtonlistener = new RemoveButtonlistener();
@@ -204,8 +203,7 @@ public class ReferencesTable<T extends EObject> implements
 		addTableReferenceListener(referenceListener);
 	}
 
-	public void addTableReferenceListener(
-			ReferencesTableListener<T> referenceListener) {
+	public void addTableReferenceListener(ReferencesTableListener referenceListener) {
 		this.referencesTableListener = referenceListener;
 	}
 
@@ -392,7 +390,7 @@ public class ReferencesTable<T extends EObject> implements
 						&& table.getSelection()[0].getData() instanceof EObject) {
 					// Navigate
 					referencesTableListener
-							.navigateTo((T) table.getSelection()[0].getData());
+							.navigateTo((EObject) table.getSelection()[0].getData());
 				}
 			}
 
@@ -609,8 +607,7 @@ public class ReferencesTable<T extends EObject> implements
 
 			for (int i = (tableItems.length - 1); i >= 0; i--) {
 				// Remove
-				referencesTableListener.handleRemove((T) tableItems[i]
-						.getData());
+				referencesTableListener.handleRemove((EObject) tableItems[i].getData());
 			}
 		}
 	}
@@ -651,8 +648,7 @@ public class ReferencesTable<T extends EObject> implements
 				int newIndex = indexOf(tableItems[i].getData()) - 1;
 				if (newIndex >= 0 && newIndex < getSize()) {
 					// Move
-					referencesTableListener.handleMove((T) tableItems[i]
-							.getData(), newIndex + 1, newIndex);
+					referencesTableListener.handleMove((EObject) tableItems[i].getData(), newIndex + 1, newIndex);
 				}
 			}
 
@@ -692,8 +688,7 @@ public class ReferencesTable<T extends EObject> implements
 				int newIndex = indexOf(tableItems[i].getData()) + 1;
 				if (newIndex >= 0 && newIndex < getSize()) {
 					// Move
-					referencesTableListener.handleMove((T) tableItems[i]
-							.getData(), newIndex - 1, newIndex);
+					referencesTableListener.handleMove((EObject) tableItems[i].getData(), newIndex - 1, newIndex);
 				}
 			}
 		}
@@ -710,7 +705,7 @@ public class ReferencesTable<T extends EObject> implements
 			if (table.getSelection().length > 0) {
 				TableItem item = table.getSelection()[0];
 				// Edit
-				referencesTableListener.handleEdit((T) item.getData());
+				referencesTableListener.handleEdit((EObject) item.getData());
 			}
 		}
 	}
