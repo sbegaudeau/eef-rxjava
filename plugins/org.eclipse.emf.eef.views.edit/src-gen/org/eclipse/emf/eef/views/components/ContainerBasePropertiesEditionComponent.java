@@ -100,8 +100,8 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for representation
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
 			
 			
 		}
@@ -153,20 +153,20 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == ViewsViewsRepository.Container.Properties.name;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == ViewsViewsRepository.Container.Properties.representation)
 			return "The representation of this part of view"; //$NON-NLS-1$
 		if (key == ViewsViewsRepository.Container.Properties.name)

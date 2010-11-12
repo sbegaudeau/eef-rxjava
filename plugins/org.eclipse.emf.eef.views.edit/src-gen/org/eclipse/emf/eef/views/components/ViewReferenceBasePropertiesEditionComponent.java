@@ -101,8 +101,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for view
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
 			
 		}
 		// init values for referenced views
@@ -153,20 +153,20 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return key == ViewsViewsRepository.ViewReference.Properties.name || key == ViewsViewsRepository.ViewReference.Properties.referencedView;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == ViewsViewsRepository.ViewReference.Properties.name)
 			return "The element name"; //$NON-NLS-1$
 		if (key == ViewsViewsRepository.ViewReference.Properties.referencedView)

@@ -115,10 +115,10 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.String, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
 	 * 
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		if (key == ViewsViewsRepository.Documentation.Documentation_.documentation__)
 			return "The documentation of the element"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
