@@ -23,7 +23,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 public class MappingCustomPropertiesEditionPartProvider extends MappingPropertiesEditionPartProvider {
 
 	@Override
-	public IPropertiesEditionPart getPropertiesEditionPart(Class key, int kind,
+	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind,
 			IPropertiesEditionComponent component) {
 		if (key == MappingViewsRepository.SimpleModelNavigation.class) {
 			if (kind == MappingViewsRepository.SWT_KIND)
