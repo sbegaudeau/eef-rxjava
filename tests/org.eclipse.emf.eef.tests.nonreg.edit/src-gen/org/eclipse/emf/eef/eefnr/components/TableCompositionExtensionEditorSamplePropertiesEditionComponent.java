@@ -67,11 +67,11 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Class, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(java.lang.Class key, int kind, EObject elt, ResourceSet allResource) {
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
@@ -96,8 +96,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
-																																																																																																																																							
-																																																																																																																																							// End of user code
+																																																																																																																																										
+																																																																																																																																										// End of user code
 			
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -112,8 +112,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-																																																																																																																																							
-																																																																																																																																							// End of user code
+																																																																																																																																										
+																																																																																																																																										// End of user code
 			
 		}
 		// init values for referenced views
