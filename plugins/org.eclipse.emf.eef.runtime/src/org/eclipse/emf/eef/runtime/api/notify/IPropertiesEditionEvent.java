@@ -24,7 +24,7 @@ public interface IPropertiesEditionEvent {
 	/**
 	 * @return the changedEditor
 	 */
-	public String getAffectedEditor();
+	public Object getAffectedEditor();
 
 	/**
 	 * @return the holders

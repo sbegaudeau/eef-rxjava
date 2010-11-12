@@ -19,7 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class PropertiesEditionEvent implements IPropertiesEditionEvent{
+public class PropertiesEditionEvent implements IPropertiesEditionEvent {
 
 	/**
 	 * Describe an event that just change the view state
@@ -118,7 +118,7 @@ public class PropertiesEditionEvent implements IPropertiesEditionEvent{
 	/**
 	 * @return the changedEditor
 	 */
-	public String getAffectedEditor() {
+	public Object getAffectedEditor() {
 		return affectedEditor;
 	}
 

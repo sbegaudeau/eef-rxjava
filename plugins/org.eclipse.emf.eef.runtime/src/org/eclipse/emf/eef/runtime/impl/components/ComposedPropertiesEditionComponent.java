@@ -276,7 +276,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.Object,
 	 *      int)
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		for (IPropertiesEditionComponent component : subComponents) {
 			if (component.isRequired(key, kind))
 				return true;
@@ -290,7 +290,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getHelpContent(java.lang.String,
 	 *      int)
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		for (IPropertiesEditionComponent component : subComponents) {
 			if (component.getHelpContent(key, kind) != StringTools.EMPTY_STRING)
 				return component.getHelpContent(key, kind);
@@ -326,7 +326,7 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.Object)
 	 */
 	public String getTabText(String key) {
 		for (IPropertiesEditionComponent component : subComponents) {

@@ -49,7 +49,7 @@ public class PropertiesValidationEditionEvent implements IPropertiesEditionEvent
 	 * @return
 	 * @see org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent#getAffectedEditor()
 	 */
-	public String getAffectedEditor() {
+	public Object getAffectedEditor() {
 		return event.getAffectedEditor();
 	}
 

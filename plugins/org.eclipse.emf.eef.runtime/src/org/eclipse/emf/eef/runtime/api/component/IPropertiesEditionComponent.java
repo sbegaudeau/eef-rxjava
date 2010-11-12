@@ -151,7 +151,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the kind of the part
 	 * @return <code>true</code> if the given ElementEditor if required
 	 */
-	public boolean isRequired(String key, int kind);
+	public boolean isRequired(Object key, int kind);
 
 	/**
 	 * This method allow managed PropertiesEditionPart to ask the component for an ElementEditor help
@@ -163,7 +163,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the kind of the part
 	 * @return the help content for the given ElementEditor according the help strategy
 	 */
-	public String getHelpContent(String key, int kind);
+	public String getHelpContent(Object key, int kind);
 
 	/**
 	 * This method translate a Part name into his identifier

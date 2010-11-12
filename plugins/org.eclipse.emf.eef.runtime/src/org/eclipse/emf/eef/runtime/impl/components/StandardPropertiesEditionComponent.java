@@ -198,7 +198,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#isRequired(java.lang.String,
 	 *      int)
 	 */
-	public boolean isRequired(String key, int kind) {
+	public boolean isRequired(Object key, int kind) {
 		return false;
 	}
 
@@ -208,7 +208,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getHelpContent(java.lang.String,
 	 *      int)
 	 */
-	public String getHelpContent(String key, int kind) {
+	public String getHelpContent(Object key, int kind) {
 		return StringTools.EMPTY_STRING;
 	}
 
