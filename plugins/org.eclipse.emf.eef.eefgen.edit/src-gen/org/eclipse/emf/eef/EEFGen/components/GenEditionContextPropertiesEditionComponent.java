@@ -113,8 +113,8 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for propertiesEditionContext
-																											
-																											// End of user code
+																														
+																														// End of user code
 			
 			
 		}
