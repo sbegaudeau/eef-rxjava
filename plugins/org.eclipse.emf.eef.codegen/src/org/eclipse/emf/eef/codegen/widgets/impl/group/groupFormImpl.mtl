@@ -19,15 +19,15 @@
 [import widgetFormImpl /]
 
 [template public implementation(editor : Container) overrides implementation ? (editor.representation.name = 'Group')]
-		create[editor.name.toJavaClassifier()/]Group(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]Group(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Group')]
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite [editor.widgetContainer().trim()/]) {
-		Section [editor.name.toJavaIdentifier()/]Section = widgetFactory.createSection([editor.widgetContainer().trim()/], Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite create[editor.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite parent) {
+		Section [editor.name.toJavaIdentifier()/]Section = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		[editor.name.toJavaIdentifier()/]Section.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);
 		GridData [editor.name.toJavaIdentifier()/]SectionData = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]SectionData.horizontalSpan = 3;
@@ -36,10 +36,8 @@
 		GridLayout [editor.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
 		[editor.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
 		[editor.name.toJavaIdentifier()/]Group.setLayout([editor.name.toJavaIdentifier()/]GroupLayout);
-[for (element : ViewElement | editor.elements)]
-[element.implementation()/]
-[/for]
 		[editor.name.toJavaIdentifier()/]Section.setClient([editor.name.toJavaIdentifier()/]Group);
+		return [editor.name.toJavaIdentifier()/]Group;
 	}
 [/template]
 

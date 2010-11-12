@@ -226,10 +226,22 @@
 [view.viewKey(pec).toJavaIdentifier()/]Part
 [/template]
 
+[template public editorID(viewElement : ViewElement)]
+// FIXME: defines the editorID computing for the element : [viewElement/]
+[/template]
+
 [template public editorID(editor : ElementEditor)]
-[editor.owningView().owningViewsRepository().vrClass()/].[for (s : String | editor.editorIDSequence()->subSequence(2, editor.editorIDSequence()->size() - 1)) separator ('.')][s.toJavaClassifier()/][/for].[editor.name.toJavaIdentifier()/]
+[editor.owningView().owningViewsRepository().vrClass()/].[for (s : String | editor.editorIDSequence()->subSequence(2, editor.editorIDSequence()->size() - 1)) separator ('.')][s.toJavaClassifier()/][/for].[editor.identifiedElementKey().toJavaIdentifier()/]
+[/template]
+
+[template public editorID(containerElement : Container)]
+[containerElement.owningView().owningViewsRepository().vrClass()/].[for (s : String | containerElement.editorIDSequence()->subSequence(2, containerElement.editorIDSequence()->size())) separator ('.')][s.toJavaClassifier()/][/for]
 [/template]
 
 [template public editorID(view : View)]
-[view.owningViewsRepository().vrClass()/].[for (s : String | view.qualifiedIdentifier.substring(view.qualifiedIdentifier.tokenize('::')->first().oclAsType(String).size()+3, view.qualifiedIdentifier.size()).tokenize('::')) separator ('.')][s.toJavaClassifier()/][/for]
+[view.owningViewsRepository().vrClass()/].[for (s : String | view.editorIDSequence()->subSequence(2, view.editorIDSequence()->size())) separator ('.')][s.toJavaClassifier()/][/for]
+[/template]
+
+[template public editorID(reference : ViewReference)]
+[reference.owningView().owningViewsRepository().vrClass()/].[for (s : String | reference.editorIDSequence()->subSequence(2, reference.editorIDSequence()->size() - 1)) separator ('.')][s.toJavaClassifier()/][/for].[reference.identifiedElementKey().toJavaIdentifier()/]
 [/template]

@@ -80,7 +80,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
-               tab="[view.viewKey(pec).toASCII().substituteAll(' ', '_')/]">
+               tab="[view.viewKey(pec).toASCII()/]">
              <input
                     type="[pec.model.qualifiedName(basePackage)/]">
              </input>
@@ -96,11 +96,11 @@
          <propertyTab
                label="[view.viewKey(pec)/]"
                category="extended"
-               id="[view.viewKey(pec).toASCII().substituteAll(' ', '_')/]"
+               id="[view.viewKey(pec).toASCII()/]"
 [if (pec.involvedViews()->indexOf(view) = 2)]
                afterTab="Base">
 [else]
-               afterTab="[pec.previousView(view).name.toASCII().substituteAll(' ', '_')/]">
+               afterTab="[pec.previousView(view).name.toASCII()/]">
 [/if]
          </propertyTab>
 [/template]

@@ -52,7 +52,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'TableComposition')]
-		create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'TableComposition')]
@@ -60,7 +60,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 * @param container
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite container) {
+	protected Composite create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite container) {
 		Composite tableContainer = widgetFactory.createComposite(container, SWT.NONE);
 		GridLayout tableContainerLayout = new GridLayout();
 		GridData tableContainerData = new GridData(GridData.FILL_BOTH);
@@ -129,6 +129,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		EditingUtils.setID([editor.name.toJavaIdentifier()/].getTable(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$		
 		create[editor.name.toJavaClassifier()/]Panel(widgetFactory, tableContainer);
+		return container;
 	}
 
 	/**
@@ -337,7 +338,7 @@ protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new Arra
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'TableComposition' or editor.representation.name = 'AdvancedTableComposition')]
-		create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedTableComposition')]
@@ -345,7 +346,7 @@ protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new Arra
 	 * @param container
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]TableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
 			public void handleAdd() { addTo[editor.name.toJavaClassifier()/]();}
 			public void handleEdit([editor.involvedPropertiesEditionElement().model.eType.name/] element) { edit[editor.name.toJavaClassifier()/](element); }
@@ -366,6 +367,7 @@ protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new Arra
 		this.[editor.name.toJavaIdentifier()/].setUpperBound([editor.involvedPropertiesEditionElement(pec).model.upperBound/]);
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		[editor.name.toJavaIdentifier()/].setEEFType("eef::[editor.representation.name/]"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**

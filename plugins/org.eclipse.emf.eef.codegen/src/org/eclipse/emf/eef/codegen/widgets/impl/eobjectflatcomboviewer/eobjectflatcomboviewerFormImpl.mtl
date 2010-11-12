@@ -38,15 +38,16 @@ protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
-		create[editor.name.toJavaClassifier()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
+create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
 	/**
-	 * @param [editor.widgetContainer().trim()/]
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, [editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0/]);
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -71,6 +72,7 @@ protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 		});
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 
@@ -106,16 +108,17 @@ protected AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElemen
 	protected ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
 [/template]
 
-
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-		create[editor.name.toJavaClassifier()/]FlatComboViewer([editor.widgetContainer().trim()/], widgetFactory);
+create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
 	/**
-	 * @param [editor.widgetContainer().trim()/]
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		// create callback listener
 		EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]> listener = new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
@@ -159,6 +162,7 @@ protected AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElemen
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 [/template]

@@ -197,7 +197,21 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-[for (aView : ViewElement | view.elements)]
+		[view.compositionSequence()/]
+		composer = new PartComposer([view.compositionStepName()/]) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
+				if (key == [aView.editorID()/][if (aView.oclIsKindOf(Container))].class[/if]) {
+					return [aView.implementation()/]
+				}
+				[/for]
+				return parent;
+			}
+		};
+		composer.compose(view);
+[comment][for (aView : ViewElement | view.elements)]
 [aView.implementation()/]
 
 [/for]
@@ -206,6 +220,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		
 		// [/protected]
 [/if]
+[/comment]
 	}
 [for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
 [aView.additionalImplementation(pec, inputPEC)/]

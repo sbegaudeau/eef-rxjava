@@ -38,15 +38,15 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
-		create[editor.name.toJavaClassifier()/]FlatComboViewer([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]FlatComboViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
 	/**
-	 * @param [editor.widgetContainer().trim()/]
+	 * @param parent the parent composite
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, [editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0/]);
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -66,6 +66,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 
@@ -102,14 +103,15 @@ import [pee.model.eContainingClass.qualifiedName(basePackage)/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-		create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
 	/**
-	 * @param [editor.widgetContainer().trim()/]
+	 * @param parent the parent composite
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		// create callback listener
 		EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]> listener = new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
@@ -152,6 +154,7 @@ import [pee.model.eContainingClass.qualifiedName(basePackage)/];
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

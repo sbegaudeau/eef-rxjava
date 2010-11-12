@@ -58,11 +58,11 @@ import org.eclipse.swt.widgets.Text;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'MultiValuedEditor')]
-		create[editor.name.toJavaClassifier()/]MultiValuedEditor([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
-	protected void create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
 		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
@@ -103,6 +103,7 @@ import org.eclipse.swt.widgets.Text;
 		});
 		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::browsebutton"); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

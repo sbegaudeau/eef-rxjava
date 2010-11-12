@@ -36,7 +36,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'FlatReferencesTable')]
-		create[editor.name.toJavaClassifier()/]FlatReferencesTable(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]FlatReferencesTable(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'FlatReferencesTable')]
@@ -44,7 +44,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 	 * @param parent
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]FlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]FlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[editor.name.toJavaIdentifier()/] = new FlatReferencesTable(parent);
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -65,6 +65,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 [/template]

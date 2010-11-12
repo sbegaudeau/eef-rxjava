@@ -19,14 +19,14 @@
 [import widgetSWTImpl /]
 
 [template public implementation(editor : Container) overrides implementation ? (editor.representation.name = 'Group')]
-		create[editor.name.toJavaClassifier()/]Group([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]Group(parent);
 [/template]
 
 [template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Group')]
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]Group(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]Group(Composite parent) {
 		Group [editor.name.toJavaIdentifier()/]Group = new Group(parent, SWT.NONE);
 		[editor.name.toJavaIdentifier()/]Group.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);
 		GridData [editor.name.toJavaIdentifier()/]GroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -35,9 +35,7 @@
 		GridLayout [editor.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
 		[editor.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
 		[editor.name.toJavaIdentifier()/]Group.setLayout([editor.name.toJavaIdentifier()/]GroupLayout);
-[for (element : ViewElement | editor.elements)]
-[element.implementation()/]
-[/for]
+		return [editor.name.toJavaIdentifier()/]Group;
 	}
 [/template]
 

@@ -24,12 +24,12 @@ protected Button [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Checkbox')]
-		create[editor.name.toJavaClassifier()/]Checkbox(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]Checkbox(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Checkbox')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
 		[editor.name.toJavaIdentifier()/] = widgetFactory.createButton(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], SWT.CHECK);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
@@ -55,6 +55,7 @@ protected Button [editor.name.toJavaIdentifier()/];
 		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

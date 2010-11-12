@@ -37,14 +37,15 @@
 [/template] 
 
 [template public implementation(reference : ViewReference)]
-		create[reference.view.name.toJavaClassifier()/]([reference.widgetContainer().trim()/]);
+create[reference.view.name.toJavaClassifier()/](parent);
 [/template]
 
 [template public additionalImplementation(reference : ViewReference, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)][let referencedView : View = reference.view.oclAsType(views::View)]
-	protected void create[referencedView.name.toJavaClassifier()/](Composite container) {
+	protected Composite create[referencedView.name.toJavaClassifier()/](Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([referencedView.owningViewsRepository().vrClass()/].class);
 		[referencedView.pepInterface().toLowerFirst()/] = ([referencedView.pepInterface()/])provider.getPropertiesEditionPart([referencedView.editorID()/].class, [referencedView.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)[referencedView.pepInterface().toLowerFirst()/]).createControls(container);
+		return container;
 	}
 [/let]
 [/template]
@@ -62,14 +63,15 @@
 
 [template public implementation(view : View)]
 		if (propertiesEditionComponent.mustBeComposed([view.editorID()/].class, [view.owningViewsRepository().vrClass()/].SWT_KIND))
-			create[view.name.toJavaClassifier()/]SubView([view.widgetContainer().trim()/]);
+			create[view.name.toJavaClassifier()/]SubView(parent);
 [/template]
 
 [template public additionalImplementation(view : View, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)]
-	protected void create[view.name.toJavaClassifier()/]SubView(Composite container) {
+	protected Composite create[view.name.toJavaClassifier()/]SubView(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([view.owningViewsRepository().vrClass()/].class);
 		[view.pepInterface().toLowerFirst()/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([view.editorID()/].class, [view.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)[view.pepInterface().toLowerFirst()/]).createControls(container);
+		return container;
 	}
 [/template]
 

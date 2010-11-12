@@ -23,21 +23,17 @@ import org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox;
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'VerticalBox')]
-		create[container.name.toJavaClassifier()/]VBox([container.widgetContainer().trim()/]);
+create[container.name.toJavaClassifier()/]VBox(parent);
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'VerticalBox')]
 	[container.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[container.name.toJavaClassifier()/]VBox(Composite parent) {
+	protected Composite create[container.name.toJavaClassifier()/]VBox(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);	
 		VerticalBox [container.name.toJavaIdentifier()/]VBox = new VerticalBox(container);
-		//create sub figures
-		[for (editor : ElementEditor | container.elements)]
-		[editor.implementation()/]
-		[/for]
-		container.pack();
+		return [container.name.toJavaIdentifier()/]VBox;
 	}
 [/template]
 

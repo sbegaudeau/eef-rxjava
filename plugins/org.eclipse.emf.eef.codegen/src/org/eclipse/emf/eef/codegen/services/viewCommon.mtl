@@ -96,18 +96,42 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 [/if]
 [/template]
 
-[template public widgetContainer(element : ViewElement)]
-[if (element.container.oclIsKindOf(views::Container) and element.container.representation.name = 'Group')]
-[element.container.name.toJavaIdentifier()/]Group
-[elseif (element.container.oclIsKindOf(views::Container) and element.container.representation.name = 'VerticalBox')]
-[element.container.name.toJavaIdentifier()/]VBox
-[elseif (element.container.oclIsKindOf(views::Container) and element.container.representation.name = 'HorizontalBox')]
-[element.container.name.toJavaIdentifier()/]HBox
-[elseif (element.container.oclIsKindOf(views::View))]
-view
+[template public compositionStepName(view : IdentifiedElement)]
+[view.identifiedElementKey().toJavaIdentifier()/]Step
+[/template]
+
+[template public compositionSequence(view : View)]
+CompositionSequence [view.compositionStepName()/] = new CompositionSequence();
+[for (elem : ViewElement | view.elements)]
+[elem.compositionSequence()/]
+[/for]
+[/template]
+
+[template public compositionSequence(viewElement : ViewElement)]
+// FIXME: composition step generation must be defined for this case : [viewElement/]
+[/template]
+
+[template public compositionSequence(containerElement : Container)]
+[if (containerElement.elements->size() > 1)]
+CompositionStep [containerElement.compositionStepName()/] = [containerElement.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step.addStep([containerElement.editorID()/].class);
+[for (element : ViewElement | containerElement.elements)]
+[element.compositionSequence()/]
+[/for]
 [else]
-//FIXME ILLEGAL MODEL STATE in template public widgetContainer(element : ViewElement) in module viewCommon.mtl
+[containerElement.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step
+	.addStep([containerElement.editorID()/].class)[if (containerElement.elements->isEmpty())];[else]
+
+	.addStep([containerElement.elements->first().editorID()/]);
+	[/if]
 [/if]
+[/template]
+
+[template public compositionSequence(reference : ViewReference)]
+[reference.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step.addStep([reference.editorID()/]);
+[/template]
+
+[template public compositionSequence(editor : ElementEditor)]
+[editor.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step.addStep([editor.editorID()/]);
 [/template]
 
 [comment ====== Widgets getters signature ====== /]
@@ -188,12 +212,6 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 [/template]
 
 [comment === ViewReference managing ===/]
-[template public updaterForViewReference(view : View)]
-[for (viewRef : ViewReference | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference)) ]
-		((CompositePropertiesEditionPart)[viewRef.view.oclAsType(views::View).pepInterface().toLowerFirst()/]).initComponent(eObject, allResources);
-[/for]
-[/template]
-
 [template public elementEditorGetterSettersForViewReference(view : View, pec : PropertiesEditionComponent, basePackage : String)]
 [for (viewRef : ViewReference | view.eAllContents(views::ViewReference)->select(oclIsTypeOf(views::ViewReference)))]
 [viewRef.view.oclAsType(views::View).getterForReferencedViewImplementation(pec.model.eefPackage(basePackage).fullPartInterfacePath(view.pepInterface()))/]

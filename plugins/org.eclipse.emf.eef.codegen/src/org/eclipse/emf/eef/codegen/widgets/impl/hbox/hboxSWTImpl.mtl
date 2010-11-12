@@ -23,14 +23,14 @@ import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'HorizontalBox')]
-		create[container.name.toJavaClassifier()/]HBox([container.widgetContainer().trim()/]);
+create[container.name.toJavaClassifier()/]HBox();
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'HorizontalBox')]
 	/**
 	 * [container.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[container.name.toJavaClassifier()/]HBox(Composite parent) {
+	protected Composite create[container.name.toJavaClassifier()/]HBox(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);
@@ -44,11 +44,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 		constraint.horizontalAlignment = GridData.BEGINNING;
 		[container.name.toJavaIdentifier()/]HBox.setLayoutData(constraint);
 		[/if]
-		//create sub figures
-		[for (editor : ElementEditor | container.elements) ]
-		[editor.implementation()/]
-		[/for]
-		parent.pack();
+		return parent;
 	}
 [/template]
 

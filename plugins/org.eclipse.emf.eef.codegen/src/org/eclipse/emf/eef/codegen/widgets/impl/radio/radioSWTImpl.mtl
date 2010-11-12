@@ -30,14 +30,14 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Radio')]
-		create[editor.name.toJavaClassifier()/]RadioViewer([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Radio')]
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
 		[editor.name.toJavaIdentifier()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/]RadioViewer.setEnabled(false);
@@ -56,6 +56,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 		});
 		[editor.name.toJavaIdentifier()/]RadioViewer.setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null);
+		return parent;
 	}
 [/template]
 

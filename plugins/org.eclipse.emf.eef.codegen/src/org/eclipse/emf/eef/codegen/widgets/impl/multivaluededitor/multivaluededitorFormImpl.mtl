@@ -58,14 +58,14 @@ protected Text [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'MultiValuedEditor')]
-		create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]MultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		[editor.name.toJavaIdentifier()/] = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
@@ -106,6 +106,7 @@ protected Text [editor.name.toJavaIdentifier()/];
 		});
 		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::browsebutton"); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

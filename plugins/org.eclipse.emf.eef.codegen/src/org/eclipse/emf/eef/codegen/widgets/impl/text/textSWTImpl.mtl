@@ -30,12 +30,12 @@ import org.eclipse.swt.events.KeyEvent;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('Text'))]
-		create[editor.name.toJavaClassifier()/]Text([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]Text(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representationName('Text'))]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[editor.name.toJavaClassifier()/]Text(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]Text(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER);
 		[if (editor.readOnly)]
@@ -81,5 +81,6 @@ import org.eclipse.swt.events.KeyEvent;
 		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]

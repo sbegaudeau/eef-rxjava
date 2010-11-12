@@ -23,12 +23,12 @@
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Textarea')]
-		create[editor.name.toJavaClassifier()/]Textarea([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]Textarea(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Textarea')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[editor.name.toJavaClassifier()/]Textarea(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]Textarea(Composite parent) {
 		Label [editor.name.toJavaIdentifier()/]Label = SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
@@ -60,6 +60,7 @@
 		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

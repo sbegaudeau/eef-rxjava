@@ -64,22 +64,6 @@
 [query public propertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
 	 pec.properties->select(views->includes(element))->first()/]
 
-[query public involvedPropertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
-
-[query public involvedPropertiesEditionElement(element : ElementEditor) : PropertiesEditionElement =
-	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
-
-[query public involvedPropertiesEditionElement(view : ViewElement, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	 pec.involvedEditionElements().oclAsType(components::PropertiesEditionElement)->select(views.oclAsType(ViewElement)->includes(view))->first()/]
-
-[comment] 
-@param PropertiesEditionElement the  PEE of the composition
-@param EStructuralFeature : the feature of the composition 
-[/comment]
-[query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =
-	 peElement.element.category.eContainer(components::PropertiesEditionContext).categories.bindings->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : components::PropertiesEditionElement | pee.model=f)->first()/]
-
 [query public relatedComponent(view : View, pec : PropertiesEditionComponent) : PropertiesEditionComponent =
 	if (pec.views->includes(view))
 	then pec.oclAsType(components::PropertiesEditionComponent)
@@ -147,12 +131,6 @@
 [comment TODOGLF: List of parts that a component have to manage/]
 [query public partToManage(pec : PropertiesEditionComponent) : Set(T) = pec.involvedViews()/]
 
-[query public involvedPropertiesEditionComponent(view : View) : PropertiesEditionComponent = 
-	if (view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->notEmpty())
-	then view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->first()
-	else null
-	endif/]
-
 [query public mustBeGenerated(view : View, pec : PropertiesEditionComponent) : Boolean =
 	view.oclAsType(ecore::EObject).eResource() = pec.oclAsType(ecore::EObject).eResource()/]
 
@@ -206,8 +184,11 @@
 	view.representation.name = nameToCheck/]
 
 [comment ----- Editor ID queries ---------/]
-[query public editorIDSequence(editorElement : ElementEditor) : Sequence(T) = 
+[query public editorIDSequence(editorElement : IdentifiedElement) : Sequence(T) = 
 	editorElement.qualifiedIdentifier.tokenize('::')/]
+	
+[query public identifiedElementKey(editorElement : IdentifiedElement) : String = 
+	editorElement.qualifiedIdentifier.tokenize('::')->last()/]
 
 [comment ----- Model Navigation ---------/]
 [query public hasModelNavigation(pee : PropertiesEditionElement) : Boolean = 
@@ -316,13 +297,13 @@ set[view.viewPackageSignature()/]
 [/template]
 
 [template public toJavaType(view : ViewElement)]
-[if (view.representationName('Text') or view.representationName('Textarea') or view.representationName('ImageViewer'))]
+[if (view.representationName('Text') or view.representationName('Textarea') or view.representationName('ImageViewer') or view.representationName('SelectionDialog'))]
 String
 [elseif (view.representationName('EMFComboViewer'))]
 Enumerator
 [elseif (view.representationName('MultiValuedEditor'))]
 EList
-[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer'))]
+[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer'))]
 EObject
 [elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
 List
@@ -527,3 +508,29 @@ Object
 	then modelNavigation.feature.eType.ePackage.metamodelPrefix()
 	else modelNavigation.discriminatorType.ePackage.metamodelPrefix()
 	endif/]
+	
+	
+	
+[query public involvedPropertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
+	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
+
+[query public involvedPropertiesEditionElement(element : ElementEditor) : PropertiesEditionElement =
+	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
+
+[query public involvedPropertiesEditionElement(view : ViewElement, pec : PropertiesEditionComponent) : PropertiesEditionElement =
+	 pec.involvedEditionElements().oclAsType(components::PropertiesEditionElement)->select(views.oclAsType(ViewElement)->includes(view))->first()/]
+
+[comment] 
+@param PropertiesEditionElement the  PEE of the composition
+@param EStructuralFeature : the feature of the composition 
+[/comment]
+[query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =
+	 peElement.element.category.eContainer(components::PropertiesEditionContext).categories.bindings->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : components::PropertiesEditionElement | pee.model=f)->first()/]
+
+
+[query public involvedPropertiesEditionComponent(view : View) : PropertiesEditionComponent = 
+	if (view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->notEmpty())
+	then view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->first()
+	else null
+	endif/]
+	 

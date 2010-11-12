@@ -35,12 +35,12 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EMFComboViewer')]
-		create[editor.name.toJavaClassifier()/]EMFComboViewer([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EMFComboViewer')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[editor.name.toJavaClassifier()/]EMFComboViewer(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]EMFComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
 		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
@@ -67,6 +67,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 		});
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

@@ -23,12 +23,12 @@
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Checkbox')]
-		create[editor.name.toJavaClassifier()/]Checkbox([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]Checkbox(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Checkbox')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
 		[editor.name.toJavaIdentifier()/] = new Button(parent, SWT.CHECK);
 		[editor.name.toJavaIdentifier()/].setText([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[if (editor.readOnly)]
@@ -55,6 +55,7 @@
 		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

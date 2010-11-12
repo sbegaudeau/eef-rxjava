@@ -37,12 +37,12 @@ protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EMFComboViewer')]
-		create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, [editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EMFComboViewer')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected void create[editor.name.toJavaClassifier()/]EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
 		[editor.name.toJavaIdentifier()/].setContentProvider(new ArrayContentProvider());
@@ -69,6 +69,7 @@ protected EMFComboViewer [editor.name.toJavaIdentifier()/];
 		});
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 [/template]
 

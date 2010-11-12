@@ -51,7 +51,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'ReferencesTable')]
-		create[editor.name.toJavaClassifier()/]ReferencesTable([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'ReferencesTable')]
@@ -59,7 +59,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 	 * @param parent
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]ReferencesTable(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]ReferencesTable(Composite parent) {
 		Label [editor.name.toJavaIdentifier()/]Label = SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData();
 		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
@@ -73,6 +73,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 		EditingUtils.setID([editor.name.toJavaIdentifier()/].getTable(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$		
 		create[editor.name.toJavaClassifier()/]ControlPanel(parent);
+		return parent;
 	}
 
 	/**
@@ -278,14 +279,14 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'AdvancedReferencesTable')]
-		create[editor.name.toJavaClassifier()/]AdvancedReferencesTable([editor.widgetContainer().trim()/]);
+create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedReferencesTable')]
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected void create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(Composite parent) {
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]> dialog = new TabElementTreeSelectionDialog<[editor.involvedPropertiesEditionElement().model.eType.name/]>(resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
@@ -320,6 +321,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 		this.[editor.name.toJavaIdentifier()/].disableMove();
 		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
 		[editor.name.toJavaIdentifier()/].setEEFType("eef::[editor.representation.name/]"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**

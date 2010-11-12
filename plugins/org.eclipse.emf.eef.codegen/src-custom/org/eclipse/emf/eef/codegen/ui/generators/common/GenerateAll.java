@@ -109,12 +109,6 @@ public class GenerateAll {
 				gen14.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
-				monitor.subTask("Generating Policies provider");
-				org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider gen10 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider(
-						model, targetFolder, arguments);
-				gen10.doGenerate(BasicMonitor.toMonitor(monitor));
-				monitor.worked(1);
-
 				monitor.subTask("Generating Global Edition provider");
 				org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider gen11 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider(
 						model, targetFolder, arguments);
