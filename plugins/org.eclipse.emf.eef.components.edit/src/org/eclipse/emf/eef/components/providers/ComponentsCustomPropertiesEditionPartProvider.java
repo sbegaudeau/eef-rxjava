@@ -22,7 +22,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 public class ComponentsCustomPropertiesEditionPartProvider extends ComponentsPropertiesEditionPartProvider {
 
 	@Override
-	public IPropertiesEditionPart getPropertiesEditionPart(Class key, int kind,
+	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind,
 			IPropertiesEditionComponent component) {
 		if (key == ComponentsViewsRepository.PropertiesEditionElement.class) {
 			if (kind == ComponentsViewsRepository.SWT_KIND)

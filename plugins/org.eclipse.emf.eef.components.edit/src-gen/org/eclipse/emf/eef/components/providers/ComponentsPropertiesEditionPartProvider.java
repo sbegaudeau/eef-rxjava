@@ -32,20 +32,20 @@ public class ComponentsPropertiesEditionPartProvider implements IPropertiesEditi
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Class)
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
 	 * 
 	 */
-	public boolean provides(java.lang.Class key) {
+	public boolean provides(Object key) {
 		return key == ComponentsViewsRepository.class;
 	}
 
 	
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Class, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(java.lang.Class key, int kind, IPropertiesEditionComponent component) {
+	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
 		if (key == ComponentsViewsRepository.PropertiesEditionContext.class) {
 			if (kind == ComponentsViewsRepository.SWT_KIND)
 				return new PropertiesEditionContextPropertiesEditionPartImpl(component);
