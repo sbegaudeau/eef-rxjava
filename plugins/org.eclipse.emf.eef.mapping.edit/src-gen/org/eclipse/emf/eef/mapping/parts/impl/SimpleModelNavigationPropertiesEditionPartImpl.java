@@ -27,6 +27,9 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -94,18 +97,39 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createPropertiesGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence simpleModelNavigationStep = new CompositionSequence();
+		CompositionStep propertiesStep = simpleModelNavigationStep.addStep(MappingViewsRepository.SimpleModelNavigation.Properties.class);
+		propertiesStep.addStep(MappingViewsRepository.SimpleModelNavigation.Properties.index);
+		propertiesStep.addStep(MappingViewsRepository.SimpleModelNavigation.Properties.feature);
+		propertiesStep.addStep(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType);
 		
-		// End of user code
+		
+		composer = new PartComposer(simpleModelNavigationStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.index) {
+					return createIndexText(parent);
+				}
+				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.feature) {
+					return createFeatureFlatComboViewer(parent);
+				}
+				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType) {
+					return createDiscriminatorTypeFlatComboViewer(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(Composite parent) {
+	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(MappingMessages.SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -114,14 +138,12 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createIndexText(propertiesGroup);
-		createFeatureFlatComboViewer(propertiesGroup);
-		createDiscriminatorTypeFlatComboViewer(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createIndexText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_IndexLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.index, MappingViewsRepository.SWT_KIND));
+	protected Composite createIndexText(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_IndexLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.index, MappingViewsRepository.SWT_KIND));
 		index = new Text(parent, SWT.BORDER);
 		GridData indexData = new GridData(GridData.FILL_HORIZONTAL);
 		index.setLayoutData(indexData);
@@ -137,7 +159,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.index, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, index.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.Properties.index, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, index.getText()));
 			}
 
 		});
@@ -154,58 +176,61 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.index, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, index.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.Properties.index, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, index.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(index, MappingViewsRepository.SimpleModelNavigation.index);
+		EditingUtils.setID(index, MappingViewsRepository.SimpleModelNavigation.Properties.index);
 		EditingUtils.setEEFtype(index, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.index, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.Properties.index, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
-	 * @param propertiesGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createFeatureFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.feature, MappingViewsRepository.SWT_KIND));
+	protected Composite createFeatureFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.SWT_KIND));
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		feature.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.feature, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getFeature()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.Properties.feature, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getFeature()));
 			}
 
 		});
 		GridData featureData = new GridData(GridData.FILL_HORIZONTAL);
 		feature.setLayoutData(featureData);
-		feature.setID(MappingViewsRepository.SimpleModelNavigation.feature);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.feature, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		feature.setID(MappingViewsRepository.SimpleModelNavigation.Properties.feature);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
-	 * @param propertiesGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createDiscriminatorTypeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.SWT_KIND));
+	protected Composite createDiscriminatorTypeFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.SWT_KIND));
 		discriminatorType = new EObjectFlatComboViewer(parent, true);
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		discriminatorType.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.discriminatorType, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getDiscriminatorType()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SimpleModelNavigationPropertiesEditionPartImpl.this, MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getDiscriminatorType()));
 			}
 
 		});
 		GridData discriminatorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		discriminatorType.setLayoutData(discriminatorTypeData);
-		discriminatorType.setID(MappingViewsRepository.SimpleModelNavigation.discriminatorType);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.discriminatorType, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		discriminatorType.setID(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

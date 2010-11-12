@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -83,20 +85,36 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createFilterExpressionGroup(view);
-
-		createFilterProperties(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence oCLFilterStep = new CompositionSequence();
+		oCLFilterStep
+			.addStep(MappingViewsRepository.OCLFilter.FilterExpression.class)
+			.addStep(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody);
 		
-		// End of user code
+		oCLFilterStep.addStep(MappingViewsRepository.OCLFilter.filterProperties);
+		
+		composer = new PartComposer(oCLFilterStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.OCLFilter.FilterExpression.class) {
+					return createFilterExpressionGroup(parent);
+				}
+				if (key == MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody) {
+					return createOCLExpressionBodyTextarea(parent);
+				}
+				if (key == MappingViewsRepository.OCLFilter.filterProperties) {
+					return createFilterProperties(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createFilterExpressionGroup(Composite parent) {
+	protected Composite createFilterExpressionGroup(Composite parent) {
 		Group filterExpressionGroup = new Group(parent, SWT.NONE);
 		filterExpressionGroup.setText(MappingMessages.OCLFilterPropertiesEditionPart_FilterExpressionGroupLabel);
 		GridData filterExpressionGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -105,12 +123,12 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		GridLayout filterExpressionGroupLayout = new GridLayout();
 		filterExpressionGroupLayout.numColumns = 3;
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
-		createOCLExpressionBodyTextarea(filterExpressionGroup);
+		return filterExpressionGroup;
 	}
 
 	
-	protected void createOCLExpressionBodyTextarea(Composite parent) {
-		Label oCLExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.SWT_KIND));
+	protected Composite createOCLExpressionBodyTextarea(Composite parent) {
+		Label oCLExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, MappingViewsRepository.SWT_KIND));
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyLabelData.horizontalSpan = 3;
 		oCLExpressionBodyLabel.setLayoutData(oCLExpressionBodyLabelData);
@@ -130,19 +148,21 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLFilterPropertiesEditionPartImpl.this, MappingViewsRepository.OCLFilter.oCLExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oCLExpressionBody.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLFilterPropertiesEditionPartImpl.this, MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oCLExpressionBody.getText()));
 			}
 
 		});
-		EditingUtils.setID(oCLExpressionBody, MappingViewsRepository.OCLFilter.oCLExpressionBody);
+		EditingUtils.setID(oCLExpressionBody, MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody);
 		EditingUtils.setEEFtype(oCLExpressionBody, "eef::Textarea"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createFilterProperties(Composite container) {
+	protected Composite createFilterProperties(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(container);
+		return container;
 	}
 
 

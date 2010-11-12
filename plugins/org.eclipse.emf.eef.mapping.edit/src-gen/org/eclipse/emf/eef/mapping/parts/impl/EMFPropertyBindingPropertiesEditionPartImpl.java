@@ -30,6 +30,9 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -107,20 +110,45 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createPropertiesGroup(view);
-
-		createBindingGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence eMFPropertyBindingStep = new CompositionSequence();
+		eMFPropertyBindingStep
+			.addStep(MappingViewsRepository.EMFPropertyBinding.Properties.class)
+			.addStep(MappingViewsRepository.EMFPropertyBinding.Properties.name);
 		
-		// End of user code
+		CompositionStep bindingStep = eMFPropertyBindingStep.addStep(MappingViewsRepository.EMFPropertyBinding.Binding.class);
+		bindingStep.addStep(MappingViewsRepository.EMFPropertyBinding.Binding.model);
+		bindingStep.addStep(MappingViewsRepository.EMFPropertyBinding.Binding.views);
+		
+		
+		composer = new PartComposer(eMFPropertyBindingStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.EMFPropertyBinding.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == MappingViewsRepository.EMFPropertyBinding.Properties.name) {
+					return createNameText(parent);
+				}
+				if (key == MappingViewsRepository.EMFPropertyBinding.Binding.class) {
+					return createBindingGroup(parent);
+				}
+				if (key == MappingViewsRepository.EMFPropertyBinding.Binding.model) {
+					return createModelFlatComboViewer(parent);
+				}
+				if (key == MappingViewsRepository.EMFPropertyBinding.Binding.views) {
+					return createViewsAdvancedReferencesTable(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(Composite parent) {
+	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(MappingMessages.EMFPropertyBindingPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -129,12 +157,12 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createNameText(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.EMFPropertyBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFPropertyBinding.name, MappingViewsRepository.SWT_KIND));
+	protected Composite createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.EMFPropertyBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFPropertyBinding.Properties.name, MappingViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -150,7 +178,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -167,20 +195,21 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, MappingViewsRepository.EMFPropertyBinding.name);
+		EditingUtils.setID(name, MappingViewsRepository.EMFPropertyBinding.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.Properties.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createBindingGroup(Composite parent) {
+	protected Composite createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(MappingMessages.EMFPropertyBindingPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -189,36 +218,36 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		GridLayout bindingGroupLayout = new GridLayout();
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
-		createModelFlatComboViewer(bindingGroup);
-		createViewsAdvancedReferencesTable(bindingGroup);
+		return bindingGroup;
 	}
 
 	/**
-	 * @param bindingGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.EMFPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFPropertyBinding.model, MappingViewsRepository.SWT_KIND));
+	protected Composite createModelFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.EMFPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFPropertyBinding.Binding.model, MappingViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
 			}
 
 		});
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
-		model.setID(MappingViewsRepository.EMFPropertyBinding.model);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.model, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		model.setID(MappingViewsRepository.EMFPropertyBinding.Binding.model);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.Binding.model, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createViewsAdvancedReferencesTable(Composite parent) {
+	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.EMFPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
@@ -227,7 +256,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.views,
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.views,
 								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
 						views.refresh();
@@ -241,21 +270,22 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 			public void handleRemove(ElementEditor element) { removeFromViews(element); }
 			public void navigateTo(ElementEditor element) { }
 		});
-		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.views, MappingViewsRepository.SWT_KIND));
+		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.Binding.views, MappingViewsRepository.SWT_KIND));
 		this.views.createControls(parent);
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
 		this.views.disableMove();
-		views.setID(MappingViewsRepository.EMFPropertyBinding.views);
+		views.setID(MappingViewsRepository.EMFPropertyBinding.Binding.views);
 		views.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
 	protected void moveViews(ElementEditor element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		views.refresh();
 	}
 
@@ -263,7 +293,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 * 
 	 */
 	protected void removeFromViews(ElementEditor element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		views.refresh();		
 	}
 

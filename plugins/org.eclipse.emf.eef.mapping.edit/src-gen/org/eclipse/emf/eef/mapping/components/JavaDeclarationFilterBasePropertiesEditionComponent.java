@@ -95,7 +95,7 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		JavaDeclarationFilter javaDeclarationFilter = (JavaDeclarationFilter)semanticObject;
-		if (MappingViewsRepository.JavaDeclarationFilter.methodName == event.getAffectedEditor()) {
+		if (MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName == event.getAffectedEditor()) {
 			javaDeclarationFilter.setMethodName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -128,15 +128,15 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.JavaDeclarationFilter.methodName == event.getAffectedEditor()) {
+				if (MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().getEAttributeType(), newValue);
 				}
-				if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
-				if (MappingViewsRepository.FilterProperties.mandatory == event.getAffectedEditor()) {
+				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}

@@ -40,7 +40,7 @@ public class SimpleModelNavigationCustomPropertiesEditionPartForm extends Simple
 	/**
 	 * @param propertiesGroup
 	 */
-	protected void createFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite createFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 
 		FormUtils.createPartLabel(widgetFactory, parent,
 				MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
@@ -73,12 +73,13 @@ public class SimpleModelNavigationCustomPropertiesEditionPartForm extends Simple
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							SimpleModelNavigationCustomPropertiesEditionPartForm.this,
-							MappingViewsRepository.SimpleModelNavigation.feature,
+							MappingViewsRepository.SimpleModelNavigation.Properties.feature,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getFeature()));
 				setDiscriminatorInput((SimpleModelNavigation)current, resourceSet);
 			}
 
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, null, null); //$NON-NLS-1$
+		return parent;
 	}
 }

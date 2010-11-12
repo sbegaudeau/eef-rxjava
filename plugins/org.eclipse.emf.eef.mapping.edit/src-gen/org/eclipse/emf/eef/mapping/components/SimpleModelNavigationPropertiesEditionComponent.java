@@ -111,8 +111,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for feature
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 			
@@ -127,8 +127,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for discriminatorType
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 		}
 		// init values for referenced views
@@ -150,13 +150,13 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		SimpleModelNavigation simpleModelNavigation = (SimpleModelNavigation)semanticObject;
-		if (MappingViewsRepository.SimpleModelNavigation.index == event.getAffectedEditor()) {
+		if (MappingViewsRepository.SimpleModelNavigation.Properties.index == event.getAffectedEditor()) {
 			simpleModelNavigation.setIndex((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
 		}
-		if (MappingViewsRepository.SimpleModelNavigation.feature == event.getAffectedEditor()) {
+		if (MappingViewsRepository.SimpleModelNavigation.Properties.feature == event.getAffectedEditor()) {
 			featureSettings.setToReference((EReference)event.getNewValue());
 		}
-		if (MappingViewsRepository.SimpleModelNavigation.discriminatorType == event.getAffectedEditor()) {
+		if (MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType == event.getAffectedEditor()) {
 			discriminatorTypeSettings.setToReference((EClassifier)event.getNewValue());
 		}
 	}
@@ -189,7 +189,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.SimpleModelNavigation.feature;
+		return key == MappingViewsRepository.SimpleModelNavigation.Properties.feature;
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.SimpleModelNavigation.index == event.getAffectedEditor()) {
+				if (MappingViewsRepository.SimpleModelNavigation.Properties.index == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), newValue);
 				}

@@ -21,6 +21,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -83,18 +86,35 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createFilterPropertiesGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence filterPropertiesStep = new CompositionSequence();
+		CompositionStep filterProperties_Step = filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.class);
+		filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.name);
+		filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
 		
-		// End of user code
+		
+		composer = new PartComposer(filterPropertiesStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.class) {
+					return createFilterPropertiesGroup(parent);
+				}
+				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.name) {
+					return createNameText(parent);
+				}
+				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.mandatory) {
+					return createMandatoryCheckbox(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createFilterPropertiesGroup(Composite parent) {
+	protected Composite createFilterPropertiesGroup(Composite parent) {
 		Group filterPropertiesGroup = new Group(parent, SWT.NONE);
 		filterPropertiesGroup.setText(MappingMessages.FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel);
 		GridData filterPropertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -103,13 +123,12 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 		GridLayout filterPropertiesGroupLayout = new GridLayout();
 		filterPropertiesGroupLayout.numColumns = 3;
 		filterPropertiesGroup.setLayout(filterPropertiesGroupLayout);
-		createNameText(filterPropertiesGroup);
-		createMandatoryCheckbox(filterPropertiesGroup);
+		return filterPropertiesGroup;
 	}
 
 	
-	protected void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.SWT_KIND));
+	protected Composite createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -125,7 +144,7 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.FilterProperties_.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -142,18 +161,19 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.FilterProperties_.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, MappingViewsRepository.FilterProperties.name);
+		EditingUtils.setID(name, MappingViewsRepository.FilterProperties.FilterProperties_.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createMandatoryCheckbox(Composite parent) {
+	protected Composite createMandatoryCheckbox(Composite parent) {
 		mandatory = new Button(parent, SWT.CHECK);
 		mandatory.setText(MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel);
 		mandatory.addSelectionListener(new SelectionAdapter() {
@@ -166,16 +186,17 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.mandatory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(mandatory.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartImpl.this, MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(mandatory.getSelection())));
 			}
 
 		});
 		GridData mandatoryData = new GridData(GridData.FILL_HORIZONTAL);
 		mandatoryData.horizontalSpan = 2;
 		mandatory.setLayoutData(mandatoryData);
-		EditingUtils.setID(mandatory, MappingViewsRepository.FilterProperties.mandatory);
+		EditingUtils.setID(mandatory, MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
 		EditingUtils.setEEFtype(mandatory, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.mandatory, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

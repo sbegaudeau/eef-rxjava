@@ -91,7 +91,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Category category = (Category)semanticObject;
-		if (MappingViewsRepository.Category.name == event.getAffectedEditor()) {
+		if (MappingViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
 			category.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -120,7 +120,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.Category.name;
+		return key == MappingViewsRepository.Category.Properties.name;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.Category.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getCategory_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getCategory_Name().getEAttributeType(), newValue);
 				}

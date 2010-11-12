@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
@@ -91,19 +93,36 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createFilterExpressionGroup(widgetFactory, view);
-
-		createFilterProperties(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence javaExpressionFilterStep = new CompositionSequence();
+		javaExpressionFilterStep
+			.addStep(MappingViewsRepository.JavaExpressionFilter.FilterExpression.class)
+			.addStep(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
 		
-		// End of user code
+		javaExpressionFilterStep.addStep(MappingViewsRepository.JavaExpressionFilter.filterProperties);
+		
+		composer = new PartComposer(javaExpressionFilterStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.JavaExpressionFilter.FilterExpression.class) {
+					return createFilterExpressionGroup(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody) {
+					return createJavaExpressionBodyTextarea(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.JavaExpressionFilter.filterProperties) {
+					return createFilterProperties(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
-		Section filterExpressionSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createFilterExpressionGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section filterExpressionSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		filterExpressionSection.setText(MappingMessages.JavaExpressionFilterPropertiesEditionPart_FilterExpressionGroupLabel);
 		GridData filterExpressionSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		filterExpressionSectionData.horizontalSpan = 3;
@@ -112,13 +131,13 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 		GridLayout filterExpressionGroupLayout = new GridLayout();
 		filterExpressionGroupLayout.numColumns = 3;
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
-		createJavaExpressionBodyTextarea(widgetFactory, filterExpressionGroup);
 		filterExpressionSection.setClient(filterExpressionGroup);
+		return filterExpressionGroup;
 	}
 
 	
-	protected void createJavaExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label javaExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.FORM_KIND));
+	protected Composite createJavaExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label javaExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingViewsRepository.FORM_KIND));
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyLabelData.horizontalSpan = 3;
 		javaExpressionBodyLabel.setLayoutData(javaExpressionBodyLabelData);
@@ -138,19 +157,21 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends CompositeProp
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartForm.this, MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartForm.this, MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
 			}
 
 		});
-		EditingUtils.setID(javaExpressionBody, MappingViewsRepository.JavaExpressionFilter.javaExpressionBody);
+		EditingUtils.setID(javaExpressionBody, MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
 		EditingUtils.setEEFtype(javaExpressionBody, "eef::Textarea"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createFilterProperties(FormToolkit widgetFactory, Composite container) {
+	protected Composite createFilterProperties(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(widgetFactory, container);
+		return container;
 	}
 
 

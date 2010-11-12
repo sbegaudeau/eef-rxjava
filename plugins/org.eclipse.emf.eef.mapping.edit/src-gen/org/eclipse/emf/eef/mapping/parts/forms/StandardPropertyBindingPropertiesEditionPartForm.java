@@ -30,6 +30,9 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -113,19 +116,45 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createPropertiesGroup(widgetFactory, view);
-
-		createBindingGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence standardPropertyBindingStep = new CompositionSequence();
+		standardPropertyBindingStep
+			.addStep(MappingViewsRepository.StandardPropertyBinding.Properties.class)
+			.addStep(MappingViewsRepository.StandardPropertyBinding.Properties.name);
 		
-		// End of user code
+		CompositionStep bindingStep = standardPropertyBindingStep.addStep(MappingViewsRepository.StandardPropertyBinding.Binding.class);
+		bindingStep.addStep(MappingViewsRepository.StandardPropertyBinding.Binding.model);
+		bindingStep.addStep(MappingViewsRepository.StandardPropertyBinding.Binding.views);
+		
+		
+		composer = new PartComposer(standardPropertyBindingStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.StandardPropertyBinding.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.StandardPropertyBinding.Properties.name) {
+					return 		createNameText(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.StandardPropertyBinding.Binding.class) {
+					return createBindingGroup(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.StandardPropertyBinding.Binding.model) {
+					return createModelFlatComboViewer(parent, widgetFactory);
+				}
+				if (key == MappingViewsRepository.StandardPropertyBinding.Binding.views) {
+					return createViewsReferencesTable(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(MappingMessages.StandardPropertyBindingPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
@@ -134,13 +163,13 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createNameText(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.name, MappingViewsRepository.FORM_KIND));
+	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Properties.name, MappingViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -155,7 +184,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -168,20 +197,21 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(name, MappingViewsRepository.StandardPropertyBinding.name);
+		EditingUtils.setID(name, MappingViewsRepository.StandardPropertyBinding.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.Properties.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
-		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createBindingGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section bindingSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bindingSection.setText(MappingMessages.StandardPropertyBindingPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		bindingSectionData.horizontalSpan = 3;
@@ -190,17 +220,17 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		GridLayout bindingGroupLayout = new GridLayout();
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
-		createModelFlatComboViewer(bindingGroup, widgetFactory);
-		createViewsReferencesTable(widgetFactory, bindingGroup);
 		bindingSection.setClient(bindingGroup);
+		return bindingGroup;
 	}
 
 	/**
-	 * @param bindingGroup
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * 
 	 */
-	protected void createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.model, MappingViewsRepository.FORM_KIND));
+	protected Composite createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingViewsRepository.FORM_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -214,18 +244,19 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getModel()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Binding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getModel()));
 			}
 
 		});
-		model.setID(MappingViewsRepository.StandardPropertyBinding.model);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.model, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		model.setID(MappingViewsRepository.StandardPropertyBinding.Binding.model);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.views = new ReferencesTable<ElementEditor>(MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<ElementEditor> dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
@@ -234,7 +265,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.views,
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Binding.views,
 								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
 						views.refresh();
@@ -247,21 +278,22 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 			public void handleRemove(ElementEditor element) { removeFromViews(element); }
 			public void navigateTo(ElementEditor element) { }
 		});
-		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.views, MappingViewsRepository.FORM_KIND));
+		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.Binding.views, MappingViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
 		this.views.disableMove();
-		views.setID(MappingViewsRepository.StandardPropertyBinding.views);
+		views.setID(MappingViewsRepository.StandardPropertyBinding.Binding.views);
 		views.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
 	protected void moveViews(ElementEditor element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		views.refresh();
 	}
 
@@ -269,7 +301,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	protected void removeFromViews(ElementEditor element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		views.refresh();
 	}
 

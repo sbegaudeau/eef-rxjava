@@ -27,6 +27,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -94,19 +96,36 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createReferencedFeatureGroup(widgetFactory, view);
-
-		createFilterProperties(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence onlyReferenceTypeFilterStep = new CompositionSequence();
+		onlyReferenceTypeFilterStep
+			.addStep(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.class)
+			.addStep(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_);
 		
-		// End of user code
+		onlyReferenceTypeFilterStep.addStep(MappingViewsRepository.OnlyReferenceTypeFilter.filterProperties);
+		
+		composer = new PartComposer(onlyReferenceTypeFilterStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.class) {
+					return createReferencedFeatureGroup(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_) {
+					return createReferencedFeatureFlatComboViewer(parent, widgetFactory);
+				}
+				if (key == MappingViewsRepository.OnlyReferenceTypeFilter.filterProperties) {
+					return createFilterProperties(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createReferencedFeatureGroup(FormToolkit widgetFactory, final Composite view) {
-		Section referencedFeatureSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createReferencedFeatureGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section referencedFeatureSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referencedFeatureSection.setText(MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureGroupLabel);
 		GridData referencedFeatureSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedFeatureSectionData.horizontalSpan = 3;
@@ -115,16 +134,17 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		GridLayout referencedFeatureGroupLayout = new GridLayout();
 		referencedFeatureGroupLayout.numColumns = 3;
 		referencedFeatureGroup.setLayout(referencedFeatureGroupLayout);
-		createReferencedFeatureFlatComboViewer(referencedFeatureGroup, widgetFactory);
 		referencedFeatureSection.setClient(referencedFeatureGroup);
+		return referencedFeatureGroup;
 	}
 
 	/**
-	 * @param referencedFeatureGroup
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * 
 	 */
-	protected void createReferencedFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature, MappingViewsRepository.FORM_KIND));
+	protected Composite createReferencedFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, MappingViewsRepository.FORM_KIND));
 		referencedFeature = new EObjectFlatComboViewer(parent, true);
 		referencedFeature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData referencedFeatureData = new GridData(GridData.FILL_HORIZONTAL);
@@ -138,18 +158,20 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OnlyReferenceTypeFilterPropertiesEditionPartForm.this, MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getReferencedFeature()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OnlyReferenceTypeFilterPropertiesEditionPartForm.this, MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getReferencedFeature()));
 			}
 
 		});
-		referencedFeature.setID(MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		referencedFeature.setID(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createFilterProperties(FormToolkit widgetFactory, Composite container) {
+	protected Composite createFilterProperties(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(widgetFactory, container);
+		return container;
 	}
 
 

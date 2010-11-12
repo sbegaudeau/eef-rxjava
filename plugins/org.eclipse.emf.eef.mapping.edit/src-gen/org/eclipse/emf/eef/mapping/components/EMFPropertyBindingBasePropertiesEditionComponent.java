@@ -117,8 +117,8 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -133,8 +133,8 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for model
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 		}
 		// init values for referenced views
@@ -156,10 +156,10 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFPropertyBinding eMFPropertyBinding = (EMFPropertyBinding)semanticObject;
-		if (MappingViewsRepository.EMFPropertyBinding.name == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFPropertyBinding.Properties.name == event.getAffectedEditor()) {
 			eMFPropertyBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (MappingViewsRepository.EMFPropertyBinding.views == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFPropertyBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof ElementEditor) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
@@ -168,7 +168,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 					viewsSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (MappingViewsRepository.EMFPropertyBinding.model == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFPropertyBinding.Binding.model == event.getAffectedEditor()) {
 			modelSettings.setToReference((EStructuralFeature)event.getNewValue());
 		}
 	}
@@ -201,7 +201,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.EMFPropertyBinding.name || key == MappingViewsRepository.EMFPropertyBinding.views || key == MappingViewsRepository.EMFPropertyBinding.model;
+		return key == MappingViewsRepository.EMFPropertyBinding.Properties.name || key == MappingViewsRepository.EMFPropertyBinding.Binding.views || key == MappingViewsRepository.EMFPropertyBinding.Binding.model;
 	}
 
 	/**
@@ -211,11 +211,11 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.EMFPropertyBinding.name)
+		if (key == MappingViewsRepository.EMFPropertyBinding.Properties.name)
 			return "The name of this property binding"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.EMFPropertyBinding.views)
+		if (key == MappingViewsRepository.EMFPropertyBinding.Binding.views)
 			return "The mapped views"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.EMFPropertyBinding.model)
+		if (key == MappingViewsRepository.EMFPropertyBinding.Binding.model)
 			return "The mapped structural feature"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -231,7 +231,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.EMFPropertyBinding.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.EMFPropertyBinding.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
 				}

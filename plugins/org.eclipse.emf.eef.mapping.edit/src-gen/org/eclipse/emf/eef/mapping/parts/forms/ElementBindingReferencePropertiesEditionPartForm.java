@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -87,17 +89,32 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createReferenceGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence elementBindingReferenceStep = new CompositionSequence();
+		elementBindingReferenceStep
+			.addStep(MappingViewsRepository.ElementBindingReference.Reference.class)
+			.addStep(MappingViewsRepository.ElementBindingReference.Reference.binding);
 		
-		// End of user code
+		
+		composer = new PartComposer(elementBindingReferenceStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.ElementBindingReference.Reference.class) {
+					return createReferenceGroup(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.ElementBindingReference.Reference.binding) {
+					return createBindingFlatComboViewer(parent, widgetFactory);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createReferenceGroup(FormToolkit widgetFactory, final Composite view) {
-		Section referenceSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createReferenceGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section referenceSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		referenceSection.setText(MappingMessages.ElementBindingReferencePropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		referenceSectionData.horizontalSpan = 3;
@@ -106,16 +123,17 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 		GridLayout referenceGroupLayout = new GridLayout();
 		referenceGroupLayout.numColumns = 3;
 		referenceGroup.setLayout(referenceGroupLayout);
-		createBindingFlatComboViewer(referenceGroup, widgetFactory);
 		referenceSection.setClient(referenceGroup);
+		return referenceGroup;
 	}
 
 	/**
-	 * @param referenceGroup
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * 
 	 */
-	protected void createBindingFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.FORM_KIND));
+	protected Composite createBindingFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND));
 		binding = new EObjectFlatComboViewer(parent, false);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData bindingData = new GridData(GridData.FILL_HORIZONTAL);
@@ -129,12 +147,13 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartForm.this, MappingViewsRepository.ElementBindingReference.binding, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getBinding()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartForm.this, MappingViewsRepository.ElementBindingReference.Reference.binding, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getBinding()));
 			}
 
 		});
-		binding.setID(MappingViewsRepository.ElementBindingReference.binding);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		binding.setID(MappingViewsRepository.ElementBindingReference.Reference.binding);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

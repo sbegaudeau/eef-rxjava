@@ -93,8 +93,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for binding
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 		}
 		// init values for referenced views
@@ -114,7 +114,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ElementBindingReference elementBindingReference = (ElementBindingReference)semanticObject;
-		if (MappingViewsRepository.ElementBindingReference.binding == event.getAffectedEditor()) {
+		if (MappingViewsRepository.ElementBindingReference.Reference.binding == event.getAffectedEditor()) {
 			bindingSettings.setToReference((AbstractElementBinding)event.getNewValue());
 		}
 	}
@@ -138,7 +138,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.ElementBindingReference.binding;
+		return key == MappingViewsRepository.ElementBindingReference.Reference.binding;
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.ElementBindingReference.binding)
+		if (key == MappingViewsRepository.ElementBindingReference.Reference.binding)
 			return "The referenced element binding"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}

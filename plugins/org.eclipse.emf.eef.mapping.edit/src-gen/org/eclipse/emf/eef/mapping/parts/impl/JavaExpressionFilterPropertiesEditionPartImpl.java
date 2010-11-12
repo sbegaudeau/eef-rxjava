@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.swt.SWT;
@@ -83,20 +85,36 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createFilterExpressionGroup(view);
-
-		createFilterProperties(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence javaExpressionFilterStep = new CompositionSequence();
+		javaExpressionFilterStep
+			.addStep(MappingViewsRepository.JavaExpressionFilter.FilterExpression.class)
+			.addStep(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
 		
-		// End of user code
+		javaExpressionFilterStep.addStep(MappingViewsRepository.JavaExpressionFilter.filterProperties);
+		
+		composer = new PartComposer(javaExpressionFilterStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.JavaExpressionFilter.FilterExpression.class) {
+					return createFilterExpressionGroup(parent);
+				}
+				if (key == MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody) {
+					return createJavaExpressionBodyTextarea(parent);
+				}
+				if (key == MappingViewsRepository.JavaExpressionFilter.filterProperties) {
+					return createFilterProperties(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createFilterExpressionGroup(Composite parent) {
+	protected Composite createFilterExpressionGroup(Composite parent) {
 		Group filterExpressionGroup = new Group(parent, SWT.NONE);
 		filterExpressionGroup.setText(MappingMessages.JavaExpressionFilterPropertiesEditionPart_FilterExpressionGroupLabel);
 		GridData filterExpressionGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -105,12 +123,12 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		GridLayout filterExpressionGroupLayout = new GridLayout();
 		filterExpressionGroupLayout.numColumns = 3;
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
-		createJavaExpressionBodyTextarea(filterExpressionGroup);
+		return filterExpressionGroup;
 	}
 
 	
-	protected void createJavaExpressionBodyTextarea(Composite parent) {
-		Label javaExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.SWT_KIND));
+	protected Composite createJavaExpressionBodyTextarea(Composite parent) {
+		Label javaExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingViewsRepository.SWT_KIND));
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyLabelData.horizontalSpan = 3;
 		javaExpressionBodyLabel.setLayoutData(javaExpressionBodyLabelData);
@@ -130,19 +148,21 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartImpl.this, MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartImpl.this, MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
 			}
 
 		});
-		EditingUtils.setID(javaExpressionBody, MappingViewsRepository.JavaExpressionFilter.javaExpressionBody);
+		EditingUtils.setID(javaExpressionBody, MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
 		EditingUtils.setEEFtype(javaExpressionBody, "eef::Textarea"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.javaExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createFilterProperties(Composite container) {
+	protected Composite createFilterProperties(Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(container);
+		return container;
 	}
 
 

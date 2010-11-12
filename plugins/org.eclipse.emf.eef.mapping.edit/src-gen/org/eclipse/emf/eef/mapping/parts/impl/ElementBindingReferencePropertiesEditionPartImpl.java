@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -82,18 +84,32 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createReferenceGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence elementBindingReferenceStep = new CompositionSequence();
+		elementBindingReferenceStep
+			.addStep(MappingViewsRepository.ElementBindingReference.Reference.class)
+			.addStep(MappingViewsRepository.ElementBindingReference.Reference.binding);
 		
-		// End of user code
+		
+		composer = new PartComposer(elementBindingReferenceStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.ElementBindingReference.Reference.class) {
+					return createReferenceGroup(parent);
+				}
+				if (key == MappingViewsRepository.ElementBindingReference.Reference.binding) {
+					return createBindingFlatComboViewer(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createReferenceGroup(Composite parent) {
+	protected Composite createReferenceGroup(Composite parent) {
 		Group referenceGroup = new Group(parent, SWT.NONE);
 		referenceGroup.setText(MappingMessages.ElementBindingReferencePropertiesEditionPart_ReferenceGroupLabel);
 		GridData referenceGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -102,29 +118,30 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		GridLayout referenceGroupLayout = new GridLayout();
 		referenceGroupLayout.numColumns = 3;
 		referenceGroup.setLayout(referenceGroupLayout);
-		createBindingFlatComboViewer(referenceGroup);
+		return referenceGroup;
 	}
 
 	/**
-	 * @param referenceGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createBindingFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.SWT_KIND));
+	protected Composite createBindingFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.SWT_KIND));
 		binding = new EObjectFlatComboViewer(parent, false);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		binding.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartImpl.this, MappingViewsRepository.ElementBindingReference.binding, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getBinding()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementBindingReferencePropertiesEditionPartImpl.this, MappingViewsRepository.ElementBindingReference.Reference.binding, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getBinding()));
 			}
 
 		});
 		GridData bindingData = new GridData(GridData.FILL_HORIZONTAL);
 		binding.setLayoutData(bindingData);
-		binding.setID(MappingViewsRepository.ElementBindingReference.binding);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.binding, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		binding.setID(MappingViewsRepository.ElementBindingReference.Reference.binding);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

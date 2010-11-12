@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -33,6 +32,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+	
 
 // End of user code
 
@@ -120,7 +120,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		OnlyReferenceTypeFilter onlyReferenceTypeFilter = (OnlyReferenceTypeFilter)semanticObject;
-		if (MappingViewsRepository.OnlyReferenceTypeFilter.referencedFeature == event.getAffectedEditor()) {
+		if (MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_ == event.getAffectedEditor()) {
 			referenceSettings.setToReference((EReference)event.getNewValue());
 		}
 	}
@@ -148,11 +148,11 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.FilterProperties.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
-				if (MappingViewsRepository.FilterProperties.mandatory == event.getAffectedEditor()) {
+				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}

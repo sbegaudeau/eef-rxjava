@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -30,6 +29,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+	
 
 // End of user code
 
@@ -90,7 +90,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DocumentedElement documentedElement = (DocumentedElement)semanticObject;
-		if (MappingViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+		if (MappingViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
 			documentedElement.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -119,7 +119,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.Documentation.documentation)
+		if (key == MappingViewsRepository.Documentation.Documentation_.documentation__)
 			return "The documentation of the element"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -135,7 +135,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+				if (MappingViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
 				}

@@ -117,8 +117,8 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -133,8 +133,8 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for model
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 		}
 		// init values for referenced views
@@ -156,10 +156,10 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFElementBinding eMFElementBinding = (EMFElementBinding)semanticObject;
-		if (MappingViewsRepository.EMFElementBinding.name == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFElementBinding.Properties.name == event.getAffectedEditor()) {
 			eMFElementBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (MappingViewsRepository.EMFElementBinding.views == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFElementBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof View) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
@@ -168,7 +168,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 					viewsSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (MappingViewsRepository.EMFElementBinding.model == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFElementBinding.Binding.model == event.getAffectedEditor()) {
 			modelSettings.setToReference((EClassifier)event.getNewValue());
 		}
 	}
@@ -201,7 +201,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.EMFElementBinding.name || key == MappingViewsRepository.EMFElementBinding.views || key == MappingViewsRepository.EMFElementBinding.model;
+		return key == MappingViewsRepository.EMFElementBinding.Properties.name || key == MappingViewsRepository.EMFElementBinding.Binding.views || key == MappingViewsRepository.EMFElementBinding.Binding.model;
 	}
 
 	/**
@@ -211,11 +211,11 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.EMFElementBinding.name)
+		if (key == MappingViewsRepository.EMFElementBinding.Properties.name)
 			return "The name of this element binding"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.EMFElementBinding.views)
+		if (key == MappingViewsRepository.EMFElementBinding.Binding.views)
 			return "The mapped views"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.EMFElementBinding.model)
+		if (key == MappingViewsRepository.EMFElementBinding.Binding.model)
 			return "The mapped classifier"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -231,7 +231,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.EMFElementBinding.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.EMFElementBinding.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newValue);
 				}

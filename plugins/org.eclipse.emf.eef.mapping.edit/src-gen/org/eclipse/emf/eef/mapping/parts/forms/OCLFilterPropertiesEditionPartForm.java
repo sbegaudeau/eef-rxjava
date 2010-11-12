@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.swt.SWT;
@@ -91,19 +93,36 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createFilterExpressionGroup(widgetFactory, view);
-
-		createFilterProperties(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence oCLFilterStep = new CompositionSequence();
+		oCLFilterStep
+			.addStep(MappingViewsRepository.OCLFilter.FilterExpression.class)
+			.addStep(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody);
 		
-		// End of user code
+		oCLFilterStep.addStep(MappingViewsRepository.OCLFilter.filterProperties);
+		
+		composer = new PartComposer(oCLFilterStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == MappingViewsRepository.OCLFilter.FilterExpression.class) {
+					return createFilterExpressionGroup(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody) {
+					return createOCLExpressionBodyTextarea(widgetFactory, parent);
+				}
+				if (key == MappingViewsRepository.OCLFilter.filterProperties) {
+					return createFilterProperties(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createFilterExpressionGroup(FormToolkit widgetFactory, final Composite view) {
-		Section filterExpressionSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createFilterExpressionGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section filterExpressionSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		filterExpressionSection.setText(MappingMessages.OCLFilterPropertiesEditionPart_FilterExpressionGroupLabel);
 		GridData filterExpressionSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		filterExpressionSectionData.horizontalSpan = 3;
@@ -112,13 +131,13 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		GridLayout filterExpressionGroupLayout = new GridLayout();
 		filterExpressionGroupLayout.numColumns = 3;
 		filterExpressionGroup.setLayout(filterExpressionGroupLayout);
-		createOCLExpressionBodyTextarea(widgetFactory, filterExpressionGroup);
 		filterExpressionSection.setClient(filterExpressionGroup);
+		return filterExpressionGroup;
 	}
 
 	
-	protected void createOCLExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label oCLExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.FORM_KIND));
+	protected Composite createOCLExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label oCLExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, MappingViewsRepository.FORM_KIND));
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyLabelData.horizontalSpan = 3;
 		oCLExpressionBodyLabel.setLayoutData(oCLExpressionBodyLabelData);
@@ -138,19 +157,21 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLFilterPropertiesEditionPartForm.this, MappingViewsRepository.OCLFilter.oCLExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oCLExpressionBody.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLFilterPropertiesEditionPartForm.this, MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oCLExpressionBody.getText()));
 			}
 
 		});
-		EditingUtils.setID(oCLExpressionBody, MappingViewsRepository.OCLFilter.oCLExpressionBody);
+		EditingUtils.setID(oCLExpressionBody, MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody);
 		EditingUtils.setEEFtype(oCLExpressionBody, "eef::Textarea"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OCLFilter.oCLExpressionBody, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
-	protected void createFilterProperties(FormToolkit widgetFactory, Composite container) {
+	protected Composite createFilterProperties(FormToolkit widgetFactory, Composite container) {
 		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
 		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(widgetFactory, container);
+		return container;
 	}
 
 

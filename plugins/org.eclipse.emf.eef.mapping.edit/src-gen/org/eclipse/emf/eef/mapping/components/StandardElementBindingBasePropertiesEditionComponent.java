@@ -117,8 +117,8 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -133,8 +133,8 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			
 			});
 			// Start of user code for additional businessfilters for model
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 		}
 		// init values for referenced views
@@ -156,10 +156,10 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		StandardElementBinding standardElementBinding = (StandardElementBinding)semanticObject;
-		if (MappingViewsRepository.StandardElementBinding.name == event.getAffectedEditor()) {
+		if (MappingViewsRepository.StandardElementBinding.Properties.name == event.getAffectedEditor()) {
 			standardElementBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (MappingViewsRepository.StandardElementBinding.views == event.getAffectedEditor()) {
+		if (MappingViewsRepository.StandardElementBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof View) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
@@ -168,7 +168,7 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 					viewsSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (MappingViewsRepository.StandardElementBinding.model == event.getAffectedEditor()) {
+		if (MappingViewsRepository.StandardElementBinding.Binding.model == event.getAffectedEditor()) {
 			modelSettings.setToReference((ModelElement)event.getNewValue());
 		}
 	}
@@ -201,7 +201,7 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.StandardElementBinding.name || key == MappingViewsRepository.StandardElementBinding.views || key == MappingViewsRepository.StandardElementBinding.model;
+		return key == MappingViewsRepository.StandardElementBinding.Properties.name || key == MappingViewsRepository.StandardElementBinding.Binding.views || key == MappingViewsRepository.StandardElementBinding.Binding.model;
 	}
 
 	/**
@@ -211,11 +211,11 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.StandardElementBinding.name)
+		if (key == MappingViewsRepository.StandardElementBinding.Properties.name)
 			return "The name of this element binding"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.StandardElementBinding.views)
+		if (key == MappingViewsRepository.StandardElementBinding.Binding.views)
 			return "The mapped views"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.StandardElementBinding.model)
+		if (key == MappingViewsRepository.StandardElementBinding.Binding.model)
 			return "The mapped model element"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -231,7 +231,7 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.StandardElementBinding.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.StandardElementBinding.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newValue);
 				}

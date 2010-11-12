@@ -112,8 +112,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -131,8 +131,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToModel(new EObjectFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-															
-															// End of user code
+																																																			
+																																																			// End of user code
 			
 		}
 		// init values for referenced views
@@ -154,10 +154,10 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFMultiPropertiesBinding eMFMultiPropertiesBinding = (EMFMultiPropertiesBinding)semanticObject;
-		if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name == event.getAffectedEditor()) {
 			eMFMultiPropertiesBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (MappingViewsRepository.EMFMultiPropertiesBinding.views == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof ElementEditor) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
@@ -166,7 +166,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 					viewsSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (MappingViewsRepository.EMFMultiPropertiesBinding.model == event.getAffectedEditor()) {
+		if (MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof EStructuralFeature) {
 					modelSettings.addToReference((EObject) event.getNewValue());
@@ -205,7 +205,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == MappingViewsRepository.EMFMultiPropertiesBinding.name || key == MappingViewsRepository.EMFMultiPropertiesBinding.views || key == MappingViewsRepository.EMFMultiPropertiesBinding.model;
+		return key == MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name || key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views || key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model;
 	}
 
 	/**
@@ -215,11 +215,11 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.name)
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name)
 			return "The name of this property binding"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.views)
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views)
 			return "The mapped views"; //$NON-NLS-1$
-		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.model)
+		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model)
 			return "The mapped properties"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -235,7 +235,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (MappingViewsRepository.EMFMultiPropertiesBinding.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
 				}

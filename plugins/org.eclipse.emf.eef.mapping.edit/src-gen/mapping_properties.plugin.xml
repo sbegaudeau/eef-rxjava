@@ -51,8 +51,8 @@
          <propertyTab
                label="Filter properties"
                category="extended"
-               id="Filter_properties"
-               afterTab="Filter_properties">
+               id="Filter properties"
+               afterTab="Filter properties">
          </propertyTab>
          <propertyTab
                label="Documentation"
@@ -105,8 +105,8 @@
          <propertyTab
                label="Filter properties"
                category="extended"
-               id="Filter_properties"
-               afterTab="Filter_properties">
+               id="Filter properties"
+               afterTab="Filter properties">
          </propertyTab>
          <propertyTab
                label="Documentation"
@@ -117,8 +117,8 @@
          <propertyTab
                label="Filter properties"
                category="extended"
-               id="Filter_properties"
-               afterTab="Filter_properties">
+               id="Filter properties"
+               afterTab="Filter properties">
          </propertyTab>
          <propertyTab
                label="Documentation"
@@ -129,8 +129,8 @@
          <propertyTab
                label="Filter properties"
                category="extended"
-               id="Filter_properties"
-               afterTab="Filter_properties">
+               id="Filter properties"
+               afterTab="Filter properties">
          </propertyTab>
          <propertyTab
                label="Documentation"
@@ -141,8 +141,8 @@
          <propertyTab
                label="Filter properties"
                category="extended"
-               id="Filter_properties"
-               afterTab="Filter_properties">
+               id="Filter properties"
+               afterTab="Filter properties">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -153,7 +153,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.BindingFilter"
-               tab="Filter_properties">
+               tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.BindingFilter">
              </input>
@@ -305,7 +305,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter"
-               tab="Filter_properties">
+               tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter">
              </input>
@@ -329,7 +329,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.OCLFilter"
-               tab="Filter_properties">
+               tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.OCLFilter">
              </input>
@@ -353,7 +353,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter"
-               tab="Filter_properties">
+               tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter">
              </input>
@@ -377,7 +377,7 @@
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter"
-               tab="Filter_properties">
+               tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter">
              </input>

@@ -39,7 +39,7 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 	/**
 	 * @param propertiesGroup
 	 */
-	protected void createFeatureFlatComboViewer(Composite parent) {
+	protected Composite createFeatureFlatComboViewer(Composite parent) {
 
 		SWTUtils.createPartLabel(parent,
 				MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
@@ -63,7 +63,7 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 			public void selectionChanged(SelectionChangedEvent event) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 						SimpleModelNavigationCustomPropertiesEditionPartImpl.this,
-						MappingViewsRepository.SimpleModelNavigation.feature, PropertiesEditionEvent.COMMIT,
+						MappingViewsRepository.SimpleModelNavigation.Properties.feature, PropertiesEditionEvent.COMMIT,
 						PropertiesEditionEvent.SET, null, getFeature()));
 				// TODO : firePropertyChanged has to call setFeature !
 				// if (event.getSelection() instanceof StructuredSelection) {
@@ -79,6 +79,7 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 		GridData featureData = new GridData(GridData.FILL_HORIZONTAL);
 		feature.setLayoutData(featureData);
 		SWTUtils.createHelpButton(parent, null, null); //$NON-NLS-1$
+		return parent;
 	}
 
 }
