@@ -141,8 +141,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 							}
 						});
 			// Start of user code for additional businessfilters for views
-																					
-																					// End of user code
+																														
+																														// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -157,8 +157,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-																					
-																					// End of user code
+																														
+																														// End of user code
 			
 			
 		}
@@ -182,10 +182,10 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesEditionElement propertiesEditionElement = (PropertiesEditionElement)semanticObject;
-		if (ComponentsViewsRepository.PropertiesEditionElement.name == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesEditionElement.Properties.name == event.getAffectedEditor()) {
 			propertiesEditionElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ComponentsViewsRepository.PropertiesEditionElement.views == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesEditionElement.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof ElementEditor) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
@@ -194,10 +194,10 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 					viewsSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (ComponentsViewsRepository.PropertiesEditionElement.model == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesEditionElement.Binding.model == event.getAffectedEditor()) {
 			modelSettings.setToReference((EStructuralFeature)event.getNewValue());
 		}
-		if (ComponentsViewsRepository.PropertiesEditionElement.helpID == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID == event.getAffectedEditor()) {
 			propertiesEditionElement.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -237,7 +237,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ComponentsViewsRepository.PropertiesEditionElement.name || key == ComponentsViewsRepository.PropertiesEditionElement.views || key == ComponentsViewsRepository.PropertiesEditionElement.model;
+		return key == ComponentsViewsRepository.PropertiesEditionElement.Properties.name || key == ComponentsViewsRepository.PropertiesEditionElement.Binding.views || key == ComponentsViewsRepository.PropertiesEditionElement.Binding.model;
 	}
 
 	/**
@@ -247,13 +247,13 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ComponentsViewsRepository.PropertiesEditionElement.name)
+		if (key == ComponentsViewsRepository.PropertiesEditionElement.Properties.name)
 			return "The name of this property binding"; //$NON-NLS-1$
-		if (key == ComponentsViewsRepository.PropertiesEditionElement.views)
+		if (key == ComponentsViewsRepository.PropertiesEditionElement.Binding.views)
 			return "The mapped views"; //$NON-NLS-1$
-		if (key == ComponentsViewsRepository.PropertiesEditionElement.model)
+		if (key == ComponentsViewsRepository.PropertiesEditionElement.Binding.model)
 			return "The mapped structural feature"; //$NON-NLS-1$
-		if (key == ComponentsViewsRepository.PropertiesEditionElement.helpID)
+		if (key == ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID)
 			return "The ID of the dynamic help associated to this element (not implemented for the moment)"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -269,11 +269,11 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ComponentsViewsRepository.PropertiesEditionElement.name == event.getAffectedEditor()) {
+				if (ComponentsViewsRepository.PropertiesEditionElement.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
 				}
-				if (ComponentsViewsRepository.PropertiesEditionElement.helpID == event.getAffectedEditor()) {
+				if (ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
 				}

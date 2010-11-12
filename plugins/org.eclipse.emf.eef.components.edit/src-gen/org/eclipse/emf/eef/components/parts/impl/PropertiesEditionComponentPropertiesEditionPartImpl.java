@@ -30,6 +30,9 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -114,20 +117,52 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createPropertiesGroup(view);
-
-		createBindingGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence propertiesEditionComponentStep = new CompositionSequence();
+		CompositionStep propertiesStep = propertiesEditionComponentStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.class);
+		propertiesStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name);
+		propertiesStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID);
+		propertiesStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit);
 		
-		// End of user code
+		CompositionStep bindingStep = propertiesEditionComponentStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Binding.class);
+		bindingStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model);
+		bindingStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views);
+		
+		
+		composer = new PartComposer(propertiesEditionComponentStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.class) {
+					return createPropertiesGroup(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.name) {
+					return createNameText(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID) {
+					return createHelpIDText(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit) {
+					return createExplicitCheckbox(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Binding.class) {
+					return createBindingGroup(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Binding.model) {
+					return createModelFlatComboViewer(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Binding.views) {
+					return createViewsAdvancedReferencesTable(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(Composite parent) {
+	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
 		propertiesGroup.setText(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -136,14 +171,12 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createNameText(propertiesGroup);
-		createHelpIDText(propertiesGroup);
-		createExplicitCheckbox(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.name, ComponentsViewsRepository.SWT_KIND));
+	protected Composite createNameText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, ComponentsViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -159,7 +192,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -176,19 +209,20 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, ComponentsViewsRepository.PropertiesEditionComponent.name);
+		EditingUtils.setID(name, ComponentsViewsRepository.PropertiesEditionComponent.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.name, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createHelpIDText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.SWT_KIND));
+	protected Composite createHelpIDText(Composite parent) {
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, ComponentsViewsRepository.SWT_KIND));
 		helpID = new Text(parent, SWT.BORDER);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
@@ -204,7 +238,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 			}
 
 		});
@@ -221,18 +255,19 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, helpID.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(helpID, ComponentsViewsRepository.PropertiesEditionComponent.helpID);
+		EditingUtils.setID(helpID, ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID);
 		EditingUtils.setEEFtype(helpID, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.helpID, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createExplicitCheckbox(Composite parent) {
+	protected Composite createExplicitCheckbox(Composite parent) {
 		explicit = new Button(parent, SWT.CHECK);
 		explicit.setText(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel);
 		explicit.addSelectionListener(new SelectionAdapter() {
@@ -245,22 +280,23 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.explicit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(explicit.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(explicit.getSelection())));
 			}
 
 		});
 		GridData explicitData = new GridData(GridData.FILL_HORIZONTAL);
 		explicitData.horizontalSpan = 2;
 		explicit.setLayoutData(explicitData);
-		EditingUtils.setID(explicit, ComponentsViewsRepository.PropertiesEditionComponent.explicit);
+		EditingUtils.setID(explicit, ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit);
 		EditingUtils.setEEFtype(explicit, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.explicit, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createBindingGroup(Composite parent) {
+	protected Composite createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -269,36 +305,36 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		GridLayout bindingGroupLayout = new GridLayout();
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
-		createModelFlatComboViewer(bindingGroup);
-		createViewsAdvancedReferencesTable(bindingGroup);
+		return bindingGroup;
 	}
 
 	/**
-	 * @param bindingGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.model, ComponentsViewsRepository.SWT_KIND));
+	protected Composite createModelFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
 			}
 
 		});
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
-		model.setID(ComponentsViewsRepository.PropertiesEditionComponent.model);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		model.setID(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createViewsAdvancedReferencesTable(Composite parent) {
+	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable<View>(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
 			public void handleAdd() {
 				TabElementTreeSelectionDialog<View> dialog = new TabElementTreeSelectionDialog<View>(resourceSet, viewsFilters, viewsBusinessFilters,
@@ -307,7 +343,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.views,
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views,
 								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 						}
 						views.refresh();
@@ -321,21 +357,22 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			public void handleRemove(View element) { removeFromViews(element); }
 			public void navigateTo(View element) { }
 		});
-		this.views.setHelpText(propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.views, ComponentsViewsRepository.SWT_KIND));
+		this.views.setHelpText(propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, ComponentsViewsRepository.SWT_KIND));
 		this.views.createControls(parent);
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
 		this.views.disableMove();
-		views.setID(ComponentsViewsRepository.PropertiesEditionComponent.views);
+		views.setID(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views);
 		views.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
 	protected void moveViews(View element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		views.refresh();
 	}
 
@@ -343,7 +380,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * 
 	 */
 	protected void removeFromViews(View element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		views.refresh();		
 	}
 

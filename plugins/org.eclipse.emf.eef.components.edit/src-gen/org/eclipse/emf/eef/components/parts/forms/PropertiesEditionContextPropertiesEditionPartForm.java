@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
@@ -90,17 +92,32 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createBindingGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence propertiesEditionContextStep = new CompositionSequence();
+		propertiesEditionContextStep
+			.addStep(ComponentsViewsRepository.PropertiesEditionContext.Binding.class)
+			.addStep(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
 		
-		// End of user code
+		
+		composer = new PartComposer(propertiesEditionContextStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.class) {
+					return createBindingGroup(widgetFactory, parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.model) {
+					return createModelFlatComboViewer(parent, widgetFactory);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createBindingGroup(FormToolkit widgetFactory, final Composite view) {
-		Section bindingSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createBindingGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section bindingSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		bindingSection.setText(ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		bindingSectionData.horizontalSpan = 3;
@@ -109,16 +126,17 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 		GridLayout bindingGroupLayout = new GridLayout();
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
-		createModelFlatComboViewer(bindingGroup, widgetFactory);
 		bindingSection.setClient(bindingGroup);
+		return bindingGroup;
 	}
 
 	/**
-	 * @param bindingGroup
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * 
 	 */
-	protected void createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.FORM_KIND));
+	protected Composite createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.FORM_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
@@ -132,12 +150,13 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends Composite
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionContextPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionContext.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getModel()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionContextPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionContext.Binding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getModel()));
 			}
 
 		});
-		model.setID(ComponentsViewsRepository.PropertiesEditionContext.model);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		model.setID(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

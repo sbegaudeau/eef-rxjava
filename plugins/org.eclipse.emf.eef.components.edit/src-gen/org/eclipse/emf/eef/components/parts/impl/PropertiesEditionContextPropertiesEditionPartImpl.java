@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -85,18 +87,32 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createBindingGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence propertiesEditionContextStep = new CompositionSequence();
+		propertiesEditionContextStep
+			.addStep(ComponentsViewsRepository.PropertiesEditionContext.Binding.class)
+			.addStep(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
 		
-		// End of user code
+		
+		composer = new PartComposer(propertiesEditionContextStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.class) {
+					return createBindingGroup(parent);
+				}
+				if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.model) {
+					return createModelFlatComboViewer(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createBindingGroup(Composite parent) {
+	protected Composite createBindingGroup(Composite parent) {
 		Group bindingGroup = new Group(parent, SWT.NONE);
 		bindingGroup.setText(ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_BindingGroupLabel);
 		GridData bindingGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -105,29 +121,30 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		GridLayout bindingGroupLayout = new GridLayout();
 		bindingGroupLayout.numColumns = 3;
 		bindingGroup.setLayout(bindingGroupLayout);
-		createModelFlatComboViewer(bindingGroup);
+		return bindingGroup;
 	}
 
 	/**
-	 * @param bindingGroup
+	 * @param parent the parent composite
 	 * 
 	 */
-	protected void createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.SWT_KIND));
+	protected Composite createModelFlatComboViewer(Composite parent) {
+		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.SWT_KIND));
 		model = new EObjectFlatComboViewer(parent, false);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		model.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionContextPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionContext.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionContextPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionContext.Binding.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getModel()));
 			}
 
 		});
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
-		model.setID(ComponentsViewsRepository.PropertiesEditionContext.model);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		model.setID(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

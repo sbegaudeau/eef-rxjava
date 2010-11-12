@@ -93,8 +93,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-																					
-																					// End of user code
+																														
+																														// End of user code
 			
 		}
 		// init values for referenced views
@@ -114,7 +114,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)semanticObject;
-		if (ComponentsViewsRepository.PropertiesEditionContext.model == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesEditionContext.Binding.model == event.getAffectedEditor()) {
 			modelSettings.setToReference((GenPackage)event.getNewValue());
 		}
 	}
@@ -138,7 +138,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ComponentsViewsRepository.PropertiesEditionContext.model;
+		return key == ComponentsViewsRepository.PropertiesEditionContext.Binding.model;
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ComponentsViewsRepository.PropertiesEditionContext.model)
+		if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.model)
 			return "The GenPackage for this edition context"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}

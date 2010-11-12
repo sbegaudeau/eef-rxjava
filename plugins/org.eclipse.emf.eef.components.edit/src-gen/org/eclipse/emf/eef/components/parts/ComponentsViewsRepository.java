@@ -27,9 +27,13 @@ public class ComponentsViewsRepository {
 	 * 
 	 */
 	public static class PropertiesEditionContext {
+		public static class Binding {
+	
+			
+			public static String model = "components::PropertiesEditionContext::Binding::model";
+			
 		
-		public static String model = "components::PropertiesEditionContext::model";
-		
+		}
 	
 	}
 
@@ -38,22 +42,30 @@ public class ComponentsViewsRepository {
 	 * 
 	 */
 	public static class PropertiesEditionComponent {
-		
-		public static String name = "components::PropertiesEditionComponent::name";
-		
-		
-		public static String helpID = "components::PropertiesEditionComponent::helpID";
-		
-		
-		public static String explicit = "components::PropertiesEditionComponent::explicit";
-		
+		public static class Properties {
 	
+			
+			public static String name = "components::PropertiesEditionComponent::Properties::name";
+			
+			
+			public static String helpID = "components::PropertiesEditionComponent::Properties::helpID";
+			
+			
+			public static String explicit = "components::PropertiesEditionComponent::Properties::explicit";
+			
 		
-		public static String model = "components::PropertiesEditionComponent::model";
+		}
+	
+		public static class Binding {
+	
+			
+			public static String model = "components::PropertiesEditionComponent::Binding::model";
+			
+			
+			public static String views = "components::PropertiesEditionComponent::Binding::views";
+			
 		
-		
-		public static String views = "components::PropertiesEditionComponent::views";
-		
+		}
 	
 	}
 
@@ -62,19 +74,27 @@ public class ComponentsViewsRepository {
 	 * 
 	 */
 	public static class PropertiesEditionElement {
-		
-		public static String name = "components::PropertiesEditionElement::name";
-		
-		
-		public static String helpID = "components::PropertiesEditionElement::helpID";
-		
+		public static class Properties {
 	
+			
+			public static String name = "components::PropertiesEditionElement::Properties::name";
+			
+			
+			public static String helpID = "components::PropertiesEditionElement::Properties::helpID";
+			
 		
-		public static String model = "components::PropertiesEditionElement::model";
+		}
+	
+		public static class Binding {
+	
+			
+			public static String model = "components::PropertiesEditionElement::Binding::model";
+			
+			
+			public static String views = "components::PropertiesEditionElement::Binding::views";
+			
 		
-		
-		public static String views = "components::PropertiesEditionElement::views";
-		
+		}
 	
 	}
 
@@ -83,19 +103,27 @@ public class ComponentsViewsRepository {
 	 * 
 	 */
 	public static class PropertiesMultiEditionElement {
-		
-		public static String name = "components::PropertiesMultiEditionElement::name";
-		
-		
-		public static String helpID = "components::PropertiesMultiEditionElement::helpID";
-		
+		public static class Properties {
 	
+			
+			public static String name = "components::PropertiesMultiEditionElement::Properties::name";
+			
+			
+			public static String helpID = "components::PropertiesMultiEditionElement::Properties::helpID";
+			
 		
-		public static String model = "components::PropertiesMultiEditionElement::model";
+		}
+	
+		public static class Binding {
+	
+			
+			public static String model = "components::PropertiesMultiEditionElement::Binding::model";
+			
+			
+			public static String views = "components::PropertiesMultiEditionElement::Binding::views";
+			
 		
-		
-		public static String views = "components::PropertiesMultiEditionElement::views";
-		
+		}
 	
 	}
 

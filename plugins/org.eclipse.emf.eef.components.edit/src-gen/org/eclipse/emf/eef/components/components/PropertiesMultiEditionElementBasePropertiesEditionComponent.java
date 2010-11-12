@@ -117,8 +117,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-																					
-																					// End of user code
+																														
+																														// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -136,8 +136,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-																					
-																					// End of user code
+																														
+																														// End of user code
 			
 			
 		}
@@ -161,10 +161,10 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement)semanticObject;
-		if (ComponentsViewsRepository.PropertiesMultiEditionElement.name == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name == event.getAffectedEditor()) {
 			propertiesMultiEditionElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ComponentsViewsRepository.PropertiesMultiEditionElement.views == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof ElementEditor) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
@@ -173,7 +173,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 					viewsSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (ComponentsViewsRepository.PropertiesMultiEditionElement.model == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof EStructuralFeature) {
 					modelSettings.addToReference((EObject) event.getNewValue());
@@ -182,7 +182,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 					modelSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
-		if (ComponentsViewsRepository.PropertiesMultiEditionElement.helpID == event.getAffectedEditor()) {
+		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID == event.getAffectedEditor()) {
 			propertiesMultiEditionElement.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -222,7 +222,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ComponentsViewsRepository.PropertiesMultiEditionElement.name || key == ComponentsViewsRepository.PropertiesMultiEditionElement.views || key == ComponentsViewsRepository.PropertiesMultiEditionElement.model;
+		return key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name || key == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views || key == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model;
 	}
 
 	/**
@@ -232,13 +232,13 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.name)
+		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name)
 			return "The name of this property binding"; //$NON-NLS-1$
-		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.views)
+		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views)
 			return "The mapped views"; //$NON-NLS-1$
-		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.model)
+		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model)
 			return "The mapped properties"; //$NON-NLS-1$
-		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.helpID)
+		if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID)
 			return "The ID of the dynamic help associated to this element (not implemented for the moment)"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -254,11 +254,11 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ComponentsViewsRepository.PropertiesMultiEditionElement.name == event.getAffectedEditor()) {
+				if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
 				}
-				if (ComponentsViewsRepository.PropertiesMultiEditionElement.helpID == event.getAffectedEditor()) {
+				if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
 				}
