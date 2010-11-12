@@ -102,8 +102,8 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 			
 			});
 			// Start of user code for additional businessfilters for representation
-															
-															// End of user code
+																																	
+																																	// End of user code
 			
 			
 			
@@ -127,13 +127,13 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CustomElementEditor customElementEditor = (CustomElementEditor)semanticObject;
-		if (ViewsViewsRepository.CustomElementEditor.representation == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.CustomElementEditor.Properties.representation == event.getAffectedEditor()) {
 			representationSettings.setToReference((Widget)event.getNewValue());
 		}
-		if (ViewsViewsRepository.CustomElementEditor.name == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.CustomElementEditor.Properties.name == event.getAffectedEditor()) {
 			customElementEditor.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ViewsViewsRepository.CustomElementEditor.readOnly == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.CustomElementEditor.Properties.readOnly == event.getAffectedEditor()) {
 			customElementEditor.setReadOnly((Boolean)event.getNewValue());	
 		}
 	}
@@ -167,7 +167,7 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ViewsViewsRepository.CustomElementEditor.name || key == ViewsViewsRepository.CustomElementEditor.readOnly;
+		return key == ViewsViewsRepository.CustomElementEditor.Properties.name || key == ViewsViewsRepository.CustomElementEditor.Properties.readOnly;
 	}
 
 	/**
@@ -177,11 +177,11 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.CustomElementEditor.representation)
+		if (key == ViewsViewsRepository.CustomElementEditor.Properties.representation)
 			return "The representation of this part of view"; //$NON-NLS-1$
-		if (key == ViewsViewsRepository.CustomElementEditor.name)
+		if (key == ViewsViewsRepository.CustomElementEditor.Properties.name)
 			return "The element name"; //$NON-NLS-1$
-		if (key == ViewsViewsRepository.CustomElementEditor.readOnly)
+		if (key == ViewsViewsRepository.CustomElementEditor.Properties.readOnly)
 			return "Defines that this editor is in read only mode"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -197,11 +197,11 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.CustomElementEditor.name == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.CustomElementEditor.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}
-				if (ViewsViewsRepository.CustomElementEditor.readOnly == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.CustomElementEditor.Properties.readOnly == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newValue);
 				}

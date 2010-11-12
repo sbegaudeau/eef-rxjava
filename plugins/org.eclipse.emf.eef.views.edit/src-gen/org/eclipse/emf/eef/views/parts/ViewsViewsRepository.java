@@ -27,9 +27,13 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class Documentation {
+		public static class Documentation_ {
+	
+			
+			public static String documentation__ = "views::Documentation::Documentation_::documentation__";
+			
 		
-		public static String documentation = "views::Documentation::documentation";
-		
+		}
 	
 	}
 
@@ -38,12 +42,16 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class ViewsRepository {
+		public static class Properties {
+	
+			
+			public static String name = "views::ViewsRepository::Properties::name";
+			
+			
+			public static String repositoryKind = "views::ViewsRepository::Properties::RepositoryKind";
+			
 		
-		public static String name = "views::ViewsRepository::name";
-		
-		
-		public static String repositoryKind = "views::ViewsRepository::RepositoryKind";
-		
+		}
 	
 	}
 
@@ -52,15 +60,19 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class View {
+		public static class Properties {
+	
+			
+			public static String name = "views::View::Properties::name";
+			
+			
+			public static String representation = "views::View::Properties::representation";
+			
+			
+			public static String explicit = "views::View::Properties::explicit";
+			
 		
-		public static String name = "views::View::name";
-		
-		
-		public static String representation = "views::View::representation";
-		
-		
-		public static String explicit = "views::View::explicit";
-		
+		}
 	
 	}
 
@@ -69,15 +81,19 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class ElementEditor {
+		public static class Properties {
+	
+			
+			public static String name = "views::ElementEditor::Properties::name";
+			
+			
+			public static String representation = "views::ElementEditor::Properties::representation";
+			
+			
+			public static String readOnly = "views::ElementEditor::Properties::readOnly";
+			
 		
-		public static String name = "views::ElementEditor::name";
-		
-		
-		public static String representation = "views::ElementEditor::representation";
-		
-		
-		public static String readOnly = "views::ElementEditor::readOnly";
-		
+		}
 	
 	}
 
@@ -86,9 +102,13 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class Category {
+		public static class Properties {
+	
+			
+			public static String name = "views::Category::Properties::name";
+			
 		
-		public static String name = "views::Category::name";
-		
+		}
 	
 	}
 
@@ -97,12 +117,16 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class Container {
+		public static class Properties {
+	
+			
+			public static String name = "views::Container::Properties::name";
+			
+			
+			public static String representation = "views::Container::Properties::representation";
+			
 		
-		public static String name = "views::Container::name";
-		
-		
-		public static String representation = "views::Container::representation";
-		
+		}
 	
 	}
 
@@ -111,15 +135,19 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class CustomElementEditor {
+		public static class Properties {
+	
+			
+			public static String name = "views::CustomElementEditor::Properties::name";
+			
+			
+			public static String representation = "views::CustomElementEditor::Properties::representation";
+			
+			
+			public static String readOnly = "views::CustomElementEditor::Properties::readOnly";
+			
 		
-		public static String name = "views::CustomElementEditor::name";
-		
-		
-		public static String representation = "views::CustomElementEditor::representation";
-		
-		
-		public static String readOnly = "views::CustomElementEditor::readOnly";
-		
+		}
 	
 	}
 
@@ -128,9 +156,13 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class CustomView {
+		public static class Properties {
+	
+			
+			public static String name = "views::CustomView::Properties::name";
+			
 		
-		public static String name = "views::CustomView::name";
-		
+		}
 	
 	}
 
@@ -139,12 +171,16 @@ public class ViewsViewsRepository {
 	 * 
 	 */
 	public static class ViewReference {
+		public static class Properties {
+	
+			
+			public static String name = "views::ViewReference::Properties::name";
+			
+			
+			public static String referencedView = "views::ViewReference::Properties::referencedView";
+			
 		
-		public static String name = "views::ViewReference::name";
-		
-		
-		public static String referencedView = "views::ViewReference::referencedView";
-		
+		}
 	
 	}
 

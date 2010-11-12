@@ -90,7 +90,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DocumentedElement documentedElement = (DocumentedElement)semanticObject;
-		if (ViewsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
 			documentedElement.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -119,7 +119,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.Documentation.documentation)
+		if (key == ViewsViewsRepository.Documentation.Documentation_.documentation__)
 			return "The documentation of the element"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -135,7 +135,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.Documentation.documentation == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
 				}

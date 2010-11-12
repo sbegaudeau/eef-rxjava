@@ -91,7 +91,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Category category = (Category)semanticObject;
-		if (ViewsViewsRepository.Category.name == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
 			category.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -120,7 +120,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ViewsViewsRepository.Category.name;
+		return key == ViewsViewsRepository.Category.Properties.name;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.Category.name)
+		if (key == ViewsViewsRepository.Category.Properties.name)
 			return "The category name"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -146,7 +146,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.Category.name == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getCategory_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getCategory_Name().getEAttributeType(), newValue);
 				}

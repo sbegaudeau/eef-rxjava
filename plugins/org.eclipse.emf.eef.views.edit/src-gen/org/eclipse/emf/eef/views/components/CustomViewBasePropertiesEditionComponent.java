@@ -91,7 +91,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CustomView customView = (CustomView)semanticObject;
-		if (ViewsViewsRepository.CustomView.name == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.CustomView.Properties.name == event.getAffectedEditor()) {
 			customView.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -120,7 +120,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ViewsViewsRepository.CustomView.name;
+		return key == ViewsViewsRepository.CustomView.Properties.name;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.CustomView.name)
+		if (key == ViewsViewsRepository.CustomView.Properties.name)
 			return "The element name"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -146,7 +146,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.CustomView.name == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.CustomView.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}

@@ -101,8 +101,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for view
-															
-															// End of user code
+																																	
+																																	// End of user code
 			
 		}
 		// init values for referenced views
@@ -123,10 +123,10 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ViewReference viewReference = (ViewReference)semanticObject;
-		if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.ViewReference.Properties.name == event.getAffectedEditor()) {
 			viewReference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ViewsViewsRepository.ViewReference.referencedView == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.ViewReference.Properties.referencedView == event.getAffectedEditor()) {
 			viewSettings.setToReference((ViewElement)event.getNewValue());
 		}
 	}
@@ -157,7 +157,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ViewsViewsRepository.ViewReference.name || key == ViewsViewsRepository.ViewReference.referencedView;
+		return key == ViewsViewsRepository.ViewReference.Properties.name || key == ViewsViewsRepository.ViewReference.Properties.referencedView;
 	}
 
 	/**
@@ -167,9 +167,9 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.ViewReference.name)
+		if (key == ViewsViewsRepository.ViewReference.Properties.name)
 			return "The element name"; //$NON-NLS-1$
-		if (key == ViewsViewsRepository.ViewReference.referencedView)
+		if (key == ViewsViewsRepository.ViewReference.Properties.referencedView)
 			return "The referenced view"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -185,7 +185,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.ViewReference.name == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.ViewReference.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}

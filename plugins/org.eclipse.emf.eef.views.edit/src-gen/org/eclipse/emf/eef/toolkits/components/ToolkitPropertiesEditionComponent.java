@@ -91,7 +91,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Toolkit toolkit = (Toolkit)semanticObject;
-		if (ToolkitsViewsRepository.Toolkit.name == event.getAffectedEditor()) {
+		if (ToolkitsViewsRepository.Toolkit.Properties.name == event.getAffectedEditor()) {
 			toolkit.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -120,7 +120,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ToolkitsViewsRepository.Toolkit.name;
+		return key == ToolkitsViewsRepository.Toolkit.Properties.name;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ToolkitsViewsRepository.Toolkit.name)
+		if (key == ToolkitsViewsRepository.Toolkit.Properties.name)
 			return "The name of the toolkit"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -146,7 +146,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ToolkitsViewsRepository.Toolkit.name == event.getAffectedEditor()) {
+				if (ToolkitsViewsRepository.Toolkit.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ToolkitsPackage.eINSTANCE.getToolkit_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ToolkitsPackage.eINSTANCE.getToolkit_Name().getEAttributeType(), newValue);
 				}

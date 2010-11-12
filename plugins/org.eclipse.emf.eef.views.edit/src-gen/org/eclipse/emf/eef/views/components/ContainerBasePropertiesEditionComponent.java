@@ -100,8 +100,8 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for representation
-															
-															// End of user code
+																																	
+																																	// End of user code
 			
 			
 		}
@@ -123,10 +123,10 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Container container = (Container)semanticObject;
-		if (ViewsViewsRepository.Container.representation == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.Container.Properties.representation == event.getAffectedEditor()) {
 			representationSettings.setToReference((Widget)event.getNewValue());
 		}
-		if (ViewsViewsRepository.Container.name == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.Container.Properties.name == event.getAffectedEditor()) {
 			container.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -157,7 +157,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ViewsViewsRepository.Container.name;
+		return key == ViewsViewsRepository.Container.Properties.name;
 	}
 
 	/**
@@ -167,9 +167,9 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.Container.representation)
+		if (key == ViewsViewsRepository.Container.Properties.representation)
 			return "The representation of this part of view"; //$NON-NLS-1$
-		if (key == ViewsViewsRepository.Container.name)
+		if (key == ViewsViewsRepository.Container.Properties.name)
 			return "The element name"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -185,7 +185,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.Container.name == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.Container.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}

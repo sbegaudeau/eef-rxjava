@@ -18,6 +18,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.views.parts.DocumentationPropertiesEditionPart;
@@ -78,18 +80,32 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		createDocumentationGroup(view);
-
-
-		// Start of user code for additional ui definition
+		CompositionSequence documentationStep = new CompositionSequence();
+		documentationStep
+			.addStep(ViewsViewsRepository.Documentation.Documentation_.class)
+			.addStep(ViewsViewsRepository.Documentation.Documentation_.documentation__);
 		
-		// End of user code
+		
+		composer = new PartComposer(documentationStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ViewsViewsRepository.Documentation.Documentation_.class) {
+					return createDocumentationGroup(parent);
+				}
+				if (key == ViewsViewsRepository.Documentation.Documentation_.documentation__) {
+					return createDocumentationTextarea(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 
 	/**
 	 * 
 	 */
-	protected void createDocumentationGroup(Composite parent) {
+	protected Composite createDocumentationGroup(Composite parent) {
 		Group documentationGroup = new Group(parent, SWT.NONE);
 		documentationGroup.setText(ViewsMessages.DocumentationPropertiesEditionPart_DocumentationGroupLabel);
 		GridData documentationGroupData = new GridData(GridData.FILL_HORIZONTAL);
@@ -98,12 +114,12 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		GridLayout documentationGroupLayout = new GridLayout();
 		documentationGroupLayout.numColumns = 3;
 		documentationGroup.setLayout(documentationGroupLayout);
-		createDocumentationTextarea(documentationGroup);
+		return documentationGroup;
 	}
 
 	
-	protected void createDocumentationTextarea(Composite parent) {
-		Label documentationLabel = SWTUtils.createPartLabel(parent, ViewsMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Documentation.documentation, ViewsViewsRepository.SWT_KIND));
+	protected Composite createDocumentationTextarea(Composite parent) {
+		Label documentationLabel = SWTUtils.createPartLabel(parent, ViewsMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Documentation.Documentation_.documentation__, ViewsViewsRepository.SWT_KIND));
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
@@ -123,13 +139,14 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentationPropertiesEditionPartImpl.this, ViewsViewsRepository.Documentation.documentation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DocumentationPropertiesEditionPartImpl.this, ViewsViewsRepository.Documentation.Documentation_.documentation__, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, documentation.getText()));
 			}
 
 		});
-		EditingUtils.setID(documentation, ViewsViewsRepository.Documentation.documentation);
+		EditingUtils.setID(documentation, ViewsViewsRepository.Documentation.Documentation_.documentation__);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.Documentation.documentation, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.Documentation.Documentation_.documentation__, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

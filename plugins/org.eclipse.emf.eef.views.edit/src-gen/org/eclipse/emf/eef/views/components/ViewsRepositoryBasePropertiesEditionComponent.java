@@ -94,10 +94,10 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ViewsRepository viewsRepository = (ViewsRepository)semanticObject;
-		if (ViewsViewsRepository.ViewsRepository.repositoryKind == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.ViewsRepository.Properties.repositoryKind == event.getAffectedEditor()) {
 			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : RepositoryKind, ViewsRepository, ViewsRepository.
 		}
-		if (ViewsViewsRepository.ViewsRepository.name == event.getAffectedEditor()) {
+		if (ViewsViewsRepository.ViewsRepository.Properties.name == event.getAffectedEditor()) {
 			viewsRepository.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -127,7 +127,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ViewsViewsRepository.ViewsRepository.repositoryKind || key == ViewsViewsRepository.ViewsRepository.name;
+		return key == ViewsViewsRepository.ViewsRepository.Properties.repositoryKind || key == ViewsViewsRepository.ViewsRepository.Properties.name;
 	}
 
 	/**
@@ -137,9 +137,9 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ViewsViewsRepository.ViewsRepository.repositoryKind)
+		if (key == ViewsViewsRepository.ViewsRepository.Properties.repositoryKind)
 			return "The kind of the repository (available values)"; //$NON-NLS-1$
-		if (key == ViewsViewsRepository.ViewsRepository.name)
+		if (key == ViewsViewsRepository.ViewsRepository.Properties.name)
 			return "The repository name"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -155,11 +155,11 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ViewsViewsRepository.ViewsRepository.repositoryKind == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.ViewsRepository.Properties.repositoryKind == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewsRepository_RepositoryKind().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewsRepository_RepositoryKind().getEAttributeType(), newValue);
 				}
-				if (ViewsViewsRepository.ViewsRepository.name == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.ViewsRepository.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewsRepository_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewsRepository_Name().getEAttributeType(), newValue);
 				}

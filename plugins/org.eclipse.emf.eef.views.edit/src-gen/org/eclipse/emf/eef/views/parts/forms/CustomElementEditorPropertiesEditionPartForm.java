@@ -19,6 +19,9 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -98,17 +101,39 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createPropertiesGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence customElementEditorStep = new CompositionSequence();
+		CompositionStep propertiesStep = customElementEditorStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.class);
+		propertiesStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.name);
+		propertiesStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.representation);
+		propertiesStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
 		
-		// End of user code
+		
+		composer = new PartComposer(customElementEditorStep) {
+			
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ViewsViewsRepository.CustomElementEditor.Properties.class) {
+					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == ViewsViewsRepository.CustomElementEditor.Properties.name) {
+					return 		createNameText(widgetFactory, parent);
+				}
+				if (key == ViewsViewsRepository.CustomElementEditor.Properties.representation) {
+					return createRepresentationFlatComboViewer(parent, widgetFactory);
+				}
+				if (key == ViewsViewsRepository.CustomElementEditor.Properties.readOnly) {
+					return createReadOnlyCheckbox(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createPropertiesGroup(FormToolkit widgetFactory, final Composite view) {
-		Section propertiesSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		propertiesSection.setText(ViewsMessages.CustomElementEditorPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
@@ -117,15 +142,13 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
-		createNameText(widgetFactory, propertiesGroup);
-		createRepresentationFlatComboViewer(propertiesGroup, widgetFactory);
-		createReadOnlyCheckbox(widgetFactory, propertiesGroup);
 		propertiesSection.setClient(propertiesGroup);
+		return propertiesGroup;
 	}
 
 	
-	protected void createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.name, ViewsViewsRepository.FORM_KIND));
+	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -140,7 +163,7 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -153,21 +176,23 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(name, ViewsViewsRepository.CustomElementEditor.name);
+		EditingUtils.setID(name, ViewsViewsRepository.CustomElementEditor.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
-	 * @param propertiesGroup
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * 
 	 */
-	protected void createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.representation, ViewsViewsRepository.FORM_KIND));
+	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND));
 		representation = new EObjectFlatComboViewer(parent, true);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
@@ -181,16 +206,17 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.representation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRepresentation()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.Properties.representation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRepresentation()));
 			}
 
 		});
-		representation.setID(ViewsViewsRepository.CustomElementEditor.representation);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		representation.setID(ViewsViewsRepository.CustomElementEditor.Properties.representation);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 	
-	protected void createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		readOnly = widgetFactory.createButton(parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel, SWT.CHECK);
 		readOnly.addSelectionListener(new SelectionAdapter() {
 
@@ -202,16 +228,17 @@ public class CustomElementEditorPropertiesEditionPartForm extends CompositePrope
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.Properties.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
 			}
 
 		});
 		GridData readOnlyData = new GridData(GridData.FILL_HORIZONTAL);
 		readOnlyData.horizontalSpan = 2;
 		readOnly.setLayoutData(readOnlyData);
-		EditingUtils.setID(readOnly, ViewsViewsRepository.CustomElementEditor.readOnly);
+		EditingUtils.setID(readOnly, ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
 		EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
 	}
 
 

@@ -27,9 +27,13 @@ public class ToolkitsViewsRepository {
 	 * 
 	 */
 	public static class Toolkit {
+		public static class Properties {
+	
+			
+			public static String name = "toolkits::Toolkit::Properties::Name";
+			
 		
-		public static String name = "toolkits::Toolkit::Name";
-		
+		}
 	
 	}
 
@@ -38,9 +42,13 @@ public class ToolkitsViewsRepository {
 	 * 
 	 */
 	public static class Widget {
+		public static class Properties {
+	
+			
+			public static String name = "toolkits::Widget::Properties::Name";
+			
 		
-		public static String name = "toolkits::Widget::Name";
-		
+		}
 	
 	}
 

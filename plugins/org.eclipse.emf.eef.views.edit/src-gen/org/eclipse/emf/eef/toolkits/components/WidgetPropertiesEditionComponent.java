@@ -91,7 +91,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Widget widget = (Widget)semanticObject;
-		if (ToolkitsViewsRepository.Widget.name == event.getAffectedEditor()) {
+		if (ToolkitsViewsRepository.Widget.Properties.name == event.getAffectedEditor()) {
 			widget.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
@@ -120,7 +120,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * 
 	 */
 	public boolean isRequired(String key, int kind) {
-		return key == ToolkitsViewsRepository.Widget.name;
+		return key == ToolkitsViewsRepository.Widget.Properties.name;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * 
 	 */
 	public String getHelpContent(String key, int kind) {
-		if (key == ToolkitsViewsRepository.Widget.name)
+		if (key == ToolkitsViewsRepository.Widget.Properties.name)
 			return "The name of the widget"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
@@ -146,7 +146,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 		if (event.getNewValue() != null) {
 			String newStringValue = event.getNewValue().toString();
 			try {
-				if (ToolkitsViewsRepository.Widget.name == event.getAffectedEditor()) {
+				if (ToolkitsViewsRepository.Widget.Properties.name == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(ToolkitsPackage.eINSTANCE.getWidget_Name().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(ToolkitsPackage.eINSTANCE.getWidget_Name().getEAttributeType(), newValue);
 				}
