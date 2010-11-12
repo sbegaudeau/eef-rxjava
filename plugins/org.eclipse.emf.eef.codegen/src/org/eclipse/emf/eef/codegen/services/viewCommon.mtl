@@ -113,7 +113,7 @@ CompositionSequence [view.compositionStepName()/] = new CompositionSequence();
 
 [template public compositionSequence(containerElement : Container)]
 [if (containerElement.elements->size() > 1)]
-CompositionStep [containerElement.compositionStepName()/] = [containerElement.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step.addStep([containerElement.editorID()/].class);
+CompositionStep [containerElement.compositionStepName()/] = [containerElement.eContainer().oclAsType(IdentifiedElement).compositionStepName()/].addStep([containerElement.editorID()/].class);
 [for (element : ViewElement | containerElement.elements)]
 [element.compositionSequence()/]
 [/for]

@@ -336,7 +336,7 @@ import [pee.model.eType.qualifiedName(basePackage)/];
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedTableComposition')]
-protected ReferencesTable<? extends EObject> [editor.name.toJavaIdentifier()/];
+protected ReferencesTable [editor.name.toJavaIdentifier()/];
 protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]BusinessFilters = new ArrayList<ViewerFilter>();
 protected List<ViewerFilter> [editor.name.toJavaIdentifier()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
@@ -351,7 +351,7 @@ create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]AdvancedTableComposition(Composite parent) {
-		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
 			public void handleAdd() { addTo[editor.name.toJavaClassifier()/]();}
 			public void handleEdit([editor.involvedPropertiesEditionElement().model.eType.name/] element) { edit[editor.name.toJavaClassifier()/](element); }
 			public void handleMove([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }
@@ -377,7 +377,7 @@ create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
-	protected void move[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) {
+	protected void move[editor.name.toJavaClassifier()/](EObject element, int oldIndex, int newIndex) {
 		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 		[editor.name.toJavaIdentifier()/].refresh();
@@ -394,14 +394,14 @@ create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
-	protected void removeFrom[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
+	protected void removeFrom[editor.name.toJavaClassifier()/](EObject element) {
 		[editor.defaultRemoveOperationForAdvancedTableComposition()/]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/] 
 	 */
-	protected void edit[editor.name.toJavaClassifier()/]([editor.involvedPropertiesEditionElement().model.eType.name/] element) {
+	protected void edit[editor.name.toJavaClassifier()/](EObject element) {
 		[editor.defaultEditOperationForAdvancedTableComposition()/]
 	}
 [/template]
