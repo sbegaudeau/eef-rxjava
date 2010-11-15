@@ -17,20 +17,14 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
-import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -200,10 +194,22 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	 */
 	protected Composite createTablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.tablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TableCompositionExtensionEditorSamplePropertiesEditionPart_TablecompositionRequiredPropertyLabel, new ReferencesTableListener<AbstractTableCompositionTargetExtensionEditorSample>() {			
-			public void handleAdd() { addToTablecompositionRequiredProperty();}
-			public void handleEdit(AbstractTableCompositionTargetExtensionEditorSample element) { editTablecompositionRequiredProperty(element); }
-			public void handleMove(AbstractTableCompositionTargetExtensionEditorSample element, int oldIndex, int newIndex) { moveTablecompositionRequiredProperty(element, oldIndex, newIndex); }
-			public void handleRemove(AbstractTableCompositionTargetExtensionEditorSample element) { removeFromTablecompositionRequiredProperty(element); }
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				tablecompositionRequiredProperty.refresh();			
+			}
+			public void handleEdit(AbstractTableCompositionTargetExtensionEditorSample element) {  
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				tablecompositionRequiredProperty.refresh();
+			}
+			public void handleMove(AbstractTableCompositionTargetExtensionEditorSample element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+				tablecompositionRequiredProperty.refresh();
+			}
+			public void handleRemove(AbstractTableCompositionTargetExtensionEditorSample element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				tablecompositionRequiredProperty.refresh();
+			}
 			public void navigateTo(AbstractTableCompositionTargetExtensionEditorSample element) { }
 		});
 		this.tablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, EefnrViewsRepository.FORM_KIND));
@@ -219,65 +225,27 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	}
 
 	/**
-	 * 
-	 */
-	protected void moveTablecompositionRequiredProperty(EObject element, int oldIndex, int newIndex) {
-	}
-
-	/**
-	 * 
-	 */
-	protected void addToTablecompositionRequiredProperty() {
-		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(), adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(current, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy instanceof CreateEditingPolicy) {
-				policy.execute();
-				EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-				if (resultEObject != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
-					tablecompositionRequiredProperty.refresh();
-				}
-			}
-		}
-		
-	}
-
-	/**
-	 * 
-	 */
-	protected void removeFromTablecompositionRequiredProperty(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				tablecompositionRequiredProperty.refresh();
-		
-	}
-
-	/**
-	 * 
-	 */
-	protected void editTablecompositionRequiredProperty(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-			if (editionPolicy != null) {
-				editionPolicy.execute();
-				tablecompositionRequiredProperty.refresh();
-			}
-		}
-	}
-
-	/**
 	 * @param container
 	 * 
 	 */
 	protected Composite createTablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.tablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TableCompositionExtensionEditorSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel, new ReferencesTableListener<AbstractTableCompositionTargetExtensionEditorSample>() {			
-			public void handleAdd() { addToTablecompositionOptionalProperty();}
-			public void handleEdit(AbstractTableCompositionTargetExtensionEditorSample element) { editTablecompositionOptionalProperty(element); }
-			public void handleMove(AbstractTableCompositionTargetExtensionEditorSample element, int oldIndex, int newIndex) { moveTablecompositionOptionalProperty(element, oldIndex, newIndex); }
-			public void handleRemove(AbstractTableCompositionTargetExtensionEditorSample element) { removeFromTablecompositionOptionalProperty(element); }
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				tablecompositionOptionalProperty.refresh();			
+			}
+			public void handleEdit(AbstractTableCompositionTargetExtensionEditorSample element) {  
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				tablecompositionOptionalProperty.refresh();
+			}
+			public void handleMove(AbstractTableCompositionTargetExtensionEditorSample element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+				tablecompositionOptionalProperty.refresh();
+			}
+			public void handleRemove(AbstractTableCompositionTargetExtensionEditorSample element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				tablecompositionOptionalProperty.refresh();
+			}
 			public void navigateTo(AbstractTableCompositionTargetExtensionEditorSample element) { }
 		});
 		this.tablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, EefnrViewsRepository.FORM_KIND));
@@ -290,56 +258,6 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		tablecompositionOptionalProperty.setID(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty);
 		tablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		return parent;
-	}
-
-	/**
-	 * 
-	 */
-	protected void moveTablecompositionOptionalProperty(EObject element, int oldIndex, int newIndex) {
-	}
-
-	/**
-	 * 
-	 */
-	protected void addToTablecompositionOptionalProperty() {
-		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty(), adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(current, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy instanceof CreateEditingPolicy) {
-				policy.execute();
-				EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-				if (resultEObject != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
-					tablecompositionOptionalProperty.refresh();
-				}
-			}
-		}
-		
-	}
-
-	/**
-	 * 
-	 */
-	protected void removeFromTablecompositionOptionalProperty(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				tablecompositionOptionalProperty.refresh();
-		
-	}
-
-	/**
-	 * 
-	 */
-	protected void editTablecompositionOptionalProperty(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-			if (editionPolicy != null) {
-				editionPolicy.execute();
-				tablecompositionOptionalProperty.refresh();
-			}
-		}
 	}
 
 

@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
+import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
@@ -33,10 +34,13 @@ import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -228,8 +232,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToEobjectflatcomboviewerOptionalProperty(new ViewerFilter() {
 			
@@ -244,8 +248,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
 			
@@ -263,8 +267,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -282,8 +286,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			
 			
@@ -302,8 +306,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -318,8 +322,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
 			
@@ -337,8 +341,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -356,8 +360,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToAdvancedeobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
 			
@@ -372,8 +376,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for advancedeobjectflatcomboviewerRequiredPropery
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToAdvancedeobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 			
@@ -388,8 +392,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for advancedeobjectflatcomboviewerOptionalPropery
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToAdvancedtablecompositionRequiredProperty(new ViewerFilter() {
 			
@@ -404,8 +408,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionRequiredProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToAdvancedtablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -420,8 +424,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			
 		}
@@ -534,8 +538,24 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				if (event.getNewValue() instanceof Sample) {
-					tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				tablecompositionRequiredPropertySettings.addToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
@@ -543,8 +563,24 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				if (event.getNewValue() instanceof Sample) {
-					tablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				tablecompositionOptionalPropertySettings.addToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
@@ -576,8 +612,24 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				if (event.getNewValue() instanceof Sample) {
-					advancedtablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				advancedtablecompositionRequiredPropertySettings.addToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedtablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
@@ -585,8 +637,24 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				if (event.getNewValue() instanceof Sample) {
-					advancedtablecompositionOptionalPropertySettings.addToReference((EObject) event.getNewValue());
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				advancedtablecompositionOptionalPropertySettings.addToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedtablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());

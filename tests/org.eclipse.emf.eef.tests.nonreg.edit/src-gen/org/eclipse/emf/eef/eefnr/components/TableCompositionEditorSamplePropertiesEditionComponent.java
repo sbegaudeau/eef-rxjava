@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -101,8 +100,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -117,8 +116,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-																																																																																																																																																																					
-																																																																																																																																																																					// End of user code
+																																																																																																																																																																																																
+																																																																																																																																																																																																// End of user code
 			
 		}
 		// init values for referenced views
@@ -141,8 +140,24 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		TableCompositionEditorSample tableCompositionEditorSample = (TableCompositionEditorSample)semanticObject;
 		if (EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				if (event.getNewValue() instanceof Sample) {
-					tablecompositionRequiredPropertySettings.addToReference((EObject) event.getNewValue());
+				Sample eObject = EefnrFactory.eINSTANCE.createSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				tablecompositionRequiredPropertySettings.addToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
@@ -158,8 +173,17 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 					if (policy != null) {
 						policy.execute();
 					}
-				}		
+				}
 				tablecompositionOptionalPropertySettings.addToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}

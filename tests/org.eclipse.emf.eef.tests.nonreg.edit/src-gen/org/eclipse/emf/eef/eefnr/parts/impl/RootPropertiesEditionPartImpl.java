@@ -17,20 +17,14 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.eefnr.AbstractSample;
-import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -136,10 +130,22 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	 */
 	protected Composite createSamplesAdvancedTableComposition(Composite parent) {
 		this.samples = new ReferencesTable(EefnrMessages.RootPropertiesEditionPart_SamplesLabel, new ReferencesTableListener<AbstractSample>() {			
-			public void handleAdd() { addToSamples();}
-			public void handleEdit(AbstractSample element) { editSamples(element); }
-			public void handleMove(AbstractSample element, int oldIndex, int newIndex) { moveSamples(element, oldIndex, newIndex); }
-			public void handleRemove(AbstractSample element) { removeFromSamples(element); }
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				samples.refresh();			
+			}
+			public void handleEdit(AbstractSample element) {  
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				samples.refresh();
+			}
+			public void handleMove(AbstractSample element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+				samples.refresh();
+			}
+			public void handleRemove(AbstractSample element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				samples.refresh();
+			}
 			public void navigateTo(AbstractSample element) { }
 		});
 		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.SWT_KIND));
@@ -152,56 +158,6 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 		samples.setID(EefnrViewsRepository.Root.Properties.samples);
 		samples.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		return parent;
-	}
-
-	/**
-	 *  
-	 */
-	protected void moveSamples(EObject element, int oldIndex, int newIndex) {
-	}
-
-	/**
-	 *  
-	 */
-	protected void addToSamples() {
-		EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, current, EefnrPackage.eINSTANCE.getRoot_Samples(), adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(current, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy instanceof CreateEditingPolicy) {
-				policy.execute();
-				EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-				if (resultEObject != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, resultEObject));
-					samples.refresh();
-				}
-			}
-		}
-		
-	}
-
-	/**
-	 *  
-	 */
-	protected void removeFromSamples(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				samples.refresh();
-		
-	}
-
-	/**
-	 *  
-	 */
-	protected void editSamples(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-			if (editionPolicy != null) {
-				editionPolicy.execute();
-				samples.refresh();
-			}
-		}
 	}
 
 

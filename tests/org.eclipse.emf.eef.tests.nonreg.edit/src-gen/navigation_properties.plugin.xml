@@ -19,7 +19,7 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
    <extension
@@ -31,7 +31,7 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
+            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 
