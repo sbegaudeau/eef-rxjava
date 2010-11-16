@@ -57,6 +57,11 @@ public class PropertiesEditionEvent implements IPropertiesEditionEvent {
 	public static final int MOVE = 7;
 
 	/**
+	 * A value has been moved
+	 */
+	public static final int EDIT = 9;
+
+	/**
 	 * The selection of a ElementEditor has changed
 	 */
 	public static final int SELECTION_CHANGED = 8;
