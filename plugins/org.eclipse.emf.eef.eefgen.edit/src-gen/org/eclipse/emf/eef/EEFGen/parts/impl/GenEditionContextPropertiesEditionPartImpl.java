@@ -172,7 +172,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 */
 	protected Composite createPropertiesEditionContextFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND));
-		propertiesEditionContext = new EObjectFlatComboViewer(parent, false);
+		propertiesEditionContext = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.SWT_KIND));
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		propertiesEditionContext.addSelectionChangedListener(new ISelectionChangedListener() {

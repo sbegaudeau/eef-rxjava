@@ -127,7 +127,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	 */
 	protected Composite createReferencedEEFGenModelFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND));
-		referencedEEFGenModel = new EObjectFlatComboViewer(parent, false);
+		referencedEEFGenModel = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND));
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		referencedEEFGenModel.addSelectionChangedListener(new ISelectionChangedListener() {

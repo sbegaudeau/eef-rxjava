@@ -180,7 +180,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	 */
 	protected Composite createViewsRepositoryFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ViewsRepositoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository, EEFGenViewsRepository.FORM_KIND));
-		viewsRepository = new EObjectFlatComboViewer(parent, false);
+		viewsRepository = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository, EEFGenViewsRepository.FORM_KIND));
 		viewsRepository.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData viewsRepositoryData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsRepository.setLayoutData(viewsRepositoryData);

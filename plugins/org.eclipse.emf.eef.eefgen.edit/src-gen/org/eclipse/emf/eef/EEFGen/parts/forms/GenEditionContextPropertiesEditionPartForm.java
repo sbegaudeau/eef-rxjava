@@ -179,7 +179,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 */
 	protected Composite createPropertiesEditionContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND));
-		propertiesEditionContext = new EObjectFlatComboViewer(parent, false);
+		propertiesEditionContext = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND));
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData propertiesEditionContextData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesEditionContext.setLayoutData(propertiesEditionContextData);
