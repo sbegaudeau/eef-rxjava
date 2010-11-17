@@ -93,8 +93,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																						
-																																																						// End of user code
+																																																									
+																																																									// End of user code
 			
 		}
 		// init values for referenced views
