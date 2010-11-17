@@ -4,6 +4,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
@@ -28,4 +29,9 @@ public interface EEFEditorSettings {
 	 * @return <code>true</code> if the given feature is processed by these settings
 	 */
 	boolean isAffectingFeature(EStructuralFeature feature);
+
+	/**
+	 * @return the edited object
+	 */
+	EObject getSource();
 }

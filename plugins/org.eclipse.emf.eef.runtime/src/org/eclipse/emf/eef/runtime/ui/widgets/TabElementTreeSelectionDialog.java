@@ -14,17 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-import org.eclipse.emf.eef.runtime.ui.widgets.settings.AdvancedEObjectFlatComboContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.AdvancedEEFEditorContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -59,7 +57,7 @@ import org.eclipse.ui.dialogs.PatternFilter;
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public abstract class TabElementTreeSelectionDialog<T extends EObject> extends Dialog implements IPropertiesFilteredWidget {
+public abstract class TabElementTreeSelectionDialog extends Dialog implements IPropertiesFilteredWidget {
 
 	/**
 	 * the label
@@ -87,15 +85,13 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	/**
 	 * The adapter factory.
 	 */
-	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+	protected AdapterFactory adapterFactory;
 
 	private Composite parent;
 
 	private Object input;
 
 	private IStructuredSelection selection;
-
-	private EClass restrictToEClass;
 
 	/**
 	 * The main resource. It's optional. The first resource is the main resource by default.
@@ -116,37 +112,10 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 	 * @param abstractElement
 	 *            it used to inform about if the element is abstract in this case the creation button does not
 	 *            appear
-	 * @deprecated 
-	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters, String title, EClass restrictToEClass) {
-		super(Display.getDefault().getActiveShell());
-		// add the resize ability to the window
-		setShellStyle(SWT.RESIZE | super.getShellStyle());
-		this.input = input;
-		this.viewerFilters = filters;
-		this.brFilters = brFilters;
-		this.title = title;
-		this.restrictToEClass = restrictToEClass;
-	}
-
-	/**
-	 * Constructor with parent shell and Element.
-	 * 
-	 * @param parentElement
-	 *            the element where we look for a children
-	 * @param filters
-	 *            this is an array of filter see {@link ViewerFilter} or an example {@link OperationFilter}
-	 * @param title
-	 *            title of the window
-	 * @param createElement
-	 *            this is the listener to create an element
-	 * @param abstractElement
-	 *            it used to inform about if the element is abstract in this case the creation button does not
-	 *            appear
 	 * @param mainResource
 	 *            the main resource.
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters, String title, EClass restrictToEClass, Resource mainResource) {
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters, String title, AdapterFactory adapterFactory, Resource mainResource) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
@@ -154,7 +123,7 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		this.viewerFilters = filters;
 		this.brFilters = brFilters;
 		this.title = title;
-		this.restrictToEClass = restrictToEClass;
+		this.adapterFactory = adapterFactory;
 		this.mainResource = mainResource;
 	}
 
@@ -179,9 +148,9 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 				ResourceSet resourceSet = null;
 				if (input instanceof ResourceSet) {
 					resourceSet = (ResourceSet)input;
-				} else if (input instanceof EObjectFlatComboSettings) {
-					if (((EObjectFlatComboSettings) input).getSource().eResource() != null) 
-						resourceSet = ((EObjectFlatComboSettings) input).getSource().eResource().getResourceSet();
+				} else if (input instanceof EEFEditorSettings) {
+					if (((EEFEditorSettings) input).getSource().eResource() != null) 
+						resourceSet = ((EEFEditorSettings) input).getSource().eResource().getResourceSet();
 				}
 				if (resourceSet != null) {
 					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? 
@@ -236,8 +205,10 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 		final TreeViewer treeViewer = filteredTree.getViewer();
 		treeViewer.setFilters(new ViewerFilter[0]);
 		treeViewer.setUseHashlookup(true);
-		AdvancedEObjectFlatComboContentProvider contentProvider = new AdvancedEObjectFlatComboContentProvider(adapterFactory);
-		treeViewer.setContentProvider(contentProvider);
+		if (input instanceof EEFEditorSettings)
+			treeViewer.setContentProvider(new AdvancedEEFEditorContentProvider(adapterFactory));
+		else
+			treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
 		ArrayList<ViewerFilter> filters = new ArrayList<ViewerFilter>();
 		if (specificTabFilter != null) {
@@ -261,18 +232,17 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 
 		filteredTree.setLayoutData(new GridData(550, 300));
 		// handle selection change
-		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (event.getSelection() instanceof IStructuredSelection) {
-					// Check selection
-					IStructuredSelection structuredSelection = (IStructuredSelection)event.getSelection();
-					if (structuredSelection != null && !structuredSelection.isEmpty()) {
-						Object o = structuredSelection.getFirstElement();
-						if (o instanceof EObject) {
+		if (input instanceof EEFEditorSettings) {
+			treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+				public void selectionChanged(SelectionChangedEvent event) {
+					if (event.getSelection() instanceof IStructuredSelection) {
+						// Check selection
+						IStructuredSelection structuredSelection = (IStructuredSelection)event.getSelection();
+						if (structuredSelection != null && !structuredSelection.isEmpty()) {
+							Object o = structuredSelection.getFirstElement();
 							// Check type matching
-							EObject eObject = (EObject)o;
 							Button okButton = getButton(IDialogConstants.OK_ID);
-							if (EEFUtils.isInstanceOfEClass(eObject, restrictToEClass)) {
+							if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
 								selection = structuredSelection;
 								if (okButton != null) {
 									okButton.setEnabled(true);
@@ -284,26 +254,23 @@ public abstract class TabElementTreeSelectionDialog<T extends EObject> extends D
 								}
 							}
 						}
+
 					}
-
 				}
-			}
-		});
+			});
 
-		// handle double click to validate
-		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
-			public void doubleClick(DoubleClickEvent event) {
-				if (selection != null && !selection.isEmpty()) {
-					Object o = selection.getFirstElement();
-					if (o instanceof EObject) {
-						if (EEFUtils.isInstanceOfEClass((EObject)o, restrictToEClass)) {
+			// handle double click to validate
+			treeViewer.addDoubleClickListener(new IDoubleClickListener() {
+				public void doubleClick(DoubleClickEvent event) {
+					if (selection != null && !selection.isEmpty()) {
+						Object o = selection.getFirstElement();
+						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
 							okPressed();
 						}
 					}
 				}
-			}
-		});
-
+			});
+		}
 		treeViewer.setInput(input);
 
 		// Init selected element

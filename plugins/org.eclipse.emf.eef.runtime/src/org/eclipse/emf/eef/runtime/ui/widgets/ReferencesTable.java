@@ -761,17 +761,17 @@ public class ReferencesTable implements
 		return input;
 	}
 
-	public interface ReferencesTableListener<T extends EObject> {
+	public interface ReferencesTableListener {
 
 		void handleAdd();
 
-		void handleRemove(T element);
+		void handleRemove(EObject element);
 
-		void handleMove(T element, int oldIndex, int newIndex);
+		void handleMove(EObject element, int oldIndex, int newIndex);
 
-		void handleEdit(T element);
+		void handleEdit(EObject element);
 
-		void navigateTo(T element);
+		void navigateTo(EObject element);
 	}
 
 	/*

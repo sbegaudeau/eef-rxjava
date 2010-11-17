@@ -18,7 +18,7 @@ import org.eclipse.jface.viewers.Viewer;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * 
  */
-public class AdvancedEObjectFlatComboContentProvider extends AdapterFactoryContentProvider {
+public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvider {
 
 	private List<Object> choiceOfValues;
 	private boolean eefInput = false;
@@ -26,7 +26,7 @@ public class AdvancedEObjectFlatComboContentProvider extends AdapterFactoryConte
 	/**
 	 * @param adapterFactory
 	 */
-	public AdvancedEObjectFlatComboContentProvider(AdapterFactory adapterFactory) {
+	public AdvancedEEFEditorContentProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 		choiceOfValues = new ArrayList<Object>();
 	}
@@ -37,7 +37,6 @@ public class AdvancedEObjectFlatComboContentProvider extends AdapterFactoryConte
 	 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
 	 *      java.lang.Object, java.lang.Object)
 	 */
-	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		super.inputChanged(viewer, oldInput, newInput);
 		if (newInput instanceof EEFEditorSettings) {
@@ -54,11 +53,9 @@ public class AdvancedEObjectFlatComboContentProvider extends AdapterFactoryConte
 	 * 
 	 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
 	 */
-	@Override
 	public Object[] getElements(Object object) {
-		if (object instanceof EObjectFlatComboSettings) {
-			return ((EObjectFlatComboSettings) object).getSource().eResource().getResourceSet()
-						.getResources().toArray();
+		if (object instanceof EEFEditorSettings) {
+			return ((EEFEditorSettings) object).getSource().eResource().getResourceSet().getResources().toArray();
 		}
 		return super.getElements(object);
 	}
@@ -68,7 +65,6 @@ public class AdvancedEObjectFlatComboContentProvider extends AdapterFactoryConte
 	 * 
 	 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getChildren(java.lang.Object)
 	 */
-	@Override
 	public Object[] getChildren(Object object) {
 		if (eefInput) {
 			Object[] children = super.getChildren(object);
@@ -88,7 +84,6 @@ public class AdvancedEObjectFlatComboContentProvider extends AdapterFactoryConte
 	 * 
 	 * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#hasChildren(java.lang.Object)
 	 */
-	@Override
 	public boolean hasChildren(Object object) {
 		if (eefInput) {
 			return getChildren(object).length > 0;

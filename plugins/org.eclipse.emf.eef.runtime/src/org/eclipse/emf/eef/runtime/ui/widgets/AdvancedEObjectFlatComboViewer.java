@@ -47,7 +47,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPropertiesFilteredWidget {
+public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget {
 
 	/** Image for the remove button */
 	protected final org.eclipse.swt.graphics.Image deleteImage = EEFRuntimePlugin
@@ -70,13 +70,13 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	/** The parent Composite */
 	protected Composite parent;
 
-	protected T selection;
+	protected EObject selection;
 
 	protected Object input;
 
 	protected Button browseButton;
 
-	protected EObjectFlatComboViewerListener<T> callback;
+	protected EObjectFlatComboViewerListener callback;
 
 	/**
 	 * The main composite
@@ -86,11 +86,9 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	/**
 	 * The adapter factory.
 	 */
-	protected AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+	protected AdapterFactory adapterFactory;
 
 	protected AdapterFactoryLabelProvider labelProvider;
-
-	private EClass restrictToEClass;
 
 	protected List<ViewerFilter> filters;
 
@@ -114,15 +112,14 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	 * @param filter
 	 *            use to look for the good element
 	 */
-	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input, ViewerFilter filter,
-			EClass restrictToEClass, EObjectFlatComboViewerListener<T> callback) {
-		this.restrictToEClass = restrictToEClass;
+	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input, ViewerFilter filter, AdapterFactory adapterFactory, EObjectFlatComboViewerListener callback) {
 		this.dialogTitle = dialogTitle;
 		this.input = input;
 		this.callback = callback;
 		this.labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		this.filters = new ArrayList<ViewerFilter>();
 		this.brFilters = new ArrayList<ViewerFilter>();
+		this.adapterFactory = adapterFactory;
 	}
 
 	public void createControls(Composite parent, FormToolkit widgetFactory) {
@@ -288,7 +285,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection structuredSelection = (StructuredSelection)selection;
 			if (!structuredSelection.isEmpty() && !"".equals(structuredSelection.getFirstElement())) {
-				setSelection((T)structuredSelection.getFirstElement());
+				setSelection((EObject)structuredSelection.getFirstElement());
 			} else {
 				this.valueText.setText(UNDEFINED_VALUE);
 				// this.parent.pack();
@@ -296,7 +293,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		}
 	}
 
-	public void setSelection(T selection) {
+	public void setSelection(EObject selection) {
 		this.selection = selection;
 		String text = labelProvider.getText(selection);
 		if ("".equals(text)) //$NON-NLS-1$
@@ -306,7 +303,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		// this.parent.pack();
 	}
 
-	public T getSelection() {
+	public EObject getSelection() {
 		return selection;
 	}
 
@@ -316,12 +313,12 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 	protected void browseButtonPressed() {
 		switch (button_mode) {
 			case BROWSE:
-				TabElementTreeSelectionDialog<T> dialog = new TabElementTreeSelectionDialog<T>(input, filters, brFilters, dialogTitle, restrictToEClass, mainResource) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(input, filters, brFilters, dialogTitle, adapterFactory, mainResource) {
 					@SuppressWarnings("unchecked")
 					@Override
 					public void process(IStructuredSelection selection) {
 						if (selection != null && !selection.isEmpty()) {
-							handleSelection((T)selection.getFirstElement());
+							handleSelection((EObject)selection.getFirstElement());
 						}
 					}
 				};
@@ -339,7 +336,7 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		}
 	}
 	
-	public void handleSelection(T selectedElement) {
+	public void handleSelection(EObject selectedElement) {
 		setSelection(selectedElement);
 		callback.handleSet(selectedElement);
 	}
@@ -348,12 +345,12 @@ public class AdvancedEObjectFlatComboViewer<T extends EObject> implements IPrope
 		setSelection(callback.handleCreate());
 	}
 
-	public interface EObjectFlatComboViewerListener<T extends EObject> {
-		public void handleSet(T element);
+	public interface EObjectFlatComboViewerListener {
+		public void handleSet(EObject element);
 
-		public void navigateTo(T element);
+		public void navigateTo(EObject element);
 
-		public T handleCreate();
+		public EObject handleCreate();
 	}
 
 	/**

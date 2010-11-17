@@ -44,7 +44,7 @@ public class ReferencesTableContentProvider extends AdapterFactoryContentProvide
 				return ((ReferencesTableSettings)inputElement).getValue();
 			else if (kind == MATCHING_VALUES_KIND) {
 				Object choiceOfValues = ((ReferencesTableSettings)inputElement).choiceOfValues(adapterFactory);
-				return choiceOfValues instanceof List?((List)choiceOfValues).toArray():new Object[] { choiceOfValues};
+				return choiceOfValues instanceof List?((List<?>)choiceOfValues).toArray():new Object[] { choiceOfValues};
 			}
 		}
 		return super.getElements(inputElement);
