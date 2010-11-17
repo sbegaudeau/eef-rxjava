@@ -28,9 +28,6 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('EObjectFlatComboViewer')).involvedPropertiesEditionElement() )]
-import [pee.model.eType.qualifiedName(basePackage)/];
-[/for]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'EObjectFlatComboViewer')]
@@ -48,7 +45,7 @@ create[editor.name.toJavaClassifier()/]FlatComboViewer(parent);
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
-		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, [editor.involvedPropertiesEditionElement(pec).model.lowerBound = 0/]);
+		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
@@ -87,18 +84,10 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvide
 import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedEObjectFlatComboViewer')).involvedPropertiesEditionElement().model.eType.ePackage->asSet() )]
-import [ePackage.qualifiedMetamodelPackage(basePackage)/];
-import [ePackage.qualifiedMetamodelFactory(basePackage)/];
-[/for]
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedEObjectFlatComboViewer')).involvedPropertiesEditionElement() )]
-import [pee.model.eType.qualifiedName(basePackage)/];
-import [pee.model.eContainingClass.qualifiedName(basePackage)/];
-[/for]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-	private AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElement().model.eType.name/]> [editor.name.toJavaIdentifier()/];
+	private AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 	protected ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
 [/template]
 
@@ -114,13 +103,13 @@ create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(parent);
 	protected Composite create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		// create callback listener
-		EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]> listener = new EObjectFlatComboViewerListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>(){
-			public void handleSet([editor.involvedPropertiesEditionElement().model.eType.name/] element){
+		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
+			public void handleSet(EObject element){
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
 			}
-			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element){ }
+			public void navigateTo(EObject element){ }
 			
-			public [editor.involvedPropertiesEditionElement().model.eType.name/] handleCreate() {
+			public EObject handleCreate() {
 				[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 				[if (editor.involvedPropertiesEditionElement().hasModelNavigation())]
 				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editor.involvedPropertiesEditionElement().navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
@@ -143,8 +132,7 @@ create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(parent);
 			}
 		};
 		//create widget
-		[editor.name.toJavaIdentifier()/] = new AdvancedEObjectFlatComboViewer<[editor.involvedPropertiesEditionElement().model.eType.name/]>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/],
-			resourceSet, [editor.name.toJavaIdentifier()/]Filter, [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), listener);
+		[editor.name.toJavaIdentifier()/] = new AdvancedEObjectFlatComboViewer([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], resourceSet, [editor.name.toJavaIdentifier()/]Filter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		[editor.name.toJavaIdentifier()/].createControls(parent);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);

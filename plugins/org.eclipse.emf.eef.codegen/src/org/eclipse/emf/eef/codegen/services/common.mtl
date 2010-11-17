@@ -517,7 +517,6 @@ Object
 [query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =
 	 peElement.element.category.eContainer(components::PropertiesEditionContext).categories.bindings->select(oclIsTypeOf(components::PropertiesEditionComponent)).oclAsType(components::PropertiesEditionComponent).properties->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(pee : components::PropertiesEditionElement | pee.model=f)->first()/]
 
-
 [query public involvedPropertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
 	 element.eInverse()->select(oclIsTypeOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->first()/]
 

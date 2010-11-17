@@ -37,9 +37,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('ReferencesTable')).involvedPropertiesEditionElement())]
-import [pee.model.eType.qualifiedName(basePackage)/];
-[/for]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'ReferencesTable')]
@@ -261,12 +258,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedReferencesTable')).involvedPropertiesEditionElement().model.eType.ePackage->asSet() )]
-import [ePackage.qualifiedMetamodelPackage(basePackage)/];
-[/for]
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedReferencesTable')).involvedPropertiesEditionElement() )]
-import [pee.model.eType.qualifiedName(basePackage)/];
-[/for]
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
@@ -287,10 +278,10 @@ create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(Composite parent) {
-		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(resourceSet, [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
-				"[editor.involvedPropertiesEditionElement().model.eType.name/]", [editor.involvedPropertiesEditionElement().editionElementPackage()/].eINSTANCE.get[editor.involvedPropertiesEditionElement().model.eType.name/](), current.eResource()) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog([editor.name.toJavaIdentifier()/].getInput(), [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
+				"[editor.name/]", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -304,10 +295,10 @@ create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 				};
 				dialog.open();
 			}
-			public void handleEdit([editor.involvedPropertiesEditionElement().model.eType.name/] element) { edit[editor.name.toJavaClassifier()/](element); }
-			public void handleMove([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }
-			public void handleRemove([editor.involvedPropertiesEditionElement().model.eType.name/] element) { removeFrom[editor.name.toJavaClassifier()/](element); }
-			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element) { }
+			public void handleEdit(EObject element) { edit[editor.name.toJavaClassifier()/](element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFrom[editor.name.toJavaClassifier()/](element); }
+			public void navigateTo(EObject element) { }
 		});
 		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		this.[editor.name.toJavaIdentifier()/].createControls(parent);
@@ -328,10 +319,8 @@ create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void move[editor.name.toJavaClassifier()/](EObject element, int oldIndex, int newIndex) {
-		[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and not editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		[editor.name.toJavaIdentifier()/].refresh();
-		[/if]
 	}
 
 	/**

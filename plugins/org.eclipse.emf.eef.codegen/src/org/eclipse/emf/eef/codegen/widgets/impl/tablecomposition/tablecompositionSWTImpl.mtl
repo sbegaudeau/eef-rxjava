@@ -37,13 +37,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TableColumn;
-
-[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('TableComposition')).involvedPropertiesEditionElement().model.eType.ePackage->asSet() )]
-import [ePackage.qualifiedMetamodelFactory(basePackage)/];
-[/for]
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('TableComposition')).involvedPropertiesEditionElement() )]
-import [pee.model.eType.qualifiedName(basePackage)/];
-[/for]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'TableComposition')]
@@ -264,12 +257,6 @@ import java.util.Map;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.jface.viewers.ViewerFilter;
-[for (ePackage : EPackage | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedTableComposition')).involvedPropertiesEditionElement().model.eType.ePackage->asSet() )]
-import [ePackage.qualifiedMetamodelFactory(basePackage)/];
-[/for]
-[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('AdvancedTableComposition')).involvedPropertiesEditionElement() )]
-import [pee.model.eType.qualifiedName(basePackage)/];
-[/for]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedTableComposition')]
@@ -288,24 +275,24 @@ create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]AdvancedTableComposition(Composite parent) {
-		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener<[editor.involvedPropertiesEditionElement().model.eType.name/]>() {			
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener() {			
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				[editor.name.toJavaIdentifier()/].refresh();			
 			}
-			public void handleEdit([editor.involvedPropertiesEditionElement().model.eType.name/] element) {  
+			public void handleEdit(EObject element) {  
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				[editor.name.toJavaIdentifier()/].refresh();
 			}
-			public void handleMove([editor.involvedPropertiesEditionElement().model.eType.name/] element, int oldIndex, int newIndex) { 
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
 				[editor.name.toJavaIdentifier()/].refresh();
 			}
-			public void handleRemove([editor.involvedPropertiesEditionElement().model.eType.name/] element) { 
+			public void handleRemove(EObject element) { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				[editor.name.toJavaIdentifier()/].refresh();
 			}
-			public void navigateTo([editor.involvedPropertiesEditionElement().model.eType.name/] element) { }
+			public void navigateTo(EObject element) { }
 		});
 		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		this.[editor.name.toJavaIdentifier()/].createControls(parent);
