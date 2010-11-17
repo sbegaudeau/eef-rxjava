@@ -192,7 +192,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.SWT_KIND));
-		representation = new EObjectFlatComboViewer(parent, true);
+		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.SWT_KIND));
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		representation.addSelectionChangedListener(new ISelectionChangedListener() {

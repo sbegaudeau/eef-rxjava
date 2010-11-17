@@ -185,7 +185,7 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ContainerPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Container.Properties.representation, ViewsViewsRepository.FORM_KIND));
-		representation = new EObjectFlatComboViewer(parent, true);
+		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.Container.Properties.representation, ViewsViewsRepository.FORM_KIND));
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
 		representation.setLayoutData(representationData);

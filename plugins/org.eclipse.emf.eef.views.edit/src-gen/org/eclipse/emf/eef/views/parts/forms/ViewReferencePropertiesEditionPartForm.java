@@ -185,7 +185,7 @@ public class ViewReferencePropertiesEditionPartForm extends CompositePropertiesE
 	 */
 	protected Composite createReferencedViewFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.FORM_KIND));
-		referencedView = new EObjectFlatComboViewer(parent, false);
+		referencedView = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.FORM_KIND));
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData referencedViewData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedView.setLayoutData(referencedViewData);

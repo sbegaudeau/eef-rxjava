@@ -184,7 +184,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 	 */
 	protected Composite createReferencedViewFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.SWT_KIND));
-		referencedView = new EObjectFlatComboViewer(parent, false);
+		referencedView = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.SWT_KIND));
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		referencedView.addSelectionChangedListener(new ISelectionChangedListener() {
