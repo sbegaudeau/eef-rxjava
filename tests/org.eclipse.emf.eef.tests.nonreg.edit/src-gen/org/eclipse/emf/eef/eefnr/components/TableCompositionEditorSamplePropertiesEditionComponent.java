@@ -100,8 +100,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
-																																																																																																																																																																																																
-																																																																																																																																																																																																// End of user code
+																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																	// End of user code
 			
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -116,8 +116,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-																																																																																																																																																																																																
-																																																																																																																																																																																																// End of user code
+																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																	// End of user code
 			
 		}
 		// init values for referenced views

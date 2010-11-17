@@ -47,6 +47,7 @@ public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProvi
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
 		return (editingContext.getEObject() instanceof RadioSample) && (refinement == RadioSamplePropertiesEditionComponent.class);
 	}
@@ -56,6 +57,7 @@ public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProvi
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
 		return (editingContext.getEObject() instanceof RadioSample) && ((RadioSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == RadioSamplePropertiesEditionComponent.class));
 	}
@@ -89,6 +91,7 @@ public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProvi
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
+	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
 		if (editingContext.getEObject() instanceof RadioSample) {
 			if (RadioSamplePropertiesEditionComponent.BASE_PART.equals(part)

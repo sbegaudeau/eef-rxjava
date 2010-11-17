@@ -16,8 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.eefnr.EefnrPackage;
-import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
@@ -144,10 +142,10 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 */
 	protected Composite createReferenceAdvancedReferencesTable(Composite parent) {
-		this.reference = new ReferencesTable(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener<TotalSample>() {
+		this.reference = new ReferencesTable(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(resourceSet, referenceFilters, referenceBusinessFilters,
-				"TotalSample", EefnrPackage.eINSTANCE.getTotalSample(), current.eResource()) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(reference.getInput(), referenceFilters, referenceBusinessFilters,
+				"reference", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -161,10 +159,10 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 				};
 				dialog.open();
 			}
-			public void handleEdit(TotalSample element) { editReference(element); }
-			public void handleMove(TotalSample element, int oldIndex, int newIndex) { moveReference(element, oldIndex, newIndex); }
-			public void handleRemove(TotalSample element) { removeFromReference(element); }
-			public void navigateTo(TotalSample element) { }
+			public void handleEdit(EObject element) { editReference(element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { moveReference(element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFromReference(element); }
+			public void navigateTo(EObject element) { }
 		});
 		this.reference.setHelpText(propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, ReferencesViewsRepository.SWT_KIND));
 		this.reference.createControls(parent);

@@ -49,6 +49,7 @@ public class ReferenceEnabledSamplePropertiesEditionProvider extends PropertiesE
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
 		return (editingContext.getEObject() instanceof ReferenceEnabledSample) && (refinement == ReferenceEnabledSampleBasePropertiesEditionComponent.class || refinement == AbstractSamplePropertiesEditionComponent.class);
 	}
@@ -58,6 +59,7 @@ public class ReferenceEnabledSamplePropertiesEditionProvider extends PropertiesE
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
 		return (editingContext.getEObject() instanceof ReferenceEnabledSample) && ((ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReferenceEnabledSampleBasePropertiesEditionComponent.class) || (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractSamplePropertiesEditionComponent.class));
 	}
@@ -93,6 +95,7 @@ public class ReferenceEnabledSamplePropertiesEditionProvider extends PropertiesE
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
+	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
 		if (editingContext.getEObject() instanceof ReferenceEnabledSample) {
 			if (ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(part)

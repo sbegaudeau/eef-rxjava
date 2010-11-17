@@ -47,6 +47,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider ext
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
 		return (editingContext.getEObject() instanceof DeferedFlatReferenceTableEditorSample) && (refinement == DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent.class);
 	}
@@ -56,6 +57,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider ext
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
 		return (editingContext.getEObject() instanceof DeferedFlatReferenceTableEditorSample) && ((DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDFLATREFERENCESTABLESAMPLE_PART.equals(part) && refinement == DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent.class));
 	}
@@ -89,6 +91,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider ext
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
+	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
 		if (editingContext.getEObject() instanceof DeferedFlatReferenceTableEditorSample) {
 			if (DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDFLATREFERENCESTABLESAMPLE_PART.equals(part)
