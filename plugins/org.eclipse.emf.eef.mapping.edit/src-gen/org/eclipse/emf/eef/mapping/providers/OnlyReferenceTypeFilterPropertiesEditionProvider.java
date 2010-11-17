@@ -51,6 +51,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
 		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && (refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
 	}
@@ -60,6 +61,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
 		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && ((OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
@@ -97,6 +99,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider extends Properties
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
+	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
 		if (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) {
 			if (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part)

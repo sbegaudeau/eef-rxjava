@@ -193,7 +193,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 */
 	protected Composite createFeatureFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.SWT_KIND));
-		feature = new EObjectFlatComboViewer(parent, false);
+		feature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.SWT_KIND));
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		feature.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -216,7 +216,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 */
 	protected Composite createDiscriminatorTypeFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.SWT_KIND));
-		discriminatorType = new EObjectFlatComboViewer(parent, true);
+		discriminatorType = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.SWT_KIND));
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		discriminatorType.addSelectionChangedListener(new ISelectionChangedListener() {

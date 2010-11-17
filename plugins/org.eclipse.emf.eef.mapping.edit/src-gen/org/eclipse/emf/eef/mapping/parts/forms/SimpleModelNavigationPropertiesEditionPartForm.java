@@ -194,7 +194,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	 */
 	protected Composite createFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.FORM_KIND));
-		feature = new EObjectFlatComboViewer(parent, false);
+		feature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.FORM_KIND));
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData featureData = new GridData(GridData.FILL_HORIZONTAL);
 		feature.setLayoutData(featureData);
@@ -223,7 +223,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	 */
 	protected Composite createDiscriminatorTypeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.FORM_KIND));
-		discriminatorType = new EObjectFlatComboViewer(parent, true);
+		discriminatorType = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.FORM_KIND));
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData discriminatorTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		discriminatorType.setLayoutData(discriminatorTypeData);

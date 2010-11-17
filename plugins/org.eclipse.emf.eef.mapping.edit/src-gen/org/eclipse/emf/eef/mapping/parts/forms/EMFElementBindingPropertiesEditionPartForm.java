@@ -43,8 +43,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.eef.views.View;
-import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -230,7 +228,7 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.EMFElementBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFElementBinding.Binding.model, MappingViewsRepository.FORM_KIND));
-		model = new EObjectFlatComboViewer(parent, false);
+		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.EMFElementBinding.Binding.model, MappingViewsRepository.FORM_KIND));
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		model.setLayoutData(modelData);
@@ -256,10 +254,10 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(MappingMessages.EMFElementBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<View>() {
+		this.views = new ReferencesTable(MappingMessages.EMFElementBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<View>(resourceSet, viewsFilters, viewsBusinessFilters,
-				"View", ViewsPackage.eINSTANCE.getView(), current.eResource()) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(views.getInput(), viewsFilters, viewsBusinessFilters,
+				"views", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -272,10 +270,10 @@ public class EMFElementBindingPropertiesEditionPartForm extends CompositePropert
 				};
 				dialog.open();
 			}
-			public void handleEdit(View element) { editViews(element); }
-			public void handleMove(View element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
-			public void handleRemove(View element) { removeFromViews(element); }
-			public void navigateTo(View element) { }
+			public void handleEdit(EObject element) { editViews(element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFromViews(element); }
+			public void navigateTo(EObject element) { }
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFElementBinding.Binding.views, MappingViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);

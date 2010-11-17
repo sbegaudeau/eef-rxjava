@@ -134,7 +134,7 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	 */
 	protected Composite createBindingFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND));
-		binding = new EObjectFlatComboViewer(parent, false);
+		binding = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND));
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData bindingData = new GridData(GridData.FILL_HORIZONTAL);
 		binding.setLayoutData(bindingData);

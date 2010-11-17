@@ -136,7 +136,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	 */
 	protected Composite createReferencedFeatureFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, MappingViewsRepository.SWT_KIND));
-		referencedFeature = new EObjectFlatComboViewer(parent, true);
+		referencedFeature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, MappingViewsRepository.SWT_KIND));
 		referencedFeature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		referencedFeature.addSelectionChangedListener(new ISelectionChangedListener() {

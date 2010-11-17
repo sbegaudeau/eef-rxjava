@@ -127,7 +127,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	 */
 	protected Composite createBindingFlatComboViewer(Composite parent) {
 		SWTUtils.createPartLabel(parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.SWT_KIND));
-		binding = new EObjectFlatComboViewer(parent, false);
+		binding = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.SWT_KIND));
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		binding.addSelectionChangedListener(new ISelectionChangedListener() {

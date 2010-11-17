@@ -18,8 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
@@ -41,8 +39,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.eef.views.ElementEditor;
-import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -224,10 +220,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * 
 	 */
 	protected Composite createModelReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.model = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener<EStructuralFeature>() {
+		this.model = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener	() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<EStructuralFeature>(resourceSet, modelFilters, modelBusinessFilters,
-				"EStructuralFeature", EcorePackage.eINSTANCE.getEStructuralFeature(), current.eResource()) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(model.getInput(), modelFilters, modelBusinessFilters,
+				"model", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -240,10 +236,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 				};
 				dialog.open();
 			}
-			public void handleEdit(EStructuralFeature element) { editModel(element); }
-			public void handleMove(EStructuralFeature element, int oldIndex, int newIndex) { moveModel(element, oldIndex, newIndex); }
-			public void handleRemove(EStructuralFeature element) { removeFromModel(element); }
-			public void navigateTo(EStructuralFeature element) { }
+			public void handleEdit(EObject element) { editModel(element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { moveModel(element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFromModel(element); }
+			public void navigateTo(EObject element) { }
 		});
 		this.model.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, MappingViewsRepository.FORM_KIND));
 		this.model.createControls(parent, widgetFactory);
@@ -260,6 +256,8 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * 
 	 */
 	protected void moveModel(EObject element, int oldIndex, int newIndex) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		model.refresh();
 	}
 
 	/**
@@ -289,10 +287,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener<ElementEditor>() {
+		this.views = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
 			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog<ElementEditor>(resourceSet, viewsFilters, viewsBusinessFilters,
-				"ElementEditor", ViewsPackage.eINSTANCE.getElementEditor(), current.eResource()) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(views.getInput(), viewsFilters, viewsBusinessFilters,
+				"views", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 					@Override
 					public void process(IStructuredSelection selection) {
 						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
@@ -305,10 +303,10 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 				};
 				dialog.open();
 			}
-			public void handleEdit(ElementEditor element) { editViews(element); }
-			public void handleMove(ElementEditor element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
-			public void handleRemove(ElementEditor element) { removeFromViews(element); }
-			public void navigateTo(ElementEditor element) { }
+			public void handleEdit(EObject element) { editViews(element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFromViews(element); }
+			public void navigateTo(EObject element) { }
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views, MappingViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);

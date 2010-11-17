@@ -117,8 +117,8 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-																																																												
-																																																												// End of user code
+																																																															
+																																																															// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -133,8 +133,8 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																												
-																																																												// End of user code
+																																																															
+																																																															// End of user code
 			
 		}
 		// init values for referenced views

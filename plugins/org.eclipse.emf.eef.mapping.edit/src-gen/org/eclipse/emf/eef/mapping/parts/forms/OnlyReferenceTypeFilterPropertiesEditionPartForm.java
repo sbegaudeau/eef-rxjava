@@ -145,7 +145,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 */
 	protected Composite createReferencedFeatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, MappingViewsRepository.FORM_KIND));
-		referencedFeature = new EObjectFlatComboViewer(parent, true);
+		referencedFeature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_, MappingViewsRepository.FORM_KIND));
 		referencedFeature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		GridData referencedFeatureData = new GridData(GridData.FILL_HORIZONTAL);
 		referencedFeature.setLayoutData(referencedFeatureData);
