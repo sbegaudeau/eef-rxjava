@@ -13,9 +13,11 @@ package org.eclipse.emf.eef.runtime.ui.viewers;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * @author <a href="mailto:sbouchet@obeo.fr">sbouchet</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  *
  */
 public abstract class PropertiesEditionMessageManager {
@@ -26,11 +28,19 @@ public abstract class PropertiesEditionMessageManager {
 
 	public void processMessage(IPropertiesEditionEvent event) {
 		if (event instanceof PropertiesValidationEditionEvent) {
-			Diagnostic diag = ((PropertiesValidationEditionEvent)event).getDiagnostic();
+			final Diagnostic diag = ((PropertiesValidationEditionEvent)event).getDiagnostic();
 			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
-				updateStatus(computeMessage(diag));
+				Display.getDefault().asyncExec(new Runnable() {
+					public void run() {
+						updateStatus(computeMessage(diag));
+					}
+				});
 			} else {
-					updateStatus(null);
+				Display.getDefault().asyncExec(new Runnable() {
+					public void run() {
+						updateStatus(null);
+					}
+				});
 			}
 		}
 	}

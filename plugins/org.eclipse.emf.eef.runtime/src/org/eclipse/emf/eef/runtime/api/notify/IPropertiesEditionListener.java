@@ -17,7 +17,7 @@ package org.eclipse.emf.eef.runtime.api.notify;
 public interface IPropertiesEditionListener {
 
 	/**
-	 * Specify that a feature value has changed
+	 * Specifies that a feature value has changed
 	 * 
 	 * @param event
 	 *            the object

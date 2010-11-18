@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
  * A stateful element to edit an EObject divided in one or more parts.
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  */
 public interface IPropertiesEditionComponent extends IPropertiesEditionListener {
 
@@ -88,6 +89,23 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 */
 	public Diagnostic validate();
 
+	/**
+	 * Specifies that a feature value has changed and will be fired later.
+	 * 
+	 * @param event
+	 */
+	void delayedFirePropertiesChanged(IPropertiesEditionEvent event);
+	
+	/**
+	 * Activates this controller. Do nothing it it is already activated.
+	 */
+	public void activate();
+	
+	/**
+	 * Deactivates this controller. Do nothing if it is not activated.
+	 */
+	public void deactivate();
+	
 	/**
 	 * Listening management - Adding a new listener.
 	 * 

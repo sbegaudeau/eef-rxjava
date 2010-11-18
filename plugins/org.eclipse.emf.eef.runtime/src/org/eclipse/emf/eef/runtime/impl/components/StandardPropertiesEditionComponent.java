@@ -13,6 +13,10 @@ package org.eclipse.emf.eef.runtime.impl.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -29,9 +33,14 @@ import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  */
 public abstract class StandardPropertiesEditionComponent implements IPropertiesEditionComponent {
 
+	private static final long DELAY = 500L;
+
+	public static final Object FIRE_PROPERTIES_CHANGED_JOB_FAMILY = new Object();
+	
 	/**
 	 * List of IPropertiesEditionComponentListeners
 	 */
@@ -47,6 +56,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 */
 	protected EditingDomain liveEditingDomain;
 
+	/**
+	 * the job that will fire the property changed event
+	 */
+	protected FirePropertiesChangedJob firePropertiesChangedJob;
+	
 	/**
 	 * the editing mode
 	 */
@@ -176,6 +190,76 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 		}
 	}
 
+	/** 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#lazyFirePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 */
+	public void delayedFirePropertiesChanged(IPropertiesEditionEvent event) {
+		if (getFirePropertiesChangedJob().cancel()) {
+			getFirePropertiesChangedJob().setEvent(event);
+			getFirePropertiesChangedJob().schedule(DELAY);
+		} else {
+			try {
+				getFirePropertiesChangedJob().join();
+				getFirePropertiesChangedJob().setEvent(event);
+				getFirePropertiesChangedJob().schedule();
+			} catch (InterruptedException e) {
+				getFirePropertiesChangedJob().setEvent(null);
+			}
+		}
+	}
+	
+	protected FirePropertiesChangedJob getFirePropertiesChangedJob() {
+		if (firePropertiesChangedJob == null) {
+			firePropertiesChangedJob = new FirePropertiesChangedJob("Fire properties changed...");
+		}
+		return firePropertiesChangedJob;
+	}
+
+	protected class FirePropertiesChangedJob extends Job {
+
+		private IPropertiesEditionEvent fEvent;
+
+		public FirePropertiesChangedJob(String name) {
+			super(name);
+		}
+		
+		@Override
+		public boolean belongsTo(Object family) {
+			return family == FIRE_PROPERTIES_CHANGED_JOB_FAMILY;
+		}
+
+		@Override
+		public boolean shouldSchedule() {
+			return fEvent != null;
+		}
+		
+		@Override
+		public boolean shouldRun() {
+			return fEvent != null;
+		}
+		
+		@Override
+		protected void canceling() {
+			super.canceling();
+			fEvent = null;
+		}
+		
+		public void setEvent(IPropertiesEditionEvent event) {
+			fEvent = event;
+		}
+		
+		@Override
+		protected IStatus run(IProgressMonitor monitor) {
+			deactivate();
+			firePropertiesChanged(fEvent);
+			activate();
+			fEvent = null;
+			return Status.OK_STATUS;
+		}
+	}
+	
 	/**
 	 * Update the model in response to a view event
 	 * @param event the view event

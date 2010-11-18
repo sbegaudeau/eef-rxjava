@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  *
  */
 public abstract class SinglePartPropertiesEditingComponent extends StandardPropertiesEditionComponent {
@@ -54,9 +55,31 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		this.editingContext = editingContext;
 		if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 			semanticAdapter = initializeSemanticAdapter();
-			this.semanticObject.eAdapters().add(semanticAdapter);
 		}
 		this.editing_mode = editing_mode;
+		activate();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see IPropertiesEditionComponent#activate()
+	 */
+	public void activate() {
+		if (semanticAdapter != null) {
+			this.semanticObject.eAdapters().add(semanticAdapter);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see IPropertiesEditionComponent#deactivate()
+	 */
+	public void deactivate() {
+		if (semanticAdapter != null) {
+			this.semanticObject.eAdapters().remove(semanticAdapter);
+		}
 	}
 	
 	/**
@@ -120,8 +143,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * 
 	 */
 	public void dispose() {
-		if (semanticAdapter != null)
-			semanticObject.eAdapters().remove(semanticAdapter);
+		deactivate();
 	}
 	
 	/**

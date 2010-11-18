@@ -30,6 +30,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  */
 public class ComposedPropertiesEditionComponent implements IPropertiesEditionComponent {
 
@@ -165,6 +166,25 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 		}
 	}
 
+	public void delayedFirePropertiesChanged(IPropertiesEditionEvent event) {
+		for (IPropertiesEditionComponent propertiesEditionComponent : subComponents) {
+			if (!event.hold(propertiesEditionComponent))
+				propertiesEditionComponent.delayedFirePropertiesChanged(event);
+		}
+	}
+	
+	public void activate() {
+		for (IPropertiesEditionComponent propertiesEditionComponent : subComponents) {
+			propertiesEditionComponent.activate();
+		}
+	}
+	
+	public void deactivate() {
+		for (IPropertiesEditionComponent propertiesEditionComponent : subComponents) {
+			propertiesEditionComponent.deactivate();
+		}
+	}
+	
 	/**
 	 * Add a new component of the managed components
 	 * 
