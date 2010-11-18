@@ -24,6 +24,8 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
 import org.eclipse.jface.viewers.ISelection;
@@ -187,9 +189,22 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @return the root element, or <code>null</code> if none
 	 */
 	protected Object getRoot() {
-		return getInput();
+		return getEObjectFromInput();
 	}
 
+	/**
+	 * @return
+	 */
+	public EObject getEObjectFromInput() {
+		EObject result = null;
+		if (getInput() instanceof EObject) {
+			result = (EObject) getInput();
+		} else if (getInput() instanceof PropertiesEditingContext) {
+			result = ((PropertiesEditingContext)getInput()).getEObject();
+		}
+		return result;
+	}
+	
 	/* =============================== Filters management =============================== */
 
 	/**
@@ -420,6 +435,17 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	}
 
 	/**
+	 * @param propertiesEditionContentProvider
+	 * @return 
+	 */
+	public CompositePropertiesEditionPart getSelectedPart() {
+		PropertiesEditionContentProvider propertiesEditionContentProvider = (PropertiesEditionContentProvider)getContentProvider();
+		String selectedPartTitle = folder.getSelection().getText();
+		return (CompositePropertiesEditionPart) propertiesEditionContentProvider.getPropertiesEditionPart(kind, selectedPartTitle);
+	}
+
+
+	/**
 	 * Create the control content
 	 */
 	protected void initControl() {
@@ -440,23 +466,21 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param propertiesEditionProvider
 	 * @param partsList
 	 */
-	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider,
-			String[] partsList) {
+	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider, String[] partsList) {
 		resetTab();
 		List<String> selectedParts = new ArrayList<String>();
 		if (kind == 1) {
 			toolkit.adapt(folder, true, true);
 			toolkit.getColors().initializeSectionToolBarColors();
-		    folder.setSelectionBackground(new Color []{
-		      toolkit.getColors().getColor(IFormColors.H_GRADIENT_END),
-		      toolkit.getColors().getColor(IFormColors.H_GRADIENT_START) }, new int []{ 25 }, true);
-		    folder.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
-		    folder.setSelectionForeground(toolkit.getColors().getColor(IFormColors.TITLE));
+			folder.setSelectionBackground(new Color []{
+					toolkit.getColors().getColor(IFormColors.H_GRADIENT_END),
+					toolkit.getColors().getColor(IFormColors.H_GRADIENT_START) }, new int []{ 25 }, true);
+			folder.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
+			folder.setSelectionForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 		}
 		for (int i = 0; i < partsList.length; i++) {
 			String nextComponentKey = partsList[i];
-			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind,
-					nextComponentKey);
+			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind, nextComponentKey);
 			if (selectPart(nextComponentKey, part)) {
 				selectedParts.add(nextComponentKey);
 				addPartTab(propertiesEditionProvider, part, nextComponentKey);
@@ -491,12 +515,12 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			editComposite = ((IFormPropertiesEditionPart)part).createFigure(folder, toolkit);
 		}
 		if (editComposite != null) {
-			if (allResources == null && getInput() != null)
+			if (allResources == null && getEObjectFromInput() != null)
 				propertiesEditionProvider.initPart(propertiesEditionProvider.translatePart(key), kind,
-						((EObject)getInput()));
+						((EObject)getEObjectFromInput()));
 			else
 				propertiesEditionProvider.initPart(propertiesEditionProvider.translatePart(key), kind,
-						((EObject)getInput()), allResources);
+						((EObject)getEObjectFromInput()), allResources);
 		} else
 			editComposite = new Composite(folder, SWT.NONE);
 		CTabItem tab = new CTabItem(folder, SWT.NONE);
@@ -558,7 +582,6 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			scroll.setMinSize(folder.getSelection().getControl().computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		}
 	}
-	
 	
 	private class ItemListener implements ControlListener{
 
