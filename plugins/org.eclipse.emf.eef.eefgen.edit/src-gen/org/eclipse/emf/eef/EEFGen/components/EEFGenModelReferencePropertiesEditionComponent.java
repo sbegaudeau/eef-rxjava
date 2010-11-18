@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.EEFGen.EEFGenFactory;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenModelReference;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
@@ -26,7 +27,11 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPar
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -93,8 +98,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for reference
-																																				
-																																				// End of user code
+																																							
+																																							// End of user code
 			
 		}
 		// init values for referenced views
@@ -115,7 +120,20 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)semanticObject;
 		if (EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel == event.getAffectedEditor()) {
-			referencedContextSettings.setToReference((EEFGenModel)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				referencedContextSettings.setToReference((EEFGenModel)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EEFGenModel eObject = EEFGenFactory.eINSTANCE.createEEFGenModel();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				referencedContextSettings.setToReference(eObject);
+			}
 		}
 	}
 

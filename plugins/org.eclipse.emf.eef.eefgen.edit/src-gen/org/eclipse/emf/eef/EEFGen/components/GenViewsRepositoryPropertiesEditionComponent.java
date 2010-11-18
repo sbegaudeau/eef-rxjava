@@ -31,10 +31,15 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.views.ViewsFactory;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -112,8 +117,8 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for viewsRepository
-																																				
-																																				// End of user code
+																																							
+																																							// End of user code
 			
 		}
 		// init values for referenced views
@@ -150,7 +155,20 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			genViewsRepository.setHelpStrategy((HELP_STRATEGY)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository == event.getAffectedEditor()) {
-			viewsRepositorySettings.setToReference((ViewsRepository)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				viewsRepositorySettings.setToReference((ViewsRepository)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				ViewsRepository eObject = ViewsFactory.eINSTANCE.createViewsRepository();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				viewsRepositorySettings.setToReference(eObject);
+			}
 		}
 	}
 
