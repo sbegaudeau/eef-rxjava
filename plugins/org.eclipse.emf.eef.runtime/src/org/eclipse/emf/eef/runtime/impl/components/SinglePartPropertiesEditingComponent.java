@@ -20,11 +20,6 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  *
  */
 public abstract class SinglePartPropertiesEditingComponent extends StandardPropertiesEditionComponent {
-
-	/**
-	 * Editing context
-	 */
-	protected PropertiesEditingContext editingContext;
 	
 	/**
 	 * EObject to edit

@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -94,7 +95,7 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 			if (eObject != null) {
 				if (viewer.getToolkit() == null)
 					viewer.setToolkit(toolkit);
-				viewer.setInput(eObject);
+				viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject));
 				viewer.addPropertiesListener(this);
 			}
 		}

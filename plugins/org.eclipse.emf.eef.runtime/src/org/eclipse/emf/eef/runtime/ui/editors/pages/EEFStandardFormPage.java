@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
@@ -105,7 +106,7 @@ public class EEFStandardFormPage extends FormPage {
 	 *            the input of the page
 	 */
 	public void setInput(EObject newEObject) {
-		viewer.setInput(newEObject);
+		viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, newEObject));
 	}
 	
 	/**

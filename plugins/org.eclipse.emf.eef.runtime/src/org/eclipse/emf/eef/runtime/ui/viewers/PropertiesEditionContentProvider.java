@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
@@ -82,18 +83,31 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 			PropertiesContextService.getInstance().pop();
 			propertiesEditionComponent.dispose();
 		}
-		PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider) adapterFactory.adapt((EObject)newInput, PropertiesEditingProvider.class);
-		if (propertiesEditionProvider != null) {
+		EObject eObject = null;
+		PropertiesEditingContext context = null;
+		if (newInput instanceof EObject) {
+			eObject = (EObject)newInput;
 			if (mode == IPropertiesEditionComponent.LIVE_MODE) {
-				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject)newInput), mode);
-				propertiesEditionComponent.setLiveEditingDomain(editingDomain);
+				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
 			} else if (mode == IPropertiesEditionComponent.BATCH_MODE) {
-				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(new EObjectPropertiesEditionContext(null, null, (EObject)newInput, adapterFactory), mode);
+				context = new EObjectPropertiesEditionContext(null, null, eObject, adapterFactory);
+			}
+		} else if (newInput instanceof EObjectPropertiesEditionContext) {
+			context = (PropertiesEditingContext) newInput;
+			eObject = context.getEObject();
+		}
+		if (eObject != null) {
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider) adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			if (propertiesEditionProvider != null) {
+				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(context, mode);
+				if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+					propertiesEditionComponent.setLiveEditingDomain(editingDomain);
+				} 
 			}
 		}
 
 		// FIXME: find a better way to manage the context
-		PropertiesContextService.getInstance().push((EObject)newInput, propertiesEditionComponent);
+		PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 	}
 
 	/**

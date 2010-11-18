@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
@@ -60,6 +61,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * the job that will fire the property changed event
 	 */
 	protected FirePropertiesChangedJob firePropertiesChangedJob;
+
+	/**
+	 * Editing context
+	 */
+	protected PropertiesEditingContext editingContext;
 	
 	/**
 	 * the editing mode
@@ -83,7 +89,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 *      int, org.eclipse.emf.ecore.EObject)
 	 */
 	public void initPart(Object key, int kind, EObject element) {
-		this.initPart(key, kind, element, element.eResource().getResourceSet());
+		this.initPart(key, kind, element, editingContext.getResourceSet());
 	}
 	
 	/**

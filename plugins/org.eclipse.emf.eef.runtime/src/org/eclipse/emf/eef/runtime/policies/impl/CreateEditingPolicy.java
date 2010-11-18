@@ -3,8 +3,11 @@
  */
 package org.eclipse.emf.eef.runtime.policies.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -33,13 +36,23 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
 	public void execute() {
-		PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getAdapterFactory(), editionContext.getEReference());
+		EClassifier eType = editionContext.getEReference().getEType();
+		PropertiesEditionWizard wizard;
+		if (eType instanceof EClass && ((EClass)eType).isAbstract()) {
+			wizard = new PropertiesEditionWizard(null, editionContext.getAdapterFactory(), editionContext.getEReference());
+		}
+		else {
+			EObject create = EcoreUtil.create((EClass) eType);
+			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
+		}
 		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
 		int executionResult = wDialog.open();
 		result = wizard.getEObject();
 		ChangeDescription change = editionContext.getChangeRecorder().endRecording();
-		if (executionResult == Window.CANCEL)
+		if (executionResult == Window.CANCEL) {
 			change.applyAndReverse();
+			result = null;
+		}
 	}
 
 	/**
