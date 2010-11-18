@@ -314,27 +314,7 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="("/>
-      <body xsi:type="ocl.ecore:PropertyCallExp">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-            <source xsi:type="mtl:QueryInvocation">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-              <definition href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
-              <argument xsi:type="ocl.ecore:VariableExp" name="elementEditor" referredVariable="/0/addSignature/elementEditor">
-                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-              </argument>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
-          </source>
-          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
-        </source>
-        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" newValue)"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(Object newValue)"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
       </parameter>
@@ -366,27 +346,7 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="("/>
-      <body xsi:type="ocl.ecore:PropertyCallExp">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <source xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-            <source xsi:type="mtl:QueryInvocation">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-              <definition href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
-              <argument xsi:type="ocl.ecore:VariableExp" name="elementEditor" referredVariable="/0/removeSignature/elementEditor">
-                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-              </argument>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//EMFPropertyBinding/model"/>
-          </source>
-          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
-        </source>
-        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" newValue)"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(Object newValue)"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
       </parameter>
@@ -1998,11 +1958,11 @@
           <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="element">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
+        <eParameters name="peElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         </eParameters>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        <eParameters name="f">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
         </eParameters>
       </eOperations>
       <eOperations name="involvedPropertiesEditionElement">
@@ -2016,6 +1976,9 @@
         <eParameters name="element">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </eParameters>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        </eParameters>
       </eOperations>
       <eOperations name="involvedPropertiesEditionElement">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -2025,11 +1988,8 @@
           <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="view">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
-        </eParameters>
-        <eParameters name="pec">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+        <eParameters name="element">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </eParameters>
       </eOperations>
       <eOperations name="involvedPropertiesEditionElement">
@@ -2040,11 +2000,11 @@
           <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-        <eParameters name="peElement">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+        <eParameters name="view">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement"/>
         </eParameters>
-        <eParameters name="f">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
       </eOperations>
       <eOperations name="involvedPropertiesEditionComponent">
@@ -3593,7 +3553,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement"/>
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="pec">
@@ -3605,7 +3565,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
       </eOperations>
@@ -4365,7 +4325,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="pec">
@@ -4804,7 +4764,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
+          <references href="../../../services/common.emtl#/0/involvedPropertiesEditionElement"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="f">
@@ -5637,9 +5597,6 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
@@ -5662,9 +5619,6 @@
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -6193,7 +6147,7 @@
     </eAnnotations>
     <eAnnotations source="positions.103" references="/0/addSignature">
       <details key="start" value="2778"/>
-      <details key="end" value="3003"/>
+      <details key="end" value="2928"/>
       <details key="line" value="73"/>
     </eAnnotations>
     <eAnnotations source="positions.104" references="/0/addSignature/@body.0">
@@ -6218,137 +6172,77 @@
     </eAnnotations>
     <eAnnotations source="positions.108" references="/0/addSignature/@body.2">
       <details key="start" value="2899"/>
-      <details key="end" value="2900"/>
+      <details key="end" value="2916"/>
       <details key="line" value="74"/>
     </eAnnotations>
-    <eAnnotations source="positions.109" references="/0/addSignature/@body.3">
-      <details key="start" value="2901"/>
-      <details key="end" value="2979"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.110" references="/0/addSignature/@body.3/@source">
-      <details key="start" value="2901"/>
-      <details key="end" value="2961"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.111" references="/0/addSignature/@body.3/@source/@source">
-      <details key="start" value="2901"/>
-      <details key="end" value="2955"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.112" references="/0/addSignature/@body.3/@source/@source/@source">
-      <details key="start" value="2901"/>
-      <details key="end" value="2949"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.113" references="/0/addSignature/@body.3/@source/@source/@source/elementEditor">
-      <details key="start" value="2901"/>
-      <details key="end" value="2914"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.114" references="/0/addSignature/@body.4">
-      <details key="start" value="2981"/>
-      <details key="end" value="2991"/>
-      <details key="line" value="74"/>
-    </eAnnotations>
-    <eAnnotations source="positions.115" references="/0/addSignature/elementEditor">
+    <eAnnotations source="positions.109" references="/0/addSignature/elementEditor">
       <details key="start" value="2808"/>
       <details key="end" value="2837"/>
       <details key="line" value="73"/>
     </eAnnotations>
-    <eAnnotations source="positions.116" references="/0/removeSignatureDocumentation">
-      <details key="start" value="3005"/>
-      <details key="end" value="3216"/>
+    <eAnnotations source="positions.110" references="/0/removeSignatureDocumentation">
+      <details key="start" value="2930"/>
+      <details key="end" value="3141"/>
       <details key="line" value="77"/>
     </eAnnotations>
-    <eAnnotations source="positions.117" references="/0/removeSignatureDocumentation/@body.0">
-      <details key="start" value="3084"/>
-      <details key="end" value="3115"/>
+    <eAnnotations source="positions.111" references="/0/removeSignatureDocumentation/@body.0">
+      <details key="start" value="3009"/>
+      <details key="end" value="3040"/>
       <details key="line" value="78"/>
     </eAnnotations>
-    <eAnnotations source="positions.118" references="/0/removeSignatureDocumentation/@body.1">
-      <details key="start" value="3116"/>
-      <details key="end" value="3134"/>
+    <eAnnotations source="positions.112" references="/0/removeSignatureDocumentation/@body.1">
+      <details key="start" value="3041"/>
+      <details key="end" value="3059"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.119" references="/0/removeSignatureDocumentation/@body.1/elementEditor">
-      <details key="start" value="3116"/>
+    <eAnnotations source="positions.113" references="/0/removeSignatureDocumentation/@body.1/elementEditor">
+      <details key="start" value="3041"/>
+      <details key="end" value="3054"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/removeSignatureDocumentation/@body.2">
+      <details key="start" value="3061"/>
       <details key="end" value="3129"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.120" references="/0/removeSignatureDocumentation/@body.2">
-      <details key="start" value="3136"/>
-      <details key="end" value="3204"/>
       <details key="line" value="79"/>
     </eAnnotations>
-    <eAnnotations source="positions.121" references="/0/removeSignatureDocumentation/elementEditor">
-      <details key="start" value="3051"/>
-      <details key="end" value="3080"/>
+    <eAnnotations source="positions.115" references="/0/removeSignatureDocumentation/elementEditor">
+      <details key="start" value="2976"/>
+      <details key="end" value="3005"/>
       <details key="line" value="77"/>
     </eAnnotations>
-    <eAnnotations source="positions.122" references="/0/removeSignature">
-      <details key="start" value="3218"/>
-      <details key="end" value="3449"/>
+    <eAnnotations source="positions.116" references="/0/removeSignature">
+      <details key="start" value="3143"/>
+      <details key="end" value="3299"/>
       <details key="line" value="84"/>
     </eAnnotations>
-    <eAnnotations source="positions.123" references="/0/removeSignature/@body.0">
-      <details key="start" value="3284"/>
-      <details key="end" value="3305"/>
+    <eAnnotations source="positions.117" references="/0/removeSignature/@body.0">
+      <details key="start" value="3209"/>
+      <details key="end" value="3230"/>
       <details key="line" value="85"/>
     </eAnnotations>
-    <eAnnotations source="positions.124" references="/0/removeSignature/@body.1">
-      <details key="start" value="3306"/>
-      <details key="end" value="3343"/>
+    <eAnnotations source="positions.118" references="/0/removeSignature/@body.1">
+      <details key="start" value="3231"/>
+      <details key="end" value="3268"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.125" references="/0/removeSignature/@body.1/@argument.0">
-      <details key="start" value="3306"/>
-      <details key="end" value="3324"/>
+    <eAnnotations source="positions.119" references="/0/removeSignature/@body.1/@argument.0">
+      <details key="start" value="3231"/>
+      <details key="end" value="3249"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.126" references="/0/removeSignature/@body.1/@argument.0/elementEditor">
-      <details key="start" value="3306"/>
-      <details key="end" value="3319"/>
+    <eAnnotations source="positions.120" references="/0/removeSignature/@body.1/@argument.0/elementEditor">
+      <details key="start" value="3231"/>
+      <details key="end" value="3244"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.127" references="/0/removeSignature/@body.2">
-      <details key="start" value="3345"/>
-      <details key="end" value="3346"/>
+    <eAnnotations source="positions.121" references="/0/removeSignature/@body.2">
+      <details key="start" value="3270"/>
+      <details key="end" value="3287"/>
       <details key="line" value="85"/>
     </eAnnotations>
-    <eAnnotations source="positions.128" references="/0/removeSignature/@body.3">
-      <details key="start" value="3347"/>
-      <details key="end" value="3425"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.129" references="/0/removeSignature/@body.3/@source">
-      <details key="start" value="3347"/>
-      <details key="end" value="3407"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.130" references="/0/removeSignature/@body.3/@source/@source">
-      <details key="start" value="3347"/>
-      <details key="end" value="3401"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.131" references="/0/removeSignature/@body.3/@source/@source/@source">
-      <details key="start" value="3347"/>
-      <details key="end" value="3395"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.132" references="/0/removeSignature/@body.3/@source/@source/@source/elementEditor">
-      <details key="start" value="3347"/>
-      <details key="end" value="3360"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.133" references="/0/removeSignature/@body.4">
-      <details key="start" value="3427"/>
-      <details key="end" value="3437"/>
-      <details key="line" value="85"/>
-    </eAnnotations>
-    <eAnnotations source="positions.134" references="/0/removeSignature/elementEditor">
-      <details key="start" value="3251"/>
-      <details key="end" value="3280"/>
+    <eAnnotations source="positions.122" references="/0/removeSignature/elementEditor">
+      <details key="start" value="3176"/>
+      <details key="end" value="3205"/>
       <details key="line" value="84"/>
     </eAnnotations>
   </ecore:EAnnotation>
