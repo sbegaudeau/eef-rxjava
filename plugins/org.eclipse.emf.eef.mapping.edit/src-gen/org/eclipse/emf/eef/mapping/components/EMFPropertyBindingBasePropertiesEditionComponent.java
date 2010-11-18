@@ -30,10 +30,14 @@ import org.eclipse.emf.eef.mapping.parts.EMFPropertyBindingPropertiesEditionPart
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -117,8 +121,8 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-																																																															
-																																																															// End of user code
+																																																																		
+																																																																		// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -133,8 +137,8 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																															
-																																																															// End of user code
+																																																																		
+																																																																		// End of user code
 			
 		}
 		// init values for referenced views
@@ -169,7 +173,22 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			}
 		}
 		if (MappingViewsRepository.EMFPropertyBinding.Binding.model == event.getAffectedEditor()) {
-			modelSettings.setToReference((EStructuralFeature)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				modelSettings.setToReference((EStructuralFeature)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, MappingPackage.eINSTANCE.getEMFPropertyBinding_Model(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+						if (resultEObject != null) {
+							modelSettings.setToReference(resultEObject);
+						}
+					}
+				}
+			}
 		}
 	}
 

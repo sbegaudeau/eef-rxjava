@@ -26,7 +26,12 @@ import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditio
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -93,8 +98,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for binding
-																																																															
-																																																															// End of user code
+																																																																		
+																																																																		// End of user code
 			
 		}
 		// init values for referenced views
@@ -115,7 +120,22 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ElementBindingReference elementBindingReference = (ElementBindingReference)semanticObject;
 		if (MappingViewsRepository.ElementBindingReference.Reference.binding == event.getAffectedEditor()) {
-			bindingSettings.setToReference((AbstractElementBinding)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				bindingSettings.setToReference((AbstractElementBinding)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+						if (resultEObject != null) {
+							bindingSettings.setToReference(resultEObject);
+						}
+					}
+				}
+			}
 		}
 	}
 
