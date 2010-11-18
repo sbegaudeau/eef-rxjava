@@ -18,13 +18,18 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
+import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -102,8 +107,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
-																																																																																																																																																																																																																																	
-																																																																																																						// End of user code
+																																																																																																																																																																																																																																													
+																																																																																																																		// End of user code
 			
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 			
@@ -118,8 +123,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
-																																																																																																																																																																																																																																	
-																																																																																																						// End of user code
+																																																																																																																																																																																																																																													
+																																																																																																																		// End of user code
 			
 		}
 		// init values for referenced views
@@ -141,10 +146,36 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)semanticObject;
 		if (EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
-			eobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				eobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				eobjectflatcomboviewerRequiredProperySettings.setToReference(eObject);
+			}
 		}
 		if (EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
-			eobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				eobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				eobjectflatcomboviewerOptionalProperySettings.setToReference(eObject);
+			}
 		}
 	}
 
