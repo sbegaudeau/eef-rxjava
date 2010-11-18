@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.components.components;
 
 // Start of user code for imports
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -26,7 +27,11 @@ import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -93,8 +98,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																									
-																																																									// End of user code
+																																																												
+																																																												// End of user code
 			
 		}
 		// init values for referenced views
@@ -115,7 +120,20 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)semanticObject;
 		if (ComponentsViewsRepository.PropertiesEditionContext.Binding.model == event.getAffectedEditor()) {
-			modelSettings.setToReference((GenPackage)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				modelSettings.setToReference((GenPackage)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				GenPackage eObject = GenModelFactory.eINSTANCE.createGenPackage();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				modelSettings.setToReference(eObject);
+			}
 		}
 	}
 
