@@ -110,24 +110,7 @@ create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(parent);
 			public void navigateTo(EObject element){ }
 			
 			public EObject handleCreate() {
-				[if (editor.involvedPropertiesEditionElement().model.eType.oclIsTypeOf(ecore::EClass) and editor.involvedPropertiesEditionElement().model.eType.oclAsType(ecore::EClass).abstract)]
-				[if (editor.involvedPropertiesEditionElement().hasModelNavigation())]
-				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationMetamodelFactory()/]Factory.eINSTANCE.create[editor.involvedPropertiesEditionElement().navigation.oclAsType(mapping::navigation::SimpleModelNavigation).simpleModelNavigationType()/]();
-				[else]
-				// TODO
-				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = null;
-				[/if]
-				[else]
-				[editor.involvedPropertiesEditionElement().model.eType.name/] eObject = [editor.involvedPropertiesEditionElement().metamodelFactory()/].eINSTANCE.create[editor.involvedPropertiesEditionElement().model.eType.name/]();
-				[/if]
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, eObject, adapterFactory);
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-				PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
 				return null;
 			}
 		};

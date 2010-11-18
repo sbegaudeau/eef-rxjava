@@ -71,7 +71,7 @@
 [/template]
 
 [template public addSignature(elementEditor : ElementEditor) ]
-	public void addTo[elementEditor.name.toJavaClassifier()/]([elementEditor.involvedPropertiesEditionElement().model.eType.instanceClassName/] newValue)
+	public void addTo[elementEditor.name.toJavaClassifier()/](Object newValue)
 [/template]
 
 [template public removeSignatureDocumentation(elementEditor : ElementEditor) ]
@@ -82,5 +82,5 @@
 [/template]
 
 [template public removeSignature(elementEditor : ElementEditor) ]
-	public void removeTo[elementEditor.name.toJavaClassifier()/]([elementEditor.involvedPropertiesEditionElement().model.eType.instanceClassName/] newValue)
+	public void removeTo[elementEditor.name.toJavaClassifier()/](Object newValue)
 [/template]
