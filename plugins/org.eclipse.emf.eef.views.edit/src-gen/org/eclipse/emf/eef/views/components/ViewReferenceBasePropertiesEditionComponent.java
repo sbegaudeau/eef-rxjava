@@ -23,8 +23,13 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.views.ViewElement;
@@ -101,8 +106,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for view
-																																													
-																																													// End of user code
+																																																
+																																																// End of user code
 			
 		}
 		// init values for referenced views
@@ -127,7 +132,22 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			viewReference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (ViewsViewsRepository.ViewReference.Properties.referencedView == event.getAffectedEditor()) {
-			viewSettings.setToReference((ViewElement)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				viewSettings.setToReference((ViewElement)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ViewsPackage.eINSTANCE.getViewReference_View(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+						if (resultEObject != null) {
+							viewSettings.setToReference(resultEObject);
+						}
+					}
+				}
+			}
 		}
 	}
 

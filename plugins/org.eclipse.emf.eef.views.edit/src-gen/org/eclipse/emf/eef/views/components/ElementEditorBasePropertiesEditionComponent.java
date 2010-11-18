@@ -23,10 +23,15 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
 import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
@@ -102,8 +107,8 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for representation
-																																													
-																																													// End of user code
+																																																
+																																																// End of user code
 			
 			
 			
@@ -128,7 +133,20 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ElementEditor elementEditor = (ElementEditor)semanticObject;
 		if (ViewsViewsRepository.ElementEditor.Properties.representation == event.getAffectedEditor()) {
-			representationSettings.setToReference((Widget)event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
+				representationSettings.setToReference((Widget)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				Widget eObject = ToolkitsFactory.eINSTANCE.createWidget();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				representationSettings.setToReference(eObject);
+			}
 		}
 		if (ViewsViewsRepository.ElementEditor.Properties.name == event.getAffectedEditor()) {
 			elementEditor.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
