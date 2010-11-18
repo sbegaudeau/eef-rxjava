@@ -19,6 +19,9 @@
    <feature id="org.eclipse.emf.eef.runtime" version="0.0.0">
       <category name="eef.features"/>
    </feature>
+   <feature id="org.eclipse.emf.eef.extended" version="0.0.0">
+      <category name="eef.extension"/>
+   </feature>
    <category-def name="eef.features" label="EEF Features (Incubation)">
       <description>
          Contains all necessary features for EEF
@@ -28,6 +31,12 @@
       <description>
          EEF integration for specific cases :
          - UML2
+      </description>
+   </category-def>
+   <category-def name="eef.extension" label="EEF Extension (Incubation)">
+      <description>
+         EEF with thirdparties :
+         - RichText Widget ( EPF )
       </description>
    </category-def>
 </site>
