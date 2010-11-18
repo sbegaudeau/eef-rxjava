@@ -22,7 +22,7 @@
    <feature id="org.eclipse.emf.eef.extended" version="0.0.0">
       <category name="eef.extension"/>
    </feature>
-   <category-def name="eef.features" label="EEF Features (Incubation)">
+   <category-def name="eef.features" label="EEF Common (Incubation)">
       <description>
          Contains all necessary features for EEF
       </description>
