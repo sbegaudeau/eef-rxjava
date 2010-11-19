@@ -21,6 +21,7 @@
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'RichText')]
 import org.eclipse.epf.richtext.IRichText;
 import org.eclipse.epf.richtext.IRichTextToolBar;
+import org.eclipse.epf.richtext.RichText;
 import org.eclipse.epf.richtext.RichTextToolBar;
 import org.eclipse.epf.richtext.actions.AddImageAction;
 import org.eclipse.epf.richtext.actions.AddLinkAction;
@@ -33,6 +34,7 @@ import org.eclipse.epf.richtext.actions.CopyAction;
 import org.eclipse.epf.richtext.actions.CutAction;
 import org.eclipse.epf.richtext.actions.FindReplaceAction;
 import org.eclipse.epf.richtext.actions.FontNameAction;
+import org.eclipse.epf.richtext.actions.FontSizeAction;
 import org.eclipse.epf.richtext.actions.FontStyleAction;
 import org.eclipse.epf.richtext.actions.IndentAction;
 import org.eclipse.epf.richtext.actions.ItalicAction;
@@ -83,7 +85,7 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 		});
 		
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
-		fillToolBar(toolBar, documentation);
+		fillToolBar(toolBar, [editor.name.toJavaIdentifier()/]);
 		return parent;
 	}
 	
