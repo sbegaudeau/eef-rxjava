@@ -14,6 +14,9 @@
       To install these features, point Eclipse at this site.
    </description>
    <feature id="org.eclipse.emf.eef.sdk" version="0.0.0">
+      <category name="eef.sdk"/>
+   </feature>
+      <feature id="org.eclipse.emf.eef.edt" version="0.0.0">
       <category name="eef.features"/>
    </feature>
    <feature id="org.eclipse.emf.eef.runtime" version="0.0.0">
@@ -22,9 +25,23 @@
    <feature id="org.eclipse.emf.eef.extended" version="0.0.0">
       <category name="eef.extension"/>
    </feature>
+   <category-def name="eef.sdk" label="EEF SDK (Incubation)">
+      <description>
+         EEF SDK package, containing ( with source ) : 
+         - EEF runtime
+         - EEF metamodels
+         - EEF generators
+         - EEF documentation
+         - EEF extended capabilities
+      </description>
+   </category-def>
    <category-def name="eef.features" label="EEF Common (Incubation)">
       <description>
-         Contains all necessary features for EEF
+         Contains all necessary features for EEF :
+         - EEF runtime
+         - EEF metamodels
+         - EEF generators
+         - EEF documentation
       </description>
    </category-def>
    <category-def name="eef.integration" label="EEF Integration (Incubation)">
