@@ -45,6 +45,22 @@ http://www.eclipse.org/legal/epl-v10.html
          id="org.eclipse.emf.eef.runtime.source"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.emf.eef.extended.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.eef.extended"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.eef.edt.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.eef.edt"
+         version="0.0.0"/>
+
    <requires>
       <import feature="org.eclipse.emf.validation" version="1.1.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.acceleo" version="3.0.0" match="greaterOrEqual"/>
@@ -60,96 +76,5 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.ui.ide" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.4.0" match="greaterOrEqual"/>
    </requires>
-
-   <plugin
-         id="org.eclipse.emf.eef.components"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.components.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.components.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.mapping"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.mapping.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.views"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.views.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.views.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.codegen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.eefgen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.eefgen.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.eefgen.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.eef.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
 </feature>
