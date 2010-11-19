@@ -78,7 +78,6 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		
 		[editor.name.toJavaIdentifier()/].addModifyListener(new ModifyListener() {
-			@Override
 			public void modifyText(ModifyEvent e) {
 				propertiesEditionComponent.delayedFirePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editorID(editor)/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 			}
@@ -131,7 +130,6 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
             /**
              * @see org.eclipse.epf.richtext.actions.FindReplaceAction#execute(org.eclipse.epf.richtext.IRichText)
              */
-            @Override
             public void execute(IRichText rText)
             {
                 rText.getFindReplaceAction().execute(rText);
