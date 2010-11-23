@@ -97,15 +97,15 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
-																																																																																																																																																																																																																																													
-																																																																																																																																																																																																																																													// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																																																																																																																																															// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
-		
 		setInitializing(false);
 	}
 

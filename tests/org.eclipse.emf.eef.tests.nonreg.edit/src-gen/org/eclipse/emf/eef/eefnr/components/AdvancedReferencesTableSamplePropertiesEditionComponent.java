@@ -101,8 +101,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
-																																																																																																																																																																																																																																													
-																																																																																																																		// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																				// End of user code
 			
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -120,14 +120,14 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
-																																																																																																																																																																																																																																													
-																																																																																																																		// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																				// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 

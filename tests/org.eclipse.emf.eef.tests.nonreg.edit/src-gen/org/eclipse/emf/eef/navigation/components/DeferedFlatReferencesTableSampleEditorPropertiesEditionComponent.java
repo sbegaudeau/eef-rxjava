@@ -54,7 +54,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	/**
 	 * Settings for flatReferencesTableSampleEditor ReferencesTable
 	 */
-	private	ReferencesTableSettings flatreferenceEditorSettings;
+	private	ReferencesTableSettings flatReferencesTableSampleEditorSettings;
 	
 	/**
 	 * Default constructor
@@ -84,8 +84,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			if (deferedFlatReferenceTableEditorSample.getName() != null)
 				deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferenceTableEditorSample.getName()));
 			
-			flatreferenceEditorSettings = new ReferencesTableSettings(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-			deferedFlatReferencesTableSamplePart.initFlatReferencesTableSampleEditor(flatreferenceEditorSettings);
+			flatReferencesTableSampleEditorSettings = new ReferencesTableSettings(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedFlatReferencesTableSamplePart.initFlatReferencesTableSampleEditor(flatReferencesTableSampleEditorSettings);
 			// init filters
 			
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new ViewerFilter() {
@@ -104,14 +104,14 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			});
 			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-																																																																																																																																																																																																																																													
-																																																																																																																																																																																																																																													// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																																																																																																																																															// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
@@ -131,7 +131,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 		}
 		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
-				flatreferenceEditorSettings.setToReference((List<EObject>) event.getNewValue());
+				flatReferencesTableSampleEditorSettings.setToReference((List<EObject>) event.getNewValue());
 		}
 	}
 
@@ -148,7 +148,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 				deferedFlatReferencesTableSamplePart.setName("");
 			}
 		}
-		if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+		if (flatReferencesTableSampleEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 			deferedFlatReferencesTableSamplePart.updateFlatReferencesTableSampleEditor();
 		
 	}

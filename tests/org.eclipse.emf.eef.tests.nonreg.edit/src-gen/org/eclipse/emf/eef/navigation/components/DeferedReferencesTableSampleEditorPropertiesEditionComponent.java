@@ -52,7 +52,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	/**
 	 * Settings for flatReferencesTableSampleEditor ReferencesTable
 	 */
-	private	ReferencesTableSettings flatreferenceEditorSettings;
+	private	ReferencesTableSettings flatReferencesTableSampleEditorSettings;
 	
 	/**
 	 * Default constructor
@@ -82,8 +82,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			if (deferedReferenceTableEditorSample.getName() != null)
 				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
 			
-			flatreferenceEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
-			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatreferenceEditorSettings);
+			flatReferencesTableSampleEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			deferedReferencesTableSamplePart.initReferencesTableSampleEditor(flatReferencesTableSampleEditorSettings);
 			// init filters
 			
 			deferedReferencesTableSamplePart.addFilterToReferencesTableSampleEditor(new ViewerFilter() {
@@ -99,14 +99,14 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			
 			});
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-																																																																																																																																																																																																																																													
-																																																																																																																																																																																																																																													// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																																																																																																																																															// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
@@ -127,10 +127,10 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		if (NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
-					flatreferenceEditorSettings.addToReference((EObject) event.getNewValue());
+					flatReferencesTableSampleEditorSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					flatreferenceEditorSettings.removeFromReference((EObject) event.getNewValue());
+					flatReferencesTableSampleEditorSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 	}
@@ -148,7 +148,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 				deferedReferencesTableSamplePart.setName("");
 			}
 		}
-		if (flatreferenceEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+		if (flatReferencesTableSampleEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 			deferedReferencesTableSamplePart.updateReferencesTableSampleEditor();
 		
 	}

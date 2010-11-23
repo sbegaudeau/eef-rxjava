@@ -147,21 +147,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 */
 	protected Composite createReferenceReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.reference = new ReferencesTable(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener	() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(reference.getInput(), referenceFilters, referenceBusinessFilters,
-				"reference", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-					@Override
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						reference.refresh();
-					}
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addReference(); }
 			public void handleEdit(EObject element) { editReference(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveReference(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromReference(element); }
@@ -181,9 +167,28 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * 
 	 */
+	protected void addReference() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(reference.getInput(), referenceFilters, referenceBusinessFilters,
+		"reference", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				reference.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveReference(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		reference.refresh();
+		reference.refresh();	
 	}
 
 	/**

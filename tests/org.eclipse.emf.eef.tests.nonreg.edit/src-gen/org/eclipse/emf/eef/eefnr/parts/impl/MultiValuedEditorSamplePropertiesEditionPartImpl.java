@@ -250,7 +250,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 	
-	public void addToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+	public void addToMultivaluededitorRequiredProperty(Object newValue) {
 		multivaluededitorRequiredPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
@@ -259,7 +259,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 	
-	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+	public void removeToMultivaluededitorRequiredProperty(Object newValue) {
 		multivaluededitorRequiredPropertyList.remove(newValue);		
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
@@ -294,7 +294,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 	
-	public void addToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+	public void addToMultivaluededitorOptionalProperty(Object newValue) {
 		multivaluededitorOptionalPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
@@ -303,7 +303,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		}
 	}
 	
-	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+	public void removeToMultivaluededitorOptionalProperty(Object newValue) {
 		multivaluededitorOptionalPropertyList.remove(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());

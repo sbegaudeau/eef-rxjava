@@ -645,22 +645,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected Composite createReferencestableRequiredPropertyAdvancedReferencesTable(Composite parent) {
 		this.referencestableRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(referencestableRequiredProperty.getInput(), referencestableRequiredPropertyFilters, referencestableRequiredPropertyBusinessFilters,
-				"referencestableRequiredProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						referencestableRequiredProperty.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addReferencestableRequiredProperty(); }
 			public void handleEdit(EObject element) { editReferencestableRequiredProperty(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveReferencestableRequiredProperty(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromReferencestableRequiredProperty(element); }
@@ -680,9 +665,28 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * 
 	 */
+	protected void addReferencestableRequiredProperty() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(referencestableRequiredProperty.getInput(), referencestableRequiredPropertyFilters, referencestableRequiredPropertyBusinessFilters,
+		"referencestableRequiredProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				referencestableRequiredProperty.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveReferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		referencestableRequiredProperty.refresh();
+		referencestableRequiredProperty.refresh();	
 	}
 
 	/**
@@ -713,22 +717,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected Composite createReferencestableOptionalPropertyAdvancedReferencesTable(Composite parent) {
 		this.referencestableOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(referencestableOptionalProperty.getInput(), referencestableOptionalPropertyFilters, referencestableOptionalPropertyBusinessFilters,
-				"referencestableOptionalProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						referencestableOptionalProperty.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addReferencestableOptionalProperty(); }
 			public void handleEdit(EObject element) { editReferencestableOptionalProperty(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveReferencestableOptionalProperty(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromReferencestableOptionalProperty(element); }
@@ -748,9 +737,28 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * 
 	 */
+	protected void addReferencestableOptionalProperty() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(referencestableOptionalProperty.getInput(), referencestableOptionalPropertyFilters, referencestableOptionalPropertyBusinessFilters,
+		"referencestableOptionalProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				referencestableOptionalProperty.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveReferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		referencestableOptionalProperty.refresh();
+		referencestableOptionalProperty.refresh();	
 	}
 
 	/**
@@ -1251,22 +1259,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected Composite createAdvancedreferencestableRequiredPropertyAdvancedReferencesTable(Composite parent) {
 		this.advancedreferencestableRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableRequiredPropertyLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableRequiredProperty.getInput(), advancedreferencestableRequiredPropertyFilters, advancedreferencestableRequiredPropertyBusinessFilters,
-				"advancedreferencestableRequiredProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						advancedreferencestableRequiredProperty.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addAdvancedreferencestableRequiredProperty(); }
 			public void handleEdit(EObject element) { editAdvancedreferencestableRequiredProperty(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAdvancedreferencestableRequiredProperty(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromAdvancedreferencestableRequiredProperty(element); }
@@ -1286,9 +1279,28 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * 
 	 */
+	protected void addAdvancedreferencestableRequiredProperty() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableRequiredProperty.getInput(), advancedreferencestableRequiredPropertyFilters, advancedreferencestableRequiredPropertyBusinessFilters,
+		"advancedreferencestableRequiredProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				advancedreferencestableRequiredProperty.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableRequiredProperty.refresh();
+		advancedreferencestableRequiredProperty.refresh();	
 	}
 
 	/**
@@ -1319,22 +1331,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected Composite createAdvancedreferencestableOptionalPropertyAdvancedReferencesTable(Composite parent) {
 		this.advancedreferencestableOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedreferencestableOptionalPropertyLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableOptionalProperty.getInput(), advancedreferencestableOptionalPropertyFilters, advancedreferencestableOptionalPropertyBusinessFilters,
-				"advancedreferencestableOptionalProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						advancedreferencestableOptionalProperty.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addAdvancedreferencestableOptionalProperty(); }
 			public void handleEdit(EObject element) { editAdvancedreferencestableOptionalProperty(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAdvancedreferencestableOptionalProperty(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromAdvancedreferencestableOptionalProperty(element); }
@@ -1354,9 +1351,28 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * 
 	 */
+	protected void addAdvancedreferencestableOptionalProperty() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableOptionalProperty.getInput(), advancedreferencestableOptionalPropertyFilters, advancedreferencestableOptionalPropertyBusinessFilters,
+		"advancedreferencestableOptionalProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				advancedreferencestableOptionalProperty.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableOptionalProperty.refresh();
+		advancedreferencestableOptionalProperty.refresh();	
 	}
 
 	/**
@@ -2117,7 +2133,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 	
-	public void addToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+	public void addToMultivaluededitorRequiredProperty(Object newValue) {
 		multivaluededitorRequiredPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
@@ -2126,7 +2142,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 	
-	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue) {
+	public void removeToMultivaluededitorRequiredProperty(Object newValue) {
 		multivaluededitorRequiredPropertyList.remove(newValue);		
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
@@ -2161,7 +2177,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 	
-	public void addToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+	public void addToMultivaluededitorOptionalProperty(Object newValue) {
 		multivaluededitorOptionalPropertyList.add(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
@@ -2170,7 +2186,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 	
-	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue) {
+	public void removeToMultivaluededitorOptionalProperty(Object newValue) {
 		multivaluededitorOptionalPropertyList.remove(newValue);		
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());

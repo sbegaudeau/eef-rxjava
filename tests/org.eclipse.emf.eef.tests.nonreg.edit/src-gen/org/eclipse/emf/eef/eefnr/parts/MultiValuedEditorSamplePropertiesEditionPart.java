@@ -40,13 +40,13 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	 * Add a value to the multivaluededitorRequiredProperty multivalued attribute.
 	 * @param newValue the value to add
 	 */
-	public void addToMultivaluededitorRequiredProperty(java.lang.String newValue);
+	public void addToMultivaluededitorRequiredProperty(Object newValue);
 
 	/**
 	 * Remove a value to the multivaluededitorRequiredProperty multivalued attribute.
 	 * @param newValue the value to remove
 	 */
-	public void removeToMultivaluededitorRequiredProperty(java.lang.String newValue);
+	public void removeToMultivaluededitorRequiredProperty(Object newValue);
 
 
 	/**
@@ -66,13 +66,13 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	 * Add a value to the multivaluededitorOptionalProperty multivalued attribute.
 	 * @param newValue the value to add
 	 */
-	public void addToMultivaluededitorOptionalProperty(java.lang.String newValue);
+	public void addToMultivaluededitorOptionalProperty(Object newValue);
 
 	/**
 	 * Remove a value to the multivaluededitorOptionalProperty multivalued attribute.
 	 * @param newValue the value to remove
 	 */
-	public void removeToMultivaluededitorOptionalProperty(java.lang.String newValue);
+	public void removeToMultivaluededitorOptionalProperty(Object newValue);
 
 
 

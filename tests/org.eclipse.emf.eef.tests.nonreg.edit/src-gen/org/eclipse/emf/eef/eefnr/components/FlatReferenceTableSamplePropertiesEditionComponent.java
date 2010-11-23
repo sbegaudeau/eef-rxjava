@@ -48,12 +48,12 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	/**
 	 * Settings for flatreferencetableRequiredProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings flatreferencestableRequiredPropertySettings;
+	private	ReferencesTableSettings flatreferencetableRequiredPropertySettings;
 	
 	/**
 	 * Settings for flatreferencetableOptionalProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings flatreferencestableOptionalPropertySettings;
+	private	ReferencesTableSettings flatreferencetableOptionalPropertySettings;
 	
 	/**
 	 * Default constructor
@@ -80,10 +80,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			final FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)elt;
 			final FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
 			// init values
-			flatreferencestableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
-			basePart.initFlatreferencetableRequiredProperty(flatreferencestableRequiredPropertySettings);
-			flatreferencestableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
-			basePart.initFlatreferencetableOptionalProperty(flatreferencestableOptionalPropertySettings);
+			flatreferencetableRequiredPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty());
+			basePart.initFlatreferencetableRequiredProperty(flatreferencetableRequiredPropertySettings);
+			flatreferencetableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+			basePart.initFlatreferencetableOptionalProperty(flatreferencetableOptionalPropertySettings);
 			// init filters
 			basePart.addFilterToFlatreferencetableRequiredProperty(new ViewerFilter() {
 			
@@ -101,8 +101,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-																																																																																																																																																																																																																																													
-																																																																																																																		// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																				// End of user code
 			
 			basePart.addFilterToFlatreferencetableOptionalProperty(new ViewerFilter() {
 			
@@ -120,14 +120,14 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
-																																																																																																																																																																																																																																													
-																																																																																																																		// End of user code
+																																																																																																																																																																																																																																																															
+																																																																																																																																				// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
@@ -144,11 +144,11 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
-				flatreferencestableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
+				flatreferencetableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
 		if (EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
-				flatreferencestableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
+				flatreferencetableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
 	}
 

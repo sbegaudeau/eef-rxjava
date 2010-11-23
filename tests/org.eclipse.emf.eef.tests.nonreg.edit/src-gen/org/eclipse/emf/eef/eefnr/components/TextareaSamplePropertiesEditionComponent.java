@@ -74,11 +74,11 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 			// init filters
 			
 			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
