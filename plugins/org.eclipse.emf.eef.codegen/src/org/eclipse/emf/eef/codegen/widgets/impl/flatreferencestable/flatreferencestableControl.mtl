@@ -23,13 +23,13 @@
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]Settings;
+private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
 if (event.getKind() == PropertiesEditionEvent.SET)
-	[editionElement.model.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
@@ -38,8 +38,8 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
-[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
-[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
+[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
@@ -74,23 +74,23 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]Settings;
+private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater  ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
 if (event.getKind() == PropertiesEditionEvent.SET)
-	[editionElement.model.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
-[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
+[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]

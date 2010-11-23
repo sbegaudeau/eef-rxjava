@@ -23,7 +23,7 @@
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]Settings;
+private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
@@ -39,7 +39,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			policy.execute();
 			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
 			if (resultEObject != null) {
-				[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
+				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 			policy.execute();
 			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
 			if (resultEObject != null) {
-				[editionElement.model.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
+				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
 			}
 		}
 	}
@@ -68,7 +68,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		}
 	}
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-		[editionElement.model.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
+		[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 }
 [/template]
 
@@ -80,8 +80,8 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-[editionElement.model.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
-[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.model.name.toJavaIdentifier()/]Settings);
+[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
@@ -113,12 +113,12 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.model.name.toJavaIdentifier()/]Settings;
+private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isReferenceMany() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
 [/template]
 
@@ -156,7 +156,7 @@ if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((
 
 [comment ===== Case : model = Containment(1) - view = TableComposition or AdvancedTableComposition===== /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isContainmentSingle() and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')))]
-if ([editionElement.model.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
 	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
 [/template]
 

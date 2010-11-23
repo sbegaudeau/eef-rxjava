@@ -16,7 +16,6 @@
 [comment --------------- Common queries --------------- /]
 
 [comment Check if at least one views of the propertyBinding is contained by the given view /]
-
 [query public involvedViews(pec : PropertiesEditionComponent) : Sequence(T) = 
 	pec.views->asSequence()->union(pec.referencedBinding.binding.views->select(ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence())))/]
 
@@ -305,7 +304,7 @@ Enumerator
 EList
 [elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer'))]
 EObject
-[elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
+[elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('FlatReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
 List
 [elseif (view.representationName('Checkbox'))]
 Boolean
