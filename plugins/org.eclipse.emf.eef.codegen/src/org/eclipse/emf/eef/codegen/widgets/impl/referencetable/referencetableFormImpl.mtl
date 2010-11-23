@@ -279,21 +279,7 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener	() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog([editor.name.toJavaIdentifier()/].getInput(), [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
-				"[editor.name/]", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-					@Override
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/],
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						[editor.name.toJavaIdentifier()/].refresh();
-					}
-				};
-				dialog.open();
-			}
+			public void handleAdd() { add[editor.name.toJavaClassifier()/](); }
 			public void handleEdit(EObject element) { edit[editor.name.toJavaClassifier()/](element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFrom[editor.name.toJavaClassifier()/](element); }
@@ -317,9 +303,15 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
+	protected void add[editor.name.toJavaClassifier()/]() {
+		[editor.defaultAddOperation()/]	
+	}
+
+	/**
+	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 */
 	protected void move[editor.name.toJavaClassifier()/](EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		[editor.name.toJavaIdentifier()/].refresh();
+		[editor.defaultMoveOperation()/]	
 	}
 
 	/**
@@ -337,6 +329,27 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 	}
 [/template]
 
+[template public defaultAddOperation (editor : ElementEditor) ]
+TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog([editor.name.toJavaIdentifier()/].getInput(), [editor.name.toJavaIdentifier()/]Filters, [editor.name.toJavaIdentifier()/]BusinessFilters,
+"[editor.name/]", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+	@Override
+	public void process(IStructuredSelection selection) {
+		for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+			EObject elem = (EObject) iter.next();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/],
+				PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+		}
+		[editor.name.toJavaIdentifier()/].refresh();
+	}
+};
+dialog.open();
+[/template]
+
+[template public defaultMoveOperation (editor : ElementEditor) ]
+propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+[editor.name.toJavaIdentifier()/].refresh();
+[/template]
+
 [template public defaultEditOperation (editor : ElementEditor) ]
 EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
@@ -349,7 +362,7 @@ if (provider != null) {
 }
 [/template]
 
-[template private defaultRemoveOperation (editor : ElementEditor) ]
+[template public defaultRemoveOperation (editor : ElementEditor) ]
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 [editor.name.toJavaIdentifier()/].refresh();
 [/template]
