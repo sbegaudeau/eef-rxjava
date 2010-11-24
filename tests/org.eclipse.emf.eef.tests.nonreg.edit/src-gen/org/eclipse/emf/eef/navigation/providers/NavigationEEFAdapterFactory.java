@@ -39,4 +39,24 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 		return new DeferedReferencesTableSampleEditorPropertiesEditionProvider();
 	}
 
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.Navigation#createOwnerAdapter()
+	 * 
+	 */
+	public Adapter createOwnerAdapter() {
+		return new OwnerPropertiesEditionProvider();
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.Navigation#createSubtypeAdapter()
+	 * 
+	 */
+	public Adapter createSubtypeAdapter() {
+		return new SubtypePropertiesEditionProvider();
+	}
+
 }

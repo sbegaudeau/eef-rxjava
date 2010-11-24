@@ -47,8 +47,8 @@ public class MultiValuedEditorSamplePropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
 		return (editingContext.getEObject() instanceof MultiValuedEditorSample) && (refinement == MultiValuedEditorSamplePropertiesEditionComponent.class);
 	}
 
@@ -57,8 +57,8 @@ public class MultiValuedEditorSamplePropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
 		return (editingContext.getEObject() instanceof MultiValuedEditorSample) && ((MultiValuedEditorSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == MultiValuedEditorSamplePropertiesEditionComponent.class));
 	}
 
@@ -91,8 +91,8 @@ public class MultiValuedEditorSamplePropertiesEditionProvider extends Properties
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	@SuppressWarnings("rawtypes")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof MultiValuedEditorSample) {
 			if (MultiValuedEditorSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == MultiValuedEditorSamplePropertiesEditionComponent.class)

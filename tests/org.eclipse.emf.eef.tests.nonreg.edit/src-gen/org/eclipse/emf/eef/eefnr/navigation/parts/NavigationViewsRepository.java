@@ -57,4 +57,79 @@ public class NavigationViewsRepository {
 	
 	}
 
+	/**
+	 * Owner view descriptor
+	 * 
+	 */
+	public static class Owner {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::Owner::properties::name";
+			
+			
+			public static String multipleSampleForTableComposition = "navigation::Owner::properties::multipleSampleForTableComposition";
+			
+			
+			public static String multipleSampleForAdvancedTableComposition = "navigation::Owner::properties::multipleSampleForAdvancedTableComposition";
+			
+			
+			public static String multipleSampleForReferencesTable = "navigation::Owner::properties::multipleSampleForReferencesTable";
+			
+			
+			public static String multipleSampleForAdvancedReferencesTable = "navigation::Owner::properties::multipleSampleForAdvancedReferencesTable";
+			
+			
+			public static String multipleSampleForFlatReferencesTable = "navigation::Owner::properties::multipleSampleForFlatReferencesTable";
+			
+			
+			public static String singleSampleForTableComposition = "navigation::Owner::properties::singleSampleForTableComposition";
+			
+			
+			public static String singleSampleForAdvancedTableComposition = "navigation::Owner::properties::singleSampleForAdvancedTableComposition";
+			
+			
+			public static String singleSampleForReferencesTable = "navigation::Owner::properties::singleSampleForReferencesTable";
+			
+			
+			public static String singleSampleForAdvancedReferencesTable = "navigation::Owner::properties::singleSampleForAdvancedReferencesTable";
+			
+			
+			public static String singleSampleForFlatReferencesTable = "navigation::Owner::properties::singleSampleForFlatReferencesTable";
+			
+			
+			public static String singleContainmentForEObjectFlatComboViewer = "navigation::Owner::properties::singleContainmentForEObjectFlatComboViewer";
+			
+			
+			public static String singleReferencesForEObjectFlatComboViewer = "navigation::Owner::properties::singleReferencesForEObjectFlatComboViewer";
+			
+			
+			public static String singleContainmentForAdvancedEObjectFlatComboViewer = "navigation::Owner::properties::singleContainmentForAdvancedEObjectFlatComboViewer";
+			
+			
+			public static String singleReferencesForAdvancedEObjectFlatComboViewer = "navigation::Owner::properties::singleReferencesForAdvancedEObjectFlatComboViewer";
+			
+		
+		}
+	
+	}
+
+	/**
+	 * Subtype view descriptor
+	 * 
+	 */
+	public static class Subtype {
+	
+	public static String ownerView = "navigation::Subtype::ownerView";
+	
+		public static class Specialisation {
+	
+			
+			public static String specialisedElement = "navigation::Subtype::Specialisation::specialisedElement";
+			
+		
+		}
+	
+	}
+
 }

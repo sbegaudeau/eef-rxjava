@@ -32,16 +32,6 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.References#createAbstractSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.util.References#createAbstractEnabledSampleAdapter()
 	 * 
 	 */

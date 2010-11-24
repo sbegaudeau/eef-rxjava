@@ -13,8 +13,12 @@ package org.eclipse.emf.eef.eefnr.navigation.providers;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedFlatReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedReferencesTableSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedFlatReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedReferencesTableSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.OwnerPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SubtypePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
@@ -52,6 +56,18 @@ public class NavigationPropertiesEditionPartProvider implements IPropertiesEditi
 				return new DeferedReferencesTableSamplePropertiesEditionPartImpl(component);
 			if (kind == NavigationViewsRepository.FORM_KIND)
 				return new DeferedReferencesTableSamplePropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.Owner.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new OwnerPropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new OwnerPropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.Subtype.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new SubtypePropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new SubtypePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationItemProviderAdapterFactory.java,v 1.2 2010/09/27 10:02:41 glefur Exp $
+ * $Id: NavigationItemProviderAdapterFactory.java,v 1.3 2010/11/24 21:51:10 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.provider;
 
@@ -145,6 +145,98 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.Owner} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OwnerItemProvider ownerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.Owner}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOwnerAdapter() {
+		if (ownerItemProvider == null) {
+			ownerItemProvider = new OwnerItemProvider(this);
+		}
+
+		return ownerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MultipleReferencerItemProvider multipleReferencerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMultipleReferencerAdapter() {
+		if (multipleReferencerItemProvider == null) {
+			multipleReferencerItemProvider = new MultipleReferencerItemProvider(this);
+		}
+
+		return multipleReferencerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.Subtype} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubtypeItemProvider subtypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.Subtype}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubtypeAdapter() {
+		if (subtypeItemProvider == null) {
+			subtypeItemProvider = new SubtypeItemProvider(this);
+		}
+
+		return subtypeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SingleReferencerItemProvider singleReferencerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSingleReferencerAdapter() {
+		if (singleReferencerItemProvider == null) {
+			singleReferencerItemProvider = new SingleReferencerItemProvider(this);
+		}
+
+		return singleReferencerItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -246,6 +338,10 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 		if (deferedFlatReferenceTableEditorSampleItemProvider != null) deferedFlatReferenceTableEditorSampleItemProvider.dispose();
 		if (deferedReferenceItemProvider != null) deferedReferenceItemProvider.dispose();
 		if (deferedReferenceTableEditorSampleItemProvider != null) deferedReferenceTableEditorSampleItemProvider.dispose();
+		if (ownerItemProvider != null) ownerItemProvider.dispose();
+		if (multipleReferencerItemProvider != null) multipleReferencerItemProvider.dispose();
+		if (subtypeItemProvider != null) subtypeItemProvider.dispose();
+		if (singleReferencerItemProvider != null) singleReferencerItemProvider.dispose();
 	}
 
 }

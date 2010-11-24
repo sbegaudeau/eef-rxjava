@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.8 2010/11/23 15:28:02 glefur Exp $
+ $Id: plugin.xml,v 1.9 2010/11/24 21:51:10 glefur Exp $
 -->
 
 <plugin>
@@ -58,7 +58,6 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
    
-  <!-- EEF extensions -->
   <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory

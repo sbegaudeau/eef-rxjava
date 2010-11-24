@@ -100,8 +100,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
-																																																																																																																																																																																																																																																															
-																																																																																																																																				// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																
+																																																																																																																																																																																																																																																																																																																					// End of user code
 			
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -119,8 +119,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
-																																																																																																																																																																																																																																																															
-																																																																																																																																				// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																
+																																																																																																																																																																																																																																																																																																																					// End of user code
 			
 			// init values for referenced views
 			

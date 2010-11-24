@@ -47,8 +47,8 @@ public class ReferencesTableSamplePropertiesEditionProvider extends PropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
 		return (editingContext.getEObject() instanceof ReferencesTableSample) && (refinement == ReferencesTableSamplePropertiesEditionComponent.class);
 	}
 
@@ -57,8 +57,8 @@ public class ReferencesTableSamplePropertiesEditionProvider extends PropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
 		return (editingContext.getEObject() instanceof ReferencesTableSample) && ((ReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReferencesTableSamplePropertiesEditionComponent.class));
 	}
 
@@ -91,8 +91,8 @@ public class ReferencesTableSamplePropertiesEditionProvider extends PropertiesEd
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	@SuppressWarnings("rawtypes")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof ReferencesTableSample) {
 			if (ReferencesTableSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == ReferencesTableSamplePropertiesEditionComponent.class)

@@ -27,6 +27,12 @@ public class NavigationMessages extends NLS {
 	public static String DeferedReferencesTableSamplePropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String OwnerPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SubtypePropertiesEditionPart_SpecialisationGroupLabel;
+
+	
 	public static String DeferedFlatReferencesTableSample_ReadOnly;
 
 	
@@ -39,6 +45,18 @@ public class NavigationMessages extends NLS {
 	public static String DeferedReferencesTableSample_Part_Title;
 
 	
+	public static String Owner_ReadOnly;
+
+	
+	public static String Owner_Part_Title;
+
+	
+	public static String Subtype_ReadOnly;
+
+	
+	public static String Subtype_Part_Title;
+
+	
 	public static String DeferedFlatReferencesTableSamplePropertiesEditionPart_NameLabel;
 
 	
@@ -49,6 +67,54 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_NameLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_MultipleSampleForTableCompositionLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_MultipleSampleForReferencesTableLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_MultipleSampleForAdvancedReferencesTableLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_MultipleSampleForFlatReferencesTableLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleSampleForTableCompositionLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleSampleForReferencesTableLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleSampleForAdvancedReferencesTableLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleSampleForFlatReferencesTableLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleContainmentForEObjectFlatComboViewerLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleReferencesForEObjectFlatComboViewerLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel;
+
+	
+	public static String OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel;
+
+	
+	public static String SubtypePropertiesEditionPart_SpecialisedElementLabel;
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;
