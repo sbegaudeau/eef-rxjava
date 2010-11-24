@@ -40,10 +40,35 @@
    
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
+            uri="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0"
+            class="org.eclipse.emf.eef.mapping.filters.provider.FiltersItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
             uri="http://www.eclipse.org/emf/eef/mapping/1.0.0"
             class="org.eclipse.emf.eef.mapping.providers.MappingEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0"
+            class="org.eclipse.emf.eef.mapping.providers.MappingEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="hhttp://www.eclipse.org/emf/eef/mapping/filters/1.0.0"
+            class="org.eclipse.emf.eef.mapping.providers.MappingEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
