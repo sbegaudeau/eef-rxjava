@@ -75,11 +75,11 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 			// init filters
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
