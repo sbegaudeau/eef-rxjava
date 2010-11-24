@@ -117,8 +117,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-																																																												
-																																																												// End of user code
+			
+			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -136,15 +136,15 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-																																																												
-																																																												// End of user code
+
+			// End of user code
 			
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 

@@ -442,22 +442,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(views.getInput(), viewsFilters, viewsBusinessFilters,
-				"views", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						views.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromViews(element); }
@@ -477,9 +462,28 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	/**
 	 * 
 	 */
+	protected void addViews() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(views.getInput(), viewsFilters, viewsBusinessFilters,
+		"views", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				views.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();
+		views.refresh();	
 	}
 
 	/**
