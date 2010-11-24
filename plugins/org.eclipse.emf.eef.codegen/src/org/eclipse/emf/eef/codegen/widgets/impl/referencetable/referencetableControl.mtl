@@ -18,7 +18,10 @@
 [import filters /]
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
-[query public validCaseForSimpleReference(editionElement : PropertiesEditionElement) : Boolean = (not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable') /]
+[query public validCaseForSimpleReference(editionElement : PropertiesEditionElement) : Boolean = 
+	not editionElement.hasModelNavigation()
+	and editionElement.model.isReferenceMany() 
+	and editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable') /]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSimpleReference())]
 
