@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationSwitch.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
+ * $Id: NavigationSwitch.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.util;
 
@@ -109,6 +109,33 @@ public class NavigationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case NavigationPackage.OWNER: {
+				Owner owner = (Owner)theEObject;
+				T result = caseOwner(owner);
+				if (result == null) result = caseAbstractSample(owner);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.MULTIPLE_REFERENCER: {
+				MultipleReferencer multipleReferencer = (MultipleReferencer)theEObject;
+				T result = caseMultipleReferencer(multipleReferencer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.SUBTYPE: {
+				Subtype subtype = (Subtype)theEObject;
+				T result = caseSubtype(subtype);
+				if (result == null) result = caseOwner(subtype);
+				if (result == null) result = caseAbstractSample(subtype);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.SINGLE_REFERENCER: {
+				SingleReferencer singleReferencer = (SingleReferencer)theEObject;
+				T result = caseSingleReferencer(singleReferencer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -155,6 +182,66 @@ public class NavigationSwitch<T> {
 	 * @generated
 	 */
 	public T caseDeferedReferenceTableEditorSample(DeferedReferenceTableEditorSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Owner</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Owner</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOwner(Owner object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multiple Referencer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multiple Referencer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultipleReferencer(MultipleReferencer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Subtype</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Subtype</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubtype(Subtype object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Referencer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Referencer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSingleReferencer(SingleReferencer object) {
 		return null;
 	}
 

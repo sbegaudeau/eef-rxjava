@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackageImpl.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -19,9 +20,14 @@ import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
+import org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 
+import org.eclipse.emf.eef.eefnr.navigation.Owner;
+import org.eclipse.emf.eef.eefnr.navigation.SingleReferencer;
+import org.eclipse.emf.eef.eefnr.navigation.Referencer;
+import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 
 import org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl;
@@ -57,6 +63,34 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	private EClass deferedReferenceTableEditorSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ownerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multipleReferencerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subtypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass singleReferencerEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -189,6 +223,195 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOwner() {
+		return ownerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOwner_MultipleReferencers() {
+		return (EReference)ownerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOwner_SingleReferencers() {
+		return (EReference)ownerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMultipleReferencer() {
+		return multipleReferencerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMultipleReferencer_MultipleSampleForTableComposition() {
+		return (EReference)multipleReferencerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMultipleReferencer_MultipleSampleForAdvancedTableComposition() {
+		return (EReference)multipleReferencerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMultipleReferencer_MultipleSampleForReferencesTable() {
+		return (EReference)multipleReferencerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMultipleReferencer_MultipleSampleAdvancedReferencesTable() {
+		return (EReference)multipleReferencerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMultipleReferencer_MultipleSampleForFlatReferencesTable() {
+		return (EReference)multipleReferencerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSubtype() {
+		return subtypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubtype_SpecialisedElement() {
+		return (EAttribute)subtypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSingleReferencer() {
+		return singleReferencerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleSampleForTableComposition() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleSampleForAdvancedTableComposition() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleSampleForReferencesTable() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleSampleAdvancedReferencesTable() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleSampleForFlatReferencesTable() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleContainmentForEObjectFlatComboViewer() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleReferenceForEObjectFlatComboViewer() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer() {
+		return (EReference)singleReferencerEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NavigationFactory getNavigationFactory() {
 		return (NavigationFactory)getEFactoryInstance();
 	}
@@ -220,6 +443,31 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 
 		deferedReferenceTableEditorSampleEClass = createEClass(DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE);
 		createEReference(deferedReferenceTableEditorSampleEClass, DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE__REFERENCES);
+
+		ownerEClass = createEClass(OWNER);
+		createEReference(ownerEClass, OWNER__MULTIPLE_REFERENCERS);
+		createEReference(ownerEClass, OWNER__SINGLE_REFERENCERS);
+
+		multipleReferencerEClass = createEClass(MULTIPLE_REFERENCER);
+		createEReference(multipleReferencerEClass, MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_TABLE_COMPOSITION);
+		createEReference(multipleReferencerEClass, MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION);
+		createEReference(multipleReferencerEClass, MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_REFERENCES_TABLE);
+		createEReference(multipleReferencerEClass, MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_ADVANCED_REFERENCES_TABLE);
+		createEReference(multipleReferencerEClass, MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE);
+
+		subtypeEClass = createEClass(SUBTYPE);
+		createEAttribute(subtypeEClass, SUBTYPE__SPECIALISED_ELEMENT);
+
+		singleReferencerEClass = createEClass(SINGLE_REFERENCER);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_TABLE_COMPOSITION);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_REFERENCES_TABLE);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_SAMPLE_ADVANCED_REFERENCES_TABLE);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_EOBJECT_FLAT_COMBO_VIEWER);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_EOBJECT_FLAT_COMBO_VIEWER);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER);
+		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER);
 	}
 
 	/**
@@ -255,6 +503,8 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		// Add supertypes to classes
 		deferedFlatReferenceTableEditorSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
 		deferedReferenceTableEditorSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
+		ownerEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
+		subtypeEClass.getESuperTypes().add(this.getOwner());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(deferedFlatReferenceTableEditorSampleEClass, DeferedFlatReferenceTableEditorSample.class, "DeferedFlatReferenceTableEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -265,6 +515,31 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 
 		initEClass(deferedReferenceTableEditorSampleEClass, DeferedReferenceTableEditorSample.class, "DeferedReferenceTableEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDeferedReferenceTableEditorSample_References(), this.getDeferedReference(), null, "references", null, 0, -1, DeferedReferenceTableEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ownerEClass, Owner.class, "Owner", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOwner_MultipleReferencers(), this.getMultipleReferencer(), null, "multipleReferencers", null, 0, -1, Owner.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOwner_SingleReferencers(), this.getSingleReferencer(), null, "singleReferencers", null, 0, 1, Owner.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(multipleReferencerEClass, MultipleReferencer.class, "MultipleReferencer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMultipleReferencer_MultipleSampleForTableComposition(), this.getOwner(), null, "multipleSampleForTableComposition", null, 0, 1, MultipleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMultipleReferencer_MultipleSampleForAdvancedTableComposition(), this.getOwner(), null, "multipleSampleForAdvancedTableComposition", null, 0, 1, MultipleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMultipleReferencer_MultipleSampleForReferencesTable(), this.getOwner(), null, "multipleSampleForReferencesTable", null, 0, 1, MultipleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMultipleReferencer_MultipleSampleAdvancedReferencesTable(), this.getOwner(), null, "multipleSampleAdvancedReferencesTable", null, 0, 1, MultipleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMultipleReferencer_MultipleSampleForFlatReferencesTable(), this.getOwner(), null, "multipleSampleForFlatReferencesTable", null, 0, 1, MultipleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(subtypeEClass, Subtype.class, "Subtype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSubtype_SpecialisedElement(), ecorePackage.getEBoolean(), "specialisedElement", null, 0, 1, Subtype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(singleReferencerEClass, SingleReferencer.class, "SingleReferencer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSingleReferencer_SingleSampleForTableComposition(), this.getOwner(), null, "singleSampleForTableComposition", null, 0, -1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleSampleForAdvancedTableComposition(), this.getOwner(), null, "singleSampleForAdvancedTableComposition", null, 0, -1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleSampleForReferencesTable(), this.getOwner(), null, "singleSampleForReferencesTable", null, 0, -1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleSampleAdvancedReferencesTable(), this.getOwner(), null, "singleSampleAdvancedReferencesTable", null, 0, -1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleSampleForFlatReferencesTable(), this.getOwner(), null, "singleSampleForFlatReferencesTable", null, 0, -1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleContainmentForEObjectFlatComboViewer(), this.getOwner(), null, "singleContainmentForEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleReferenceForEObjectFlatComboViewer(), this.getOwner(), null, "singleReferenceForEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer(), this.getOwner(), null, "singleContainmentForAdvancedEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer(), this.getOwner(), null, "singleReferenceForAdvancedEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //NavigationPackageImpl

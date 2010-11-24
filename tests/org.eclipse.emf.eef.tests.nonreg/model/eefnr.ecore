@@ -200,5 +200,46 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
           eType="#//navigation/DeferedReference" containment="true"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Owner" eSuperTypes="#//AbstractSample">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="multipleReferencers"
+          upperBound="-1" eType="#//navigation/MultipleReferencer" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleReferencers" eType="#//navigation/SingleReferencer"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MultipleReferencer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="multipleSampleForTableComposition"
+          eType="#//navigation/Owner" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="multipleSampleForAdvancedTableComposition"
+          eType="#//navigation/Owner" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="multipleSampleForReferencesTable"
+          eType="#//navigation/Owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="multipleSampleAdvancedReferencesTable"
+          eType="#//navigation/Owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="multipleSampleForFlatReferencesTable"
+          eType="#//navigation/Owner"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Subtype" eSuperTypes="#//navigation/Owner">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="specialisedElement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SingleReferencer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleSampleForTableComposition"
+          upperBound="-1" eType="#//navigation/Owner" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleSampleForAdvancedTableComposition"
+          upperBound="-1" eType="#//navigation/Owner" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleSampleForReferencesTable"
+          upperBound="-1" eType="#//navigation/Owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleSampleAdvancedReferencesTable"
+          upperBound="-1" eType="#//navigation/Owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleSampleForFlatReferencesTable"
+          upperBound="-1" eType="#//navigation/Owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleContainmentForEObjectFlatComboViewer"
+          eType="#//navigation/Owner" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleReferenceForEObjectFlatComboViewer"
+          eType="#//navigation/Owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleContainmentForAdvancedEObjectFlatComboViewer"
+          eType="#//navigation/Owner" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleReferenceForAdvancedEObjectFlatComboViewer"
+          eType="#//navigation/Owner"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

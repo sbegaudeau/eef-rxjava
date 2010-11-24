@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationFactoryImpl.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
+ * $Id: NavigationFactoryImpl.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
@@ -63,6 +63,10 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 			case NavigationPackage.DEFERED_FLAT_REFERENCE_TABLE_EDITOR_SAMPLE: return createDeferedFlatReferenceTableEditorSample();
 			case NavigationPackage.DEFERED_REFERENCE: return createDeferedReference();
 			case NavigationPackage.DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE: return createDeferedReferenceTableEditorSample();
+			case NavigationPackage.OWNER: return createOwner();
+			case NavigationPackage.MULTIPLE_REFERENCER: return createMultipleReferencer();
+			case NavigationPackage.SUBTYPE: return createSubtype();
+			case NavigationPackage.SINGLE_REFERENCER: return createSingleReferencer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +100,46 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	public DeferedReferenceTableEditorSample createDeferedReferenceTableEditorSample() {
 		DeferedReferenceTableEditorSampleImpl deferedReferenceTableEditorSample = new DeferedReferenceTableEditorSampleImpl();
 		return deferedReferenceTableEditorSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Owner createOwner() {
+		OwnerImpl owner = new OwnerImpl();
+		return owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MultipleReferencer createMultipleReferencer() {
+		MultipleReferencerImpl multipleReferencer = new MultipleReferencerImpl();
+		return multipleReferencer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Subtype createSubtype() {
+		SubtypeImpl subtype = new SubtypeImpl();
+		return subtype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SingleReferencer createSingleReferencer() {
+		SingleReferencerImpl singleReferencer = new SingleReferencerImpl();
+		return singleReferencer;
 	}
 
 	/**

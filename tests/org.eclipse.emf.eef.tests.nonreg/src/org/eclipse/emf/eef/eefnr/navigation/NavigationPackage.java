@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackage.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
+ * $Id: NavigationPackage.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -165,6 +166,273 @@ public interface NavigationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.OwnerImpl <em>Owner</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.OwnerImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getOwner()
+	 * @generated
+	 */
+	int OWNER = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWNER__NAME = EefnrPackage.ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Referencers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWNER__MULTIPLE_REFERENCERS = EefnrPackage.ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Single Referencers</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWNER__SINGLE_REFERENCERS = EefnrPackage.ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Owner</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OWNER_FEATURE_COUNT = EefnrPackage.ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.MultipleReferencerImpl <em>Multiple Referencer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.MultipleReferencerImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getMultipleReferencer()
+	 * @generated
+	 */
+	int MULTIPLE_REFERENCER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Sample For Table Composition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_TABLE_COMPOSITION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Sample For Advanced Table Composition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Sample For References Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_REFERENCES_TABLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Sample Advanced References Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_ADVANCED_REFERENCES_TABLE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Sample For Flat References Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE = 4;
+
+	/**
+	 * The number of structural features of the '<em>Multiple Referencer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_REFERENCER_FEATURE_COUNT = 5;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SubtypeImpl <em>Subtype</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SubtypeImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSubtype()
+	 * @generated
+	 */
+	int SUBTYPE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE__NAME = OWNER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Referencers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE__MULTIPLE_REFERENCERS = OWNER__MULTIPLE_REFERENCERS;
+
+	/**
+	 * The feature id for the '<em><b>Single Referencers</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE__SINGLE_REFERENCERS = OWNER__SINGLE_REFERENCERS;
+
+	/**
+	 * The feature id for the '<em><b>Specialised Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE__SPECIALISED_ELEMENT = OWNER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Subtype</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTYPE_FEATURE_COUNT = OWNER_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SingleReferencerImpl <em>Single Referencer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SingleReferencerImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSingleReferencer()
+	 * @generated
+	 */
+	int SINGLE_REFERENCER = 6;
+
+	/**
+	 * The feature id for the '<em><b>Single Sample For Table Composition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_TABLE_COMPOSITION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Single Sample For Advanced Table Composition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Single Sample For References Table</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_REFERENCES_TABLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Single Sample Advanced References Table</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_SAMPLE_ADVANCED_REFERENCES_TABLE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Single Sample For Flat References Table</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Single Containment For EObject Flat Combo Viewer</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_EOBJECT_FLAT_COMBO_VIEWER = 5;
+
+	/**
+	 * The feature id for the '<em><b>Single Reference For EObject Flat Combo Viewer</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_EOBJECT_FLAT_COMBO_VIEWER = 6;
+
+	/**
+	 * The feature id for the '<em><b>Single Containment For Advanced EObject Flat Combo Viewer</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER = 7;
+
+	/**
+	 * The feature id for the '<em><b>Single Reference For Advanced EObject Flat Combo Viewer</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER = 8;
+
+	/**
+	 * The number of structural features of the '<em>Single Referencer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_REFERENCER_FEATURE_COUNT = 9;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample <em>Defered Flat Reference Table Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -226,6 +494,233 @@ public interface NavigationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDeferedReferenceTableEditorSample_References();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.Owner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Owner</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Owner
+	 * @generated
+	 */
+	EClass getOwner();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.Owner#getMultipleReferencers <em>Multiple Referencers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Multiple Referencers</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Owner#getMultipleReferencers()
+	 * @see #getOwner()
+	 * @generated
+	 */
+	EReference getOwner_MultipleReferencers();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.Owner#getSingleReferencers <em>Single Referencers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Single Referencers</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Owner#getSingleReferencers()
+	 * @see #getOwner()
+	 * @generated
+	 */
+	EReference getOwner_SingleReferencers();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer <em>Multiple Referencer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multiple Referencer</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer
+	 * @generated
+	 */
+	EClass getMultipleReferencer();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForTableComposition <em>Multiple Sample For Table Composition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Multiple Sample For Table Composition</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForTableComposition()
+	 * @see #getMultipleReferencer()
+	 * @generated
+	 */
+	EReference getMultipleReferencer_MultipleSampleForTableComposition();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForAdvancedTableComposition <em>Multiple Sample For Advanced Table Composition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Multiple Sample For Advanced Table Composition</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForAdvancedTableComposition()
+	 * @see #getMultipleReferencer()
+	 * @generated
+	 */
+	EReference getMultipleReferencer_MultipleSampleForAdvancedTableComposition();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForReferencesTable <em>Multiple Sample For References Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Multiple Sample For References Table</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForReferencesTable()
+	 * @see #getMultipleReferencer()
+	 * @generated
+	 */
+	EReference getMultipleReferencer_MultipleSampleForReferencesTable();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleAdvancedReferencesTable <em>Multiple Sample Advanced References Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Multiple Sample Advanced References Table</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleAdvancedReferencesTable()
+	 * @see #getMultipleReferencer()
+	 * @generated
+	 */
+	EReference getMultipleReferencer_MultipleSampleAdvancedReferencesTable();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForFlatReferencesTable <em>Multiple Sample For Flat References Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Multiple Sample For Flat References Table</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer#getMultipleSampleForFlatReferencesTable()
+	 * @see #getMultipleReferencer()
+	 * @generated
+	 */
+	EReference getMultipleReferencer_MultipleSampleForFlatReferencesTable();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.Subtype <em>Subtype</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Subtype</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Subtype
+	 * @generated
+	 */
+	EClass getSubtype();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.Subtype#isSpecialisedElement <em>Specialised Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Specialised Element</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Subtype#isSpecialisedElement()
+	 * @see #getSubtype()
+	 * @generated
+	 */
+	EAttribute getSubtype_SpecialisedElement();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer <em>Single Referencer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Single Referencer</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer
+	 * @generated
+	 */
+	EClass getSingleReferencer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForTableComposition <em>Single Sample For Table Composition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Single Sample For Table Composition</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForTableComposition()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleSampleForTableComposition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForAdvancedTableComposition <em>Single Sample For Advanced Table Composition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Single Sample For Advanced Table Composition</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForAdvancedTableComposition()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleSampleForAdvancedTableComposition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForReferencesTable <em>Single Sample For References Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Single Sample For References Table</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForReferencesTable()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleSampleForReferencesTable();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleAdvancedReferencesTable <em>Single Sample Advanced References Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Single Sample Advanced References Table</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleAdvancedReferencesTable()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleSampleAdvancedReferencesTable();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForFlatReferencesTable <em>Single Sample For Flat References Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Single Sample For Flat References Table</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleSampleForFlatReferencesTable()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleSampleForFlatReferencesTable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleContainmentForEObjectFlatComboViewer <em>Single Containment For EObject Flat Combo Viewer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Single Containment For EObject Flat Combo Viewer</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleContainmentForEObjectFlatComboViewer()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleContainmentForEObjectFlatComboViewer();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleReferenceForEObjectFlatComboViewer <em>Single Reference For EObject Flat Combo Viewer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Single Reference For EObject Flat Combo Viewer</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleReferenceForEObjectFlatComboViewer()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleReferenceForEObjectFlatComboViewer();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleContainmentForAdvancedEObjectFlatComboViewer <em>Single Containment For Advanced EObject Flat Combo Viewer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Single Containment For Advanced EObject Flat Combo Viewer</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleContainmentForAdvancedEObjectFlatComboViewer()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleReferenceForAdvancedEObjectFlatComboViewer <em>Single Reference For Advanced EObject Flat Combo Viewer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Single Reference For Advanced EObject Flat Combo Viewer</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer#getSingleReferenceForAdvancedEObjectFlatComboViewer()
+	 * @see #getSingleReferencer()
+	 * @generated
+	 */
+	EReference getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -302,6 +797,182 @@ public interface NavigationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE__REFERENCES = eINSTANCE.getDeferedReferenceTableEditorSample_References();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.OwnerImpl <em>Owner</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.OwnerImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getOwner()
+		 * @generated
+		 */
+		EClass OWNER = eINSTANCE.getOwner();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Referencers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OWNER__MULTIPLE_REFERENCERS = eINSTANCE.getOwner_MultipleReferencers();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Referencers</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OWNER__SINGLE_REFERENCERS = eINSTANCE.getOwner_SingleReferencers();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.MultipleReferencerImpl <em>Multiple Referencer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.MultipleReferencerImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getMultipleReferencer()
+		 * @generated
+		 */
+		EClass MULTIPLE_REFERENCER = eINSTANCE.getMultipleReferencer();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Sample For Table Composition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_TABLE_COMPOSITION = eINSTANCE.getMultipleReferencer_MultipleSampleForTableComposition();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Sample For Advanced Table Composition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION = eINSTANCE.getMultipleReferencer_MultipleSampleForAdvancedTableComposition();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Sample For References Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_REFERENCES_TABLE = eINSTANCE.getMultipleReferencer_MultipleSampleForReferencesTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Sample Advanced References Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_ADVANCED_REFERENCES_TABLE = eINSTANCE.getMultipleReferencer_MultipleSampleAdvancedReferencesTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Sample For Flat References Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE = eINSTANCE.getMultipleReferencer_MultipleSampleForFlatReferencesTable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SubtypeImpl <em>Subtype</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SubtypeImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSubtype()
+		 * @generated
+		 */
+		EClass SUBTYPE = eINSTANCE.getSubtype();
+
+		/**
+		 * The meta object literal for the '<em><b>Specialised Element</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBTYPE__SPECIALISED_ELEMENT = eINSTANCE.getSubtype_SpecialisedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SingleReferencerImpl <em>Single Referencer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SingleReferencerImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSingleReferencer()
+		 * @generated
+		 */
+		EClass SINGLE_REFERENCER = eINSTANCE.getSingleReferencer();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Sample For Table Composition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_TABLE_COMPOSITION = eINSTANCE.getSingleReferencer_SingleSampleForTableComposition();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Sample For Advanced Table Composition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION = eINSTANCE.getSingleReferencer_SingleSampleForAdvancedTableComposition();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Sample For References Table</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_REFERENCES_TABLE = eINSTANCE.getSingleReferencer_SingleSampleForReferencesTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Sample Advanced References Table</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_SAMPLE_ADVANCED_REFERENCES_TABLE = eINSTANCE.getSingleReferencer_SingleSampleAdvancedReferencesTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Sample For Flat References Table</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE = eINSTANCE.getSingleReferencer_SingleSampleForFlatReferencesTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Containment For EObject Flat Combo Viewer</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_EOBJECT_FLAT_COMBO_VIEWER = eINSTANCE.getSingleReferencer_SingleContainmentForEObjectFlatComboViewer();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Reference For EObject Flat Combo Viewer</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_EOBJECT_FLAT_COMBO_VIEWER = eINSTANCE.getSingleReferencer_SingleReferenceForEObjectFlatComboViewer();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Containment For Advanced EObject Flat Combo Viewer</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER = eINSTANCE.getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer();
+
+		/**
+		 * The meta object literal for the '<em><b>Single Reference For Advanced EObject Flat Combo Viewer</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER = eINSTANCE.getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer();
 
 	}
 

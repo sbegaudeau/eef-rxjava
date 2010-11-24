@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationFactory.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
+ * $Id: NavigationFactory.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation;
 
@@ -51,6 +51,42 @@ public interface NavigationFactory extends EFactory {
 	 * @generated
 	 */
 	DeferedReferenceTableEditorSample createDeferedReferenceTableEditorSample();
+
+	/**
+	 * Returns a new object of class '<em>Owner</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Owner</em>'.
+	 * @generated
+	 */
+	Owner createOwner();
+
+	/**
+	 * Returns a new object of class '<em>Multiple Referencer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multiple Referencer</em>'.
+	 * @generated
+	 */
+	MultipleReferencer createMultipleReferencer();
+
+	/**
+	 * Returns a new object of class '<em>Subtype</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Subtype</em>'.
+	 * @generated
+	 */
+	Subtype createSubtype();
+
+	/**
+	 * Returns a new object of class '<em>Single Referencer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Referencer</em>'.
+	 * @generated
+	 */
+	SingleReferencer createSingleReferencer();
 
 	/**
 	 * Returns the package supported by this factory.

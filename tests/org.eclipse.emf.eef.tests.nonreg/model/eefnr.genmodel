@@ -136,6 +136,33 @@
       <genClasses ecoreClass="eefnr.ecore#//navigation/DeferedReferenceTableEditorSample">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/DeferedReferenceTableEditorSample/references"/>
       </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/Owner">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/Owner/multipleReferencers"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/Owner/singleReferencers"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/MultipleReferencer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/MultipleReferencer/multipleSampleForTableComposition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/MultipleReferencer/multipleSampleForAdvancedTableComposition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/MultipleReferencer/multipleSampleForReferencesTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/MultipleReferencer/multipleSampleAdvancedReferencesTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/MultipleReferencer/multipleSampleForFlatReferencesTable"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/Subtype">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/Subtype/specialisedElement"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/SingleReferencer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleSampleForTableComposition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleSampleForAdvancedTableComposition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleSampleForReferencesTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleSampleAdvancedReferencesTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleSampleForFlatReferencesTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleContainmentForEObjectFlatComboViewer"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleReferenceForEObjectFlatComboViewer"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleContainmentForAdvancedEObjectFlatComboViewer"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SingleReferencer/singleReferenceForAdvancedEObjectFlatComboViewer"/>
+      </genClasses>
     </nestedGenPackages>
   </genPackages>
   <genPackages prefix="Eefnrext" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"

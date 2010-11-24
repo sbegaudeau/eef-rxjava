@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationAdapterFactory.java,v 1.2 2010/09/27 10:02:37 glefur Exp $
+ * $Id: NavigationAdapterFactory.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.util;
 
@@ -86,6 +86,22 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 				return createDeferedReferenceTableEditorSampleAdapter();
 			}
 			@Override
+			public Adapter caseOwner(Owner object) {
+				return createOwnerAdapter();
+			}
+			@Override
+			public Adapter caseMultipleReferencer(MultipleReferencer object) {
+				return createMultipleReferencerAdapter();
+			}
+			@Override
+			public Adapter caseSubtype(Subtype object) {
+				return createSubtypeAdapter();
+			}
+			@Override
+			public Adapter caseSingleReferencer(SingleReferencer object) {
+				return createSingleReferencerAdapter();
+			}
+			@Override
 			public Adapter caseAbstractSample(AbstractSample object) {
 				return createAbstractSampleAdapter();
 			}
@@ -148,6 +164,62 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.Owner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Owner
+	 * @generated
+	 */
+	public Adapter createOwnerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer <em>Multiple Referencer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer
+	 * @generated
+	 */
+	public Adapter createMultipleReferencerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.Subtype <em>Subtype</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Subtype
+	 * @generated
+	 */
+	public Adapter createSubtypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.SingleReferencer <em>Single Referencer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SingleReferencer
+	 * @generated
+	 */
+	public Adapter createSingleReferencerAdapter() {
 		return null;
 	}
 
