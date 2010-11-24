@@ -107,8 +107,8 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			});
 			// Start of user code for additional businessfilters for representation
-																																																			
-																																																			// End of user code
+																																																						
+																																																						// End of user code
 			
 			
 			

@@ -50,8 +50,8 @@ public class CustomViewPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
 	 * 
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
 		return (editingContext.getEObject() instanceof CustomView) && (refinement == CustomViewBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
 	}
 
@@ -60,8 +60,8 @@ public class CustomViewPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
 	 * 
 	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
 		return (editingContext.getEObject() instanceof CustomView) && ((CustomViewBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == CustomViewBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
@@ -96,8 +96,8 @@ public class CustomViewPropertiesEditionProvider extends PropertiesEditingProvid
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	@SuppressWarnings("rawtypes")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+	@SuppressWarnings("unchecked")
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof CustomView) {
 			if (CustomViewBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == CustomViewBasePropertiesEditionComponent.class)
