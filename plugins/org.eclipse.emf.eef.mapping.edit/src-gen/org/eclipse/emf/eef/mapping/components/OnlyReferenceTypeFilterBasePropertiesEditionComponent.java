@@ -100,8 +100,8 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for referencedFeature
-																																																												
-																																																												// End of user code
+																																																															
+																																																															// End of user code
 			
 			// init values for referenced views
 			

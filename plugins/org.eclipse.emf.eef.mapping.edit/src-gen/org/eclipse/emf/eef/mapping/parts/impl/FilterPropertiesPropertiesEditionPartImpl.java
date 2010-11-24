@@ -88,8 +88,8 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 	public void createControls(Composite view) { 
 		CompositionSequence filterPropertiesStep = new CompositionSequence();
 		CompositionStep filterProperties_Step = filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.class);
-		filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.name);
-		filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
+		filterProperties_Step.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.name);
+		filterProperties_Step.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
 		
 		
 		composer = new PartComposer(filterPropertiesStep) {

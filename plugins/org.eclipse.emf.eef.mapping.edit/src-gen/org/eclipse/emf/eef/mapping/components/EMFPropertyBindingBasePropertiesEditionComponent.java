@@ -121,8 +121,8 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-																																																																																																
-																																																																																																// End of user code
+																																																																																																			
+																																																																																																			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -137,8 +137,8 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																																																																
-																																																																																																// End of user code
+																																																																																																			
+																																																																																																			// End of user code
 			
 			// init values for referenced views
 			
