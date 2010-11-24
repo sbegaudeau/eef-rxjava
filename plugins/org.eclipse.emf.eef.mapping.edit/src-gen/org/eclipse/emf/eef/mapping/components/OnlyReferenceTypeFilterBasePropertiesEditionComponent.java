@@ -54,7 +54,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 	/**
 	 * Settings for referencedFeature EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings referenceSettings;
+	private	EObjectFlatComboSettings referencedFeatureSettings;
 	
 	/**
 	 * Default constructor
@@ -82,8 +82,8 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 			final OnlyReferenceTypeFilterPropertiesEditionPart basePart = (OnlyReferenceTypeFilterPropertiesEditionPart)editingPart;
 			// init values
 			// init part
-			referenceSettings = new EObjectFlatComboSettings(onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference());
-			basePart.initReferencedFeature(referenceSettings);
+			referencedFeatureSettings = new EObjectFlatComboSettings(onlyReferenceTypeFilter, FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference());
+			basePart.initReferencedFeature(referencedFeatureSettings);
 			// set the button mode
 			basePart.setReferencedFeatureButtonMode(ButtonsModeEnum.BROWSE);
 			// init filters
@@ -100,16 +100,16 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for referencedFeature
-																														
-																														// End of user code
+																																																												
+																																																												// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+			
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
-		
-		
 		setInitializing(false);
 	}
 
@@ -127,7 +127,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 		OnlyReferenceTypeFilter onlyReferenceTypeFilter = (OnlyReferenceTypeFilter)semanticObject;
 		if (MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
-				referenceSettings.setToReference((EReference)event.getNewValue());
+				referencedFeatureSettings.setToReference((EReference)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				EReference eObject = EcoreFactory.eINSTANCE.createEReference();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
@@ -138,7 +138,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 						policy.execute();
 					}
 				}
-				referenceSettings.setToReference(eObject);
+				referencedFeatureSettings.setToReference(eObject);
 			}
 		}
 	}

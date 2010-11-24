@@ -73,11 +73,11 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 			
 			// init filters
 			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 

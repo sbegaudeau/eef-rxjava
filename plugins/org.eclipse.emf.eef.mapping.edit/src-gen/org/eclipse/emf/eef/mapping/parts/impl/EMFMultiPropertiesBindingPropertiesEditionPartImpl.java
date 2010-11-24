@@ -219,22 +219,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 */
 	protected Composite createModelAdvancedReferencesTable(Composite parent) {
 		this.model = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(model.getInput(), modelFilters, modelBusinessFilters,
-				"model", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						model.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addModel(); }
 			public void handleEdit(EObject element) { editModel(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveModel(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromModel(element); }
@@ -254,9 +239,28 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	/**
 	 * 
 	 */
+	protected void addModel() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(model.getInput(), modelFilters, modelBusinessFilters,
+		"model", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				model.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveModel(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		model.refresh();
+		model.refresh();	
 	}
 
 	/**
@@ -287,22 +291,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
 		this.views = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(views.getInput(), viewsFilters, viewsBusinessFilters,
-				"views", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						views.refresh();
-					}
-
-				};
-				dialog.open();
-			}
+			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromViews(element); }
@@ -322,9 +311,28 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	/**
 	 * 
 	 */
+	protected void addViews() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(views.getInput(), viewsFilters, viewsBusinessFilters,
+		"views", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				views.refresh();
+			}
+		};
+		dialog.open();	
+	}
+
+	/**
+	 * 
+	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();
+		views.refresh();	
 	}
 
 	/**

@@ -33,16 +33,6 @@ public class MappingEEFAdapterFactory extends MappingAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createBindingFilterAdapter()
-	 * 
-	 */
-	public Adapter createBindingFilterAdapter() {
-		return new FilterPropertiesPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.util.Mapping#createEMFElementBindingAdapter()
 	 * 
 	 */
@@ -108,56 +98,6 @@ public class MappingEEFAdapterFactory extends MappingAdapterFactory {
 	 */
 	public Adapter createEMFMultiPropertiesBindingAdapter() {
 		return new EMFMultiPropertiesBindingPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createSimpleModelNavigationAdapter()
-	 * 
-	 */
-	public Adapter createSimpleModelNavigationAdapter() {
-		return new SimpleModelNavigationPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createOnlyReferenceTypeFilterAdapter()
-	 * 
-	 */
-	public Adapter createOnlyReferenceTypeFilterAdapter() {
-		return new OnlyReferenceTypeFilterPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createOCLFilterAdapter()
-	 * 
-	 */
-	public Adapter createOCLFilterAdapter() {
-		return new OCLFilterPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createJavaExpressionFilterAdapter()
-	 * 
-	 */
-	public Adapter createJavaExpressionFilterAdapter() {
-		return new JavaExpressionFilterPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createJavaDeclarationFilterAdapter()
-	 * 
-	 */
-	public Adapter createJavaDeclarationFilterAdapter() {
-		return new JavaDeclarationFilterPropertiesEditionProvider();
 	}
 
 }

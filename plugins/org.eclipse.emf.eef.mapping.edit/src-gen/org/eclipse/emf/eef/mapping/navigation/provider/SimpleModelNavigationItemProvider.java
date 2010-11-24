@@ -115,8 +115,7 @@ public class SimpleModelNavigationItemProvider extends StructuredModelNavigation
 								.getEAllStructuralFeatures();
 						List<EStructuralFeature> result = new ArrayList<EStructuralFeature>();
 						for (Object object2 : comboBoxObjects) {
-							if (object2 instanceof EStructuralFeature
-									&& allStructuralFeatures.contains(object2))
+							if (object2 instanceof EStructuralFeature && allStructuralFeatures.contains(object2))
 								result.add((EStructuralFeature)object2);
 						}
 						return result;
