@@ -252,6 +252,7 @@ public class PackagePropertiesEditionProvider extends AbstractAcceleoGenerator {
     super.registerPackages(resourceSet);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE);
+    resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
     // TODO If you need additional package registrations, do them here. The following line is an example for UML.
     // resourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
   }

@@ -10,31 +10,31 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module PackagePropertiesEditionProvider('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
+[module PackagePropertiesEditionProvider('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import common /]
 [import naming /]
 
-[template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
+[template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, ePackage : EPackage)]
 [comment @main /]
-	[file (peContext.fullFilePath(), false)]
+	[file (peContext.fullFilePath(ePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
 package [peContext.providersPackage()/];
 
 import org.eclipse.emf.common.notify.Adapter;
-import [peContext.model.basePackage/].util.[peContext.model.ecorePackage.name.toJavaClassifier()/];
+import [peContext.associatedEMFGenModel(ePackage).basePackage/].util.[ePackage.name.toJavaClassifier()/];
 
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [peContext.pecPackageProviderClass()/] extends [peContext.model.ecorePackage.name.toJavaClassifier()/]AdapterFactory {
+public class [ePackage.pecPackageProviderClass()/] extends [ePackage.name.toJavaClassifier()/]AdapterFactory {
 
-[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated())]
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated() and component.model.ePackage = ePackage)]
 
 	/**
 	 * {@inheritDoc}
-	 * @see [peContext.model.basePackage/].util.[peContext.model.ecorePackage.name.toJavaClassifier()/]#create[component.model.name.toJavaClassifier()/]Adapter()
+	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].util.[ePackage.name.toJavaClassifier()/]#create[component.model.name.toJavaClassifier()/]Adapter()
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Adapter create[component.model.name.toJavaClassifier()/]Adapter() {
@@ -46,7 +46,7 @@ public class [peContext.pecPackageProviderClass()/] extends [peContext.model.eco
 [/file]
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionContext)]
-[pec.pecPackageProviderQualifiedClass().toPath()/].java
+[template public fullFilePath(pec : PropertiesEditionContext, ePackage : EPackage)]
+[pec.pecPackageProviderQualifiedClass(ePackage).toPath()/].java
 [/template]
 

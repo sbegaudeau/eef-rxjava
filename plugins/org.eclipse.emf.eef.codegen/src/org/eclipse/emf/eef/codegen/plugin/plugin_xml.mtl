@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
 
 [import common /]
 [import naming /]
@@ -24,12 +24,14 @@
  <plugin>
 
   <!-- EEF extensions -->
+  [for (ePackage : EPackage | editionContext.model.ecorePackage.eAllContents(EPackage)->including(editionContext.model.ecorePackage))]
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="[editionContext.model.ecorePackage.nsURI/]"
-            class="[editionContext.pecPackageProviderQualifiedClass()/]"
+            uri="[ePackage.nsURI/]"
+            class="[editionContext.providersPackage()/].[ePackage.pecPackageProviderClass()/]"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
+  [/for]
 [for (repository : ViewsRepository | views::ViewsRepository.allInstances())]
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">

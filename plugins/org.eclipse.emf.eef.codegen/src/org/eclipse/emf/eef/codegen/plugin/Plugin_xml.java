@@ -254,6 +254,7 @@ public class Plugin_xml extends AbstractAcceleoGenerator {
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+    resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
     // TODO If you need additional package registrations, do them here. The following line is an example for UML.
     // resourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
   }
