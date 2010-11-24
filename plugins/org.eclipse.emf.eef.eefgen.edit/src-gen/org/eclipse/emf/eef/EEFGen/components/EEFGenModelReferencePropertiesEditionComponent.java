@@ -52,7 +52,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	/**
 	 * Settings for reference EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings referencedContextSettings;
+	private	EObjectFlatComboSettings referenceSettings;
 	
 	/**
 	 * Default constructor
@@ -80,8 +80,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			final EEFGenModelReferencePropertiesEditionPart basePart = (EEFGenModelReferencePropertiesEditionPart)editingPart;
 			// init values
 			// init part
-			referencedContextSettings = new EObjectFlatComboSettings(eEFGenModelReference, EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext());
-			basePart.initReferencedEEFGenModel(referencedContextSettings);
+			referenceSettings = new EObjectFlatComboSettings(eEFGenModelReference, EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext());
+			basePart.initReferencedEEFGenModel(referenceSettings);
 			// set the button mode
 			basePart.setReferencedEEFGenModelButtonMode(ButtonsModeEnum.BROWSE);
 			// init filters
@@ -98,14 +98,14 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for reference
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
@@ -121,7 +121,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 		EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)semanticObject;
 		if (EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
-				referencedContextSettings.setToReference((EEFGenModel)event.getNewValue());
+				referenceSettings.setToReference((EEFGenModel)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				EEFGenModel eObject = EEFGenFactory.eINSTANCE.createEEFGenModel();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
@@ -132,7 +132,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 						policy.execute();
 					}
 				}
-				referencedContextSettings.setToReference(eObject);
+				referenceSettings.setToReference(eObject);
 			}
 		}
 	}

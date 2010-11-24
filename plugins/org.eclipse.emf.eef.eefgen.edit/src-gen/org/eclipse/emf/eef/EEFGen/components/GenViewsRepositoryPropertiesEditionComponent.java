@@ -117,14 +117,14 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for viewsRepository
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
 			
 		}
-		// init values for referenced views
-		
-		// init filters for referenced views
-		
 		setInitializing(false);
 	}
 
