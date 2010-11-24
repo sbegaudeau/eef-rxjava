@@ -255,8 +255,8 @@ public void update[editor.model.eContainingClass.name.toUpperFirst()/]_[editor.m
 [for (elementEditor : ElementEditor | subView.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(owningView() = subView))]
 [elementEditor.getterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
 
-[elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
 
+[elementEditor.setterImplementationDelegate(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()),initView)/]
 [/for]
 [view.elementEditorGetterSettersForSubViewsDelegate(pec, basePackage, initView)/]
 [/for]

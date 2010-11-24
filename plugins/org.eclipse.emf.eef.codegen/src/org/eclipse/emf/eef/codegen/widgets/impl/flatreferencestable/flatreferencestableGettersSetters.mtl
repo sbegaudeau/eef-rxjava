@@ -72,12 +72,12 @@
 [template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('FlatReferencesTable'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](settings);
 	}
 
 [updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.updateSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/]();
 	}
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -90,10 +90,6 @@
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
 	}
 
-[isContainedInTableSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
-[elementEditor.isContainedInTableSignature()/] {
-		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.isContainedIn[elementEditor.viewPackageSignature()/]Table(element);
-	}
 [/template]
 
 [template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides initSignatureDocumentationImplementation ? (elementEditor.representationName('FlatReferencesTable'))]

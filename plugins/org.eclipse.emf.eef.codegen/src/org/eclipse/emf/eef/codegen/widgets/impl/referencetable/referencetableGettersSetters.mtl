@@ -45,6 +45,9 @@
 	public void init[elementEditor.viewPackageSignature()/](ReferencesTableSettings settings)
 [/template]
 
+[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides getterImplementationDelegate ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
+[/template]
+
 [template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 	/**
 	 * Init the [elementEditor.name/]
@@ -73,12 +76,12 @@
 [template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('ReferencesTable') or elementEditor.representationName('AdvancedReferencesTable'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature);
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](settings);
 	}
 
 [updateSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.updateSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/](newValue);
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.update[elementEditor.viewPackageSignature()/]();
 	}
 
 [addFilterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]

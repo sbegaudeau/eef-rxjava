@@ -76,12 +76,16 @@
 [pec.providersPackage()/].[pec.pecPolicyProviderClass()/]
 [/template]
 
-[template public pecPackageProviderClass(pec : PropertiesEditionContext)]
-[pec.model.ecorePackage.name.toJavaClassifier()/]EEFAdapterFactory
+[template public pecPackageProviderClass(ePack : EPackage)]
+[ePack.name.toJavaClassifier()/]EEFAdapterFactory
 [/template]
 
-[template public pecPackageProviderQualifiedClass(pec : PropertiesEditionContext)]
-[pec.providersPackage()/].[pec.pecPackageProviderClass()/]
+[template public pecPackageProviderClass(pec : PropertiesEditionContext)]
+[pec.model.ecorePackage.pecPackageProviderClass()/]
+[/template]
+
+[template public pecPackageProviderQualifiedClass(pec : PropertiesEditionContext, ePackage : EPackage)]
+[pec.providersPackage()/].[ePackage.pecPackageProviderClass()/]
 [/template]
 
 [comment --------------------------------------------------------------------------

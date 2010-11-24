@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -21,11 +22,13 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLauncher;
 import org.eclipse.emf.eef.codegen.core.services.PropertiesGeneratorLaunchersServices;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 
 /**
  * Main entry point of the 'Codegen' generation module.
@@ -109,12 +112,6 @@ public class GenerateAll {
 				gen14.doGenerate(BasicMonitor.toMonitor(monitor));
 				monitor.worked(1);
 
-				monitor.subTask("Generating Global Edition provider");
-				org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider gen11 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider(
-						model, targetFolder, arguments);
-				gen11.doGenerate(BasicMonitor.toMonitor(monitor));
-				monitor.worked(1);
-
 				monitor.subTask("Generating Edition provider");
 				org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider gen12 = new org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider(
 						model, targetFolder, arguments);
@@ -139,6 +136,22 @@ public class GenerateAll {
 				org.eclipse.emf.eef.codegen.parts.FormPropertiesEditionPart gen2 = new org.eclipse.emf.eef.codegen.parts.FormPropertiesEditionPart(
 						model, targetFolder, arguments);
 				gen2.doGenerate(BasicMonitor.toMonitor(monitor));
+				monitor.worked(1);
+
+				monitor.subTask("Generating Global Edition provider");
+				List<EPackage> packages = new ArrayList<EPackage>();
+				packages.add(((PropertiesEditionContext)model).getModel().getEcorePackage());
+				for (Iterator iterator = ((PropertiesEditionContext)model).getModel().getEcorePackage().eAllContents(); iterator.hasNext();) {
+					EObject element = (EObject) iterator.next();
+					if (element instanceof EPackage) {
+						packages.add((EPackage) element);
+					}
+				}
+				for (EPackage ePackage : packages) {
+					arguments.set(0, ePackage);
+					org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider gen11 = new org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider(model, targetFolder, arguments);
+					gen11.doGenerate(BasicMonitor.toMonitor(monitor));					
+				}
 				monitor.worked(1);
 
 			}

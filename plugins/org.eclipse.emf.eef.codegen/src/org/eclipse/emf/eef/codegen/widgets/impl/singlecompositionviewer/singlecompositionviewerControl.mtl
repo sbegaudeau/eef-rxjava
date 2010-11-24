@@ -1,0 +1,73 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module singlecompositionviewerControl('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0') extends widgetControl/]
+
+[import naming /]
+[import common /]
+[import typeUtils /]
+
+[comment ===== Case : model = Reference(1) - view = SingleCompositionViewer ===== /]
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isContainmentSingle() and editionElement.representationName('SingleCompositionViewer'))]
+		if (msg.getFeature() != null && (((EStructuralFeature)msg.getFeature()) == [editionElement.metamodelGetter()/]) && [view.viewIdentifier(pec)/] != null)
+			[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([editionElement.model.eType.name/])msg.getNewValue());
+
+[/template]
+[comment]
+[template public liveCommandUpdater(editionElement : PropertiesEditionElement, view : View, modelName : String) overrides liveCommandUpdater ? (editionElement.model.isContainmentSingle() and editionElement.representationName('SingleCompositionViewer'))]
+			if ([editionElement.views->first().editorID()/] == event.getAffectedEditor())
+				command.append(SetCommand.create(liveEditingDomain, [modelName/], [editionElement.metamodelGetter()/], event.getNewValue()));
+[/template]
+
+[template public commandUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides commandUpdater ? (editionElement.model.isContainmentSingle() and editionElement.representationName('SingleCompositionViewer'))]
+			cc.append(SetCommand.create(editingDomain, [modelName/], [editionElement.metamodelGetter()/], [view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]));
+[/template]
+[/comment]
+
+[comment][template public partUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent, modelName : String) overrides partUpdater ? (editionElement.model.isContainmentSingle() and editionElement.representationName('SingleCompositionViewer'))]
+			[modelName/]ToUpdate.set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])[view.viewIdentifier(pec)/].[editionElement.views->first().viewCompletePackageGetter()/]);
+[/template][/comment]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('SingleCompositionViewer'))]
+			
+			if([editionElement.metamodelGetter()/].getLowerBound() == 1 && elt.eGet([editionElement.metamodelGetter()/]) == null) {
+				final List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy([editionElement.metamodelGetter()/].getEType(), allResource);
+				if(instanciableTypesInHierarchy.size() == 1) {
+					ControlListener listener = new ControlListener() {
+						
+						public void controlResized(ControlEvent e) {
+							if(e.getSource() instanceof SingleCompositionViewer<?>) {
+								((SingleCompositionViewer<?>)e.getSource()).removeControlListener(this);
+							}
+							EObject element = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
+							if(IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+								setInitializing(false);
+							firePropertiesChanged(new PropertiesEditionEvent((IPropertiesEditionListener) [view.viewIdentifier(pec)/], [editionElement.views->first().editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+							setInitializing(true);
+							if(IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode))
+								[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](element);
+						}
+						
+						public void controlMoved(ControlEvent e) {					
+						}
+					};
+				[view.viewIdentifier(pec)/].add[editionElement.views->first().viewPackageSignature()/]ControlListener(listener);
+				}
+			}
+			
+			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/], liveEditingDomain);
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.representationName('SingleCompositionViewer'))]
+[comment no filters for emfcomboviewer /]
+[/template]
+

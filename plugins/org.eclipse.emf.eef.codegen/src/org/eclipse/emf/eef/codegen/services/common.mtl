@@ -90,6 +90,15 @@
 [query public associatedGenModel(pec : PropertiesEditionContext) : EEFGenModel = 
 	pec.associatedGenContext().eefGenModel/]
 
+[query public associatedEMFGenModel(pec : PropertiesEditionContext, ePackage : EPackage) : GenPackage = 
+	if (pec.model.ecorePackage = ePackage) 
+	then pec.model
+	else if (pec.model.eAllContents(GenPackage)->select(p : GenPackage | p.ecorePackage = ePackage)->size() > 0)
+		 then pec.model.eAllContents(GenPackage)->select(p : GenPackage | p.ecorePackage = ePackage)->first()
+		 else null
+		 endif
+	endif/]
+
 [query public associatedGenRepository(viewsRepository : ViewsRepository) : GenViewsRepository = 
 	if (viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->notEmpty())
 	then viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->first().oclAsType(EEFGen::GenViewsRepository)

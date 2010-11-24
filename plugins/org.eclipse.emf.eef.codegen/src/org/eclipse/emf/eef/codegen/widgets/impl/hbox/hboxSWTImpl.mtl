@@ -23,7 +23,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'HorizontalBox')]
-create[container.name.toJavaClassifier()/]HBox();
+create[container.name.toJavaClassifier()/]HBox(parent);
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'HorizontalBox')]
