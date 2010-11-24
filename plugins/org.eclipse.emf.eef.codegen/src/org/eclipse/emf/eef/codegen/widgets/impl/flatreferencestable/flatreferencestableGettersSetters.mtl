@@ -23,6 +23,8 @@
 [template public getterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides getterImplementation ? (elementEditor.representationName('FlatReferencesTable'))]
 [/template]
 
+[template public getterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides getterImplementationDelegate ? (elementEditor.representationName('FlatReferencesTable'))]
+[/template]
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.initSignatureDocumentation()/]
@@ -89,7 +91,10 @@
 [elementEditor.addBusinessFilterSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.addBusinessFilterTo[elementEditor.viewPackageSignature()/](filter);
 	}
-
+[isContainedInTableSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
+[elementEditor.isContainedInTableSignature()/] {
+		return [referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.isContainedIn[elementEditor.viewPackageSignature()/]Table(element);
+	}
 [/template]
 
 [template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides initSignatureDocumentationImplementation ? (elementEditor.representationName('FlatReferencesTable'))]

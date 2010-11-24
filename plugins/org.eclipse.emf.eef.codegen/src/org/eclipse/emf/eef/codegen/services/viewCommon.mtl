@@ -118,7 +118,7 @@ CompositionStep [containerElement.compositionStepName()/] = [containerElement.eC
 [element.compositionSequence()/]
 [/for]
 [else]
-[containerElement.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step
+[containerElement.eContainer().oclAsType(IdentifiedElement).compositionStepName()/]
 	.addStep([containerElement.editorID()/].class)[if (containerElement.elements->isEmpty())];[else]
 
 	.addStep([containerElement.elements->first().editorID()/]);
@@ -127,11 +127,11 @@ CompositionStep [containerElement.compositionStepName()/] = [containerElement.eC
 [/template]
 
 [template public compositionSequence(reference : ViewReference)]
-[reference.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step.addStep([reference.editorID()/]);
+[reference.eContainer().oclAsType(IdentifiedElement).compositionStepName()/].addStep([reference.editorID()/]);
 [/template]
 
 [template public compositionSequence(editor : ElementEditor)]
-[editor.eContainer().oclAsType(ViewElement).name.toJavaIdentifier()/]Step.addStep([editor.editorID()/]);
+[editor.eContainer().oclAsType(IdentifiedElement).compositionStepName()/].addStep([editor.editorID()/]);
 [/template]
 
 [comment ====== Widgets getters signature ====== /]

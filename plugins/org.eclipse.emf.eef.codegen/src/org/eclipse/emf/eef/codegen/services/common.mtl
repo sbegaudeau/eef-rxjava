@@ -76,7 +76,7 @@
 	pee.model.eInverse()->select(oclIsKindOf(genmodel::GenFeature))->first().oclAsType(genmodel::GenFeature)/]
 
 [query public associatedGenPackage(p : EPackage) : GenPackage = 
-	p.eInverse()->select(oclIsKindOf(genmodel::GenPackage))->first().oclAsType(genmodel::GenPackage)/]
+	p.eInverse(genmodel::GenPackage)->first()/]
 
 [query public associatedGenPackage(pec : PropertiesEditionComponent) : GenPackage = 
 	pec.model.ePackage.associatedGenPackage()/]
