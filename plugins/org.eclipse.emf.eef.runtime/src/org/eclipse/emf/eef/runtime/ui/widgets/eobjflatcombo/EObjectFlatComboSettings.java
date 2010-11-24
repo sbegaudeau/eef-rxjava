@@ -85,7 +85,7 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 						throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation with multiple references");
 					}
 					else {
-						return ((EObject)value1).eGet(features[1]);
+						return value1 == null?"":((EObject)value1).eGet(features[1]);
 					}
 				}
 			}

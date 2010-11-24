@@ -87,8 +87,10 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 						for (EObject elem : ((List<EObject>)value1)) {
 							if (features[1].isMany())
 								result.addAll((List<EObject>)elem.eGet(features[1]));
-							else
-								result.add((EObject)elem.eGet(features[1]));
+							else {
+								EObject value2 = (EObject)elem.eGet(features[1]);
+								result.add(value2 == null?"":value2);
+							}
 						}
 						return result.toArray();
 					} else {
@@ -96,7 +98,8 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 							return ((List)((EObject)value1).eGet(features[1])).toArray();
 						}
 						else {
-							return new Object[] { ((EObject)value1).eGet(features[1]) };
+							Object value2 = ((EObject)value1).eGet(features[1]);
+							return new Object[] { value2 == null?"":value2 };
 						}
 					}
 				}
