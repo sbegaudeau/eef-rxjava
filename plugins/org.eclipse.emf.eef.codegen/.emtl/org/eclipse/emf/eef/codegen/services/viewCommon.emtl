@@ -2847,7 +2847,7 @@
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
             </argument>
           </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;&#xA;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <definition href="../widgets/api/widgetGettersSetters.emtl#/0/setterImplementationDelegate"/>
@@ -2883,7 +2883,7 @@
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
             </argument>
           </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
           <loopVariable name="elementEditor">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
           </loopVariable>
@@ -3913,6 +3913,21 @@
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="associatedEMFGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="common.emtl#/0/associatedEMFGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
       </eOperations>
       <eOperations name="associatedGenRepository">
@@ -5054,6 +5069,18 @@
           <references href="naming.emtl#/0/pecPackageProviderClass"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="ePack">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="pecPackageProviderClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="naming.emtl#/0/pecPackageProviderClass.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         </eParameters>
@@ -5068,6 +5095,9 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
       </eOperations>
       <eOperations name="partsPackage">
@@ -8119,6 +8149,15 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </eParameters>
       </eOperations>
+      <eOperations name="pecPackageProviderClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="naming.emtl#/0/pecPackageProviderClass"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PropertiesEditionContext_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -8141,6 +8180,18 @@
           <references href="common.emtl#/0/associatedGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
+      </eOperations>
+      <eOperations name="associatedEMFGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="common.emtl#/0/associatedEMFGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
       </eOperations>
       <eOperations name="contextPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -8192,7 +8243,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="naming.emtl#/0/pecPackageProviderClass"/>
+          <references href="naming.emtl#/0/pecPackageProviderClass.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -8204,6 +8255,9 @@
           <references href="naming.emtl#/0/pecPackageProviderQualifiedClass"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
       </eOperations>
       <eOperations name="propertiesPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -14197,63 +14251,63 @@
     </eAnnotations>
     <eAnnotations source="positions.928" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.1">
       <details key="start" value="14237"/>
-      <details key="end" value="14239"/>
+      <details key="end" value="14240"/>
       <details key="line" value="257"/>
     </eAnnotations>
     <eAnnotations source="positions.929" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2">
-      <details key="start" value="14240"/>
-      <details key="end" value="14369"/>
+      <details key="start" value="14241"/>
+      <details key="end" value="14370"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.930" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/elementEditor">
-      <details key="start" value="14240"/>
-      <details key="end" value="14253"/>
+      <details key="start" value="14241"/>
+      <details key="end" value="14254"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.931" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1">
-      <details key="start" value="14283"/>
-      <details key="end" value="14359"/>
+      <details key="start" value="14284"/>
+      <details key="end" value="14360"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.932" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1/@argument.0">
-      <details key="start" value="14305"/>
-      <details key="end" value="14338"/>
+      <details key="start" value="14306"/>
+      <details key="end" value="14339"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.933" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1/@argument.0/@argument.0">
-      <details key="start" value="14305"/>
-      <details key="end" value="14314"/>
+      <details key="start" value="14306"/>
+      <details key="end" value="14315"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.934" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1/@argument.0/@argument.0/pec">
-      <details key="start" value="14305"/>
-      <details key="end" value="14308"/>
+      <details key="start" value="14306"/>
+      <details key="end" value="14309"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.935" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1/@argument.0/basePackage">
-      <details key="start" value="14326"/>
-      <details key="end" value="14337"/>
+      <details key="start" value="14327"/>
+      <details key="end" value="14338"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.936" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1/@argument.1">
-      <details key="start" value="14339"/>
-      <details key="end" value="14358"/>
+      <details key="start" value="14340"/>
+      <details key="end" value="14359"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.937" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/@argument.1/@argument.1/view">
-      <details key="start" value="14339"/>
-      <details key="end" value="14343"/>
+      <details key="start" value="14340"/>
+      <details key="end" value="14344"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.938" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.2/initView">
-      <details key="start" value="14360"/>
-      <details key="end" value="14368"/>
+      <details key="start" value="14361"/>
+      <details key="end" value="14369"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.939" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/@body.3">
-      <details key="start" value="14371"/>
+      <details key="start" value="14372"/>
       <details key="end" value="14373"/>
-      <details key="line" value="259"/>
+      <details key="line" value="260"/>
     </eAnnotations>
     <eAnnotations source="positions.940" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.0/elementEditor">
       <details key="start" value="13964"/>

@@ -1083,6 +1083,21 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         </eParameters>
       </eOperations>
+      <eOperations name="associatedEMFGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/associatedEMFGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
+      </eOperations>
       <eOperations name="associatedGenRepository">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -2959,6 +2974,18 @@
           <references href="../../../services/common.emtl#/0/associatedGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
+      </eOperations>
+      <eOperations name="associatedEMFGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/associatedEMFGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ViewsRepository_Class">

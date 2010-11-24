@@ -341,7 +341,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(current, containingFeature, feature);&#xA;&#x9;}&#xA;&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(settings);&#xA;&#x9;}&#xA;&#xA;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../api/widgetGettersSetters.emtl#/0/updateSignatureDocumentationImplementation"/>
@@ -380,7 +380,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(newValue);&#xA;&#x9;}&#xA;&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="();&#xA;&#x9;}&#xA;&#xA;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../api/widgetGettersSetters.emtl#/0/addFilterSignatureDocumentationImplementation"/>
@@ -458,46 +458,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(filter);&#xA;&#x9;}&#xA;&#xA;"/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../api/widgetGettersSetters.emtl#/0/isContainedInTableSignatureDocumentationImplementation"/>
-        <argument xsi:type="ocl.ecore:VariableExp" name="elementEditor" referredVariable="/0/setterImplementationDelegate/elementEditor">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-        </argument>
-        <argument xsi:type="ocl.ecore:VariableExp" name="fullInterfacePath" referredVariable="/0/setterImplementationDelegate/fullInterfacePath">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../api/widgetGettersSetters.emtl#/0/isContainedInTableSignature"/>
-        <argument xsi:type="ocl.ecore:VariableExp" name="elementEditor" referredVariable="/0/setterImplementationDelegate/elementEditor">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" {&#xA;&#x9;&#x9;return "/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/common.emtl#/0/toJavaIdentifier"/>
-        <argument xsi:type="ocl.ecore:PropertyCallExp">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:VariableExp" name="referencedView" referredVariable="/0/setterImplementationDelegate/referencedView">
-            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-          </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="PropertiesEditionPart.isContainedIn"/>
-      <body xsi:type="mtl:TemplateInvocation">
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../services/common.emtl#/0/viewPackageSignature"/>
-        <argument xsi:type="ocl.ecore:VariableExp" name="elementEditor" referredVariable="/0/setterImplementationDelegate/elementEditor">
-          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-        </argument>
-      </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Table(element);&#xA;&#x9;}"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(filter);&#xA;&#x9;}&#xA;"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/setterImplementationDelegate"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1465,6 +1426,21 @@
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="associatedEMFGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/associatedEMFGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="pec">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
       </eOperations>
       <eOperations name="associatedGenRepository">
@@ -2606,6 +2582,18 @@
           <references href="../../../services/naming.emtl#/0/pecPackageProviderClass"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="ePack">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="pecPackageProviderClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/pecPackageProviderClass.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         </eParameters>
@@ -2620,6 +2608,9 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
+        </eParameters>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
       </eOperations>
       <eOperations name="partsPackage">
@@ -5162,6 +5153,15 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </eParameters>
       </eOperations>
+      <eOperations name="pecPackageProviderClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/naming.emtl#/0/pecPackageProviderClass"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PropertiesEditionContext_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -5184,6 +5184,18 @@
           <references href="../../../services/common.emtl#/0/associatedGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
+      </eOperations>
+      <eOperations name="associatedEMFGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/associatedEMFGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
       </eOperations>
       <eOperations name="contextPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -5235,7 +5247,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/naming.emtl#/0/pecPackageProviderClass"/>
+          <references href="../../../services/naming.emtl#/0/pecPackageProviderClass.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -5247,6 +5259,9 @@
           <references href="../../../services/naming.emtl#/0/pecPackageProviderQualifiedClass"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="ePackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+        </eParameters>
       </eOperations>
       <eOperations name="propertiesPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -5953,18 +5968,6 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
@@ -6610,7 +6613,7 @@
     </eAnnotations>
     <eAnnotations source="positions.107" references="/0/setterImplementationDelegate">
       <details key="start" value="3177"/>
-      <details key="end" value="4735"/>
+      <details key="end" value="4416"/>
       <details key="line" value="72"/>
     </eAnnotations>
     <eAnnotations source="positions.108" references="/0/setterImplementationDelegate/@body.0">
@@ -6680,617 +6683,547 @@
     </eAnnotations>
     <eAnnotations source="positions.121" references="/0/setterImplementationDelegate/@body.7">
       <details key="start" value="3626"/>
-      <details key="end" value="3669"/>
+      <details key="end" value="3642"/>
       <details key="line" value="75"/>
     </eAnnotations>
     <eAnnotations source="positions.122" references="/0/setterImplementationDelegate/@body.8">
-      <details key="start" value="3670"/>
-      <details key="end" value="3746"/>
+      <details key="start" value="3643"/>
+      <details key="end" value="3719"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.123" references="/0/setterImplementationDelegate/@body.8/elementEditor">
-      <details key="start" value="3713"/>
-      <details key="end" value="3726"/>
+      <details key="start" value="3686"/>
+      <details key="end" value="3699"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.124" references="/0/setterImplementationDelegate/@body.8/fullInterfacePath">
-      <details key="start" value="3728"/>
-      <details key="end" value="3745"/>
+      <details key="start" value="3701"/>
+      <details key="end" value="3718"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.125" references="/0/setterImplementationDelegate/@body.9">
-      <details key="start" value="3748"/>
-      <details key="end" value="3749"/>
+      <details key="start" value="3721"/>
+      <details key="end" value="3722"/>
       <details key="line" value="79"/>
     </eAnnotations>
     <eAnnotations source="positions.126" references="/0/setterImplementationDelegate/@body.10">
-      <details key="start" value="3750"/>
-      <details key="end" value="3781"/>
+      <details key="start" value="3723"/>
+      <details key="end" value="3754"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.127" references="/0/setterImplementationDelegate/@body.10/elementEditor">
-      <details key="start" value="3750"/>
-      <details key="end" value="3763"/>
+      <details key="start" value="3723"/>
+      <details key="end" value="3736"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.128" references="/0/setterImplementationDelegate/@body.11">
-      <details key="start" value="3783"/>
-      <details key="end" value="3788"/>
+      <details key="start" value="3756"/>
+      <details key="end" value="3761"/>
       <details key="line" value="79"/>
     </eAnnotations>
     <eAnnotations source="positions.129" references="/0/setterImplementationDelegate/@body.12">
-      <details key="start" value="3789"/>
-      <details key="end" value="3827"/>
+      <details key="start" value="3762"/>
+      <details key="end" value="3800"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.130" references="/0/setterImplementationDelegate/@body.12/@argument.0">
-      <details key="start" value="3789"/>
-      <details key="end" value="3808"/>
+      <details key="start" value="3762"/>
+      <details key="end" value="3781"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.131" references="/0/setterImplementationDelegate/@body.12/@argument.0/referencedView">
-      <details key="start" value="3789"/>
-      <details key="end" value="3803"/>
+      <details key="start" value="3762"/>
+      <details key="end" value="3776"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.132" references="/0/setterImplementationDelegate/@body.13">
-      <details key="start" value="3829"/>
-      <details key="end" value="3857"/>
+      <details key="start" value="3802"/>
+      <details key="end" value="3830"/>
       <details key="line" value="80"/>
     </eAnnotations>
     <eAnnotations source="positions.133" references="/0/setterImplementationDelegate/@body.14">
-      <details key="start" value="3858"/>
-      <details key="end" value="3894"/>
+      <details key="start" value="3831"/>
+      <details key="end" value="3867"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.134" references="/0/setterImplementationDelegate/@body.14/elementEditor">
-      <details key="start" value="3858"/>
-      <details key="end" value="3871"/>
+      <details key="start" value="3831"/>
+      <details key="end" value="3844"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.135" references="/0/setterImplementationDelegate/@body.15">
-      <details key="start" value="3896"/>
-      <details key="end" value="3912"/>
+      <details key="start" value="3869"/>
+      <details key="end" value="3877"/>
       <details key="line" value="80"/>
     </eAnnotations>
     <eAnnotations source="positions.136" references="/0/setterImplementationDelegate/@body.16">
-      <details key="start" value="3913"/>
-      <details key="end" value="3992"/>
+      <details key="start" value="3878"/>
+      <details key="end" value="3957"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.137" references="/0/setterImplementationDelegate/@body.16/elementEditor">
-      <details key="start" value="3959"/>
-      <details key="end" value="3972"/>
+      <details key="start" value="3924"/>
+      <details key="end" value="3937"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.138" references="/0/setterImplementationDelegate/@body.16/fullInterfacePath">
-      <details key="start" value="3974"/>
-      <details key="end" value="3991"/>
+      <details key="start" value="3939"/>
+      <details key="end" value="3956"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.139" references="/0/setterImplementationDelegate/@body.17">
-      <details key="start" value="3994"/>
-      <details key="end" value="3995"/>
+      <details key="start" value="3959"/>
+      <details key="end" value="3960"/>
       <details key="line" value="84"/>
     </eAnnotations>
     <eAnnotations source="positions.140" references="/0/setterImplementationDelegate/@body.18">
-      <details key="start" value="3996"/>
-      <details key="end" value="4030"/>
+      <details key="start" value="3961"/>
+      <details key="end" value="3995"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.141" references="/0/setterImplementationDelegate/@body.18/elementEditor">
-      <details key="start" value="3996"/>
-      <details key="end" value="4009"/>
+      <details key="start" value="3961"/>
+      <details key="end" value="3974"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.142" references="/0/setterImplementationDelegate/@body.19">
-      <details key="start" value="4032"/>
-      <details key="end" value="4037"/>
+      <details key="start" value="3997"/>
+      <details key="end" value="4002"/>
       <details key="line" value="84"/>
     </eAnnotations>
     <eAnnotations source="positions.143" references="/0/setterImplementationDelegate/@body.20">
-      <details key="start" value="4038"/>
-      <details key="end" value="4076"/>
+      <details key="start" value="4003"/>
+      <details key="end" value="4041"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.144" references="/0/setterImplementationDelegate/@body.20/@argument.0">
-      <details key="start" value="4038"/>
-      <details key="end" value="4057"/>
+      <details key="start" value="4003"/>
+      <details key="end" value="4022"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.145" references="/0/setterImplementationDelegate/@body.20/@argument.0/referencedView">
-      <details key="start" value="4038"/>
-      <details key="end" value="4052"/>
+      <details key="start" value="4003"/>
+      <details key="end" value="4017"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.146" references="/0/setterImplementationDelegate/@body.21">
-      <details key="start" value="4078"/>
-      <details key="end" value="4111"/>
+      <details key="start" value="4043"/>
+      <details key="end" value="4076"/>
       <details key="line" value="85"/>
     </eAnnotations>
     <eAnnotations source="positions.147" references="/0/setterImplementationDelegate/@body.22">
-      <details key="start" value="4112"/>
-      <details key="end" value="4148"/>
+      <details key="start" value="4077"/>
+      <details key="end" value="4113"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.148" references="/0/setterImplementationDelegate/@body.22/elementEditor">
-      <details key="start" value="4112"/>
-      <details key="end" value="4125"/>
+      <details key="start" value="4077"/>
+      <details key="end" value="4090"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.149" references="/0/setterImplementationDelegate/@body.23">
-      <details key="start" value="4150"/>
-      <details key="end" value="4164"/>
+      <details key="start" value="4115"/>
+      <details key="end" value="4129"/>
       <details key="line" value="85"/>
     </eAnnotations>
     <eAnnotations source="positions.150" references="/0/setterImplementationDelegate/@body.24">
-      <details key="start" value="4165"/>
-      <details key="end" value="4252"/>
+      <details key="start" value="4130"/>
+      <details key="end" value="4217"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.151" references="/0/setterImplementationDelegate/@body.24/elementEditor">
-      <details key="start" value="4219"/>
-      <details key="end" value="4232"/>
+      <details key="start" value="4184"/>
+      <details key="end" value="4197"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.152" references="/0/setterImplementationDelegate/@body.24/fullInterfacePath">
-      <details key="start" value="4234"/>
-      <details key="end" value="4251"/>
+      <details key="start" value="4199"/>
+      <details key="end" value="4216"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.153" references="/0/setterImplementationDelegate/@body.25">
-      <details key="start" value="4254"/>
-      <details key="end" value="4255"/>
+      <details key="start" value="4219"/>
+      <details key="end" value="4220"/>
       <details key="line" value="89"/>
     </eAnnotations>
     <eAnnotations source="positions.154" references="/0/setterImplementationDelegate/@body.26">
-      <details key="start" value="4256"/>
-      <details key="end" value="4298"/>
+      <details key="start" value="4221"/>
+      <details key="end" value="4263"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.155" references="/0/setterImplementationDelegate/@body.26/elementEditor">
-      <details key="start" value="4256"/>
-      <details key="end" value="4269"/>
+      <details key="start" value="4221"/>
+      <details key="end" value="4234"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.156" references="/0/setterImplementationDelegate/@body.27">
-      <details key="start" value="4300"/>
-      <details key="end" value="4305"/>
+      <details key="start" value="4265"/>
+      <details key="end" value="4270"/>
       <details key="line" value="89"/>
     </eAnnotations>
     <eAnnotations source="positions.157" references="/0/setterImplementationDelegate/@body.28">
-      <details key="start" value="4306"/>
-      <details key="end" value="4344"/>
+      <details key="start" value="4271"/>
+      <details key="end" value="4309"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.158" references="/0/setterImplementationDelegate/@body.28/@argument.0">
-      <details key="start" value="4306"/>
-      <details key="end" value="4325"/>
+      <details key="start" value="4271"/>
+      <details key="end" value="4290"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.159" references="/0/setterImplementationDelegate/@body.28/@argument.0/referencedView">
-      <details key="start" value="4306"/>
-      <details key="end" value="4320"/>
+      <details key="start" value="4271"/>
+      <details key="end" value="4285"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.160" references="/0/setterImplementationDelegate/@body.29">
-      <details key="start" value="4346"/>
-      <details key="end" value="4387"/>
+      <details key="start" value="4311"/>
+      <details key="end" value="4352"/>
       <details key="line" value="90"/>
     </eAnnotations>
     <eAnnotations source="positions.161" references="/0/setterImplementationDelegate/@body.30">
-      <details key="start" value="4388"/>
-      <details key="end" value="4424"/>
+      <details key="start" value="4353"/>
+      <details key="end" value="4389"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.162" references="/0/setterImplementationDelegate/@body.30/elementEditor">
-      <details key="start" value="4388"/>
-      <details key="end" value="4401"/>
+      <details key="start" value="4353"/>
+      <details key="end" value="4366"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.163" references="/0/setterImplementationDelegate/@body.31">
-      <details key="start" value="4426"/>
-      <details key="end" value="4440"/>
+      <details key="start" value="4391"/>
+      <details key="end" value="4404"/>
       <details key="line" value="90"/>
     </eAnnotations>
-    <eAnnotations source="positions.164" references="/0/setterImplementationDelegate/@body.32">
-      <details key="start" value="4441"/>
-      <details key="end" value="4529"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.165" references="/0/setterImplementationDelegate/@body.32/elementEditor">
-      <details key="start" value="4496"/>
-      <details key="end" value="4509"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.166" references="/0/setterImplementationDelegate/@body.32/fullInterfacePath">
-      <details key="start" value="4511"/>
-      <details key="end" value="4528"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.167" references="/0/setterImplementationDelegate/@body.33">
-      <details key="start" value="4531"/>
-      <details key="end" value="4532"/>
-      <details key="line" value="94"/>
-    </eAnnotations>
-    <eAnnotations source="positions.168" references="/0/setterImplementationDelegate/@body.34">
-      <details key="start" value="4533"/>
-      <details key="end" value="4576"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.169" references="/0/setterImplementationDelegate/@body.34/elementEditor">
-      <details key="start" value="4533"/>
-      <details key="end" value="4546"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.170" references="/0/setterImplementationDelegate/@body.35">
-      <details key="start" value="4578"/>
-      <details key="end" value="4590"/>
-      <details key="line" value="94"/>
-    </eAnnotations>
-    <eAnnotations source="positions.171" references="/0/setterImplementationDelegate/@body.36">
-      <details key="start" value="4591"/>
-      <details key="end" value="4629"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.172" references="/0/setterImplementationDelegate/@body.36/@argument.0">
-      <details key="start" value="4591"/>
-      <details key="end" value="4610"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.173" references="/0/setterImplementationDelegate/@body.36/@argument.0/referencedView">
-      <details key="start" value="4591"/>
-      <details key="end" value="4605"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.174" references="/0/setterImplementationDelegate/@body.37">
-      <details key="start" value="4631"/>
-      <details key="end" value="4666"/>
-      <details key="line" value="95"/>
-    </eAnnotations>
-    <eAnnotations source="positions.175" references="/0/setterImplementationDelegate/@body.38">
-      <details key="start" value="4667"/>
-      <details key="end" value="4703"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.176" references="/0/setterImplementationDelegate/@body.38/elementEditor">
-      <details key="start" value="4667"/>
-      <details key="end" value="4680"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.177" references="/0/setterImplementationDelegate/@body.39">
-      <details key="start" value="4705"/>
-      <details key="end" value="4723"/>
-      <details key="line" value="95"/>
-    </eAnnotations>
-    <eAnnotations source="positions.178" references="/0/setterImplementationDelegate/elementEditor">
+    <eAnnotations source="positions.164" references="/0/setterImplementationDelegate/elementEditor">
       <details key="start" value="3223"/>
       <details key="end" value="3252"/>
       <details key="line" value="72"/>
     </eAnnotations>
-    <eAnnotations source="positions.179" references="/0/setterImplementationDelegate/fullInterfacePath">
+    <eAnnotations source="positions.165" references="/0/setterImplementationDelegate/fullInterfacePath">
       <details key="start" value="3254"/>
       <details key="end" value="3280"/>
       <details key="line" value="72"/>
     </eAnnotations>
-    <eAnnotations source="positions.180" references="/0/setterImplementationDelegate/referencedView">
+    <eAnnotations source="positions.166" references="/0/setterImplementationDelegate/referencedView">
       <details key="start" value="3282"/>
       <details key="end" value="3303"/>
       <details key="line" value="72"/>
     </eAnnotations>
-    <eAnnotations source="positions.181" references="/0/setterImplementationDelegate/@guard">
+    <eAnnotations source="positions.167" references="/0/setterImplementationDelegate/@guard">
       <details key="start" value="3347"/>
       <details key="end" value="3402"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.182" references="/0/setterImplementationDelegate/@guard/elementEditor">
+    <eAnnotations source="positions.168" references="/0/setterImplementationDelegate/@guard/elementEditor">
       <details key="start" value="3347"/>
       <details key="end" value="3360"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.183" references="/0/setterImplementationDelegate/@guard/@argument.1">
+    <eAnnotations source="positions.169" references="/0/setterImplementationDelegate/@guard/@argument.1">
       <details key="start" value="3380"/>
       <details key="end" value="3401"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.184" references="/0/initSignatureDocumentationImplementation">
-      <details key="start" value="4737"/>
-      <details key="end" value="5109"/>
-      <details key="line" value="99"/>
+    <eAnnotations source="positions.170" references="/0/initSignatureDocumentationImplementation">
+      <details key="start" value="4418"/>
+      <details key="end" value="4790"/>
+      <details key="line" value="95"/>
     </eAnnotations>
-    <eAnnotations source="positions.185" references="/0/initSignatureDocumentationImplementation/@body.0">
-      <details key="start" value="4966"/>
-      <details key="end" value="5003"/>
-      <details key="line" value="100"/>
+    <eAnnotations source="positions.171" references="/0/initSignatureDocumentationImplementation/@body.0">
+      <details key="start" value="4647"/>
+      <details key="end" value="4684"/>
+      <details key="line" value="96"/>
     </eAnnotations>
-    <eAnnotations source="positions.186" references="/0/initSignatureDocumentationImplementation/fullInterfacePath">
-      <details key="start" value="5004"/>
-      <details key="end" value="5021"/>
+    <eAnnotations source="positions.172" references="/0/initSignatureDocumentationImplementation/fullInterfacePath">
+      <details key="start" value="4685"/>
+      <details key="end" value="4702"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.187" references="/0/initSignatureDocumentationImplementation/@body.2">
-      <details key="start" value="5023"/>
-      <details key="end" value="5028"/>
+    <eAnnotations source="positions.173" references="/0/initSignatureDocumentationImplementation/@body.2">
+      <details key="start" value="4704"/>
+      <details key="end" value="4709"/>
+      <details key="line" value="99"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/initSignatureDocumentationImplementation/@body.3">
+      <details key="start" value="4710"/>
+      <details key="end" value="4746"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.175" references="/0/initSignatureDocumentationImplementation/@body.3/elementEditor">
+      <details key="start" value="4710"/>
+      <details key="end" value="4723"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.176" references="/0/initSignatureDocumentationImplementation/@body.4">
+      <details key="start" value="4748"/>
+      <details key="end" value="4778"/>
+      <details key="line" value="99"/>
+    </eAnnotations>
+    <eAnnotations source="positions.177" references="/0/initSignatureDocumentationImplementation/elementEditor">
+      <details key="start" value="4476"/>
+      <details key="end" value="4505"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.178" references="/0/initSignatureDocumentationImplementation/fullInterfacePath.1">
+      <details key="start" value="4507"/>
+      <details key="end" value="4533"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.179" references="/0/initSignatureDocumentationImplementation/@guard">
+      <details key="start" value="4589"/>
+      <details key="end" value="4644"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.180" references="/0/initSignatureDocumentationImplementation/@guard/elementEditor">
+      <details key="start" value="4589"/>
+      <details key="end" value="4602"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.181" references="/0/initSignatureDocumentationImplementation/@guard/@argument.1">
+      <details key="start" value="4622"/>
+      <details key="end" value="4643"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.182" references="/0/initSignatureImplementation">
+      <details key="start" value="4792"/>
+      <details key="end" value="5222"/>
       <details key="line" value="103"/>
     </eAnnotations>
-    <eAnnotations source="positions.188" references="/0/initSignatureDocumentationImplementation/@body.3">
-      <details key="start" value="5029"/>
-      <details key="end" value="5065"/>
+    <eAnnotations source="positions.183" references="/0/initSignatureImplementation/@body.0">
+      <details key="start" value="4968"/>
+      <details key="end" value="4997"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.189" references="/0/initSignatureDocumentationImplementation/@body.3/elementEditor">
-      <details key="start" value="5029"/>
-      <details key="end" value="5042"/>
+    <eAnnotations source="positions.184" references="/0/initSignatureImplementation/@body.0/elementEditor">
+      <details key="start" value="4968"/>
+      <details key="end" value="4981"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.190" references="/0/initSignatureDocumentationImplementation/@body.4">
-      <details key="start" value="5067"/>
-      <details key="end" value="5097"/>
+    <eAnnotations source="positions.185" references="/0/initSignatureImplementation/@body.1">
+      <details key="start" value="4999"/>
+      <details key="end" value="5147"/>
+      <details key="line" value="104"/>
+    </eAnnotations>
+    <eAnnotations source="positions.186" references="/0/initSignatureImplementation/@body.2">
+      <details key="start" value="5148"/>
+      <details key="end" value="5185"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.187" references="/0/initSignatureImplementation/@body.2/@argument.0">
+      <details key="start" value="5148"/>
+      <details key="end" value="5166"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.188" references="/0/initSignatureImplementation/@body.2/@argument.0/elementEditor">
+      <details key="start" value="5148"/>
+      <details key="end" value="5161"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.189" references="/0/initSignatureImplementation/@body.3">
+      <details key="start" value="5187"/>
+      <details key="end" value="5210"/>
+      <details key="line" value="107"/>
+    </eAnnotations>
+    <eAnnotations source="positions.190" references="/0/initSignatureImplementation/elementEditor">
+      <details key="start" value="4837"/>
+      <details key="end" value="4866"/>
       <details key="line" value="103"/>
     </eAnnotations>
-    <eAnnotations source="positions.191" references="/0/initSignatureDocumentationImplementation/elementEditor">
-      <details key="start" value="4795"/>
-      <details key="end" value="4824"/>
-      <details key="line" value="99"/>
+    <eAnnotations source="positions.191" references="/0/initSignatureImplementation/@guard">
+      <details key="start" value="4909"/>
+      <details key="end" value="4964"/>
+      <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.192" references="/0/initSignatureDocumentationImplementation/fullInterfacePath.1">
-      <details key="start" value="4826"/>
-      <details key="end" value="4852"/>
-      <details key="line" value="99"/>
+    <eAnnotations source="positions.192" references="/0/initSignatureImplementation/@guard/elementEditor">
+      <details key="start" value="4909"/>
+      <details key="end" value="4922"/>
+      <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.193" references="/0/initSignatureDocumentationImplementation/@guard">
-      <details key="start" value="4908"/>
+    <eAnnotations source="positions.193" references="/0/initSignatureImplementation/@guard/@argument.1">
+      <details key="start" value="4942"/>
       <details key="end" value="4963"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.194" references="/0/initSignatureDocumentationImplementation/@guard/elementEditor">
-      <details key="start" value="4908"/>
-      <details key="end" value="4921"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.195" references="/0/initSignatureDocumentationImplementation/@guard/@argument.1">
-      <details key="start" value="4941"/>
-      <details key="end" value="4962"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.196" references="/0/initSignatureImplementation">
-      <details key="start" value="5111"/>
-      <details key="end" value="5541"/>
-      <details key="line" value="107"/>
-    </eAnnotations>
-    <eAnnotations source="positions.197" references="/0/initSignatureImplementation/@body.0">
-      <details key="start" value="5287"/>
-      <details key="end" value="5316"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.198" references="/0/initSignatureImplementation/@body.0/elementEditor">
-      <details key="start" value="5287"/>
-      <details key="end" value="5300"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.199" references="/0/initSignatureImplementation/@body.1">
-      <details key="start" value="5318"/>
-      <details key="end" value="5466"/>
-      <details key="line" value="108"/>
-    </eAnnotations>
-    <eAnnotations source="positions.200" references="/0/initSignatureImplementation/@body.2">
-      <details key="start" value="5467"/>
-      <details key="end" value="5504"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.201" references="/0/initSignatureImplementation/@body.2/@argument.0">
-      <details key="start" value="5467"/>
-      <details key="end" value="5485"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.202" references="/0/initSignatureImplementation/@body.2/@argument.0/elementEditor">
-      <details key="start" value="5467"/>
-      <details key="end" value="5480"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.203" references="/0/initSignatureImplementation/@body.3">
-      <details key="start" value="5506"/>
-      <details key="end" value="5529"/>
+    <eAnnotations source="positions.194" references="/0/addFilterSignatureImplementation">
+      <details key="start" value="5224"/>
+      <details key="end" value="5482"/>
       <details key="line" value="111"/>
     </eAnnotations>
-    <eAnnotations source="positions.204" references="/0/initSignatureImplementation/elementEditor">
-      <details key="start" value="5156"/>
-      <details key="end" value="5185"/>
-      <details key="line" value="107"/>
-    </eAnnotations>
-    <eAnnotations source="positions.205" references="/0/initSignatureImplementation/@guard">
-      <details key="start" value="5228"/>
-      <details key="end" value="5283"/>
+    <eAnnotations source="positions.195" references="/0/addFilterSignatureImplementation/@body.0">
+      <details key="start" value="5367"/>
+      <details key="end" value="5401"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.206" references="/0/initSignatureImplementation/@guard/elementEditor">
-      <details key="start" value="5228"/>
-      <details key="end" value="5241"/>
+    <eAnnotations source="positions.196" references="/0/addFilterSignatureImplementation/@body.0/elementEditor">
+      <details key="start" value="5367"/>
+      <details key="end" value="5380"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.207" references="/0/initSignatureImplementation/@guard/@argument.1">
-      <details key="start" value="5261"/>
-      <details key="end" value="5282"/>
+    <eAnnotations source="positions.197" references="/0/addFilterSignatureImplementation/@body.1">
+      <details key="start" value="5403"/>
+      <details key="end" value="5408"/>
+      <details key="line" value="112"/>
+    </eAnnotations>
+    <eAnnotations source="positions.198" references="/0/addFilterSignatureImplementation/@body.2">
+      <details key="start" value="5409"/>
+      <details key="end" value="5446"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.208" references="/0/addFilterSignatureImplementation">
-      <details key="start" value="5543"/>
-      <details key="end" value="5801"/>
-      <details key="line" value="115"/>
-    </eAnnotations>
-    <eAnnotations source="positions.209" references="/0/addFilterSignatureImplementation/@body.0">
-      <details key="start" value="5686"/>
-      <details key="end" value="5720"/>
+    <eAnnotations source="positions.199" references="/0/addFilterSignatureImplementation/@body.2/@argument.0">
+      <details key="start" value="5409"/>
+      <details key="end" value="5427"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.210" references="/0/addFilterSignatureImplementation/@body.0/elementEditor">
-      <details key="start" value="5686"/>
-      <details key="end" value="5699"/>
+    <eAnnotations source="positions.200" references="/0/addFilterSignatureImplementation/@body.2/@argument.0/elementEditor">
+      <details key="start" value="5409"/>
+      <details key="end" value="5422"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.211" references="/0/addFilterSignatureImplementation/@body.1">
-      <details key="start" value="5722"/>
-      <details key="end" value="5727"/>
-      <details key="line" value="116"/>
+    <eAnnotations source="positions.201" references="/0/addFilterSignatureImplementation/@body.3">
+      <details key="start" value="5448"/>
+      <details key="end" value="5470"/>
+      <details key="line" value="113"/>
     </eAnnotations>
-    <eAnnotations source="positions.212" references="/0/addFilterSignatureImplementation/@body.2">
-      <details key="start" value="5728"/>
-      <details key="end" value="5765"/>
+    <eAnnotations source="positions.202" references="/0/addFilterSignatureImplementation/elementEditor">
+      <details key="start" value="5274"/>
+      <details key="end" value="5303"/>
+      <details key="line" value="111"/>
+    </eAnnotations>
+    <eAnnotations source="positions.203" references="/0/addFilterSignatureImplementation/@guard">
+      <details key="start" value="5308"/>
+      <details key="end" value="5363"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.213" references="/0/addFilterSignatureImplementation/@body.2/@argument.0">
-      <details key="start" value="5728"/>
-      <details key="end" value="5746"/>
+    <eAnnotations source="positions.204" references="/0/addFilterSignatureImplementation/@guard/elementEditor">
+      <details key="start" value="5308"/>
+      <details key="end" value="5321"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.214" references="/0/addFilterSignatureImplementation/@body.2/@argument.0/elementEditor">
-      <details key="start" value="5728"/>
-      <details key="end" value="5741"/>
+    <eAnnotations source="positions.205" references="/0/addFilterSignatureImplementation/@guard/@argument.1">
+      <details key="start" value="5341"/>
+      <details key="end" value="5362"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.215" references="/0/addFilterSignatureImplementation/@body.3">
-      <details key="start" value="5767"/>
-      <details key="end" value="5789"/>
+    <eAnnotations source="positions.206" references="/0/addBusinessFilterSignatureImplementation">
+      <details key="start" value="5484"/>
+      <details key="end" value="5770"/>
       <details key="line" value="117"/>
     </eAnnotations>
-    <eAnnotations source="positions.216" references="/0/addFilterSignatureImplementation/elementEditor">
-      <details key="start" value="5593"/>
-      <details key="end" value="5622"/>
-      <details key="line" value="115"/>
-    </eAnnotations>
-    <eAnnotations source="positions.217" references="/0/addFilterSignatureImplementation/@guard">
-      <details key="start" value="5627"/>
-      <details key="end" value="5682"/>
+    <eAnnotations source="positions.207" references="/0/addBusinessFilterSignatureImplementation/@body.0">
+      <details key="start" value="5635"/>
+      <details key="end" value="5677"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.218" references="/0/addFilterSignatureImplementation/@guard/elementEditor">
-      <details key="start" value="5627"/>
-      <details key="end" value="5640"/>
+    <eAnnotations source="positions.208" references="/0/addBusinessFilterSignatureImplementation/@body.0/elementEditor">
+      <details key="start" value="5635"/>
+      <details key="end" value="5648"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.219" references="/0/addFilterSignatureImplementation/@guard/@argument.1">
-      <details key="start" value="5660"/>
-      <details key="end" value="5681"/>
+    <eAnnotations source="positions.209" references="/0/addBusinessFilterSignatureImplementation/@body.1">
+      <details key="start" value="5679"/>
+      <details key="end" value="5684"/>
+      <details key="line" value="118"/>
+    </eAnnotations>
+    <eAnnotations source="positions.210" references="/0/addBusinessFilterSignatureImplementation/@body.2">
+      <details key="start" value="5685"/>
+      <details key="end" value="5722"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.220" references="/0/addBusinessFilterSignatureImplementation">
-      <details key="start" value="5803"/>
-      <details key="end" value="6089"/>
-      <details key="line" value="121"/>
-    </eAnnotations>
-    <eAnnotations source="positions.221" references="/0/addBusinessFilterSignatureImplementation/@body.0">
-      <details key="start" value="5954"/>
-      <details key="end" value="5996"/>
+    <eAnnotations source="positions.211" references="/0/addBusinessFilterSignatureImplementation/@body.2/@argument.0">
+      <details key="start" value="5685"/>
+      <details key="end" value="5703"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.222" references="/0/addBusinessFilterSignatureImplementation/@body.0/elementEditor">
-      <details key="start" value="5954"/>
+    <eAnnotations source="positions.212" references="/0/addBusinessFilterSignatureImplementation/@body.2/@argument.0/elementEditor">
+      <details key="start" value="5685"/>
+      <details key="end" value="5698"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.213" references="/0/addBusinessFilterSignatureImplementation/@body.3">
+      <details key="start" value="5724"/>
+      <details key="end" value="5758"/>
+      <details key="line" value="119"/>
+    </eAnnotations>
+    <eAnnotations source="positions.214" references="/0/addBusinessFilterSignatureImplementation/elementEditor">
+      <details key="start" value="5542"/>
+      <details key="end" value="5571"/>
+      <details key="line" value="117"/>
+    </eAnnotations>
+    <eAnnotations source="positions.215" references="/0/addBusinessFilterSignatureImplementation/@guard">
+      <details key="start" value="5576"/>
+      <details key="end" value="5631"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.216" references="/0/addBusinessFilterSignatureImplementation/@guard/elementEditor">
+      <details key="start" value="5576"/>
+      <details key="end" value="5589"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.217" references="/0/addBusinessFilterSignatureImplementation/@guard/@argument.1">
+      <details key="start" value="5609"/>
+      <details key="end" value="5630"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.218" references="/0/isContainedInTableSignatureImplementation">
+      <details key="start" value="5772"/>
+      <details key="end" value="6093"/>
+      <details key="line" value="123"/>
+    </eAnnotations>
+    <eAnnotations source="positions.219" references="/0/isContainedInTableSignatureImplementation/@body.0">
+      <details key="start" value="5924"/>
       <details key="end" value="5967"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.223" references="/0/addBusinessFilterSignatureImplementation/@body.1">
-      <details key="start" value="5998"/>
-      <details key="end" value="6003"/>
-      <details key="line" value="122"/>
-    </eAnnotations>
-    <eAnnotations source="positions.224" references="/0/addBusinessFilterSignatureImplementation/@body.2">
-      <details key="start" value="6004"/>
-      <details key="end" value="6041"/>
+    <eAnnotations source="positions.220" references="/0/isContainedInTableSignatureImplementation/@body.0/elementEditor">
+      <details key="start" value="5924"/>
+      <details key="end" value="5937"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.225" references="/0/addBusinessFilterSignatureImplementation/@body.2/@argument.0">
-      <details key="start" value="6004"/>
-      <details key="end" value="6022"/>
+    <eAnnotations source="positions.221" references="/0/isContainedInTableSignatureImplementation/@body.1">
+      <details key="start" value="5969"/>
+      <details key="end" value="6007"/>
+      <details key="line" value="124"/>
+    </eAnnotations>
+    <eAnnotations source="positions.222" references="/0/isContainedInTableSignatureImplementation/@body.2">
+      <details key="start" value="6008"/>
+      <details key="end" value="6045"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.226" references="/0/addBusinessFilterSignatureImplementation/@body.2/@argument.0/elementEditor">
-      <details key="start" value="6004"/>
-      <details key="end" value="6017"/>
+    <eAnnotations source="positions.223" references="/0/isContainedInTableSignatureImplementation/@body.2/@argument.0">
+      <details key="start" value="6008"/>
+      <details key="end" value="6026"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.227" references="/0/addBusinessFilterSignatureImplementation/@body.3">
-      <details key="start" value="6043"/>
-      <details key="end" value="6077"/>
+    <eAnnotations source="positions.224" references="/0/isContainedInTableSignatureImplementation/@body.2/@argument.0/elementEditor">
+      <details key="start" value="6008"/>
+      <details key="end" value="6021"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.225" references="/0/isContainedInTableSignatureImplementation/@body.3">
+      <details key="start" value="6047"/>
+      <details key="end" value="6081"/>
+      <details key="line" value="125"/>
+    </eAnnotations>
+    <eAnnotations source="positions.226" references="/0/isContainedInTableSignatureImplementation/elementEditor">
+      <details key="start" value="5831"/>
+      <details key="end" value="5860"/>
       <details key="line" value="123"/>
     </eAnnotations>
-    <eAnnotations source="positions.228" references="/0/addBusinessFilterSignatureImplementation/elementEditor">
-      <details key="start" value="5861"/>
-      <details key="end" value="5890"/>
-      <details key="line" value="121"/>
-    </eAnnotations>
-    <eAnnotations source="positions.229" references="/0/addBusinessFilterSignatureImplementation/@guard">
-      <details key="start" value="5895"/>
-      <details key="end" value="5950"/>
+    <eAnnotations source="positions.227" references="/0/isContainedInTableSignatureImplementation/@guard">
+      <details key="start" value="5865"/>
+      <details key="end" value="5920"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.230" references="/0/addBusinessFilterSignatureImplementation/@guard/elementEditor">
-      <details key="start" value="5895"/>
-      <details key="end" value="5908"/>
+    <eAnnotations source="positions.228" references="/0/isContainedInTableSignatureImplementation/@guard/elementEditor">
+      <details key="start" value="5865"/>
+      <details key="end" value="5878"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.231" references="/0/addBusinessFilterSignatureImplementation/@guard/@argument.1">
-      <details key="start" value="5928"/>
-      <details key="end" value="5949"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.232" references="/0/isContainedInTableSignatureImplementation">
-      <details key="start" value="6091"/>
-      <details key="end" value="6412"/>
-      <details key="line" value="127"/>
-    </eAnnotations>
-    <eAnnotations source="positions.233" references="/0/isContainedInTableSignatureImplementation/@body.0">
-      <details key="start" value="6243"/>
-      <details key="end" value="6286"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.234" references="/0/isContainedInTableSignatureImplementation/@body.0/elementEditor">
-      <details key="start" value="6243"/>
-      <details key="end" value="6256"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.235" references="/0/isContainedInTableSignatureImplementation/@body.1">
-      <details key="start" value="6288"/>
-      <details key="end" value="6326"/>
-      <details key="line" value="128"/>
-    </eAnnotations>
-    <eAnnotations source="positions.236" references="/0/isContainedInTableSignatureImplementation/@body.2">
-      <details key="start" value="6327"/>
-      <details key="end" value="6364"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.237" references="/0/isContainedInTableSignatureImplementation/@body.2/@argument.0">
-      <details key="start" value="6327"/>
-      <details key="end" value="6345"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.238" references="/0/isContainedInTableSignatureImplementation/@body.2/@argument.0/elementEditor">
-      <details key="start" value="6327"/>
-      <details key="end" value="6340"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.239" references="/0/isContainedInTableSignatureImplementation/@body.3">
-      <details key="start" value="6366"/>
-      <details key="end" value="6400"/>
-      <details key="line" value="129"/>
-    </eAnnotations>
-    <eAnnotations source="positions.240" references="/0/isContainedInTableSignatureImplementation/elementEditor">
-      <details key="start" value="6150"/>
-      <details key="end" value="6179"/>
-      <details key="line" value="127"/>
-    </eAnnotations>
-    <eAnnotations source="positions.241" references="/0/isContainedInTableSignatureImplementation/@guard">
-      <details key="start" value="6184"/>
-      <details key="end" value="6239"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.242" references="/0/isContainedInTableSignatureImplementation/@guard/elementEditor">
-      <details key="start" value="6184"/>
-      <details key="end" value="6197"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.243" references="/0/isContainedInTableSignatureImplementation/@guard/@argument.1">
-      <details key="start" value="6217"/>
-      <details key="end" value="6238"/>
+    <eAnnotations source="positions.229" references="/0/isContainedInTableSignatureImplementation/@guard/@argument.1">
+      <details key="start" value="5898"/>
+      <details key="end" value="5919"/>
       <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>
