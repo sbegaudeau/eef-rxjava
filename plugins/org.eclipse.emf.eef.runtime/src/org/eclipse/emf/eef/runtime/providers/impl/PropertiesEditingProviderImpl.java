@@ -3,7 +3,11 @@
  */
 package org.eclipse.emf.eef.runtime.providers.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -18,6 +22,22 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  */
 public abstract class PropertiesEditingProviderImpl extends AdapterImpl implements PropertiesEditingProvider {
 	
+	private List<PropertiesEditingProvider> superProviders;
+	
+	/**
+	 * @param superProviders
+	 */
+	public PropertiesEditingProviderImpl() {
+		this.superProviders = new ArrayList<PropertiesEditingProvider>();
+	}
+	
+	/**
+	 * @param superProviders
+	 */
+	public PropertiesEditingProviderImpl(List<PropertiesEditingProvider> superProviders) {
+		this.superProviders = superProviders;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyProvider#getPolicy(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
@@ -31,5 +51,49 @@ public abstract class PropertiesEditingProviderImpl extends AdapterImpl implemen
 		}
 		return null;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+		for (PropertiesEditingProvider provider : superProviders) {
+			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(editingContext, mode);
+			if (propertiesEditingComponent != null) {
+				return propertiesEditingComponent;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+		for (PropertiesEditingProvider provider : superProviders) {
+			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(editingContext, mode, part);
+			if (propertiesEditingComponent != null) {
+				return propertiesEditingComponent;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+		for (PropertiesEditingProvider provider : superProviders) {
+			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+			if (propertiesEditingComponent != null) {
+				return propertiesEditingComponent;
+			}
+		}
+		return null;
+	}
+	
+	
 
 }

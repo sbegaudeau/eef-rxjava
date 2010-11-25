@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
@@ -38,7 +39,11 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 	public void execute() {
 		EClassifier eType = editionContext.getEReference().getEType();
 		PropertiesEditionWizard wizard;
-		if (eType instanceof EClass && ((EClass)eType).isAbstract()) {
+		if (editionContext instanceof TypedEReferencePropertiesEditingContext) {
+			EObject create = EcoreUtil.create(((TypedEReferencePropertiesEditingContext) editionContext).getExpectedType());
+			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
+		}
+		else if (eType instanceof EClass && ((EClass)eType).isAbstract()) {
 			wizard = new PropertiesEditionWizard(null, editionContext.getAdapterFactory(), editionContext.getEReference());
 		}
 		else {
