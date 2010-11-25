@@ -109,9 +109,8 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider imple
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Databinding)object).getDocumentation();
-		return label == null || label.length() == 0 ? getString("_UI_Databinding_type")
-				: getString("_UI_Databinding_type") + " " + label;
+		String label = ((Databinding) object).getDocumentation();
+		return label == null || label.length() == 0 ? getString("_UI_Databinding_type") : getString("_UI_Databinding_type") + " " + label;
 	}
 
 	/**
@@ -126,11 +125,10 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider imple
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Databinding.class)) {
-			case MappingPackage.DATABINDING__BINDINGS:
-			case MappingPackage.DATABINDING__CATEGORIES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.DATABINDING__BINDINGS:
+		case MappingPackage.DATABINDING__CATEGORIES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -146,14 +144,11 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider imple
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
-				MappingFactory.eINSTANCE.createEMFElementBinding()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS, MappingFactory.eINSTANCE.createEMFElementBinding()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
-				MappingFactory.eINSTANCE.createStandardElementBinding()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS, MappingFactory.eINSTANCE.createStandardElementBinding()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES,
-				MappingFactory.eINSTANCE.createCategory()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES, MappingFactory.eINSTANCE.createCategory()));
 	}
 
 }

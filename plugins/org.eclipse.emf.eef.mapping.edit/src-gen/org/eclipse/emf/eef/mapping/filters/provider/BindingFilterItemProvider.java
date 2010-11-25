@@ -71,11 +71,7 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_name_feature",
-						"_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__NAME, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_name_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -85,12 +81,7 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addMandatoryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_BindingFilter_mandatory_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_BindingFilter_mandatory_feature",
-						"_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__MANDATORY, true,
-				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_mandatory_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_mandatory_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__MANDATORY, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -101,9 +92,8 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BindingFilter)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_BindingFilter_type")
-				: getString("_UI_BindingFilter_type") + " " + label;
+		String label = ((BindingFilter) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_BindingFilter_type") : getString("_UI_BindingFilter_type") + " " + label;
 	}
 
 	/**
@@ -118,11 +108,10 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(BindingFilter.class)) {
-			case FiltersPackage.BINDING_FILTER__NAME:
-			case FiltersPackage.BINDING_FILTER__MANDATORY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case FiltersPackage.BINDING_FILTER__NAME:
+		case FiltersPackage.BINDING_FILTER__MANDATORY:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -137,17 +126,6 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return MappingEditPlugin.INSTANCE;
 	}
 
 }

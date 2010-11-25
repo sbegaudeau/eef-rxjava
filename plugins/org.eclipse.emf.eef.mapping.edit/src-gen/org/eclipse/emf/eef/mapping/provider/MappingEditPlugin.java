@@ -47,7 +47,7 @@ public final class MappingEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public MappingEditPlugin() {
-		super(new ResourceLocator[] {ViewsEditPlugin.INSTANCE,});
+		super(new ResourceLocator[] { ViewsEditPlugin.INSTANCE, });
 	}
 
 	/**

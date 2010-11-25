@@ -67,11 +67,7 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	 * @generated
 	 */
 	protected void addOCLBodyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_OCLFilter_OCLBody_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_OCLFilter_OCLBody_feature",
-						"_UI_OCLFilter_type"), FiltersPackage.Literals.OCL_FILTER__OCL_BODY, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OCLFilter_OCLBody_feature"), getString("_UI_PropertyDescriptor_description", "_UI_OCLFilter_OCLBody_feature", "_UI_OCLFilter_type"), FiltersPackage.Literals.OCL_FILTER__OCL_BODY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -93,9 +89,8 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OCLFilter)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_OCLFilter_type")
-				: getString("_UI_OCLFilter_type") + " " + label;
+		String label = ((OCLFilter) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_OCLFilter_type") : getString("_UI_OCLFilter_type") + " " + label;
 	}
 
 	/**
@@ -110,10 +105,9 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OCLFilter.class)) {
-			case FiltersPackage.OCL_FILTER__OCL_BODY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case FiltersPackage.OCL_FILTER__OCL_BODY:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}

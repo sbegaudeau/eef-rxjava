@@ -63,9 +63,8 @@ public class JavaFilterItemProvider extends BindingFilterItemProvider implements
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((JavaFilter)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_JavaFilter_type")
-				: getString("_UI_JavaFilter_type") + " " + label;
+		String label = ((JavaFilter) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_JavaFilter_type") : getString("_UI_JavaFilter_type") + " " + label;
 	}
 
 	/**

@@ -63,9 +63,8 @@ public class BusinessFilterItemProvider extends BindingFilterItemProvider implem
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BusinessFilter)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_BusinessFilter_type")
-				: getString("_UI_BusinessFilter_type") + " " + label;
+		String label = ((BusinessFilter) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_BusinessFilter_type") : getString("_UI_BusinessFilter_type") + " " + label;
 	}
 
 	/**

@@ -76,12 +76,7 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_AbstractPropertyBinding_name_feature"),
-				getString("_UI_AbstractPropertyBinding_name_description"),
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPropertyBinding_name_feature"), getString("_UI_AbstractPropertyBinding_name_description"), MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -128,26 +123,20 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated NOT
 	 */
 	private ItemPropertyDescriptor initViewsPropertyDescriptors() {
-		return new ItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_AbstractPropertyBinding_views_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_AbstractPropertyBinding_views_feature",
-						"_UI_AbstractPropertyBinding_type"),
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__VIEWS, true, false, true, null, null, null) {
+		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPropertyBinding_views_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbstractPropertyBinding_views_feature", "_UI_AbstractPropertyBinding_type"), MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__VIEWS, true, false, true, null, null, null) {
 
 			@Override
 			protected Collection<?> getComboBoxObjects(Object object) {
 				if (object instanceof AbstractPropertyBinding) {
-					AbstractPropertyBinding propertyBinding = (AbstractPropertyBinding)object;
+					AbstractPropertyBinding propertyBinding = (AbstractPropertyBinding) object;
 					List<View> views = new ArrayList<View>(propertyBinding.getElement().getViews());
-					for (ElementBindingReference reference : propertyBinding.getElement()
-							.getReferencedBinding())
+					for (ElementBindingReference reference : propertyBinding.getElement().getReferencedBinding())
 						views.addAll(reference.getBinding().getViews());
 					Collection<?> comboBoxObjects = super.getComboBoxObjects(object);
 					Collection<ViewElement> result = new ArrayList<ViewElement>();
 					for (Object viewElement : comboBoxObjects) {
-						if (ownedBy((ViewElement)viewElement, views))
-							result.add((ViewElement)viewElement);
+						if (ownedBy((ViewElement) viewElement, views))
+							result.add((ViewElement) viewElement);
 					}
 					return result;
 				}
@@ -195,9 +184,8 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AbstractPropertyBinding)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_AbstractPropertyBinding_type")
-				: getString("_UI_AbstractPropertyBinding_type") + " " + label;
+		String label = ((AbstractPropertyBinding) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_AbstractPropertyBinding_type") : getString("_UI_AbstractPropertyBinding_type") + " " + label;
 	}
 
 	/**
@@ -212,14 +200,12 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AbstractPropertyBinding.class)) {
-			case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
-			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -240,17 +226,11 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 		//				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
 		//				FiltersFactory.eINSTANCE.createOCLFilter()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createJavaDeclarationFilter()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE.createJavaDeclarationFilter()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createJavaExpressionFilter()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE.createJavaExpressionFilter()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE
-						.createOnlyReferenceTypeFilter()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS, FiltersFactory.eINSTANCE.createOnlyReferenceTypeFilter()));
 	}
 
 }

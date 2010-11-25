@@ -65,12 +65,7 @@ public class ElementBindingReferenceItemProvider extends DocumentedElementItemPr
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ElementBindingReference_binding_feature"),
-				getString("_UI_ElementBindingReference_binding_description"),
-				MappingPackage.Literals.ELEMENT_BINDING_REFERENCE__BINDING, true, false, true, null, null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementBindingReference_binding_feature"), getString("_UI_ElementBindingReference_binding_description"), MappingPackage.Literals.ELEMENT_BINDING_REFERENCE__BINDING, true, false, true, null, null, null));
 	}
 
 	/**
@@ -92,9 +87,8 @@ public class ElementBindingReferenceItemProvider extends DocumentedElementItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ElementBindingReference)object).getDocumentation();
-		return label == null || label.length() == 0 ? getString("_UI_ElementBindingReference_type")
-				: getString("_UI_ElementBindingReference_type") + " " + label;
+		String label = ((ElementBindingReference) object).getDocumentation();
+		return label == null || label.length() == 0 ? getString("_UI_ElementBindingReference_type") : getString("_UI_ElementBindingReference_type") + " " + label;
 	}
 
 	/**

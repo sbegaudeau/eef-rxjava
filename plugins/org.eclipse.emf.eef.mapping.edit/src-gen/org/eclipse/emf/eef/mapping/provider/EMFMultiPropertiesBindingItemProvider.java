@@ -68,12 +68,7 @@ public class EMFMultiPropertiesBindingItemProvider extends AbstractPropertyBindi
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_EMFMultiPropertiesBinding_model_feature"),
-				getString("_UI_EMFMultiPropertiesBinding_model_description"),
-				MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__MODEL, true, false, true, null, null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFMultiPropertiesBinding_model_feature"), getString("_UI_EMFMultiPropertiesBinding_model_description"), MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__MODEL, true, false, true, null, null, null));
 	}
 
 	/**
@@ -125,9 +120,8 @@ public class EMFMultiPropertiesBindingItemProvider extends AbstractPropertyBindi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EMFMultiPropertiesBinding)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_EMFMultiPropertiesBinding_type")
-				: getString("_UI_EMFMultiPropertiesBinding_type") + " " + label;
+		String label = ((EMFMultiPropertiesBinding) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_EMFMultiPropertiesBinding_type") : getString("_UI_EMFMultiPropertiesBinding_type") + " " + label;
 	}
 
 	/**
@@ -142,10 +136,9 @@ public class EMFMultiPropertiesBindingItemProvider extends AbstractPropertyBindi
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EMFMultiPropertiesBinding.class)) {
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -161,17 +154,11 @@ public class EMFMultiPropertiesBindingItemProvider extends AbstractPropertyBindi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, NavigationFactory.eINSTANCE
-						.createSimpleModelNavigation()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, NavigationFactory.eINSTANCE
-						.createChainedModelNavigation()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, NavigationFactory.eINSTANCE.createChainedModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, NavigationFactory.eINSTANCE
-						.createCustomModelNavigation()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, NavigationFactory.eINSTANCE.createCustomModelNavigation()));
 	}
 
 }

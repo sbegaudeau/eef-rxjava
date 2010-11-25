@@ -67,11 +67,7 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider impl
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ModelElement_binding_feature"),
-				getString("_UI_ModelElement_binding_description"),
-				MappingPackage.Literals.MODEL_ELEMENT__BINDING, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ModelElement_binding_feature"), getString("_UI_ModelElement_binding_description"), MappingPackage.Literals.MODEL_ELEMENT__BINDING, true, false, true, null, null, null));
 	}
 
 	/**
@@ -113,9 +109,8 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider impl
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelElement)object).getDocumentation();
-		return label == null || label.length() == 0 ? getString("_UI_ModelElement_type")
-				: getString("_UI_ModelElement_type") + " " + label;
+		String label = ((ModelElement) object).getDocumentation();
+		return label == null || label.length() == 0 ? getString("_UI_ModelElement_type") : getString("_UI_ModelElement_type") + " " + label;
 	}
 
 	/**
@@ -130,11 +125,10 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider impl
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ModelElement.class)) {
-			case MappingPackage.MODEL_ELEMENT__PROPERTIES:
-			case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.MODEL_ELEMENT__PROPERTIES:
+		case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}

@@ -65,11 +65,7 @@ public class EMFElementBindingItemProvider extends AbstractElementBindingItemPro
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_EMFElementBinding_model_feature"),
-				getString("_UI_EMFElementBinding_model_description"),
-				MappingPackage.Literals.EMF_ELEMENT_BINDING__MODEL, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFElementBinding_model_feature"), getString("_UI_EMFElementBinding_model_description"), MappingPackage.Literals.EMF_ELEMENT_BINDING__MODEL, true, false, true, null, null, null));
 	}
 
 	/**
@@ -91,9 +87,8 @@ public class EMFElementBindingItemProvider extends AbstractElementBindingItemPro
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EMFElementBinding)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_EMFElementBinding_type")
-				: getString("_UI_EMFElementBinding_type") + " " + label;
+		String label = ((EMFElementBinding) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_EMFElementBinding_type") : getString("_UI_EMFElementBinding_type") + " " + label;
 	}
 
 	/**

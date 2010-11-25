@@ -67,13 +67,7 @@ public class JavaDeclarationFilterItemProvider extends JavaFilterItemProvider im
 	 * @generated
 	 */
 	protected void addMethodNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_JavaDeclarationFilter_methodName_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_JavaDeclarationFilter_methodName_feature",
-						"_UI_JavaDeclarationFilter_type"),
-				FiltersPackage.Literals.JAVA_DECLARATION_FILTER__METHOD_NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_JavaDeclarationFilter_methodName_feature"), getString("_UI_PropertyDescriptor_description", "_UI_JavaDeclarationFilter_methodName_feature", "_UI_JavaDeclarationFilter_type"), FiltersPackage.Literals.JAVA_DECLARATION_FILTER__METHOD_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,9 +89,8 @@ public class JavaDeclarationFilterItemProvider extends JavaFilterItemProvider im
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((JavaDeclarationFilter)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_JavaDeclarationFilter_type")
-				: getString("_UI_JavaDeclarationFilter_type") + " " + label;
+		String label = ((JavaDeclarationFilter) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_JavaDeclarationFilter_type") : getString("_UI_JavaDeclarationFilter_type") + " " + label;
 	}
 
 	/**
@@ -112,10 +105,9 @@ public class JavaDeclarationFilterItemProvider extends JavaFilterItemProvider im
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(JavaDeclarationFilter.class)) {
-			case FiltersPackage.JAVA_DECLARATION_FILTER__METHOD_NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case FiltersPackage.JAVA_DECLARATION_FILTER__METHOD_NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}

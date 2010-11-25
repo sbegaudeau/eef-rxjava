@@ -69,11 +69,7 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Category_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Category_name_feature",
-						"_UI_Category_type"), MappingPackage.Literals.CATEGORY__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Category_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Category_name_feature", "_UI_Category_type"), MappingPackage.Literals.CATEGORY__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -126,9 +122,8 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Category)object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Category_type")
-				: getString("_UI_Category_type") + " " + label;
+		String label = ((Category) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Category_type") : getString("_UI_Category_type") + " " + label;
 	}
 
 	/**
@@ -143,15 +138,13 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Category.class)) {
-			case MappingPackage.CATEGORY__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
-			case MappingPackage.CATEGORY__BINDINGS:
-			case MappingPackage.CATEGORY__CATEGORIES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case MappingPackage.CATEGORY__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case MappingPackage.CATEGORY__BINDINGS:
+		case MappingPackage.CATEGORY__CATEGORIES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -167,14 +160,11 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS,
-				MappingFactory.eINSTANCE.createEMFElementBinding()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS, MappingFactory.eINSTANCE.createEMFElementBinding()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS,
-				MappingFactory.eINSTANCE.createStandardElementBinding()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS, MappingFactory.eINSTANCE.createStandardElementBinding()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__CATEGORIES,
-				MappingFactory.eINSTANCE.createCategory()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__CATEGORIES, MappingFactory.eINSTANCE.createCategory()));
 	}
 
 }

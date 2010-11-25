@@ -124,11 +124,10 @@ public class ChainedModelNavigationItemProvider extends StructuredModelNavigatio
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ChainedModelNavigation.class)) {
-			case NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT:
-			case NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT:
+		case NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -144,21 +143,13 @@ public class ChainedModelNavigationItemProvider extends StructuredModelNavigatio
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT, NavigationFactory.eINSTANCE
-						.createSimpleModelNavigation()));
+		newChildDescriptors.add(createChildParameter(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT, NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT, NavigationFactory.eINSTANCE
-						.createChainedModelNavigation()));
+		newChildDescriptors.add(createChildParameter(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT, NavigationFactory.eINSTANCE.createChainedModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT, NavigationFactory.eINSTANCE
-						.createSimpleModelNavigation()));
+		newChildDescriptors.add(createChildParameter(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT, NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(
-				NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT, NavigationFactory.eINSTANCE
-						.createChainedModelNavigation()));
+		newChildDescriptors.add(createChildParameter(NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT, NavigationFactory.eINSTANCE.createChainedModelNavigation()));
 	}
 
 	/**
@@ -172,12 +163,10 @@ public class ChainedModelNavigationItemProvider extends StructuredModelNavigatio
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT
-				|| childFeature == NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT;
+		boolean qualify = childFeature == NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__CURRENT || childFeature == NavigationPackage.Literals.CHAINED_MODEL_NAVIGATION__NEXT;
 
 		if (qualify) {
-			return getString("_UI_CreateChild_text2", new Object[] {getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
+			return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}
