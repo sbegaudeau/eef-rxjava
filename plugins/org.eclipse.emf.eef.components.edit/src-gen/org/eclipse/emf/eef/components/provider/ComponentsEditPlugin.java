@@ -50,9 +50,7 @@ public final class ComponentsEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ComponentsEditPlugin() {
-		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE,
-				GenModelEditPlugin.INSTANCE, MappingEditPlugin.INSTANCE,
-				ViewsEditPlugin.INSTANCE, });
+		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, GenModelEditPlugin.INSTANCE, MappingEditPlugin.INSTANCE, ViewsEditPlugin.INSTANCE, });
 	}
 
 	/**
@@ -97,8 +95,7 @@ public final class ComponentsEditPlugin extends EMFPlugin {
 			// Remember the static instance.
 			//
 			plugin = this;
-			EValidator.Registry.INSTANCE.put(ComponentsPackage.eINSTANCE,
-					new EEFValidator());
+			EValidator.Registry.INSTANCE.put(ComponentsPackage.eINSTANCE, new EEFValidator());
 		}
 	}
 

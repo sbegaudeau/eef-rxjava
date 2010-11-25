@@ -35,18 +35,14 @@ import org.eclipse.emf.eef.mapping.provider.EMFMultiPropertiesBindingItemProvide
  * <!-- end-user-doc -->
  * @generated
  */
-public class PropertiesMultiEditionElementItemProvider extends
-		EMFMultiPropertiesBindingItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class PropertiesMultiEditionElementItemProvider extends EMFMultiPropertiesBindingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PropertiesMultiEditionElementItemProvider(
-			AdapterFactory adapterFactory) {
+	public PropertiesMultiEditionElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -73,13 +69,7 @@ public class PropertiesMultiEditionElementItemProvider extends
 	 * @generated
 	 */
 	protected void addHelpIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_EEFElement_helpID_feature"),
-				getString("_UI_EEFElement_helpID_description"),
-				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"), getString("_UI_EEFElement_helpID_description"), ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,8 +80,7 @@ public class PropertiesMultiEditionElementItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/PropertiesMultiEditionElement"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertiesMultiEditionElement"));
 	}
 
 	/**
@@ -103,9 +92,7 @@ public class PropertiesMultiEditionElementItemProvider extends
 	@Override
 	public String getText(Object object) {
 		String label = ((PropertiesMultiEditionElement) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_PropertiesMultiEditionElement_type")
-				: getString("_UI_PropertiesMultiEditionElement_type") + " "
-						+ label;
+		return label == null || label.length() == 0 ? getString("_UI_PropertiesMultiEditionElement_type") : getString("_UI_PropertiesMultiEditionElement_type") + " " + label;
 	}
 
 	/**
@@ -121,8 +108,7 @@ public class PropertiesMultiEditionElementItemProvider extends
 
 		switch (notification.getFeatureID(PropertiesMultiEditionElement.class)) {
 		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -136,20 +122,8 @@ public class PropertiesMultiEditionElementItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ComponentsEditPlugin.INSTANCE;
 	}
 
 }

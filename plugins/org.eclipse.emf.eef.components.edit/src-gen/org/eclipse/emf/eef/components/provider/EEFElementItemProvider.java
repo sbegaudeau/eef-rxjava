@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -35,9 +36,7 @@ import org.eclipse.emf.eef.components.EEFElement;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EEFElementItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class EEFElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -71,13 +70,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addHelpIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_EEFElement_helpID_feature"),
-				getString("_UI_EEFElement_helpID_description"),
-				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"), getString("_UI_EEFElement_helpID_description"), ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -88,8 +81,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/EEFElement"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EEFElement"));
 	}
 
 	/**
@@ -101,8 +93,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements
 	@Override
 	public String getText(Object object) {
 		String label = ((EEFElement) object).getHelpID();
-		return label == null || label.length() == 0 ? getString("_UI_EEFElement_type")
-				: getString("_UI_EEFElement_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_EEFElement_type") : getString("_UI_EEFElement_type") + " " + label;
 	}
 
 	/**
@@ -118,8 +109,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements
 
 		switch (notification.getFeatureID(EEFElement.class)) {
 		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-			fireNotifyChanged(new ViewerNotification(notification, notification
-					.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -133,8 +123,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -146,7 +135,7 @@ public class EEFElementItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ComponentsEditPlugin.INSTANCE;
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

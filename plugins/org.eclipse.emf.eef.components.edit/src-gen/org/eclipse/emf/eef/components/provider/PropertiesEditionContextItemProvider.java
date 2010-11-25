@@ -36,10 +36,7 @@ import org.eclipse.emf.eef.mapping.provider.DatabindingItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PropertiesEditionContextItemProvider extends
-		DatabindingItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class PropertiesEditionContextItemProvider extends DatabindingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,15 +70,7 @@ public class PropertiesEditionContextItemProvider extends
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_PropertiesEditionContext_model_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_PropertiesEditionContext_model_feature",
-						"_UI_PropertiesEditionContext_type"),
-				ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertiesEditionContext_model_feature"), getString("_UI_PropertiesEditionContext_model_description"), ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL, true, false, true, null, null, null));
 	}
 
 	/**
@@ -92,8 +81,7 @@ public class PropertiesEditionContextItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-				"full/obj16/PropertiesEditionContext"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertiesEditionContext"));
 	}
 
 	/**
@@ -105,8 +93,7 @@ public class PropertiesEditionContextItemProvider extends
 	@Override
 	public String getText(Object object) {
 		String label = ((PropertiesEditionContext) object).getDocumentation();
-		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionContext_type")
-				: getString("_UI_PropertiesEditionContext_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionContext_type") : getString("_UI_PropertiesEditionContext_type") + " " + label;
 	}
 
 	/**
@@ -130,31 +117,12 @@ public class PropertiesEditionContextItemProvider extends
 	 * @generated NOT
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		//super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(
-						MappingPackage.Literals.DATABINDING__CATEGORIES,
-						MappingFactory.eINSTANCE.createCategory()));
-		
-		newChildDescriptors
-				.add(createChildParameter(
-						MappingPackage.Literals.DATABINDING__BINDINGS,
-						ComponentsFactory.eINSTANCE
-								.createPropertiesEditionComponent()));
-	}
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES, MappingFactory.eINSTANCE.createCategory()));
 
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ComponentsEditPlugin.INSTANCE;
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS, ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
 	}
 
 }
