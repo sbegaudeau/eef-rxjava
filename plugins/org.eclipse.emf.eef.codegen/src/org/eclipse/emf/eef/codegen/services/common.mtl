@@ -111,6 +111,11 @@
 	else null
 	endif/]
 
+[query public significantClass(ePackage : EPackage) : Set(EClass) = ePackage.eClassifiers->select(oclIsKindOf(EClass)).oclAsType(EClass).classAndHierarchy()->asSet() /]
+
+[query private classAndHierarchy(eclass : EClass) : Set(EClass) = eclass.eSuperTypes.classAndHierarchy()->including(eclass) /]
+
+
 [comment Defines if a SubPropertiesEditionComponent must be generated. A SubPropertiesEdtionComponent must be generated if :
 	- its 'explicit' property is set to true 
 	- A ElementBindingReference reference it and it contains at least 1 PEE/]

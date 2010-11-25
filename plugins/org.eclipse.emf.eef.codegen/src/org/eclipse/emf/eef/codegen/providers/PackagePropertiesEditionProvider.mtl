@@ -33,11 +33,11 @@ import [peContext.associatedEMFGenModel(ePackage).basePackage/].util.[ePackage.n
  */
 public class [ePackage.pecPackageProviderClass()/] extends [ePackage.name.toJavaClassifier()/]AdapterFactory {
 
-[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated() and component.model.ePackage = ePackage)]
+[for (component : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent)) ? (component.mustBeGenerated() and ePackage.significantClass()->includes(component.model.oclAsType(EClass)))]
 
 	/**
 	 * {@inheritDoc}
-	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].util.[ePackage.name.toJavaClassifier()/]#create[component.model.name.toJavaClassifier()/]Adapter()
+	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].util.[ePackage.name.toJavaClassifier()/]AdapterFactory#create[component.model.name.toJavaClassifier()/]Adapter()
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Adapter create[component.model.name.toJavaClassifier()/]Adapter() {
