@@ -85,8 +85,7 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	 */
 	public EList<EStructuralFeature> getModel() {
 		if (model == null) {
-			model = new EObjectResolvingEList<EStructuralFeature>(EStructuralFeature.class, this,
-					MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL);
+			model = new EObjectResolvingEList<EStructuralFeature>(EStructuralFeature.class, this, MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL);
 		}
 		return model;
 	}
@@ -109,8 +108,7 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 		ModelNavigation oldNavigation = navigation;
 		navigation = newNavigation;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, oldNavigation, newNavigation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, oldNavigation, newNavigation);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -128,17 +126,14 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 		if (newNavigation != navigation) {
 			NotificationChain msgs = null;
 			if (navigation != null)
-				msgs = ((InternalEObject)navigation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, null, msgs);
+				msgs = ((InternalEObject) navigation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, null, msgs);
 			if (newNavigation != null)
-				msgs = ((InternalEObject)newNavigation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, null, msgs);
+				msgs = ((InternalEObject) newNavigation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, null, msgs);
 			msgs = basicSetNavigation(newNavigation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, newNavigation, newNavigation));
+			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, newNavigation, newNavigation));
 	}
 
 	/**
@@ -149,8 +144,8 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
-				return basicSetNavigation(null, msgs);
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
+			return basicSetNavigation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -163,10 +158,10 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
-				return getModel();
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
-				return getNavigation();
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
+			return getModel();
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
+			return getNavigation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -180,13 +175,13 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
-				getModel().clear();
-				getModel().addAll((Collection<? extends EStructuralFeature>)newValue);
-				return;
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
-				setNavigation((ModelNavigation)newValue);
-				return;
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
+			getModel().clear();
+			getModel().addAll((Collection<? extends EStructuralFeature>) newValue);
+			return;
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
+			setNavigation((ModelNavigation) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -199,12 +194,12 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
-				getModel().clear();
-				return;
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
-				setNavigation((ModelNavigation)null);
-				return;
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
+			getModel().clear();
+			return;
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
+			setNavigation((ModelNavigation) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -217,10 +212,10 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
-				return model != null && !model.isEmpty();
-			case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
-				return navigation != null;
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
+			return model != null && !model.isEmpty();
+		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
+			return navigation != null;
 		}
 		return super.eIsSet(featureID);
 	}

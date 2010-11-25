@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.mapping.navigation.*;
 import org.eclipse.emf.eef.mapping.navigation.ChainedModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.CustomModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.NavigationFactory;
@@ -36,8 +37,7 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	 */
 	public static NavigationFactory init() {
 		try {
-			NavigationFactory theNavigationFactory = (NavigationFactory)EPackage.Registry.INSTANCE
-					.getEFactory("http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0");
+			NavigationFactory theNavigationFactory = (NavigationFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0");
 			if (theNavigationFactory != null) {
 				return theNavigationFactory;
 			}
@@ -65,15 +65,14 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case NavigationPackage.SIMPLE_MODEL_NAVIGATION:
-				return createSimpleModelNavigation();
-			case NavigationPackage.CHAINED_MODEL_NAVIGATION:
-				return createChainedModelNavigation();
-			case NavigationPackage.CUSTOM_MODEL_NAVIGATION:
-				return createCustomModelNavigation();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName()
-						+ "' is not a valid classifier");
+		case NavigationPackage.SIMPLE_MODEL_NAVIGATION:
+			return createSimpleModelNavigation();
+		case NavigationPackage.CHAINED_MODEL_NAVIGATION:
+			return createChainedModelNavigation();
+		case NavigationPackage.CUSTOM_MODEL_NAVIGATION:
+			return createCustomModelNavigation();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -113,7 +112,7 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	 * @generated
 	 */
 	public NavigationPackage getNavigationPackage() {
-		return (NavigationPackage)getEPackage();
+		return (NavigationPackage) getEPackage();
 	}
 
 	/**

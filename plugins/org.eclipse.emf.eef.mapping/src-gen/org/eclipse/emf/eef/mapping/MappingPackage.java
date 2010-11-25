@@ -1590,8 +1590,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT = eINSTANCE
-				.getAbstractElementBinding_SuperElement();
+		EReference ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT = eINSTANCE.getAbstractElementBinding_SuperElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1607,8 +1606,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING = eINSTANCE
-				.getAbstractElementBinding_ReferencedBinding();
+		EReference ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING = eINSTANCE.getAbstractElementBinding_ReferencedBinding();
 
 		/**
 		 * The meta object literal for the '<em><b>Views</b></em>' reference list feature.
@@ -1692,8 +1690,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS = eINSTANCE
-				.getAbstractPropertyBinding_BindingFilters();
+		EReference ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS = eINSTANCE.getAbstractPropertyBinding_BindingFilters();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl <em>EMF Element Binding</em>}' class.
@@ -1877,8 +1874,7 @@ public interface MappingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EMF_MULTI_PROPERTIES_BINDING__NAVIGATION = eINSTANCE
-				.getEMFMultiPropertiesBinding_Navigation();
+		EReference EMF_MULTI_PROPERTIES_BINDING__NAVIGATION = eINSTANCE.getEMFMultiPropertiesBinding_Navigation();
 
 	}
 

@@ -372,8 +372,7 @@ public interface NavigationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE = eINSTANCE
-				.getSimpleModelNavigation_DiscriminatorType();
+		EReference SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE = eINSTANCE.getSimpleModelNavigation_DiscriminatorType();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.navigation.impl.ChainedModelNavigationImpl <em>Chained Model Navigation</em>}' class.

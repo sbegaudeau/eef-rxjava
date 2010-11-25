@@ -110,12 +110,10 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 */
 	public static NavigationPackage init() {
 		if (isInited)
-			return (NavigationPackage)EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI);
+			return (NavigationPackage) EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-				: new NavigationPackageImpl());
+		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new NavigationPackageImpl());
 
 		isInited = true;
 
@@ -123,14 +121,8 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		ViewsPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		MappingPackageImpl theMappingPackage = (MappingPackageImpl)(EPackage.Registry.INSTANCE
-				.getEPackage(MappingPackage.eNS_URI) instanceof MappingPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(MappingPackage.eNS_URI)
-				: MappingPackage.eINSTANCE);
-		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE
-				.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(FiltersPackage.eNS_URI)
-				: FiltersPackage.eINSTANCE);
+		MappingPackageImpl theMappingPackage = (MappingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(MappingPackage.eNS_URI) instanceof MappingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MappingPackage.eNS_URI) : MappingPackage.eINSTANCE);
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theNavigationPackage.createPackageContents();
@@ -174,7 +166,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	public EReference getSimpleModelNavigation_Feature() {
-		return (EReference)simpleModelNavigationEClass.getEStructuralFeatures().get(0);
+		return (EReference) simpleModelNavigationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -183,7 +175,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	public EAttribute getSimpleModelNavigation_Index() {
-		return (EAttribute)simpleModelNavigationEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) simpleModelNavigationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -192,7 +184,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	public EReference getSimpleModelNavigation_DiscriminatorType() {
-		return (EReference)simpleModelNavigationEClass.getEStructuralFeatures().get(2);
+		return (EReference) simpleModelNavigationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -210,7 +202,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	public EReference getChainedModelNavigation_Current() {
-		return (EReference)chainedModelNavigationEClass.getEStructuralFeatures().get(0);
+		return (EReference) chainedModelNavigationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -219,7 +211,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	public EReference getChainedModelNavigation_Next() {
-		return (EReference)chainedModelNavigationEClass.getEStructuralFeatures().get(1);
+		return (EReference) chainedModelNavigationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -246,7 +238,7 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	public NavigationFactory getNavigationFactory() {
-		return (NavigationFactory)getEFactoryInstance();
+		return (NavigationFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -320,40 +312,22 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		customModelNavigationEClass.getESuperTypes().add(this.getModelNavigation());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(modelNavigationEClass, ModelNavigation.class, "ModelNavigation", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(modelNavigationEClass, ModelNavigation.class, "ModelNavigation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(simpleModelNavigationEClass, SimpleModelNavigation.class, "SimpleModelNavigation",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSimpleModelNavigation_Feature(), ecorePackage.getEReference(), null, "feature",
-				null, 1, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleModelNavigation_Index(), ecorePackage.getEInt(), "index", null, 0, 1,
-				SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSimpleModelNavigation_DiscriminatorType(), ecorePackage.getEClassifier(), null,
-				"discriminatorType", null, 0, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEClass(simpleModelNavigationEClass, SimpleModelNavigation.class, "SimpleModelNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSimpleModelNavigation_Feature(), ecorePackage.getEReference(), null, "feature", null, 1, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleModelNavigation_Index(), ecorePackage.getEInt(), "index", null, 0, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimpleModelNavigation_DiscriminatorType(), ecorePackage.getEClassifier(), null, "discriminatorType", null, 0, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(chainedModelNavigationEClass, ChainedModelNavigation.class, "ChainedModelNavigation",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChainedModelNavigation_Current(), this.getStructuredModelNavigation(), null,
-				"current", null, 1, 1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getChainedModelNavigation_Next(), this.getStructuredModelNavigation(), null, "next",
-				null, 1, 1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(chainedModelNavigationEClass, ChainedModelNavigation.class, "ChainedModelNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChainedModelNavigation_Current(), this.getStructuredModelNavigation(), null, "current", null, 1, 1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChainedModelNavigation_Next(), this.getStructuredModelNavigation(), null, "next", null, 1, 1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(structuredModelNavigationEClass, StructuredModelNavigation.class,
-				"StructuredModelNavigation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(structuredModelNavigationEClass, StructuredModelNavigation.class, "StructuredModelNavigation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(structuredModelNavigationEClass, ecorePackage.getEClass(), "evaluate", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
+		addEOperation(structuredModelNavigationEClass, ecorePackage.getEClass(), "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(customModelNavigationEClass, CustomModelNavigation.class, "CustomModelNavigation",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(customModelNavigationEClass, CustomModelNavigation.class, "CustomModelNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //NavigationPackageImpl
