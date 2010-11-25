@@ -208,6 +208,24 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenEditionContext_LeafComponentsSuperClass() {
+		return (EAttribute)genEditionContextEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenEditionContext_PropertiesEditingProvidersSuperClass() {
+		return (EAttribute)genEditionContextEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEEFGenModelReference() {
 		return eefGenModelReferenceEClass;
 	}
@@ -370,6 +388,15 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenViewsRepository_PartsSuperClass() {
+		return (EAttribute)genViewsRepositoryEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getHELP_STRATEGY() {
 		return helP_STRATEGYEEnum;
 	}
@@ -410,6 +437,8 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS);
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS);
 		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES);
+		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS);
+		createEAttribute(genEditionContextEClass, GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS);
 
 		eefGenModelReferenceEClass = createEClass(EEF_GEN_MODEL_REFERENCE);
 		createEReference(eefGenModelReferenceEClass, EEF_GEN_MODEL_REFERENCE__REFERENCED_CONTEXT);
@@ -431,6 +460,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		createEAttribute(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__FORM_VIEWS);
 		createEAttribute(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__HELP_STRATEGY);
 		createEReference(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL);
+		createEAttribute(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS);
 
 		// Create enums
 		helP_STRATEGYEEnum = createEEnum(HELP_STRATEGY);
@@ -478,6 +508,8 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		initEAttribute(getGenEditionContext_DescriptorsGenericPropertiesViews(), ecorePackage.getEBoolean(), "descriptorsGenericPropertiesViews", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenEditionContext_GmfPropertiesViews(), ecorePackage.getEBoolean(), "gmfPropertiesViews", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenEditionContext_GenerateJunitTestCases(), ecorePackage.getEBoolean(), "generateJunitTestCases", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenEditionContext_LeafComponentsSuperClass(), ecorePackage.getEString(), "leafComponentsSuperClass", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenEditionContext_PropertiesEditingProvidersSuperClass(), ecorePackage.getEString(), "propertiesEditingProvidersSuperClass", null, 0, 1, GenEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefGenModelReferenceEClass, EEFGenModelReference.class, "EEFGenModelReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEEFGenModelReference_ReferencedContext(), this.getEEFGenModel(), null, "referencedContext", null, 1, 1, EEFGenModelReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -499,6 +531,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		initEAttribute(getGenViewsRepository_FormViews(), ecorePackage.getEBoolean(), "formViews", null, 0, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenViewsRepository_HelpStrategy(), this.getHELP_STRATEGY(), "helpStrategy", null, 1, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGenViewsRepository_EefGenModel(), this.getEEFGenModel(), this.getEEFGenModel_ViewsRepositories(), "eefGenModel", null, 1, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenViewsRepository_PartsSuperClass(), ecorePackage.getEString(), "partsSuperClass", null, 0, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(helP_STRATEGYEEnum, org.eclipse.emf.eef.EEFGen.HELP_STRATEGY.class, "HELP_STRATEGY");

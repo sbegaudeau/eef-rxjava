@@ -36,6 +36,7 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl#isFormViews <em>Form Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl#getHelpStrategy <em>Help Strategy</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl#getEefGenModel <em>Eef Gen Model</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenViewsRepositoryImpl#getPartsSuperClass <em>Parts Super Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,6 +132,26 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 	 * @ordered
 	 */
 	protected HELP_STRATEGY helpStrategy = HELP_STRATEGY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPartsSuperClass() <em>Parts Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartsSuperClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PARTS_SUPER_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPartsSuperClass() <em>Parts Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartsSuperClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String partsSuperClass = PARTS_SUPER_CLASS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -319,6 +340,27 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getPartsSuperClass() {
+		return partsSuperClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPartsSuperClass(String newPartsSuperClass) {
+		String oldPartsSuperClass = partsSuperClass;
+		partsSuperClass = newPartsSuperClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFGenPackage.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS, oldPartsSuperClass, partsSuperClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -379,6 +421,8 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 				return getHelpStrategy();
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL:
 				return getEefGenModel();
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS:
+				return getPartsSuperClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -408,6 +452,9 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 				return;
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL:
 				setEefGenModel((EEFGenModel)newValue);
+				return;
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS:
+				setPartsSuperClass((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -439,6 +486,9 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL:
 				setEefGenModel((EEFGenModel)null);
 				return;
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS:
+				setPartsSuperClass(PARTS_SUPER_CLASS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -463,6 +513,8 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 				return helpStrategy != HELP_STRATEGY_EDEFAULT;
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL:
 				return getEefGenModel() != null;
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS:
+				return PARTS_SUPER_CLASS_EDEFAULT == null ? partsSuperClass != null : !PARTS_SUPER_CLASS_EDEFAULT.equals(partsSuperClass);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -485,6 +537,8 @@ public class GenViewsRepositoryImpl extends EObjectImpl implements GenViewsRepos
 		result.append(formViews);
 		result.append(", helpStrategy: ");
 		result.append(helpStrategy);
+		result.append(", partsSuperClass: ");
+		result.append(partsSuperClass);
 		result.append(')');
 		return result.toString();
 	}

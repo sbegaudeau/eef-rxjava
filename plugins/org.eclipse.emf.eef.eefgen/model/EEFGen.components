@@ -21,6 +21,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vadagI8KEd6IfIxnkxy2-g" name="junitTestCases" views="_nMPb4I8KEd6IfIxnkxy2-g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/generateJunitTestCases"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_J2C1kPhsEd-GdKVgEHzVgw" name="leafComponentsSuperClass" views="_-_vaYPhrEd-GdKVgEHzVgw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/leafComponentsSuperClass"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NO0vQPhsEd-GdKVgEHzVgw" name="propertiesEditingProvidersSuperClass" views="_CZsYwPhsEd-GdKVgEHzVgw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext/propertiesEditingProvidersSuperClass"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenEditionContext"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tAYOqBxUEd6jvs_siNWNCw" name="EEFGenModelReference" views="_tAYOuxxUEd6jvs_siNWNCw">
@@ -63,6 +69,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DGVTQCTTEd6NLaRtyZDf1Q" name="viewsRepository" views="_9RCT0STSEd6NLaRtyZDf1Q" helpID="">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenViewsRepository/viewsRepository"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Qd_Z8PhsEd-GdKVgEHzVgw" name="partsSuperClass" views="_GsrQ4PhsEd-GdKVgEHzVgw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenViewsRepository/partsSuperClass"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenViewsRepository"/>
       </bindings>
     </categories>
@@ -98,6 +107,15 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_nMPb4I8KEd6IfIxnkxy2-g" name="JUnit test cases">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_85jJ8fhrEd-GdKVgEHzVgw" name="Implementation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-_vaYPhrEd-GdKVgEHzVgw" name="leafComponentsSuperClass">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CZsYwPhsEd-GdKVgEHzVgw" name="propertiesEditingProvidersSuperClass">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
@@ -155,6 +173,12 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_tAYOxRxUEd6jvs_siNWNCw" name="Forms views">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:Container" xmi:id="_FONHwPhsEd-GdKVgEHzVgw" name="Implementation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_GsrQ4PhsEd-GdKVgEHzVgw" name="partsSuperClass">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

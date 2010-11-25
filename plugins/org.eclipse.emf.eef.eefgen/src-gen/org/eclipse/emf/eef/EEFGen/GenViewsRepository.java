@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#isFormViews <em>Form Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getHelpStrategy <em>Help Strategy</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getEefGenModel <em>Eef Gen Model</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getPartsSuperClass <em>Parts Super Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -195,5 +196,31 @@ public interface GenViewsRepository extends EObject {
 	 * @generated
 	 */
 	void setEefGenModel(EEFGenModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Parts Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parts Super Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parts Super Class</em>' attribute.
+	 * @see #setPartsSuperClass(String)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenViewsRepository_PartsSuperClass()
+	 * @model
+	 * @generated
+	 */
+	String getPartsSuperClass();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getPartsSuperClass <em>Parts Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parts Super Class</em>' attribute.
+	 * @see #getPartsSuperClass()
+	 * @generated
+	 */
+	void setPartsSuperClass(String value);
 
 } // GenViewsRepository

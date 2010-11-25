@@ -138,13 +138,31 @@ public interface EEFGenPackage extends EPackage {
 	int GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES = 6;
 
 	/**
+	 * The feature id for the '<em><b>Leaf Components Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Properties Editing Providers Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS = 8;
+
+	/**
 	 * The number of structural features of the '<em>Gen Edition Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 7;
+	int GEN_EDITION_CONTEXT_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.
@@ -330,13 +348,22 @@ public interface EEFGenPackage extends EPackage {
 	int GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL = 5;
 
 	/**
+	 * The feature id for the '<em><b>Parts Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS = 6;
+
+	/**
 	 * The number of structural features of the '<em>Gen Views Repository</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_VIEWS_REPOSITORY_FEATURE_COUNT = 6;
+	int GEN_VIEWS_REPOSITORY_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}' enum.
@@ -435,6 +462,28 @@ public interface EEFGenPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGenEditionContext_GenerateJunitTestCases();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getLeafComponentsSuperClass <em>Leaf Components Super Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Leaf Components Super Class</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getLeafComponentsSuperClass()
+	 * @see #getGenEditionContext()
+	 * @generated
+	 */
+	EAttribute getGenEditionContext_LeafComponentsSuperClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getPropertiesEditingProvidersSuperClass <em>Properties Editing Providers Super Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Properties Editing Providers Super Class</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenEditionContext#getPropertiesEditingProvidersSuperClass()
+	 * @see #getGenEditionContext()
+	 * @generated
+	 */
+	EAttribute getGenEditionContext_PropertiesEditingProvidersSuperClass();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.EEFGen.EEFGenModelReference <em>Model Reference</em>}'.
@@ -632,6 +681,17 @@ public interface EEFGenPackage extends EPackage {
 	EReference getGenViewsRepository_EefGenModel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getPartsSuperClass <em>Parts Super Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Parts Super Class</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#getPartsSuperClass()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EAttribute getGenViewsRepository_PartsSuperClass();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -728,6 +788,22 @@ public interface EEFGenPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES = eINSTANCE.getGenEditionContext_GenerateJunitTestCases();
+
+		/**
+		 * The meta object literal for the '<em><b>Leaf Components Super Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS = eINSTANCE.getGenEditionContext_LeafComponentsSuperClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties Editing Providers Super Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS = eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.impl.EEFGenModelReferenceImpl <em>Model Reference</em>}' class.
@@ -878,6 +954,14 @@ public interface EEFGenPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL = eINSTANCE.getGenViewsRepository_EefGenModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Parts Super Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS = eINSTANCE.getGenViewsRepository_PartsSuperClass();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}' enum.

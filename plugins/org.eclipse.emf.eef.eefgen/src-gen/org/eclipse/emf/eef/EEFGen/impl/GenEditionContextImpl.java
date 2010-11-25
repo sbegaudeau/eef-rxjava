@@ -36,6 +36,8 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isGmfPropertiesViews <em>Gmf Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#getLeafComponentsSuperClass <em>Leaf Components Super Class</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.impl.GenEditionContextImpl#getPropertiesEditingProvidersSuperClass <em>Properties Editing Providers Super Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,6 +153,46 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * @ordered
 	 */
 	protected boolean generateJunitTestCases = GENERATE_JUNIT_TEST_CASES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLeafComponentsSuperClass() <em>Leaf Components Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLeafComponentsSuperClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LEAF_COMPONENTS_SUPER_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLeafComponentsSuperClass() <em>Leaf Components Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLeafComponentsSuperClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String leafComponentsSuperClass = LEAF_COMPONENTS_SUPER_CLASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPropertiesEditingProvidersSuperClass() <em>Properties Editing Providers Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPropertiesEditingProvidersSuperClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPropertiesEditingProvidersSuperClass() <em>Properties Editing Providers Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPropertiesEditingProvidersSuperClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String propertiesEditingProvidersSuperClass = PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,6 +402,48 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getLeafComponentsSuperClass() {
+		return leafComponentsSuperClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLeafComponentsSuperClass(String newLeafComponentsSuperClass) {
+		String oldLeafComponentsSuperClass = leafComponentsSuperClass;
+		leafComponentsSuperClass = newLeafComponentsSuperClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFGenPackage.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS, oldLeafComponentsSuperClass, leafComponentsSuperClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPropertiesEditingProvidersSuperClass() {
+		return propertiesEditingProvidersSuperClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPropertiesEditingProvidersSuperClass(String newPropertiesEditingProvidersSuperClass) {
+		String oldPropertiesEditingProvidersSuperClass = propertiesEditingProvidersSuperClass;
+		propertiesEditingProvidersSuperClass = newPropertiesEditingProvidersSuperClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFGenPackage.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS, oldPropertiesEditingProvidersSuperClass, propertiesEditingProvidersSuperClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -422,6 +506,10 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				return isGmfPropertiesViews();
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				return isGenerateJunitTestCases();
+			case EEFGenPackage.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS:
+				return getLeafComponentsSuperClass();
+			case EEFGenPackage.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS:
+				return getPropertiesEditingProvidersSuperClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -454,6 +542,12 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				return;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				setGenerateJunitTestCases((Boolean)newValue);
+				return;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS:
+				setLeafComponentsSuperClass((String)newValue);
+				return;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS:
+				setPropertiesEditingProvidersSuperClass((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -488,6 +582,12 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				setGenerateJunitTestCases(GENERATE_JUNIT_TEST_CASES_EDEFAULT);
 				return;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS:
+				setLeafComponentsSuperClass(LEAF_COMPONENTS_SUPER_CLASS_EDEFAULT);
+				return;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS:
+				setPropertiesEditingProvidersSuperClass(PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -514,6 +614,10 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 				return gmfPropertiesViews != GMF_PROPERTIES_VIEWS_EDEFAULT;
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
 				return generateJunitTestCases != GENERATE_JUNIT_TEST_CASES_EDEFAULT;
+			case EEFGenPackage.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS:
+				return LEAF_COMPONENTS_SUPER_CLASS_EDEFAULT == null ? leafComponentsSuperClass != null : !LEAF_COMPONENTS_SUPER_CLASS_EDEFAULT.equals(leafComponentsSuperClass);
+			case EEFGenPackage.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS:
+				return PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS_EDEFAULT == null ? propertiesEditingProvidersSuperClass != null : !PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS_EDEFAULT.equals(propertiesEditingProvidersSuperClass);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -538,6 +642,10 @@ public class GenEditionContextImpl extends EObjectImpl implements GenEditionCont
 		result.append(gmfPropertiesViews);
 		result.append(", generateJunitTestCases: ");
 		result.append(generateJunitTestCases);
+		result.append(", leafComponentsSuperClass: ");
+		result.append(leafComponentsSuperClass);
+		result.append(", propertiesEditingProvidersSuperClass: ");
+		result.append(propertiesEditingProvidersSuperClass);
 		result.append(')');
 		return result.toString();
 	}

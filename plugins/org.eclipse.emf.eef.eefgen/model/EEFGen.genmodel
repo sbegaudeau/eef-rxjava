@@ -24,6 +24,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/descriptorsGenericPropertiesViews"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/gmfPropertiesViews"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/generateJunitTestCases"/>
+      <genFeatures createChild="false" propertyCategory="implementation" propertyDescription="The base from which implementations of leaf PropertiesEditingComponents extend"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/leafComponentsSuperClass"/>
+      <genFeatures createChild="false" propertyCategory="implementation" propertyDescription="The base from which implementations of leaf PropertiesEditingProviders extend"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenEditionContext/propertiesEditingProvidersSuperClass"/>
     </genClasses>
     <genClasses ecoreClass="EEFGen.ecore#//EEFGenModelReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EEFGen.ecore#//EEFGenModelReference/referencedContext"/>
@@ -45,6 +49,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenViewsRepository/formViews"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenViewsRepository/helpStrategy"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference EEFGen.ecore#//GenViewsRepository/eefGenModel"/>
+      <genFeatures createChild="false" propertyDescription="The base from which implementations of leaf PropertiesEditingParts extend"
+          ecoreFeature="ecore:EAttribute EEFGen.ecore#//GenViewsRepository/partsSuperClass"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

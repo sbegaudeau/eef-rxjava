@@ -28,6 +28,8 @@ import org.eclipse.emf.eef.components.PropertiesEditionContext;
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isDescriptorsGenericPropertiesViews <em>Descriptors Generic Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGmfPropertiesViews <em>Gmf Properties Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#isGenerateJunitTestCases <em>Generate Junit Test Cases</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getLeafComponentsSuperClass <em>Leaf Components Super Class</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getPropertiesEditingProvidersSuperClass <em>Properties Editing Providers Super Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -219,5 +221,57 @@ public interface GenEditionContext extends EObject {
 	 * @generated
 	 */
 	void setGenerateJunitTestCases(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Leaf Components Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Leaf Components Super Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Leaf Components Super Class</em>' attribute.
+	 * @see #setLeafComponentsSuperClass(String)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_LeafComponentsSuperClass()
+	 * @model
+	 * @generated
+	 */
+	String getLeafComponentsSuperClass();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getLeafComponentsSuperClass <em>Leaf Components Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Leaf Components Super Class</em>' attribute.
+	 * @see #getLeafComponentsSuperClass()
+	 * @generated
+	 */
+	void setLeafComponentsSuperClass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties Editing Providers Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties Editing Providers Super Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties Editing Providers Super Class</em>' attribute.
+	 * @see #setPropertiesEditingProvidersSuperClass(String)
+	 * @see org.eclipse.emf.eef.EEFGen.EEFGenPackage#getGenEditionContext_PropertiesEditingProvidersSuperClass()
+	 * @model
+	 * @generated
+	 */
+	String getPropertiesEditingProvidersSuperClass();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.EEFGen.GenEditionContext#getPropertiesEditingProvidersSuperClass <em>Properties Editing Providers Super Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Properties Editing Providers Super Class</em>' attribute.
+	 * @see #getPropertiesEditingProvidersSuperClass()
+	 * @generated
+	 */
+	void setPropertiesEditingProvidersSuperClass(String value);
 
 } // GenEditionContext

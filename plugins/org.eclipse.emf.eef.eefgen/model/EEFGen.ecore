@@ -16,6 +16,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gmfPropertiesViews" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="generateJunitTestCases"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="leafComponentsSuperClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertiesEditingProvidersSuperClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="HELP_STRATEGY">
     <eLiterals name="GENMODEL"/>
@@ -50,5 +54,6 @@
         eType="#//HELP_STRATEGY"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eefGenModel" lowerBound="1"
         eType="#//EEFGenModel" eOpposite="#//EEFGenModel/viewsRepositories"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partsSuperClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
