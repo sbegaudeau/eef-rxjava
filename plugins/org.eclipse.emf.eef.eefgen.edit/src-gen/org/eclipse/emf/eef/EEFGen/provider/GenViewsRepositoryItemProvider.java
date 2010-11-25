@@ -70,6 +70,7 @@ public class GenViewsRepositoryItemProvider
 			addSwtViewsPropertyDescriptor(object);
 			addFormViewsPropertyDescriptor(object);
 			addHelpStrategyPropertyDescriptor(object);
+			addPartsSuperClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -185,6 +186,28 @@ public class GenViewsRepositoryItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Parts Super Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPartsSuperClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenViewsRepository_partsSuperClass_feature"),
+				 getString("_UI_GenViewsRepository_partsSuperClass_description"),
+				 EEFGenPackage.Literals.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns GenViewsRepository.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -225,6 +248,7 @@ public class GenViewsRepositoryItemProvider
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__SWT_VIEWS:
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__FORM_VIEWS:
 			case EEFGenPackage.GEN_VIEWS_REPOSITORY__HELP_STRATEGY:
+			case EEFGenPackage.GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

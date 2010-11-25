@@ -60,6 +60,17 @@ public class EEFGenViewsRepository {
 		
 		}
 	
+		public static class Implementation {
+	
+			
+			public static String leafComponentsSuperClass = "EEFGen::GenEditionContext::Implementation::leafComponentsSuperClass";
+			
+			
+			public static String propertiesEditingProvidersSuperClass = "EEFGen::GenEditionContext::Implementation::propertiesEditingProvidersSuperClass";
+			
+		
+		}
+	
 	}
 
 	/**
@@ -140,6 +151,14 @@ public class EEFGenViewsRepository {
 			
 			
 			public static String formsViews = "EEFGen::GenViewsRepository::Activation::Forms views";
+			
+		
+		}
+	
+		public static class Implementation {
+	
+			
+			public static String partsSuperClass = "EEFGen::GenViewsRepository::Implementation::partsSuperClass";
 			
 		
 		}

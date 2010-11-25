@@ -71,6 +71,8 @@ public class GenEditionContextItemProvider
 			addDescriptorsGenericPropertiesViewsPropertyDescriptor(object);
 			addGmfPropertiesViewsPropertyDescriptor(object);
 			addGenerateJunitTestCasesPropertyDescriptor(object);
+			addLeafComponentsSuperClassPropertyDescriptor(object);
+			addPropertiesEditingProvidersSuperClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -208,6 +210,50 @@ public class GenEditionContextItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Leaf Components Super Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLeafComponentsSuperClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenEditionContext_leafComponentsSuperClass_feature"),
+				 getString("_UI_GenEditionContext_leafComponentsSuperClass_description"),
+				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_implementationPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Properties Editing Providers Super Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPropertiesEditingProvidersSuperClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenEditionContext_propertiesEditingProvidersSuperClass_feature"),
+				 getString("_UI_GenEditionContext_propertiesEditingProvidersSuperClass_description"),
+				 EEFGenPackage.Literals.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_implementationPropertyCategory"),
+				 null));
+	}
+
+	/**
 	 * This returns GenEditionContext.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,6 +295,8 @@ public class GenEditionContextItemProvider
 			case EEFGenPackage.GEN_EDITION_CONTEXT__DESCRIPTORS_GENERIC_PROPERTIES_VIEWS:
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GMF_PROPERTIES_VIEWS:
 			case EEFGenPackage.GEN_EDITION_CONTEXT__GENERATE_JUNIT_TEST_CASES:
+			case EEFGenPackage.GEN_EDITION_CONTEXT__LEAF_COMPONENTS_SUPER_CLASS:
+			case EEFGenPackage.GEN_EDITION_CONTEXT__PROPERTIES_EDITING_PROVIDERS_SUPER_CLASS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

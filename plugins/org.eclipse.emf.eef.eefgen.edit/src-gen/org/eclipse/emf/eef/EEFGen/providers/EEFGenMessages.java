@@ -31,6 +31,9 @@ public class EEFGenMessages extends NLS {
 	public static String GenEditionContextPropertiesEditionPart_ActivationGroupLabel;
 
 	
+	public static String GenEditionContextPropertiesEditionPart_ImplementationGroupLabel;
+
+	
 	public static String EEFGenModelReferencePropertiesEditionPart_ReferenceGroupLabel;
 
 	
@@ -47,6 +50,9 @@ public class EEFGenMessages extends NLS {
 
 	
 	public static String GenViewsRepositoryPropertiesEditionPart_ActivationGroupLabel;
+
+	
+	public static String GenViewsRepositoryPropertiesEditionPart_ImplementationGroupLabel;
 
 	
 	public static String GenEditionContext_ReadOnly;
@@ -91,6 +97,12 @@ public class EEFGenMessages extends NLS {
 	public static String GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel;
 
 	
+	public static String GenEditionContextPropertiesEditionPart_LeafComponentsSuperClassLabel;
+
+	
+	public static String GenEditionContextPropertiesEditionPart_PropertiesEditingProvidersSuperClassLabel;
+
+	
 	public static String EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel;
 
 	
@@ -122,6 +134,9 @@ public class EEFGenMessages extends NLS {
 
 	
 	public static String GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel;
+
+	
+	public static String GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel;
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

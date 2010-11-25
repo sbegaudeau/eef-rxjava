@@ -100,6 +100,12 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			basePart.setPropertiesEditionContextButtonMode(ButtonsModeEnum.BROWSE);
 			basePart.setJUnitTestCases(genEditionContext.isGenerateJunitTestCases());
 			
+			if (genEditionContext.getLeafComponentsSuperClass() != null)
+				basePart.setLeafComponentsSuperClass(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genEditionContext.getLeafComponentsSuperClass()));
+			
+			if (genEditionContext.getPropertiesEditingProvidersSuperClass() != null)
+				basePart.setPropertiesEditingProvidersSuperClass(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genEditionContext.getPropertiesEditingProvidersSuperClass()));
+			
 			// init filters
 			
 			
@@ -118,8 +124,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for propertiesEditionContext
-																																										
-																																										// End of user code
+																																													
+																																													// End of user code
+			
+			
 			
 			
 			// init values for referenced views
@@ -129,6 +137,8 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -176,6 +186,12 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 		if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
 			genEditionContext.setGenerateJunitTestCases((Boolean)event.getNewValue());	
 		}
+		if (EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass == event.getAffectedEditor()) {
+			genEditionContext.setLeafComponentsSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
+		if (EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass == event.getAffectedEditor()) {
+			genEditionContext.setPropertiesEditingProvidersSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		}
 	}
 
 	/**
@@ -209,6 +225,20 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 		if (EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().equals(msg.getFeature()) && basePart != null)
 			basePart.setJUnitTestCases((Boolean)msg.getNewValue());
 		
+		if (EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setLeafComponentsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setLeafComponentsSuperClass("");
+			}
+		}
+		if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().equals(msg.getFeature()) && basePart != null){
+			if (msg.getNewValue() != null) {
+				basePart.setPropertiesEditingProvidersSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+			} else {
+				basePart.setPropertiesEditingProvidersSuperClass("");
+			}
+		}
 		
 	}
 
@@ -234,6 +264,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			return "The base package for all the generated code"; //$NON-NLS-1$
 		if (key == EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext)
 			return "The PropertiesEditioContext to describe"; //$NON-NLS-1$
+		if (key == EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass)
+			return "The base from which implementations of leaf PropertiesEditingComponents extend"; //$NON-NLS-1$
+		if (key == EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass)
+			return "The base from which implementations of leaf PropertiesEditingProviders extend"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -267,6 +301,14 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 				if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
 					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newStringValue);
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), newValue);
+				}
+				if (EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass == event.getAffectedEditor()) {
+					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), newStringValue);
+					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

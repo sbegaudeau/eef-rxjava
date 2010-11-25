@@ -144,6 +144,34 @@ public interface GenEditionContextPropertiesEditionPart {
 	public void setJUnitTestCases(Boolean newValue);
 
 
+	/**
+	 * @return the leafComponentsSuperClass
+	 * 
+	 */
+	public String getLeafComponentsSuperClass();
+
+	/**
+	 * Defines a new leafComponentsSuperClass
+	 * @param newValue the new leafComponentsSuperClass to set
+	 * 
+	 */
+	public void setLeafComponentsSuperClass(String newValue);
+
+
+	/**
+	 * @return the propertiesEditingProvidersSuperClass
+	 * 
+	 */
+	public String getPropertiesEditingProvidersSuperClass();
+
+	/**
+	 * Defines a new propertiesEditingProvidersSuperClass
+	 * @param newValue the new propertiesEditingProvidersSuperClass to set
+	 * 
+	 */
+	public void setPropertiesEditingProvidersSuperClass(String newValue);
+
+
 
 
 

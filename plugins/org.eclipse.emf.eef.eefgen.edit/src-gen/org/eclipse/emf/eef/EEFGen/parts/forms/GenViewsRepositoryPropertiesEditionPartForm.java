@@ -71,6 +71,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	protected EMFComboViewer helpStrategy;
 	protected Button sWTViews;
 	protected Button formsViews;
+	protected Text partsSuperClass;
 
 
 
@@ -122,6 +123,10 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		activationStep.addStep(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews);
 		activationStep.addStep(EEFGenViewsRepository.GenViewsRepository.Activation.formsViews);
 		
+		genViewsRepositoryStep
+			.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.class)
+			.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass);
+		
 		
 		composer = new PartComposer(genViewsRepositoryStep) {
 			
@@ -150,6 +155,12 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 				}
 				if (key == EEFGenViewsRepository.GenViewsRepository.Activation.formsViews) {
 					return createFormsViewsCheckbox(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.GenViewsRepository.Implementation.class) {
+					return createImplementationGroup(widgetFactory, parent);
+				}
+				if (key == EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass) {
+					return 		createPartsSuperClassText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -355,6 +366,63 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createImplementationGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section implementationSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		implementationSection.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ImplementationGroupLabel);
+		GridData implementationSectionData = new GridData(GridData.FILL_HORIZONTAL);
+		implementationSectionData.horizontalSpan = 3;
+		implementationSection.setLayoutData(implementationSectionData);
+		Composite implementationGroup = widgetFactory.createComposite(implementationSection);
+		GridLayout implementationGroupLayout = new GridLayout();
+		implementationGroupLayout.numColumns = 3;
+		implementationGroup.setLayout(implementationGroupLayout);
+		implementationSection.setClient(implementationGroup);
+		return implementationGroup;
+	}
+
+	
+	protected Composite createPartsSuperClassText(FormToolkit widgetFactory, Composite parent) {
+		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, EEFGenViewsRepository.FORM_KIND));
+		partsSuperClass = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		partsSuperClass.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData partsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
+		partsSuperClass.setLayoutData(partsSuperClassData);
+		partsSuperClass.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenViewsRepositoryPropertiesEditionPartForm.this, EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, partsSuperClass.getText()));
+			}
+		});
+		partsSuperClass.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenViewsRepositoryPropertiesEditionPartForm.this, EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, partsSuperClass.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(partsSuperClass, EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass);
+		EditingUtils.setEEFtype(partsSuperClass, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
 
 
 	/**
@@ -543,6 +611,31 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 			formsViews.setSelection(newValue.booleanValue());
 		} else {
 			formsViews.setSelection(false);
+		}
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getPartsSuperClass()
+	 * 
+	 */
+	public String getPartsSuperClass() {
+		return partsSuperClass.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setPartsSuperClass(String newValue)
+	 * 
+	 */
+	public void setPartsSuperClass(String newValue) {
+		if (newValue != null) {
+			partsSuperClass.setText(newValue);
+		} else {
+			partsSuperClass.setText(""); //$NON-NLS-1$
 		}
 	}
 
