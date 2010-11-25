@@ -32,8 +32,7 @@ import org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl;
  *
  * @generated
  */
-public class PropertiesEditionComponentImpl extends EMFElementBindingImpl
-		implements PropertiesEditionComponent {
+public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implements PropertiesEditionComponent {
 	/**
 	 * The default value of the '{@link #getHelpID() <em>Help ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -111,9 +110,7 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl
 		String oldHelpID = helpID;
 		helpID = newHelpID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID,
-					oldHelpID, helpID));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID, oldHelpID, helpID));
 	}
 
 	/**
@@ -134,9 +131,7 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl
 		boolean oldExplicit = explicit;
 		explicit = newExplicit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT,
-					oldExplicit, explicit));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT, oldExplicit, explicit));
 	}
 
 	/**
@@ -200,8 +195,7 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-			return HELP_ID_EDEFAULT == null ? helpID != null
-					: !HELP_ID_EDEFAULT.equals(helpID);
+			return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
 		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
 			return explicit != EXPLICIT_EDEFAULT;
 		}

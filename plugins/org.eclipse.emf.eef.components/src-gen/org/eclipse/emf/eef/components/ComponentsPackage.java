@@ -63,8 +63,7 @@ public interface ComponentsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ComponentsPackage eINSTANCE = org.eclipse.emf.eef.components.impl.ComponentsPackageImpl
-			.init();
+	ComponentsPackage eINSTANCE = org.eclipse.emf.eef.components.impl.ComponentsPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.components.impl.PropertiesEditionContextImpl <em>Properties Edition Context</em>}' class.
@@ -571,8 +570,7 @@ public interface ComponentsPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.components.impl.ComponentsPackageImpl#getPropertiesEditionContext()
 		 * @generated
 		 */
-		EClass PROPERTIES_EDITION_CONTEXT = eINSTANCE
-				.getPropertiesEditionContext();
+		EClass PROPERTIES_EDITION_CONTEXT = eINSTANCE.getPropertiesEditionContext();
 
 		/**
 		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
@@ -580,8 +578,7 @@ public interface ComponentsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROPERTIES_EDITION_CONTEXT__MODEL = eINSTANCE
-				.getPropertiesEditionContext_Model();
+		EReference PROPERTIES_EDITION_CONTEXT__MODEL = eINSTANCE.getPropertiesEditionContext_Model();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.components.impl.PropertiesEditionComponentImpl <em>Properties Edition Component</em>}' class.
@@ -591,8 +588,7 @@ public interface ComponentsPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.components.impl.ComponentsPackageImpl#getPropertiesEditionComponent()
 		 * @generated
 		 */
-		EClass PROPERTIES_EDITION_COMPONENT = eINSTANCE
-				.getPropertiesEditionComponent();
+		EClass PROPERTIES_EDITION_COMPONENT = eINSTANCE.getPropertiesEditionComponent();
 
 		/**
 		 * The meta object literal for the '<em><b>Explicit</b></em>' attribute feature.
@@ -600,8 +596,7 @@ public interface ComponentsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTIES_EDITION_COMPONENT__EXPLICIT = eINSTANCE
-				.getPropertiesEditionComponent_Explicit();
+		EAttribute PROPERTIES_EDITION_COMPONENT__EXPLICIT = eINSTANCE.getPropertiesEditionComponent_Explicit();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.components.impl.PropertiesEditionElementImpl <em>Properties Edition Element</em>}' class.
@@ -611,8 +606,7 @@ public interface ComponentsPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.components.impl.ComponentsPackageImpl#getPropertiesEditionElement()
 		 * @generated
 		 */
-		EClass PROPERTIES_EDITION_ELEMENT = eINSTANCE
-				.getPropertiesEditionElement();
+		EClass PROPERTIES_EDITION_ELEMENT = eINSTANCE.getPropertiesEditionElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.components.impl.PropertiesMultiEditionElementImpl <em>Properties Multi Edition Element</em>}' class.
@@ -622,8 +616,7 @@ public interface ComponentsPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.components.impl.ComponentsPackageImpl#getPropertiesMultiEditionElement()
 		 * @generated
 		 */
-		EClass PROPERTIES_MULTI_EDITION_ELEMENT = eINSTANCE
-				.getPropertiesMultiEditionElement();
+		EClass PROPERTIES_MULTI_EDITION_ELEMENT = eINSTANCE.getPropertiesMultiEditionElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.components.impl.EEFElementImpl <em>EEF Element</em>}' class.

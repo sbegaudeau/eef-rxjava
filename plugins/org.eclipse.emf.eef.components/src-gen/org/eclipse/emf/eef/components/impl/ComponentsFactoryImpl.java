@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.components.*;
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
@@ -28,8 +29,7 @@ import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ComponentsFactoryImpl extends EFactoryImpl implements
-		ComponentsFactory {
+public class ComponentsFactoryImpl extends EFactoryImpl implements ComponentsFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -38,8 +38,7 @@ public class ComponentsFactoryImpl extends EFactoryImpl implements
 	 */
 	public static ComponentsFactory init() {
 		try {
-			ComponentsFactory theComponentsFactory = (ComponentsFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.eclipse.org/emf/eef/components/1.0.0");
+			ComponentsFactory theComponentsFactory = (ComponentsFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/components/1.0.0");
 			if (theComponentsFactory != null) {
 				return theComponentsFactory;
 			}
@@ -76,8 +75,7 @@ public class ComponentsFactoryImpl extends EFactoryImpl implements
 		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT:
 			return createPropertiesMultiEditionElement();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName()
-					+ "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 

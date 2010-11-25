@@ -32,8 +32,7 @@ import org.eclipse.emf.eef.mapping.impl.DatabindingImpl;
  *
  * @generated
  */
-public class PropertiesEditionContextImpl extends DatabindingImpl implements
-		PropertiesEditionContext {
+public class PropertiesEditionContextImpl extends DatabindingImpl implements PropertiesEditionContext {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -74,11 +73,7 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements
 			model = (GenPackage) eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL,
-							oldModel, model));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL, oldModel, model));
 			}
 		}
 		return model;
@@ -102,9 +97,7 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements
 		GenPackage oldModel = model;
 		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL,
-					oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL, oldModel, model));
 	}
 
 	/**

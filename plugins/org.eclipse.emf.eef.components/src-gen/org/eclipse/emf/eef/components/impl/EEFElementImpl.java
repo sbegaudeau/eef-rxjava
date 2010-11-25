@@ -88,8 +88,7 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 		String oldHelpID = helpID;
 		helpID = newHelpID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ComponentsPackage.EEF_ELEMENT__HELP_ID, oldHelpID, helpID));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.EEF_ELEMENT__HELP_ID, oldHelpID, helpID));
 	}
 
 	/**
@@ -145,8 +144,7 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-			return HELP_ID_EDEFAULT == null ? helpID != null
-					: !HELP_ID_EDEFAULT.equals(helpID);
+			return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
 		}
 		return super.eIsSet(featureID);
 	}

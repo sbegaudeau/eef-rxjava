@@ -22,6 +22,5 @@ import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
  * @model
  * @generated
  */
-public interface PropertiesMultiEditionElement extends
-		EMFMultiPropertiesBinding, EEFElement {
+public interface PropertiesMultiEditionElement extends EMFMultiPropertiesBinding, EEFElement {
 } // PropertiesMultiEditionElement

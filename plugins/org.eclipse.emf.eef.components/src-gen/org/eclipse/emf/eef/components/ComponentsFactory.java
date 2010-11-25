@@ -27,8 +27,7 @@ public interface ComponentsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ComponentsFactory eINSTANCE = org.eclipse.emf.eef.components.impl.ComponentsFactoryImpl
-			.init();
+	ComponentsFactory eINSTANCE = org.eclipse.emf.eef.components.impl.ComponentsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Properties Edition Context</em>'.

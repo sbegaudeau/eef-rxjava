@@ -28,8 +28,7 @@ import org.eclipse.emf.eef.mapping.EMFElementBinding;
  * @model
  * @generated
  */
-public interface PropertiesEditionComponent extends EMFElementBinding,
-		EEFElement {
+public interface PropertiesEditionComponent extends EMFElementBinding, EEFElement {
 	/**
 	 * Returns the value of the '<em><b>Explicit</b></em>' attribute.
 	 * The default value is <code>"true"</code>.

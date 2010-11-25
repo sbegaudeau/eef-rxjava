@@ -22,6 +22,5 @@ import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
  * @model
  * @generated
  */
-public interface PropertiesEditionElement extends EMFPropertyBinding,
-		EEFElement {
+public interface PropertiesEditionElement extends EMFPropertyBinding, EEFElement {
 } // PropertiesEditionElement
