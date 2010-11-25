@@ -65,7 +65,8 @@
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute views.ecore#//IdentifiedElement/qualifiedIdentifier"/>
     </genClasses>
     <nestedGenPackages prefix="Toolkits" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
-        multipleEditorPages="false" ecorePackage="views.ecore#//toolkits">
+        multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
+        ecorePackage="views.ecore#//toolkits">
       <genClasses ecoreClass="views.ecore#//toolkits/Toolkit">
         <genFeatures property="None" children="true" createChild="true" propertyDescription="The widgets of the toolkits"
             ecoreFeature="ecore:EReference views.ecore#//toolkits/Toolkit/widgets"/>
