@@ -26,7 +26,6 @@ import org.eclipse.emf.eef.codegen.plugin.GMF_Plugin_xml;
 import org.eclipse.emf.eef.codegen.properties.PropertySection;
 import org.eclipse.emf.eef.codegen.providers.ContextMessages;
 import org.eclipse.emf.eef.codegen.providers.ContextMessagesProperties;
-import org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionPolicyProvider;
 import org.eclipse.emf.eef.codegen.providers.PackagePropertiesEditionProvider;
 import org.eclipse.emf.eef.codegen.providers.PropertiesEditionProvider;
 
@@ -72,9 +71,6 @@ public class EMFPropertiesLauncher {
 				PackagePropertiesEditionProvider packagePropertiesEditionProvider = new PackagePropertiesEditionProvider(
 						modelURI, folder, arguments);
 				packagePropertiesEditionProvider.doGenerate(monitor);
-				PackagePropertiesEditionPolicyProvider packagePropertiesEditionPolicyProvider = new PackagePropertiesEditionPolicyProvider(
-						modelURI, folder, arguments);
-				packagePropertiesEditionPolicyProvider.doGenerate(monitor);
 				PropertiesEditionProvider propertiesEditionProvider = new PropertiesEditionProvider(modelURI,
 						folder, arguments);
 				propertiesEditionProvider.doGenerate(monitor);
