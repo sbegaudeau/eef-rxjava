@@ -52,6 +52,9 @@
 [pec.componentsPackage()/].[pec.subPECClass(view)/]
 [/template]
 
+[comment --------------------------------------------------------------------------
+  Providers naming
+ ---------------------------------------------------------------------------------- /]
 [template public providersPackage(pec : PropertiesEditionComponent)]
 [pec.editionContext().contextCompletePackage()/].providers
 [/template]
@@ -68,12 +71,20 @@
 [pec.contextCompletePackage()/].providers
 [/template]
 
-[template public pecPolicyProviderClass(pec : PropertiesEditionContext)]
-[pec.model.ecorePackage.name.toJavaClassifier()/]PackagePropertiesEditionPolicyProvider
+[template public pecRootProviderQualifiedClass(pec : PropertiesEditionComponent) post (trim())]
+[if (pec.associatedGenContext().propertiesEditingProvidersSuperClass.oclIsUndefined() or pec.associatedGenContext().propertiesEditingProvidersSuperClass.size() = 0)]
+org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl
+[else]
+[pec.associatedGenContext().propertiesEditingProvidersSuperClass/]
+[/if]
 [/template]
 
-[template public pecPolicyProviderQualifiedClass(pec : PropertiesEditionContext)]
-[pec.providersPackage()/].[pec.pecPolicyProviderClass()/]
+[template public pecRootProviderClass(pec : PropertiesEditionComponent) post (trim())]
+[if (pec.associatedGenContext().propertiesEditingProvidersSuperClass.oclIsUndefined() or pec.associatedGenContext().propertiesEditingProvidersSuperClass.size() = 0)]
+PropertiesEditingProviderImpl
+[else]
+[pec.associatedGenContext().propertiesEditingProvidersSuperClass.tokenize('.')->last()/]
+[/if]
 [/template]
 
 [template public pecPackageProviderClass(ePack : EPackage)]
