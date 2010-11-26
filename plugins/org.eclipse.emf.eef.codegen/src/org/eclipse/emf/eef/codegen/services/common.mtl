@@ -111,6 +111,8 @@
 	else null
 	endif/]
 
+[query public associatedPEC(eclass : EClass, peContext : PropertiesEditionContext) : PropertiesEditionComponent = eclass.eInverse(PropertiesEditionComponent)->first() /]
+
 [query public significantClass(ePackage : EPackage) : Set(EClass) = ePackage.eClassifiers->select(oclIsKindOf(EClass)).oclAsType(EClass).classAndHierarchy()->asSet() /]
 
 [query private classAndHierarchy(eclass : EClass) : Set(EClass) = eclass.eSuperTypes.classAndHierarchy()->including(eclass) /]
