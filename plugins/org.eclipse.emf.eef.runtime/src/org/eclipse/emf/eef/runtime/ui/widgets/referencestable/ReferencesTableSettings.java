@@ -282,7 +282,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 		// Finally we have those we don't have found in the existing values
 		for (EObject eObject : todo) {
 			EObject intermediate = EcoreUtil.create(features[0].getEReferenceType());
-			intermediate.eSet(features[1], todo);
+			intermediate.eSet(features[1], eObject);
 			ref1Values.add(intermediate);
 		}
 	}
