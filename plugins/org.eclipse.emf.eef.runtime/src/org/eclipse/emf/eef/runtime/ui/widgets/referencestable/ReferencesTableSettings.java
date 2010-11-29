@@ -22,8 +22,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
  */
 public class ReferencesTableSettings implements EEFEditorSettings {
 
-	private EObject source;
-	private EReference[] features;
+	protected EObject source;
+	protected EReference[] features;
 
 	/**
 	 * @param source
@@ -133,7 +133,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Values
 	 * @param newValue
 	 */
-	private void addFirstMany(List<EObject> ref1Values, EObject newValue) {
+	protected void addFirstMany(List<EObject> ref1Values, EObject newValue) {
 		if (features.length > 1) {
 			if (features[1].isMany()) {
 				addFirstManySecondMany(ref1Values, newValue);
@@ -153,7 +153,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Values
 	 * @param newValue
 	 */
-	private void addFirstManySecondMany(List<EObject> ref1Values, EObject newValue) {
+	protected void addFirstManySecondMany(List<EObject> ref1Values, EObject newValue) {
 		throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation with more than one multiple reference");
 	}
 
@@ -161,7 +161,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param newValue
 	 * @param ref2
 	 */
-	private void addFirstManySecondSingle(List<EObject> ref1Values, EObject newValue) {
+	protected void addFirstManySecondSingle(List<EObject> ref1Values, EObject newValue) {
 		EObject intermediate  = EcoreUtil.create(features[0].getEReferenceType());
 		((EObject)intermediate).eSet(features[1], newValue);
 		ref1Values.add(intermediate);
@@ -172,7 +172,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Value
 	 * @param newValue
 	 */
-	private void addFirstSingle(EObject ref1Value, EObject newValue) {
+	protected void addFirstSingle(EObject ref1Value, EObject newValue) {
 		if (features.length > 1) {
 			if (features[1].isMany()) {
 				addFirstSingleSecondMany(ref1Value, newValue);
@@ -192,7 +192,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Value
 	 * @param newValue
 	 */
-	private void addFirstSingleSecondMany(EObject ref1Value, EObject newValue) {
+	protected void addFirstSingleSecondMany(EObject ref1Value, EObject newValue) {
 		if (ref1Value == null)  {
 			ref1Value = EcoreUtil.create(features[0].getEReferenceType());
 			// WARNING: Cannot be an abstract class
@@ -205,7 +205,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Value
 	 * @param newValue
 	 */
-	private void addFirstSingleSecondSingle(EObject ref1Value, EObject newValue) {
+	protected void addFirstSingleSecondSingle(EObject ref1Value, EObject newValue) {
 		throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation without multiple reference");
 	}
 
@@ -234,7 +234,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Values
 	 * @param newValues
 	 */
-	private void setFirstMany(List<EObject> ref1Values, List<EObject> newValues) {
+	protected void setFirstMany(List<EObject> ref1Values, List<EObject> newValues) {
 		if (features.length > 1) {
 			EReference ref2 = features[1];
 			if (ref2.isMany()) {
@@ -255,7 +255,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Values
 	 * @param newValues
 	 */
-	private void setFirstManySecondMany(List<EObject> ref1Values, List<EObject> newValues) {
+	protected void setFirstManySecondMany(List<EObject> ref1Values, List<EObject> newValues) {
 		throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation with more than one multiple reference");
 	}
 
@@ -263,7 +263,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Values
 	 * @param newValues
 	 */
-	private void setFirstManySecondSingle(List<EObject> ref1Values, List<EObject> newValues) {
+	protected void setFirstManySecondSingle(List<EObject> ref1Values, List<EObject> newValues) {
 		List<EObject> todo = new ArrayList<EObject>(newValues);
 		List<EObject> toremove = new ArrayList<EObject>();
 		// First, we check the existing values. Mainly, we create a list of elements
@@ -293,7 +293,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param newValues
 	 * @param ref
 	 */
-	private void setFirstSingle(EObject ref1Value, List<EObject> newValues) {
+	protected void setFirstSingle(EObject ref1Value, List<EObject> newValues) {
 		if (features.length > 1) {
 			if (features[1].isMany()) {
 				setFirstSingleSecondMany(ref1Value, newValues);
@@ -313,7 +313,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param ref1Value
 	 * @param newValues
 	 */
-	private void setFirstSingleSecondMany(EObject ref1Value, List<EObject> newValues) {
+	protected void setFirstSingleSecondMany(EObject ref1Value, List<EObject> newValues) {
 		if (ref1Value == null)  {
 			ref1Value = EcoreUtil.create(features[0].getEReferenceType());
 			// WARNING: Cannot be an abstract class
@@ -326,7 +326,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 * @param value2
 	 * @param newValues
 	 */
-	private void setFirstSingleSecondSingle(Object value2, List<EObject> newValues) {
+	protected void setFirstSingleSecondSingle(Object value2, List<EObject> newValues) {
 		throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation without multiple reference");
 	}
 
@@ -350,7 +350,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 		}
 	}
 
-	private void removeFirstMany(List<EObject> value1, EObject valueToRemove) {
+	protected void removeFirstMany(List<EObject> value1, EObject valueToRemove) {
 		if (features.length > 1) {
 			EReference ref2 = features[1];
 			if (ref2.isMany()) {
@@ -365,11 +365,11 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 		}
 	}
 
-	private void removeFirstManySecondMany(List<EObject> ref1Values, EObject valueToRemove) {
+	protected void removeFirstManySecondMany(List<EObject> ref1Values, EObject valueToRemove) {
 		throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation with more than one multiple reference");
 	}
 
-	private void removeFirstManySecondSingle(List<EObject> value1, EObject valueToRemove) {
+	protected void removeFirstManySecondSingle(List<EObject> value1, EObject valueToRemove) {
 		EObject elemToRemove = null;
 		for (EObject elem : value1) {
 			EObject elem2 = (EObject) ((EObject)elem).eGet(features[1]);
@@ -380,7 +380,7 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 		value1.remove(elemToRemove);
 	}
 
-	private void removeFirstSingle(EObject value1, EObject valueToRemove) {
+	protected void removeFirstSingle(EObject value1, EObject valueToRemove) {
 		if (features.length > 1) {
 			Object value2 = value1.eGet(features[1]);
 			if (features[1].isMany()) {
@@ -396,11 +396,11 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	}
 
 
-	private void removeFirstSingleSecondMany(List<EObject> value2, EObject valueToRemove) {
+	protected void removeFirstSingleSecondMany(List<EObject> value2, EObject valueToRemove) {
 		value2.remove(valueToRemove);
 	}
 
-	private void removeFirstSingleSecondSingle() {
+	protected void removeFirstSingleSecondSingle() {
 		EcoreUtil.remove((EObject) source.eGet(features[0]));
 	}
 

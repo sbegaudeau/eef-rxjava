@@ -20,8 +20,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
  */
 public class EObjectFlatComboSettings implements EEFEditorSettings {
 
-	private EObject source;
-	private EReference[] features;
+	protected EObject source;
+	protected EReference[] features;
 
 	/**
 	 * @param source
@@ -118,7 +118,7 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 	 * @param ref1Value
 	 * @param newValue
 	 */
-	private void setFirstSingle(EObject ref1Value, EObject newValue) {
+	protected void setFirstSingle(EObject ref1Value, EObject newValue) {
 		if (features.length > 1) {
 			if (features[1].isMany()) {
 				throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation with multiple references");
@@ -136,7 +136,7 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 	 * @param value2
 	 * @param newValue
 	 */
-	private void setFirstSingleSecondSingle(Object value2, EObject newValue) {
+	protected void setFirstSingleSecondSingle(Object value2, EObject newValue) {
 		throw new IllegalStateException("Ambigous case - Cannot process ModelNavigation without multiple reference");
 	}
 	
