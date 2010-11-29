@@ -43,7 +43,7 @@ import [pec.model.completePackage()/].components.[pec.subPECClass(view)/];
 import [subPec.model.ePackage.completePackage()/].components.[subPec.subPECClass(view)/];
 	[/for]
 [/for]
-
+[peContext.additionalImports()/]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
@@ -164,6 +164,9 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 [/file]
 [/if]
 [/for]
+[/template]
+
+[template public additionalImports (peContext : PropertiesEditionContext) ]
 [/template]
 
 [template public provideForPart(pec : PropertiesEditionComponent)]

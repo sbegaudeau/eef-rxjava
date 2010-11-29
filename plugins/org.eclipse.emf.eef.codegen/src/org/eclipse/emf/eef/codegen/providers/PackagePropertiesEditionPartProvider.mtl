@@ -30,6 +30,9 @@ import [v.vrPackage()/].parts.forms.[view.pepFormClass()/];
 import [v.vrPackage()/].parts.impl.[view.pepClass()/];
 [/for]
 
+[v.additionalImports()/]
+
+
 /**
  * [v.associatedGenModel().authorText().trim()/]
  * [v.associatedGenModel().generationMark()/]
@@ -65,6 +68,9 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 
 }
 [/file]
+[/template]
+
+[template public additionalImports (v : ViewsRepository) ]
 [/template]
 
 [template public fullFilePath(repository : ViewsRepository)]
