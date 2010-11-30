@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -161,7 +162,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 				eObject = newEObject;
 				if (eObject != null) {
 					disposeComponent();
-					viewer.setInput(eObject);
+					viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject));
 				}
 			}
 		}

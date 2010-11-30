@@ -272,12 +272,10 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
 		this.waitUntil(new DefaultCondition() {
 			
-			@Override
 			public boolean test() throws Exception {
 				return !editor.isDirty();
 			}
 			
-			@Override
 			public String getFailureMessage() {
 				return "the editor does not save in less than one minute";
 			}
@@ -376,7 +374,6 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 			SWTBotUtils.sendFocusLost(textWithId.widget);
 			syncExec(new VoidResult() {
 				
-				@Override
 				public void run() {
 					synchronizationWithUIThread();
 				}
