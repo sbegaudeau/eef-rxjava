@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesItemProviderAdapterFactory.java,v 1.1 2010/04/15 12:48:47 glefur Exp $
+ * $Id: ReferencesItemProviderAdapterFactory.java,v 1.2 2010/11/30 08:24:13 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references.provider;
 
@@ -96,6 +96,29 @@ public class ReferencesItemProviderAdapterFactory extends ReferencesAdapterFacto
 		}
 
 		return referenceEnabledSampleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.references.Tests} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TestsItemProvider testsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.references.Tests}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTestsAdapter() {
+		if (testsItemProvider == null) {
+			testsItemProvider = new TestsItemProvider(this);
+		}
+
+		return testsItemProvider;
 	}
 
 	/**
@@ -198,6 +221,7 @@ public class ReferencesItemProviderAdapterFactory extends ReferencesAdapterFacto
 	 */
 	public void dispose() {
 		if (referenceEnabledSampleItemProvider != null) referenceEnabledSampleItemProvider.dispose();
+		if (testsItemProvider != null) testsItemProvider.dispose();
 	}
 
 }

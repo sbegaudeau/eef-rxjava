@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.components.FlatReferenceTableSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -22,6 +25,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class FlatReferenceTableSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public FlatReferenceTableSamplePropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public FlatReferenceTableSamplePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -71,7 +89,7 @@ public class FlatReferenceTableSamplePropertiesEditionProvider extends Propertie
 		if (editingContext.getEObject() instanceof FlatReferencesTableSample) {
 			return new FlatReferenceTableSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -84,7 +102,7 @@ public class FlatReferenceTableSamplePropertiesEditionProvider extends Propertie
 			if (FlatReferenceTableSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new FlatReferenceTableSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -98,7 +116,7 @@ public class FlatReferenceTableSamplePropertiesEditionProvider extends Propertie
 				&& refinement == FlatReferenceTableSamplePropertiesEditionComponent.class)
 				return new FlatReferenceTableSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

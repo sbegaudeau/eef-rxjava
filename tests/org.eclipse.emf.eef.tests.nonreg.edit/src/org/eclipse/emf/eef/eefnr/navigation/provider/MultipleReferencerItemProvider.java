@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MultipleReferencerItemProvider.java,v 1.1 2010/11/24 21:51:10 glefur Exp $
+ * $Id: MultipleReferencerItemProvider.java,v 1.2 2010/11/30 08:24:13 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -67,8 +68,77 @@ public class MultipleReferencerItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMultipleSampleForReferencesTablePropertyDescriptor(object);
+			addMultipleSampleAdvancedReferencesTablePropertyDescriptor(object);
+			addMultipleSampleForFlatReferencesTablePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Multiple Sample For References Table feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMultipleSampleForReferencesTablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MultipleReferencer_multipleSampleForReferencesTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MultipleReferencer_multipleSampleForReferencesTable_feature", "_UI_MultipleReferencer_type"),
+				 NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_REFERENCES_TABLE,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Multiple Sample Advanced References Table feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMultipleSampleAdvancedReferencesTablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MultipleReferencer_multipleSampleAdvancedReferencesTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MultipleReferencer_multipleSampleAdvancedReferencesTable_feature", "_UI_MultipleReferencer_type"),
+				 NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_ADVANCED_REFERENCES_TABLE,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Multiple Sample For Flat References Table feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMultipleSampleForFlatReferencesTablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MultipleReferencer_multipleSampleForFlatReferencesTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MultipleReferencer_multipleSampleForFlatReferencesTable_feature", "_UI_MultipleReferencer_type"),
+				 NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -173,6 +243,11 @@ public class MultipleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_TABLE_COMPOSITION,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -180,6 +255,11 @@ public class MultipleReferencerItemProvider
 			(createChildParameter
 				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION,
 				 NavigationFactory.eINSTANCE.createSubtype()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -193,6 +273,11 @@ public class MultipleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_REFERENCES_TABLE,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_ADVANCED_REFERENCES_TABLE,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -203,6 +288,11 @@ public class MultipleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_ADVANCED_REFERENCES_TABLE,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -210,6 +300,11 @@ public class MultipleReferencerItemProvider
 			(createChildParameter
 				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE,
 				 NavigationFactory.eINSTANCE.createSubtype()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NavigationPackage.Literals.MULTIPLE_REFERENCER__MULTIPLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
 	}
 
 	/**

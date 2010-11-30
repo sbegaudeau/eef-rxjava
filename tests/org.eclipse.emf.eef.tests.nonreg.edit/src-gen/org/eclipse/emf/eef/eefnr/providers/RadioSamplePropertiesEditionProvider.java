@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnr.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.RadioSample;
 import org.eclipse.emf.eef.eefnr.components.RadioSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -22,6 +25,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public RadioSamplePropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public RadioSamplePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -71,7 +89,7 @@ public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProvi
 		if (editingContext.getEObject() instanceof RadioSample) {
 			return new RadioSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -84,7 +102,7 @@ public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProvi
 			if (RadioSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new RadioSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -98,7 +116,7 @@ public class RadioSamplePropertiesEditionProvider extends PropertiesEditingProvi
 				&& refinement == RadioSamplePropertiesEditionComponent.class)
 				return new RadioSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

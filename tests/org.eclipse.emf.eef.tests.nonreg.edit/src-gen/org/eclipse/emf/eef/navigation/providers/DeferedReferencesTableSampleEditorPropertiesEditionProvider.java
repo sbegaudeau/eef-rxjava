@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.navigation.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.navigation.components.DeferedReferencesTableSampleEditorPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -22,6 +25,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public DeferedReferencesTableSampleEditorPropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public DeferedReferencesTableSampleEditorPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -71,7 +89,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
 			return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -84,7 +102,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 			if (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part))
 				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -98,7 +116,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 				&& refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class)
 				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

@@ -132,4 +132,55 @@ public class NavigationViewsRepository {
 	
 	}
 
+	/**
+	 * AnotherSubtype view descriptor
+	 * 
+	 */
+	public static class AnotherSubtype {
+	
+	public static String subtypeView = "navigation::AnotherSubtype::subtypeView";
+	
+		public static class AnotherSpecialisation {
+	
+			
+			public static String anotherSpecialisationElement = "navigation::AnotherSubtype::Another specialisation::anotherSpecialisationElement";
+			
+		
+		}
+	
+	}
+
+	/**
+	 * NamedElement view descriptor
+	 * 
+	 */
+	public static class NamedElement {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::NamedElement::properties::name";
+			
+		
+		}
+	
+	}
+
+	/**
+	 * Element view descriptor
+	 * 
+	 */
+	public static class Element {
+		public static class Properties {
+	
+			
+			public static String isVisible = "navigation::Element::properties::isVisible";
+			
+		
+		}
+	
+	
+	public static String namedElementView = "navigation::Element::namedElementView";
+	
+	}
+
 }

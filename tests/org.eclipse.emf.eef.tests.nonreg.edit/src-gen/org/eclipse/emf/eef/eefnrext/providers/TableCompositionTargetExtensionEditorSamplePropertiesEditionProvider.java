@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnrext.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample;
 import org.eclipse.emf.eef.eefnrext.components.TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -22,6 +25,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -71,7 +89,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionProvide
 		if (editingContext.getEObject() instanceof TableCompositionTargetExtensionEditorSample) {
 			return new TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -84,7 +102,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionProvide
 			if (TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -98,7 +116,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionProvide
 				&& refinement == TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent.class)
 				return new TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

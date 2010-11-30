@@ -384,7 +384,28 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_dCGcSvcjEd-hGoEe0fLfnQ" name="specialisedElement" views="_dCHDefcjEd-hGoEe0fLfnQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/Subtype/specialisedElement"/>
         </properties>
+        <referencedBinding xmi:id="_LHttQfh2Ed-2Tb9fbD9-hQ" binding="_dCGcRPcjEd-hGoEe0fLfnQ"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/Subtype"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HWawcPh3Ed-2Tb9fbD9-hQ" name="AnotherSubtype" views="_-HUjoPh2Ed-2Tb9fbD9-hQ" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LvTcQPh3Ed-2Tb9fbD9-hQ" name="anotherSpecialisation" views="_-HUjo_h2Ed-2Tb9fbD9-hQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/AnotherSubType/anotherSpecialisation"/>
+        </properties>
+        <referencedBinding xmi:id="_NID-8Ph3Ed-2Tb9fbD9-hQ" binding="_dCGcSPcjEd-hGoEe0fLfnQ"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/AnotherSubType"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_SfgckfiqEd-OEO-fmkgPzw" name="NamedElement" views="_WTpckPiqEd-OEO-fmkgPzw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_owyGQPiqEd-OEO-fmkgPzw" name="name" views="_cauIgPiqEd-OEO-fmkgPzw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//NamedElement"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_zzSKYPiqEd-OEO-fmkgPzw" name="Element" views="_rlnlYPiqEd-OEO-fmkgPzw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_39COAPiqEd-OEO-fmkgPzw" name="isVisible" views="_t_KPofiqEd-OEO-fmkgPzw" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/Element/visible"/>
+        </properties>
+        <referencedBinding xmi:id="_2o9-EPiqEd-OEO-fmkgPzw" binding="_SfgckfiqEd-OEO-fmkgPzw"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/Element"/>
       </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr/navigation"/>
@@ -820,6 +841,32 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
+      </views>
+      <views xmi:id="_-HUjoPh2Ed-2Tb9fbD9-hQ" name="AnotherSubtype">
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_-HUjofh2Ed-2Tb9fbD9-hQ" name="subtypeView" view="_dCHDdvcjEd-hGoEe0fLfnQ"/>
+        <elements xsi:type="eef-views:Container" xmi:id="_-HUjovh2Ed-2Tb9fbD9-hQ" name="Another specialisation">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-HUjo_h2Ed-2Tb9fbD9-hQ" name="anotherSpecialisationElement">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_WTpckPiqEd-OEO-fmkgPzw" name="NamedElement">
+        <elements xsi:type="eef-views:Container" xmi:id="_XWBfkPiqEd-OEO-fmkgPzw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_cauIgPiqEd-OEO-fmkgPzw" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rlnlYPiqEd-OEO-fmkgPzw" name="Element">
+        <elements xsi:type="eef-views:Container" xmi:id="_t_KPoPiqEd-OEO-fmkgPzw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_t_KPofiqEd-OEO-fmkgPzw" name="isVisible">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_xGw5wPiqEd-OEO-fmkgPzw" name="namedElementView" view="_WTpckPiqEd-OEO-fmkgPzw"/>
       </views>
     </categories>
   </eef-views:ViewsRepository>

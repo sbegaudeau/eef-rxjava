@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.references.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.references.components.AbstractEnabledSampleBasePropertiesEditionComponent;
@@ -17,6 +19,7 @@ import org.eclipse.emf.eef.references.components.AbstractEnabledSampleProperties
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -24,6 +27,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public AbstractEnabledSamplePropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public AbstractEnabledSamplePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -73,7 +91,7 @@ public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEd
 		if (editingContext.getEObject() instanceof AbstractEnabledSample) {
 			return new AbstractEnabledSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -88,7 +106,7 @@ public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEd
 			if (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new AbstractSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -105,7 +123,7 @@ public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEd
 				&& refinement == AbstractSamplePropertiesEditionComponent.class)
 				return new AbstractSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

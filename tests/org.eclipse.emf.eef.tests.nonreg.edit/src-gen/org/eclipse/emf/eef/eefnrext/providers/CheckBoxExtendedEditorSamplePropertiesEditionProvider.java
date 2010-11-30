@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.eefnrext.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSampleBasePropertiesEditionComponent;
@@ -17,6 +19,7 @@ import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSamplePrope
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -24,6 +27,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class CheckBoxExtendedEditorSamplePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public CheckBoxExtendedEditorSamplePropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public CheckBoxExtendedEditorSamplePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -73,7 +91,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionProvider extends Prope
 		if (editingContext.getEObject() instanceof CheckBoxExtendedEditorSample) {
 			return new CheckBoxExtendedEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -88,7 +106,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionProvider extends Prope
 			if (AbstractSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new AbstractSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -105,7 +123,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionProvider extends Prope
 				&& refinement == AbstractSamplePropertiesEditionComponent.class)
 				return new AbstractSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

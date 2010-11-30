@@ -11,21 +11,15 @@
 package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.SubtypePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 	
 
 // End of user code
@@ -34,99 +28,90 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class SubtypePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class SubtypePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
-	
-	public static String BASE_PART = "Base"; //$NON-NLS-1$
-
-	
 	/**
-	 * Default constructor
+	 * The Base part
+	 * 
+	 */
+	private SubtypePropertiesEditionPart basePart;
+
+	/**
+	 * The SubtypeBasePropertiesEditionComponent sub component
+	 * 
+	 */
+	protected SubtypeBasePropertiesEditionComponent subtypeBasePropertiesEditionComponent;
+	/**
+	 * The OwnerPropertiesEditionComponent sub component
+	 * 
+	 */
+	protected OwnerPropertiesEditionComponent ownerPropertiesEditionComponent;
+
+	/**
+	 * Parameterized constructor
+	 * 
+	 * @param subtype the EObject to edit
 	 * 
 	 */
 	public SubtypePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject subtype, String editing_mode) {
-		super(editingContext, subtype, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = NavigationViewsRepository.class;
-		partKey = NavigationViewsRepository.Subtype.class;
+		super(editingContext, editing_mode);
+		if (subtype instanceof Subtype) {
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(subtype, PropertiesEditingProvider.class);
+			subtypeBasePropertiesEditionComponent = (SubtypeBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, SubtypeBasePropertiesEditionComponent.BASE_PART, SubtypeBasePropertiesEditionComponent.class);
+			addSubComponent(subtypeBasePropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(subtype, PropertiesEditingProvider.class);
+			ownerPropertiesEditionComponent = (OwnerPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, OwnerPropertiesEditionComponent.BASE_PART, OwnerPropertiesEditionComponent.class);
+			addSubComponent(ownerPropertiesEditionComponent);
+		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * 
+	 */
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+		if (SubtypeBasePropertiesEditionComponent.BASE_PART.equals(key)) {
+			basePart = (SubtypePropertiesEditionPart)subtypeBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)basePart;
+		}
+		return super.getPropertiesEditionPart(kind, key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * 
+	 */
+	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+		if (NavigationViewsRepository.Subtype.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			basePart = (SubtypePropertiesEditionPart)propertiesEditionPart;
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			final Subtype subtype = (Subtype)elt;
-			final SubtypePropertiesEditionPart basePart = (SubtypePropertiesEditionPart)editingPart;
-			// init values
-			basePart.setSpecialisedElement(subtype.isSpecialisedElement());
-			
-			// init filters
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
+	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
+		if (key == NavigationViewsRepository.Subtype.class) {
+			super.initPart(key, kind, element, allResource);
+			ownerPropertiesEditionComponent.setPropertiesEditionPart(NavigationViewsRepository.Owner.class, kind, basePart.getOwnerReferencedView());
+			ownerPropertiesEditionComponent.initPart(NavigationViewsRepository.Owner.class, kind, element, allResource);
 		}
-		setInitializing(false);
-	}
-
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Subtype subtype = (Subtype)semanticObject;
-		if (NavigationViewsRepository.Subtype.Specialisation.specialisedElement == event.getAffectedEditor()) {
-			subtype.setSpecialisedElement((Boolean)event.getNewValue());	
+		if (key == NavigationViewsRepository.Owner.class) {
+			super.initPart(key, kind, element, allResource);
 		}
 	}
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-	 */
-	public void updatePart(Notification msg) {
-		SubtypePropertiesEditionPart basePart = (SubtypePropertiesEditionPart)editingPart;
-		if (NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement().equals(msg.getFeature()) && basePart != null)
-			basePart.setSpecialisedElement((Boolean)msg.getNewValue());
-		
-		
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
-	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
-			try {
-				if (NavigationViewsRepository.Subtype.Specialisation.specialisedElement == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
-
 }

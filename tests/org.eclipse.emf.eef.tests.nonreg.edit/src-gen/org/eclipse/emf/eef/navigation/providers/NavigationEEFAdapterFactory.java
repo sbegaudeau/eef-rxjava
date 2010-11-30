@@ -10,8 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.navigation.providers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory;
+import org.eclipse.emf.eef.references.providers.AbstractSamplePropertiesEditionProvider;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -19,44 +25,75 @@ import org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory;
  */
 public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.Navigation#createDeferedFlatReferenceTableEditorSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSubtypeAdapter()
 	 * 
 	 */
-	public Adapter createDeferedFlatReferenceTableEditorSampleAdapter() {
-		return new DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider();
+	public Adapter createSubtypeAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createOwnerAdapter());
+		return new SubtypePropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.Navigation#createDeferedReferenceTableEditorSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createElementAdapter()
 	 * 
 	 */
-	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
-		return new DeferedReferencesTableSampleEditorPropertiesEditionProvider();
+	public Adapter createElementAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createNamedElementAdapter());
+		return new ElementPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.Navigation#createOwnerAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createAnotherSubTypeAdapter()
+	 * 
+	 */
+	public Adapter createAnotherSubTypeAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createSubtypeAdapter());
+		return new AnotherSubtypePropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createAbstractSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createOwnerAdapter()
 	 * 
 	 */
 	public Adapter createOwnerAdapter() {
 		return new OwnerPropertiesEditionProvider();
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.Navigation#createSubtypeAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createDeferedFlatReferenceTableEditorSampleAdapter()
 	 * 
 	 */
-	public Adapter createSubtypeAdapter() {
-		return new SubtypePropertiesEditionProvider();
+	public Adapter createDeferedFlatReferenceTableEditorSampleAdapter() {
+		return new DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createDeferedReferenceTableEditorSampleAdapter()
+	 * 
+	 */
+	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
+		return new DeferedReferencesTableSampleEditorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createNamedElementAdapter()
+	 * 
+	 */
+	public Adapter createNamedElementAdapter() {
+		return new NamedElementPropertiesEditionProvider();
 	}
 
 }

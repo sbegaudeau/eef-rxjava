@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationItemProviderAdapterFactory.java,v 1.3 2010/11/24 21:51:10 glefur Exp $
+ * $Id: NavigationItemProviderAdapterFactory.java,v 1.4 2010/11/30 08:24:13 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.provider;
 
@@ -237,6 +237,52 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.AnotherSubType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnotherSubTypeItemProvider anotherSubTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.AnotherSubType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnotherSubTypeAdapter() {
+		if (anotherSubTypeItemProvider == null) {
+			anotherSubTypeItemProvider = new AnotherSubTypeItemProvider(this);
+		}
+
+		return anotherSubTypeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.Element} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ElementItemProvider elementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.Element}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createElementAdapter() {
+		if (elementItemProvider == null) {
+			elementItemProvider = new ElementItemProvider(this);
+		}
+
+		return elementItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -342,6 +388,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 		if (multipleReferencerItemProvider != null) multipleReferencerItemProvider.dispose();
 		if (subtypeItemProvider != null) subtypeItemProvider.dispose();
 		if (singleReferencerItemProvider != null) singleReferencerItemProvider.dispose();
+		if (anotherSubTypeItemProvider != null) anotherSubTypeItemProvider.dispose();
+		if (elementItemProvider != null) elementItemProvider.dispose();
 	}
 
 }

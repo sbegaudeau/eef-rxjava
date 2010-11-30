@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SingleReferencerItemProvider.java,v 1.1 2010/11/24 21:51:10 glefur Exp $
+ * $Id: SingleReferencerItemProvider.java,v 1.2 2010/11/30 08:24:13 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.provider;
 
@@ -224,6 +224,11 @@ public class SingleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_TABLE_COMPOSITION,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -231,6 +236,11 @@ public class SingleReferencerItemProvider
 			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION,
 				 NavigationFactory.eINSTANCE.createSubtype()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_ADVANCED_TABLE_COMPOSITION,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -244,6 +254,11 @@ public class SingleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_REFERENCES_TABLE,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_ADVANCED_REFERENCES_TABLE,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -251,6 +266,11 @@ public class SingleReferencerItemProvider
 			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_ADVANCED_REFERENCES_TABLE,
 				 NavigationFactory.eINSTANCE.createSubtype()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_ADVANCED_REFERENCES_TABLE,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -264,6 +284,11 @@ public class SingleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_SAMPLE_FOR_FLAT_REFERENCES_TABLE,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_EOBJECT_FLAT_COMBO_VIEWER,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -274,6 +299,11 @@ public class SingleReferencerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_EOBJECT_FLAT_COMBO_VIEWER,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER,
 				 NavigationFactory.eINSTANCE.createOwner()));
 
@@ -281,6 +311,11 @@ public class SingleReferencerItemProvider
 			(createChildParameter
 				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER,
 				 NavigationFactory.eINSTANCE.createSubtype()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NavigationPackage.Literals.SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
 	}
 
 	/**

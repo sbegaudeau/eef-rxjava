@@ -19,7 +19,7 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
+            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
    <extension
@@ -31,7 +31,7 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
+            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 
@@ -72,6 +72,24 @@
                id="DeferedReferencesTableSample"
                afterTab="DeferedReferencesTableSample">
          </propertyTab>
+         <propertyTab
+               label="Owner"
+               category="extended"
+               id="Owner"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="Subtype"
+               category="extended"
+               id="Subtype"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="NamedElement"
+               category="extended"
+               id="NamedElement"
+               afterTab="Base">
+         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -108,6 +126,54 @@
                tab="Base">
              <input
                     type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Subtype"
+               tab="Owner">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.AnotherSubType">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
+               tab="Subtype">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.AnotherSubType">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.NamedElement"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.NamedElement">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Element"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Element">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Element"
+               tab="NamedElement">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Element">
              </input>
          </propertySection>
       </propertySections>
