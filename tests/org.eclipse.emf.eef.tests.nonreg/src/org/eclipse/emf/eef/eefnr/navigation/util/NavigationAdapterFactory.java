@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationAdapterFactory.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
+ * $Id: NavigationAdapterFactory.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.util;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 
+import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.navigation.*;
 
 /**
@@ -102,8 +103,20 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 				return createSingleReferencerAdapter();
 			}
 			@Override
+			public Adapter caseAnotherSubType(AnotherSubType object) {
+				return createAnotherSubTypeAdapter();
+			}
+			@Override
+			public Adapter caseElement(Element object) {
+				return createElementAdapter();
+			}
+			@Override
 			public Adapter caseAbstractSample(AbstractSample object) {
 				return createAbstractSampleAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -220,6 +233,48 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSingleReferencerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.AnotherSubType <em>Another Sub Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.AnotherSubType
+	 * @generated
+	 */
+	public Adapter createAnotherSubTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.Element <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Element
+	 * @generated
+	 */
+	public Adapter createElementAdapter() {
 		return null;
 	}
 

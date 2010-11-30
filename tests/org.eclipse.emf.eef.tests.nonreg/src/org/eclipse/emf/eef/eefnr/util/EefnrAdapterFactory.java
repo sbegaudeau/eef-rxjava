@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrAdapterFactory.java,v 1.5 2010/04/15 12:48:58 glefur Exp $
+ * $Id: EefnrAdapterFactory.java,v 1.6 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -150,6 +150,10 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAbstractTableCompositionTargetExtensionEditorSample(AbstractTableCompositionTargetExtensionEditorSample object) {
 				return createAbstractTableCompositionTargetExtensionEditorSampleAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -448,6 +452,20 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractTableCompositionTargetExtensionEditorSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 

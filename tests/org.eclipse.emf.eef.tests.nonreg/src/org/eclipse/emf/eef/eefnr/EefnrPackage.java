@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackage.java,v 1.6 2010/06/03 13:49:36 glefur Exp $
+ * $Id: EefnrPackage.java,v 1.7 2010/11/30 08:23:17 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -1161,6 +1161,34 @@ public interface EefnrPackage extends EPackage {
 	int ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.NamedElementImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getNamedElement()
+	 * @generated
+	 */
+	int NAMED_ELEMENT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Named Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1168,7 +1196,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 20;
+	int ENUM_SAMPLE = 21;
 
 
 	/**
@@ -2054,6 +2082,16 @@ public interface EefnrPackage extends EPackage {
 	EClass getAbstractTableCompositionTargetExtensionEditorSample();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.NamedElement
+	 * @generated
+	 */
+	EClass getNamedElement();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2780,6 +2818,16 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE = eINSTANCE.getAbstractTableCompositionTargetExtensionEditorSample();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.NamedElementImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getNamedElement()
+		 * @generated
+		 */
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

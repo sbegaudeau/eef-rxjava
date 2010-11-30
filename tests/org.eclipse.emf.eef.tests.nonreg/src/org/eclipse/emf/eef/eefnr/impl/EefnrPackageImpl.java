@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackageImpl.java,v 1.7 2010/06/03 13:49:36 glefur Exp $
+ * $Id: EefnrPackageImpl.java,v 1.8 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
+import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.RadioSample;
 import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.Root;
@@ -189,6 +190,13 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * @generated
 	 */
 	private EClass abstractTableCompositionTargetExtensionEditorSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass namedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1012,6 +1020,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getNamedElement() {
+		return namedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -1146,6 +1163,8 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 
 		abstractTableCompositionTargetExtensionEditorSampleEClass = createEClass(ABSTRACT_TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE);
 
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
 	}
@@ -1204,6 +1223,7 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		textSampleWithTwoTabsEClass.getESuperTypes().add(this.getAbstractSample());
 		tableCompositionExtensionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		abstractTableCompositionTargetExtensionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		namedElementEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1307,6 +1327,8 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEReference(getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty(), this.getAbstractTableCompositionTargetExtensionEditorSample(), null, "tablecompositionOptionalProperty", null, 0, -1, TableCompositionExtensionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractTableCompositionTargetExtensionEditorSampleEClass, AbstractTableCompositionTargetExtensionEditorSample.class, "AbstractTableCompositionTargetExtensionEditorSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

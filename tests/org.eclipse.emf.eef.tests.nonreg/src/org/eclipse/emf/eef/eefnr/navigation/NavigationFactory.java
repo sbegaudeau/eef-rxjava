@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationFactory.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
+ * $Id: NavigationFactory.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation;
 
@@ -87,6 +87,24 @@ public interface NavigationFactory extends EFactory {
 	 * @generated
 	 */
 	SingleReferencer createSingleReferencer();
+
+	/**
+	 * Returns a new object of class '<em>Another Sub Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Another Sub Type</em>'.
+	 * @generated
+	 */
+	AnotherSubType createAnotherSubType();
+
+	/**
+	 * Returns a new object of class '<em>Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Element</em>'.
+	 * @generated
+	 */
+	Element createElement();
 
 	/**
 	 * Returns the package supported by this factory.

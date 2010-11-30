@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesPackage.java,v 1.1 2010/04/15 12:48:58 glefur Exp $
+ * $Id: ReferencesPackage.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references;
 
@@ -146,6 +146,35 @@ public interface ReferencesPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.references.impl.TestsImpl <em>Tests</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.references.impl.TestsImpl
+	 * @see org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl#getTests()
+	 * @generated
+	 */
+	int TESTS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTS__NAME = EefnrPackage.NAMED_ELEMENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Tests</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTS_FEATURE_COUNT = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample <em>Abstract Enabled Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -186,6 +215,16 @@ public interface ReferencesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getReferenceEnabledSample_Reference();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.references.Tests <em>Tests</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Tests</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.references.Tests
+	 * @generated
+	 */
+	EClass getTests();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -244,6 +283,16 @@ public interface ReferencesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REFERENCE_ENABLED_SAMPLE__REFERENCE = eINSTANCE.getReferenceEnabledSample_Reference();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.references.impl.TestsImpl <em>Tests</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.references.impl.TestsImpl
+		 * @see org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl#getTests()
+		 * @generated
+		 */
+		EClass TESTS = eINSTANCE.getTests();
 
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesFactoryImpl.java,v 1.1 2010/04/15 12:48:58 glefur Exp $
+ * $Id: ReferencesFactoryImpl.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references.impl;
 
@@ -61,6 +61,7 @@ public class ReferencesFactoryImpl extends EFactoryImpl implements ReferencesFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ReferencesPackage.REFERENCE_ENABLED_SAMPLE: return createReferenceEnabledSample();
+			case ReferencesPackage.TESTS: return createTests();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +75,16 @@ public class ReferencesFactoryImpl extends EFactoryImpl implements ReferencesFac
 	public ReferenceEnabledSample createReferenceEnabledSample() {
 		ReferenceEnabledSampleImpl referenceEnabledSample = new ReferenceEnabledSampleImpl();
 		return referenceEnabledSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Tests createTests() {
+		TestsImpl tests = new TestsImpl();
+		return tests;
 	}
 
 	/**

@@ -2,20 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DeferedReferenceImpl.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: DeferedReferenceImpl.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.eef.eefnr.TotalSample;
-
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 

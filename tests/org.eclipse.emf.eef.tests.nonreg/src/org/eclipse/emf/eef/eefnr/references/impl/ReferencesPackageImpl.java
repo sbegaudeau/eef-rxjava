@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesPackageImpl.java,v 1.2 2010/04/16 08:00:57 glefur Exp $
+ * $Id: ReferencesPackageImpl.java,v 1.3 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesFactory;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 
+import org.eclipse.emf.eef.eefnr.references.Tests;
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 
 import org.eclipse.emf.eef.eefnrext.impl.EefnrextPackageImpl;
@@ -48,6 +49,13 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	 * @generated
 	 */
 	private EClass referenceEnabledSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testsEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -162,6 +170,15 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTests() {
+		return testsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ReferencesFactory getReferencesFactory() {
 		return (ReferencesFactory)getEFactoryInstance();
 	}
@@ -190,6 +207,8 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 
 		referenceEnabledSampleEClass = createEClass(REFERENCE_ENABLED_SAMPLE);
 		createEReference(referenceEnabledSampleEClass, REFERENCE_ENABLED_SAMPLE__REFERENCE);
+
+		testsEClass = createEClass(TESTS);
 	}
 
 	/**
@@ -225,6 +244,7 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 		// Add supertypes to classes
 		abstractEnabledSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
 		referenceEnabledSampleEClass.getESuperTypes().add(this.getAbstractEnabledSample());
+		testsEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(abstractEnabledSampleEClass, AbstractEnabledSample.class, "AbstractEnabledSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -232,6 +252,8 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 
 		initEClass(referenceEnabledSampleEClass, ReferenceEnabledSample.class, "ReferenceEnabledSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReferenceEnabledSample_Reference(), theEefnrPackage.getTotalSample(), null, "reference", null, 0, -1, ReferenceEnabledSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(testsEClass, Tests.class, "Tests", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //ReferencesPackageImpl

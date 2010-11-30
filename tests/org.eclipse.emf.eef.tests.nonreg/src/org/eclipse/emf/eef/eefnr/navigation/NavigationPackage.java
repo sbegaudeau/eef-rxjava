@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackage.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
+ * $Id: NavigationPackage.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation;
 
@@ -433,6 +433,109 @@ public interface NavigationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.AnotherSubTypeImpl <em>Another Sub Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.AnotherSubTypeImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getAnotherSubType()
+	 * @generated
+	 */
+	int ANOTHER_SUB_TYPE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_SUB_TYPE__NAME = SUBTYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Referencers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_SUB_TYPE__MULTIPLE_REFERENCERS = SUBTYPE__MULTIPLE_REFERENCERS;
+
+	/**
+	 * The feature id for the '<em><b>Single Referencers</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_SUB_TYPE__SINGLE_REFERENCERS = SUBTYPE__SINGLE_REFERENCERS;
+
+	/**
+	 * The feature id for the '<em><b>Specialised Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_SUB_TYPE__SPECIALISED_ELEMENT = SUBTYPE__SPECIALISED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Another Specialisation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION = SUBTYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Another Sub Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_SUB_TYPE_FEATURE_COUNT = SUBTYPE_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.ElementImpl <em>Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.ElementImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getElement()
+	 * @generated
+	 */
+	int ELEMENT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__NAME = EefnrPackage.NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visible</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__VISIBLE = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_FEATURE_COUNT = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample <em>Defered Flat Reference Table Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -723,6 +826,48 @@ public interface NavigationPackage extends EPackage {
 	EReference getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.AnotherSubType <em>Another Sub Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Another Sub Type</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.AnotherSubType
+	 * @generated
+	 */
+	EClass getAnotherSubType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.AnotherSubType#isAnotherSpecialisation <em>Another Specialisation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Another Specialisation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.AnotherSubType#isAnotherSpecialisation()
+	 * @see #getAnotherSubType()
+	 * @generated
+	 */
+	EAttribute getAnotherSubType_AnotherSpecialisation();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.Element <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Element</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Element
+	 * @generated
+	 */
+	EClass getElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.Element#isVisible <em>Visible</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Visible</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.Element#isVisible()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Visible();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -973,6 +1118,42 @@ public interface NavigationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER = eINSTANCE.getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.AnotherSubTypeImpl <em>Another Sub Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.AnotherSubTypeImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getAnotherSubType()
+		 * @generated
+		 */
+		EClass ANOTHER_SUB_TYPE = eINSTANCE.getAnotherSubType();
+
+		/**
+		 * The meta object literal for the '<em><b>Another Specialisation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION = eINSTANCE.getAnotherSubType_AnotherSpecialisation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.ElementImpl <em>Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.ElementImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getElement()
+		 * @generated
+		 */
+		EClass ELEMENT = eINSTANCE.getElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__VISIBLE = eINSTANCE.getElement_Visible();
 
 	}
 

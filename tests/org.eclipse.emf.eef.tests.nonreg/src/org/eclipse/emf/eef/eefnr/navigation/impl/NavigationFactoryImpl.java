@@ -2,19 +2,27 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationFactoryImpl.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
+ * $Id: NavigationFactoryImpl.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.eef.eefnr.navigation.*;
+import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
+import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
+import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
+import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
+import org.eclipse.emf.eef.eefnr.navigation.Element;
+import org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer;
+import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
+import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+import org.eclipse.emf.eef.eefnr.navigation.Owner;
+import org.eclipse.emf.eef.eefnr.navigation.SingleReferencer;
+import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,6 +75,8 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 			case NavigationPackage.MULTIPLE_REFERENCER: return createMultipleReferencer();
 			case NavigationPackage.SUBTYPE: return createSubtype();
 			case NavigationPackage.SINGLE_REFERENCER: return createSingleReferencer();
+			case NavigationPackage.ANOTHER_SUB_TYPE: return createAnotherSubType();
+			case NavigationPackage.ELEMENT: return createElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -140,6 +150,26 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	public SingleReferencer createSingleReferencer() {
 		SingleReferencerImpl singleReferencer = new SingleReferencerImpl();
 		return singleReferencer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnotherSubType createAnotherSubType() {
+		AnotherSubTypeImpl anotherSubType = new AnotherSubTypeImpl();
+		return anotherSubType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element createElement() {
+		ElementImpl element = new ElementImpl();
+		return element;
 	}
 
 	/**

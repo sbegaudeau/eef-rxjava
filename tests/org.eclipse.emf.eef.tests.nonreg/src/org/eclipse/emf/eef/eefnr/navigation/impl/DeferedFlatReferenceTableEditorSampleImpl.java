@@ -2,24 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DeferedFlatReferenceTableEditorSampleImpl.java,v 1.1 2010/04/16 08:00:57 glefur Exp $
+ * $Id: DeferedFlatReferenceTableEditorSampleImpl.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.eef.eefnr.impl.AbstractSampleImpl;
-
 import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;

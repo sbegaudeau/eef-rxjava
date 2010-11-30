@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationSwitch.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
+ * $Id: NavigationSwitch.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.util;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 
+import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.navigation.*;
 
 /**
@@ -136,6 +137,23 @@ public class NavigationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case NavigationPackage.ANOTHER_SUB_TYPE: {
+				AnotherSubType anotherSubType = (AnotherSubType)theEObject;
+				T result = caseAnotherSubType(anotherSubType);
+				if (result == null) result = caseSubtype(anotherSubType);
+				if (result == null) result = caseOwner(anotherSubType);
+				if (result == null) result = caseAbstractSample(anotherSubType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.ELEMENT: {
+				Element element = (Element)theEObject;
+				T result = caseElement(element);
+				if (result == null) result = caseNamedElement(element);
+				if (result == null) result = caseAbstractSample(element);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -242,6 +260,51 @@ public class NavigationSwitch<T> {
 	 * @generated
 	 */
 	public T caseSingleReferencer(SingleReferencer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Another Sub Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Another Sub Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnotherSubType(AnotherSubType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseElement(Element object) {
 		return null;
 	}
 

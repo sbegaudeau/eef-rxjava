@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesSwitch.java,v 1.1 2010/04/15 12:48:57 glefur Exp $
+ * $Id: ReferencesSwitch.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references.util;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 
+import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.references.*;
 
 /**
@@ -104,6 +105,14 @@ public class ReferencesSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ReferencesPackage.TESTS: {
+				Tests tests = (Tests)theEObject;
+				T result = caseTests(tests);
+				if (result == null) result = caseNamedElement(tests);
+				if (result == null) result = caseAbstractSample(tests);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -139,6 +148,21 @@ public class ReferencesSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tests</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tests</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTests(Tests object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Abstract Sample</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -150,6 +174,21 @@ public class ReferencesSwitch<T> {
 	 * @generated
 	 */
 	public T caseAbstractSample(AbstractSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 

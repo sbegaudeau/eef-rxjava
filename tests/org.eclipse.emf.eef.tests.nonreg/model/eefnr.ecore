@@ -173,6 +173,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTableCompositionTargetExtensionEditorSample"
       abstract="true" eSuperTypes="#//AbstractSample"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//AbstractSample"/>
   <eSubpackages name="references" nsURI="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
       nsPrefix="eefnr-ref">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractEnabledSample" abstract="true"
@@ -183,6 +184,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
           eType="#//TotalSample"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Tests" eSuperTypes="#//NamedElement"/>
   </eSubpackages>
   <eSubpackages name="navigation" nsURI="http://www.eclipse.org/emf/eef/nonreg/navigation/1.0.0"
       nsPrefix="eefnr-nav">
@@ -240,6 +242,13 @@
           eType="#//navigation/Owner" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="singleReferenceForAdvancedEObjectFlatComboViewer"
           eType="#//navigation/Owner"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AnotherSubType" eSuperTypes="#//navigation/Subtype">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="anotherSpecialisation"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Element" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

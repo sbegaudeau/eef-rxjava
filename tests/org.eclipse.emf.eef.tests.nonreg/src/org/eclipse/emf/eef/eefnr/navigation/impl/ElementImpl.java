@@ -2,56 +2,57 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SubtypeImpl.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
+ * $Id: ElementImpl.java,v 1.1 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.eef.eefnr.impl.NamedElementImpl;
+import org.eclipse.emf.eef.eefnr.navigation.Element;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
-import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Subtype</b></em>'.
+ * An implementation of the model object '<em><b>Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.eefnr.navigation.impl.SubtypeImpl#isSpecialisedElement <em>Specialised Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.navigation.impl.ElementImpl#isVisible <em>Visible</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SubtypeImpl extends OwnerImpl implements Subtype {
+public class ElementImpl extends NamedElementImpl implements Element {
 	/**
-	 * The default value of the '{@link #isSpecialisedElement() <em>Specialised Element</em>}' attribute.
+	 * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSpecialisedElement()
+	 * @see #isVisible()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SPECIALISED_ELEMENT_EDEFAULT = false;
+	protected static final boolean VISIBLE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isSpecialisedElement() <em>Specialised Element</em>}' attribute.
+	 * The cached value of the '{@link #isVisible() <em>Visible</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSpecialisedElement()
+	 * @see #isVisible()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean specialisedElement = SPECIALISED_ELEMENT_EDEFAULT;
+	protected boolean visible = VISIBLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SubtypeImpl() {
+	protected ElementImpl() {
 		super();
 	}
 
@@ -62,7 +63,7 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return NavigationPackage.Literals.SUBTYPE;
+		return NavigationPackage.Literals.ELEMENT;
 	}
 
 	/**
@@ -70,8 +71,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSpecialisedElement() {
-		return specialisedElement;
+	public boolean isVisible() {
+		return visible;
 	}
 
 	/**
@@ -79,11 +80,11 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSpecialisedElement(boolean newSpecialisedElement) {
-		boolean oldSpecialisedElement = specialisedElement;
-		specialisedElement = newSpecialisedElement;
+	public void setVisible(boolean newVisible) {
+		boolean oldVisible = visible;
+		visible = newVisible;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT, oldSpecialisedElement, specialisedElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, NavigationPackage.ELEMENT__VISIBLE, oldVisible, visible));
 	}
 
 	/**
@@ -94,8 +95,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				return isSpecialisedElement();
+			case NavigationPackage.ELEMENT__VISIBLE:
+				return isVisible();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +109,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				setSpecialisedElement((Boolean)newValue);
+			case NavigationPackage.ELEMENT__VISIBLE:
+				setVisible((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +124,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				setSpecialisedElement(SPECIALISED_ELEMENT_EDEFAULT);
+			case NavigationPackage.ELEMENT__VISIBLE:
+				setVisible(VISIBLE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +139,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				return specialisedElement != SPECIALISED_ELEMENT_EDEFAULT;
+			case NavigationPackage.ELEMENT__VISIBLE:
+				return visible != VISIBLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +155,10 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (specialisedElement: ");
-		result.append(specialisedElement);
+		result.append(" (visible: ");
+		result.append(visible);
 		result.append(')');
 		return result.toString();
 	}
 
-} //SubtypeImpl
+} //ElementImpl

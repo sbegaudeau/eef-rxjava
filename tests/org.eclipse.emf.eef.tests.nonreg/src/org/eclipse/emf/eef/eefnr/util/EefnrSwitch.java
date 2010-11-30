@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.5 2010/04/15 12:48:58 glefur Exp $
+ * $Id: EefnrSwitch.java,v 1.6 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -222,6 +222,13 @@ public class EefnrSwitch<T> {
 				AbstractTableCompositionTargetExtensionEditorSample abstractTableCompositionTargetExtensionEditorSample = (AbstractTableCompositionTargetExtensionEditorSample)theEObject;
 				T result = caseAbstractTableCompositionTargetExtensionEditorSample(abstractTableCompositionTargetExtensionEditorSample);
 				if (result == null) result = caseAbstractSample(abstractTableCompositionTargetExtensionEditorSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.NAMED_ELEMENT: {
+				NamedElement namedElement = (NamedElement)theEObject;
+				T result = caseNamedElement(namedElement);
+				if (result == null) result = caseAbstractSample(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -526,6 +533,21 @@ public class EefnrSwitch<T> {
 	 * @generated
 	 */
 	public T caseAbstractTableCompositionTargetExtensionEditorSample(AbstractTableCompositionTargetExtensionEditorSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 

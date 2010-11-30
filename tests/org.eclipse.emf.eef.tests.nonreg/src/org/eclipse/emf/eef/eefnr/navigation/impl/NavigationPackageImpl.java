@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackageImpl.java,v 1.3 2010/11/24 21:50:53 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
@@ -10,30 +10,23 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-
 import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
-
+import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
+import org.eclipse.emf.eef.eefnr.navigation.Element;
 import org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
-
 import org.eclipse.emf.eef.eefnr.navigation.Owner;
 import org.eclipse.emf.eef.eefnr.navigation.SingleReferencer;
-import org.eclipse.emf.eef.eefnr.navigation.Referencer;
 import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
-
 import org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl;
-
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
-
 import org.eclipse.emf.eef.eefnrext.impl.EefnrextPackageImpl;
 
 /**
@@ -91,6 +84,20 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	private EClass singleReferencerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass anotherSubTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass elementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -412,6 +419,42 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAnotherSubType() {
+		return anotherSubTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnotherSubType_AnotherSpecialisation() {
+		return (EAttribute)anotherSubTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getElement() {
+		return elementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElement_Visible() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NavigationFactory getNavigationFactory() {
 		return (NavigationFactory)getEFactoryInstance();
 	}
@@ -468,6 +511,12 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_EOBJECT_FLAT_COMBO_VIEWER);
 		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_CONTAINMENT_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER);
 		createEReference(singleReferencerEClass, SINGLE_REFERENCER__SINGLE_REFERENCE_FOR_ADVANCED_EOBJECT_FLAT_COMBO_VIEWER);
+
+		anotherSubTypeEClass = createEClass(ANOTHER_SUB_TYPE);
+		createEAttribute(anotherSubTypeEClass, ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION);
+
+		elementEClass = createEClass(ELEMENT);
+		createEAttribute(elementEClass, ELEMENT__VISIBLE);
 	}
 
 	/**
@@ -505,6 +554,8 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		deferedReferenceTableEditorSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
 		ownerEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
 		subtypeEClass.getESuperTypes().add(this.getOwner());
+		anotherSubTypeEClass.getESuperTypes().add(this.getSubtype());
+		elementEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(deferedFlatReferenceTableEditorSampleEClass, DeferedFlatReferenceTableEditorSample.class, "DeferedFlatReferenceTableEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -540,6 +591,12 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		initEReference(getSingleReferencer_SingleReferenceForEObjectFlatComboViewer(), this.getOwner(), null, "singleReferenceForEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer(), this.getOwner(), null, "singleContainmentForAdvancedEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer(), this.getOwner(), null, "singleReferenceForAdvancedEObjectFlatComboViewer", null, 0, 1, SingleReferencer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(anotherSubTypeEClass, AnotherSubType.class, "AnotherSubType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnotherSubType_AnotherSpecialisation(), ecorePackage.getEBoolean(), "anotherSpecialisation", null, 0, 1, AnotherSubType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getElement_Visible(), ecorePackage.getEBoolean(), "visible", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //NavigationPackageImpl

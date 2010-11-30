@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesAdapterFactory.java,v 1.1 2010/04/15 12:48:57 glefur Exp $
+ * $Id: ReferencesAdapterFactory.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references.util;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 
+import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.references.*;
 
 /**
@@ -82,8 +83,16 @@ public class ReferencesAdapterFactory extends AdapterFactoryImpl {
 				return createReferenceEnabledSampleAdapter();
 			}
 			@Override
+			public Adapter caseTests(Tests object) {
+				return createTestsAdapter();
+			}
+			@Override
 			public Adapter caseAbstractSample(AbstractSample object) {
 				return createAbstractSampleAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -134,6 +143,20 @@ public class ReferencesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.references.Tests <em>Tests</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.references.Tests
+	 * @generated
+	 */
+	public Adapter createTestsAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.AbstractSample <em>Abstract Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -144,6 +167,20 @@ public class ReferencesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 

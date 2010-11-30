@@ -2,56 +2,56 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SubtypeImpl.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
+ * $Id: AnotherSubTypeImpl.java,v 1.1 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
-import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Subtype</b></em>'.
+ * An implementation of the model object '<em><b>Another Sub Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.eefnr.navigation.impl.SubtypeImpl#isSpecialisedElement <em>Specialised Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.navigation.impl.AnotherSubTypeImpl#isAnotherSpecialisation <em>Another Specialisation</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SubtypeImpl extends OwnerImpl implements Subtype {
+public class AnotherSubTypeImpl extends SubtypeImpl implements AnotherSubType {
 	/**
-	 * The default value of the '{@link #isSpecialisedElement() <em>Specialised Element</em>}' attribute.
+	 * The default value of the '{@link #isAnotherSpecialisation() <em>Another Specialisation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSpecialisedElement()
+	 * @see #isAnotherSpecialisation()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SPECIALISED_ELEMENT_EDEFAULT = false;
+	protected static final boolean ANOTHER_SPECIALISATION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isSpecialisedElement() <em>Specialised Element</em>}' attribute.
+	 * The cached value of the '{@link #isAnotherSpecialisation() <em>Another Specialisation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSpecialisedElement()
+	 * @see #isAnotherSpecialisation()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean specialisedElement = SPECIALISED_ELEMENT_EDEFAULT;
+	protected boolean anotherSpecialisation = ANOTHER_SPECIALISATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SubtypeImpl() {
+	protected AnotherSubTypeImpl() {
 		super();
 	}
 
@@ -62,7 +62,7 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return NavigationPackage.Literals.SUBTYPE;
+		return NavigationPackage.Literals.ANOTHER_SUB_TYPE;
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSpecialisedElement() {
-		return specialisedElement;
+	public boolean isAnotherSpecialisation() {
+		return anotherSpecialisation;
 	}
 
 	/**
@@ -79,11 +79,11 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSpecialisedElement(boolean newSpecialisedElement) {
-		boolean oldSpecialisedElement = specialisedElement;
-		specialisedElement = newSpecialisedElement;
+	public void setAnotherSpecialisation(boolean newAnotherSpecialisation) {
+		boolean oldAnotherSpecialisation = anotherSpecialisation;
+		anotherSpecialisation = newAnotherSpecialisation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT, oldSpecialisedElement, specialisedElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, NavigationPackage.ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION, oldAnotherSpecialisation, anotherSpecialisation));
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				return isSpecialisedElement();
+			case NavigationPackage.ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION:
+				return isAnotherSpecialisation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +108,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				setSpecialisedElement((Boolean)newValue);
+			case NavigationPackage.ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION:
+				setAnotherSpecialisation((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +123,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				setSpecialisedElement(SPECIALISED_ELEMENT_EDEFAULT);
+			case NavigationPackage.ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION:
+				setAnotherSpecialisation(ANOTHER_SPECIALISATION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +138,8 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case NavigationPackage.SUBTYPE__SPECIALISED_ELEMENT:
-				return specialisedElement != SPECIALISED_ELEMENT_EDEFAULT;
+			case NavigationPackage.ANOTHER_SUB_TYPE__ANOTHER_SPECIALISATION:
+				return anotherSpecialisation != ANOTHER_SPECIALISATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +154,10 @@ public class SubtypeImpl extends OwnerImpl implements Subtype {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (specialisedElement: ");
-		result.append(specialisedElement);
+		result.append(" (anotherSpecialisation: ");
+		result.append(anotherSpecialisation);
 		result.append(')');
 		return result.toString();
 	}
 
-} //SubtypeImpl
+} //AnotherSubTypeImpl

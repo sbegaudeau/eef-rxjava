@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesFactory.java,v 1.1 2010/04/15 12:48:58 glefur Exp $
+ * $Id: ReferencesFactory.java,v 1.2 2010/11/30 08:23:18 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.references;
 
@@ -33,6 +33,15 @@ public interface ReferencesFactory extends EFactory {
 	 * @generated
 	 */
 	ReferenceEnabledSample createReferenceEnabledSample();
+
+	/**
+	 * Returns a new object of class '<em>Tests</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tests</em>'.
+	 * @generated
+	 */
+	Tests createTests();
 
 	/**
 	 * Returns the package supported by this factory.
