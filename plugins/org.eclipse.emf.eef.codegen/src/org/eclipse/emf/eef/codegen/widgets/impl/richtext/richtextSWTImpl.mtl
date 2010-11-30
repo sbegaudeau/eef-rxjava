@@ -73,7 +73,7 @@ create[editor.name.toJavaClassifier()/]RichText(parent);
 		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier()/]Data.heightHint = 80;
+		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
 		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		
@@ -96,6 +96,11 @@ create[editor.name.toJavaClassifier()/]RichText(parent);
      */
     private void fillToolBar(IRichTextToolBar toolBar, IRichText richText)
     {
+		[editor.fillToolBar()/]     
+	}
+[/template]
+
+[template public fillToolBar (editor : ElementEditor) ]
         toolBar.addAction(new FontStyleAction(richText));
         toolBar.addAction(new FontNameAction(richText));
         toolBar.addAction(new FontSizeAction(richText));
@@ -140,6 +145,6 @@ create[editor.name.toJavaClassifier()/]RichText(parent);
         toolBar.addAction(new AddImageAction(richText));
         toolBar.addSeparator();
         toolBar.addAction(new AddTableAction(richText));
-    }
+
 [/template]
 
