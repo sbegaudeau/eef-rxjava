@@ -146,7 +146,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaRequiredProperty feature of the TextareaSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextareaSample.textareaRequiredProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class TextareaSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textareaSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaOptionalProperty feature of the TextareaSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextareaSample.textareaOptionalProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

@@ -156,7 +156,7 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerRequiredProperty feature of the EMFComboViewerSample element 
-				bot.editPropertyEMFComboViewerFeature(propertiesView, EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerRequiredProperty, enumValueForEmfcomboviewerRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEMFComboViewerFeature(propertiesView, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, enumValueForEmfcomboviewerRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -217,7 +217,7 @@ public class EMFComboViewerSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerOptionalProperty feature of the EMFComboViewerSample element 
-				bot.editPropertyEMFComboViewerFeature(propertiesView, EefnrViewsRepository.EMFComboViewerSample.emfcomboviewerOptionalProperty, enumValueForEmfcomboviewerOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEMFComboViewerFeature(propertiesView, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, enumValueForEmfcomboviewerOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

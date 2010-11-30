@@ -146,7 +146,7 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleFirstTab");
 		
 		// Change value of the textOptionalPropertyInFirstTab feature of the TextSampleWithTwoTabs element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleFirstTab");
 		
 		// Change value of the textRequiredPropertyInFirstTab feature of the TextSampleWithTwoTabs element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -266,7 +266,7 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleSecondTab");
 		
 		// Change value of the textOptionalPropertyInSecondTab feature of the TextSampleWithTwoTabs element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -326,7 +326,7 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleSecondTab");
 		
 		// Change value of the textRequiredPropertyInSecondTab feature of the TextSampleWithTwoTabs element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

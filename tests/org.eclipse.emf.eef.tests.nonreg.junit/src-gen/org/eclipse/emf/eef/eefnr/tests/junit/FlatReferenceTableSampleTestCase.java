@@ -167,7 +167,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element 
-		bot.editFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty, 0);
+		bot.editFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -233,7 +233,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element
-				bot.removeFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableRequiredProperty);
+				bot.removeFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -295,7 +295,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element 
-		bot.editFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty, 0);
+		bot.editFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -361,7 +361,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element
-				bot.removeFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.flatreferencetableOptionalProperty);
+				bot.removeFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

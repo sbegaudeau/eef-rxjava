@@ -148,7 +148,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
 		// Change value of the textRequiredProperty feature of the TextSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.textRequiredProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -208,7 +208,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textOptionalProperty feature of the TextSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.textOptionalProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

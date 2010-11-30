@@ -166,7 +166,7 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerRequiredPropery feature of the EObjectFlatComboViewerSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredPropery));
+		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredPropery));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -228,7 +228,7 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalPropery feature of the EObjectFlatComboViewerSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalPropery)+1);
+		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalPropery)+1);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -289,7 +289,7 @@ public class EObjectFlatComboViewerSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eObjectFlatComboViewerSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalPropery feature of the EObjectFlatComboViewerSample element
-		bot.removeEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery);
+		bot.removeEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
 		
 		
 		// Save the changement

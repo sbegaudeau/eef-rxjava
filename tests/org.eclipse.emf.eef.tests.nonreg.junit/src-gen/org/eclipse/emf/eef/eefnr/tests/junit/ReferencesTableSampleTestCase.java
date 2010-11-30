@@ -167,7 +167,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, 0);
+				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -233,7 +233,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, 0);
+				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -295,7 +295,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, 0);
+				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -361,7 +361,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, 0);
+				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, 0);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

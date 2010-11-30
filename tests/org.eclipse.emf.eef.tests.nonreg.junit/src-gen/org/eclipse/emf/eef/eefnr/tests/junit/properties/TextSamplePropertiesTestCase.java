@@ -146,7 +146,7 @@ public class TextSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the textRequiredProperty feature of the TextSample element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSample.textRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class TextSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the textOptionalProperty feature of the TextSample element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSample.textOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

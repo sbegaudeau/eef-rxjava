@@ -156,7 +156,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, radioSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioRequiredProperty feature of the RadioSample element 
-				bot.editRadioFeature(wizardShell, EefnrViewsRepository.RadioSample.radioRequiredProperty, enumValueForRadioRequiredProperty);
+				bot.editRadioFeature(wizardShell, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, enumValueForRadioRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -217,7 +217,7 @@ public class RadioSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, radioSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioOptionalProperty feature of the RadioSample element 
-				bot.editRadioFeature(wizardShell, EefnrViewsRepository.RadioSample.radioOptionalProperty, enumValueForRadioOptionalProperty);
+				bot.editRadioFeature(wizardShell, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, enumValueForRadioOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

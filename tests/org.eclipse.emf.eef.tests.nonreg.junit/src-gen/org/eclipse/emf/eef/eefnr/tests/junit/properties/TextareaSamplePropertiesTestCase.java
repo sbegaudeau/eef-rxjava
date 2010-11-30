@@ -146,7 +146,7 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the textareaRequiredProperty feature of the TextareaSample element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextareaSample.textareaRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the textareaOptionalProperty feature of the TextareaSample element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextareaSample.textareaOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

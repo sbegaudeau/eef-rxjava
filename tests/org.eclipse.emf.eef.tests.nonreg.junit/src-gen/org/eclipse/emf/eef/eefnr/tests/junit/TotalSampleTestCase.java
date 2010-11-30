@@ -211,7 +211,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textRequiredProperty feature of the TotalSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.textRequiredProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -271,7 +271,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textOptionalProperty feature of the TotalSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.textOptionalProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -332,7 +332,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the TotalSample element 
-				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.TotalSample.checkboxRequiredProperty);
+				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -393,7 +393,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the TotalSample element 
-				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.TotalSample.checkboxOptionalProperty);
+				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -453,7 +453,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaRequiredProperty feature of the TotalSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.textareaRequiredProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -513,7 +513,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the textareaOptionalProperty feature of the TotalSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.textareaOptionalProperty, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -574,7 +574,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioRequiredProperty feature of the TotalSample element 
-				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.radioRequiredProperty, enumValueForRadioRequiredProperty);
+				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, enumValueForRadioRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -635,7 +635,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the radioOptionalProperty feature of the TotalSample element 
-				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.radioOptionalProperty, enumValueForRadioOptionalProperty);
+				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, enumValueForRadioOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -697,7 +697,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerRequiredProperty feature of the TotalSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.eobjectflatcomboviewerRequiredProperty, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredProperty));
+		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredProperty));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -759,7 +759,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the TotalSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalProperty)+1);
+		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalProperty)+1);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -820,7 +820,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalProperty feature of the TotalSample element
-		bot.removeEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.eobjectflatcomboviewerOptionalProperty);
+		bot.removeEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty);
 		
 		
 		// Save the changement
@@ -883,7 +883,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the TotalSample element 
-		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.referencestableRequiredProperty, referenceValueForReferencestableRequiredProperty);
+		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, referenceValueForReferencestableRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -949,7 +949,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the TotalSample element 
-		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.referencestableRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1011,7 +1011,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the TotalSample element 
-		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.referencestableOptionalProperty, referenceValueForReferencestableOptionalProperty);
+		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, referenceValueForReferencestableOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1077,7 +1077,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the TotalSample element 
-		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.referencestableOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1138,7 +1138,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerRequiredProperty feature of the TotalSample element 
-				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.emfcomboviewerRequiredProperty, enumValueForEmfcomboviewerRequiredProperty);
+				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, enumValueForEmfcomboviewerRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1199,7 +1199,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the emfcomboviewerOptionalProperty feature of the TotalSample element 
-				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.emfcomboviewerOptionalProperty, enumValueForEmfcomboviewerOptionalProperty);
+				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, enumValueForEmfcomboviewerOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1261,7 +1261,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorRequiredProperty feature of the TotalSample element 
-				bot.editMultiValuedEditorFeature(wizardShell, EefnrViewsRepository.TotalSample.multivaluededitorRequiredProperty, UPDATED_VALUE);
+				bot.editMultiValuedEditorFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1323,7 +1323,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorOptionalProperty feature of the TotalSample element 
-				bot.editMultiValuedEditorFeature(wizardShell, EefnrViewsRepository.TotalSample.multivaluededitorOptionalProperty, UPDATED_VALUE);
+				bot.editMultiValuedEditorFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1449,7 +1449,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TotalSample element 
-		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty);
+		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1575,7 +1575,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TotalSample element 
-		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty);
+		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1637,7 +1637,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the TotalSample element 
-		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty, referenceValueForAdvancedreferencestableRequiredProperty);
+		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, referenceValueForAdvancedreferencestableRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1703,7 +1703,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableRequiredProperty feature of the TotalSample element 
-		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedreferencestableRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1765,7 +1765,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the TotalSample element 
-		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty, referenceValueForAdvancedreferencestableOptionalProperty);
+		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, referenceValueForAdvancedreferencestableOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1831,7 +1831,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedreferencestableOptionalProperty feature of the TotalSample element 
-		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedreferencestableOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1893,7 +1893,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerRequiredPropery feature of the TotalSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerRequiredPropery, allInstancesOf.indexOf(referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery));
+		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, allInstancesOf.indexOf(referenceValueForAdvancedeobjectflatcomboviewerRequiredPropery));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -1955,7 +1955,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the TotalSample element 
-		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery, allInstancesOf.indexOf(referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery)+1);
+		bot.editEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, allInstancesOf.indexOf(referenceValueForAdvancedeobjectflatcomboviewerOptionalPropery)+1);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -2016,7 +2016,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedeobjectflatcomboviewerOptionalPropery feature of the TotalSample element
-		bot.removeEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedeobjectflatcomboviewerOptionalPropery);
+		bot.removeEObjectFlatComboViewerFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery);
 		
 		
 		// Save the changement
@@ -2145,7 +2145,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the TotalSample element 
-				bot.removeAdvancedTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty);
+				bot.removeAdvancedTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -2273,7 +2273,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the TotalSample element 
-				bot.removeAdvancedTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty);
+				bot.removeAdvancedTableCompositionFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -2333,7 +2333,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, totalSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the name feature of the TotalSample element 
-				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.name, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, EefnrViewsRepository.TotalSample.Properties.name, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -2386,9 +2386,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2397,7 +2397,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editTableCompositiontablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
-		bot.addButtonTableComposition(EefnrViewsRepository.TotalSample.tablecompositionRequiredProperty).click();
+		bot.addButtonTableComposition(EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty).click();
 		editTableCompositionFortablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -2410,9 +2410,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2421,7 +2421,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editTableCompositiontablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
-		bot.addButtonTableComposition(EefnrViewsRepository.TotalSample.tablecompositionOptionalProperty).click();
+		bot.addButtonTableComposition(EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty).click();
 		editTableCompositionFortablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -2442,9 +2442,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2453,7 +2453,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
-		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.TotalSample.advancedtablecompositionRequiredProperty).click();
+		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -2466,9 +2466,9 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -2477,7 +2477,7 @@ public class TotalSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
-		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.TotalSample.advancedtablecompositionOptionalProperty).click();
+		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}

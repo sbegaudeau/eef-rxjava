@@ -226,7 +226,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element 
-		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty);
+		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -352,7 +352,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, tableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element 
-		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty);
+		bot.removeTableCompositionFeature(wizardShell, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -373,9 +373,9 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -384,7 +384,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editTableCompositiontablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
-		bot.addButtonTableComposition(EefnrViewsRepository.TableCompositionEditorSample.tablecompositionRequiredProperty).click();
+		bot.addButtonTableComposition(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty).click();
 		editTableCompositionFortablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}
@@ -397,9 +397,9 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -408,7 +408,7 @@ public class TableCompositionEditorSampleTestCase extends SWTBotEEFTestCase {
 	 */
 	protected void editTableCompositiontablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException{
 		bot.activateShell(wizardShell);
-		bot.addButtonTableComposition(EefnrViewsRepository.TableCompositionEditorSample.tablecompositionOptionalProperty).click();
+		bot.addButtonTableComposition(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty).click();
 		editTableCompositionFortablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
 	}

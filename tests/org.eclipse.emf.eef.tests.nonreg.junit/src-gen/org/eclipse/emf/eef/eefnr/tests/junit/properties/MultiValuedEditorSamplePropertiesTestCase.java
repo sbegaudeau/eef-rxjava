@@ -150,7 +150,7 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorRequiredProperty feature of the MultiValuedEditorSample element 
-				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -212,7 +212,7 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the multivaluededitorOptionalProperty feature of the MultiValuedEditorSample element 
-				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.multivaluededitorOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

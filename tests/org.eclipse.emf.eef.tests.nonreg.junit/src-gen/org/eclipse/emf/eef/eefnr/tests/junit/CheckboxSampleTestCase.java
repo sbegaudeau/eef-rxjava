@@ -147,7 +147,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the CheckboxSample element 
-				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty);
+				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -208,7 +208,7 @@ public class CheckboxSampleTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, checkboxSampleMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the CheckboxSample element 
-				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty);
+				bot.editCheckboxFeature(wizardShell, EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

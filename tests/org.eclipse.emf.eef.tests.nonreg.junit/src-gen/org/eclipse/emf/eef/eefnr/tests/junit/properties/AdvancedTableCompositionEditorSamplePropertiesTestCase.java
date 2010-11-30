@@ -231,7 +231,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
-		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -359,7 +359,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
-		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -380,9 +380,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -391,7 +391,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		SWTEEFBotHelper helper = new SWTEEFBotHelper(propertyView.bot());
-		helper.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionRequiredProperty).click();
+		helper.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature();
 		selectNode.select();
 	}
@@ -404,9 +404,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textRequiredProperty, sample.getTextRequiredProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
-				bot.editEEFText(EefnrViewsRepository.Sample.textOptionalProperty, sample.getTextOptionalProperty());
+				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
 	}	
 	/**
@@ -415,7 +415,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesTestCase extends SWTB
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
 		SWTEEFBotHelper helper = new SWTEEFBotHelper(propertyView.bot());
-		helper.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.advancedtablecompositionOptionalProperty).click();
+		helper.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		selectNode.select();
 	}

@@ -147,7 +147,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxRequiredProperty feature of the CheckboxSample element 
-				bot.editPropertyEEFCheckbox(propertiesView, EefnrViewsRepository.CheckboxSample.checkboxRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFCheckbox(propertiesView, EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -208,7 +208,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the checkboxOptionalProperty feature of the CheckboxSample element 
-				bot.editPropertyEEFCheckbox(propertiesView, EefnrViewsRepository.CheckboxSample.checkboxOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFCheckbox(propertiesView, EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

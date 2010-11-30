@@ -167,7 +167,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.editPropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -233,7 +233,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
-				bot.removePropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.referencestableRequiredProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.removePropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -295,7 +295,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.editPropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -361,7 +361,7 @@ public class ReferencesTableSamplePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
-				bot.removePropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.referencestableOptionalProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.removePropertyReferencesTableFeature(propertiesView, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, 0, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

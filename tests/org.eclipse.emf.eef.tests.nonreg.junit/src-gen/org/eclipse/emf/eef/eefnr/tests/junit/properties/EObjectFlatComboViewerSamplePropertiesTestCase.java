@@ -166,7 +166,7 @@ public class EObjectFlatComboViewerSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerRequiredPropery feature of the EObjectFlatComboViewerSample element 
-		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerRequiredPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredPropery), bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerRequiredPropery), bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -228,7 +228,7 @@ public class EObjectFlatComboViewerSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalPropery feature of the EObjectFlatComboViewerSample element 
-		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalPropery)+1, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, allInstancesOf.indexOf(referenceValueForEobjectflatcomboviewerOptionalPropery)+1, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -289,7 +289,7 @@ public class EObjectFlatComboViewerSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the eobjectflatcomboviewerOptionalPropery feature of the EObjectFlatComboViewerSample element 
-		bot.removePropertyEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.EObjectFlatComboViewerSample.eobjectflatcomboviewerOptionalPropery, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyEObjectFlatComboViewerFeature(propertiesView, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		
 		// Save the changement

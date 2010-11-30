@@ -146,7 +146,7 @@ public class TextSampleWithTwoTabsPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "TextSampleFirstTab");
 		
 		// Change value of the textOptionalPropertyInFirstTab feature of the TextSampleWithTwoTabs element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleFirstTab.textOptionalPropertyInFirstTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -206,7 +206,7 @@ public class TextSampleWithTwoTabsPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "TextSampleFirstTab");
 		
 		// Change value of the textRequiredPropertyInFirstTab feature of the TextSampleWithTwoTabs element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleFirstTab.textRequiredPropertyInFirstTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -266,7 +266,7 @@ public class TextSampleWithTwoTabsPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "TextSampleSecondTab");
 		
 		// Change value of the textOptionalPropertyInSecondTab feature of the TextSampleWithTwoTabs element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleSecondTab.textOptionalPropertyInSecondTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -326,7 +326,7 @@ public class TextSampleWithTwoTabsPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "TextSampleSecondTab");
 		
 		// Change value of the textRequiredPropertyInSecondTab feature of the TextSampleWithTwoTabs element 
-				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleSecondTab.textRequiredPropertyInSecondTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

@@ -7,4 +7,5 @@ Require-Bundle: org.eclipse.emf.eef.runtime.tests,
  org.eclipse.emf.eef.runtime,
  org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.emf.eef.tests.nonreg.edit;bundle-version="1.0.0"
+ org.eclipse.emf.eef.tests.nonreg.edit,
+ org.junit4
