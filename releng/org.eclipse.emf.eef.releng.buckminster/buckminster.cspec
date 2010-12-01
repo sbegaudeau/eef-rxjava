@@ -3,6 +3,7 @@
     <cs:dependencies>
         <cs:dependency name="org.eclipse.acceleo" componentType="eclipse.feature" versionDesignator="3.0.0"/>
         <cs:dependency name="org.eclipse.emf.codegen.ecore.ui" componentType="osgi.bundle"/>
+        <cs:dependency name="org.eclipse.emf.transaction" componentType="eclipse.feature" versionDesignator="1.1.0"/>
         <cs:dependency name="org.eclipse.emf.validation" componentType="eclipse.feature" versionDesignator="1.1.0"/>
         <cs:dependency name="org.eclipse.pde.core" componentType="osgi.bundle" versionDesignator="3.3.0"/>
         <cs:dependency name="org.eclipse.platform" componentType="eclipse.feature" versionDesignator="3.3.0"/>
