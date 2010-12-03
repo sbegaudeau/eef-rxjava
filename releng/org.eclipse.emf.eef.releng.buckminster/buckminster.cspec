@@ -8,6 +8,8 @@
         <cs:dependency name="org.eclipse.emf.workspace" componentType="eclipse.feature" versionDesignator="1.1.0"/>
         <cs:dependency name="org.eclipse.pde.core" componentType="osgi.bundle" versionDesignator="3.3.0"/>
         <cs:dependency name="org.eclipse.platform" componentType="eclipse.feature" versionDesignator="3.3.0"/>
+        <cs:dependency name="org.junit4" componentType="osgi.bundle"/>
+        <cs:dependency name="org.eclipse.swtbot.eclipse" componentType="osgi.bundle"/>
     </cs:dependencies>
     <cs:actions>
         <cs:public name="setup.promoter" actor="ant">
