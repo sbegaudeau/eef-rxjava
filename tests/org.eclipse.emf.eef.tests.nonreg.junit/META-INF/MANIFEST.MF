@@ -9,3 +9,4 @@ Require-Bundle: org.eclipse.emf.eef.runtime.tests,
  org.eclipse.core.runtime,
  org.eclipse.emf.eef.tests.nonreg.edit,
  org.junit4
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
