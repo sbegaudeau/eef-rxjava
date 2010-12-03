@@ -46,11 +46,15 @@ http://www.eclipse.org/legal/epl-v10.html
          version="0.0.0"/>
 
    <includes
+         id="org.eclipse.emf.eef.extended"
+         version="0.0.0"/>
+
+   <includes
          id="org.eclipse.emf.eef.extended.source"
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.eef.extended"
+         id="org.eclipse.emf.eef.edt"
          version="0.0.0"/>
 
    <includes
@@ -58,7 +62,11 @@ http://www.eclipse.org/legal/epl-v10.html
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.eef.edt"
+         id="org.eclipse.emf.eef.tests"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.eef.tests.source"
          version="0.0.0"/>
 
    <requires>
