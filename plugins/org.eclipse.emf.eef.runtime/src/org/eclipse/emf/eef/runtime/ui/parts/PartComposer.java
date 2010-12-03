@@ -51,7 +51,7 @@ public abstract class PartComposer {
 	}
 	
 	/**
-	 * Ask for subclasses to instanciate the element with key {@code key} in the given parent.
+	 * Ask for subclasses to instantiate the element with key {@code key} in the given parent.
 	 * @param parent the element parent
 	 * @param key the element
 	 */

@@ -10,19 +10,17 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.notify;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.command.WizardEditingCommand;
-import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.Transaction;
-import org.eclipse.emf.transaction.TransactionalCommandStack;
+import org.eclipse.emf.eef.runtime.impl.command.TransactionalWizardEditingCommand;
+import org.eclipse.emf.eef.runtime.impl.operation.WizardEditingOperation;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFRuntimeMessages;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -35,6 +33,7 @@ public class OpenTransactionalWizardOnDoubleClick implements IDoubleClickListene
 
 	private EditingDomain editingDomain;
 	private AdapterFactory adapterFactory;
+	private IProgressMonitor progressMonitor;
 
 	/**
 	 * @param editingDomain
@@ -62,25 +61,28 @@ public class OpenTransactionalWizardOnDoubleClick implements IDoubleClickListene
 			}
 			if (eObject != null) {
 				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
-				WizardEditingCommand wizardEditingCommand = new WizardEditingCommand(propertiesEditionContext);
+				WizardEditingOperation operation = new WizardEditingOperation(propertiesEditionContext);
 				try {
-					((TransactionalCommandStack)editingDomain.getCommandStack()).execute(wizardEditingCommand, specialOptions());
-				} catch (InterruptedException e) {
-					EEFRuntimePlugin.getDefault().logError("An error occured during an EEF editing session.", e);
-				} catch (RollbackException e) {
-					EEFRuntimePlugin.getDefault().logError("An error occured during an EEF editing session.", e);
+					operation.execute(getProgressMonitor(), null);
+				} catch (ExecutionException e) {
+					EEFRuntimePlugin.getDefault().logError("An error occured during wizard editing.", e);
 				}
 			}
 		}
 	}
-	
-    protected Map<Object, Object> specialOptions() {
-        Map<Object, Object> options = new HashMap<Object, Object>();
-        options.put(Transaction.OPTION_NO_UNDO, Boolean.TRUE);
-        options.put(Transaction.OPTION_NO_TRIGGERS, Boolean.TRUE);
-        options.put(Transaction.OPTION_NO_NOTIFICATIONS, Boolean.TRUE);
-        options.put(Transaction.OPTION_NO_VALIDATION, Boolean.TRUE);
-        return options;
-    }
+
+	/**
+	 * @return
+	 */
+	public IProgressMonitor getProgressMonitor() {
+		return progressMonitor;
+	}
+
+	/**
+	 * @param progressMonitor
+	 */
+	public void setProgressMonitor(IProgressMonitor progressMonitor) {
+		this.progressMonitor = progressMonitor;
+	}
 
 }
