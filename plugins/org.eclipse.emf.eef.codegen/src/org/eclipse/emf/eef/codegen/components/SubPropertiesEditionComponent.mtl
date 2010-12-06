@@ -53,8 +53,8 @@ import [pee.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).dis
 [/if]
 [/for]
 [for (ePackage : EPackage | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement)->select((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum)).model.eType.ePackage->asSet())]
-import [ePackage.qualifiedMetamodelPackage(basePackage)/];
-import [ePackage.qualifiedMetamodelFactory(basePackage)/];
+import [ePackage.qualifiedMetamodelPackage()/];
+import [ePackage.qualifiedMetamodelFactory()/];
 [/for]
 [for (v : View | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view)]
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(v).oclAsType(components::PropertiesEditionElement)) ? ((not model.eType.oclIsKindOf(ecore::EDataType)) or model.eType.oclIsKindOf(ecore::EEnum))]
@@ -94,7 +94,7 @@ import org.eclipse.emf.common.util.EList;
 [/if]
 import org.eclipse.emf.edit.domain.EditingDomain;
 [for (ePackage : EPackage | pec.involvedEditionElementsInView(view).oclAsType(components::PropertiesEditionElement).model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(ecore::EClass).ePackage))]
-import [ePackage.qualifiedMetamodelPackage(basePackage)/];
+import [ePackage.qualifiedMetamodelPackage()/];
 [/for]
 [comment]
 [let deferredPec : PropertiesEditionComponent = if (pec.views->includes(view))
@@ -104,7 +104,7 @@ import [ePackage.qualifiedMetamodelPackage(basePackage)/];
 import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
 [/let]
 [/comment]
-import [view.owningViewsRepository().vrPackage()/].parts.[view.pepInterface()/];
+import [view.pepQualifiedInterface()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
@@ -136,7 +136,7 @@ import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 [for (bindingFilter : BindingFilter | element.bindingFilters) ? (bindingFilter.oclIsTypeOf(mapping::filters::OnlyReferenceTypeFilter))]
-import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).reference.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
+import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).reference.eContainingClass.qualifiedMetamodelPackage()/];
 [/for]
 [/for]
 import org.eclipse.swt.widgets.Display;
@@ -344,7 +344,7 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 [template public manageImportForViewReferences(view : View, pec : PropertiesEditionComponent, basePackage : String)]
 [for (v : View | view.referencedViews())]
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)->select(i | i.oclAsType(EObject).eResource() <> pec.oclAsType(EObject).eResource()))]
-import [editionElement.model.eContainingClass.qualifiedMetamodelPackage(basePackage)/];
+import [editionElement.model.eContainingClass.qualifiedMetamodelPackage()/];
 [/for]
 [for (viewsRepository : ViewsRepository | v.owningViewsRepository())]
 import [viewsRepository.vrQualifiedClass()/];

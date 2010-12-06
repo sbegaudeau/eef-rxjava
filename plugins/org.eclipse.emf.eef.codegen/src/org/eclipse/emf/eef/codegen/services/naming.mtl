@@ -22,11 +22,11 @@
 [/template]
 
 [template public contextCompletePackage(peContext : PropertiesEditionContext)]
-[peContext.associatedGenContext().basePackage/].[peContext.model.ecorePackage.name/]
+[if ((not peContext.associatedGenContext().basePackage.oclIsUndefined()) and (peContext.associatedGenContext().basePackage.size() > 0))][peContext.associatedGenContext().basePackage/].[/if][peContext.model.ecorePackage.name/]
 [/template]
 
-[template public vrPackage(repository : ViewsRepository)]
-[repository.associatedGenRepository().basePackage/]
+[template public vrPackage(repository : ViewsRepository) post (trim())]
+[if ((not repository.associatedGenRepository().basePackage.oclIsUndefined()) and (repository.associatedGenRepository().basePackage.size() > 0))][repository.associatedGenRepository().basePackage/].[/if]
 [/template]
 
 [comment --------------------------------------------------------------------------
@@ -103,11 +103,11 @@ PropertiesEditingProviderImpl
   Parts naming
  ---------------------------------------------------------------------------------- /]
 [template public partsPackage(repository : ViewsRepository)]
-[repository.vrPackage()/].parts
+[repository.vrPackage()/]parts
 [/template]
 
 [template public partsPackage(view : View)]
-[view.owningViewsRepository().vrPackage()/].parts
+[view.owningViewsRepository().vrPackage()/]parts
 [/template]
 
 [template public partsImplPackage(view : View)]
@@ -132,6 +132,10 @@ PropertiesEditingProviderImpl
 
 [template public pepQualifiedClass(view : View)]
 [view.partsImplPackage()/].[view.pepClass()/]
+[/template]
+
+[template public pepQualifiedFormClass(view : View)]
+[view.partsFormPackage()/].[view.pepFormClass()/]
 [/template]
 
 [template public pepFormClass(view : View)]

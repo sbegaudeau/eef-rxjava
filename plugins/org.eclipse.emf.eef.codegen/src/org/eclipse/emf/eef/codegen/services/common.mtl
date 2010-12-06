@@ -440,7 +440,7 @@ Object
 [/template]
 
 [template public completePackage(ePackage : EPackage)]
-[ePackage.associatedGenPackage().basePackage/].[ePackage.name/]
+[if ((not ePackage.associatedGenPackage().basePackage.oclIsUndefined()) and (ePackage.associatedGenPackage().basePackage.size() > 0))][ePackage.associatedGenPackage().basePackage/].[/if][ePackage.name/]
 [/template]
 
 [template public eefPackage(eClassifier : EClassifier, basePackage : String)]
@@ -482,14 +482,14 @@ Object
 [/template]
 
 [comment @deprecated /]
-[template public qualifiedMetamodelPackage(ePackage : EPackage, basePackage : String)]
+[comment][template public qualifiedMetamodelPackage(ePackage : EPackage, basePackage : String)]
 [ePackage.completePackage()/].[ePackage.metamodelPackage()/]
-[/template]
+[/template][/comment]
 
 [comment @deprecated /]
-[template public qualifiedMetamodelPackage(eClassifier : EClassifier, basePackage : String)]
+[comment][template public qualifiedMetamodelPackage(eClassifier : EClassifier, basePackage : String)]
 [eClassifier.ePackage.qualifiedMetamodelPackage(basePackage)/]
-[/template]
+[/template][/comment]
 
 [template public qualifiedMetamodelPackage(ePackage : EPackage)]
 [ePackage.completePackage()/].[ePackage.metamodelPackage()/]
@@ -499,7 +499,7 @@ Object
 [eClassifier.ePackage.qualifiedMetamodelPackage()/]
 [/template]
 
-[template public qualifiedMetamodelFactory(ePackage : EPackage, basePackage : String)]
+[template public qualifiedMetamodelFactory(ePackage : EPackage)]
 [ePackage.completePackage()/].[ePackage.metamodelFactory()/]
 [/template]
 

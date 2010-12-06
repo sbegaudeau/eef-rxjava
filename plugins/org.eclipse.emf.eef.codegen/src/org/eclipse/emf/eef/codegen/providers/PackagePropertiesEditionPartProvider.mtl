@@ -19,15 +19,15 @@
 	[comment @main /]
 	[file (v.fullFilePath(), false)]
 [v.associatedGenModel().licenceText().trim()/]
-package [v.vrPackage()/].providers;
+package [v.vrPackage()/]providers;
 
-import [v.vrPackage()/].parts.[v.vrClass()/];
+import [v.vrPackage()/]parts.[v.vrClass()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 [for (view : View | v.eAllContents(views::View)) ? (view.elements->size() > 0)]
-import [v.vrPackage()/].parts.forms.[view.pepFormClass()/];
-import [v.vrPackage()/].parts.impl.[view.pepClass()/];
+import [view.pepQualifiedFormClass()/];
+import [view.pepQualifiedClass()/];
 [/for]
 
 [v.additionalImports()/]
