@@ -60,6 +60,7 @@
 
 [template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
+		[view.viewIdentifier(pec)/].get[v.name.toJavaClassifier()/]ReferencedView().setContext(elt, allResource);
 [for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(components::PropertiesEditionElement)).oclAsType(components::PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 [editionElement.updater(v, pec)/]
 [/for]
