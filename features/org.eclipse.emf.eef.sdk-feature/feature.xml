@@ -60,7 +60,7 @@ http://www.eclipse.org/legal/epl-v10.html
    <includes
          id="org.eclipse.emf.eef.edt.source"
          version="0.0.0"/>
-
+<!--
    <includes
          id="org.eclipse.emf.eef.tests"
          version="0.0.0"/>
@@ -68,7 +68,7 @@ http://www.eclipse.org/legal/epl-v10.html
    <includes
          id="org.eclipse.emf.eef.tests.source"
          version="0.0.0"/>
-
+-->
    <requires>
       <import feature="org.eclipse.emf.validation" version="1.1.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.acceleo" version="3.0.0" match="greaterOrEqual"/>
