@@ -65,13 +65,13 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
-		RichTextToolBar toolBar = new RichTextToolBar(parent, SWT.NONE, [editor.name.toJavaIdentifier()/]);
+		RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, [editor.name.toJavaIdentifier()/]);
 		Composite toolbarContainer = widgetFactory.createComposite(parent);
 		toolbarContainer.setLayout(new GridLayout(2, false));
 		GridData toolbarData = new GridData(GridData.FILL_HORIZONTAL);
 		toolbarData.horizontalSpan = 3;
 		toolbarContainer.setLayoutData(toolbarData);
-		[editor.name.toJavaIdentifier()/] = new EEFRichText(toolbarContainer, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		[editor.name.toJavaIdentifier()/] = new EEFRichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		[editor.name.toJavaIdentifier()/].setEditable(true);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
