@@ -27,33 +27,22 @@
    </feature>
    <category-def name="eef.sdk" label="EEF SDK (Incubation)">
       <description>
-         EEF SDK package, containing ( with source ) : \n
-         - EEF runtime\n
-         - EEF metamodels\n
-         - EEF generators\n
-         - EEF documentation\n
-         - EEF extended capabilities
+         EEF SDK package. It contains runtime, metamodels, generators, documentation and extended capabilities (with source).
       </description>
    </category-def>
    <category-def name="eef.features" label="EEF Common (Incubation)">
       <description>
-         Contains all necessary features for EEF :\n
-         - EEF runtime\n
-         - EEF metamodels\n
-         - EEF generators\n
-         - EEF documentation
+         Contains all necessary features for EEF : EEF runtime, EEF metamodels, EEF generators and EEF documentation.
       </description>
    </category-def>
    <category-def name="eef.integration" label="EEF Integration (Incubation)">
       <description>
-         EEF integration for specific cases :\n
-         - UML2
+         EEF integration for specific cases, like UML2.
       </description>
    </category-def>
    <category-def name="eef.extension" label="EEF Extension (Incubation)">
       <description>
-         EEF with thirdparties :\n
-         - RichText Widget ( EPF )
+         EEF with thirdparties.
       </description>
    </category-def>
 </site>
