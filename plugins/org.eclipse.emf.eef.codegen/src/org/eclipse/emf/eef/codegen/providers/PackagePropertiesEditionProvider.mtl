@@ -39,10 +39,10 @@ public class [ePackage.pecPackageProviderClass()/] extends [ePackage.name.toJava
 		[if (not pec.oclIsUndefined())]
 	/**
 	 * {@inheritDoc}
-	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].[ePackage.name/].util.[ePackage.name.toJavaClassifier()/]AdapterFactory#create[eclass.name.toJavaClassifier()/]Adapter()
+	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].[ePackage.name/].util.[ePackage.name.toJavaClassifier()/]AdapterFactory#create[eclass.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter()
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public Adapter create[eclass.name.toJavaClassifier()/]Adapter() {
+	public Adapter create[eclass.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter() {
 		[if (pec.referencedBinding->size() > 0)]
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>([pec.referencedBinding->size()/]);
 		[for (binding : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(PropertiesEditionComponent))]

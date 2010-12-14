@@ -78,16 +78,16 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 [for (viewRef : ViewReference | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference)) ]
-import [viewRef.view.owningViewsRepository().vrPackage()/].parts.[viewRef.view.oclAsType(views::View).pepInterface()/];
+import [viewRef.view.oclAsType(views::View).pepQualifiedInterface()/];
 	[for (widget : Widget | viewRef.view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet())]
 [widget.manageImports(pec, view, basePackage)/]
 	[/for]
 [/for]
 [for (subView : View | view.elements->select(oclIsKindOf(views::View))) ]
-import [subView.owningViewsRepository().vrPackage()/].parts.[subView.pepInterface()/];
+import [subView.pepQualifiedInterface()/];
 [/for]
 [/if]
-
+[view.additionalImports()/]
 [/template]
 
 [comment Defines the default imports for a custom Form Part.
@@ -109,8 +109,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
 import [pec.model.qualifiedName(basePackage)/];
-import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
-[view.additionalImports()/]
+import [view.pepQualifiedInterface()/];
 [/template]
 
 [template public PropertiesEditionPart(peContext : PropertiesEditionContext, basePackage : String)]

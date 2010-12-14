@@ -409,7 +409,7 @@ Object
 [if (s.oclIsUndefined())][''/][elseif (s = '')][''/][else][s.substring(1,1)/][/if]
 [/template]
 
-[template private toJavaIdentifierDelegate(s : String)]
+[template public toJavaIdentifierDelegate(s : String)]
 [if (s.startsWithADigit())]_[/if][for (str : String | s.toASCII().tokenize(' '))][str.toUpperFirst()/][/for]
 [/template]
 
