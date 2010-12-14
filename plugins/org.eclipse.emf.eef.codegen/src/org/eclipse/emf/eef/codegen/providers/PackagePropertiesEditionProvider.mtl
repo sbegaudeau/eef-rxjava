@@ -46,7 +46,7 @@ public class [ePackage.pecPackageProviderClass()/] extends [ePackage.name.toJava
 		[if (pec.referencedBinding->size() > 0)]
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>([pec.referencedBinding->size()/]);
 		[for (binding : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(PropertiesEditionComponent))]
-		providers.add((PropertiesEditingProvider)create[binding.model.name.toJavaClassifier()/]Adapter());
+		providers.add((PropertiesEditingProvider)create[binding.model.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter());
 		[/for]
 		return new [pec.pecProviderClass()/](providers);
 		[else]
