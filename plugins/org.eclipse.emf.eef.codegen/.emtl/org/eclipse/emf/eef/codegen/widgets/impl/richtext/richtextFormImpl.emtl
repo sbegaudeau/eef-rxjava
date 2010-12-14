@@ -279,7 +279,7 @@
           </argument>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".FORM_KIND), null); //$NON-NLS-1$&#xA;&#x9;&#x9;RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, "/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".FORM_KIND), null); //$NON-NLS-1$&#xA;&#x9;&#x9;Composite toolbarContainer = widgetFactory.createComposite(parent);&#xA;&#x9;&#x9;toolbarContainer.setLayout(new GridLayout(2, false));&#xA;&#x9;&#x9;GridData toolbarData = new GridData(GridData.FILL_HORIZONTAL);&#xA;&#x9;&#x9;toolbarData.horizontalSpan = 3;&#xA;&#x9;&#x9;toolbarContainer.setLayoutData(toolbarData);&#xA;&#x9;&#x9;RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, "/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/toJavaIdentifier"/>
@@ -291,7 +291,7 @@
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewElement/name"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;&#x9;&#x9;Composite toolbarContainer = widgetFactory.createComposite(parent);&#xA;&#x9;&#x9;toolbarContainer.setLayout(new GridLayout(2, false));&#xA;&#x9;&#x9;GridData toolbarData = new GridData(GridData.FILL_HORIZONTAL);&#xA;&#x9;&#x9;toolbarData.horizontalSpan = 3;&#xA;&#x9;&#x9;toolbarContainer.setLayoutData(toolbarData);&#xA;&#x9;&#x9;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;&#x9;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <definition href="../../../services/common.emtl#/0/toJavaIdentifier"/>
@@ -6025,28 +6025,28 @@
     </eAnnotations>
     <eAnnotations source="positions.87" references="/0/additionalImplementation/@body.26">
       <details key="start" value="4289"/>
-      <details key="end" value="4399"/>
+      <details key="end" value="4671"/>
       <details key="line" value="67"/>
     </eAnnotations>
     <eAnnotations source="positions.88" references="/0/additionalImplementation/@body.27">
-      <details key="start" value="4400"/>
-      <details key="end" value="4430"/>
+      <details key="start" value="4672"/>
+      <details key="end" value="4702"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.89" references="/0/additionalImplementation/@body.27/@argument.0">
-      <details key="start" value="4400"/>
-      <details key="end" value="4411"/>
+      <details key="start" value="4672"/>
+      <details key="end" value="4683"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.90" references="/0/additionalImplementation/@body.27/@argument.0/editor">
-      <details key="start" value="4400"/>
-      <details key="end" value="4406"/>
+      <details key="start" value="4672"/>
+      <details key="end" value="4678"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.91" references="/0/additionalImplementation/@body.28">
-      <details key="start" value="4432"/>
+      <details key="start" value="4704"/>
       <details key="end" value="4709"/>
-      <details key="line" value="68"/>
+      <details key="line" value="73"/>
     </eAnnotations>
     <eAnnotations source="positions.92" references="/0/additionalImplementation/@body.29">
       <details key="start" value="4710"/>
