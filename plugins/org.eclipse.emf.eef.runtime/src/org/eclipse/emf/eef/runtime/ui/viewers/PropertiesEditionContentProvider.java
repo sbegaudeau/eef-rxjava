@@ -44,9 +44,11 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	/**
 	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode) throws InstantiationException {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode)
+			throws InstantiationException {
 		if (mode == IPropertiesEditionComponent.LIVE_MODE)
-			throw new InstantiationException(EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
+			throw new InstantiationException(
+					EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
 		this.adapterFactory = adapterFactory;
 		this.mode = mode;
 	}
@@ -54,7 +56,8 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	/**
 	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode, EditingDomain editingDomain) {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode,
+			EditingDomain editingDomain) {
 		this.adapterFactory = adapterFactory;
 		this.mode = mode;
 		this.editingDomain = editingDomain;
@@ -88,21 +91,24 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		if (newInput instanceof EObject) {
 			eObject = (EObject)newInput;
 			if (mode == IPropertiesEditionComponent.LIVE_MODE) {
-				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
+				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
+						eObject);
 			} else if (mode == IPropertiesEditionComponent.BATCH_MODE) {
 				context = new EObjectPropertiesEditionContext(null, null, eObject, adapterFactory);
 			}
 		} else if (newInput instanceof EObjectPropertiesEditionContext) {
-			context = (PropertiesEditingContext) newInput;
+			context = (PropertiesEditingContext)newInput;
 			eObject = context.getEObject();
 		}
 		if (eObject != null) {
-			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider) adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory
+					.adapt(eObject, PropertiesEditingProvider.class);
 			if (propertiesEditionProvider != null) {
-				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(context, mode);
+				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(
+						context, mode);
 				if (mode == IPropertiesEditionComponent.LIVE_MODE) {
 					propertiesEditionComponent.setLiveEditingDomain(editingDomain);
-				} 
+				}
 			}
 		}
 

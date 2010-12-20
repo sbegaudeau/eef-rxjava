@@ -30,9 +30,9 @@ import org.eclipse.swt.widgets.ToolItem;
 public class SWTUtils {
 
 	/**
-	 * Image registry key for help image (value <code>"dialog_help_image"</code>).
+	 * Image registry key for help image (value <code>"dialog_help_image"</code> ).
 	 */
-	public static final String DLG_IMG_HELP = "dialog_help_image";  //$NON-NLS-1$
+	public static final String DLG_IMG_HELP = "dialog_help_image"; //$NON-NLS-1$
 
 	/**
 	 * Create a label describing a properties of the view
@@ -80,7 +80,7 @@ public class SWTUtils {
 			return result;
 		}
 	}
-	
+
 	public static final double HEIGHT = 0.66;
 
 	public static final double WIDTH = 0.66;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,9 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	 * @param eReference
 	 * @param resourceSet
 	 */
-	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference, AdapterFactory adapterFactory) {
+	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext,
+			IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference,
+			AdapterFactory adapterFactory) {
 		super(parentContext, propertiesEditionComponent, eObject, adapterFactory);
 		this.eReference = eReference;
 	}

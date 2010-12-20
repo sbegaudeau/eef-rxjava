@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,15 +14,16 @@ import org.eclipse.swt.graphics.Point;
 
 /**
  * List of UI constants used by EEF
+ * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public interface UIConstants {
-	
+
 	/**
 	 * Defines the initial size for the Editing wizard.
 	 */
-	Point INITIAL_WIZARD_SIZE = new Point(650,800);
-	
+	Point INITIAL_WIZARD_SIZE = new Point(650, 800);
+
 	/**
 	 * Defines the constant for an unknown EEF representation type.
 	 */

@@ -99,10 +99,8 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	 * @param isMulti
 	 *            if the selection can be unique or not
 	 */
-	public EMFModelViewerDialog(
-			ILabelProvider labelProvider, Object input, 
-			List<ViewerFilter> filters, List<ViewerFilter> bpFilters, 
-			boolean nullable, boolean isMulti) {
+	public EMFModelViewerDialog(ILabelProvider labelProvider, Object input, List<ViewerFilter> filters,
+			List<ViewerFilter> bpFilters, boolean nullable, boolean isMulti) {
 		super(Display.getDefault().getActiveShell());
 		this.labelProviderElement = labelProvider;
 		this.filters = filters;
@@ -115,7 +113,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
+	 * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets .Composite)
 	 */
 	protected Control createDialogArea(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
@@ -159,7 +157,8 @@ public abstract class EMFModelViewerDialog extends Dialog {
 			elements.setContentProvider(provider);
 		}
 		if (labelProvider == null) {
-			this.labelProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE)) {
+			this.labelProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(
+					ComposedAdapterFactory.Descriptor.Registry.INSTANCE)) {
 
 				public String getColumnText(Object object, int columnIndex) {
 					if (object instanceof EObject) {
@@ -167,7 +166,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 							String result = ((EObject)object).eClass().getName();
 							if (result == null || result == StringTools.EMPTY_STRING)
 								return StringTools.EMPTY_STRING;
-							if (result.equals("EClass")) {  //$NON-NLS-1$
+							if (result.equals("EClass")) { //$NON-NLS-1$
 								return getColumnText(object, 1);
 							}
 							return result;
@@ -216,7 +215,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 					if (filterName != null) {
 						filteredContent.setText(filterName);
 					} else {
-						filteredContent.setText(EEFRuntimeUIMessages.EMFModelViewerDialog_filter_name); 
+						filteredContent.setText(EEFRuntimeUIMessages.EMFModelViewerDialog_filter_name);
 					}
 
 					filteredContent.setData(viewerFilter);
@@ -285,8 +284,8 @@ public abstract class EMFModelViewerDialog extends Dialog {
 	 */
 	protected void buildColumns(Table table) {
 
-		addColumn(table, 0, EEFRuntimeUIMessages.EMFModelViewerDialog_type_column_title); 
-		addColumn(table, 1, EEFRuntimeUIMessages.EMFModelViewerDialog_name_column_title); 
+		addColumn(table, 0, EEFRuntimeUIMessages.EMFModelViewerDialog_type_column_title);
+		addColumn(table, 1, EEFRuntimeUIMessages.EMFModelViewerDialog_name_column_title);
 
 	}
 

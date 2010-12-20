@@ -68,7 +68,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		selection.setEditable(false);
 		EditingUtils.setEEFtype(selection, "eef::EObjectFlatComboViewer::field");
 		editer = new Button(this, SWT.PUSH);
-		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);  //$NON-NLS-1$
+		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button); //$NON-NLS-1$
 
 		filters = new ArrayList<ViewerFilter>();
 		bpFilters = new ArrayList<ViewerFilter>();
@@ -89,16 +89,16 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 
 			/*
 			 * (non-Javadoc)
-			 * @see
-			 * org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse
+			 * .swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				switch (button_mode) {
 					case BROWSE:
 						if (input instanceof EObjectFlatComboSettings) {
-							EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input, 
-										filters.isEmpty() ? null : filters, bpFilters.isEmpty() ? null : bpFilters,
-										nullable, false) {
+							EMFModelViewerDialog dialog = new EMFModelViewerDialog(labelProvider, input,
+									filters.isEmpty() ? null : filters, bpFilters.isEmpty() ? null
+											: bpFilters, nullable, false) {
 
 								public void process(IStructuredSelection selection) {
 									if (selection == null) {
@@ -149,13 +149,15 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 		if (this.input != input) {
 			this.input = input;
 			this.selectedElement = null;
-			this.selection.setText("");  //$NON-NLS-1$
+			this.selection.setText(""); //$NON-NLS-1$
 		}
 	}
 
 	/**
 	 * Sets the given ID to the EObjectFlatComboViewer
-	 * @param id the id of the widget
+	 * 
+	 * @param id
+	 *            the id of the widget
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(selection, id);
@@ -195,7 +197,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 			else
 				selection.setText(selectedElement.toString());
 		} else
-			selection.setText("");  //$NON-NLS-1$
+			selection.setText(""); //$NON-NLS-1$
 	}
 
 	protected void selectionChanged(ISelection selection) {

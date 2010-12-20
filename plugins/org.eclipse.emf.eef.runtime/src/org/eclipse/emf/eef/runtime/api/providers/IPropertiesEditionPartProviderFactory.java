@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,6 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.api.providers;
-
 
 /**
  * Defines the {@link IPropertiesEditionPartProvider} factories interface.
@@ -21,7 +20,8 @@ public interface IPropertiesEditionPartProviderFactory {
 	/**
 	 * Indicates whether this provider provides the specified ViewRepository.
 	 * 
-	 * @param key the ViewRepository to provide
+	 * @param key
+	 *            the ViewRepository to provide
 	 * @return <code>true</code> if this provider provides the ViewRepository; <code>false</code> otherwise.
 	 */
 	public abstract boolean provides(Object key);
@@ -36,7 +36,8 @@ public interface IPropertiesEditionPartProviderFactory {
 	/**
 	 * Provides a {@link IPropertiesEditionPartProvider} for the specified ViewRepository.
 	 * 
-	 * @param the ViewRepository to provide
+	 * @param the
+	 *            ViewRepository to provide
 	 * @return the {@link IPropertiesEditionPartProvider} for the specified ViewRepository.
 	 */
 	public abstract IPropertiesEditionPartProvider getProvider(Object key);

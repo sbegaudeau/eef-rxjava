@@ -62,20 +62,27 @@ public class EEFUtils {
 
 	/**
 	 * Return the choice of value for the given feature
-	 * @param adapterFactory the adapterFactory to use
-	 * @param eObject the EObject to process
-	 * @param feature the feature to process
+	 * 
+	 * @param adapterFactory
+	 *            the adapterFactory to use
+	 * @param eObject
+	 *            the EObject to process
+	 * @param feature
+	 *            the feature to process
 	 * @return list of possible values
 	 */
-	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject, EStructuralFeature feature) {
+	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject,
+			EStructuralFeature feature) {
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource) adapterFactory.adapt(eObject, IItemPropertySource.class);
+		IItemPropertySource ps = (IItemPropertySource)adapterFactory
+				.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)
 				choiceOfValues = propertyDescriptor.getChoiceOfValues(eObject);
 		}
-		if (choiceOfValues == null && eObject.eResource() != null && eObject.eResource().getResourceSet() != null)
+		if (choiceOfValues == null && eObject.eResource() != null
+				&& eObject.eResource().getResourceSet() != null)
 			choiceOfValues = eObject.eResource().getResourceSet();
 		if (choiceOfValues == null)
 			choiceOfValues = "";
@@ -90,48 +97,55 @@ public class EEFUtils {
 		return choiceOfValues;
 	}
 
-
 	/**
 	 * Return all the instanciable types for a given reference.
-	 * @param eReference the reference to process.
-	 * @param editingDomain the editing domain where we live !
+	 * 
+	 * @param eReference
+	 *            the reference to process.
+	 * @param editingDomain
+	 *            the editing domain where we live !
 	 * @return a list of {@link EClass} containing all the instanciable type for the give reference.
 	 */
 	public static List<EClass> allTypeFor(EReference eReference, EditingDomain editingDomain) {
-		Collection<?> list = editingDomain.getNewChildDescriptors(EEFUtils.searchInstanceOf(editingDomain.getResourceSet(), eReference.getEContainingClass()), null);
+		Collection<?> list = editingDomain.getNewChildDescriptors(
+				EEFUtils.searchInstanceOf(editingDomain.getResourceSet(), eReference.getEContainingClass()),
+				null);
 		ArrayList<EClass> instanciableTypesInHierarchy = new ArrayList<EClass>();
-		for(Object object : list) {
-			if(object instanceof CommandParameter) {
-				if(((CommandParameter) object).getFeature() instanceof EReference) {
-					if((((CommandParameter) object).getFeature()).equals(eReference)) {
-						instanciableTypesInHierarchy.add(((CommandParameter) object).getEValue().eClass());
+		for (Object object : list) {
+			if (object instanceof CommandParameter) {
+				if (((CommandParameter)object).getFeature() instanceof EReference) {
+					if ((((CommandParameter)object).getFeature()).equals(eReference)) {
+						instanciableTypesInHierarchy.add(((CommandParameter)object).getEValue().eClass());
 					}
 				}
 			}
 		}
 		return instanciableTypesInHierarchy;
 	}
-	
+
 	/**
 	 * Search an instance of a given Class.
-	 * @param allResources the ResourceSet where to search
-	 * @param eClass the searched type
+	 * 
+	 * @param allResources
+	 *            the ResourceSet where to search
+	 * @param eClass
+	 *            the searched type
 	 * @return the first instance of the given type.
 	 */
 	public static EObject searchInstanceOf(ResourceSet allResources, EClass eClass) {
-		for(Resource resource : allResources.getResources()) {
+		for (Resource resource : allResources.getResources()) {
 			TreeIterator<EObject> iterator = resource.getAllContents();
-			while(iterator.hasNext()) {
+			while (iterator.hasNext()) {
 				Object objectTemp = iterator.next();
-				if(objectTemp instanceof EObject) {
+				if (objectTemp instanceof EObject) {
 					if (eClass.isInstance(objectTemp))
-						return (EObject) objectTemp;
+						return (EObject)objectTemp;
 				}
 			}
 		}
 		return null;
 	}
-	
+
 	/**
 	 * @param eClassifier
 	 * @return
@@ -139,7 +153,7 @@ public class EEFUtils {
 	 */
 	public static List<EClass> instanciableTypesInHierarchy(EClassifier eClassifier) {
 		return instanciableTypesInHierarchy(eClassifier, null);
-	}	
+	}
 
 	/**
 	 * @param eClassifier
@@ -149,7 +163,7 @@ public class EEFUtils {
 	public static List<EClass> instanciableTypesInHierarchy(EClassifier eClassifier, ResourceSet resourceSet) {
 		List<EClass> result = new ArrayList<EClass>();
 		if (eClassifier instanceof EClass) {
-			EClass eClass = (EClass) eClassifier;
+			EClass eClass = (EClass)eClassifier;
 			if (!eClass.isAbstract())
 				result.add(eClass);
 			result.addAll(instanciableSubTypes(eClass, resourceSet));
@@ -162,8 +176,9 @@ public class EEFUtils {
 		for (EPackage ePackage : allPackages(eClass, resourceSet)) {
 			for (EClassifier eClassifier : ePackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
-					EClass eClass2 = (EClass) eClassifier;
-					if (!eClass2.equals(eClass) && eClass.isSuperTypeOf(eClass2) && !eClass2.isAbstract() && !eClass2.isInterface())
+					EClass eClass2 = (EClass)eClassifier;
+					if (!eClass2.equals(eClass) && eClass.isSuperTypeOf(eClass2) && !eClass2.isAbstract()
+							&& !eClass2.isInterface())
 						result.add(eClass2);
 				}
 			}
@@ -183,12 +198,11 @@ public class EEFUtils {
 				resourcesToProcess = new ArrayList<Resource>();
 				resourcesToProcess.add(eClass.eResource());
 			}
-			for (Resource resource : resourcesToProcess) 
+			for (Resource resource : resourcesToProcess)
 				result.addAll(allPackageOfResource(resource));
-		}
-		else {
+		} else {
 			EPackage rootPackage = eClass.getEPackage();
-			while (rootPackage.getESuperPackage() != null) 
+			while (rootPackage.getESuperPackage() != null)
 				rootPackage = rootPackage.getESuperPackage();
 			result.addAll(allSubPackages(rootPackage));
 		}
@@ -222,18 +236,17 @@ public class EEFUtils {
 		Object staticPackage = EPackage.Registry.INSTANCE.get(ePackage_p.getNsURI());
 		if (null != staticPackage) {
 			if (staticPackage instanceof EPackage) {
-				return (EPackage) staticPackage;
+				return (EPackage)staticPackage;
 			} else if (staticPackage instanceof EPackage.Descriptor) {
-				return ((EPackage.Descriptor) staticPackage).getEPackage();
+				return ((EPackage.Descriptor)staticPackage).getEPackage();
 			}
 		}
 		return null;
 	}
 
-
 	private static List<EPackage> allSubPackages(EPackage ePackage) {
 		List<EPackage> result = new ArrayList<EPackage>();
-		for (EPackage subPackage : ePackage.getESubpackages()) 
+		for (EPackage subPackage : ePackage.getESubpackages())
 			result.addAll(allSubPackages(subPackage));
 		return result;
 	}
@@ -241,16 +254,18 @@ public class EEFUtils {
 	private static List<EPackage> allPackageOfResource(Resource resource) {
 		List<EPackage> result = new ArrayList<EPackage>();
 		for (Iterator iterator = resource.getAllContents(); iterator.hasNext();) {
-			EObject type = (EObject) iterator.next();
+			EObject type = (EObject)iterator.next();
 			if (type instanceof EPackage)
-				result .add((EPackage)type);
+				result.add((EPackage)type);
 		}
 		return result;
 	}
 
 	/**
 	 * Convert a treeIterator in Object list
-	 * @param iter the iterator
+	 * 
+	 * @param iter
+	 *            the iterator
 	 * @return the result list
 	 */
 	public static List<Object> asList(TreeIterator<Object> iter) {
@@ -262,7 +277,9 @@ public class EEFUtils {
 
 	/**
 	 * Convert a treeIterator in EObject list
-	 * @param iter the iterator
+	 * 
+	 * @param iter
+	 *            the iterator
 	 * @return the result list
 	 */
 	public static List<EObject> asEObjectList(TreeIterator<EObject> iter) {
@@ -274,14 +291,16 @@ public class EEFUtils {
 
 	/**
 	 * method defining if a bundle is loaded or not
-	 * @param name the searched bundle
+	 * 
+	 * @param name
+	 *            the searched bundle
 	 * @return <code>true</code> when the bundle is loaded
 	 */
 	public static boolean isBundleLoaded(String name) {
 		Bundle bundle = Platform.getBundle(name);
 		return bundle != null && bundle.getState() == Bundle.ACTIVE;
 	}
-	
+
 	/**
 	 * @param eObject
 	 *            the element to check
@@ -320,6 +339,5 @@ public class EEFUtils {
 		}
 		return false;
 	}
-
 
 }

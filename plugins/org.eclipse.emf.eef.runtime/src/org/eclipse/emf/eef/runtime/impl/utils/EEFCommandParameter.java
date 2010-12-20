@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
 public class EEFCommandParameter {
 
 	private EReference reference;
-	
+
 	private EClass eClass;
 
 	public EEFCommandParameter(EReference reference, EClass eClass) {
@@ -27,12 +27,13 @@ public class EEFCommandParameter {
 		this.reference = reference;
 		this.eClass = eClass;
 	}
+
 	public EClass geteClass() {
 		return eClass;
 	}
-	
+
 	public EReference getReference() {
 		return reference;
 	}
-	
+
 }

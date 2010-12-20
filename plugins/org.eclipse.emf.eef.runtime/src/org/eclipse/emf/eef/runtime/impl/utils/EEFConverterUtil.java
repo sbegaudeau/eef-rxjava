@@ -15,12 +15,13 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">stephane bouchet</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to an int
+	 * 
 	 * @param eInt
 	 *            the EDatatype EInt
 	 * @param literal
@@ -34,6 +35,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a double
+	 * 
 	 * @param eDouble
 	 *            the EDatatype EDouble
 	 * @param literal
@@ -47,6 +49,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a byte
+	 * 
 	 * @param eByte
 	 *            the EDatatype EByte
 	 * @param literal
@@ -60,6 +63,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a short
+	 * 
 	 * @param eShort
 	 *            the EDatatype EShort
 	 * @param literal
@@ -73,6 +77,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a long
+	 * 
 	 * @param eLong
 	 *            the EDatatype ELong
 	 * @param literal
@@ -86,6 +91,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a float
+	 * 
 	 * @param eFloat
 	 *            the EDatatype EFloat
 	 * @param literal
@@ -99,6 +105,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a char
+	 * 
 	 * @param eChar
 	 *            the EDatatype EChar
 	 * @param literal
@@ -112,6 +119,7 @@ public class EEFConverterUtil extends EcoreUtil {
 
 	/**
 	 * Converts from a string to a boolean
+	 * 
 	 * @param eBoolean
 	 *            the EDatatype EBoolean
 	 * @param literal

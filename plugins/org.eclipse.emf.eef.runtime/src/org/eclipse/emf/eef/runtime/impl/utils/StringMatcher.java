@@ -29,7 +29,8 @@ public class StringMatcher {
 
 	protected boolean fHasTrailingStar;
 
-	protected String fSegments[]; // the given pattern is split into * separated segments
+	protected String fSegments[]; // the given pattern is split into * separated
+									// segments
 
 	/* boundary value beyond which we don't need to search in the text */
 	protected int fBound = 0;
@@ -60,7 +61,8 @@ public class StringMatcher {
 	 * '*' for 0 and many characters and '?' for exactly one character. Literal '*' and '?' characters must be
 	 * escaped in the pattern e.g., "\*" means literal "*", etc. Escaping any other character (including the
 	 * escape character itself), just results in that character in the pattern. e.g., "\a" means "a" and "\\"
-	 * means"\" If invoking the StringMatcher with string literals in Java, don't forget escape characters are represented by "
+	 * means
+	 * "\" If invoking the StringMatcher with string literals in Java, don't forget escape characters are represented by "
 	 * \\".
 	 * 
 	 * @param pattern
@@ -86,8 +88,8 @@ public class StringMatcher {
 	}
 
 	/**
-	 * Find the first occurrence of the pattern between <code>start</code)(inclusive) 
-	 * and <code>end</code>(exclusive).
+	 * Find the first occurrence of the pattern between <code>start</code )(inclusive) and <code>end</code>
+	 * (exclusive).
 	 * 
 	 * @param text
 	 *            the String object to search in
@@ -175,7 +177,10 @@ public class StringMatcher {
 		if (fIgnoreWildCards)
 			return (end - start == fLength) && fPattern.regionMatches(fIgnoreCase, 0, text, start, fLength);
 		int segCount = fSegments.length;
-		if (segCount == 0 && (fHasLeadingStar || fHasTrailingStar)) // pattern contains only '*'(s)
+		if (segCount == 0 && (fHasLeadingStar || fHasTrailingStar)) // pattern
+																	// contains
+																	// only
+																	// '*'(s)
 			return true;
 		if (start == end)
 			return fLength == 0;
@@ -314,7 +319,8 @@ public class StringMatcher {
 	 *            the stopping point of search, exclusive
 	 * @return the starting index in the text of the pattern , or -1 if not found
 	 */
-	protected int posIn(String text, int start, int end) {// no wild card in pattern
+	protected int posIn(String text, int start, int end) {// no wild card in
+															// pattern
 		int max = end - fLength;
 
 		if (!fIgnoreCase) {
@@ -371,7 +377,8 @@ public class StringMatcher {
 			if (fIgnoreCase) {
 				if (Character.toUpperCase(tchar) == Character.toUpperCase(pchar))
 					continue;
-				// comparing after converting to upper case doesn't handle all cases;
+				// comparing after converting to upper case doesn't handle all
+				// cases;
 				// also compare after converting to lower case
 				if (Character.toLowerCase(tchar) == Character.toLowerCase(pchar))
 					continue;

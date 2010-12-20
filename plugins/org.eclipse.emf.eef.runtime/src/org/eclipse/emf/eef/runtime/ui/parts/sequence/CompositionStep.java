@@ -13,21 +13,24 @@ package org.eclipse.emf.eef.runtime.ui.parts.sequence;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class CompositionStep {
 
 	public CompositionStep parent;
+
 	public Object key;
+
 	protected List<CompositionStep> subSteps;
+
 	private boolean visibility;
-	
+
 	/**
-	 * @param parent the containing {@link CompositionSequence}
-	 * @param key of this Step
+	 * @param parent
+	 *            the containing {@link CompositionSequence}
+	 * @param key
+	 *            of this Step
 	 */
 	public CompositionStep(CompositionStep parent, Object key) {
 		super();
@@ -36,7 +39,7 @@ public class CompositionStep {
 		subSteps = new ArrayList<CompositionStep>();
 		this.visibility = true;
 	}
-	
+
 	/**
 	 * @return the subSteps
 	 */
@@ -46,7 +49,9 @@ public class CompositionStep {
 
 	/**
 	 * Add a Sub-Step to the sequence.
-	 * @param key the key of the sub step
+	 * 
+	 * @param key
+	 *            the key of the sub step
 	 * @return the created {@link CompositionStep}
 	 */
 	public CompositionStep addStep(Object key) {
@@ -57,11 +62,13 @@ public class CompositionStep {
 
 	/**
 	 * Remove a Sub-Step to the sequence.
-	 * @param key the key of the sub step to remove
+	 * 
+	 * @param key
+	 *            the key of the sub step to remove
 	 * @return <code>this</code>
 	 */
 	public CompositionStep removeStep(Object key) {
-		for (CompositionStep step :  subSteps) {
+		for (CompositionStep step : subSteps) {
 			if (step.key == key) {
 				subSteps.remove(step);
 				return this;
@@ -69,14 +76,14 @@ public class CompositionStep {
 		}
 		return this;
 	}
-	
+
 	/**
 	 * @return the visibility
 	 */
 	public boolean isVisibile() {
 		return visibility && (parent == null || parent.isVisibile());
 	}
-	
+
 	/**
 	 * switch the step visibility
 	 */
@@ -90,32 +97,30 @@ public class CompositionStep {
 	public CompositionStep next() {
 		if (subSteps.isEmpty()) {
 			return parent.nextOf(this);
-		} 
-		else {
+		} else {
 			return subSteps.get(0);
 		}
 	}
-	
+
 	/**
 	 * Search the next step following the deep first algorithm
-	 * @param step step search the following
+	 * 
+	 * @param step
+	 *            step search the following
 	 * @return the following step for <code>step</code>, <code>null</code> otherwise.
 	 */
 	protected CompositionStep nextOf(CompositionStep step) {
 		if (step == null) {
 			return null;
-		}
-		else {
+		} else {
 			int index = subSteps.indexOf(step);
 			if (index >= 0) {
-				if (index +1 < subSteps.size()) {
+				if (index + 1 < subSteps.size()) {
 					return subSteps.get(index + 1);
-				}
-				else {
+				} else {
 					if (parent != null) {
 						return parent.nextOf(this);
-					}
-					else {
+					} else {
 						return null;
 					}
 				}
@@ -123,18 +128,17 @@ public class CompositionStep {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * @return the previous step
 	 */
 	public CompositionStep before() {
 		if (parent != null) {
 			return parent.beforeOf(this);
-		}
-		else {
+		} else {
 			return null;
 		}
-			
+
 	}
 
 	/**
@@ -143,18 +147,15 @@ public class CompositionStep {
 	private CompositionStep beforeOf(CompositionStep step) {
 		if (step == null) {
 			return null;
-		}
-		else {
+		} else {
 			int index = subSteps.indexOf(step);
 			if (index >= 0) {
 				if (index - 1 >= 0) {
 					return subSteps.get(index - 1);
-				}
-				else {
+				} else {
 					if (parent != null) {
 						return parent.beforeOf(this);
-					}
-					else {
+					} else {
 						return null;
 					}
 				}
@@ -162,7 +163,7 @@ public class CompositionStep {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * up the step in the sequence
 	 */
@@ -173,7 +174,8 @@ public class CompositionStep {
 	}
 
 	/**
-	 * @param step the step to up
+	 * @param step
+	 *            the step to up
 	 */
 	private void upStep(CompositionStep step) {
 		if (step != null) {
@@ -184,7 +186,7 @@ public class CompositionStep {
 			}
 		}
 	}
-	
+
 	/**
 	 * down the step in the sequence
 	 */
@@ -195,7 +197,8 @@ public class CompositionStep {
 	}
 
 	/**
-	 * @param step the step to down
+	 * @param step
+	 *            the step to down
 	 */
 	private void downStep(CompositionStep step) {
 		if (step != null) {
@@ -209,7 +212,9 @@ public class CompositionStep {
 
 	/**
 	 * Move the current Step to a new container.
-	 * @param newParent the new container
+	 * 
+	 * @param newParent
+	 *            the new container
 	 */
 	public void moveTo(CompositionStep newParent) {
 		if (newParent != null) {
@@ -218,5 +223,5 @@ public class CompositionStep {
 			parent = newParent;
 		}
 	}
-	
+
 }

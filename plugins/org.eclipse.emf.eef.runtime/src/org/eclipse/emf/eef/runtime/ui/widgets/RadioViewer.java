@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,12 +39,12 @@ import org.eclipse.swt.widgets.Control;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class RadioViewer extends Composite implements ISelectionProvider {
-	
+
 	/**
 	 * Listeners for selection changes
 	 */
 	private List<ISelectionChangedListener> listeners;
-	
+
 	private RadioSelectionChangedListener radioSelectionChangedListener;
 
 	/**
@@ -108,6 +108,7 @@ public class RadioViewer extends Composite implements ISelectionProvider {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
 	 */
 	public ISelection getSelection() {
@@ -133,12 +134,14 @@ public class RadioViewer extends Composite implements ISelectionProvider {
 
 	/**
 	 * Sets the given ID to the EObjectFlatComboViewer
-	 * @param id the id of the widget
+	 * 
+	 * @param id
+	 *            the id of the widget
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(this, id);
 		for (Control control : getChildren()) {
-			EditingUtils.setID(control, id);			
+			EditingUtils.setID(control, id);
 		}
 	}
 
@@ -149,7 +152,6 @@ public class RadioViewer extends Composite implements ISelectionProvider {
 		return EditingUtils.getID(this);
 	}
 
-	
 	/**
 	 * Sets the tooltip text for the viewer
 	 * 
@@ -161,27 +163,32 @@ public class RadioViewer extends Composite implements ISelectionProvider {
 			button.setToolTipText(tooltip);
 		}
 	}
-	
+
 	/**
 	 * Add a new SelectionChangedListener
-	 * @param listener the listener to add
+	 * 
+	 * @param listener
+	 *            the listener to add
 	 */
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.add(listener);
 	}
-	
+
 	/**
 	 * remove a SelectionChanged listener
-	 * @param listener the listener to remove
+	 * 
+	 * @param listener
+	 *            the listener to remove
 	 */
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.remove(listener);
 	}
-	
+
 	private class RadioSelectionChangedListener extends SelectionAdapter {
 
 		/**
 		 * {@inheritDoc}
+		 * 
 		 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 		 */
 		public void widgetSelected(SelectionEvent e) {
@@ -192,10 +199,11 @@ public class RadioViewer extends Composite implements ISelectionProvider {
 			}
 			if (value != null) {
 				for (ISelectionChangedListener listener : listeners) {
-					listener.selectionChanged(new SelectionChangedEvent(RadioViewer.this, new StructuredSelection(value)));
+					listener.selectionChanged(new SelectionChangedEvent(RadioViewer.this,
+							new StructuredSelection(value)));
 				}
 			}
 		}
-		
+
 	}
 }

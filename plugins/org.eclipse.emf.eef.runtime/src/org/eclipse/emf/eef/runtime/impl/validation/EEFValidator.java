@@ -44,7 +44,8 @@ public class EEFValidator extends EObjectValidator {
 		return validate(eObject.eClass(), eObject, diagnostics, context);
 	}
 
-	public boolean validate(EClass eClass, EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validate(EClass eClass, EObject eObject, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		super.validate(eClass, eObject, diagnostics, context);
 		IStatus status = Status.OK_STATUS;
 		if (diagnostics != null) {

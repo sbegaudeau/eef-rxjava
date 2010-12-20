@@ -32,18 +32,18 @@ import org.osgi.framework.BundleContext;
 public class EEFRuntimePlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime";  //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime"; //$NON-NLS-1$
 
 	// The shared instance
 	private static EEFRuntimePlugin plugin;
 
 	// Shared adapterFactory
 	private static AdapterFactory adapterFactory;
-	
+
 	// Shared diagnostician
 	private static Diagnostician diagnostician;
 
-	public static final String ICONS_16x16 = "icons/16x16/";  //$NON-NLS-1$
+	public static final String ICONS_16x16 = "icons/16x16/"; //$NON-NLS-1$
 
 	private static ImageRegistry registry = null;
 
@@ -80,14 +80,17 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 
 			/**
 			 * {@inheritDoc}
-			 * @see org.eclipse.emf.ecore.util.Diagnostician#doValidateContents(org.eclipse.emf.ecore.EObject, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+			 * 
+			 * @see org.eclipse.emf.ecore.util.Diagnostician#doValidateContents(org.eclipse.emf.ecore.EObject,
+			 *      org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 			 */
 			@Override
-			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
-				//Do nothing
+			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics,
+					Map<Object, Object> context) {
+				// Do nothing
 				return true;
 			}
-			
+
 		};
 	}
 

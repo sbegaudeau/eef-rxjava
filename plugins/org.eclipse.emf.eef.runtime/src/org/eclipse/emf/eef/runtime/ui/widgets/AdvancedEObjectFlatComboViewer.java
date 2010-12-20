@@ -15,10 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
@@ -112,7 +110,8 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 	 * @param filter
 	 *            use to look for the good element
 	 */
-	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input, ViewerFilter filter, AdapterFactory adapterFactory, EObjectFlatComboViewerListener callback) {
+	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input, ViewerFilter filter,
+			AdapterFactory adapterFactory, EObjectFlatComboViewerListener callback) {
 		this.dialogTitle = dialogTitle;
 		this.input = input;
 		this.callback = callback;
@@ -158,7 +157,7 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 		removeButton.setLayoutData(data);
 		removeButton.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
 		EditingUtils.setEEFtype(removeButton, "eef::AdvancedEObjectFlatComboViewer::removebutton");
-		
+
 		this.browseButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		browseButton.setImage(addImage);
 		data = new FormData();
@@ -190,7 +189,9 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 
 	/**
 	 * Sets the given ID to the EObjectFlatComboViewer
-	 * @param id the id of the widget
+	 * 
+	 * @param id
+	 *            the id of the widget
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(field, id);
@@ -204,10 +205,11 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 	public Object getID() {
 		return EditingUtils.getID(field);
 	}
-	
+
 	private void createLabels(Composite parent) {
 		// Display label
-		// final Label displayLabel = createLabel(parent, dialogTitle, SWT.NONE);
+		// final Label displayLabel = createLabel(parent, dialogTitle,
+		// SWT.NONE);
 		// FormData data = new FormData();
 		// data.left = new FormAttachment(0, 0);
 		// data.top = new FormAttachment(0, 0);
@@ -313,7 +315,8 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 	protected void browseButtonPressed() {
 		switch (button_mode) {
 			case BROWSE:
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(input, filters, brFilters, dialogTitle, adapterFactory, mainResource) {
+				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(input, filters,
+						brFilters, dialogTitle, adapterFactory, mainResource) {
 					@SuppressWarnings("unchecked")
 					@Override
 					public void process(IStructuredSelection selection) {
@@ -335,7 +338,7 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 				break;
 		}
 	}
-	
+
 	public void handleSelection(EObject selectedElement) {
 		setSelection(selectedElement);
 		callback.handleSet(selectedElement);

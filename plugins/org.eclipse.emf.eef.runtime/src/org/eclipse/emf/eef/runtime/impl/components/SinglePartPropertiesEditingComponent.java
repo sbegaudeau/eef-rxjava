@@ -1,6 +1,13 @@
-/**
- * 
- */
+/*******************************************************************************
+ * Copyright (c) 2008, 2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.components;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -13,14 +20,12 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
-
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
- *
  */
 public abstract class SinglePartPropertiesEditingComponent extends StandardPropertiesEditionComponent {
-	
+
 	/**
 	 * EObject to edit
 	 */
@@ -30,7 +35,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * Component's part
 	 */
 	protected IPropertiesEditionPart editingPart;
-	
+
 	/**
 	 * Key to use to get the Part provider
 	 */
@@ -43,9 +48,9 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 
 	/**
 	 * Default constructor
-	 * 
 	 */
-	public SinglePartPropertiesEditingComponent(PropertiesEditingContext editingContext, EObject semanticObject, String editing_mode) {
+	public SinglePartPropertiesEditingComponent(PropertiesEditingContext editingContext,
+			EObject semanticObject, String editing_mode) {
 		this.semanticObject = semanticObject;
 		this.editingContext = editingContext;
 		if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -65,7 +70,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 			this.semanticObject.eAdapters().add(semanticAdapter);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -76,7 +81,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 			this.semanticObject.eAdapters().remove(semanticAdapter);
 		}
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -88,7 +93,6 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#translatePart(java.lang.String)
-	 * 
 	 */
 	public java.lang.Object translatePart(String key) {
 		if (partID().equals(key))
@@ -100,10 +104,11 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * 
+	 *      setPropertiesEditionPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 */
-	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(java.lang.Object key, int kind,
+			IPropertiesEditionPart propertiesEditionPart) {
 		if (key == partKey) {
 			this.editingPart = propertiesEditionPart;
 			if (semanticAdapter != null)
@@ -113,6 +118,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getEditingContext()
 	 */
 	public PropertiesEditingContext getEditingContext() {
@@ -123,7 +129,6 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
-	 * 
 	 */
 	public Diagnostic validate() {
 		Diagnostic validate = Diagnostic.OK_INSTANCE;
@@ -135,23 +140,22 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#dispose()
-	 * 
 	 */
 	public void dispose() {
 		deactivate();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getPropertiesEditionPart
-	 *  (java.lang.String, java.lang.String)
-	 * 
+	 *      (java.lang.String, java.lang.String)
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (semanticObject != null && partID().equals(key)) {
 			if (editingPart == null) {
-				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(repositoryKey);
+				IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance()
+						.getProvider(repositoryKey);
 				if (provider != null) {
 					editingPart = provider.getPropertiesEditionPart(partKey, kind, this);
 					addListener((IPropertiesEditionListener)editingPart);
@@ -166,9 +170,8 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getTabText(java.lang.String)
 	 */
 	public String getTabText(String p_key) {
 		return editingPart.getTitle();

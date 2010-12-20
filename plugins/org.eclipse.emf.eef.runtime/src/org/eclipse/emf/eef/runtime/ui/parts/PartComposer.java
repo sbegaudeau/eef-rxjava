@@ -16,19 +16,18 @@ import org.eclipse.swt.widgets.Composite;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public abstract class PartComposer {
 
 	private CompositionSequence compositionSequence;
-	
+
 	/**
-	 * Default constructor. The composition sequence is empty. 
+	 * Default constructor. The composition sequence is empty.
 	 */
 	public PartComposer(CompositionSequence sequence) {
 		compositionSequence = sequence;
 	}
-	
+
 	/**
 	 * @return the compositionSequence
 	 */
@@ -38,7 +37,9 @@ public abstract class PartComposer {
 
 	/**
 	 * Compose the part.
-	 * @param parent the view where to compose the part
+	 * 
+	 * @param parent
+	 *            the view where to compose the part
 	 */
 	public void compose(Composite parent) {
 		CompositionStep next = compositionSequence.next();
@@ -49,11 +50,14 @@ public abstract class PartComposer {
 			next = next.next();
 		}
 	}
-	
+
 	/**
 	 * Ask for subclasses to instantiate the element with key {@code key} in the given parent.
-	 * @param parent the element parent
-	 * @param key the element
+	 * 
+	 * @param parent
+	 *            the element parent
+	 * @param key
+	 *            the element
 	 */
 	public abstract Composite addToPart(Composite parent, Object key);
 }

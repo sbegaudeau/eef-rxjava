@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 
 	private EditingDomain editingDomain;
+
 	private AdapterFactory adapterFactory;
 
 	/**
@@ -54,7 +55,8 @@ public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 					eObject = (EObject)((IAdaptable)firstElement).getAdapter(EObject.class);
 			}
 			if (eObject != null) {
-				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
+				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(
+						null, null, editingDomain, adapterFactory, eObject);
 				WizardEditingCommand wizardEditingCommand = new WizardEditingCommand(propertiesEditionContext);
 				editingDomain.getCommandStack().execute(wizardEditingCommand);
 			}

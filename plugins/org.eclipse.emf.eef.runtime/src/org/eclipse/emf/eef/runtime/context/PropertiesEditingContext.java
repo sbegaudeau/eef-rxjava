@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,22 +19,22 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public interface PropertiesEditingContext {
-	
+
 	/**
 	 * @return the changeRecorder of the editing session
 	 */
 	public ChangeRecorder getChangeRecorder();
-	
+
 	/**
 	 * @return the currently edited {@link EObject}.
 	 */
 	public EObject getEObject();
-	
+
 	/**
 	 * @return the resourceSet where to work.
 	 */
 	public ResourceSet getResourceSet();
-	
+
 	/**
 	 * @return the {@link AdapterFactory} to use during the editing.
 	 */

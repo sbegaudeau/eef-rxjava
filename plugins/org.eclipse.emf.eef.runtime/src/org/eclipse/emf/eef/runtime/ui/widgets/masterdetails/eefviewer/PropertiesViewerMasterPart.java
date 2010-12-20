@@ -24,22 +24,27 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 
 	/**
-	 * @param toolkit the toolkit to use to create part widgets
-	 * @param container the composite where to create the part
-	 * @param block the AbstractEEFMasterDetailsBlock which will contain this part
+	 * @param toolkit
+	 *            the toolkit to use to create part widgets
+	 * @param container
+	 *            the composite where to create the part
+	 * @param block
+	 *            the AbstractEEFMasterDetailsBlock which will contain this part
 	 */
-	public PropertiesViewerMasterPart(FormToolkit toolkit, Composite container, AbstractEEFMasterDetailsBlock block) {
+	public PropertiesViewerMasterPart(FormToolkit toolkit, Composite container,
+			AbstractEEFMasterDetailsBlock block) {
 		super(toolkit, container, block);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterPart#createSectionClientContents(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterPart#createSectionClientContents(org.eclipse.swt.widgets.Composite,
+	 *      org.eclipse.ui.forms.widgets.FormToolkit)
 	 */
 	protected StructuredViewer createSectionClientContents(Composite parent, FormToolkit toolkit) {
 		GridLayout containerLayout = new GridLayout();

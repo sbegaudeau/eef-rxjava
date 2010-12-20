@@ -112,16 +112,20 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 
 		} catch (SecurityException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} catch (NoSuchFieldException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} catch (IllegalArgumentException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} catch (IllegalAccessException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.TabbedPropertiesEditionSheetPage_descriptorToTab_not_found, e);
 		} finally {
 			if (descriptorToTabField != null) {
 				descriptorToTabField.setAccessible(oldAccessible);
@@ -132,32 +136,32 @@ public class TabbedPropertiesEditionSheetPage extends TabbedPropertySheetPage {
 
 	@Override
 	public void refresh() {
-        boolean isCurrentTabNull = true;
-        try {
-            try {
-                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab"); //$NON-NLS-1$
-                // We are in eclipse 3.3
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null); //$NON-NLS-1$
-                isCurrentTabNull = searchMethod.invoke(this) == null;
-            } catch (final ClassNotFoundException cnfe) {
-                // We are in eclipse 3.4
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", null); //$NON-NLS-1$
-                isCurrentTabNull = searchMethod.invoke(this) == null;
-            }
-        } catch (final SecurityException e) {
-            // Do nothing
-        } catch (final NoSuchMethodException e) {
-            // Do nothing
-        } catch (final IllegalArgumentException e) {
-            // Do nothing
-        } catch (final IllegalAccessException e) {
-            // Do nothing
-        } catch (final InvocationTargetException e) {
-            // Do nothing
-        }
+		boolean isCurrentTabNull = true;
+		try {
+			try {
+				Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab"); //$NON-NLS-1$
+				// We are in eclipse 3.3
+				final Method searchMethod = this.getClass().getMethod("getCurrentTab", null); //$NON-NLS-1$
+				isCurrentTabNull = searchMethod.invoke(this) == null;
+			} catch (final ClassNotFoundException cnfe) {
+				// We are in eclipse 3.4
+				final Method searchMethod = this.getClass().getMethod("getCurrentTab", null); //$NON-NLS-1$
+				isCurrentTabNull = searchMethod.invoke(this) == null;
+			}
+		} catch (final SecurityException e) {
+			// Do nothing
+		} catch (final NoSuchMethodException e) {
+			// Do nothing
+		} catch (final IllegalArgumentException e) {
+			// Do nothing
+		} catch (final IllegalAccessException e) {
+			// Do nothing
+		} catch (final InvocationTargetException e) {
+			// Do nothing
+		}
 
-        if (!isCurrentTabNull) {
-            super.refresh();
-        }
-    }
+		if (!isCurrentTabNull) {
+			super.refresh();
+		}
+	}
 }

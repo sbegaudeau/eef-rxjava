@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,17 +23,22 @@ public interface IPropertiesEditionPartProvider {
 	/**
 	 * Indicates whether this provider provides the specified ViewRepository.
 	 * 
-	 * @param key the key identifing the ViewRepository to check 
+	 * @param key
+	 *            the key identifing the ViewRepository to check
 	 * @return <code>true</code> if this provider provides for this ; <code>false</code> otherwise.
 	 */
 	public abstract boolean provides(Object key);
 
 	/**
-	 * @param key the key identifing the expected View.
-	 * @param kind the kind of the expected view
-	 * @param component the {@link IPropertiesEditionComponent} that manages this view
+	 * @param key
+	 *            the key identifing the expected View.
+	 * @param kind
+	 *            the kind of the expected view
+	 * @param component
+	 *            the {@link IPropertiesEditionComponent} that manages this view
 	 * @return the expected view
 	 */
-	public abstract IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component);
+	public abstract IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind,
+			IPropertiesEditionComponent component);
 
 }

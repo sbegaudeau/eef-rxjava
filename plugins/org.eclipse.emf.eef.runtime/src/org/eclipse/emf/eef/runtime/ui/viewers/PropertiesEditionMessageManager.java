@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,11 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * @author <a href="mailto:sbouchet@obeo.fr">sbouchet</a>
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
- *
  */
 public abstract class PropertiesEditionMessageManager {
-	
+
 	private Diagnostic oldFailedDiagnostic = null;
 
 	private Object oldFailedEvent = null;
@@ -46,7 +45,7 @@ public abstract class PropertiesEditionMessageManager {
 	}
 
 	protected abstract void updateStatus(final String message);
-	
+
 	private String computeMessage(Diagnostic diag) {
 		for (Diagnostic child : diag.getChildren()) {
 			if (child.getSeverity() != Diagnostic.OK) {
@@ -58,6 +57,5 @@ public abstract class PropertiesEditionMessageManager {
 		}
 		return diag.getMessage();
 	}
-
 
 }

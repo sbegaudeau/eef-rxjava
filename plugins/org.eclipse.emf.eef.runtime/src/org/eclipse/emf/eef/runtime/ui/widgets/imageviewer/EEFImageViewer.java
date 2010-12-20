@@ -35,16 +35,17 @@ import org.eclipse.swt.widgets.FileDialog;
  */
 public class EEFImageViewer extends Composite implements ISelectionProvider {
 
-	private static final String[] EXTENSIONS = new String[] { "*.png", "*.bmp", "*.jpeg", "*.jpg", "*.gif", "*.*" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
-	
+	private static final String[] EXTENSIONS = new String[] {
+			"*.png", "*.bmp", "*.jpeg", "*.jpg", "*.gif", "*.*"}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
+
 	private Canvas viewerCanvas;
-	
+
 	private String key;
 
 	private String imagePath;
-	
+
 	private List<ISelectionChangedListener> listeners = new ArrayList<ISelectionChangedListener>();
-	
+
 	/**
 	 * @param parent
 	 * @param style
@@ -57,6 +58,7 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 
 			/**
 			 * {@inheritDoc}
+			 * 
 			 * @see org.eclipse.swt.events.MouseAdapter#mouseDoubleClick(org.eclipse.swt.events.MouseEvent)
 			 */
 			@Override
@@ -67,29 +69,33 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 					String fn = dialog.open();
 					if (fn != null) {
 						updateImage(fn);
-						SelectionChangedEvent event = new SelectionChangedEvent(EEFImageViewer.this, new StructuredSelection(fn));
+						SelectionChangedEvent event = new SelectionChangedEvent(EEFImageViewer.this,
+								new StructuredSelection(fn));
 						for (ISelectionChangedListener listener : listeners) {
 							listener.selectionChanged(event);
 						}
 					}
 				}
 			}
-			
+
 		});
 		EditingUtils.setEEFtype(viewerCanvas, "eef::ImageViewer");
 	}
-	
+
 	/**
-	 * @param key the key to set
+	 * @param key
+	 *            the key to set
 	 */
 	public void initViewer(String key, String imagePath) {
 		this.key = key;
 		updateImage(imagePath);
 	}
-	
+
 	/**
 	 * Sets the given ID to the EMFComboViewer
-	 * @param id the ID to give
+	 * 
+	 * @param id
+	 *            the ID to give
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(viewerCanvas, id);
@@ -109,25 +115,26 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 		this.imagePath = imagePath;
 		EEFRuntimePlugin.getDefault().registerImage(key, imagePath);
 		Image image = EEFRuntimePlugin.getDefault().getRegisteredImage(key);
-		
-		if(image != null) {
+
+		if (image != null) {
 			Image newImage = null;
-			if(this.getLayoutData() instanceof GridData) {
-				GridData gridData = (GridData) this.getLayoutData();
-				newImage = new Image(image.getDevice(), image.getImageData().scaledTo(gridData.widthHint, gridData.heightHint));
+			if (this.getLayoutData() instanceof GridData) {
+				GridData gridData = (GridData)this.getLayoutData();
+				newImage = new Image(image.getDevice(), image.getImageData().scaledTo(gridData.widthHint,
+						gridData.heightHint));
 			}
-			if(newImage == null) {
+			if (newImage == null) {
 				viewerCanvas.setBackgroundImage(image);
-			}
-			else {
+			} else {
 				viewerCanvas.setBackgroundImage(newImage);
 			}
 		}
 		viewerCanvas.redraw();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
 	 */
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
@@ -136,6 +143,7 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
 	 */
 	public ISelection getSelection() {
@@ -147,6 +155,7 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#removeSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
 	 */
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
@@ -155,18 +164,17 @@ public class EEFImageViewer extends Composite implements ISelectionProvider {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#setSelection(org.eclipse.jface.viewers.ISelection)
 	 */
 	public void setSelection(ISelection selection) {
 		if (selection instanceof StructuredSelection) {
-			StructuredSelection sSelection = (StructuredSelection) selection;
+			StructuredSelection sSelection = (StructuredSelection)selection;
 			if (sSelection.getFirstElement() instanceof String) {
-				String path = (String) sSelection.getFirstElement();
+				String path = (String)sSelection.getFirstElement();
 				updateImage(path);
 			}
 		}
 	}
-	
-	
 
 }

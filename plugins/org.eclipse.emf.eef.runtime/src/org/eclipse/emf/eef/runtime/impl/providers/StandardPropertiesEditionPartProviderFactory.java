@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 	 */
 	private List<IPropertiesEditionPartProvider> editPropertiesPartProviders;
 
-
 	/**
 	 * Default constructor.
 	 */
@@ -36,7 +35,7 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#getProvider(java.lang.Object)
 	 */
 	public IPropertiesEditionPartProvider getProvider(Object key) {
@@ -49,7 +48,7 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#provides(java.lang.Object)
 	 */
 	public boolean provides(Object key) {
@@ -60,8 +59,9 @@ public class StandardPropertiesEditionPartProviderFactory implements IProperties
 		return false;
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProviderFactory#register(org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider)
 	 */
 	public void register(IPropertiesEditionPartProvider editPropertiesPartProvider) {

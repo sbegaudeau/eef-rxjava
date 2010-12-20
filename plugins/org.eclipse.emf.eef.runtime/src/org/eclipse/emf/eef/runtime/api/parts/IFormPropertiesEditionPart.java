@@ -21,7 +21,8 @@ public interface IFormPropertiesEditionPart {
 	/**
 	 * Create the figure in the specified element.
 	 * 
-	 * @param parent the parent
+	 * @param parent
+	 *            the parent
 	 * @return the created view
 	 */
 	public abstract Composite createFigure(Composite parent, FormToolkit widgetFactory);

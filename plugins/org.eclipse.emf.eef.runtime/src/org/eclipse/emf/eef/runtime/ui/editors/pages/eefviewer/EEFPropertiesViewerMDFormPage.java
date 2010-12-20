@@ -17,31 +17,36 @@ import org.eclipse.ui.forms.editor.FormEditor;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class EEFPropertiesViewerMDFormPage extends AbstractEEFMDFormPage {
 
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-md-form-page";  //$NON-NLS-1$
-	
+	public static final String PAGE_ID = "EEF-md-form-page"; //$NON-NLS-1$
+
 	private boolean orientable = true;
+
 	private boolean showValidateAction = true;
 
 	/**
-	 * @param editor the form editor in which this page will be included
-	 * @param pageTitle the title of the page
+	 * @param editor
+	 *            the form editor in which this page will be included
+	 * @param pageTitle
+	 *            the title of the page
 	 */
 	public EEFPropertiesViewerMDFormPage(FormEditor editor, String pageTitle) {
 		super(editor, pageTitle);
 	}
 
 	/**
-	 * @param editor the form editor in which this page will be included
-	 * @param pageTitle the title of the page
+	 * @param editor
+	 *            the form editor in which this page will be included
+	 * @param pageTitle
+	 *            the title of the page
 	 */
-	public EEFPropertiesViewerMDFormPage(FormEditor editor, String pageTitle, boolean isOrientable, boolean showValidatePage) {
+	public EEFPropertiesViewerMDFormPage(FormEditor editor, String pageTitle, boolean isOrientable,
+			boolean showValidatePage) {
 		super(editor, pageTitle);
 		this.orientable = isOrientable;
 		this.showValidateAction = showValidatePage;
@@ -49,12 +54,11 @@ public class EEFPropertiesViewerMDFormPage extends AbstractEEFMDFormPage {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.AbstractEEFMDFormPage#createMasterDetailsBlock()
 	 */
 	protected AbstractEEFMasterDetailsBlock createMasterDetailsBlock() {
 		return new PropertiesViewerMasterDetailsBlock(orientable, showValidateAction);
 	}
-	
-	
 
 }

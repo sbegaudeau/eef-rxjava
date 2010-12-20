@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,26 +37,29 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IPropertiesEditionListener {
-	
+
 	private FormToolkit toolkit;
+
 	private EditingDomain editingDomain;
+
 	protected EObject eObject;
+
 	protected IPropertiesEditionComponent propertiesEditionComponent;
-	
+
 	/**
-     * Manager for error message
-     */
+	 * Manager for error message
+	 */
 	private PropertiesEditionMessageManager messageManager;
 
 	protected PropertiesEditionViewer viewer;
+
 	private AdapterFactory adapterFactory;
 
 	public EEFDetailsPage(FormToolkit toolkit, EditingDomain editingDomain, AdapterFactory adapterFactory) {
 		super();
-		this.toolkit = toolkit; 
+		this.toolkit = toolkit;
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
@@ -82,7 +85,8 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 		this.viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
 		viewer.setDynamicTabHeader(false);
 		viewer.setToolkit(getManagedForm().getToolkit());
-		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
+				IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 	}
 
 	public void selectionChanged(IFormPart part, ISelection selection) {
@@ -95,20 +99,22 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 			if (eObject != null) {
 				if (viewer.getToolkit() == null)
 					viewer.setToolkit(toolkit);
-				viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject));
+				viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
+						eObject));
 				viewer.addPropertiesListener(this);
 			}
 		}
 	}
 
 	private EObject getEObjectFromSelection(ISelection selection) {
-		if (selection instanceof StructuredSelection && (((StructuredSelection)selection).getFirstElement() instanceof EObject))
-			return (EObject) ((StructuredSelection)selection).getFirstElement();
+		if (selection instanceof StructuredSelection
+				&& (((StructuredSelection)selection).getFirstElement() instanceof EObject))
+			return (EObject)((StructuredSelection)selection).getFirstElement();
 		if (selection instanceof EObject)
-			return (EObject) selection;
+			return (EObject)selection;
 		if (selection instanceof IAdaptable && ((IAdaptable)selection).getAdapter(EObject.class) != null)
-			return (EObject) ((IAdaptable)selection).getAdapter(EObject.class);
-			
+			return (EObject)((IAdaptable)selection).getAdapter(EObject.class);
+
 		return null;
 	}
 

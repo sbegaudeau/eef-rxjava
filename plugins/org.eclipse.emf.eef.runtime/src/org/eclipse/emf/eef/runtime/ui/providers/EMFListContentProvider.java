@@ -29,7 +29,8 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 	private boolean nullable;
 
 	/**
-	 * @param nullable define if there is a null value or not
+	 * @param nullable
+	 *            define if there is a null value or not
 	 */
 	public EMFListContentProvider(boolean nullable) {
 		super();
@@ -46,7 +47,7 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
+	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface .viewers.Viewer,
 	 * java.lang.Object, java.lang.Object)
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -75,7 +76,7 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 	private List asList(TreeIterator iter) {
 		List result = new ArrayList();
 		if (nullable)
-			result.add("");  //$NON-NLS-1$
+			result.add(""); //$NON-NLS-1$
 		while (iter.hasNext())
 			result.add(iter.next());
 		return result;

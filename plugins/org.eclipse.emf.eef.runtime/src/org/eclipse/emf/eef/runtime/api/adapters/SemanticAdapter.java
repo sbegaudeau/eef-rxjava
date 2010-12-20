@@ -13,12 +13,12 @@ package org.eclipse.emf.eef.runtime.api.adapters;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * Interface that allows to defines a way to access to the semantic
- * object to edit with editing component  
+ * Interface that allows to defines a way to access to the semantic object to edit with editing component
+ * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public interface SemanticAdapter {
-	
+
 	/**
 	 * @return the semantic element to edit
 	 */

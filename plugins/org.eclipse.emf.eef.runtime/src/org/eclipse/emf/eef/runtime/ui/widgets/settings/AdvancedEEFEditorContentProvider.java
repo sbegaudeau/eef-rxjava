@@ -1,6 +1,13 @@
-/**
- * 
- */
+/*******************************************************************************
+ * Copyright (c) 2008, 2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
 import java.util.ArrayList;
@@ -11,16 +18,15 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- * 
  */
 public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvider {
 
 	private List<Object> choiceOfValues;
+
 	private boolean eefInput = false;
 
 	/**
@@ -55,7 +61,8 @@ public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvi
 	 */
 	public Object[] getElements(Object object) {
 		if (object instanceof EEFEditorSettings) {
-			return ((EEFEditorSettings) object).getSource().eResource().getResourceSet().getResources().toArray();
+			return ((EEFEditorSettings)object).getSource().eResource().getResourceSet().getResources()
+					.toArray();
 		}
 		return super.getElements(object);
 	}
@@ -99,15 +106,15 @@ public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvi
 	 *            the input to process
 	 */
 	private void computeChoiceOfValues(Object input) {
-		Object choiceOfValues2 = ((EEFEditorSettings) input).choiceOfValues(adapterFactory);
+		Object choiceOfValues2 = ((EEFEditorSettings)input).choiceOfValues(adapterFactory);
 		if (choiceOfValues2 instanceof Collection<?>) {
-			for (Object next : ((Collection<?>) choiceOfValues2)) {
+			for (Object next : ((Collection<?>)choiceOfValues2)) {
 				while (next != null) {
 					if (next instanceof EObject) {
 						choiceOfValues.add(next);
-						EObject eContainer = ((EObject) next).eContainer();
+						EObject eContainer = ((EObject)next).eContainer();
 						if (eContainer == null) {
-							next = ((EObject) next).eResource();
+							next = ((EObject)next).eResource();
 						} else {
 							next = eContainer;
 						}

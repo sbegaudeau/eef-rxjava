@@ -115,7 +115,8 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 	 * @param mainResource
 	 *            the main resource.
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters, List<ViewerFilter> brFilters, String title, AdapterFactory adapterFactory, Resource mainResource) {
+	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
+			List<ViewerFilter> brFilters, String title, AdapterFactory adapterFactory, Resource mainResource) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
@@ -149,12 +150,11 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 				if (input instanceof ResourceSet) {
 					resourceSet = (ResourceSet)input;
 				} else if (input instanceof EEFEditorSettings) {
-					if (((EEFEditorSettings) input).getSource().eResource() != null) 
-						resourceSet = ((EEFEditorSettings) input).getSource().eResource().getResourceSet();
+					if (((EEFEditorSettings)input).getSource().eResource() != null)
+						resourceSet = ((EEFEditorSettings)input).getSource().eResource().getResourceSet();
 				}
 				if (resourceSet != null) {
-					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? 
-							TabElementTreeSelectionDialog.this.mainResource
+					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? TabElementTreeSelectionDialog.this.mainResource
 							: resourceSet.getResources().get(0);
 					if (mainResource != null && mainResource == element) {
 						return true;
@@ -200,7 +200,8 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 		PatternFilter patternFilter = new TreeSelectionPatternFilter();
 		patternFilter.setIncludeLeadingWildcard(true);
 
-		FilteredTree filteredTree = new FilteredTree(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL | SWT.RESIZE, patternFilter);
+		FilteredTree filteredTree = new FilteredTree(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL
+				| SWT.RESIZE, patternFilter);
 		// use of EMF facilities
 		final TreeViewer treeViewer = filteredTree.getViewer();
 		treeViewer.setFilters(new ViewerFilter[0]);
@@ -242,7 +243,8 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 							Object o = structuredSelection.getFirstElement();
 							// Check type matching
 							Button okButton = getButton(IDialogConstants.OK_ID);
-							if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
+							if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory))
+									.contains(o)) {
 								selection = structuredSelection;
 								if (okButton != null) {
 									okButton.setEnabled(true);
@@ -353,16 +355,19 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 	}
 
 	public abstract void process(IStructuredSelection selection);
-	
+
 	public void addBusinessRuleFilter(ViewerFilter filter) {
 		this.brFilters.add(filter);
 	}
+
 	public void addFilter(ViewerFilter filter) {
 		this.viewerFilters.add(filter);
 	}
+
 	public void removeBusinessRuleFilter(ViewerFilter filter) {
 		this.brFilters.remove(filter);
 	}
+
 	public void removeFilter(ViewerFilter filter) {
 		this.viewerFilters.remove(filter);
 	}

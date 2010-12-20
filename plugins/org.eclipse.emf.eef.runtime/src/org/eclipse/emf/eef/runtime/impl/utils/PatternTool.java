@@ -27,7 +27,7 @@ public class PatternTool {
 		if (text == null) {
 			return false;
 		}
-		if (pattern == null || pattern == "") {  //$NON-NLS-1$
+		if (pattern == null || pattern == "") { //$NON-NLS-1$
 			return true;
 		}
 		PatternMatcher fNameMatcher = new PatternMatcher(pattern, true);
@@ -79,7 +79,8 @@ public class PatternTool {
 					if (SearchPattern.camelCaseMatch(fPattern, text)) {
 						return true;
 					}
-					// fall through to prefix match if camel case failed (bug 137244)
+					// fall through to prefix match if camel case failed (bug
+					// 137244)
 				default:
 					return startsWithIgnoreCase(text, fPattern);
 			}

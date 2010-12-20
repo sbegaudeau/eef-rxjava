@@ -126,10 +126,12 @@ public class EMFComboViewer extends AbstractListViewer {
 	public void reveal(Object element) {
 		return;
 	}
-	
+
 	/**
 	 * Sets the given ID to the EMFComboViewer
-	 * @param id the ID to give
+	 * 
+	 * @param id
+	 *            the ID to give
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(combo, id);
@@ -222,7 +224,7 @@ public class EMFComboViewer extends AbstractListViewer {
 		setSelection(selection);
 		updating = false;
 	}
-	
+
 	/**
 	 * Sets the viewer readonly or not
 	 * 

@@ -16,26 +16,27 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class PropertiesEditionPartFilter extends ViewerFilter {
 
 	private String key;
-	
+
 	/**
 	 * Default constructor.
-	 * @param key the key of the part to select
+	 * 
+	 * @param key
+	 *            the key of the part to select
 	 */
 	public PropertiesEditionPartFilter(String key) {
 		super();
 		this.key = key;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+	 * 
+	 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+	 *      java.lang.Object)
 	 */
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {

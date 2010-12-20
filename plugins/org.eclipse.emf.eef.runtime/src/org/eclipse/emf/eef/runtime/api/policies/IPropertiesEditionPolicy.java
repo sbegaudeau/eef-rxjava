@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a> A interface that allows to specify a
  *         behavior to edit properties of an eObject. This behavior is parameterized by an
- *         {@link PropertiesEditingContext}.
+ *         {@link PropertiesEditingContext} .
  */
 public interface IPropertiesEditionPolicy {
 

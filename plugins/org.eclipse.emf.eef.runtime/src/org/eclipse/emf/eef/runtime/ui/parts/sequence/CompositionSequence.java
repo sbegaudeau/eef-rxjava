@@ -10,24 +10,22 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.parts.sequence;
 
-
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class CompositionSequence extends CompositionStep {
-	
+
 	public static final String START_SEQUENCE_ID = "start";
-	
+
 	/**
-	 * A start point composition sequence with default ID 
+	 * A start point composition sequence with default ID
 	 */
 	public CompositionSequence() {
 		super(null, START_SEQUENCE_ID);
 	}
 
 	/**
-	 * A sub sequence 
+	 * A sub sequence
 	 */
 	public CompositionSequence(CompositionStep parent, Object id) {
 		super(parent, id);

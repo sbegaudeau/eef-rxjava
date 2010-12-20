@@ -96,7 +96,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		control.setLayoutData(new GridData(GridData.FILL_BOTH));
 		scroll = new ScrolledComposite(control, SWT.V_SCROLL | SWT.H_SCROLL);
 		folder = new CTabFolder(scroll, style);
-	    folder.setSimple(false);
+		folder.setSimple(false);
 		this.allResources = allResources;
 		this.kind = kind;
 		scroll.setContent(folder);
@@ -107,12 +107,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 			/**
 			 * {@inheritDoc}
+			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				listener.updateControlListener();
 			}
-			
+
 		});
 		control.addControlListener(listener);
 	}
@@ -198,14 +199,16 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	public EObject getEObjectFromInput() {
 		EObject result = null;
 		if (getInput() instanceof EObject) {
-			result = (EObject) getInput();
+			result = (EObject)getInput();
 		} else if (getInput() instanceof PropertiesEditingContext) {
 			result = ((PropertiesEditingContext)getInput()).getEObject();
 		}
 		return result;
 	}
-	
-	/* =============================== Filters management =============================== */
+
+	/*
+	 * =============================== Filters management ===============================
+	 */
 
 	/**
 	 * Returns this viewer's filters.
@@ -318,7 +321,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		return result;
 	}
 
-	/* ========================== Component edition management ========================== */
+	/*
+	 * ========================== Component edition management ==========================
+	 */
 
 	/**
 	 * Compute the edition command to perform to update the model
@@ -327,12 +332,13 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 *            the editingDomain where the command have to be performed
 	 * @return the command to perform
 	 */
-//	public CompoundCommand getPropertiesEditionCommand(EditingDomain editingDomain) {
-//		if (getContentProvider() != null)
-//			return ((PropertiesEditionContentProvider)getContentProvider())
-//					.getPropertiesEditionCommand(editingDomain);
-//		return null;
-//	}
+	// public CompoundCommand getPropertiesEditionCommand(EditingDomain
+	// editingDomain) {
+	// if (getContentProvider() != null)
+	// return ((PropertiesEditionContentProvider)getContentProvider())
+	// .getPropertiesEditionCommand(editingDomain);
+	// return null;
+	// }
 
 	/**
 	 * Update and return the given EObject
@@ -341,12 +347,12 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 *            the EObject to update
 	 * @return the updated EObject
 	 */
-//	public EObject getPropertiesEditionObject(EObject eObject) {
-//		if (getContentProvider() != null)
-//			return ((PropertiesEditionContentProvider)getContentProvider())
-//					.getPropertiesEditionObject(eObject);
-//		return null;
-//	}
+	// public EObject getPropertiesEditionObject(EObject eObject) {
+	// if (getContentProvider() != null)
+	// return ((PropertiesEditionContentProvider)getContentProvider())
+	// .getPropertiesEditionObject(eObject);
+	// return null;
+	// }
 
 	/**
 	 * Validate the model and return the resulting Diagnostic
@@ -361,7 +367,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		return null;
 	}
 
-	/* ============================== Selection management ============================== */
+	/*
+	 * ============================== Selection management ==============================
+	 */
 
 	/**
 	 * {@inheritDoc}
@@ -405,7 +413,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		return null;
 	}
 
-	/* ============================== Graphical management ============================== */
+	/*
+	 * ============================== Graphical management ==============================
+	 */
 
 	/**
 	 * {@inheritDoc}
@@ -436,14 +446,14 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	/**
 	 * @param propertiesEditionContentProvider
-	 * @return 
+	 * @return
 	 */
 	public CompositePropertiesEditionPart getSelectedPart() {
 		PropertiesEditionContentProvider propertiesEditionContentProvider = (PropertiesEditionContentProvider)getContentProvider();
 		String selectedPartTitle = folder.getSelection().getText();
-		return (CompositePropertiesEditionPart) propertiesEditionContentProvider.getPropertiesEditionPart(kind, selectedPartTitle);
+		return (CompositePropertiesEditionPart)propertiesEditionContentProvider.getPropertiesEditionPart(
+				kind, selectedPartTitle);
 	}
-
 
 	/**
 	 * Create the control content
@@ -466,21 +476,23 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param propertiesEditionProvider
 	 * @param partsList
 	 */
-	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider, String[] partsList) {
+	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider,
+			String[] partsList) {
 		resetTab();
 		List<String> selectedParts = new ArrayList<String>();
 		if (kind == 1) {
 			toolkit.adapt(folder, true, true);
 			toolkit.getColors().initializeSectionToolBarColors();
-			folder.setSelectionBackground(new Color []{
-					toolkit.getColors().getColor(IFormColors.H_GRADIENT_END),
-					toolkit.getColors().getColor(IFormColors.H_GRADIENT_START) }, new int []{ 25 }, true);
+			folder.setSelectionBackground(
+					new Color[] {toolkit.getColors().getColor(IFormColors.H_GRADIENT_END),
+							toolkit.getColors().getColor(IFormColors.H_GRADIENT_START)}, new int[] {25}, true);
 			folder.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 			folder.setSelectionForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 		}
 		for (int i = 0; i < partsList.length; i++) {
 			String nextComponentKey = partsList[i];
-			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind, nextComponentKey);
+			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind,
+					nextComponentKey);
 			if (selectPart(nextComponentKey, part)) {
 				selectedParts.add(nextComponentKey);
 				addPartTab(propertiesEditionProvider, part, nextComponentKey);
@@ -541,7 +553,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		}
 	}
 
-	/* ================================= Search methods ================================= */
+	/*
+	 * ================================= Search methods =================================
+	 */
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -572,8 +586,10 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		// TODO Auto-generated method stub
 
 	}
-	
-	/* ================================= Scroll management ================================= */
+
+	/*
+	 * ================================= Scroll management =================================
+	 */
 	/**
 	 * update the scroll composite size
 	 */
@@ -582,28 +598,30 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			scroll.setMinSize(folder.getSelection().getControl().computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		}
 	}
-	
-	private class ItemListener implements ControlListener{
+
+	private class ItemListener implements ControlListener {
 
 		Control listenedControl = null;
-		
+
 		/**
 		 * {@inheritDoc}
+		 * 
 		 * @see org.eclipse.swt.events.ControlListener#controlMoved(org.eclipse.swt.events.ControlEvent)
 		 */
 		public void controlMoved(ControlEvent e) {
 			// Nothing to do
-			
+
 		}
 
 		/**
 		 * {@inheritDoc}
+		 * 
 		 * @see org.eclipse.swt.events.ControlListener#controlResized(org.eclipse.swt.events.ControlEvent)
 		 */
 		public void controlResized(ControlEvent e) {
 			updateScrollSize();
 		}
-		
+
 		/**
 		 * update listeners managing scroll composite size
 		 */
@@ -611,16 +629,14 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			if (listener.listenedControl != null) {
 				listener.listenedControl.removeControlListener(listener);
 			}
-			Control control2 = folder.getSelection().getControl();		
+			Control control2 = folder.getSelection().getControl();
 			if (control2 != null) {
 				listener.listenedControl = control2;
 				control2.addControlListener(listener);
-			}		
-			
+			}
+
 		}
 
-		
 	}
-
 
 }

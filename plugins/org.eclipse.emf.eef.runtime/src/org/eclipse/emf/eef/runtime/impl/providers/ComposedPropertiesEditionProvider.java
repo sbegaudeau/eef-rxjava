@@ -19,8 +19,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
- * An implementation of {@link PropertiesEditingProvider} composing several
- * {@link PropertiesEditingProvider}.
+ * An implementation of {@link PropertiesEditingProvider} composing several {@link PropertiesEditingProvider}.
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
@@ -73,6 +72,7 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
@@ -85,7 +85,9 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+	 *      java.lang.String)
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
 		for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
@@ -97,19 +99,23 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+	 *      java.lang.Class)
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, Class refinement) {
-	    for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
-	        if (editPropertiesProvider.provides(editingContext, refinement))
-	          return true;
-	      }
-	      return false;
+		for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
+			if (editPropertiesProvider.provides(editingContext, refinement))
+				return true;
+		}
+		return false;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+	 *      java.lang.String, java.lang.Class)
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part, Class refinement) {
 		for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
@@ -121,9 +127,12 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+	 *      java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
+			String mode) {
 		for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(editingContext))
 				return editPropertiesProvider.getPropertiesEditingComponent(editingContext, mode);
@@ -133,9 +142,12 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+	 *      java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
+			String mode, String part) {
 		for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(editingContext, part))
 				return editPropertiesProvider.getPropertiesEditingComponent(editingContext, mode, part);
@@ -145,15 +157,18 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+	 *      java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
+			String mode, String part, Class refinement) {
 		for (PropertiesEditingProvider editPropertiesProvider : editPropertiesProviders) {
 			if (editPropertiesProvider.provides(editingContext, part, refinement))
-				return editPropertiesProvider.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+				return editPropertiesProvider.getPropertiesEditingComponent(editingContext, mode, part,
+						refinement);
 		}
 		return null;
 	}
 
-	
 }

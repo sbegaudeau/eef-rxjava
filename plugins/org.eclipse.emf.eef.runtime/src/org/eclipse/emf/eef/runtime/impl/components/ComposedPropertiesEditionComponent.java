@@ -144,9 +144,10 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 		}
 		return new NullCompositePropertiesEditionPart(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#getEditingContext()
 	 */
 	public PropertiesEditingContext getEditingContext() {
@@ -172,19 +173,19 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 				propertiesEditionComponent.delayedFirePropertiesChanged(event);
 		}
 	}
-	
+
 	public void activate() {
 		for (IPropertiesEditionComponent propertiesEditionComponent : subComponents) {
 			propertiesEditionComponent.activate();
 		}
 	}
-	
+
 	public void deactivate() {
 		for (IPropertiesEditionComponent propertiesEditionComponent : subComponents) {
 			propertiesEditionComponent.deactivate();
 		}
 	}
-	
+
 	/**
 	 * Add a new component of the managed components
 	 * 
@@ -240,7 +241,8 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, EEFRuntimeMessages.ComposedPropertiesEditionComponent_eef_validation_diagnostic, 0,
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
+				EEFRuntimeMessages.ComposedPropertiesEditionComponent_eef_validation_diagnostic, 0,
 				EEFRuntimeMessages.ComposedPropertiesEditionComponent_no_problem, null);
 		for (IPropertiesEditionComponent component : subComponents) {
 			Diagnostic validateValue = component.validateValue(event);
@@ -257,7 +259,8 @@ public class ComposedPropertiesEditionComponent implements IPropertiesEditionCom
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validate()
 	 */
 	public Diagnostic validate() {
-		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, EEFRuntimeMessages.ComposedPropertiesEditionComponent_eef_validation_diagnostic, Status.OK,
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
+				EEFRuntimeMessages.ComposedPropertiesEditionComponent_eef_validation_diagnostic, Status.OK,
 				EEFRuntimeMessages.ComposedPropertiesEditionComponent_no_problem, null);
 		for (IPropertiesEditionComponent component : subComponents) {
 			diagnostic.getChildren().add(component.validate());

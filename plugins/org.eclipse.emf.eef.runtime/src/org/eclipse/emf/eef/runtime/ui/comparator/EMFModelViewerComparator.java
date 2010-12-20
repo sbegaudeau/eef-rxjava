@@ -41,8 +41,8 @@ public class EMFModelViewerComparator extends ViewerComparator {
 		final String text2 = labelProvider.getColumnText(o2, columnIndex);
 		int r = order * text1.compareTo(text2);
 		if (r == 0) {
-			String text11 = "";  //$NON-NLS-1$
-			String text22 = "";  //$NON-NLS-1$
+			String text11 = ""; //$NON-NLS-1$
+			String text22 = ""; //$NON-NLS-1$
 			if (columnIndex == 0) {
 				text11 = labelProvider.getColumnText(o1, 1);
 				text22 = labelProvider.getColumnText(o2, 1);
@@ -51,7 +51,7 @@ public class EMFModelViewerComparator extends ViewerComparator {
 				text11 = labelProvider.getColumnText(o1, 0);
 				text22 = labelProvider.getColumnText(o2, 0);
 			}
-			if (text11 != null && text22 != null && text11 != "" && text22 != "") {   //$NON-NLS-1$//$NON-NLS-2$
+			if (text11 != null && text22 != null && text11 != "" && text22 != "") { //$NON-NLS-1$//$NON-NLS-2$
 				return order * text11.compareToIgnoreCase(text22);
 			}
 		}

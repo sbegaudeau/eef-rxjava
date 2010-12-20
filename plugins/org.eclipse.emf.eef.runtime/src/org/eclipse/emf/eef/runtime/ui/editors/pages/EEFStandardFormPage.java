@@ -36,7 +36,7 @@ public class EEFStandardFormPage extends FormPage {
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-std-form-page";  //$NON-NLS-1$
+	public static final String PAGE_ID = "EEF-std-form-page"; //$NON-NLS-1$
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -55,18 +55,18 @@ public class EEFStandardFormPage extends FormPage {
 
 	/**
 	 * The folder for the tab
-	 */	
+	 */
 	protected PropertiesEditionViewer viewer;
 
 	private AdapterFactory adapterFactory;
-	
 
 	/**
 	 * @param editor
 	 *            the form editor in which this page will be included
 	 */
-	public EEFStandardFormPage(FormEditor editor, String pageTitle, EditingDomain editingDomain, AdapterFactory adapterFactory) {
-		super(editor, PAGE_ID, pageTitle); 
+	public EEFStandardFormPage(FormEditor editor, String pageTitle, EditingDomain editingDomain,
+			AdapterFactory adapterFactory) {
+		super(editor, PAGE_ID, pageTitle);
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
@@ -86,7 +86,8 @@ public class EEFStandardFormPage extends FormPage {
 		viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 		viewer.setDynamicTabHeader(false);
 		viewer.setToolkit(getManagedForm().getToolkit());
-		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
+				IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 
 	}
 
@@ -106,11 +107,13 @@ public class EEFStandardFormPage extends FormPage {
 	 *            the input of the page
 	 */
 	public void setInput(EObject newEObject) {
-		viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, newEObject));
+		viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
+				newEObject));
 	}
-	
+
 	/**
 	 * Sets the image to be rendered to the left of the title.
+	 * 
 	 * @param image
 	 *            the title image
 	 */
@@ -118,10 +121,12 @@ public class EEFStandardFormPage extends FormPage {
 		if (image != null && form != null)
 			form.setImage(image);
 	}
-	
+
 	/**
 	 * Add the given filter to the page viewer
-	 * @param filter the page viewer filter
+	 * 
+	 * @param filter
+	 *            the page viewer filter
 	 */
 	public void addFilter(ViewerFilter filter) {
 		viewer.addFilter(filter);

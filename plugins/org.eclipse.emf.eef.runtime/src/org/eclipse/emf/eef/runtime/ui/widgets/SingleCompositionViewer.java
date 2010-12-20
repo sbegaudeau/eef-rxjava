@@ -43,7 +43,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.SharedScrolledComposite;
 
 /**
- * 
  * @param <T>
  */
 public class SingleCompositionViewer<T extends EObject> extends Composite {
@@ -51,15 +50,15 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	EObjectFlatComboViewer comboViewer;
 
 	/**
-	 * The Form tool kit use to use this widget in an Eclipse Forms compliant
-	 * mode
+	 * The Form tool kit use to use this widget in an Eclipse Forms compliant mode
 	 */
 	private FormToolkit widgetFactory;
 
 	/**
 	 * The adapter factory.
 	 */
-	private AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+	private AdapterFactory adapterFactory = new ComposedAdapterFactory(
+			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	/**
 	 * The viewer to display the feature.
@@ -77,8 +76,7 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	private Label label;
 
 	/**
-	 * The top part of the feature (usually the checkbox and the flat combo
-	 * viewer).
+	 * The top part of the feature (usually the checkbox and the flat combo viewer).
 	 */
 	private Composite top;
 
@@ -114,8 +112,8 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	 * @param kind
 	 *            the kind of the part.
 	 */
-	public SingleCompositionViewer(String label, Composite parent, int style,
-			FormToolkit widgetFactory, int kind, boolean isRequired) {
+	public SingleCompositionViewer(String label, Composite parent, int style, FormToolkit widgetFactory,
+			int kind, boolean isRequired) {
 		super(parent, style);
 		this.layout(true);
 		this.isRequired = isRequired;
@@ -129,9 +127,8 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * Creates the top part of the single composition viewer. The top includes
-	 * the check box to activate or not the widget and the flat combo viewer to
-	 * select what kind of object to instantiate.
+	 * Creates the top part of the single composition viewer. The top includes the check box to activate or
+	 * not the widget and the flat combo viewer to select what kind of object to instantiate.
 	 * 
 	 * @param label
 	 *            the label of the feature
@@ -150,9 +147,8 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * This method is used to re-create the top part without the checkbox. The
-	 * reason to do this is that the feature lower bound is higher than 1. In
-	 * this case, the single composition viewer cannot be disable.
+	 * This method is used to re-create the top part without the checkbox. The reason to do this is that the
+	 * feature lower bound is higher than 1. In this case, the single composition viewer cannot be disable.
 	 */
 	private void resetTopWithoutCheckBox() {
 		top.dispose();
@@ -181,8 +177,7 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	private void createLabel(String label, Composite top) {
 		this.label = new Label(top, SWT.NONE);
 		if (isRequired)
-			this.label.setFont(JFaceResources.getFontRegistry().getBold(
-					JFaceResources.DEFAULT_FONT));
+			this.label.setFont(JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT));
 		this.label.setText(label);
 
 	}
@@ -206,35 +201,31 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	 */
 	private void createFlatComboViewer(Composite top) {
 		comboViewer = new EObjectFlatComboViewer(top, false);
-		comboViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-				adapterFactory));
+		comboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		comboViewer.setEnabled(true);
 		GridData matchData = new GridData(GridData.FILL_HORIZONTAL);
 		comboViewer.setLayoutData(matchData);
 		if (setActiveEEFViewerCheckBox != null) {
-			comboViewer
-					.addSelectionChangedListener(new ISelectionChangedListener() {
+			comboViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
-						public void selectionChanged(SelectionChangedEvent event) {
-							setActiveEEFViewerCheckBox.setSelection(true);
+				public void selectionChanged(SelectionChangedEvent event) {
+					setActiveEEFViewerCheckBox.setSelection(true);
 
-						}
-					});
+				}
+			});
 
-			setActiveEEFViewerCheckBox
-					.addSelectionListener(new SelectionListener() {
+			setActiveEEFViewerCheckBox.addSelectionListener(new SelectionListener() {
 
-						public void widgetSelected(SelectionEvent e) {
-							if (getCheckBoxSelection())
-								comboViewer.getSelectionAdapter(false)
-										.widgetSelected(e);
+				public void widgetSelected(SelectionEvent e) {
+					if (getCheckBoxSelection())
+						comboViewer.getSelectionAdapter(false).widgetSelected(e);
 
-						}
+				}
 
-						public void widgetDefaultSelected(SelectionEvent e) {
+				public void widgetDefaultSelected(SelectionEvent e) {
 
-						}
-					});
+				}
+			});
 		}
 	}
 
@@ -270,7 +261,6 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @param newValue
 	 */
 	private void updateEEFViewer(EObject newValue) {
@@ -306,14 +296,13 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	 * @param feature
 	 *            the feature to display.
 	 * @param allResources
-	 *            the resource set required to get all instanciable types in the
-	 *            hierarchy of the feature type.
+	 *            the resource set required to get all instanciable types in the hierarchy of the feature
+	 *            type.
 	 */
-	public void setInput(EObject current, EReference feature,
-			ResourceSet allResources) {
+	public void setInput(EObject current, EReference feature, ResourceSet allResources) {
 
-		List<EClass> instanciableTypesInHierarchy = EEFUtils
-				.instanciableTypesInHierarchy(feature.getEType(), allResources);
+		List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(feature.getEType(),
+				allResources);
 
 		instanciableObjectsInHierarchy = new ArrayList<EObject>();
 		for (EClass eClass : instanciableTypesInHierarchy) {
@@ -336,16 +325,16 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	 */
 	public EObject getElement() {
 		if (comboViewer.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) comboViewer
-					.getSelection()).getFirstElement();
+			Object firstElement = ((StructuredSelection)comboViewer.getSelection()).getFirstElement();
 			if (firstElement instanceof EObject) {
 				if (kind == 0 && viewer != null) {
-//					firstElement = viewer
-//							.getPropertiesEditionObject(((EObject) firstElement));
-					//TODO: getPropertiesEditionObject doesn't exists anymore, it must be a getInput() instead
+					// firstElement = viewer
+					// .getPropertiesEditionObject(((EObject) firstElement));
+					// TODO: getPropertiesEditionObject doesn't exists anymore,
+					// it must be a getInput() instead
 					firstElement = viewer.getInput();
 				}
-				return (EObject) firstElement;
+				return (EObject)firstElement;
 			}
 		}
 		return null;
@@ -374,7 +363,6 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @param provider
 	 */
 	public void setLabelProvider(AdapterFactoryLabelProvider provider) {
@@ -382,17 +370,13 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @param structuredSelection
 	 * @param feature
 	 */
-	public void setSelection(StructuredSelection structuredSelection,
-			EReference feature) {
-		EObject selectedObject = (EObject) ((EObject) structuredSelection
-				.getFirstElement()).eGet(feature);
+	public void setSelection(StructuredSelection structuredSelection, EReference feature) {
+		EObject selectedObject = (EObject)((EObject)structuredSelection.getFirstElement()).eGet(feature);
 		if (selectedObject != null) {
-			StructuredSelection selection = new StructuredSelection(
-					selectedObject);
+			StructuredSelection selection = new StructuredSelection(selectedObject);
 			comboViewer.setSelection(selection);
 			if (hasFeatures(selectedObject)) {
 				if (viewer == null)
@@ -407,18 +391,15 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @param editingDomain
 	 */
 	private void initViewer(EditingDomain editingDomain) {
 		if (editingDomain != null)
-			viewer.setContentProvider(new PropertiesEditionContentProvider(
-					adapterFactory,
+			viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
 					IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 		else {
 			try {
-				viewer.setContentProvider(new PropertiesEditionContentProvider(
-						adapterFactory,
+				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
 						IPropertiesEditionComponent.BATCH_MODE));
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -427,7 +408,6 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @param editingDomain
 	 */
 	public void init(EditingDomain editingDomain) {
@@ -436,7 +416,6 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public boolean getCheckBoxSelection() {
@@ -452,7 +431,6 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * 
 	 * @param value
 	 */
 	public void setEnable(boolean value) {
@@ -461,8 +439,8 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * Returns whether the given eObject has one feature at least. This method
-	 * is usually used to know whether to display the check box or not.
+	 * Returns whether the given eObject has one feature at least. This method is usually used to know whether
+	 * to display the check box or not.
 	 * 
 	 * @param eObject
 	 *            the eObject.
@@ -475,8 +453,7 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 	}
 
 	/**
-	 * Reflows this section and all the parents up the hierarchy until a
-	 * SharedScrolledComposite is reached.
+	 * Reflows this section and all the parents up the hierarchy until a SharedScrolledComposite is reached.
 	 */
 	protected void reflow() {
 		Composite c = this;
@@ -492,7 +469,7 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 			c.layout(true);
 			c = c.getParent();
 			if (c instanceof SharedScrolledComposite) {
-				((SharedScrolledComposite) c).reflow(true);
+				((SharedScrolledComposite)c).reflow(true);
 				break;
 			}
 		}

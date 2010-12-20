@@ -89,8 +89,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	private Form scrolledForm;
 
 	/**
-     * Manager for error message
-     */
+	 * Manager for error message
+	 */
 	private PropertiesEditionMessageManager messageManager;
 
 	/**
@@ -113,7 +113,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		this.propertySheetPage = aTabbedPropertySheetPage;
 		this.parent = parent;
 		scrolledForm = getWidgetFactory().createForm(parent);
-		scrolledForm.getBody().setLayout(new GridLayout());		
+		scrolledForm.getBody().setLayout(new GridLayout());
 		scrolledForm.getBody().setLayoutData(new GridData(GridData.FILL_BOTH));
 		container = getWidgetFactory().createComposite(scrolledForm.getBody());
 		GridLayout containerLayout = new GridLayout();
@@ -159,18 +159,22 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	private void refreshComponent(String descriptor) {
 		PropertiesEditingProvider provider = getProvider(eObject);
 		if (provider != null) {
-			propertiesEditionComponent = provider.getPropertiesEditingComponent(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject), IPropertiesEditionComponent.LIVE_MODE);
+			propertiesEditionComponent = provider.getPropertiesEditingComponent(
+					new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject),
+					IPropertiesEditionComponent.LIVE_MODE);
 			if (propertiesEditionComponent != null) {
 				PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 				propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 				propertiesEditionComponent.addListener(this);
-				IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent.getPropertiesEditionPart(1, descriptor);
+				IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent
+						.getPropertiesEditionPart(1, descriptor);
 				if (propertiesEditionPart instanceof IFormPropertiesEditionPart) {
 					for (int i = 0; i < container.getChildren().length; i++) {
 						Composite child = (Composite)container.getChildren()[i];
 						child.dispose();
 					}
-					Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart).createFigure(container, getWidgetFactory());
+					Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart)
+							.createFigure(container, getWidgetFactory());
 					if (editComposite != null) {
 						editComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 						container.layout();
@@ -256,16 +260,20 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 
 		} catch (SecurityException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} catch (NoSuchFieldException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} catch (IllegalArgumentException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} catch (IllegalAccessException e) {
 
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.PropertiesEditionSection_descriptorToTab_not_found, e);
 		} finally {
 			if (descriptorToTabField != null) {
 				descriptorToTabField.setAccessible(oldAccessible);
@@ -307,7 +315,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		try {
 			return source.getClass().getDeclaredMethod(name, argsType);
 		} catch (Exception e) {
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_method_not_found + name, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.PropertiesEditionSection_method_not_found + name, e);
 		}
 		return null;
 	}
@@ -325,7 +334,9 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		try {
 			return method.invoke(source, args);
 		} catch (Exception e) {
-			EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionSection_error_occured_on + method.getName() + EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
+			EEFRuntimePlugin.getDefault().logError(
+					EEFRuntimeUIMessages.PropertiesEditionSection_error_occured_on + method.getName()
+							+ EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
 		}
 		return null;
 	}
@@ -338,7 +349,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	public boolean select(Object toTest) {
 		EObject eObj = resolveSemanticObject(toTest);
 		if (eObj != null) {
-			return getProvider(eObj)!=null;
+			return getProvider(eObj) != null;
 		}
 		return false;
 	}
@@ -349,8 +360,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 
 	private void handleChange(IPropertiesEditionEvent event) {
 		// do not handle changes if you are in initialization.
-//		if (viewer.isInitializing())
-//			return;
+		// if (viewer.isInitializing())
+		// return;
 		messageManager.processMessage(event);
 	}
 

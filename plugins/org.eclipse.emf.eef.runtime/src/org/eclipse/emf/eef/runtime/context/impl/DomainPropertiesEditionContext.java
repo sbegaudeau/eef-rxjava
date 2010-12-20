@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,29 +27,42 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 	 * The domain where edit the EObject
 	 */
 	protected EditingDomain editingDomain;
-	
+
 	/**
-	 * @param parentContext the parent context
-	 * @param editionComponent editingComponent holding the EObject editing
-	 * @param domain domain where to perform commands
-	 * @param adapterFactory adapterFactory to use to get editing providers
-	 * @param eObject eObject to edit
+	 * @param parentContext
+	 *            the parent context
+	 * @param editionComponent
+	 *            editingComponent holding the EObject editing
+	 * @param domain
+	 *            domain where to perform commands
+	 * @param adapterFactory
+	 *            adapterFactory to use to get editing providers
+	 * @param eObject
+	 *            eObject to edit
 	 */
-	public DomainPropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent editionComponent, EditingDomain domain, AdapterFactory adapterFactory, EObject eObject) {
+	public DomainPropertiesEditionContext(PropertiesEditingContext parentContext,
+			IPropertiesEditionComponent editionComponent, EditingDomain domain,
+			AdapterFactory adapterFactory, EObject eObject) {
 		super(parentContext, editionComponent, eObject, adapterFactory);
 		this.editingDomain = domain;
 		this.changeRecorder = new ChangeRecorder(getResourceSet());
 	}
 
 	/**
-	 * @param editionComponent editingComponent holding the EObject editing
-	 * @param domain domain where to perform commands
-	 * @param adapterFactory adapterFactory to use to get editing providers
-	 * @param eObject eObject to edit
-	 * @param resourceSet specific ResourceSet to use
+	 * @param editionComponent
+	 *            editingComponent holding the EObject editing
+	 * @param domain
+	 *            domain where to perform commands
+	 * @param adapterFactory
+	 *            adapterFactory to use to get editing providers
+	 * @param eObject
+	 *            eObject to edit
+	 * @param resourceSet
+	 *            specific ResourceSet to use
 	 * @deprecated no specific resourceSet must be used.
 	 */
-	public DomainPropertiesEditionContext(IPropertiesEditionComponent editionComponent, EditingDomain domain, AdapterFactory adapterFactory, EObject eObject, ResourceSet resourceSet) {
+	public DomainPropertiesEditionContext(IPropertiesEditionComponent editionComponent, EditingDomain domain,
+			AdapterFactory adapterFactory, EObject eObject, ResourceSet resourceSet) {
 		super(null, editionComponent, eObject, adapterFactory);
 		this.editingDomain = domain;
 		this.changeRecorder = new ChangeRecorder(getResourceSet());
@@ -64,6 +77,7 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext#getResourceSet()
 	 */
 	public ResourceSet getResourceSet() {

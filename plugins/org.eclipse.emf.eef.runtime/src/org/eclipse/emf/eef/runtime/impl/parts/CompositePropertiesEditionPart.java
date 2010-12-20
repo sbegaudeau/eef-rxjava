@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,15 +40,15 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	protected Composite view;
 
 	/**
-	 * Helper to use to create the part. 
+	 * Helper to use to create the part.
 	 */
 	protected PartComposer composer;
-	
+
 	/**
 	 * The message manager.
 	 */
 	protected IMessageManager messageManager;
-	
+
 	/**
 	 * The adapter factory.
 	 */
@@ -58,12 +58,12 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * The edited element
 	 */
 	protected EObject current;
-	
+
 	/**
 	 * the current ResourceSet
 	 */
 	protected ResourceSet resourceSet;
-	
+
 	/**
 	 * Defines if part has changed
 	 */
@@ -79,11 +79,12 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 		this.propertiesEditionComponent = editionComponent;
 		this.adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#setContext(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.resource.ResourceSet)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#setContext(org.eclipse.emf.ecore.EObject,
+	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void setContext(EObject eObject, ResourceSet allResources) {
 		this.current = eObject;
@@ -112,7 +113,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	public void handleNotificationEvent(Notification event) {
 		partHasChanged = true;
 	}
-	
+
 	/**
 	 * Return <code>true</code> if part has changed
 	 * 
@@ -132,12 +133,13 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getObserver(java.lang.String)
 	 */
 	public ISWTObservableValue getObserver(String key) {
 		return null;
 	}
-	
+
 	/**
 	 * Refresh the part
 	 */
@@ -156,5 +158,5 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 			next.dispose();
 		}
 	}
-	
+
 }

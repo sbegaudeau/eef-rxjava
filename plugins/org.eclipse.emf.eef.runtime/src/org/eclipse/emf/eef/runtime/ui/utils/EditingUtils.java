@@ -23,29 +23,33 @@ import org.eclipse.ui.PlatformUI;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class EditingUtils {
-	
+
 	/**
-	 * @param part the workbench part managing the editing domain
+	 * @param part
+	 *            the workbench part managing the editing domain
 	 * @return if provided the editingDomain of the given workbench part
 	 */
 	public static EditingDomain getResourceSetFromEditor(IWorkbenchPart part) {
 		EditingDomain editingDomain = null;
-			if (part instanceof IEditingDomainProvider)
-				editingDomain = ((IEditingDomainProvider)part).getEditingDomain();
-			if (part instanceof IEditorPart) {
-				if ((((IEditorPart)part).getAdapter(IEditingDomainProvider.class)) != null)
-					editingDomain = ((IEditingDomainProvider)((IEditorPart)part)
-							.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
-				else if ((((IEditorPart)part).getAdapter(EditingDomain.class)) != null)
-					editingDomain = (EditingDomain)((IEditorPart)part).getAdapter(EditingDomain.class);
-			}
-		return editingDomain; 
+		if (part instanceof IEditingDomainProvider)
+			editingDomain = ((IEditingDomainProvider)part).getEditingDomain();
+		if (part instanceof IEditorPart) {
+			if ((((IEditorPart)part).getAdapter(IEditingDomainProvider.class)) != null)
+				editingDomain = ((IEditingDomainProvider)((IEditorPart)part)
+						.getAdapter(IEditingDomainProvider.class)).getEditingDomain();
+			else if ((((IEditorPart)part).getAdapter(EditingDomain.class)) != null)
+				editingDomain = (EditingDomain)((IEditorPart)part).getAdapter(EditingDomain.class);
+		}
+		return editingDomain;
 	}
-	
+
 	/**
 	 * Set an id to a given widget.
-	 * @param widget the widget where put the ID
-	 * @param value the ID to put
+	 * 
+	 * @param widget
+	 *            the widget where put the ID
+	 * @param value
+	 *            the ID to put
 	 */
 	public static void setID(Control widget, Object value) {
 		if (widget != null)
@@ -54,7 +58,9 @@ public class EditingUtils {
 
 	/**
 	 * Return the ID of a widget?
-	 * @param widget the widget to inspect
+	 * 
+	 * @param widget
+	 *            the widget to inspect
 	 * @return the ID of the widget
 	 */
 	public static Object getID(Control widget) {
@@ -65,8 +71,11 @@ public class EditingUtils {
 
 	/**
 	 * Set the EEF type of widget.
-	 * @param widget the widget where put the ID
-	 * @param value the type of the widget
+	 * 
+	 * @param widget
+	 *            the widget where put the ID
+	 * @param value
+	 *            the type of the widget
 	 */
 	public static void setEEFtype(Control widget, String value) {
 		if (widget != null)
@@ -75,7 +84,9 @@ public class EditingUtils {
 
 	/**
 	 * Return the ID of a widget?
-	 * @param widget the widget to inspect
+	 * 
+	 * @param widget
+	 *            the widget to inspect
 	 * @return the ID of the widget
 	 */
 	public static String getEEFType(Control widget) {
@@ -86,14 +97,13 @@ public class EditingUtils {
 		}
 		return UIConstants.UNKNOW_EEF_TYPE;
 	}
-	
+
 	/**
 	 * @return platform shell
 	 */
 	public static Shell getShell() {
 		Shell theShell = null;
-		if (PlatformUI.getWorkbench() != null
-				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
+		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
 			theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		theShell = new Shell();
 		return theShell;

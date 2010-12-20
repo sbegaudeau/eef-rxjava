@@ -45,10 +45,9 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 
 /**
- * Base class for a complex section composite. This composite has a label, a
- * table that describes a tree structure, and four buttons on the side of the
- * table to add an element into the table, remove selected element(s), move up
- * or down the selected element.
+ * Base class for a complex section composite. This composite has a label, a table that describes a tree
+ * structure, and four buttons on the side of the table to add an element into the table, remove selected
+ * element(s), move up or down the selected element.
  * 
  * @author Remi SCHNEKENBURGER
  * @author Patrick Tessier
@@ -56,32 +55,31 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class ReferencesTable implements
-		IPropertiesFilteredWidget {
+public class ReferencesTable implements IPropertiesFilteredWidget {
 
 	/**
 	 * Image for the add element button.
 	 */
-	final protected static Image NEW_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif"); //$NON-NLS-1$
+	final protected static Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16
+			+ "Add_16x16.gif"); //$NON-NLS-1$
 
 	/**
 	 * Image for the delete element button.
 	 */
-	final protected static Image DELETE_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "Delete_16x16.gif"); //$NON-NLS-1$
+	final protected static Image DELETE_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16
+			+ "Delete_16x16.gif"); //$NON-NLS-1$
 
 	/**
 	 * Image for the up button.
 	 */
-	final protected static Image UP_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowUp_16x16.gif"); //$NON-NLS-1$
+	final protected static Image UP_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16
+			+ "ArrowUp_16x16.gif"); //$NON-NLS-1$
 
 	/**
 	 * Image for the down button.
 	 */
-	final protected static Image DOWN_ELEMENT_IMG = EEFRuntimePlugin
-			.getImage(EEFRuntimePlugin.ICONS_16x16 + "ArrowDown_16x16.gif"); //$NON-NLS-1$
+	final protected static Image DOWN_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16
+			+ "ArrowDown_16x16.gif"); //$NON-NLS-1$
 
 	/** list of element that we want to display * */
 	private Object input;
@@ -142,18 +140,18 @@ public class ReferencesTable implements
 	private Listener tableListener;
 
 	private int upperBound = -1;
+
 	private int lowerBound = 0;
+
 	/**
-	 * The listener used by the client to handle business events (Add, Remove,
-	 * Move, NavigateTo)
+	 * The listener used by the client to handle business events (Add, Remove, Move, NavigateTo)
 	 */
 	private ReferencesTableListener referencesTableListener;
 
 	private String labelToDisplay;
 
 	/**
-	 * The Form tool kit use to use this widget in an Eclipse Forms compliant
-	 * mode
+	 * The Form tool kit use to use this widget in an Eclipse Forms compliant mode
 	 */
 	private FormToolkit widgetFactory;
 
@@ -180,7 +178,7 @@ public class ReferencesTable implements
 	protected List<ViewerFilter> filters;
 
 	/**
-	 * ContentProvider of the table 
+	 * ContentProvider of the table
 	 */
 	private IStructuredContentProvider contentProvider;
 
@@ -261,7 +259,7 @@ public class ReferencesTable implements
 	public void createControls(Composite parent) {
 		composite = createComposite(parent);
 		if (parent instanceof ExpandableComposite) {
-			((ExpandableComposite) parent).setClient(composite);
+			((ExpandableComposite)parent).setClient(composite);
 		}
 		FormLayout formLayout = new FormLayout();
 		formLayout.marginTop = 7;
@@ -276,11 +274,9 @@ public class ReferencesTable implements
 		Control helpButton = null;
 		if (helpText != null) {
 			if (widgetFactory != null) {
-				helpButton = FormUtils.createHelpButton(widgetFactory,
-						composite, helpText, null); 
+				helpButton = FormUtils.createHelpButton(widgetFactory, composite, helpText, null);
 			} else {
-				helpButton = SWTUtils.createHelpButton(composite, helpText,
-						null); 
+				helpButton = SWTUtils.createHelpButton(composite, helpText, null);
 			}
 			helpButton.setLayoutData(data);
 		}
@@ -298,11 +294,9 @@ public class ReferencesTable implements
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
 		if (helpText != null) {
-			data.right = new FormAttachment(helpButton,
-					-ITabbedPropertyConstants.HSPACE);
+			data.right = new FormAttachment(helpButton, -ITabbedPropertyConstants.HSPACE);
 		} else {
-			data.right = new FormAttachment(100,
-					-ITabbedPropertyConstants.HSPACE);
+			data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
 		}
 		removeButton.setLayoutData(data);
 		removeButton.addMouseListener(removeButtonlistener);
@@ -316,8 +310,7 @@ public class ReferencesTable implements
 		// data.top = new FormAttachment(label,
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		data.right = new FormAttachment(removeButton,
-				-ITabbedPropertyConstants.HSPACE);
+		data.right = new FormAttachment(removeButton, -ITabbedPropertyConstants.HSPACE);
 		addButton.setLayoutData(data);
 		addButton.addMouseListener(addButtonlistener);
 
@@ -331,8 +324,7 @@ public class ReferencesTable implements
 		// data.top = new FormAttachment(removeButton,
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		data.right = new FormAttachment(addButton,
-				-ITabbedPropertyConstants.HSPACE);
+		data.right = new FormAttachment(addButton, -ITabbedPropertyConstants.HSPACE);
 		upButton.setLayoutData(data);
 		upButton.addMouseListener(upButtonlistener);
 
@@ -346,8 +338,7 @@ public class ReferencesTable implements
 		// data.top = new FormAttachment(upButton,
 		// ITabbedPropertyConstants.HSPACE);
 		data.top = new FormAttachment(-6, 0);
-		data.right = new FormAttachment(upButton,
-				-ITabbedPropertyConstants.HSPACE);
+		data.right = new FormAttachment(upButton, -ITabbedPropertyConstants.HSPACE);
 		downButton.setLayoutData(data);
 		downButton.addMouseListener(downButtonlistener);
 
@@ -356,8 +347,7 @@ public class ReferencesTable implements
 		// label.setLayout(new FormLayout());
 		data = new FormData();
 		data.left = new FormAttachment(2, 0);
-		data.right = new FormAttachment(downButton,
-				-ITabbedPropertyConstants.HSPACE - 5/* 50 */);
+		data.right = new FormAttachment(downButton, -ITabbedPropertyConstants.HSPACE - 5/* 50 */);
 		data.top = new FormAttachment(0, 0);
 		label.setLayoutData(data);
 
@@ -366,17 +356,15 @@ public class ReferencesTable implements
 		table = createTable(composite, SWT.MULTI | SWT.H_SCROLL | SWT.BORDER);
 		table.setLayout(new FormLayout());
 		table.setVisible(true);
-		table.addListener(SWT.MouseDoubleClick,
-				tableListener = new EditItemListener());
+		table.addListener(SWT.MouseDoubleClick, tableListener = new EditItemListener());
 		// createTable
 		tableViewer = new TableViewer(table);
-		
+
 		// The filters.
 
 		data = new FormData();
 		data.height = 100;
-		data.top = new FormAttachment(label,
-				ITabbedPropertyConstants.VSPACE + 4);
+		data.top = new FormAttachment(label, ITabbedPropertyConstants.VSPACE + 4);
 		data.left = new FormAttachment(0, ITabbedPropertyConstants.HSPACE);
 		data.right = new FormAttachment(100, -ITabbedPropertyConstants.HSPACE);
 
@@ -385,12 +373,10 @@ public class ReferencesTable implements
 
 			@SuppressWarnings("unchecked")
 			public void mouseDoubleClick(MouseEvent e) {
-				if (table.getSelection() != null
-						&& table.getSelectionCount() != 0
+				if (table.getSelection() != null && table.getSelectionCount() != 0
 						&& table.getSelection()[0].getData() instanceof EObject) {
 					// Navigate
-					referencesTableListener
-							.navigateTo((EObject) table.getSelection()[0].getData());
+					referencesTableListener.navigateTo((EObject)table.getSelection()[0].getData());
 				}
 			}
 
@@ -411,9 +397,10 @@ public class ReferencesTable implements
 	public void setLayoutData(Object layoutData) {
 		composite.setLayoutData(layoutData);
 	}
-	
+
 	/**
-	 * @param contentProvider contentProvider to use in the Table
+	 * @param contentProvider
+	 *            contentProvider to use in the Table
 	 */
 	public void setContentProvider(IStructuredContentProvider contentProvider) {
 		this.contentProvider = contentProvider;
@@ -440,27 +427,29 @@ public class ReferencesTable implements
 	public int getLowerBound() {
 		return this.lowerBound;
 	}
-	
+
 	private int getSize() {
 		if (contentProvider != null && input != null)
 			return contentProvider.getElements(input).length;
 		return -1;
 	}
-	
+
 	private int indexOf(Object elem) {
 		Object[] elements = contentProvider.getElements(input);
 		for (int i = 0; i < elements.length; i++) {
 			Object next = elements[i];
-			if (next.equals(elem)) 
+			if (next.equals(elem))
 				return i;
-			
+
 		}
 		return -1;
 	}
 
 	/**
 	 * Sets the given ID to the EMFComboViewer
-	 * @param id the ID to give
+	 * 
+	 * @param id
+	 *            the ID to give
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(table, id);
@@ -472,7 +461,9 @@ public class ReferencesTable implements
 
 	/**
 	 * Defines the type of reference table
-	 * @param id the type to give
+	 * 
+	 * @param id
+	 *            the type to give
 	 */
 	public void setEEFType(String type) {
 		EditingUtils.setEEFtype(table, type + "::field");
@@ -488,7 +479,7 @@ public class ReferencesTable implements
 	public Object getID() {
 		return EditingUtils.getID(table);
 	}
-	
+
 	/**
 	 * @param helpText
 	 */
@@ -607,7 +598,7 @@ public class ReferencesTable implements
 
 			for (int i = (tableItems.length - 1); i >= 0; i--) {
 				// Remove
-				referencesTableListener.handleRemove((EObject) tableItems[i].getData());
+				referencesTableListener.handleRemove((EObject)tableItems[i].getData());
 			}
 		}
 	}
@@ -648,7 +639,8 @@ public class ReferencesTable implements
 				int newIndex = indexOf(tableItems[i].getData()) - 1;
 				if (newIndex >= 0 && newIndex < getSize()) {
 					// Move
-					referencesTableListener.handleMove((EObject) tableItems[i].getData(), newIndex + 1, newIndex);
+					referencesTableListener.handleMove((EObject)tableItems[i].getData(), newIndex + 1,
+							newIndex);
 				}
 			}
 
@@ -688,7 +680,8 @@ public class ReferencesTable implements
 				int newIndex = indexOf(tableItems[i].getData()) + 1;
 				if (newIndex >= 0 && newIndex < getSize()) {
 					// Move
-					referencesTableListener.handleMove((EObject) tableItems[i].getData(), newIndex - 1, newIndex);
+					referencesTableListener.handleMove((EObject)tableItems[i].getData(), newIndex - 1,
+							newIndex);
 				}
 			}
 		}
@@ -705,7 +698,7 @@ public class ReferencesTable implements
 			if (table.getSelection().length > 0) {
 				TableItem item = table.getSelection()[0];
 				// Edit
-				referencesTableListener.handleEdit((EObject) item.getData());
+				referencesTableListener.handleEdit((EObject)item.getData());
 			}
 		}
 	}
@@ -753,7 +746,7 @@ public class ReferencesTable implements
 		computeAddButtonStatus();
 		computeRemoveButtonStatus();
 	}
-	
+
 	/**
 	 * @return the input of the viewer
 	 */
@@ -776,7 +769,6 @@ public class ReferencesTable implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @seeorg.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#
 	 * addBusinessRuleFilter(org.eclipse. jface.viewers.ViewerFilter)
 	 */
@@ -786,9 +778,7 @@ public class ReferencesTable implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter
 	 * (org.eclipse.jface.viewers .ViewerFilter)
 	 */
 	public void addFilter(ViewerFilter filter) {
@@ -797,7 +787,6 @@ public class ReferencesTable implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @seeorg.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#
 	 * removeBusinessRuleFilter(org.eclipse .jface.viewers.ViewerFilter)
 	 */
@@ -807,9 +796,7 @@ public class ReferencesTable implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter
 	 * (org.eclipse.jface.viewers .ViewerFilter)
 	 */
 	public void removeFilter(ViewerFilter filter) {

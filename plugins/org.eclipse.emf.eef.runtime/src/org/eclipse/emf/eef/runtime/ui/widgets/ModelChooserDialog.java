@@ -84,16 +84,17 @@ public class ModelChooserDialog extends Dialog {
 		label.setText(EEFRuntimeUIMessages.ModelChooserDialog_choose_model);
 		workspaceViewer = new TreeViewer(container);
 		workspaceViewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
-		if (EEFUtils.isBundleLoaded("org.eclipse.ui.ide"))  //$NON-NLS-1$
+		if (EEFUtils.isBundleLoaded("org.eclipse.ui.ide")) //$NON-NLS-1$
 			workspaceViewer.setContentProvider(new WorkbenchContentProvider());
 		else
-			workspaceViewer.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-			
+			workspaceViewer.setContentProvider(new AdapterFactoryContentProvider(EEFRuntimePlugin
+					.getDefault().getAdapterFactory()));
+
 		workspaceViewer.setLabelProvider(new WorkbenchLabelProvider());
 		workspaceViewer.addFilter(new ViewerFilter() {
 			/*
 			 * (non-Javadoc)
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface .viewers.Viewer,
 			 * java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -159,7 +160,7 @@ public class ModelChooserDialog extends Dialog {
 			if (childType == IResource.FILE && child.getFileExtension() != null
 					&& child.getFileExtension().equalsIgnoreCase(modelExtension)) {
 				files.add(child);
-			} else if (childType == IResource.FOLDER && !child.getName().startsWith(".")) {  //$NON-NLS-1$
+			} else if (childType == IResource.FOLDER && !child.getName().startsWith(".")) { //$NON-NLS-1$
 				folders.add((IContainer)child);
 			}
 		}

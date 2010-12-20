@@ -20,30 +20,29 @@ import org.eclipse.swt.widgets.Composite;
  * 
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  */
-public class VerticalBox extends Composite{
-	  public VerticalBox(Composite parent){
-		  super(parent, SWT.NONE);
+public class VerticalBox extends Composite {
+	public VerticalBox(Composite parent) {
+		super(parent, SWT.NONE);
 
-		  GridLayout layout = new GridLayout();
-		  layout.numColumns = 1;
-		  layout.marginWidth=0;
-		  layout.marginHeight=0;
-		  layout.verticalSpacing=0;
-		  layout.horizontalSpacing=0;
-		  GridData constraint = new GridData(GridData.FILL_VERTICAL);
-		  
-		  constraint.grabExcessHorizontalSpace=true;
-		  //constraint.grabExcessVerticalSpace=true;
-		  //gridData.horizontalSpan=0;
-		  //gridData.verticalSpan=0;  
-		  constraint.horizontalAlignment = GridData.FILL;
-		  //constraint.verticalAlignment = GridData.FILL;
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 1;
+		layout.marginWidth = 0;
+		layout.marginHeight = 0;
+		layout.verticalSpacing = 0;
+		layout.horizontalSpacing = 0;
+		GridData constraint = new GridData(GridData.FILL_VERTICAL);
 
-		  //constraint.horizontalSpan = 3;
-			
-		  this.setLayout(layout);
-		  this.setLayoutData(constraint);
-		
-	  }
-  }
-  
+		constraint.grabExcessHorizontalSpace = true;
+		// constraint.grabExcessVerticalSpace=true;
+		// gridData.horizontalSpan=0;
+		// gridData.verticalSpan=0;
+		constraint.horizontalAlignment = GridData.FILL;
+		// constraint.verticalAlignment = GridData.FILL;
+
+		// constraint.horizontalSpan = 3;
+
+		this.setLayout(layout);
+		this.setLayoutData(constraint);
+
+	}
+}

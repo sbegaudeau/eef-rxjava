@@ -20,7 +20,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * A "Null Object" implementation for the {@link CompositePropertiesEditionPart}.
+ * A "Null Object" implementation for the {@link CompositePropertiesEditionPart} .
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */

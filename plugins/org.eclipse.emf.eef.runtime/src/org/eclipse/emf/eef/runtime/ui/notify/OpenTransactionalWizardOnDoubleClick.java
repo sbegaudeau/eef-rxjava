@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
 public class OpenTransactionalWizardOnDoubleClick implements IDoubleClickListener {
 
 	private EditingDomain editingDomain;
+
 	private AdapterFactory adapterFactory;
+
 	private IProgressMonitor progressMonitor;
 
 	/**
@@ -58,7 +60,8 @@ public class OpenTransactionalWizardOnDoubleClick implements IDoubleClickListene
 					eObject = (EObject)((IAdaptable)firstElement).getAdapter(EObject.class);
 			}
 			if (eObject != null) {
-				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
+				DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(
+						null, null, editingDomain, adapterFactory, eObject);
 				WizardEditingOperation operation = new WizardEditingOperation(propertiesEditionContext);
 				try {
 					operation.execute(getProgressMonitor(), null);

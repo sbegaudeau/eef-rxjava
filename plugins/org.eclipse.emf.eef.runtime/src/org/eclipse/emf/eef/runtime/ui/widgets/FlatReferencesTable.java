@@ -121,7 +121,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
 		EditingUtils.setEEFtype(selection, "eef::FlatReferencesTable::field");
-		
+
 		editer = new Button(this, SWT.PUSH);
 		editer.setText(EEFRuntimeUIMessages.EObjectFlatComboViewer_add_button);
 
@@ -140,26 +140,25 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 			/*
 			 * (non-Javadoc)
-			 * @see
-			 * org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse
+			 * .swt.events.SelectionEvent)
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				switch (button_mode) {
 					case BROWSE:
 						if (input instanceof ReferencesTableSettings) {
-							List currentValues = Arrays.asList(((ReferencesTableSettings) input).getValue());
-							Object choiceOfValues2 = ((ReferencesTableSettings) input).choiceOfValues(null);
+							List currentValues = Arrays.asList(((ReferencesTableSettings)input).getValue());
+							Object choiceOfValues2 = ((ReferencesTableSettings)input).choiceOfValues(null);
 							List cloneOfValues = new ArrayList();
 							if (choiceOfValues2 instanceof List) {
 								cloneOfValues.addAll((List)choiceOfValues2);
-							}
-							else {
+							} else {
 								cloneOfValues.add(choiceOfValues2);
 							}
 							EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-									getParent().getShell(), EEFRuntimeUIMessages.FlatReferencesTable_featureEditor_title, delegatedLabelProvider,   
-									currentValues, cloneOfValues,
-									false, true, 
+									getParent().getShell(),
+									EEFRuntimeUIMessages.FlatReferencesTable_featureEditor_title,
+									delegatedLabelProvider, currentValues, cloneOfValues, false, true,
 									filters, brFilters);
 							int open = dialog.open();
 							if (open == Dialog.OK) {
@@ -264,10 +263,12 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		}
 		refresh();
 	}
-	
+
 	/**
 	 * Sets the given ID to the EMFComboViewer
-	 * @param id the ID to give
+	 * 
+	 * @param id
+	 *            the ID to give
 	 */
 	public void setID(Object id) {
 		EditingUtils.setID(selection, id);
@@ -287,9 +288,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener(org.eclipse.jface.viewers.
-	 * ISelectionChangedListener)
+	 * @see org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener
+	 * (org.eclipse.jface.viewers. ISelectionChangedListener)
 	 */
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.add(listener);
@@ -297,9 +297,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.jface.viewers.ISelectionProvider#removeSelectionChangedListener(org.eclipse.jface.viewers
-	 * .ISelectionChangedListener)
+	 * @see org.eclipse.jface.viewers.ISelectionProvider#removeSelectionChangedListener
+	 * (org.eclipse.jface.viewers .ISelectionChangedListener)
 	 */
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		listeners.remove(listener);
@@ -315,7 +314,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ISelectionProvider#setSelection(org.eclipse.jface.viewers.ISelection)
+	 * @see org.eclipse.jface.viewers.ISelectionProvider#setSelection(org.eclipse .jface.viewers.ISelection)
 	 */
 	public void setSelection(ISelection pSelection) {
 		throw new UnsupportedOperationException(EEFRuntimeUIMessages.FlatReferencesTable_nothing_to_do);
@@ -340,7 +339,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 				selection.setText(result.toString());
 			}
 		} else
-			selection.setText("");  //$NON-NLS-1$
+			selection.setText(""); //$NON-NLS-1$
 	}
 
 	/**
@@ -363,9 +362,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter(org.eclipse.jface.viewers
-	 * .ViewerFilter)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addFilter
+	 * (org.eclipse.jface.viewers .ViewerFilter)
 	 */
 	public void addFilter(ViewerFilter filter) {
 		filters.add(filter);
@@ -373,9 +371,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter(org.eclipse.jface.viewers
-	 * .ViewerFilter)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeFilter
+	 * (org.eclipse.jface.viewers .ViewerFilter)
 	 */
 	public void removeFilter(ViewerFilter filter) {
 		filters.remove(filter);
@@ -383,9 +380,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#addBusinessRuleFilter(org.eclipse.
-	 * jface.viewers.ViewerFilter)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#
+	 * addBusinessRuleFilter(org.eclipse. jface.viewers.ViewerFilter)
 	 */
 	public void addBusinessRuleFilter(ViewerFilter filter) {
 		brFilters.add(filter);
@@ -393,9 +389,8 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 
 	/*
 	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#removeBusinessRuleFilter(org.eclipse
-	 * .jface.viewers.ViewerFilter)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.IPropertiesFilteredWidget#
+	 * removeBusinessRuleFilter(org.eclipse .jface.viewers.ViewerFilter)
 	 */
 	public void removeBusinessRuleFilter(ViewerFilter filter) {
 		brFilters.remove(filter);

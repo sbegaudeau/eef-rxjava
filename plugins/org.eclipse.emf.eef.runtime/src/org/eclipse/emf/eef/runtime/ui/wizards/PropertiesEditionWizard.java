@@ -63,18 +63,22 @@ public class PropertiesEditionWizard extends Wizard {
 
 	protected Command command;
 
-//	protected ResourceSet allResources;
-	
+	// protected ResourceSet allResources;
+
 	private PropertiesEditionMessageManager messageManager;
 
 	private AdapterFactory adapterFactory;
 
 	/**
-	 * @param editionContext defines the editing context.
-	 * @param adapterFactory the adapterFactory to use to get the editing component
-	 * @param eObject the eObject to edit
+	 * @param editionContext
+	 *            defines the editing context.
+	 * @param adapterFactory
+	 *            the adapterFactory to use to get the editing component
+	 * @param eObject
+	 *            the eObject to edit
 	 */
-	public PropertiesEditionWizard(PropertiesEditingContext editionContext, AdapterFactory adapterFactory, EObject eObject) {
+	public PropertiesEditionWizard(PropertiesEditingContext editionContext, AdapterFactory adapterFactory,
+			EObject eObject) {
 		this.editingContext = editionContext;
 		this.eObject = eObject;
 		this.adapterFactory = adapterFactory;
@@ -83,11 +87,15 @@ public class PropertiesEditionWizard extends Wizard {
 	}
 
 	/**
-	 * @param editingContext defines the editing context.
-	 * @param adapterFactory the adapterFactory to use to get the editing component
-	 * @param eReference the eReference to edit
+	 * @param editingContext
+	 *            defines the editing context.
+	 * @param adapterFactory
+	 *            the adapterFactory to use to get the editing component
+	 * @param eReference
+	 *            the eReference to edit
 	 */
-	public PropertiesEditionWizard(PropertiesEditingContext editingContext, AdapterFactory adapterFactory, EReference eReference) {
+	public PropertiesEditionWizard(PropertiesEditingContext editingContext, AdapterFactory adapterFactory,
+			EReference eReference) {
 		this.editingContext = editingContext;
 		this.eReference = eReference;
 		this.adapterFactory = adapterFactory;
@@ -97,13 +105,13 @@ public class PropertiesEditionWizard extends Wizard {
 
 	private void initMessageManager() {
 		messageManager = new PropertiesEditionMessageManager() {
-			
+
 			@Override
 			protected void updateStatus(String message) {
 				if (mainPage != null) {
 					mainPage.setMessage(null);
 					mainPage.setErrorMessage(message);
-//					mainPage.setPageComplete(message == null);
+					// mainPage.setPageComplete(message == null);
 				}
 			}
 		};
@@ -113,7 +121,8 @@ public class PropertiesEditionWizard extends Wizard {
 	 * @return the editingDomain where to perform commands.
 	 */
 	public EditingDomain getEditingDomain() {
-		return editingContext instanceof DomainPropertiesEditionContext?((DomainPropertiesEditionContext)editingContext).getEditingDomain():null;
+		return editingContext instanceof DomainPropertiesEditionContext ? ((DomainPropertiesEditionContext)editingContext)
+				.getEditingDomain() : null;
 	}
 
 	/**
@@ -196,8 +205,8 @@ public class PropertiesEditionWizard extends Wizard {
 		private List<Button> buttons = new ArrayList<Button>();
 
 		protected ElementCreationWizardPage() {
-			super(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_key); 
-			this.setTitle(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_title); 
+			super(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_key);
+			this.setTitle(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_title);
 			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_description);
 		}
 
@@ -208,12 +217,13 @@ public class PropertiesEditionWizard extends Wizard {
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
 			List<EClass> instanciableTypesInHierarchy;
-			if(editingContext instanceof DomainPropertiesEditionContext) {
-				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference, ((DomainPropertiesEditionContext)editingContext).getEditingDomain());
+			if (editingContext instanceof DomainPropertiesEditionContext) {
+				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference,
+						((DomainPropertiesEditionContext)editingContext).getEditingDomain());
 				editingContext = null;
-			}
-			else {
-				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(), editingContext.getResourceSet());
+			} else {
+				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),
+						editingContext.getResourceSet());
 			}
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
@@ -244,7 +254,7 @@ public class PropertiesEditionWizard extends Wizard {
 		private PropertiesEditionViewer viewer;
 
 		protected EditPropertyWizardPage() {
-			super(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_key); 
+			super(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_key);
 		}
 
 		/**
@@ -254,7 +264,8 @@ public class PropertiesEditionWizard extends Wizard {
 		 */
 		public void createControl(Composite parent) {
 			try {
-				ScrolledComposite scrolledContainer = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
+				ScrolledComposite scrolledContainer = new ScrolledComposite(parent, SWT.H_SCROLL
+						| SWT.V_SCROLL);
 				scrolledContainer.setExpandHorizontal(true);
 				scrolledContainer.setExpandVertical(true);
 				Composite container = new Composite(scrolledContainer, SWT.FLAT);
@@ -267,17 +278,20 @@ public class PropertiesEditionWizard extends Wizard {
 					resourceSet = eObject.eResource().getResourceSet();
 				viewer = new PropertiesEditionViewer(container, resourceSet, 0);
 				viewer.setDynamicTabHeader(true);
-				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.BATCH_MODE));
+				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
+						IPropertiesEditionComponent.BATCH_MODE));
 				scrolledContainer.setContent(container);
 				setControl(viewer.getControl());
 			} catch (InstantiationException e) {
-				EEFRuntimePlugin.getDefault().logError(EEFRuntimeUIMessages.PropertiesEditionWizard_error_wizard_live_mode, e);
+				EEFRuntimePlugin.getDefault().logError(
+						EEFRuntimeUIMessages.PropertiesEditionWizard_error_wizard_live_mode, e);
 			}
 		}
 
 		public void setInput(EObject eObject) {
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description + eObject.eClass().getName());
+			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description
+					+ eObject.eClass().getName());
 			viewer.setInput(new EObjectPropertiesEditionContext(editingContext, null, eObject, adapterFactory));
 			viewer.addPropertiesListener(this);
 		}

@@ -14,7 +14,6 @@ import org.eclipse.emf.validation.model.IClientSelector;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class EEFValidationClientSelector implements IClientSelector {
 

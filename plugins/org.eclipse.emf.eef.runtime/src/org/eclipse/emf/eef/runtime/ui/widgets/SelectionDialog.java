@@ -27,17 +27,19 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 public class SelectionDialog extends Composite {
 
 	private FormToolkit widgetFactory;
+
 	private Text text;
+
 	private Button browseButton;
 
 	/**
 	 * The constructor.
+	 * 
 	 * @param parent
 	 * @param style
 	 * @param widgetFactory
 	 */
-	public SelectionDialog(Composite parent, int style,
-			FormToolkit widgetFactory) {
+	public SelectionDialog(Composite parent, int style, FormToolkit widgetFactory) {
 		super(parent, style);
 		this.widgetFactory = widgetFactory;
 		createControl();
@@ -62,48 +64,47 @@ public class SelectionDialog extends Composite {
 			text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		}
 	}
-	
+
 	/**
-	 * 
 	 * @return the text of the text widget.
 	 */
 	public String getText() {
-		if(text != null)
+		if (text != null)
 			return text.getText();
 		return "";
 	}
-	
+
 	/**
-	 * 
 	 * @param text
 	 */
 	public void setText(String text) {
-		if(this.text != null)
+		if (this.text != null)
 			this.text.setText(text);
 	}
-	
+
 	/**
 	 * Adds a selection listener on browse button.
+	 * 
 	 * @param selectionListener
 	 */
 	public void addSelectionListener(SelectionListener selectionListener) {
-		if(browseButton != null)
+		if (browseButton != null)
 			browseButton.addSelectionListener(selectionListener);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void addFocusListener(FocusListener focusListener) {
-		if(this.text != null)
+		if (this.text != null)
 			this.text.addFocusListener(focusListener);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void addKeyListener(KeyListener keyListener) {
-		if(this.text != null)
+		if (this.text != null)
 			this.text.addKeyListener(keyListener);
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.emf.eef.runtime.ui.widgets;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 
 /**
  * Horizontal box are regular boxes that stack items horizontally.
@@ -21,7 +20,7 @@ import org.eclipse.swt.widgets.Control;
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  */
 public class HorizontalBox extends Composite {
-	
+
 	private GridLayout layout;
 
 	/**
@@ -30,10 +29,10 @@ public class HorizontalBox extends Composite {
 	public HorizontalBox(Composite parent) {
 		super(parent, SWT.NONE);
 		layout = new GridLayout();
-		layout.marginHeight=2;
-		layout.marginWidth=2;
+		layout.marginHeight = 2;
+		layout.marginWidth = 2;
 		layout.numColumns = 10;
-		layout.makeColumnsEqualWidth=false;
+		layout.makeColumnsEqualWidth = false;
 		this.setLayout(layout);
 	}
 
@@ -44,5 +43,5 @@ public class HorizontalBox extends Composite {
 		layout.numColumns = count * 3;
 		layout();
 	}
-	
+
 }
