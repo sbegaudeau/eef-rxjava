@@ -5,17 +5,15 @@ package org.eclipse.emf.eef.runtime.policies.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class StandardEditingPolicy implements PropertiesEditingPolicy {
 
@@ -28,17 +26,17 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 		this.context = propertiesEditionContext;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
 	public void execute() {
 		EObjectPropertiesEditionContext editionContext = (EObjectPropertiesEditionContext)context;
 		EObject eObject = editionContext.getEObject();
-		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), eObject);
-		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
+		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
+				editionContext.getAdapterFactory(), eObject);
+		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int result = wDialog.open();
 		ChangeDescription change = editionContext.getChangeRecorder().endRecording();
 		if (result == Window.CANCEL) {

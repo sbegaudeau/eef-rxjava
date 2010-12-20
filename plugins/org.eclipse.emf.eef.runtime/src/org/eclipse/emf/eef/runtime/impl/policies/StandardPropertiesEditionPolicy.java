@@ -22,9 +22,9 @@ import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionConte
 import org.eclipse.emf.eef.runtime.impl.command.WizardEditingCommand;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -55,8 +55,9 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 	public void getPropertiesEditionObject(PropertiesEditingContext propertiesEditionContext) {
 		if (propertiesEditionContext instanceof EObjectPropertiesEditionContext) {
 			EObjectPropertiesEditionContext editingContext = (EObjectPropertiesEditionContext)propertiesEditionContext;
-			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editingContext.getAdapterFactory(), editingContext.getEObject());
-			WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null,
+					editingContext.getAdapterFactory(), editingContext.getEObject());
+			EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 			int result = wDialog.open();
 			ChangeDescription change = editingContext.getChangeRecorder().endRecording();
 			if (result == Window.CANCEL) {
@@ -64,8 +65,9 @@ public class StandardPropertiesEditionPolicy implements IPropertiesEditionPolicy
 			}
 		} else if (propertiesEditionContext instanceof EReferencePropertiesEditionContext) {
 			EReferencePropertiesEditionContext editionContext = (EReferencePropertiesEditionContext)propertiesEditionContext;
-			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null, editionContext.getAdapterFactory(), editionContext.getEReference());
-			WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard);
+			PropertiesEditionWizard wizard = new PropertiesEditionWizard(null,
+					editionContext.getAdapterFactory(), editionContext.getEReference());
+			EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 			int result = wDialog.open();
 			ChangeDescription change = editionContext.getChangeRecorder().endRecording();
 			if (result == Window.CANCEL)

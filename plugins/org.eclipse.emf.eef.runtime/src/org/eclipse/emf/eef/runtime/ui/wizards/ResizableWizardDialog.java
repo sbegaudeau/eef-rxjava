@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class ResizableWizardDialog extends WizardDialog {
+public class ResizableWizardDialog extends EEFWizardDialog {
 
 	public ResizableWizardDialog(Shell parentShell, IWizard newWizard) {
 		super(parentShell, newWizard);
