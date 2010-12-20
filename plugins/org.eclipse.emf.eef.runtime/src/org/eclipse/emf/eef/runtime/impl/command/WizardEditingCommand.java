@@ -13,20 +13,18 @@ package org.eclipse.emf.eef.runtime.impl.command;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.ui.UIConstants;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.graphics.Point;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class WizardEditingCommand extends AbstractCommand {
-	
+
 	private DomainPropertiesEditionContext editionContext;
-	
+
 	private ChangeDescription description;
 
 	/**
@@ -38,23 +36,14 @@ public class WizardEditingCommand extends AbstractCommand {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.common.command.AbstractCommand#prepare()
 	 */
 	@Override
 	protected boolean prepare() {
-		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), editionContext.getEObject());
-		WizardDialog wDialog = new WizardDialog(EditingUtils.getShell(), wizard) {
-			
-			/**
-			 * {@inheritDoc}
-			 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
-			 */
-			@Override
-			protected Point getInitialSize() {
-				return UIConstants.INITIAL_WIZARD_SIZE;
-			}
-			
-		};
+		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
+				editionContext.getAdapterFactory(), editionContext.getEObject());
+		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int open = wDialog.open();
 		description = editionContext.getChangeRecorder().endRecording();
 		if (open == Window.OK) {
@@ -64,16 +53,18 @@ public class WizardEditingCommand extends AbstractCommand {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.common.command.Command#execute()
 	 */
 	public void execute() {
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.common.command.AbstractCommand#undo()
 	 */
 	@Override
@@ -83,11 +74,11 @@ public class WizardEditingCommand extends AbstractCommand {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.common.command.Command#redo()
 	 */
 	public void redo() {
 		description.applyAndReverse();
 	}
-	
 
 }
