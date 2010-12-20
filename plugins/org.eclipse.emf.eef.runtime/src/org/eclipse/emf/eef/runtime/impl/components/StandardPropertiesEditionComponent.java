@@ -41,7 +41,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	private static final long DELAY = 500L;
 
 	public static final Object FIRE_PROPERTIES_CHANGED_JOB_FAMILY = new Object();
-	
+
 	/**
 	 * List of IPropertiesEditionComponentListeners
 	 */
@@ -66,19 +66,19 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * Editing context
 	 */
 	protected PropertiesEditingContext editingContext;
-	
+
 	/**
 	 * the editing mode
 	 */
 	protected String editing_mode;
-	
+
 	/**
 	 * Is the component is current initializing
 	 */
 	protected boolean initializing = false;
-	
+
 	/**
-	 * List of {@link IPropertiesEditionPart}'s key managed by the component. 
+	 * List of {@link IPropertiesEditionPart}'s key managed by the component.
 	 */
 	protected String[] parts;
 
@@ -91,12 +91,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	public void initPart(Object key, int kind, EObject element) {
 		this.initPart(key, kind, element, editingContext.getResourceSet());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#partsList()
-	 * 
 	 */
 	public String[] partsList() {
 		return parts;
@@ -131,25 +130,26 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	public void setLiveEditingDomain(EditingDomain editingDomain) {
 		this.liveEditingDomain = editingDomain;
 	}
-	
+
 	/**
 	 * Initialize the semantic model listener for live editing mode
-	 * @return the semantic model listener
 	 * 
+	 * @return the semantic model listener
 	 */
 	protected PropertiesEditingSemanticLister initializeSemanticAdapter() {
 		return new PropertiesEditingSemanticLister(this) {
-			
+
 			public void runUpdateRunnable(Notification msg) {
 				updatePart(msg);
 			}
 		};
 	}
-	
 
 	/**
 	 * Update the part in response to a semantic event
-	 * @param msg the semantic event
+	 * 
+	 * @param msg
+	 *            the semantic event
 	 */
 	public abstract void updatePart(Notification msg);
 
@@ -165,12 +165,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 				listener.firePropertiesChanged(event);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
 	 */
 	public void firePropertiesChanged(final IPropertiesEditionEvent event) {
 		if (!isInitializing()) {
@@ -178,16 +177,15 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				propagateEvent(new PropertiesValidationEditionEvent(event, valueDiagnostic));
 			else {
-				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {			
+				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 					updateSemanticModel(event);
-				}
-				else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+				} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
 					liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
 
 						public void execute() {
 							updateSemanticModel(event);
 						}
-					});			
+					});
 				}
 				Diagnostic validate = validate();
 				propagateEvent(new PropertiesValidationEditionEvent(event, validate));
@@ -196,26 +194,30 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 		}
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#lazyFirePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
 	public void delayedFirePropertiesChanged(IPropertiesEditionEvent event) {
-		if (getFirePropertiesChangedJob().cancel()) {
-			getFirePropertiesChangedJob().setEvent(event);
-			getFirePropertiesChangedJob().schedule(DELAY);
-		} else {
-			try {
-				getFirePropertiesChangedJob().join();
+		if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
+			firePropertiesChanged(event);
+		} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+			if (getFirePropertiesChangedJob().cancel()) {
 				getFirePropertiesChangedJob().setEvent(event);
-				getFirePropertiesChangedJob().schedule();
-			} catch (InterruptedException e) {
-				getFirePropertiesChangedJob().setEvent(null);
+				getFirePropertiesChangedJob().schedule(DELAY);
+			} else {
+				try {
+					getFirePropertiesChangedJob().join();
+					getFirePropertiesChangedJob().setEvent(event);
+					getFirePropertiesChangedJob().schedule();
+				} catch (InterruptedException e) {
+					getFirePropertiesChangedJob().setEvent(null);
+				}
 			}
 		}
 	}
-	
+
 	protected FirePropertiesChangedJob getFirePropertiesChangedJob() {
 		if (firePropertiesChangedJob == null) {
 			firePropertiesChangedJob = new FirePropertiesChangedJob("Fire properties changed...");
@@ -230,7 +232,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 		public FirePropertiesChangedJob(String name) {
 			super(name);
 		}
-		
+
 		@Override
 		public boolean belongsTo(Object family) {
 			return family == FIRE_PROPERTIES_CHANGED_JOB_FAMILY;
@@ -240,22 +242,22 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 		public boolean shouldSchedule() {
 			return fEvent != null;
 		}
-		
+
 		@Override
 		public boolean shouldRun() {
 			return fEvent != null;
 		}
-		
+
 		@Override
 		protected void canceling() {
 			super.canceling();
 			fEvent = null;
 		}
-		
+
 		public void setEvent(IPropertiesEditionEvent event) {
 			fEvent = event;
 		}
-		
+
 		@Override
 		protected IStatus run(IProgressMonitor monitor) {
 			deactivate();
@@ -265,10 +267,12 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 			return Status.OK_STATUS;
 		}
 	}
-	
+
 	/**
 	 * Update the model in response to a view event
-	 * @param event the view event
+	 * 
+	 * @param event
+	 *            the view event
 	 */
 	public abstract void updateSemanticModel(IPropertiesEditionEvent event);
 
@@ -310,7 +314,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	public Object translatePart(String key) {
 		return null;
 	}
-	
+
 	/**
 	 * @return the initializing
 	 */
@@ -319,7 +323,8 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	}
 
 	/**
-	 * @param initializing the initializing to set
+	 * @param initializing
+	 *            the initializing to set
 	 */
 	public void setInitializing(boolean initializing) {
 		this.initializing = initializing;
