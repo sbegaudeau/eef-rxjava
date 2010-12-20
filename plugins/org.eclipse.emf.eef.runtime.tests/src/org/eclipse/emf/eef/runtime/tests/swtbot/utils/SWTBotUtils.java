@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.runtime.tests.swtbot.utils;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Text;

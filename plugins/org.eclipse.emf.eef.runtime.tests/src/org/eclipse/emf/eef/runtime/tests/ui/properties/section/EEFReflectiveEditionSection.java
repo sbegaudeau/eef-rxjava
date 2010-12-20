@@ -50,7 +50,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	/**
 	 * the property sheet page for this section.
 	 */
-	private TabbedPropertySheetPage propertySheetPage;
+//	private TabbedPropertySheetPage propertySheetPage;
 
 	/**
 	 * the section's parent
@@ -118,7 +118,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	 */
 	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
-		this.propertySheetPage = aTabbedPropertySheetPage;
+//		this.propertySheetPage = aTabbedPropertySheetPage;
 		this.parent = parent;
 		scrolledForm = getWidgetFactory().createForm(parent);
 		scrolledForm.getBody().setLayout(new GridLayout());		
