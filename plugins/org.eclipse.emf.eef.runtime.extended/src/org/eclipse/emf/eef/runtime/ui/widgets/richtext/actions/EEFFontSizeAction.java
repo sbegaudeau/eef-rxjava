@@ -1,6 +1,13 @@
-/**
- * 
- */
+/*******************************************************************************
+ * Copyright (c) 2008, 2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions;
 
 import org.eclipse.epf.richtext.IRichText;
@@ -10,16 +17,16 @@ import org.eclipse.swt.widgets.Control;
 
 /**
  * @author glefur
- *
  */
 public class EEFFontSizeAction extends FontSizeAction {
 
 	public EEFFontSizeAction(IRichText richText) {
 		super(richText);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.epf.ui.actions.CComboContributionItem#createControl(org.eclipse.swt.widgets.Composite)
 	 */
 	protected Control createControl(Composite parent) {
@@ -27,8 +34,6 @@ public class EEFFontSizeAction extends FontSizeAction {
 		selectFontSize();
 		return createControl;
 	}
-
-
 
 	/**
 	 * 
