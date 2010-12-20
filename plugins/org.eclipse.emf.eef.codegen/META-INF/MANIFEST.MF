@@ -25,7 +25,11 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.emf.eef.views,
  org.eclipse.emf.eef.views.edit,
  org.eclipse.emf.eef.components,
- org.eclipse.emf.eef.components.edit
+ org.eclipse.emf.eef.components.edit,
+ org.eclipse.emf.importer.ecore;bundle-version="2.6.0",
+ org.eclipse.emf.importer;bundle-version="2.6.0",
+ org.eclipse.pde.core;bundle-version="3.6.1",
+ org.eclipse.pde.ui;bundle-version="3.6.1"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.eef.codegen,
@@ -34,6 +38,7 @@ Export-Package: org.eclipse.emf.eef.codegen,
  org.eclipse.emf.eef.codegen.core.launcher,
  org.eclipse.emf.eef.codegen.core.launcher.gmf,
  org.eclipse.emf.eef.codegen.core.services,
+ org.eclipse.emf.eef.codegen.core.util,
  org.eclipse.emf.eef.codegen.parts,
  org.eclipse.emf.eef.codegen.plugin,
  org.eclipse.emf.eef.codegen.properties,

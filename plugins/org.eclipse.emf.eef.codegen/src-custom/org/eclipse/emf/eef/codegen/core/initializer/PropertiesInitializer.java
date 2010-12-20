@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenFactory;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
+import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsFactory;
@@ -74,7 +75,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		registerResourceFactories(resourceSet);
 		registerPackages(resourceSet);
-		EObject model = load(modelURI, resourceSet);
+		EObject model = EMFHelper.load(modelURI, resourceSet);
 
 		if (!targetFolder.exists()) {
 			if (targetFolder instanceof IFolder)
@@ -85,8 +86,8 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 
 		Map<String, EObject> toolkits = new HashMap<String, EObject>();
 		View instanceView = ViewsFactory.eINSTANCE.createView();
-		toolkits.put(SWT_TOOLKIT_NAME, load(URI.createURI(getSWTPathmap(instanceView), false), model.eResource().getResourceSet()));
-		toolkits.put(EMF_PROPERTIES_TOOLKIT_NAME, load(URI.createURI(getEMFPropertiesPathmap(instanceView), false), model.eResource().getResourceSet()));
+		toolkits.put(SWT_TOOLKIT_NAME, EMFHelper.load(URI.createURI(getSWTPathmap(instanceView), false), model.eResource().getResourceSet()));
+		toolkits.put(EMF_PROPERTIES_TOOLKIT_NAME, EMFHelper.load(URI.createURI(getEMFPropertiesPathmap(instanceView), false), model.eResource().getResourceSet()));
 
 		ViewTransformer viewTransformer = new ViewTransformer(toolkits);
 		TreeIterator<EObject> allContents = model.eAllContents();
