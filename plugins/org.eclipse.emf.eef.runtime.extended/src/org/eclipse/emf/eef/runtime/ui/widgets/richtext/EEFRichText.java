@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.richtext;
 
 import java.io.File;
@@ -17,7 +27,6 @@ import org.eclipse.epf.common.utils.FileUtil;
 import org.eclipse.epf.common.utils.XMLUtil;
 import org.eclipse.epf.common.xml.XSLTProcessor;
 import org.eclipse.epf.richtext.IRichText;
-import org.eclipse.epf.richtext.RichText;
 import org.eclipse.epf.richtext.RichTextCommand;
 import org.eclipse.epf.richtext.RichTextImages;
 import org.eclipse.epf.richtext.RichTextListener;
@@ -59,11 +68,9 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * 
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mika�l Barbero</a>
  */
 public class EEFRichText implements IRichText {
-	
 
 	// Encoded single quote. All single quotes need to be specially encoded to
 	// avoid JavaScript error when calling Browse.executeCommand().
@@ -98,8 +105,7 @@ public class EEFRichText implements IRichText {
 	private static final int STATUS_REFORMAT_LINKS = 10;
 
 	// The default base path used for resolving links (<href>, <img>, etc.)
-	private static final String DEFAULT_BASE_PATH = System
-			.getProperty("user.home") //$NON-NLS-1$
+	private static final String DEFAULT_BASE_PATH = System.getProperty("user.home") //$NON-NLS-1$
 			+ System.getProperty("file.separator") + "rte"; //$NON-NLS-1$ //$NON-NLS-2$
 
 	// If true, log debugging info.
@@ -181,7 +187,7 @@ public class EEFRichText implements IRichText {
 
 	// The control's find/replace text action
 	protected FindReplaceAction findReplaceAction;
-	
+
 	// The control's IE flag
 	protected boolean isIE = false;
 
@@ -241,15 +247,13 @@ public class EEFRichText implements IRichText {
 		if (path != null && path.length() > 0) {
 			if (path.startsWith(FileUtil.UNC_PATH_PREFIX)) {
 				basePath = FileUtil.UNC_PATH_PREFIX
-						+ FileUtil.appendSeparator(path.substring(
-								FileUtil.UNC_PATH_PREFIX_LENGTH).replace('\\',
-								'/'), "/"); //$NON-NLS-1$
+						+ FileUtil.appendSeparator(
+								path.substring(FileUtil.UNC_PATH_PREFIX_LENGTH).replace('\\', '/'), "/"); //$NON-NLS-1$
 			} else {
 				basePath = FileUtil.appendSeparator(path).replace('\\', '/');
 			}
 		} else {
-			basePath = FileUtil.appendSeparator(DEFAULT_BASE_PATH).replace(
-					'\\', '/');
+			basePath = FileUtil.appendSeparator(DEFAULT_BASE_PATH).replace('\\', '/');
 		}
 	}
 
@@ -302,6 +306,7 @@ public class EEFRichText implements IRichText {
 			throw e;
 		}
 		addProgressListener();
+		setFocus();
 	}
 
 	/**
@@ -397,8 +402,7 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Returns the base URL of the rich text control whose content was last
-	 * copied to the clipboard.
+	 * Returns the base URL of the rich text control whose content was last copied to the clipboard.
 	 * 
 	 * @return the base URL of a rich text control
 	 */
@@ -407,8 +411,7 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Sets the base URL of the rich text control whose content was last copied
-	 * to the clipboard.
+	 * Sets the base URL of the rich text control whose content was last copied to the clipboard.
 	 */
 	public void setCopyURL() {
 		try {
@@ -469,8 +472,7 @@ public class EEFRichText implements IRichText {
 			try {
 				executeCommand(RichTextCommand.GET_TEXT);
 				if (currentText != null && currentText.length() > 0) {
-					currentText = currentText.replaceAll(
-							"<P>&nbsp;</P>", "<br/>"); //$NON-NLS-1$ //$NON-NLS-2$			
+					currentText = currentText.replaceAll("<P>&nbsp;</P>", "<br/>"); //$NON-NLS-1$ //$NON-NLS-2$			
 					currentText = tidyText(currentText);
 					currentText = formatHTML(currentText);
 				} else {
@@ -532,11 +534,10 @@ public class EEFRichText implements IRichText {
 			}
 
 			if (debug) {
-				printDebugMessage(
-						"setText", "modified=" + modified + ", newText=", newText); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				printDebugMessage("setText", "modified=" + modified + ", newText=", newText); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			}
 
-			if (initialized) {
+			if (initialized && modified) {
 				try {
 					executeCommand(RichTextCommand.SET_TEXT, newText);
 					executeCommand(RichTextCommand.SET_EDITABLE, "" + editable); //$NON-NLS-1$				
@@ -560,8 +561,7 @@ public class EEFRichText implements IRichText {
 	/**
 	 * Returns the currently selected text.
 	 * 
-	 * @return the selected text or <code>""</code> if there is no
-	 *         hasSelection
+	 * @return the selected text or <code>""</code> if there is no hasSelection
 	 */
 	public String getSelectedText() {
 		// executeCommand(RichTextCommand.GET_SELECTED_TEXT);
@@ -570,7 +570,6 @@ public class EEFRichText implements IRichText {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.epf.richtext.IRichText#getSelected()
 	 */
 	public RichTextSelection getSelected() {
@@ -582,8 +581,7 @@ public class EEFRichText implements IRichText {
 	 * 
 	 * @param key
 	 *            the name of the property
-	 * @return the value of the property or <code>null</code> if it has not
-	 *         been set
+	 * @return the value of the property or <code>null</code> if it has not been set
 	 */
 	public Object getData(String key) {
 		if (editor != null) {
@@ -642,11 +640,12 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Executes the given rich text command. The supported command strings are
-	 * defined in <code>RichTextCommand<code>.
+	 * Executes the given rich text command. The supported command strings are defined in
+	 * <code>RichTextCommand<code>.
 	 * 
-	 * @param	command		a rich text command string.
-	 * @return	a status code returned by the executed command
+	 * @param command
+	 *            a rich text command string.
+	 * @return a status code returned by the executed command
 	 */
 	public int executeCommand(String command) {
 		status = 0;
@@ -664,12 +663,14 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Executes the given rich text command with a single parameter. The
-	 * supported command strings are defined in <code>RichTextCommand<code>.
+	 * Executes the given rich text command with a single parameter. The supported command strings are defined
+	 * in <code>RichTextCommand<code>.
 	 * 
-	 * @param	command		a rich text command string
-	 * @param	param		a parameter for the command or <code>null</code>
-	 * @return	a status code returned by the executed command
+	 * @param command
+	 *            a rich text command string
+	 * @param param
+	 *            a parameter for the command or <code>null</code>
+	 * @return a status code returned by the executed command
 	 */
 	public int executeCommand(String command, String param) {
 		if (param == null) {
@@ -679,12 +680,14 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Executes the given rich text command with an array of parameters. The
-	 * supported command strings are defined in <code>RichTextCommand<code>.
+	 * Executes the given rich text command with an array of parameters. The supported command strings are
+	 * defined in <code>RichTextCommand<code>.
 	 * 
-	 * @param	command		a rich text command string
-	 * @param	params		an array of parameters for the command or <code>null</code>
-	 * @return	a status code returned by the executed command
+	 * @param command
+	 *            a rich text command string
+	 * @param params
+	 *            an array of parameters for the command or <code>null</code>
+	 * @return a status code returned by the executed command
 	 */
 	public int executeCommand(String command, String[] params) {
 		if (params == null || params.length == 0) {
@@ -746,8 +749,8 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Adds a listener to the collection of listeners who will be notified when
-	 * keys are pressed and released within this control.
+	 * Adds a listener to the collection of listeners who will be notified when keys are pressed and released
+	 * within this control.
 	 * 
 	 * @param listener
 	 *            the listener which should be notified
@@ -759,8 +762,8 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Removes a listener from the collection of listeners who will be notified
-	 * when keys are pressed and released within this control.
+	 * Removes a listener from the collection of listeners who will be notified when keys are pressed and
+	 * released within this control.
 	 * 
 	 * @param listener
 	 *            the listener which should no longer be notified
@@ -772,36 +775,33 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Adds a listener to the collection of listeners who will be notified when
-	 * the content of this control is modified.
+	 * Adds a listener to the collection of listeners who will be notified when the content of this control is
+	 * modified.
 	 * 
 	 * @param listener
 	 *            the listener which should be notified
 	 */
 	public void addModifyListener(ModifyListener listener) {
-		if (editor != null && listener != null
-				&& !modifyListeners.contains(listener)) {
+		if (editor != null && listener != null && !modifyListeners.contains(listener)) {
 			modifyListeners.add(listener);
 		}
 	}
 
 	/**
-	 * Removes a listener from the collection of listeners who will be notified
-	 * when the content of this control is modified.
+	 * Removes a listener from the collection of listeners who will be notified when the content of this
+	 * control is modified.
 	 * 
 	 * @param listener
 	 *            the listener which should no longer be notified
 	 */
 	public void removeModifyListener(ModifyListener listener) {
-		if (editor != null && listener != null
-				&& modifyListeners.contains(listener)) {
+		if (editor != null && listener != null && modifyListeners.contains(listener)) {
 			modifyListeners.remove(listener);
 		}
 	}
 
 	/**
-	 * Adds the listener to the collection of listeners who will be notifed when
-	 * this control is disposed.
+	 * Adds the listener to the collection of listeners who will be notifed when this control is disposed.
 	 * 
 	 * @param listener
 	 *            the listener which should be notified
@@ -813,8 +813,7 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Removes a listener from the collection of listeners who will be notified
-	 * when this control is disposed.
+	 * Removes a listener from the collection of listeners who will be notified when this control is disposed.
 	 * 
 	 * @param listener
 	 *            the listener which should no longer be notified
@@ -826,8 +825,8 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Adds a listener to the collection of listeners who will be notified when
-	 * help events are generated for this control.
+	 * Adds a listener to the collection of listeners who will be notified when help events are generated for
+	 * this control.
 	 * 
 	 * @param listener
 	 *            the listener which should be notified
@@ -839,8 +838,8 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Removes a listener from the collection of listeners who will be notified
-	 * when help events are generated for this control.
+	 * Removes a listener from the collection of listeners who will be notified when help events are generated
+	 * for this control.
 	 * 
 	 * @param listener
 	 *            the listener which should no longer be notified
@@ -852,8 +851,8 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Adds the listener to the collection of listeners who will be notifed when
-	 * an event of the given type occurs within this control.
+	 * Adds the listener to the collection of listeners who will be notifed when an event of the given type
+	 * occurs within this control.
 	 * 
 	 * @param eventType
 	 *            the type of event to listen for
@@ -864,8 +863,7 @@ public class EEFRichText implements IRichText {
 		if (editor != null && !listeners.containsKey(listener)) {
 			if (eventType != SWT.SELECTED) {
 				if (editorControl == null
-						|| (eventType != SWT.Activate
-								&& eventType != SWT.Deactivate
+						|| (eventType != SWT.Activate && eventType != SWT.Deactivate
 								&& eventType != SWT.FocusIn && eventType != SWT.FocusOut)) {
 					editor.addListener(eventType, listener);
 				}
@@ -875,21 +873,18 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Removes the listener from the collection of listeners who will be notifed
-	 * when an event of the given type occurs within this control.
+	 * Removes the listener from the collection of listeners who will be notifed when an event of the given
+	 * type occurs within this control.
 	 * 
 	 * @param eventType
 	 *            the type of event to listen for
 	 * @param listener
-	 *            the listener which should no longer be notified when the event
-	 *            occurs
+	 *            the listener which should no longer be notified when the event occurs
 	 */
 	public void removeListener(int eventType, Listener listener) {
 		if (editor != null && listeners.containsKey(listener)) {
 			if (editorControl == null
-					|| (eventType != SWT.Activate
-							&& eventType != SWT.Deactivate
-							&& eventType != SWT.FocusIn && eventType != SWT.FocusOut)) {
+					|| (eventType != SWT.Activate && eventType != SWT.Deactivate && eventType != SWT.FocusIn && eventType != SWT.FocusOut)) {
 				editor.removeListener(eventType, listener);
 			}
 			listeners.remove(listener);
@@ -899,181 +894,166 @@ public class EEFRichText implements IRichText {
 	/**
 	 * Returns the event listeners attached to this control.
 	 * 
-	 * @return an iterator for retrieving the event listeners attached to this
-	 *         control
+	 * @return an iterator for retrieving the event listeners attached to this control
 	 */
 	public Iterator<RichTextListener> getListeners() {
 		return listeners.values().iterator();
 	}
 
 	/**
-	 * Adds the listener to monitor events and status sent by the underlying
-	 * DHTML editor.
+	 * Adds the listener to monitor events and status sent by the underlying DHTML editor.
 	 */
 	protected void addStatusTextListener() {
 		editor.addStatusTextListener(new StatusTextListener() {
 			public void changed(StatusTextEvent event) {
 				String eventText = event.text;
 				int eventTextLength = eventText.length();
-				if (eventText.startsWith(STATUS_PREFIX)
-						&& eventTextLength > STATUS_PREFIX_LENGTH) {
+				if (eventText.startsWith(STATUS_PREFIX) && eventTextLength > STATUS_PREFIX_LENGTH) {
 					try {
 						processingJSEvent = true;
 						int endStatusIndex = STATUS_PREFIX_LENGTH + 1;
 						if (eventText.length() > STATUS_PREFIX_LENGTH + 1
-								&& Character.isDigit(eventText
-										.charAt(endStatusIndex))) {
+								&& Character.isDigit(eventText.charAt(endStatusIndex))) {
 							endStatusIndex++;
 						}
-						int statusType = Integer.parseInt(eventText.substring(
-								STATUS_PREFIX_LENGTH, endStatusIndex));
+						int statusType = Integer.parseInt(eventText.substring(STATUS_PREFIX_LENGTH,
+								endStatusIndex));
 						switch (statusType) {
-						case STATUS_NOP:
-							break;
-						case STATUS_INITIALIZED:
-							break;
-						case STATUS_MODIFIED:
-							if (debug) {
-								printDebugMessage(
-										"statusTextListener", "STATUS_MODIFIED"); //$NON-NLS-1$ //$NON-NLS-2$
-							}
-							checkModify();
-							break;
-						case STATUS_GET_TEXT:
-							if (eventTextLength >= STATUS_PREFIX_LENGTH + 2) {
-								currentText = eventText
-										.substring(STATUS_PREFIX_LENGTH + 2);
-							} else {
-								currentText = ""; //$NON-NLS-1$
-							}
-							if (debug) {
-								printDebugMessage(
-										"statusTextListener", //$NON-NLS-1$
-										"STATUS_GET_TEXT, currentText=", currentText); //$NON-NLS-1$
-							}
-							break;
-						case STATUS_KEY_DOWN:
-							if (eventTextLength >= STATUS_PREFIX_LENGTH + 2) {
-								String cmd = eventText
-										.substring(STATUS_PREFIX_LENGTH + 2);
+							case STATUS_NOP:
+								break;
+							case STATUS_INITIALIZED:
+								break;
+							case STATUS_MODIFIED:
+								if (debug) {
+									printDebugMessage("statusTextListener", "STATUS_MODIFIED"); //$NON-NLS-1$ //$NON-NLS-2$
+								}
+								checkModify();
+								break;
+							case STATUS_GET_TEXT:
+								if (eventTextLength >= STATUS_PREFIX_LENGTH + 2) {
+									currentText = eventText.substring(STATUS_PREFIX_LENGTH + 2);
+								} else {
+									currentText = ""; //$NON-NLS-1$
+								}
 								if (debug) {
 									printDebugMessage("statusTextListener", //$NON-NLS-1$
-											"STATUS_KEY_DOWN, cmd=" + cmd); //$NON-NLS-1$
+											"STATUS_GET_TEXT, currentText=", currentText); //$NON-NLS-1$
 								}
-								if (cmd.equals(RichTextCommand.COPY)) {
-									setCopyURL();
-								} else if (cmd.equals(RichTextCommand.CUT)) {
-									setCopyURL();
-									CutAction action = new CutAction(
-											EEFRichText.this);
-									action.execute(EEFRichText.this);
-								} else if (cmd
-										.equals(RichTextCommand.FIND_TEXT)) {
-									getFindReplaceAction().execute(
-											EEFRichText.this);
-								} else if (cmd.equals(RichTextCommand.PASTE)) {
-									PasteAction action = new PasteAction(
-											EEFRichText.this);
-									action.execute(EEFRichText.this);
-								} else if (cmd.equals(RichTextCommand.SAVE)) {
-									PlatformUI.getWorkbench()
-											.getActiveWorkbenchWindow()
-											.getActivePage().getActiveEditor()
-											.doSave(null);
-								} else if (cmd.equals(RichTextCommand.SAVE_ALL)) {
-									PlatformUI.getWorkbench()
-											.getActiveWorkbenchWindow()
-											.getActivePage().saveAllEditors(
-													false);
+								break;
+							case STATUS_KEY_DOWN:
+								if (eventTextLength >= STATUS_PREFIX_LENGTH + 2) {
+									String cmd = eventText.substring(STATUS_PREFIX_LENGTH + 2);
+									if (debug) {
+										printDebugMessage("statusTextListener", //$NON-NLS-1$
+												"STATUS_KEY_DOWN, cmd=" + cmd); //$NON-NLS-1$
+									}
+									if (cmd.equals(RichTextCommand.COPY)) {
+										setCopyURL();
+									} else if (cmd.equals(RichTextCommand.CUT)) {
+										setCopyURL();
+										CutAction action = new CutAction(EEFRichText.this);
+										action.execute(EEFRichText.this);
+									} else if (cmd.equals(RichTextCommand.FIND_TEXT)) {
+										getFindReplaceAction().execute(EEFRichText.this);
+									} else if (cmd.equals(RichTextCommand.PASTE)) {
+										PasteAction action = new PasteAction(EEFRichText.this);
+										action.execute(EEFRichText.this);
+									} else if (cmd.equals(RichTextCommand.SAVE)) {
+										checkModify();
+										if (modified) {
+											// save model !
+										}
+										PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+												.getActiveEditor().doSave(null);
+									} else if (cmd.equals(RichTextCommand.SAVE_ALL)) {
+										checkModify();
+										if (modified) {
+											// save model !
+										}
+										PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+												.saveAllEditors(false);
+									}
 								}
-							}
-							break;
-						case STATUS_KEY_UP:
-							if (debug) {
-								printDebugMessage("statusTextListener", //$NON-NLS-1$
-										"STATUS_KEY_UP, modified=" + modified); //$NON-NLS-1$
-							}
-							checkModify();
-							break;
-						case STATUS_SELECT_TEXT:
-							if (eventTextLength >= STATUS_PREFIX_LENGTH + 2) {
-								String[] strings = eventText.substring(
-										STATUS_PREFIX_LENGTH + 2).split(
-										"\\$", 5); //$NON-NLS-1$
-								try {
-									richTextSelection.setFontName(strings[0]);
-									richTextSelection.setFontSize(strings[1]);
-									richTextSelection.setBlockStyle(strings[2]);
-									richTextSelection.setFlags(Integer
-											.parseInt(strings[3]));
-									richTextSelection.setText(strings[4]);
-								} catch (NumberFormatException e) {
-									logger.logError(e);
+								break;
+							case STATUS_KEY_UP:
+								if (debug) {
+									printDebugMessage("statusTextListener", //$NON-NLS-1$
+											"STATUS_KEY_UP, modified=" + modified); //$NON-NLS-1$
+								}
+								checkModify();
+								break;
+							case STATUS_SELECT_TEXT:
+								if (eventTextLength >= STATUS_PREFIX_LENGTH + 2) {
+									String[] strings = eventText.substring(STATUS_PREFIX_LENGTH + 2).split(
+											"\\$", 5); //$NON-NLS-1$
+									try {
+										richTextSelection.setFontName(strings[0]);
+										richTextSelection.setFontSize(strings[1]);
+										richTextSelection.setBlockStyle(strings[2]);
+										richTextSelection.setFlags(Integer.parseInt(strings[3]));
+										richTextSelection.setText(strings[4]);
+									} catch (NumberFormatException e) {
+										logger.logError(e);
+									}
+									if (debug) {
+										printDebugMessage("selectionStatusListener", //$NON-NLS-1$
+												"current selection is=" + richTextSelection); //$NON-NLS-1$
+									}
+
+									hasSelection = true;
+									if (hasFocus())
+										notifyListeners(SWT.SELECTED, new Event());
+								} else {
+									richTextSelection.setText(""); //$NON-NLS-1$
+									hasSelection = false;
 								}
 								if (debug) {
-									printDebugMessage(
-											"selectionStatusListener", //$NON-NLS-1$
-											"current selection is=" + richTextSelection); //$NON-NLS-1$
+									printDebugMessage("statusTextListener", //$NON-NLS-1$
+											"STATUS_SELECT_TEXT, selectedText=", richTextSelection.getText()); //$NON-NLS-1$
 								}
-
+								break;
+							case STATUS_SELECT_CONTROL:
+								if (debug) {
+									printDebugMessage("statusTextListener", //$NON-NLS-1$
+											"STATUS_SELECT_CONTROL, control selected"); //$NON-NLS-1$
+								}
 								hasSelection = true;
-								if (hasFocus())
-									notifyListeners(SWT.SELECTED, new Event());
-							} else {
-								richTextSelection.setText(""); //$NON-NLS-1$
+								break;
+							case STATUS_SELECT_NONE:
+								if (debug) {
+									printDebugMessage("statusTextListener", //$NON-NLS-1$
+											"STATUS_SELECT_NONE, no selection"); //$NON-NLS-1$
+								}
 								hasSelection = false;
-							}
-							if (debug) {
-								printDebugMessage(
-										"statusTextListener", //$NON-NLS-1$
-										"STATUS_SELECT_TEXT, selectedText=", richTextSelection.getText()); //$NON-NLS-1$
-							}
-							break;
-						case STATUS_SELECT_CONTROL:
-							if (debug) {
-								printDebugMessage("statusTextListener", //$NON-NLS-1$
-										"STATUS_SELECT_CONTROL, control selected"); //$NON-NLS-1$
-							}
-							hasSelection = true;
-							break;
-						case STATUS_SELECT_NONE:
-							if (debug) {
-								printDebugMessage("statusTextListener", //$NON-NLS-1$
-										"STATUS_SELECT_NONE, no selection"); //$NON-NLS-1$
-							}
-							hasSelection = false;
-							break;
-						case STATUS_EXEC_CMD:
-							if (eventTextLength >= STATUS_PREFIX_LENGTH + 3) {
-								try {
-									status = Integer.parseInt(eventText
-											.substring(
-													STATUS_PREFIX_LENGTH + 2,
-													STATUS_PREFIX_LENGTH + 3));
-								} catch (Exception e) {
-									status = -1;
+								break;
+							case STATUS_EXEC_CMD:
+								if (eventTextLength >= STATUS_PREFIX_LENGTH + 3) {
+									try {
+										status = Integer.parseInt(eventText.substring(
+												STATUS_PREFIX_LENGTH + 2, STATUS_PREFIX_LENGTH + 3));
+									} catch (Exception e) {
+										status = -1;
+									}
 								}
-							}
-							if (debug && status != 1) {
-								printDebugMessage("statusTextListener", //$NON-NLS-1$
-										"STATUS_EXEC_CMD, status=" + status); //$NON-NLS-1$
-							}
-							break;
-						case STATUS_REFORMAT_LINKS:
-							if (debug) {
-								printDebugMessage(
-										"statusTextListener", "STATUS_REFORMAT_LINKS"); //$NON-NLS-1$ //$NON-NLS-2$
-							}
-							if (Platform.getOS().equals("win32")) { //$NON-NLS-1$ 
-								// Workaround the drag and drop issue with DBCS
-								// characters.
-								if (modified) {
-									setText(getText());
-									modified = true;
+								if (debug && status != 1) {
+									printDebugMessage("statusTextListener", //$NON-NLS-1$
+											"STATUS_EXEC_CMD, status=" + status); //$NON-NLS-1$
 								}
-							}
-							checkModify();
-							break;
+								break;
+							case STATUS_REFORMAT_LINKS:
+								if (debug) {
+									printDebugMessage("statusTextListener", "STATUS_REFORMAT_LINKS"); //$NON-NLS-1$ //$NON-NLS-2$
+								}
+								if (Platform.getOS().equals("win32")) { //$NON-NLS-1$ 
+									// Workaround the drag and drop issue with DBCS
+									// characters.
+									if (modified) {
+										setText(getText());
+										modified = true;
+									}
+								}
+								checkModify();
+								break;
 						}
 					} catch (Exception e) {
 					} finally {
@@ -1092,10 +1072,8 @@ public class EEFRichText implements IRichText {
 	protected String generateEditorHTML() throws Exception {
 		String escapedBasePath = basePath;
 		if (escapedBasePath.startsWith(FileUtil.UNC_PATH_PREFIX))
-			escapedBasePath = escapedBasePath.replaceFirst(
-					"^\\\\\\\\", "\\\\\\\\\\\\\\\\"); //$NON-NLS-1$ //$NON-NLS-2$
-		escapedBasePath = XMLUtil
-				.escape("file://" + escapedBasePath.replaceAll("'", "\\\\'")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			escapedBasePath = escapedBasePath.replaceFirst("^\\\\\\\\", "\\\\\\\\\\\\\\\\"); //$NON-NLS-1$ //$NON-NLS-2$
+		escapedBasePath = XMLUtil.escape("file://" + escapedBasePath.replaceAll("'", "\\\\'")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		String escapedRteUTL = rteURL.replaceAll("&apos;", "%27"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		StringBuffer rteXML = new StringBuffer();
@@ -1105,8 +1083,7 @@ public class EEFRichText implements IRichText {
 				.append("\" baseURL=\"").append(escapedBasePath) //$NON-NLS-1$
 				.append("\"/>"); //$NON-NLS-1$
 		StringWriter result = new StringWriter();
-		XSLTProcessor.transform(
-				rteFolder + "rte.xsl", rteXML.toString(), result); //$NON-NLS-1$
+		XSLTProcessor.transform(rteFolder + "rte.xsl", rteXML.toString(), result); //$NON-NLS-1$
 		return result.toString();
 	}
 
@@ -1147,8 +1124,7 @@ public class EEFRichText implements IRichText {
 		pastePlainTextItem.setImage(RichTextImages.IMG_PASTE_PLAIN_TEXT);
 		pastePlainTextItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
-				PastePlainTextAction action = new PastePlainTextAction(
-						EEFRichText.this);
+				PastePlainTextAction action = new PastePlainTextAction(EEFRichText.this);
 				action.execute(EEFRichText.this);
 			}
 		});
@@ -1174,19 +1150,18 @@ public class EEFRichText implements IRichText {
 		editorControl = getControlSite(editor);
 		if (editorControl != null) {
 			if (debug) {
-				printDebugMessage(
-						"init", "editorControl=" + editorControl.getClass().getName()); //$NON-NLS-1$ //$NON-NLS-2$
+				printDebugMessage("init", "editorControl=" + editorControl.getClass().getName()); //$NON-NLS-1$ //$NON-NLS-2$
 			}
-			
+
 			// only IE (win32) has the editorControl != null
 			isIE = true;
-			
+
 			editorControl.addListener(SWT.Activate, new Listener() {
 				public void handleEvent(Event event) {
 					if (debug) {
 						printDebugMessage("activateListener"); //$NON-NLS-1$
 					}
-					setFocus();
+					// setFocus();
 					notifyListeners(SWT.Activate, event);
 				}
 			});
@@ -1216,35 +1191,32 @@ public class EEFRichText implements IRichText {
 					int keyCode = event.keyCode;
 					int stateMask = event.stateMask;
 					if (debug) {
-						printDebugMessage(
-								"keyUpListener", "keyCode=" + keyCode //$NON-NLS-1$ //$NON-NLS-2$
-										+ ", stateMask=" + stateMask + ", editable=" + editable); //$NON-NLS-1$ //$NON-NLS-2$
+						printDebugMessage("keyUpListener", "keyCode=" + keyCode //$NON-NLS-1$ //$NON-NLS-2$
+								+ ", stateMask=" + stateMask + ", editable=" + editable); //$NON-NLS-1$ //$NON-NLS-2$
 					}
-					if ((stateMask & SWT.CTRL) > 0
-							|| (stateMask & SWT.ALT) > 0
+					if ((stateMask & SWT.CTRL) > 0 || (stateMask & SWT.ALT) > 0
 							|| ((stateMask & SWT.SHIFT) > 0 && keyCode == stateMask)) {
 						return;
 					}
 					if (editable) {
 						switch (event.keyCode) {
-						case SWT.ARROW_DOWN:
-						case SWT.ARROW_LEFT:
-						case SWT.ARROW_RIGHT:
-						case SWT.ARROW_UP:
-						case SWT.END:
-						case SWT.HOME:
-						case SWT.PAGE_DOWN:
-						case SWT.PAGE_UP:
-						case SWT.TAB:
-							return;
-						default:
-							checkModify();
-							break;
+							case SWT.ARROW_DOWN:
+							case SWT.ARROW_LEFT:
+							case SWT.ARROW_RIGHT:
+							case SWT.ARROW_UP:
+							case SWT.END:
+							case SWT.HOME:
+							case SWT.PAGE_DOWN:
+							case SWT.PAGE_UP:
+							case SWT.TAB:
+								return;
+							default:
+								checkModify();
+								break;
 						}
 					}
 				}
 			});
-
 			editor.addLocationListener(new LocationAdapter() {
 				public void changing(LocationEvent event) {
 					// Deactivate the links in the content page in readonly
@@ -1258,7 +1230,7 @@ public class EEFRichText implements IRichText {
 					if (debug) {
 						printDebugMessage("activateListener"); //$NON-NLS-1$
 					}
-					setFocus();
+					// setFocus();
 				}
 			});
 
@@ -1278,25 +1250,24 @@ public class EEFRichText implements IRichText {
 				}
 
 				public void keyReleased(KeyEvent e) {
-					if ((e.stateMask & SWT.CTRL) > 0
-							|| (e.stateMask & SWT.ALT) > 0)
+					if ((e.stateMask & SWT.CTRL) > 0 || (e.stateMask & SWT.ALT) > 0)
 						return;
 					if (editable) {
 						switch (e.keyCode) {
-						case SWT.ARROW_DOWN:
-						case SWT.ARROW_LEFT:
-						case SWT.ARROW_RIGHT:
-						case SWT.ARROW_UP:
-						case SWT.END:
-						case SWT.HOME:
-						case SWT.PAGE_DOWN:
-						case SWT.PAGE_UP:
-						case SWT.SHIFT:
-						case SWT.TAB:
-							break;
-						default:
-							checkModify();
-							break;
+							case SWT.ARROW_DOWN:
+							case SWT.ARROW_LEFT:
+							case SWT.ARROW_RIGHT:
+							case SWT.ARROW_UP:
+							case SWT.END:
+							case SWT.HOME:
+							case SWT.PAGE_DOWN:
+							case SWT.PAGE_UP:
+							case SWT.SHIFT:
+							case SWT.TAB:
+								break;
+							default:
+								checkModify();
+								break;
 						}
 					}
 				}
@@ -1333,8 +1304,7 @@ public class EEFRichText implements IRichText {
 			event.display = Display.getCurrent();
 			event.widget = editor;
 
-			for (Iterator<RichTextListener> i = listeners.values().iterator(); i
-					.hasNext();) {
+			for (Iterator<RichTextListener> i = listeners.values().iterator(); i.hasNext();) {
 				RichTextListener listener = i.next();
 				if (listener.getEventType() == eventType) {
 					if (debug) {
@@ -1352,8 +1322,7 @@ public class EEFRichText implements IRichText {
 	}
 
 	/**
-	 * Notifies the modify listeners that the rich text editor content has
-	 * changed.
+	 * Notifies the modify listeners that the rich text editor content has changed.
 	 */
 	public void notifyModifyListeners() {
 		notifyingModifyListeners = true;
@@ -1362,17 +1331,14 @@ public class EEFRichText implements IRichText {
 		event.display = Display.getCurrent();
 		event.widget = editor;
 
-		for (Iterator<ModifyListener> i = modifyListeners.iterator(); i
-				.hasNext();) {
+		for (Iterator<ModifyListener> i = modifyListeners.iterator(); i.hasNext();) {
 			ModifyListener listener = i.next();
 			if (debug) {
-				printDebugMessage(
-						"notifyModifyListeners", "notifying listener, " + listener); //$NON-NLS-1$ //$NON-NLS-2$	
+				printDebugMessage("notifyModifyListeners", "notifying listener, " + listener); //$NON-NLS-1$ //$NON-NLS-2$	
 			}
 			listener.modifyText(new ModifyEvent(event));
 			if (debug) {
-				printDebugMessage(
-						"notifyModifyListeners", "notified listener, " + listener); //$NON-NLS-1$ //$NON-NLS-2$	
+				printDebugMessage("notifyModifyListeners", "notified listener, " + listener); //$NON-NLS-1$ //$NON-NLS-2$	
 			}
 		}
 
@@ -1381,7 +1347,6 @@ public class EEFRichText implements IRichText {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see org.eclipse.epf.richtext.IRichText#checkModify()
 	 */
 	public void checkModify() {
@@ -1441,34 +1406,32 @@ public class EEFRichText implements IRichText {
 		for (int i = 0; i < textSize; i++) {
 			char ch = text.charAt(i);
 			switch (ch) {
-			case '\r':
-				break;
-			case '\t':
-				result.append(' ');
-				break;
-			case '\n':
-				result.append(ENCODED_NEWLINE);
-				break;
-			case '\'':
-				result.append(ENCODED_SINGLE_QUOTE);
-				break;
-			case '\\':
-				result.append("\\\\"); //$NON-NLS-1$
-				break;
-			default:
-				result.append(ch);
+				case '\r':
+					break;
+				case '\t':
+					result.append(' ');
+					break;
+				case '\n':
+					result.append(ENCODED_NEWLINE);
+					break;
+				case '\'':
+					result.append(ENCODED_SINGLE_QUOTE);
+					break;
+				case '\\':
+					result.append("\\\\"); //$NON-NLS-1$
+					break;
+				default:
+					result.append(ch);
 			}
 		}
 		return result.toString();
 	}
 
 	/**
-	 * Returns the child <code>OleControlSite</code> contained within the
-	 * given <code>Composite</code>.
+	 * Returns the child <code>OleControlSite</code> contained within the given <code>Composite</code>.
 	 * 
 	 * @param composite
-	 *            a <code>Composite</code> object, presumably a
-	 *            <code>Browser</code>
+	 *            a <code>Composite</code> object, presumably a <code>Browser</code>
 	 * @return an <code>OleControlSite</code> object
 	 */
 	protected Control getControlSite(Composite composite) {
@@ -1479,7 +1442,7 @@ public class EEFRichText implements IRichText {
 				if (controlClass.equals("org.eclipse.swt.browser.WebSite")) { //$NON-NLS-1$
 					return controls[i];
 				} else if (controls[i] instanceof Composite) {
-					return getControlSite((Composite) controls[i]);
+					return getControlSite((Composite)controls[i]);
 				}
 			}
 		}
@@ -1522,8 +1485,7 @@ public class EEFRichText implements IRichText {
 
 	public void setFindReplaceAction(FindReplaceAction findReplaceAction) {
 		if (findReplaceAction != null) {
-			if (this.findReplaceAction != null
-					&& this.findReplaceAction != findReplaceAction) {
+			if (this.findReplaceAction != null && this.findReplaceAction != findReplaceAction) {
 				this.findReplaceAction.dispose();
 			}
 			this.findReplaceAction = findReplaceAction;
@@ -1536,40 +1498,35 @@ public class EEFRichText implements IRichText {
 		initialText = text == null ? "" : text; //$NON-NLS-1$
 		modified = false;
 	}
-	
+
 	protected void addProgressListener() {
 		editor.addProgressListener(new ProgressListener() {
 			public void completed(ProgressEvent event) {
 				if (!initialized) {
 					initialized = true;
 					if (debug) {
-						printDebugMessage(
-								"statusTextListener", "STATUS_INITIALIZED"); //$NON-NLS-1$ //$NON-NLS-2$
+						printDebugMessage("statusTextListener", "STATUS_INITIALIZED"); //$NON-NLS-1$ //$NON-NLS-2$
 					}
 					if (!Platform.getOS().equals("win32")) { //$NON-NLS-1$
 						// Workaround Mozilla'a IFRAME
 						// height issue.
-						executeCommand(RichTextCommand.SET_HEIGHT,
-								"" + editor.getBounds().height); //$NON-NLS-1$
+						executeCommand(RichTextCommand.SET_HEIGHT, "" + editor.getBounds().height); //$NON-NLS-1$
 					}
-					executeCommand(RichTextCommand.SET_TEXT,
-							currentText);
+					executeCommand(RichTextCommand.SET_TEXT, currentText);
 					editor.redraw();
 					if (initializedWithFocus) {
 						setFocus();
 					}
 					if (!editable) {
-						executeCommand(
-								RichTextCommand.SET_EDITABLE,
-								"" + editable); //$NON-NLS-1$
+						executeCommand(RichTextCommand.SET_EDITABLE, "" + editable); //$NON-NLS-1$
 					}
 				}
 			}
-			
+
 			public void changed(ProgressEvent event) {
 				// do nothing
 			}
 		});
 	}
-	
+
 }
