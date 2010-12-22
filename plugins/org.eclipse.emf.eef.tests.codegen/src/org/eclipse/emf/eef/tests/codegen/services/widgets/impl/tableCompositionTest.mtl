@@ -70,7 +70,7 @@ editTableComposition[peElement.name/]Feature(propertiesView, bot.selectNode(mode
 		[editFeature(f, involvedPropertiesEditionElement(peElement, f))/]
 		[/for]
 		bot.closeShellWithFinishButton(shellTable);
-	}	
+	}
 [/template]
 
 [comment overrides this template if additional methods are needed/]

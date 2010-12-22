@@ -94,9 +94,9 @@ package [pec.model.completePackage()/].tests.junit;
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
-		
+
 		[pec.editFeature(peElement)/]
 [/template]
 
@@ -105,8 +105,8 @@ package [pec.model.completePackage()/].tests.junit;
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
-		
+
 		[pec.removeFeature(peElement)/]
 [/template]

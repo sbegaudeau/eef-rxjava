@@ -93,7 +93,7 @@ CompoundCommand cc = new CompoundCommand();
 [comment  TODO: Reuse the commandUpdater template but the last parameter of the command creation method must be ... parameterized /]
 List eGet = (List)[pec.model.name.toLowerFirst()/].eGet([peElement.metamodelGetter()/]);
 if (eGet.size() == 0)
-	throw new InputModelInvalidException("Model is invalid");					
+	throw new InputModelInvalidException("Model is invalid");
 EObject firstInstanceOf = (EObject) eGet.get(0);
 cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], [peElement.metamodelGetter()/], firstInstanceOf));
 [/template]
