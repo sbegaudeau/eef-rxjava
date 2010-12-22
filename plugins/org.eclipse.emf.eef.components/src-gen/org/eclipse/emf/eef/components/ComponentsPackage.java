@@ -212,6 +212,15 @@ public interface ComponentsPackage extends EPackage {
 	int PROPERTIES_EDITION_COMPONENT__CATEGORY = MappingPackage.EMF_ELEMENT_BINDING__CATEGORY;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES_EDITION_COMPONENT__BINDING_FILTERS = MappingPackage.EMF_ELEMENT_BINDING__BINDING_FILTERS;
+
+	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
