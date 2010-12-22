@@ -1,12 +1,47 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EEF Extended Runtime
-Bundle-SymbolicName: org.eclipse.emf.eef.runtime.extended
+Bundle-SymbolicName: org.eclipse.emf.eef.runtime.extended;singleton:=true
 Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.epf.common;bundle-version="1.2.0",
  org.eclipse.epf.richtext;bundle-version="1.2.0";visibility:=reexport,
- org.eclipse.epf.ui;bundle-version="1.2.0";visibility:=reexport
-Export-Package: org.eclipse.emf.eef.runtime.ui.widgets.richtext,
+ org.eclipse.epf.ui;bundle-version="1.2.0";visibility:=reexport,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.jface,
+ org.eclipse.ui,
+ org.eclipse.emf.edit.ui;visibility:=reexport,
+ org.eclipse.ui.forms;visibility:=reexport,
+ org.eclipse.emf.eef.runtime;visibility:=reexport,
+ org.eclipse.emf.eef.mapping;visibility:=reexport,
+ org.eclipse.emf.eef.views;visibility:=reexport,
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.eef.components;visibility:=reexport,
+ org.eclipse.ocl.ecore
+Export-Package: org.eclipse.emf.eef.runtime.extended.editor,
+ org.eclipse.emf.eef.runtime.extended.editor.impl,
+ org.eclipse.emf.eef.runtime.extended.editor.util,
+ org.eclipse.emf.eef.runtime.extended.query,
+ org.eclipse.emf.eef.runtime.extended.query.impl,
+ org.eclipse.emf.eef.runtime.extended.query.util,
+ org.eclipse.emf.eef.runtime.query,
+ org.eclipse.emf.eef.runtime.query.compound,
+ org.eclipse.emf.eef.runtime.query.explicitpath,
+ org.eclipse.emf.eef.runtime.query.explicitpath.exception,
+ org.eclipse.emf.eef.runtime.query.explicitpath.path,
+ org.eclipse.emf.eef.runtime.query.ocl,
+ org.eclipse.emf.eef.runtime.ui,
+ org.eclipse.emf.eef.runtime.ui.editor,
+ org.eclipse.emf.eef.runtime.ui.editor.messages,
+ org.eclipse.emf.eef.runtime.ui.editors.pages,
+ org.eclipse.emf.eef.runtime.ui.editors.pages.eefviewer,
+ org.eclipse.emf.eef.runtime.ui.editors.pages.tree,
+ org.eclipse.emf.eef.runtime.ui.views,
+ org.eclipse.emf.eef.runtime.ui.widgets.masterdetails,
+ org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.eefviewer,
+ org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.tree,
+ org.eclipse.emf.eef.runtime.ui.widgets.richtext,
  org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions
+Bundle-Activator: org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime$Implementation

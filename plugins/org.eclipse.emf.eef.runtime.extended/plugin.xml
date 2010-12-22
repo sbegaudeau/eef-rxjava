@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2010/12/22 14:23:48 glefur Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/eef/extended/editor/1.0.0"
+            class="org.eclipse.emf.eef.runtime.ui.editor.EditorPackage"
+            genModel="model/extended.genmodel"/>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor"
+            contributorClass="org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditorActionBarContributor"
+            icon="icons/full/obj16/InteractiveEditor.gif"
+            id="org.eclipse.emf.eef.appmaster.editor.InteractiveEEFEditorID"
+            name="%UI_InteractiveEEFEditor_name">
+      </editor>
+   </extension>
+     <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/extended/query/1.0.0"
+            class="org.eclipse.emf.eef.runtime.extended.query.EEFQueryInterpreterAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.extended.query.EEFQueryInterpreter"/>
+   </extension>
+   
+</plugin>
