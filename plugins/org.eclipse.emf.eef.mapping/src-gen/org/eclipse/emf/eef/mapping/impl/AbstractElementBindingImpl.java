@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.View;
 
 /**
@@ -46,6 +47,7 @@ import org.eclipse.emf.eef.views.View;
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl#getReferencedBinding <em>Referenced Binding</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl#getViews <em>Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl#getBindingFilters <em>Binding Filters</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,6 +113,16 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * @ordered
 	 */
 	protected EList<View> views;
+
+	/**
+	 * The cached value of the '{@link #getBindingFilters() <em>Binding Filters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBindingFilters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BindingFilter> bindingFilters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -331,6 +343,18 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<BindingFilter> getBindingFilters() {
+		if (bindingFilters == null) {
+			bindingFilters = new EObjectContainmentEList<BindingFilter>(BindingFilter.class, this, MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS);
+		}
+		return bindingFilters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -375,6 +399,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 			return ((InternalEList<?>) getReferencedBinding()).basicRemove(otherEnd, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
 			return basicSetCategory(null, msgs);
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
+			return ((InternalEList<?>) getBindingFilters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -421,6 +447,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 			return getViews();
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
 			return getCategory();
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
+			return getBindingFilters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -462,6 +490,10 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
 			setCategory((Category) newValue);
 			return;
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
+			getBindingFilters().clear();
+			getBindingFilters().addAll((Collection<? extends BindingFilter>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -498,6 +530,9 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
 			setCategory((Category) null);
 			return;
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
+			getBindingFilters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -526,6 +561,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 			return views != null && !views.isEmpty();
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
 			return getCategory() != null;
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
+			return bindingFilters != null && !bindingFilters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

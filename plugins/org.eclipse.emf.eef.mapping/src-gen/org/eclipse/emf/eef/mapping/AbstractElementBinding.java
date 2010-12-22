@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.View;
 
 /**
@@ -29,6 +30,7 @@ import org.eclipse.emf.eef.views.View;
  *   <li>{@link org.eclipse.emf.eef.mapping.AbstractElementBinding#getReferencedBinding <em>Referenced Binding</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.AbstractElementBinding#getViews <em>Views</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.AbstractElementBinding#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.AbstractElementBinding#getBindingFilters <em>Binding Filters</em>}</li>
  * </ul>
  * </p>
  *
@@ -214,5 +216,21 @@ public interface AbstractElementBinding extends DocumentedElement {
 	 * @generated
 	 */
 	void setCategory(Category value);
+
+	/**
+	 * Returns the value of the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.mapping.filters.BindingFilter}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Binding Filters</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Binding Filters</em>' containment reference list.
+	 * @see org.eclipse.emf.eef.mapping.MappingPackage#getAbstractElementBinding_BindingFilters()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<BindingFilter> getBindingFilters();
 
 } // AbstractElementBinding

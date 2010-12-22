@@ -42,6 +42,7 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/views"/>
       <genFeatures property="None" notify="false" createChild="false" propertyCategory=""
           propertyDescription="The owning category" ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/category"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//AbstractElementBinding/bindingFilters"/>
     </genClasses>
     <genClasses image="false" ecoreClass="mapping.ecore#//ModelProperty">
       <genFeatures notify="false" createChild="false" propertyDescription="The binding that manage this property"

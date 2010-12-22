@@ -36,6 +36,8 @@
         eType="ecore:EClass ../../org.eclipse.emf.eef.views/model/views.ecore#//View"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"
         eOpposite="#//Category/bindings"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bindingFilters" upperBound="-1"
+        eType="#//filters/BindingFilter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelProperty" abstract="true" eSuperTypes="#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="binding" eType="#//StandardPropertyBinding"

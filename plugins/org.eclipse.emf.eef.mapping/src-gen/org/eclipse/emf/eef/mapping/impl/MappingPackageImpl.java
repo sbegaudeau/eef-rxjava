@@ -364,6 +364,15 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAbstractElementBinding_BindingFilters() {
+		return (EReference) abstractElementBindingEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelProperty() {
 		return modelPropertyEClass;
 	}
@@ -668,6 +677,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		createEReference(abstractElementBindingEClass, ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING);
 		createEReference(abstractElementBindingEClass, ABSTRACT_ELEMENT_BINDING__VIEWS);
 		createEReference(abstractElementBindingEClass, ABSTRACT_ELEMENT_BINDING__CATEGORY);
+		createEReference(abstractElementBindingEClass, ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS);
 
 		modelPropertyEClass = createEClass(MODEL_PROPERTY);
 		createEReference(modelPropertyEClass, MODEL_PROPERTY__BINDING);
@@ -762,7 +772,8 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(databindingEClass, Databinding.class, "Databinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDatabinding_Bindings(), this.getAbstractElementBinding(), this.getAbstractElementBinding_Databinding(), "bindings", null, 0, -1, Databinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDatabinding_Bindings(), this.getAbstractElementBinding(), this.getAbstractElementBinding_Databinding(), "bindings", null, 0, -1, Databinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEReference(getDatabinding_Categories(), this.getCategory(), this.getCategory_Databinding(), "categories", null, 0, -1, Databinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -772,24 +783,34 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		initEReference(getModelElement_SuperElement(), this.getModelElement(), this.getModelElement_SubElements(), "superElement", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractElementBindingEClass, AbstractElementBinding.class, "AbstractElementBinding", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractElementBinding_SubElements(), this.getAbstractElementBinding(), this.getAbstractElementBinding_SuperElement(), "subElements", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractElementBinding_Properties(), this.getAbstractPropertyBinding(), this.getAbstractPropertyBinding_Element(), "properties", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractElementBinding_Databinding(), this.getDatabinding(), this.getDatabinding_Bindings(), "databinding", null, 0, 1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractElementBinding_SuperElement(), this.getAbstractElementBinding(), this.getAbstractElementBinding_SubElements(), "superElement", null, 0, 1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementBinding_SubElements(), this.getAbstractElementBinding(), this.getAbstractElementBinding_SuperElement(), "subElements", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementBinding_Properties(), this.getAbstractPropertyBinding(), this.getAbstractPropertyBinding_Element(), "properties", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementBinding_Databinding(), this.getDatabinding(), this.getDatabinding_Bindings(), "databinding", null, 0, 1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getAbstractElementBinding_SuperElement(), this.getAbstractElementBinding(), this.getAbstractElementBinding_SubElements(), "superElement", null, 0, 1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractElementBinding_Name(), ecorePackage.getEString(), "name", null, 1, 1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractElementBinding_ReferencedBinding(), this.getElementBindingReference(), null, "referencedBinding", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementBinding_ReferencedBinding(), this.getElementBindingReference(), null, "referencedBinding", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEReference(getAbstractElementBinding_Views(), theViewsPackage.getView(), null, "views", null, 1, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractElementBinding_Category(), this.getCategory(), this.getCategory_Bindings(), "category", null, 0, 1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractElementBinding_BindingFilters(), theFiltersPackage.getBindingFilter(), null, "bindingFilters", null, 0, -1, AbstractElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(modelPropertyEClass, ModelProperty.class, "ModelProperty", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModelProperty_Binding(), this.getStandardPropertyBinding(), this.getStandardPropertyBinding_Model(), "binding", null, 0, 1, ModelProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelProperty_Binding(), this.getStandardPropertyBinding(), this.getStandardPropertyBinding_Model(), "binding", null, 0, 1, ModelProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEReference(getModelProperty_ModelElement(), this.getModelElement(), this.getModelElement_Properties(), "modelElement", null, 0, 1, ModelProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractPropertyBindingEClass, AbstractPropertyBinding.class, "AbstractPropertyBinding", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractPropertyBinding_Name(), ecorePackage.getEString(), "name", null, 1, 1, AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractPropertyBinding_Views(), theViewsPackage.getElementEditor(), null, "views", null, 1, -1, AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractPropertyBinding_Element(), this.getAbstractElementBinding(), this.getAbstractElementBinding_Properties(), "element", null, 0, 1, AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAbstractPropertyBinding_BindingFilters(), theFiltersPackage.getBindingFilter(), null, "bindingFilters", null, 0, -1, AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractPropertyBinding_Element(), this.getAbstractElementBinding(), this.getAbstractElementBinding_Properties(), "element", null, 0, 1, AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractPropertyBinding_BindingFilters(), theFiltersPackage.getBindingFilter(), null, "bindingFilters", null, 0, -1, AbstractPropertyBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(emfElementBindingEClass, EMFElementBinding.class, "EMFElementBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEMFElementBinding_Model(), ecorePackage.getEClassifier(), null, "model", null, 1, 1, EMFElementBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -818,7 +839,8 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 
 		initEClass(emfMultiPropertiesBindingEClass, EMFMultiPropertiesBinding.class, "EMFMultiPropertiesBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEMFMultiPropertiesBinding_Model(), ecorePackage.getEStructuralFeature(), null, "model", null, 1, -1, EMFMultiPropertiesBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEMFMultiPropertiesBinding_Navigation(), theNavigationPackage.getModelNavigation(), null, "navigation", null, 0, 1, EMFMultiPropertiesBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEMFMultiPropertiesBinding_Navigation(), theNavigationPackage.getModelNavigation(), null, "navigation", null, 0, 1, EMFMultiPropertiesBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

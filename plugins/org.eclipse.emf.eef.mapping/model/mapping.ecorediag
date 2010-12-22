@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
   <notation:Diagram xmi:id="_bOv-kKEaEd2AHMZKEcVVmw" type="EcoreTools" name="mapping" measurementUnit="Pixel">
     <children xmi:type="notation:Node" xmi:id="_4GY4QKEaEd2AHMZKEcVVmw" type="1001">
       <children xmi:type="notation:Node" xmi:id="_4GaGYKEaEd2AHMZKEcVVmw" type="4001"/>
@@ -187,7 +187,7 @@
       </children>
       <styles xmi:type="notation:ShapeStyle" xmi:id="_RFNgoaUpEd240aLpjFEypg" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="0"/>
       <element xmi:type="ecore:EClass" href="mapping.ecore#//ElementBindingReference"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RFNgoqUpEd240aLpjFEypg" x="444" y="144"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RFNgoqUpEd240aLpjFEypg" x="480" y="5"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_aN_iYdAQEd2iW7y4TPlnqQ" type="1001">
       <children xmi:type="notation:Node" xmi:id="_aOBXkNAQEd2iW7y4TPlnqQ" type="4001"/>

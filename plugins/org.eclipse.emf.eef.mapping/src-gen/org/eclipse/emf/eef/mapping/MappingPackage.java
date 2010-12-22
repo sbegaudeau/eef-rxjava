@@ -293,13 +293,22 @@ public interface MappingPackage extends EPackage {
 	int ABSTRACT_ELEMENT_BINDING__CATEGORY = DOCUMENTED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Element Binding</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
+	int ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl <em>Model Property</em>}' class.
@@ -503,6 +512,15 @@ public interface MappingPackage extends EPackage {
 	int EMF_ELEMENT_BINDING__CATEGORY = ABSTRACT_ELEMENT_BINDING__CATEGORY;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_ELEMENT_BINDING__BINDING_FILTERS = ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS;
+
+	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -692,6 +710,15 @@ public interface MappingPackage extends EPackage {
 	 * @ordered
 	 */
 	int STANDARD_ELEMENT_BINDING__CATEGORY = ABSTRACT_ELEMENT_BINDING__CATEGORY;
+
+	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_ELEMENT_BINDING__BINDING_FILTERS = ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' reference.
@@ -1150,6 +1177,17 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAbstractElementBinding_Category();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.mapping.AbstractElementBinding#getBindingFilters <em>Binding Filters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Binding Filters</em>'.
+	 * @see org.eclipse.emf.eef.mapping.AbstractElementBinding#getBindingFilters()
+	 * @see #getAbstractElementBinding()
+	 * @generated
+	 */
+	EReference getAbstractElementBinding_BindingFilters();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.ModelProperty <em>Model Property</em>}'.
@@ -1623,6 +1661,14 @@ public interface MappingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ABSTRACT_ELEMENT_BINDING__CATEGORY = eINSTANCE.getAbstractElementBinding_Category();
+
+		/**
+		 * The meta object literal for the '<em><b>Binding Filters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS = eINSTANCE.getAbstractElementBinding_BindingFilters();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl <em>Model Property</em>}' class.
