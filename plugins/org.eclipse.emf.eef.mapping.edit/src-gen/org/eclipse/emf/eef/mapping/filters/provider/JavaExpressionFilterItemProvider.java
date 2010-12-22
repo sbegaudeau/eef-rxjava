@@ -67,7 +67,8 @@ public class JavaExpressionFilterItemProvider extends JavaFilterItemProvider imp
 	 * @generated
 	 */
 	protected void addJavaBodyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_JavaExpressionFilter_javaBody_feature"), getString("_UI_PropertyDescriptor_description", "_UI_JavaExpressionFilter_javaBody_feature", "_UI_JavaExpressionFilter_type"), FiltersPackage.Literals.JAVA_EXPRESSION_FILTER__JAVA_BODY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_JavaExpressionFilter_javaBody_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_JavaExpressionFilter_javaBody_feature", "_UI_JavaExpressionFilter_type"), FiltersPackage.Literals.JAVA_EXPRESSION_FILTER__JAVA_BODY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

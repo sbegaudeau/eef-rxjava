@@ -84,7 +84,8 @@ public class SimpleModelNavigationItemProvider extends StructuredModelNavigation
 	 * @generated NOT
 	 */
 	private ItemPropertyDescriptor initFeatureItemDescriptor() {
-		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SimpleModelNavigation_feature_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SimpleModelNavigation_feature_feature", "_UI_SimpleModelNavigation_type"), NavigationPackage.Literals.SIMPLE_MODEL_NAVIGATION__FEATURE, true, false, true, null, null, null) {
+		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SimpleModelNavigation_feature_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SimpleModelNavigation_feature_feature",
+				"_UI_SimpleModelNavigation_type"), NavigationPackage.Literals.SIMPLE_MODEL_NAVIGATION__FEATURE, true, false, true, null, null, null) {
 
 			/**
 			 * {@inheritDoc}
@@ -123,7 +124,8 @@ public class SimpleModelNavigationItemProvider extends StructuredModelNavigation
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SimpleModelNavigation_index_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SimpleModelNavigation_index_feature", "_UI_SimpleModelNavigation_type"), NavigationPackage.Literals.SIMPLE_MODEL_NAVIGATION__INDEX, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SimpleModelNavigation_index_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_SimpleModelNavigation_index_feature", "_UI_SimpleModelNavigation_type"), NavigationPackage.Literals.SIMPLE_MODEL_NAVIGATION__INDEX, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -141,7 +143,8 @@ public class SimpleModelNavigationItemProvider extends StructuredModelNavigation
 	 * @generated NOT
 	 */
 	private ItemPropertyDescriptor initializeDiscriminatorTypePropertyDescriptor() {
-		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SimpleModelNavigation_discriminatorType_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SimpleModelNavigation_discriminatorType_feature", "_UI_SimpleModelNavigation_type"), NavigationPackage.Literals.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE, true, false, true, null, null, null) {
+		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SimpleModelNavigation_discriminatorType_feature"), getString("_UI_PropertyDescriptor_description",
+				"_UI_SimpleModelNavigation_discriminatorType_feature", "_UI_SimpleModelNavigation_type"), NavigationPackage.Literals.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE, true, false, true, null, null, null) {
 
 			/**
 			 * {@inheritDoc}

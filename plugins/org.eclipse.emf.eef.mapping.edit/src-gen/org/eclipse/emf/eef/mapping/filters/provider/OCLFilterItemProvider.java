@@ -67,7 +67,8 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	 * @generated
 	 */
 	protected void addOCLBodyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OCLFilter_OCLBody_feature"), getString("_UI_PropertyDescriptor_description", "_UI_OCLFilter_OCLBody_feature", "_UI_OCLFilter_type"), FiltersPackage.Literals.OCL_FILTER__OCL_BODY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OCLFilter_OCLBody_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_OCLFilter_OCLBody_feature", "_UI_OCLFilter_type"), FiltersPackage.Literals.OCL_FILTER__OCL_BODY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

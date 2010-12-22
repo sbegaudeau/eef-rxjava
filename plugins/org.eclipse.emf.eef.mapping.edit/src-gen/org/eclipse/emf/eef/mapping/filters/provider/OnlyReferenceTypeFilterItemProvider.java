@@ -65,7 +65,8 @@ public class OnlyReferenceTypeFilterItemProvider extends BusinessFilterItemProvi
 	 * @generated
 	 */
 	protected void addReferencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OnlyReferenceTypeFilter_reference_feature"), getString("_UI_PropertyDescriptor_description", "_UI_OnlyReferenceTypeFilter_reference_feature", "_UI_OnlyReferenceTypeFilter_type"), FiltersPackage.Literals.ONLY_REFERENCE_TYPE_FILTER__REFERENCE, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OnlyReferenceTypeFilter_reference_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_OnlyReferenceTypeFilter_reference_feature", "_UI_OnlyReferenceTypeFilter_type"), FiltersPackage.Literals.ONLY_REFERENCE_TYPE_FILTER__REFERENCE, true, false, true, null, null, null));
 	}
 
 	/**

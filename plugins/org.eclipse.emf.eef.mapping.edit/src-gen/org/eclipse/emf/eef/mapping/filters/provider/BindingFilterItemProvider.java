@@ -71,7 +71,8 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_name_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_name_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_name_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -81,7 +82,8 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addMandatoryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_mandatory_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_mandatory_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__MANDATORY, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_mandatory_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_mandatory_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__MANDATORY, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**

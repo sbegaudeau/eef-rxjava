@@ -65,7 +65,8 @@ public class StandardPropertyBindingItemProvider extends AbstractPropertyBinding
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_StandardPropertyBinding_model_feature"), getString("_UI_StandardPropertyBinding_model_description"), MappingPackage.Literals.STANDARD_PROPERTY_BINDING__MODEL, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_StandardPropertyBinding_model_feature"), getString("_UI_StandardPropertyBinding_model_description"),
+				MappingPackage.Literals.STANDARD_PROPERTY_BINDING__MODEL, true, false, true, null, null, null));
 	}
 
 	/**

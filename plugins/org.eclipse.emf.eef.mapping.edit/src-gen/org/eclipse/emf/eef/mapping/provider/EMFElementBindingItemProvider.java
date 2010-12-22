@@ -65,7 +65,8 @@ public class EMFElementBindingItemProvider extends AbstractElementBindingItemPro
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFElementBinding_model_feature"), getString("_UI_EMFElementBinding_model_description"), MappingPackage.Literals.EMF_ELEMENT_BINDING__MODEL, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFElementBinding_model_feature"), getString("_UI_EMFElementBinding_model_description"),
+				MappingPackage.Literals.EMF_ELEMENT_BINDING__MODEL, true, false, true, null, null, null));
 	}
 
 	/**

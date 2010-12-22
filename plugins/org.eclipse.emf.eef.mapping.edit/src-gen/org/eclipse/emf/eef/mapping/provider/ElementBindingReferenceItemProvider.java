@@ -65,7 +65,8 @@ public class ElementBindingReferenceItemProvider extends DocumentedElementItemPr
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementBindingReference_binding_feature"), getString("_UI_ElementBindingReference_binding_description"), MappingPackage.Literals.ELEMENT_BINDING_REFERENCE__BINDING, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementBindingReference_binding_feature"), getString("_UI_ElementBindingReference_binding_description"),
+				MappingPackage.Literals.ELEMENT_BINDING_REFERENCE__BINDING, true, false, true, null, null, null));
 	}
 
 	/**

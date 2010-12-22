@@ -67,7 +67,8 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider impl
 	 * @generated
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ModelElement_binding_feature"), getString("_UI_ModelElement_binding_description"), MappingPackage.Literals.MODEL_ELEMENT__BINDING, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ModelElement_binding_feature"), getString("_UI_ModelElement_binding_description"),
+				MappingPackage.Literals.MODEL_ELEMENT__BINDING, true, false, true, null, null, null));
 	}
 
 	/**

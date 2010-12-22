@@ -65,7 +65,8 @@ public class StandardElementBindingItemProvider extends AbstractElementBindingIt
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_StandardElementBinding_model_feature"), getString("_UI_StandardElementBinding_model_description"), MappingPackage.Literals.STANDARD_ELEMENT_BINDING__MODEL, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_StandardElementBinding_model_feature"), getString("_UI_StandardElementBinding_model_description"),
+				MappingPackage.Literals.STANDARD_ELEMENT_BINDING__MODEL, true, false, true, null, null, null));
 	}
 
 	/**

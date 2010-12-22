@@ -70,7 +70,8 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractElementBinding_name_feature"), getString("_UI_AbstractElementBinding_name_description"), MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractElementBinding_name_feature"), getString("_UI_AbstractElementBinding_name_description"),
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -80,7 +81,8 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * @generated
 	 */
 	protected void addViewsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractElementBinding_views_feature"), getString("_UI_AbstractElementBinding_views_description"), MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__VIEWS, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractElementBinding_views_feature"), getString("_UI_AbstractElementBinding_views_description"),
+				MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__VIEWS, true, false, true, null, null, null));
 	}
 
 	/**
@@ -98,6 +100,7 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS);
 			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES);
 			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING);
+			childrenFeatures.add(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS);
 		}
 		return childrenFeatures;
 	}
@@ -156,6 +159,7 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS:
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES:
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING:
+		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -167,7 +171,7 @@ public class AbstractElementBindingItemProvider extends DocumentedElementItemPro
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {

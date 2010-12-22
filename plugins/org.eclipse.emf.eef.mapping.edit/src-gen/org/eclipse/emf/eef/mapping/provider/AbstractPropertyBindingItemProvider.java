@@ -76,7 +76,8 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPropertyBinding_name_feature"), getString("_UI_AbstractPropertyBinding_name_description"), MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPropertyBinding_name_feature"), getString("_UI_AbstractPropertyBinding_name_description"),
+				MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -123,7 +124,8 @@ public class AbstractPropertyBindingItemProvider extends DocumentedElementItemPr
 	 * @generated NOT
 	 */
 	private ItemPropertyDescriptor initViewsPropertyDescriptors() {
-		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPropertyBinding_views_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbstractPropertyBinding_views_feature", "_UI_AbstractPropertyBinding_type"), MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__VIEWS, true, false, true, null, null, null) {
+		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPropertyBinding_views_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbstractPropertyBinding_views_feature",
+				"_UI_AbstractPropertyBinding_type"), MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__VIEWS, true, false, true, null, null, null) {
 
 			@Override
 			protected Collection<?> getComboBoxObjects(Object object) {

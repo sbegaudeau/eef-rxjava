@@ -112,7 +112,8 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 	 * @generated NOT
 	 */
 	private ItemPropertyDescriptor initModelPropertyDescriptor() {
-		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFPropertyBinding_model_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EMFPropertyBinding_model_feature", "_UI_EMFPropertyBinding_type"), MappingPackage.Literals.EMF_PROPERTY_BINDING__MODEL, true, false, true, null, null, null) {
+		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFPropertyBinding_model_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EMFPropertyBinding_model_feature",
+				"_UI_EMFPropertyBinding_type"), MappingPackage.Literals.EMF_PROPERTY_BINDING__MODEL, true, false, true, null, null, null) {
 
 			@Override
 			protected Collection<?> getComboBoxObjects(Object object) {
