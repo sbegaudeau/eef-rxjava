@@ -97,7 +97,7 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 		elementStep.addStep(NavigationViewsRepository.Element.namedElementView);
 		
 		composer = new PartComposer(elementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.Element.Properties.class) {

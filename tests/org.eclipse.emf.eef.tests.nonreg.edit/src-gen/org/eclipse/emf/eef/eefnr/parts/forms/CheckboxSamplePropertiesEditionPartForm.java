@@ -92,7 +92,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends CompositeProperties
 		
 		
 		composer = new PartComposer(checkboxSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.CheckboxSample.Properties.class) {

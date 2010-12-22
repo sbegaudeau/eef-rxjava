@@ -45,7 +45,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -102,7 +102,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		
 		
 		composer = new PartComposer(advancedReferencesTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.AdvancedReferencesTableSample.Properties.class) {
@@ -173,7 +173,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 				advancedreferencestableRequiredProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	 */
 	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableRequiredProperty.refresh();	
+		advancedreferencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	 */
 	protected void removeFromAdvancedreferencestableRequiredProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		advancedreferencestableRequiredProperty.refresh();		
+		advancedreferencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 				policy.execute();
 				advancedreferencestableRequiredProperty.refresh();
 			}
-		}		
+		}
 	}
 
 	/**
@@ -245,7 +245,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 				advancedreferencestableOptionalProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	 */
 	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableOptionalProperty.refresh();	
+		advancedreferencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -261,7 +261,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	 */
 	protected void removeFromAdvancedreferencestableOptionalProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		advancedreferencestableOptionalProperty.refresh();		
+		advancedreferencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -276,7 +276,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 				policy.execute();
 				advancedreferencestableOptionalProperty.refresh();
 			}
-		}		
+		}
 	}
 
 

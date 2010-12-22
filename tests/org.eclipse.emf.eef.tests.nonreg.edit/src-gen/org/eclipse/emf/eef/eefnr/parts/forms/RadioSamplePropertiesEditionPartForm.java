@@ -94,7 +94,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		
 		
 		composer = new PartComposer(radioSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.RadioSample.Properties.class) {
@@ -138,7 +138,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		radioRequiredPropertyRadioViewer.setLayoutData(radioRequiredPropertyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null);
 		radioRequiredPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			
+
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
@@ -158,7 +158,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		radioOptionalPropertyRadioViewer.setLayoutData(radioOptionalPropertyData);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.FORM_KIND), null);
 		radioOptionalPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			
+
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));

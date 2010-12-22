@@ -94,7 +94,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 		
 		
 		composer = new PartComposer(textSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TextSample.Properties.class) {

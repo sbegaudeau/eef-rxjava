@@ -108,7 +108,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 		referenceEnabledSampleStep.addStep(ReferencesViewsRepository.ReferenceEnabledSample.abstractEnabledSampleReference);
 		
 		composer = new PartComposer(referenceEnabledSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ReferencesViewsRepository.ReferenceEnabledSample.Properties.class) {
@@ -180,7 +180,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 				reference.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 */
 	protected void moveReference(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		reference.refresh();	
+		reference.refresh();
 	}
 
 	/**

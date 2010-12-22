@@ -94,7 +94,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 		
 		
 		composer = new PartComposer(textSampleFirstTabStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TextSampleFirstTab.Properties.class) {

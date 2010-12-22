@@ -94,7 +94,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends CompositePrope
 		
 		
 		composer = new PartComposer(textSampleSecondTabStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TextSampleSecondTab.Properties.class) {

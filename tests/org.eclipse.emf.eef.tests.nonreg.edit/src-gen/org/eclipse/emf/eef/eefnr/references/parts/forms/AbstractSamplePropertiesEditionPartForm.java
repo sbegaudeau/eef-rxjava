@@ -92,7 +92,7 @@ public class AbstractSamplePropertiesEditionPartForm extends CompositeProperties
 		
 		
 		composer = new PartComposer(abstractSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ReferencesViewsRepository.AbstractSample.NameProperties.class) {

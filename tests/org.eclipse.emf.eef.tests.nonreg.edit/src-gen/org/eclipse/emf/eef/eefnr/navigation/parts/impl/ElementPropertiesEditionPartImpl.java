@@ -38,7 +38,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -92,7 +92,7 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		elementStep.addStep(NavigationViewsRepository.Element.namedElementView);
 		
 		composer = new PartComposer(elementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.Element.Properties.class) {

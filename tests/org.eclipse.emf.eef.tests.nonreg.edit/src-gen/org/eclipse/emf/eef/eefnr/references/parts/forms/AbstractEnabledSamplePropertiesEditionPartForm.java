@@ -97,7 +97,7 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 		abstractEnabledSampleStep.addStep(ReferencesViewsRepository.AbstractEnabledSample.abstractReference);
 		
 		composer = new PartComposer(abstractEnabledSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.class) {

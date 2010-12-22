@@ -36,7 +36,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -88,7 +88,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 		
 		
 		composer = new PartComposer(abstractSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ReferencesViewsRepository.AbstractSample.NameProperties.class) {

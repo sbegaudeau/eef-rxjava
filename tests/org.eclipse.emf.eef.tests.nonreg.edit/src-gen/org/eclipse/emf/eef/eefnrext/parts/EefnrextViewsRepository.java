@@ -31,7 +31,7 @@ public class EefnrextViewsRepository {
 			
 			public static String name = "eefnrext::TableCompositionTargetExtensionEditorSample::properties::name";
 			
-		
+	
 		}
 	
 	}
@@ -46,7 +46,7 @@ public class EefnrextViewsRepository {
 			
 			public static String flatReferenceEditorSample = "eefnrext::FlatReferenceExtendedEditorSample::properties::flatReferenceEditorSample";
 			
-		
+	
 		}
 	
 	
@@ -67,7 +67,7 @@ public class EefnrextViewsRepository {
 			
 			public static String size = "eefnrext::SecondFlatReferenceExtendedEditorSample::extended::size";
 			
-		
+	
 		}
 	
 	}
@@ -82,7 +82,7 @@ public class EefnrextViewsRepository {
 			
 			public static String checkboxEditorSample = "eefnrext::CheckBoxExtendedEditorSample::properties::checkboxEditorSample";
 			
-		
+	
 		}
 	
 	

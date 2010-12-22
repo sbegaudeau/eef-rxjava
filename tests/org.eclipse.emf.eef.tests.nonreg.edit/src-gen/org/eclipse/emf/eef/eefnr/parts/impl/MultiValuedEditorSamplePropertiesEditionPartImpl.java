@@ -41,7 +41,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -98,7 +98,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		
 		
 		composer = new PartComposer(multiValuedEditorSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.MultiValuedEditorSample.Properties.class) {
@@ -154,7 +154,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 						multivaluededitorRequiredProperty.getShell(), "MultiValuedEditorSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						multivaluededitorRequiredPropertyList, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					multivaluededitorRequiredPropertyList = dialog.getResult();
 					if (multivaluededitorRequiredPropertyList == null) {
@@ -194,7 +194,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 						multivaluededitorOptionalProperty.getShell(), "MultiValuedEditorSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						multivaluededitorOptionalPropertyList, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					multivaluededitorOptionalPropertyList = dialog.getResult();
 					if (multivaluededitorOptionalPropertyList == null) {
@@ -249,18 +249,18 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void addToMultivaluededitorRequiredProperty(Object newValue) {
-		multivaluededitorRequiredPropertyList.add(newValue);		
+		multivaluededitorRequiredPropertyList.add(newValue);
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void removeToMultivaluededitorRequiredProperty(Object newValue) {
-		multivaluededitorRequiredPropertyList.remove(newValue);		
+		multivaluededitorRequiredPropertyList.remove(newValue);
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
@@ -293,18 +293,18 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void addToMultivaluededitorOptionalProperty(Object newValue) {
-		multivaluededitorOptionalPropertyList.add(newValue);		
+		multivaluededitorOptionalPropertyList.add(newValue);
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void removeToMultivaluededitorOptionalProperty(Object newValue) {
-		multivaluededitorOptionalPropertyList.remove(newValue);		
+		multivaluededitorOptionalPropertyList.remove(newValue);
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {

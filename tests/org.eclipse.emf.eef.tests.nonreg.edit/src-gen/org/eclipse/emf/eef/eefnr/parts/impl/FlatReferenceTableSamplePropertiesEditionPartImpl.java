@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -92,7 +92,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		
 		
 		composer = new PartComposer(flatReferenceTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.FlatReferenceTableSample.Properties.class) {

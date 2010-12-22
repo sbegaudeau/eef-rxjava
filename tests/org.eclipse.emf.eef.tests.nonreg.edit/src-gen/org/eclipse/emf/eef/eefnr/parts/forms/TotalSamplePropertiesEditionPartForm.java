@@ -204,7 +204,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		
 		
 		composer = new PartComposer(totalSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TotalSample.Properties.class) {
@@ -669,7 +669,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				referencestableRequiredProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -677,7 +677,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	protected void moveReferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		referencestableRequiredProperty.refresh();	
+		referencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -741,7 +741,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				referencestableOptionalProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -749,7 +749,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	protected void moveReferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		referencestableOptionalProperty.refresh();	
+		referencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -855,7 +855,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						multivaluededitorRequiredProperty.getShell(), "TotalSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						multivaluededitorRequiredPropertyList, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					multivaluededitorRequiredPropertyList = dialog.getResult();
 					if (multivaluededitorRequiredPropertyList == null) {
@@ -898,7 +898,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 						multivaluededitorOptionalProperty.getShell(), "TotalSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						multivaluededitorOptionalPropertyList, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					multivaluededitorOptionalPropertyList = dialog.getResult();
 					if (multivaluededitorOptionalPropertyList == null) {
@@ -936,7 +936,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		gdTablecompositionRequiredProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionRequiredProperty.setLayoutData(gdTablecompositionRequiredProperty);
 		tableTablecompositionRequiredProperty.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for TablecompositionRequiredProperty
 				TableColumn name = new TableColumn(tableTablecompositionRequiredProperty, SWT.NONE);
 				name.setWidth(80);
@@ -990,14 +990,14 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 					}
 				}
 			}
-	
+
 		});
 		GridData tablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionRequiredPropertyData.minimumHeight = 120;
 		tablecompositionRequiredPropertyData.heightHint = 120;
 		tablecompositionRequiredProperty.getTable().setLayoutData(tablecompositionRequiredPropertyData);
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
-		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(widgetFactory, tableContainer);
 		return container;
 	}
@@ -1102,7 +1102,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 		gdTablecompositionOptionalProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionOptionalProperty.setLayoutData(gdTablecompositionOptionalProperty);
 		tableTablecompositionOptionalProperty.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for TablecompositionOptionalProperty
 				TableColumn name = new TableColumn(tableTablecompositionOptionalProperty, SWT.NONE);
 				name.setWidth(80);
@@ -1156,14 +1156,14 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 					}
 				}
 			}
-	
+
 		});
 		GridData tablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionOptionalPropertyData.minimumHeight = 120;
 		tablecompositionOptionalPropertyData.heightHint = 120;
 		tablecompositionOptionalProperty.getTable().setLayoutData(tablecompositionOptionalPropertyData);
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
-		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(widgetFactory, tableContainer);
 		return container;
 	}
@@ -1285,7 +1285,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedreferencestableRequiredProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -1293,7 +1293,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableRequiredProperty.refresh();	
+		advancedreferencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -1357,7 +1357,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 				advancedreferencestableOptionalProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -1365,7 +1365,7 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableOptionalProperty.refresh();	
+		advancedreferencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -1454,20 +1454,20 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionRequiredPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener() {			
-			public void handleAdd() { 
+		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener() {
+			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				advancedtablecompositionRequiredProperty.refresh();			
+				advancedtablecompositionRequiredProperty.refresh();
 			}
-			public void handleEdit(EObject element) {  
+			public void handleEdit(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
-			public void handleRemove(EObject element) { 
+			public void handleRemove(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
@@ -1490,20 +1490,20 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionOptionalPropertyTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener() {			
-			public void handleAdd() { 
+		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener() {
+			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				advancedtablecompositionOptionalProperty.refresh();			
+				advancedtablecompositionOptionalProperty.refresh();
 			}
-			public void handleEdit(EObject element) {  
+			public void handleEdit(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
-			public void handleRemove(EObject element) { 
+			public void handleRemove(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
@@ -2131,18 +2131,18 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void addToMultivaluededitorRequiredProperty(Object newValue) {
-		multivaluededitorRequiredPropertyList.add(newValue);		
+		multivaluededitorRequiredPropertyList.add(newValue);
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void removeToMultivaluededitorRequiredProperty(Object newValue) {
-		multivaluededitorRequiredPropertyList.remove(newValue);		
+		multivaluededitorRequiredPropertyList.remove(newValue);
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
@@ -2175,18 +2175,18 @@ public class TotalSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void addToMultivaluededitorOptionalProperty(Object newValue) {
-		multivaluededitorOptionalPropertyList.add(newValue);		
+		multivaluededitorOptionalPropertyList.add(newValue);
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void removeToMultivaluededitorOptionalProperty(Object newValue) {
-		multivaluededitorOptionalPropertyList.remove(newValue);		
+		multivaluededitorOptionalPropertyList.remove(newValue);
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {

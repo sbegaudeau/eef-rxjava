@@ -96,7 +96,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 		
 		
 		composer = new PartComposer(advancedEObjectFlatComboViewerSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.class) {

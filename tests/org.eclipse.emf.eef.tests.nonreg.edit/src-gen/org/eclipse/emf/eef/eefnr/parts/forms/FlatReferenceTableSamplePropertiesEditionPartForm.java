@@ -95,7 +95,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends Composite
 		
 		
 		composer = new PartComposer(flatReferenceTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.FlatReferenceTableSample.Properties.class) {

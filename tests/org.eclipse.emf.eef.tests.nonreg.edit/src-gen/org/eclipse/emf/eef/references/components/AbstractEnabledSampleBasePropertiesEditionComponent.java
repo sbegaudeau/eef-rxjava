@@ -71,6 +71,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 			// init filters
 			
 			// init values for referenced views
+					basePart.getAbstractSampleReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
 			
@@ -91,7 +92,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)semanticObject;
 		if (ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled == event.getAffectedEditor()) {
-			abstractEnabledSample.setEnabled((Boolean)event.getNewValue());	
+			abstractEnabledSample.setEnabled((Boolean)event.getNewValue());
 		}
 	}
 

@@ -81,7 +81,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -200,7 +200,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		
 		
 		composer = new PartComposer(totalSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TotalSample.Properties.class) {
@@ -678,7 +678,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				referencestableRequiredProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -686,7 +686,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void moveReferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		referencestableRequiredProperty.refresh();	
+		referencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -694,7 +694,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void removeFromReferencestableRequiredProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		referencestableRequiredProperty.refresh();		
+		referencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -709,7 +709,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				policy.execute();
 				referencestableRequiredProperty.refresh();
 			}
-		}		
+		}
 	}
 
 	/**
@@ -750,7 +750,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				referencestableOptionalProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -758,7 +758,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void moveReferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		referencestableOptionalProperty.refresh();	
+		referencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -766,7 +766,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void removeFromReferencestableOptionalProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		referencestableOptionalProperty.refresh();		
+		referencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -781,7 +781,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				policy.execute();
 				referencestableOptionalProperty.refresh();
 			}
-		}		
+		}
 	}
 
 	
@@ -861,7 +861,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 						multivaluededitorRequiredProperty.getShell(), "TotalSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						multivaluededitorRequiredPropertyList, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					multivaluededitorRequiredPropertyList = dialog.getResult();
 					if (multivaluededitorRequiredPropertyList == null) {
@@ -901,7 +901,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 						multivaluededitorOptionalProperty.getShell(), "TotalSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						multivaluededitorOptionalPropertyList, EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					multivaluededitorOptionalPropertyList = dialog.getResult();
 					if (multivaluededitorOptionalPropertyList == null) {
@@ -939,7 +939,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		gdTablecompositionRequiredProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionRequiredProperty.setLayoutData(gdTablecompositionRequiredProperty);
 		tableTablecompositionRequiredProperty.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for TablecompositionRequiredProperty
 				TableColumn name = new TableColumn(tableTablecompositionRequiredProperty, SWT.NONE);
 				name.setWidth(80);
@@ -992,14 +992,14 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 					}
 				}
 			}
-	
+
 		});
 		GridData tablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionRequiredPropertyData.minimumHeight = 120;
 		tablecompositionRequiredPropertyData.heightHint = 120;
 		tablecompositionRequiredProperty.getTable().setLayoutData(tablecompositionRequiredPropertyData);
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
-		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(tableContainer);
 		return container;
 	}
@@ -1107,7 +1107,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		gdTablecompositionOptionalProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionOptionalProperty.setLayoutData(gdTablecompositionOptionalProperty);
 		tableTablecompositionOptionalProperty.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for TablecompositionOptionalProperty
 				TableColumn name = new TableColumn(tableTablecompositionOptionalProperty, SWT.NONE);
 				name.setWidth(80);
@@ -1160,14 +1160,14 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 					}
 				}
 			}
-	
+
 		});
 		GridData tablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionOptionalPropertyData.minimumHeight = 120;
 		tablecompositionOptionalPropertyData.heightHint = 120;
 		tablecompositionOptionalProperty.getTable().setLayoutData(tablecompositionOptionalPropertyData);
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
-		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(tableContainer);
 		return container;
 	}
@@ -1292,7 +1292,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				advancedreferencestableRequiredProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -1300,7 +1300,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableRequiredProperty.refresh();	
+		advancedreferencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -1308,7 +1308,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void removeFromAdvancedreferencestableRequiredProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		advancedreferencestableRequiredProperty.refresh();		
+		advancedreferencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -1323,7 +1323,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				policy.execute();
 				advancedreferencestableRequiredProperty.refresh();
 			}
-		}		
+		}
 	}
 
 	/**
@@ -1364,7 +1364,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				advancedreferencestableOptionalProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -1372,7 +1372,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableOptionalProperty.refresh();	
+		advancedreferencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -1380,7 +1380,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void removeFromAdvancedreferencestableOptionalProperty(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		advancedreferencestableOptionalProperty.refresh();		
+		advancedreferencestableOptionalProperty.refresh();
 	}
 
 	/**
@@ -1395,7 +1395,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				policy.execute();
 				advancedreferencestableOptionalProperty.refresh();
 			}
-		}		
+		}
 	}
 
 	/**
@@ -1449,17 +1449,17 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionRequiredPropertyAdvancedTableComposition(Composite parent) {
-		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener() {			
+		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				advancedtablecompositionRequiredProperty.refresh();			
+				advancedtablecompositionRequiredProperty.refresh();
 			}
-			public void handleEdit(EObject element) {  
+			public void handleEdit(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
 			public void handleRemove(EObject element) { 
@@ -1485,17 +1485,17 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(Composite parent) {
-		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener() {			
+		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				advancedtablecompositionOptionalProperty.refresh();			
+				advancedtablecompositionOptionalProperty.refresh();
 			}
-			public void handleEdit(EObject element) {  
+			public void handleEdit(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
 			public void handleRemove(EObject element) { 
@@ -2132,18 +2132,18 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void addToMultivaluededitorRequiredProperty(Object newValue) {
-		multivaluededitorRequiredPropertyList.add(newValue);		
+		multivaluededitorRequiredPropertyList.add(newValue);
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void removeToMultivaluededitorRequiredProperty(Object newValue) {
-		multivaluededitorRequiredPropertyList.remove(newValue);		
+		multivaluededitorRequiredPropertyList.remove(newValue);
 		if (newValue != null) {
 			multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
 		} else {
@@ -2176,18 +2176,18 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void addToMultivaluededitorOptionalProperty(Object newValue) {
-		multivaluededitorOptionalPropertyList.add(newValue);		
+		multivaluededitorOptionalPropertyList.add(newValue);
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 	public void removeToMultivaluededitorOptionalProperty(Object newValue) {
-		multivaluededitorOptionalPropertyList.remove(newValue);		
+		multivaluededitorOptionalPropertyList.remove(newValue);
 		if (newValue != null) {
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {

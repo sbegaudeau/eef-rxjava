@@ -71,7 +71,6 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 		return key == EefnrViewsRepository.class;
 	}
 
-	
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)

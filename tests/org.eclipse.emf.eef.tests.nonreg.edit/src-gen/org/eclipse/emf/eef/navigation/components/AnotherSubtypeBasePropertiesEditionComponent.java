@@ -70,6 +70,7 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 			// init filters
 			
 			// init values for referenced views
+					basePart.getSubtypeReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
 			
@@ -90,7 +91,7 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AnotherSubType anotherSubType = (AnotherSubType)semanticObject;
 		if (NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement == event.getAffectedEditor()) {
-			anotherSubType.setAnotherSpecialisation((Boolean)event.getNewValue());	
+			anotherSubType.setAnotherSpecialisation((Boolean)event.getNewValue());
 		}
 	}
 

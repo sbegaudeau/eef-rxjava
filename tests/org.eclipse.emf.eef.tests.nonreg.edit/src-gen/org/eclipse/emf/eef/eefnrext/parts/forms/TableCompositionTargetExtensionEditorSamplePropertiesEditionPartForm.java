@@ -92,7 +92,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 		
 		
 		composer = new PartComposer(tableCompositionTargetExtensionEditorSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.class) {

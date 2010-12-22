@@ -31,7 +31,7 @@ public class ReferencesViewsRepository {
 			
 			public static String reference = "references::ReferenceEnabledSample::properties::reference";
 			
-		
+	
 		}
 	
 	
@@ -49,7 +49,7 @@ public class ReferencesViewsRepository {
 			
 			public static String enabled = "references::AbstractEnabledSample::enabled properties::enabled";
 			
-		
+	
 		}
 	
 	
@@ -67,7 +67,7 @@ public class ReferencesViewsRepository {
 			
 			public static String name = "references::AbstractSample::name properties::name";
 			
-		
+	
 		}
 	
 	}

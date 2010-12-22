@@ -93,7 +93,7 @@ public class TextareaSamplePropertiesEditionPartForm extends CompositeProperties
 		
 		
 		composer = new PartComposer(textareaSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TextareaSample.Properties.class) {

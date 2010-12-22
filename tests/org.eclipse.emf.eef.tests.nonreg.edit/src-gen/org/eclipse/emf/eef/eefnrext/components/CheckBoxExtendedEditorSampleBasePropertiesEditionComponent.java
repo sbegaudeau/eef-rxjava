@@ -72,6 +72,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 			// init filters
 			
 			// init values for referenced views
+					basePart.getAbstractSampleReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
 			
@@ -92,7 +93,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)semanticObject;
 		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample == event.getAffectedEditor()) {
-			checkBoxExtendedEditorSample.setCheckboxEditorSample((Boolean)event.getNewValue());	
+			checkBoxExtendedEditorSample.setCheckboxEditorSample((Boolean)event.getNewValue());
 		}
 	}
 

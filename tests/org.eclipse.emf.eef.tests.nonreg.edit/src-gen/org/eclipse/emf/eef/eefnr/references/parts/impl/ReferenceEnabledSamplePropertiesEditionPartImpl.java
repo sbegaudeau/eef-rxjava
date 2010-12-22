@@ -49,7 +49,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -105,7 +105,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		referenceEnabledSampleStep.addStep(ReferencesViewsRepository.ReferenceEnabledSample.abstractEnabledSampleReference);
 		
 		composer = new PartComposer(referenceEnabledSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ReferencesViewsRepository.ReferenceEnabledSample.Properties.class) {
@@ -176,7 +176,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 				reference.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 */
 	protected void moveReference(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		reference.refresh();	
+		reference.refresh();
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	 */
 	protected void removeFromReference(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		reference.refresh();		
+		reference.refresh();
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 				policy.execute();
 				reference.refresh();
 			}
-		}		
+		}
 	}
 
 	protected Composite createAbstractEnabledSample(Composite container) {

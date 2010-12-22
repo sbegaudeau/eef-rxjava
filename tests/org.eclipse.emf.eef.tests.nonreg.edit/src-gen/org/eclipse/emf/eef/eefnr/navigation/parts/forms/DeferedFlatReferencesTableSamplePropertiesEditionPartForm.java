@@ -101,7 +101,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends C
 		
 		
 		composer = new PartComposer(deferedFlatReferencesTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.class) {

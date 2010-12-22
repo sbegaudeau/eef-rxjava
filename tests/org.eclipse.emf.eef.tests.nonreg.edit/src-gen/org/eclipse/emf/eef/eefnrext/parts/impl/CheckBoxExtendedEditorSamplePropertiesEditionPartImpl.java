@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -93,7 +93,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 		checkBoxExtendedEditorSampleStep.addStep(EefnrextViewsRepository.CheckBoxExtendedEditorSample.abstractSampleReference);
 		
 		composer = new PartComposer(checkBoxExtendedEditorSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.class) {

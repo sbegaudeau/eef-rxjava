@@ -105,7 +105,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 		
 		
 		composer = new PartComposer(advancedReferencesTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.AdvancedReferencesTableSample.Properties.class) {
@@ -177,7 +177,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 				advancedreferencestableRequiredProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 */
 	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableRequiredProperty.refresh();	
+		advancedreferencestableRequiredProperty.refresh();
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 				advancedreferencestableOptionalProperty.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Comp
 	 */
 	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		advancedreferencestableOptionalProperty.refresh();	
+		advancedreferencestableOptionalProperty.refresh();
 	}
 
 	/**

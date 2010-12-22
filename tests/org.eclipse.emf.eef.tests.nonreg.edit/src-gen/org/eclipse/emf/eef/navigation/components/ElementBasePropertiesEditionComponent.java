@@ -71,6 +71,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 			// init filters
 			
 			// init values for referenced views
+					basePart.getNamedElementReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
 			
@@ -91,7 +92,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Element element = (Element)semanticObject;
 		if (NavigationViewsRepository.Element.Properties.isVisible == event.getAffectedEditor()) {
-			element.setVisible((Boolean)event.getNewValue());	
+			element.setVisible((Boolean)event.getNewValue());
 		}
 	}
 

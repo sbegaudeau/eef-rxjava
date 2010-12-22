@@ -119,7 +119,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 		
 		
 		composer = new PartComposer(deferedReferencesTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.class) {
@@ -208,7 +208,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 		referencesTableSampleEditorData.heightHint = 120;
 		referencesTableSampleEditor.getTable().setLayoutData(referencesTableSampleEditorData);
 		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
-		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencesTableSampleEditorControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -232,10 +232,10 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table referencesTableSampleEditor label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -319,7 +319,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 		EditingUtils.setID(removeReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(removeReferencesTableSampleEditor, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -337,7 +337,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Compo
 		dialog.open();
 		referencesTableSampleEditor.refresh();
 	}
-	
+
 	/**
 	 * @param selection the referencesTableSampleEditor to remove
 	 * 

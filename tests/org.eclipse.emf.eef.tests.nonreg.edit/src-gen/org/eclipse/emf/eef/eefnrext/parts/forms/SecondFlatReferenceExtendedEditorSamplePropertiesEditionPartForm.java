@@ -94,7 +94,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		
 		
 		composer = new PartComposer(secondFlatReferenceExtendedEditorSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.class) {

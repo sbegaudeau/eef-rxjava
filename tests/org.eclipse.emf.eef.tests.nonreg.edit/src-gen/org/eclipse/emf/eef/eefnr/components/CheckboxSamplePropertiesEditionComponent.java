@@ -92,10 +92,10 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CheckboxSample checkboxSample = (CheckboxSample)semanticObject;
 		if (EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty == event.getAffectedEditor()) {
-			checkboxSample.setCheckboxRequiredProperty((Boolean)event.getNewValue());	
+			checkboxSample.setCheckboxRequiredProperty((Boolean)event.getNewValue());
 		}
 		if (EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty == event.getAffectedEditor()) {
-			checkboxSample.setCheckboxOptionalProperty((Boolean)event.getNewValue());	
+			checkboxSample.setCheckboxOptionalProperty((Boolean)event.getNewValue());
 		}
 	}
 

@@ -92,7 +92,7 @@ public class NamedElementPropertiesEditionPartForm extends CompositePropertiesEd
 		
 		
 		composer = new PartComposer(namedElementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.NamedElement.Properties.class) {

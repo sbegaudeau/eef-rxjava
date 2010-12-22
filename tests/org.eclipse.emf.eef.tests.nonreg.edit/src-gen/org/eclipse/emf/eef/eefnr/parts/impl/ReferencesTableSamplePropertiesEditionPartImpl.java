@@ -53,7 +53,7 @@ import org.eclipse.swt.widgets.TableColumn;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -114,7 +114,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		
 		
 		composer = new PartComposer(referencesTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.ReferencesTableSample.Properties.class) {
@@ -163,7 +163,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		referencestableRequiredPropertyData.heightHint = 120;
 		referencestableRequiredProperty.getTable().setLayoutData(referencestableRequiredPropertyData);
 		EditingUtils.setID(referencestableRequiredProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
-		EditingUtils.setEEFtype(referencestableRequiredProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(referencestableRequiredProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencestableRequiredPropertyControlPanel(parent);
 		return parent;
 	}
@@ -187,10 +187,10 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table referencestableRequiredProperty label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -321,7 +321,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		referencestableOptionalPropertyData.heightHint = 120;
 		referencestableOptionalProperty.getTable().setLayoutData(referencestableOptionalPropertyData);
 		EditingUtils.setID(referencestableOptionalProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
-		EditingUtils.setEEFtype(referencestableOptionalProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(referencestableOptionalProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencestableOptionalPropertyControlPanel(parent);
 		return parent;
 	}
@@ -345,10 +345,10 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table referencestableOptionalProperty label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);

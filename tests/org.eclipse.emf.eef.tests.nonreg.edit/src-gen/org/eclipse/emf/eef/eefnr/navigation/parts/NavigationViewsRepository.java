@@ -34,7 +34,7 @@ public class NavigationViewsRepository {
 			
 			public static String flatReferencesTableSampleEditor = "navigation::DeferedFlatReferencesTableSample::properties::flatReferencesTableSampleEditor";
 			
-		
+	
 		}
 	
 	}
@@ -52,7 +52,7 @@ public class NavigationViewsRepository {
 			
 			public static String referencesTableSampleEditor = "navigation::DeferedReferencesTableSample::properties::referencesTableSampleEditor";
 			
-		
+	
 		}
 	
 	}
@@ -109,7 +109,7 @@ public class NavigationViewsRepository {
 			
 			public static String singleReferencesForAdvancedEObjectFlatComboViewer = "navigation::Owner::properties::singleReferencesForAdvancedEObjectFlatComboViewer";
 			
-		
+	
 		}
 	
 	}
@@ -127,7 +127,7 @@ public class NavigationViewsRepository {
 			
 			public static String specialisedElement = "navigation::Subtype::Specialisation::specialisedElement";
 			
-		
+	
 		}
 	
 	}
@@ -145,7 +145,7 @@ public class NavigationViewsRepository {
 			
 			public static String anotherSpecialisationElement = "navigation::AnotherSubtype::Another specialisation::anotherSpecialisationElement";
 			
-		
+	
 		}
 	
 	}
@@ -160,7 +160,7 @@ public class NavigationViewsRepository {
 			
 			public static String name = "navigation::NamedElement::properties::name";
 			
-		
+	
 		}
 	
 	}
@@ -175,7 +175,7 @@ public class NavigationViewsRepository {
 			
 			public static String isVisible = "navigation::Element::properties::isVisible";
 			
-		
+	
 		}
 	
 	

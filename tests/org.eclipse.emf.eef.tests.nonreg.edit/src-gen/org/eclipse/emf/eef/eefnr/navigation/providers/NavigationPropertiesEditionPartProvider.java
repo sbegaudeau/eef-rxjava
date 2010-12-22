@@ -47,7 +47,6 @@ public class NavigationPropertiesEditionPartProvider implements IPropertiesEditi
 		return key == NavigationViewsRepository.class;
 	}
 
-	
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)

@@ -100,7 +100,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		flatReferenceExtendedEditorSampleStep.addStep(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.checkboxSampleReference);
 		
 		composer = new PartComposer(flatReferenceExtendedEditorSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.class) {

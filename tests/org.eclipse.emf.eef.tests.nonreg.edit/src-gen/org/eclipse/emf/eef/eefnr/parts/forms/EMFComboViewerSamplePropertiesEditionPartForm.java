@@ -97,7 +97,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends CompositeProp
 		
 		
 		composer = new PartComposer(eMFComboViewerSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.EMFComboViewerSample.Properties.class) {

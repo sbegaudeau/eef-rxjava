@@ -101,7 +101,7 @@ public class SubtypePropertiesEditionPartForm extends CompositePropertiesEdition
 		
 		
 		composer = new PartComposer(subtypeStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.Subtype.ownerView) {

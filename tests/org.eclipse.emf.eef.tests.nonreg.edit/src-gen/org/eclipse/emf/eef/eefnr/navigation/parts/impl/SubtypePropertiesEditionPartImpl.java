@@ -43,7 +43,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -97,7 +97,7 @@ public class SubtypePropertiesEditionPartImpl extends CompositePropertiesEdition
 		
 		
 		composer = new PartComposer(subtypeStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.Subtype.ownerView) {

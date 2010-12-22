@@ -214,8 +214,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForTableComposition
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			basePart.addFilterToMultipleSampleForAdvancedTableComposition(new ViewerFilter() {
 			
@@ -230,8 +230,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForAdvancedTableComposition
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			basePart.addFilterToMultipleSampleForReferencesTable(new ViewerFilter() {
 			
@@ -246,8 +246,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForReferencesTable
-																																																																																																																											
-																																																																																																																											// End of user code
+																																																																																																																																				
+																																																																																																																																				// End of user code
 			
 			basePart.addFilterToMultipleSampleForAdvancedReferencesTable(new ViewerFilter() {
 			
@@ -262,8 +262,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForAdvancedReferencesTable
-																																																																																																																											
-																																																																																																																											// End of user code
+																																																																																																																																				
+																																																																																																																																				// End of user code
 			
 			basePart.addFilterToMultipleSampleForFlatReferencesTable(new ViewerFilter() {
 			
@@ -281,8 +281,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToMultipleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for multipleSampleForFlatReferencesTables
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			basePart.addFilterToSingleSampleForTableComposition(new ViewerFilter() {
 			
@@ -301,8 +301,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for singleSampleForTableComposition
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			basePart.addFilterToSingleSampleForAdvancedTableComposition(new ViewerFilter() {
 			
@@ -321,8 +321,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for singleSampleForAdvancedTableComposition
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			basePart.addFilterToSingleSampleForReferencesTable(new ViewerFilter() {
 			
@@ -340,8 +340,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for singleSampleForReferencesTable
-																																																																																																																					
-																																																																																																																					// End of user code
+																																																																																																																														
+																																																																																																																														// End of user code
 			
 			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new ViewerFilter() {
 			
@@ -359,8 +359,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for singleSampleForAdvancedReferencesTable
-																																																																																																																					
-																																																																																																																					// End of user code
+																																																																																																																														
+																																																																																																																														// End of user code
 			
 			basePart.addFilterToSingleSampleForFlatReferencesTable(new ViewerFilter() {
 			
@@ -378,8 +378,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToSingleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for singleSampleForFlatReferencesTable
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			
 			basePart.addFilterToSingleReferencesForEObjectFlatComboViewer(new ViewerFilter() {
@@ -395,8 +395,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for singleReferenceForEObjectFlatComboViewer
-																																																																																																			
-																																																																																																			// End of user code
+																																																																																																												
+																																																																																																												// End of user code
 			
 			
 			basePart.addFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(new EObjectFilter(NavigationPackage.eINSTANCE.getOwner()));

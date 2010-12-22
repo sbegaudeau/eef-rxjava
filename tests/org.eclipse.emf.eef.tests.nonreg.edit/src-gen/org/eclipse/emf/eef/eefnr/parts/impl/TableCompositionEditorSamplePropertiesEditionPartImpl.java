@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.TableColumn;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -109,7 +109,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		
 		
 		composer = new PartComposer(tableCompositionEditorSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EefnrViewsRepository.TableCompositionEditorSample.Properties.class) {
@@ -163,7 +163,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		gdTablecompositionRequiredProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionRequiredProperty.setLayoutData(gdTablecompositionRequiredProperty);
 		tableTablecompositionRequiredProperty.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for TablecompositionRequiredProperty
 				TableColumn name = new TableColumn(tableTablecompositionRequiredProperty, SWT.NONE);
 				name.setWidth(80);
@@ -216,14 +216,14 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 					}
 				}
 			}
-	
+
 		});
 		GridData tablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionRequiredPropertyData.minimumHeight = 120;
 		tablecompositionRequiredPropertyData.heightHint = 120;
 		tablecompositionRequiredProperty.getTable().setLayoutData(tablecompositionRequiredPropertyData);
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
-		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(tableContainer);
 		return container;
 	}
@@ -331,7 +331,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		gdTablecompositionOptionalProperty.verticalAlignment = GridData.FILL;
 		tableTablecompositionOptionalProperty.setLayoutData(gdTablecompositionOptionalProperty);
 		tableTablecompositionOptionalProperty.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for TablecompositionOptionalProperty
 				TableColumn name = new TableColumn(tableTablecompositionOptionalProperty, SWT.NONE);
 				name.setWidth(80);
@@ -384,14 +384,14 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 					}
 				}
 			}
-	
+
 		});
 		GridData tablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionOptionalPropertyData.minimumHeight = 120;
 		tablecompositionOptionalPropertyData.heightHint = 120;
 		tablecompositionOptionalProperty.getTable().setLayoutData(tablecompositionOptionalPropertyData);
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
-		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(tableContainer);
 		return container;
 	}

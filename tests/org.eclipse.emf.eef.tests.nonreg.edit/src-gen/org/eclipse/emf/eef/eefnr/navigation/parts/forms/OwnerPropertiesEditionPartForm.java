@@ -183,7 +183,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		
 		
 		composer = new PartComposer(ownerStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.Owner.Properties.class) {
@@ -317,7 +317,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		gdMultipleSampleForTableComposition.verticalAlignment = GridData.FILL;
 		tableMultipleSampleForTableComposition.setLayoutData(gdMultipleSampleForTableComposition);
 		tableMultipleSampleForTableComposition.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for MultipleSampleForTableComposition
 				TableColumn name = new TableColumn(tableMultipleSampleForTableComposition, SWT.NONE);
 				name.setWidth(80);
@@ -371,14 +371,14 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 					}
 				}
 			}
-	
+
 		});
 		GridData multipleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		multipleSampleForTableCompositionData.minimumHeight = 120;
 		multipleSampleForTableCompositionData.heightHint = 120;
 		multipleSampleForTableComposition.getTable().setLayoutData(multipleSampleForTableCompositionData);
 		EditingUtils.setID(multipleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
-		EditingUtils.setEEFtype(multipleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(multipleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createMultipleSampleForTableCompositionPanel(widgetFactory, tableContainer);
 		return container;
 	}
@@ -467,20 +467,20 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * 
 	 */
 	protected Composite createMultipleSampleForAdvancedTableCompositionTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.multipleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {			
-			public void handleAdd() { 
+		this.multipleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {
+			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				multipleSampleForAdvancedTableComposition.refresh();			
+				multipleSampleForAdvancedTableComposition.refresh();
 			}
-			public void handleEdit(EObject element) {  
+			public void handleEdit(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				multipleSampleForAdvancedTableComposition.refresh();
 			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				multipleSampleForAdvancedTableComposition.refresh();
 			}
-			public void handleRemove(EObject element) { 
+			public void handleRemove(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				multipleSampleForAdvancedTableComposition.refresh();
 			}
@@ -513,7 +513,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		multipleSampleForReferencesTableData.heightHint = 120;
 		multipleSampleForReferencesTable.getTable().setLayoutData(multipleSampleForReferencesTableData);
 		EditingUtils.setID(multipleSampleForReferencesTable.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
-		EditingUtils.setEEFtype(multipleSampleForReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(multipleSampleForReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createMultipleSampleForReferencesTableControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -537,10 +537,10 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table multipleSampleForReferencesTable label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -624,7 +624,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		EditingUtils.setID(removeMultipleSampleForReferencesTable, NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
 		EditingUtils.setEEFtype(removeMultipleSampleForReferencesTable, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -642,7 +642,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		dialog.open();
 		multipleSampleForReferencesTable.refresh();
 	}
-	
+
 	/**
 	 * @param selection the multipleSampleForReferencesTable to remove
 	 * 
@@ -693,7 +693,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 				multipleSampleForAdvancedReferencesTable.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -701,7 +701,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 */
 	protected void moveMultipleSampleForAdvancedReferencesTable(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		multipleSampleForAdvancedReferencesTable.refresh();	
+		multipleSampleForAdvancedReferencesTable.refresh();
 	}
 
 	/**
@@ -773,7 +773,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		gdSingleSampleForTableComposition.verticalAlignment = GridData.FILL;
 		tableSingleSampleForTableComposition.setLayoutData(gdSingleSampleForTableComposition);
 		tableSingleSampleForTableComposition.setLinesVisible(true);
-		
+
 		// Start of user code for columns definition for SingleSampleForTableComposition
 				TableColumn name = new TableColumn(tableSingleSampleForTableComposition, SWT.NONE);
 				name.setWidth(80);
@@ -827,14 +827,14 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 					}
 				}
 			}
-	
+
 		});
 		GridData singleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		singleSampleForTableCompositionData.minimumHeight = 120;
 		singleSampleForTableCompositionData.heightHint = 120;
 		singleSampleForTableComposition.getTable().setLayoutData(singleSampleForTableCompositionData);
 		EditingUtils.setID(singleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
-		EditingUtils.setEEFtype(singleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(singleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createSingleSampleForTableCompositionPanel(widgetFactory, tableContainer);
 		return container;
 	}
@@ -923,20 +923,20 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 * 
 	 */
 	protected Composite createSingleSampleForAdvancedTableCompositionTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.singleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {			
-			public void handleAdd() { 
+		this.singleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {
+			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				singleSampleForAdvancedTableComposition.refresh();			
+				singleSampleForAdvancedTableComposition.refresh();
 			}
-			public void handleEdit(EObject element) {  
+			public void handleEdit(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				singleSampleForAdvancedTableComposition.refresh();
 			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));	
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				singleSampleForAdvancedTableComposition.refresh();
 			}
-			public void handleRemove(EObject element) { 
+			public void handleRemove(EObject element) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				singleSampleForAdvancedTableComposition.refresh();
 			}
@@ -969,7 +969,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		singleSampleForReferencesTableData.heightHint = 120;
 		singleSampleForReferencesTable.getTable().setLayoutData(singleSampleForReferencesTableData);
 		EditingUtils.setID(singleSampleForReferencesTable.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
-		EditingUtils.setEEFtype(singleSampleForReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(singleSampleForReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createSingleSampleForReferencesTableControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -993,10 +993,10 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table singleSampleForReferencesTable label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -1080,7 +1080,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		EditingUtils.setID(removeSingleSampleForReferencesTable, NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
 		EditingUtils.setEEFtype(removeSingleSampleForReferencesTable, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -1098,7 +1098,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		dialog.open();
 		singleSampleForReferencesTable.refresh();
 	}
-	
+
 	/**
 	 * @param selection the singleSampleForReferencesTable to remove
 	 * 
@@ -1126,7 +1126,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		singleSampleForAdvancedReferencesTableData.heightHint = 120;
 		singleSampleForAdvancedReferencesTable.getTable().setLayoutData(singleSampleForAdvancedReferencesTableData);
 		EditingUtils.setID(singleSampleForAdvancedReferencesTable.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
-		EditingUtils.setEEFtype(singleSampleForAdvancedReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(singleSampleForAdvancedReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createSingleSampleForAdvancedReferencesTableControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -1150,10 +1150,10 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table singleSampleForAdvancedReferencesTable label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -1237,7 +1237,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		EditingUtils.setID(removeSingleSampleForAdvancedReferencesTable, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
 		EditingUtils.setEEFtype(removeSingleSampleForAdvancedReferencesTable, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -1255,7 +1255,7 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		dialog.open();
 		singleSampleForAdvancedReferencesTable.refresh();
 	}
-	
+
 	/**
 	 * @param selection the singleSampleForAdvancedReferencesTable to remove
 	 * 

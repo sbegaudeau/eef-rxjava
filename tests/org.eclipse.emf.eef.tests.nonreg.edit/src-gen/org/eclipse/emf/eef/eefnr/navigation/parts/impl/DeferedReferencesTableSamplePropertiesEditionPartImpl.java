@@ -58,7 +58,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -115,7 +115,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		
 		
 		composer = new PartComposer(deferedReferencesTableSampleStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.class) {
@@ -210,7 +210,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		referencesTableSampleEditorData.heightHint = 120;
 		referencesTableSampleEditor.getTable().setLayoutData(referencesTableSampleEditorData);
 		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
-		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencesTableSampleEditorControlPanel(parent);
 		return parent;
 	}
@@ -234,10 +234,10 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 				name.setText("Label"); //$NON-NLS-1$
 		
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table referencesTableSampleEditor label provider
 						public String getColumnText(Object object, int columnIndex) {
 							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
