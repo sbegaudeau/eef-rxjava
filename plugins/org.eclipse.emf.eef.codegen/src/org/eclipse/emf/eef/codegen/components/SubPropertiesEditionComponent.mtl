@@ -230,7 +230,7 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
-		// [protected ('for notifyChanged body')]
+		// [protected ('for updateSemanticModel body')]
 		
 		// [/protected]
 			[else]
@@ -249,7 +249,7 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 	 */
 	public void updatePart(Notification msg) {
 			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
-		// [protected ('for notifyChanged body')]
+		// [protected ('for updatePart body')]
 		
 		// [/protected]
 			[else]		
