@@ -4,6 +4,7 @@
   <rm:property key="technology.source.repository.location" value=":pserver:anonymous@dev.eclipse.org:/cvsroot/technology"/>
   <rm:locator pattern="^org\.eclipse\.emf\.eef\.(?:releng|build)(?:\..+)?$" searchPathRef="releng"/>
   <rm:locator pattern="^org\.eclipse\.emf\.eef(?:\..+)?$" searchPathRef="eef"/>
+  <rm:locator pattern="^org\.eclipse\.emf\.examples\.eef(?:\..+)?$" searchPathRef="eef"/>
   <rm:locator pattern="^org\.eclipse\.epf(?:\..+)?$" searchPathRef="epf"/>
   <rm:searchPath name="eef">
     <rm:provider componentTypes="osgi.bundle" readerType="cvs" mutable="false">
