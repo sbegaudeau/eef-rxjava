@@ -8,13 +8,9 @@ Bundle-Activator: org.eclipse.emf.eef.eefnr.provider.EefnrEditPlugin$Implementat
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.eef.eefnr.components,
- org.eclipse.emf.eef.eefnr.navigation.provider,
+Export-Package: org.eclipse.emf.eef.eefnr.navigation.provider,
  org.eclipse.emf.eef.eefnr.navigation.providers,
  org.eclipse.emf.eef.eefnr.parts,
- org.eclipse.emf.eef.eefnr.parts.forms,
- org.eclipse.emf.eef.eefnr.parts.impl,
- org.eclipse.emf.eef.eefnr.properties,
  org.eclipse.emf.eef.eefnr.provider,
  org.eclipse.emf.eef.eefnr.providers,
  org.eclipse.emf.eef.eefnr.references.provider,
