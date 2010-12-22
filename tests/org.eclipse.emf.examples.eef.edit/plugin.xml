@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.3 2009/12/10 12:47:02 sbouchet Exp $
+ $Id: plugin.xml,v 1.4 2010/12/22 13:51:43 sbouchet Exp $
 -->
 
 <plugin>
@@ -21,17 +21,12 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
-      <PropertiesEditionComponentProvider
-            providerClass="org.eclipse.emf.samples.conference.providers.ConferencePackagePropertiesEditionProvider">
-      </PropertiesEditionComponentProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
-      <PropertiesEditionPolicyProvider
-            providerClass="org.eclipse.emf.samples.conference.providers.ConferencePackagePropertiesEditionPolicyProvider">
-      </PropertiesEditionPolicyProvider>
+  <!-- EEF extensions -->
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/samples/eef/1.0.0"
+            class="org.eclipse.emf.samples.conference.providers.ConferenceEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
@@ -39,6 +34,7 @@
             providerClass="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
+
    <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
