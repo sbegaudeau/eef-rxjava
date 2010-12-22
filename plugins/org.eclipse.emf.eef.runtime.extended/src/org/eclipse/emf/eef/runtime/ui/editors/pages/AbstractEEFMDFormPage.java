@@ -42,7 +42,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public abstract class AbstractEEFMDFormPage extends FormPage {
+public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEditorPage {
 
 	/**
 	 * The page ID
