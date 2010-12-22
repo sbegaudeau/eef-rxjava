@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
@@ -201,6 +202,10 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 
 	private void disposeComponent() {
 		if (propertiesEditionComponent != null) {
+			PropertiesEditingContext editingContext = propertiesEditionComponent.getEditingContext();
+			if (editingContext!=null && editingContext.getParentContext()==null) {
+				editingContext.dispose();	
+			}
 			propertiesEditionComponent.dispose();
 			PropertiesContextService.getInstance().pop();
 		}

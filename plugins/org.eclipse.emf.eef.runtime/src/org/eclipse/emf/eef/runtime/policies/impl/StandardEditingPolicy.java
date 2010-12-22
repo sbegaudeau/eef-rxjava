@@ -46,6 +46,7 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int result = wDialog.open();
 		ChangeDescription change = editionContext.getChangeRecorder().endRecording();
+		editionContext.dispose();
 		if (result == Window.CANCEL) {
 			change.applyAndReverse();
 		}

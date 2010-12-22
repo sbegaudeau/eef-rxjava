@@ -292,7 +292,7 @@ public class PropertiesEditionWizard extends Wizard {
 			this.setTitle(eObject.eClass().getName());
 			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description
 					+ eObject.eClass().getName());
-			viewer.setInput(new EObjectPropertiesEditionContext(editingContext, null, eObject, adapterFactory));
+			viewer.setInput(editingContext);
 			viewer.addPropertiesListener(this);
 		}
 

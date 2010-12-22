@@ -40,4 +40,13 @@ public interface PropertiesEditingContext {
 	 */
 	public AdapterFactory getAdapterFactory();
 
+	/**
+	 * dispose the context
+	 */
+	public void dispose();
+	
+	/**
+	 * @return the parentContext
+	 */
+	public PropertiesEditingContext getParentContext();
 }

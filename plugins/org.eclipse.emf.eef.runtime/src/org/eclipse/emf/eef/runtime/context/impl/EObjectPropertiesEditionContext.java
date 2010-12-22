@@ -99,6 +99,13 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 	}
 
 	/**
+	 * @param eObject
+	 */
+	public void seteObject(EObject eObject) {
+		this.eObject = eObject;
+	}
+
+	/**
 	 * @return the resourceSet
 	 */
 	public ResourceSet getResourceSet() {
@@ -114,6 +121,13 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 	 */
 	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
+	}
+
+	/**
+	 * Dispose the change recorder
+	 */
+	public void dispose() {
+		changeRecorder.dispose();
 	}
 
 }

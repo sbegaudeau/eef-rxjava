@@ -59,6 +59,7 @@ public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 						null, null, editingDomain, adapterFactory, eObject);
 				WizardEditingCommand wizardEditingCommand = new WizardEditingCommand(propertiesEditionContext);
 				editingDomain.getCommandStack().execute(wizardEditingCommand);
+				propertiesEditionContext.dispose();
 			}
 		}
 	}

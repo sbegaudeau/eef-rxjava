@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.runtime.context.impl;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -45,7 +44,6 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 			AdapterFactory adapterFactory, EObject eObject) {
 		super(parentContext, editionComponent, eObject, adapterFactory);
 		this.editingDomain = domain;
-		this.changeRecorder = new ChangeRecorder(getResourceSet());
 	}
 
 	/**
@@ -65,7 +63,6 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 			AdapterFactory adapterFactory, EObject eObject, ResourceSet resourceSet) {
 		super(null, editionComponent, eObject, adapterFactory);
 		this.editingDomain = domain;
-		this.changeRecorder = new ChangeRecorder(getResourceSet());
 	}
 
 	/**
