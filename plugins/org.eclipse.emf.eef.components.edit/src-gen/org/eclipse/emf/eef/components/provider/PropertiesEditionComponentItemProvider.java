@@ -73,7 +73,8 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 * @generated
 	 */
 	protected void addHelpIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"), getString("_UI_EEFElement_helpID_description"), ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"), getString("_UI_EEFElement_helpID_description"), ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -83,7 +84,8 @@ public class PropertiesEditionComponentItemProvider extends EMFElementBindingIte
 	 * @generated
 	 */
 	protected void addExplicitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertiesEditionComponent_explicit_feature"), getString("_UI_PropertiesEditionComponent_explicit_description"), ComponentsPackage.Literals.PROPERTIES_EDITION_COMPONENT__EXPLICIT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertiesEditionComponent_explicit_feature"), getString("_UI_PropertiesEditionComponent_explicit_description"),
+				ComponentsPackage.Literals.PROPERTIES_EDITION_COMPONENT__EXPLICIT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**

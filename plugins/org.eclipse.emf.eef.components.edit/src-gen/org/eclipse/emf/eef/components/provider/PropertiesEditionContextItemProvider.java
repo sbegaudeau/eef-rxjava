@@ -70,7 +70,8 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertiesEditionContext_model_feature"), getString("_UI_PropertiesEditionContext_model_description"), ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertiesEditionContext_model_feature"), getString("_UI_PropertiesEditionContext_model_description"),
+				ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL, true, false, true, null, null, null));
 	}
 
 	/**
