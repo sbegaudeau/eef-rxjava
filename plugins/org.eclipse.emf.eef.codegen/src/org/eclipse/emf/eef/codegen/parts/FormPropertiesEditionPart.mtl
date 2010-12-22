@@ -199,7 +199,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		[view.compositionSequence()/]
 		composer = new PartComposer([view.compositionStepName()/]) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
@@ -288,7 +288,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [peContext.associatedGenModel().licenceText().trim()/]
 package [view.partsFormPackage()/]
 
-[if (peContext.associatedGenModel().useJMergeForUserCode)]	
+[if (peContext.associatedGenModel().useJMergeForUserCode)]
 [pec.defaultMinimalImports(view, basePackage)/]
 [else]
 // [protected ('for imports')]
@@ -302,7 +302,7 @@ package [view.partsFormPackage()/]
  */
 public class [view.pepFormClass()/] extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, [view.pepInterface()/] {
 
-	[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
+	[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 	// [protected ('widgets declaration')]
 	
 	// [/protected]
@@ -346,7 +346,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		view.setLayout(layout);
-		[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
+		[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('view visual definition')]
 		
 		// [/protected]
@@ -360,7 +360,7 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
+		[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
@@ -374,13 +374,13 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
-		[if (not peContext.associatedGenModel().useJMergeForUserCode)]	
+		[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for title')]
 		return "CustomTitle";
 		// [/protected]
 		[else]
 		return "CustomTitle";
-		[/if]			
+		[/if]
 	}
 
 [view.additionalMethods()/]
@@ -392,11 +392,11 @@ public class [view.pepFormClass()/] extends CompositePropertiesEditionPart imple
 [/template]
 
 [template public additionalMethods(view : View)]
-	[if (not view.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]	
+	[if (not view.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 	// [protected ('additional methods')]
 	
 	// [/protected]
-	[/if]			
+	[/if]
 [/template]
 
 [template public fullFilePath(view : View)]

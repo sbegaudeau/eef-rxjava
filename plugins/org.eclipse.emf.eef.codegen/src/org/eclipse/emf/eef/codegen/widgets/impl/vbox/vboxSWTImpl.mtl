@@ -31,7 +31,7 @@ create[container.name.toJavaClassifier()/]VBox(parent);
 	protected Composite create[container.name.toJavaClassifier()/]VBox(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
-		container.setLayout(layout);	
+		container.setLayout(layout);
 		VerticalBox [container.name.toJavaIdentifier()/]VBox = new VerticalBox(container);
 		return [container.name.toJavaIdentifier()/]VBox;
 	}

@@ -43,15 +43,15 @@ create[editor.name.toJavaClassifier()/]ImageViewer(widgetFactory, parent);
 		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData();
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-		[editor.defaultLayoutData()/] 		
+		[editor.defaultLayoutData()/]
 		[else]
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
-		[editor.defaultLayoutData()/] 		
+		[editor.defaultLayoutData()/]
 		// [/protected]
  		[/if]
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
-			
+
 			public void selectionChanged(SelectionChangedEvent event) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.viewCompletePackageGetter()/]));
 			}

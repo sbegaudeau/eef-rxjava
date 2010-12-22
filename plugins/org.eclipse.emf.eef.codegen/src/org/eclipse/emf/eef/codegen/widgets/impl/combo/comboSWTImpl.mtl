@@ -61,7 +61,7 @@ create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, get[editor.name.toJavaClassifier()/]()));
 			}
-			
+
 		});
 		[editor.name.toJavaIdentifier()/].setContentProvider(new EMFListContentProvider());
 		EditingUtils.setID([editor.name.toJavaIdentifier()/].getCombo(), [editor.editorID()/]);

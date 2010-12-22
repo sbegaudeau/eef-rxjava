@@ -34,15 +34,15 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, parent);
 
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		generatorData.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier()/].setLayoutData(generatorData);	
-				
+		[editor.name.toJavaIdentifier()/].setLayoutData(generatorData);
+
 		[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
-			 @Override
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 					[editor.name.toJavaIdentifier()/]SelectionDialog();
 			}
 		});
-		
+
 		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
@@ -71,7 +71,7 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, parent);
 		});
 		return parent;
 	}
-	
+
 	protected void [editor.name.toJavaIdentifier()/]SelectionDialog() {
 	//[protected ('browse button selection dialog')]
 		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {

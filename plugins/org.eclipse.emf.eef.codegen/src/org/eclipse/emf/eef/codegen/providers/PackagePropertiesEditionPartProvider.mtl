@@ -48,7 +48,6 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 		return key == [v.vrClass()/].class;
 	}
 
-	
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)

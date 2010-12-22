@@ -43,11 +43,11 @@ import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 		[/if]
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData();
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
-		[defaultLayoutData()/] 		
+		[defaultLayoutData()/]
 		// [/protected]
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
-			
+
 			public void selectionChanged(SelectionChangedEvent event) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.viewCompletePackageGetter()/]));
 			}

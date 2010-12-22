@@ -61,7 +61,7 @@
 [template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('SingleCompositionViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature, editingDomain);	
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](current, containingFeature, feature, editingDomain);
 	}
 
 [setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
@@ -71,14 +71,14 @@
 [/template]
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('SingleCompositionViewer'))]
-[elementEditor.initSignature()/] {	
+[elementEditor.initSignature()/] {
 		this.[elementEditor.name.toJavaIdentifier()/].setInput(current, feature, resourceSet);
 		this.[elementEditor.name.toJavaIdentifier()/].init(editingDomain);
 		if (current != null) {
 			this.[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current), feature);
 		}
 		[elementEditor.name.toJavaIdentifier()/].refresh();
-		
+
 	}
 [/template]
 

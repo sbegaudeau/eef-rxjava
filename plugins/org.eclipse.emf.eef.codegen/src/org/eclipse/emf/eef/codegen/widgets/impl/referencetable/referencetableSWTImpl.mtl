@@ -68,7 +68,7 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
 		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		EditingUtils.setID([editor.name.toJavaIdentifier()/].getTable(), [editor.editorID()/]);
-		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		create[editor.name.toJavaClassifier()/]ControlPanel(parent);
 		return parent;
 	}
@@ -93,19 +93,19 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultColumnInitialisation()/]
 		[else]
-		// [protected ('for table '.concat(editor.name).concat(' s columns definition'))]		
+		// [protected ('for table '.concat(editor.name).concat(' s columns definition'))]
 		[editor.defaultColumnInitialisation()/]
 		// [/protected]
 		[/if]
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultLabelProviderInitialisation()/]
 		[else]
 			// [protected ('for table '.concat(editor.name).concat(' label provider'))]
-			[editor.defaultLabelProviderInitialisation()/]			
+			[editor.defaultLabelProviderInitialisation()/]
 			// [/protected]
 		[/if]
 
@@ -304,28 +304,28 @@ create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void add[editor.name.toJavaClassifier()/]() {
-		[editor.defaultAddOperation()/]	
+		[editor.defaultAddOperation()/]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void move[editor.name.toJavaClassifier()/](EObject element, int oldIndex, int newIndex) {
-		[editor.defaultMoveOperation()/]	
+		[editor.defaultMoveOperation()/]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void removeFrom[editor.name.toJavaClassifier()/](EObject element) {
-		[editor.defaultRemoveOperation()/]		
+		[editor.defaultRemoveOperation()/]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void edit[editor.name.toJavaClassifier()/](EObject element) {
-		[editor.defaultEditOperation()/]		
+		[editor.defaultEditOperation()/]
 	}
 [/template]
 

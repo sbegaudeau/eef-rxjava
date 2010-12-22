@@ -29,7 +29,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 [/template]
-	
+
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'EObjectFlatComboViewer')]
 protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
 [/template]

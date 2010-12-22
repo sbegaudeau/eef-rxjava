@@ -52,10 +52,10 @@ import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
  * [peContext.associatedGenModel().authorText().trim()/]
  */
 public class [pec.propertySection(view)/] extends AbstractPropertySection implements IFilter {
-	
+
 	[peContext.associatedGenModel().generationComment()/]
 	private Composite parent;
-	
+
 	[peContext.associatedGenModel().generationComment()/]
 	private IPropertiesEditionComponent propertiesEditionComponent;
 

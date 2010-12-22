@@ -130,7 +130,7 @@ package [view.partsImplPackage()/];
 // [protected ('for imports')]
 [pec.defaultImports(view, basePackage)/]
 
-// [/protected]	
+// [/protected]
 [/if]
 
 /**
@@ -182,7 +182,7 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 	public void createControls(Composite view) { 
 		[view.compositionSequence()/]
 		composer = new PartComposer([view.compositionStepName()/]) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]

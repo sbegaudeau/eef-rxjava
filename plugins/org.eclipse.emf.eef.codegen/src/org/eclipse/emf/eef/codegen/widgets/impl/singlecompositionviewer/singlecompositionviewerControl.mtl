@@ -38,12 +38,12 @@
 [/template][/comment]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('SingleCompositionViewer'))]
-			
+
 			if([editionElement.metamodelGetter()/].getLowerBound() == 1 && elt.eGet([editionElement.metamodelGetter()/]) == null) {
 				final List<EClass> instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy([editionElement.metamodelGetter()/].getEType(), allResource);
 				if(instanciableTypesInHierarchy.size() == 1) {
 					ControlListener listener = new ControlListener() {
-						
+
 						public void controlResized(ControlEvent e) {
 							if(e.getSource() instanceof SingleCompositionViewer<?>) {
 								((SingleCompositionViewer<?>)e.getSource()).removeControlListener(this);
@@ -56,14 +56,14 @@
 							if(IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode))
 								[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/](element);
 						}
-						
-						public void controlMoved(ControlEvent e) {					
+
+						public void controlMoved(ControlEvent e) {
 						}
 					};
 				[view.viewIdentifier(pec)/].add[editionElement.views->first().viewPackageSignature()/]ControlListener(listener);
 				}
 			}
-			
+
 			[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([pec.model.name.toJavaIdentifier()/], null, [editionElement.metamodelGetter()/], liveEditingDomain);
 [/template]
 

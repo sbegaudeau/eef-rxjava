@@ -67,7 +67,7 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
 		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		EditingUtils.setID([editor.name.toJavaIdentifier()/].getTable(), [editor.editorID()/]);
-		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		create[editor.name.toJavaClassifier()/]ControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -91,20 +91,20 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 		table.setLinesVisible(true);
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultColumnInitialisation()/]
-		[else]			
+		[else]
 		// [protected ('for table '.concat(editor.name).concat(' s columns definition'))]
 		[editor.defaultColumnInitialisation()/]
 		// [/protected]
 		[/if]
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
-			[editor.defaultLabelProviderInitialisaion()/]			
-		[else]			
+			[editor.defaultLabelProviderInitialisaion()/]
+		[else]
 			// [protected ('for table '.concat(editor.name).concat(' label provider'))]
-			[editor.defaultLabelProviderInitialisaion()/]			
+			[editor.defaultLabelProviderInitialisaion()/]
 			
 			// [/protected]
 		[/if]
@@ -185,7 +185,7 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 		EditingUtils.setID(remove[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(remove[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
@@ -203,7 +203,7 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 		dialog.open();
 		[editor.name.toJavaIdentifier()/].refresh();
 	}
-	
+
 	/**
 	 * @param selection the [editor.name/] to remove
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
@@ -304,14 +304,14 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void add[editor.name.toJavaClassifier()/]() {
-		[editor.defaultAddOperation()/]	
+		[editor.defaultAddOperation()/]
 	}
 
 	/**
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected void move[editor.name.toJavaClassifier()/](EObject element, int oldIndex, int newIndex) {
-		[editor.defaultMoveOperation()/]	
+		[editor.defaultMoveOperation()/]
 	}
 
 	/**

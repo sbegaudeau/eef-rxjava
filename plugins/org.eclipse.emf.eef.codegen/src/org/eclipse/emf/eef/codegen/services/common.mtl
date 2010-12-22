@@ -154,7 +154,7 @@
 	then not ref.view.oclAsType(views::View).involvedPropertiesEditionComponent().oclIsUndefined()
 	else false
 	endif/]
-	
+
 [query public isA1stLevelReferencedView(toCheck : View, pec : PropertiesEditionComponent) : Boolean = 
 	pec.views.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsKindOf(views::View)).oclAsType(views::View)->includes(toCheck)/]
 
@@ -201,7 +201,7 @@
 [comment ----- Editor ID queries ---------/]
 [query public editorIDSequence(editorElement : IdentifiedElement) : Sequence(T) = 
 	editorElement.qualifiedIdentifier.tokenize('::')/]
-	
+
 [query public identifiedElementKey(editorElement : IdentifiedElement) : String = 
 	editorElement.qualifiedIdentifier.tokenize('::')->last()/]
 
@@ -523,8 +523,7 @@ Object
 	then modelNavigation.feature.eType.ePackage.metamodelPrefix()
 	else modelNavigation.discriminatorType.ePackage.metamodelPrefix()
 	endif/]
-	
-	
+
 [comment] 
 @param PropertiesEditionElement the  PEE of the composition
 @param EStructuralFeature : the feature of the composition 

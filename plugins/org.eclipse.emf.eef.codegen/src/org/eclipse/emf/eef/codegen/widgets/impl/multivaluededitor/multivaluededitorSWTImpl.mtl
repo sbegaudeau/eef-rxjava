@@ -89,7 +89,7 @@ create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 						[editor.name.toJavaIdentifier()/].getShell(), "[pec.model.name/]", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						[editor.name.toJavaIdentifier()/]List, [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), null,
 						false, true, 
-						null, null);						
+						null, null);
 				if (dialog.open() == Window.OK) {
 					[editor.name.toJavaIdentifier()/]List = dialog.getResult();
 					if ([editor.name.toJavaIdentifier()/]List == null) {

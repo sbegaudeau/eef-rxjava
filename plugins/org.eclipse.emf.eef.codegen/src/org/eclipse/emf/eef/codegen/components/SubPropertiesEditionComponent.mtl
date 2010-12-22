@@ -141,7 +141,7 @@ import [bindingFilter.oclAsType(mapping::filters::OnlyReferenceTypeFilter).refer
 [/for]
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-[view.additionalImports()/]	
+[view.additionalImports()/]
 [/template]
 
 [template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
@@ -229,18 +229,18 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
+		[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for updateSemanticModel body')]
 		
 		// [/protected]
-			[else]
+		[else]
 		[pec.model.name/] [pec.model.name.toJavaIdentifier()/] = ([pec.model.name/])semanticObject;
 		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 		if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
 			[editionElement.declareEObjectUpdater(view, pec)/]
 		}
 		[/for]
-			[/if]
+		[/if]
 	}
 
 	/**
@@ -248,18 +248,18 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
+		[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for updatePart body')]
 		
 		// [/protected]
-			[else]		
+		[else]
 		[view.pepInterface()/] [view.viewIdentifier(pec)/] = ([view.pepInterface()/])editingPart;
-				[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
 		[editionElement.liveUpdater(view, pec)/]
-				[/for]
+		[/for]
 		[comment add ViewReference support/]
 		[view.liveUpdaterForReferencedViews(pec)/]
-			[/if]
+		[/if]
 	}
 
 [if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]

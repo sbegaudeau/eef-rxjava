@@ -64,7 +64,7 @@
 [template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('Radio'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
-		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](eenum, current);	
+		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](eenum, current);
 	}
 
 [setterSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]

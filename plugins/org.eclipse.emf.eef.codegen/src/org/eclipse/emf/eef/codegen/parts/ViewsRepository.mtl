@@ -90,7 +90,7 @@ public static String [viewElement.oclAsType(views::ElementEditor).identifiedElem
 	[for (ve : ViewElement | viewElement.oclAsType(views::Container).elements)]
 		[ve.viewElementDescriptor()/]
 	[/for]
-	
+
 	}
 [elseif (viewElement.oclIsTypeOf(views::View))]
 [for (v : View | viewElement.oclAsType(views::View))]

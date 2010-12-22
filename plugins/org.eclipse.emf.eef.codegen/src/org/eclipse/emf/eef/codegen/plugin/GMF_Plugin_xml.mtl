@@ -18,7 +18,7 @@
 [template public GMF_Plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
 [comment @main /]
 	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
-	
+
 	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
 	[if (editionContext.contributorID(basePackage)->notEmpty())]
 		<propertyContributor contributorId="[editionContext.contributorID(basePackage).trim()/]" labelProvider="[editionContext.labelProvider()/]">
@@ -52,7 +52,7 @@
 				label="Propriétés"
 				category="extended"
 				id="Proprietes">
-			</propertyTab>	
+			</propertyTab>
 			<propertyTab
 				label="Stéréotypes"
 				category="extended"

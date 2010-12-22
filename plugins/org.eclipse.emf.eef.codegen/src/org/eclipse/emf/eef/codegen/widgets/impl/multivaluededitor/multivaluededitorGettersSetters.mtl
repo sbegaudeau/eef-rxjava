@@ -42,18 +42,18 @@
 			[elementEditor.name.toJavaIdentifier()/].setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 [elementEditor.addSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]List.add(newValue);		
+		[elementEditor.name.toJavaIdentifier()/]List.add(newValue);
 		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setText([elementEditor.name.toJavaIdentifier()/]List.toString());
 		} else {
 			[elementEditor.name.toJavaIdentifier()/].setText(""); //$NON-NLS-1$
 		}
 	}
-	
+
 [elementEditor.removeSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]List.remove(newValue);		
+		[elementEditor.name.toJavaIdentifier()/]List.remove(newValue);
 		if (newValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setText([elementEditor.name.toJavaIdentifier()/]List.toString());
 		} else {

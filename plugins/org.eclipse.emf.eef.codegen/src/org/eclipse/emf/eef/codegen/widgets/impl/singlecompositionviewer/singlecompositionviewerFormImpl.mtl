@@ -55,7 +55,7 @@ create[editor.name.toJavaClassifier()/]SingleCompositionViewer(widgetFactory, pa
 			[editor.name.toJavaIdentifier()/].setEnabled(false);
 		[else]
 			this.[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
-	
+
 				/**
 				 * {@inheritDoc}
 				 * 
@@ -67,9 +67,9 @@ create[editor.name.toJavaClassifier()/]SingleCompositionViewer(widgetFactory, pa
 					}
 				}
 			});
-		
+
 			this.[editor.name.toJavaIdentifier()/].addCheckBoxSelectionListener(new SelectionListener() {
-			
+
 				public void widgetSelected(SelectionEvent e) {
 					if(![editor.name.toJavaIdentifier()/].getCheckBoxSelection()) {
 						if (propertiesEditionComponent != null) {
@@ -77,9 +77,9 @@ create[editor.name.toJavaClassifier()/]SingleCompositionViewer(widgetFactory, pa
 						}
 					}
 				}
-				
+
 				public void widgetDefaultSelected(SelectionEvent e) {
-					
+
 				}
 			});
 		[/if]

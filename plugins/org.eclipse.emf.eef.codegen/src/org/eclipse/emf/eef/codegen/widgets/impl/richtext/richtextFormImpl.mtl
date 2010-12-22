@@ -82,17 +82,17 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
 		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		
+
 		[editor.name.toJavaIdentifier()/].addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				propertiesEditionComponent.delayedFirePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editorID(editor)/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 			}
 		});
-		
+
 		fillToolBar(toolBar, [editor.name.toJavaIdentifier()/]);
 		return parent;
 	}
-	
+
 	/**
      * Populate actions in the Toolbar to link with the RichText
      * 
@@ -101,7 +101,7 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
      */
     private void fillToolBar(IRichTextToolBar toolBar, IRichText richText)
     {
-		[editor.fillToolbar()/]    
+		[editor.fillToolbar()/]
 	}
 [/template]
 
