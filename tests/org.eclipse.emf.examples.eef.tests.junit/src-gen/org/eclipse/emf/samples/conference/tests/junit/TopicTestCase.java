@@ -11,7 +11,6 @@
 package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -22,7 +21,7 @@ import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
-import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
@@ -30,7 +29,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class TopicTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -40,55 +39,61 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject topic;
+
 	/**
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.conference";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.conference";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.examples.eef.tests.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -118,7 +123,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditTopicDescription() throws Exception {
 		
 		// Import the input model
@@ -142,7 +147,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the description feature of the Topic element 
-				bot.editTextFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.description, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -166,8 +171,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				String[] strings = {UPDATED_VALUE};
-				cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), Arrays.asList(strings)));
+				cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -179,7 +183,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditTopicReferences() throws Exception {
 		
 		// Import the input model
@@ -203,7 +207,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the references feature of the Topic element 
-				bot.editMultiValuedEditorFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.references, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -239,7 +243,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditTopicDocumentation() throws Exception {
 		
 		// Import the input model
@@ -263,7 +267,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
 		
 		// Change value of the documentation feature of the Topic element 
-				bot.editTextFeature(wizardShell, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, UPDATED_VALUE);
+				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.documentation, UPDATED_VALUE);
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);

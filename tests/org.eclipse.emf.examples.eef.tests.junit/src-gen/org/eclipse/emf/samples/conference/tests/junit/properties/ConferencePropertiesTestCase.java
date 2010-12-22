@@ -24,15 +24,14 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.exceptions.WidgetInvalidException;
+import org.eclipse.emf.eef.runtime.tests.swtbot.finder.SWTEEFBotHelper;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
-import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
-import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Site;
+import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 /**
@@ -40,7 +39,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -50,10 +49,11 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject conference;
+
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass siteMetaClass = ConferencePackage.eINSTANCE.getSite();	
+	private EClass siteMetaClass = ConferencePackage.eINSTANCE.getSite();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -62,51 +62,56 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.conference";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.conference";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.examples.eef.tests.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -136,7 +141,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditConferencePlace() throws Exception {
 		
 		// Import the input model
@@ -160,7 +165,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the place feature of the Conference element 
-				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.ConferencePropertiesEditionPart_PlaceLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Conference_.Localisation.place, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -171,7 +176,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -184,11 +189,11 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		if (conference == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
 		EClass siteMetaClass = ConferencePackage.eINSTANCE.getSite();
-				EObject site = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, siteMetaClass);
-				if (site == null)
-					throw new InputModelInvalidException(siteMetaClass.getName());
-				CompoundCommand cc = new CompoundCommand();
-				cc.append(AddCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), EcoreUtil.copy(site)));
+		EObject site = EEFTestsModelsUtils.getFirstInstanceOf(expectedModel, siteMetaClass);
+		if (site == null)
+			throw new InputModelInvalidException(siteMetaClass.getName());
+		CompoundCommand cc = new CompoundCommand();
+		cc.append(AddCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), EcoreUtil.copy(site)));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -200,7 +205,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditConferenceSites() throws Exception {
 		
 		// Import the input model
@@ -235,7 +240,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -248,9 +253,11 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		if (conference == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((Conference)conference).getSites();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, siteMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), firstInstanceOf));
+		List eGet = (List)conference.eGet(ConferencePackage.eINSTANCE.getConference_Sites());
+		if (eGet.size() == 0)
+			throw new InputModelInvalidException("Model is invalid");					
+		EObject firstInstanceOf = (EObject) eGet.get(0);
+		cc.append(RemoveCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -262,7 +269,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testRemoveConferenceSites() throws Exception {
 		
 		// Import the input model
@@ -286,7 +293,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the sites feature of the Conference element 
-				bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 0, firstInstanceOf, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedTableCompositionFeature(propertiesView, ConferenceViewsRepository.Conference_.Localisation.sites, ConferenceMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -297,7 +304,7 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 
 
 	/**
@@ -310,19 +317,19 @@ public class ConferencePropertiesTestCase extends SWTBotEEFTestCase {
 		Site site = (Site) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
 		bot.sleep(500);
 		// Change value of the documentation feature of the documentation element 
-				bot.editTextWithLabel(ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel, site.getDocumentation());
+				bot.editEEFText(ConferenceViewsRepository.Site.Properties.documentation, site.getDocumentation());
 		bot.sleep(500);
 		// Change value of the name feature of the name element 
-				bot.editTextWithLabel(ConferenceMessages.SitePropertiesEditionPart_NameLabel, site.getName());
+				bot.editEEFText(ConferenceViewsRepository.Site.Properties.name, site.getName());
 		bot.closeShellWithFinishButton(shellTable);
-	}	
+	}
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
 	protected void editAdvancedTableCompositionsitesFeature(SWTBotView propertyView, SWTBotTreeItem selectNode) throws WidgetInvalidException {
-		SWTBot propertyBot = propertyView.bot();
-		propertyBot.buttonWithTooltip(EEFRuntimeUIMessages.ReferencesTable_add_tooltip).click();
+		SWTEEFBotHelper helper = new SWTEEFBotHelper(propertyView.bot());
+		helper.addButtonAdvancedTableComposition(ConferenceViewsRepository.Conference_.Localisation.sites).click();
 		editAdvancedTableCompositionForsitesFeature();
 		selectNode.select();
 	}

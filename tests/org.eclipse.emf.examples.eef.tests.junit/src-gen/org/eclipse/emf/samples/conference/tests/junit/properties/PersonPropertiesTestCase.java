@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
+import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -33,7 +34,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
 public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
-	
+
 	/**
 	 * The EClass of the type to edit
 	 */
@@ -43,6 +44,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject person;
+
 	/**
 	 * The enum value for the enum class gender
 	 */
@@ -54,7 +56,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass talkMetaClass = ConferencePackage.eINSTANCE.getTalk();	
+	private EClass talkMetaClass = ConferencePackage.eINSTANCE.getTalk();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -63,51 +65,56 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * Updated value of the feature
 	 */
 	private static final String UPDATED_VALUE = "value2";
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelName()
 	 */
 	protected String getExpectedModelName() {
 		return "expected.conference";
 	}
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelFolder()
 	 */
 	protected String getInputModelFolder() {
 		return "input";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getInputModelName()
 	 */
 	protected String getInputModelName() {
 		return "input.conference";
 	}
 
-	/**{@inheritDoc}
-	 *
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getTestsProjectName()
 	 */
 	protected String getTestsProjectName() {
 		return "org.eclipse.emf.examples.eef.tests.junit";
 	}
-	
+
 	/**
-	 *  The project that contains models for tests 
-	 */
-	/**{@inheritDoc}
-	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getExpectedModelFolder()
 	 */
 	protected String getExpectedModelFolder() {
+		// The project that contains models for tests
 		return "expected";
 	}
-	
-	/**{@inheritDoc}
-	 *
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase#getImportModelsFolder()
 	 */
 	protected String getImportModelsFolder() {
@@ -137,7 +144,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonFirstname() throws Exception {
 		
 		// Import the input model
@@ -161,7 +168,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the firstname feature of the Person element 
-				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.Identity.firstname, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -172,7 +179,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -197,7 +204,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonLastname() throws Exception {
 		
 		// Import the input model
@@ -221,7 +228,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the lastname feature of the Person element 
-				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.Identity.lastname, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -232,7 +239,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -257,7 +264,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonAge() throws Exception {
 		
 		// Import the input model
@@ -281,7 +288,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the age feature of the Person element 
-				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.Identity.age, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -292,7 +299,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -305,8 +312,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter());
-				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), !oldValue));
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -318,7 +324,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonEclipseCommiter() throws Exception {
 		
 		// Import the input model
@@ -342,7 +348,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the eclipseCommiter feature of the Person element 
-				bot.editPropertyCheckboxFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -353,7 +359,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -366,9 +372,9 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, talkMetaClass);
-				referenceValueForAssists = bot.changeReferenceValue(allInstancesOf, ((Person)person).getAssists());
-				cc.append(AddCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), referenceValueForAssists));
+		allInstancesOf = EEFTestsModelsUtils.getAllInstancesOf(expectedModel, talkMetaClass);
+		referenceValueForAssists = bot.changeReferenceValue(allInstancesOf, ((Person)person).getAssists());
+		cc.append(AddCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), referenceValueForAssists));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -380,7 +386,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonAssists() throws Exception {
 		
 		// Import the input model
@@ -404,7 +410,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Presence");
 		
 		// Change value of the assists feature of the Person element 
-				bot.editPropertyAdvancedReferencesTableFeature(propertiesView, 0, referenceValueForAssists, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.editPropertyAdvancedReferencesTableFeature(propertiesView, ConferenceViewsRepository.Presence.Talks.assists, referenceValueForAssists, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -415,7 +421,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -428,9 +434,13 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				allInstancesOf = ((Person)person).getAssists();
-				EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(allInstancesOf, talkMetaClass);
-				cc.append(RemoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), firstInstanceOf));
+		List<EObject> allReferencedInstances = (List<EObject>)person.eGet(ConferencePackage.eINSTANCE.getPerson_Assists());
+		if (allReferencedInstances.size() > 0) {
+			cc.append(RemoveCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Assists(), allReferencedInstances.get(0)));
+		}
+		else {
+			throw new InputModelInvalidException();
+		}
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -442,7 +452,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testRemovePersonAssists() throws Exception {
 		
 		// Import the input model
@@ -466,7 +476,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Presence");
 		
 		// Change value of the assists feature of the Person element 
-				bot.removePropertyAdvancedReferencesTableFeature(propertiesView, 0, ConferenceMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+		bot.removePropertyAdvancedReferencesTableFeature(propertiesView, ConferenceViewsRepository.Presence.Talks.assists, ConferenceMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -477,7 +487,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -502,7 +512,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonGender() throws Exception {
 		
 		// Import the input model
@@ -527,7 +537,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the gender feature of the Person element 
-				bot.editPropertyTextFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.Identity.gender, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -538,7 +548,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 	/**
 	 * Create the expected model from the input model
 	 * @throws InputModelInvalidException error during expected model initialization
@@ -551,8 +561,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_IsRegistered());
-				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), !oldValue));
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), UPDATED_VALUE));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -564,7 +573,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - change the properties in the editor properties
 	 * - compare the expected and the real model : if they are equals the test pass
 	 * - delete the models
-	 */	
+	 */
 	public void testEditPersonIsRegistered() throws Exception {
 		
 		// Import the input model
@@ -588,7 +597,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 		
 		// Change value of the isRegistered feature of the Person element 
-				bot.editPropertyCheckboxFeature(propertiesView, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.EclipseStatus.isRegistered, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
 		
 		// Save the changement
 		bot.finalizeEdition(modelEditor);
@@ -599,7 +608,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		// Delete the input model
 		deleteModels();
 	
-	}	
+	}
 
 
 
