@@ -10,17 +10,16 @@
 <booleanAttribute key="clearws" value="true"/>
 <booleanAttribute key="clearwslog" value="false"/>
 <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
-<booleanAttribute key="default" value="false"/>
-<stringAttribute key="deselected_workspace_plugins" value="org.eclipse.emf.examples.eef.tests.junit,org.eclipse.worldcupforecast.edit,org.eclipse.emf.eef.abstract_non_reg.edit,org.eclipse.emf.examples.eef.editor,org.eclipse.emf.eef.tests.nonreg.junit,org.eclipse.emf.samples.eef.tarot.editor,org.eclipse.worldcupforecast.editor,org.eclipse.emf.eef.non_reg.edit,org.eclipse.emf.eef.middle_non_reg.editor,org.eclipse.worldcupforecast,org.eclipse.emf.eef.non_reg.editor,org.eclipse.emf.examples.eef,org.eclipse.emf.examples.eef.edit,org.eclipse.emf.samples.eef.tarot,org.eclipse.emf.eef.non_reg,org.eclipse.emf.eef.middle_non_reg,org.eclipse.emf.eef.abstract_non_reg.editor,org.eclipse.emf.eef.tests.nonreg,org.eclipse.emf.eef.tests.nonreg.editor,org.eclipse.emf.eef.abstract_non_reg,org.eclipse.emf.eef.tests.nonreg.edit,org.eclipse.emf.eef.middle_non_reg.edit,org.eclipse.emf.samples.eef.tarot.edit"/>
+<booleanAttribute key="default" value="true"/>
 <booleanAttribute key="includeOptional" value="true"/>
 <stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/org.eclipse.emf.eef.tests.nonreg.junit"/>
+<listEntry value="/org.eclipse.emf.eef.tests.nonreg.junit/src-gen"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=org.eclipse.emf.eef.tests.nonreg.junit"/>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=org.eclipse.emf.eef.tests.nonreg.junit/src-gen"/>
 <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
