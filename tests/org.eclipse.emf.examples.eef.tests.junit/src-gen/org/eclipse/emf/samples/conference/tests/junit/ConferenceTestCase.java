@@ -139,39 +139,39 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditConferencePlace() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		conference = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (conference == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForConferencePlace();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Conference element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, conferenceMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the place feature of the Conference element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Conference_.Localisation.place, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -203,39 +203,39 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditConferenceSites() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		conference = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (conference == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForConferenceSites();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Conference element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, conferenceMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the sites feature of the Conference element 
 		editAdvancedTableCompositionsitesFeature(wizardShell);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -251,7 +251,7 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 		CompoundCommand cc = new CompoundCommand();
 		List eGet = (List)conference.eGet(ConferencePackage.eINSTANCE.getConference_Sites());
 		if (eGet.size() == 0)
-			throw new InputModelInvalidException("Model is invalid");					
+			throw new InputModelInvalidException("Model is invalid");
 		EObject firstInstanceOf = (EObject) eGet.get(0);
 		cc.append(RemoveCommand.create(editingDomain, conference, ConferencePackage.eINSTANCE.getConference_Sites(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
@@ -267,39 +267,39 @@ public class ConferenceTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveConferenceSites() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		conference = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (conference == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForConferenceSites();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Conference element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), conferenceMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(conferenceMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, conferenceMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the sites feature of the Conference element 
 				bot.removeAdvancedTableCompositionFeature(wizardShell, ConferenceViewsRepository.Conference_.Localisation.sites);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

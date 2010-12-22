@@ -125,39 +125,39 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTopicDescription() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTopicDescription();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Topic element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the description feature of the Topic element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.description, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -185,39 +185,39 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTopicReferences() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTopicReferences();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Topic element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the references feature of the Topic element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.references, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -245,39 +245,39 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTopicDocumentation() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTopicDocumentation();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Topic element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the documentation feature of the Topic element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.documentation, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

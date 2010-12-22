@@ -125,39 +125,39 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditSiteName() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		site = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
 		if (site == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForSiteName();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Site element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the name feature of the Site element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Site.Properties.name, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -185,39 +185,39 @@ public class SitePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditSiteDocumentation() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		site = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
 		if (site == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForSiteDocumentation();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Site element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), siteMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(siteMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the documentation feature of the Site element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Site.Properties.documentation, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

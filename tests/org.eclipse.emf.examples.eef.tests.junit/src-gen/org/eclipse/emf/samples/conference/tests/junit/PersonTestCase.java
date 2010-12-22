@@ -146,39 +146,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonFirstname() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForPersonFirstname();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the firstname feature of the Person element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Person.Identity.firstname, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -206,39 +206,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonLastname() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForPersonLastname();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the lastname feature of the Person element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Person.Identity.lastname, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -266,39 +266,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonAge() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForPersonAge();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the age feature of the Person element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Person.Identity.age, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -326,39 +326,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonEclipseCommiter() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForPersonEclipseCommiter();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the eclipseCommiter feature of the Person element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -388,39 +388,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonAssists() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForPersonAssists();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Presence");
-		
+
 		// Change value of the assists feature of the Person element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, ConferenceViewsRepository.Presence.Talks.assists, referenceValueForAssists);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -454,39 +454,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemovePersonAssists() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForPersonAssists();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Presence");
-		
+
 		// Change value of the assists feature of the Person element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, ConferenceViewsRepository.Presence.Talks.assists, ConferenceMessages.PropertiesEditionPart_RemoveListViewerLabel);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -514,40 +514,40 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonGender() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		enumValueForGender = bot.changeEnumLiteralValue(ConferencePackage.eINSTANCE.getGENDER(), ((Person)person).getGender().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForPersonGender();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the gender feature of the Person element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Person.Identity.gender, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -575,39 +575,39 @@ public class PersonTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditPersonIsRegistered() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		person = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForPersonIsRegistered();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Person element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), personMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, personMetaClass, firstInstanceOf, "Base");
-		
+
 		// Change value of the isRegistered feature of the Person element 
 				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Person.EclipseStatus.isRegistered, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

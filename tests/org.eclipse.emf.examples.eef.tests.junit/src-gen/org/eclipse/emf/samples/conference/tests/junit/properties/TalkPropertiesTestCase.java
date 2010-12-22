@@ -47,14 +47,14 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForType;
 	/**
-	 * The reference value for the reference class presenter
-	 */
-	private Object referenceValueForPresenter;
-
-	/**
 	 * The reference value for the reference class topic
 	 */
 	private Object referenceValueForTopic;
+
+	/**
+	 * The reference value for the reference class presenter
+	 */
+	private Object referenceValueForPresenter;
 
 	/**
 	 * The reference value for the reference class creator
@@ -158,39 +158,39 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTalkTitle() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTalkTitle();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the title feature of the Talk element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Talk.Properties.title_, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -220,39 +220,39 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTalkTopic() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTalkTopic();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the topic feature of the Talk element 
 		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, ConferenceViewsRepository.Talk.Properties.topic, allInstancesOf.indexOf(referenceValueForTopic), bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -280,40 +280,40 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTalkType() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		enumValueForType = bot.changeEnumLiteralValue(ConferencePackage.eINSTANCE.getTALK_TYPE(), ((Talk)talk).getType().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForTalkType();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the type feature of the Talk element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Talk.Properties.type, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -343,39 +343,39 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTalkPresenter() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTalkPresenter();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the presenter feature of the Talk element 
 		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, ConferenceViewsRepository.Talk.Properties.presenter, allInstancesOf.indexOf(referenceValueForPresenter), bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -405,39 +405,39 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTalkCreator() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTalkCreator();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the creator feature of the Talk element 
 		bot.editPropertyEObjectFlatComboViewerFeature(propertiesView, ConferenceViewsRepository.Talk.Properties.creator, allInstancesOf.indexOf(referenceValueForCreator)+1, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -466,40 +466,40 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveTalkCreator() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForTalkCreator();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the creator feature of the Talk element 
 		bot.removePropertyEObjectFlatComboViewerFeature(propertiesView, ConferenceViewsRepository.Talk.Properties.creator, bot.selectNode(modelEditor, firstInstanceOf));
 		
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -527,39 +527,39 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTalkDocumentation() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		talk = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTalkDocumentation();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Talk element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), talkMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the documentation feature of the Talk element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Talk.Properties.documentation, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

@@ -125,39 +125,39 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTopicDescription() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTopicDescription();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Topic element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the description feature of the Topic element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Topic.Properties.description, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -185,39 +185,39 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTopicReferences() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTopicReferences();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Topic element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the references feature of the Topic element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Topic.Properties.references, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -245,39 +245,39 @@ public class TopicPropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTopicDocumentation() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		topic = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTopicDocumentation();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the Topic element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), topicMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
-		
+
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
 		// Change value of the documentation feature of the Topic element 
 				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Topic.Properties.documentation, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 
