@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceEditor.java,v 1.2 2010/01/04 15:21:21 sbouchet Exp $
+ * $Id: ConferenceEditor.java,v 1.3 2010/12/22 13:10:14 sbouchet Exp $
  */
 package org.eclipse.emf.samples.conference.presentation;
 
@@ -972,7 +972,7 @@ public class ConferenceEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void createPages() {
@@ -1015,7 +1015,7 @@ public class ConferenceEditor
 				createContextMenuFor(selectionViewer);
 				int pageIndex = addPage(viewerPane.getControl());
 				setPageText(pageIndex, getString("_UI_SelectionPage_label"));
-				selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain));
+				selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 			}
 
 			// Create a page for the parent tree view.
