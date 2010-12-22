@@ -15,8 +15,8 @@ package org.eclipse.emf.samples.conference.parts;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -50,10 +50,9 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * Init the topic
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initTopic(ResourceSet allResources, EObject current);
+	public void initTopic(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new topic
@@ -119,10 +118,9 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * Init the presenter
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initPresenter(ResourceSet allResources, EObject current);
+	public void initPresenter(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new presenter
@@ -167,10 +165,9 @@ public interface TalkPropertiesEditionPart {
 
 	/**
 	 * Init the creator
-	 * @param allResources the ResourceSet where the widget have to process
-	 * @param current the current value
+	 * @param settings the combo setting
 	 */
-	public void initCreator(ResourceSet allResources, EObject current);
+	public void initCreator(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new creator

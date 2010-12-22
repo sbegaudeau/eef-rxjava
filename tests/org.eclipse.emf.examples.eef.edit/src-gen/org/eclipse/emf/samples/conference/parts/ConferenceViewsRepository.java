@@ -25,13 +25,17 @@ public class ConferenceViewsRepository {
 	 * Conference view descriptor
 	 * 
 	 */
-	public static class Conference {
-		
-		public static String place = "conference::Conference::place";
-		
-		
-		public static String sites = "conference::Conference::sites";
-		
+	public static class Conference_ {
+		public static class Localisation {
+	
+			
+			public static String place = "conference::Conference_::Localisation::place";
+			
+			
+			public static String sites = "conference::Conference_::Localisation::sites";
+			
+	
+		}
 	
 	}
 
@@ -40,25 +44,33 @@ public class ConferenceViewsRepository {
 	 * 
 	 */
 	public static class Person {
-		
-		public static String firstname = "conference::Person::firstname";
-		
-		
-		public static String lastname = "conference::Person::lastname";
-		
-		
-		public static String age = "conference::Person::age";
-		
-		
-		public static String gender = "conference::Person::gender";
-		
+		public static class Identity {
 	
-		
-		public static String eclipseCommiter = "conference::Person::eclipseCommiter";
-		
-		
-		public static String isRegistered = "conference::Person::isRegistered";
-		
+			
+			public static String firstname = "conference::Person::Identity::firstname";
+			
+			
+			public static String lastname = "conference::Person::Identity::lastname";
+			
+			
+			public static String age = "conference::Person::Identity::age";
+			
+			
+			public static String gender = "conference::Person::Identity::gender";
+			
+	
+		}
+	
+		public static class EclipseStatus {
+	
+			
+			public static String eclipseCommiter = "conference::Person::Eclipse Status::eclipseCommiter";
+			
+			
+			public static String isRegistered = "conference::Person::Eclipse Status::isRegistered";
+			
+	
+		}
 	
 	}
 
@@ -67,9 +79,13 @@ public class ConferenceViewsRepository {
 	 * 
 	 */
 	public static class Presence {
-		
-		public static String assists = "conference::Presence::assists";
-		
+		public static class Talks {
+	
+			
+			public static String assists = "conference::Presence::Talks::assists";
+			
+	
+		}
 	
 	}
 
@@ -78,24 +94,28 @@ public class ConferenceViewsRepository {
 	 * 
 	 */
 	public static class Talk {
-		
-		public static String title_ = "conference::Talk::title";
-		
-		
-		public static String topic = "conference::Talk::topic";
-		
-		
-		public static String type = "conference::Talk::type";
-		
-		
-		public static String presenter = "conference::Talk::presenter";
-		
-		
-		public static String creator = "conference::Talk::creator";
-		
-		
-		public static String documentation = "conference::Talk::documentation";
-		
+		public static class Properties {
+	
+			
+			public static String title_ = "conference::Talk::properties::title";
+			
+			
+			public static String topic = "conference::Talk::properties::topic";
+			
+			
+			public static String type = "conference::Talk::properties::type";
+			
+			
+			public static String presenter = "conference::Talk::properties::presenter";
+			
+			
+			public static String creator = "conference::Talk::properties::creator";
+			
+			
+			public static String documentation = "conference::Talk::properties::documentation";
+			
+	
+		}
 	
 	}
 
@@ -104,15 +124,19 @@ public class ConferenceViewsRepository {
 	 * 
 	 */
 	public static class Topic {
-		
-		public static String description = "conference::Topic::description";
-		
-		
-		public static String references = "conference::Topic::references";
-		
-		
-		public static String documentation = "conference::Topic::documentation";
-		
+		public static class Properties {
+	
+			
+			public static String description = "conference::Topic::properties::description";
+			
+			
+			public static String references = "conference::Topic::properties::references";
+			
+			
+			public static String documentation = "conference::Topic::properties::documentation";
+			
+	
+		}
 	
 	}
 
@@ -121,12 +145,16 @@ public class ConferenceViewsRepository {
 	 * 
 	 */
 	public static class Site {
-		
-		public static String name = "conference::Site::name";
-		
-		
-		public static String documentation = "conference::Site::documentation";
-		
+		public static class Properties {
+	
+			
+			public static String name = "conference::Site::properties::name";
+			
+			
+			public static String documentation = "conference::Site::properties::documentation";
+			
+	
+		}
 	
 	}
 

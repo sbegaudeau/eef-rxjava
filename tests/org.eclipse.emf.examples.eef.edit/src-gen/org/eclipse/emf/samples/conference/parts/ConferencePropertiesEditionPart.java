@@ -12,11 +12,8 @@ package org.eclipse.emf.samples.conference.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -42,35 +39,7 @@ public interface ConferencePropertiesEditionPart {
 	public void setPlace(String newValue);
 
 
-	/**
-	 * @return the sites to add
-	 * 
-	 */
-	public List getSitesToAdd();
 
-	/**
-	 * @return the sites to remove
-	 * 
-	 */
-	public List getSitesToRemove();
-
-	/**
-	 * @return the sites to move
-	 * 
-	 */
-	public List getSitesToMove();
-
-	/**
-	 * @return the sites to edit
-	 * 
-	 */
-	public Map getSitesToEdit();
-
-	/**
-	 * @return the current sites table
-	 * 
-	 */
-	public List getSitesTable();
 
 	/**
 	 * Init the sites
@@ -78,14 +47,14 @@ public interface ConferencePropertiesEditionPart {
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initSites(EObject current, EReference containingFeature, EReference feature);
+	public void initSites(ReferencesTableSettings settings);
 
 	/**
 	 * Update the sites
 	 * @param newValue the sites to update
 	 * 
 	 */
-	public void updateSites(EObject newValue);
+	public void updateSites();
 
 	/**
 	 * Adds the given filter to the sites edition editor.

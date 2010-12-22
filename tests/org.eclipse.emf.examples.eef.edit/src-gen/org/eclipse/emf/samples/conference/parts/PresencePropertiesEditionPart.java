@@ -12,10 +12,8 @@ package org.eclipse.emf.samples.conference.parts;
 
 // Start of user code for imports
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
@@ -27,38 +25,20 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface PresencePropertiesEditionPart {
 
-	/**
-	 * @return the assists to add
-	 * 
-	 */
-	public List getAssistsToAdd();
 
-	/**
-	 * @return the assists to remove
-	 * 
-	 */
-	public List getAssistsToRemove();
-
-	/**
-	 * @return the current assists table
-	 * 
-	 */
-	public List getAssistsTable();
 
 	/**
 	 * Init the assists
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
+	 * @param settings settings for the assists ReferencesTable 
 	 */
-	public void initAssists(EObject current, EReference containingFeature, EReference feature);
+	public void initAssists(ReferencesTableSettings settings);
 
 	/**
 	 * Update the assists
 	 * @param newValue the assists to update
 	 * 
 	 */
-	public void updateAssists(EObject newValue);
+	public void updateAssists();
 
 	/**
 	 * Adds the given filter to the assists edition editor.

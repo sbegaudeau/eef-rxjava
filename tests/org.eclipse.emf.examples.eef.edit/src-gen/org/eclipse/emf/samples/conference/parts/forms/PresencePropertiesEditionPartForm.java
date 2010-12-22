@@ -17,22 +17,21 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.utils.EMFListEditUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.samples.conference.ConferencePackage;
-import org.eclipse.emf.samples.conference.Talk;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
@@ -54,8 +53,7 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
-	private EMFListEditUtil assistsEditUtil;
-		protected ReferencesTable<? extends EObject> assists;
+		protected ReferencesTable assists;
 		protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
@@ -96,17 +94,32 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * 
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		createTalksGroup(widgetFactory, view);
-
-		// Start of user code for additional ui definition
+		CompositionSequence presenceStep = new CompositionSequence();
+		presenceStep
+			.addStep(ConferenceViewsRepository.Presence.Talks.class)
+			.addStep(ConferenceViewsRepository.Presence.Talks.assists);
 		
-		// End of user code
+		
+		composer = new PartComposer(presenceStep) {
+
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == ConferenceViewsRepository.Presence.Talks.class) {
+					return createTalksGroup(widgetFactory, parent);
+				}
+				if (key == ConferenceViewsRepository.Presence.Talks.assists) {
+					return createAssistsReferencesTable(widgetFactory, parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
 	}
 	/**
 	 * 
 	 */
-	protected void createTalksGroup(FormToolkit widgetFactory, final Composite view) {
-		Section talksSection = widgetFactory.createSection(view, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+	protected Composite createTalksGroup(FormToolkit widgetFactory, final Composite parent) {
+		Section talksSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		talksSection.setText(ConferenceMessages.PresencePropertiesEditionPart_TalksGroupLabel);
 		GridData talksSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		talksSectionData.horizontalSpan = 3;
@@ -115,87 +128,80 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		GridLayout talksGroupLayout = new GridLayout();
 		talksGroupLayout.numColumns = 3;
 		talksGroup.setLayout(talksGroupLayout);
-		createAssistsReferencesTable(widgetFactory, talksGroup);
 		talksSection.setClient(talksGroup);
+		return talksGroup;
 	}
 
 	/**
 	 * 
 	 */
-	protected void createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.assists = new ReferencesTable<Talk>(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener<Talk>() {
-			public void handleAdd() {
-				TabElementTreeSelectionDialog<Talk> dialog = new TabElementTreeSelectionDialog<Talk>(resourceSet, assistsFilters, assistsBusinessFilters,
-				"Talk", ConferencePackage.eINSTANCE.getTalk(), current.eResource()) {
-					@Override
-					public void process(IStructuredSelection selection) {
-						for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-							EObject elem = (EObject) iter.next();
-							if (!assistsEditUtil.getVirtualList().contains(elem))
-								assistsEditUtil.addElement(elem);
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.assists,
-								PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-						}
-						assists.refresh();
-					}
-				};
-				dialog.open();
-			}
-			public void handleEdit(Talk element) { editAssists(element); }
-			public void handleMove(Talk element, int oldIndex, int newIndex) { moveAssists(element, oldIndex, newIndex); }
-			public void handleRemove(Talk element) { removeFromAssists(element); }
-			public void navigateTo(Talk element) { }
+	protected Composite createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {
+		this.assists = new ReferencesTable(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener	() {
+			public void handleAdd() { addAssists(); }
+			public void handleEdit(EObject element) { editAssists(element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAssists(element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFromAssists(element); }
+			public void navigateTo(EObject element) { }
 		});
-		this.assists.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Presence.assists, ConferenceViewsRepository.FORM_KIND));
+		this.assists.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Presence.Talks.assists, ConferenceViewsRepository.FORM_KIND));
 		this.assists.createControls(parent, widgetFactory);
 		GridData assistsData = new GridData(GridData.FILL_HORIZONTAL);
 		assistsData.horizontalSpan = 3;
 		this.assists.setLayoutData(assistsData);
 		this.assists.disableMove();
-		assists.setID(ConferenceViewsRepository.Presence.assists);
+		assists.setID(ConferenceViewsRepository.Presence.Talks.assists);
 		assists.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		return parent;
 	}
 
 	/**
 	 * 
 	 */
-	protected void moveAssists(Talk element, int oldIndex, int newIndex) {
-		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
-		assistsEditUtil.moveElement(element, oldIndex, newIndex);
-		assists.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, editedElement, newIndex));
-	}
-
-	/**
-	 * 
-	 */
-	protected void removeFromAssists(Talk element) {
-		// Start of user code for the removeFromAssists() method body
-		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
-		assistsEditUtil.removeElement(element);
-		assists.refresh();
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, editedElement));
-		// End of user code
-	}
-
-	/**
-	 * 
-	 */
-	protected void editAssists(Talk element) {
-		// Start of user code editAssists() method body
-		
-		EObject editedElement = assistsEditUtil.foundCorrespondingEObject(element);
-		IPropertiesEditionPolicyProvider policyProvider = PropertiesEditionPolicyProviderService.getInstance().getProvider(element);
-		IPropertiesEditionPolicy editionPolicy = policyProvider	.getEditionPolicy(editedElement);
-		if (editionPolicy != null) {
-			EObject propertiesEditionObject = editionPolicy.getPropertiesEditionObject(new EObjectPropertiesEditionContext(null, element,resourceSet));
-			if (propertiesEditionObject != null) {
-				assistsEditUtil.putElementToRefresh(editedElement, propertiesEditionObject);
+	protected void addAssists() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(assists.getInput(), assistsFilters, assistsBusinessFilters,
+		"assists", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.Talks.assists,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
 				assists.refresh();
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, editedElement, propertiesEditionObject));
+			}
+		};
+		dialog.open();
+	}
+
+	/**
+	 * 
+	 */
+	protected void moveAssists(EObject element, int oldIndex, int newIndex) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.Talks.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		assists.refresh();
+	}
+
+	/**
+	 * 
+	 */
+	protected void removeFromAssists(EObject element) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.Talks.assists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		assists.refresh();
+	}
+
+	/**
+	 * 
+	 */
+	protected void editAssists(EObject element) {
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+		if (provider != null) {
+			PropertiesEditingPolicy policy = provider.getPolicy(context);
+			if (policy != null) {
+				policy.execute();
+				assists.refresh();
 			}
 		}
-		// End of user code
 	}
 
 
@@ -212,64 +218,30 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		// End of user code
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getAssistsToAdd()
-	 * 
-	 */
-	public List getAssistsToAdd() {
-		return assistsEditUtil.getElementsToAdd();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getAssistsToRemove()
-	 * 
-	 */
-	public List getAssistsToRemove() {
-		return assistsEditUtil.getElementsToRemove();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#getAssistsTable()
-	 * 
-	 */
-	public List getAssistsTable() {
-		return assistsEditUtil.getVirtualList();
-	}
 
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#initAssists(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#initAssists(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
-	public void initAssists(EObject current, EReference containingFeature, EReference feature) {
+	public void initAssists(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		if (containingFeature != null)
-			assistsEditUtil = new EMFListEditUtil(current, containingFeature, feature);
-		else
-			assistsEditUtil = new EMFListEditUtil(current, feature);
-		this.assists.setInput(assistsEditUtil.getVirtualList());
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		assists.setContentProvider(contentProvider);
+		assists.setInput(settings);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#updateAssists(EObject newValue)
+	 * @see org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart#updateAssists()
 	 * 
 	 */
-	public void updateAssists(EObject newValue) {
-		if(assistsEditUtil != null){
-			assistsEditUtil.reinit(newValue);
-			assists.refresh();
-		}
-	}
+	public void updateAssists() {
+	assists.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
@@ -298,7 +270,7 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 	 * 
 	 */
 	public boolean isContainedInAssistsTable(EObject element) {
-		return assistsEditUtil.contains(element);
+		return ((ReferencesTableSettings)assists.getInput()).contains(element);
 	}
 
 
