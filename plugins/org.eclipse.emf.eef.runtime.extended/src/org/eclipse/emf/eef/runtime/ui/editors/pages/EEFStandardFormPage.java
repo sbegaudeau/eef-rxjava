@@ -31,7 +31,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EEFStandardFormPage extends FormPage {
+public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 
 	/**
 	 * The page ID
@@ -58,6 +58,9 @@ public class EEFStandardFormPage extends FormPage {
 	 */	
 	protected PropertiesEditionViewer viewer;
 
+	/**
+	 * 
+	 */
 	private AdapterFactory adapterFactory;
 	
 
@@ -105,8 +108,10 @@ public class EEFStandardFormPage extends FormPage {
 	 * @param input
 	 *            the input of the page
 	 */
-	public void setInput(EObject newEObject) {
-		viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, newEObject));
+	public void setInput(Object newEObject) {
+		if (newEObject instanceof EObject) {
+			viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) newEObject));
+		}
 	}
 	
 	/**

@@ -79,6 +79,8 @@ public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEdito
 	 * The managed form
 	 */
 	private IManagedForm managedForm;
+
+	private Object input;
 	
 	/**
 	 * @param editor the form editor in which this page will be included
@@ -108,6 +110,9 @@ public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEdito
 			
 		});
 		createContextMenuFor(block.getMasterPart().getModelViewer());
+		if (input != null) {
+			updateInputToMasterBlock();
+		}
 	}
 
 	/**
@@ -191,6 +196,13 @@ public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEdito
 	 * @param input the input of the page
 	 */
 	public void setInput(Object input) {
+		this.input = input;
+		if (block != null) {
+			updateInputToMasterBlock();
+		}
+	}
+
+	protected void updateInputToMasterBlock() {
 		block.setAdapterFactory(adapterFactory);
 		block.setEditingDomain(editingDomain);
 		block.setInput(input);
