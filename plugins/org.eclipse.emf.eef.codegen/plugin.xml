@@ -89,4 +89,6 @@
             path="src/org/eclipse/emf/eef/codegen/widgets/impl/">
       </templates>
    </extension>
+   
+   <!-- Test -->
 </plugin>
