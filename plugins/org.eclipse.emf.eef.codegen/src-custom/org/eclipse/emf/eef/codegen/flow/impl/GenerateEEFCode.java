@@ -9,15 +9,11 @@ import java.util.List;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.codegen.flow.Step;
-import org.eclipse.emf.eef.codegen.flow.WorkflowConstants;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 import org.eclipse.emf.eef.codegen.ui.generators.callback.EEFGenerationCallback;
-import org.eclipse.emf.eef.codegen.ui.generators.callback.imports.JDTImportsOrganisationCallback;
 import org.eclipse.emf.eef.codegen.ui.generators.common.GenerationHelper;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -26,6 +22,7 @@ import org.eclipse.ui.PlatformUI;
 public class GenerateEEFCode extends Step {
 
 	private Object eefgenModel;
+	private List<EEFGenerationCallback> callbacks;
 
 	/**
 	 * @param name of the step
@@ -33,20 +30,23 @@ public class GenerateEEFCode extends Step {
 	public GenerateEEFCode(String name, Object eefgenModel) {
 		super(name);
 		this.eefgenModel = eefgenModel;
+		callbacks = new ArrayList<EEFGenerationCallback>(1);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		List<EEFGenModel> eefgenModels = new ArrayList<EEFGenModel>(1);
 		eefgenModels.add(getEEFGenModel());
-		List<EEFGenerationCallback> callbacks = new ArrayList<EEFGenerationCallback>(1);
-		callbacks.add(new JDTImportsOrganisationCallback(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart().getSite()));
 		GenerationHelper generationHelper = new GenerationHelper(eefgenModels, callbacks);
-		generationHelper.generate((IProgressMonitor) getContext().get(WorkflowConstants.ECLIPSE_MONITOR));
+		generationHelper.generate(monitor);
 		return Status.OK_STATUS;
+	}
+
+	public void addGenerationCallback(EEFGenerationCallback callback) {
+		callbacks.add(callback);
 	}
 
 	public EEFGenModel getEEFGenModel() {

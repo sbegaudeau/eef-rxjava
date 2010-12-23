@@ -7,10 +7,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.BasicMonitor;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowContext;
@@ -94,28 +93,22 @@ public class Workflow extends Step {
 	}
 
 	/**
-	 * {@inheritDoc]
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		for (Iterator<String> iterator = steps.keySet().iterator(); iterator.hasNext();) {
 			String key = (String) iterator.next();
 			monitor.beginTask(key, 1);
-			IStatus execute = steps.get(key).execute(monitor);
+			Step step = steps.get(key);
+			IStatus execute = step.execute(monitor);
 			if (!execute.isOK()) {
 				return execute;
 			}
+			monitor.worked(1);
 			
 		}
 		return Status.OK_STATUS;
-	}
-
-	/**
-	 * @return
-	 */
-	public IStatus execute() {
-		Monitor monitor = new BasicMonitor();
-		return execute(monitor);
 	}
 
 }

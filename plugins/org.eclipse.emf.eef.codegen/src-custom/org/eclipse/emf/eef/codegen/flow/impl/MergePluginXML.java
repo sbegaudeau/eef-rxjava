@@ -14,11 +14,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.util.ExtensionHelper;
 import org.eclipse.emf.eef.codegen.flow.Step;
-import org.eclipse.emf.eef.codegen.flow.WorkflowConstants;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 import org.w3c.dom.Node;
 
@@ -40,12 +38,12 @@ public class MergePluginXML extends Step {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		try {
 			IProject editProject = getEditGenProject();
-			editProject.refreshLocal(IResource.DEPTH_INFINITE, (IProgressMonitor) getContext().get(WorkflowConstants.ECLIPSE_MONITOR));
+			editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 			PluginXMLSearcher searcher = new PluginXMLSearcher();
 			editProject.accept(searcher);
 			ExtensionHelper actualHelper = new ExtensionHelper(editProject);

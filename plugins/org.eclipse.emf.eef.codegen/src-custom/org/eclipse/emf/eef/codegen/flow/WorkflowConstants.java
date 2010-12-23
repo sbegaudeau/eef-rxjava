@@ -9,6 +9,6 @@ package org.eclipse.emf.eef.codegen.flow;
  */
 public interface WorkflowConstants {
 
-	public static String ECLIPSE_MONITOR = "Eclipse monitor";
+	public static String EMF_MONITOR = "EMF monitor";
 	
 }

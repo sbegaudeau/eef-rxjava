@@ -112,8 +112,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 				}
 			}
 		}
-		String componentsFilePath = targetFolder.getFullPath() + "/"
-				+ model.eResource().getURI().trimFileExtension().lastSegment() + ".components";
+		String componentsFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment() + ".components";
 		URI componentsModelUri = URI.createPlatformResourceURI(componentsFilePath, false);
 		Resource componentsResource = model.eResource().getResourceSet().createResource(componentsModelUri);
 		for (PropertiesEditionContext context : contexts)
@@ -122,8 +121,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 			componentsResource.getContents().add(repository);
 		componentsResource.save(Collections.EMPTY_MAP);
 		EEFGenModel eefGenModel = createEEFGenModel(repositories, contexts, targetFolder);
-		String eefgenFilePath = targetFolder.getFullPath() + "/"
-				+ model.eResource().getURI().trimFileExtension().lastSegment() + ".eefgen";
+		String eefgenFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment() + ".eefgen";
 		URI eefgenModelUri = URI.createPlatformResourceURI(eefgenFilePath, false);
 		Resource eefgenResource = model.eResource().getResourceSet().createResource(eefgenModelUri);
 		eefgenResource.getContents().add(eefGenModel);

@@ -7,9 +7,11 @@ import java.io.IOException;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -61,17 +63,16 @@ public class InitializeGenModel extends Step {
 		this.targetFolder = targetFolder;
 	}
 
-
 	/**
-	 * {@inheritDoc]
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		try {
 			String genmodelFileName = genmodelFileName(computeEcoreModelURI(modelFile));
-			ModelImporter importer;
-			importer = initializeConverter(genmodelFileName, monitor);
-			initializeGenModel(importer, monitor);
+			BasicMonitor emfMonitor = new BasicMonitor();
+			ModelImporter importer = initializeConverter(genmodelFileName, emfMonitor);
+			initializeGenModel(importer, emfMonitor);
 			((WorkflowVariable)genmodel()).setValue(loadGenmodel());
 			((WorkflowVariable)getGenModelURI()).setValue(genmodelURI());
 			return Status.OK_STATUS;

@@ -3,8 +3,8 @@
  */
 package org.eclipse.emf.eef.codegen.flow;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowContext;
@@ -83,6 +83,6 @@ public abstract class Step {
 	 * @param monitor monitor to use
 	 * @return the execution result
 	 */
-	public abstract IStatus execute(Monitor monitor);
+	public abstract IStatus execute(IProgressMonitor monitor);
 
 }

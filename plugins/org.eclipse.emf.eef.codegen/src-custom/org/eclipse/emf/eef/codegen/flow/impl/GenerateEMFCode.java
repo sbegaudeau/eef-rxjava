@@ -7,13 +7,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.generator.Generator;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.flow.Step;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
@@ -53,10 +53,10 @@ public abstract class GenerateEMFCode extends Step {
 	}
 	
 	/**
-	 * {@inheritDoc]
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		try {
 			if (getGenModel() != null) {
 				getGenModel().setCanGenerate(true);

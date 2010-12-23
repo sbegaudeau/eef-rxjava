@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.codegen.flow.impl;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Monitor;
@@ -33,9 +34,9 @@ public class AddDependency extends Step {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		try {
 			BundleHelper bundleHelper = new BundleHelper(getEditProject());
 			bundleHelper.addDependency(dependency);

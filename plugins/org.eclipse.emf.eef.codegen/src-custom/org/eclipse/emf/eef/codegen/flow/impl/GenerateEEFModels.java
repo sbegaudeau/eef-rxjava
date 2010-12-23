@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
@@ -22,7 +21,6 @@ import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.initializer.PropertiesInitializer;
 import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
 import org.eclipse.emf.eef.codegen.flow.Step;
-import org.eclipse.emf.eef.codegen.flow.WorkflowConstants;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 
 /**
@@ -36,6 +34,7 @@ public class GenerateEEFModels extends Step {
 	private Object editGenProject;
 	private Object genmodelURI;
 	private WorkflowVariable eefgenModelVar;
+	private WorkflowVariable eefModelsFolderVar;
 
 	/**
 	 * @param name of the step
@@ -48,15 +47,15 @@ public class GenerateEEFModels extends Step {
 	}
 
 	/**
-	 * {@inheritDoc]
-	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.emf.common.util.Monitor)
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public IStatus execute(Monitor monitor) {
+	public IStatus execute(IProgressMonitor monitor) {
 		try {
 			IProject editProject = getEditProject();
 			if (editProject != null) {
 				propertiesInitializer = new PropertiesInitializer();
-				IFolder modelsFolder = createEEFModelsFolder(editProject, (IProgressMonitor) getContext().get(WorkflowConstants.ECLIPSE_MONITOR));
+				IFolder modelsFolder = createEEFModelsFolder(editProject, monitor);
 				initializeEEFModels(modelsFolder, getGenModelURI());
 				EEFGenModel eefgenModel = generatedEEFGen(getModelURI(), modelsFolder);
 				((WorkflowVariable)getEEFGenModel()).setValue(eefgenModel);
@@ -83,6 +82,17 @@ public class GenerateEEFModels extends Step {
 		return "GEN_EEF_MODELS_" + name + "_EEFGENMODEL";
 	}
 	
+	public Object getEEFModelsFolder() {
+		if (eefModelsFolderVar == null) {
+			eefModelsFolderVar = new WorkflowVariable(eefModelsFolderVarName());
+		}
+		return eefModelsFolderVar;
+	}
+	
+	private final String eefModelsFolderVarName() {
+		return "GEN_EEF_MODELS_" + name + "_EEFMODELSFOLDER";
+	}
+
 	private URI getModelURI() {
 		if (modelURI instanceof URI) {
 			return (URI) modelURI;
@@ -134,6 +144,7 @@ public class GenerateEEFModels extends Step {
 		IFolder modelsFolder = editProject.getFolder(new Path("models"));
 		modelsFolder.create(true, true, monitor);
 		editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		((WorkflowVariable)getEEFModelsFolder()).setValue(modelsFolder);
 		return modelsFolder;
 	}			
 
