@@ -534,7 +534,7 @@
               <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
             </ifExpr>
           </body>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;}&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;}&#xA;"/>
           <fileUrl xsi:type="mtl:TemplateInvocation" definition="/0/fullFilePath">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="view" referredVariable="/0/IPropertiesEditionPart/@body.1/view">
@@ -6732,7 +6732,7 @@
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/IPropertiesEditionPart">
       <details key="start" value="1169"/>
-      <details key="end" value="3810"/>
+      <details key="end" value="3809"/>
       <details key="line" value="31"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/IPropertiesEditionPart/@body.0">
@@ -7367,12 +7367,12 @@
     </eAnnotations>
     <eAnnotations source="positions.144" references="/0/IPropertiesEditionPart/@body.1">
       <details key="start" value="2911"/>
-      <details key="end" value="3798"/>
+      <details key="end" value="3797"/>
       <details key="line" value="88"/>
     </eAnnotations>
     <eAnnotations source="positions.145" references="/0/IPropertiesEditionPart/@body.1/@body.0">
       <details key="start" value="3010"/>
-      <details key="end" value="3791"/>
+      <details key="end" value="3790"/>
       <details key="line" value="89"/>
     </eAnnotations>
     <eAnnotations source="positions.146" references="/0/IPropertiesEditionPart/@body.1/@body.0/@body.0">
@@ -7602,7 +7602,7 @@
     </eAnnotations>
     <eAnnotations source="positions.191" references="/0/IPropertiesEditionPart/@body.1/@body.0/@body.15">
       <details key="start" value="3780"/>
-      <details key="end" value="3784"/>
+      <details key="end" value="3783"/>
       <details key="line" value="118"/>
     </eAnnotations>
     <eAnnotations source="positions.192" references="/0/IPropertiesEditionPart/@body.1/@body.0/@fileUrl">
@@ -7666,43 +7666,43 @@
       <details key="line" value="31"/>
     </eAnnotations>
     <eAnnotations source="positions.204" references="/0/fullFilePath">
-      <details key="start" value="3812"/>
-      <details key="end" value="3913"/>
+      <details key="start" value="3811"/>
+      <details key="end" value="3912"/>
       <details key="line" value="124"/>
     </eAnnotations>
     <eAnnotations source="positions.205" references="/0/fullFilePath/@body.0">
-      <details key="start" value="3857"/>
-      <details key="end" value="3894"/>
+      <details key="start" value="3856"/>
+      <details key="end" value="3893"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.206" references="/0/fullFilePath/@body.0/@argument.0">
-      <details key="start" value="3857"/>
-      <details key="end" value="3885"/>
+      <details key="start" value="3856"/>
+      <details key="end" value="3884"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.207" references="/0/fullFilePath/@body.0/@argument.0/view">
-      <details key="start" value="3857"/>
-      <details key="end" value="3861"/>
+      <details key="start" value="3856"/>
+      <details key="end" value="3860"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.208" references="/0/fullFilePath/@body.1">
-      <details key="start" value="3896"/>
-      <details key="end" value="3901"/>
+      <details key="start" value="3895"/>
+      <details key="end" value="3900"/>
       <details key="line" value="125"/>
     </eAnnotations>
     <eAnnotations source="positions.209" references="/0/fullFilePath/view">
-      <details key="start" value="3842"/>
-      <details key="end" value="3853"/>
+      <details key="start" value="3841"/>
+      <details key="end" value="3852"/>
       <details key="line" value="124"/>
     </eAnnotations>
     <eAnnotations source="positions.210" references="/0/additionalImports">
-      <details key="start" value="3983"/>
-      <details key="end" value="4040"/>
+      <details key="start" value="3982"/>
+      <details key="end" value="4039"/>
       <details key="line" value="129"/>
     </eAnnotations>
     <eAnnotations source="positions.211" references="/0/additionalImports/v">
-      <details key="start" value="4018"/>
-      <details key="end" value="4026"/>
+      <details key="start" value="4017"/>
+      <details key="end" value="4025"/>
       <details key="line" value="129"/>
     </eAnnotations>
   </ecore:EAnnotation>
