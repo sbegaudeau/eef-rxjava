@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.emf.eef.ui.contribution.editorinit"
+            nameFilter="*.ecore"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.emf.eef.ui.menu"
+               label="EEF"
+               path="additions">
+            <separator
+                  name="initializer">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.eef.codegen.extended.ui.initializer.InitializeEEFEditorAction"
+               enablesFor="1"
+               id="org.eclipse.emf.eef.codegen.initialize"
+               label="Initialize EEF Editor"
+               menubarPath="org.eclipse.emf.eef.ui.menu/initializer">
+         </action>
+      </objectContribution>
+
+   </extension>
+
+</plugin>

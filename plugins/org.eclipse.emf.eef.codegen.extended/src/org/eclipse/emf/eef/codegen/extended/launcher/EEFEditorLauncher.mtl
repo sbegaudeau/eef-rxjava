@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module EEFEditorLauncher('http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0')/]
+
+[template public EEFEditorLauncher(genModel : EEFGenModel)]
+	
+[for (editionContext : GenEditionContext | genModel.editionContexts)]
+	[let peContext : PropertiesEditionContext = editionContext.PropertiesEditionContext]
+
+	[/let]
+[/for]	
+[/template]
+

@@ -1,0 +1,54 @@
+[comment encoding = UTF-8 /]
+[module EditorContribution('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0')/]
+
+[import org::eclipse::emf::eef::codegen::services::common /]
+
+
+[template public editorInput(input : EEFPageInput)]
+//FIXME: Input of type [input.eClass().name/] no manager. Override 'editorInput' template into EditorContribution to fix this. 
+[/template]
+
+[template public editorPage(page : EEFPage, editorName : String)]
+//FIXME: Input of type [page.eClass().name/] no manager. Override 'editorPage' template into EditorContribution to fix this. 
+[/template]
+
+
+[comment =================== Standard implementations ===================== /]
+
+
+[template public editorInput(input : AllResourcesRootsRelativeInput)]
+	[if (input.query.oclIsUndefined())]
+Object input = getEditingDomain().getResourceSet();
+	[else]
+//FIXME: input not processed		
+	[/if]
+[/template]
+
+[template public editorPage(page : TreeMasterPage, editorName : String)]
+final EEFTreeMDFormPage page = new EEFTreeMDFormPage([editorName/].this, "[page.name/]") {
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.ui.forms.editor.FormPage#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
+	public void createPartControl(Composite parent) {
+		super.createPartControl(parent);
+		getModelViewer().addSelectionChangedListener(new ISelectionChangedListener() {
+			// This just notifies those things that are affected by the section.
+			//
+			public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
+				[editorName/].this.setSelection(selectionChangedEvent.getSelection());
+
+			}
+		}
+	
+		);
+		
+		setAdapterFactory(adapterFactory);
+	}
+	
+};
+page.setInitialMasterPartToolBarVisibility([page.toolbarVisible/]);
+page.setAdapterFactory(adapterFactory);
+pagesetEditingDomain(editingDomain);
+[/template]
