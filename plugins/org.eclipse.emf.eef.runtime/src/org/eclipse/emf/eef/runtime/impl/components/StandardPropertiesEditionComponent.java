@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
@@ -180,11 +181,14 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 					updateSemanticModel(event);
 				} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-					liveEditingDomain.getCommandStack().execute(new StandardEditingCommand() {
+					liveEditingDomain.getCommandStack().execute(new StandardEditingCommand(new EObjectPropertiesEditionContext(editingContext, this, editingContext.getEObject(), editingContext.getAdapterFactory())) {
 
 						public void execute() {
 							updateSemanticModel(event);
-						}
+							description = context.getChangeRecorder().endRecording();
+							context.getChangeRecorder().dispose();
+						}						
+						
 					});
 				}
 				Diagnostic validate = validate();
