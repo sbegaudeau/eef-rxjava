@@ -8,8 +8,9 @@
   <foreignModel>extended.ecore</foreignModel>
   <genPackages prefix="Extended" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       ecorePackage="extended.ecore#/">
-    <nestedGenPackages prefix="Editor" disposableProviderFactory="true" extensibleProviderFactory="true"
-        childCreationExtenders="true" ecorePackage="extended.ecore#//editor">
+    <nestedGenPackages prefix="Editor" basePackage="org.eclipse.emf.eef.extended"
+        disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+        ecorePackage="extended.ecore#//editor">
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorContribution">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extended.ecore#//editor/EEFEditorContribution/model"/>
       </genClasses>
@@ -39,7 +40,8 @@
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorContributions"/>
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorPages"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Query" disposableProviderFactory="true" ecorePackage="extended.ecore#//query">
+    <nestedGenPackages prefix="Query" basePackage="org.eclipse.emf.eef.extended" disposableProviderFactory="true"
+        ecorePackage="extended.ecore#//query">
       <genClasses image="false" ecoreClass="extended.ecore#//query/EEFUnderstandableQuery"/>
       <genClasses ecoreClass="extended.ecore#//query/OCLQuery">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extended.ecore#//query/OCLQuery/query"/>

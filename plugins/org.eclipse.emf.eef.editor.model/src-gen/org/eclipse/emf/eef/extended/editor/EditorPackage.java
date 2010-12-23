@@ -158,6 +158,15 @@ public interface EditorPackage extends EPackage {
 	int EEF_EDITOR_CONTRIBUTION__CATEGORY = MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY;
 
 	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_EDITOR_CONTRIBUTION__BINDING_FILTERS = MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS;
+
+	/**
 	 * The feature id for the '<em><b>Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

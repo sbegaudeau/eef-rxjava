@@ -31,6 +31,9 @@
             uri="http://www.eclipse.org/emf/eef/mapping/1.0.0"
             class="org.eclipse.emf.eef.extended.editor.provider.EditorItemProviderAdapterFactory$MappingChildCreationExtender"/>
       <extender
+            uri="http://www.eclipse.org/emf/eef/components/1.0.0"
+            class="org.eclipse.emf.eef.extended.editor.provider.EditorItemProviderAdapterFactory$MappingChildCreationExtender"/>
+      <extender
             uri="http://www.eclipse.org/emf/eef/views/1.0.0"
             class="org.eclipse.emf.eef.extended.editor.provider.EditorItemProviderAdapterFactory$ViewsChildCreationExtender"/>
    </extension>

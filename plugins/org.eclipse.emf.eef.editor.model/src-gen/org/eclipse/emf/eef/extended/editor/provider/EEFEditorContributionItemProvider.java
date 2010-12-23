@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EditorFactory;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
+import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.provider.AbstractElementBindingItemProvider;
 
 /**
@@ -153,13 +154,19 @@ public class EEFEditorContributionItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		newChildDescriptors.add
 			(createChildParameter
-				(EditorPackage.Literals.EEF_EDITOR_CONTRIBUTION__MODEL,
-				 EditorFactory.eINSTANCE.createAllResourcesRootsRelativeInput()));
+					(EditorPackage.Literals.EEF_EDITOR_CONTRIBUTION__MODEL,
+							EditorFactory.eINSTANCE.createAllResourcesRootsRelativeInput()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(EditorPackage.Literals.EEF_EDITOR_CONTRIBUTION__MODEL,
-				 EditorFactory.eINSTANCE.createFirstResourceRootRelativeInput()));
+					(EditorPackage.Literals.EEF_EDITOR_CONTRIBUTION__MODEL,
+							EditorFactory.eINSTANCE.createFirstResourceRootRelativeInput()));
+
+		newChildDescriptors.add
+			(createChildParameter
+					(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS,
+							EditorFactory.eINSTANCE.createPartFilter()));
+
 	}
 
 }
