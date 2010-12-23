@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitializer;
 import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
+import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorCode;
 import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorModels;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.emf.eef.codegen.flow.impl.AddDependency;
@@ -50,6 +51,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 	private static final String GENERATE_EEF_CODE = "Generate EEF code";
 	private static final String MERGING_GENERATED_PLUGIN_XML_FILES = "Merging generated plugin.xml files";
 	private static final String GENERATE_EEF_EDITOR_MODELS = "Generate EEF Editor models";
+	private static final String GENERATE_EEF_EDITOR_CODE = "Generate EEF Editor code";
 
 	private ResourceSet resourceSet;
 	private IFile modelFile;
@@ -83,6 +85,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 				public void configureGenModel(GenModel genModel) {
 					genModel.setModelDirectory(genModel.getModelDirectory() + "-gen");
 					genModel.setEditDirectory(genModel.getEditDirectory() + "-gen");
+					genModel.setEditorDirectory(genModel.getEditorDirectory() + "-gen");
 				}
 
 			};
@@ -117,6 +120,8 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			};
 			GenerateEEFEditorModels generateEEFEditorModels = new GenerateEEFEditorModels(GENERATE_EEF_EDITOR_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI(), generateEEFModels.getEEFModelsFolder());
 			workflow.addStep(GENERATE_EEF_EDITOR_MODELS, generateEEFEditorModels);
+			GenerateEEFEditorCode generateEEFEditorCode = new GenerateEEFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
+			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
 			new ProgressMonitorDialog(new Shell()).run(true, true, runnable);
 		}
 		
