@@ -79,6 +79,9 @@
 [query public getFilteredAllGenFeatures(genModel : GenModel) : Sequence(GenFeature)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getFilteredAllGenFeatures()', Sequence{genModel}) /]
 
+[query public getAllGenPackagesWithClassifiers(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllGenPackagesWithClassifiers()', Sequence{genModel}) /]
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public getImportedName(genModel : GenModel,qualifiedName : String) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.ImportManagerWrapper', 'getImportedName(java.lang.String)', Sequence{qualifiedName}) /]

@@ -38,7 +38,7 @@
       </library>
    </runtime>
 [/if]
-[for (genPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())/]
+[for (genPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())]
   <%if (!genPackage.getGenClasses().isEmpty()) {%>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
