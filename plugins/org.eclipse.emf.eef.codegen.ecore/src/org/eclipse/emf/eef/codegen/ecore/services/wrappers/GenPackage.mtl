@@ -62,6 +62,35 @@
 [query public getClassUniqueName(genPackage : GenPackage, genClass : GenClass) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getClassUniqueName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl)', Sequence{genClass}) /]
 
+[query public getNSURI(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getNSURI()', Sequence{genPackage}) /]
+
+[query public getQualifiedItemProviderAdapterFactoryClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedItemProviderAdapterFactoryClassName()', Sequence{genPackage}) /]
+
+[query public isContentType(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'isContentType()', Sequence{genPackage}) /]
+
+[query public getResource(genPackage : GenPackage) : GenResourceKind
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getResource()', Sequence{genPackage}) /]
+
+[query public getFileExtension(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getFileExtension()', Sequence{genPackage}) /]
+
+[query public getQualifiedResourceFactoryClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedResourceFactoryClassName()', Sequence{genPackage}) /]
+
+[query public getContentTypeIdentifier(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getContentTypeIdentifier()', Sequence{genPackage}) /]
+
+[query public getQualifiedEffectiveResourceFactoryClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedEffectiveResourceFactoryClassName()', Sequence{genPackage}) /]
+
+[query public isXMIResource(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'isXMIResource()', Sequence{genPackage}) /]
+
+[query public hasTargetNamespace(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'hasTargetNamespace()', Sequence{genPackage}) /]
 
 [comment special handling for avoiding NPE due to importManager /]
 [query public isLiteralsInterface(genPackage : GenPackage) : Boolean = genPackage.literalsInterface/]

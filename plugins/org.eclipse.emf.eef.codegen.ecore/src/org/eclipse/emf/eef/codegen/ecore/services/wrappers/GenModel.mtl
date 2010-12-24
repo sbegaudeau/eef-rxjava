@@ -82,6 +82,15 @@
 [query public getAllGenPackagesWithClassifiers(genModel : GenModel) : Sequence(GenPackage)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllGenPackagesWithClassifiers()', Sequence{genModel}) /]
 
+[query public sameModelEditProject(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'sameModelEditProject()', Sequence{genModel}) /]
+
+[query public hasLocalGenModel(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'hasLocalGenModel()', Sequence{genModel}) /]
+
+[query public getRelativeGenModelLocation(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getRelativeGenModelLocation()', Sequence{genModel}) /]
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public getImportedName(genModel : GenModel,qualifiedName : String) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.ImportManagerWrapper', 'getImportedName(java.lang.String)', Sequence{qualifiedName}) /]
