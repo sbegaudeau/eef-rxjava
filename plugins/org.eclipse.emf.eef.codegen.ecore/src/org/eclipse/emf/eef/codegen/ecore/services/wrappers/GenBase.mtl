@@ -1,0 +1,13 @@
+[module GenBase('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[query public hasCopyright(genBase : GenBase) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'hasCopyright()', Sequence{genBase}) /]
+	
+[query public getCopyright(genBase : GenBase, indentation : String) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getCopyright(java.lang.String)', Sequence{genBase, indentation}) /]
+	
+[query public getGenModel(genBase : GenBase) : GenModel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'genGenModel()', Sequence{genBase}) /]
+
+[comment special handling for avoiding NPE due to importManager /]
+[query public getEffectiveComplianceLevel(genBase : GenBase) : GenJDKLevel = getGenModel().complianceLevel/]

@@ -1,0 +1,4 @@
+[module GenDataType('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[query public getQualifiedClassifierAccessor(genEnum : GenDataType) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenDataTypeImpl', 'getQualifiedClassifierAccessor()', Sequence{genEnum}) /]

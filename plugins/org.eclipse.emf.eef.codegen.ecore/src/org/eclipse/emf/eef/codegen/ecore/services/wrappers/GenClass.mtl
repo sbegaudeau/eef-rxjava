@@ -1,0 +1,138 @@
+[module GenClass('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenPackage /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenBase /]
+[import org::eclipse::emf::eef::codegen::ecore::services::common/] 
+
+[query public getQualifiedInterfaceName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getQualifiedInterfaceName()', Sequence{genClass}) /]
+	
+[query public getProviderClassName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getProviderClassName()', Sequence{genClass}) /]
+
+[comment Warning ! This method is declared on GenClassifier. Could provoke error /]
+[query public getName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getName()', Sequence{genClass}) /]
+
+[query public getChildrenFeatures(genClass : GenClass) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getChildrenFeatures()', Sequence{genClass}) /]
+
+[query public needsHasChildrenMethodOverride(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'needsHasChildrenMethodOverride()', Sequence{genClass}) /]
+
+[query public isMapEntry(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'isMapEntry()', Sequence{genClass}) /]
+
+[query public getSafeUncapName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getSafeUncapName()', Sequence{genClass}) /]
+
+[query public getMapEntryKeyFeature(genClass : GenClass) : GenFeature
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getMapEntryKeyFeature()', Sequence{genClass}) /]
+
+[query public getMapEntryValueFeature(genClass : GenClass) : GenFeature
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getMapEntryValueFeature()', Sequence{genClass}) /]
+
+[query public getInterfaceWildTypeArguments(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getInterfaceWildTypeArguments()', Sequence{genClass}) /]
+
+[query public getLabelNotifyFeatures(genClass : GenClass) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getLabelNotifyFeatures()', Sequence{genClass}) /]
+
+[query public getContentNotifyFeatures(genClass : GenClass) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getContentNotifyFeatures()', Sequence{genClass}) /]
+
+[query public getLabelAndContentNotifyFeatures(genClass : GenClass) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getLabelAndContentNotifyFeatures()', Sequence{genClass}) /]
+
+[query public getFeatureID(genClass : GenClass, genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getFeatureID(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genClass, genFeature}) /]
+
+[query public getGenModel(genClass : GenClass) : GenModel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getGenModel()', Sequence{genClass}) /]
+
+[query public getGenPackage(genClass : GenClass) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getGenPackage()', Sequence{genClass}) /]
+
+[query public getProviderExtendsGenClass(genClass : GenClass) : GenClass
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getProviderExtendsGenClass()', Sequence{genClass}) /]
+
+[query public getBaseGenClass(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getBaseGenClass()', Sequence{genClass}) /]
+
+[query public getQualifiedProviderClassName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getQualifiedProviderClassName()', Sequence{genClass}) /]
+
+[query public getPropertyFeatures(genClass : GenClass) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getPropertyFeatures()', Sequence{genClass}) /]
+
+[query public getSharedClassCreateChildFeatures(genClass : GenClass) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getSharedClassCreateChildFeatures()', Sequence{genClass}) /]
+
+[query public hasFeatureMapCreateChildFeatures(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'hasFeatureMapCreateChildFeatures()', Sequence{genClass}) /]
+
+[query public getQualifiedClassifierAccessor(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getQualifiedClassifierAccessor()', Sequence{genClass}) /]
+
+[query public getUncapName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getUncapName()', Sequence{genClass}) /]
+
+[query public isAbstract(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'isAbstract()', Sequence{genClass}) /]
+
+[query public isProviderSingleton(genClass : GenClass) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'isProviderSingleton()', Sequence{genClass}) /]
+
+[query public getItemProviderAdapterFactoryClassName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getItemProviderAdapterFactoryClassName()', Sequence{genClass}) /]
+
+[query public getTypeParameters(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getTypeParameters()', Sequence{genClass}) /]
+
+[query public getInterfaceTypeArguments(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getInterfaceTypeArguments()', Sequence{genClass}) /]
+
+[query public getItemIconFileName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getItemIconFileName()', Sequence{genClass}) /]
+
+[query public getFormattedName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl', 'getFormattedName()', Sequence{genClass}) /]
+
+[comment special handling for avoiding NPE due to importManager and other stuff/]
+[query public getRawImportedInterfaceName(genClass : GenClass) : String = getGenModel().getImportedName(getInternalQualifiedInterfaceName(false))/]
+
+[query public getQualifiedFeatureID(genClass : GenClass, genFeature : GenFeature) : String = getGenPackage().getImportedPackageInterfaceName().concat('.').concat(getFeatureID(genFeature))/]
+
+[query public getImportedInterfaceName(genClass : GenClass) : String = getGenModel().getImportedName(getInternalQualifiedInterfaceName())/]
+
+[query public getProviderBaseClassName(genClass : GenClass) : String = 
+if not genClass.getProviderExtendsGenClass().oclIsUndefined()
+	then genClass.getProviderExtendsGenClass().getImportedProviderClassName()
+	else
+	 if isBlank(getGenModel().getProviderRootExtendsClass())
+		then null
+		else getGenModel().getImportedName(getGenModel().getProviderRootExtendsClass())
+	 endif
+endif
+/]
+
+[query public getImportedProviderClassName(genClass : GenClass) : String = getGenModel().getImportedName(getQualifiedProviderClassName())/]
+
+[query public getInternalQualifiedInterfaceName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl)', Sequence{genClass}) /]
+
+[query public getInternalQualifiedInterfaceName(genClass : GenClass, boolean : Boolean) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl, java.lang.Boolean)', Sequence{genClass, boolean}) /]
+
+[query public getChildCreationData(genClass : GenClass) : Sequence(OclAny)
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getChildCreationData(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl)', Sequence{genClass}) /]
+
+[query public getChildCreationDataCreateFeature(oclAny : OclAny ) : GenFeature
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateFeature(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getChildCreationDataDelegatedFeature(oclAny : OclAny ) : GenFeature
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getDelegatedFeature(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getChildCreationDataCreateClassifier(oclAny : OclAny ) : GenClassifier
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateClassifier(java.lang.Object)', Sequence{oclAny}) /]

@@ -1,0 +1,64 @@
+[comment encoding = UTF-8 /]
+[module GenFeature('http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenPackage/]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenClass /]
+
+
+[query public getCapName(genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getCapName()', Sequence{genFeature}) /]
+
+[query public getFormattedName(genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getFormattedName()', Sequence{genFeature}) /]
+	
+[query public getName(genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getName()', Sequence{genFeature}) /]
+	
+[query public isReferenceType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isReferenceType()', Sequence{genFeature}) /]
+	
+[query public getPropertyImageName(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getPropertyImageName()', Sequence{genFeature}) /]
+	
+[query public isPrimitiveType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isPrimitiveType()', Sequence{genFeature}) /]
+	
+[query public isSuppressedGetVisibility(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isSuppressedGetVisibility()', Sequence{genFeature}) /]
+	
+[query public getGetAccessor(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getGetAccessor()', Sequence{genFeature}) /]
+	
+[query public isStringType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isStringType()', Sequence{genFeature}) /]
+
+[query public getRawImportedType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getRawImportedType(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genFeature}) /]
+
+[query public getQualifiedFeatureAccessorName(genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getQualifiedFeatureAccessorName()', Sequence{genFeature}) /]
+
+[query public getGenPackage(genFeature : GenFeature) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getGenPackage()', Sequence{genFeature}) /]
+
+[query public isFeatureMapType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isFeatureMapType()', Sequence{genFeature}) /]
+
+[query public isEnumBasedType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isEnumBasedType()', Sequence{genFeature}) /]
+
+[query public isStringBasedType(genFeature : GenFeature) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'isStringBasedType()', Sequence{genFeature}) /]
+
+[query public getTypeGenEnum(genFeature : GenFeature) : GenEnum
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getTypeGenEnum()', Sequence{genFeature}) /]
+
+[query public getEcoreFeature(genFeature : GenFeature) : EStructuralFeature
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getEcoreFeature()', Sequence{genFeature}) /]
+
+[query public getCreateChildValueLiteral(genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl', 'getCreateChildValueLiteral()', Sequence{genFeature}) /]
+
+[comment special handling for avoiding NPE due to importManager /]
+[query public getQualifiedFeatureAccessor(genFeature : GenFeature) : String = if getGenPackage().isLiteralsInterface() 
+	then getGenPackage().getImportedPackageInterfaceName().concat('.Literals.').concat(genClass.getFeatureID(genFeature)) else getQualifiedFeatureAccessorName().concat('()') endif/]

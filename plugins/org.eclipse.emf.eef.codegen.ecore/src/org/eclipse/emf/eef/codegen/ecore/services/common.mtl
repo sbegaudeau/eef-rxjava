@@ -1,0 +1,6 @@
+[comment encoding = UTF-8 /]
+[module common('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[template public toPath(s : String)][s.substituteAll('.', '/')/][/template]
+
+[query public isBlank(string : String) : Boolean = string.oclIsUndefined() or string->size() = 0/]

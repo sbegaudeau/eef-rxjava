@@ -1,0 +1,89 @@
+[comment encoding = UTF-8 /]
+[module GenPackage('http://www.eclipse.org/emf/2002/GenModel')/]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel/]
+
+[query public getProviderSupportedTypes(genPackage : GenPackage) : Set(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getProviderSupportedTypes()', Sequence{genPackage}) /]
+	
+[query public getProviderPackageName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getProviderPackageName()', Sequence{genPackage}) /]
+
+[query public getQualifiedPackageInterfaceName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedPackageInterfaceName()', Sequence{genPackage}) /]
+
+[query public getQualifiedEditPluginClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedEditPluginClassName()', Sequence{genPackage}) /]
+
+[query public isExtensibleProviderFactory(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'isExtensibleProviderFactory()', Sequence{genPackage}) /]
+
+[query public getQualifiedEFactoryInstanceAccessor(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedEFactoryInstanceAccessor()', Sequence{genPackage}) /]
+
+[query public getQualifiedFactoryInterfaceName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedFactoryInterfaceName()', Sequence{genPackage}) /]
+
+[query public getFactoryInstanceName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getFactoryInstanceName()', Sequence{genPackage}) /]
+
+[query public getItemProviderAdapterFactoryClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getItemProviderAdapterFactoryClassName()', Sequence{genPackage}) /]
+
+[query public getQualifiedAdapterFactoryClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedAdapterFactoryClassName()', Sequence{genPackage}) /]
+
+[query public isDisposableProviderFactory(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'isDisposableProviderFactory()', Sequence{genPackage}) /]
+
+[query public hasStatefulProvider(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'hasStatefulProvider()', Sequence{genPackage}) /]
+
+[query public getAdapterDelegatePackages(genPackage : GenPackage) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getAdapterDelegatePackages()', Sequence{genPackage}) /]
+
+[query public getUncapAdapterFactoryDelegateName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getUncapAdapterFactoryDelegateName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
+
+[query public getAdapterFactoryDelegateName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getAdapterFactoryDelegateName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
+
+[query public getGenClasses(genPackage : GenPackage) : Sequence(GenClass)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getGenClasses()', Sequence{genPackage}) /]
+
+[query public getAdapterDelegateSuperClasses(genPackage : GenPackage) : Sequence(GenClass)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getAdapterDelegateSuperClasses()', Sequence{genPackage}) /]
+
+[query public isChildCreationExtenders(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'isChildCreationExtenders()', Sequence{genPackage}) /]
+
+[query public getChildCreationExtenderName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getChildCreationExtenderName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
+
+[query public getClassUniqueName(genPackage : GenPackage, genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getClassUniqueName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl)', Sequence{genClass}) /]
+
+
+[comment special handling for avoiding NPE due to importManager /]
+[query public isLiteralsInterface(genPackage : GenPackage) : Boolean = genPackage.literalsInterface/]
+
+[query public getImportedPackageInterfaceName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedPackageInterfaceName())/]
+
+[query public getImportedEditPluginClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedEditPluginClassName())/]
+
+[query public getQualifiedFactoryInstanceAccessor(genPackage : GenPackage) : String = getImportedFactoryInterfaceName().concat('.').concat(getFactoryInstanceName())/]
+
+[query public getImportedFactoryInterfaceName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedFactoryInterfaceName())/]
+
+[query public getImportedAdapterFactoryClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedAdapterFactoryClassName())/]
+
+[query public getExtendedChildCreationDataEntrySet(genPackage : GenPackage) : Set(OclAny)
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
+
+[query public getPackageEntryKey(oclAny : OclAny) : GenFeature
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getPackageEntryKey(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getPackageEntryValueEntrySet(oclAny : OclAny) : Set(OclAny)
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getPackageEntryValueEntrySet(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getClassEntryKey(oclAny : OclAny) : GenClass
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getClassEntryKey(java.lang.Object)', Sequence{oclAny}) /]

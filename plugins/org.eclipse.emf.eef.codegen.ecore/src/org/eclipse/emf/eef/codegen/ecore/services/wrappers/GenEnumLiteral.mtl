@@ -1,0 +1,7 @@
+[module GenEnumLiteral('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[query public getName(genEnumLiteral : GenEnumLiteral) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumLiteralImpl', 'getName()', Sequence{genEnumLiteral}) /]
+
+[query public getLiteral(genEnumLiteral : GenEnumLiteral) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumLiteralImpl', 'getLiteral()', Sequence{genEnumLiteral}) /]

@@ -1,0 +1,32 @@
+[comment encoding = UTF-8 /]
+[module buildproperties('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[import org::eclipse::emf::eef::codegen::ecore::services::common /]
+[import org::eclipse::emf::eef::codegen::ecore::services::header /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
+
+[template public buildproperties(genModel : GenModel)]
+[file (buildpropertiesPath(), false, 'UTF-8')]
+[includeHeaderProperties()/]
+bin.includes = [pluginClassesLocation(genModel)/],\
+[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+               icons/,\
+[/if]
+[if (genModel.bundleManifest)]
+               META-INF/,\
+[/if]
+[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+               plugin.xml,\
+[/if]
+               plugin.properties
+jars.compile.order = [pluginClassesLocation(genModel)/]
+source.[pluginClassesLocation(genModel)/] = [for (sourceFolder : String | genModel.getEditSourceFolders()) separator (',\\           ')]
+[sourceFolder/]
+[/for]
+output.[pluginClassesLocation(genModel)/] = bin/
+[/file]
+[/template]
+
+[query public buildpropertiesPath(genModel : GenModel) : String = 'build.properties' /]
+
+[query public pluginClassesLocation(genModel : GenModel) : String = if genModel.runtimeJar then genModel.getEditPluginID().concat('.jar') else '.' endif/]

@@ -1,0 +1,10 @@
+[module GenEnum('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[query public getStaticValue(genEnum : GenEnum, literal : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumImpl', 'getStaticValue(java.lang.String)', Sequence{literal}) /]
+
+[query public getName(genEnum : GenEnum) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumImpl', 'getName()', Sequence{genEnum}) /]
+
+[query public getSafeUncapName(genEnum : GenEnum) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenEnumImpl', 'getSafeUncapName()', Sequence{genEnum}) /]
