@@ -8,7 +8,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.util.BundleHelper;
 import org.eclipse.emf.eef.codegen.flow.Step;
@@ -20,15 +19,15 @@ import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
  */
 public class AddDependency extends Step {
 	
-	private Object editProject;
+	private Object project;
 	private String dependency;
 
 	/**
 	 * @param name of the step
 	 */
-	public AddDependency(String name, Object editProject, String dependency) {
+	public AddDependency(String name, Object project, String dependency) {
 		super(name);
-		this.editProject = editProject;
+		this.project = project;
 		this.dependency = dependency;
 	}
 
@@ -47,10 +46,10 @@ public class AddDependency extends Step {
 	}
 
 	private IProject getEditProject() {
-		if (editProject instanceof IProject) {
-			return (IProject) editProject;
-		} else if (editProject instanceof WorkflowVariable) {
-			return (IProject) ((WorkflowVariable)editProject).getValue();
+		if (project instanceof IProject) {
+			return (IProject) project;
+		} else if (project instanceof WorkflowVariable) {
+			return (IProject) ((WorkflowVariable)project).getValue();
 		} else {
 			return null;
 		}
