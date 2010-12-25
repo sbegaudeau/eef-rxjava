@@ -14,6 +14,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -84,7 +85,7 @@ public class EEFEditorModelInitializer extends AbstractPropertiesInitializer {
 			contributionsResource.getContents().add(context);
 		for (ViewsRepository repository : repositories.keySet())
 			contributionsResource.getContents().add(repository);
-		EEFGenModel eefGenModel = createEEFGenModel(repositories, contexts, targetFolder);
+		EEFGenModel eefGenModel = createEEFGenModel((GenModel) model, repositories, contexts, targetFolder);
 		contributionsResource.save(Collections.EMPTY_MAP);
 		String eefgenFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment() + "-editor.eefgen";
 		URI eefgenModelUri = URI.createPlatformResourceURI(eefgenFilePath, false);
@@ -117,9 +118,9 @@ public class EEFEditorModelInitializer extends AbstractPropertiesInitializer {
 		return hierarchy;
 	}
 
-	private EEFGenModel createEEFGenModel(Map<ViewsRepository, String> repositories, List<PropertiesEditionContext> contexts, IContainer targetFolder) {
+	private EEFGenModel createEEFGenModel(GenModel inputGenmodel, Map<ViewsRepository, String> repositories, List<PropertiesEditionContext> contexts, IContainer targetFolder) {
 		EEFGenModel eefGenModel = EEFGenFactory.eINSTANCE.createEEFGenModel();
-		eefGenModel.setGenDirectory(findGenDirectory(targetFolder));
+		eefGenModel.setGenDirectory(findGenDirectory(inputGenmodel));
 		for (PropertiesEditionContext context : contexts)
 			eefGenModel.getEditionContexts().add(createGenEditionContext(context));
 		String contextPackage = "";
@@ -159,8 +160,8 @@ public class EEFEditorModelInitializer extends AbstractPropertiesInitializer {
 		return "";
 	}
 
-	private String findGenDirectory(IContainer targetFolder) {
-		return targetFolder.getFullPath().removeLastSegments(1).toString() + "/src-gen";
+	private String findGenDirectory(GenModel genmodel) {
+		return genmodel.getEditorDirectory();
 	}
 
 }

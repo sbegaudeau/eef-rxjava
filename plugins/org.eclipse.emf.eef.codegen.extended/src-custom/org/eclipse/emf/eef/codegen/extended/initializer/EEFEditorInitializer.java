@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.codegen.flow.impl.InitializeGenModel;
 import org.eclipse.emf.eef.codegen.flow.impl.MergePluginXML;
 import org.eclipse.emf.eef.codegen.ui.generators.callback.imports.JDTImportsOrganisationCallback;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
@@ -51,6 +52,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 	private static final String GENERATE_EEF_CODE = "Generate EEF code";
 	private static final String MERGING_GENERATED_PLUGIN_XML_FILES = "Merging generated plugin.xml files";
 	private static final String GENERATE_EEF_EDITOR_MODELS = "Generate EEF Editor models";
+	private static final String ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY = "Adding EEF Extended Runtime dependency";
 	private static final String GENERATE_EEF_EDITOR_CODE = "Generate EEF Editor code";
 
 	private ResourceSet resourceSet;
@@ -120,6 +122,8 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			};
 			GenerateEEFEditorModels generateEEFEditorModels = new GenerateEEFEditorModels(GENERATE_EEF_EDITOR_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI(), generateEEFModels.getEEFModelsFolder());
 			workflow.addStep(GENERATE_EEF_EDITOR_MODELS, generateEEFEditorModels);
+			AddDependency addExtendedRuntimeDependency = new AddDependency(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, generateEMFEditorCode.genProject(), EEFExtendedRuntime.PLUGIN_ID);
+			workflow.addStep(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, addExtendedRuntimeDependency);
 			GenerateEEFEditorCode generateEEFEditorCode = new GenerateEEFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
 			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
 			new ProgressMonitorDialog(new Shell()).run(true, true, runnable);

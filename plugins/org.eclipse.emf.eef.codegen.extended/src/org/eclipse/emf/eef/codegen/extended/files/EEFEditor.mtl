@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module EEFEditor('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0')/]
+[module EEFEditor('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
@@ -8,13 +8,12 @@
 
 
 [template public generateEditor(peContext : PropertiesEditionContext)]
-	
 	[file (peContext.fullFilePath(), false, 'UTF-8')]
 /**
  * <copyright>
  * </copyright>
  *
- * $Id: EEFEditor.mtl,v 1.1 2010/12/23 13:49:11 glefur Exp $
+ * $Id: EEFEditor.mtl,v 1.2 2010/12/25 23:21:25 glefur Exp $
  */
 package [peContext.model.presentationPackage()/];
 
@@ -30,14 +29,18 @@ import org.eclipse.swt.widgets.Composite;
  * This is an example of a Demo model editor.
  * @generated
  */
-public [model.editorClassName()/] extends InteractiveEEFEditor {
+public class [model.editorClassName()/] extends InteractiveEEFEditor {
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor#contributePages()
 	 */
 	protected void contributePages() {
-	[for (contribution : EEFEditorContribution | peContext.categories->filter(EEFEditorContributions).bindings->filter(EEFEditorContribution))]
+	/*
+	[peContext.categories.bindings.eClass()/]
+	[peContext.categories.bindings.oclAsType(extended::editor::EEFEditorContribution)/]
+	*/
+	[for (contribution : EEFEditorContribution | peContext.categories.bindings.oclAsType(EEFEditorContribution))]
 		{
 			[contribution.model.editorInput()/]
 			[comment TODO : Process filters/]
