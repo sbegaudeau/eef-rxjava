@@ -2779,9 +2779,6 @@
         <body xsi:type="mtl:IfBlock">
           <body xsi:type="mtl:TemplateInvocation" definition="/0/manageImportForViewReferences">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <argument xsi:type="ocl.ecore:VariableExp" name="v" referredVariable="/0/manageImportForViewReferences/@body.0/v">
-              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-            </argument>
             <argument xsi:type="mtl:QueryInvocation">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
               <definition href="../services/common.emtl#/0/involvedPropertiesEditionComponent"/>
@@ -13598,82 +13595,77 @@
       <details key="end" value="17876"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.937" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/v">
-      <details key="start" value="17792"/>
-      <details key="end" value="17793"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.938" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/@argument.1">
+    <eAnnotations source="positions.937" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/@argument.0">
       <details key="start" value="17824"/>
       <details key="end" value="17862"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.939" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/@argument.1/v">
+    <eAnnotations source="positions.938" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/@argument.0/v">
       <details key="start" value="17824"/>
       <details key="end" value="17825"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.940" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/basePackage">
+    <eAnnotations source="positions.939" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.0/basePackage">
       <details key="start" value="17864"/>
       <details key="end" value="17875"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.941" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.1">
+    <eAnnotations source="positions.940" references="/0/manageImportForViewReferences/@body.0/@body.2/@body.1">
       <details key="start" value="17878"/>
       <details key="end" value="17879"/>
       <details key="line" value="354"/>
     </eAnnotations>
-    <eAnnotations source="positions.942" references="/0/manageImportForViewReferences/@body.0/@body.2/@ifExpr">
+    <eAnnotations source="positions.941" references="/0/manageImportForViewReferences/@body.0/@body.2/@ifExpr">
       <details key="start" value="17756"/>
       <details key="end" value="17789"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.943" references="/0/manageImportForViewReferences/@body.0/@body.2/@ifExpr/@source">
+    <eAnnotations source="positions.942" references="/0/manageImportForViewReferences/@body.0/@body.2/@ifExpr/@source">
       <details key="start" value="17757"/>
       <details key="end" value="17776"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.944" references="/0/manageImportForViewReferences/@body.0/@body.2/@ifExpr/@source/v">
+    <eAnnotations source="positions.943" references="/0/manageImportForViewReferences/@body.0/@body.2/@ifExpr/@source/v">
       <details key="start" value="17757"/>
       <details key="end" value="17758"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.945" references="/0/manageImportForViewReferences/@body.0/v">
+    <eAnnotations source="positions.944" references="/0/manageImportForViewReferences/@body.0/v">
       <details key="start" value="17336"/>
       <details key="end" value="17344"/>
       <details key="line" value="345"/>
     </eAnnotations>
-    <eAnnotations source="positions.946" references="/0/manageImportForViewReferences/@body.0/@iterSet">
+    <eAnnotations source="positions.945" references="/0/manageImportForViewReferences/@body.0/@iterSet">
       <details key="start" value="17347"/>
       <details key="end" value="17369"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.947" references="/0/manageImportForViewReferences/@body.0/@iterSet/view">
+    <eAnnotations source="positions.946" references="/0/manageImportForViewReferences/@body.0/@iterSet/view">
       <details key="start" value="17347"/>
       <details key="end" value="17351"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.948" references="/0/manageImportForViewReferences/view">
+    <eAnnotations source="positions.947" references="/0/manageImportForViewReferences/view">
       <details key="start" value="17260"/>
       <details key="end" value="17271"/>
       <details key="line" value="344"/>
     </eAnnotations>
-    <eAnnotations source="positions.949" references="/0/manageImportForViewReferences/pec">
+    <eAnnotations source="positions.948" references="/0/manageImportForViewReferences/pec">
       <details key="start" value="17273"/>
       <details key="end" value="17305"/>
       <details key="line" value="344"/>
     </eAnnotations>
-    <eAnnotations source="positions.950" references="/0/manageImportForViewReferences/basePackage">
+    <eAnnotations source="positions.949" references="/0/manageImportForViewReferences/basePackage">
       <details key="start" value="17307"/>
       <details key="end" value="17327"/>
       <details key="line" value="344"/>
     </eAnnotations>
-    <eAnnotations source="positions.951" references="/0/additionalImports">
+    <eAnnotations source="positions.950" references="/0/additionalImports">
       <details key="start" value="17973"/>
       <details key="end" value="18030"/>
       <details key="line" value="359"/>
     </eAnnotations>
-    <eAnnotations source="positions.952" references="/0/additionalImports/v">
+    <eAnnotations source="positions.951" references="/0/additionalImports/v">
       <details key="start" value="18008"/>
       <details key="end" value="18016"/>
       <details key="line" value="359"/>
