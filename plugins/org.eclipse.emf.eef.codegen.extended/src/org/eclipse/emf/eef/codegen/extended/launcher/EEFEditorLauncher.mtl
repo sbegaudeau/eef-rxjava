@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module EEFEditorLauncher('http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module EEFEditorLauncher('http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::extended::files::EEFEditor /]
 

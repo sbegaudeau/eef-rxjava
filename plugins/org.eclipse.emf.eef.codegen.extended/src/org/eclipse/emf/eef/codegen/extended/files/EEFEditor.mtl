@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module EEFEditor('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module EEFEditor('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
@@ -13,11 +13,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EEFEditor.mtl,v 1.2 2010/12/25 23:21:25 glefur Exp $
  */
 package [peContext.model.presentationPackage()/];
 
 
+import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
 import org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor;
 import org.eclipse.emf.eef.runtime.ui.editors.pages.tree.EEFTreeMDFormPage;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -36,22 +36,23 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 	 * @see org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor#contributePages()
 	 */
 	protected void contributePages() {
-	/*
-	[peContext.categories.bindings.eClass()/]
-	[peContext.categories.bindings.oclAsType(extended::editor::EEFEditorContribution)/]
-	*/
+		try {
 	[for (contribution : EEFEditorContribution | peContext.categories.bindings.oclAsType(EEFEditorContribution))]
-		{
+			{
 			[contribution.model.editorInput()/]
 			[comment TODO : Process filters/]
 			[for (page : EEFPage | contribution.views->filter(EEFPage))]
-			{	
-				[page.editorPage(peContext.model.editorClassName())/]
-				page.setInput(input);
-			}
+				{
+					[page.editorPage(peContext.model.editorClassName())/]
+					page.setInput(input);
+					addPage(page);
+				}
 			[/for]
-		}
+			}
 	[/for]
+		} catch (PartInitException e) {
+			EEFExtendedRuntime.getPlugin().log(e);
+		}
 	}
 
 }

@@ -50,5 +50,5 @@ final EEFTreeMDFormPage page = new EEFTreeMDFormPage([editorName/].this, "[page.
 };
 page.setInitialMasterPartToolBarVisibility([page.toolbarVisible/]);
 page.setAdapterFactory(adapterFactory);
-pagesetEditingDomain(editingDomain);
+page.setEditingDomain(editingDomain);
 [/template]

@@ -258,6 +258,7 @@ public class EEFEditorLauncher extends AbstractAcceleoGenerator {
     super.registerPackages(resourceSet);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
+    resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.extended.editor.EditorPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.extended.editor.EditorPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE);
     resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE);
