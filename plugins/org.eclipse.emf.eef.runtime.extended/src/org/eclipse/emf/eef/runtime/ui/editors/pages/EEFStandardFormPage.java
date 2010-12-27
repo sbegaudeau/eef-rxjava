@@ -62,7 +62,12 @@ public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 	 * 
 	 */
 	private AdapterFactory adapterFactory;
-	
+
+	/**
+	 * Viewer input
+	 */
+	private Object input;
+
 
 	/**
 	 * @param editor
@@ -85,11 +90,14 @@ public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 		toolkit = managedForm.getToolkit();
 		toolkit.decorateFormHeading(form.getForm());
 		form.getBody().setLayout(EEFFormLayoutFactory.createDetailsGridLayout(false, 1));
-		this.viewer = new PropertiesEditionViewer(form.getBody(), null, SWT.BORDER, 1);
+		this.viewer = new PropertiesEditionViewer(form.getBody(), null, SWT.NONE, 1);
 		viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
-		viewer.setDynamicTabHeader(false);
+		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(getManagedForm().getToolkit());
 		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		if (input != null) {
+			viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) input));
+		}
 
 	}
 
@@ -110,10 +118,15 @@ public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 	 */
 	public void setInput(Object newEObject) {
 		if (newEObject instanceof EObject) {
-			viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) newEObject));
+			if (newEObject != input) {
+				input = newEObject;
+				if (viewer != null) {
+					viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) input));
+				}
+			}
 		}
 	}
-	
+
 	/**
 	 * Sets the image to be rendered to the left of the title.
 	 * @param image
@@ -123,7 +136,7 @@ public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 		if (image != null && form != null)
 			form.setImage(image);
 	}
-	
+
 	/**
 	 * Add the given filter to the page viewer
 	 * @param filter the page viewer filter
