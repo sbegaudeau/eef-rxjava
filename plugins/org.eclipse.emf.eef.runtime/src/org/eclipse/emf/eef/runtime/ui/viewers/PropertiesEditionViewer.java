@@ -152,6 +152,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 */
 	public void setToolkit(FormToolkit toolkit) {
 		this.toolkit = toolkit;
+		toolkit.adapt(control);
+		toolkit.adapt(scroll);
+		toolkit.adapt(folder);
 	}
 
 	/**
