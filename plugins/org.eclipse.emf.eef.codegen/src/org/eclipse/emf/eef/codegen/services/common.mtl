@@ -511,6 +511,11 @@ Object
 [p.model.eContainingClass.metamodelPackage()/].eINSTANCE.[p.ecoreCompletePackageGetter()/]
 [/template]
 
+[template public metamodelGetter(c : EClassifier)]
+[c.metamodelPackage()/].eINSTANCE.get[c.name/]()
+[/template]
+
+
 [comment queries for model navigation /]
 [query public simpleModelNavigationType(modelNavigation : SimpleModelNavigation) : String = 
 	if (modelNavigation.discriminatorType.oclIsUndefined())

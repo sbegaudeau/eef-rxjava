@@ -97,16 +97,16 @@ public class Workflow extends Step {
 	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public IStatus execute(IProgressMonitor monitor) {
+		monitor.beginTask(name, steps.size());
 		for (Iterator<String> iterator = steps.keySet().iterator(); iterator.hasNext();) {
 			String key = (String) iterator.next();
-			monitor.beginTask(key, 1);
+			monitor.subTask(key);
 			Step step = steps.get(key);
 			IStatus execute = step.execute(monitor);
 			if (!execute.isOK()) {
 				return execute;
 			}
 			monitor.worked(1);
-			
 		}
 		return Status.OK_STATUS;
 	}
