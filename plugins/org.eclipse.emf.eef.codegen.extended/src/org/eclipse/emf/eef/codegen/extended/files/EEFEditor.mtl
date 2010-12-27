@@ -6,7 +6,6 @@
 [import org::eclipse::emf::eef::codegen::extended::services::editor-common /]
 [import org::eclipse::emf::eef::codegen::extended::editor::api::EditorContribution /]
 
-
 [template public generateEditor(peContext : PropertiesEditionContext)]
 	[file (peContext.fullFilePath(), false, 'UTF-8')]
 /**
@@ -19,15 +18,14 @@ package [peContext.model.presentationPackage()/];
 
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
 import org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor;
-import org.eclipse.emf.eef.runtime.ui.editors.pages.tree.EEFTreeMDFormPage;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.swt.widgets.Composite;
-
+[for (pageType : EClass | peContext.categories.bindings.views.eClass()->asOrderedSet())]
+[pageType.pageImports()/]
+[/for]
+import org.eclipse.ui.PartInitException;
 
 /**
  * This is an example of a Demo model editor.
- * @generated
+ *
  */
 public class [model.editorClassName()/] extends InteractiveEEFEditor {
 
@@ -39,8 +37,8 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 		try {
 	[for (contribution : EEFEditorContribution | peContext.categories.bindings.oclAsType(EEFEditorContribution))]
 			{
-			[contribution.model.editorInput()/]
-			[comment TODO : Process filters/]
+				[contribution.model.editorInput()/]
+				[comment TODO : Process filters/]
 			[for (page : EEFPage | contribution.views->filter(EEFPage))]
 				{
 					[page.editorPage(peContext.model.editorClassName())/]

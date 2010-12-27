@@ -1,0 +1,16 @@
+[comment encoding = UTF-8 /]
+[module query('http://www.eclipse.org/emf/eef/extended/query/1.0.0')/]
+[import org::eclipse::emf::eef::codegen::services::common /]
+
+[template public body(query : EEFUnderstandableQuery)]
+[/template]
+
+[template public body(oclQuery : OCLQuery)]
+OCLQuery query = new OCLQuery([oclQuery._context.metamodelGetter()/], "[oclQuery.query/]");
+if (EEFExtendedRuntime.INSTANCE.getProcessor().canEvaluate(query)) {
+	QueryResult result = EEFExtendedRuntime.INSTANCE.getProcessor().evaluate(element, query);
+	if (result.evaluationStatus.isOK()) {
+		input = result.evaluationResult;
+	}
+}
+[/template]

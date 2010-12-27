@@ -24,6 +24,18 @@
                menubarPath="org.eclipse.emf.eef.ui.menu/initializer">
          </action>
       </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.eef.codegen.extended.ui.launcher"
+            nameFilter="*.eefgen"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.eclipse.emf.eef.codegen.extended.ui.launcher.GenerateEEFEditorAction"
+               enablesFor="*"
+               id="org.eclipse.emf.eef.codegen.extended.ui.generateeefeditor"
+               label="Generate EEF Editor"
+               menubarPath="org.eclipse.emf.eef.ui.menu/generation">
+         </action>
+      </objectContribution>
 
    </extension>
 

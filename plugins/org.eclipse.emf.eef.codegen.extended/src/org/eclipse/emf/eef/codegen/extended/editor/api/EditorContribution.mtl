@@ -1,27 +1,52 @@
 [comment encoding = UTF-8 /]
-[module EditorContribution('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0')/]
+[module EditorContribution('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::extended::query::query /]
 
+
+[comment =================== API ===================== /]
 
 [template public editorInput(input : EEFPageInput)]
-//FIXME: Input of type [input.eClass().name/] no manager. Override 'editorInput' template into EditorContribution to fix this. 
+//FIXME: Input of type [input.eClass().name/] not managed. Override 'editorInput' template into EditorContribution to fix this. 
 [/template]
 
 [template public editorPage(page : EEFPage, editorName : String)]
-//FIXME: Input of type [page.eClass().name/] no manager. Override 'editorPage' template into EditorContribution to fix this. 
+//FIXME: Input of type [page.eClass().name/] not managed. Override 'editorPage' template into EditorContribution to fix this. 
 [/template]
 
-
 [comment =================== Standard implementations ===================== /]
-
-
 [template public editorInput(input : AllResourcesRootsRelativeInput)]
 	[if (input.query.oclIsUndefined())]
 Object input = getEditingDomain().getResourceSet();
 	[else]
 //FIXME: input not processed		
 	[/if]
+[/template]
+
+[template public editorInput(input : FirstResourceRootRelativeInput)]
+Object input = null;
+	[if (input.query.oclIsUndefined())]
+if (getEditingDomain().getResourceSet() != null && getEditingDomain().getResourceSet().getResources().size() > 0) {
+	input = getEditingDomain().getResourceSet().getResources().get(0);
+}
+	[else]
+if (getEditingDomain().getResourceSet() != null && getEditingDomain().getResourceSet().getResources().size() > 0) {
+	Resource resource = getEditingDomain().getResourceSet().getResources().get(0);
+	if (resource.getContents() != null && resource.getContents().size() > 0) {
+		EObject element = resource.getContents().get(0);
+		[input.query._body()/]
+	}
+}
+	[/if]
+[/template]
+
+
+[template public pageImports(pageType : EClass) ? (pageType.name = 'TreeMasterPage')]
+import org.eclipse.emf.eef.runtime.ui.editors.pages.tree.EEFTreeMDFormPage;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.swt.widgets.Composite;
 [/template]
 
 [template public editorPage(page : TreeMasterPage, editorName : String)]
@@ -52,3 +77,12 @@ page.setInitialMasterPartToolBarVisibility([page.toolbarVisible/]);
 page.setAdapterFactory(adapterFactory);
 page.setEditingDomain(editingDomain);
 [/template]
+
+[template public pageImports(pageType : EClass) ? (pageType.name = 'StandardFormPage')]
+import org.eclipse.emf.eef.runtime.ui.editors.pages.EEFStandardFormPage;
+[/template]
+
+[template public editorPage(page : StandardFormPage, editorName : String)]
+final EEFStandardFormPage page = new EEFStandardFormPage([editorName/].this, "[page.name/]", editingDomain, adapterFactory);
+[/template]
+
