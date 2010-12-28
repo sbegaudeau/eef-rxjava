@@ -42,9 +42,9 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 	 */
 	protected void contributePages() {
 		try {
-	[for (contribution : EEFEditorContribution | peContext.categories.bindings.oclAsType(EEFEditorContribution))]
+	[for (contribution : StaticEEFEditorContribution | peContext.categories.bindings->filter(StaticEEFEditorContribution))]
 			{
-				[contribution.model.editorInput()/]
+				[contribution.input.editorInput()/]
 				[comment TODO : Process filters/]
 			[for (page : EEFPage | contribution.views->filter(EEFPage))]
 				{

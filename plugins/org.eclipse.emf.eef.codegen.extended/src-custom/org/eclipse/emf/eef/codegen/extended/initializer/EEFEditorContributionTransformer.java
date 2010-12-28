@@ -14,10 +14,10 @@ import org.eclipse.emf.eef.codegen.core.initializer.AbstractTransformer;
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
-import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContributions;
 import org.eclipse.emf.eef.extended.editor.EEFPage;
 import org.eclipse.emf.eef.extended.editor.EditorFactory;
+import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.views.ViewElement;
 
 /**
@@ -46,9 +46,9 @@ public class EEFEditorContributionTransformer extends AbstractTransformer {
 		return context;
 	}
 
-	private Collection<EEFEditorContribution> genPackage2Contributions(GenPackage genPackage) {
-		Collection<EEFEditorContribution> result = new ArrayList<EEFEditorContribution>();
-		EEFEditorContribution eefEditorContribution = EditorFactory.eINSTANCE.createEEFEditorContribution();
+	private Collection<StaticEEFEditorContribution> genPackage2Contributions(GenPackage genPackage) {
+		Collection<StaticEEFEditorContribution> result = new ArrayList<StaticEEFEditorContribution>();
+		StaticEEFEditorContribution eefEditorContribution = EditorFactory.eINSTANCE.createStaticEEFEditorContribution();
 		eefEditorContribution.setName("Main contribution");
 		workingResolvTemp.get(genPackage.getEcorePackage());
 		Collection<EEFPage> pages = new ArrayList<EEFPage>();
@@ -59,7 +59,7 @@ public class EEFEditorContributionTransformer extends AbstractTransformer {
 		}
 		eefEditorContribution.getViews().addAll(pages);
 		AllResourcesRootsRelativeInput input = EditorFactory.eINSTANCE.createAllResourcesRootsRelativeInput();
-		eefEditorContribution.setModel(input);
+		eefEditorContribution.setInput(input);
 		result.add(eefEditorContribution);
 		return result ;
 	}
