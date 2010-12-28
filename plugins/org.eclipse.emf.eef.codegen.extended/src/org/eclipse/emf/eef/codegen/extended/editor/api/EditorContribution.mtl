@@ -83,6 +83,11 @@ import org.eclipse.emf.eef.runtime.ui.editors.pages.EEFStandardFormPage;
 [/template]
 
 [template public editorPage(page : StandardFormPage, editorName : String)]
-final EEFStandardFormPage page = new EEFStandardFormPage([editorName/].this, "[page.name/]", editingDomain, adapterFactory);
+final EEFStandardFormPage page = new EEFStandardFormPage([editorName/].this, "[page.name/]");
+[if ((not page.title.oclIsUndefined()) and (page.title.size() > 0))]	
+page.setPageTitle("[page.title/]");
+[/if]
+page.setAdapterFactory(adapterFactory);
+page.setEditingDomain(editingDomain);
 [/template]
 
