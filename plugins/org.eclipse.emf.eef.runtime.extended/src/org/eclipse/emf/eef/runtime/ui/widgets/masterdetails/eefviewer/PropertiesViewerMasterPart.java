@@ -56,7 +56,7 @@ public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 			}
 		};
 		PropertiesEditionViewer viewer = new PropertiesEditionViewer(parent, null, SWT.NONE, 1);
-		viewer.setDynamicTabHeader(false);
+		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(toolkit);
 		return viewer;
 	}

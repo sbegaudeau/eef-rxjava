@@ -80,7 +80,7 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 			}
 		};
 		this.viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
-		viewer.setDynamicTabHeader(false);
+		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(getManagedForm().getToolkit());
 		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 	}

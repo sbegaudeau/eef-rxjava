@@ -4,6 +4,7 @@ Bundle-Name: EEF Extended Runtime
 Bundle-SymbolicName: org.eclipse.emf.eef.runtime.extended;singleton:=true
 Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
+Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.epf.common;bundle-version="1.2.0",
  org.eclipse.epf.richtext;bundle-version="1.2.0";visibility:=reexport,
@@ -34,3 +35,4 @@ Export-Package: org.eclipse.emf.eef.runtime.query,
  org.eclipse.emf.eef.runtime.ui.widgets.richtext,
  org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions
 Bundle-Activator: org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime$Implementation
+Bundle-ActivationPolicy: lazy

@@ -139,11 +139,6 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 		block.setAdapterFactory(adapterFactory);
 		block.setEditingDomain(editingDomain);
 		block.setInput(input);
-		if (input instanceof ResourceSet) {
-			Resource resource = ((ResourceSet)input).getResources().get(0);
-			setPageTitle(resource.getURI().toString());
-			form.setImage((new AdapterFactoryLabelProvider(adapterFactory)).getImage(resource));
-		}
 	}
 	
 	/**
