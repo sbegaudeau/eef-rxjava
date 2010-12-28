@@ -487,8 +487,9 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			toolkit.adapt(folder, true, true);
 			toolkit.getColors().initializeSectionToolBarColors();
 			folder.setSelectionBackground(
-					new Color[] {toolkit.getColors().getColor(IFormColors.H_GRADIENT_END),
-							toolkit.getColors().getColor(IFormColors.H_GRADIENT_START)}, new int[] {25}, true);
+					new Color[] {toolkit.getColors().getColor(IFormColors.H_GRADIENT_START), toolkit.getColors().getColor(IFormColors.H_GRADIENT_END)}, 
+					new int[] {50}, 
+					true);
 			folder.setForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 			folder.setSelectionForeground(toolkit.getColors().getColor(IFormColors.TITLE));
 		}
