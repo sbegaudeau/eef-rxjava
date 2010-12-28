@@ -20,33 +20,20 @@ import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
+public class EEFStandardFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * The page ID
 	 */
 	public static final String PAGE_ID = "EEF-std-form-page";  //$NON-NLS-1$
-
-	/**
-	 * This keeps track of the editing domain that is used to track all changes to the model.
-	 */
-	protected EditingDomain editingDomain;
-
-	/**
-	 * The form containing this page
-	 */
-	private ScrolledForm form;
 
 	/**
 	 * The form toolkit to use
@@ -59,25 +46,27 @@ public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 	protected PropertiesEditionViewer viewer;
 
 	/**
-	 * 
+	 * @param editor editor including this page
+	 * @param name page name
+	 * @param editingDomain the editingDomain to use to edit the model
+	 * @param adapterFactory the adapterFactory to use
+	 * @deprecated
 	 */
-	private AdapterFactory adapterFactory;
-
-	/**
-	 * Viewer input
-	 */
-	private Object input;
-
-
-	/**
-	 * @param editor
-	 *            the form editor in which this page will be included
-	 */
-	public EEFStandardFormPage(FormEditor editor, String pageTitle, EditingDomain editingDomain, AdapterFactory adapterFactory) {
-		super(editor, PAGE_ID, pageTitle); 
+	public EEFStandardFormPage(FormEditor editor, String name, EditingDomain editingDomain, AdapterFactory adapterFactory) {
+		super(editor, PAGE_ID, name); 
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
+	
+	/**
+	 * @param editor editor including this page
+	 * @param name page name
+	 */
+	public EEFStandardFormPage(FormEditor editor, String name) {
+		super(editor, PAGE_ID, name);
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
@@ -95,46 +84,17 @@ public class EEFStandardFormPage extends FormPage implements EEFEditorPage {
 		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(getManagedForm().getToolkit());
 		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
-		if (input != null) {
+		refresh();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.AbstractEEFEditorPage#refreshFormContents()
+	 */
+	protected void refreshFormContents() {
+		if (viewer != null && input instanceof EObject) {
 			viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) input));
 		}
-
-	}
-
-	/**
-	 * Defines the title of the page
-	 * 
-	 * @param title
-	 *            the title to define
-	 */
-	public void setPageTitle(String title) {
-		if (title != null && form != null)
-			form.setText(title);
-	}
-
-	/**
-	 * @param input
-	 *            the input of the page
-	 */
-	public void setInput(Object newEObject) {
-		if (newEObject instanceof EObject) {
-			if (newEObject != input) {
-				input = newEObject;
-				if (viewer != null) {
-					viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) input));
-				}
-			}
-		}
-	}
-
-	/**
-	 * Sets the image to be rendered to the left of the title.
-	 * @param image
-	 *            the title image
-	 */
-	public void setImage(Image image) {
-		if (image != null && form != null)
-			form.setImage(image);
 	}
 
 	/**

@@ -13,15 +13,21 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface EEFEditorPage {
 
 	/**
-	 * Defines the page input
+	 * Defines the page input.
 	 * @param input page input
 	 */
 	void setInput(Object input);
 	
 	/**
-	 * Add a filter to the most appropriated {@link PropertiesEditionViewer}
+	 * Add a filter to the most appropriated {@link PropertiesEditionViewer}.
 	 * @param filter the filter to add
 	 */
 	void addFilter(ViewerFilter filter);
+	
+	/**
+	 * Defines the page title.
+	 * @param pageTitle page title
+	 */
+	void setPageTitle(String pageTitle);
 	
 }

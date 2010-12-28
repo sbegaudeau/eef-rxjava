@@ -12,10 +12,8 @@ package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
@@ -35,14 +33,12 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.eclipse.ui.forms.editor.FormPage;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEditorPage {
+public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * The page ID
@@ -55,32 +51,14 @@ public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEdito
 	private FormEditor editor;
 	
 	/**
-	 * This keeps track of the editing domain that is used to track all changes
-	 * to the model.
-	 */
-	private EditingDomain editingDomain;
-
-	/**
-	 * This is the one adapter factory used for providing views of the model.
-	 */
-	private AdapterFactory adapterFactory;
-
-	/**
 	 * The master/details block for model edition 
 	 */
 	protected AbstractEEFMasterDetailsBlock block;
 
 	/**
-	 * The form containing this page
-	 */
-	private ScrolledForm form;
-
-	/**
 	 * The managed form
 	 */
 	private IManagedForm managedForm;
-
-	private Object input;
 	
 	/**
 	 * @param editor the form editor in which this page will be included
@@ -110,9 +88,7 @@ public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEdito
 			
 		});
 		createContextMenuFor(block.getMasterPart().getModelViewer());
-		if (input != null) {
-			updateInputToMasterBlock();
-		}
+		refresh();
 	}
 
 	/**
@@ -156,53 +132,10 @@ public abstract class AbstractEEFMDFormPage extends FormPage implements EEFEdito
 	}
 
 	/**
-	 * @return the editingDomain
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.AbstractEEFEditorPage#refreshFormContents()
 	 */
-	public EditingDomain getEditingDomain() {
-		return editingDomain;
-	}
-
-	/**
-	 * @param editingDomain the editingDomain to set
-	 */
-	public void setEditingDomain(EditingDomain editingDomain) {
-		this.editingDomain = editingDomain;
-	}
-
-	/**
-	 * @return the adapterFactory
-	 */
-	public AdapterFactory getAdapterFactory() {
-		return adapterFactory;
-	}
-
-	/**
-	 * @param adapterFactory the adapterFactory to set
-	 */
-	public void setAdapterFactory(AdapterFactory adapterFactory) {
-		this.adapterFactory = adapterFactory;
-	}
-
-	/**
-	 * Defines the title of the page
-	 * @param title the title to define
-	 */
-	public void setPageTitle(String title) {
-		if (title != null && form != null)
-			form.setText(title);
-	}
-	
-	/**
-	 * @param input the input of the page
-	 */
-	public void setInput(Object input) {
-		this.input = input;
-		if (block != null) {
-			updateInputToMasterBlock();
-		}
-	}
-
-	protected void updateInputToMasterBlock() {
+	protected void refreshFormContents() {
 		block.setAdapterFactory(adapterFactory);
 		block.setEditingDomain(editingDomain);
 		block.setInput(input);
