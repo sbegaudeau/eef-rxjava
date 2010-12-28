@@ -18,18 +18,11 @@ import java.util.List;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.components.ComponentsPackage;
-import org.eclipse.emf.eef.extended.editor.EditorPackage;
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
-import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
  * Entry point of the 'EEFEditorLauncher' generation module.
