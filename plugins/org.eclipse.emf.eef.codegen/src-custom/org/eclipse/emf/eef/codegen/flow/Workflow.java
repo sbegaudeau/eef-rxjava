@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowContext;
 
 /**
@@ -104,6 +105,7 @@ public class Workflow extends Step {
 			Step step = steps.get(key);
 			IStatus execute = step.execute(monitor);
 			if (!execute.isOK()) {
+				EEFCodegenPlugin.getDefault().logError((Exception) execute.getException());
 				return execute;
 			}
 			monitor.worked(1);
