@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.viewers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -41,26 +44,28 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 
 	private EditingDomain editingDomain;
 
+	private List<IPropertiesEditionListener> propertiesEditionListeners;
+
 	/**
 	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode)
-			throws InstantiationException {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode) throws InstantiationException {
 		if (mode == IPropertiesEditionComponent.LIVE_MODE)
 			throw new InstantiationException(
 					EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
 		this.adapterFactory = adapterFactory;
 		this.mode = mode;
+		this.propertiesEditionListeners = new ArrayList<IPropertiesEditionListener>();
 	}
 
 	/**
 	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode,
-			EditingDomain editingDomain) {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode, EditingDomain editingDomain) {
 		this.adapterFactory = adapterFactory;
 		this.mode = mode;
 		this.editingDomain = editingDomain;
+		this.propertiesEditionListeners = new ArrayList<IPropertiesEditionListener>();
 	}
 
 	/**
@@ -91,8 +96,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		if (newInput instanceof EObject) {
 			eObject = (EObject)newInput;
 			if (mode == IPropertiesEditionComponent.LIVE_MODE) {
-				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
-						eObject);
+				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
 			} else if (mode == IPropertiesEditionComponent.BATCH_MODE) {
 				context = new EObjectPropertiesEditionContext(null, null, eObject, adapterFactory);
 			}
@@ -101,17 +105,16 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 			eObject = context.getEObject();
 		}
 		if (eObject != null) {
-			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory
-					.adapt(eObject, PropertiesEditingProvider.class);
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
 			if (propertiesEditionProvider != null) {
-				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(
-						context, mode);
+				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(context, mode);
 				if (mode == IPropertiesEditionComponent.LIVE_MODE) {
 					propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 				}
+				updateListeners();
 			}
 		}
-
+		
 		// FIXME: find a better way to manage the context
 		PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 	}
@@ -121,6 +124,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	 *            the properties listener to add
 	 */
 	public void addPropertiesListener(IPropertiesEditionListener listener) {
+		propertiesEditionListeners.add(listener);
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.addListener(listener);
 	}
@@ -212,6 +216,15 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	 */
 	public Object[] getElements(Object inputElement) {
 		return new Object[] {inputElement};
+	}
+
+	/**
+	 * 
+	 */
+	protected void updateListeners() {
+		for (IPropertiesEditionListener listener : propertiesEditionListeners) {
+			propertiesEditionComponent.addListener(listener);
+		}
 	}
 
 }
