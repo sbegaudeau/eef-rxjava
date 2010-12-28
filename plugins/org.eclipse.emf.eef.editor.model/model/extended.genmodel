@@ -12,7 +12,7 @@
         disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
         ecorePackage="extended.ecore#//editor">
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorContribution">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extended.ecore#//editor/EEFEditorContribution/model"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extended.ecore#//editor/EEFEditorContribution/input"/>
       </genClasses>
       <genClasses image="false" ecoreClass="extended.ecore#//editor/EEFPage">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extended.ecore#//editor/EEFPage/title"/>
@@ -39,6 +39,8 @@
       </genClasses>
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorContributions"/>
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorPages"/>
+      <genClasses ecoreClass="extended.ecore#//editor/StaticEEFEditorContribution"/>
+      <genClasses ecoreClass="extended.ecore#//editor/DynamicEEFEditorContribution"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Query" basePackage="org.eclipse.emf.eef.extended" disposableProviderFactory="true"
         ecorePackage="extended.ecore#//query">

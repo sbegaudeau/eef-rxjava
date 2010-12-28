@@ -77,103 +77,13 @@ public interface EditorPackage extends EPackage {
 	int EEF_EDITOR_CONTRIBUTION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_EDITOR_CONTRIBUTION__DOCUMENTATION = MappingPackage.ABSTRACT_ELEMENT_BINDING__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Sub Elements</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__SUB_ELEMENTS = MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__PROPERTIES = MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Databinding</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__DATABINDING = MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING;
-
-	/**
-	 * The feature id for the '<em><b>Super Element</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__SUPER_ELEMENT = MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__NAME = MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Referenced Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__REFERENCED_BINDING = MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Views</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__VIEWS = MappingPackage.ABSTRACT_ELEMENT_BINDING__VIEWS;
-
-	/**
-	 * The feature id for the '<em><b>Category</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__CATEGORY = MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY;
-
-	/**
-	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__BINDING_FILTERS = MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS;
-
-	/**
-	 * The feature id for the '<em><b>Model</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_CONTRIBUTION__MODEL = MappingPackage.ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT + 0;
+	int EEF_EDITOR_CONTRIBUTION__INPUT = 0;
 
 	/**
 	 * The number of structural features of the '<em>EEF Editor Contribution</em>' class.
@@ -182,7 +92,7 @@ public interface EditorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_EDITOR_CONTRIBUTION_FEATURE_COUNT = MappingPackage.ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT + 1;
+	int EEF_EDITOR_CONTRIBUTION_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.extended.editor.impl.EEFPageImpl <em>EEF Page</em>}' class.
@@ -1034,6 +944,252 @@ public interface EditorPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.extended.editor.impl.StaticEEFEditorContributionImpl <em>Static EEF Editor Contribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.extended.editor.impl.StaticEEFEditorContributionImpl
+	 * @see org.eclipse.emf.eef.extended.editor.impl.EditorPackageImpl#getStaticEEFEditorContribution()
+	 * @generated
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__DOCUMENTATION = MappingPackage.ABSTRACT_ELEMENT_BINDING__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Sub Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__SUB_ELEMENTS = MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__PROPERTIES = MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Databinding</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__DATABINDING = MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING;
+
+	/**
+	 * The feature id for the '<em><b>Super Element</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__SUPER_ELEMENT = MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__NAME = MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Referenced Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__REFERENCED_BINDING = MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Views</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__VIEWS = MappingPackage.ABSTRACT_ELEMENT_BINDING__VIEWS;
+
+	/**
+	 * The feature id for the '<em><b>Category</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__CATEGORY = MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY;
+
+	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__BINDING_FILTERS = MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION__INPUT = MappingPackage.ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Static EEF Editor Contribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_EEF_EDITOR_CONTRIBUTION_FEATURE_COUNT = MappingPackage.ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.extended.editor.impl.DynamicEEFEditorContributionImpl <em>Dynamic EEF Editor Contribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.extended.editor.impl.DynamicEEFEditorContributionImpl
+	 * @see org.eclipse.emf.eef.extended.editor.impl.EditorPackageImpl#getDynamicEEFEditorContribution()
+	 * @generated
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION = 13;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__DOCUMENTATION = MappingPackage.EMF_ELEMENT_BINDING__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Sub Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__SUB_ELEMENTS = MappingPackage.EMF_ELEMENT_BINDING__SUB_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__PROPERTIES = MappingPackage.EMF_ELEMENT_BINDING__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Databinding</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__DATABINDING = MappingPackage.EMF_ELEMENT_BINDING__DATABINDING;
+
+	/**
+	 * The feature id for the '<em><b>Super Element</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__SUPER_ELEMENT = MappingPackage.EMF_ELEMENT_BINDING__SUPER_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__NAME = MappingPackage.EMF_ELEMENT_BINDING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Referenced Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__REFERENCED_BINDING = MappingPackage.EMF_ELEMENT_BINDING__REFERENCED_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Views</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__VIEWS = MappingPackage.EMF_ELEMENT_BINDING__VIEWS;
+
+	/**
+	 * The feature id for the '<em><b>Category</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__CATEGORY = MappingPackage.EMF_ELEMENT_BINDING__CATEGORY;
+
+	/**
+	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__BINDING_FILTERS = MappingPackage.EMF_ELEMENT_BINDING__BINDING_FILTERS;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__MODEL = MappingPackage.EMF_ELEMENT_BINDING__MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION__INPUT = MappingPackage.EMF_ELEMENT_BINDING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Dynamic EEF Editor Contribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_EEF_EDITOR_CONTRIBUTION_FEATURE_COUNT = MappingPackage.EMF_ELEMENT_BINDING_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.extended.editor.EEFEditorContribution <em>EEF Editor Contribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1044,15 +1200,15 @@ public interface EditorPackage extends EPackage {
 	EClass getEEFEditorContribution();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.extended.editor.EEFEditorContribution#getModel <em>Model</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.extended.editor.EEFEditorContribution#getInput <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Model</em>'.
-	 * @see org.eclipse.emf.eef.extended.editor.EEFEditorContribution#getModel()
+	 * @return the meta object for the containment reference '<em>Input</em>'.
+	 * @see org.eclipse.emf.eef.extended.editor.EEFEditorContribution#getInput()
 	 * @see #getEEFEditorContribution()
 	 * @generated
 	 */
-	EReference getEEFEditorContribution_Model();
+	EReference getEEFEditorContribution_Input();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.extended.editor.EEFPage <em>EEF Page</em>}'.
@@ -1242,6 +1398,26 @@ public interface EditorPackage extends EPackage {
 	EClass getEEFEditorPages();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution <em>Static EEF Editor Contribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Static EEF Editor Contribution</em>'.
+	 * @see org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution
+	 * @generated
+	 */
+	EClass getStaticEEFEditorContribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution <em>Dynamic EEF Editor Contribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dynamic EEF Editor Contribution</em>'.
+	 * @see org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution
+	 * @generated
+	 */
+	EClass getDynamicEEFEditorContribution();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1274,12 +1450,12 @@ public interface EditorPackage extends EPackage {
 		EClass EEF_EDITOR_CONTRIBUTION = eINSTANCE.getEEFEditorContribution();
 
 		/**
-		 * The meta object literal for the '<em><b>Model</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EEF_EDITOR_CONTRIBUTION__MODEL = eINSTANCE.getEEFEditorContribution_Model();
+		EReference EEF_EDITOR_CONTRIBUTION__INPUT = eINSTANCE.getEEFEditorContribution_Input();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.extended.editor.impl.EEFPageImpl <em>EEF Page</em>}' class.
@@ -1446,6 +1622,26 @@ public interface EditorPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EEF_EDITOR_PAGES = eINSTANCE.getEEFEditorPages();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.extended.editor.impl.StaticEEFEditorContributionImpl <em>Static EEF Editor Contribution</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.extended.editor.impl.StaticEEFEditorContributionImpl
+		 * @see org.eclipse.emf.eef.extended.editor.impl.EditorPackageImpl#getStaticEEFEditorContribution()
+		 * @generated
+		 */
+		EClass STATIC_EEF_EDITOR_CONTRIBUTION = eINSTANCE.getStaticEEFEditorContribution();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.extended.editor.impl.DynamicEEFEditorContributionImpl <em>Dynamic EEF Editor Contribution</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.extended.editor.impl.DynamicEEFEditorContributionImpl
+		 * @see org.eclipse.emf.eef.extended.editor.impl.EditorPackageImpl#getDynamicEEFEditorContribution()
+		 * @generated
+		 */
+		EClass DYNAMIC_EEF_EDITOR_CONTRIBUTION = eINSTANCE.getDynamicEEFEditorContribution();
 
 	}
 

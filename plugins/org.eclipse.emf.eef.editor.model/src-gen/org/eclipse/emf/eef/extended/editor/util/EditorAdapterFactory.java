@@ -1,20 +1,12 @@
-/**
- * Copyright (c) 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     Obeo - initial API and implementation
- */
 package org.eclipse.emf.eef.extended.editor.util;
+
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
+import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContributions;
 import org.eclipse.emf.eef.extended.editor.EEFEditorPages;
@@ -26,12 +18,14 @@ import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.MasterDetailsPage;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
+import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
-import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.mapping.EMFElementBinding;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.Container;
+import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewElement;
@@ -141,16 +135,16 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 				return createEEFEditorPagesAdapter();
 			}
 			@Override
+			public Adapter caseStaticEEFEditorContribution(StaticEEFEditorContribution object) {
+				return createStaticEEFEditorContributionAdapter();
+			}
+			@Override
+			public Adapter caseDynamicEEFEditorContribution(DynamicEEFEditorContribution object) {
+				return createDynamicEEFEditorContributionAdapter();
+			}
+			@Override
 			public Adapter caseDocumentedElement(DocumentedElement object) {
 				return createDocumentedElementAdapter();
-			}
-			@Override
-			public Adapter caseAbstractElementBinding(AbstractElementBinding object) {
-				return createAbstractElementBindingAdapter();
-			}
-			@Override
-			public Adapter caseViews_DocumentedElement(org.eclipse.emf.eef.views.DocumentedElement object) {
-				return createViews_DocumentedElementAdapter();
 			}
 			@Override
 			public Adapter caseViewElement(ViewElement object) {
@@ -169,6 +163,10 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 				return createViewAdapter();
 			}
 			@Override
+			public Adapter caseMapping_DocumentedElement(org.eclipse.emf.eef.mapping.DocumentedElement object) {
+				return createMapping_DocumentedElementAdapter();
+			}
+			@Override
 			public Adapter caseBindingFilter(BindingFilter object) {
 				return createBindingFilterAdapter();
 			}
@@ -179,6 +177,14 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseViews_Category(org.eclipse.emf.eef.views.Category object) {
 				return createViews_CategoryAdapter();
+			}
+			@Override
+			public Adapter caseAbstractElementBinding(AbstractElementBinding object) {
+				return createAbstractElementBindingAdapter();
+			}
+			@Override
+			public Adapter caseEMFElementBinding(EMFElementBinding object) {
+				return createEMFElementBindingAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -369,30 +375,30 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.DocumentedElement <em>Documented Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution <em>Static EEF Editor Contribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.eef.mapping.DocumentedElement
+	 * @see org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution
 	 * @generated
 	 */
-	public Adapter createDocumentedElementAdapter() {
+	public Adapter createStaticEEFEditorContributionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.AbstractElementBinding <em>Abstract Element Binding</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution <em>Dynamic EEF Editor Contribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.eef.mapping.AbstractElementBinding
+	 * @see org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution
 	 * @generated
 	 */
-	public Adapter createAbstractElementBindingAdapter() {
+	public Adapter createDynamicEEFEditorContributionAdapter() {
 		return null;
 	}
 
@@ -406,7 +412,7 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.eef.views.DocumentedElement
 	 * @generated
 	 */
-	public Adapter createViews_DocumentedElementAdapter() {
+	public Adapter createDocumentedElementAdapter() {
 		return null;
 	}
 
@@ -467,6 +473,20 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.DocumentedElement <em>Documented Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.mapping.DocumentedElement
+	 * @generated
+	 */
+	public Adapter createMapping_DocumentedElementAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.filters.BindingFilter <em>Binding Filter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -505,6 +525,34 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createViews_CategoryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.AbstractElementBinding <em>Abstract Element Binding</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.mapping.AbstractElementBinding
+	 * @generated
+	 */
+	public Adapter createAbstractElementBindingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.EMFElementBinding <em>EMF Element Binding</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.mapping.EMFElementBinding
+	 * @generated
+	 */
+	public Adapter createEMFElementBindingAdapter() {
 		return null;
 	}
 

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
+import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContributions;
 import org.eclipse.emf.eef.extended.editor.EEFEditorPages;
@@ -30,6 +31,7 @@ import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.MasterDetailsPage;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
+import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
 import org.eclipse.emf.eef.extended.query.QueryPackage;
 import org.eclipse.emf.eef.extended.query.impl.QueryPackageImpl;
@@ -129,6 +131,20 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 	private EClass eefEditorPagesEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass staticEEFEditorContributionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dynamicEEFEditorContributionEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -211,7 +227,7 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEEFEditorContribution_Model() {
+	public EReference getEEFEditorContribution_Input() {
 		return (EReference)eefEditorContributionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -382,6 +398,24 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStaticEEFEditorContribution() {
+		return staticEEFEditorContributionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDynamicEEFEditorContribution() {
+		return dynamicEEFEditorContributionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EditorFactory getEditorFactory() {
 		return (EditorFactory)getEFactoryInstance();
 	}
@@ -406,7 +440,7 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 
 		// Create classes and their features
 		eefEditorContributionEClass = createEClass(EEF_EDITOR_CONTRIBUTION);
-		createEReference(eefEditorContributionEClass, EEF_EDITOR_CONTRIBUTION__MODEL);
+		createEReference(eefEditorContributionEClass, EEF_EDITOR_CONTRIBUTION__INPUT);
 
 		eefPageEClass = createEClass(EEF_PAGE);
 		createEAttribute(eefPageEClass, EEF_PAGE__TITLE);
@@ -436,6 +470,10 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		eefEditorContributionsEClass = createEClass(EEF_EDITOR_CONTRIBUTIONS);
 
 		eefEditorPagesEClass = createEClass(EEF_EDITOR_PAGES);
+
+		staticEEFEditorContributionEClass = createEClass(STATIC_EEF_EDITOR_CONTRIBUTION);
+
+		dynamicEEFEditorContributionEClass = createEClass(DYNAMIC_EEF_EDITOR_CONTRIBUTION);
 	}
 
 	/**
@@ -462,19 +500,18 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		MappingPackage theMappingPackage = (MappingPackage)EPackage.Registry.INSTANCE.getEPackage(MappingPackage.eNS_URI);
 		ViewsPackage theViewsPackage = (ViewsPackage)EPackage.Registry.INSTANCE.getEPackage(ViewsPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		QueryPackage theQueryPackage = (QueryPackage)EPackage.Registry.INSTANCE.getEPackage(QueryPackage.eNS_URI);
 		FiltersPackage theFiltersPackage = (FiltersPackage)EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI);
 		ComponentsPackage theComponentsPackage = (ComponentsPackage)EPackage.Registry.INSTANCE.getEPackage(ComponentsPackage.eNS_URI);
+		MappingPackage theMappingPackage = (MappingPackage)EPackage.Registry.INSTANCE.getEPackage(MappingPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		eefEditorContributionEClass.getESuperTypes().add(theMappingPackage.getAbstractElementBinding());
 		eefPageEClass.getESuperTypes().add(theViewsPackage.getView());
 		standardFormPageEClass.getESuperTypes().add(this.getEEFPage());
 		masterDetailsPageEClass.getESuperTypes().add(this.getEEFPage());
@@ -485,10 +522,14 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		partFilterEClass.getESuperTypes().add(theFiltersPackage.getBindingFilter());
 		eefEditorContributionsEClass.getESuperTypes().add(theMappingPackage.getCategory());
 		eefEditorPagesEClass.getESuperTypes().add(theViewsPackage.getCategory());
+		staticEEFEditorContributionEClass.getESuperTypes().add(theMappingPackage.getAbstractElementBinding());
+		staticEEFEditorContributionEClass.getESuperTypes().add(this.getEEFEditorContribution());
+		dynamicEEFEditorContributionEClass.getESuperTypes().add(theMappingPackage.getEMFElementBinding());
+		dynamicEEFEditorContributionEClass.getESuperTypes().add(this.getEEFEditorContribution());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(eefEditorContributionEClass, EEFEditorContribution.class, "EEFEditorContribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEEFEditorContribution_Model(), this.getEEFPageInput(), null, "model", null, 1, 1, EEFEditorContribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eefEditorContributionEClass, EEFEditorContribution.class, "EEFEditorContribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFEditorContribution_Input(), this.getEEFPageInput(), null, "input", null, 1, 1, EEFEditorContribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefPageEClass, EEFPage.class, "EEFPage", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEEFPage_Title(), ecorePackage.getEString(), "title", null, 1, 1, EEFPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -518,6 +559,10 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		initEClass(eefEditorContributionsEClass, EEFEditorContributions.class, "EEFEditorContributions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eefEditorPagesEClass, EEFEditorPages.class, "EEFEditorPages", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(staticEEFEditorContributionEClass, StaticEEFEditorContribution.class, "StaticEEFEditorContribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(dynamicEEFEditorContributionEClass, DynamicEEFEditorContribution.class, "DynamicEEFEditorContribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -30,15 +30,6 @@ public interface EditorFactory extends EFactory {
 	EditorFactory eINSTANCE = org.eclipse.emf.eef.extended.editor.impl.EditorFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>EEF Editor Contribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EEF Editor Contribution</em>'.
-	 * @generated
-	 */
-	EEFEditorContribution createEEFEditorContribution();
-
-	/**
 	 * Returns a new object of class '<em>Standard Form Page</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,6 +100,24 @@ public interface EditorFactory extends EFactory {
 	 * @generated
 	 */
 	EEFEditorPages createEEFEditorPages();
+
+	/**
+	 * Returns a new object of class '<em>Static EEF Editor Contribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Static EEF Editor Contribution</em>'.
+	 * @generated
+	 */
+	StaticEEFEditorContribution createStaticEEFEditorContribution();
+
+	/**
+	 * Returns a new object of class '<em>Dynamic EEF Editor Contribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dynamic EEF Editor Contribution</em>'.
+	 * @generated
+	 */
+	DynamicEEFEditorContribution createDynamicEEFEditorContribution();
 
 	/**
 	 * Returns the package supported by this factory.

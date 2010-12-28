@@ -43,6 +43,7 @@ import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.util.MappingSwitch;
+import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.emf.eef.views.util.ViewsSwitch;
@@ -101,29 +102,6 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.extended.editor.EEFEditorContribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EEFEditorContributionItemProvider eefEditorContributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.eef.extended.editor.EEFEditorContribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEEFEditorContributionAdapter() {
-		if (eefEditorContributionItemProvider == null) {
-			eefEditorContributionItemProvider = new EEFEditorContributionItemProvider(this);
-		}
-
-		return eefEditorContributionItemProvider;
 	}
 
 	/**
@@ -311,6 +289,52 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StaticEEFEditorContributionItemProvider staticEEFEditorContributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStaticEEFEditorContributionAdapter() {
+		if (staticEEFEditorContributionItemProvider == null) {
+			staticEEFEditorContributionItemProvider = new StaticEEFEditorContributionItemProvider(this);
+		}
+
+		return staticEEFEditorContributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DynamicEEFEditorContributionItemProvider dynamicEEFEditorContributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDynamicEEFEditorContributionAdapter() {
+		if (dynamicEEFEditorContributionItemProvider == null) {
+			dynamicEEFEditorContributionItemProvider = new DynamicEEFEditorContributionItemProvider(this);
+		}
+
+		return dynamicEEFEditorContributionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,7 +460,6 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
-		if (eefEditorContributionItemProvider != null) eefEditorContributionItemProvider.dispose();
 		if (standardFormPageItemProvider != null) standardFormPageItemProvider.dispose();
 		if (eefMasterPageItemProvider != null) eefMasterPageItemProvider.dispose();
 		if (treeMasterPageItemProvider != null) treeMasterPageItemProvider.dispose();
@@ -445,6 +468,8 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 		if (partFilterItemProvider != null) partFilterItemProvider.dispose();
 		if (eefEditorContributionsItemProvider != null) eefEditorContributionsItemProvider.dispose();
 		if (eefEditorPagesItemProvider != null) eefEditorPagesItemProvider.dispose();
+		if (staticEEFEditorContributionItemProvider != null) staticEEFEditorContributionItemProvider.dispose();
+		if (dynamicEEFEditorContributionItemProvider != null) dynamicEEFEditorContributionItemProvider.dispose();
 	}
 
 	/**
@@ -497,7 +522,12 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 				newChildDescriptors.add
 					(createChildParameter
 						(MappingPackage.Literals.DATABINDING__BINDINGS,
-						 EditorFactory.eINSTANCE.createEEFEditorContribution()));
+						 EditorFactory.eINSTANCE.createStaticEEFEditorContribution()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(MappingPackage.Literals.DATABINDING__BINDINGS,
+						 EditorFactory.eINSTANCE.createDynamicEEFEditorContribution()));
 
 				newChildDescriptors.add
 					(createChildParameter
@@ -517,7 +547,17 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 				newChildDescriptors.add
 					(createChildParameter
 						(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
-						 EditorFactory.eINSTANCE.createEEFEditorContribution()));
+						 EditorFactory.eINSTANCE.createStaticEEFEditorContribution()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+						 EditorFactory.eINSTANCE.createDynamicEEFEditorContribution()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS,
+						 EditorFactory.eINSTANCE.createPartFilter()));
 
 				return null;
 			}
@@ -547,7 +587,12 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 				newChildDescriptors.add
 					(createChildParameter
 						(MappingPackage.Literals.CATEGORY__BINDINGS,
-						 EditorFactory.eINSTANCE.createEEFEditorContribution()));
+						 EditorFactory.eINSTANCE.createStaticEEFEditorContribution()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(MappingPackage.Literals.CATEGORY__BINDINGS,
+						 EditorFactory.eINSTANCE.createDynamicEEFEditorContribution()));
 
 				newChildDescriptors.add
 					(createChildParameter
@@ -638,12 +683,80 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 			public Object caseViewsRepository(ViewsRepository object) {
 				newChildDescriptors.add
 					(createChildParameter
+						(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS,
+						 EditorFactory.eINSTANCE.createStandardFormPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS,
+						 EditorFactory.eINSTANCE.createEEFMasterPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS,
+						 EditorFactory.eINSTANCE.createTreeMasterPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
 						(ViewsPackage.Literals.VIEWS_REPOSITORY__CATEGORIES,
 						 EditorFactory.eINSTANCE.createEEFEditorPages()));
 
 				return null;
 			}
   
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseCategory(org.eclipse.emf.eef.views.Category object) {
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CATEGORY__VIEWS,
+						 EditorFactory.eINSTANCE.createStandardFormPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CATEGORY__VIEWS,
+						 EditorFactory.eINSTANCE.createEEFMasterPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CATEGORY__VIEWS,
+						 EditorFactory.eINSTANCE.createTreeMasterPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CATEGORY__CATEGORIES,
+						 EditorFactory.eINSTANCE.createEEFEditorPages()));
+
+				return null;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseContainer(Container object) {
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CONTAINER__ELEMENTS,
+						 EditorFactory.eINSTANCE.createStandardFormPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CONTAINER__ELEMENTS,
+						 EditorFactory.eINSTANCE.createEEFMasterPage()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ViewsPackage.Literals.CONTAINER__ELEMENTS,
+						 EditorFactory.eINSTANCE.createTreeMasterPage()));
+
+				return null;
+			}
 			/**
 			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->

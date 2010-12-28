@@ -116,7 +116,11 @@ public class EEFEditorContributionsItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(MappingPackage.Literals.CATEGORY__BINDINGS,
-				 EditorFactory.eINSTANCE.createEEFEditorContribution()));
+				 EditorFactory.eINSTANCE.createStaticEEFEditorContribution()));
+		newChildDescriptors.add
+			(createChildParameter
+				(MappingPackage.Literals.CATEGORY__BINDINGS,
+				 EditorFactory.eINSTANCE.createDynamicEEFEditorContribution()));
 	}
 
 }

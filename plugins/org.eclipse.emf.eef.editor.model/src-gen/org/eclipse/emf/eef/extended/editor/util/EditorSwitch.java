@@ -1,20 +1,12 @@
-/**
- * Copyright (c) 2010 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     Obeo - initial API and implementation
- */
 package org.eclipse.emf.eef.extended.editor.util;
+
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
+import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContributions;
 import org.eclipse.emf.eef.extended.editor.EEFEditorPages;
@@ -26,12 +18,14 @@ import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.MasterDetailsPage;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
+import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
-import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.mapping.EMFElementBinding;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.Container;
+import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewElement;
@@ -113,8 +107,6 @@ public class EditorSwitch<T> {
 			case EditorPackage.EEF_EDITOR_CONTRIBUTION: {
 				EEFEditorContribution eefEditorContribution = (EEFEditorContribution)theEObject;
 				T result = caseEEFEditorContribution(eefEditorContribution);
-				if (result == null) result = caseAbstractElementBinding(eefEditorContribution);
-				if (result == null) result = caseDocumentedElement(eefEditorContribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -125,7 +117,7 @@ public class EditorSwitch<T> {
 				if (result == null) result = caseContainer(eefPage);
 				if (result == null) result = caseViewElement(eefPage);
 				if (result == null) result = caseIdentifiedElement(eefPage);
-				if (result == null) result = caseViews_DocumentedElement(eefPage);
+				if (result == null) result = caseDocumentedElement(eefPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,7 +129,7 @@ public class EditorSwitch<T> {
 				if (result == null) result = caseContainer(standardFormPage);
 				if (result == null) result = caseViewElement(standardFormPage);
 				if (result == null) result = caseIdentifiedElement(standardFormPage);
-				if (result == null) result = caseViews_DocumentedElement(standardFormPage);
+				if (result == null) result = caseDocumentedElement(standardFormPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -149,7 +141,7 @@ public class EditorSwitch<T> {
 				if (result == null) result = caseContainer(masterDetailsPage);
 				if (result == null) result = caseViewElement(masterDetailsPage);
 				if (result == null) result = caseIdentifiedElement(masterDetailsPage);
-				if (result == null) result = caseViews_DocumentedElement(masterDetailsPage);
+				if (result == null) result = caseDocumentedElement(masterDetailsPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -162,7 +154,7 @@ public class EditorSwitch<T> {
 				if (result == null) result = caseContainer(eefMasterPage);
 				if (result == null) result = caseViewElement(eefMasterPage);
 				if (result == null) result = caseIdentifiedElement(eefMasterPage);
-				if (result == null) result = caseViews_DocumentedElement(eefMasterPage);
+				if (result == null) result = caseDocumentedElement(eefMasterPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -175,7 +167,7 @@ public class EditorSwitch<T> {
 				if (result == null) result = caseContainer(treeMasterPage);
 				if (result == null) result = caseViewElement(treeMasterPage);
 				if (result == null) result = caseIdentifiedElement(treeMasterPage);
-				if (result == null) result = caseViews_DocumentedElement(treeMasterPage);
+				if (result == null) result = caseDocumentedElement(treeMasterPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -203,7 +195,7 @@ public class EditorSwitch<T> {
 				PartFilter partFilter = (PartFilter)theEObject;
 				T result = casePartFilter(partFilter);
 				if (result == null) result = caseBindingFilter(partFilter);
-				if (result == null) result = caseDocumentedElement(partFilter);
+				if (result == null) result = caseMapping_DocumentedElement(partFilter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -211,7 +203,7 @@ public class EditorSwitch<T> {
 				EEFEditorContributions eefEditorContributions = (EEFEditorContributions)theEObject;
 				T result = caseEEFEditorContributions(eefEditorContributions);
 				if (result == null) result = caseCategory(eefEditorContributions);
-				if (result == null) result = caseDocumentedElement(eefEditorContributions);
+				if (result == null) result = caseMapping_DocumentedElement(eefEditorContributions);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -219,7 +211,26 @@ public class EditorSwitch<T> {
 				EEFEditorPages eefEditorPages = (EEFEditorPages)theEObject;
 				T result = caseEEFEditorPages(eefEditorPages);
 				if (result == null) result = caseViews_Category(eefEditorPages);
-				if (result == null) result = caseViews_DocumentedElement(eefEditorPages);
+				if (result == null) result = caseDocumentedElement(eefEditorPages);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION: {
+				StaticEEFEditorContribution staticEEFEditorContribution = (StaticEEFEditorContribution)theEObject;
+				T result = caseStaticEEFEditorContribution(staticEEFEditorContribution);
+				if (result == null) result = caseAbstractElementBinding(staticEEFEditorContribution);
+				if (result == null) result = caseEEFEditorContribution(staticEEFEditorContribution);
+				if (result == null) result = caseMapping_DocumentedElement(staticEEFEditorContribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EditorPackage.DYNAMIC_EEF_EDITOR_CONTRIBUTION: {
+				DynamicEEFEditorContribution dynamicEEFEditorContribution = (DynamicEEFEditorContribution)theEObject;
+				T result = caseDynamicEEFEditorContribution(dynamicEEFEditorContribution);
+				if (result == null) result = caseEMFElementBinding(dynamicEEFEditorContribution);
+				if (result == null) result = caseEEFEditorContribution(dynamicEEFEditorContribution);
+				if (result == null) result = caseAbstractElementBinding(dynamicEEFEditorContribution);
+				if (result == null) result = caseMapping_DocumentedElement(dynamicEEFEditorContribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -408,6 +419,36 @@ public class EditorSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Static EEF Editor Contribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Static EEF Editor Contribution</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStaticEEFEditorContribution(StaticEEFEditorContribution object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dynamic EEF Editor Contribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dynamic EEF Editor Contribution</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDynamicEEFEditorContribution(DynamicEEFEditorContribution object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -419,36 +460,6 @@ public class EditorSwitch<T> {
 	 * @generated
 	 */
 	public T caseDocumentedElement(DocumentedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Element Binding</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Element Binding</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractElementBinding(AbstractElementBinding object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseViews_DocumentedElement(org.eclipse.emf.eef.views.DocumentedElement object) {
 		return null;
 	}
 
@@ -513,6 +524,21 @@ public class EditorSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapping_DocumentedElement(org.eclipse.emf.eef.mapping.DocumentedElement object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Binding Filter</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -554,6 +580,36 @@ public class EditorSwitch<T> {
 	 * @generated
 	 */
 	public T caseViews_Category(org.eclipse.emf.eef.views.Category object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Element Binding</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Element Binding</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractElementBinding(AbstractElementBinding object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>EMF Element Binding</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EMF Element Binding</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEMFElementBinding(EMFElementBinding object) {
 		return null;
 	}
 

@@ -15,25 +15,26 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFPageInput;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
+import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
+import org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>EEF Editor Contribution</b></em>'.
+ * An implementation of the model object '<em><b>Static EEF Editor Contribution</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.extended.editor.impl.EEFEditorContributionImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.extended.editor.impl.StaticEEFEditorContributionImpl#getInput <em>Input</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class EEFEditorContributionImpl extends EObjectImpl implements EEFEditorContribution {
+public class StaticEEFEditorContributionImpl extends AbstractElementBindingImpl implements StaticEEFEditorContribution {
 	/**
 	 * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -43,12 +44,13 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	 * @ordered
 	 */
 	protected EEFPageInput input;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EEFEditorContributionImpl() {
+	protected StaticEEFEditorContributionImpl() {
 		super();
 	}
 
@@ -59,7 +61,7 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EditorPackage.Literals.EEF_EDITOR_CONTRIBUTION;
+		return EditorPackage.Literals.STATIC_EEF_EDITOR_CONTRIBUTION;
 	}
 
 	/**
@@ -80,7 +82,7 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 		EEFPageInput oldInput = input;
 		input = newInput;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT, oldInput, newInput);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT, oldInput, newInput);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -95,14 +97,14 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 		if (newInput != input) {
 			NotificationChain msgs = null;
 			if (input != null)
-				msgs = ((InternalEObject)input).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT, null, msgs);
+				msgs = ((InternalEObject)input).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT, null, msgs);
 			if (newInput != null)
-				msgs = ((InternalEObject)newInput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT, null, msgs);
+				msgs = ((InternalEObject)newInput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT, null, msgs);
 			msgs = basicSetInput(newInput, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT, newInput, newInput));
+			eNotify(new ENotificationImpl(this, Notification.SET, EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT, newInput, newInput));
 	}
 
 	/**
@@ -113,7 +115,7 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT:
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT:
 				return basicSetInput(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -127,7 +129,7 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT:
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT:
 				return getInput();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -141,7 +143,7 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT:
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT:
 				setInput((EEFPageInput)newValue);
 				return;
 		}
@@ -156,7 +158,7 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT:
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT:
 				setInput((EEFPageInput)null);
 				return;
 		}
@@ -171,10 +173,42 @@ public abstract class EEFEditorContributionImpl extends EObjectImpl implements E
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT:
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT:
 				return input != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //EEFEditorContributionImpl
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == EEFEditorContribution.class) {
+			switch (derivedFeatureID) {
+				case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT: return EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == EEFEditorContribution.class) {
+			switch (baseFeatureID) {
+				case EditorPackage.EEF_EDITOR_CONTRIBUTION__INPUT: return EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION__INPUT;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+} //StaticEEFEditorContributionImpl

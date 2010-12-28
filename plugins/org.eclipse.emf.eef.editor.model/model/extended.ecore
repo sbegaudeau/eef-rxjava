@@ -5,8 +5,8 @@
     nsURI="http://www.eclipse.org/emf/eef/extended" nsPrefix="eef-ext">
   <eSubpackages name="editor" nsURI="http://www.eclipse.org/emf/eef/extended/editor/1.0.0"
       nsPrefix="eef-ext-edt">
-    <eClassifiers xsi:type="ecore:EClass" name="EEFEditorContribution" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1"
+    <eClassifiers xsi:type="ecore:EClass" name="EEFEditorContribution" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1"
           eType="#//editor/EEFPageInput" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EEFPage" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.views/model/views.ecore#//View">
@@ -37,6 +37,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EEFEditorContributions" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//Category"/>
     <eClassifiers xsi:type="ecore:EClass" name="EEFEditorPages" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.views/model/views.ecore#//Category"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StaticEEFEditorContribution" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding #//editor/EEFEditorContribution"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DynamicEEFEditorContribution" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFElementBinding #//editor/EEFEditorContribution"/>
   </eSubpackages>
   <eSubpackages name="query" nsURI="http://www.eclipse.org/emf/eef/extended/query/1.0.0"
       nsPrefix="eef-ext-qry">

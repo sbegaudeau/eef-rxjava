@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
-import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
+import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContributions;
 import org.eclipse.emf.eef.extended.editor.EEFEditorPages;
 import org.eclipse.emf.eef.extended.editor.EEFMasterPage;
@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
+import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
 
 /**
@@ -71,7 +72,6 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case EditorPackage.EEF_EDITOR_CONTRIBUTION: return createEEFEditorContribution();
 			case EditorPackage.STANDARD_FORM_PAGE: return createStandardFormPage();
 			case EditorPackage.EEF_MASTER_PAGE: return createEEFMasterPage();
 			case EditorPackage.TREE_MASTER_PAGE: return createTreeMasterPage();
@@ -80,19 +80,11 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 			case EditorPackage.PART_FILTER: return createPartFilter();
 			case EditorPackage.EEF_EDITOR_CONTRIBUTIONS: return createEEFEditorContributions();
 			case EditorPackage.EEF_EDITOR_PAGES: return createEEFEditorPages();
+			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION: return createStaticEEFEditorContribution();
+			case EditorPackage.DYNAMIC_EEF_EDITOR_CONTRIBUTION: return createDynamicEEFEditorContribution();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEFEditorContribution createEEFEditorContribution() {
-		EEFEditorContributionImpl eefEditorContribution = new EEFEditorContributionImpl();
-		return eefEditorContribution;
 	}
 
 	/**
@@ -173,6 +165,26 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 	public EEFEditorPages createEEFEditorPages() {
 		EEFEditorPagesImpl eefEditorPages = new EEFEditorPagesImpl();
 		return eefEditorPages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StaticEEFEditorContribution createStaticEEFEditorContribution() {
+		StaticEEFEditorContributionImpl staticEEFEditorContribution = new StaticEEFEditorContributionImpl();
+		return staticEEFEditorContribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DynamicEEFEditorContribution createDynamicEEFEditorContribution() {
+		DynamicEEFEditorContributionImpl dynamicEEFEditorContribution = new DynamicEEFEditorContributionImpl();
+		return dynamicEEFEditorContribution;
 	}
 
 	/**
