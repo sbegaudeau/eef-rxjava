@@ -103,6 +103,5 @@ page.setEditingDomain(editingDomain);
 [if ((not page.title.oclIsUndefined()) and (page.title.size() > 0))]	
 page.setPageTitle("[page.title/]");
 [/if]
-return page;
 [/template]
 
