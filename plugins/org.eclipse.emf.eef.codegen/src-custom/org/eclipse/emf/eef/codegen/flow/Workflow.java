@@ -3,8 +3,10 @@
  */
 package org.eclipse.emf.eef.codegen.flow;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -14,30 +16,42 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowContext;
+import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public class Workflow extends Step {
+public class Workflow extends StepWithInput {
 	
 	private Map<String, Step> steps;
+	private Shell shell;
+	private boolean prepared;
 
 	/**
 	 * Create an empty flow 
 	 */
-	public Workflow(String name) {
+	public Workflow(String name, Shell shell) {
 		super(name);
 		steps = new LinkedHashMap<String, Step>();
+		this.shell = shell;
+		prepared = false;
 	}
 
 	/**
 	 * Create a flow with the given steps
+	 * @param name flow name
+	 * @param shell current shell
 	 * @param steps the workflow's steps
 	 */
-	public Workflow(String name, Map<String, Step> steps) {
+	public Workflow(String name, Shell shell, Map<String, Step> steps) {
 		super(name);
 		this.steps = steps;
+		this.shell = shell;
+		prepared = false;
 	}
 
 	/**
@@ -92,12 +106,61 @@ public class Workflow extends Step {
 			step.setResourceSet(resourceSet);
 		}
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.codegen.flow.StepWithInput#getInputPages()
+	 */
+	public List<WizardPage> getInputPages() {
+		List<WizardPage> flowPages = new ArrayList<WizardPage>();
+		for (Step step : steps.values()) {
+			if (step instanceof StepWithInput) {
+				flowPages.addAll(((StepWithInput) step).getInputPages());
+			}
+		}
+		return flowPages;
+	}
+	
+	/**
+	 * Prepare the flow execution.
+	 */
+	public void prepare() {
+		if (getInputPages().size() > 0) {
+			Wizard prepareWizard = new Wizard() {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.jface.wizard.Wizard#addPages()
+				 */
+				public void addPages() {
+					for (WizardPage page : getInputPages()) {
+						addPage(page);
+					}
+				}
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.jface.wizard.Wizard#performFinish()
+				 */
+				public boolean performFinish() {
+					for (WizardPage page : getInputPages()) {
+						((StepInput)page).processInput();
+					}
+					return true;
+				}
+			};
+			WizardDialog wDialog = new WizardDialog(shell, prepareWizard);
+			wDialog.open();
+		}
+		prepared = true;
+	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public IStatus execute(IProgressMonitor monitor) {
+		assert prepared == true:"Workflow must be prepared before execution";
 		monitor.beginTask(name, steps.size());
 		for (Iterator<String> iterator = steps.keySet().iterator(); iterator.hasNext();) {
 			String key = (String) iterator.next();
