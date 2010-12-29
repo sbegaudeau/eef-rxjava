@@ -142,8 +142,10 @@ public class GenerateEEFModels extends Step {
 
 	private IFolder createEEFModelsFolder(IProject editProject, IProgressMonitor monitor) throws CoreException {
 		IFolder modelsFolder = editProject.getFolder(new Path("models"));
-		modelsFolder.create(true, true, monitor);
-		editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		if (!modelsFolder.exists()) {
+			modelsFolder.create(true, true, monitor);
+			editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		}
 		((WorkflowVariable)getEEFModelsFolder()).setValue(modelsFolder);
 		return modelsFolder;
 	}			
