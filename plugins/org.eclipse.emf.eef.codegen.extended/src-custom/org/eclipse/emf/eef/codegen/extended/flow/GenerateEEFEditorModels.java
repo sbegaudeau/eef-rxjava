@@ -64,9 +64,9 @@ public class GenerateEEFEditorModels extends Step {
 				return new Status(IStatus.ERROR, EEFCodegenPlugin.PLUGIN_ID, "Unable to find edit project");
 			}
 		} catch (IOException e) {
-			return new Status(IStatus.ERROR, EEFCodegenPlugin.PLUGIN_ID, "An error occured during EEF models initialization.");
+			return new Status(IStatus.ERROR, EEFCodegenPlugin.PLUGIN_ID, "An error occured during EEF models initialization.", e);
 		} catch (CoreException e) {
-			return new Status(IStatus.ERROR, EEFCodegenPlugin.PLUGIN_ID, "An error occured during EEF models initialization.");
+			return new Status(IStatus.ERROR, EEFCodegenPlugin.PLUGIN_ID, "An error occured during EEF models initialization.", e);
 		}
 	}
 	

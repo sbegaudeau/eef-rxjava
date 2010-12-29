@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitializer;
 import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
+import org.eclipse.emf.eef.codegen.extended.flow.CleanEEFEditorSources;
 import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorCode;
 import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorModels;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
@@ -34,7 +35,6 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -42,6 +42,7 @@ import org.eclipse.ui.PlatformUI;
  */
 public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 
+	private static final String CLEAN_EEF_EDITOR_SOURCE = "Clean EEF editor source";
 	private static final String WORKFLOW_NAME = "Generate EEF Editor";
 	private static final String GENERATING_THE_GENMODEL = "Generating the GenModel";
 	private static final String GENERATE_EMF_MODEL_CODE = "Generate EMF Model Code";
@@ -77,6 +78,8 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 		if (model instanceof EPackage) {
 			final Workflow workflow = new Workflow(WORKFLOW_NAME);
 			workflow.setResourceSet(resourceSet);
+			CleanEEFEditorSources cleanEEFEditorSources = new CleanEEFEditorSources(CLEAN_EEF_EDITOR_SOURCE, activeSite.getShell(), modelFile, targetFolder);
+			workflow.addStep(CLEAN_EEF_EDITOR_SOURCE, cleanEEFEditorSources);
 			// Step 1 :  Generate GenModel
 			InitializeGenModel initializeGenModelStep = new InitializeGenModel(GENERATING_THE_GENMODEL, modelFile, targetFolder) {
 
@@ -106,26 +109,24 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			AddDependency addDependency = new AddDependency(ADDING_EEF_RUNTIME_DEPENDENCY, generateEMFEditCode.genProject(), EEFRuntimePlugin.PLUGIN_ID);
 			workflow.addStep(ADDING_EEF_RUNTIME_DEPENDENCY, addDependency);
 			GenerateEEFCode generateEEFCode = new GenerateEEFCode(GENERATE_EEF_CODE, generateEEFModels.getEEFGenModel());
-			activeSite = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart().getSite();
 			JDTImportsOrganisationCallback callback = new JDTImportsOrganisationCallback(activeSite);
 			generateEEFCode.addGenerationCallback(callback);
 			workflow.addStep(GENERATE_EEF_CODE, generateEEFCode);
 			// Step 6 : Adding Extension Point
-			// bundleHelper.addExtension("org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider");
 			MergePluginXML mergePluginXML = new MergePluginXML(MERGING_GENERATED_PLUGIN_XML_FILES, generateEMFEditCode.genProject());
 			workflow.addStep(MERGING_GENERATED_PLUGIN_XML_FILES, mergePluginXML);
-			IRunnableWithProgress runnable = new IRunnableWithProgress() {
-
-				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-					workflow.execute(monitor);
-				}
-			};
 			GenerateEEFEditorModels generateEEFEditorModels = new GenerateEEFEditorModels(GENERATE_EEF_EDITOR_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI(), generateEEFModels.getEEFModelsFolder());
 			workflow.addStep(GENERATE_EEF_EDITOR_MODELS, generateEEFEditorModels);
 			AddDependency addExtendedRuntimeDependency = new AddDependency(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, generateEMFEditorCode.genProject(), EEFExtendedRuntime.PLUGIN_ID);
 			workflow.addStep(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, addExtendedRuntimeDependency);
 			GenerateEEFEditorCode generateEEFEditorCode = new GenerateEEFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
 			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
+			IRunnableWithProgress runnable = new IRunnableWithProgress() {
+
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					workflow.execute(monitor);
+				}
+			};
 			new ProgressMonitorDialog(new Shell()).run(true, true, runnable);
 		}
 		
