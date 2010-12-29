@@ -76,9 +76,9 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 		registerPackages(resourceSet);
 		EObject model = EMFHelper.load(modelURI, resourceSet);
 		if (model instanceof EPackage) {
-			final Workflow workflow = new Workflow(WORKFLOW_NAME);
+			final Workflow workflow = new Workflow(WORKFLOW_NAME, activeSite.getShell());
 			workflow.setResourceSet(resourceSet);
-			CleanEEFEditorSources cleanEEFEditorSources = new CleanEEFEditorSources(CLEAN_EEF_EDITOR_SOURCE, activeSite.getShell(), modelFile, targetFolder);
+			CleanEEFEditorSources cleanEEFEditorSources = new CleanEEFEditorSources(CLEAN_EEF_EDITOR_SOURCE, modelFile, targetFolder);
 			workflow.addStep(CLEAN_EEF_EDITOR_SOURCE, cleanEEFEditorSources);
 			// Step 1 :  Generate GenModel
 			InitializeGenModel initializeGenModelStep = new InitializeGenModel(GENERATING_THE_GENMODEL, modelFile, targetFolder) {
@@ -121,6 +121,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			workflow.addStep(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, addExtendedRuntimeDependency);
 			GenerateEEFEditorCode generateEEFEditorCode = new GenerateEEFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
 			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
+			workflow.prepare();
 			IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
 				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {

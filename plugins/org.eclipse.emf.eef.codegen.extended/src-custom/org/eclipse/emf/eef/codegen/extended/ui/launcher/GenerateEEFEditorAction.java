@@ -59,25 +59,26 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 			if (selectedFiles != null) {
 				eefGenModels = initEEFGenModel();
 
-				IRunnableWithProgress runnable = new IRunnableWithProgress() {
-
-					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-						if (eefGenModels != null) {
-							Workflow flow = new Workflow("Generate EEF Editors");
-							for (final EEFGenModel eefGenModel : eefGenModels) {
-								String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
-								GenerateEEFEditorCode eefEditorCode = new GenerateEEFEditorCode(key, eefGenModel);
-								flow.addStep(key, eefEditorCode);
-							}
-							flow.execute(monitor);
-						}
-						monitor.done();
-						selectedFiles.clear();
-						eefGenModels.clear();
+				if (eefGenModels != null) {
+					final Workflow flow = new Workflow("Generate EEF Editors", shell);
+					for (final EEFGenModel eefGenModel : eefGenModels) {
+						String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
+						GenerateEEFEditorCode eefEditorCode = new GenerateEEFEditorCode(key, eefGenModel);
+						flow.addStep(key, eefEditorCode);
 					}
+					flow.prepare();
+					IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-				};
-				new ProgressMonitorDialog(shell).run(true, true, runnable);
+						public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+							flow.execute(monitor);
+							monitor.done();
+							selectedFiles.clear();
+							eefGenModels.clear();
+						}
+
+					};
+					new ProgressMonitorDialog(shell).run(true, true, runnable);
+				}
 			}
 		} catch (InvocationTargetException e) {
 			EEFCodegenPlugin.getDefault().logError(e);

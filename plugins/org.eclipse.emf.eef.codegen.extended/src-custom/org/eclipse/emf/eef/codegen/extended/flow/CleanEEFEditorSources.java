@@ -19,23 +19,22 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.eef.codegen.flow.GenmodelHelper;
-import org.eclipse.emf.eef.codegen.flow.Step;
+import org.eclipse.emf.eef.codegen.flow.StepInput;
+import org.eclipse.emf.eef.codegen.flow.StepWithInput;
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
-import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public class CleanEEFEditorSources extends Step {
+public class CleanEEFEditorSources extends StepWithInput {
 
 	private static final String PLUGIN_XML = "plugin.xml";
 	private static final String PLUGIN_PROPERTIES = "plugin.properties";
@@ -44,22 +43,29 @@ public class CleanEEFEditorSources extends Step {
 	private static final String COMPONENTS_FILE_EXTENSION = "components";
 	private static final String EEF_MODELS_FOLDER = "models";
 
-	private Shell shell;
 	private GenmodelHelper helper;
-	private SourceSelectorDialog dialog;
-	private int open;
 	private IFile ecoreModel;
 	private IContainer targetFolder;
 
+	private Boolean genmodel;
+	private Boolean emfModelCode;
+	private Boolean emfEditCode;
+	private Boolean emfEditorCode;
+	private Boolean eefModels;
+	
 	/**
 	 * @param name task name
 	 * @param activeShell the active shell
 	 */
-	public CleanEEFEditorSources(String name, Shell activeShell, IFile ecoreModel, IContainer targetFolder) {
+	public CleanEEFEditorSources(String name, IFile ecoreModel, IContainer targetFolder) {
 		super(name);
-		this.shell = activeShell;
 		this.ecoreModel = ecoreModel;
 		this.targetFolder = targetFolder;
+		genmodel = true;
+		emfModelCode = true;
+		emfEditCode = true;
+		emfEditorCode = true;
+		eefModels = true;
 	}
 
 	/**
@@ -67,42 +73,42 @@ public class CleanEEFEditorSources extends Step {
 	 * @see org.eclipse.emf.eef.codegen.flow.Step#execute(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public IStatus execute(IProgressMonitor monitor) {
-		this.helper = new GenmodelHelper(resourceSet, ecoreModel, targetFolder);
-		shell.getDisplay().syncExec(new Runnable() {
-
-
-
-			public void run() {
-				dialog = new SourceSelectorDialog(shell);
-				open = dialog.open();
-			}
-		});
 		try {
-			if (open == Window.OK) {
-				String modelDirectory = helper.getGenModel().getModelDirectory();
-				String editDirectory = helper.getGenModel().getEditDirectory();
-				String editorDirectory = helper.getGenModel().getEditorDirectory();
-				if (dialog.genmodel) {
-					deleteGenmodel(monitor);
-				}
-				if (dialog.emfModelCode) {
-					deleteProject(modelDirectory, monitor);
-				}
-				if (dialog.emfEditCode) {
-					deleteProject(editDirectory, monitor);
-				}
-				if (dialog.emfEditorCode) {
-					deleteProject(editorDirectory, monitor);
-				}
-				if (dialog.eefModels) {
-					deleteEEFModels(editDirectory, monitor);
-					
-				}
+			helper = new GenmodelHelper(resourceSet, ecoreModel, targetFolder);
+			String modelDirectory = helper.getGenModel().getModelDirectory();
+			String editDirectory = helper.getGenModel().getEditDirectory();
+			String editorDirectory = helper.getGenModel().getEditorDirectory();
+			if (genmodel) {
+				deleteGenmodel(monitor);
+			}
+			if (emfModelCode) {
+				deleteProject(modelDirectory, monitor);
+			}
+			if (emfEditCode) {
+				deleteProject(editDirectory, monitor);
+			}
+			if (emfEditorCode) {
+				deleteProject(editorDirectory, monitor);
+			}
+			if (eefModels) {
+				deleteEEFModels(editDirectory, monitor);
+
 			}
 		} catch (CoreException e) {
 			return new Status(IStatus.ERROR, EEFExtendedRuntime.PLUGIN_ID, "Unable to delete genmodel file.", e);
 		}
 		return Status.OK_STATUS;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.codegen.flow.StepWithInput#getInputPages()
+	 */
+	public List<WizardPage> getInputPages() {
+		CleanEEFEditorSourcesWizardPage cleanEEFEditorSourcesWizardPage = new CleanEEFEditorSourcesWizardPage("Clean EEF Editor sources page");
+		List<WizardPage> pages = new ArrayList<WizardPage>();
+		pages.add(cleanEEFEditorSourcesWizardPage);
+		return pages;
 	}
 
 	/**
@@ -173,7 +179,7 @@ public class CleanEEFEditorSources extends Step {
 		}
 	}
 
-	private class SourceSelectorDialog extends Dialog {
+	private class CleanEEFEditorSourcesWizardPage extends WizardPage implements StepInput {
 
 		private Button genmodelButton;
 		private Button emfModelCodeButton;
@@ -181,73 +187,104 @@ public class CleanEEFEditorSources extends Step {
 		private Button emfEditorCodeButton;
 		private Button eefModelsButton;
 
-		private Boolean genmodel;
-		private Boolean emfModelCode;
-		private Boolean emfEditCode;
-		private Boolean emfEditorCode;
-		private Boolean eefModels;
-
 		/**
-		 * @param parentShell
+		 * @param pageName
 		 */
-		public SourceSelectorDialog(Shell parentShell) {
-			super(parentShell);
+		public CleanEEFEditorSourcesWizardPage(String pageName) {
+			super(pageName);
+			setTitle("EEF editor sources cleaning");
+			setDescription("Choose actions you want to perform");
 		}
-		
-		/**
-		 * {@inheritDoc}
-		 * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
-		 */
-		protected void configureShell(Shell newShell) {
-			super.configureShell(newShell);
-			newShell.setText("EEF Editor sources cleaning");
-		}
-
-
 
 		/**
 		 * {@inheritDoc}
-		 * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
+		 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
 		 */
-		protected Control createDialogArea(Composite parent) {
+		public void createControl(Composite parent) {
 			Composite container = new Composite(parent, SWT.NONE);
 			GridLayout layout = new GridLayout();
 			container.setLayout(layout);
-			Label label = new Label(container, SWT.NONE);
-			label.setText("Choose actions you want to perform");
 			genmodelButton = new Button(container, SWT.CHECK);
 			genmodelButton.setText("Delete generated 'genmodel' file");
+			genmodelButton.addSelectionListener(new SelectionAdapter() {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+				 */
+				public void widgetSelected(SelectionEvent e) {
+					genmodel = genmodelButton.getSelection();
+				}
+				
+			});
 			genmodelButton.setSelection(true);
 			emfModelCodeButton = new Button(container, SWT.CHECK);
 			emfModelCodeButton.setText("Delete generated EMF model code");
+			emfModelCodeButton.addSelectionListener(new SelectionAdapter() {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+				 */
+				public void widgetSelected(SelectionEvent e) {
+					emfModelCode = emfModelCodeButton.getSelection();
+				}
+				
+			});
 			emfModelCodeButton.setSelection(true);
 			emfEditCodeButton = new Button(container, SWT.CHECK);
 			emfEditCodeButton.setText("Delete generated EMF edit code");
+			emfEditCodeButton.addSelectionListener(new SelectionAdapter() {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+				 */
+				public void widgetSelected(SelectionEvent e) {
+					emfEditCode = emfEditCodeButton.getSelection();
+				}
+				
+			});
 			emfEditCodeButton.setSelection(true);
 			emfEditorCodeButton = new Button(container, SWT.CHECK);
 			emfEditorCodeButton.setText("Delete generated EMF editor code");
+			emfEditorCodeButton.addSelectionListener(new SelectionAdapter() {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+				 */
+				public void widgetSelected(SelectionEvent e) {
+					emfEditorCode = emfEditCodeButton.getSelection();
+				}
+				
+			});
 			emfEditorCodeButton.setSelection(true);
 			eefModelsButton = new Button(container, SWT.CHECK);
 			eefModelsButton.setText("Delete generated EEF models");
+			eefModelsButton.addSelectionListener(new SelectionAdapter() {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+				 */
+				public void widgetSelected(SelectionEvent e) {
+					eefModels = eefModelsButton.getSelection();
+				}
+				
+			});
 			eefModelsButton.setSelection(true);
-			return container;
+			setControl(container);
 		}
 
 		/**
 		 * {@inheritDoc}
-		 * @see org.eclipse.jface.dialogs.Dialog#okPressed()
+		 * @see org.eclipse.emf.eef.codegen.flow.StepInput#processInput()
 		 */
-		protected void okPressed() {
-			genmodel = genmodelButton.getSelection();
-			emfModelCode = emfModelCodeButton.getSelection();
-			emfEditCode = emfEditCodeButton.getSelection();
-			emfEditorCode = emfEditorCodeButton.getSelection();
-			eefModels = eefModelsButton.getSelection();
-			super.okPressed();
+		public void processInput() {
+			// Nothing to do
 		}
 		
-		
-
 	}
-
+	
 }
