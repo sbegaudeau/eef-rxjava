@@ -3,6 +3,7 @@
  */
 package org.eclipse.emf.eef.codegen.extended.flow;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -18,9 +20,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLauncher;
 import org.eclipse.emf.eef.codegen.core.services.PropertiesGeneratorLaunchersServices;
 import org.eclipse.emf.eef.codegen.extended.Activator;
@@ -32,14 +36,14 @@ import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * 
  */
-public class GenerateEEFEditorCode extends Step {
+public class OverrideEMFEditorCode extends Step {
 
 	private Object eefEditorGenModel;
 
 	/**
 	 * @param name
 	 */
-	public GenerateEEFEditorCode(String name, Object eefEditorGenModel) {
+	public OverrideEMFEditorCode(String name, Object eefEditorGenModel) {
 		super(name);
 		this.eefEditorGenModel = eefEditorGenModel;
 	}
@@ -56,6 +60,7 @@ public class GenerateEEFEditorCode extends Step {
 			IContainer target = getGenContainer(eefEditorGenModel);
 			if (target != null) {
 				monitor.beginTask("Generating EEF Editor", 1);
+				clearExistingEditorCode(monitor);
 				Set<IContainer> generationTargets = new LinkedHashSet<IContainer>();
 				generationTargets.add(target);
 				final EEFEditorLauncher generator = new EEFEditorLauncher(eefEditorGenModel, target.getLocation().toFile(), new ArrayList<String>());
@@ -114,4 +119,24 @@ public class GenerateEEFEditorCode extends Step {
 		return null;
 	}
 
+	private void clearExistingEditorCode(IProgressMonitor monitor) throws CoreException {
+		for (GenEditionContext genEditionContext : getEEFEditorGenModel().getEditionContexts()) {
+			if (genEditionContext.getPropertiesEditionContext() != null && genEditionContext.getPropertiesEditionContext().getModel() != null) {
+				GenPackage genPackage = (GenPackage)genEditionContext.getPropertiesEditionContext().getModel();
+				StringBuilder builder = new StringBuilder();
+				builder.append(genPackage.getGenModel().getEditorPluginDirectory());
+				builder.append('/');
+				builder.append(genPackage.getPresentationPackageName().replaceAll("\\.", "/"));
+				builder.append('/');
+				builder.append(genPackage.getEditorClassName());
+				builder.append(".java");
+				String qualifiedEditorClass = builder.toString();
+				IFile editorClass = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(qualifiedEditorClass));
+				if (editorClass.isAccessible()) {
+					editorClass.setContents(new ByteArrayInputStream("".getBytes()), true, false, monitor);
+				}
+			}
+		}
+	}
+	
 }
