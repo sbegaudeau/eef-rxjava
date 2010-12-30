@@ -115,6 +115,13 @@ public class Workflow extends StepWithInput {
 	public List<WizardPage> getInputPages() {
 		List<WizardPage> flowPages = new ArrayList<WizardPage>();
 		for (Step step : steps.values()) {
+			if (step instanceof ConditionalStep) {
+				if (((ConditionalStep) step).condition()) {
+					step = ((ConditionalStep) step).getThenStep();
+				} else {
+					step = ((ConditionalStep) step).getElseStep();
+				}
+			}
 			if (step instanceof StepWithInput) {
 				flowPages.addAll(((StepWithInput) step).getInputPages());
 			}
@@ -145,9 +152,7 @@ public class Workflow extends StepWithInput {
 				 * @see org.eclipse.jface.wizard.Wizard#performFinish()
 				 */
 				public boolean performFinish() {
-					for (WizardPage page : getInputPages()) {
-						((StepInput)page).processInput();
-					}
+					canExecute = true;
 					return true;
 				}
 
@@ -180,6 +185,13 @@ public class Workflow extends StepWithInput {
 			String key = (String) iterator.next();
 			monitor.subTask(key);
 			Step step = steps.get(key);
+			if (step instanceof ConditionalStep) {
+				if (((ConditionalStep) step).condition()) {
+					step = ((ConditionalStep) step).getThenStep();
+				} else {
+					step = ((ConditionalStep) step).getElseStep();
+				}
+			}
 			if (step.validateExecution()) {
 				IStatus execute = step.execute(monitor);
 				if (!execute.isOK()) {
