@@ -64,7 +64,7 @@ public class CleanEEFEditorSources extends StepWithInput {
 		emfEditCode = true;
 		emfEditorCode = true;
 		eefPropertiesModels = true;
-		eefEditorModels = true;
+		eefEditorModels = false;
 	}
 
 	/**
@@ -73,7 +73,6 @@ public class CleanEEFEditorSources extends StepWithInput {
 	 */
 	public IStatus execute(IProgressMonitor monitor) {
 		try {
-			helper = new GenmodelHelper(resourceSet, ecoreModel, targetFolder);
 			GenModel genModel = helper.getGenModel();
 			if (genModel != null) {
 				String modelDirectory = genModel.getModelDirectory();
@@ -109,6 +108,7 @@ public class CleanEEFEditorSources extends StepWithInput {
 	 * @see org.eclipse.emf.eef.codegen.flow.StepWithInput#getInputPages()
 	 */
 	public List<WizardPage> getInputPages() {
+		helper = new GenmodelHelper(resourceSet, ecoreModel, targetFolder);
 		CleanEEFEditorSourcesWizardPage cleanEEFEditorSourcesWizardPage = new CleanEEFEditorSourcesWizardPage("Clean EEF Editor sources page");
 		List<WizardPage> pages = new ArrayList<WizardPage>();
 		pages.add(cleanEEFEditorSourcesWizardPage);
@@ -224,7 +224,12 @@ public class CleanEEFEditorSources extends StepWithInput {
 				}
 				
 			});
-			genmodelButton.setSelection(true);
+			if (helper.getGenModelFile().exists()) {
+				genmodelButton.setSelection(genmodel);
+			} else {
+				genmodelButton.setEnabled(false);
+				genmodel = false;
+			}
 			emfModelCodeButton = new Button(container, SWT.CHECK);
 			emfModelCodeButton.setText("Delete generated EMF model code");
 			emfModelCodeButton.addSelectionListener(new SelectionAdapter() {
@@ -238,7 +243,13 @@ public class CleanEEFEditorSources extends StepWithInput {
 				}
 				
 			});
-			emfModelCodeButton.setSelection(true);
+			IFolder emfModelSrcFolder = helper.getEMFModelSrcFolder();
+			if (emfModelSrcFolder != null && emfModelSrcFolder.isAccessible()) {
+				emfModelCodeButton.setSelection(emfModelCode);
+			} else {
+				emfModelCodeButton.setEnabled(false);
+				emfModelCode = false;
+			}
 			emfEditCodeButton = new Button(container, SWT.CHECK);
 			emfEditCodeButton.setText("Delete generated EMF edit code");
 			emfEditCodeButton.addSelectionListener(new SelectionAdapter() {
@@ -252,7 +263,13 @@ public class CleanEEFEditorSources extends StepWithInput {
 				}
 				
 			});
-			emfEditCodeButton.setSelection(true);
+			IFolder emfEditSrcFolder = helper.getEMFEditSrcFolder();
+			if (emfEditSrcFolder != null && emfEditSrcFolder.isAccessible()) {
+				emfEditCodeButton.setSelection(emfEditCode);
+			} else {
+				emfEditCodeButton.setEnabled(false);
+				emfEditCode = false;
+			}
 			emfEditorCodeButton = new Button(container, SWT.CHECK);
 			emfEditorCodeButton.setText("Delete generated EMF editor code");
 			emfEditorCodeButton.addSelectionListener(new SelectionAdapter() {
@@ -266,7 +283,13 @@ public class CleanEEFEditorSources extends StepWithInput {
 				}
 				
 			});
-			emfEditorCodeButton.setSelection(true);
+			IFolder emfEditorSrcFolder = helper.getEMFEditorSrcFolder();
+			if (emfEditorSrcFolder != null && emfEditorSrcFolder.isAccessible()) {
+				emfEditorCodeButton.setSelection(emfEditorCode);
+			} else {
+				emfEditorCodeButton.setEnabled(false);
+				emfEditorCode = false;
+			}
 			eefPropertiesModelsButton = new Button(container, SWT.CHECK);
 			eefPropertiesModelsButton.setText("Delete generated EEF models for properties views");
 			eefPropertiesModelsButton.addSelectionListener(new SelectionAdapter() {
@@ -280,7 +303,12 @@ public class CleanEEFEditorSources extends StepWithInput {
 				}
 				
 			});
-			eefPropertiesModelsButton.setSelection(true);
+			if (helper.getEEFPropertiesComponentsModel().exists() || helper.getEEFPropertiesEEFGenModel().exists()) {
+				eefPropertiesModelsButton.setSelection(eefPropertiesModels);
+			} else {
+				eefPropertiesModelsButton.setEnabled(false);
+				eefPropertiesModels = false;
+			}
 			eefEditorModelsButton = new Button(container, SWT.CHECK);
 			eefEditorModelsButton.setText("Delete generated EEF models for EEF editor");
 			eefEditorModelsButton.setSelection(true);
@@ -296,7 +324,12 @@ public class CleanEEFEditorSources extends StepWithInput {
 				}
 				
 			});
-			eefEditorModelsButton.setSelection(true);
+			if (helper.getEEFEditorComponentsModel().exists() || helper.getEEFEditorEEFGenModel().exists()) {
+				eefEditorModelsButton.setSelection(eefEditorModels); 
+			} else {
+				eefEditorModelsButton.setEnabled(false);
+				eefEditorModels = false;
+			}
 			setControl(container);
 		}
 

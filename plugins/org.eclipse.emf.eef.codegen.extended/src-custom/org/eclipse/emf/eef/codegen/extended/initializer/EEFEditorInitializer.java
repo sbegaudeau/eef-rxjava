@@ -181,14 +181,15 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			workflow.addStep(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, addExtendedRuntimeDependency);
 			GenerateEEFEditorCode generateEEFEditorCode = new GenerateEEFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
 			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
-			workflow.prepare();
-			IRunnableWithProgress runnable = new IRunnableWithProgress() {
+			if (workflow.prepare()) {
+				IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-					workflow.execute(monitor);
-				}
-			};
-			new ProgressMonitorDialog(new Shell()).run(true, true, runnable);
+					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						workflow.execute(monitor);
+					}
+				};
+				new ProgressMonitorDialog(new Shell()).run(true, true, runnable);
+			}
 		}
 
 	}
