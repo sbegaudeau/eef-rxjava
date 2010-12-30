@@ -18,8 +18,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitializer;
 import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
 import org.eclipse.emf.eef.codegen.extended.flow.CleanEEFEditorSources;
-import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorCode;
+import org.eclipse.emf.eef.codegen.extended.flow.OverrideEMFEditorCode;
 import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorModels;
+import org.eclipse.emf.eef.codegen.flow.ConditionalStep;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.emf.eef.codegen.flow.impl.AddDependency;
 import org.eclipse.emf.eef.codegen.flow.impl.GenerateEEFCode;
@@ -83,7 +84,14 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			workflow.setResourceSet(resourceSet);
 			final GenmodelHelper helper = new GenmodelHelper(resourceSet, modelFile, targetFolder);
 			CleanEEFEditorSources cleanEEFEditorSources = new CleanEEFEditorSources(CLEAN_EEF_EDITOR_SOURCE, modelFile, targetFolder);
-			workflow.addStep(CLEAN_EEF_EDITOR_SOURCE, cleanEEFEditorSources);
+			ConditionalStep conditon = new ConditionalStep(cleanEEFEditorSources) {
+				
+				@Override
+				public boolean condition() {
+					return helper.getGenModelFile().isAccessible();
+				}
+			};
+			workflow.addStep(CLEAN_EEF_EDITOR_SOURCE, conditon);
 			// Step 1 :  Generate GenModel
 			InitializeGenModel initializeGenModelStep = new InitializeGenModel(GENERATING_THE_GENMODEL, modelFile, targetFolder, helper.genmodelFileName()) {
 
@@ -179,7 +187,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			workflow.addStep(GENERATE_EEF_EDITOR_MODELS, generateEEFEditorModels);
 			AddDependency addExtendedRuntimeDependency = new AddDependency(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, generateEMFEditorCode.genProject(), EEFExtendedRuntime.PLUGIN_ID);
 			workflow.addStep(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, addExtendedRuntimeDependency);
-			GenerateEEFEditorCode generateEEFEditorCode = new GenerateEEFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
+			OverrideEMFEditorCode generateEEFEditorCode = new OverrideEMFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
 			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
 			if (workflow.prepare()) {
 				IRunnableWithProgress runnable = new IRunnableWithProgress() {

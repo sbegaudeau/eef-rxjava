@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
-import org.eclipse.emf.eef.codegen.extended.flow.GenerateEEFEditorCode;
+import org.eclipse.emf.eef.codegen.extended.flow.OverrideEMFEditorCode;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -63,7 +63,7 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 					final Workflow flow = new Workflow("Generate EEF Editors", shell);
 					for (final EEFGenModel eefGenModel : eefGenModels) {
 						String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
-						GenerateEEFEditorCode eefEditorCode = new GenerateEEFEditorCode(key, eefGenModel);
+						OverrideEMFEditorCode eefEditorCode = new OverrideEMFEditorCode(key, eefGenModel);
 						flow.addStep(key, eefEditorCode);
 					}
 					flow.prepare();

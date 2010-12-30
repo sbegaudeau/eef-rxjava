@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.eef.codegen.flow.StepInput;
 import org.eclipse.emf.eef.codegen.flow.StepWithInput;
 import org.eclipse.emf.eef.codegen.flow.util.GenmodelHelper;
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
@@ -185,7 +184,7 @@ public class CleanEEFEditorSources extends StepWithInput {
 		helper.getEEFModelsFolder().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
 
-	private class CleanEEFEditorSourcesWizardPage extends WizardPage implements StepInput {
+	private class CleanEEFEditorSourcesWizardPage extends WizardPage {
 
 		private Button genmodelButton;
 		private Button emfModelCodeButton;
@@ -333,14 +332,6 @@ public class CleanEEFEditorSources extends StepWithInput {
 			setControl(container);
 		}
 
-		/**
-		 * {@inheritDoc}
-		 * @see org.eclipse.emf.eef.codegen.flow.StepInput#processInput()
-		 */
-		public void processInput() {
-			// Nothing to do
-		}
-		
 	}
 	
 }
