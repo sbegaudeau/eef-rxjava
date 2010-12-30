@@ -92,7 +92,17 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 				 * @see org.eclipse.emf.eef.codegen.flow.Step#validateExecution()
 				 */
 				public boolean validateExecution() {
-					return !helper.getGenModelFile().exists();
+					boolean genmodelExists = helper.getGenModelFile().exists();
+					if (genmodelExists) {
+						try {
+							((WorkflowVariable)getGenModelURI()).setValue(helper.genmodelURI());
+							((WorkflowVariable)genmodel()).setValue(EMFHelper.load(helper.genmodelURI(), resourceSet));
+						} catch (IOException e) {
+							EEFExtendedRuntime.INSTANCE.log(e);
+							return true;
+						}
+					}
+					return !genmodelExists;
 				}
 
 				/**
@@ -122,7 +132,16 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 				 * @see org.eclipse.emf.eef.codegen.flow.Step#validateExecution()
 				 */
 				public boolean validateExecution() {
-					return !helper.getEEFPropertiesComponentsModel().exists() && !helper.getEEFPropertiesEEFGenModel().exists();
+					boolean modelsExist = helper.getEEFPropertiesComponentsModel().exists() && helper.getEEFPropertiesEEFGenModel().exists();
+					if (modelsExist) {
+						try {
+							((WorkflowVariable)getEEFGenModel()).setValue(EMFHelper.load(GenmodelHelper.computePropertiesEEFGenModelURI(helper.getEEFModelsFolder(), helper.genmodelURI()), resourceSet));
+						} catch (IOException e) {
+							EEFExtendedRuntime.INSTANCE.log(e);
+							return true;
+						}
+					}
+					return !modelsExist;
 				}
 
 			};
@@ -150,6 +169,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 							((WorkflowVariable)getEEFGenModel()).setValue(EMFHelper.load(GenmodelHelper.computeEditorEEFGenModelURI(helper.getEEFModelsFolder(), helper.genmodelURI()), resourceSet));
 						} catch (IOException e) {
 							EEFExtendedRuntime.INSTANCE.log(e);
+							return true;
 						}
 					}
 					return !modelsExist;
