@@ -30,6 +30,7 @@ public class Workflow extends StepWithInput {
 	private Map<String, Step> steps;
 	private Shell shell;
 	private boolean prepared;
+	private boolean canExecute;
 
 	/**
 	 * Create an empty flow 
@@ -124,7 +125,8 @@ public class Workflow extends StepWithInput {
 	/**
 	 * Prepare the flow execution.
 	 */
-	public void prepare() {
+	public boolean prepare() {
+		canExecute = true;
 		if (getInputPages().size() > 0) {
 			Wizard prepareWizard = new Wizard() {
 
@@ -148,11 +150,23 @@ public class Workflow extends StepWithInput {
 					}
 					return true;
 				}
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.jface.wizard.Wizard#performCancel()
+				 */
+				public boolean performCancel() {
+					canExecute = false;
+					return true;
+				}
+				
+				
 			};
 			WizardDialog wDialog = new WizardDialog(shell, prepareWizard);
 			wDialog.open();
 		}
 		prepared = true;
+		return canExecute;
 	}
 
 	/**

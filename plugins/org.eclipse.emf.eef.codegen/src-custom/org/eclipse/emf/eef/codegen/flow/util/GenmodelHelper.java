@@ -139,6 +139,36 @@ public class GenmodelHelper {
 	}
 	
 	/**
+	 * @return the Source folder of the EMF model plugin if genmodel found. null otherwise.
+	 */
+	public IFolder getEMFModelSrcFolder() {
+		if (getGenModel() != null) {
+			return targetFolder.getWorkspace().getRoot().getFolder(new Path(getGenModel().getModelDirectory()));
+		}
+		return null;
+	}
+	
+	/**
+	 * @return the Source folder of the EMF edit plugin if genmodel found. null otherwise.
+	 */
+	public IFolder getEMFEditSrcFolder() {
+		if (getGenModel() != null) {
+			return targetFolder.getWorkspace().getRoot().getFolder(new Path(getGenModel().getEditDirectory()));
+		}
+		return null;
+	}
+	
+	/**
+	 * @return the Source folder of the EMF editor plugin if genmodel found. null otherwise.
+	 */
+	public IFolder getEMFEditorSrcFolder() {
+		if (getGenModel() != null) {
+			return targetFolder.getWorkspace().getRoot().getFolder(new Path(getGenModel().getEditorDirectory()));
+		}
+		return null;
+	}
+	
+	/**
 	 * Compute the Ecore Model URI for the given ecore file
 	 * @param ecoreModel the ecore file
 	 * @return the ecore model URI
@@ -198,5 +228,4 @@ public class GenmodelHelper {
 	public static URI computeEditorEEFGenModelURI(IContainer targetFolder, URI genmodelURI) {
 		return URI.createPlatformResourceURI(targetFolder.getFullPath() + "/" + genmodelURI.trimFileExtension().lastSegment() + "-" + EDITOR_SUFFIX + "." + EEFGEN_FILE_EXTENSION, false);
 	}
-
 }
