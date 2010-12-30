@@ -78,6 +78,13 @@ public abstract class Step {
 	public void setResourceSet(ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
 	}
+	
+	/**
+	 * @return <code>true</code> if the step must be executed
+	 */
+	public boolean validateExecution() {
+		return true;
+	}
 
 	/**
 	 * @param monitor monitor to use

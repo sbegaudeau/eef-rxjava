@@ -8,13 +8,16 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
-import org.eclipse.emf.eef.codegen.flow.GenmodelHelper;
+import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
 import org.eclipse.emf.eef.codegen.flow.Step;
+import org.eclipse.emf.eef.codegen.flow.util.GenmodelHelper;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 import org.eclipse.emf.importer.ModelImporter;
 
@@ -37,21 +40,24 @@ public class InitializeGenModel extends Step {
 	/**
 	 * GenModel Helper
 	 */
-	private GenmodelHelper helper;
+//	private GenmodelHelper helper;
 
 	private IFile modelFile;
 
 	private IContainer targetFolder;
+
+	private String genmodelFileName;
 	
 	/**
 	 * @param name of the step
 	 * @param modelURI Ecore model file 
 	 * @param targetFolder Folder where to generate the GenModel
 	 */
-	public InitializeGenModel(String name, IFile modelFile, IContainer targetFolder) {
+	public InitializeGenModel(String name, IFile modelFile, IContainer targetFolder, String genmodelFileName) {
 		super(name);
 		this.modelFile = modelFile;
 		this.targetFolder = targetFolder;
+		this.genmodelFileName = genmodelFileName;
 	}
 
 	/**
@@ -60,13 +66,13 @@ public class InitializeGenModel extends Step {
 	 */
 	public IStatus execute(IProgressMonitor monitor) {
 		try {
-			this.helper = new GenmodelHelper(resourceSet, modelFile, targetFolder);
 			BasicMonitor emfMonitor = new BasicMonitor();
-			ModelImporter importer = initializeConverter(helper.genmodelFileName(), emfMonitor);
+			ModelImporter importer = initializeConverter(genmodelFileName, emfMonitor);
 			initializeGenModel(importer, emfMonitor);
-			helper.getTargetFolder().refreshLocal(IResource.DEPTH_INFINITE, monitor);
-			((WorkflowVariable)genmodel()).setValue(helper.getGenModel());
-			((WorkflowVariable)getGenModelURI()).setValue(helper.genmodelURI());
+			targetFolder.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+			URI genmodelURI = GenmodelHelper.computeGenmodelURI(targetFolder, genmodelFileName);
+			((WorkflowVariable)getGenModelURI()).setValue(genmodelURI);
+			((WorkflowVariable)genmodel()).setValue(EMFHelper.load(genmodelURI, resourceSet));
 			return Status.OK_STATUS;
 		} catch (Exception e) {
 			return new Status(IStatus.ERROR, EEFCodegenPlugin.PLUGIN_ID, "An error occured during genmodel initialization", e);
@@ -102,9 +108,9 @@ public class InitializeGenModel extends Step {
 
 	private ModelImporter initializeConverter(String genmodelFileName, Monitor monitor) throws Exception {
 		ModelImporter converter = new org.eclipse.emf.importer.ecore.EcoreImporter();
-		converter.setGenModelContainerPath(helper.getTargetFolder().getFullPath());
+		converter.setGenModelContainerPath(targetFolder.getFullPath());
 		converter.setGenModelFileName(genmodelFileName);
-		converter.setModelFile(helper.getEcoreModel());
+		converter.setModelFile(modelFile);
 		converter.computeEPackages(monitor);
 		converter.adjustEPackages(monitor);
 		return converter;

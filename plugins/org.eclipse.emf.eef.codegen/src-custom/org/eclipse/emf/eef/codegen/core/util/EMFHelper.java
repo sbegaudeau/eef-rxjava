@@ -28,14 +28,42 @@ public class EMFHelper {
 	 */
 	public static EObject load(URI modelURI, ResourceSet resourceSet) throws IOException {
 		EObject result = null;
-		final Resource modelResource = createResource(modelURI, resourceSet);
-		final Map<String, String> options = new HashMap<String, String>();
-		options.put(XMLResource.OPTION_ENCODING, System.getProperty("file.encoding"));
-		modelResource.load(options);
+		Resource modelResource = null;
+		modelResource = resourceAlreadyLoaded(modelURI, resourceSet, modelResource); 
+		if (modelResource == null) {
+			modelResource = createResource(modelURI, resourceSet);
+			final Map<String, String> options = new HashMap<String, String>();
+			options.put(XMLResource.OPTION_ENCODING, System.getProperty("file.encoding"));
+			modelResource.load(options);
+		}
 		if (modelResource.getContents().size() > 0) {
 			result = modelResource.getContents().get(0);
+		} else {
+			// Maybe the resource was deleted. Try a reload
+			modelResource.unload();
+			final Map<String, String> options = new HashMap<String, String>();
+			options.put(XMLResource.OPTION_ENCODING, System.getProperty("file.encoding"));
+			modelResource.load(options);
+			if (modelResource.getContents().size() > 0) {
+				result = modelResource.getContents().get(0);
+			}
 		}
 		return result;
+	}
+
+	/**
+	 * @param modelURI
+	 * @param resourceSet
+	 * @param modelResource
+	 * @return
+	 */
+	protected static Resource resourceAlreadyLoaded(URI modelURI, ResourceSet resourceSet, Resource modelResource) {
+		for (Resource resource : resourceSet.getResources()) {
+			if (resource.getURI().equals(modelURI)) {
+				modelResource = resource;
+			}
+		}
+		return modelResource;
 	}
 
 	/**

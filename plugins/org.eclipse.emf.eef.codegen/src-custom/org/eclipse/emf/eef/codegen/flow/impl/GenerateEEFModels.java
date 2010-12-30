@@ -35,15 +35,17 @@ public class GenerateEEFModels extends Step {
 	private Object genmodelURI;
 	private WorkflowVariable eefgenModelVar;
 	private WorkflowVariable eefModelsFolderVar;
+	private String modelsFolderPath;
 
 	/**
 	 * @param name of the step
 	 */
-	public GenerateEEFModels(String name, Object modelURI, Object editGenProject, Object genmodelURI) {
+	public GenerateEEFModels(String name, Object modelURI, Object editGenProject, Object genmodelURI, String modelsFolderPath) {
 		super(name);
 		this.modelURI = modelURI;
 		this.editGenProject = editGenProject;
 		this.genmodelURI = genmodelURI;
+		this.modelsFolderPath = modelsFolderPath;
 	}
 
 	/**
@@ -141,7 +143,7 @@ public class GenerateEEFModels extends Step {
 
 
 	private IFolder createEEFModelsFolder(IProject editProject, IProgressMonitor monitor) throws CoreException {
-		IFolder modelsFolder = editProject.getFolder(new Path("models"));
+		IFolder modelsFolder = editProject.getFolder(new Path(modelsFolderPath));
 		if (!modelsFolder.exists()) {
 			modelsFolder.create(true, true, monitor);
 			editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);

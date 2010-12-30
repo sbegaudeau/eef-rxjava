@@ -34,6 +34,7 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
 import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
+import org.eclipse.emf.eef.codegen.flow.util.GenmodelHelper;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsFactory;
@@ -112,8 +113,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 				}
 			}
 		}
-		String componentsFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment() + ".components";
-		URI componentsModelUri = URI.createPlatformResourceURI(componentsFilePath, false);
+		URI componentsModelUri = GenmodelHelper.computePropertiesComponentsModelURI(targetFolder, model.eResource().getURI());
 		Resource componentsResource = model.eResource().getResourceSet().createResource(componentsModelUri);
 		for (PropertiesEditionContext context : contexts)
 			componentsResource.getContents().add(context);
@@ -121,8 +121,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 			componentsResource.getContents().add(repository);
 		componentsResource.save(Collections.EMPTY_MAP);
 		EEFGenModel eefGenModel = createEEFGenModel(repositories, contexts, targetFolder);
-		String eefgenFilePath = targetFolder.getFullPath() + "/" + model.eResource().getURI().trimFileExtension().lastSegment() + ".eefgen";
-		URI eefgenModelUri = URI.createPlatformResourceURI(eefgenFilePath, false);
+		URI eefgenModelUri = GenmodelHelper.computePropertiesEEFGenModelURI(targetFolder, model.eResource().getURI());
 		Resource eefgenResource = model.eResource().getResourceSet().createResource(eefgenModelUri);
 		eefgenResource.getContents().add(eefGenModel);
 		eefgenResource.save(Collections.EMPTY_MAP);

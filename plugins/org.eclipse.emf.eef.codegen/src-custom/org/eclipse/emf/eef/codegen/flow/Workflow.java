@@ -166,10 +166,12 @@ public class Workflow extends StepWithInput {
 			String key = (String) iterator.next();
 			monitor.subTask(key);
 			Step step = steps.get(key);
-			IStatus execute = step.execute(monitor);
-			if (!execute.isOK()) {
-				EEFCodegenPlugin.getDefault().logError((Exception) execute.getException());
-				return execute;
+			if (step.validateExecution()) {
+				IStatus execute = step.execute(monitor);
+				if (!execute.isOK()) {
+					EEFCodegenPlugin.getDefault().logError((Exception) execute.getException());
+					return execute;
+				}
 			}
 			monitor.worked(1);
 		}
