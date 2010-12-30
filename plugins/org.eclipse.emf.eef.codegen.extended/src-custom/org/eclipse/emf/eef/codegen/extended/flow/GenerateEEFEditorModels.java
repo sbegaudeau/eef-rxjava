@@ -20,6 +20,7 @@ import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
 import org.eclipse.emf.eef.codegen.extended.initializer.EEFEditorModelInitializer;
 import org.eclipse.emf.eef.codegen.flow.Step;
+import org.eclipse.emf.eef.codegen.flow.util.GenmodelHelper;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 
 /**
@@ -127,9 +128,8 @@ public class GenerateEEFEditorModels extends Step {
 	}
 	
 	private EEFGenModel generatedEEFGen(URI modelURI, IFolder modelsFolder) throws IOException {
-		String eefgenPath = modelsFolder.getFullPath().toString() + "/" + modelURI.trimFileExtension().lastSegment() + "-editor.eefgen";
 		EEFGenModel eefgenModel = null;
-		URI eefgenURI = URI.createPlatformResourceURI(eefgenPath, true);
+		URI eefgenURI = GenmodelHelper.computeEditorEEFGenModelURI(modelsFolder, modelURI);
 		EObject extractedEEFGenModel = EMFHelper.load(eefgenURI, resourceSet);
 		if (extractedEEFGenModel instanceof EEFGenModel) {
 			eefgenModel = (EEFGenModel)extractedEEFGenModel;

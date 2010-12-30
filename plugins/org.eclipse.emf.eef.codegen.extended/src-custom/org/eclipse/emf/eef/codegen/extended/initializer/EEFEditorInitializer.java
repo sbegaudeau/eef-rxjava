@@ -3,6 +3,7 @@
  */
 package org.eclipse.emf.eef.codegen.extended.initializer;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.resources.IContainer;
@@ -28,6 +29,8 @@ import org.eclipse.emf.eef.codegen.flow.impl.GenerateEMFEditorCode;
 import org.eclipse.emf.eef.codegen.flow.impl.GenerateEMFModelCode;
 import org.eclipse.emf.eef.codegen.flow.impl.InitializeGenModel;
 import org.eclipse.emf.eef.codegen.flow.impl.MergePluginXML;
+import org.eclipse.emf.eef.codegen.flow.util.GenmodelHelper;
+import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 import org.eclipse.emf.eef.codegen.ui.generators.callback.imports.JDTImportsOrganisationCallback;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
@@ -78,10 +81,19 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 		if (model instanceof EPackage) {
 			final Workflow workflow = new Workflow(WORKFLOW_NAME, activeSite.getShell());
 			workflow.setResourceSet(resourceSet);
+			final GenmodelHelper helper = new GenmodelHelper(resourceSet, modelFile, targetFolder);
 			CleanEEFEditorSources cleanEEFEditorSources = new CleanEEFEditorSources(CLEAN_EEF_EDITOR_SOURCE, modelFile, targetFolder);
 			workflow.addStep(CLEAN_EEF_EDITOR_SOURCE, cleanEEFEditorSources);
 			// Step 1 :  Generate GenModel
-			InitializeGenModel initializeGenModelStep = new InitializeGenModel(GENERATING_THE_GENMODEL, modelFile, targetFolder) {
+			InitializeGenModel initializeGenModelStep = new InitializeGenModel(GENERATING_THE_GENMODEL, modelFile, targetFolder, helper.genmodelFileName()) {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.emf.eef.codegen.flow.Step#validateExecution()
+				 */
+				public boolean validateExecution() {
+					return !helper.getGenModelFile().exists();
+				}
 
 				/**
 				 * {@inheritDoc]
@@ -103,7 +115,17 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			GenerateEMFEditorCode generateEMFEditorCode = new GenerateEMFEditorCode(GENERATE_EMF_EDITOR_CODE, initializeGenModelStep.genmodel());
 			workflow.addStep(GENERATE_EMF_EDITOR_CODE, generateEMFEditorCode);
 			// Step 3 : Generate EEF model
-			GenerateEEFModels generateEEFModels = new GenerateEEFModels(GENERATE_EEF_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI());
+			GenerateEEFModels generateEEFModels = new GenerateEEFModels(GENERATE_EEF_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI(), helper.eefmodelsFolderPath()) {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.emf.eef.codegen.flow.Step#validateExecution()
+				 */
+				public boolean validateExecution() {
+					return !helper.getEEFPropertiesComponentsModel().exists() && !helper.getEEFPropertiesEEFGenModel().exists();
+				}
+
+			};
 			workflow.addStep(GENERATE_EEF_MODELS, generateEEFModels);
 			// Step  4 : Add EEF Runtime dependency 
 			AddDependency addDependency = new AddDependency(ADDING_EEF_RUNTIME_DEPENDENCY, generateEMFEditCode.genProject(), EEFRuntimePlugin.PLUGIN_ID);
@@ -115,7 +137,25 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			// Step 6 : Adding Extension Point
 			MergePluginXML mergePluginXML = new MergePluginXML(MERGING_GENERATED_PLUGIN_XML_FILES, generateEMFEditCode.genProject());
 			workflow.addStep(MERGING_GENERATED_PLUGIN_XML_FILES, mergePluginXML);
-			GenerateEEFEditorModels generateEEFEditorModels = new GenerateEEFEditorModels(GENERATE_EEF_EDITOR_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI(), generateEEFModels.getEEFModelsFolder());
+			final GenerateEEFEditorModels generateEEFEditorModels = new GenerateEEFEditorModels(GENERATE_EEF_EDITOR_MODELS, modelURI, generateEMFEditCode.genProject(), initializeGenModelStep.getGenModelURI(), generateEEFModels.getEEFModelsFolder()) {
+
+				/**
+				 * {@inheritDoc}
+				 * @see org.eclipse.emf.eef.codegen.flow.Step#validateExecution()
+				 */
+				public boolean validateExecution() {
+					boolean modelsExist = helper.getEEFEditorComponentsModel().exists() && helper.getEEFEditorEEFGenModel().exists();
+					if (modelsExist) {
+						try {
+							((WorkflowVariable)getEEFGenModel()).setValue(EMFHelper.load(GenmodelHelper.computeEditorEEFGenModelURI(helper.getEEFModelsFolder(), helper.genmodelURI()), resourceSet));
+						} catch (IOException e) {
+							EEFExtendedRuntime.INSTANCE.log(e);
+						}
+					}
+					return !modelsExist;
+				}
+
+			};
 			workflow.addStep(GENERATE_EEF_EDITOR_MODELS, generateEEFEditorModels);
 			AddDependency addExtendedRuntimeDependency = new AddDependency(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, generateEMFEditorCode.genProject(), EEFExtendedRuntime.PLUGIN_ID);
 			workflow.addStep(ADDING_EEF_EXTENDED_RUNTIME_DEPENDENCY, addExtendedRuntimeDependency);
@@ -130,7 +170,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			};
 			new ProgressMonitorDialog(new Shell()).run(true, true, runnable);
 		}
-		
+
 	}
 
 }
