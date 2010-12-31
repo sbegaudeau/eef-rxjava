@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -93,5 +96,18 @@ public class EMFHelper {
 		return resourceSet.createResource(modelURI);
 	}
 
+	
+	/**
+	 * @param eObject
+	 * @return
+	 */
+	public static IFile associatedFile(EObject eObject) {
+		if (eObject.eResource().getURI().isPlatformResource()) {
+			URI uri = eObject.eResource().getURI();
+			String path = uri.toString().substring("platform:/resource".length());
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path));
+		}
+		return null;
+	}
 
 }
