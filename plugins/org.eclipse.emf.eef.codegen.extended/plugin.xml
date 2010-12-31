@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-  <extension
+  <!--extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
@@ -37,6 +37,20 @@
          </action>
       </objectContribution>
 
-   </extension>
+   </extension-->
+  <extension
+        point="org.eclipse.ui.editorActions">
+     <editorContribution
+           id="org.eclipse.emf.eef.codegen.ecore.diagram.contribution"
+           targetID="org.eclipse.emf.ecoretools.diagram.part.EcoreDiagramEditorID">
+        <action
+              class="org.eclipse.emf.eef.codegen.extended.ui.initializer.InitializeEEFEditorAction"
+              icon="icons/full/obj16/initialize_eef_editor.gif"
+              id="org.eclipse.emf.eef.codegen.extended.ui.generateeefeditor.contribution"
+              label="Initialize EEF Editor"
+              toolbarPath="Normal/additions">
+        </action>
+     </editorContribution>
+  </extension>
 
 </plugin>

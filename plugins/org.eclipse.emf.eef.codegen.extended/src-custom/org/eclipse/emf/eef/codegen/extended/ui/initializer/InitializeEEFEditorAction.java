@@ -13,14 +13,19 @@ package org.eclipse.emf.eef.codegen.extended.ui.initializer;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitializer;
+import org.eclipse.emf.eef.codegen.core.util.EMFHelper;
 import org.eclipse.emf.eef.codegen.extended.initializer.EEFEditorInitializer;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.ui.IEditorActionDelegate;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
@@ -29,7 +34,7 @@ import org.eclipse.ui.IWorkbenchPartSite;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  *
  */
-public class InitializeEEFEditorAction implements IObjectActionDelegate {
+public class InitializeEEFEditorAction implements IObjectActionDelegate, IEditorActionDelegate {
 
 	private URI modelURI;
 
@@ -71,10 +76,21 @@ public class InitializeEEFEditorAction implements IObjectActionDelegate {
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
-			if (sSelection.getFirstElement() instanceof IFile) {
-				this.selectedFile = (IFile)sSelection.getFirstElement();
+			Object selectedElement = sSelection.getFirstElement();
+			if (selectedElement instanceof IFile) {
+				this.selectedFile = (IFile)selectedElement;
+			} else if (selectedElement instanceof IAdaptable) {
+				EObject eObject = (EObject) ((IAdaptable)selectedElement).getAdapter(EObject.class);
+				if (eObject != null) {
+					// We use the ability of a GMF EditPart to be adapted into the semantic EObject
+					if (eObject.eResource().getURI().fileExtension().equals("ecore")) {
+						IFile associatedFile = EMFHelper.associatedFile(eObject);
+						if (associatedFile.isAccessible()) {
+							this.selectedFile = associatedFile;
+						}
+					}
+				}
 			}
-
 		}
 	}
 
@@ -86,4 +102,14 @@ public class InitializeEEFEditorAction implements IObjectActionDelegate {
 		this.activeSite = targetPart.getSite();
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.ui.IEditorActionDelegate#setActiveEditor(org.eclipse.jface.action.IAction, org.eclipse.ui.IEditorPart)
+	 */
+	public void setActiveEditor(IAction action, IEditorPart targetEditor) {
+		if (targetEditor != null) {
+			this.activeSite = targetEditor.getSite();
+		}
+	}
+
 }

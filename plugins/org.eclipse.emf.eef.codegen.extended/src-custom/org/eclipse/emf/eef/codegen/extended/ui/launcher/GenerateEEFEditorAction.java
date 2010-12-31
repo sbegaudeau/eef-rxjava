@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -33,14 +35,14 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 
 	private static final String GENERATE_EEF_EDITOR = "Generate EEF Editor for ";
 	private Shell shell;
-	protected List<IFile> selectedFiles;
+	protected Set<IFile> selectedFiles;
 	protected List<EEFGenModel> eefGenModels;
 
 	/**
 	 * Constructor for Action1.
 	 */
 	public GenerateEEFEditorAction() {
-		selectedFiles = new ArrayList<IFile>();
+		selectedFiles = new LinkedHashSet<IFile>();
 		eefGenModels = new ArrayList<EEFGenModel>();
 	}
 
@@ -95,10 +97,11 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
+			this.selectedFiles.clear();
 			for (Object selectedElement : sSelection.toList()) {
 				if (selectedElement instanceof IFile) {
 					this.selectedFiles.add((IFile)selectedElement);
-				}
+				} 
 			}
 
 		}
