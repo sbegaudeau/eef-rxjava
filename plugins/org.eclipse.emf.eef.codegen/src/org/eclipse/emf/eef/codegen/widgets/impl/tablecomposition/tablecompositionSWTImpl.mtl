@@ -299,7 +299,7 @@ create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 		this.[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
-				if (e.item.getData() instanceof EObject) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}

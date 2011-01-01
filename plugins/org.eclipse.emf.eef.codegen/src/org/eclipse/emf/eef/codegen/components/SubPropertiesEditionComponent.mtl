@@ -309,22 +309,35 @@ public class [pec.subPECClass(view)/] extends SinglePartPropertiesEditingCompone
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 [for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
 				if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
+				[if (editionElement.model.many)]
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
+				[else]
+					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), event.getNewValue());
+				[/if]
 				}
 [/for]
 [comment add ViewReference support/]
 [for ( v : View | view.referencedViews())]
-[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(v)) ? (editionElement.model.oclIsTypeOf(ecore::EAttribute))]
 				if ([editionElement.views->first().editorID()/] == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
+				[if (editionElement.model.many)]
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), iter.next()));
+					}
+					ret = chain;
+				[else]
+					ret = Diagnostician.INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), event.getNewValue());
+				[/if]
 				}
-[/for]
+	[/for]
 [/for] 
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

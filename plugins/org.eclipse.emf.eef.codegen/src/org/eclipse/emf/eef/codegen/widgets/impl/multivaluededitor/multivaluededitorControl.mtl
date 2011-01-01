@@ -30,7 +30,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 	if (msg.getEventType() == Notification.ADD) 
 		[view.viewIdentifier(pec)/].addTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getNewValue());
 	else if (msg.getEventType() == Notification.REMOVE) 
-		[view.viewIdentifier(pec)/].removeTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getNewValue());
+		[view.viewIdentifier(pec)/].removeTo[editionElement.views->first().name.toJavaClassifier()/](([editionElement.model.eType.instanceClassName/]) msg.getOldValue());
 }
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor

@@ -99,7 +99,7 @@ create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, parent);
 						[editor.name.toJavaIdentifier()/]List = new BasicEList();
 					}
 					[editor.name.toJavaIdentifier()/].setText([editor.name.toJavaIdentifier()/]List.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/]List));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList([editor.name.toJavaIdentifier()/]List)));
 					setHasChanged(true);
 				}
 			}

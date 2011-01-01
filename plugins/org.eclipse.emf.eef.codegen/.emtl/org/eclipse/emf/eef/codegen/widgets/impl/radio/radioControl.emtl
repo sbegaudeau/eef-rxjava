@@ -327,7 +327,7 @@
         </source>
         <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")((EEnumLiteral)event.getNewValue()).getInstance());"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")event.getNewValue());"/>
       <overrides href="../../api/widgetControl.emtl#/0/declareEObjectUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -2644,6 +2644,18 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         </eParameters>
       </eOperations>
+      <eOperations name="metamodelGetter">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/metamodelGetter.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="c">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        </eParameters>
+      </eOperations>
       <eOperations name="simpleModelNavigationType">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -4634,6 +4646,15 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
+      <eOperations name="metamodelGetter">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/metamodelGetter.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EAttribute_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -5255,7 +5276,7 @@
     </eAnnotations>
     <eAnnotations source="positions.86" references="/0/declareEObjectUpdater">
       <details key="start" value="2289"/>
-      <details key="end" value="2726"/>
+      <details key="end" value="2696"/>
       <details key="line" value="37"/>
     </eAnnotations>
     <eAnnotations source="positions.87" references="/0/declareEObjectUpdater/@body.0">
@@ -5330,7 +5351,7 @@
     </eAnnotations>
     <eAnnotations source="positions.101" references="/0/declareEObjectUpdater/@body.5">
       <details key="start" value="2662"/>
-      <details key="end" value="2714"/>
+      <details key="end" value="2684"/>
       <details key="line" value="38"/>
     </eAnnotations>
     <eAnnotations source="positions.102" references="/0/declareEObjectUpdater/editionElement">
