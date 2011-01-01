@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Conference.java,v 1.1 2009/09/04 09:07:41 glefur Exp $
+ * $Id: Conference.java,v 1.2 2011/01/01 23:10:21 glefur Exp $
  */
 package org.eclipse.emf.samples.conference;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.samples.conference.Conference#getTalks <em>Talks</em>}</li>
  *   <li>{@link org.eclipse.emf.samples.conference.Conference#getTopics <em>Topics</em>}</li>
  *   <li>{@link org.eclipse.emf.samples.conference.Conference#getSites <em>Sites</em>}</li>
+ *   <li>{@link org.eclipse.emf.samples.conference.Conference#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.samples.conference.Conference#getOverview <em>Overview</em>}</li>
  * </ul>
  * </p>
  *
@@ -120,5 +122,57 @@ public interface Conference extends EObject {
 	 * @generated
 	 */
 	EList<Site> getSites();
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.eclipse.emf.samples.conference.ConferencePackage#getConference_Name()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.samples.conference.Conference#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Overview</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Overview</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Overview</em>' attribute.
+	 * @see #setOverview(String)
+	 * @see org.eclipse.emf.samples.conference.ConferencePackage#getConference_Overview()
+	 * @model
+	 * @generated
+	 */
+	String getOverview();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.samples.conference.Conference#getOverview <em>Overview</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Overview</em>' attribute.
+	 * @see #getOverview()
+	 * @generated
+	 */
+	void setOverview(String value);
 
 } // Conference

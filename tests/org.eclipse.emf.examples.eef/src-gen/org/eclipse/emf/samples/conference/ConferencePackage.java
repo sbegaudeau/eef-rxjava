@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferencePackage.java,v 1.1 2009/09/04 09:07:41 glefur Exp $
+ * $Id: ConferencePackage.java,v 1.2 2011/01/01 23:10:21 glefur Exp $
  */
 package org.eclipse.emf.samples.conference;
 
@@ -116,13 +116,31 @@ public interface ConferencePackage extends EPackage {
 	int CONFERENCE__SITES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFERENCE__NAME = 5;
+
+	/**
+	 * The feature id for the '<em><b>Overview</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFERENCE__OVERVIEW = 6;
+
+	/**
 	 * The number of structural features of the '<em>Conference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFERENCE_FEATURE_COUNT = 5;
+	int CONFERENCE_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.samples.conference.impl.PersonImpl <em>Person</em>}' class.
@@ -447,6 +465,28 @@ public interface ConferencePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConference_Sites();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.samples.conference.Conference#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.samples.conference.Conference#getName()
+	 * @see #getConference()
+	 * @generated
+	 */
+	EAttribute getConference_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.samples.conference.Conference#getOverview <em>Overview</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Overview</em>'.
+	 * @see org.eclipse.emf.samples.conference.Conference#getOverview()
+	 * @see #getConference()
+	 * @generated
+	 */
+	EAttribute getConference_Overview();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.samples.conference.Person <em>Person</em>}'.
@@ -777,6 +817,22 @@ public interface ConferencePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONFERENCE__SITES = eINSTANCE.getConference_Sites();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONFERENCE__NAME = eINSTANCE.getConference_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Overview</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONFERENCE__OVERVIEW = eINSTANCE.getConference_Overview();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.samples.conference.impl.PersonImpl <em>Person</em>}' class.

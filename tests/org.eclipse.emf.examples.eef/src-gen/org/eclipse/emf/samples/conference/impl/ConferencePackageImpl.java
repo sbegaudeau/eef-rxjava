@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferencePackageImpl.java,v 1.2 2010/03/17 13:47:31 glefur Exp $
+ * $Id: ConferencePackageImpl.java,v 1.3 2011/01/01 23:10:21 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
@@ -189,6 +189,24 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 	 */
 	public EReference getConference_Sites() {
 		return (EReference)conferenceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConference_Name() {
+		return (EAttribute)conferenceEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConference_Overview() {
+		return (EAttribute)conferenceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -441,6 +459,8 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 		createEReference(conferenceEClass, CONFERENCE__TALKS);
 		createEReference(conferenceEClass, CONFERENCE__TOPICS);
 		createEReference(conferenceEClass, CONFERENCE__SITES);
+		createEAttribute(conferenceEClass, CONFERENCE__NAME);
+		createEAttribute(conferenceEClass, CONFERENCE__OVERVIEW);
 
 		personEClass = createEClass(PERSON);
 		createEAttribute(personEClass, PERSON__FIRSTNAME);
@@ -509,6 +529,8 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 		initEReference(getConference_Talks(), this.getTalk(), null, "talks", null, 0, -1, Conference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConference_Topics(), this.getTopic(), null, "topics", null, 0, -1, Conference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConference_Sites(), this.getSite(), null, "sites", null, 0, -1, Conference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConference_Name(), ecorePackage.getEString(), "name", null, 1, 1, Conference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConference_Overview(), ecorePackage.getEString(), "overview", null, 0, 1, Conference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerson_Firstname(), ecorePackage.getEString(), "firstname", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

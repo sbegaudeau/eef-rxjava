@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmi:id="_sVkM4JkgEd6sxtwdpecy3w" type="EcoreTools" name="conference.ecorediag" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_sVkM4JkgEd6sxtwdpecy3w" type="EcoreTools" name="conference.ecorediag" measurementUnit="Pixel">
   <children xmi:type="notation:Node" xmi:id="_sYwDwJkgEd6sxtwdpecy3w" type="1001">
     <children xmi:type="notation:Node" xmi:id="_sY2xcJkgEd6sxtwdpecy3w" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_sY4moJkgEd6sxtwdpecy3w" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_I8T1wBX7EeCOmvkqVxGWpA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="conference.ecore#//Conference/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_I8T1wRX7EeCOmvkqVxGWpA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_KEipIBX7EeCOmvkqVxGWpA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="conference.ecore#//Conference/overview"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_KEipIRX7EeCOmvkqVxGWpA"/>
+      </children>
       <children xmi:type="notation:Node" xmi:id="_sZNWwJkgEd6sxtwdpecy3w" type="2001">
         <element xmi:type="ecore:EAttribute" href="conference.ecore#//Conference/place"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_sZNWwZkgEd6sxtwdpecy3w"/>

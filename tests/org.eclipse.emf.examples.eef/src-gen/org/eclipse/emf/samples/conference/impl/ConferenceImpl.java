@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceImpl.java,v 1.1 2009/09/04 09:07:40 glefur Exp $
+ * $Id: ConferenceImpl.java,v 1.2 2011/01/01 23:10:21 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
@@ -41,6 +41,8 @@ import org.eclipse.emf.samples.conference.Topic;
  *   <li>{@link org.eclipse.emf.samples.conference.impl.ConferenceImpl#getTalks <em>Talks</em>}</li>
  *   <li>{@link org.eclipse.emf.samples.conference.impl.ConferenceImpl#getTopics <em>Topics</em>}</li>
  *   <li>{@link org.eclipse.emf.samples.conference.impl.ConferenceImpl#getSites <em>Sites</em>}</li>
+ *   <li>{@link org.eclipse.emf.samples.conference.impl.ConferenceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.samples.conference.impl.ConferenceImpl#getOverview <em>Overview</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,6 +108,46 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 	 * @ordered
 	 */
 	protected EList<Site> sites;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOverview() <em>Overview</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOverview()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OVERVIEW_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOverview() <em>Overview</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOverview()
+	 * @generated
+	 * @ordered
+	 */
+	protected String overview = OVERVIEW_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -200,6 +242,48 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConferencePackage.CONFERENCE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOverview() {
+		return overview;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOverview(String newOverview) {
+		String oldOverview = overview;
+		overview = newOverview;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConferencePackage.CONFERENCE__OVERVIEW, oldOverview, overview));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -233,6 +317,10 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 				return getTopics();
 			case ConferencePackage.CONFERENCE__SITES:
 				return getSites();
+			case ConferencePackage.CONFERENCE__NAME:
+				return getName();
+			case ConferencePackage.CONFERENCE__OVERVIEW:
+				return getOverview();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -265,6 +353,12 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 				getSites().clear();
 				getSites().addAll((Collection<? extends Site>)newValue);
 				return;
+			case ConferencePackage.CONFERENCE__NAME:
+				setName((String)newValue);
+				return;
+			case ConferencePackage.CONFERENCE__OVERVIEW:
+				setOverview((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -292,6 +386,12 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 			case ConferencePackage.CONFERENCE__SITES:
 				getSites().clear();
 				return;
+			case ConferencePackage.CONFERENCE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case ConferencePackage.CONFERENCE__OVERVIEW:
+				setOverview(OVERVIEW_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -314,6 +414,10 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 				return topics != null && !topics.isEmpty();
 			case ConferencePackage.CONFERENCE__SITES:
 				return sites != null && !sites.isEmpty();
+			case ConferencePackage.CONFERENCE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ConferencePackage.CONFERENCE__OVERVIEW:
+				return OVERVIEW_EDEFAULT == null ? overview != null : !OVERVIEW_EDEFAULT.equals(overview);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -330,6 +434,10 @@ public class ConferenceImpl extends EObjectImpl implements Conference {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (place: ");
 		result.append(place);
+		result.append(", name: ");
+		result.append(name);
+		result.append(", overview: ");
+		result.append(overview);
 		result.append(')');
 		return result.toString();
 	}

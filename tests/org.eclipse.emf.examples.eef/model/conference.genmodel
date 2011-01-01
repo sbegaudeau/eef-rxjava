@@ -29,6 +29,8 @@
           ecoreFeature="ecore:EReference conference.ecore#//Conference/topics"/>
       <genFeatures property="None" children="true" createChild="true" propertyDescription="Where the conference take place"
           ecoreFeature="ecore:EReference conference.ecore#//Conference/sites"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute conference.ecore#//Conference/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute conference.ecore#//Conference/overview"/>
     </genClasses>
     <genClasses ecoreClass="conference.ecore#//Person">
       <genFeatures createChild="false" propertyDescription="Firstname of the person"
