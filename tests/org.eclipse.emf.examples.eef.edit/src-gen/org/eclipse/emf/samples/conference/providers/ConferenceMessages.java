@@ -21,6 +21,9 @@ public class ConferenceMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.samples.conference.providers.conferenceMessages"; //$NON-NLS-1$
 
 	
+	public static String ConferencePropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String ConferencePropertiesEditionPart_LocalisationGroupLabel;
 
 	
@@ -76,6 +79,12 @@ public class ConferenceMessages extends NLS {
 
 	
 	public static String Site_Part_Title;
+
+	
+	public static String ConferencePropertiesEditionPart_NameLabel;
+
+	
+	public static String ConferencePropertiesEditionPart_OverviewLabel;
 
 	
 	public static String ConferencePropertiesEditionPart_PlaceLabel;

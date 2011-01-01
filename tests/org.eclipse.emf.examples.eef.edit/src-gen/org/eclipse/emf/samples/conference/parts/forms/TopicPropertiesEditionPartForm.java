@@ -218,7 +218,7 @@ public class TopicPropertiesEditionPartForm extends CompositePropertiesEditionPa
 						referencesList = new BasicEList();
 					}
 					references.setText(referencesList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TopicPropertiesEditionPartForm.this, ConferenceViewsRepository.Topic.Properties.references, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, referencesList));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TopicPropertiesEditionPartForm.this, ConferenceViewsRepository.Topic.Properties.references, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(referencesList)));
 					setHasChanged(true);
 				}
 			}

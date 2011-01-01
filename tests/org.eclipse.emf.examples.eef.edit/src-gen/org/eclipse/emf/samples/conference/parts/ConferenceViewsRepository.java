@@ -26,6 +26,17 @@ public class ConferenceViewsRepository {
 	 * 
 	 */
 	public static class Conference_ {
+		public static class Properties {
+	
+			
+			public static String name = "conference::Conference_::Properties::name";
+			
+			
+			public static String overview = "conference::Conference_::Properties::overview";
+			
+	
+		}
+	
 		public static class Localisation {
 	
 			

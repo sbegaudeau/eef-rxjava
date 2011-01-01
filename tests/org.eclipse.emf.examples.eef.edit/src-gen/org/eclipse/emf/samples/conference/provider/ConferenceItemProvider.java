@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceItemProvider.java,v 1.3 2010/03/17 13:47:34 glefur Exp $
+ * $Id: ConferenceItemProvider.java,v 1.4 2011/01/01 23:10:26 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -64,6 +64,8 @@ public class ConferenceItemProvider
 			super.getPropertyDescriptors(object);
 
 			addPlacePropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
+			addOverviewPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,6 +84,50 @@ public class ConferenceItemProvider
 				 getString("_UI_Conference_place_feature"),
 				 getString("_UI_Conference_place_description"),
 				 ConferencePackage.Literals.CONFERENCE__PLACE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Conference_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Conference_name_feature", "_UI_Conference_type"),
+				 ConferencePackage.Literals.CONFERENCE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Overview feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOverviewPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Conference_overview_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Conference_overview_feature", "_UI_Conference_type"),
+				 ConferencePackage.Literals.CONFERENCE__OVERVIEW,
 				 true,
 				 false,
 				 false,
@@ -142,7 +188,7 @@ public class ConferenceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Conference)object).getPlace();
+		String label = ((Conference)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Conference_type") :
 			getString("_UI_Conference_type") + " " + label;
@@ -161,6 +207,8 @@ public class ConferenceItemProvider
 
 		switch (notification.getFeatureID(Conference.class)) {
 			case ConferencePackage.CONFERENCE__PLACE:
+			case ConferencePackage.CONFERENCE__NAME:
+			case ConferencePackage.CONFERENCE__OVERVIEW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ConferencePackage.CONFERENCE__PARTICIPANTS:

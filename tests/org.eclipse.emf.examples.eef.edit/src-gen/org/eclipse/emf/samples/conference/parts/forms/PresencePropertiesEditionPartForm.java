@@ -37,6 +37,8 @@ import org.eclipse.emf.samples.conference.parts.PresencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -145,6 +147,15 @@ public class PresencePropertiesEditionPartForm extends CompositePropertiesEditio
 		});
 		this.assists.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Presence.Talks.assists, ConferenceViewsRepository.FORM_KIND));
 		this.assists.createControls(parent, widgetFactory);
+		this.assists.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PresencePropertiesEditionPartForm.this, ConferenceViewsRepository.Presence.Talks.assists, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData assistsData = new GridData(GridData.FILL_HORIZONTAL);
 		assistsData.horizontalSpan = 3;
 		this.assists.setLayoutData(assistsData);

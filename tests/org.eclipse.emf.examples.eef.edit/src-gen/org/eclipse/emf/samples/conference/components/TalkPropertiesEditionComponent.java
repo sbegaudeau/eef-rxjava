@@ -132,8 +132,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for topic
-																																				
-																																				// End of user code
+																																							
+																																							// End of user code
 			
 			
 			basePart.addFilterToPresenter(new ViewerFilter() {
@@ -149,8 +149,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for presenter
-																																				
-																																				// End of user code
+																																							
+																																							// End of user code
 			
 			basePart.addFilterToCreator(new ViewerFilter() {
 			
@@ -165,8 +165,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for creator
-																																				
-																																				// End of user code
+																																							
+																																							// End of user code
 			
 			
 			// init values for referenced views
@@ -325,18 +325,26 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ConferenceViewsRepository.Talk.Properties.title_ == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Title().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Title().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTalk_Title().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Talk.Properties.type == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Type().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Type().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTalk_Type().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Talk.Properties.documentation == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Documentation().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTalk_Documentation().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTalk_Documentation().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

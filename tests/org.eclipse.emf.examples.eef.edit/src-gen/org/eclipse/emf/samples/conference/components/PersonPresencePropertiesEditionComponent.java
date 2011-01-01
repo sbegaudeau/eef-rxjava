@@ -94,8 +94,8 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 			});
 			presencePart.addFilterToAssists(new EObjectFilter(ConferencePackage.eINSTANCE.getTalk()));
 			// Start of user code for additional businessfilters for assists
-																																				
-																																				// End of user code
+																																							
+																																							// End of user code
 			
 			// init values for referenced views
 			
@@ -181,7 +181,6 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

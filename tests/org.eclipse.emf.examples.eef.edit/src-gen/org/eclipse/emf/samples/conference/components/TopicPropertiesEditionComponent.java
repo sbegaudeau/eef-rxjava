@@ -12,6 +12,7 @@ package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -131,9 +132,9 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null) {
 			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToReferences((java.lang.String) msg.getNewValue());
+				basePart.addToReferences(msg.getNewValue());
 			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToReferences((java.lang.String) msg.getNewValue());
+				basePart.removeToReferences(msg.getOldValue());
 		}
 		
 		if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
@@ -182,18 +183,26 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ConferenceViewsRepository.Topic.Properties.description == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Description().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Description().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_Description().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Topic.Properties.references == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_References().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_References().getEAttributeType(), newValue);
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_References().getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
 				}
 				if (ConferenceViewsRepository.Topic.Properties.documentation == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

@@ -26,6 +26,34 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface ConferencePropertiesEditionPart {
 
 	/**
+	 * @return the name
+	 * 
+	 */
+	public String getName();
+
+	/**
+	 * Defines a new name
+	 * @param newValue the new name to set
+	 * 
+	 */
+	public void setName(String newValue);
+
+
+	/**
+	 * @return the overview
+	 * 
+	 */
+	public String getOverview();
+
+	/**
+	 * Defines a new overview
+	 * @param newValue the new overview to set
+	 * 
+	 */
+	public void setOverview(String newValue);
+
+
+	/**
 	 * @return the place
 	 * 
 	 */
