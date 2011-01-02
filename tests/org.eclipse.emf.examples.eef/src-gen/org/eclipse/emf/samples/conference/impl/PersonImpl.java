@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.2 2010/03/17 13:47:31 glefur Exp $
+ * $Id: PersonImpl.java,v 1.3 2011/01/02 14:10:40 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 

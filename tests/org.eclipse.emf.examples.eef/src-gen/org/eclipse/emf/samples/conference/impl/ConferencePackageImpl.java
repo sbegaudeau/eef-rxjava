@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferencePackageImpl.java,v 1.3 2011/01/01 23:10:21 glefur Exp $
+ * $Id: ConferencePackageImpl.java,v 1.4 2011/01/02 14:10:40 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
@@ -11,7 +11,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferenceFactory;
 import org.eclipse.emf.samples.conference.ConferencePackage;

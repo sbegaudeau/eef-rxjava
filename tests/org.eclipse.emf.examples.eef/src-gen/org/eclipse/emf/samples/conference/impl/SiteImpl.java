@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SiteImpl.java,v 1.1 2009/09/04 09:07:40 glefur Exp $
+ * $Id: SiteImpl.java,v 1.2 2011/01/02 14:10:40 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 

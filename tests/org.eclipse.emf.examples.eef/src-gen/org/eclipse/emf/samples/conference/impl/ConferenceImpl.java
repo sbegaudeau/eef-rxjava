@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceImpl.java,v 1.2 2011/01/01 23:10:21 glefur Exp $
+ * $Id: ConferenceImpl.java,v 1.3 2011/01/02 14:10:40 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
