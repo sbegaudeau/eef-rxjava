@@ -11,12 +11,6 @@
 package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -27,29 +21,24 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 
 // End of user code
 
@@ -61,10 +50,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 
 	protected Text name;
 	protected Text overview;
-	protected Text place;
-	protected ReferencesTable sites;
-	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -108,10 +93,6 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		propertiesStep.addStep(ConferenceViewsRepository.Conference_.Properties.name);
 		propertiesStep.addStep(ConferenceViewsRepository.Conference_.Properties.overview);
 		
-		CompositionStep localisationStep = conference_Step.addStep(ConferenceViewsRepository.Conference_.Localisation.class);
-		localisationStep.addStep(ConferenceViewsRepository.Conference_.Localisation.place);
-		localisationStep.addStep(ConferenceViewsRepository.Conference_.Localisation.sites);
-		
 		
 		composer = new PartComposer(conference_Step) {
 
@@ -124,16 +105,7 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 					return 		createNameText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Conference_.Properties.overview) {
-					return 		createOverviewText(widgetFactory, parent);
-				}
-				if (key == ConferenceViewsRepository.Conference_.Localisation.class) {
-					return createLocalisationGroup(widgetFactory, parent);
-				}
-				if (key == ConferenceViewsRepository.Conference_.Localisation.place) {
-					return 		createPlaceText(widgetFactory, parent);
-				}
-				if (key == ConferenceViewsRepository.Conference_.Localisation.sites) {
-					return createSitesTableComposition(widgetFactory, parent);
+					return createOverviewTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -198,144 +170,34 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 	}
 
 	
-	protected Composite createOverviewText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.ConferencePropertiesEditionPart_OverviewLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.FORM_KIND));
-		overview = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		overview.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+	protected Composite createOverviewTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label overviewLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.ConferencePropertiesEditionPart_OverviewLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.FORM_KIND));
+		GridData overviewLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		overviewLabelData.horizontalSpan = 3;
+		overviewLabel.setLayoutData(overviewLabelData);
+		overview = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData overviewData = new GridData(GridData.FILL_HORIZONTAL);
+		overviewData.horizontalSpan = 2;
+		overviewData.heightHint = 80;
+		overviewData.widthHint = 200;
 		overview.setLayoutData(overviewData);
 		overview.addFocusListener(new FocusAdapter() {
+
 			/**
+			 * {@inheritDoc}
+			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Properties.overview, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, overview.getText()));
 			}
-		});
-		overview.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Properties.overview, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, overview.getText()));
-				}
-			}
+
 		});
 		EditingUtils.setID(overview, ConferenceViewsRepository.Conference_.Properties.overview);
-		EditingUtils.setEEFtype(overview, "eef::Text"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(overview, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
-
-	/**
-	 * 
-	 */
-	protected Composite createLocalisationGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section localisationSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		localisationSection.setText(ConferenceMessages.ConferencePropertiesEditionPart_LocalisationGroupLabel);
-		GridData localisationSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		localisationSectionData.horizontalSpan = 3;
-		localisationSection.setLayoutData(localisationSectionData);
-		Composite localisationGroup = widgetFactory.createComposite(localisationSection);
-		GridLayout localisationGroupLayout = new GridLayout();
-		localisationGroupLayout.numColumns = 3;
-		localisationGroup.setLayout(localisationGroupLayout);
-		localisationSection.setClient(localisationGroup);
-		return localisationGroup;
-	}
-
-	
-	protected Composite createPlaceText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.ConferencePropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Localisation.place, ConferenceViewsRepository.FORM_KIND));
-		place = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		place.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
-		place.setLayoutData(placeData);
-		place.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.place, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, place.getText()));
-			}
-		});
-		place.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.place, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, place.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(place, ConferenceViewsRepository.Conference_.Localisation.place);
-		EditingUtils.setEEFtype(place, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Localisation.place, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
-
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createSitesTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.sites = new ReferencesTable(ConferenceMessages.ConferencePropertiesEditionPart_SitesLabel, new ReferencesTableListener() {
-			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				sites.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				sites.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				sites.refresh();
-			}
-			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				sites.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		this.sites.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Localisation.sites, ConferenceViewsRepository.FORM_KIND));
-		this.sites.createControls(parent, widgetFactory);
-		this.sites.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Localisation.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData sitesData = new GridData(GridData.FILL_HORIZONTAL);
-		sitesData.horizontalSpan = 3;
-		this.sites.setLayoutData(sitesData);
-		this.sites.setLowerBound(0);
-		this.sites.setUpperBound(-1);
-		sites.setID(ConferenceViewsRepository.Conference_.Localisation.sites);
-		sites.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -398,89 +260,8 @@ public class ConferencePropertiesEditionPartForm extends CompositePropertiesEdit
 		if (newValue != null) {
 			overview.setText(newValue);
 		} else {
-			overview.setText(""); //$NON-NLS-1$
+			overview.setText("");  //$NON-NLS-1$
 		}
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#getPlace()
-	 * 
-	 */
-	public String getPlace() {
-		return place.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#setPlace(String newValue)
-	 * 
-	 */
-	public void setPlace(String newValue) {
-		if (newValue != null) {
-			place.setText(newValue);
-		} else {
-			place.setText(""); //$NON-NLS-1$
-		}
-	}
-
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#initSites(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initSites(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		sites.setContentProvider(contentProvider);
-		sites.setInput(settings);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#updateSites()
-	 * 
-	 */
-	public void updateSites() {
-	sites.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#addFilterSites(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToSites(ViewerFilter filter) {
-		sitesFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#addBusinessFilterSites(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToSites(ViewerFilter filter) {
-		sitesBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart#isContainedInSitesTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInSitesTable(EObject element) {
-		return ((ReferencesTableSettings)sites.getInput()).contains(element);
 	}
 
 

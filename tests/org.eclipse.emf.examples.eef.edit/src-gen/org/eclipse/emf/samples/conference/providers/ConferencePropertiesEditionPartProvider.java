@@ -14,12 +14,14 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+import org.eclipse.emf.samples.conference.parts.forms.ConferenceLocalisationPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.ConferencePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.PersonPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.PresencePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.SitePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TalkPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TopicPropertiesEditionPartForm;
+import org.eclipse.emf.samples.conference.parts.impl.ConferenceLocalisationPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.ConferencePropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.PersonPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.PresencePropertiesEditionPartImpl;
@@ -56,6 +58,12 @@ public class ConferencePropertiesEditionPartProvider implements IPropertiesEditi
 				return new ConferencePropertiesEditionPartImpl(component);
 			if (kind == ConferenceViewsRepository.FORM_KIND)
 				return new ConferencePropertiesEditionPartForm(component);
+		}
+		if (key == ConferenceViewsRepository.ConferenceLocalisation.class) {
+			if (kind == ConferenceViewsRepository.SWT_KIND)
+				return new ConferenceLocalisationPropertiesEditionPartImpl(component);
+			if (kind == ConferenceViewsRepository.FORM_KIND)
+				return new ConferenceLocalisationPropertiesEditionPartForm(component);
 		}
 		if (key == ConferenceViewsRepository.Person.class) {
 			if (kind == ConferenceViewsRepository.SWT_KIND)

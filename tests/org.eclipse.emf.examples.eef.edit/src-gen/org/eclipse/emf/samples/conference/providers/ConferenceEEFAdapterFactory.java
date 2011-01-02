@@ -22,14 +22,6 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTopicAdapter()
-	 * 
-	 */
-	public Adapter createTopicAdapter() {
-		return new TopicPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createSiteAdapter()
 	 * 
 	 */
@@ -59,6 +51,14 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 	 */
 	public Adapter createTalkAdapter() {
 		return new TalkPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTopicAdapter()
+	 * 
+	 */
+	public Adapter createTopicAdapter() {
+		return new TopicPropertiesEditionProvider();
 	}
 
 }

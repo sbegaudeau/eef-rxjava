@@ -24,9 +24,6 @@ public class ConferenceMessages extends NLS {
 	public static String ConferencePropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String ConferencePropertiesEditionPart_LocalisationGroupLabel;
-
-	
 	public static String PersonPropertiesEditionPart_IdentityGroupLabel;
 
 	
@@ -49,6 +46,12 @@ public class ConferenceMessages extends NLS {
 
 	
 	public static String Conference_Part_Title;
+
+	
+	public static String ConferenceLocalisation_ReadOnly;
+
+	
+	public static String ConferenceLocalisation_Part_Title;
 
 	
 	public static String Person_ReadOnly;
@@ -87,10 +90,10 @@ public class ConferenceMessages extends NLS {
 	public static String ConferencePropertiesEditionPart_OverviewLabel;
 
 	
-	public static String ConferencePropertiesEditionPart_PlaceLabel;
+	public static String ConferenceLocalisationPropertiesEditionPart_PlaceLabel;
 
 	
-	public static String ConferencePropertiesEditionPart_SitesLabel;
+	public static String ConferenceLocalisationPropertiesEditionPart_SitesLabel;
 
 	
 	public static String PersonPropertiesEditionPart_FirstnameLabel;

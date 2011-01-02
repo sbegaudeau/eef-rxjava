@@ -11,7 +11,6 @@
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -43,6 +42,7 @@ import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 
 // End of user code
 
@@ -132,8 +132,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for topic
-																																							
-																																							// End of user code
+												
+												// End of user code
 			
 			
 			basePart.addFilterToPresenter(new ViewerFilter() {
@@ -149,8 +149,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for presenter
-																																							
-																																							// End of user code
+												
+												// End of user code
 			
 			basePart.addFilterToCreator(new ViewerFilter() {
 			
@@ -165,8 +165,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for creator
-																																							
-																																							// End of user code
+												
+												// End of user code
 			
 			
 			// init values for referenced views

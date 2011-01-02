@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceItemProvider.java,v 1.4 2011/01/01 23:10:26 glefur Exp $
+ * $Id: ConferenceItemProvider.java,v 1.5 2011/01/02 14:10:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 

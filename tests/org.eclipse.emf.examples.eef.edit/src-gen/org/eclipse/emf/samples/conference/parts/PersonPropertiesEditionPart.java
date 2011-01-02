@@ -11,9 +11,9 @@
 package org.eclipse.emf.samples.conference.parts;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
+
 
 
 // End of user code

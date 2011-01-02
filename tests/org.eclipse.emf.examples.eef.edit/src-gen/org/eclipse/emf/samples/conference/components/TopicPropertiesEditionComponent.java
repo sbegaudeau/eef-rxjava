@@ -11,7 +11,6 @@
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
-
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,6 +32,7 @@ import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Topic;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart;
+
 
 // End of user code
 

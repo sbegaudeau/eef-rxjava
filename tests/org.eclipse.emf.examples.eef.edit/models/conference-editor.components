@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-ext-edt="http://www.eclipse.org/emf/eef/extended/editor/1.0.0" xmlns:eef-ext-qry="http://www.eclipse.org/emf/eef/extended/query/1.0.0" xmlns:eef-mapping-filters="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_SiXfIBX9EeCoMtD9CjHikw" documentation="Editor contribution for conference GenPackage">
+    <categories xsi:type="eef-ext-edt:EEFEditorContributions" xmi:id="_SilhkBX9EeCoMtD9CjHikw" name="conference contributions">
+      <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" xmi:id="_SimvsBX9EeCoMtD9CjHikw" name="Conference main" views="/1/@categories.0/@views.0">
+        <bindingFilters xsi:type="eef-ext-edt:PartFilter" name="Conference page filter">
+          <filteredPart href="conference.components#_KvJoMZkmEd6sxtwdpecy3w"/>
+          <contextualComponent href="conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
+        </bindingFilters>
+        <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput">
+          <query xsi:type="eef-ext-qry:OCLQuery" query="self">
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+          </query>
+        </input>
+      </bindings>
+      <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" name="Conference participants" views="/1/@categories.0/@views.2">
+        <bindingFilters xsi:type="eef-mapping-filters:OCLFilter" name="Participants page filter" OCLBody="self.oclIsTypeOf(conference::Person)"/>
+        <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput">
+          <query xsi:type="eef-ext-qry:OCLQuery" query="self">
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+          </query>
+        </input>
+      </bindings>
+      <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" name="Conference localisation" views="/1/@categories.0/@views.1">
+        <bindingFilters xsi:type="eef-ext-edt:PartFilter" name="Localisation page filter">
+          <filteredPart href="conference.components#/1/@categories.0/@views.1"/>
+          <contextualComponent href="conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
+        </bindingFilters>
+        <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput">
+          <query xsi:type="eef-ext-qry:OCLQuery" query="self">
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+          </query>
+        </input>
+      </bindings>
+      <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" name="Extension" views="/1/@categories.0/@views.3">
+        <input xsi:type="eef-ext-edt:AllResourcesRootsRelativeInput"/>
+      </bindings>
+    </categories>
+    <model href="../../org.eclipse.emf.examples.eef/model/conference.genmodel#//conference"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_SimvshX9EeCoMtD9CjHikw" documentation="Editor pages for conference GenPackage" name="conference editor">
+    <RepositoryKind>Editor</RepositoryKind>
+    <categories xsi:type="eef-ext-edt:EEFEditorPages" xmi:id="_SimvsxX9EeCoMtD9CjHikw" name="conference editor pages">
+      <views xsi:type="eef-ext-edt:StandardFormPage" name="Conference" title=""/>
+      <views xsi:type="eef-ext-edt:EEFMasterPage" name="localisation" title="Conference localisation"/>
+      <views xsi:type="eef-ext-edt:TreeMasterPage" name="participants" toolbarVisible="true"/>
+      <views xsi:type="eef-ext-edt:TreeMasterPage" name="extended" title="conference"/>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>

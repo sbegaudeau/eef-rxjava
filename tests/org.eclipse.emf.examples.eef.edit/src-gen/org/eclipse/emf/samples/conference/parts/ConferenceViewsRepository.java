@@ -37,16 +37,18 @@ public class ConferenceViewsRepository {
 	
 		}
 	
-		public static class Localisation {
+	}
+
+	/**
+	 * Conference localisation view descriptor
+	 * 
+	 */
+	public static class ConferenceLocalisation {
 	
-			
-			public static String place = "conference::Conference_::Localisation::place";
-			
-			
-			public static String sites = "conference::Conference_::Localisation::sites";
-			
+	public static String place = "conference::Conference localisation::place";
 	
-		}
+	
+	public static String sites = "conference::Conference localisation::sites";
 	
 	}
 

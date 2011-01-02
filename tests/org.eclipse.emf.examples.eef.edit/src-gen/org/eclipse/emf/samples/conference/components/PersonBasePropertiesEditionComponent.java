@@ -11,7 +11,6 @@
 package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -32,6 +31,7 @@ import org.eclipse.emf.samples.conference.GENDER;
 import org.eclipse.emf.samples.conference.Person;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
+
 
 // End of user code
 

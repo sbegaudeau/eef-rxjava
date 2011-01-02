@@ -11,7 +11,6 @@
 package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +45,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 
 // End of user code
 

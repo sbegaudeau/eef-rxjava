@@ -24,10 +24,10 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferencePackage;
-import org.eclipse.emf.samples.conference.Site;
+import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
-import org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart;
 
 
 // End of user code
@@ -36,7 +36,7 @@ import org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class ConferenceBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
@@ -46,11 +46,11 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * Default constructor
 	 * 
 	 */
-	public SitePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject site, String editing_mode) {
-		super(editingContext, site, editing_mode);
+	public ConferenceBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject conference, String editing_mode) {
+		super(editingContext, conference, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ConferenceViewsRepository.class;
-		partKey = ConferenceViewsRepository.Site.class;
+		partKey = ConferenceViewsRepository.Conference_.class;
 	}
 
 	/**
@@ -64,14 +64,14 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			final Site site = (Site)elt;
-			final SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
+			final Conference conference = (Conference)elt;
+			final ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
 			// init values
-			if (site.getName() != null)
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getName()));
+			if (conference.getName() != null)
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getName()));
 			
-			if (site.getDocumentation() != null)
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getDocumentation()));
+			if (conference.getOverview() != null)
+				basePart.setOverview(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getOverview()));
 			// init filters
 			
 			
@@ -93,12 +93,12 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Site site = (Site)semanticObject;
-		if (ConferenceViewsRepository.Site.Properties.name == event.getAffectedEditor()) {
-			site.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		Conference conference = (Conference)semanticObject;
+		if (ConferenceViewsRepository.Conference_.Properties.name == event.getAffectedEditor()) {
+			conference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ConferenceViewsRepository.Site.Properties.documentation == event.getAffectedEditor()) {
-			site.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		if (ConferenceViewsRepository.Conference_.Properties.overview == event.getAffectedEditor()) {
+			conference.setOverview((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
 
@@ -107,19 +107,19 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
-		if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null){
+		ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
+		if (ConferencePackage.eINSTANCE.getConference_Name().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
 				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 			} else {
 				basePart.setName("");
 			}
 		}
-		if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null){
+		if (ConferencePackage.eINSTANCE.getConference_Overview().equals(msg.getFeature()) && basePart != null){
 			if (msg.getNewValue() != null) {
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				basePart.setOverview(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 			} else {
-				basePart.setDocumentation("");
+				basePart.setOverview("");
 			}
 		}
 		
@@ -133,7 +133,7 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == ConferenceViewsRepository.Site.Properties.name || key == ConferenceViewsRepository.Site.Properties.documentation;
+		return key == ConferenceViewsRepository.ConferenceLocalisation.place || key == ConferenceViewsRepository.Conference_.Properties.name;
 	}
 
 	/**
@@ -143,10 +143,10 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == ConferenceViewsRepository.Site.Properties.name)
-			return "Name of the place"; //$NON-NLS-1$
-		if (key == ConferenceViewsRepository.Site.Properties.documentation)
-			return "Information about this site"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.ConferenceLocalisation.place)
+			return "The conference's place"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.ConferenceLocalisation.sites)
+			return "Where the conference take place"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -160,19 +160,19 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (ConferenceViewsRepository.Site.Properties.name == event.getAffectedEditor()) {
+				if (ConferenceViewsRepository.Conference_.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Name().getEAttributeType(), (String)newValue);
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getConference_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getSite_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getConference_Name().getEAttributeType(), newValue);
 				}
-				if (ConferenceViewsRepository.Site.Properties.documentation == event.getAffectedEditor()) {
+				if (ConferenceViewsRepository.Conference_.Properties.overview == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), (String)newValue);
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getConference_Overview().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getConference_Overview().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

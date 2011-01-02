@@ -43,6 +43,12 @@
                id="Base">
          </propertyTab>
          <propertyTab
+               label="Conference localisation"
+               category="extended"
+               id="Conference localisation"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
                label="Presence"
                category="extended"
                id="Presence"
@@ -58,6 +64,14 @@
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Base">
+             <input
+                    type="org.eclipse.emf.samples.conference.Conference">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.samples.conference.section.Conference"
+               tab="Conference localisation">
              <input
                     type="org.eclipse.emf.samples.conference.Conference">
              </input>

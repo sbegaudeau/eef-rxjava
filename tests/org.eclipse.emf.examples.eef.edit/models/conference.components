@@ -2,11 +2,11 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_KvIaEJkmEd6sxtwdpecy3w" documentation="Edition Context for conference GenPackage">
     <categories xmi:id="_KvJBIJkmEd6sxtwdpecy3w" name="conference">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBIZkmEd6sxtwdpecy3w" name="Conference" views="_KvJoMZkmEd6sxtwdpecy3w">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OJpU8JktEd6sxtwdpecy3w" name="place" views="_KvJoM5kmEd6sxtwdpecy3w">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_KvJBIZkmEd6sxtwdpecy3w" name="Conference" views="_KvJoMZkmEd6sxtwdpecy3w /1/@categories.0/@views.1">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OJpU8JktEd6sxtwdpecy3w" name="place" views="/1/@categories.0/@views.1/@elements.0">
           <model xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/place"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_P9i7gJktEd6sxtwdpecy3w" name="sites" views="_KvJoN5kmEd6sxtwdpecy3w">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_P9i7gJktEd6sxtwdpecy3w" name="sites" views="/1/@categories.0/@views.1/@elements.1">
           <model xsi:type="ecore:EReference" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/sites"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" name="name" views="/1/@categories.0/@views.0/@elements.0/@elements.0" helpID="">
@@ -97,17 +97,16 @@
             <representation href="../../../plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" name="overview">
-            <representation href="../../../plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="../../../plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
         </elements>
-        <elements xsi:type="eef-views:Container" xmi:id="_KvJoMpkmEd6sxtwdpecy3w" name="Localisation">
-          <representation href="../../../plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoM5kmEd6sxtwdpecy3w" name="place">
-            <representation href="../../../plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvJoN5kmEd6sxtwdpecy3w" name="sites">
-            <representation href="../../../plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
+      </views>
+      <views name="Conference localisation">
+        <elements xsi:type="eef-views:ElementEditor" name="place">
+          <representation href="../../../plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" name="sites">
+          <representation href="../../../plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
         </elements>
       </views>
       <views xmi:id="_KvJoOJkmEd6sxtwdpecy3w" name="Person">

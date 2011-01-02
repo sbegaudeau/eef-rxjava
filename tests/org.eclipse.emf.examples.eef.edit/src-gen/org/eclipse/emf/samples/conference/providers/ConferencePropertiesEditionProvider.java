@@ -18,6 +18,8 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.components.ConferenceBasePropertiesEditionComponent;
+import org.eclipse.emf.samples.conference.components.ConferenceConferenceLocalisationPropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.ConferencePropertiesEditionComponent;
 
 /**
@@ -57,7 +59,7 @@ public class ConferencePropertiesEditionProvider extends PropertiesEditingProvid
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Conference) && (ConferencePropertiesEditionComponent.BASE_PART.equals(part));
+		return (editingContext.getEObject() instanceof Conference) && (ConferenceBasePropertiesEditionComponent.BASE_PART.equals(part) || ConferenceConferenceLocalisationPropertiesEditionComponent.CONFERENCELOCALISATION_PART.equals(part));
 	}
 
 	/**
@@ -67,7 +69,7 @@ public class ConferencePropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("unchecked")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Conference) && (refinement == ConferencePropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Conference) && (refinement == ConferenceBasePropertiesEditionComponent.class || refinement == ConferenceConferenceLocalisationPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -77,7 +79,7 @@ public class ConferencePropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("unchecked")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Conference) && ((ConferencePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConferencePropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Conference) && ((ConferenceBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConferenceBasePropertiesEditionComponent.class) || (ConferenceConferenceLocalisationPropertiesEditionComponent.CONFERENCELOCALISATION_PART.equals(part) && refinement == ConferenceConferenceLocalisationPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -99,8 +101,10 @@ public class ConferencePropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Conference) {
-			if (ConferencePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ConferencePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConferenceBasePropertiesEditionComponent.BASE_PART.equals(part))
+				return new ConferenceBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConferenceConferenceLocalisationPropertiesEditionComponent.CONFERENCELOCALISATION_PART.equals(part))
+				return new ConferenceConferenceLocalisationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -112,9 +116,12 @@ public class ConferencePropertiesEditionProvider extends PropertiesEditingProvid
 	@SuppressWarnings("unchecked")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Conference) {
-			if (ConferencePropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == ConferencePropertiesEditionComponent.class)
-				return new ConferencePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConferenceBasePropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == ConferenceBasePropertiesEditionComponent.class)
+				return new ConferenceBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConferenceConferenceLocalisationPropertiesEditionComponent.CONFERENCELOCALISATION_PART.equals(part)
+				&& refinement == ConferenceConferenceLocalisationPropertiesEditionComponent.class)
+				return new ConferenceConferenceLocalisationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

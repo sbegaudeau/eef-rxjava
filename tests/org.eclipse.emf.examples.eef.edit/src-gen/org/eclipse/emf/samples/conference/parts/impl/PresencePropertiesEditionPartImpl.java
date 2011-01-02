@@ -11,7 +11,6 @@
 package org.eclipse.emf.samples.conference.parts.impl;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,6 +43,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 
 // End of user code
 

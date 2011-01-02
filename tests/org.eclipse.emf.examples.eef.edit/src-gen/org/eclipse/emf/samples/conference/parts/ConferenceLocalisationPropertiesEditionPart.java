@@ -23,48 +23,64 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public interface PresencePropertiesEditionPart {
-
-
+public interface ConferenceLocalisationPropertiesEditionPart {
 
 	/**
-	 * Init the assists
-	 * @param settings settings for the assists ReferencesTable 
-	 */
-	public void initAssists(ReferencesTableSettings settings);
-
-	/**
-	 * Update the assists
-	 * @param newValue the assists to update
+	 * @return the place
 	 * 
 	 */
-	public void updateAssists();
+	public String getPlace();
 
 	/**
-	 * Adds the given filter to the assists edition editor.
+	 * Defines a new place
+	 * @param newValue the new place to set
+	 * 
+	 */
+	public void setPlace(String newValue);
+
+
+
+
+	/**
+	 * Init the sites
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initSites(ReferencesTableSettings settings);
+
+	/**
+	 * Update the sites
+	 * @param newValue the sites to update
+	 * 
+	 */
+	public void updateSites();
+
+	/**
+	 * Adds the given filter to the sites edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addFilterToAssists(ViewerFilter filter);
+	public void addFilterToSites(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the assists edition editor.
+	 * Adds the given filter to the sites edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addBusinessFilterToAssists(ViewerFilter filter);
+	public void addBusinessFilterToSites(ViewerFilter filter);
 
 	/**
-	 * @return true if the given element is contained inside the assists table
+	 * @return true if the given element is contained inside the sites table
 	 * 
 	 */
-	public boolean isContainedInAssistsTable(EObject element);
+	public boolean isContainedInSitesTable(EObject element);
 
 
 
