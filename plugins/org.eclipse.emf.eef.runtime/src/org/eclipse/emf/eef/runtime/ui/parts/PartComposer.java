@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.parts;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.swt.widgets.Composite;
@@ -42,13 +44,30 @@ public abstract class PartComposer {
 	 *            the view where to compose the part
 	 */
 	public void compose(Composite parent) {
-		CompositionStep next = compositionSequence.next();
-		Composite currentContainer = parent;
-		while (next != null) {
-			if (next.isVisibile())
-				currentContainer = addToPart(currentContainer, next.key);
-			next = next.next();
+		List<CompositionStep> subSteps = compositionSequence.getSubSteps();
+		if (!subSteps.isEmpty()) {
+			for (CompositionStep compositionStep : subSteps) {
+				composeDelegate(parent, compositionStep);
+			}
 		}
+	}
+
+	/**
+	 * Compose the part.
+	 * 
+	 * @param parent
+	 *            the view where to compose the part
+	 */
+	protected void composeDelegate(Composite parent, CompositionStep step) {
+		Composite currentContainer = addToPart(parent, step.key);
+		List<CompositionStep> subSteps = step.getSubSteps();
+		if (!subSteps.isEmpty()) {
+			for (CompositionStep compositionStep : subSteps) {
+				composeDelegate(currentContainer, compositionStep);
+			}
+		}
+		
+		
 	}
 
 	/**
