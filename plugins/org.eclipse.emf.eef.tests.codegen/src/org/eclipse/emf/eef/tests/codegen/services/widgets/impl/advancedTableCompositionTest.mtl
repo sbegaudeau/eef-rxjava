@@ -106,7 +106,7 @@ cc.append(RemoveCommand.create(editingDomain, [pec.model.name.toLowerFirst()/], 
 
 [template public removePropertyFeature(pec : PropertiesEditionComponent, peElement : PropertiesEditionElement) overrides removePropertyFeature ? (peElement.isAdvancedTableComposition())]
 // Change value of the [peElement.name/] feature of the [pec.model.name/] element 
-bot.removePropertyAdvancedTableCompositionFeature(propertiesView, [peElement.views->first().editorID()/], EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
+bot.removePropertyAdvancedTableCompositionFeature(propertiesView, [peElement.views->first().editorID()/], [peElement.views->first().owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, bot.selectNode(modelEditor, firstInstanceOf));
 [/template]
 
 [query public isAdvancedTableComposition(peElement : PropertiesEditionElement) : Boolean = 
