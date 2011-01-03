@@ -117,7 +117,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		this.setLayout(layout);
 		selection = new Text(this, SWT.BORDER);
 		GridData selectionData = new GridData(GridData.FILL_HORIZONTAL);
-		selectionData.widthHint = 400;
+//		selectionData.widthHint = 400;
 		selection.setLayoutData(selectionData);
 		selection.setEditable(false);
 		EditingUtils.setEEFtype(selection, "eef::FlatReferencesTable::field");
