@@ -7,7 +7,9 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.emf.samples.conference.provider.ConferenceEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.eclipse.emf.samples.conference.provider
+Export-Package: org.eclipse.emf.samples.conference.parts,
+ org.eclipse.emf.samples.conference.provider,
+ org.eclipse.emf.samples.conference.providers
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.examples.eef;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,

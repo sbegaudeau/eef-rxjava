@@ -132,8 +132,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for topic
-												
-												// End of user code
+																					
+																					// End of user code
 			
 			
 			basePart.addFilterToPresenter(new ViewerFilter() {
@@ -149,8 +149,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for presenter
-												
-												// End of user code
+																					
+																					// End of user code
 			
 			basePart.addFilterToCreator(new ViewerFilter() {
 			
@@ -165,8 +165,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for creator
-												
-												// End of user code
+																					
+																					// End of user code
 			
 			
 			// init values for referenced views

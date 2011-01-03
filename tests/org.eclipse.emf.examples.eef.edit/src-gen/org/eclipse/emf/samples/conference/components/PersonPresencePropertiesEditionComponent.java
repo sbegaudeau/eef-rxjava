@@ -94,8 +94,8 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 			});
 			presencePart.addFilterToAssists(new EObjectFilter(ConferencePackage.eINSTANCE.getTalk()));
 			// Start of user code for additional businessfilters for assists
-												
-												// End of user code
+																					
+																					// End of user code
 			
 			// init values for referenced views
 			

@@ -22,11 +22,11 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createSiteAdapter()
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createPersonAdapter()
 	 * 
 	 */
-	public Adapter createSiteAdapter() {
-		return new SitePropertiesEditionProvider();
+	public Adapter createPersonAdapter() {
+		return new PersonPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -38,11 +38,19 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createPersonAdapter()
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTopicAdapter()
 	 * 
 	 */
-	public Adapter createPersonAdapter() {
-		return new PersonPropertiesEditionProvider();
+	public Adapter createTopicAdapter() {
+		return new TopicPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createSiteAdapter()
+	 * 
+	 */
+	public Adapter createSiteAdapter() {
+		return new SitePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -51,14 +59,6 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 	 */
 	public Adapter createTalkAdapter() {
 		return new TalkPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTopicAdapter()
-	 * 
-	 */
-	public Adapter createTopicAdapter() {
-		return new TopicPropertiesEditionProvider();
 	}
 
 }

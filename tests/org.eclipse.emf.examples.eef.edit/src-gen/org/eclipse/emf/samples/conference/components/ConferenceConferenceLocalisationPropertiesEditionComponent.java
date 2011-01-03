@@ -102,8 +102,8 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 			
 			});
 			// Start of user code for additional businessfilters for sites
-									
-									// End of user code
+																		
+																		// End of user code
 			
 			// init values for referenced views
 			
