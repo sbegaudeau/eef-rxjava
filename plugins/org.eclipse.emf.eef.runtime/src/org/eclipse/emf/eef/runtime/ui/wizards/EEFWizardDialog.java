@@ -28,7 +28,7 @@ public class EEFWizardDialog extends WizardDialog {
 	public EEFWizardDialog(Shell shell, IWizard wizard) {
 		super(shell, wizard);
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -36,8 +36,11 @@ public class EEFWizardDialog extends WizardDialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return UIConstants.INITIAL_WIZARD_SIZE;
+		Point initialSize = super.getInitialSize();
+		return new Point(Math.min(UIConstants.INITIAL_WIZARD_SIZE.x, initialSize.x), Math.min(UIConstants.INITIAL_WIZARD_SIZE.y, initialSize.y));
 	}
+
+
 
 	@Override
 	protected Button createButton(Composite parent, int id, String label, boolean defaultButton) {
@@ -49,5 +52,6 @@ public class EEFWizardDialog extends WizardDialog {
 	public void updateButtons() {
 		boolean canFinish = getWizard().canFinish();
 		_finishButton.setEnabled(canFinish);
-	}
+	}	
+	
 }
