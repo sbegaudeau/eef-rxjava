@@ -4,6 +4,8 @@
 package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
@@ -12,6 +14,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface EEFEditorPage {
 
+	/**
+	 * @return the main viewer of the page (where the filters are added).
+	 */
+	StructuredViewer getModelViewer();
+	
 	/**
 	 * Defines the page input.
 	 * @param input page input
@@ -23,6 +30,12 @@ public interface EEFEditorPage {
 	 * @param filter the filter to add
 	 */
 	void addFilter(ViewerFilter filter);
+	
+	/**
+	 * Add an action to the page.
+	 * @param action action to add.
+	 */
+	public void addAction(Action action);
 	
 	/**
 	 * Defines the page title.

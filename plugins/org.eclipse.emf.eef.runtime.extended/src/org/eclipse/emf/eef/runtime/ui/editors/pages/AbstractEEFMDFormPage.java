@@ -12,12 +12,9 @@ package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock;
 import org.eclipse.jface.action.Action;
@@ -27,7 +24,6 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Menu;
@@ -125,10 +121,15 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 	}
 
 	/**
-	 * @return the modelViewer
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getModelViewer()
 	 */
 	public StructuredViewer getModelViewer() {
-		return block.getMasterPart().getModelViewer();
+		if (block != null && block.getMasterPart() != null) {
+			return block.getMasterPart().getModelViewer();
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -139,13 +140,6 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 		block.setAdapterFactory(adapterFactory);
 		block.setEditingDomain(editingDomain);
 		block.setInput(input);
-	}
-	
-	/**
-	 * @param filter add a filter to the model viewer
-	 */
-	public void addFilter(ViewerFilter filter) {
-		block.addFilter(filter);
 	}
 	
 	/**

@@ -18,7 +18,7 @@ import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.ui.forms.IManagedForm;
@@ -53,7 +53,7 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 	 * @deprecated
 	 */
 	public EEFStandardFormPage(FormEditor editor, String name, EditingDomain editingDomain, AdapterFactory adapterFactory) {
-		super(editor, PAGE_ID, name); 
+		this(editor, name);
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
@@ -98,10 +98,10 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 	}
 
 	/**
-	 * Add the given filter to the page viewer
-	 * @param filter the page viewer filter
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getModelViewer()
 	 */
-	public void addFilter(ViewerFilter filter) {
-		viewer.addFilter(filter);
+	public StructuredViewer getModelViewer() {
+		return viewer;
 	}
 }
