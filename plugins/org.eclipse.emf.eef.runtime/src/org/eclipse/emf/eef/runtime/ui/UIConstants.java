@@ -22,7 +22,7 @@ public interface UIConstants {
 	/**
 	 * Defines the initial size for the Editing wizard.
 	 */
-	Point INITIAL_WIZARD_SIZE = new Point(650, 800);
+	Point INITIAL_WIZARD_SIZE = new Point(650, 660);
 
 	/**
 	 * Defines the constant for an unknown EEF representation type.
