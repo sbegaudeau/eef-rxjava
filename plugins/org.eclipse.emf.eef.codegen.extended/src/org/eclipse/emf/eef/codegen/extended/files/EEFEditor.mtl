@@ -16,7 +16,11 @@
  */
 package [peContext.model.presentationPackage()/];
 
-
+[if (peContext.categories.bindings.bindingFilters->size() > 0)]
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.jface.viewers.ViewerFilter;
+[/if]
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import [model.ecorePackage.qualifiedMetamodelPackage()/];
@@ -25,14 +29,17 @@ import org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor;
 [for (pageType : EClass | peContext.categories.bindings.views.eClass()->asOrderedSet())]
 [pageType.pageImports()/]
 [/for]
+[for (filterType : EClass | peContext.categories.bindings.bindingFilters.eClass()->asOrderedSet())]
+[filterType.filterImports()/]
+[/for]
 [for (queryType : EClass | peContext.eAllContents(EEFUnderstandableQuery).eClass()->asOrderedSet())]
 [queryType.queryImports()/]
 [/for]
 import org.eclipse.ui.PartInitException;
 
 /**
- * This is an example of a Demo model editor.
- *
+ * This is an example of a [model.ecorePackage.name/] model editor.
+ * 
  */
 public class [model.editorClassName()/] extends InteractiveEEFEditor {
 
@@ -45,10 +52,18 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 	[for (contribution : StaticEEFEditorContribution | peContext.categories.bindings->filter(StaticEEFEditorContribution))]
 			{
 				[contribution.input.editorInput()/]
-				[comment TODO : Process filters/]
+					[if (contribution.bindingFilters->size() > 0)]
+				List<ViewerFilter> filters = new ArrayList<ViewerFilter>([contribution.bindingFilters->size()/]);
+				[contribution.bindingFilters.filterDeclaration()/]
+					[/if]
 			[for (page : EEFPage | contribution.views->filter(EEFPage))]
 				{
 					[page.editorPage(peContext.model.editorClassName())/]
+					[if (contribution.bindingFilters->size() > 0)]
+					for (ViewerFilter viewerFilter : filters) {
+						page.addFilter(viewerFilter);
+					}
+					[/if]
 					page.setInput(input);
 					addPage(page);
 				}

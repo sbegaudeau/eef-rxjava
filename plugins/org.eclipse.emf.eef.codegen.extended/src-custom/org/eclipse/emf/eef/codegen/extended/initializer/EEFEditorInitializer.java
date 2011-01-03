@@ -143,6 +143,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 					boolean modelsExist = helper.getEEFPropertiesComponentsModel().exists() && helper.getEEFPropertiesEEFGenModel().exists();
 					if (modelsExist) {
 						try {
+							((WorkflowVariable)getEEFModelsFolder()).setValue(helper.getEEFModelsFolder());
 							((WorkflowVariable)getEEFGenModel()).setValue(EMFHelper.load(GenmodelHelper.computePropertiesEEFGenModelURI(helper.getEEFModelsFolder(), helper.genmodelURI()), resourceSet));
 						} catch (IOException e) {
 							EEFExtendedRuntime.INSTANCE.log(e);

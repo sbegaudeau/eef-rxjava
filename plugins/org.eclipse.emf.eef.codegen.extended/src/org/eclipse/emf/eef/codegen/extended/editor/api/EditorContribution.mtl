@@ -1,7 +1,8 @@
 [comment encoding = UTF-8 /]
-[module EditorContribution('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module EditorContribution('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/extended/editor/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming/]
 [import org::eclipse::emf::eef::codegen::extended::query::query /]
 
 
@@ -9,6 +10,10 @@
 
 [template public editorInput(input : EEFPageInput)]
 //FIXME: Input of type [input.eClass().name/] not managed. Override 'editorInput' template into EditorContribution to fix this. 
+[/template]
+
+[template public filterDeclaration(filter : BindingFilter)]
+//FIXME: Input of type [filter.eClass().name/] not managed. Override 'filterDeclaration' template into EditorContribution to fix this. 
 [/template]
 
 [template public editorPage(page : EEFPage, editorName : String)]
@@ -41,6 +46,38 @@ if (getEditingDomain().getResourceSet() != null && getEditingDomain().getResourc
 	[/if]
 [/template]
 
+[comment =================== Filters implementations ===================== /]
+[template public filterImports(filterType : EClass) ? (filterType.name = 'PartFilter')]
+import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
+[/template]
+
+[template public filterDeclaration(filter : PartFilter)]
+filters.add(new PropertiesEditionPartFilter("[filter.filteredPart.viewKey(filter.contextualComponent)/]"));
+[/template]
+
+[template public filterImports(filterType : EClass) ? (filterType.name = 'OCLFilter')]
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.emf.eef.runtime.query.QueryWrapper;
+[/template]
+
+[template public filterDeclaration(filter : OCLFilter)]
+filters.add(new ViewerFilter() {
+
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject) {
+							final QueryWrapper query = new OCLQuery(EcorePackage.eINSTANCE.getEObject(), "[filter.OCLBody/]");
+							if (EEFExtendedRuntime.INSTANCE.getProcessor().canEvaluate(query)) {
+								final QueryResult evaluate = EEFExtendedRuntime.INSTANCE.getProcessor().evaluate((EObject) element, query);
+								if (evaluate.evaluationStatus.isOK()) {
+									return (Boolean)evaluate.evaluationResult;
+								}
+							}
+						}
+						return true;
+					}
+				});
+[/template]
 
 [comment =================== Editor page implementations ===================== /]
 [template public pageImports(pageType : EClass) ? (pageType.name = 'TreeMasterPage')]
