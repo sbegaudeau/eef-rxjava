@@ -46,18 +46,14 @@ public class ComponentPropertiesTestsGeneratorLauncher extends AbstractPropertie
 		for (GenEditionContext genEditionContext : eefGenModel.getEditionContexts()) {
 			if (genEditionContext.isGenerateJunitTestCases()) {
 				try {
-					PropertiesEditionContext propertiesEditionContext = genEditionContext
-							.getPropertiesEditionContext();
+					PropertiesEditionContext propertiesEditionContext = genEditionContext.getPropertiesEditionContext();
 					monitor.subTask("Generating JUnits TestCases");
 					IContainer testGenContainer = getTestGenContainer(eefGenModel);
 					if (testGenContainer != null && !testGenContainer.exists()) {
-						EEFCodegenPlugin.getDefault().logWarning(
-								new FileNotFoundException("Cannot find junit test project named \""
-										+ testGenContainer.getProject().getName() + "\""));
+						EEFCodegenPlugin.getDefault().logWarning(new FileNotFoundException("Cannot find junit test project named \"" + testGenContainer.getProject().getName() + "\""));
 						return;
 					}
-					ComponentPropertiesTests gen = new ComponentPropertiesTests(propertiesEditionContext,
-							testGenContainer.getLocation().toFile(), arguments);
+					ComponentPropertiesTests gen = new ComponentPropertiesTests(propertiesEditionContext, testGenContainer.getLocation().toFile(), arguments);
 					gen.doGenerate(BasicMonitor.toMonitor(monitor));
 					targetContainer.add(testGenContainer);
 					monitor.worked(1);
