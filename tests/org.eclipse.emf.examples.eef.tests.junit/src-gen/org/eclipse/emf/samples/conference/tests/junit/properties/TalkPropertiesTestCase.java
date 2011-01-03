@@ -47,6 +47,11 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForType;
 	/**
+	 * The reference value for the reference class creator
+	 */
+	private Object referenceValueForCreator;
+
+	/**
 	 * The reference value for the reference class topic
 	 */
 	private Object referenceValueForTopic;
@@ -55,11 +60,6 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 	 * The reference value for the reference class presenter
 	 */
 	private Object referenceValueForPresenter;
-
-	/**
-	 * The reference value for the reference class creator
-	 */
-	private Object referenceValueForCreator;
 	/**
 	 * The EClass of the reference to edit
 	 */
@@ -266,7 +266,7 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 		if (talk == null)
 			throw new InputModelInvalidException(talkMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Type(), UPDATED_VALUE));
+		cc.append(SetCommand.create(editingDomain, talk, ConferencePackage.eINSTANCE.getTalk_Type(), ConferencePackage.eINSTANCE.getTALK_TYPE().getEEnumLiteralByLiteral(enumValueForType.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -303,7 +303,7 @@ public class TalkPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 
 		// Change value of the type feature of the Talk element 
-				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Talk.Properties.type, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEMFComboViewerFeature(propertiesView, ConferenceViewsRepository.Talk.Properties.type, enumValueForType, bot.selectNode(modelEditor, firstInstanceOf));
 
 		// Save the modification
 		bot.finalizeEdition(modelEditor);

@@ -11,7 +11,9 @@
 package org.eclipse.emf.samples.conference.tests.junit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
@@ -171,7 +173,9 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		if (topic == null)
 			throw new InputModelInvalidException(topicMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), UPDATED_VALUE));
+		List expectedValue = new ArrayList((List)topic.eGet(ConferencePackage.eINSTANCE.getTopic_References()));
+		expectedValue.add(UPDATED_VALUE);
+		cc.append(SetCommand.create(editingDomain, topic, ConferencePackage.eINSTANCE.getTopic_References(), expectedValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -207,7 +211,7 @@ public class TopicTestCase extends SWTBotEEFTestCase {
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, topicMetaClass, firstInstanceOf, "Base");
 
 		// Change value of the references feature of the Topic element 
-				bot.editTextFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.references, UPDATED_VALUE);
+				bot.editMultiValuedEditorFeature(wizardShell, ConferenceViewsRepository.Topic.Properties.references, UPDATED_VALUE);
 
 		// Save the modification
 		bot.finalizeEdition(modelEditor);

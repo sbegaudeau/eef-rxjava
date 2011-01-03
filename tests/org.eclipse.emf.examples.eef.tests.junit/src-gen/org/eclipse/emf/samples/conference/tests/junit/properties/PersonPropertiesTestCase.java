@@ -312,7 +312,8 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), UPDATED_VALUE));
+				Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter());
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(), !oldValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -348,7 +349,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 
 		// Change value of the eclipseCommiter feature of the Person element 
-				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFCheckbox(propertiesView, ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, bot.selectNode(modelEditor, firstInstanceOf));
 
 		// Save the modification
 		bot.finalizeEdition(modelEditor);
@@ -500,7 +501,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), UPDATED_VALUE));
+		cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_Gender(), ConferencePackage.eINSTANCE.getGENDER().getEEnumLiteralByLiteral(enumValueForGender.toString()).getInstance()));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -537,7 +538,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 
 		// Change value of the gender feature of the Person element 
-				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.Identity.gender, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEMFComboViewerFeature(propertiesView, ConferenceViewsRepository.Person.Identity.gender, enumValueForGender, bot.selectNode(modelEditor, firstInstanceOf));
 
 		// Save the modification
 		bot.finalizeEdition(modelEditor);
@@ -561,7 +562,8 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		if (person == null)
 			throw new InputModelInvalidException(personMetaClass.getName());
 		CompoundCommand cc = new CompoundCommand();
-				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), UPDATED_VALUE));
+				Boolean oldValue = (Boolean)person.eGet(ConferencePackage.eINSTANCE.getPerson_IsRegistered());
+				cc.append(SetCommand.create(editingDomain, person, ConferencePackage.eINSTANCE.getPerson_IsRegistered(), !oldValue));
 		editingDomain.getCommandStack().execute(cc);
 		expectedModel.save(Collections.EMPTY_MAP);
 	}
@@ -597,7 +599,7 @@ public class PersonPropertiesTestCase extends SWTBotEEFTestCase {
 		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
 
 		// Change value of the isRegistered feature of the Person element 
-				bot.editPropertyEEFText(propertiesView, ConferenceViewsRepository.Person.EclipseStatus.isRegistered, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
+				bot.editPropertyEEFCheckbox(propertiesView, ConferenceViewsRepository.Person.EclipseStatus.isRegistered, bot.selectNode(modelEditor, firstInstanceOf));
 
 		// Save the modification
 		bot.finalizeEdition(modelEditor);
