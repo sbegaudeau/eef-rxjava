@@ -1115,6 +1115,18 @@
           <references href="../../../services/common.emtl#/0/associatedGenRepository"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
+        <eParameters name="view">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="associatedGenRepository">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/associatedGenRepository.1"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
         <eParameters name="viewsRepository">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewsRepository"/>
         </eParameters>
@@ -1153,7 +1165,7 @@
         <eAnnotations source="MTL">
           <references href="../../../services/common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../../../services/common.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../../../components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -1977,6 +1989,18 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         </eParameters>
       </eOperations>
+      <eOperations name="metamodelGetter">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/metamodelGetter.2"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="c">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        </eParameters>
+      </eOperations>
       <eOperations name="simpleModelNavigationType">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -2729,6 +2753,15 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
       </eOperations>
+      <eOperations name="associatedGenRepository">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/associatedGenRepository"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
+      </eOperations>
       <eOperations name="isDynamicView">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -2893,7 +2926,7 @@
         <eAnnotations source="MTL">
           <references href="../../../services/common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../../../services/common.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../../../components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
       </eOperations>
       <eOperations name="completePackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -3006,7 +3039,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../services/common.emtl#/0/associatedGenRepository"/>
+          <references href="../../../services/common.emtl#/0/associatedGenRepository.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
       </eOperations>
@@ -3335,6 +3368,15 @@
         </eAnnotations>
         <eAnnotations source="MTL">
           <references href="../../../services/common.emtl#/0/qualifiedMetamodelPackage.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="metamodelGetter">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../services/common.emtl#/0/metamodelGetter.2"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
