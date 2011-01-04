@@ -99,6 +99,9 @@
 		 endif
 	endif/]
 
+[query public associatedGenRepository(view : View) : GenViewsRepository = 
+	view.owningViewsRepository().associatedGenRepository()/]
+
 [query public associatedGenRepository(viewsRepository : ViewsRepository) : GenViewsRepository = 
 	if (viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->notEmpty())
 	then viewsRepository.eInverse()->select(oclIsKindOf(EEFGen::GenViewsRepository))->first().oclAsType(EEFGen::GenViewsRepository)
@@ -514,7 +517,6 @@ Object
 [template public metamodelGetter(c : EClassifier)]
 [c.metamodelPackage()/].eINSTANCE.get[c.name/]()
 [/template]
-
 
 [comment queries for model navigation /]
 [query public simpleModelNavigationType(modelNavigation : SimpleModelNavigation) : String = 

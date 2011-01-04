@@ -52,6 +52,23 @@
 [pec.componentsPackage()/].[pec.subPECClass(view)/]
 [/template]
 
+[template public pecQualifiedComponentSuperClass(pec : PropertiesEditionComponent) post (trim())]
+[if (pec.associatedGenContext().leafComponentsSuperClass.oclIsUndefined() or pec.associatedGenContext().leafComponentsSuperClass.size() = 0)]
+org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent
+[else]
+[pec.associatedGenContext().leafComponentsSuperClass/]
+[/if]
+[/template]
+
+[template public pecComponentSuperClass(pec : PropertiesEditionComponent) post (trim())]
+[if (pec.associatedGenContext().leafComponentsSuperClass.oclIsUndefined() or pec.associatedGenContext().leafComponentsSuperClass.size() = 0)]
+SinglePartPropertiesEditingComponent
+[else]
+[pec.associatedGenContext().leafComponentsSuperClass.tokenize('.')->last()/]
+[/if]
+[/template]
+
+
 [comment --------------------------------------------------------------------------
   Providers naming
  ---------------------------------------------------------------------------------- /]
@@ -144,6 +161,22 @@ PropertiesEditingProviderImpl
 
 [template public pepFormQualifiedClass(view : View)]
 [view.partsFormPackage()/].[view.pepFormClass()/]
+[/template]
+
+[template public partQualifiedSuperclass(view : View) post (trim())]
+[if (view.associatedGenRepository().partsSuperClass.oclIsUndefined() or view.associatedGenRepository().partsSuperClass.size() = 0)]
+org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart
+[else]
+[view.associatedGenRepository().partsSuperClass/]
+[/if]
+[/template]
+
+[template public partSuperclass(view : View) post (trim())]
+[if (view.associatedGenRepository().partsSuperClass.oclIsUndefined() or view.associatedGenRepository().partsSuperClass.size() = 0)]
+CompositePropertiesEditionPart
+[else]
+[view.associatedGenRepository().partsSuperClass.tokenize('.')->last()/]
+[/if]
 [/template]
 
 [template public vrClass(repository : ViewsRepository)]

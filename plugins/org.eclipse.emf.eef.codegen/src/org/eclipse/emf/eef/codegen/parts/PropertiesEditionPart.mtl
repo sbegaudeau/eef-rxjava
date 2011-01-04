@@ -103,7 +103,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import [view.partQualifiedSuperclass()/];
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -137,7 +137,7 @@ package [view.partsImplPackage()/];
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [view.pepClass()/] extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
+public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
 
 [for (element : ViewElement | view.eAllContents()) ? (element.oclIsKindOf(ElementEditor))][let editor : ElementEditor = element.oclAsType(ElementEditor)]
 [editor.widgetDeclaration()/]
