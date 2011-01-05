@@ -488,7 +488,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param propertiesEditionProvider
 	 * @param partsList
 	 */
-	private void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider,
+	protected void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider,
 			String[] partsList) {
 		resetTab();
 		List<String> selectedParts = new ArrayList<String>();
