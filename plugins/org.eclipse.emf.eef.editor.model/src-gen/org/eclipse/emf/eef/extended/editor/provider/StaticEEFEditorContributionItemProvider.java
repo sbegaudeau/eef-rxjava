@@ -24,11 +24,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.extended.editor.EditorFactory;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.filters.FiltersFactory;
 import org.eclipse.emf.eef.mapping.provider.AbstractElementBindingItemProvider;
 
 /**
@@ -149,41 +149,30 @@ public class StaticEEFEditorContributionItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
-				 EditorFactory.eINSTANCE.createStaticEEFEditorContribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
-				 EditorFactory.eINSTANCE.createDynamicEEFEditorContribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
-				 ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
-				 ComponentsFactory.eINSTANCE.createPropertiesEditionElement()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
-				 ComponentsFactory.eINSTANCE.createPropertiesMultiEditionElement()));
-
+//		super.collectNewChildDescriptors(newChildDescriptors, object);
 		newChildDescriptors.add
 			(createChildParameter
 				(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS,
 				 EditorFactory.eINSTANCE.createPartFilter()));
+
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE.createJavaDeclarationFilter()));
+
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE.createJavaExpressionFilter()));
+
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE.createOCLFilter()));
 
 		newChildDescriptors.add
 			(createChildParameter
