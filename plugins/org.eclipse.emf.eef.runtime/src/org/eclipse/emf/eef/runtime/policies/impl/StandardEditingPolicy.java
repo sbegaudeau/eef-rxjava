@@ -24,7 +24,7 @@ import org.eclipse.jface.window.Window;
  */
 public class StandardEditingPolicy implements PropertiesEditingPolicy {
 
-	private EObjectPropertiesEditionContext context;
+	protected EObjectPropertiesEditionContext context;
 
 	/**
 	 * @param propertiesEditionContext

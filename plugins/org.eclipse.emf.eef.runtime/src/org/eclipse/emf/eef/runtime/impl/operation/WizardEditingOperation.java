@@ -30,7 +30,7 @@ import org.eclipse.jface.window.Window;
  */
 public class WizardEditingOperation extends AbstractEMFOperation {
 
-	private PropertiesEditingContext editingContext;
+	protected PropertiesEditingContext editingContext;
 
 	/**
 	 * @param domain

@@ -28,9 +28,9 @@ import org.eclipse.jface.window.Window;
  */
 public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 
-	private EReferencePropertiesEditionContext editionContext;
+	protected EReferencePropertiesEditionContext editionContext;
 
-	private EObject result;
+	protected EObject result;
 
 	/**
 	 * @param editionContext

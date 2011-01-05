@@ -23,9 +23,9 @@ import org.eclipse.jface.window.Window;
  */
 public class WizardEditingCommand extends AbstractCommand {
 
-	private DomainPropertiesEditionContext editionContext;
+	protected DomainPropertiesEditionContext editionContext;
 
-	private ChangeDescription description;
+	protected ChangeDescription description;
 
 	/**
 	 * @param editionContext
