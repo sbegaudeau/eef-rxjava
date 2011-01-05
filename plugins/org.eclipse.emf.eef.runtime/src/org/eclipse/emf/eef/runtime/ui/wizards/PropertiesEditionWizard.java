@@ -27,7 +27,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
@@ -51,9 +50,9 @@ import org.eclipse.swt.widgets.Label;
  */
 public class PropertiesEditionWizard extends Wizard {
 
-	private EditPropertyWizardPage mainPage;
+	protected EditPropertyWizardPage mainPage;
 
-	private ElementCreationWizardPage elementCreationPage;
+	protected ElementCreationWizardPage elementCreationPage;
 
 	protected PropertiesEditingContext editingContext;
 
@@ -67,7 +66,7 @@ public class PropertiesEditionWizard extends Wizard {
 
 	private PropertiesEditionMessageManager messageManager;
 
-	private AdapterFactory adapterFactory;
+	protected AdapterFactory adapterFactory;
 
 	/**
 	 * @param editionContext
@@ -196,11 +195,11 @@ public class PropertiesEditionWizard extends Wizard {
 	/**
 	 * @return
 	 */
-	private boolean inReferenceMode() {
+	protected boolean inReferenceMode() {
 		return eReference != null && eReference.isContainment() && eObject == null;
 	}
 
-	private class ElementCreationWizardPage extends WizardPage {
+	protected class ElementCreationWizardPage extends WizardPage {
 
 		private List<Button> buttons = new ArrayList<Button>();
 
@@ -249,7 +248,7 @@ public class PropertiesEditionWizard extends Wizard {
 
 	}
 
-	private class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
+	protected class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
 
 		private PropertiesEditionViewer viewer;
 

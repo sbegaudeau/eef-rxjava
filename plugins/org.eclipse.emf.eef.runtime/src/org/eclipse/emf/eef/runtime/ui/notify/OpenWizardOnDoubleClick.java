@@ -26,9 +26,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
  */
 public class OpenWizardOnDoubleClick implements IDoubleClickListener {
 
-	private EditingDomain editingDomain;
+	protected EditingDomain editingDomain;
 
-	private AdapterFactory adapterFactory;
+	protected AdapterFactory adapterFactory;
 
 	/**
 	 * @param editingDomain
