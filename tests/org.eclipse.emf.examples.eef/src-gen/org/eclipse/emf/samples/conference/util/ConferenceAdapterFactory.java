@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceAdapterFactory.java,v 1.2 2011/01/02 14:10:40 glefur Exp $
+ * $Id: ConferenceAdapterFactory.java,v 1.3 2011/01/05 15:06:12 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.util;
 
