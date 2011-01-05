@@ -373,7 +373,7 @@ import [editionElement.model.eContainingClass.qualifiedMetamodelPackage()/];
 import [viewsRepository.vrQualifiedClass()/];
 [/for]
 [if (v.referencedViews()->notEmpty())]
-[v.manageImportForViewReferences(v.involvedPropertiesEditionComponent(), basePackage)/]
+[manageImportForViewReferences(v, v.involvedPropertiesEditionComponent(), basePackage)/]
 [/if]
 [/for]
 [/template]
