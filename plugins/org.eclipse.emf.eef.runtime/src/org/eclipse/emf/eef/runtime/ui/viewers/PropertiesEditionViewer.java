@@ -59,11 +59,17 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 */
 	private FormToolkit toolkit;
 
-	private CTabFolder folder = null;
+	/**
+	 * TODO: sets this private 
+	 */
+	protected CTabFolder folder = null;
 
-	private Composite control;
+	/**
+	 * TODO: sets this private 
+	 */
+	protected Composite control;
 
-	private boolean dynamicTabHeader = true;
+	protected boolean dynamicTabHeader = true;
 
 	/**
 	 * The expected kind for the part.
@@ -78,7 +84,10 @@ public class PropertiesEditionViewer extends StructuredViewer {
 
 	private ItemListener listener;
 
-	private ScrolledComposite scroll;
+	/**
+	 * TODO: sets this private 
+	 */
+	protected ScrolledComposite scroll;
 
 	/**
 	 * Create an Viewer for EEF properties editing in the given parent composite.

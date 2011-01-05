@@ -250,7 +250,7 @@ public class PropertiesEditionWizard extends Wizard {
 
 	protected class EditPropertyWizardPage extends WizardPage implements IPropertiesEditionListener {
 
-		private PropertiesEditionViewer viewer;
+		protected PropertiesEditionViewer viewer;
 
 		protected EditPropertyWizardPage() {
 			super(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_key);
