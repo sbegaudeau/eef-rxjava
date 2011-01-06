@@ -28,6 +28,10 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 
 	private boolean nullable;
 
+	public EMFListContentProvider() {
+		super();
+	}
+	
 	/**
 	 * @param nullable
 	 *            define if there is a null value or not
