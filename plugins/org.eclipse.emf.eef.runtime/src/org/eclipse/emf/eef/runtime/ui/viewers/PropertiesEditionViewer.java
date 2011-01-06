@@ -561,6 +561,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			CTabItem[] items = folder.getItems();
 			for (int i = 0; i < items.length; i++) {
 				CTabItem cTabItem = items[i];
+				cTabItem.getControl().dispose(); //adding this line solves my problem.
 				cTabItem.dispose();
 			}
 		}
