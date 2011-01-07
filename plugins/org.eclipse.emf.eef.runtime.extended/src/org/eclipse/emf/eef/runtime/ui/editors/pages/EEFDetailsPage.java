@@ -112,6 +112,13 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 		return null;
 	}
 
+	/**
+	 * @return the viewer
+	 */
+	public PropertiesEditionViewer getViewer() {
+		return viewer;
+	}
+
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		handleChange(event);
 	}

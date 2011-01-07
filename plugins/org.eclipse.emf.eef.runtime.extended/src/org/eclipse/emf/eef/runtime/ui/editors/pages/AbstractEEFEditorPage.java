@@ -170,11 +170,11 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 	protected void refreshToolbar() {
 		if (getManagedForm().getForm() != null) {
 			if (!actions.isEmpty()) {
-				getManagedForm().getForm().setText("Wzaaaaaaaaaaaaaaaa");
 				IToolBarManager toolBarManager = getManagedForm().getForm().getToolBarManager();
 				for (Action action : actions) {
 					toolBarManager.add(action);
 				}
+				toolBarManager.update(true);
 			}
 		}
 	}

@@ -50,6 +50,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	protected EditingDomain editingDomain;
 	private AdapterFactory adapterFactory;
 	protected ValidateAction validateAction;
+	private EEFDetailsPage lastDetailsPage;
 	
 	private boolean orientable = true;
 	private boolean showValidateAction = true;
@@ -157,6 +158,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	 */
 	protected void registerPages(DetailsPart detailsPart) {
 		detailsPart.setPageProvider(new IDetailsPageProvider() {
+
 			public Object getPageKey(Object object) {
 				if (object instanceof EObject)
 					return EObject.class;
@@ -164,8 +166,10 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 			}
 
 			public IDetailsPage getPage(Object key) {
-				if (key.equals(EObject.class))
-					return new EEFDetailsPage(toolkit, editingDomain, adapterFactory);
+				if (key.equals(EObject.class)) {
+					lastDetailsPage = new EEFDetailsPage(toolkit, editingDomain, adapterFactory);
+					return lastDetailsPage;
+				}
 				return null;
 			}
 		});
@@ -178,6 +182,13 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		return masterPart;
 	}
 		
+	/**
+	 * @return the lastDetailsPage
+	 */
+	public EEFDetailsPage getLastDetailsPage() {
+		return lastDetailsPage;
+	}
+
 	/**
 	 * Defines the orientation of the block.
 	 * @param orientation the orientation to set

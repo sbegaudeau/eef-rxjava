@@ -104,4 +104,14 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 	public StructuredViewer getModelViewer() {
 		return viewer;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getPropertiesViewer()
+	 */
+	public PropertiesEditionViewer getPropertiesViewer() {
+		return viewer;
+	}
+	
+	
 }

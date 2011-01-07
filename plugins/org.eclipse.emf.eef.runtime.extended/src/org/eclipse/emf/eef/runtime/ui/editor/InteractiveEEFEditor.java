@@ -657,18 +657,16 @@ public class InteractiveEEFEditor extends FormEditor
 					//
 					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
 						setSelection(selectionChangedEvent.getSelection());
-
 					}
 				}
 			
 				);
 				
-				setAdapterFactory(adapterFactory);
-				setInput(editingDomain.getResourceSet());
-
 			}
 		};
+		mainPage.setAdapterFactory(adapterFactory);
 		mainPage.setEditingDomain(editingDomain);
+		mainPage.setInput(editingDomain.getResourceSet());
 		addPage(mainPage);
 	}
 	

@@ -43,4 +43,9 @@ public interface EEFEditorPage {
 	 */
 	void setPageTitle(String pageTitle);
 	
+	/**
+	 * @return the {@link PropertiesEditionViewer} dedicated to properties editing.
+	 */
+	PropertiesEditionViewer getPropertiesViewer();
+	
 }

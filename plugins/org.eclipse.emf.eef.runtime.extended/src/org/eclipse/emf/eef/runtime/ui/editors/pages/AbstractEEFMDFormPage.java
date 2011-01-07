@@ -16,6 +16,7 @@ import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.AbstractEEFMasterDetailsBlock;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
@@ -130,6 +131,19 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 		} else {
 			return null;
 		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getPropertiesViewer()
+	 */
+	public PropertiesEditionViewer getPropertiesViewer() {
+		if (block != null) {
+			if (block.getLastDetailsPage() != null) {
+				return block.getLastDetailsPage().getViewer();
+			}
+		}
+		return null;
 	}
 
 	/**
