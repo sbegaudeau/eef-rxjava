@@ -14,19 +14,23 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
-import org.eclipse.emf.samples.conference.parts.forms.ConferenceLocalisationPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.ConferencePropertiesEditionPartForm;
+import org.eclipse.emf.samples.conference.parts.forms.LocalisationPropertiesEditionPartForm;
+import org.eclipse.emf.samples.conference.parts.forms.ParticipantsPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.PersonPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.PresencePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.SitePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TalkPropertiesEditionPartForm;
+import org.eclipse.emf.samples.conference.parts.forms.TalksAndTopicsPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TopicPropertiesEditionPartForm;
-import org.eclipse.emf.samples.conference.parts.impl.ConferenceLocalisationPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.ConferencePropertiesEditionPartImpl;
+import org.eclipse.emf.samples.conference.parts.impl.LocalisationPropertiesEditionPartImpl;
+import org.eclipse.emf.samples.conference.parts.impl.ParticipantsPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.PersonPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.PresencePropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.SitePropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.TalkPropertiesEditionPartImpl;
+import org.eclipse.emf.samples.conference.parts.impl.TalksAndTopicsPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.TopicPropertiesEditionPartImpl;
 
 
@@ -59,11 +63,23 @@ public class ConferencePropertiesEditionPartProvider implements IPropertiesEditi
 			if (kind == ConferenceViewsRepository.FORM_KIND)
 				return new ConferencePropertiesEditionPartForm(component);
 		}
-		if (key == ConferenceViewsRepository.ConferenceLocalisation.class) {
+		if (key == ConferenceViewsRepository.Localisation.class) {
 			if (kind == ConferenceViewsRepository.SWT_KIND)
-				return new ConferenceLocalisationPropertiesEditionPartImpl(component);
+				return new LocalisationPropertiesEditionPartImpl(component);
 			if (kind == ConferenceViewsRepository.FORM_KIND)
-				return new ConferenceLocalisationPropertiesEditionPartForm(component);
+				return new LocalisationPropertiesEditionPartForm(component);
+		}
+		if (key == ConferenceViewsRepository.Participants.class) {
+			if (kind == ConferenceViewsRepository.SWT_KIND)
+				return new ParticipantsPropertiesEditionPartImpl(component);
+			if (kind == ConferenceViewsRepository.FORM_KIND)
+				return new ParticipantsPropertiesEditionPartForm(component);
+		}
+		if (key == ConferenceViewsRepository.TalksAndTopics.class) {
+			if (kind == ConferenceViewsRepository.SWT_KIND)
+				return new TalksAndTopicsPropertiesEditionPartImpl(component);
+			if (kind == ConferenceViewsRepository.FORM_KIND)
+				return new TalksAndTopicsPropertiesEditionPartForm(component);
 		}
 		if (key == ConferenceViewsRepository.Person.class) {
 			if (kind == ConferenceViewsRepository.SWT_KIND)

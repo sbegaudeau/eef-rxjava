@@ -40,15 +40,38 @@ public class ConferenceViewsRepository {
 	}
 
 	/**
-	 * Conference localisation view descriptor
+	 * Localisation view descriptor
 	 * 
 	 */
-	public static class ConferenceLocalisation {
+	public static class Localisation {
 	
-	public static String place = "conference::Conference localisation::place";
+	public static String place = "conference::Localisation::place";
 	
 	
-	public static String sites = "conference::Conference localisation::sites";
+	public static String sites = "conference::Localisation::sites";
+	
+	}
+
+	/**
+	 * Participants view descriptor
+	 * 
+	 */
+	public static class Participants {
+	
+	public static String participants_ = "conference::Participants::participants_";
+	
+	}
+
+	/**
+	 * Talks and Topics view descriptor
+	 * 
+	 */
+	public static class TalksAndTopics {
+	
+	public static String talks = "conference::Talks and Topics::talks";
+	
+	
+	public static String topics = "conference::Talks and Topics::topics";
 	
 	}
 

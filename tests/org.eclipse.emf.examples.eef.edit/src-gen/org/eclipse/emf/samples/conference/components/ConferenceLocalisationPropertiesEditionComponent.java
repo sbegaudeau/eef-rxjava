@@ -34,8 +34,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Site;
-import org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+import org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -46,10 +46,10 @@ import org.eclipse.jface.viewers.ViewerFilter;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class ConferenceConferenceLocalisationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class ConferenceLocalisationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
-	public static String CONFERENCELOCALISATION_PART = "Conference localisation"; //$NON-NLS-1$
+	public static String LOCALISATION_PART = "Localisation"; //$NON-NLS-1$
 
 	
 	/**
@@ -61,11 +61,11 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 	 * Default constructor
 	 * 
 	 */
-	public ConferenceConferenceLocalisationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject conference, String editing_mode) {
+	public ConferenceLocalisationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject conference, String editing_mode) {
 		super(editingContext, conference, editing_mode);
-		parts = new String[] { CONFERENCELOCALISATION_PART };
+		parts = new String[] { LOCALISATION_PART };
 		repositoryKey = ConferenceViewsRepository.class;
-		partKey = ConferenceViewsRepository.ConferenceLocalisation.class;
+		partKey = ConferenceViewsRepository.Localisation.class;
 	}
 
 	/**
@@ -80,16 +80,18 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			final Conference conference = (Conference)elt;
-			final ConferenceLocalisationPropertiesEditionPart conferenceLocalisationPart = (ConferenceLocalisationPropertiesEditionPart)editingPart;
+			final LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
 			// init values
-			if (conference.getPlace() != null)
-				conferenceLocalisationPart.setPlace(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getPlace()));
+			if (conference.getPlace() != null && isAccessible(ConferenceViewsRepository.Localisation.place))
+				localisationPart.setPlace(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getPlace()));
 			
-			sitesSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Sites());
-			conferenceLocalisationPart.initSites(sitesSettings);
+			if (isAccessible(ConferenceViewsRepository.Localisation.sites)) {
+				sitesSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Sites());
+				localisationPart.initSites(sitesSettings);
+			}
 			// init filters
 			
-			conferenceLocalisationPart.addFilterToSites(new ViewerFilter() {
+			localisationPart.addFilterToSites(new ViewerFilter() {
 			
 					/**
 					 * {@inheritDoc}
@@ -124,21 +126,17 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Conference conference = (Conference)semanticObject;
-		if (ConferenceViewsRepository.ConferenceLocalisation.place == event.getAffectedEditor()) {
+		if (ConferenceViewsRepository.Localisation.place == event.getAffectedEditor()) {
 			conference.setPlace((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ConferenceViewsRepository.ConferenceLocalisation.sites == event.getAffectedEditor()) {
+		if (ConferenceViewsRepository.Localisation.sites == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ConferencePackage.eINSTANCE.getConference_Sites(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, sitesSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							sitesSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -161,17 +159,19 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		ConferenceLocalisationPropertiesEditionPart conferenceLocalisationPart = (ConferenceLocalisationPropertiesEditionPart)editingPart;
-		if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && conferenceLocalisationPart != null){
-			if (msg.getNewValue() != null) {
-				conferenceLocalisationPart.setPlace(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				conferenceLocalisationPart.setPlace("");
+		if (editingPart.isVisible()) {	
+			LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
+			if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Localisation.place)){
+				if (msg.getNewValue() != null) {
+					localisationPart.setPlace(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					localisationPart.setPlace("");
+				}
 			}
+			if (ConferencePackage.eINSTANCE.getConference_Sites().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Localisation.sites))
+				localisationPart.updateSites();
+			
 		}
-		if (ConferencePackage.eINSTANCE.getConference_Sites().equals(msg.getFeature()))
-			conferenceLocalisationPart.updateSites();
-		
 	}
 
 
@@ -182,7 +182,7 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == ConferenceViewsRepository.ConferenceLocalisation.place || key == ConferenceViewsRepository.Conference_.Properties.name;
+		return key == ConferenceViewsRepository.Localisation.place || key == ConferenceViewsRepository.Conference_.Properties.name;
 	}
 
 	/**
@@ -192,10 +192,16 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == ConferenceViewsRepository.ConferenceLocalisation.place)
+		if (key == ConferenceViewsRepository.Localisation.place)
 			return "The conference's place"; //$NON-NLS-1$
-		if (key == ConferenceViewsRepository.ConferenceLocalisation.sites)
+		if (key == ConferenceViewsRepository.Localisation.sites)
 			return "Where the conference take place"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.Participants.participants_)
+			return "Person attending to the conference"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.TalksAndTopics.talks)
+			return "Talks of the conference"; //$NON-NLS-1$
+		if (key == ConferenceViewsRepository.TalksAndTopics.topics)
+			return "Topics discussed during the conference"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -209,7 +215,7 @@ public class ConferenceConferenceLocalisationPropertiesEditionComponent extends 
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (ConferenceViewsRepository.ConferenceLocalisation.place == event.getAffectedEditor()) {
+				if (ConferenceViewsRepository.Localisation.place == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getConference_Place().getEAttributeType(), (String)newValue);

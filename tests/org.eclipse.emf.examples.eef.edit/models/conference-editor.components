@@ -4,12 +4,12 @@
     <categories xsi:type="eef-ext-edt:EEFEditorContributions" xmi:id="_nN6J0RhdEeCrurN87PviTw" name="main">
       <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" xmi:id="_nN6J0hhdEeCrurN87PviTw" documentation="" name="main" views="_vFVRsBhgEeCKSuQJteRgnw">
         <bindingFilters xsi:type="eef-ext-edt:PartFilter" xmi:id="_TvcNQBjREeCOk6BuQTSdWA" name="main filter">
-          <filteredPart href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJoMZkmEd6sxtwdpecy3w"/>
-          <contextualComponent href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
+          <filteredPart href="../../org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJoMZkmEd6sxtwdpecy3w"/>
+          <contextualComponent href="../../org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
         </bindingFilters>
         <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput" xmi:id="_y0ENQBhgEeCKSuQJteRgnw">
           <query xsi:type="eef-ext-qry:OCLQuery" xmi:id="_zbXd0BhgEeCKSuQJteRgnw" query="self">
-            <context xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
           </query>
         </input>
       </bindings>
@@ -17,29 +17,29 @@
         <bindingFilters xsi:type="eef-mapping-filters:OCLFilter" xmi:id="_8c8vcBjWEeCroIVQrq2-XQ" name="Person filter" OCLBody="self.oclIsKindOf(conference::Person)"/>
         <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput" xmi:id="_ltEQchjREeCOk6BuQTSdWA">
           <query xsi:type="eef-ext-qry:OCLQuery" xmi:id="_ltEQcxjREeCOk6BuQTSdWA" query="self">
-            <context xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
           </query>
         </input>
       </bindings>
       <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" xmi:id="_lyimUBjREeCOk6BuQTSdWA" name="talks" views="_2LXO4BjREeCOk6BuQTSdWA">
         <bindingFilters xsi:type="eef-ext-edt:PartFilter" xmi:id="_lyimURjREeCOk6BuQTSdWA" name="main filter">
-          <filteredPart href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_FYGywBi6EeCOk6BuQTSdWA"/>
-          <contextualComponent href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
+          <filteredPart href="../../org.eclipse.emf.examples.eef.edit/models/conference.components#_FYGywBi6EeCOk6BuQTSdWA"/>
+          <contextualComponent href="../../org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
         </bindingFilters>
         <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput" xmi:id="_lyimUhjREeCOk6BuQTSdWA">
           <query xsi:type="eef-ext-qry:OCLQuery" xmi:id="_lyimUxjREeCOk6BuQTSdWA" query="self">
-            <context xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
           </query>
         </input>
       </bindings>
       <bindings xsi:type="eef-ext-edt:StaticEEFEditorContribution" xmi:id="_l4pOUBjREeCOk6BuQTSdWA" name="localisation " views="_5hQzsBjREeCOk6BuQTSdWA">
         <bindingFilters xsi:type="eef-ext-edt:PartFilter" xmi:id="_l4pOURjREeCOk6BuQTSdWA" name="main filter">
-          <filteredPart href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_0lr-cxi5EeCOk6BuQTSdWA"/>
-          <contextualComponent href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
+          <filteredPart href="../../org.eclipse.emf.examples.eef.edit/models/conference.components#_0lr-cxi5EeCOk6BuQTSdWA"/>
+          <contextualComponent href="../../org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBIZkmEd6sxtwdpecy3w"/>
         </bindingFilters>
         <input xsi:type="eef-ext-edt:FirstResourceRootRelativeInput" xmi:id="_l4pOUhjREeCOk6BuQTSdWA">
           <query xsi:type="eef-ext-qry:OCLQuery" xmi:id="_l4pOUxjREeCOk6BuQTSdWA" query="self">
-            <context xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+            <context xsi:type="ecore:EClass" href="../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
           </query>
         </input>
       </bindings>
@@ -49,7 +49,7 @@
         <input xsi:type="eef-ext-edt:AllResourcesRootsRelativeInput" xmi:id="_mafBchhgEeCKSuQJteRgnw"/>
       </bindings>
     </categories>
-    <model href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.genmodel#//conference"/>
+    <model href="../../org.eclipse.emf.examples.eef/model/conference.genmodel#//conference"/>
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_nN6J1BhdEeCrurN87PviTw" documentation="Editor pages for conference GenPackage" name="conference editor">
     <RepositoryKind>Editor</RepositoryKind>

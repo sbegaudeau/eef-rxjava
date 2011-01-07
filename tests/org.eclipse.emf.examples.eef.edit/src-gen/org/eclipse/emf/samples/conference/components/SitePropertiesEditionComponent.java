@@ -67,10 +67,10 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final Site site = (Site)elt;
 			final SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
 			// init values
-			if (site.getName() != null)
+			if (site.getName() != null && isAccessible(ConferenceViewsRepository.Site.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getName()));
 			
-			if (site.getDocumentation() != null)
+			if (site.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation))
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getDocumentation()));
 			// init filters
 			
@@ -107,22 +107,24 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
-		if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
+			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Site.Properties.name)){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
-		}
-		if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setDocumentation("");
+			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
+				if (msg.getNewValue() != null) {
+					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setDocumentation("");
+				}
 			}
+			
 		}
-		
 	}
 
 

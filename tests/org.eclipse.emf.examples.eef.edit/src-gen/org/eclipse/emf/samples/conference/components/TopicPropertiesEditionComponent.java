@@ -71,13 +71,13 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			final Topic topic = (Topic)elt;
 			final TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
 			// init values
-			if (topic.getDescription() != null)
+			if (topic.getDescription() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDescription()));
 			
-			if (topic.getReferences() != null)
+			if (topic.getReferences() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references))
 				basePart.setReferences(topic.getReferences());
 			
-			if (topic.getDocumentation() != null)
+			if (topic.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation))
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDocumentation()));
 			// init filters
 			
@@ -122,29 +122,31 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
-		if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setDescription(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setDescription("");
+		if (editingPart.isVisible()) {	
+			TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
+			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Topic.Properties.description)){
+				if (msg.getNewValue() != null) {
+					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setDescription("");
+				}
 			}
-		}
-		if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null) {
-			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToReferences(msg.getNewValue());
-			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToReferences(msg.getOldValue());
-		}
-		
-		if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setDocumentation("");
+			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
+				if (msg.getEventType() == Notification.ADD) 
+					basePart.addToReferences(msg.getNewValue());
+				else if (msg.getEventType() == Notification.REMOVE) 
+					basePart.removeToReferences(msg.getOldValue());
 			}
+			
+			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
+				if (msg.getNewValue() != null) {
+					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setDocumentation("");
+				}
+			}
+			
 		}
-		
 	}
 
 

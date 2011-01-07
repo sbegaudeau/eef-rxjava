@@ -18,9 +18,11 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.samples.conference.Conference;
-import org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+import org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart;
+import org.eclipse.emf.samples.conference.parts.ParticipantsPropertiesEditionPart;
+import org.eclipse.emf.samples.conference.parts.TalksAndTopicsPropertiesEditionPart;
 
 
 // End of user code
@@ -44,16 +46,40 @@ public class ConferencePropertiesEditionComponent extends ComposedPropertiesEdit
 	protected ConferenceBasePropertiesEditionComponent conferenceBasePropertiesEditionComponent;
 
 	/**
-	 * The Conference localisation part
+	 * The Localisation part
 	 * 
 	 */
-	private ConferenceLocalisationPropertiesEditionPart conferenceLocalisationPart;
+	private LocalisationPropertiesEditionPart localisationPart;
 
 	/**
-	 * The ConferenceConferenceLocalisationPropertiesEditionComponent sub component
+	 * The ConferenceLocalisationPropertiesEditionComponent sub component
 	 * 
 	 */
-	protected ConferenceConferenceLocalisationPropertiesEditionComponent conferenceConferenceLocalisationPropertiesEditionComponent;
+	protected ConferenceLocalisationPropertiesEditionComponent conferenceLocalisationPropertiesEditionComponent;
+
+	/**
+	 * The Participants part
+	 * 
+	 */
+	private ParticipantsPropertiesEditionPart participantsPart;
+
+	/**
+	 * The ConferenceParticipantsPropertiesEditionComponent sub component
+	 * 
+	 */
+	protected ConferenceParticipantsPropertiesEditionComponent conferenceParticipantsPropertiesEditionComponent;
+
+	/**
+	 * The Talks and Topics part
+	 * 
+	 */
+	private TalksAndTopicsPropertiesEditionPart talksAndTopicsPart;
+
+	/**
+	 * The ConferenceTalksAndTopicsPropertiesEditionComponent sub component
+	 * 
+	 */
+	protected ConferenceTalksAndTopicsPropertiesEditionComponent conferenceTalksAndTopicsPropertiesEditionComponent;
 	/**
 	 * Parameterized constructor
 	 * 
@@ -68,8 +94,14 @@ public class ConferencePropertiesEditionComponent extends ComposedPropertiesEdit
 			conferenceBasePropertiesEditionComponent = (ConferenceBasePropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConferenceBasePropertiesEditionComponent.BASE_PART, ConferenceBasePropertiesEditionComponent.class);
 			addSubComponent(conferenceBasePropertiesEditionComponent);
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(conference, PropertiesEditingProvider.class);
-			conferenceConferenceLocalisationPropertiesEditionComponent = (ConferenceConferenceLocalisationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConferenceConferenceLocalisationPropertiesEditionComponent.CONFERENCELOCALISATION_PART, ConferenceConferenceLocalisationPropertiesEditionComponent.class);
-			addSubComponent(conferenceConferenceLocalisationPropertiesEditionComponent);
+			conferenceLocalisationPropertiesEditionComponent = (ConferenceLocalisationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConferenceLocalisationPropertiesEditionComponent.LOCALISATION_PART, ConferenceLocalisationPropertiesEditionComponent.class);
+			addSubComponent(conferenceLocalisationPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(conference, PropertiesEditingProvider.class);
+			conferenceParticipantsPropertiesEditionComponent = (ConferenceParticipantsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConferenceParticipantsPropertiesEditionComponent.PARTICIPANTS_PART, ConferenceParticipantsPropertiesEditionComponent.class);
+			addSubComponent(conferenceParticipantsPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(conference, PropertiesEditingProvider.class);
+			conferenceTalksAndTopicsPropertiesEditionComponent = (ConferenceTalksAndTopicsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConferenceTalksAndTopicsPropertiesEditionComponent.TALKSANDTOPICS_PART, ConferenceTalksAndTopicsPropertiesEditionComponent.class);
+			addSubComponent(conferenceTalksAndTopicsPropertiesEditionComponent);
 		}
 	}
 
@@ -85,9 +117,17 @@ public class ConferencePropertiesEditionComponent extends ComposedPropertiesEdit
 			basePart = (ConferencePropertiesEditionPart)conferenceBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)basePart;
 		}
-		if (ConferenceConferenceLocalisationPropertiesEditionComponent.CONFERENCELOCALISATION_PART.equals(key)) {
-			conferenceLocalisationPart = (ConferenceLocalisationPropertiesEditionPart)conferenceConferenceLocalisationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)conferenceLocalisationPart;
+		if (ConferenceLocalisationPropertiesEditionComponent.LOCALISATION_PART.equals(key)) {
+			localisationPart = (LocalisationPropertiesEditionPart)conferenceLocalisationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)localisationPart;
+		}
+		if (ConferenceParticipantsPropertiesEditionComponent.PARTICIPANTS_PART.equals(key)) {
+			participantsPart = (ParticipantsPropertiesEditionPart)conferenceParticipantsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)participantsPart;
+		}
+		if (ConferenceTalksAndTopicsPropertiesEditionComponent.TALKSANDTOPICS_PART.equals(key)) {
+			talksAndTopicsPart = (TalksAndTopicsPropertiesEditionPart)conferenceTalksAndTopicsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)talksAndTopicsPart;
 		}
 		return super.getPropertiesEditionPart(kind, key);
 	}
@@ -105,9 +145,17 @@ public class ConferencePropertiesEditionComponent extends ComposedPropertiesEdit
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			basePart = (ConferencePropertiesEditionPart)propertiesEditionPart;
 		}
-		if (ConferenceViewsRepository.ConferenceLocalisation.class == key) {
+		if (ConferenceViewsRepository.Localisation.class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			conferenceLocalisationPart = (ConferenceLocalisationPropertiesEditionPart)propertiesEditionPart;
+			localisationPart = (LocalisationPropertiesEditionPart)propertiesEditionPart;
+		}
+		if (ConferenceViewsRepository.Participants.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			participantsPart = (ParticipantsPropertiesEditionPart)propertiesEditionPart;
+		}
+		if (ConferenceViewsRepository.TalksAndTopics.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			talksAndTopicsPart = (TalksAndTopicsPropertiesEditionPart)propertiesEditionPart;
 		}
 	}
 
@@ -123,7 +171,13 @@ public class ConferencePropertiesEditionComponent extends ComposedPropertiesEdit
 		if (key == ConferenceViewsRepository.Conference_.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == ConferenceViewsRepository.ConferenceLocalisation.class) {
+		if (key == ConferenceViewsRepository.Localisation.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == ConferenceViewsRepository.Participants.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == ConferenceViewsRepository.TalksAndTopics.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

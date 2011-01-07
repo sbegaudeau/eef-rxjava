@@ -29,8 +29,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+import org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class ConferenceLocalisationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ConferenceLocalisationPropertiesEditionPart {
+public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, LocalisationPropertiesEditionPart {
 
 	protected Text place;
 protected ReferencesTable sites;
@@ -66,7 +66,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public ConferenceLocalisationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public LocalisationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
@@ -94,18 +94,18 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence conferenceLocalisationStep = new CompositionSequence();
-		conferenceLocalisationStep.addStep(ConferenceViewsRepository.ConferenceLocalisation.place);
-		conferenceLocalisationStep.addStep(ConferenceViewsRepository.ConferenceLocalisation.sites);
+		CompositionSequence localisationStep = new CompositionSequence();
+		localisationStep.addStep(ConferenceViewsRepository.Localisation.place);
+		localisationStep.addStep(ConferenceViewsRepository.Localisation.sites);
 		
-		composer = new PartComposer(conferenceLocalisationStep) {
+		composer = new PartComposer(localisationStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == ConferenceViewsRepository.ConferenceLocalisation.place) {
+				if (key == ConferenceViewsRepository.Localisation.place) {
 					return createPlaceText(parent);
 				}
-				if (key == ConferenceViewsRepository.ConferenceLocalisation.sites) {
+				if (key == ConferenceViewsRepository.Localisation.sites) {
 					return createSitesAdvancedTableComposition(parent);
 				}
 				return parent;
@@ -116,7 +116,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 	
 	protected Composite createPlaceText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.ConferenceLocalisationPropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.ConferenceLocalisation.place, ConferenceViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Localisation.place, ConferenceViewsRepository.SWT_KIND));
 		place = new Text(parent, SWT.BORDER);
 		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
 		place.setLayoutData(placeData);
@@ -132,7 +132,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.place, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, place.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.place, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, place.getText()));
 			}
 
 		});
@@ -149,14 +149,14 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.place, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, place.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.place, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, place.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(place, ConferenceViewsRepository.ConferenceLocalisation.place);
+		EditingUtils.setID(place, ConferenceViewsRepository.Localisation.place);
 		EditingUtils.setEEFtype(place, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.ConferenceLocalisation.place, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Localisation.place, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -165,32 +165,32 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	protected Composite createSitesAdvancedTableComposition(Composite parent) {
-		this.sites = new ReferencesTable(ConferenceMessages.ConferenceLocalisationPropertiesEditionPart_SitesLabel, new ReferencesTableListener() {
+		this.sites = new ReferencesTable(ConferenceMessages.LocalisationPropertiesEditionPart_SitesLabel, new ReferencesTableListener() {
 			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				sites.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				sites.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				sites.refresh();
 			}
 			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				sites.refresh();
 			}
 			public void navigateTo(EObject element) { }
 		});
-		this.sites.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.ConferenceLocalisation.sites, ConferenceViewsRepository.SWT_KIND));
+		this.sites.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Localisation.sites, ConferenceViewsRepository.SWT_KIND));
 		this.sites.createControls(parent);
 		this.sites.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferenceLocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.ConferenceLocalisation.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -200,7 +200,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 		this.sites.setLayoutData(sitesData);
 		this.sites.setLowerBound(0);
 		this.sites.setUpperBound(-1);
-		sites.setID(ConferenceViewsRepository.ConferenceLocalisation.sites);
+		sites.setID(ConferenceViewsRepository.Localisation.sites);
 		sites.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		return parent;
 	}
@@ -222,7 +222,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#getPlace()
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#getPlace()
 	 * 
 	 */
 	public String getPlace() {
@@ -232,7 +232,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#setPlace(String newValue)
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#setPlace(String newValue)
 	 * 
 	 */
 	public void setPlace(String newValue) {
@@ -249,7 +249,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#initSites(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#initSites(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initSites(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -262,7 +262,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#updateSites()
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#updateSites()
 	 * 
 	 */
 	public void updateSites() {
@@ -272,7 +272,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#addFilterSites(ViewerFilter filter)
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#addFilterSites(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSites(ViewerFilter filter) {
@@ -282,7 +282,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#addBusinessFilterSites(ViewerFilter filter)
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#addBusinessFilterSites(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSites(ViewerFilter filter) {
@@ -292,7 +292,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.samples.conference.parts.ConferenceLocalisationPropertiesEditionPart#isContainedInSitesTable(EObject element)
+	 * @see org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart#isContainedInSitesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInSitesTable(EObject element) {
@@ -312,7 +312,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	public String getTitle() {
-		return ConferenceMessages.ConferenceLocalisation_Part_Title;
+		return ConferenceMessages.Localisation_Part_Title;
 	}
 
 	// Start of user code additional methods
