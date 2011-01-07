@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
 /**
@@ -177,4 +178,14 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		return editingPart.getTitle();
 	}
 
+	/**
+	 * @param key of the editor to ckeck
+	 * @return <code>true</code> is the editor is visible.
+	 */
+	public boolean isAccessible(Object key) {
+		if (editingPart != null && ((CompositePropertiesEditionPart)editingPart).getComposer() != null) {
+			return ((CompositePropertiesEditionPart)editingPart).getComposer().isVisible(key);
+		}
+		return false;
+	}
 }

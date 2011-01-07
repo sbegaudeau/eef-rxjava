@@ -12,7 +12,7 @@ package org.eclipse.emf.eef.runtime.policies.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
@@ -24,12 +24,12 @@ import org.eclipse.jface.window.Window;
  */
 public class StandardEditingPolicy implements PropertiesEditingPolicy {
 
-	protected EObjectPropertiesEditionContext context;
+	protected PropertiesEditingContext context;
 
 	/**
 	 * @param propertiesEditionContext
 	 */
-	public StandardEditingPolicy(EObjectPropertiesEditionContext propertiesEditionContext) {
+	public StandardEditingPolicy(PropertiesEditingContext propertiesEditionContext) {
 		this.context = propertiesEditionContext;
 	}
 
@@ -39,7 +39,7 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
 	public void execute() {
-		EObjectPropertiesEditionContext editionContext = (EObjectPropertiesEditionContext)context;
+		PropertiesEditingContext editionContext = (PropertiesEditingContext)context;
 		EObject eObject = editionContext.getEObject();
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
 				editionContext.getAdapterFactory(), eObject);

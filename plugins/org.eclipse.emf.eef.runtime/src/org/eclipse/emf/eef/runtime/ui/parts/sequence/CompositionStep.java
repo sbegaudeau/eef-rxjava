@@ -224,4 +224,21 @@ public class CompositionStep {
 		}
 	}
 
+	/**
+	 * @param key the concerning key.
+	 * @return <code>visibility</code> if the key correspond to the key of the step <code>false</code> otherwise.
+	 */
+	public boolean isVisible(Object key) {
+		if (key == this.key) {
+			return isVisibile();
+		} else {
+			for (CompositionStep step : subSteps) {
+				if (step.isVisible(key)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

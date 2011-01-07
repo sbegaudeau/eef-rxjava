@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
@@ -217,12 +218,10 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayout(layout);
 			List<EClass> instanciableTypesInHierarchy;
 			if (editingContext instanceof DomainPropertiesEditionContext) {
-				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference,
-						((DomainPropertiesEditionContext)editingContext).getEditingDomain());
+				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference, ((DomainPropertiesEditionContext)editingContext).getEditingDomain());
 				editingContext = null;
 			} else {
-				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),
-						editingContext.getResourceSet());
+				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),editingContext.getResourceSet());
 			}
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
@@ -230,7 +229,13 @@ public class PropertiesEditionWizard extends Wizard {
 				button.addSelectionListener(new SelectionAdapter() {
 
 					public void widgetSelected(SelectionEvent e) {
-						eObject = EcoreUtil.create(eClass);
+						if (editingContext instanceof EReferencePropertiesEditionContext && ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
+							((EReferencePropertiesEditionContext)editingContext).getSettings().removeFromReference(eObject);
+							eObject = EcoreUtil.create(eClass);
+							((EReferencePropertiesEditionContext)editingContext).getSettings().addToReference(eObject);
+						} else {
+							eObject = EcoreUtil.create(eClass);							
+						}
 						mainPage.setInput(eObject);
 					}
 				});
@@ -239,7 +244,9 @@ public class PropertiesEditionWizard extends Wizard {
 			if (buttons.size() > 0) {
 				buttons.get(0).setSelection(true);
 				eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
-			} else {
+				if (editingContext instanceof EReferencePropertiesEditionContext && ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
+					((EReferencePropertiesEditionContext)editingContext).getSettings().addToReference(eObject);
+				}			} else {
 				Label errorLabel = new Label(control, SWT.NONE);
 				errorLabel.setText("Error non instanciable type found");
 			}
@@ -277,8 +284,7 @@ public class PropertiesEditionWizard extends Wizard {
 					resourceSet = eObject.eResource().getResourceSet();
 				viewer = new PropertiesEditionViewer(container, resourceSet, 0);
 				viewer.setDynamicTabHeader(true);
-				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
-						IPropertiesEditionComponent.BATCH_MODE));
+				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.BATCH_MODE));
 				scrolledContainer.setContent(container);
 				setControl(viewer.getControl());
 			} catch (InstantiationException e) {
@@ -289,8 +295,8 @@ public class PropertiesEditionWizard extends Wizard {
 
 		public void setInput(EObject eObject) {
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description
-					+ eObject.eClass().getName());
+			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description + eObject.eClass().getName());
+			editingContext.seteObject(eObject);
 			viewer.setInput(editingContext);
 			viewer.addPropertiesListener(this);
 		}

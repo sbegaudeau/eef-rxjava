@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.runtime.impl.command;
 
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 /**

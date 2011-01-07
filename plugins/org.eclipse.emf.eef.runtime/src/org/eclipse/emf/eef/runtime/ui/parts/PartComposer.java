@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.runtime.ui.parts;
 
 import java.util.List;
 
-import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.swt.widgets.Composite;
 
@@ -21,19 +20,19 @@ import org.eclipse.swt.widgets.Composite;
  */
 public abstract class PartComposer {
 
-	private CompositionSequence compositionSequence;
+	private CompositionStep compositionSequence;
 
 	/**
 	 * Default constructor. The composition sequence is empty.
 	 */
-	public PartComposer(CompositionSequence sequence) {
+	public PartComposer(CompositionStep sequence) {
 		compositionSequence = sequence;
 	}
 
 	/**
 	 * @return the compositionSequence
 	 */
-	public CompositionSequence getCompositionSequence() {
+	public CompositionStep getCompositionSequence() {
 		return compositionSequence;
 	}
 
@@ -59,17 +58,27 @@ public abstract class PartComposer {
 	 *            the view where to compose the part
 	 */
 	protected void composeDelegate(Composite parent, CompositionStep step) {
-		Composite currentContainer = addToPart(parent, step.key);
-		List<CompositionStep> subSteps = step.getSubSteps();
-		if (!subSteps.isEmpty()) {
-			for (CompositionStep compositionStep : subSteps) {
-				composeDelegate(currentContainer, compositionStep);
+		if (step.isVisibile()) {
+			Composite currentContainer = addToPart(parent, step.key);
+			List<CompositionStep> subSteps = step.getSubSteps();
+			if (!subSteps.isEmpty()) {
+				for (CompositionStep compositionStep : subSteps) {
+					composeDelegate(currentContainer, compositionStep);
+				}
 			}
 		}
-		
-		
 	}
 
+	/**
+	 * @return <code>true</code> if the Editor associated to the key is visible.
+	 */
+	public boolean isVisible(Object key) {
+		if (compositionSequence != null) {
+			return compositionSequence.isVisible(key);
+		}
+		return false;
+	}
+	
 	/**
 	 * Ask for subclasses to instantiate the element with key {@code key} in the given parent.
 	 * 

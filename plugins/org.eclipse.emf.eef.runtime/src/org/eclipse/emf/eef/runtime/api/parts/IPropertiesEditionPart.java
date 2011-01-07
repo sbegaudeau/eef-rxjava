@@ -55,4 +55,16 @@ public interface IPropertiesEditionPart extends IPropertiesEditionListener {
 	 * @return the internationalized title text.
 	 */
 	public String getTitle();
+	
+	
+	/**
+	 * @return <code>true</code> if the part is visible
+	 */
+	public boolean isVisible();
+	
+	/**
+	 * Defines the part visibility.
+	 * @param visibility to set.
+	 */
+	public void setVisible(boolean visibility);
 }

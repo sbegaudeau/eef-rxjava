@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -25,17 +26,33 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	 * the EReference to edit
 	 */
 	protected EReference eReference;
+	
+	/**
+	 * EEF editor settings to use.
+	 */
+	private ReferencesTableSettings settings;
 
 	/**
 	 * @param propertiesEditionComponent
 	 * @param eReference
 	 * @param resourceSet
+	 * @deprecated
 	 */
-	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext,
-			IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference,
-			AdapterFactory adapterFactory) {
+	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference, AdapterFactory adapterFactory) {
 		super(parentContext, propertiesEditionComponent, eObject, adapterFactory);
 		this.eReference = eReference;
+	}
+
+	/**
+	 * @param parentContext
+	 * @param propertiesEditionComponent
+	 * @param settings
+	 * @param adapterFactory
+	 */
+	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, ReferencesTableSettings settings, AdapterFactory adapterFactory) {
+		super(parentContext, propertiesEditionComponent, settings.getSource(), adapterFactory);
+		this.settings = settings;
+		this.eReference = settings.getLastReference();
 	}
 
 	/**
@@ -44,4 +61,12 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	public EReference getEReference() {
 		return eReference;
 	}
+
+	/**
+	 * @return the settings to use.
+	 */
+	public ReferencesTableSettings getSettings() {
+		return settings;
+	}
+	
 }

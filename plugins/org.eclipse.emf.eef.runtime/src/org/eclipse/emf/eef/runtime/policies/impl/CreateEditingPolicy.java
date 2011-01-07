@@ -48,16 +48,20 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 		EClassifier eType = editionContext.getEReference().getEType();
 		PropertiesEditionWizard wizard;
 		if (editionContext instanceof TypedEReferencePropertiesEditingContext) {
-			EObject create = EcoreUtil.create(((TypedEReferencePropertiesEditingContext)editionContext)
-					.getExpectedType());
+			EObject create = EcoreUtil.create(((TypedEReferencePropertiesEditingContext)editionContext).getExpectedType()); 
 			editionContext.seteObject(create);
+			if (editionContext.getSettings() != null) {
+				editionContext.getSettings().addToReference(create);
+			}
 			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
 		} else if (eType instanceof EClass && ((EClass)eType).isAbstract()) {
-			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(),
-					editionContext.getEReference());
+			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), editionContext.getEReference());
 		} else {
 			EObject create = EcoreUtil.create((EClass)eType);
 			editionContext.seteObject(create);
+			if (editionContext.getSettings() != null) {
+				editionContext.getSettings().addToReference(create);
+			}
 			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
 		}
 		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);

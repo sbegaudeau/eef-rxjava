@@ -91,4 +91,22 @@ public class NullCompositePropertiesEditionPart extends CompositePropertiesEditi
 	public String getTitle() {
 		return ""; //$NON-NLS-1$
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#isVisible()
+	 */
+	public boolean isVisible() {
+		return false;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#setVisible(boolean)
+	 */
+	public void setVisible(boolean visibility) {
+		
+	}
+	
+	
 }

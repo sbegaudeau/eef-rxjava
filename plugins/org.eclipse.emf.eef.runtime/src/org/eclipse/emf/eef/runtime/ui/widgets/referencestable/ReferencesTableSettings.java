@@ -59,6 +59,13 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	}
 
 	/**
+	 * @return the last reference of the settings.
+	 */
+	public EReference getLastReference() {
+		return features[features.length - 1];
+	}
+
+	/**
 	 * @return the type of the last feature
 	 */
 	public EClassifier getEType() {
@@ -482,4 +489,5 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 		}
 		return null;
 	}
+
 }

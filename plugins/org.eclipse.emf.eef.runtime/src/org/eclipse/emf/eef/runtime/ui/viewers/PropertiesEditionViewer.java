@@ -333,39 +333,6 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		return result;
 	}
 
-	/*
-	 * ========================== Component edition management ==========================
-	 */
-
-	/**
-	 * Compute the edition command to perform to update the model
-	 * 
-	 * @param editingDomain
-	 *            the editingDomain where the command have to be performed
-	 * @return the command to perform
-	 */
-	// public CompoundCommand getPropertiesEditionCommand(EditingDomain
-	// editingDomain) {
-	// if (getContentProvider() != null)
-	// return ((PropertiesEditionContentProvider)getContentProvider())
-	// .getPropertiesEditionCommand(editingDomain);
-	// return null;
-	// }
-
-	/**
-	 * Update and return the given EObject
-	 * 
-	 * @param eObject
-	 *            the EObject to update
-	 * @return the updated EObject
-	 */
-	// public EObject getPropertiesEditionObject(EObject eObject) {
-	// if (getContentProvider() != null)
-	// return ((PropertiesEditionContentProvider)getContentProvider())
-	// .getPropertiesEditionObject(eObject);
-	// return null;
-	// }
-
 	/**
 	 * Validate the model and return the resulting Diagnostic
 	 * 
@@ -463,8 +430,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	public CompositePropertiesEditionPart getSelectedPart() {
 		PropertiesEditionContentProvider propertiesEditionContentProvider = (PropertiesEditionContentProvider)getContentProvider();
 		String selectedPartTitle = folder.getSelection().getText();
-		return (CompositePropertiesEditionPart)propertiesEditionContentProvider.getPropertiesEditionPart(
-				kind, selectedPartTitle);
+		return (CompositePropertiesEditionPart)propertiesEditionContentProvider.getPropertiesEditionPart(kind, selectedPartTitle);
 	}
 
 	/**
@@ -509,6 +475,8 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			if (selectPart(nextComponentKey, part)) {
 				selectedParts.add(nextComponentKey);
 				addPartTab(propertiesEditionProvider, part, nextComponentKey);
+			} else {
+				part.setVisible(false);
 			}
 		}
 		if (dynamicTabHeader) {
@@ -530,8 +498,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param tabText
 	 *            the title of the tab
 	 */
-	private void addPartTab(PropertiesEditionContentProvider propertiesEditionProvider,
-			IPropertiesEditionPart part, String key) {
+	private void addPartTab(PropertiesEditionContentProvider propertiesEditionProvider, IPropertiesEditionPart part, String key) {
 		Composite editComposite = null;
 		if (part instanceof ISWTPropertiesEditionPart)
 			editComposite = ((ISWTPropertiesEditionPart)part).createFigure(folder);
@@ -565,6 +532,15 @@ public class PropertiesEditionViewer extends StructuredViewer {
 				cTabItem.dispose();
 			}
 		}
+	}
+	
+	/**
+	 * Refresh the active tab.
+	 */
+	public void refreshTab() {
+		getSelectedPart().refresh();
+		PropertiesEditionContentProvider propertiesEditionContentProvider = (PropertiesEditionContentProvider)getContentProvider();
+		propertiesEditionContentProvider.initPart(propertiesEditionContentProvider.translatePart(folder.getSelection().getText()), kind, ((EObject)getEObjectFromInput()));
 	}
 
 	/*

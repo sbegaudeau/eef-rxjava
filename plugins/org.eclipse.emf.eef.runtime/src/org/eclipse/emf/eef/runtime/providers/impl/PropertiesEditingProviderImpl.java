@@ -54,7 +54,7 @@ public abstract class PropertiesEditingProviderImpl extends AdapterImpl implemen
 			return new CreateEditingPolicy((EReferencePropertiesEditionContext)context);
 		}
 		if (context instanceof EObjectPropertiesEditionContext) {
-			return new StandardEditingPolicy((EObjectPropertiesEditionContext)context);
+			return new StandardEditingPolicy((PropertiesEditingContext)context);
 		}
 		return null;
 	}
@@ -65,11 +65,9 @@ public abstract class PropertiesEditingProviderImpl extends AdapterImpl implemen
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
 	 *      java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
-			String mode) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		for (PropertiesEditingProvider provider : superProviders) {
-			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(
-					editingContext, mode);
+			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(editingContext, mode);
 			if (propertiesEditingComponent != null) {
 				return propertiesEditingComponent;
 			}
@@ -83,11 +81,9 @@ public abstract class PropertiesEditingProviderImpl extends AdapterImpl implemen
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
-			String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		for (PropertiesEditingProvider provider : superProviders) {
-			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(
-					editingContext, mode, part);
+			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(editingContext, mode, part);
 			if (propertiesEditingComponent != null) {
 				return propertiesEditingComponent;
 			}
@@ -101,11 +97,9 @@ public abstract class PropertiesEditingProviderImpl extends AdapterImpl implemen
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
 	 *      java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext,
-			String mode, String part, Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, Class refinement) {
 		for (PropertiesEditingProvider provider : superProviders) {
-			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(
-					editingContext, mode, part, refinement);
+			IPropertiesEditionComponent propertiesEditingComponent = provider.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 			if (propertiesEditingComponent != null) {
 				return propertiesEditingComponent;
 			}

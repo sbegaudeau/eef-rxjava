@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -42,4 +43,9 @@ public interface EEFEditorSettings {
 	 * @return the edited object
 	 */
 	EObject getSource();
+
+	/**
+	 * @return the final type of the settings.
+	 */
+	EClassifier getEType();
 }

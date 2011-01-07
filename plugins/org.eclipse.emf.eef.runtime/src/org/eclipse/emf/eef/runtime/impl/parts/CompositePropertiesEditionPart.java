@@ -68,6 +68,11 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Defines if part has changed
 	 */
 	protected boolean partHasChanged = false;
+	
+	/**
+	 * Defines the part visibility.
+	 */
+	protected boolean visibility = true;
 
 	/**
 	 * Parameterized constructeur.
@@ -153,10 +158,29 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Clear all the graphical elements of the view
 	 */
 	private void clear() {
-		for (int i = 0; i < view.getChildren().length; i++) {
-			Control next = view.getChildren()[i];
+//		for (int i = 0; i < view.getChildren().length; i++) {
+		while (view.getChildren().length > 0) {
+			Control next = view.getChildren()[0];
 			next.dispose();
 		}
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#isVisible()
+	 */
+	public boolean isVisible() {
+		return visibility;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#setVisible(boolean)
+	 */
+	public void setVisible(boolean visibility) {
+		this.visibility = visibility;
+	}
+	
+	
 
 }

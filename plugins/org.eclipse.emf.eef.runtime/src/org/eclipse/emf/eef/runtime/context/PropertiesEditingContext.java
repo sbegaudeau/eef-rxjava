@@ -49,4 +49,9 @@ public interface PropertiesEditingContext {
 	 * @return the parentContext
 	 */
 	public PropertiesEditingContext getParentContext();
+
+	/**
+	 * @param eObject
+	 */
+	public abstract void seteObject(EObject eObject);
 }
