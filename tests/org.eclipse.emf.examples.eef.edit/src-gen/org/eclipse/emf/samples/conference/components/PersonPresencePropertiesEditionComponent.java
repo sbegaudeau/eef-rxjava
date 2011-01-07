@@ -75,10 +75,8 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 			final Person person = (Person)elt;
 			final PresencePropertiesEditionPart presencePart = (PresencePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(ConferenceViewsRepository.Presence.Talks.assists)) {
-				assistsSettings = new ReferencesTableSettings(person, ConferencePackage.eINSTANCE.getPerson_Assists());
-				presencePart.initAssists(assistsSettings);
-			}
+			assistsSettings = new ReferencesTableSettings(person, ConferencePackage.eINSTANCE.getPerson_Assists());
+			presencePart.initAssists(assistsSettings);
 			// init filters
 			presencePart.addFilterToAssists(new ViewerFilter() {
 			
@@ -96,8 +94,8 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 			});
 			presencePart.addFilterToAssists(new EObjectFilter(ConferencePackage.eINSTANCE.getTalk()));
 			// Start of user code for additional businessfilters for assists
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
 			
 			// init values for referenced views
 			
@@ -135,7 +133,7 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			PresencePropertiesEditionPart presencePart = (PresencePropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Presence.Talks.assists))
+			if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
 				presencePart.updateAssists();
 			
 		}

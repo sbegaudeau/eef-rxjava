@@ -96,34 +96,28 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final Talk talk = (Talk)elt;
 			final TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
 			// init values
-			if (talk.getTitle() != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_))
+			if (talk.getTitle() != null)
 				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), talk.getTitle()));
 			
-			if (isAccessible(ConferenceViewsRepository.Talk.Properties.topic)) {
-				// init part
-				topicSettings = new EObjectFlatComboSettings(talk, ConferencePackage.eINSTANCE.getTalk_Topic());
-				basePart.initTopic(topicSettings);
-				// set the button mode
-				basePart.setTopicButtonMode(ButtonsModeEnum.BROWSE);
-			}
+			// init part
+			topicSettings = new EObjectFlatComboSettings(talk, ConferencePackage.eINSTANCE.getTalk_Topic());
+			basePart.initTopic(topicSettings);
+			// set the button mode
+			basePart.setTopicButtonMode(ButtonsModeEnum.BROWSE);
 			if (isAccessible(ConferenceViewsRepository.Talk.Properties.type)) {
 				basePart.initType((EEnum) ConferencePackage.eINSTANCE.getTalk_Type().getEType(), talk.getType());
 			}
-			if (isAccessible(ConferenceViewsRepository.Talk.Properties.presenter)) {
-				// init part
-				presenterSettings = new EObjectFlatComboSettings(talk, ConferencePackage.eINSTANCE.getTalk_Presenter());
-				basePart.initPresenter(presenterSettings);
-				// set the button mode
-				basePart.setPresenterButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(ConferenceViewsRepository.Talk.Properties.creator)) {
-				// init part
-				creatorSettings = new EObjectFlatComboSettings(talk, ConferencePackage.eINSTANCE.getTalk_Creator());
-				basePart.initCreator(creatorSettings);
-				// set the button mode
-				basePart.setCreatorButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (talk.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation))
+			// init part
+			presenterSettings = new EObjectFlatComboSettings(talk, ConferencePackage.eINSTANCE.getTalk_Presenter());
+			basePart.initPresenter(presenterSettings);
+			// set the button mode
+			basePart.setPresenterButtonMode(ButtonsModeEnum.BROWSE);
+			// init part
+			creatorSettings = new EObjectFlatComboSettings(talk, ConferencePackage.eINSTANCE.getTalk_Creator());
+			basePart.initCreator(creatorSettings);
+			// set the button mode
+			basePart.setCreatorButtonMode(ButtonsModeEnum.BROWSE);
+			if (talk.getDocumentation() != null)
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), talk.getDocumentation()));
 			// init filters
 			
@@ -140,8 +134,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for topic
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
 			
 			
 			basePart.addFilterToPresenter(new ViewerFilter() {
@@ -157,8 +151,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for presenter
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
 			
 			basePart.addFilterToCreator(new ViewerFilter() {
 			
@@ -173,8 +167,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for creator
-																																							
-																																							// End of user code
+																																										
+																																										// End of user code
 			
 			
 			// init values for referenced views
@@ -266,23 +260,23 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.title_)){
+			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null){
 				if (msg.getNewValue() != null) {
 					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.topic))
+			if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null)
 				basePart.setTopic((EObject)msg.getNewValue());
 			if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.type))
 				basePart.setType((Enumerator)msg.getNewValue());
 			
-			if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.presenter))
+			if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null)
 				basePart.setPresenter((EObject)msg.getNewValue());
-			if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.creator))
+			if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null)
 				basePart.setCreator((EObject)msg.getNewValue());
-			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {

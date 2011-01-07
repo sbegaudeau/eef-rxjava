@@ -71,13 +71,13 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			final Topic topic = (Topic)elt;
 			final TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
 			// init values
-			if (topic.getDescription() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description))
+			if (topic.getDescription() != null)
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDescription()));
 			
-			if (topic.getReferences() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references))
+			if (topic.getReferences() != null)
 				basePart.setReferences(topic.getReferences());
 			
-			if (topic.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation))
+			if (topic.getDocumentation() != null)
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDocumentation()));
 			// init filters
 			
@@ -124,21 +124,21 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Topic.Properties.description)){
+			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null){
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setDescription("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
+			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null) {
 				if (msg.getEventType() == Notification.ADD) 
 					basePart.addToReferences(msg.getNewValue());
 				else if (msg.getEventType() == Notification.REMOVE) 
 					basePart.removeToReferences(msg.getOldValue());
 			}
 			
-			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {

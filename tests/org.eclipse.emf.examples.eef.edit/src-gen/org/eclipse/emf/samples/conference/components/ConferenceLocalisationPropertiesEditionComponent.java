@@ -82,13 +82,11 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 			final Conference conference = (Conference)elt;
 			final LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
 			// init values
-			if (conference.getPlace() != null && isAccessible(ConferenceViewsRepository.Localisation.place))
+			if (conference.getPlace() != null)
 				localisationPart.setPlace(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getPlace()));
 			
-			if (isAccessible(ConferenceViewsRepository.Localisation.sites)) {
-				sitesSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Sites());
-				localisationPart.initSites(sitesSettings);
-			}
+			sitesSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Sites());
+			localisationPart.initSites(sitesSettings);
 			// init filters
 			
 			localisationPart.addFilterToSites(new ViewerFilter() {
@@ -104,8 +102,8 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for sites
-																		
-																		// End of user code
+																					
+																					// End of user code
 			
 			// init values for referenced views
 			
@@ -131,12 +129,16 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 		}
 		if (ConferenceViewsRepository.Localisation.sites == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, sitesSettings, editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ConferencePackage.eINSTANCE.getConference_Sites(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
+						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
+						if (resultEObject != null) {
+							sitesSettings.addToReference(resultEObject);
+						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -161,14 +163,14 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Localisation.place)){
+			if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && localisationPart != null){
 				if (msg.getNewValue() != null) {
 					localisationPart.setPlace(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					localisationPart.setPlace("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getConference_Sites().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Localisation.sites))
+			if (ConferencePackage.eINSTANCE.getConference_Sites().equals(msg.getFeature()))
 				localisationPart.updateSites();
 			
 		}
