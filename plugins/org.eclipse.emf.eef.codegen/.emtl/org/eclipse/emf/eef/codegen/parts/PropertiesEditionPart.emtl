@@ -3565,7 +3565,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedGenFeature"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenFeature"/>
         <eParameters name="pee">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         </eParameters>
@@ -3577,7 +3577,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedGenPackage"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="p">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -3589,7 +3589,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedGenPackage.1"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
@@ -3637,7 +3637,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedEMFGenModel"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         </eParameters>
@@ -3703,7 +3703,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../services/common.emtl#/3/Set(EClass)"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -6217,7 +6217,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedGenPackage.1"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
       </eOperations>
       <eOperations name="associatedGenContext">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -6388,7 +6388,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedEMFGenModel"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -7087,7 +7087,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedGenPackage"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
       </eOperations>
       <eOperations name="significantClass">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -7096,7 +7096,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../services/common.emtl#/3/Set(EClass)"/>
       </eOperations>
       <eOperations name="completePackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -7400,7 +7400,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/associatedGenFeature"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenFeature"/>
       </eOperations>
       <eOperations name="representationName">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">

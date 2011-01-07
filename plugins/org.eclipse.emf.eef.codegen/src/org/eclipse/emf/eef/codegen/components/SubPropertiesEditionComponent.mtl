@@ -248,18 +248,20 @@ public class [pec.subPECClass(view)/] extends [pec.pecComponentSuperClass()/] {
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
-		// [protected ('for updatePart body')]
-		
-		// [/protected]
-		[else]
-		[view.pepInterface()/] [view.viewIdentifier(pec)/] = ([view.pepInterface()/])editingPart;
-		[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
-		[editionElement.liveUpdater(view, pec)/]
-		[/for]
-		[comment add ViewReference support/]
-		[view.liveUpdaterForReferencedViews(pec)/]
-		[/if]
+		if (editingPart.isVisible()) {	
+			[if (view.oclIsTypeOf(views::CustomView) and not peContext.associatedGenModel().useJMergeForUserCode)]
+			// [protected ('for updatePart body')]
+			
+			// [/protected]
+			[else]
+			[view.pepInterface()/] [view.viewIdentifier(pec)/] = ([view.pepInterface()/])editingPart;
+			[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))]
+			[editionElement.liveUpdater(view, pec)/]
+			[/for]
+			[comment add ViewReference support/]
+			[view.liveUpdaterForReferencedViews(pec)/]
+			[/if]
+		}
 	}
 
 [if (pec.properties.oclAsType(components::PropertiesEditionElement)->select(localPee : components::PropertiesEditionElement | localPee.model.required)->notEmpty())]

@@ -2917,6 +2917,9 @@
         </body>
         <body xsi:type="mtl:TemplateInvocation" definition="/0/elementEditorGetterSettersForSubViewsDelegate">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="view" referredVariable="/0/elementEditorGetterSettersForSubViewsDelegate/view">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+          </argument>
           <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/elementEditorGetterSettersForSubViewsDelegate/pec">
             <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
           </argument>
@@ -3979,7 +3982,7 @@
         <eAnnotations source="MTL">
           <references href="common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="common.emtl#/3/Set(EClass)"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -8228,7 +8231,7 @@
         <eAnnotations source="MTL">
           <references href="common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="common.emtl#/3/Set(EClass)"/>
       </eOperations>
       <eOperations name="completePackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -14514,82 +14517,87 @@
       <details key="end" value="14459"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.953" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/pec">
+    <eAnnotations source="positions.953" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/view">
+      <details key="start" value="14381"/>
+      <details key="end" value="14385"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.954" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/pec">
       <details key="start" value="14432"/>
       <details key="end" value="14435"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.954" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/basePackage">
+    <eAnnotations source="positions.955" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/basePackage">
       <details key="start" value="14437"/>
       <details key="end" value="14448"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.955" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/initView">
+    <eAnnotations source="positions.956" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.1/initView">
       <details key="start" value="14450"/>
       <details key="end" value="14458"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.956" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.2">
+    <eAnnotations source="positions.957" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/@body.2">
       <details key="start" value="14461"/>
       <details key="end" value="14462"/>
       <details key="line" value="262"/>
     </eAnnotations>
-    <eAnnotations source="positions.957" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/subView">
+    <eAnnotations source="positions.958" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/subView">
       <details key="start" value="13891"/>
       <details key="end" value="13905"/>
       <details key="line" value="254"/>
     </eAnnotations>
-    <eAnnotations source="positions.958" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select">
+    <eAnnotations source="positions.959" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select">
       <details key="start" value="13908"/>
       <details key="end" value="13955"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.959" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@source">
+    <eAnnotations source="positions.960" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@source">
       <details key="start" value="13908"/>
       <details key="end" value="13921"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.960" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@source/view">
+    <eAnnotations source="positions.961" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@source/view">
       <details key="start" value="13908"/>
       <details key="end" value="13912"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.961" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@body">
+    <eAnnotations source="positions.962" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@body">
       <details key="start" value="13930"/>
       <details key="end" value="13954"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.962" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@body/temp1">
+    <eAnnotations source="positions.963" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@body/temp1">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.963" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@body/@argument.0">
+    <eAnnotations source="positions.964" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/@body/@argument.0">
       <details key="start" value="13942"/>
       <details key="end" value="13953"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.964" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/temp25">
+    <eAnnotations source="positions.965" references="/0/elementEditorGetterSettersForSubViewsDelegate/@body.0/select/temp25">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.965" references="/0/elementEditorGetterSettersForSubViewsDelegate/view">
+    <eAnnotations source="positions.966" references="/0/elementEditorGetterSettersForSubViewsDelegate/view">
       <details key="start" value="13798"/>
       <details key="end" value="13809"/>
       <details key="line" value="253"/>
     </eAnnotations>
-    <eAnnotations source="positions.966" references="/0/elementEditorGetterSettersForSubViewsDelegate/pec">
+    <eAnnotations source="positions.967" references="/0/elementEditorGetterSettersForSubViewsDelegate/pec">
       <details key="start" value="13811"/>
       <details key="end" value="13843"/>
       <details key="line" value="253"/>
     </eAnnotations>
-    <eAnnotations source="positions.967" references="/0/elementEditorGetterSettersForSubViewsDelegate/basePackage">
+    <eAnnotations source="positions.968" references="/0/elementEditorGetterSettersForSubViewsDelegate/basePackage">
       <details key="start" value="13845"/>
       <details key="end" value="13865"/>
       <details key="line" value="253"/>
     </eAnnotations>
-    <eAnnotations source="positions.968" references="/0/elementEditorGetterSettersForSubViewsDelegate/initView">
+    <eAnnotations source="positions.969" references="/0/elementEditorGetterSettersForSubViewsDelegate/initView">
       <details key="start" value="13867"/>
       <details key="end" value="13882"/>
       <details key="line" value="253"/>
