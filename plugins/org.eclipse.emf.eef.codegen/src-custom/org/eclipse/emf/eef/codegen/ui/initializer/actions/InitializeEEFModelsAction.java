@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ui.initializer.actions;
 
-import java.io.IOException;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -69,7 +66,7 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 			if (result.length >= 1) {
 				try {
 					IContainer container = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder((IPath)result[0]);
-					modelURI = URI.createURI("file:" + selectedFile.getLocationURI().getPath());
+					modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), false);
 					AbstractPropertiesInitializer initializer = dialog.getInitializer();
 					initializer.initialize(modelURI, container);
 					container.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
