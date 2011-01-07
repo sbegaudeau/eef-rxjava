@@ -47,14 +47,14 @@ public class TalkTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForType;
 	/**
-	 * The reference value for the reference class creator
-	 */
-	private Object referenceValueForCreator;
-
-	/**
 	 * The reference value for the reference class topic
 	 */
 	private Object referenceValueForTopic;
+
+	/**
+	 * The reference value for the reference class creator
+	 */
+	private Object referenceValueForCreator;
 
 	/**
 	 * The reference value for the reference class presenter
