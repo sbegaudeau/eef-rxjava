@@ -528,8 +528,11 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			CTabItem[] items = folder.getItems();
 			for (int i = 0; i < items.length; i++) {
 				CTabItem cTabItem = items[i];
-				cTabItem.getControl().dispose(); //adding this line solves my problem.
-				cTabItem.dispose();
+				
+				if (!cTabItem.getControl().isDisposed())
+					cTabItem.getControl().dispose(); //adding this line solves my problem.
+				if (!cTabItem.isDisposed())
+					cTabItem.dispose();
 			}
 		}
 	}
@@ -616,15 +619,19 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		 * update listeners managing scroll composite size
 		 */
 		public void updateControlListener() {
-			if (listener.listenedControl != null) {
-				listener.listenedControl.removeControlListener(listener);
-			}
+			removeControlListener();
 			Control control2 = folder.getSelection().getControl();
 			if (control2 != null) {
 				listener.listenedControl = control2;
 				control2.addControlListener(listener);
 			}
 
+		}
+
+		public void removeControlListener() {
+			if (listener.listenedControl != null && !listener.listenedControl.isDisposed()) {
+				listener.listenedControl.removeControlListener(listener);
+			}
 		}
 
 	}

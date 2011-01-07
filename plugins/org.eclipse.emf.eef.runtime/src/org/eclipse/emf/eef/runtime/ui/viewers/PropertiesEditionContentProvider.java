@@ -90,6 +90,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		if (propertiesEditionComponent != null) {
 			PropertiesContextService.getInstance().pop();
 			propertiesEditionComponent.dispose();
+			propertiesEditionComponent = null;
 		}
 		EObject eObject = null;
 		PropertiesEditingContext context = null;
