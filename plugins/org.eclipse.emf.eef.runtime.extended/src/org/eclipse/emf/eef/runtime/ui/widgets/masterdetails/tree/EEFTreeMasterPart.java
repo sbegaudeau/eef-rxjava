@@ -289,7 +289,6 @@ private List<EEFCommandParameter> commandParameters;
 							Command command = AddCommand.create(editingDomain, modelRoot,null,value);
 							editingDomain.getCommandStack().execute(command);
 						}
-//						list.add(EcoreUtil.create(commandParameter.geteClass()));
 						try {
 							modelRoot.eResource().save(Collections.EMPTY_MAP);
 							
