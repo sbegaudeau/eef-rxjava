@@ -98,7 +98,7 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 			EObject next = allContents.next();
 			if (next instanceof GenPackage) {
 				GenPackage genPack = (GenPackage)next;
-				if (genPack.eContents().size() >= 1) {
+				if (genPack.getGenClassifiers().size() >= 1) {
 					ViewsRepository repository = viewTransformer.genPackage2ViewsRepository(genPack, SWT_TOOLKIT_NAME);
 					String completePackage = genPack.getBasePackage();
 					if (completePackage != null && completePackage.length() > 0) {
