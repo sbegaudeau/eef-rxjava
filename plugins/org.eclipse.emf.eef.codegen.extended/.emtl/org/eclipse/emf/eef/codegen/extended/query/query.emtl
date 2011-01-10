@@ -7,7 +7,7 @@
     <input>
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </input>
-    <imports href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0"/>
+    <imports href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="body" visibility="Public">
       <parameter name="query">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/extended/query/1.0.0#//EEFUnderstandableQuery"/>
@@ -37,7 +37,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="OCLQuery query = new OCLQuery("/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.2"/>
+        <definition href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.2"/>
         <argument xsi:type="ocl.ecore:PropertyCallExp">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
           <source xsi:type="ocl.ecore:VariableExp" name="oclQuery" referredVariable="/0/body.1/oclQuery">
@@ -238,7 +238,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/fullPartInterfacePath"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/fullPartInterfacePath"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pepInterface">
@@ -250,7 +250,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toPath"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toPath"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -259,7 +259,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toASCII"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toASCII"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -268,7 +268,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toUnicode"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toUnicode"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -277,7 +277,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/startsWithADigit"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/startsWithADigit"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -286,7 +286,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/firstChar"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/firstChar"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -295,7 +295,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifierDelegate"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifierDelegate"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -304,7 +304,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifier"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifier"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -313,7 +313,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaClassifier"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaClassifier"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -322,7 +322,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaMetamodelIdentifier"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaMetamodelIdentifier"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -331,7 +331,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaConstant"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaConstant"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -340,7 +340,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -489,7 +489,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedViews"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedViews"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="pec">
@@ -501,7 +501,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElements"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElements"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="pec">
@@ -513,7 +513,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editionContext"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editionContext"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         <eParameters name="pec">
@@ -525,7 +525,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningView"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         <eParameters name="element">
@@ -537,7 +537,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewString"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewString"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="element">
@@ -549,7 +549,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasOwningViewsRepository"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasOwningViewsRepository"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="view">
@@ -561,7 +561,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewsRepository"/>
         <eParameters name="view">
@@ -573,7 +573,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewsRepository"/>
         <eParameters name="element">
@@ -585,7 +585,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/referencedViews"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/referencedViews"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="view">
@@ -597,7 +597,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ownedBy"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ownedBy"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="element">
@@ -612,7 +612,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElementsInView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElementsInView"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="pec">
@@ -627,7 +627,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesEditionElement"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesEditionElement"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="element">
@@ -642,7 +642,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/relatedComponent"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/relatedComponent"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         <eParameters name="view">
@@ -657,7 +657,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/fullPartInterfacePath"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/fullPartInterfacePath"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pepCompletePackage">
@@ -672,7 +672,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenFeature"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenFeature"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenFeature"/>
         <eParameters name="pee">
@@ -684,7 +684,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="p">
@@ -696,7 +696,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="pec">
@@ -708,7 +708,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenEditionContext"/>
         <eParameters name="peco">
@@ -720,7 +720,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenEditionContext"/>
         <eParameters name="peco">
@@ -732,7 +732,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
         <eParameters name="pec">
@@ -744,7 +744,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedEMFGenModel"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedEMFGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="pec">
@@ -759,7 +759,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
         <eParameters name="view">
@@ -771,7 +771,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
         <eParameters name="viewsRepository">
@@ -783,7 +783,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
         <eParameters name="viewsRepository">
@@ -795,7 +795,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedPEC"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedPEC"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         <eParameters name="eclass">
@@ -810,9 +810,9 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/significantClass"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/3/Set(EClass)"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -822,7 +822,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="pec">
@@ -834,7 +834,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needComposedEditionComponent"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needComposedEditionComponent"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="pec">
@@ -846,7 +846,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustDynamicPecBeGenerated"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustDynamicPecBeGenerated"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="pec">
@@ -861,7 +861,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isDynamicView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isDynamicView"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="view">
@@ -873,7 +873,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/dynamicViews"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/dynamicViews"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="pec">
@@ -888,7 +888,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/partToManage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/partToManage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SetType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)"/>
         <eParameters name="pec">
@@ -900,7 +900,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="view">
@@ -915,7 +915,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needBeGenerated"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needBeGenerated"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="ref">
@@ -927,7 +927,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isA1stLevelReferencedView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isA1stLevelReferencedView"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="toCheck">
@@ -942,7 +942,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -954,7 +954,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceSingle"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceSingle"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -966,7 +966,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainment"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainment"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -978,7 +978,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -990,7 +990,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentSingle"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentSingle"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -1002,7 +1002,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -1014,7 +1014,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeSingle"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeSingle"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="feature">
@@ -1026,7 +1026,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="editionElement">
@@ -1041,7 +1041,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="view">
@@ -1056,7 +1056,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editorIDSequence"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editorIDSequence"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="editorElement">
@@ -1068,7 +1068,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/identifiedElementKey"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/identifiedElementKey"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="editorElement">
@@ -1080,7 +1080,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasModelNavigation"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasModelNavigation"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="pee">
@@ -1092,7 +1092,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecorePackageSignature"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecorePackageSignature"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="e">
@@ -1104,7 +1104,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="editor">
@@ -1116,7 +1116,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1128,7 +1128,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageSetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageSetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="editor">
@@ -1140,7 +1140,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreGenModelAnnotation"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreGenModelAnnotation"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="modelElement">
@@ -1152,7 +1152,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreDocumentationAnnotation"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreDocumentationAnnotation"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="modelElement">
@@ -1164,7 +1164,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreHelp"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreHelp"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="modelElement">
@@ -1176,7 +1176,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/helpText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/helpText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="pee">
@@ -1188,7 +1188,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/licenceText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/licenceText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eefGenModel">
@@ -1200,7 +1200,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesLicenceText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesLicenceText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eefGenModel">
@@ -1212,7 +1212,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationMark"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationMark"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eefGenModel">
@@ -1224,7 +1224,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationComment"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationComment"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eefGenModel">
@@ -1236,7 +1236,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/authorText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/authorText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eefGenModel">
@@ -1248,7 +1248,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
@@ -1260,7 +1260,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
@@ -1272,7 +1272,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSignature"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSignature"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
@@ -1284,7 +1284,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
@@ -1296,7 +1296,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageSetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageSetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
@@ -1308,7 +1308,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaType"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaType"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="view">
@@ -1320,7 +1320,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toPath"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toPath"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1332,7 +1332,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toASCII"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toASCII"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1344,7 +1344,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toUnicode"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toUnicode"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1356,7 +1356,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/startsWithADigit"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/startsWithADigit"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="s">
@@ -1368,7 +1368,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/firstChar"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/firstChar"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1380,7 +1380,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifierDelegate"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifierDelegate"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1392,7 +1392,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifier"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaIdentifier"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1404,7 +1404,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaClassifier"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaClassifier"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1416,7 +1416,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaMetamodelIdentifier"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaMetamodelIdentifier"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1428,7 +1428,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaConstant"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaConstant"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1440,7 +1440,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1452,7 +1452,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eClassifier">
@@ -1464,7 +1464,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1476,7 +1476,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eClassifier">
@@ -1491,7 +1491,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1506,7 +1506,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eClassifier">
@@ -1518,7 +1518,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eClassifier">
@@ -1533,7 +1533,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPrefix"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPrefix"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1545,7 +1545,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1557,7 +1557,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelFactory"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1569,7 +1569,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eClassifier">
@@ -1581,7 +1581,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1593,7 +1593,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="eClassifier">
@@ -1605,7 +1605,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelFactory"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="ePackage">
@@ -1617,7 +1617,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="s">
@@ -1629,7 +1629,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="p">
@@ -1641,7 +1641,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.2"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.2"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="c">
@@ -1653,7 +1653,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationType"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationType"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="modelNavigation">
@@ -1665,7 +1665,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationMetamodelFactory"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationMetamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="modelNavigation">
@@ -1677,7 +1677,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="peElement">
@@ -1692,7 +1692,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="element">
@@ -1707,7 +1707,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="element">
@@ -1719,7 +1719,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="view">
@@ -1734,7 +1734,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionComponent"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionComponent"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         <eParameters name="view">
@@ -1904,7 +1904,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedPEC"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedPEC"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         <eParameters name="peContext">
@@ -1933,7 +1933,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedViews"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedViews"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
       </eOperations>
@@ -1942,7 +1942,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElements"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElements"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
       </eOperations>
@@ -1951,7 +1951,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editionContext"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editionContext"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
       </eOperations>
@@ -1960,7 +1960,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElementsInView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedEditionElementsInView"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="v">
@@ -1972,7 +1972,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
       </eOperations>
@@ -1981,7 +1981,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenEditionContext"/>
       </eOperations>
@@ -1990,7 +1990,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -1999,7 +1999,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needComposedEditionComponent"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needComposedEditionComponent"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2008,7 +2008,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustDynamicPecBeGenerated"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustDynamicPecBeGenerated"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="view">
@@ -2020,7 +2020,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/dynamicViews"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/dynamicViews"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
         <eParameters name="topLevelView">
@@ -2032,7 +2032,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/partToManage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/partToManage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SetType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)"/>
       </eOperations>
@@ -2046,7 +2046,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningView"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
       </eOperations>
@@ -2055,7 +2055,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewString"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewString"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2064,7 +2064,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewsRepository"/>
       </eOperations>
@@ -2073,7 +2073,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ownedBy"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ownedBy"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="view">
@@ -2085,7 +2085,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="nameToCheck">
@@ -2097,7 +2097,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2106,7 +2106,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2115,7 +2115,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSignature"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSignature"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2124,7 +2124,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewPackageSetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2133,7 +2133,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageSetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/viewCompletePackageSetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2142,7 +2142,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaType"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/toJavaType"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2151,7 +2151,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.3"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="pec">
@@ -2168,7 +2168,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasOwningViewsRepository"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasOwningViewsRepository"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2177,7 +2177,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/owningViewsRepository"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ViewsRepository"/>
       </eOperations>
@@ -2186,7 +2186,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/referencedViews"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/referencedViews"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
       </eOperations>
@@ -2195,7 +2195,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/relatedComponent"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/relatedComponent"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         <eParameters name="pec">
@@ -2207,7 +2207,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
       </eOperations>
@@ -2216,7 +2216,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isDynamicView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isDynamicView"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2225,7 +2225,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/mustBeGenerated.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="pec">
@@ -2237,7 +2237,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isA1stLevelReferencedView"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isA1stLevelReferencedView"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="pec">
@@ -2249,7 +2249,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionComponent"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionComponent"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
       </eOperations>
@@ -2263,7 +2263,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesEditionElement"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesEditionElement"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="pec">
@@ -2275,7 +2275,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="pec">
@@ -2287,7 +2287,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement.2"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
       </eOperations>
@@ -2301,7 +2301,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenFeature"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenFeature"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenFeature"/>
       </eOperations>
@@ -2310,7 +2310,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/representationName"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
         <eParameters name="nameToCheck">
@@ -2322,7 +2322,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasModelNavigation"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/hasModelNavigation"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2331,7 +2331,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2340,7 +2340,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageSetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageSetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2349,7 +2349,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/helpText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/helpText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2358,7 +2358,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2367,7 +2367,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/involvedPropertiesEditionElement"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         <eParameters name="f">
@@ -2384,7 +2384,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenPackage"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
       </eOperations>
@@ -2393,16 +2393,16 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/significantClass"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/significantClass"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/components/SubPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/3/Set(EClass)"/>
       </eOperations>
       <eOperations name="completePackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2411,7 +2411,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="basePackage">
@@ -2423,7 +2423,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPrefix"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPrefix"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2432,7 +2432,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2441,7 +2441,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelFactory"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2450,7 +2450,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2459,7 +2459,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelFactory"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2473,7 +2473,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenContext"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenEditionContext"/>
       </eOperations>
@@ -2482,7 +2482,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
       </eOperations>
@@ -2491,7 +2491,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedEMFGenModel"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedEMFGenModel"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
         <eParameters name="ePackage">
@@ -2508,7 +2508,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenRepository.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//GenViewsRepository"/>
       </eOperations>
@@ -2517,7 +2517,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/associatedGenModel.1"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/generation/1.0.0#//EEFGenModel"/>
       </eOperations>
@@ -2531,7 +2531,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needBeGenerated"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/needBeGenerated"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2545,7 +2545,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2554,7 +2554,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceSingle"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isReferenceSingle"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2563,7 +2563,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainment"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainment"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2572,7 +2572,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2581,7 +2581,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentSingle"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isContainmentSingle"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2590,7 +2590,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeMany"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeMany"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2599,7 +2599,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeSingle"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/isAttributeSingle"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
       </eOperations>
@@ -2608,7 +2608,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecorePackageSignature"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecorePackageSignature"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2622,7 +2622,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editorIDSequence"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/editorIDSequence"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
       </eOperations>
@@ -2631,7 +2631,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/identifiedElementKey"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/identifiedElementKey"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2645,7 +2645,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreCompletePackageGetter.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2654,7 +2654,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2663,7 +2663,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationType"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationType"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2672,7 +2672,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationMetamodelFactory"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/simpleModelNavigationMetamodelFactory"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2686,7 +2686,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreGenModelAnnotation"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreGenModelAnnotation"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
       </eOperations>
@@ -2695,7 +2695,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreDocumentationAnnotation"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreDocumentationAnnotation"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
       </eOperations>
@@ -2704,7 +2704,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreHelp"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/ecoreHelp"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2718,7 +2718,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/licenceText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/licenceText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2727,7 +2727,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesLicenceText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/propertiesLicenceText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2736,7 +2736,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationMark"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationMark"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2745,7 +2745,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationComment"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/generationComment"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2754,7 +2754,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/authorText"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/authorText"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2768,7 +2768,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/completePackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2777,7 +2777,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/eefPackage"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="basePackage">
@@ -2789,7 +2789,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2798,7 +2798,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedName.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="basePackage">
@@ -2810,7 +2810,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2819,7 +2819,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage.1"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/qualifiedMetamodelPackage.1"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
@@ -2828,7 +2828,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../../../../../../../../../org.eclipse.emf.eef.codegen/bin/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.2"/>
+          <references href="../../../../../../../../../../plugin/org.eclipse.emf.eef.codegen/org/eclipse/emf/eef/codegen/services/common.emtl#/0/metamodelGetter.2"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
