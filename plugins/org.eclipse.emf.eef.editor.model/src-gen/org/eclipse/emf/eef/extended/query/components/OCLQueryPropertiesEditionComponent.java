@@ -98,8 +98,8 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			});
 			// Start of user code for additional businessfilters for context
-															
-															// End of user code
+																								
+																								// End of user code
 			
 			// init values for referenced views
 			

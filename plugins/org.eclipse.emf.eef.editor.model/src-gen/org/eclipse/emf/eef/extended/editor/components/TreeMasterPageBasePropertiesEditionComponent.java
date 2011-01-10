@@ -140,7 +140,7 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == EditorViewsRepository.TreeMasterPage.Naming.name || key == EditorViewsRepository.TreeMasterPage.Naming.title_;
+		return key == EditorViewsRepository.TreeMasterPage.Naming.name;
 	}
 
 	/**

@@ -130,7 +130,7 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == EditorViewsRepository.StandardFormPage.Naming.name || key == EditorViewsRepository.StandardFormPage.Naming.title_;
+		return key == EditorViewsRepository.StandardFormPage.Naming.name;
 	}
 
 	/**

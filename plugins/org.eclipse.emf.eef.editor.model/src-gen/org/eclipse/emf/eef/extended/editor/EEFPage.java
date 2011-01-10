@@ -40,7 +40,7 @@ public interface EEFPage extends View {
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.eclipse.emf.eef.extended.editor.EditorPackage#getEEFPage_Title()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getTitle();

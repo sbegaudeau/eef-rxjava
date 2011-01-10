@@ -96,8 +96,7 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-															
-															// End of user code
+			// End of user code
 			
 			// init values for referenced views
 			

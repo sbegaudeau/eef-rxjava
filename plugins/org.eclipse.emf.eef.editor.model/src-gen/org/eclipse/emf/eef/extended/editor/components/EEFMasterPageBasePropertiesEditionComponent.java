@@ -150,7 +150,7 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == EditorViewsRepository.EEFMasterPage.Naming.name || key == EditorViewsRepository.EEFMasterPage.Naming.title_;
+		return key == EditorViewsRepository.EEFMasterPage.Naming.name;
 	}
 
 	/**

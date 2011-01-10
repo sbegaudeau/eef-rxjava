@@ -10,8 +10,7 @@
           eType="#//editor/EEFPageInput" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EEFPage" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.views/model/views.ecore#//View">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="StandardFormPage" eSuperTypes="#//editor/EEFPage"/>
     <eClassifiers xsi:type="ecore:EClass" name="MasterDetailsPage" abstract="true"

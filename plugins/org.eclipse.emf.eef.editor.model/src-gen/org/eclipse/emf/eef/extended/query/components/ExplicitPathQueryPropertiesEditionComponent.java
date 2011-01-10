@@ -90,8 +90,8 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for query
-															
-															// End of user code
+																								
+																								// End of user code
 			
 			// init values for referenced views
 			
