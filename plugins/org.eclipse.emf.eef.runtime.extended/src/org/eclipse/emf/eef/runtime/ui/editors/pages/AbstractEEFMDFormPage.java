@@ -12,6 +12,7 @@ package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
 import java.util.List;
 
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
@@ -56,6 +57,8 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 	 * The managed form
 	 */
 	private IManagedForm managedForm;
+
+	private EditingDomainViewerDropAdapter dropAdapter;
 	
 	/**
 	 * @param editor the form editor in which this page will be included
@@ -108,10 +111,17 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 		viewer.getControl().setMenu(menu);
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
+		if (editingDomain != null) {
+			initDragnDrop(viewer);
+		}
+	}
+
+	private void initDragnDrop(StructuredViewer viewer) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
-		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
+		dropAdapter = new EditingDomainViewerDropAdapter(editingDomain, viewer);
+		viewer.addDropSupport(dndOperations, transfers, dropAdapter);
 	}
 	
 	/**
@@ -156,6 +166,14 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 		block.setInput(input);
 	}
 	
+	
+	public void setEditingDomain(EditingDomain editingDomain) {
+		super.setEditingDomain(editingDomain);
+		if (dropAdapter == null) {
+			initDragnDrop(getModelViewer());
+		}
+	}
+
 	/**
 	 * @return the list of actions to add to the form toolbar
 	 */
