@@ -517,7 +517,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 			editComposite = new Composite(folder, SWT.NONE);
 		CTabItem tab = new CTabItem(folder, SWT.NONE);
 		tab.setControl(editComposite);
-		tab.setText(key);
+		tab.setText(part.getTitle());
 	}
 
 	/**
