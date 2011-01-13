@@ -169,7 +169,7 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 	
 	public void setEditingDomain(EditingDomain editingDomain) {
 		super.setEditingDomain(editingDomain);
-		if (dropAdapter == null) {
+		if (dropAdapter == null && getModelViewer() != null) {
 			initDragnDrop(getModelViewer());
 		}
 	}
