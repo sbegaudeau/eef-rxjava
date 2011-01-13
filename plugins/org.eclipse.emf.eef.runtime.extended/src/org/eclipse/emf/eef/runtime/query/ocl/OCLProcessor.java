@@ -69,9 +69,14 @@ public class OCLProcessor implements QueryProcessor {
 			OCLQuery oclQuery = (OCLQuery)query;
 			OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> oclHelper = oclEnvironment.createOCLHelper();
 			oclHelper.setContext(oclQuery.getContext());
-			OCLExpression<EClassifier> parsedException = oclHelper.createQuery(oclQuery.getOclQuery());
-			Object evaluationResult = oclEnvironment.evaluate(context, parsedException);
-			return new QueryResult(Status.OK_STATUS, evaluationResult);
+			String queryBody = oclQuery.getOclQuery();
+			if (queryBody != null && !queryBody.equals("")) {
+				OCLExpression<EClassifier> parsedException = oclHelper.createQuery(queryBody);
+				Object evaluationResult = oclEnvironment.evaluate(context, parsedException);
+				return new QueryResult(Status.OK_STATUS, evaluationResult);
+			} else {
+				return new QueryResult(Status.OK_STATUS, null);				
+			}
 		} catch (ParserException e) {
 			return new QueryResult(new Status(IStatus.ERROR, EEFQuery.PLUGIN_ID, "Error parsing ocl query.", e), null);
 		}
