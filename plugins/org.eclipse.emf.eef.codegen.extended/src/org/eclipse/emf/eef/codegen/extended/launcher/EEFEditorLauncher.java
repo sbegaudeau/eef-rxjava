@@ -12,17 +12,23 @@ package org.eclipse.emf.eef.codegen.extended.launcher;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.acceleo.common.IAcceleoConstants;
+import org.eclipse.acceleo.common.internal.utils.workspace.BundleURLConverter;
+import org.eclipse.acceleo.common.utils.ModelUtils;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
+import org.eclipse.acceleo.model.mtl.Module;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 
 /**
  * Entry point of the 'EEFEditorLauncher' generation module.
@@ -275,5 +281,49 @@ public class EEFEditorLauncher extends AbstractAcceleoGenerator {
     // TODO If you need additional resource factories registrations, do them here. The following line is an example for UML.
     // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
   }
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator#initialize(org.eclipse.emf.ecore.EObject, java.io.File, java.util.List)
+	 * TODO: remove this when bug #XXX is fixed. Prevent workspace override
+	 */
+	@Override
+	public void initialize(EObject element, File folder, List<? extends Object> arguments) throws IOException {
+		ResourceSet resourceSet = element.eResource().getResourceSet();
+		resourceSet.setURIConverter(new ExtensibleURIConverterImpl() {
+			public URI normalize(URI uri) {
+				BundleURLConverter conv = new BundleURLConverter(uri.toString());
+				if (conv.resolveBundle() != null) { 
+					return URI.createURI(conv.resolveAsPlatformPlugin());
+				}
+				return super.normalize(uri);
+			}
+		});
+
+		registerResourceFactories(resourceSet);
+		registerPackages(resourceSet);
+
+		addListeners();
+		addProperties();
+
+		String moduleName = getModuleName();
+		if (moduleName.endsWith('.' + IAcceleoConstants.MTL_FILE_EXTENSION)) {
+			moduleName = moduleName.substring(0, moduleName.lastIndexOf('.'));
+		}
+		if (!moduleName.endsWith('.' + IAcceleoConstants.EMTL_FILE_EXTENSION)) {
+			moduleName += '.' + IAcceleoConstants.EMTL_FILE_EXTENSION;
+		}
+
+		URL moduleURL = findModuleURL(moduleName);
+
+		if (moduleURL == null) {
+			throw new IOException("'" + getModuleName() + ".emtl' not found"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+		URI moduleURI = createTemplateURI(moduleURL.toString());
+		module = (Module)ModelUtils.load(moduleURI, resourceSet);
+		model = element;
+		targetFolder = folder;
+		generationArguments = arguments;
+	}
 	
 }
