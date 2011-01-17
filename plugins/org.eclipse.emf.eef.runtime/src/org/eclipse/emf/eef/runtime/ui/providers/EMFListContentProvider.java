@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.providers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
@@ -73,6 +74,9 @@ public class EMFListContentProvider implements IStructuredContentProvider {
 			ResourceSet resourceSet = (ResourceSet)inputElement;
 			TreeIterator allContents = resourceSet.getAllContents();
 			return asList(allContents).toArray();
+		}
+		if (inputElement instanceof Collection<?>) {
+			return ((Collection) inputElement).toArray();
 		}
 		return null;
 	}
