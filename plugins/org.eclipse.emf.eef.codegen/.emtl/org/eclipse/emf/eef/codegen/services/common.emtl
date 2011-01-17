@@ -1110,7 +1110,7 @@
       </expression>
       <type xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="significantClass" visibility="Public" type="/3/Set(EClass)">
+    <ownedModuleElement xsi:type="mtl:Query" name="significantClass" visibility="Public">
       <parameter name="ePackage">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
       </parameter>
@@ -1163,6 +1163,7 @@
         </source>
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/asOrderedSet"/>
       </expression>
+      <type xsi:type="ocl.ecore:SetType" href="../widgets/impl/combo/comboControl.emtl#/3/Set(EClass)"/>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="classAndHierarchy" type="/3/Set(EClass)">
       <parameter name="eclass">
@@ -5463,11 +5464,12 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         </eParameters>
       </eOperations>
-      <eOperations name="significantClass" eType="/3/Set(EClass)">
+      <eOperations name="significantClass">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/significantClass"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../widgets/impl/combo/comboControl.emtl#/3/Set(EClass)"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -6768,11 +6770,12 @@
         <eAnnotations source="MTL" references="/0/associatedGenPackage"/>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
       </eOperations>
-      <eOperations name="significantClass" eType="/3/Set(EClass)">
+      <eOperations name="significantClass">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/significantClass"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../widgets/impl/combo/comboControl.emtl#/3/Set(EClass)"/>
       </eOperations>
       <eOperations name="completePackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
