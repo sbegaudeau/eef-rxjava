@@ -30,7 +30,7 @@
 [/for]
 [for (view : View | viewsRepository.eAllContents(views::View))]
 [view.name.toJavaClassifier()/]_ReadOnly=Cette propri\u00E9t\u00E9 est en lecture seule
-[view.name.toJavaClassifier()/]_Part_Title=Base
+[view.name.toJavaClassifier()/]_Part_Title=[view.name/]
 [/for]
 [for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
 [editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if (editor.representation.name <> 'Checkbox' and editor.representation.name <> 'MultiValuedEditor')] : [/if]
