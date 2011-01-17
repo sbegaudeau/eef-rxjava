@@ -28,24 +28,22 @@
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('Combo'))]
-	public void init[elementEditor.viewPackageSignature()/](ResourceSet allResources, EObject current)
+	public void init[elementEditor.viewPackageSignature()/](Object input, Object currentValue)
 [/template]
 
 
 [template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('Combo'))]
 	/**
 	 * Init the [elementEditor.name/]
-	 * @param eClass the eClass to manage
-	 * @param current the current value
+	 * @param input choice of values
+	 * @param currentValue the current value
 	 */
 [/template]
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.getterSignature()/] {
 		if ([elementEditor.name.toJavaIdentifier()/].getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
+			return ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
 		}
 		return "";
 	}
@@ -107,15 +105,15 @@
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](ResourceSet allResources, EObject current)
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](Object input, Object currentValue)
 	 */
 [/template]
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setInput(allResources);
+		[elementEditor.name.toJavaIdentifier()/].setInput(input);
 		if (current != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current));
+			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(currentValue));
 		}
 	}
 [/template]
