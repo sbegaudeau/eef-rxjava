@@ -49,16 +49,12 @@ if (event.getKind() == PropertiesEditionEvent.SET)  {
 	}
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(eObject);
 		[else]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.setToReference(resultEObject);
-			}
 		}
 	}
 		[/if]
@@ -137,16 +133,12 @@ if (event.getKind() == PropertiesEditionEvent.SET)  {
 	}
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(eObject);
 		[else]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.setToReference(resultEObject);
-			}
 		}
 	}
 		[/if]
@@ -225,16 +217,12 @@ if (event.getKind() == PropertiesEditionEvent.SET)  {
 	}
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(eObject);
 		[else]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.setToReference(resultEObject);
-			}
 		}
 	}
 		[/if]

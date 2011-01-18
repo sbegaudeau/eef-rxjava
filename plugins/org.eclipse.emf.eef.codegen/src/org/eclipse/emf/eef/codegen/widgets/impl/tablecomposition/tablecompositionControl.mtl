@@ -36,29 +36,21 @@ private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Setting
 if (event.getKind() == PropertiesEditionEvent.ADD)  {
 	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
-			}
 		}
 	}
 		[else]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
-			}
 		}
 	}
 		[/if]
@@ -132,29 +124,21 @@ private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Setting
 if (event.getKind() == PropertiesEditionEvent.ADD)  {
 	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
-			}
 		}
 	}
 		[else]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
-			}
 		}
 	}
 		[/if]
@@ -230,29 +214,21 @@ private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Setting
 if (event.getKind() == PropertiesEditionEvent.ADD)  {
 	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
-			}
 		}
 	}
 		[else]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, [editionElement.metamodelGetter()/], editingContext.getAdapterFactory());
+	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
 		if (policy instanceof CreateEditingPolicy) {
 			policy.execute();
-			EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-			if (resultEObject != null) {
-				[editionElement.name.toJavaIdentifier()/]Settings.addToReference(resultEObject);
-			}
 		}
 	}
 		[/if]
