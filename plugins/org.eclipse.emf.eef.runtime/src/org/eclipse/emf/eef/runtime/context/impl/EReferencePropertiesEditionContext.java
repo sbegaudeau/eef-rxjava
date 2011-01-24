@@ -36,7 +36,7 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	 * @param propertiesEditionComponent
 	 * @param eReference
 	 * @param resourceSet
-	 * @deprecated
+	 * @deprecated use EReferencePropertiesEditionContext(PropertiesEditingContext, IPropertiesEditionComponent, ReferencesTableSettings settings, AdapterFactory adapterFactory) instead
 	 */
 	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference, AdapterFactory adapterFactory) {
 		super(parentContext, propertiesEditionComponent, eObject, adapterFactory);

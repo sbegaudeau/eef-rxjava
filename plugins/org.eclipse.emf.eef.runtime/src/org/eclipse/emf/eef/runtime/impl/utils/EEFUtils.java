@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
@@ -74,8 +75,7 @@ public class EEFUtils {
 	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject,
 			EStructuralFeature feature) {
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)adapterFactory
-				.adapt(eObject, IItemPropertySource.class);
+		IItemPropertySource ps = (IItemPropertySource)adapterFactory.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)
@@ -95,6 +95,25 @@ public class EEFUtils {
 			}
 		}
 		return choiceOfValues;
+	}
+
+	/**
+	 * Return the choice of value for the given feature
+	 * 
+	 * @param adapterFactory
+	 *            the adapterFactory to use
+	 * @param eObject
+	 *            the EObject to process
+	 * @param feature
+	 *            the feature to process
+	 * @return list of possible values
+	 */
+	public static String getLabel(AdapterFactory adapterFactory, EObject eObject) {
+		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(eObject, IItemLabelProvider.class);
+		if (labelProvider != null) {
+			return labelProvider.getText(eObject);
+		}
+		return null;
 	}
 
 	/**
