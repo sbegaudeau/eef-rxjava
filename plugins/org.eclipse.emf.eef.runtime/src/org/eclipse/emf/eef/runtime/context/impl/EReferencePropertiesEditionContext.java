@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -30,7 +31,7 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	/**
 	 * EEF editor settings to use.
 	 */
-	private ReferencesTableSettings settings;
+	private EEFEditorSettings settings;
 
 	/**
 	 * @param propertiesEditionComponent
@@ -49,7 +50,7 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	 * @param settings
 	 * @param adapterFactory
 	 */
-	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, ReferencesTableSettings settings, AdapterFactory adapterFactory) {
+	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, EEFEditorSettings settings, AdapterFactory adapterFactory) {
 		super(parentContext, propertiesEditionComponent, settings.getSource(), adapterFactory);
 		this.settings = settings;
 		this.eReference = settings.getLastReference();
@@ -65,7 +66,7 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	/**
 	 * @return the settings to use.
 	 */
-	public ReferencesTableSettings getSettings() {
+	public EEFEditorSettings getSettings() {
 		return settings;
 	}
 	

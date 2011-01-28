@@ -34,6 +34,9 @@ import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -230,9 +233,12 @@ public class PropertiesEditionWizard extends Wizard {
 
 					public void widgetSelected(SelectionEvent e) {
 						if (editingContext instanceof EReferencePropertiesEditionContext && ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
-							((EReferencePropertiesEditionContext)editingContext).getSettings().removeFromReference(eObject);
+							EEFEditorSettings settings = ((EReferencePropertiesEditionContext)editingContext).getSettings();
+							if (settings instanceof ReferencesTableSettings) {
+								((ReferencesTableSettings) ((EReferencePropertiesEditionContext)editingContext).getSettings()).removeFromReference(eObject);
+							}
 							eObject = EcoreUtil.create(eClass);
-							((EReferencePropertiesEditionContext)editingContext).getSettings().addToReference(eObject);
+							EEFUtils.putToReference(settings, eObject);
 						} else {
 							eObject = EcoreUtil.create(eClass);							
 						}
@@ -245,8 +251,9 @@ public class PropertiesEditionWizard extends Wizard {
 				buttons.get(0).setSelection(true);
 				eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
 				if (editingContext instanceof EReferencePropertiesEditionContext && ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
-					((EReferencePropertiesEditionContext)editingContext).getSettings().addToReference(eObject);
-				}			} else {
+					EEFUtils.putToReference(((EReferencePropertiesEditionContext)editingContext).getSettings(), eObject);
+				}			
+			} else {
 				Label errorLabel = new Label(control, SWT.NONE);
 				errorLabel.setText("Error non instanciable type found");
 			}

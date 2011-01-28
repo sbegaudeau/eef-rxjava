@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
@@ -51,7 +52,7 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 			EObject create = EcoreUtil.create(((TypedEReferencePropertiesEditingContext)editionContext).getExpectedType()); 
 			editionContext.seteObject(create);
 			if (editionContext.getSettings() != null) {
-				editionContext.getSettings().addToReference(create);
+				EEFUtils.putToReference(editionContext.getSettings(), create);
 			}
 			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
 		} else if (eType instanceof EClass && ((EClass)eType).isAbstract()) {
@@ -60,7 +61,7 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 			EObject create = EcoreUtil.create((EClass)eType);
 			editionContext.seteObject(create);
 			if (editionContext.getSettings() != null) {
-				editionContext.getSettings().addToReference(create);
+				EEFUtils.putToReference(editionContext.getSettings(), create);
 			}
 			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
 		}

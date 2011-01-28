@@ -173,4 +173,13 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 		}
 		return null;
 	}
+
+	/**
+	 * @return the last reference of the settings.
+	 */
+	public EReference getLastReference() {
+		return features[features.length - 1];
+	}
+
+	
 }

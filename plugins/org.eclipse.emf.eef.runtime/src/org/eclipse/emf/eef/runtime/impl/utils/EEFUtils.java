@@ -33,6 +33,9 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.osgi.framework.Bundle;
 
 /**
@@ -357,6 +360,18 @@ public class EEFUtils {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * @param settings
+	 * @param eObject
+	 */
+	public static void putToReference(EEFEditorSettings settings, EObject eObject) {
+		if (settings instanceof ReferencesTableSettings) {			
+			((ReferencesTableSettings) settings).addToReference(eObject);
+		} else if (settings instanceof EObjectFlatComboSettings) {
+			((EObjectFlatComboSettings) settings).setToReference(eObject);
+		}
 	}
 
 }
