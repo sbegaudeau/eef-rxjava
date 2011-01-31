@@ -36,7 +36,7 @@ public class [ePackage.pecPackageProviderClass()/] extends [ePackage.name.toJava
 
 [for (eclass : EClass | ePackage.significantClass())]
 	[let pec : PropertiesEditionComponent = eclass.associatedPEC(peContext)]
-		[if (not pec.oclIsUndefined())]
+		[if (not pec.oclIsUndefined() and pec.mustBeGenerated())]
 	/**
 	 * {@inheritDoc}
 	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].[ePackage.name/].util.[ePackage.name.toJavaClassifier()/]AdapterFactory#create[eclass.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter()
