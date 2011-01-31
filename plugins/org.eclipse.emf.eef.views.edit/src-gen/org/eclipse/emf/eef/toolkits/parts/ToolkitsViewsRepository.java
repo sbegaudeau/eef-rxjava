@@ -32,7 +32,7 @@ public class ToolkitsViewsRepository {
 			
 			public static String name = "toolkits::Toolkit::Properties::Name";
 			
-		
+	
 		}
 	
 	}
@@ -47,7 +47,7 @@ public class ToolkitsViewsRepository {
 			
 			public static String name = "toolkits::Widget::Properties::Name";
 			
-		
+	
 		}
 	
 	}

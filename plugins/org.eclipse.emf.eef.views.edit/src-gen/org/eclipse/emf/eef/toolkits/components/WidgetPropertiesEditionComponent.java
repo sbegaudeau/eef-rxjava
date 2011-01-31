@@ -101,15 +101,17 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		WidgetPropertiesEditionPart basePart = (WidgetPropertiesEditionPart)editingPart;
-		if (ToolkitsPackage.eINSTANCE.getWidget_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			WidgetPropertiesEditionPart basePart = (WidgetPropertiesEditionPart)editingPart;
+			if (ToolkitsPackage.eINSTANCE.getWidget_Name().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -144,10 +146,12 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ToolkitsViewsRepository.Widget.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ToolkitsPackage.eINSTANCE.getWidget_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ToolkitsPackage.eINSTANCE.getWidget_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ToolkitsPackage.eINSTANCE.getWidget_Name().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

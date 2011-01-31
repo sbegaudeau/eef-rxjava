@@ -34,6 +34,9 @@ import org.eclipse.emf.eef.views.parts.impl.ViewPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.impl.ViewReferencePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.impl.ViewsRepositoryPropertiesEditionPartImpl;
 
+
+
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -49,7 +52,6 @@ public class ViewsPropertiesEditionPartProvider implements IPropertiesEditionPar
 		return key == ViewsViewsRepository.class;
 	}
 
-	
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)

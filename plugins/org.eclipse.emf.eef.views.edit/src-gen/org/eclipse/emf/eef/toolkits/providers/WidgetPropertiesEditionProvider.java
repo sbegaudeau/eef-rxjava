@@ -11,8 +11,11 @@
  */
 package org.eclipse.emf.eef.toolkits.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
@@ -23,6 +26,21 @@ import org.eclipse.emf.eef.toolkits.components.WidgetPropertiesEditionComponent;
  * 
  */
 public class WidgetPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public WidgetPropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public WidgetPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,7 +90,7 @@ public class WidgetPropertiesEditionProvider extends PropertiesEditingProviderIm
 		if (editingContext.getEObject() instanceof Widget) {
 			return new WidgetPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -85,7 +103,7 @@ public class WidgetPropertiesEditionProvider extends PropertiesEditingProviderIm
 			if (WidgetPropertiesEditionComponent.BASE_PART.equals(part))
 				return new WidgetPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -99,7 +117,7 @@ public class WidgetPropertiesEditionProvider extends PropertiesEditingProviderIm
 				&& refinement == WidgetPropertiesEditionComponent.class)
 				return new WidgetPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

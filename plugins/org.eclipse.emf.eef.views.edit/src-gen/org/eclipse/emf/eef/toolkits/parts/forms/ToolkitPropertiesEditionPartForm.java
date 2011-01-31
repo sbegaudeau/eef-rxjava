@@ -93,7 +93,7 @@ public class ToolkitPropertiesEditionPartForm extends CompositePropertiesEdition
 		
 		
 		composer = new PartComposer(toolkitStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ToolkitsViewsRepository.Toolkit.Properties.class) {
@@ -174,9 +174,9 @@ public class ToolkitPropertiesEditionPartForm extends CompositePropertiesEdition
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

@@ -100,15 +100,17 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
-		if (ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null){
-			if (msg.getNewValue() != null) {
-				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				documentationPart.setDocumentation("");
+		if (editingPart.isVisible()) {	
+			DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
+			if (ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null){
+				if (msg.getNewValue() != null) {
+					documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					documentationPart.setDocumentation("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -133,10 +135,12 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ViewsViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

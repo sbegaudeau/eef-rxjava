@@ -29,7 +29,6 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
-import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.toolkits.Widget} object.

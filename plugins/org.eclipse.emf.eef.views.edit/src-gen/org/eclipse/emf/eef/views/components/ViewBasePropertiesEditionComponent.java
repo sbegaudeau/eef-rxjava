@@ -152,7 +152,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 			view.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (ViewsViewsRepository.View.Properties.explicit == event.getAffectedEditor()) {
-			view.setExplicit((Boolean)event.getNewValue());	
+			view.setExplicit((Boolean)event.getNewValue());
 		}
 	}
 
@@ -161,20 +161,22 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		ViewPropertiesEditionPart basePart = (ViewPropertiesEditionPart)editingPart;
-		if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
-			basePart.setRepresentation((EObject)msg.getNewValue());
-		if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			ViewPropertiesEditionPart basePart = (ViewPropertiesEditionPart)editingPart;
+			if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null)
+				basePart.setRepresentation((EObject)msg.getNewValue());
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
+			if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
+				basePart.setExplicit((Boolean)msg.getNewValue());
+			
+			
 		}
-		if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null)
-			basePart.setExplicit((Boolean)msg.getNewValue());
-		
-		
 	}
 
 
@@ -213,14 +215,19 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ViewsViewsRepository.View.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}
 				if (ViewsViewsRepository.View.Properties.explicit == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

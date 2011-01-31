@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -90,7 +90,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		
 		
 		composer = new PartComposer(viewsRepositoryStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ViewsViewsRepository.ViewsRepository.Properties.class) {
@@ -225,8 +225,8 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

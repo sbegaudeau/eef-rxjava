@@ -104,7 +104,7 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 		
 		
 		composer = new PartComposer(containerStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ViewsViewsRepository.Container.Properties.class) {
@@ -217,9 +217,9 @@ public class ContainerPropertiesEditionPartForm extends CompositePropertiesEditi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

@@ -20,6 +20,9 @@ import org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm;
 import org.eclipse.emf.eef.toolkits.parts.impl.ToolkitPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.toolkits.parts.impl.WidgetPropertiesEditionPartImpl;
 
+
+
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -35,7 +38,6 @@ public class ToolkitsPropertiesEditionPartProvider implements IPropertiesEdition
 		return key == ToolkitsViewsRepository.class;
 	}
 
-	
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)

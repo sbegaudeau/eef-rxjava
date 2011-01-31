@@ -32,7 +32,7 @@ public class ViewsViewsRepository {
 			
 			public static String documentation__ = "views::Documentation::Documentation_::documentation__";
 			
-		
+	
 		}
 	
 	}
@@ -50,7 +50,7 @@ public class ViewsViewsRepository {
 			
 			public static String repositoryKind = "views::ViewsRepository::Properties::RepositoryKind";
 			
-		
+	
 		}
 	
 	}
@@ -71,7 +71,7 @@ public class ViewsViewsRepository {
 			
 			public static String explicit = "views::View::Properties::explicit";
 			
-		
+	
 		}
 	
 	}
@@ -92,7 +92,7 @@ public class ViewsViewsRepository {
 			
 			public static String readOnly = "views::ElementEditor::Properties::readOnly";
 			
-		
+	
 		}
 	
 	}
@@ -107,7 +107,7 @@ public class ViewsViewsRepository {
 			
 			public static String name = "views::Category::Properties::name";
 			
-		
+	
 		}
 	
 	}
@@ -125,7 +125,7 @@ public class ViewsViewsRepository {
 			
 			public static String representation = "views::Container::Properties::representation";
 			
-		
+	
 		}
 	
 	}
@@ -146,7 +146,7 @@ public class ViewsViewsRepository {
 			
 			public static String readOnly = "views::CustomElementEditor::Properties::readOnly";
 			
-		
+	
 		}
 	
 	}
@@ -161,7 +161,7 @@ public class ViewsViewsRepository {
 			
 			public static String name = "views::CustomView::Properties::name";
 			
-		
+	
 		}
 	
 	}
@@ -179,7 +179,7 @@ public class ViewsViewsRepository {
 			
 			public static String referencedView = "views::ViewReference::Properties::referencedView";
 			
-		
+	
 		}
 	
 	}

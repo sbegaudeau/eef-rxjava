@@ -11,8 +11,13 @@
  */
 package org.eclipse.emf.eef.views.providers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
+
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -20,94 +25,93 @@ import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
  */
 public class ViewsEEFAdapterFactory extends ViewsAdapterFactory {
 
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createDocumentedElementAdapter()
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createDocumentedElementAdapter()
 	 * 
 	 */
 	public Adapter createDocumentedElementAdapter() {
 		return new DocumentedElementPropertiesEditionProvider();
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createViewsRepositoryAdapter()
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewsRepositoryAdapter()
 	 * 
 	 */
 	public Adapter createViewsRepositoryAdapter() {
-		return new ViewsRepositoryPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ViewsRepositoryPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createViewAdapter()
-	 * 
-	 */
-	public Adapter createViewAdapter() {
-		return new ViewPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createElementEditorAdapter()
-	 * 
-	 */
-	public Adapter createElementEditorAdapter() {
-		return new ElementEditorPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createCategoryAdapter()
-	 * 
-	 */
-	public Adapter createCategoryAdapter() {
-		return new CategoryPropertiesEditionProvider();
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createContainerAdapter()
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createContainerAdapter()
 	 * 
 	 */
 	public Adapter createContainerAdapter() {
-		return new ContainerPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ContainerPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createCustomElementEditorAdapter()
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewAdapter()
+	 * 
+	 */
+	public Adapter createViewAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ViewPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createElementEditorAdapter()
+	 * 
+	 */
+	public Adapter createElementEditorAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ElementEditorPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createCategoryAdapter()
+	 * 
+	 */
+	public Adapter createCategoryAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new CategoryPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createCustomElementEditorAdapter()
 	 * 
 	 */
 	public Adapter createCustomElementEditorAdapter() {
-		return new CustomElementEditorPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new CustomElementEditorPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createCustomViewAdapter()
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createCustomViewAdapter()
 	 * 
 	 */
 	public Adapter createCustomViewAdapter() {
-		return new CustomViewPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new CustomViewPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Views#createViewReferenceAdapter()
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewReferenceAdapter()
 	 * 
 	 */
 	public Adapter createViewReferenceAdapter() {
-		return new ViewReferencePropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ViewReferencePropertiesEditionProvider(providers);
 	}
 
 }
