@@ -28,7 +28,7 @@
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
@@ -116,7 +116,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
@@ -206,7 +206,7 @@ if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStruc
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
