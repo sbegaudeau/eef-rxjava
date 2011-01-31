@@ -62,7 +62,10 @@ public class ContextMessages extends AbstractAcceleoGenerator {
 	public ContextMessages() {
     // Empty implementation
   }
-
+	@Override
+	protected void postGenerate(ResourceSet rs) {
+		// Don't unload resources
+	}
 	/**
 	 * This allows clients to instantiates a generator with all required information.
 	 * 

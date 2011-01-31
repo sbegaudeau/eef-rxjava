@@ -271,5 +271,9 @@ public class PackagePropertiesEditionPartProvider extends AbstractAcceleoGenerat
     // TODO If you need additional resource factories registrations, do them here. The following line is an example for UML.
     // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
   }
-	
+	@Override
+	protected void postGenerate(ResourceSet rs) {
+		// Don't unload resources
+	}
+
 }
