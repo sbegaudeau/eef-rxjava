@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.emf.codegen.ecore.templates.editor" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="PluginProperties" version="$Id: plugin.propertiesjet,v 1.1 2010/12/24 13:32:37 sbouchet Exp $" %>
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.editor" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="PluginProperties" version="$Id: plugin.propertiesjet,v 1.2 2011/01/31 16:26:28 sbouchet Exp $" %>
 <%
 /**
  * <copyright>
@@ -20,6 +20,7 @@
 
 pluginName = <%=genModel.getModelName()%> Editor
 providerName = www.example.org
+<%if (genModel.getRuntimePlatform() != GenRuntimePlatform.GWT) {%>
 
 <%boolean hasMultiPageEditor = false;%>
 <%for (GenPackage genPackage : genModel.getAllGenPackagesWithClassifiers()) {if (genPackage.isMultipleEditorPages()) { hasMultiPageEditor = true; }%>
@@ -113,4 +114,5 @@ _UI_About_text = <%=genModel.getModelName()%> Application about box goes here.
 _UI_<%=genPackage.getModelWizardClassName()%>_ActionSet_label = <%=genPackage.getPrefix()%> Model Action Set
 <%}}%>
 
+<%}%>
 <%}%>
