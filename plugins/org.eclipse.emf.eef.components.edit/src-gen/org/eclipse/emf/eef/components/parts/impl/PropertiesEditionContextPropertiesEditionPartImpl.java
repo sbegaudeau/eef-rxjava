@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -94,7 +94,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		
 		
 		composer = new PartComposer(propertiesEditionContextStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesEditionContext.Binding.class) {
@@ -157,8 +157,8 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

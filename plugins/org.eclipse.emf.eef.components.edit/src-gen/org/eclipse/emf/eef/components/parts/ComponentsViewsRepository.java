@@ -32,7 +32,7 @@ public class ComponentsViewsRepository {
 			
 			public static String model = "components::PropertiesEditionContext::Binding::model";
 			
-		
+	
 		}
 	
 	}
@@ -53,7 +53,7 @@ public class ComponentsViewsRepository {
 			
 			public static String explicit = "components::PropertiesEditionComponent::Properties::explicit";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -64,7 +64,7 @@ public class ComponentsViewsRepository {
 			
 			public static String views = "components::PropertiesEditionComponent::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -82,7 +82,7 @@ public class ComponentsViewsRepository {
 			
 			public static String helpID = "components::PropertiesEditionElement::Properties::helpID";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -93,7 +93,7 @@ public class ComponentsViewsRepository {
 			
 			public static String views = "components::PropertiesEditionElement::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -111,7 +111,7 @@ public class ComponentsViewsRepository {
 			
 			public static String helpID = "components::PropertiesMultiEditionElement::Properties::helpID";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -122,7 +122,7 @@ public class ComponentsViewsRepository {
 			
 			public static String views = "components::PropertiesMultiEditionElement::Binding::views";
 			
-		
+	
 		}
 	
 	}

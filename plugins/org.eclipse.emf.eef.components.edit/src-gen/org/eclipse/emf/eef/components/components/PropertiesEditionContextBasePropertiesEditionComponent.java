@@ -98,7 +98,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for model
-
+			
 			// End of user code
 			
 			// init values for referenced views
@@ -142,10 +142,12 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
-		if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
-			basePart.setModel((EObject)msg.getNewValue());
-		
+		if (editingPart.isVisible()) {	
+			PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
+			if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
+				basePart.setModel((EObject)msg.getNewValue());
+			
+		}
 	}
 
 
@@ -180,7 +182,6 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

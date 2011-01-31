@@ -136,7 +136,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		
 		
 		composer = new PartComposer(propertiesMultiEditionElementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.class) {
@@ -291,7 +291,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		modelData.heightHint = 120;
 		model.getTable().setLayoutData(modelData);
 		EditingUtils.setID(model.getTable(), ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
-		EditingUtils.setEEFtype(model.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(model.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createModelControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -314,10 +314,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table model label provider
 			
 			public String getColumnText(Object object, int columnIndex) {
@@ -400,7 +400,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		EditingUtils.setID(removeModel, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
 		EditingUtils.setEEFtype(removeModel, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -418,7 +418,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		dialog.open();
 		model.refresh();
 	}
-	
+
 	/**
 	 * @param selection the model to remove
 	 * 
@@ -444,6 +444,15 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, ComponentsViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -469,7 +478,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -477,7 +486,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -513,9 +522,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

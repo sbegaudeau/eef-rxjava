@@ -67,7 +67,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -130,7 +130,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		
 		
 		composer = new PartComposer(propertiesEditionElementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesEditionElement.Properties.class) {
@@ -318,7 +318,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		viewsData.heightHint = 120;
 		views.getTable().setLayoutData(viewsData);
 		EditingUtils.setID(views.getTable(), ComponentsViewsRepository.PropertiesEditionElement.Binding.views);
-		EditingUtils.setEEFtype(views.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(views.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createViewsControlPanel(parent);
 		return parent;
 	}
@@ -342,10 +342,10 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		name.setWidth(200);
 		name.setText("Views"); //$NON-NLS-1$
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table views label provider
 			
 			public String getColumnText(Object object, int columnIndex) {
@@ -470,8 +470,8 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

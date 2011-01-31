@@ -127,7 +127,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-
+			
 			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
@@ -143,7 +143,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			
 			});
 			// Start of user code for additional businessfilters for model
-
+			
 			// End of user code
 			
 			
@@ -186,16 +186,12 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				modelSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, MappingPackage.eINSTANCE.getEMFElementBinding_Model(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							modelSettings.setToReference(resultEObject);
-						}
 					}
 				}
 			}
@@ -204,7 +200,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			propertiesEditionComponent.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit == event.getAffectedEditor()) {
-			propertiesEditionComponent.setExplicit((Boolean)event.getNewValue());	
+			propertiesEditionComponent.setExplicit((Boolean)event.getNewValue());
 		}
 	}
 
@@ -213,29 +209,31 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		PropertiesEditionComponentPropertiesEditionPart basePart = (PropertiesEditionComponentPropertiesEditionPart)editingPart;
-		if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			PropertiesEditionComponentPropertiesEditionPart basePart = (PropertiesEditionComponentPropertiesEditionPart)editingPart;
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
-		}
-		if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature()))
-			basePart.updateViews();
-		if (MappingPackage.eINSTANCE.getEMFElementBinding_Model().equals(msg.getFeature()) && basePart != null)
-			basePart.setModel((EObject)msg.getNewValue());
-		if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setHelpID("");
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature()))
+				basePart.updateViews();
+			if (MappingPackage.eINSTANCE.getEMFElementBinding_Model().equals(msg.getFeature()) && basePart != null)
+				basePart.setModel((EObject)msg.getNewValue());
+			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setHelpID("");
+				}
 			}
+			if (ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().equals(msg.getFeature()) && basePart != null)
+				basePart.setExplicit((Boolean)msg.getNewValue());
+			
+			
 		}
-		if (ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().equals(msg.getFeature()) && basePart != null)
-			basePart.setExplicit((Boolean)msg.getNewValue());
-		
-		
 	}
 
 
@@ -278,18 +276,26 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ComponentsViewsRepository.PropertiesEditionComponent.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newValue);
 				}
 				if (ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
 				}
 				if (ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

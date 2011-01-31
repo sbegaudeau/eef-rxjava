@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -127,7 +127,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		
 		
 		composer = new PartComposer(propertiesEditionComponentStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.class) {
@@ -342,6 +342,15 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, ComponentsViewsRepository.SWT_KIND));
 		this.views.createControls(parent);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -367,7 +376,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -375,7 +384,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -383,7 +392,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 */
 	protected void removeFromViews(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		views.refresh();		
+		views.refresh();
 	}
 
 	/**
@@ -398,7 +407,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 				policy.execute();
 				views.refresh();
 			}
-		}		
+		}
 	}
 
 
@@ -411,8 +420,8 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

@@ -136,7 +136,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			});
 			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
 			// Start of user code for additional businessfilters for model
-
+			
 			// End of user code
 			
 			
@@ -192,26 +192,28 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		PropertiesMultiEditionElementPropertiesEditionPart basePart = (PropertiesMultiEditionElementPropertiesEditionPart)editingPart;
-		if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			PropertiesMultiEditionElementPropertiesEditionPart basePart = (PropertiesMultiEditionElementPropertiesEditionPart)editingPart;
+			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
-		}
-		if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
-			basePart.updateViews();
-		if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
-			basePart.updateModel();
-		if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setHelpID("");
+			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views().equals(msg.getFeature()))
+				basePart.updateViews();
+			if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature()))
+				basePart.updateModel();
+			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setHelpID("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -252,14 +254,19 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
 				}
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

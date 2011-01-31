@@ -134,7 +134,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		
 		
 		composer = new PartComposer(propertiesEditionElementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesEditionElement.Properties.class) {
@@ -318,7 +318,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		viewsData.heightHint = 120;
 		views.getTable().setLayoutData(viewsData);
 		EditingUtils.setID(views.getTable(), ComponentsViewsRepository.PropertiesEditionElement.Binding.views);
-		EditingUtils.setEEFtype(views.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(views.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createViewsControlPanel(parent, widgetFactory);
 		return parent;
 	}
@@ -341,10 +341,10 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		name.setWidth(200);
 		name.setText("Views"); //$NON-NLS-1$
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table views label provider
 			
 			public String getColumnText(Object object, int columnIndex) {
@@ -427,7 +427,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		EditingUtils.setID(removeViews, ComponentsViewsRepository.PropertiesEditionElement.Binding.views);
 		EditingUtils.setEEFtype(removeViews, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -445,7 +445,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 		dialog.open();
 		views.refresh();
 	}
-	
+
 	/**
 	 * @param selection the views to remove
 	 * 
@@ -468,9 +468,9 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends Composite
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

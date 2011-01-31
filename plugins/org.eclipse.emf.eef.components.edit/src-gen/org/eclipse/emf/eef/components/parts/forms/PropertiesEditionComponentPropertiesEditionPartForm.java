@@ -133,7 +133,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 		
 		
 		composer = new PartComposer(propertiesEditionComponentStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.class) {
@@ -344,6 +344,15 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, ComponentsViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -369,7 +378,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -377,7 +386,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesEditionComponentPropertiesEditionPartForm.this, ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -413,8 +422,8 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

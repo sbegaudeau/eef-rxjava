@@ -65,7 +65,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -130,7 +130,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		
 		
 		composer = new PartComposer(propertiesMultiEditionElementStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.class) {
@@ -295,7 +295,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		modelData.heightHint = 120;
 		model.getTable().setLayoutData(modelData);
 		EditingUtils.setID(model.getTable(), ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
-		EditingUtils.setEEFtype(model.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$		
+		EditingUtils.setEEFtype(model.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createModelControlPanel(parent);
 		return parent;
 	}
@@ -319,10 +319,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		name.setWidth(80);
 		name.setText("Label"); //$NON-NLS-1$
 		// End of user code
-		
+
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
-	
+
 			// Start of user code for table model label provider
 			
 			public String getColumnText(Object object, int columnIndex) {
@@ -450,6 +450,15 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, ComponentsViewsRepository.SWT_KIND));
 		this.views.createControls(parent);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -475,7 +484,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -483,7 +492,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -491,7 +500,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	protected void removeFromViews(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PropertiesMultiEditionElementPropertiesEditionPartImpl.this, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		views.refresh();		
+		views.refresh();
 	}
 
 	/**
@@ -506,7 +515,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 				policy.execute();
 				views.refresh();
 			}
-		}		
+		}
 	}
 
 
@@ -519,8 +528,8 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**
