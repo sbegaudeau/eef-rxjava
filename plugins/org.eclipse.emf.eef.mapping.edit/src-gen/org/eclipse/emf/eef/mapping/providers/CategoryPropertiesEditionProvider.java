@@ -11,6 +11,8 @@
  */
 package org.eclipse.emf.eef.mapping.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.components.CategoryBasePropertiesEditionComponent;
@@ -18,6 +20,7 @@ import org.eclipse.emf.eef.mapping.components.CategoryPropertiesEditionComponent
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -25,6 +28,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class CategoryPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public CategoryPropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public CategoryPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -74,7 +92,7 @@ public class CategoryPropertiesEditionProvider extends PropertiesEditingProvider
 		if (editingContext.getEObject() instanceof Category) {
 			return new CategoryPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -89,7 +107,7 @@ public class CategoryPropertiesEditionProvider extends PropertiesEditingProvider
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -106,7 +124,7 @@ public class CategoryPropertiesEditionProvider extends PropertiesEditingProvider
 				&& refinement == DocumentedElementPropertiesEditionComponent.class)
 				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

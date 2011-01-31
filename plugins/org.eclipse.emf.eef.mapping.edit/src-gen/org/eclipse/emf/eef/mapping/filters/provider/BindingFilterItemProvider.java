@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,7 +27,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.provider.DocumentedElementItemProvider;
-import org.eclipse.emf.eef.mapping.provider.MappingEditPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.mapping.filters.BindingFilter} object.
@@ -36,7 +34,9 @@ import org.eclipse.emf.eef.mapping.provider.MappingEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BindingFilterItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class BindingFilterItemProvider extends DocumentedElementItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -71,8 +71,16 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_name_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_BindingFilter_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_BindingFilter_name_feature",
+						"_UI_BindingFilter_type"),
+				FiltersPackage.Literals.BINDING_FILTER__NAME, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -82,8 +90,16 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	protected void addMandatoryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BindingFilter_mandatory_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_BindingFilter_mandatory_feature", "_UI_BindingFilter_type"), FiltersPackage.Literals.BINDING_FILTER__MANDATORY, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_BindingFilter_mandatory_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_BindingFilter_mandatory_feature",
+						"_UI_BindingFilter_type"),
+				FiltersPackage.Literals.BINDING_FILTER__MANDATORY, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,7 +111,8 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	@Override
 	public String getText(Object object) {
 		String label = ((BindingFilter) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_BindingFilter_type") : getString("_UI_BindingFilter_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_BindingFilter_type")
+				: getString("_UI_BindingFilter_type") + " " + label;
 	}
 
 	/**
@@ -112,7 +129,8 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 		switch (notification.getFeatureID(BindingFilter.class)) {
 		case FiltersPackage.BINDING_FILTER__NAME:
 		case FiltersPackage.BINDING_FILTER__MANDATORY:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -126,7 +144,8 @@ public class BindingFilterItemProvider extends DocumentedElementItemProvider imp
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

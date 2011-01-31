@@ -118,8 +118,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for feature
-																																																																																																			
-																																																																																																			// End of user code
+																																																																																																						
+																																																																																																						// End of user code
 			
 			basePart.addFilterToDiscriminatorType(new ViewerFilter() {
 			
@@ -134,8 +134,8 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			
 			});
 			// Start of user code for additional businessfilters for discriminatorType
-																																																																																																			
-																																																																																																			// End of user code
+																																																																																																						
+																																																																																																						// End of user code
 			
 			// init values for referenced views
 			
@@ -180,16 +180,12 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				discriminatorTypeSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, discriminatorTypeSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							discriminatorTypeSettings.setToReference(resultEObject);
-						}
 					}
 				}
 			}
@@ -201,19 +197,21 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		SimpleModelNavigationPropertiesEditionPart basePart = (SimpleModelNavigationPropertiesEditionPart)editingPart;
-		if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setIndex(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
-			} else {
-				basePart.setIndex("");
+		if (editingPart.isVisible()) {	
+			SimpleModelNavigationPropertiesEditionPart basePart = (SimpleModelNavigationPropertiesEditionPart)editingPart;
+			if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setIndex(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+				} else {
+					basePart.setIndex("");
+				}
 			}
+			if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature().equals(msg.getFeature()) && basePart != null)
+				basePart.setFeature((EObject)msg.getNewValue());
+			if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType().equals(msg.getFeature()) && basePart != null)
+				basePart.setDiscriminatorType((EObject)msg.getNewValue());
+			
 		}
-		if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature().equals(msg.getFeature()) && basePart != null)
-			basePart.setFeature((EObject)msg.getNewValue());
-		if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType().equals(msg.getFeature()) && basePart != null)
-			basePart.setDiscriminatorType((EObject)msg.getNewValue());
-		
 	}
 
 
@@ -236,10 +234,12 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.SimpleModelNavigation.Properties.index == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

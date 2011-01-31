@@ -31,7 +31,10 @@ import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OnlyReferenceTypeFilterItemProvider extends BusinessFilterItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class OnlyReferenceTypeFilterItemProvider extends
+		BusinessFilterItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -65,8 +68,16 @@ public class OnlyReferenceTypeFilterItemProvider extends BusinessFilterItemProvi
 	 * @generated
 	 */
 	protected void addReferencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OnlyReferenceTypeFilter_reference_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_OnlyReferenceTypeFilter_reference_feature", "_UI_OnlyReferenceTypeFilter_type"), FiltersPackage.Literals.ONLY_REFERENCE_TYPE_FILTER__REFERENCE, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_OnlyReferenceTypeFilter_reference_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_OnlyReferenceTypeFilter_reference_feature",
+						"_UI_OnlyReferenceTypeFilter_type"),
+				FiltersPackage.Literals.ONLY_REFERENCE_TYPE_FILTER__REFERENCE,
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -77,7 +88,10 @@ public class OnlyReferenceTypeFilterItemProvider extends BusinessFilterItemProvi
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OnlyReferenceTypeFilter"));
+		return overlayImage(
+				object,
+				getResourceLocator().getImage(
+						"full/obj16/OnlyReferenceTypeFilter"));
 	}
 
 	/**
@@ -89,7 +103,8 @@ public class OnlyReferenceTypeFilterItemProvider extends BusinessFilterItemProvi
 	@Override
 	public String getText(Object object) {
 		String label = ((OnlyReferenceTypeFilter) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_OnlyReferenceTypeFilter_type") : getString("_UI_OnlyReferenceTypeFilter_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_OnlyReferenceTypeFilter_type")
+				: getString("_UI_OnlyReferenceTypeFilter_type") + " " + label;
 	}
 
 	/**
@@ -113,7 +128,8 @@ public class OnlyReferenceTypeFilterItemProvider extends BusinessFilterItemProvi
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

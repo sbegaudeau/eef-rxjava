@@ -96,7 +96,7 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 		
 		
 		composer = new PartComposer(elementBindingReferenceStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.ElementBindingReference.Reference.class) {
@@ -166,9 +166,9 @@ public class ElementBindingReferencePropertiesEditionPartForm extends CompositeP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

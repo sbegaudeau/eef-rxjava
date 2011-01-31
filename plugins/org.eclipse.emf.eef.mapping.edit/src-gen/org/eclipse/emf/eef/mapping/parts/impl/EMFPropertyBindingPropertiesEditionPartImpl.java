@@ -53,13 +53,15 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -119,7 +121,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		
 		
 		composer = new PartComposer(eMFPropertyBindingStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.EMFPropertyBinding.Properties.class) {
@@ -255,6 +257,15 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.Binding.views, MappingViewsRepository.SWT_KIND));
 		this.views.createControls(parent);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -280,7 +291,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -288,7 +299,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -296,7 +307,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 */
 	protected void removeFromViews(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFPropertyBindingPropertiesEditionPartImpl.this, MappingViewsRepository.EMFPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		views.refresh();		
+		views.refresh();
 	}
 
 	/**
@@ -311,7 +322,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 				policy.execute();
 				views.refresh();
 			}
-		}		
+		}
 	}
 
 
@@ -324,8 +335,8 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

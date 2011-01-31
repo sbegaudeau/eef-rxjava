@@ -92,7 +92,8 @@ public final class MappingEditPlugin extends EMFPlugin {
 			// Remember the static instance.
 			//
 			plugin = this;
-			EValidator.Registry.INSTANCE.put(MappingPackage.eINSTANCE, new EEFValidator());
+			EValidator.Registry.INSTANCE.put(MappingPackage.eINSTANCE,
+					new EEFValidator());
 		}
 	}
 

@@ -53,6 +53,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -125,7 +127,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		
 		
 		composer = new PartComposer(standardPropertyBindingStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.StandardPropertyBinding.Properties.class) {
@@ -264,6 +266,15 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.StandardPropertyBinding.Binding.views, MappingViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -289,7 +300,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -297,7 +308,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StandardPropertyBindingPropertiesEditionPartForm.this, MappingViewsRepository.StandardPropertyBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -333,9 +344,9 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends CompositeP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

@@ -11,6 +11,8 @@
  */
 package org.eclipse.emf.eef.mapping.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.FilterPropertiesPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.JavaExpressionFilterBasePropertiesEditionComponent;
@@ -19,6 +21,7 @@ import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -26,6 +29,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public JavaExpressionFilterPropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public JavaExpressionFilterPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -75,7 +93,7 @@ public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEdi
 		if (editingContext.getEObject() instanceof JavaExpressionFilter) {
 			return new JavaExpressionFilterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -92,7 +110,7 @@ public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEdi
 			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part))
 				return new FilterPropertiesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -112,7 +130,7 @@ public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEdi
 				&& refinement == FilterPropertiesPropertiesEditionComponent.class)
 				return new FilterPropertiesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

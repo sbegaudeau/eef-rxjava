@@ -121,8 +121,8 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-																																																																																																			
-																																																																																																			// End of user code
+																																																																																																						
+																																																																																																						// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -137,8 +137,8 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																																																																			
-																																																																																																			// End of user code
+																																																																																																						
+																																																																																																						// End of user code
 			
 			// init values for referenced views
 			
@@ -176,16 +176,12 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				modelSettings.setToReference((ModelElement)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, MappingPackage.eINSTANCE.getStandardElementBinding_Model(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							modelSettings.setToReference(resultEObject);
-						}
 					}
 				}
 			}
@@ -197,19 +193,21 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		StandardElementBindingPropertiesEditionPart basePart = (StandardElementBindingPropertiesEditionPart)editingPart;
-		if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			StandardElementBindingPropertiesEditionPart basePart = (StandardElementBindingPropertiesEditionPart)editingPart;
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature()))
+				basePart.updateViews();
+			if (MappingPackage.eINSTANCE.getStandardElementBinding_Model().equals(msg.getFeature()) && basePart != null)
+				basePart.setModel((EObject)msg.getNewValue());
+			
 		}
-		if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature()))
-			basePart.updateViews();
-		if (MappingPackage.eINSTANCE.getStandardElementBinding_Model().equals(msg.getFeature()) && basePart != null)
-			basePart.setModel((EObject)msg.getNewValue());
-		
 	}
 
 
@@ -248,10 +246,12 @@ public class StandardElementBindingBasePropertiesEditionComponent extends Single
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.StandardElementBinding.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

@@ -73,6 +73,7 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 			// init filters
 			
 			// init values for referenced views
+					basePart.getFilterPropertiesReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
 			
@@ -104,15 +105,17 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
-		if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setOCLExpressionBody("");
+		if (editingPart.isVisible()) {	
+			OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
+			if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setOCLExpressionBody("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -125,18 +128,26 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), newValue);
 				}
 				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
 				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

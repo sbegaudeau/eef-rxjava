@@ -74,6 +74,7 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 			// init filters
 			
 			// init values for referenced views
+					basePart.getFilterPropertiesReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
 			
@@ -105,15 +106,17 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		JavaDeclarationFilterPropertiesEditionPart basePart = (JavaDeclarationFilterPropertiesEditionPart)editingPart;
-		if (FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setMethodName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setMethodName("");
+		if (editingPart.isVisible()) {	
+			JavaDeclarationFilterPropertiesEditionPart basePart = (JavaDeclarationFilterPropertiesEditionPart)editingPart;
+			if (FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setMethodName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setMethodName("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -126,18 +129,26 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().getEAttributeType(), newValue);
 				}
 				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
 				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

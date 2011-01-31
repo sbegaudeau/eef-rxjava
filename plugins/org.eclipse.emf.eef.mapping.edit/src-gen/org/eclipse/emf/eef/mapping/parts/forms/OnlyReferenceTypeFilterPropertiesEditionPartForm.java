@@ -104,7 +104,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 		onlyReferenceTypeFilterStep.addStep(MappingViewsRepository.OnlyReferenceTypeFilter.filterProperties);
 		
 		composer = new PartComposer(onlyReferenceTypeFilterStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.class) {
@@ -185,8 +185,8 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends CompositeP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

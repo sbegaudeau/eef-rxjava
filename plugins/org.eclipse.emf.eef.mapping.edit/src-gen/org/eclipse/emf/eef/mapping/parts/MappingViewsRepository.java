@@ -32,7 +32,7 @@ public class MappingViewsRepository {
 			
 			public static String documentation__ = "mapping::Documentation::Documentation_::documentation__";
 			
-		
+	
 		}
 	
 	}
@@ -50,7 +50,7 @@ public class MappingViewsRepository {
 			
 			public static String mandatory = "mapping::Filter properties::Filter Properties_::Mandatory";
 			
-		
+	
 		}
 	
 	}
@@ -65,7 +65,7 @@ public class MappingViewsRepository {
 			
 			public static String name = "mapping::EMFElementBinding::Properties::name";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -76,7 +76,7 @@ public class MappingViewsRepository {
 			
 			public static String views = "mapping::EMFElementBinding::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -91,7 +91,7 @@ public class MappingViewsRepository {
 			
 			public static String name = "mapping::EMFPropertyBinding::Properties::name";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -102,7 +102,7 @@ public class MappingViewsRepository {
 			
 			public static String views = "mapping::EMFPropertyBinding::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -117,7 +117,7 @@ public class MappingViewsRepository {
 			
 			public static String name = "mapping::StandardElementBinding::Properties::name";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -128,7 +128,7 @@ public class MappingViewsRepository {
 			
 			public static String views = "mapping::StandardElementBinding::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -143,7 +143,7 @@ public class MappingViewsRepository {
 			
 			public static String name = "mapping::StandardPropertyBinding::Properties::name";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -154,7 +154,7 @@ public class MappingViewsRepository {
 			
 			public static String views = "mapping::StandardPropertyBinding::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -169,7 +169,7 @@ public class MappingViewsRepository {
 			
 			public static String name = "mapping::Category::Properties::name";
 			
-		
+	
 		}
 	
 	}
@@ -184,7 +184,7 @@ public class MappingViewsRepository {
 			
 			public static String binding = "mapping::ElementBindingReference::Réference::binding";
 			
-		
+	
 		}
 	
 	}
@@ -199,7 +199,7 @@ public class MappingViewsRepository {
 			
 			public static String name = "mapping::EMFMultiPropertiesBinding::Properties::name";
 			
-		
+	
 		}
 	
 		public static class Binding {
@@ -210,7 +210,7 @@ public class MappingViewsRepository {
 			
 			public static String views = "mapping::EMFMultiPropertiesBinding::Binding::views";
 			
-		
+	
 		}
 	
 	}
@@ -222,7 +222,7 @@ public class MappingViewsRepository {
 	public static class ModelNavigation {
 		public static class Properties {
 	
-		
+	
 		}
 	
 	}
@@ -243,7 +243,7 @@ public class MappingViewsRepository {
 			
 			public static String discriminatorType = "mapping::SimpleModelNavigation::Properties::discriminatorType";
 			
-		
+	
 		}
 	
 	}
@@ -258,7 +258,7 @@ public class MappingViewsRepository {
 			
 			public static String referencedFeature_ = "mapping::OnlyReferenceTypeFilter::Referenced feature::referencedFeature_";
 			
-		
+	
 		}
 	
 	
@@ -276,7 +276,7 @@ public class MappingViewsRepository {
 			
 			public static String oCLExpressionBody = "mapping::OCLFilter::Filter expression::OCLExpressionBody";
 			
-		
+	
 		}
 	
 	
@@ -294,7 +294,7 @@ public class MappingViewsRepository {
 			
 			public static String javaExpressionBody = "mapping::JavaExpressionFilter::Filter expression::javaExpressionBody";
 			
-		
+	
 		}
 	
 	
@@ -312,11 +312,29 @@ public class MappingViewsRepository {
 			
 			public static String methodName = "mapping::JavaDeclarationFilter::Filter expression::methodName";
 			
-		
+	
 		}
 	
 	
 	public static String filterProperties = "mapping::JavaDeclarationFilter::filter properties";
+	
+	}
+
+	/**
+	 * StrictTypingFilter view descriptor
+	 * 
+	 */
+	public static class StrictTypingFilter {
+		public static class Type {
+	
+			
+			public static String restriction = "mapping::StrictTypingFilter::Type::Restriction";
+			
+	
+		}
+	
+	
+	public static String filterProperties = "mapping::StrictTypingFilter::filter properties";
 	
 	}
 

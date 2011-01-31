@@ -99,7 +99,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 		
 		
 		composer = new PartComposer(filterPropertiesStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.class) {
@@ -209,8 +209,8 @@ public class FilterPropertiesPropertiesEditionPartForm extends CompositeProperti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

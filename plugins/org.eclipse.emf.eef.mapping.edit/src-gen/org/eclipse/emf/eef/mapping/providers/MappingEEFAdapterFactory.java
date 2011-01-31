@@ -11,8 +11,13 @@
  */
 package org.eclipse.emf.eef.mapping.providers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.mapping.util.MappingAdapterFactory;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -20,84 +25,83 @@ import org.eclipse.emf.eef.mapping.util.MappingAdapterFactory;
  */
 public class MappingEEFAdapterFactory extends MappingAdapterFactory {
 
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createDocumentedElementAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createDocumentedElementAdapter()
 	 * 
 	 */
 	public Adapter createDocumentedElementAdapter() {
 		return new DocumentedElementPropertiesEditionProvider();
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createEMFElementBindingAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createEMFElementBindingAdapter()
 	 * 
 	 */
 	public Adapter createEMFElementBindingAdapter() {
-		return new EMFElementBindingPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new EMFElementBindingPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createEMFPropertyBindingAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createEMFPropertyBindingAdapter()
 	 * 
 	 */
 	public Adapter createEMFPropertyBindingAdapter() {
-		return new EMFPropertyBindingPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new EMFPropertyBindingPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createStandardElementBindingAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createStandardElementBindingAdapter()
 	 * 
 	 */
 	public Adapter createStandardElementBindingAdapter() {
-		return new StandardElementBindingPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new StandardElementBindingPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createStandardPropertyBindingAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createStandardPropertyBindingAdapter()
 	 * 
 	 */
 	public Adapter createStandardPropertyBindingAdapter() {
-		return new StandardPropertyBindingPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new StandardPropertyBindingPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createCategoryAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createCategoryAdapter()
 	 * 
 	 */
 	public Adapter createCategoryAdapter() {
-		return new CategoryPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new CategoryPropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createElementBindingReferenceAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createElementBindingReferenceAdapter()
 	 * 
 	 */
 	public Adapter createElementBindingReferenceAdapter() {
-		return new ElementBindingReferencePropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ElementBindingReferencePropertiesEditionProvider(providers);
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.Mapping#createEMFMultiPropertiesBindingAdapter()
+	 * @see org.eclipse.emf.eef.mapping.util.MappingAdapterFactory#createEMFMultiPropertiesBindingAdapter()
 	 * 
 	 */
 	public Adapter createEMFMultiPropertiesBindingAdapter() {
-		return new EMFMultiPropertiesBindingPropertiesEditionProvider();
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new EMFMultiPropertiesBindingPropertiesEditionProvider(providers);
 	}
 
 }

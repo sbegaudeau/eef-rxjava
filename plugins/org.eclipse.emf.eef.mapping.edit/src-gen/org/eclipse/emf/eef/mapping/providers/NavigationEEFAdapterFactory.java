@@ -14,16 +14,16 @@ package org.eclipse.emf.eef.mapping.providers;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory;
 
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
 public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.mapping.util.Navigation#createSimpleModelNavigationAdapter()
+	 * @see org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory#createSimpleModelNavigationAdapter()
 	 * 
 	 */
 	public Adapter createSimpleModelNavigationAdapter() {

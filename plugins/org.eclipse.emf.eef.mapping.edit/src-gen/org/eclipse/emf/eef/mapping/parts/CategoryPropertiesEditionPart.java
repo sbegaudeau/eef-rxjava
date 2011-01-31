@@ -51,6 +51,6 @@ public interface CategoryPropertiesEditionPart {
 
 	// Start of user code for additional methods
  	
-	// End of user code
+// End of user code
 
 }

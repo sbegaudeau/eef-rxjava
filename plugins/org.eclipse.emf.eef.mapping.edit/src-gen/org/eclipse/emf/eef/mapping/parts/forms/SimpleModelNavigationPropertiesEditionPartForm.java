@@ -110,7 +110,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 		
 		
 		composer = new PartComposer(simpleModelNavigationStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.class) {
@@ -255,8 +255,8 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends CompositePro
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

@@ -94,7 +94,7 @@ public class CategoryPropertiesEditionPartForm extends CompositePropertiesEditio
 		
 		
 		composer = new PartComposer(categoryStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.Category.Properties.class) {
@@ -175,9 +175,9 @@ public class CategoryPropertiesEditionPartForm extends CompositePropertiesEditio
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

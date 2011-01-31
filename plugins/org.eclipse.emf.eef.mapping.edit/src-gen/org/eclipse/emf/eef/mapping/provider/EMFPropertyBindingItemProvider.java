@@ -41,7 +41,10 @@ import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class EMFPropertyBindingItemProvider extends
+		AbstractPropertyBindingItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -87,10 +90,12 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION);
+			childrenFeatures
+					.add(MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION);
 		}
 		return childrenFeatures;
 	}
@@ -112,33 +117,49 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 	 * @generated NOT
 	 */
 	private ItemPropertyDescriptor initModelPropertyDescriptor() {
-		return new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EMFPropertyBinding_model_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EMFPropertyBinding_model_feature",
-				"_UI_EMFPropertyBinding_type"), MappingPackage.Literals.EMF_PROPERTY_BINDING__MODEL, true, false, true, null, null, null) {
+		return new ItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_EMFPropertyBinding_model_feature"), getString(
+						"_UI_PropertyDescriptor_description",
+						"_UI_EMFPropertyBinding_model_feature",
+						"_UI_EMFPropertyBinding_type"),
+				MappingPackage.Literals.EMF_PROPERTY_BINDING__MODEL, true,
+				false, true, null, null, null) {
 
 			@Override
 			protected Collection<?> getComboBoxObjects(Object object) {
 				if (object instanceof EMFPropertyBinding) {
 					EMFPropertyBinding propertyBinding = (EMFPropertyBinding) object;
 					EClassifier model = null;
-					if (propertyBinding.getNavigation() != null && !(propertyBinding.getNavigation() instanceof CustomModelNavigation)) {
+					if (propertyBinding.getNavigation() != null
+							&& !(propertyBinding.getNavigation() instanceof CustomModelNavigation)) {
 						if (propertyBinding.getNavigation() != null)
-							model = ((StructuredModelNavigation) propertyBinding.getNavigation()).evaluate();
+							model = ((StructuredModelNavigation) propertyBinding
+									.getNavigation()).evaluate();
 						else
-							model = ((EMFElementBinding) propertyBinding.getElement()).getModel();
+							model = ((EMFElementBinding) propertyBinding
+									.getElement()).getModel();
 						if (model instanceof EClass) {
-							Collection<?> comboBoxObjects = super.getComboBoxObjects(object);
+							Collection<?> comboBoxObjects = super
+									.getComboBoxObjects(object);
 							Collection<EStructuralFeature> result = new ArrayList<EStructuralFeature>();
 							for (Object feature : comboBoxObjects) {
-								if (((EClass) model).getEAllStructuralFeatures().contains(feature))
+								if (((EClass) model)
+										.getEAllStructuralFeatures().contains(
+												feature))
 									result.add((EStructuralFeature) feature);
 							}
 							return result;
 						}
 					} else {
-						model = ((EMFElementBinding) propertyBinding.getElement()).getModel();
+						model = ((EMFElementBinding) propertyBinding
+								.getElement()).getModel();
 						if (model != null) {
 							if (model instanceof EClass)
-								return ((EClass) model).getEAllStructuralFeatures();
+								return ((EClass) model)
+										.getEAllStructuralFeatures();
 						}
 					}
 				}
@@ -156,7 +177,8 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EMFPropertyBinding"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/EMFPropertyBinding"));
 	}
 
 	/**
@@ -168,7 +190,8 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 	@Override
 	public String getText(Object object) {
 		String label = ((EMFPropertyBinding) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_EMFPropertyBinding_type") : getString("_UI_EMFPropertyBinding_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_EMFPropertyBinding_type")
+				: getString("_UI_EMFPropertyBinding_type") + " " + label;
 	}
 
 	/**
@@ -184,7 +207,8 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 
 		switch (notification.getFeatureID(EMFPropertyBinding.class)) {
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -198,14 +222,21 @@ public class EMFPropertyBindingItemProvider extends AbstractPropertyBindingItemP
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION, NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
+		newChildDescriptors.add(createChildParameter(
+				MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION,
+				NavigationFactory.eINSTANCE.createSimpleModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION, NavigationFactory.eINSTANCE.createChainedModelNavigation()));
+		newChildDescriptors.add(createChildParameter(
+				MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION,
+				NavigationFactory.eINSTANCE.createChainedModelNavigation()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION, NavigationFactory.eINSTANCE.createCustomModelNavigation()));
+		newChildDescriptors.add(createChildParameter(
+				MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION,
+				NavigationFactory.eINSTANCE.createCustomModelNavigation()));
 	}
 
 }

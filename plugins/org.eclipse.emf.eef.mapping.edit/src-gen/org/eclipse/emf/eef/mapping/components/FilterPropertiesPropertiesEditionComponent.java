@@ -99,7 +99,7 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 			bindingFilter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
-			bindingFilter.setMandatory((Boolean)event.getNewValue());	
+			bindingFilter.setMandatory((Boolean)event.getNewValue());
 		}
 	}
 
@@ -108,18 +108,20 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
-		if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null){
-			if (msg.getNewValue() != null) {
-				filterPropertiesPart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				filterPropertiesPart.setName("");
+		if (editingPart.isVisible()) {	
+			FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null){
+				if (msg.getNewValue() != null) {
+					filterPropertiesPart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					filterPropertiesPart.setName("");
+				}
 			}
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && filterPropertiesPart != null)
+				filterPropertiesPart.setMandatory((Boolean)msg.getNewValue());
+			
+			
 		}
-		if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && filterPropertiesPart != null)
-			filterPropertiesPart.setMandatory((Boolean)msg.getNewValue());
-		
-		
 	}
 
 
@@ -132,14 +134,19 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
 				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

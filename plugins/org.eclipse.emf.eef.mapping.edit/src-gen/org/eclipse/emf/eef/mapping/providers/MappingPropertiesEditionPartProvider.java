@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.parts.forms.OnlyReferenceTypeFilterProperties
 import org.eclipse.emf.eef.mapping.parts.forms.SimpleModelNavigationPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.StandardPropertyBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.StrictTypingFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.impl.CategoryPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.EMFElementBindingPropertiesEditionPartImpl;
@@ -42,9 +43,13 @@ import org.eclipse.emf.eef.mapping.parts.impl.OnlyReferenceTypeFilterPropertiesE
 import org.eclipse.emf.eef.mapping.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.StandardPropertyBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.StrictTypingFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+
+
+
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -61,7 +66,6 @@ public class MappingPropertiesEditionPartProvider implements IPropertiesEditionP
 		return key == MappingViewsRepository.class;
 	}
 
-	
 	/** 
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
@@ -157,6 +161,12 @@ public class MappingPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new JavaDeclarationFilterPropertiesEditionPartImpl(component);
 			if (kind == MappingViewsRepository.FORM_KIND)
 				return new JavaDeclarationFilterPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.StrictTypingFilter.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new StrictTypingFilterPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new StrictTypingFilterPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

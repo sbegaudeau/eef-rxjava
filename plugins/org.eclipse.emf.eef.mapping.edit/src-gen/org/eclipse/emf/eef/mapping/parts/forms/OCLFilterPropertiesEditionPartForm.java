@@ -101,7 +101,7 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 		oCLFilterStep.addStep(MappingViewsRepository.OCLFilter.filterProperties);
 		
 		composer = new PartComposer(oCLFilterStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.OCLFilter.FilterExpression.class) {
@@ -185,8 +185,8 @@ public class OCLFilterPropertiesEditionPartForm extends CompositePropertiesEditi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

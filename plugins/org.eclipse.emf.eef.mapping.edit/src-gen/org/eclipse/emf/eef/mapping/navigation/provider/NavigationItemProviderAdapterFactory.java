@@ -12,8 +12,8 @@ package org.eclipse.emf.eef.mapping.navigation.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -45,7 +45,9 @@ import org.eclipse.emf.eef.mapping.provider.MappingEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NavigationItemProviderAdapterFactory extends NavigationAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
+public class NavigationItemProviderAdapterFactory extends
+		NavigationAdapterFactory implements ComposeableAdapterFactory,
+		IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -68,7 +70,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(MappingEditPlugin.INSTANCE, NavigationPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			MappingEditPlugin.INSTANCE, NavigationPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -109,7 +112,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	@Override
 	public Adapter createSimpleModelNavigationAdapter() {
 		if (simpleModelNavigationItemProvider == null) {
-			simpleModelNavigationItemProvider = new SimpleModelNavigationItemProvider(this);
+			simpleModelNavigationItemProvider = new SimpleModelNavigationItemProvider(
+					this);
 		}
 
 		return simpleModelNavigationItemProvider;
@@ -132,7 +136,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	@Override
 	public Adapter createChainedModelNavigationAdapter() {
 		if (chainedModelNavigationItemProvider == null) {
-			chainedModelNavigationItemProvider = new ChainedModelNavigationItemProvider(this);
+			chainedModelNavigationItemProvider = new ChainedModelNavigationItemProvider(
+					this);
 		}
 
 		return chainedModelNavigationItemProvider;
@@ -155,7 +160,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	@Override
 	public Adapter createCustomModelNavigationAdapter() {
 		if (customModelNavigationItemProvider == null) {
-			customModelNavigationItemProvider = new CustomModelNavigationItemProvider(this);
+			customModelNavigationItemProvider = new CustomModelNavigationItemProvider(
+					this);
 		}
 
 		return customModelNavigationItemProvider;
@@ -168,7 +174,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -177,7 +184,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -211,7 +219,8 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -233,8 +242,10 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+	public Collection<?> getNewChildDescriptors(Object object,
+			EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object,
+				editingDomain);
 	}
 
 	/**

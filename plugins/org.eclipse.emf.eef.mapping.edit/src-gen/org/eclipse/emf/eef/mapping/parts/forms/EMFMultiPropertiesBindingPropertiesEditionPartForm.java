@@ -46,6 +46,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -119,7 +121,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		
 		
 		composer = new PartComposer(eMFMultiPropertiesBindingStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Properties.class) {
@@ -229,6 +231,15 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		});
 		this.model.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, MappingViewsRepository.FORM_KIND));
 		this.model.createControls(parent, widgetFactory);
+		this.model.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData modelData = new GridData(GridData.FILL_HORIZONTAL);
 		modelData.horizontalSpan = 3;
 		this.model.setLayoutData(modelData);
@@ -254,7 +265,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 				model.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -262,7 +273,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	protected void moveModel(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		model.refresh();	
+		model.refresh();
 	}
 
 	/**
@@ -301,6 +312,15 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 		});
 		this.views.setHelpText(propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views, MappingViewsRepository.FORM_KIND));
 		this.views.createControls(parent, widgetFactory);
+		this.views.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData viewsData = new GridData(GridData.FILL_HORIZONTAL);
 		viewsData.horizontalSpan = 3;
 		this.views.setLayoutData(viewsData);
@@ -326,7 +346,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 				views.refresh();
 			}
 		};
-		dialog.open();	
+		dialog.open();
 	}
 
 	/**
@@ -334,7 +354,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	protected void moveViews(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFMultiPropertiesBindingPropertiesEditionPartForm.this, MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		views.refresh();	
+		views.refresh();
 	}
 
 	/**
@@ -370,9 +390,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends Composit
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

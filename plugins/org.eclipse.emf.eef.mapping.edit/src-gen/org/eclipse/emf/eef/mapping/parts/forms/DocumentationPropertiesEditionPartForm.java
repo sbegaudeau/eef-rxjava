@@ -93,7 +93,7 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 		
 		
 		composer = new PartComposer(documentationStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.Documentation.Documentation_.class) {
@@ -166,9 +166,9 @@ public class DocumentationPropertiesEditionPartForm extends CompositePropertiesE
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// Nothing to do
-		// End of user code
+
+// Nothing to do
+// End of user code
 	}
 
 	/**

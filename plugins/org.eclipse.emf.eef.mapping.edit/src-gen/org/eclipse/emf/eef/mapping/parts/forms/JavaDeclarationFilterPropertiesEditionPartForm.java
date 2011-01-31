@@ -102,7 +102,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 		javaDeclarationFilterStep.addStep(MappingViewsRepository.JavaDeclarationFilter.filterProperties);
 		
 		composer = new PartComposer(javaDeclarationFilterStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.JavaDeclarationFilter.FilterExpression.class) {
@@ -194,8 +194,8 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends CompositePro
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

@@ -82,6 +82,9 @@ public class MappingMessages extends NLS {
 	public static String JavaDeclarationFilterPropertiesEditionPart_FilterExpressionGroupLabel;
 
 	
+	public static String StrictTypingFilterPropertiesEditionPart_TypeGroupLabel;
+
+	
 	public static String Documentation_ReadOnly;
 
 	
@@ -172,6 +175,12 @@ public class MappingMessages extends NLS {
 	public static String JavaDeclarationFilter_Part_Title;
 
 	
+	public static String StrictTypingFilter_ReadOnly;
+
+	
+	public static String StrictTypingFilter_Part_Title;
+
+	
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 
 	
@@ -253,6 +262,9 @@ public class MappingMessages extends NLS {
 	public static String JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel;
 
 	
+	public static String StrictTypingFilterPropertiesEditionPart_RestrictionLabel;
+
+	
 	public static String PropertiesEditionPart_DocumentationLabel;
 
 	
@@ -299,11 +311,11 @@ public class MappingMessages extends NLS {
 
 	
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
-	
+
 	// Start of user code for additionnal NLS Constants
-	
+
  	
-	// End of user code
+// End of user code
 
 	static {
 		// initialize resource bundle

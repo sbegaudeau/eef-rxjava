@@ -82,7 +82,7 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 			.addStep(MappingViewsRepository.ModelNavigation.Properties.class);
 		
 		composer = new PartComposer(modelNavigationStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.ModelNavigation.Properties.class) {
@@ -120,8 +120,8 @@ public class ModelNavigationPropertiesEditionPartForm extends CompositePropertie
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 

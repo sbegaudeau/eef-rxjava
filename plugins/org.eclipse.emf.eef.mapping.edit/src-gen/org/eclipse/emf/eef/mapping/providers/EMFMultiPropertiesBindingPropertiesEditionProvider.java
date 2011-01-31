@@ -11,6 +11,8 @@
  */
 package org.eclipse.emf.eef.mapping.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
@@ -18,6 +20,7 @@ import org.eclipse.emf.eef.mapping.components.EMFMultiPropertiesBindingBasePrope
 import org.eclipse.emf.eef.mapping.components.EMFMultiPropertiesBindingPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -25,6 +28,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class EMFMultiPropertiesBindingPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public EMFMultiPropertiesBindingPropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public EMFMultiPropertiesBindingPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -74,7 +92,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 		if (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) {
 			return new EMFMultiPropertiesBindingPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -89,7 +107,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
 				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -106,7 +124,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 				&& refinement == DocumentedElementPropertiesEditionComponent.class)
 				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

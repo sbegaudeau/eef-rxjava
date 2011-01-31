@@ -43,7 +43,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -97,7 +97,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		onlyReferenceTypeFilterStep.addStep(MappingViewsRepository.OnlyReferenceTypeFilter.filterProperties);
 		
 		composer = new PartComposer(onlyReferenceTypeFilterStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == MappingViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.class) {
@@ -171,8 +171,8 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

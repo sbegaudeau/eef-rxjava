@@ -87,6 +87,6 @@ public interface ElementBindingReferencePropertiesEditionPart {
 
 	// Start of user code for additional methods
  	
-	// End of user code
+// End of user code
 
 }

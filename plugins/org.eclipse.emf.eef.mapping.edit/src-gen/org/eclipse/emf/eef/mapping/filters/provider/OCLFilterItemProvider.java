@@ -33,7 +33,9 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OCLFilterItemProvider extends BindingFilterItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class OCLFilterItemProvider extends BindingFilterItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -67,8 +69,15 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	 * @generated
 	 */
 	protected void addOCLBodyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OCLFilter_OCLBody_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_OCLFilter_OCLBody_feature", "_UI_OCLFilter_type"), FiltersPackage.Literals.OCL_FILTER__OCL_BODY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_OCLFilter_OCLBody_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_OCLFilter_OCLBody_feature", "_UI_OCLFilter_type"),
+				FiltersPackage.Literals.OCL_FILTER__OCL_BODY, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -79,7 +88,8 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OCLFilter"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/OCLFilter"));
 	}
 
 	/**
@@ -91,7 +101,8 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	@Override
 	public String getText(Object object) {
 		String label = ((OCLFilter) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_OCLFilter_type") : getString("_UI_OCLFilter_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_OCLFilter_type")
+				: getString("_UI_OCLFilter_type") + " " + label;
 	}
 
 	/**
@@ -107,7 +118,8 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 
 		switch (notification.getFeatureID(OCLFilter.class)) {
 		case FiltersPackage.OCL_FILTER__OCL_BODY:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -121,7 +133,8 @@ public class OCLFilterItemProvider extends BindingFilterItemProvider implements 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

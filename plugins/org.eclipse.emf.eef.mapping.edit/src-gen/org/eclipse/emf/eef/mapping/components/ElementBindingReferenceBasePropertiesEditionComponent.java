@@ -98,8 +98,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for binding
-																																																																																																			
-																																																																																																			// End of user code
+																																																																																																						
+																																																																																																						// End of user code
 			
 			// init values for referenced views
 			
@@ -123,16 +123,12 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				bindingSettings.setToReference((AbstractElementBinding)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, MappingPackage.eINSTANCE.getElementBindingReference_Binding(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, bindingSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							bindingSettings.setToReference(resultEObject);
-						}
 					}
 				}
 			}
@@ -144,10 +140,12 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		ElementBindingReferencePropertiesEditionPart basePart = (ElementBindingReferencePropertiesEditionPart)editingPart;
-		if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
-			basePart.setBinding((EObject)msg.getNewValue());
-		
+		if (editingPart.isVisible()) {	
+			ElementBindingReferencePropertiesEditionPart basePart = (ElementBindingReferencePropertiesEditionPart)editingPart;
+			if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null)
+				basePart.setBinding((EObject)msg.getNewValue());
+			
+		}
 	}
 
 
@@ -182,7 +180,6 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
