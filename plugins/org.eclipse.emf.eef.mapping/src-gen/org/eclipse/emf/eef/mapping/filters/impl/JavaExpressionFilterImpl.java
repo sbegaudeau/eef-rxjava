@@ -29,7 +29,8 @@ import org.eclipse.emf.eef.mapping.filters.JavaExpressionFilter;
  *
  * @generated
  */
-public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpressionFilter {
+public class JavaExpressionFilterImpl extends JavaFilterImpl implements
+		JavaExpressionFilter {
 	/**
 	 * The default value of the '{@link #getJavaBody() <em>Java Body</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -87,7 +88,9 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpr
 		String oldJavaBody = javaBody;
 		javaBody = newJavaBody;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY, oldJavaBody, javaBody));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY,
+					oldJavaBody, javaBody));
 	}
 
 	/**
@@ -143,7 +146,8 @@ public class JavaExpressionFilterImpl extends JavaFilterImpl implements JavaExpr
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case FiltersPackage.JAVA_EXPRESSION_FILTER__JAVA_BODY:
-			return JAVA_BODY_EDEFAULT == null ? javaBody != null : !JAVA_BODY_EDEFAULT.equals(javaBody);
+			return JAVA_BODY_EDEFAULT == null ? javaBody != null
+					: !JAVA_BODY_EDEFAULT.equals(javaBody);
 		}
 		return super.eIsSet(featureID);
 	}

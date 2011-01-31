@@ -31,7 +31,8 @@ import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
  *
  * @generated
  */
-public class OnlyReferenceTypeFilterImpl extends BusinessFilterImpl implements OnlyReferenceTypeFilter {
+public class OnlyReferenceTypeFilterImpl extends BusinessFilterImpl implements
+		OnlyReferenceTypeFilter {
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,7 +73,11 @@ public class OnlyReferenceTypeFilterImpl extends BusinessFilterImpl implements O
 			reference = (EReference) eResolveProxy(oldReference);
 			if (reference != oldReference) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FiltersPackage.ONLY_REFERENCE_TYPE_FILTER__REFERENCE, oldReference, reference));
+					eNotify(new ENotificationImpl(
+							this,
+							Notification.RESOLVE,
+							FiltersPackage.ONLY_REFERENCE_TYPE_FILTER__REFERENCE,
+							oldReference, reference));
 			}
 		}
 		return reference;
@@ -96,7 +101,9 @@ public class OnlyReferenceTypeFilterImpl extends BusinessFilterImpl implements O
 		EReference oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.ONLY_REFERENCE_TYPE_FILTER__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.ONLY_REFERENCE_TYPE_FILTER__REFERENCE,
+					oldReference, reference));
 	}
 
 	/**

@@ -42,7 +42,8 @@ public class MappingFactoryImpl extends EFactoryImpl implements MappingFactory {
 	 */
 	public static MappingFactory init() {
 		try {
-			MappingFactory theMappingFactory = (MappingFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/mapping/1.0.0");
+			MappingFactory theMappingFactory = (MappingFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/eef/mapping/1.0.0");
 			if (theMappingFactory != null) {
 				return theMappingFactory;
 			}
@@ -87,7 +88,8 @@ public class MappingFactoryImpl extends EFactoryImpl implements MappingFactory {
 		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING:
 			return createEMFMultiPropertiesBinding();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 

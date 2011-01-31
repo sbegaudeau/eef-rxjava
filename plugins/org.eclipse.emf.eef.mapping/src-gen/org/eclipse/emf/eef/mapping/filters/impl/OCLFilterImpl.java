@@ -87,7 +87,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 		String oldOCLBody = oclBody;
 		oclBody = newOCLBody;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.OCL_FILTER__OCL_BODY, oldOCLBody, oclBody));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.OCL_FILTER__OCL_BODY, oldOCLBody, oclBody));
 	}
 
 	/**
@@ -143,7 +144,8 @@ public class OCLFilterImpl extends BindingFilterImpl implements OCLFilter {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case FiltersPackage.OCL_FILTER__OCL_BODY:
-			return OCL_BODY_EDEFAULT == null ? oclBody != null : !OCL_BODY_EDEFAULT.equals(oclBody);
+			return OCL_BODY_EDEFAULT == null ? oclBody != null
+					: !OCL_BODY_EDEFAULT.equals(oclBody);
 		}
 		return super.eIsSet(featureID);
 	}

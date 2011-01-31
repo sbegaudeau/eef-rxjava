@@ -38,7 +38,8 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 	 */
 	public static FiltersFactory init() {
 		try {
-			FiltersFactory theFiltersFactory = (FiltersFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/mapping/filters/1.0.0");
+			FiltersFactory theFiltersFactory = (FiltersFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/eef/mapping/filters/1.0.0");
 			if (theFiltersFactory != null) {
 				return theFiltersFactory;
 			}
@@ -74,8 +75,11 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 			return createJavaExpressionFilter();
 		case FiltersPackage.ONLY_REFERENCE_TYPE_FILTER:
 			return createOnlyReferenceTypeFilter();
+		case FiltersPackage.STRICT_TYPING_FILTER:
+			return createStrictTypingFilter();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
@@ -117,6 +121,16 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 	public OnlyReferenceTypeFilter createOnlyReferenceTypeFilter() {
 		OnlyReferenceTypeFilterImpl onlyReferenceTypeFilter = new OnlyReferenceTypeFilterImpl();
 		return onlyReferenceTypeFilter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StrictTypingFilter createStrictTypingFilter() {
+		StrictTypingFilterImpl strictTypingFilter = new StrictTypingFilterImpl();
+		return strictTypingFilter;
 	}
 
 	/**

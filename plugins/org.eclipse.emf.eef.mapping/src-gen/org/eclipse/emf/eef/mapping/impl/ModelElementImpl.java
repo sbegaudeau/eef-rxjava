@@ -42,7 +42,8 @@ import org.eclipse.emf.eef.mapping.StandardElementBinding;
  *
  * @generated
  */
-public abstract class ModelElementImpl extends DocumentedElementImpl implements ModelElement {
+public abstract class ModelElementImpl extends DocumentedElementImpl implements
+		ModelElement {
 	/**
 	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -99,7 +100,10 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 */
 	public EList<ModelProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentWithInverseEList<ModelProperty>(ModelProperty.class, this, MappingPackage.MODEL_ELEMENT__PROPERTIES, MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT);
+			properties = new EObjectContainmentWithInverseEList<ModelProperty>(
+					ModelProperty.class, this,
+					MappingPackage.MODEL_ELEMENT__PROPERTIES,
+					MappingPackage.MODEL_PROPERTY__MODEL_ELEMENT);
 		}
 		return properties;
 	}
@@ -111,7 +115,10 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 */
 	public EList<ModelElement> getSubElements() {
 		if (subElements == null) {
-			subElements = new EObjectContainmentWithInverseEList<ModelElement>(ModelElement.class, this, MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS, MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT);
+			subElements = new EObjectContainmentWithInverseEList<ModelElement>(
+					ModelElement.class, this,
+					MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS,
+					MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT);
 		}
 		return subElements;
 	}
@@ -127,7 +134,9 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 			binding = (StandardElementBinding) eResolveProxy(oldBinding);
 			if (binding != oldBinding) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MappingPackage.MODEL_ELEMENT__BINDING, oldBinding, binding));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MappingPackage.MODEL_ELEMENT__BINDING, oldBinding,
+							binding));
 			}
 		}
 		return binding;
@@ -147,11 +156,14 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBinding(StandardElementBinding newBinding, NotificationChain msgs) {
+	public NotificationChain basicSetBinding(StandardElementBinding newBinding,
+			NotificationChain msgs) {
 		StandardElementBinding oldBinding = binding;
 		binding = newBinding;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MappingPackage.MODEL_ELEMENT__BINDING, oldBinding, newBinding);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, MappingPackage.MODEL_ELEMENT__BINDING,
+					oldBinding, newBinding);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -169,14 +181,20 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 		if (newBinding != binding) {
 			NotificationChain msgs = null;
 			if (binding != null)
-				msgs = ((InternalEObject) binding).eInverseRemove(this, MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, StandardElementBinding.class, msgs);
+				msgs = ((InternalEObject) binding).eInverseRemove(this,
+						MappingPackage.STANDARD_ELEMENT_BINDING__MODEL,
+						StandardElementBinding.class, msgs);
 			if (newBinding != null)
-				msgs = ((InternalEObject) newBinding).eInverseAdd(this, MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, StandardElementBinding.class, msgs);
+				msgs = ((InternalEObject) newBinding).eInverseAdd(this,
+						MappingPackage.STANDARD_ELEMENT_BINDING__MODEL,
+						StandardElementBinding.class, msgs);
 			msgs = basicSetBinding(newBinding, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.MODEL_ELEMENT__BINDING, newBinding, newBinding));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.MODEL_ELEMENT__BINDING, newBinding,
+					newBinding));
 	}
 
 	/**
@@ -195,8 +213,10 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSuperElement(ModelElement newSuperElement, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newSuperElement, MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT, msgs);
+	public NotificationChain basicSetSuperElement(ModelElement newSuperElement,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newSuperElement,
+				MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT, msgs);
 		return msgs;
 	}
 
@@ -206,19 +226,25 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 * @generated
 	 */
 	public void setSuperElement(ModelElement newSuperElement) {
-		if (newSuperElement != eInternalContainer() || (eContainerFeatureID() != MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT && newSuperElement != null)) {
+		if (newSuperElement != eInternalContainer()
+				|| (eContainerFeatureID() != MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT && newSuperElement != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperElement))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSuperElement != null)
-				msgs = ((InternalEObject) newSuperElement).eInverseAdd(this, MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS, ModelElement.class, msgs);
+				msgs = ((InternalEObject) newSuperElement).eInverseAdd(this,
+						MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS,
+						ModelElement.class, msgs);
 			msgs = basicSetSuperElement(newSuperElement, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT, newSuperElement, newSuperElement));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT,
+					newSuperElement, newSuperElement));
 	}
 
 	/**
@@ -228,15 +254,20 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.MODEL_ELEMENT__PROPERTIES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getProperties()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getProperties())
+					.basicAdd(otherEnd, msgs);
 		case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubElements()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubElements())
+					.basicAdd(otherEnd, msgs);
 		case MappingPackage.MODEL_ELEMENT__BINDING:
 			if (binding != null)
-				msgs = ((InternalEObject) binding).eInverseRemove(this, MappingPackage.STANDARD_ELEMENT_BINDING__MODEL, StandardElementBinding.class, msgs);
+				msgs = ((InternalEObject) binding).eInverseRemove(this,
+						MappingPackage.STANDARD_ELEMENT_BINDING__MODEL,
+						StandardElementBinding.class, msgs);
 			return basicSetBinding((StandardElementBinding) otherEnd, msgs);
 		case MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT:
 			if (eInternalContainer() != null)
@@ -252,12 +283,15 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.MODEL_ELEMENT__PROPERTIES:
-			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd,
+					msgs);
 		case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
-			return ((InternalEList<?>) getSubElements()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getSubElements()).basicRemove(otherEnd,
+					msgs);
 		case MappingPackage.MODEL_ELEMENT__BINDING:
 			return basicSetBinding(null, msgs);
 		case MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT:
@@ -272,10 +306,13 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case MappingPackage.MODEL_ELEMENT__SUPER_ELEMENT:
-			return eInternalContainer().eInverseRemove(this, MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS, ModelElement.class, msgs);
+			return eInternalContainer().eInverseRemove(this,
+					MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS,
+					ModelElement.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -313,11 +350,13 @@ public abstract class ModelElementImpl extends DocumentedElementImpl implements 
 		switch (featureID) {
 		case MappingPackage.MODEL_ELEMENT__PROPERTIES:
 			getProperties().clear();
-			getProperties().addAll((Collection<? extends ModelProperty>) newValue);
+			getProperties().addAll(
+					(Collection<? extends ModelProperty>) newValue);
 			return;
 		case MappingPackage.MODEL_ELEMENT__SUB_ELEMENTS:
 			getSubElements().clear();
-			getSubElements().addAll((Collection<? extends ModelElement>) newValue);
+			getSubElements().addAll(
+					(Collection<? extends ModelElement>) newValue);
 			return;
 		case MappingPackage.MODEL_ELEMENT__BINDING:
 			setBinding((StandardElementBinding) newValue);

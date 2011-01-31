@@ -38,7 +38,8 @@ import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
  *
  * @generated
  */
-public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl implements EMFMultiPropertiesBinding {
+public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl
+		implements EMFMultiPropertiesBinding {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -85,7 +86,9 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	 */
 	public EList<EStructuralFeature> getModel() {
 		if (model == null) {
-			model = new EObjectResolvingEList<EStructuralFeature>(EStructuralFeature.class, this, MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL);
+			model = new EObjectResolvingEList<EStructuralFeature>(
+					EStructuralFeature.class, this,
+					MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL);
 		}
 		return model;
 	}
@@ -104,11 +107,15 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNavigation(ModelNavigation newNavigation, NotificationChain msgs) {
+	public NotificationChain basicSetNavigation(ModelNavigation newNavigation,
+			NotificationChain msgs) {
 		ModelNavigation oldNavigation = navigation;
 		navigation = newNavigation;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, oldNavigation, newNavigation);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION,
+					oldNavigation, newNavigation);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -126,14 +133,26 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 		if (newNavigation != navigation) {
 			NotificationChain msgs = null;
 			if (navigation != null)
-				msgs = ((InternalEObject) navigation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, null, msgs);
+				msgs = ((InternalEObject) navigation)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION,
+								null, msgs);
 			if (newNavigation != null)
-				msgs = ((InternalEObject) newNavigation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, null, msgs);
+				msgs = ((InternalEObject) newNavigation)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION,
+								null, msgs);
 			msgs = basicSetNavigation(newNavigation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION, newNavigation, newNavigation));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION,
+					newNavigation, newNavigation));
 	}
 
 	/**
@@ -142,7 +161,8 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
 			return basicSetNavigation(null, msgs);
@@ -177,7 +197,8 @@ public class EMFMultiPropertiesBindingImpl extends AbstractPropertyBindingImpl i
 		switch (featureID) {
 		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__MODEL:
 			getModel().clear();
-			getModel().addAll((Collection<? extends EStructuralFeature>) newValue);
+			getModel().addAll(
+					(Collection<? extends EStructuralFeature>) newValue);
 			return;
 		case MappingPackage.EMF_MULTI_PROPERTIES_BINDING__NAVIGATION:
 			setNavigation((ModelNavigation) newValue);

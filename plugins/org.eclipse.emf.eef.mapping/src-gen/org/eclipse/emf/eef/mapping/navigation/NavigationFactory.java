@@ -27,7 +27,8 @@ public interface NavigationFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	NavigationFactory eINSTANCE = org.eclipse.emf.eef.mapping.navigation.impl.NavigationFactoryImpl.init();
+	NavigationFactory eINSTANCE = org.eclipse.emf.eef.mapping.navigation.impl.NavigationFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Simple Model Navigation</em>'.

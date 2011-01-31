@@ -32,7 +32,8 @@ import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
  *
  * @generated
  */
-public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl implements StandardPropertyBinding {
+public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl
+		implements StandardPropertyBinding {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -73,7 +74,9 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 			model = (ModelProperty) eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, oldModel, model));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MappingPackage.STANDARD_PROPERTY_BINDING__MODEL,
+							oldModel, model));
 			}
 		}
 		return model;
@@ -93,11 +96,15 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetModel(ModelProperty newModel, NotificationChain msgs) {
+	public NotificationChain basicSetModel(ModelProperty newModel,
+			NotificationChain msgs) {
 		ModelProperty oldModel = model;
 		model = newModel;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, oldModel, newModel);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, oldModel,
+					newModel);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -115,14 +122,20 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 		if (newModel != model) {
 			NotificationChain msgs = null;
 			if (model != null)
-				msgs = ((InternalEObject) model).eInverseRemove(this, MappingPackage.MODEL_PROPERTY__BINDING, ModelProperty.class, msgs);
+				msgs = ((InternalEObject) model).eInverseRemove(this,
+						MappingPackage.MODEL_PROPERTY__BINDING,
+						ModelProperty.class, msgs);
 			if (newModel != null)
-				msgs = ((InternalEObject) newModel).eInverseAdd(this, MappingPackage.MODEL_PROPERTY__BINDING, ModelProperty.class, msgs);
+				msgs = ((InternalEObject) newModel).eInverseAdd(this,
+						MappingPackage.MODEL_PROPERTY__BINDING,
+						ModelProperty.class, msgs);
 			msgs = basicSetModel(newModel, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, newModel, newModel));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.STANDARD_PROPERTY_BINDING__MODEL, newModel,
+					newModel));
 	}
 
 	/**
@@ -131,11 +144,14 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
 			if (model != null)
-				msgs = ((InternalEObject) model).eInverseRemove(this, MappingPackage.MODEL_PROPERTY__BINDING, ModelProperty.class, msgs);
+				msgs = ((InternalEObject) model).eInverseRemove(this,
+						MappingPackage.MODEL_PROPERTY__BINDING,
+						ModelProperty.class, msgs);
 			return basicSetModel((ModelProperty) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -147,7 +163,8 @@ public class StandardPropertyBindingImpl extends AbstractPropertyBindingImpl imp
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.STANDARD_PROPERTY_BINDING__MODEL:
 			return basicSetModel(null, msgs);

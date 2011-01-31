@@ -27,7 +27,8 @@ public interface FiltersFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FiltersFactory eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersFactoryImpl.init();
+	FiltersFactory eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>OCL Filter</em>'.
@@ -64,6 +65,15 @@ public interface FiltersFactory extends EFactory {
 	 * @generated
 	 */
 	OnlyReferenceTypeFilter createOnlyReferenceTypeFilter();
+
+	/**
+	 * Returns a new object of class '<em>Strict Typing Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Strict Typing Filter</em>'.
+	 * @generated
+	 */
+	StrictTypingFilter createStrictTypingFilter();
 
 	/**
 	 * Returns the package supported by this factory.

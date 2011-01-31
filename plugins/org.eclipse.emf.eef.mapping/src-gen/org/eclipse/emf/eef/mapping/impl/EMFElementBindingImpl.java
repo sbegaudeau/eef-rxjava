@@ -31,7 +31,8 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public class EMFElementBindingImpl extends AbstractElementBindingImpl implements EMFElementBinding {
+public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
+		EMFElementBinding {
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,7 +73,9 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 			model = (EClassifier) eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MappingPackage.EMF_ELEMENT_BINDING__MODEL, oldModel, model));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MappingPackage.EMF_ELEMENT_BINDING__MODEL,
+							oldModel, model));
 			}
 		}
 		return model;
@@ -96,7 +99,8 @@ public class EMFElementBindingImpl extends AbstractElementBindingImpl implements
 		EClassifier oldModel = model;
 		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.EMF_ELEMENT_BINDING__MODEL, oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.EMF_ELEMENT_BINDING__MODEL, oldModel, model));
 	}
 
 	/**

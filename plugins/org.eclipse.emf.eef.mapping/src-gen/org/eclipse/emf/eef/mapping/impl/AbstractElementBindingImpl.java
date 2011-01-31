@@ -53,7 +53,8 @@ import org.eclipse.emf.eef.views.View;
  *
  * @generated
  */
-public abstract class AbstractElementBindingImpl extends DocumentedElementImpl implements AbstractElementBinding {
+public abstract class AbstractElementBindingImpl extends DocumentedElementImpl
+		implements AbstractElementBinding {
 	/**
 	 * The cached value of the '{@link #getSubElements() <em>Sub Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -150,7 +151,10 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 */
 	public EList<AbstractElementBinding> getSubElements() {
 		if (subElements == null) {
-			subElements = new EObjectContainmentWithInverseEList<AbstractElementBinding>(AbstractElementBinding.class, this, MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS, MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT);
+			subElements = new EObjectContainmentWithInverseEList<AbstractElementBinding>(
+					AbstractElementBinding.class, this,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT);
 		}
 		return subElements;
 	}
@@ -162,7 +166,10 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 */
 	public EList<AbstractPropertyBinding> getProperties() {
 		if (properties == null) {
-			properties = new EObjectContainmentWithInverseEList<AbstractPropertyBinding>(AbstractPropertyBinding.class, this, MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES, MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT);
+			properties = new EObjectContainmentWithInverseEList<AbstractPropertyBinding>(
+					AbstractPropertyBinding.class, this,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+					MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT);
 		}
 		return properties;
 	}
@@ -183,8 +190,10 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDatabinding(Databinding newDatabinding, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newDatabinding, MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING, msgs);
+	public NotificationChain basicSetDatabinding(Databinding newDatabinding,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDatabinding,
+				MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING, msgs);
 		return msgs;
 	}
 
@@ -194,19 +203,25 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * @generated
 	 */
 	public void setDatabinding(Databinding newDatabinding) {
-		if (newDatabinding != eInternalContainer() || (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING && newDatabinding != null)) {
+		if (newDatabinding != eInternalContainer()
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING && newDatabinding != null)) {
 			if (EcoreUtil.isAncestor(this, newDatabinding))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatabinding != null)
-				msgs = ((InternalEObject) newDatabinding).eInverseAdd(this, MappingPackage.DATABINDING__BINDINGS, Databinding.class, msgs);
+				msgs = ((InternalEObject) newDatabinding).eInverseAdd(this,
+						MappingPackage.DATABINDING__BINDINGS,
+						Databinding.class, msgs);
 			msgs = basicSetDatabinding(newDatabinding, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING, newDatabinding, newDatabinding));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING,
+					newDatabinding, newDatabinding));
 	}
 
 	/**
@@ -225,8 +240,10 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSuperElement(AbstractElementBinding newSuperElement, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newSuperElement, MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT, msgs);
+	public NotificationChain basicSetSuperElement(
+			AbstractElementBinding newSuperElement, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newSuperElement,
+				MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT, msgs);
 		return msgs;
 	}
 
@@ -236,19 +253,25 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * @generated
 	 */
 	public void setSuperElement(AbstractElementBinding newSuperElement) {
-		if (newSuperElement != eInternalContainer() || (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT && newSuperElement != null)) {
+		if (newSuperElement != eInternalContainer()
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT && newSuperElement != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperElement))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSuperElement != null)
-				msgs = ((InternalEObject) newSuperElement).eInverseAdd(this, MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS, AbstractElementBinding.class, msgs);
+				msgs = ((InternalEObject) newSuperElement).eInverseAdd(this,
+						MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+						AbstractElementBinding.class, msgs);
 			msgs = basicSetSuperElement(newSuperElement, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT, newSuperElement, newSuperElement));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT,
+					newSuperElement, newSuperElement));
 	}
 
 	/**
@@ -269,7 +292,9 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -279,7 +304,9 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 */
 	public EList<ElementBindingReference> getReferencedBinding() {
 		if (referencedBinding == null) {
-			referencedBinding = new EObjectContainmentEList<ElementBindingReference>(ElementBindingReference.class, this, MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING);
+			referencedBinding = new EObjectContainmentEList<ElementBindingReference>(
+					ElementBindingReference.class, this,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING);
 		}
 		return referencedBinding;
 	}
@@ -291,7 +318,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 */
 	public EList<View> getViews() {
 		if (views == null) {
-			views = new EObjectResolvingEList<View>(View.class, this, MappingPackage.ABSTRACT_ELEMENT_BINDING__VIEWS);
+			views = new EObjectResolvingEList<View>(View.class, this,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__VIEWS);
 		}
 		return views;
 	}
@@ -312,8 +340,10 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCategory(Category newCategory, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newCategory, MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY, msgs);
+	public NotificationChain basicSetCategory(Category newCategory,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newCategory,
+				MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY, msgs);
 		return msgs;
 	}
 
@@ -323,19 +353,25 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * @generated
 	 */
 	public void setCategory(Category newCategory) {
-		if (newCategory != eInternalContainer() || (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY && newCategory != null)) {
+		if (newCategory != eInternalContainer()
+				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY && newCategory != null)) {
 			if (EcoreUtil.isAncestor(this, newCategory))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newCategory != null)
-				msgs = ((InternalEObject) newCategory).eInverseAdd(this, MappingPackage.CATEGORY__BINDINGS, Category.class, msgs);
+				msgs = ((InternalEObject) newCategory)
+						.eInverseAdd(this, MappingPackage.CATEGORY__BINDINGS,
+								Category.class, msgs);
 			msgs = basicSetCategory(newCategory, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY, newCategory, newCategory));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY,
+					newCategory, newCategory));
 	}
 
 	/**
@@ -345,7 +381,9 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 */
 	public EList<BindingFilter> getBindingFilters() {
 		if (bindingFilters == null) {
-			bindingFilters = new EObjectContainmentEList<BindingFilter>(BindingFilter.class, this, MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS);
+			bindingFilters = new EObjectContainmentEList<BindingFilter>(
+					BindingFilter.class, this,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS);
 		}
 		return bindingFilters;
 	}
@@ -357,12 +395,15 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubElements()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubElements())
+					.basicAdd(otherEnd, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getProperties()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getProperties())
+					.basicAdd(otherEnd, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
@@ -385,22 +426,27 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS:
-			return ((InternalEList<?>) getSubElements()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getSubElements()).basicRemove(otherEnd,
+					msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES:
-			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd,
+					msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING:
 			return basicSetDatabinding(null, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT:
 			return basicSetSuperElement(null, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING:
-			return ((InternalEList<?>) getReferencedBinding()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getReferencedBinding()).basicRemove(
+					otherEnd, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
 			return basicSetCategory(null, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
-			return ((InternalEList<?>) getBindingFilters()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getBindingFilters()).basicRemove(
+					otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -411,14 +457,20 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING:
-			return eInternalContainer().eInverseRemove(this, MappingPackage.DATABINDING__BINDINGS, Databinding.class, msgs);
+			return eInternalContainer().eInverseRemove(this,
+					MappingPackage.DATABINDING__BINDINGS, Databinding.class,
+					msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT:
-			return eInternalContainer().eInverseRemove(this, MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS, AbstractElementBinding.class, msgs);
+			return eInternalContainer().eInverseRemove(this,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+					AbstractElementBinding.class, msgs);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY:
-			return eInternalContainer().eInverseRemove(this, MappingPackage.CATEGORY__BINDINGS, Category.class, msgs);
+			return eInternalContainer().eInverseRemove(this,
+					MappingPackage.CATEGORY__BINDINGS, Category.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -464,11 +516,13 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 		switch (featureID) {
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS:
 			getSubElements().clear();
-			getSubElements().addAll((Collection<? extends AbstractElementBinding>) newValue);
+			getSubElements().addAll(
+					(Collection<? extends AbstractElementBinding>) newValue);
 			return;
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES:
 			getProperties().clear();
-			getProperties().addAll((Collection<? extends AbstractPropertyBinding>) newValue);
+			getProperties().addAll(
+					(Collection<? extends AbstractPropertyBinding>) newValue);
 			return;
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING:
 			setDatabinding((Databinding) newValue);
@@ -481,7 +535,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 			return;
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING:
 			getReferencedBinding().clear();
-			getReferencedBinding().addAll((Collection<? extends ElementBindingReference>) newValue);
+			getReferencedBinding().addAll(
+					(Collection<? extends ElementBindingReference>) newValue);
 			return;
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__VIEWS:
 			getViews().clear();
@@ -492,7 +547,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 			return;
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS:
 			getBindingFilters().clear();
-			getBindingFilters().addAll((Collection<? extends BindingFilter>) newValue);
+			getBindingFilters().addAll(
+					(Collection<? extends BindingFilter>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -554,7 +610,8 @@ public abstract class AbstractElementBindingImpl extends DocumentedElementImpl i
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT:
 			return getSuperElement() != null;
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING:
 			return referencedBinding != null && !referencedBinding.isEmpty();
 		case MappingPackage.ABSTRACT_ELEMENT_BINDING__VIEWS:

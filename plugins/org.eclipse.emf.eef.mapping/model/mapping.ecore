@@ -135,5 +135,9 @@
     <eClassifiers xsi:type="ecore:EClass" name="OnlyReferenceTypeFilter" eSuperTypes="#//filters/BusinessFilter">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StrictTypingFilter" eSuperTypes="#//filters/BusinessFilter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

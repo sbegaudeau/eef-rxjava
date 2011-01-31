@@ -28,7 +28,8 @@ import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFactory {
+public class NavigationFactoryImpl extends EFactoryImpl implements
+		NavigationFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -37,7 +38,8 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	 */
 	public static NavigationFactory init() {
 		try {
-			NavigationFactory theNavigationFactory = (NavigationFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0");
+			NavigationFactory theNavigationFactory = (NavigationFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0");
 			if (theNavigationFactory != null) {
 				return theNavigationFactory;
 			}
@@ -72,7 +74,8 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 		case NavigationPackage.CUSTOM_MODEL_NAVIGATION:
 			return createCustomModelNavigation();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 

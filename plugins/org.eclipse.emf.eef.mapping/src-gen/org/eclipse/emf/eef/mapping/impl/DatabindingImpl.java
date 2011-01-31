@@ -37,7 +37,8 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public class DatabindingImpl extends DocumentedElementImpl implements Databinding {
+public class DatabindingImpl extends DocumentedElementImpl implements
+		Databinding {
 	/**
 	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -84,7 +85,10 @@ public class DatabindingImpl extends DocumentedElementImpl implements Databindin
 	 */
 	public EList<AbstractElementBinding> getBindings() {
 		if (bindings == null) {
-			bindings = new EObjectContainmentWithInverseEList<AbstractElementBinding>(AbstractElementBinding.class, this, MappingPackage.DATABINDING__BINDINGS, MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING);
+			bindings = new EObjectContainmentWithInverseEList<AbstractElementBinding>(
+					AbstractElementBinding.class, this,
+					MappingPackage.DATABINDING__BINDINGS,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__DATABINDING);
 		}
 		return bindings;
 	}
@@ -96,7 +100,10 @@ public class DatabindingImpl extends DocumentedElementImpl implements Databindin
 	 */
 	public EList<Category> getCategories() {
 		if (categories == null) {
-			categories = new EObjectContainmentWithInverseEList<Category>(Category.class, this, MappingPackage.DATABINDING__CATEGORIES, MappingPackage.CATEGORY__DATABINDING);
+			categories = new EObjectContainmentWithInverseEList<Category>(
+					Category.class, this,
+					MappingPackage.DATABINDING__CATEGORIES,
+					MappingPackage.CATEGORY__DATABINDING);
 		}
 		return categories;
 	}
@@ -108,12 +115,15 @@ public class DatabindingImpl extends DocumentedElementImpl implements Databindin
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.DATABINDING__BINDINGS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getBindings()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getBindings())
+					.basicAdd(otherEnd, msgs);
 		case MappingPackage.DATABINDING__CATEGORIES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getCategories()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getCategories())
+					.basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -124,12 +134,15 @@ public class DatabindingImpl extends DocumentedElementImpl implements Databindin
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.DATABINDING__BINDINGS:
-			return ((InternalEList<?>) getBindings()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getBindings()).basicRemove(otherEnd,
+					msgs);
 		case MappingPackage.DATABINDING__CATEGORIES:
-			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -161,7 +174,8 @@ public class DatabindingImpl extends DocumentedElementImpl implements Databindin
 		switch (featureID) {
 		case MappingPackage.DATABINDING__BINDINGS:
 			getBindings().clear();
-			getBindings().addAll((Collection<? extends AbstractElementBinding>) newValue);
+			getBindings().addAll(
+					(Collection<? extends AbstractElementBinding>) newValue);
 			return;
 		case MappingPackage.DATABINDING__CATEGORIES:
 			getCategories().clear();

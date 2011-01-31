@@ -93,7 +93,8 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseStructuredModelNavigation(StructuredModelNavigation object) {
+		public Adapter caseStructuredModelNavigation(
+				StructuredModelNavigation object) {
 			return createStructuredModelNavigationAdapter();
 		}
 

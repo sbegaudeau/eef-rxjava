@@ -29,7 +29,8 @@ import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;
  *
  * @generated
  */
-public class JavaDeclarationFilterImpl extends JavaFilterImpl implements JavaDeclarationFilter {
+public class JavaDeclarationFilterImpl extends JavaFilterImpl implements
+		JavaDeclarationFilter {
 	/**
 	 * The default value of the '{@link #getMethodName() <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -87,7 +88,9 @@ public class JavaDeclarationFilterImpl extends JavaFilterImpl implements JavaDec
 		String oldMethodName = methodName;
 		methodName = newMethodName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.JAVA_DECLARATION_FILTER__METHOD_NAME, oldMethodName, methodName));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.JAVA_DECLARATION_FILTER__METHOD_NAME,
+					oldMethodName, methodName));
 	}
 
 	/**
@@ -143,7 +146,8 @@ public class JavaDeclarationFilterImpl extends JavaFilterImpl implements JavaDec
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case FiltersPackage.JAVA_DECLARATION_FILTER__METHOD_NAME:
-			return METHOD_NAME_EDEFAULT == null ? methodName != null : !METHOD_NAME_EDEFAULT.equals(methodName);
+			return METHOD_NAME_EDEFAULT == null ? methodName != null
+					: !METHOD_NAME_EDEFAULT.equals(methodName);
 		}
 		return super.eIsSet(featureID);
 	}

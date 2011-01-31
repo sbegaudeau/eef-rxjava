@@ -149,6 +149,14 @@
         <referencedBinding xmi:id="_Z_AvAEnREd60zu6mQdwT9g" binding="_NsYfwEnREd60zu6mQdwT9g"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/JavaDeclarationFilter"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_usjesSedEeCxV-UsXGE_0Q" name="StrictTypingFilterFilter" views="_ydJbcCedEeCxV-UsXGE_0Q" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_usjesiedEeCxV-UsXGE_0Q" documentation="" name="type" views="_ydJbciedEeCxV-UsXGE_0Q">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/StrictTypingFilter/type"/>
+        </properties>
+        <referencedBinding xmi:id="_usjesyedEeCxV-UsXGE_0Q" binding="_s6Yv0AtHEd6GjLeaWWGqlg"/>
+        <referencedBinding xmi:id="_usjetCedEeCxV-UsXGE_0Q" binding="_NsYfwEnREd60zu6mQdwT9g"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//filters/StrictTypingFilter"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping"/>
   </eef-components:PropertiesEditionContext>
@@ -335,6 +343,15 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:ViewReference" xmi:id="_L_HssEnREd60zu6mQdwT9g" name="filter properties" view="_AuaNcEnREd60zu6mQdwT9g"/>
+      </views>
+      <views xmi:id="_ydJbcCedEeCxV-UsXGE_0Q" name="StrictTypingFilter">
+        <elements xsi:type="eef-views:Container" xmi:id="_ydJbcSedEeCxV-UsXGE_0Q" name="Type">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ydJbciedEeCxV-UsXGE_0Q" name="Restriction">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="eef-views:ViewReference" xmi:id="_ydJbcyedEeCxV-UsXGE_0Q" name="filter properties" view="_AuaNcEnREd60zu6mQdwT9g"/>
       </views>
     </categories>
   </eef-views:ViewsRepository>

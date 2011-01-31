@@ -31,7 +31,8 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public class ElementBindingReferenceImpl extends DocumentedElementImpl implements ElementBindingReference {
+public class ElementBindingReferenceImpl extends DocumentedElementImpl
+		implements ElementBindingReference {
 	/**
 	 * The cached value of the '{@link #getBinding() <em>Binding</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,7 +73,9 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl implement
 			binding = (AbstractElementBinding) eResolveProxy(oldBinding);
 			if (binding != oldBinding) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING, oldBinding, binding));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING,
+							oldBinding, binding));
 			}
 		}
 		return binding;
@@ -96,7 +99,9 @@ public class ElementBindingReferenceImpl extends DocumentedElementImpl implement
 		AbstractElementBinding oldBinding = binding;
 		binding = newBinding;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING, oldBinding, binding));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.ELEMENT_BINDING_REFERENCE__BINDING,
+					oldBinding, binding));
 	}
 
 	/**

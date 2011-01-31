@@ -31,7 +31,8 @@ import org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl;
  *
  * @generated
  */
-public abstract class BindingFilterImpl extends DocumentedElementImpl implements BindingFilter {
+public abstract class BindingFilterImpl extends DocumentedElementImpl implements
+		BindingFilter {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -109,7 +110,8 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.BINDING_FILTER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.BINDING_FILTER__NAME, oldName, name));
 	}
 
 	/**
@@ -130,7 +132,9 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 		boolean oldMandatory = mandatory;
 		mandatory = newMandatory;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.BINDING_FILTER__MANDATORY, oldMandatory, mandatory));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					FiltersPackage.BINDING_FILTER__MANDATORY, oldMandatory,
+					mandatory));
 	}
 
 	/**
@@ -194,7 +198,8 @@ public abstract class BindingFilterImpl extends DocumentedElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case FiltersPackage.BINDING_FILTER__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case FiltersPackage.BINDING_FILTER__MANDATORY:
 			return mandatory != MANDATORY_EDEFAULT;
 		}

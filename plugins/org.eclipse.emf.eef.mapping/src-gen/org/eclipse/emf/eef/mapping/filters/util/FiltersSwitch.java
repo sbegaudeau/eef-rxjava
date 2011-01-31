@@ -82,7 +82,8 @@ public class FiltersSwitch<T> {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -172,6 +173,19 @@ public class FiltersSwitch<T> {
 				result = caseBindingFilter(onlyReferenceTypeFilter);
 			if (result == null)
 				result = caseDocumentedElement(onlyReferenceTypeFilter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case FiltersPackage.STRICT_TYPING_FILTER: {
+			StrictTypingFilter strictTypingFilter = (StrictTypingFilter) theEObject;
+			T result = caseStrictTypingFilter(strictTypingFilter);
+			if (result == null)
+				result = caseBusinessFilter(strictTypingFilter);
+			if (result == null)
+				result = caseBindingFilter(strictTypingFilter);
+			if (result == null)
+				result = caseDocumentedElement(strictTypingFilter);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -283,6 +297,21 @@ public class FiltersSwitch<T> {
 	 * @generated
 	 */
 	public T caseOnlyReferenceTypeFilter(OnlyReferenceTypeFilter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Strict Typing Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Strict Typing Filter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStrictTypingFilter(StrictTypingFilter object) {
 		return null;
 	}
 

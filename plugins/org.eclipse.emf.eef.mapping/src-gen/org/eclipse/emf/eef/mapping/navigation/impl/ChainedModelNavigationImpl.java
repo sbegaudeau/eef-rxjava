@@ -36,7 +36,8 @@ import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
  *
  * @generated
  */
-public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl implements ChainedModelNavigation {
+public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl
+		implements ChainedModelNavigation {
 	/**
 	 * The cached value of the '{@link #getCurrent() <em>Current</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -90,11 +91,15 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCurrent(StructuredModelNavigation newCurrent, NotificationChain msgs) {
+	public NotificationChain basicSetCurrent(
+			StructuredModelNavigation newCurrent, NotificationChain msgs) {
 		StructuredModelNavigation oldCurrent = current;
 		current = newCurrent;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT, oldCurrent, newCurrent);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT,
+					oldCurrent, newCurrent);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -112,14 +117,26 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 		if (newCurrent != current) {
 			NotificationChain msgs = null;
 			if (current != null)
-				msgs = ((InternalEObject) current).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT, null, msgs);
+				msgs = ((InternalEObject) current)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT,
+								null, msgs);
 			if (newCurrent != null)
-				msgs = ((InternalEObject) newCurrent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT, null, msgs);
+				msgs = ((InternalEObject) newCurrent)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT,
+								null, msgs);
 			msgs = basicSetCurrent(newCurrent, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT, newCurrent, newCurrent));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT,
+					newCurrent, newCurrent));
 	}
 
 	/**
@@ -136,11 +153,15 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNext(StructuredModelNavigation newNext, NotificationChain msgs) {
+	public NotificationChain basicSetNext(StructuredModelNavigation newNext,
+			NotificationChain msgs) {
 		StructuredModelNavigation oldNext = next;
 		next = newNext;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT, oldNext, newNext);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT, oldNext,
+					newNext);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -158,14 +179,26 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 		if (newNext != next) {
 			NotificationChain msgs = null;
 			if (next != null)
-				msgs = ((InternalEObject) next).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT, null, msgs);
+				msgs = ((InternalEObject) next)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT,
+								null, msgs);
 			if (newNext != null)
-				msgs = ((InternalEObject) newNext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT, null, msgs);
+				msgs = ((InternalEObject) newNext)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT,
+								null, msgs);
 			msgs = basicSetNext(newNext, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT, newNext, newNext));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					NavigationPackage.CHAINED_MODEL_NAVIGATION__NEXT, newNext,
+					newNext));
 	}
 
 	/**
@@ -174,7 +207,8 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case NavigationPackage.CHAINED_MODEL_NAVIGATION__CURRENT:
 			return basicSetCurrent(null, msgs);
@@ -273,9 +307,11 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 	 */
 	public EClass owningEClass() {
 		if (this.eContainer() instanceof EMFPropertyBinding) {
-			EMFPropertyBinding propertyBinding = (EMFPropertyBinding) this.eContainer();
+			EMFPropertyBinding propertyBinding = (EMFPropertyBinding) this
+					.eContainer();
 			if (propertyBinding.eContainer() instanceof EMFElementBinding) {
-				EMFElementBinding elementBinding = (EMFElementBinding) propertyBinding.eContainer();
+				EMFElementBinding elementBinding = (EMFElementBinding) propertyBinding
+						.eContainer();
 				if (elementBinding.getModel() instanceof EClass)
 					return (EClass) elementBinding.getModel();
 			}
@@ -283,7 +319,8 @@ public class ChainedModelNavigationImpl extends StructuredModelNavigationImpl im
 			ChainedModelNavigation container = (ChainedModelNavigation) eContainer();
 			if (NavigationPackage.eINSTANCE.getChainedModelNavigation_Current() == eContainingFeature())
 				return container.owningEClass();
-			else if (NavigationPackage.eINSTANCE.getChainedModelNavigation_Next() == eContainingFeature())
+			else if (NavigationPackage.eINSTANCE
+					.getChainedModelNavigation_Next() == eContainingFeature())
 				return container.currentEClass();
 		}
 		return null;

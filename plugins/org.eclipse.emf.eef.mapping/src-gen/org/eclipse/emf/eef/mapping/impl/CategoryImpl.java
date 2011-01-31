@@ -121,7 +121,8 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.CATEGORY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.CATEGORY__NAME, oldName, name));
 	}
 
 	/**
@@ -131,7 +132,10 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	public EList<AbstractElementBinding> getBindings() {
 		if (bindings == null) {
-			bindings = new EObjectContainmentWithInverseEList<AbstractElementBinding>(AbstractElementBinding.class, this, MappingPackage.CATEGORY__BINDINGS, MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY);
+			bindings = new EObjectContainmentWithInverseEList<AbstractElementBinding>(
+					AbstractElementBinding.class, this,
+					MappingPackage.CATEGORY__BINDINGS,
+					MappingPackage.ABSTRACT_ELEMENT_BINDING__CATEGORY);
 		}
 		return bindings;
 	}
@@ -152,8 +156,10 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDatabinding(Databinding newDatabinding, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newDatabinding, MappingPackage.CATEGORY__DATABINDING, msgs);
+	public NotificationChain basicSetDatabinding(Databinding newDatabinding,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDatabinding,
+				MappingPackage.CATEGORY__DATABINDING, msgs);
 		return msgs;
 	}
 
@@ -163,19 +169,25 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	public void setDatabinding(Databinding newDatabinding) {
-		if (newDatabinding != eInternalContainer() || (eContainerFeatureID() != MappingPackage.CATEGORY__DATABINDING && newDatabinding != null)) {
+		if (newDatabinding != eInternalContainer()
+				|| (eContainerFeatureID() != MappingPackage.CATEGORY__DATABINDING && newDatabinding != null)) {
 			if (EcoreUtil.isAncestor(this, newDatabinding))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatabinding != null)
-				msgs = ((InternalEObject) newDatabinding).eInverseAdd(this, MappingPackage.DATABINDING__CATEGORIES, Databinding.class, msgs);
+				msgs = ((InternalEObject) newDatabinding).eInverseAdd(this,
+						MappingPackage.DATABINDING__CATEGORIES,
+						Databinding.class, msgs);
 			msgs = basicSetDatabinding(newDatabinding, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappingPackage.CATEGORY__DATABINDING, newDatabinding, newDatabinding));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.CATEGORY__DATABINDING, newDatabinding,
+					newDatabinding));
 	}
 
 	/**
@@ -185,7 +197,8 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	public EList<Category> getCategories() {
 		if (categories == null) {
-			categories = new EObjectContainmentEList<Category>(Category.class, this, MappingPackage.CATEGORY__CATEGORIES);
+			categories = new EObjectContainmentEList<Category>(Category.class,
+					this, MappingPackage.CATEGORY__CATEGORIES);
 		}
 		return categories;
 	}
@@ -197,10 +210,12 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.CATEGORY__BINDINGS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getBindings()).basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getBindings())
+					.basicAdd(otherEnd, msgs);
 		case MappingPackage.CATEGORY__DATABINDING:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
@@ -215,14 +230,17 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.CATEGORY__BINDINGS:
-			return ((InternalEList<?>) getBindings()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getBindings()).basicRemove(otherEnd,
+					msgs);
 		case MappingPackage.CATEGORY__DATABINDING:
 			return basicSetDatabinding(null, msgs);
 		case MappingPackage.CATEGORY__CATEGORIES:
-			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getCategories()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -233,10 +251,13 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case MappingPackage.CATEGORY__DATABINDING:
-			return eInternalContainer().eInverseRemove(this, MappingPackage.DATABINDING__CATEGORIES, Databinding.class, msgs);
+			return eInternalContainer().eInverseRemove(this,
+					MappingPackage.DATABINDING__CATEGORIES, Databinding.class,
+					msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -275,7 +296,8 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 			return;
 		case MappingPackage.CATEGORY__BINDINGS:
 			getBindings().clear();
-			getBindings().addAll((Collection<? extends AbstractElementBinding>) newValue);
+			getBindings().addAll(
+					(Collection<? extends AbstractElementBinding>) newValue);
 			return;
 		case MappingPackage.CATEGORY__DATABINDING:
 			setDatabinding((Databinding) newValue);
@@ -321,7 +343,8 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case MappingPackage.CATEGORY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
 		case MappingPackage.CATEGORY__BINDINGS:
 			return bindings != null && !bindings.isEmpty();
 		case MappingPackage.CATEGORY__DATABINDING:

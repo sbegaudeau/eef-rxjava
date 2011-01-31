@@ -106,7 +106,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAbstractPropertyBinding(AbstractPropertyBinding object) {
+		public Adapter caseAbstractPropertyBinding(
+				AbstractPropertyBinding object) {
 			return createAbstractPropertyBindingAdapter();
 		}
 
@@ -126,7 +127,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseStandardPropertyBinding(StandardPropertyBinding object) {
+		public Adapter caseStandardPropertyBinding(
+				StandardPropertyBinding object) {
 			return createStandardPropertyBindingAdapter();
 		}
 
@@ -136,7 +138,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseElementBindingReference(ElementBindingReference object) {
+		public Adapter caseElementBindingReference(
+				ElementBindingReference object) {
 			return createElementBindingReferenceAdapter();
 		}
 
@@ -146,7 +149,8 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseEMFMultiPropertiesBinding(EMFMultiPropertiesBinding object) {
+		public Adapter caseEMFMultiPropertiesBinding(
+				EMFMultiPropertiesBinding object) {
 			return createEMFMultiPropertiesBindingAdapter();
 		}
 

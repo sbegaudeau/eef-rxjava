@@ -111,8 +111,14 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseOnlyReferenceTypeFilter(OnlyReferenceTypeFilter object) {
+		public Adapter caseOnlyReferenceTypeFilter(
+				OnlyReferenceTypeFilter object) {
 			return createOnlyReferenceTypeFilterAdapter();
+		}
+
+		@Override
+		public Adapter caseStrictTypingFilter(StrictTypingFilter object) {
+			return createStrictTypingFilterAdapter();
 		}
 
 		@Override
@@ -234,6 +240,20 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOnlyReferenceTypeFilterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.filters.StrictTypingFilter <em>Strict Typing Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.mapping.filters.StrictTypingFilter
+	 * @generated
+	 */
+	public Adapter createStrictTypingFilterAdapter() {
 		return null;
 	}
 
