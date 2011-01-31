@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.emf.codegen.ecore.templates.edit" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="PluginProperties" version="$Id: plugin.propertiesjet,v 1.1 2010/12/24 13:32:37 sbouchet Exp $" %>
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.edit" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="PluginProperties" version="$Id: plugin.propertiesjet,v 1.2 2011/01/31 15:52:09 sbouchet Exp $" %>
 <%
 /**
  * <copyright>
@@ -20,6 +20,7 @@
 
 pluginName = <%=genModel.getModelName()%> Edit Support
 providerName = www.example.org
+<%if (genModel.getRuntimePlatform() != GenRuntimePlatform.GWT) {%>
 
 <%if (genModel.isCreationCommands()) {%>
 _UI_CreateChild_text = {0}
@@ -62,4 +63,5 @@ _UI_<%=genEnum.getName()%>_<%=genEnumLiteral.getName()%>_literal = <%=genEnumLit
 <%}%>
 <%for (String category : genModel.getPropertyCategories()) {%>
 <%=genModel.getPropertyCategoryKey(category)%> = <%=category%>
+<%}%>
 <%}%>
