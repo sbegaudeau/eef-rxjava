@@ -65,7 +65,13 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 			Object[] result = dialog.getResult();
 			if (result.length >= 1) {
 				try {
-					IContainer container = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder((IPath)result[0]);
+					IContainer container;
+					IPath path = (IPath)result[0];
+					if (path.segmentCount() == 1) {
+						container = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getProject(path.toString());
+					} else {
+						container = (IContainer)ResourcesPlugin.getWorkspace().getRoot().getFolder(path);
+					}
 					modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), false);
 					AbstractPropertiesInitializer initializer = dialog.getInitializer();
 					initializer.initialize(modelURI, container);

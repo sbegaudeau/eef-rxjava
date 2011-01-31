@@ -19,6 +19,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
@@ -194,7 +195,14 @@ public class PropertiesInitializer extends AbstractPropertiesInitializer {
 	}
 
 	private String findGenDirectory(IContainer targetFolder) {
-		return targetFolder.getFullPath().removeLastSegments(1).toString() + "/src-gen";
+		IProject project;
+		if (targetFolder instanceof IFolder) {
+			project = targetFolder.getProject();
+		} else {
+			project = (IProject) targetFolder;
+		}
+			
+		return project.getFullPath().toString() + "/src-gen";
 	}
 
 }
