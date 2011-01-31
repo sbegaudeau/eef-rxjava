@@ -47,20 +47,21 @@
             uri="[genPackage.getNSURI()/]"
             class="[genPackage.getQualifiedItemProviderAdapterFactoryClassName()/]"
             supportedTypes=
-    [for (supported : String | genPackage.getProviderSupportedTypes()) before ('              "') separator ('\n               ') after ('"/>') ][supported/][/for]
+[for (supported : String | genPackage.getProviderSupportedTypes()) before ('              "') separator ('\n               ') after ('"/>') ][supported/][/for]
    </extension>
-    <%if (genPackage.isChildCreationExtenders()) { Map<GenPackage, Map<GenClass, List<GenClass.ChildCreationData>>> extendedChildCreationData = genPackage.getExtendedChildCreationData();%>
-      <%if (!extendedChildCreationData.isEmpty()) {%>
-
+    [comment]<%if (genPackage.isChildCreationExtenders()) { Map<GenPackage, Map<GenClass, List<GenClass.ChildCreationData>>> extendedChildCreationData = genPackage.getExtendedChildCreationData();%>
+      <%if (!extendedChildCreationData.isEmpty()) {%>[/comment]
+[if (genPackage.isChildCreationExtenders())]
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
-        <%for (Map.Entry<GenPackage, Map<GenClass, List<GenClass.ChildCreationData>>> entry : extendedChildCreationData.entrySet()) {%>
+        [for (genPackage.getExtendedChildCreationDataEntrySet())]
+        [let key : GenPackage = getPackageEntryKey()]
       <extender
-            uri="<%=entry.getKey().getNSURI()%>"
-            class="<%=genPackage.getQualifiedItemProviderAdapterFactoryClassName()%>$<%=genPackage.getChildCreationExtenderName(entry.getKey())%>"/>
-        <%}%>
+            uri="[key.getNSURI()/]"
+            class="[genPackage.getQualifiedItemProviderAdapterFactoryClassName()/]$[genPackage.getChildCreationExtenderName(key)/]"/>
+        [/let]
+        [/for]
    </extension>
-      <%}%>
-    <%}%>
+    [/if]
   [/if]
 [/for]
 [if (genModel.sameModelEditProject())]

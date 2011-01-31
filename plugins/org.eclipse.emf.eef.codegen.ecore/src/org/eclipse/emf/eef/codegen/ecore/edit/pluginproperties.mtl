@@ -14,7 +14,7 @@
 [includeHeaderProperties()/]
 pluginName = [genModel.getModelName()/] Edit Support
 providerName = www.example.org
-
+[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
 [if (genModel.creationCommands)]
 _UI_CreateChild_text = {0}
 _UI_CreateChild_text2 = {1} [if (genModel.creationSubmenus)]| [/if]{0}
@@ -57,6 +57,7 @@ _UI_[genEnum.getName()/]_[genEnumLiteral.getName()/]_literal = [genEnumLiteral.g
 [for (category : String | genModel.getPropertyCategories())]
 [genModel.getPropertyCategoryKey(category)/] = [category/]
 [/for]
+[/if]
 [/file]
 [/template]
 
