@@ -41,6 +41,7 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 	 * The type to edit
 	 */
 	private EObject multiValuedEditorSample;
+
 	/**
 	 * Updated value of the feature
 	 */
@@ -128,39 +129,38 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 	 * - delete the models
 	 */
 	public void testEditMultiValuedEditorSampleMultivaluededitorRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		multiValuedEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
 		if (multiValuedEditorSample == null)
 			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForMultiValuedEditorSampleMultivaluededitorRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the MultiValuedEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the multivaluededitorRequiredProperty feature of the MultiValuedEditorSample element 
 				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -190,39 +190,38 @@ public class MultiValuedEditorSamplePropertiesTestCase extends SWTBotEEFTestCase
 	 * - delete the models
 	 */
 	public void testEditMultiValuedEditorSampleMultivaluededitorOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		multiValuedEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
 		if (multiValuedEditorSample == null)
 			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForMultiValuedEditorSampleMultivaluededitorOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the MultiValuedEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), multiValuedEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(multiValuedEditorSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the multivaluededitorOptionalProperty feature of the MultiValuedEditorSample element 
 				bot.editPropertyMultiValuedEditorFeature(propertiesView, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

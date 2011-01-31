@@ -44,10 +44,11 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * The type to edit
 	 */
 	private EObject advancedTableCompositionEditorSample;
+
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();	
+	private EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -141,39 +142,39 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * - delete the models
 	 */
 	public void testEditAdvancedTableCompositionEditorSampleAdvancedtablecompositionRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedTableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
 		editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(wizardShell);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -189,7 +190,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		CompoundCommand cc = new CompoundCommand();
 		List eGet = (List)advancedTableCompositionEditorSample.eGet(EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty());
 		if (eGet.size() == 0)
-			throw new InputModelInvalidException("Model is invalid");					
+			throw new InputModelInvalidException("Model is invalid");
 		EObject firstInstanceOf = (EObject) eGet.get(0);
 		cc.append(RemoveCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
@@ -205,39 +206,39 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * - delete the models
 	 */
 	public void testRemoveAdvancedTableCompositionEditorSampleAdvancedtablecompositionRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedTableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedtablecompositionRequiredProperty feature of the AdvancedTableCompositionEditorSample element 
 				bot.removeAdvancedTableCompositionFeature(wizardShell, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -269,39 +270,39 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * - delete the models
 	 */
 	public void testEditAdvancedTableCompositionEditorSampleAdvancedtablecompositionOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedTableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
 		editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(wizardShell);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -317,7 +318,7 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		CompoundCommand cc = new CompoundCommand();
 		List eGet = (List)advancedTableCompositionEditorSample.eGet(EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty());
 		if (eGet.size() == 0)
-			throw new InputModelInvalidException("Model is invalid");					
+			throw new InputModelInvalidException("Model is invalid");
 		EObject firstInstanceOf = (EObject) eGet.get(0);
 		cc.append(RemoveCommand.create(editingDomain, advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), firstInstanceOf));
 		editingDomain.getCommandStack().execute(cc);
@@ -333,39 +334,39 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 	 * - delete the models
 	 */
 	public void testRemoveAdvancedTableCompositionEditorSampleAdvancedtablecompositionOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedTableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (advancedTableCompositionEditorSample == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForAdvancedTableCompositionEditorSampleAdvancedtablecompositionOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedTableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedTableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedTableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedTableCompositionEditorSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedtablecompositionOptionalProperty feature of the AdvancedTableCompositionEditorSample element 
 				bot.removeAdvancedTableCompositionFeature(wizardShell, EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Edit the feature in the table composition
@@ -375,18 +376,21 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
+		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
-	}	
+	}
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionRequiredPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
+		bot.sleep(500);
 		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionRequiredPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);
@@ -399,18 +403,21 @@ public class AdvancedTableCompositionEditorSampleTestCase extends SWTBotEEFTestC
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
+		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
-	}	
+	}
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
 	 */
 	protected void editAdvancedTableCompositionadvancedtablecompositionOptionalPropertyFeature(SWTBotShell wizardShell) throws WidgetInvalidException {
 		bot.activateShell(wizardShell);
+		bot.sleep(500);
 		bot.addButtonAdvancedTableComposition(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty).click();
 		editAdvancedTableCompositionForadvancedtablecompositionOptionalPropertyFeature();
 		bot.closeShellWithFinishButton(wizardShell);

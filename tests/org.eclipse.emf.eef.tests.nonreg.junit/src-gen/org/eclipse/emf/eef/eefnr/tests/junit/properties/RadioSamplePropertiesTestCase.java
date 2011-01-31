@@ -40,10 +40,12 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject radioSample;
+
 	/**
 	 * The enum value for the enum class radioRequiredProperty
 	 */
 	private Object enumValueForRadioRequiredProperty;
+
 	/**
 	 * The enum value for the enum class radioOptionalProperty
 	 */
@@ -133,40 +135,39 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditRadioSampleRadioRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		radioSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), radioSampleMetaClass);
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
-	
+
 		enumValueForRadioRequiredProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((RadioSample)radioSample).getRadioRequiredProperty().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForRadioSampleRadioRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the RadioSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), radioSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the radioRequiredProperty feature of the RadioSample element 
 				bot.editPropertyRadioFeature(propertiesView, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, enumValueForRadioRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -194,40 +195,39 @@ public class RadioSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditRadioSampleRadioOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		radioSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), radioSampleMetaClass);
 		if (radioSample == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
-	
+
 		enumValueForRadioOptionalProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((RadioSample)radioSample).getRadioOptionalProperty().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForRadioSampleRadioOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the RadioSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), radioSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(radioSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the radioOptionalProperty feature of the RadioSample element 
 				bot.editPropertyRadioFeature(propertiesView, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, enumValueForRadioOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

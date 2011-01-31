@@ -42,10 +42,12 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject referencesTableSample;
+
 	/**
 	 * The reference value for the reference class referencestableOptionalProperty
 	 */
 	private Object referenceValueForReferencestableOptionalProperty;
+
 	/**
 	 * The reference value for the reference class referencestableRequiredProperty
 	 */
@@ -53,7 +55,7 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
+	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -145,39 +147,39 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditReferencesTableSampleReferencestableRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForReferencesTableSampleReferencestableRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the ReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
 				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, 0);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -211,39 +213,39 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveReferencesTableSampleReferencestableRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForReferencesTableSampleReferencestableRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the ReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the referencestableRequiredProperty feature of the ReferencesTableSample element 
 				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, 0);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -273,39 +275,39 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditReferencesTableSampleReferencestableOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForReferencesTableSampleReferencestableOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the ReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
 				bot.editReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, 0);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -339,39 +341,39 @@ public class ReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveReferencesTableSampleReferencestableOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		referencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (referencesTableSample == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForReferencesTableSampleReferencestableOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the ReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), referencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(referencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, referencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the referencestableOptionalProperty feature of the ReferencesTableSample element 
 				bot.removeReferencesTableFeature(wizardShell, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, 0);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

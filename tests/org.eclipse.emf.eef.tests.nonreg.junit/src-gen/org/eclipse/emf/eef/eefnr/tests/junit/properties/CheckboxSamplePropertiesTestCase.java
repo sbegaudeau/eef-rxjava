@@ -39,6 +39,7 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject checkboxSample;
+
 	/**
 	 * Updated value of the feature
 	 */
@@ -125,39 +126,38 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditCheckboxSampleCheckboxRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		checkboxSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), checkboxSampleMetaClass);
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForCheckboxSampleCheckboxRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the CheckboxSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), checkboxSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the checkboxRequiredProperty feature of the CheckboxSample element 
 				bot.editPropertyEEFCheckbox(propertiesView, EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -186,39 +186,38 @@ public class CheckboxSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditCheckboxSampleCheckboxOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		checkboxSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), checkboxSampleMetaClass);
 		if (checkboxSample == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForCheckboxSampleCheckboxOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the CheckboxSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), checkboxSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(checkboxSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the checkboxOptionalProperty feature of the CheckboxSample element 
 				bot.editPropertyEEFCheckbox(propertiesView, EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

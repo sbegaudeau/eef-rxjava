@@ -39,6 +39,7 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject textareaSample;
+
 	/**
 	 * Updated value of the feature
 	 */
@@ -124,39 +125,38 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextareaSampleTextareaRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
 		if (textareaSample == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextareaSampleTextareaRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the TextareaSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the textareaRequiredProperty feature of the TextareaSample element 
 				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -184,39 +184,38 @@ public class TextareaSamplePropertiesTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextareaSampleTextareaOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textareaSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
 		if (textareaSample == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextareaSampleTextareaOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the TextareaSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textareaSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textareaSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the textareaOptionalProperty feature of the TextareaSample element 
 				bot.editPropertyEEFText(propertiesView, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, UPDATED_VALUE, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

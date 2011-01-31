@@ -39,6 +39,7 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject textSampleWithTwoTabs;
+
 	/**
 	 * Updated value of the feature
 	 */
@@ -124,39 +125,39 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextSampleWithTwoTabsTextOptionalPropertyInFirstTab() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textSampleWithTwoTabs = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (textSampleWithTwoTabs == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextSampleWithTwoTabsTextOptionalPropertyInFirstTab();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the TextSampleWithTwoTabs element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleFirstTab");
-		
+
 		// Change value of the textOptionalPropertyInFirstTab feature of the TextSampleWithTwoTabs element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -184,39 +185,39 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextSampleWithTwoTabsTextRequiredPropertyInFirstTab() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textSampleWithTwoTabs = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (textSampleWithTwoTabs == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextSampleWithTwoTabsTextRequiredPropertyInFirstTab();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the TextSampleWithTwoTabs element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleFirstTab");
-		
+
 		// Change value of the textRequiredPropertyInFirstTab feature of the TextSampleWithTwoTabs element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -244,39 +245,39 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextSampleWithTwoTabsTextOptionalPropertyInSecondTab() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textSampleWithTwoTabs = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (textSampleWithTwoTabs == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextSampleWithTwoTabsTextOptionalPropertyInSecondTab();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the TextSampleWithTwoTabs element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleSecondTab");
-		
+
 		// Change value of the textOptionalPropertyInSecondTab feature of the TextSampleWithTwoTabs element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -304,39 +305,39 @@ public class TextSampleWithTwoTabsTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextSampleWithTwoTabsTextRequiredPropertyInSecondTab() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textSampleWithTwoTabs = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (textSampleWithTwoTabs == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextSampleWithTwoTabsTextRequiredPropertyInSecondTab();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the TextSampleWithTwoTabs element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleWithTwoTabsMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleWithTwoTabsMetaClass.getName());
-		
+
 		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleWithTwoTabsMetaClass, firstInstanceOf, "TextSampleSecondTab");
-		
+
 		// Change value of the textRequiredPropertyInSecondTab feature of the TextSampleWithTwoTabs element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

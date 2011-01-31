@@ -39,6 +39,7 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject sample;
+
 	/**
 	 * Updated value of the feature
 	 */
@@ -124,39 +125,39 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditSampleTextRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		sample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForSampleTextRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Sample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, sampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, sampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the textRequiredProperty feature of the Sample element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.Sample.Properties.textRequiredProperty, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -184,39 +185,39 @@ public class SampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditSampleTextOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		sample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		if (sample == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForSampleTextOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the Sample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(sampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, sampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, sampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the textOptionalProperty feature of the Sample element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.Sample.Properties.textOptionalProperty, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

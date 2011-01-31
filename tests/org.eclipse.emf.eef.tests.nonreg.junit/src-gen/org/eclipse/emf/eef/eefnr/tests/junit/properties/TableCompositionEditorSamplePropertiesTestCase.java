@@ -48,10 +48,11 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * The type to edit
 	 */
 	private EObject tableCompositionEditorSample;
+
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();	
+	private EClass sampleMetaClass = EefnrPackage.eINSTANCE.getSample();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -145,39 +146,38 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * - delete the models
 	 */
 	public void testEditTableCompositionEditorSampleTablecompositionRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTableCompositionEditorSampleTablecompositionRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the TableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element
 		editTableCompositiontablecompositionRequiredPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -207,39 +207,39 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * - delete the models
 	 */
 	public void testRemoveTableCompositionEditorSampleTablecompositionRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForTableCompositionEditorSampleTablecompositionRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the TableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the tablecompositionRequiredProperty feature of the TableCompositionEditorSample element 
 		bot.removePropertyTableCompositionFeature(propertiesView, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -271,39 +271,38 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * - delete the models
 	 */
 	public void testEditTableCompositionEditorSampleTablecompositionOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTableCompositionEditorSampleTablecompositionOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the TableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element
 		editTableCompositiontablecompositionOptionalPropertyFeature(propertiesView, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -333,39 +332,39 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 	 * - delete the models
 	 */
 	public void testRemoveTableCompositionEditorSampleTablecompositionOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		tableCompositionEditorSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (tableCompositionEditorSample == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForTableCompositionEditorSampleTablecompositionOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF properties view to edit the TableCompositionEditorSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), tableCompositionEditorSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(tableCompositionEditorSampleMetaClass.getName());
-		
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "Base");
-		
+
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, null);
+
 		// Change value of the tablecompositionOptionalProperty feature of the TableCompositionEditorSample element 
 		bot.removePropertyTableCompositionFeature(propertiesView, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, bot.selectNode(modelEditor, firstInstanceOf));
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Edit the feature in the table composition
@@ -375,12 +374,14 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
+		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
-	}	
+	}
 	/**
 	 * Edit the table composition
 	 * @param wizardShell
@@ -399,12 +400,14 @@ public class TableCompositionEditorSamplePropertiesTestCase extends SWTBotEEFTes
 		SWTBotShell shellTable = bot.shell(sampleMetaClass.getName());
 		bot.activateShell(shellTable);
 		Sample sample = (Sample) EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), sampleMetaClass);
+		bot.sleep(500);
 		// Change value of the textRequiredProperty feature of the textRequiredProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textRequiredProperty, sample.getTextRequiredProperty());
+		bot.sleep(500);
 		// Change value of the textOptionalProperty feature of the textOptionalProperty element 
 				bot.editEEFText(EefnrViewsRepository.Sample.Properties.textOptionalProperty, sample.getTextOptionalProperty());
 		bot.closeShellWithFinishButton(shellTable);
-	}	
+	}
 	/**
 	 * Edit the table composition
 	 * @param wizardShell

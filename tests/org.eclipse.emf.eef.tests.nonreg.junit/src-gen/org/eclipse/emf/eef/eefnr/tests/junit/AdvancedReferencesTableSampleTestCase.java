@@ -43,18 +43,20 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject advancedReferencesTableSample;
+
+	/**
+	 * The reference value for the reference class advancedreferencestableOptionalProperty
+	 */
+	private Object referenceValueForAdvancedreferencestableOptionalProperty;
+
 	/**
 	 * The reference value for the reference class advancedreferencestableRequiredProperty
 	 */
 	private Object referenceValueForAdvancedreferencestableRequiredProperty;
 	/**
-	 * The reference value for the reference class advancedreferencestableOptionalProperty
-	 */
-	private Object referenceValueForAdvancedreferencestableOptionalProperty;
-	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
+	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -146,39 +148,39 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditAdvancedReferencesTableSampleAdvancedreferencestableRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (advancedReferencesTableSample == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForAdvancedReferencesTableSampleAdvancedreferencestableRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedreferencestableRequiredProperty feature of the AdvancedReferencesTableSample element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty, referenceValueForAdvancedreferencestableRequiredProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -212,39 +214,39 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveAdvancedReferencesTableSampleAdvancedreferencestableRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (advancedReferencesTableSample == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForAdvancedReferencesTableSampleAdvancedreferencestableRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedreferencestableRequiredProperty feature of the AdvancedReferencesTableSample element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -274,39 +276,39 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditAdvancedReferencesTableSampleAdvancedreferencestableOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (advancedReferencesTableSample == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForAdvancedReferencesTableSampleAdvancedreferencestableOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedreferencestableOptionalProperty feature of the AdvancedReferencesTableSample element 
 		bot.editAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty, referenceValueForAdvancedreferencestableOptionalProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -340,39 +342,39 @@ public class AdvancedReferencesTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveAdvancedReferencesTableSampleAdvancedreferencestableOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		advancedReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (advancedReferencesTableSample == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForAdvancedReferencesTableSampleAdvancedreferencestableOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the AdvancedReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), advancedReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(advancedReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, advancedReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the advancedreferencestableOptionalProperty feature of the AdvancedReferencesTableSample element 
 		bot.removeAdvancedReferencesTableFeature(wizardShell, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

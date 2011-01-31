@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.tests.junit;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Collections;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -24,8 +23,6 @@ import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.swt.finder.keyboard.KeyboardStrategy;
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences.KeyboardLayoutDetector;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 /**
  * TestCase for TextSample
@@ -42,6 +39,7 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject textSample;
+
 	/**
 	 * Updated value of the feature
 	 */
@@ -127,38 +125,39 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextSampleTextRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleMetaClass);
 		if (textSample == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextSampleTextRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the TextSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the textRequiredProperty feature of the TextSample element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -186,39 +185,39 @@ public class TextSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditTextSampleTextOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		textSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleMetaClass);
 		if (textSample == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForTextSampleTextOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the TextSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), textSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(textSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, textSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the textOptionalProperty feature of the TextSample element 
 				bot.editTextFeature(wizardShell, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, UPDATED_VALUE);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

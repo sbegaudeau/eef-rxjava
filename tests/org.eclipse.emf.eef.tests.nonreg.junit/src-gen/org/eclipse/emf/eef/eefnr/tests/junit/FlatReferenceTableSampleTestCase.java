@@ -42,10 +42,12 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject flatReferencesTableSample;
+
 	/**
 	 * The reference value for the reference class flatreferencestableOptionalProperty
 	 */
 	private Object referenceValueForFlatreferencestableOptionalProperty;
+
 	/**
 	 * The reference value for the reference class flatreferencestableRequiredProperty
 	 */
@@ -53,7 +55,7 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	/**
 	 * The EClass of the reference to edit
 	 */
-	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();	
+	private EClass totalSampleMetaClass = EefnrPackage.eINSTANCE.getTotalSample();
 	/**
 	 * The eObjects list contained in widgets
 	 */
@@ -145,39 +147,39 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditFlatReferenceTableSampleFlatreferencetableRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		flatReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForFlatReferencesTableSampleFlatreferencetableRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the FlatReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element 
 		bot.editFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, 0);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -211,39 +213,39 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveFlatReferenceTableSampleFlatreferencetableRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		flatReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForFlatReferencesTableSampleFlatreferencetableRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the FlatReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the flatreferencetableRequiredProperty feature of the FlatReferencesTableSample element
 				bot.removeFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -273,39 +275,39 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditFlatReferenceTableSampleFlatreferencetableOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		flatReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeExpectedModelForFlatReferencesTableSampleFlatreferencetableOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the FlatReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element 
 		bot.editFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, 0);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -339,39 +341,39 @@ public class FlatReferenceTableSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testRemoveFlatReferenceTableSampleFlatreferencetableOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		flatReferencesTableSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (flatReferencesTableSample == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-	
+
 		// Create the expected model
 		initializeRemoveExpectedModelForFlatReferencesTableSampleFlatreferencetableOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the FlatReferencesTableSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), flatReferencesTableSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(flatReferencesTableSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, flatReferencesTableSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the flatreferencetableOptionalProperty feature of the FlatReferencesTableSample element
 				bot.removeFlatReferencesTableFeature(wizardShell, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 

@@ -40,10 +40,12 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * The type to edit
 	 */
 	private EObject eMFComboViewerSample;
+
 	/**
 	 * The enum value for the enum class emfcomboviewerRequiredProperty
 	 */
 	private Object enumValueForEmfcomboviewerRequiredProperty;
+
 	/**
 	 * The enum value for the enum class emfcomboviewerOptionalProperty
 	 */
@@ -133,40 +135,40 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditEMFComboViewerSampleEmfcomboviewerRequiredProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
-	
+
 		enumValueForEmfcomboviewerRequiredProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((EMFComboViewerSample)eMFComboViewerSample).getEmfcomboviewerRequiredProperty().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerRequiredProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the EMFComboViewerSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the emfcomboviewerRequiredProperty feature of the EMFComboViewerSample element 
 				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, enumValueForEmfcomboviewerRequiredProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 	/**
 	 * Create the expected model from the input model
@@ -194,40 +196,40 @@ public class EMFComboViewerSampleTestCase extends SWTBotEEFTestCase {
 	 * - delete the models
 	 */
 	public void testEditEMFComboViewerSampleEmfcomboviewerOptionalProperty() throws Exception {
-		
+
 		// Import the input model
 		initializeInputModel();
-		
+
 		eMFComboViewerSample = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
 		if (eMFComboViewerSample == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
-	
+
 		enumValueForEmfcomboviewerOptionalProperty = bot.changeEnumLiteralValue(EefnrPackage.eINSTANCE.getENUM_SAMPLE(), ((EMFComboViewerSample)eMFComboViewerSample).getEmfcomboviewerOptionalProperty().getLiteral());
 		// Create the expected model
 		initializeExpectedModelForEMFComboViewerSampleEmfcomboviewerOptionalProperty();
-		
+
 		// Open the input model with the treeview editor
 		SWTBotEditor modelEditor = bot.openActiveModel();
-		
+
 		// Open the EEF wizard (by double click) to edit the EMFComboViewerSample element
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), eMFComboViewerSampleMetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException(eMFComboViewerSampleMetaClass.getName());
-		
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, "Base");
-		
+
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, eMFComboViewerSampleMetaClass, firstInstanceOf, null);
+
 		// Change value of the emfcomboviewerOptionalProperty feature of the EMFComboViewerSample element 
 				bot.editEMFComboViewerFeature(wizardShell, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, enumValueForEmfcomboviewerOptionalProperty);
-		
-		// Save the changement
+
+		// Save the modification
 		bot.finalizeEdition(modelEditor);
-		
+
 		// Compare real model with expected model
 		assertExpectedModelReached(expectedModel);
-		
+
 		// Delete the input model
 		deleteModels();
-	
+
 	}
 
 
