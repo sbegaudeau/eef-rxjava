@@ -129,7 +129,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 		
 		
 		composer = new PartComposer(genViewsRepositoryStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EEFGenViewsRepository.GenViewsRepository.Reference.class) {
@@ -433,8 +433,8 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends CompositeProper
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

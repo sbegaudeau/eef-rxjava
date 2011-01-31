@@ -122,7 +122,7 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 			eEFGenModel.setTestsGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode == event.getAffectedEditor()) {
-			eEFGenModel.setUseJMergeForUserCode((Boolean)event.getNewValue());	
+			eEFGenModel.setUseJMergeForUserCode((Boolean)event.getNewValue());
 		}
 	}
 
@@ -131,39 +131,41 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		EEFGenModelPropertiesEditionPart basePart = (EEFGenModelPropertiesEditionPart)editingPart;
-		if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setGenerationDirectory("");
+		if (editingPart.isVisible()) {	
+			EEFGenModelPropertiesEditionPart basePart = (EEFGenModelPropertiesEditionPart)editingPart;
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setGenerationDirectory("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setAuthor(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setAuthor("");
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setAuthor(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setAuthor("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setLicense(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setLicense("");
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setLicense(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setLicense("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTestsGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTestsGenerationDirectory("");
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setTestsGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setTestsGenerationDirectory("");
+				}
 			}
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().equals(msg.getFeature()) && basePart != null)
+				basePart.setUseJMergeToManageUserCode((Boolean)msg.getNewValue());
+			
+			
 		}
-		if (EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().equals(msg.getFeature()) && basePart != null)
-			basePart.setUseJMergeToManageUserCode((Boolean)msg.getNewValue());
-		
-		
 	}
 
 
@@ -186,26 +188,40 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.EEFGenModel.Legal.author == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_Author().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.EEFGenModel.Legal.license == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_License().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

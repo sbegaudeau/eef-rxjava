@@ -107,7 +107,7 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 		
 		
 		composer = new PartComposer(eEFGenModelStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.class) {
@@ -358,8 +358,8 @@ public class EEFGenModelPropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

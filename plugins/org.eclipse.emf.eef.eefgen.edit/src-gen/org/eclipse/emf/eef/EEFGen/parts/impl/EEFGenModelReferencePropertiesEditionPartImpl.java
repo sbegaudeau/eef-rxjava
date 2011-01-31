@@ -39,7 +39,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-// End of user code	
+// End of user code
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -91,7 +91,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		
 		
 		composer = new PartComposer(eEFGenModelReferenceStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EEFGenViewsRepository.EEFGenModelReference.Reference.class) {
@@ -154,8 +154,8 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

@@ -32,7 +32,7 @@ public class EEFGenViewsRepository {
 			
 			public static String propertiesEditionContext = "EEFGen::GenEditionContext::Reference::properties Edition Context";
 			
-		
+	
 		}
 	
 		public static class Parameters {
@@ -43,7 +43,7 @@ public class EEFGenViewsRepository {
 			
 			public static String descriptorsContributorID = "EEFGen::GenEditionContext::Parameters::Descriptors contributorID";
 			
-		
+	
 		}
 	
 		public static class Activation {
@@ -57,7 +57,7 @@ public class EEFGenViewsRepository {
 			
 			public static String jUnitTestCases = "EEFGen::GenEditionContext::Activation::JUnit test cases";
 			
-		
+	
 		}
 	
 		public static class Implementation {
@@ -68,7 +68,7 @@ public class EEFGenViewsRepository {
 			
 			public static String propertiesEditingProvidersSuperClass = "EEFGen::GenEditionContext::Implementation::propertiesEditingProvidersSuperClass";
 			
-		
+	
 		}
 	
 	}
@@ -83,7 +83,7 @@ public class EEFGenViewsRepository {
 			
 			public static String referencedEEFGenModel = "EEFGen::EEFGenModelReference::Reference::Referenced EEFGenModel";
 			
-		
+	
 		}
 	
 	}
@@ -104,7 +104,7 @@ public class EEFGenViewsRepository {
 			
 			public static String useJMergeToManageUserCode = "EEFGen::EEFGenModel::Parameters::Use JMerge to manage user code";
 			
-		
+	
 		}
 	
 		public static class Legal {
@@ -115,7 +115,7 @@ public class EEFGenViewsRepository {
 			
 			public static String license = "EEFGen::EEFGenModel::Legal::license";
 			
-		
+	
 		}
 	
 	}
@@ -130,7 +130,7 @@ public class EEFGenViewsRepository {
 			
 			public static String viewsRepository = "EEFGen::GenViewsRepository::Reference::Views repository";
 			
-		
+	
 		}
 	
 		public static class Parameters {
@@ -141,7 +141,7 @@ public class EEFGenViewsRepository {
 			
 			public static String helpStrategy = "EEFGen::GenViewsRepository::Parameters::Help strategy";
 			
-		
+	
 		}
 	
 		public static class Activation {
@@ -152,7 +152,7 @@ public class EEFGenViewsRepository {
 			
 			public static String formsViews = "EEFGen::GenViewsRepository::Activation::Forms views";
 			
-		
+	
 		}
 	
 		public static class Implementation {
@@ -160,7 +160,7 @@ public class EEFGenViewsRepository {
 			
 			public static String partsSuperClass = "EEFGen::GenViewsRepository::Implementation::partsSuperClass";
 			
-		
+	
 		}
 	
 	}

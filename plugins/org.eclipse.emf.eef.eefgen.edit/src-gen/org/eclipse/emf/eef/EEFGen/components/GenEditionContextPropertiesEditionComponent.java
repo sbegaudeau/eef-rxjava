@@ -162,10 +162,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			genEditionContext.setDescriptorsContributorID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
-			genEditionContext.setDescriptorsGenericPropertiesViews((Boolean)event.getNewValue());	
+			genEditionContext.setDescriptorsGenericPropertiesViews((Boolean)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
-			genEditionContext.setGmfPropertiesViews((Boolean)event.getNewValue());	
+			genEditionContext.setGmfPropertiesViews((Boolean)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
@@ -184,7 +184,7 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
-			genEditionContext.setGenerateJunitTestCases((Boolean)event.getNewValue());	
+			genEditionContext.setGenerateJunitTestCases((Boolean)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass == event.getAffectedEditor()) {
 			genEditionContext.setLeafComponentsSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
@@ -199,47 +199,49 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		GenEditionContextPropertiesEditionPart basePart = (GenEditionContextPropertiesEditionPart)editingPart;
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setBasePackage("");
+		if (editingPart.isVisible()) {	
+			GenEditionContextPropertiesEditionPart basePart = (GenEditionContextPropertiesEditionPart)editingPart;
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setBasePackage("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setDescriptorsContributorID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setDescriptorsContributorID("");
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setDescriptorsContributorID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setDescriptorsContributorID("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().equals(msg.getFeature()) && basePart != null)
-			basePart.setGenericPropertiesViewsDescriptors((Boolean)msg.getNewValue());
-		
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().equals(msg.getFeature()) && basePart != null)
-			basePart.setGMFSpecificPropertiesViews((Boolean)msg.getNewValue());
-		
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditionContext().equals(msg.getFeature()) && basePart != null)
-			basePart.setPropertiesEditionContext((EObject)msg.getNewValue());
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().equals(msg.getFeature()) && basePart != null)
-			basePart.setJUnitTestCases((Boolean)msg.getNewValue());
-		
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setLeafComponentsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setLeafComponentsSuperClass("");
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().equals(msg.getFeature()) && basePart != null)
+				basePart.setGenericPropertiesViewsDescriptors((Boolean)msg.getNewValue());
+			
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().equals(msg.getFeature()) && basePart != null)
+				basePart.setGMFSpecificPropertiesViews((Boolean)msg.getNewValue());
+			
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditionContext().equals(msg.getFeature()) && basePart != null)
+				basePart.setPropertiesEditionContext((EObject)msg.getNewValue());
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().equals(msg.getFeature()) && basePart != null)
+				basePart.setJUnitTestCases((Boolean)msg.getNewValue());
+			
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setLeafComponentsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setLeafComponentsSuperClass("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setPropertiesEditingProvidersSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setPropertiesEditingProvidersSuperClass("");
+			if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setPropertiesEditingProvidersSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setPropertiesEditingProvidersSuperClass("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -280,34 +282,54 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EEFGenViewsRepository.GenEditionContext.Parameters.basePackage == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

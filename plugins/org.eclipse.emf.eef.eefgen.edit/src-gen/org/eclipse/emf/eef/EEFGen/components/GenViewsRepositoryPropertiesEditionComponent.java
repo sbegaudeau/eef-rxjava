@@ -93,7 +93,9 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			
 			basePart.setFormsViews(genViewsRepository.isFormViews());
 			
-			basePart.initHelpStrategy((EEnum) EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEType(), genViewsRepository.getHelpStrategy());
+			if (isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy)) {
+				basePart.initHelpStrategy((EEnum) EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEType(), genViewsRepository.getHelpStrategy());
+			}
 			// init part
 			viewsRepositorySettings = new EObjectFlatComboSettings(genViewsRepository, EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository());
 			basePart.initViewsRepository(viewsRepositorySettings);
@@ -151,10 +153,10 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			genViewsRepository.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews == event.getAffectedEditor()) {
-			genViewsRepository.setSwtViews((Boolean)event.getNewValue());	
+			genViewsRepository.setSwtViews((Boolean)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenViewsRepository.Activation.formsViews == event.getAffectedEditor()) {
-			genViewsRepository.setFormViews((Boolean)event.getNewValue());	
+			genViewsRepository.setFormViews((Boolean)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy == event.getAffectedEditor()) {
 			genViewsRepository.setHelpStrategy((HELP_STRATEGY)event.getNewValue());
@@ -185,33 +187,35 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		GenViewsRepositoryPropertiesEditionPart basePart = (GenViewsRepositoryPropertiesEditionPart)editingPart;
-		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setBasePackage("");
+		if (editingPart.isVisible()) {	
+			GenViewsRepositoryPropertiesEditionPart basePart = (GenViewsRepositoryPropertiesEditionPart)editingPart;
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setBasePackage("");
+				}
 			}
-		}
-		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
-			basePart.setSWTViews((Boolean)msg.getNewValue());
-		
-		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null)
-			basePart.setFormsViews((Boolean)msg.getNewValue());
-		
-		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && basePart != null)
-			basePart.setHelpStrategy((Enumerator)msg.getNewValue());
-		
-		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository().equals(msg.getFeature()) && basePart != null)
-			basePart.setViewsRepository((EObject)msg.getNewValue());
-		if (EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setPartsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setPartsSuperClass("");
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null)
+				basePart.setSWTViews((Boolean)msg.getNewValue());
+			
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null)
+				basePart.setFormsViews((Boolean)msg.getNewValue());
+			
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy))
+				basePart.setHelpStrategy((Enumerator)msg.getNewValue());
+			
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository().equals(msg.getFeature()) && basePart != null)
+				basePart.setViewsRepository((EObject)msg.getNewValue());
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setPartsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setPartsSuperClass("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -246,26 +250,40 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenViewsRepository.Activation.formsViews == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

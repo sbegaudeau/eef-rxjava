@@ -14,46 +14,40 @@ package org.eclipse.emf.eef.EEFGen.providers;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory;
 
+
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
 public class EEFGenEEFAdapterFactory extends EEFGenAdapterFactory {
 
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.EEFGen#createGenEditionContextAdapter()
+	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createGenEditionContextAdapter()
 	 * 
 	 */
 	public Adapter createGenEditionContextAdapter() {
 		return new GenEditionContextPropertiesEditionProvider();
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.EEFGen#createEEFGenModelReferenceAdapter()
+	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createEEFGenModelReferenceAdapter()
 	 * 
 	 */
 	public Adapter createEEFGenModelReferenceAdapter() {
 		return new EEFGenModelReferencePropertiesEditionProvider();
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.EEFGen#createEEFGenModelAdapter()
+	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createEEFGenModelAdapter()
 	 * 
 	 */
 	public Adapter createEEFGenModelAdapter() {
 		return new EEFGenModelPropertiesEditionProvider();
 	}
-
-
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.util.EEFGen#createGenViewsRepositoryAdapter()
+	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createGenViewsRepositoryAdapter()
 	 * 
 	 */
 	public Adapter createGenViewsRepositoryAdapter() {

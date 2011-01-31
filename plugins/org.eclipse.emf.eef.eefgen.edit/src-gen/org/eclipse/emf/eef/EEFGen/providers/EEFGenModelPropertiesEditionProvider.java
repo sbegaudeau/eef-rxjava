@@ -11,11 +11,14 @@
  */
 package org.eclipse.emf.eef.EEFGen.providers;
 
+import java.util.List;
+
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.components.EEFGenModelPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 /**
@@ -23,6 +26,21 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * 
  */
 public class EEFGenModelPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+
+	/**
+	 * Constructor without provider for super types.
+	 */
+	public EEFGenModelPropertiesEditionProvider() {
+		super();
+	}
+
+	/**
+	 * Constructor with providers for super types.
+	 * @param superProviders providers to use for super types.
+	 */
+	public EEFGenModelPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+		super(superProviders);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,7 +90,7 @@ public class EEFGenModelPropertiesEditionProvider extends PropertiesEditingProvi
 		if (editingContext.getEObject() instanceof EEFGenModel) {
 			return new EEFGenModelPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
 
 	/**
@@ -85,7 +103,7 @@ public class EEFGenModelPropertiesEditionProvider extends PropertiesEditingProvi
 			if (EEFGenModelPropertiesEditionComponent.BASE_PART.equals(part))
 				return new EEFGenModelPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
 	/**
@@ -99,7 +117,7 @@ public class EEFGenModelPropertiesEditionProvider extends PropertiesEditingProvi
 				&& refinement == EEFGenModelPropertiesEditionComponent.class)
 				return new EEFGenModelPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
-		return null;
+		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
 }

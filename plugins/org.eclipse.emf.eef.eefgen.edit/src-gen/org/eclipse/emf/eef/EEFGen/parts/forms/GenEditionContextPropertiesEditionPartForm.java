@@ -126,7 +126,7 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 		
 		
 		composer = new PartComposer(genEditionContextStep) {
-			
+
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == EEFGenViewsRepository.GenEditionContext.Reference.class) {
@@ -515,8 +515,8 @@ public class GenEditionContextPropertiesEditionPartForm extends CompositePropert
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**
