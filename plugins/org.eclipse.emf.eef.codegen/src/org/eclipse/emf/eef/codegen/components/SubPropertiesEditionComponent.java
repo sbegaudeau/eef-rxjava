@@ -275,7 +275,6 @@ public class SubPropertiesEditionComponent extends AbstractAcceleoGenerator {
     // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
   }
 	
-	@Override
 	protected void postGenerate(ResourceSet rs) {
 		// Don't unload resources
 	}

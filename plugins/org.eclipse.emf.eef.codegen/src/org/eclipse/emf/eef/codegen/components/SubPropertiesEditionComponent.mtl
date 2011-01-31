@@ -39,7 +39,7 @@ import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.command.MoveCommand;
-
+import org.eclipse.emf.ecore.EcorePackage;
 import [pec.model.qualifiedName(basePackage)/];
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 [comment add import for external ViewReference (stored in another resource)/]
