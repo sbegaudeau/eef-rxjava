@@ -95,8 +95,7 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		EObject firstInstanceOf = EEFTestsModelsUtils.getFirstInstanceOf(bot.getActiveResource(), [pec.model.name.toLowerFirst()/]MetaClass);
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
-
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, [if (pec.involvedViews()->size() > 1)]"[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]"[else]null[/if]);
 
 		[pec.editPropertyFeature(peElement)/]
 [/template]
@@ -107,7 +106,7 @@ package [pec.model.completePackage()/].tests.junit.properties;
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 
-		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
+		SWTBotView propertiesView = bot.prepareLiveEditing(modelEditor, firstInstanceOf, [if (pec.involvedViews()->size() > 1)]"[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]"[else]null[/if]);
 
 		[pec.removePropertyFeature(peElement)/]
 [/template]

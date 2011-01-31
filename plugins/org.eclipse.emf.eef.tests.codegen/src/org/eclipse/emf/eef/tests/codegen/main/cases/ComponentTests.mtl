@@ -95,7 +95,7 @@ package [pec.model.completePackage()/].tests.junit;
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, [if (pec.involvedViews()->size() > 1)]"[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]"[else]null[/if]);
 
 		[pec.editFeature(peElement)/]
 [/template]
@@ -106,7 +106,7 @@ package [pec.model.completePackage()/].tests.junit;
 		if (firstInstanceOf == null)
 			throw new InputModelInvalidException([pec.model.name.toLowerFirst()/]MetaClass.getName());
 
-		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, "[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]");
+		SWTBotShell wizardShell = bot.prepareBatchEditing(modelEditor, [pec.model.name.toLowerFirst()/]MetaClass, firstInstanceOf, [if (pec.involvedViews()->size() > 1)]"[peElement.views->first().owningView().viewKey(pec).toASCII().substituteAll(' ', '_')/]"[else]null[/if]);
 
 		[pec.removeFeature(peElement)/]
 [/template]
