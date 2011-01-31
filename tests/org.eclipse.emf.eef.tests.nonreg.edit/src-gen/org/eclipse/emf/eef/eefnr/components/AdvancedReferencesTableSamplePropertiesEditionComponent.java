@@ -101,8 +101,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -120,8 +120,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			});
 			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			// init values for referenced views
 			
@@ -167,12 +167,14 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		AdvancedReferencesTableSamplePropertiesEditionPart basePart = (AdvancedReferencesTableSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableRequiredProperty();
-		if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedreferencestableOptionalProperty();
-		
+		if (editingPart.isVisible()) {	
+			AdvancedReferencesTableSamplePropertiesEditionPart basePart = (AdvancedReferencesTableSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature()))
+				basePart.updateAdvancedreferencestableRequiredProperty();
+			if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature()))
+				basePart.updateAdvancedreferencestableOptionalProperty();
+			
+		}
 	}
 
 
@@ -195,7 +197,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

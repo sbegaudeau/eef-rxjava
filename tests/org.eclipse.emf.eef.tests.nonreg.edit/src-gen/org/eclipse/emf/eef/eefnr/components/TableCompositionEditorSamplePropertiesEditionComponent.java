@@ -51,12 +51,12 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	/**
 	 * Settings for tablecompositionRequiredProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings tablecompositionRequiredPropertySettings;
+	protected ReferencesTableSettings tablecompositionRequiredPropertySettings;
 	
 	/**
 	 * Settings for tablecompositionOptionalProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings tablecompositionOptionalPropertySettings;
+	protected ReferencesTableSettings tablecompositionOptionalPropertySettings;
 	
 	/**
 	 * Default constructor
@@ -101,8 +101,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionRequiredProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					// End of user code
 			
 			basePart.addFilterToTablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -117,8 +117,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					// End of user code
 			
 			// init values for referenced views
 			
@@ -141,16 +141,12 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		TableCompositionEditorSample tableCompositionEditorSample = (TableCompositionEditorSample)semanticObject;
 		if (EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, tablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							tablecompositionRequiredPropertySettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -168,16 +164,12 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		}
 		if (EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, tablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							tablecompositionOptionalPropertySettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -200,12 +192,14 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		TableCompositionEditorSamplePropertiesEditionPart basePart = (TableCompositionEditorSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
-			basePart.updateTablecompositionRequiredProperty();
-		if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
-			basePart.updateTablecompositionOptionalProperty();
-		
+		if (editingPart.isVisible()) {	
+			TableCompositionEditorSamplePropertiesEditionPart basePart = (TableCompositionEditorSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()))
+				basePart.updateTablecompositionRequiredProperty();
+			if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()))
+				basePart.updateTablecompositionOptionalProperty();
+			
+		}
 	}
 
 
@@ -228,7 +222,6 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -99,8 +99,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			
 			});
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															// End of user code
 			
 			// init values for referenced views
 			
@@ -140,17 +140,19 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null){
-			if (msg.getNewValue() != null) {
-				deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				deferedReferencesTableSamplePart.setName("");
+		if (editingPart.isVisible()) {	
+			DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null){
+				if (msg.getNewValue() != null) {
+					deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					deferedReferencesTableSamplePart.setName("");
+				}
 			}
+			if (flatReferencesTableSampleEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				deferedReferencesTableSamplePart.updateReferencesTableSampleEditor();
+			
 		}
-		if (flatReferencesTableSampleEditorSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			deferedReferencesTableSamplePart.updateReferencesTableSampleEditor();
-		
 	}
 
 
@@ -173,10 +175,12 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (NavigationViewsRepository.DeferedReferencesTableSample.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

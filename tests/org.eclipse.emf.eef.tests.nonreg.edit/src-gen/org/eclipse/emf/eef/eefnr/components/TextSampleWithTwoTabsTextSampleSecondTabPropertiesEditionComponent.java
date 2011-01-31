@@ -108,22 +108,24 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
-			if (msg.getNewValue() != null) {
-				textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				textSampleSecondTabPart.setTextOptionalPropertyInSecondTab("");
+		if (editingPart.isVisible()) {	
+			TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
+				if (msg.getNewValue() != null) {
+					textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					textSampleSecondTabPart.setTextOptionalPropertyInSecondTab("");
+				}
 			}
-		}
-		if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
-			if (msg.getNewValue() != null) {
-				textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				textSampleSecondTabPart.setTextRequiredPropertyInSecondTab("");
+			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null){
+				if (msg.getNewValue() != null) {
+					textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					textSampleSecondTabPart.setTextRequiredPropertyInSecondTab("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -146,14 +148,19 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

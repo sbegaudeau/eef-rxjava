@@ -102,11 +102,13 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
-		if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
-		
-		
+		if (editingPart.isVisible()) {	
+			CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
+			if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null)
+				basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
+			
+			
+		}
 	}
 
 
@@ -119,14 +121,19 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newValue);
 				}
 				if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

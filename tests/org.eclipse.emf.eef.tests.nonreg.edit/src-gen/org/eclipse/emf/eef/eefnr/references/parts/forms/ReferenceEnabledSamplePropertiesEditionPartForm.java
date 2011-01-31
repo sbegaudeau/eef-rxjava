@@ -40,6 +40,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableCon
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -155,6 +157,15 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 		});
 		this.reference.setHelpText(propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, ReferencesViewsRepository.FORM_KIND));
 		this.reference.createControls(parent, widgetFactory);
+		this.reference.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData referenceData = new GridData(GridData.FILL_HORIZONTAL);
 		referenceData.horizontalSpan = 3;
 		this.reference.setLayoutData(referenceData);
@@ -232,8 +243,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 

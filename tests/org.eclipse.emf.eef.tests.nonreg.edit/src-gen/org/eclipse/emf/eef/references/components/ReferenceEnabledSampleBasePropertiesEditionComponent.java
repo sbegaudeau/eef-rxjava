@@ -95,8 +95,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 			});
 			basePart.addFilterToReference(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for reference
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												// End of user code
 			
 			// init values for referenced views
 					basePart.getAbstractEnabledSampleReferencedView().setContext(elt, allResource);
@@ -133,10 +133,12 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
-		if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
-			basePart.updateReference();
-		
+		if (editingPart.isVisible()) {	
+			ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
+			if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature()))
+				basePart.updateReference();
+			
+		}
 	}
 
 
@@ -149,7 +151,6 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

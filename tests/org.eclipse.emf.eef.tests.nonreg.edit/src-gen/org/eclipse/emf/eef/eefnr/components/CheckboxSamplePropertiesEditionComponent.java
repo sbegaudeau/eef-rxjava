@@ -104,14 +104,16 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
-		
-		if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
-		
-		
+		if (editingPart.isVisible()) {	
+			CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null)
+				basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null)
+				basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+			
+			
+		}
 	}
 
 
@@ -134,14 +136,19 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

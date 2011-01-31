@@ -100,11 +100,13 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		AnotherSubtypePropertiesEditionPart basePart = (AnotherSubtypePropertiesEditionPart)editingPart;
-		if (NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().equals(msg.getFeature()) && basePart != null)
-			basePart.setAnotherSpecialisationElement((Boolean)msg.getNewValue());
-		
-		
+		if (editingPart.isVisible()) {	
+			AnotherSubtypePropertiesEditionPart basePart = (AnotherSubtypePropertiesEditionPart)editingPart;
+			if (NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().equals(msg.getFeature()) && basePart != null)
+				basePart.setAnotherSpecialisationElement((Boolean)msg.getNewValue());
+			
+			
+		}
 	}
 
 
@@ -117,14 +119,19 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().getEAttributeType(), newValue);
 				}
 				if (NavigationViewsRepository.Subtype.Specialisation.specialisedElement == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

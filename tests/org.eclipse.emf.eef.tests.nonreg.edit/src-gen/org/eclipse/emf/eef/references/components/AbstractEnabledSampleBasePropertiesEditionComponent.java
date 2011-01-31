@@ -101,11 +101,13 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
-		if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && basePart != null)
-			basePart.setEnabled((Boolean)msg.getNewValue());
-		
-		
+		if (editingPart.isVisible()) {	
+			AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
+			if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && basePart != null)
+				basePart.setEnabled((Boolean)msg.getNewValue());
+			
+			
+		}
 	}
 
 
@@ -118,14 +120,19 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().getEAttributeType(), newValue);
 				}
 				if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

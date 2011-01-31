@@ -362,8 +362,8 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

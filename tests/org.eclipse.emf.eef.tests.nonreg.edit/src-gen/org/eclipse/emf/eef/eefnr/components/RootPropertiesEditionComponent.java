@@ -51,7 +51,7 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	/**
 	 * Settings for samples ReferencesTable
 	 */
-	private	ReferencesTableSettings samplesSettings;
+	protected ReferencesTableSettings samplesSettings;
 	
 	/**
 	 * Default constructor
@@ -94,8 +94,8 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for samples
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			// init values for referenced views
 			
@@ -117,16 +117,12 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		Root root = (Root)semanticObject;
 		if (EefnrViewsRepository.Root.Properties.samples == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, EefnrPackage.eINSTANCE.getRoot_Samples(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, samplesSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							samplesSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -149,10 +145,12 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		RootPropertiesEditionPart basePart = (RootPropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getRoot_Samples().equals(msg.getFeature()))
-			basePart.updateSamples();
-		
+		if (editingPart.isVisible()) {	
+			RootPropertiesEditionPart basePart = (RootPropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getRoot_Samples().equals(msg.getFeature()))
+				basePart.updateSamples();
+			
+		}
 	}
 
 
@@ -165,7 +163,6 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

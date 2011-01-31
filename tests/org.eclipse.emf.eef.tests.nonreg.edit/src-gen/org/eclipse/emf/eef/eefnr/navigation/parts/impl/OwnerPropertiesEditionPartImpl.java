@@ -492,6 +492,15 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		});
 		this.multipleSampleForAdvancedTableComposition.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, NavigationViewsRepository.SWT_KIND));
 		this.multipleSampleForAdvancedTableComposition.createControls(parent);
+		this.multipleSampleForAdvancedTableComposition.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData multipleSampleForAdvancedTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		multipleSampleForAdvancedTableCompositionData.horizontalSpan = 3;
 		this.multipleSampleForAdvancedTableComposition.setLayoutData(multipleSampleForAdvancedTableCompositionData);
@@ -673,6 +682,15 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		});
 		this.multipleSampleForAdvancedReferencesTable.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable, NavigationViewsRepository.SWT_KIND));
 		this.multipleSampleForAdvancedReferencesTable.createControls(parent);
+		this.multipleSampleForAdvancedReferencesTable.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData multipleSampleForAdvancedReferencesTableData = new GridData(GridData.FILL_HORIZONTAL);
 		multipleSampleForAdvancedReferencesTableData.horizontalSpan = 3;
 		this.multipleSampleForAdvancedReferencesTable.setLayoutData(multipleSampleForAdvancedReferencesTableData);
@@ -951,6 +969,15 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		});
 		this.singleSampleForAdvancedTableComposition.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, NavigationViewsRepository.SWT_KIND));
 		this.singleSampleForAdvancedTableComposition.createControls(parent);
+		this.singleSampleForAdvancedTableComposition.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData singleSampleForAdvancedTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		singleSampleForAdvancedTableCompositionData.horizontalSpan = 3;
 		this.singleSampleForAdvancedTableComposition.setLayoutData(singleSampleForAdvancedTableCompositionData);
@@ -1414,8 +1441,8 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

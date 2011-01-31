@@ -108,22 +108,24 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextRequiredProperty("");
+		if (editingPart.isVisible()) {	
+			SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setTextRequiredProperty("");
+				}
 			}
-		}
-		if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextOptionalProperty("");
+			if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setTextOptionalProperty("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -146,14 +148,19 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.Sample.Properties.textRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.Sample.Properties.textOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

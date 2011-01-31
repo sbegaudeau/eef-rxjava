@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -93,10 +92,10 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		RadioSample radioSample = (RadioSample)semanticObject;
 		if (EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty == event.getAffectedEditor()) {
-			radioSample.setRadioRequiredProperty((ENUM_SAMPLE)((EEnumLiteral)event.getNewValue()).getInstance());
+			radioSample.setRadioRequiredProperty((ENUM_SAMPLE)event.getNewValue());
 		}
 		if (EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty == event.getAffectedEditor()) {
-			radioSample.setRadioOptionalProperty((ENUM_SAMPLE)((EEnumLiteral)event.getNewValue()).getInstance());
+			radioSample.setRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 		}
 	}
 
@@ -105,14 +104,16 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setRadioRequiredProperty((Object)msg.getNewValue());
-		
-		if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setRadioOptionalProperty((Object)msg.getNewValue());
-		
-		
+		if (editingPart.isVisible()) {	
+			RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null)
+				basePart.setRadioRequiredProperty((Object)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null)
+				basePart.setRadioOptionalProperty((Object)msg.getNewValue());
+			
+			
+		}
 	}
 
 
@@ -135,14 +136,19 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

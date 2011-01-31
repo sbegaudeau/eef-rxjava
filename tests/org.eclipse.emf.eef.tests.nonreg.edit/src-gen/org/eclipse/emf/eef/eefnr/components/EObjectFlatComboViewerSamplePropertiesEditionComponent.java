@@ -107,8 +107,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
-																																																																																																																								
-																																																																																																																								// End of user code
+																																																																																																																																																									
+																																																																																																																																																									// End of user code
 			
 			basePart.addFilterToEobjectflatcomboviewerOptionalPropery(new ViewerFilter() {
 			
@@ -123,8 +123,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
-																																																																																																																								
-																																																																																																																								// End of user code
+																																																																																																																																																									
+																																																																																																																																																									// End of user code
 			
 			// init values for referenced views
 			
@@ -184,12 +184,14 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
-			basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
-		if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
-			basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
-		
+		if (editingPart.isVisible()) {	
+			EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null)
+				basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null)
+				basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
+			
+		}
 	}
 
 
@@ -212,7 +214,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

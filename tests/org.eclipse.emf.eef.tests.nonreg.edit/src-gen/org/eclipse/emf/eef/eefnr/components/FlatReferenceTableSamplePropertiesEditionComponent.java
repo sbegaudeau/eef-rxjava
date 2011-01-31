@@ -101,8 +101,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			basePart.addFilterToFlatreferencetableOptionalProperty(new ViewerFilter() {
 			
@@ -120,8 +120,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			// init values for referenced views
 			
@@ -157,12 +157,14 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateFlatreferencetableRequiredProperty();
-		if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateFlatreferencetableOptionalProperty();
-		
+		if (editingPart.isVisible()) {	
+			FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()))
+				basePart.updateFlatreferencetableRequiredProperty();
+			if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()))
+				basePart.updateFlatreferencetableOptionalProperty();
+			
+		}
 	}
 
 
@@ -185,7 +187,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -32,6 +32,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableCon
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -149,6 +151,15 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 		});
 		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.SWT_KIND));
 		this.samples.createControls(parent);
+		this.samples.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData samplesData = new GridData(GridData.FILL_HORIZONTAL);
 		samplesData.horizontalSpan = 3;
 		this.samples.setLayoutData(samplesData);
@@ -169,8 +180,8 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 

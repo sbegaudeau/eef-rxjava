@@ -97,8 +97,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 			});
 			basePart.addFilterToFlatReferenceEditorSample(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getAbstractSample()));
 			// Start of user code for additional businessfilters for flatReferenceEditorSample
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															// End of user code
 			
 			// init values for referenced views
 					basePart.getCheckBoxExtendedEditorSampleReferencedView().setContext(elt, allResource);
@@ -132,10 +132,12 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		FlatReferenceExtendedEditorSamplePropertiesEditionPart basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
-		if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample().equals(msg.getFeature()))
-			basePart.updateFlatReferenceEditorSample();
-		
+		if (editingPart.isVisible()) {	
+			FlatReferenceExtendedEditorSamplePropertiesEditionPart basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
+			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample().equals(msg.getFeature()))
+				basePart.updateFlatReferenceEditorSample();
+			
+		}
 	}
 
 
@@ -158,10 +160,12 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

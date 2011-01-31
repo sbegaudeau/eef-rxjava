@@ -27,6 +27,22 @@ public class EefnrextEEFAdapterFactory extends EefnrextAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createAbstractSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createTableCompositionTargetExtensionEditorSampleAdapter()
+	 * 
+	 */
+	public Adapter createTableCompositionTargetExtensionEditorSampleAdapter() {
+		return new TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createCheckBoxExtendedEditorSampleAdapter()
 	 * 
 	 */
@@ -37,14 +53,6 @@ public class EefnrextEEFAdapterFactory extends EefnrextAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createAbstractSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createFlatReferenceExtendedEditorSampleAdapter()
 	 * 
 	 */
@@ -52,14 +60,6 @@ public class EefnrextEEFAdapterFactory extends EefnrextAdapterFactory {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createCheckBoxExtendedEditorSampleAdapter());
 		return new FlatReferenceExtendedEditorSamplePropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createTableCompositionTargetExtensionEditorSampleAdapter()
-	 * 
-	 */
-	public Adapter createTableCompositionTargetExtensionEditorSampleAdapter() {
-		return new TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider();
 	}
 
 }

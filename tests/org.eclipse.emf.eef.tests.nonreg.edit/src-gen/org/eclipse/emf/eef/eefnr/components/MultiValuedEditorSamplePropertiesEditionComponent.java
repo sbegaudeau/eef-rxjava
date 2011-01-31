@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -20,7 +21,6 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
@@ -115,22 +115,24 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
-			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
-			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToMultivaluededitorRequiredProperty((java.lang.String) msg.getNewValue());
+		if (editingPart.isVisible()) {	
+			MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null) {
+				if (msg.getEventType() == Notification.ADD) 
+					basePart.addToMultivaluededitorRequiredProperty(msg.getNewValue());
+				else if (msg.getEventType() == Notification.REMOVE) 
+					basePart.removeToMultivaluededitorRequiredProperty(msg.getOldValue());
+			}
+			
+			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null) {
+				if (msg.getEventType() == Notification.ADD) 
+					basePart.addToMultivaluededitorOptionalProperty(msg.getNewValue());
+				else if (msg.getEventType() == Notification.REMOVE) 
+					basePart.removeToMultivaluededitorOptionalProperty(msg.getOldValue());
+			}
+			
+			
 		}
-		
-		if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null) {
-			if (msg.getEventType() == Notification.ADD) 
-				basePart.addToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
-			else if (msg.getEventType() == Notification.REMOVE) 
-				basePart.removeToMultivaluededitorOptionalProperty((java.lang.String) msg.getNewValue());
-		}
-		
-		
 	}
 
 
@@ -153,15 +155,20 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().getEAttributeType(), newValue);
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
 				}
 				if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEAttributeType(), newStringValue);
-					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEAttributeType(), newValue);
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

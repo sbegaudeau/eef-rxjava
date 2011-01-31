@@ -152,12 +152,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart basePart = (AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setAdvancedeobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());
-		if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setAdvancedeobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
-		
+		if (editingPart.isVisible()) {	
+			AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart basePart = (AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
+				basePart.setAdvancedeobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
+				basePart.setAdvancedeobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
+			
+		}
 	}
 
 
@@ -180,7 +182,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

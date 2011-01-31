@@ -51,12 +51,12 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	/**
 	 * Settings for advancedtablecompositionRequiredProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings advancedtablecompositionRequiredPropertySettings;
+	protected ReferencesTableSettings advancedtablecompositionRequiredPropertySettings;
 	
 	/**
 	 * Settings for advancedtablecompositionOptionalProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings advancedtablecompositionOptionalPropertySettings;
+	protected ReferencesTableSettings advancedtablecompositionOptionalPropertySettings;
 	
 	/**
 	 * Default constructor
@@ -101,8 +101,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 			
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionRequiredProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			basePart.addFilterToAdvancedtablecompositionOptionalProperty(new ViewerFilter() {
 			
@@ -117,8 +117,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 			
 			});
 			// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			// init values for referenced views
 			
@@ -141,16 +141,12 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 		AdvancedTableCompositionEditorSample advancedTableCompositionEditorSample = (AdvancedTableCompositionEditorSample)semanticObject;
 		if (EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, advancedtablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							advancedtablecompositionRequiredPropertySettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -168,16 +164,12 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 		}
 		if (EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, advancedtablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							advancedtablecompositionOptionalPropertySettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -200,12 +192,14 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		AdvancedTableCompositionEditorSamplePropertiesEditionPart basePart = (AdvancedTableCompositionEditorSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedtablecompositionRequiredProperty();
-		if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
-			basePart.updateAdvancedtablecompositionOptionalProperty();
-		
+		if (editingPart.isVisible()) {	
+			AdvancedTableCompositionEditorSamplePropertiesEditionPart basePart = (AdvancedTableCompositionEditorSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()))
+				basePart.updateAdvancedtablecompositionRequiredProperty();
+			if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()))
+				basePart.updateAdvancedtablecompositionOptionalProperty();
+			
+		}
 	}
 
 
@@ -228,7 +222,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -169,7 +169,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 						multivaluededitorRequiredPropertyList = new BasicEList();
 					}
 					multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, multivaluededitorRequiredPropertyList));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorRequiredPropertyList)));
 					setHasChanged(true);
 				}
 			}
@@ -212,7 +212,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 						multivaluededitorOptionalPropertyList = new BasicEList();
 					}
 					multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, multivaluededitorOptionalPropertyList));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorOptionalPropertyList)));
 					setHasChanged(true);
 				}
 			}
@@ -232,8 +232,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

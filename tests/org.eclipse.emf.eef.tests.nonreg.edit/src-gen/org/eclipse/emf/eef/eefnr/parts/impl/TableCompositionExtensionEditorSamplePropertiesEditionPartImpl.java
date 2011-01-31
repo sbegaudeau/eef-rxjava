@@ -39,6 +39,8 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -214,6 +216,15 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 		});
 		this.tablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		this.tablecompositionRequiredProperty.createControls(parent);
+		this.tablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData tablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionRequiredPropertyData.horizontalSpan = 3;
 		this.tablecompositionRequiredProperty.setLayoutData(tablecompositionRequiredPropertyData);
@@ -250,6 +261,15 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 		});
 		this.tablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		this.tablecompositionOptionalProperty.createControls(parent);
+		this.tablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionExtensionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
 		GridData tablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionOptionalPropertyData.horizontalSpan = 3;
 		this.tablecompositionOptionalProperty.setLayoutData(tablecompositionOptionalPropertyData);
@@ -270,8 +290,8 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
@@ -141,7 +142,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
 		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
@@ -161,7 +162,7 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartForm.this, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
@@ -178,8 +179,8 @@ public class RadioSamplePropertiesEditionPartForm extends CompositePropertiesEdi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

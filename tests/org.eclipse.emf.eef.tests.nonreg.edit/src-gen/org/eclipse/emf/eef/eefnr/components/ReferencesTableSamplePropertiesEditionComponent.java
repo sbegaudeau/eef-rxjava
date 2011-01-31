@@ -100,8 +100,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
 			
@@ -119,8 +119,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			});
 			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																																																																																																									// End of user code
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
+																																																																																																																																																																																																																																																																																																																																																																																																																																										// End of user code
 			
 			// init values for referenced views
 			
@@ -166,12 +166,14 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableRequiredProperty();
-		if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
-			basePart.updateReferencestableOptionalProperty();
-		
+		if (editingPart.isVisible()) {	
+			ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature()))
+				basePart.updateReferencestableRequiredProperty();
+			if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature()))
+				basePart.updateReferencestableOptionalProperty();
+			
+		}
 	}
 
 
@@ -194,7 +196,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

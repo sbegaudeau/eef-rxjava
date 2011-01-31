@@ -107,22 +107,24 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
-		if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
-			if (msg.getNewValue() != null) {
-				secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				secondFlatReferenceExtendedEditorSamplePart.setDemo("");
+		if (editingPart.isVisible()) {	
+			SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
+			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
+				if (msg.getNewValue() != null) {
+					secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					secondFlatReferenceExtendedEditorSamplePart.setDemo("");
+				}
 			}
-		}
-		if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
-			if (msg.getNewValue() != null) {
-				secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
-			} else {
-				secondFlatReferenceExtendedEditorSamplePart.setSize("");
+			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null){
+				if (msg.getNewValue() != null) {
+					secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+				} else {
+					secondFlatReferenceExtendedEditorSamplePart.setSize("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -145,14 +147,19 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().getEAttributeType(), newValue);
 				}
 				if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

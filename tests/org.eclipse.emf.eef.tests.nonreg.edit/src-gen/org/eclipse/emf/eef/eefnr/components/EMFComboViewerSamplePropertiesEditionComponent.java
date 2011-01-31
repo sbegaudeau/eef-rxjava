@@ -68,8 +68,12 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 			final EMFComboViewerSample eMFComboViewerSample = (EMFComboViewerSample)elt;
 			final EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values
-			basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerRequiredProperty());
-			basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerOptionalProperty());
+			if (isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty)) {
+				basePart.initEmfcomboviewerRequiredProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerRequiredProperty());
+			}
+			if (isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty)) {
+				basePart.initEmfcomboviewerOptionalProperty((EEnum) EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEType(), eMFComboViewerSample.getEmfcomboviewerOptionalProperty());
+			}
 			// init filters
 			
 			
@@ -105,14 +109,16 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
-		
-		if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && basePart != null)
-			basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
-		
-		
+		if (editingPart.isVisible()) {	
+			EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty))
+				basePart.setEmfcomboviewerRequiredProperty((Enumerator)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty))
+				basePart.setEmfcomboviewerOptionalProperty((Enumerator)msg.getNewValue());
+			
+			
+		}
 	}
 
 
@@ -135,14 +141,19 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

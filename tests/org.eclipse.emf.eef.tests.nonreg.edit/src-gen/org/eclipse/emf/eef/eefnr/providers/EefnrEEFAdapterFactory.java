@@ -24,35 +24,51 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createFlatReferencesTableSampleAdapter()
-	 * 
-	 */
-	public Adapter createFlatReferencesTableSampleAdapter() {
-		return new FlatReferenceTableSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createEObjectFlatComboViewerSampleAdapter()
-	 * 
-	 */
-	public Adapter createEObjectFlatComboViewerSampleAdapter() {
-		return new EObjectFlatComboViewerSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createSampleAdapter()
-	 * 
-	 */
-	public Adapter createSampleAdapter() {
-		return new SamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createRootAdapter()
 	 * 
 	 */
 	public Adapter createRootAdapter() {
 		return new RootPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createAbstractSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTotalSampleAdapter()
+	 * 
+	 */
+	public Adapter createTotalSampleAdapter() {
+		return new TotalSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTextSampleAdapter()
+	 * 
+	 */
+	public Adapter createTextSampleAdapter() {
+		return new TextSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createCheckboxSampleAdapter()
+	 * 
+	 */
+	public Adapter createCheckboxSampleAdapter() {
+		return new CheckboxSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTextareaSampleAdapter()
+	 * 
+	 */
+	public Adapter createTextareaSampleAdapter() {
+		return new TextareaSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -64,19 +80,27 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createAdvancedEObjectFlatComboViewerSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createEObjectFlatComboViewerSampleAdapter()
 	 * 
 	 */
-	public Adapter createAdvancedEObjectFlatComboViewerSampleAdapter() {
-		return new AdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider();
+	public Adapter createEObjectFlatComboViewerSampleAdapter() {
+		return new EObjectFlatComboViewerSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTableCompositionExtensionEditorSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createReferencesTableSampleAdapter()
 	 * 
 	 */
-	public Adapter createTableCompositionExtensionEditorSampleAdapter() {
-		return new TableCompositionExtensionEditorSamplePropertiesEditionProvider();
+	public Adapter createReferencesTableSampleAdapter() {
+		return new ReferencesTableSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createEMFComboViewerSampleAdapter()
+	 * 
+	 */
+	public Adapter createEMFComboViewerSampleAdapter() {
+		return new EMFComboViewerSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -96,19 +120,19 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createReferencesTableSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createAdvancedReferencesTableSampleAdapter()
 	 * 
 	 */
-	public Adapter createReferencesTableSampleAdapter() {
-		return new ReferencesTableSamplePropertiesEditionProvider();
+	public Adapter createAdvancedReferencesTableSampleAdapter() {
+		return new AdvancedReferencesTableSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTextSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createAdvancedEObjectFlatComboViewerSampleAdapter()
 	 * 
 	 */
-	public Adapter createTextSampleAdapter() {
-		return new TextSamplePropertiesEditionProvider();
+	public Adapter createAdvancedEObjectFlatComboViewerSampleAdapter() {
+		return new AdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -120,11 +144,19 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createAbstractSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createFlatReferencesTableSampleAdapter()
 	 * 
 	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
+	public Adapter createFlatReferencesTableSampleAdapter() {
+		return new FlatReferenceTableSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createSampleAdapter()
+	 * 
+	 */
+	public Adapter createSampleAdapter() {
+		return new SamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -136,11 +168,11 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTextareaSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTableCompositionExtensionEditorSampleAdapter()
 	 * 
 	 */
-	public Adapter createTextareaSampleAdapter() {
-		return new TextareaSamplePropertiesEditionProvider();
+	public Adapter createTableCompositionExtensionEditorSampleAdapter() {
+		return new TableCompositionExtensionEditorSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -149,38 +181,6 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	 */
 	public Adapter createNamedElementAdapter() {
 		return new NamedElementPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createAdvancedReferencesTableSampleAdapter()
-	 * 
-	 */
-	public Adapter createAdvancedReferencesTableSampleAdapter() {
-		return new AdvancedReferencesTableSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createCheckboxSampleAdapter()
-	 * 
-	 */
-	public Adapter createCheckboxSampleAdapter() {
-		return new CheckboxSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createTotalSampleAdapter()
-	 * 
-	 */
-	public Adapter createTotalSampleAdapter() {
-		return new TotalSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createEMFComboViewerSampleAdapter()
-	 * 
-	 */
-	public Adapter createEMFComboViewerSampleAdapter() {
-		return new EMFComboViewerSamplePropertiesEditionProvider();
 	}
 
 }

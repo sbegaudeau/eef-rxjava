@@ -64,12 +64,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	/**
 	 * Settings for multipleSampleForTableComposition ReferencesTable
 	 */
-	private	ReferencesTableSettings multipleSampleForTableCompositionSettings;
+	protected ReferencesTableSettings multipleSampleForTableCompositionSettings;
 	
 	/**
 	 * Settings for multipleSampleForAdvancedTableComposition ReferencesTable
 	 */
-	private	ReferencesTableSettings multipleSampleForAdvancedTableCompositionSettings;
+	protected ReferencesTableSettings multipleSampleForAdvancedTableCompositionSettings;
 	
 	/**
 	 * Settings for multipleSampleForReferencesTable ReferencesTable
@@ -89,12 +89,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	/**
 	 * Settings for singleSampleForTableComposition ReferencesTable
 	 */
-	private	ReferencesTableSettings singleSampleForTableCompositionSettings;
+	protected ReferencesTableSettings singleSampleForTableCompositionSettings;
 	
 	/**
 	 * Settings for singleSampleForAdvancedTableComposition ReferencesTable
 	 */
-	private	ReferencesTableSettings singleSampleForAdvancedTableCompositionSettings;
+	protected ReferencesTableSettings singleSampleForAdvancedTableCompositionSettings;
 	
 	/**
 	 * Settings for singleSampleForReferencesTable ReferencesTable
@@ -214,8 +214,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForTableComposition
-																																																																																																																																													
-																																																																																																																																													// End of user code
+																																																																																																																																																																														
+																																																																																																																																																																														// End of user code
 			
 			basePart.addFilterToMultipleSampleForAdvancedTableComposition(new ViewerFilter() {
 			
@@ -230,8 +230,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForAdvancedTableComposition
-																																																																																																																																													
-																																																																																																																																													// End of user code
+																																																																																																																																																																														
+																																																																																																																																																																														// End of user code
 			
 			basePart.addFilterToMultipleSampleForReferencesTable(new ViewerFilter() {
 			
@@ -246,8 +246,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForReferencesTable
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																																																					
+																																																																																																																																																																					// End of user code
 			
 			basePart.addFilterToMultipleSampleForAdvancedReferencesTable(new ViewerFilter() {
 			
@@ -262,8 +262,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for multipleSampleForAdvancedReferencesTable
-																																																																																																																																				
-																																																																																																																																				// End of user code
+																																																																																																																																																																					
+																																																																																																																																																																					// End of user code
 			
 			basePart.addFilterToMultipleSampleForFlatReferencesTable(new ViewerFilter() {
 			
@@ -281,8 +281,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToMultipleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for multipleSampleForFlatReferencesTables
-																																																																																																																																													
-																																																																																																																																													// End of user code
+																																																																																																																																																																														
+																																																																																																																																																																														// End of user code
 			
 			basePart.addFilterToSingleSampleForTableComposition(new ViewerFilter() {
 			
@@ -301,8 +301,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for singleSampleForTableComposition
-																																																																																																																																													
-																																																																																																																																													// End of user code
+																																																																																																																																																																														
+																																																																																																																																																																														// End of user code
 			
 			basePart.addFilterToSingleSampleForAdvancedTableComposition(new ViewerFilter() {
 			
@@ -321,8 +321,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for singleSampleForAdvancedTableComposition
-																																																																																																																																													
-																																																																																																																																													// End of user code
+																																																																																																																																																																														
+																																																																																																																																																																														// End of user code
 			
 			basePart.addFilterToSingleSampleForReferencesTable(new ViewerFilter() {
 			
@@ -340,8 +340,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for singleSampleForReferencesTable
-																																																																																																																														
-																																																																																																																														// End of user code
+																																																																																																																																																															
+																																																																																																																																																															// End of user code
 			
 			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new ViewerFilter() {
 			
@@ -359,8 +359,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for singleSampleForAdvancedReferencesTable
-																																																																																																																														
-																																																																																																																														// End of user code
+																																																																																																																																																															
+																																																																																																																																																															// End of user code
 			
 			basePart.addFilterToSingleSampleForFlatReferencesTable(new ViewerFilter() {
 			
@@ -378,8 +378,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			});
 			basePart.addFilterToSingleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
 			// Start of user code for additional businessfilters for singleSampleForFlatReferencesTable
-																																																																																																																																													
-																																																																																																																																													// End of user code
+																																																																																																																																																																														
+																																																																																																																																																																														// End of user code
 			
 			
 			basePart.addFilterToSingleReferencesForEObjectFlatComboViewer(new ViewerFilter() {
@@ -395,8 +395,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			});
 			// Start of user code for additional businessfilters for singleReferenceForEObjectFlatComboViewer
-																																																																																																												
-																																																																																																												// End of user code
+																																																																																																																																													
+																																																																																																																																													// End of user code
 			
 			
 			basePart.addFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(new EObjectFilter(NavigationPackage.eINSTANCE.getOwner()));
@@ -437,16 +437,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleForTableComposition(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, multipleSampleForTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							multipleSampleForTableCompositionSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -464,16 +460,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleForAdvancedTableComposition(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, multipleSampleForAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							multipleSampleForAdvancedTableCompositionSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -513,16 +505,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleForTableComposition(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, singleSampleForTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							singleSampleForTableCompositionSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -540,16 +528,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleForAdvancedTableComposition(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, singleSampleForAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							singleSampleForAdvancedTableCompositionSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -658,43 +642,45 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		OwnerPropertiesEditionPart basePart = (OwnerPropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setName("");
+		if (editingPart.isVisible()) {	
+			OwnerPropertiesEditionPart basePart = (OwnerPropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setName("");
+				}
 			}
+			if (multipleSampleForTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateMultipleSampleForTableComposition();
+			if (multipleSampleForAdvancedTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateMultipleSampleForAdvancedTableComposition();
+			if (multipleSampleForReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateMultipleSampleForReferencesTable();
+			if (NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleAdvancedReferencesTable().equals(msg.getFeature()))
+				basePart.updateMultipleSampleForAdvancedReferencesTable();
+			if (multipleSampleForFlatReferencesTablesSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateMultipleSampleForFlatReferencesTable();
+			if (singleSampleForTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateSingleSampleForTableComposition();
+			if (singleSampleForAdvancedTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateSingleSampleForAdvancedTableComposition();
+			if (singleSampleForReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateSingleSampleForReferencesTable();
+			if (singleSampleForAdvancedReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateSingleSampleForAdvancedReferencesTable();
+			if (singleSampleForFlatReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
+				basePart.updateSingleSampleForFlatReferencesTable();
+			if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
+				basePart.setSingleContainmentForEObjectFlatComboViewer((EObject)msg.getNewValue());
+			if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
+				basePart.setSingleReferencesForEObjectFlatComboViewer((EObject)msg.getNewValue());
+			if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
+				basePart.setSingleContainmentForAdvancedEObjectFlatComboViewer((EObject)msg.getNewValue());
+			if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
+				basePart.setSingleReferencesForAdvancedEObjectFlatComboViewer((EObject)msg.getNewValue());
+			
 		}
-		if (multipleSampleForTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateMultipleSampleForTableComposition();
-		if (multipleSampleForAdvancedTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateMultipleSampleForAdvancedTableComposition();
-		if (multipleSampleForReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateMultipleSampleForReferencesTable();
-		if (NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleAdvancedReferencesTable().equals(msg.getFeature()))
-			basePart.updateMultipleSampleForAdvancedReferencesTable();
-		if (multipleSampleForFlatReferencesTablesSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateMultipleSampleForFlatReferencesTable();
-		if (singleSampleForTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateSingleSampleForTableComposition();
-		if (singleSampleForAdvancedTableCompositionSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateSingleSampleForAdvancedTableComposition();
-		if (singleSampleForReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateSingleSampleForReferencesTable();
-		if (singleSampleForAdvancedReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateSingleSampleForAdvancedReferencesTable();
-		if (singleSampleForFlatReferencesTableSettings.isAffectingFeature((EStructuralFeature)msg.getFeature()))
-			basePart.updateSingleSampleForFlatReferencesTable();
-		if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
-			basePart.setSingleContainmentForEObjectFlatComboViewer((EObject)msg.getNewValue());
-		if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
-			basePart.setSingleReferencesForEObjectFlatComboViewer((EObject)msg.getNewValue());
-		if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
-			basePart.setSingleContainmentForAdvancedEObjectFlatComboViewer((EObject)msg.getNewValue());
-		if (NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer().equals(msg.getFeature()) && basePart != null)
-			basePart.setSingleReferencesForAdvancedEObjectFlatComboViewer((EObject)msg.getNewValue());
-		
 	}
 
 
@@ -707,10 +693,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (NavigationViewsRepository.Owner.Properties.name == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

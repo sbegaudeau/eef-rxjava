@@ -106,22 +106,24 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextareaRequiredProperty("");
+		if (editingPart.isVisible()) {	
+			TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setTextareaRequiredProperty("");
+				}
 			}
-		}
-		if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null){
-			if (msg.getNewValue() != null) {
-				basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				basePart.setTextareaOptionalProperty("");
+			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null){
+				if (msg.getNewValue() != null) {
+					basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					basePart.setTextareaOptionalProperty("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -144,14 +146,19 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {

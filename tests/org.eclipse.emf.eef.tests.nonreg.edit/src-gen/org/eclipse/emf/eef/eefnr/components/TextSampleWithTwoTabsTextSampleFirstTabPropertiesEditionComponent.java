@@ -108,22 +108,24 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)editingPart;
-		if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
-			if (msg.getNewValue() != null) {
-				textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				textSampleFirstTabPart.setTextOptionalPropertyInFirstTab("");
+		if (editingPart.isVisible()) {	
+			TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)editingPart;
+			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
+				if (msg.getNewValue() != null) {
+					textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					textSampleFirstTabPart.setTextOptionalPropertyInFirstTab("");
+				}
 			}
-		}
-		if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
-			if (msg.getNewValue() != null) {
-				textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
-			} else {
-				textSampleFirstTabPart.setTextRequiredPropertyInFirstTab("");
+			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().equals(msg.getFeature()) && textSampleFirstTabPart != null){
+				if (msg.getNewValue() != null) {
+					textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+				} else {
+					textSampleFirstTabPart.setTextRequiredPropertyInFirstTab("");
+				}
 			}
+			
 		}
-		
 	}
 
 
@@ -146,14 +148,19 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
-			String newStringValue = event.getNewValue().toString();
 			try {
 				if (EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().getEAttributeType(), newValue);
 				}
 				if (EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab == event.getAffectedEditor()) {
-					Object newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().getEAttributeType(), newStringValue);
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().getEAttributeType(), (String)newValue);
+					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInFirstTab().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
