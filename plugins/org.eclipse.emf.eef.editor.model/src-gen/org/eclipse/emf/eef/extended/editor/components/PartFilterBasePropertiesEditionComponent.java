@@ -114,7 +114,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 			
 			});
 			// Start of user code for additional businessfilters for filteredPart
-
+			
 			// End of user code
 			
 			basePart.addFilterToContextualComponent(new ViewerFilter() {
@@ -130,7 +130,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 			
 			});
 			// Start of user code for additional businessfilters for contextualComponent
-
+			
 			// End of user code
 			
 			// init values for referenced views

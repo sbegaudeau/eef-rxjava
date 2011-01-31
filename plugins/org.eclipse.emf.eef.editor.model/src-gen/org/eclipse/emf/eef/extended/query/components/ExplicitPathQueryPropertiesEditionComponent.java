@@ -115,16 +115,12 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				querySettings.setToReference((ModelNavigation)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, QueryPackage.eINSTANCE.getExplicitPathQuery_Query(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, querySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							querySettings.setToReference(resultEObject);
-						}
 					}
 				}
 			}

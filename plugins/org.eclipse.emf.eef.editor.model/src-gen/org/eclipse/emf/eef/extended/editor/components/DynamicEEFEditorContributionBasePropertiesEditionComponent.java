@@ -113,7 +113,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
 			// Start of user code for additional businessfilters for views
-
+			
 			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
@@ -129,7 +129,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 			
 			});
 			// Start of user code for additional businessfilters for model
-
+			
 			// End of user code
 			
 			// init values for referenced views
@@ -168,16 +168,12 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				modelSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, MappingPackage.eINSTANCE.getEMFElementBinding_Model(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							modelSettings.setToReference(resultEObject);
-						}
 					}
 				}
 			}

@@ -13,13 +13,13 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.extended.editor.providers.EditorPropertiesEditionPartProvider">
+            providerClass="org.eclipse.emf.eef.extended.query.providers.QueryPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.extended.query.providers.QueryPropertiesEditionPartProvider">
+            providerClass="org.eclipse.emf.eef.extended.editor.providers.EditorPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 
