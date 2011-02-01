@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.emf.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.*" class="XMLProcessorClass" version="$Id: XMLProcessorClass.javajet,v 1.1 2010/12/24 13:32:37 sbouchet Exp $" %>
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.*" class="XMLProcessorClass" version="$Id: XMLProcessorClass.javajet,v 1.2 2011/02/01 15:54:39 sbouchet Exp $" %>
 <%
 /**
  * <copyright>
