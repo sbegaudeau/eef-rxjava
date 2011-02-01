@@ -102,16 +102,22 @@
                id="Base">
          </propertyTab>
          <propertyTab
-               label="Filter properties"
-               category="extended"
-               id="Filter properties"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
                label="Documentation"
                category="extended"
                id="Documentation"
                afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="Filter properties"
+               category="extended"
+               id="Filter properties"
+               afterTab="Filter properties">
+         </propertyTab>
+         <propertyTab
+               label="StrictTypingFilter"
+               category="extended"
+               id="StrictTypingFilter"
+               afterTab="StrictTypingFilter">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -349,6 +355,30 @@
                tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
+               tab="StrictTypingFilter">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.StrictTypingFilter">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
+               tab="Documentation">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.StrictTypingFilter">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
+               tab="Filter properties">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.StrictTypingFilter">
              </input>
          </propertySection>
       </propertySections>

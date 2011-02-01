@@ -272,6 +272,11 @@ public class AbstractPropertyBindingItemProvider extends
 						MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
 						FiltersFactory.eINSTANCE
 								.createOnlyReferenceTypeFilter()));
+		newChildDescriptors
+				.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS,
+						FiltersFactory.eINSTANCE
+								.createStrictTypingFilter()));
 	}
 
 }
