@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.emf.codegen.ecore.templates.editor" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="EntryPoint" version="$Id: EntryPoint.javajet,v 1.1 2011/01/31 16:26:28 sbouchet Exp $" %>
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.editor" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="EntryPoint" version="$Id: EntryPoint.javajet,v 1.2 2011/02/01 15:53:14 sbouchet Exp $" %>
 <%
 /**
  * <copyright>
