@@ -63,7 +63,7 @@ public class InitializeEEFModelsAction implements IObjectActionDelegate {
 			dialog.setTitle("Container Selection");
 			dialog.open();
 			Object[] result = dialog.getResult();
-			if (result.length >= 1) {
+			if (result != null && result.length >= 1) {
 				try {
 					IContainer container;
 					IPath path = (IPath)result[0];

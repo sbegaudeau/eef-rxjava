@@ -36,7 +36,11 @@ protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Setti
 if (event.getKind() == PropertiesEditionEvent.ADD)  {
 	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
+			[if (editionElement.strictFilterType().oclIsUndefined())]
 	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+			[else]
+	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+			[/if]
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -45,7 +49,11 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		}
 	}
 		[else]
+			[if (editionElement.strictFilterType().oclIsUndefined())]
 	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+			[else]
+	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+			[/if]
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -90,7 +98,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()))
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
 		public boolean select(Viewer viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][editionElement.model.eType.name/][else][editionElement.strictFilterType().name/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 
 });
@@ -124,7 +132,11 @@ protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Setti
 if (event.getKind() == PropertiesEditionEvent.ADD)  {
 	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
+			[if (editionElement.strictFilterType().oclIsUndefined())]
 	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+			[else]
+	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+			[/if]
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -133,7 +145,11 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		}
 	}
 		[else]
+			[if (editionElement.strictFilterType().oclIsUndefined())]
 	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+			[else]
+	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+			[/if]
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -214,7 +230,11 @@ protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Setti
 if (event.getKind() == PropertiesEditionEvent.ADD)  {
 	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
 		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
+			[if (editionElement.strictFilterType().oclIsUndefined())]
 	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+			[else]
+	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+			[/if]
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -223,7 +243,11 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		}
 	}
 		[else]
+			[if (editionElement.strictFilterType().oclIsUndefined())]
 	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+			[else]
+	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+			[/if]
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -243,7 +267,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD)  {
 		}
 	}
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-		[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 }
 [/template]
 
@@ -266,7 +290,7 @@ if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStruc
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
 		public boolean select(Viewer viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][editionElement.model.eType.name/][else][editionElement.strictFilterType().name/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 
 });
@@ -279,3 +303,9 @@ if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStruc
 // [/protected]
 [/if]
 [/template]
+
+[query public strictFilterType(editingElement : PropertiesEditionElement) : EClassifier = 
+	if (editingElement.bindingFilters->filter(StrictTypingFilter)->size() > 0) 
+	then editingElement.bindingFilters->filter(StrictTypingFilter)->first().type
+	else null
+	endif /]
