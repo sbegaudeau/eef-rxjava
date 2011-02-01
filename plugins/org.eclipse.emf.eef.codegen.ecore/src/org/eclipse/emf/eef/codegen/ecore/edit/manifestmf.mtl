@@ -9,7 +9,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: [genModel.getEditPluginID()/];singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: [if (genModel.runtimeJar)][genModel.getEditPluginID()/].jar[else].[/if]
 [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
 Bundle-Activator: [genModel.getQualifiedEditPluginClassName()/]$Implementation
