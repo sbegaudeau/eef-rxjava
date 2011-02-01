@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrextPackageImpl.java,v 1.2 2010/04/16 08:00:57 glefur Exp $
+ * $Id: EefnrextPackageImpl.java,v 1.3 2011/02/01 09:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnrext.impl;
 
@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
+import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
+import org.eclipse.emf.eef.eefnr.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
 
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
@@ -104,18 +106,21 @@ public class EefnrextPackageImpl extends EPackageImpl implements EefnrextPackage
 		EefnrPackageImpl theEefnrPackage = (EefnrPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) instanceof EefnrPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) : EefnrPackage.eINSTANCE);
 		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) : ReferencesPackage.eINSTANCE);
 		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) : NavigationPackage.eINSTANCE);
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEefnrextPackage.createPackageContents();
 		theEefnrPackage.createPackageContents();
 		theReferencesPackage.createPackageContents();
 		theNavigationPackage.createPackageContents();
+		theFiltersPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEefnrextPackage.initializePackageContents();
 		theEefnrPackage.initializePackageContents();
 		theReferencesPackage.initializePackageContents();
 		theNavigationPackage.initializePackageContents();
+		theFiltersPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theEefnrextPackage.freeze();

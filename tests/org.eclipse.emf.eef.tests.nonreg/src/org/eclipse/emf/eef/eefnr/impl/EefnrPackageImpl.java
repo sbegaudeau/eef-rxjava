@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackageImpl.java,v 1.8 2010/11/30 08:23:18 glefur Exp $
+ * $Id: EefnrPackageImpl.java,v 1.9 2011/02/01 09:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -37,6 +37,8 @@ import org.eclipse.emf.eef.eefnr.TextSample;
 import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
 import org.eclipse.emf.eef.eefnr.TextareaSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
+import org.eclipse.emf.eef.eefnr.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
@@ -254,18 +256,21 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		// Obtain or create and register interdependencies
 		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) : ReferencesPackage.eINSTANCE);
 		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) : NavigationPackage.eINSTANCE);
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
 		EefnrextPackageImpl theEefnrextPackage = (EefnrextPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) instanceof EefnrextPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) : EefnrextPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEefnrPackage.createPackageContents();
 		theReferencesPackage.createPackageContents();
 		theNavigationPackage.createPackageContents();
+		theFiltersPackage.createPackageContents();
 		theEefnrextPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theEefnrPackage.initializePackageContents();
 		theReferencesPackage.initializePackageContents();
 		theNavigationPackage.initializePackageContents();
+		theFiltersPackage.initializePackageContents();
 		theEefnrextPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
@@ -1195,10 +1200,12 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		// Obtain other dependent packages
 		ReferencesPackage theReferencesPackage = (ReferencesPackage)EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI);
 		NavigationPackage theNavigationPackage = (NavigationPackage)EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI);
+		FiltersPackage theFiltersPackage = (FiltersPackage)EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theReferencesPackage);
 		getESubpackages().add(theNavigationPackage);
+		getESubpackages().add(theFiltersPackage);
 
 		// Create type parameters
 

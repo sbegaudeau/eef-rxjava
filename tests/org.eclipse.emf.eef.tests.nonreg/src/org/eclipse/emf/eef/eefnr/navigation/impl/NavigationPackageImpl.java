@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NavigationPackageImpl.java,v 1.4 2010/11/30 08:23:18 glefur Exp $
+ * $Id: NavigationPackageImpl.java,v 1.5 2011/02/01 09:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.navigation.impl;
 
@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
+import org.eclipse.emf.eef.eefnr.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
 import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample;
@@ -148,18 +150,21 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		// Obtain or create and register interdependencies
 		EefnrPackageImpl theEefnrPackage = (EefnrPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) instanceof EefnrPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) : EefnrPackage.eINSTANCE);
 		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) : ReferencesPackage.eINSTANCE);
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
 		EefnrextPackageImpl theEefnrextPackage = (EefnrextPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) instanceof EefnrextPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) : EefnrextPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theNavigationPackage.createPackageContents();
 		theEefnrPackage.createPackageContents();
 		theReferencesPackage.createPackageContents();
+		theFiltersPackage.createPackageContents();
 		theEefnrextPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theNavigationPackage.initializePackageContents();
 		theEefnrPackage.initializePackageContents();
 		theReferencesPackage.initializePackageContents();
+		theFiltersPackage.initializePackageContents();
 		theEefnrextPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed

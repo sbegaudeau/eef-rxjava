@@ -173,6 +173,20 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/Element/visible"/>
       </genClasses>
     </nestedGenPackages>
+    <nestedGenPackages prefix="Filters" basePackage="org.eclipse.emf.eef.eefnr" disposableProviderFactory="true"
+        ecorePackage="eefnr.ecore#//filters">
+      <genClasses ecoreClass="eefnr.ecore#//filters/AbstractReferenceOwnerSample">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference eefnr.ecore#//filters/AbstractReferenceOwnerSample/abstractTarget"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//filters/AbstractReferenceTargetSample"/>
+      <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceOwnerSample">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference eefnr.ecore#//filters/ConcreteReferenceOwnerSample/target"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample1"/>
+      <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample2"/>
+    </nestedGenPackages>
   </genPackages>
   <genPackages prefix="Eefnrext" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       ecorePackage="eefnrext.ecore#/">
