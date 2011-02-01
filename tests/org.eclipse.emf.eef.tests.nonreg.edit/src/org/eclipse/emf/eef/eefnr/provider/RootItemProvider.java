@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RootItemProvider.java,v 1.9 2010/11/30 08:24:13 glefur Exp $
+ * $Id: RootItemProvider.java,v 1.10 2011/02/01 09:55:16 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Root;
+import org.eclipse.emf.eef.eefnr.filters.FiltersFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.references.ReferencesFactory;
 import org.eclipse.emf.eef.eefnrext.EefnrextFactory;
@@ -278,6 +279,21 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 NavigationFactory.eINSTANCE.createElement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceOwnerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
 
 		newChildDescriptors.add
 			(createChildParameter

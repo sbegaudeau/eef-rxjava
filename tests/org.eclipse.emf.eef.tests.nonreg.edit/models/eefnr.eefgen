@@ -9,6 +9,9 @@
   <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true">
     <PropertiesEditionContext href="eefnr.components#_IPrf8j1-Ed-LLuOHydFNYw"/>
   </editionContexts>
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsGenericPropertiesViews="true">
+    <PropertiesEditionContext href="eefnr.components#_Z3SiZS1SEeCoYry1ltbGrg"/>
+  </editionContexts>
   <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="" descriptorsGenericPropertiesViews="true">
     <PropertiesEditionContext href="eefnr.components#_IPrf8j1-Ed-LLuOHydFNYe"/>
   </editionContexts>
@@ -23,5 +26,8 @@
   </viewsRepositories>
   <viewsRepositories basePackage="org.eclipse.emf.eef.eefnr.references" swtViews="true" formViews="true">
     <viewsRepository href="eefnr.components#_IPsHCz1-Ed-LLuOHydFNYe"/>
+  </viewsRepositories>
+  <viewsRepositories basePackage="org.eclipse.emf.eef.eefnr.filters" swtViews="true" formViews="true">
+    <viewsRepository href="eefnr.components#_Z3Twfy1SEeCoYry1ltbGrg"/>
   </viewsRepositories>
 </eef-gen:EEFGenModel>

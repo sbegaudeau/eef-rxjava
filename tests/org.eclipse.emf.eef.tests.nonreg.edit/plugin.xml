@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.10 2010/11/30 08:24:13 glefur Exp $
+ $Id: plugin.xml,v 1.11 2011/02/01 09:55:16 glefur Exp $
 -->
 
 <plugin>
@@ -14,6 +14,18 @@
       <factory
             uri="http://www.eclipse.org/emf/eef/nonreg/1.0.0"
             class="org.eclipse.emf.eef.eefnr.provider.EefnrItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/nonreg/filters/1.0.0"
+            class="org.eclipse.emf.eef.eefnr.filters.provider.FiltersItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -61,21 +73,27 @@
   <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
+            uri="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
+            class="org.eclipse.emf.eef.eefnr.providers.ReferencesEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/nonreg/navigation/1.0.0"
+            class="org.eclipse.emf.eef.eefnr.providers.NavigationEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/nonreg/filters/1.0.0"
+            class="org.eclipse.emf.eef.eefnr.providers.FiltersEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
             uri="http://www.eclipse.org/emf/eef/nonreg/1.0.0"
             class="org.eclipse.emf.eef.eefnr.providers.EefnrEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
@@ -87,6 +105,24 @@
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
             providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.filters.providers.FiltersPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 
@@ -285,191 +321,6 @@
                     type="org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample">
              </input>
          </propertySection>
-      </propertySections>
-   </extension>
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <factory
-            uri="http://www.eclipse.org/emf/eef/nonreg/navigation/1.0.0"
-            class="org.eclipse.emf.eef.navigation.providers.NavigationEEFAdapterFactory"
-            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-
-   <!-- Tabbed properties views extension -->
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
-      <propertyContributor
-            contributorId="org.eclipse.emf.eef.navigation.properties">
-         <propertyCategory
-               category="default">
-         </propertyCategory>
-         <propertyCategory
-               category="extended">
-         </propertyCategory>
-         <propertyCategory
-               category="advanced">
-         </propertyCategory>
-      </propertyContributor>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
-      <propertyTabs
-            contributorId="org.eclipse.emf.eef.navigation.properties">
-         <propertyTab
-               label="Base"
-               category="default"
-               id="Base">
-         </propertyTab>
-         <propertyTab
-               label="DeferedFlatReferencesTableSample"
-               category="extended"
-               id="DeferedFlatReferencesTableSample"
-               afterTab="DeferedFlatReferencesTableSample">
-         </propertyTab>
-         <propertyTab
-               label="DeferedReferencesTableSample"
-               category="extended"
-               id="DeferedReferencesTableSample"
-               afterTab="DeferedReferencesTableSample">
-         </propertyTab>
-      </propertyTabs>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertySections">
-      <propertySections
-            contributorId="org.eclipse.emf.eef.navigation.properties">
-         <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.navigation.section.DeferedFlatReferenceTableEditorSample"
-               tab="DeferedFlatReferencesTableSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.navigation.section.DeferedReferenceTableEditorSample"
-               tab="DeferedReferencesTableSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample">
-             </input>
-         </propertySection>
-            <propertySection
-	       class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-	       id="org.eclipse.emf.eef.navigation.section.Owner"
-	       tab="Base">
-	     <input
-	            type="org.eclipse.emf.eef.eefnr.navigation.Owner">
-	     </input>
-	 </propertySection>
-	 <propertySection
-	       class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-	       id="org.eclipse.emf.eef.navigation.section.Subtype"
-	       tab="Base">
-	     <input
-	            type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
-	     </input>
-	 </propertySection>
-      </propertySections>
-   </extension>
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <factory
-            uri="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
-            class="org.eclipse.emf.eef.references.providers.ReferencesEEFAdapterFactory"
-            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
-   </extension>
-	   
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.references.providers.ReferencesPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.navigation.providers.NavigationPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnrext.providers.EefnrextPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.eefnr.providers.EefnrPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
-   </extension>
-
-   <!-- Tabbed properties views extension -->
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
-      <propertyContributor
-            contributorId="org.eclipse.emf.eef.references.properties">
-         <propertyCategory
-               category="default">
-         </propertyCategory>
-         <propertyCategory
-               category="extended">
-         </propertyCategory>
-         <propertyCategory
-               category="advanced">
-         </propertyCategory>
-      </propertyContributor>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
-      <propertyTabs
-            contributorId="org.eclipse.emf.eef.references.properties">
-         <propertyTab
-               label="Base"
-               category="default"
-               id="Base">
-         </propertyTab>
-         <propertyTab
-               label="AbstractSample"
-               category="extended"
-               id="AbstractSample"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="AbstractSample"
-               category="extended"
-               id="AbstractSample"
-               afterTab="Base">
-         </propertyTab>
-      </propertyTabs>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertySections">
-      <propertySections
-            contributorId="org.eclipse.emf.eef.references.properties">
          <propertySection
                class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
                id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
@@ -510,7 +361,175 @@
                     type="org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample">
              </input>
          </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnrext.section.TableCompositionTargetExtensionEditorSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnrext.section.CheckBoxExtendedEditorSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnrext.section.CheckBoxExtendedEditorSample"
+               tab="AbstractSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnrext.section.FlatReferenceExtendedEditorSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnrext.section.FlatReferenceExtendedEditorSample"
+               tab="SecondFlatReferenceExtendedEditorSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnrext.section.FlatReferenceExtendedEditorSample"
+               tab="CheckBoxExtendedEditorSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.AbstractReferenceOwnerSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.filters.AbstractReferenceOwnerSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.AbstractReferenceTargetSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.filters.AbstractReferenceTargetSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.ConcreteReferenceOwnerSample"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.ConcreteReferenceTargetSample1"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample1">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.filters.section.ConcreteReferenceTargetSample2"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.DeferedFlatReferenceTableEditorSample"
+               tab="DeferedFlatReferencesTableSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.DeferedReferenceTableEditorSample"
+               tab="DeferedReferencesTableSample">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Owner"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Owner">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Subtype"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Subtype"
+               tab="Owner">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.AnotherSubType">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
+               tab="Subtype">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.AnotherSubType">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.eefnr.section.NamedElement"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.NamedElement">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Element"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Element">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.eef.navigation.section.Element"
+               tab="NamedElement">
+             <input
+                    type="org.eclipse.emf.eef.eefnr.navigation.Element">
+             </input>
+         </propertySection>
       </propertySections>
    </extension>
-   
 </plugin>
+   
