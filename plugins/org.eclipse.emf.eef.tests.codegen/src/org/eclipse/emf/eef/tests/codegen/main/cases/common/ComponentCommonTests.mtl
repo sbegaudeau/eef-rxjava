@@ -57,7 +57,11 @@ import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsResourceUtils;
 import org.eclipse.emf.eef.runtime.tests.utils.UIConstants;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+[additionalImports()/]
 [/template]
+
+[template public additionalImports (peContext : PropertiesEditionContext) /]
+
 
 [template public testCasePropertySection(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent)]
 	/**
