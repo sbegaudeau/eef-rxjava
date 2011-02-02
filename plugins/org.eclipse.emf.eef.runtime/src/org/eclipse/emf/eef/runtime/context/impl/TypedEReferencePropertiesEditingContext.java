@@ -46,8 +46,9 @@ public class TypedEReferencePropertiesEditingContext extends EReferencePropertie
 	 * @param settings
 	 * @param adapterFactory
 	 */
-	public TypedEReferencePropertiesEditingContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, ReferencesTableSettings settings, AdapterFactory adapterFactory) {
+	public TypedEReferencePropertiesEditingContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, ReferencesTableSettings settings, EClass expectedType, AdapterFactory adapterFactory) {
 		super(parentContext, propertiesEditionComponent, settings, adapterFactory);
+		this.expectedType = expectedType;
 	}
 
 
