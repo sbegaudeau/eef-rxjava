@@ -176,7 +176,7 @@ public abstract class SWTBotEEFTestCase extends SWTBotEclipseTestCase {
 	public void setUp() throws Exception {
 		super.setUp();
 		bot.closeWelcomePage();
-		// openJavaPerspective();
+		bot.openJavaPerspective();
 		bot.openPropertiesView();
 		initWorkspaceForTests();
 	}

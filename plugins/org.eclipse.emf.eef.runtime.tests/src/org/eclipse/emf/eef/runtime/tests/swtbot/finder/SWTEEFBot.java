@@ -196,8 +196,10 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 	public SWTBotShell prepareBatchEditing(SWTBotEditor editor, EClass elementType, EObject element, String tabName) {
 		SWTBotTreeItem node2 = selectNode(editor, element);
 		node2.doubleClick();
-		cTabItem(tabName).activate();
-		cTabItem(tabName).setFocus();
+		if (tabName != null) {
+			cTabItem(tabName).activate();
+			cTabItem(tabName).setFocus();
+		}
 		return shell(elementType.getName());
 	}
 
