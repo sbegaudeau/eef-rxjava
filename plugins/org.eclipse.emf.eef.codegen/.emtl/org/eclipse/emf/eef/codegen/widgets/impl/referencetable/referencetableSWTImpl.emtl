@@ -21,7 +21,6 @@
     <imports href="../../api/widgetSWTImpl.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="manageImports" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import org.eclipse.jface.viewers.TableViewer;&#xA;import org.eclipse.jface.viewers.ViewerFilter;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.swt.widgets.TableColumn;&#xA;import org.eclipse.jface.viewers.ArrayContentProvider;&#xA;import org.eclipse.jface.viewers.ITableLabelProvider;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xA;import org.eclipse.jface.viewers.StructuredSelection;&#xA;import java.util.Iterator;&#xA;import org.eclipse.emf.common.notify.AdapterFactory;&#xA;import org.eclipse.jface.viewers.ILabelProviderListener;&#xA;import org.eclipse.jface.viewers.IStructuredSelection;&#xA;import org.eclipse.jface.viewers.Viewer;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xA;import org.eclipse.swt.graphics.Image;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;"/>
-      <overrides href="#/0/manageImports.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/manageImports"/>
       <parameter name="widget">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -112,7 +111,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Filters = new ArrayList&lt;ViewerFilter>();"/>
-      <overrides href="#/0/widgetDeclaration.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/widgetDeclaration"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -150,7 +148,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ReferencesTable(parent);"/>
-      <overrides href="#/0/implementation.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1226,7 +1223,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".refresh();&#xA;&#x9;}"/>
-      <overrides href="#/0/additionalImplementation.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1270,7 +1266,6 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="manageImports" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import org.eclipse.jface.viewers.TableViewer;&#xA;import org.eclipse.jface.viewers.ViewerFilter;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.swt.widgets.TableColumn;&#xA;import org.eclipse.jface.viewers.ArrayContentProvider;&#xA;import org.eclipse.jface.viewers.ITableLabelProvider;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xA;import org.eclipse.jface.viewers.StructuredSelection;&#xA;import java.util.Iterator;&#xA;import org.eclipse.emf.common.notify.AdapterFactory;&#xA;import org.eclipse.jface.viewers.ILabelProviderListener;&#xA;import org.eclipse.jface.viewers.IStructuredSelection;&#xA;import org.eclipse.jface.viewers.Viewer;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;&#xA;import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;"/>
-      <overrides href="#/0/manageImports"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/manageImports"/>
       <parameter name="widget">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -1337,7 +1332,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Filters = new ArrayList&lt;ViewerFilter>();"/>
-      <overrides href="#/0/widgetDeclaration"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/widgetDeclaration"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1375,7 +1369,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="AdvancedReferencesTable(parent);"/>
-      <overrides href="#/0/implementation"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1887,7 +1880,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;}"/>
-      <overrides href="#/0/additionalImplementation"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>

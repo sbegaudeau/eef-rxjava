@@ -164,7 +164,7 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="liveCommandUpdater" visibility="Public" overrides="/0/liveCommandUpdater.1">
+    <ownedModuleElement xsi:type="mtl:Template" name="liveCommandUpdater" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;if ("/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -279,7 +279,7 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="liveCommandUpdater" visibility="Public" overrides="/0/liveCommandUpdater">
+    <ownedModuleElement xsi:type="mtl:Template" name="liveCommandUpdater" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;// do not generates command for derived attribute "/>
       <body xsi:type="ocl.ecore:PropertyCallExp">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -342,7 +342,7 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="commandUpdater" visibility="Public" overrides="/0/commandUpdater.1">
+    <ownedModuleElement xsi:type="mtl:Template" name="commandUpdater" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;cc.append(SetCommand.create(editingDomain, "/>
       <body xsi:type="ocl.ecore:VariableExp" name="modelName" referredVariable="/0/commandUpdater/modelName.1">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -471,7 +471,7 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="commandUpdater" visibility="Public" overrides="/0/commandUpdater">
+    <ownedModuleElement xsi:type="mtl:Template" name="commandUpdater" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;// do not generates command for derived attribute "/>
       <body xsi:type="ocl.ecore:PropertyCallExp">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -537,7 +537,7 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="partUpdater" visibility="Public" overrides="/0/partUpdater.1">
+    <ownedModuleElement xsi:type="mtl:Template" name="partUpdater" visibility="Public">
       <body xsi:type="mtl:IfBlock">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;"/>
         <body xsi:type="ocl.ecore:VariableExp" name="modelName" referredVariable="/0/partUpdater/modelName">
@@ -801,7 +801,7 @@
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
       </guard>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Template" name="partUpdater" visibility="Public" overrides="/0/partUpdater">
+    <ownedModuleElement xsi:type="mtl:Template" name="partUpdater" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;// do not update derived attribute "/>
       <body xsi:type="ocl.ecore:PropertyCallExp">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>

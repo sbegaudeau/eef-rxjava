@@ -72,7 +72,6 @@
         <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")event.getNewValue());"/>
-      <overrides href="#/0/declareEObjectUpdater.1"/>
       <overrides href="../../api/widgetControl.emtl#/0/declareEObjectUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -174,7 +173,6 @@
         </source>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")msg.getNewValue());"/>
-      <overrides href="#/0/liveUpdater.1"/>
       <overrides href="../../api/widgetControl.emtl#/0/liveUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -269,7 +267,6 @@
         </source>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="());"/>
-      <overrides href="#/0/updater.1"/>
       <overrides href="../../api/widgetControl.emtl#/0/updater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -486,7 +483,6 @@
           <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
         </ifExpr>
       </body>
-      <overrides href="#/0/filterUpdater.1"/>
       <overrides href="../../api/widgetControl.emtl#/0/filterUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -571,7 +567,6 @@
         <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")event.getNewValue());"/>
-      <overrides href="#/0/declareEObjectUpdater"/>
       <overrides href="../../api/widgetControl.emtl#/0/declareEObjectUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -673,7 +668,6 @@
         </source>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")msg.getNewValue());"/>
-      <overrides href="#/0/liveUpdater"/>
       <overrides href="../../api/widgetControl.emtl#/0/liveUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -829,7 +823,6 @@
         </source>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="());"/>
-      <overrides href="#/0/updater"/>
       <overrides href="../../api/widgetControl.emtl#/0/updater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -873,7 +866,6 @@
       </parameter>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="filterUpdater" visibility="Public">
-      <overrides href="#/0/filterUpdater"/>
       <overrides href="../../api/widgetControl.emtl#/0/filterUpdater"/>
       <parameter name="editionElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>

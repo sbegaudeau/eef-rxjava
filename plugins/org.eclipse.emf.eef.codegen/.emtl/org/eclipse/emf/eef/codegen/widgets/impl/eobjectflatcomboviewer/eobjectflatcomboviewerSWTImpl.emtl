@@ -21,7 +21,6 @@
     <imports href="../../api/widgetSWTImpl.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="manageImports" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.jface.viewers.ISelectionChangedListener;&#xA;import org.eclipse.jface.viewers.SelectionChangedEvent;&#xA;import org.eclipse.jface.viewers.StructuredSelection;&#xA;import org.eclipse.jface.viewers.Viewer;&#xA;import org.eclipse.jface.viewers.ViewerFilter;"/>
-      <overrides href="#/0/manageImports.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/manageImports"/>
       <parameter name="widget">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -64,7 +63,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";"/>
-      <overrides href="#/0/widgetDeclaration.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/widgetDeclaration"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -102,7 +100,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="FlatComboViewer(parent);"/>
-      <overrides href="#/0/implementation.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -418,7 +415,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".SWT_KIND), null); //$NON-NLS-1$&#xA;&#x9;&#x9;return parent;&#xA;&#x9;}"/>
-      <overrides href="#/0/additionalImplementation.1"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -450,7 +446,6 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="manageImports" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;&#xA;import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.jface.viewers.ISelectionChangedListener;&#xA;import org.eclipse.jface.viewers.SelectionChangedEvent;&#xA;import org.eclipse.jface.viewers.StructuredSelection;&#xA;import org.eclipse.jface.viewers.Viewer;&#xA;import org.eclipse.jface.viewers.ViewerFilter;&#xA;import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;&#xA;import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;&#xA;import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;&#xA;import org.eclipse.emf.ecore.util.EcoreUtil;"/>
-      <overrides href="#/0/manageImports"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/manageImports"/>
       <parameter name="widget">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -505,7 +500,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Filter;"/>
-      <overrides href="#/0/widgetDeclaration"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/widgetDeclaration"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -543,7 +537,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="AdvancedFlatComboViewer(parent);"/>
-      <overrides href="#/0/implementation"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -870,7 +863,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".SWT_KIND), null); //$NON-NLS-1$&#xA;&#x9;&#x9;return parent;&#xA;&#x9;}"/>
-      <overrides href="#/0/additionalImplementation"/>
       <overrides href="../../api/widgetSWTImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>

@@ -104,7 +104,7 @@
           <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/first"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(new ViewerFilter() {&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;/**&#xA;&#x9;&#x9;&#x9;&#x9; * {@inheritDoc}&#xA;&#x9;&#x9;&#x9;&#x9; * &#xA;&#x9;&#x9;&#x9;&#x9; * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)&#xA;&#x9;&#x9;&#x9;&#x9; */&#xA;&#x9;&#x9;&#x9;&#x9;public boolean select(Viewer viewer, Object parentElement, Object element) {&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(new ViewerFilter() {&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;/**&#xA;&#x9;&#x9;&#x9;&#x9; * {@inheritDoc}&#xA;&#x9;&#x9;&#x9;&#x9; * &#xA;&#x9;&#x9;&#x9;&#x9; * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)&#xA;&#x9;&#x9;&#x9;&#x9; */&#xA;&#x9;&#x9;&#x9;&#x9;public boolean select(Viewer viewer, Object parentElement, Object element) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       <body xsi:type="mtl:IfBlock">
         <body xsi:type="ocl.ecore:PropertyCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -4903,7 +4903,7 @@
     </eAnnotations>
     <eAnnotations source="positions.34" references="/0/filterBody.2/@body.4">
       <details key="start" value="1808"/>
-      <details key="end" value="2085"/>
+      <details key="end" value="2090"/>
       <details key="line" value="38"/>
     </eAnnotations>
     <eAnnotations source="positions.35" references="/0/filterBody.2/@body.5">

@@ -228,7 +228,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".getSelection()).getFirstElement();&#xA;&#x9;&#x9;&#x9;if (firstElement instanceof EObject)&#xA;&#x9;&#x9;&#x9;&#x9;return (EObject) firstElement;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;return null;&#xA;&#x9;}"/>
-      <overrides href="#/0/getterSignatureImplementation.1"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/getterSignatureImplementation"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -265,7 +264,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".getSelection();&#xA;&#x9;}"/>
-      <overrides href="#/0/getterSignatureImplementation"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/getterSignatureImplementation"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -664,7 +662,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".setSelection(new StructuredSelection()); //$NON-NLS-1$&#xA;&#x9;&#x9;}&#xA;&#x9;}"/>
-      <overrides href="#/0/setterSignatureImplementation.1"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/setterSignatureImplementation"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -713,7 +710,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".setSelection(new StructuredSelection()); //$NON-NLS-1$&#xA;&#x9;&#x9;}&#xA;&#x9;}"/>
-      <overrides href="#/0/setterSignatureImplementation"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/setterSignatureImplementation"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -851,7 +847,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".setSelection(new StructuredSelection(settings.getValue()));&#xA;&#x9;&#x9;}&#xA;&#x9;}"/>
-      <overrides href="#/0/initSignatureImplementation.1"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/initSignatureImplementation"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -899,7 +894,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".setSelection(new StructuredSelection(settings.getValue()));&#xA;&#x9;&#x9;}&#xA;&#x9;}"/>
-      <overrides href="#/0/initSignatureImplementation"/>
       <overrides href="../../api/widgetGettersSetters.emtl#/0/initSignatureImplementation"/>
       <parameter name="elementEditor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>

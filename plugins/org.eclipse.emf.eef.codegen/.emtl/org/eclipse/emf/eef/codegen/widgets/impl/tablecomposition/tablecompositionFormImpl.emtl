@@ -21,7 +21,6 @@
     <imports href="../../api/widgetFormImpl.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="manageImports" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import java.util.Map;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;&#xA;import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;&#xA;import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;&#xA;import org.eclipse.jface.viewers.ILabelProviderListener;&#xA;import org.eclipse.jface.viewers.IStructuredSelection;&#xA;import org.eclipse.jface.viewers.ITableLabelProvider;&#xA;import org.eclipse.jface.viewers.TableViewer;&#xA;import org.eclipse.jface.window.Window;&#xA;import org.eclipse.jface.wizard.WizardDialog;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xA;import org.eclipse.swt.graphics.Image;&#xA;import org.eclipse.swt.widgets.Event;&#xA;import org.eclipse.swt.widgets.Listener;&#xA;import org.eclipse.swt.widgets.TableColumn;&#xA;import org.eclipse.jface.viewers.ViewerFilter;"/>
-      <overrides href="#/0/manageImports.1"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/manageImports"/>
       <parameter name="widget">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -88,7 +87,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Filters = new ArrayList&lt;ViewerFilter>();"/>
-      <overrides href="#/0/widgetDeclaration.1"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/widgetDeclaration"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -126,7 +124,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="TableComposition(widgetFactory, parent);"/>
-      <overrides href="#/0/implementation.1"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1528,7 +1525,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Panel;&#xA;&#x9;}"/>
-      <overrides href="#/0/additionalImplementation.1"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1584,7 +1580,6 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="manageImports" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import java.util.Map;&#xA;import org.eclipse.jface.viewers.ViewerFilter;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;&#xA;import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;"/>
-      <overrides href="#/0/manageImports"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/manageImports"/>
       <parameter name="widget">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget"/>
@@ -1651,7 +1646,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Filters = new ArrayList&lt;ViewerFilter>();"/>
-      <overrides href="#/0/widgetDeclaration"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/widgetDeclaration"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -1689,7 +1683,6 @@
         </argument>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="TableComposition(widgetFactory, parent);"/>
-      <overrides href="#/0/implementation"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/implementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
@@ -2197,7 +2190,6 @@
         <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/eef/views/1.0.0#//toolkits/Widget/name"/>
       </body>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;); //$NON-NLS-1$&#xA;&#x9;&#x9;return parent;&#xA;&#x9;}"/>
-      <overrides href="#/0/additionalImplementation"/>
       <overrides href="../../api/widgetFormImpl.emtl#/0/additionalImplementation"/>
       <parameter name="editor">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//ElementEditor"/>
