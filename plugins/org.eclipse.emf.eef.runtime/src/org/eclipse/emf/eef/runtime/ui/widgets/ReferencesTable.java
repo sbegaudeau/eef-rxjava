@@ -774,6 +774,10 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	 */
 	public void addBusinessRuleFilter(ViewerFilter filter) {
 		this.bpFilters.add(filter);
+		if (this.tableViewer != null) {
+			this.tableViewer.addFilter(filter);
+			this.tableViewer.refresh();
+		}
 	}
 
 	/*
@@ -783,6 +787,10 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	 */
 	public void addFilter(ViewerFilter filter) {
 		this.filters.add(filter);
+		if (this.tableViewer != null) {
+			this.tableViewer.addFilter(filter);
+			this.tableViewer.refresh();
+		}
 	}
 
 	/*
@@ -792,6 +800,10 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	 */
 	public void removeBusinessRuleFilter(ViewerFilter filter) {
 		this.bpFilters.remove(filter);
+		if (this.tableViewer != null) {
+			this.tableViewer.removeFilter(filter);
+			this.tableViewer.refresh();
+		}
 	}
 
 	/*
@@ -801,6 +813,10 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	 */
 	public void removeFilter(ViewerFilter filter) {
 		this.filters.remove(filter);
+		if (this.tableViewer != null) {
+			this.tableViewer.removeFilter(filter);
+			this.tableViewer.refresh();
+		}
 	}
 
 	protected void refreshFilters() {
