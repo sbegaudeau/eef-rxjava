@@ -357,10 +357,9 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 
 	/**
 	 * Remove a value following a list of StructualFeatures to a given EObject
-	 * 
-	 * @param valueToRemove
-	 *            the value to remove
+	 * @param valueToRemove the value to remove
 	 */
+
 	public void removeFromReference(EObject valueToRemove) {
 		EReference ref = features[0];
 		Object value1 = source.eGet(ref);
@@ -380,7 +379,12 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 				removeFirstManySecondSingle(value1, valueToRemove);
 			}
 		} else {
-			value1.remove(valueToRemove);
+			// EcoreUtil.delete if the reference is containment.
+			if (features[0].isContainment()) {
+				EcoreUtil.delete(valueToRemove);
+			} else {
+				value1.remove(valueToRemove);
+			}
 		}
 	}
 
@@ -397,28 +401,46 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 				elemToRemove = elem;
 			}
 		}
-		value1.remove(elemToRemove);
-	}
-
-	protected void removeFirstSingle(EObject value1, EObject valueToRemove) {
-		if (features.length > 1) {
-			Object value2 = value1.eGet(features[1]);
-			if (features[1].isMany()) {
-				removeFirstSingleSecondMany((List<EObject>)value2, valueToRemove);
-			} else { /* ref2 is Single */
-				removeFirstSingleSecondSingle();
-			}
+		if (features[0].isContainment()) {
+			EcoreUtil.delete(elemToRemove);
 		} else {
-			EcoreUtil.remove((EObject)source.eGet(features[0]));
+			value1.remove(elemToRemove);
 		}
 	}
 
+    protected void removeFirstSingle(EObject value1, EObject valueToRemove) {
+        if (features.length > 1) {
+              Object value2 = value1.eGet(features[1]);
+              if (features[1].isMany()) {
+                    removeFirstSingleSecondMany((List<EObject>)value2, valueToRemove);
+              } else { /* ref2 is Single */
+                    removeFirstSingleSecondSingle();
+              }
+        } else {
+              // EcoreUtil.delete if the reference is containment.
+              if (features[0].isContainment()) {
+                    EcoreUtil.delete(valueToRemove);
+              } else {
+                    source.eUnset(features[0]);
+              }
+        }
+  }
+    
 	protected void removeFirstSingleSecondMany(List<EObject> value2, EObject valueToRemove) {
-		value2.remove(valueToRemove);
+		if (features[1].isContainment()) {
+			EcoreUtil.delete(valueToRemove);
+		} else {
+			value2.remove(valueToRemove);
+		}
 	}
 
+
 	protected void removeFirstSingleSecondSingle() {
-		EcoreUtil.remove((EObject)source.eGet(features[0]));
+		if (features[0].isContainment()) {
+			EcoreUtil.delete((EObject) source.eGet(features[0]));
+		} else {
+			source.eUnset(features[0]);
+		}
 	}
 
 	/**
