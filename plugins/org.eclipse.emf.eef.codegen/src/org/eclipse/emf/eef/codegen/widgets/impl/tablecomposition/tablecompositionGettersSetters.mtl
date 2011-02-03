@@ -123,6 +123,9 @@
 [template public addFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.addFilterSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/]Filters.add(filter);
+		if (this.[elementEditor.name.toJavaIdentifier()/] != null) {
+			this.[elementEditor.name.toJavaIdentifier()/].addFilter(filter);
+		}
 	}
 [/template]
 

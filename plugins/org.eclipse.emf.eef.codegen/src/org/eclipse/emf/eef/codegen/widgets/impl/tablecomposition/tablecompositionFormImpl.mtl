@@ -126,6 +126,9 @@ create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/]Data.minimumHeight = 120;
 		[editor.name.toJavaIdentifier()/]Data.heightHint = 120;
 		[editor.name.toJavaIdentifier()/].getTable().setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		for (ViewerFilter filter : this.[editor.name.toJavaIdentifier()/]Filters) {
+			[editor.name.toJavaIdentifier()/].addFilter(filter);
+		}
 		EditingUtils.setID([editor.name.toJavaIdentifier()/].getTable(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		create[editor.name.toJavaClassifier()/]Panel(widgetFactory, tableContainer);
@@ -292,6 +295,9 @@ create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, parent);
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.[editor.name.toJavaIdentifier()/]Filters) {
+			this.[editor.name.toJavaIdentifier()/].addFilter(filter);
+		}
 		this.[editor.name.toJavaIdentifier()/].setHelpText(propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		this.[editor.name.toJavaIdentifier()/].createControls(parent, widgetFactory);
 		this.[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
