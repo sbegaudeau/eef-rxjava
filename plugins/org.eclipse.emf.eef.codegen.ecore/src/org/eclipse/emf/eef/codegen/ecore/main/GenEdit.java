@@ -29,13 +29,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
  *
  * @generated
  */
-public class GenAll extends AbstractAcceleoGenerator {
+public class GenEdit extends AbstractAcceleoGenerator {
 	/**
 	 * The name of the module.
 	 *
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "GenAll";
+	public static final String MODULE_FILE_NAME = "GenEdit";
 	
 	/**
 	 * The name of the templates that are to be generated.
@@ -58,7 +58,7 @@ public class GenAll extends AbstractAcceleoGenerator {
 	 *
 	 * @generated
 	 */
-	public GenAll() {
+	public GenEdit() {
     // Empty implementation
   }
 
@@ -78,7 +78,7 @@ public class GenAll extends AbstractAcceleoGenerator {
 	 *             the model cannot be loaded.
 	 * @generated
 	 */
-	public GenAll(URI modelURI, File targetFolder,
+	public GenEdit(URI modelURI, File targetFolder,
 			List<? extends Object> arguments) throws IOException {
     initialize(modelURI, targetFolder, arguments);
   }
@@ -99,7 +99,7 @@ public class GenAll extends AbstractAcceleoGenerator {
 	 *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
 	 * @generated
 	 */
-	public GenAll(EObject model, File targetFolder,
+	public GenEdit(EObject model, File targetFolder,
 			List<? extends Object> arguments) throws IOException {
     initialize(model, targetFolder, arguments);
   }
@@ -122,7 +122,7 @@ public class GenAll extends AbstractAcceleoGenerator {
         for (int i = 2; i < args.length; i++) {
           arguments.add(args[i]);
         }
-        GenAll generator = new GenAll(modelURI, folder, arguments);
+        GenEdit generator = new GenEdit(modelURI, folder, arguments);
         generator.doGenerate(new BasicMonitor());
       }
     } catch (IOException e) {

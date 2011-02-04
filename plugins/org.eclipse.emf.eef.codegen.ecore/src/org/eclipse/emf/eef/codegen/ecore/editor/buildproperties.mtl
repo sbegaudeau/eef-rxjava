@@ -9,9 +9,7 @@
 [file (buildpropertiesPath(), false, 'UTF-8')]
 [includeHeaderProperties()/]
 bin.includes = [pluginClassesLocation()/],\
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
                icons/,\
-[/if]
 [if (genModel.bundleManifest)]
                META-INF/,\
 [/if]
@@ -20,13 +18,15 @@ bin.includes = [pluginClassesLocation()/],\
 [/if]
                plugin.properties
 jars.compile.order = [pluginClassesLocation()/]
-source.[pluginClassesLocation()/] = [for (sourceFolder : String | genModel.getEditSourceFolders()) separator (',\\           ')]
+source.[pluginClassesLocation()/] = [for (sourceFolder : String | genModel.getEditorSourceFolders()) separator (',\\           ')]
 [sourceFolder/]
 [/for]
-output.[pluginClassesLocation()/] = bin/
+output.[pluginClassesLocation()/] = [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]bin/[else]war/WEB-INF/classes[/if]
+
 [/file]
 [/template]
 
 [query public buildpropertiesPath(genModel : GenModel) : String = 'build.properties' /]
 
 [query public pluginClassesLocation(genModel : GenModel) : String = if genModel.runtimeJar then genModel.getEditPluginID().concat('.jar') else '.' endif/]
+

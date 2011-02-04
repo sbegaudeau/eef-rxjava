@@ -92,6 +92,30 @@
 [query public hasTargetNamespace(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'hasTargetNamespace()', Sequence{genPackage}) /]
 
+[query public getPresentationPackageName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getPresentationPackageName()', Sequence{genPackage}) /]
+
+[query public getActionBarContributorClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getActionBarContributorClassName()', Sequence{genPackage}) /]
+
+[query public getPrefix(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getPrefix()', Sequence{genPackage}) /]
+
+[query public getModelWizardClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getModelWizardClassName()', Sequence{genPackage}) /]
+
+[query public getQualifiedEditorPluginClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedEditorPluginClassName()', Sequence{genPackage}) /]
+
+[query public getEditorClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getEditorClassName()', Sequence{genPackage}) /]
+
+[query public getInterfacePackageName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getInterfacePackageName()', Sequence{genPackage}) /]
+
+[query public getImportedModelWizardClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getImportedModelWizardClassName()', Sequence{genPackage}) /]
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public isLiteralsInterface(genPackage : GenPackage) : Boolean = genPackage.literalsInterface/]
 
@@ -104,6 +128,8 @@
 [query public getImportedFactoryInterfaceName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedFactoryInterfaceName())/]
 
 [query public getImportedAdapterFactoryClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedAdapterFactoryClassName())/]
+
+[query public getImportedEditorPluginClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedEditorPluginClassName())/]
 
 [query public getExtendedChildCreationDataEntrySet(genPackage : GenPackage) : Set(OclAny)
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]

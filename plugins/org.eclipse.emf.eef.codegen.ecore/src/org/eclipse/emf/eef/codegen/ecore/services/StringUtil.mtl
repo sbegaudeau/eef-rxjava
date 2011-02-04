@@ -1,0 +1,6 @@
+[comment encoding = UTF-8 /]
+[module StringUtil('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[query public toLowerCase(genModel : GenModel, string : String, locale : OclAny) : String 
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.StringUtil', 'toLowerCase(java.lang.String, java.lang.Object)', Sequence{string, locale}) /]
+

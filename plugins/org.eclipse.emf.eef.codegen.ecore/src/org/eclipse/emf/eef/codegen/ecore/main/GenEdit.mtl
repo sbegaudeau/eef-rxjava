@@ -1,6 +1,7 @@
 [comment encoding = UTF-8 /]
-[module GenAll('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
+[module GenEdit('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
 
+[import org::eclipse::emf::eef::codegen::ecore::services::initializers /]
 [import org::eclipse::emf::eef::codegen::ecore::edit::ItemProvider/]
 [import org::eclipse::emf::eef::codegen::ecore::edit::ItemProviderAdapterFactory/]
 [import org::eclipse::emf::eef::codegen::ecore::edit::buildproperties/]
@@ -11,6 +12,8 @@
 
 [template public GenAllGenClass(model : GenModel)]
 	[comment @main /]
+	[comment edit generation/]
+	[model.initEdit()/]
 	[model.buildproperties()/]
 	[model.manifestmf()/]
 	[model.Plugin()/]

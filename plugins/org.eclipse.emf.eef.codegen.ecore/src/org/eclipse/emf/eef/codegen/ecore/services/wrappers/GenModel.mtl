@@ -91,6 +91,33 @@
 [query public getRelativeGenModelLocation(genModel : GenModel) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getRelativeGenModelLocation()', Sequence{genModel}) /]
 
+[query public isRichClientPlatform(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'isRichClientPlatform()', Sequence{genModel}) /]
+
+[query public getLocale(genModel : GenModel) : OclAny
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getLocale()', Sequence{genModel}) /]
+
+[query public getEditorPluginPackageName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginPackageName()', Sequence{genModel}) /]
+
+[query public getEditorAdvisorClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorAdvisorClassName()', Sequence{genModel}) /]
+
+[query public isRichAjaxPlatform(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'isRichAjaxPlatform()', Sequence{genModel}) /]
+
+[query public getAllGenPackagesWithConcreteClasses(genModel : GenModel) : Sequence(OclAny)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllGenPackagesWithConcreteClasses()', Sequence{genModel}) /]
+
+[query public getQualifiedEditorPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getQualifiedEditorPluginClassName()', Sequence{genModel}) /]
+
+[query public getEditorSourceFolders(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorSourceFolders()', Sequence{genModel}) /]
+
+[query public getEditorPluginID(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginID()', Sequence{genModel}) /]
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public getImportedName(genModel : GenModel,qualifiedName : String) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.ImportManagerWrapper', 'getImportedName(java.lang.String)', Sequence{qualifiedName}) /]
