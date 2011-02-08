@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -38,14 +39,15 @@ import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
- * This is an Abstract class use to display a label with the referenced named Element For example type of a
- * property
+ * This is an Abstract class use to display a label with the referenced named
+ * Element For example type of a property
  * 
  * @author Patrick Tessier
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget {
+public class AdvancedEObjectFlatComboViewer implements
+		IPropertiesFilteredWidget {
 
 	/** Image for the remove button */
 	protected final org.eclipse.swt.graphics.Image deleteImage = EEFRuntimePlugin
@@ -110,8 +112,9 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 	 * @param filter
 	 *            use to look for the good element
 	 */
-	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input, ViewerFilter filter,
-			AdapterFactory adapterFactory, EObjectFlatComboViewerListener callback) {
+	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input,
+			ViewerFilter filter, AdapterFactory adapterFactory,
+			EObjectFlatComboViewerListener callback) {
 		this.dialogTitle = dialogTitle;
 		this.input = input;
 		this.callback = callback;
@@ -131,7 +134,7 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 		this.composite = createComposite(parent);
 		this.parent = parent;
 		if (parent instanceof ExpandableComposite) {
-			((ExpandableComposite)parent).setClient(composite);
+			((ExpandableComposite) parent).setClient(composite);
 		}
 
 		FormLayout layout = new FormLayout();
@@ -155,8 +158,10 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 		data.right = new FormAttachment(100, -5);
 		data.top = new FormAttachment(0, -2);
 		removeButton.setLayoutData(data);
-		removeButton.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
-		EditingUtils.setEEFtype(removeButton, "eef::AdvancedEObjectFlatComboViewer::removebutton");
+		removeButton
+				.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
+		EditingUtils.setEEFtype(removeButton,
+				"eef::AdvancedEObjectFlatComboViewer::removebutton");
 
 		this.browseButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		browseButton.setImage(addImage);
@@ -278,16 +283,18 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 		} else {
 			field = widgetFactory.createText(parent, value, style);
 		}
-		EditingUtils.setEEFtype(field, "eef::AdvancedEObjectFlatComboViewer::field");
+		EditingUtils.setEEFtype(field,
+				"eef::AdvancedEObjectFlatComboViewer::field");
 		return field;
 	}
 
 	@SuppressWarnings("unchecked")
 	public void setSelection(ISelection selection) {
 		if (selection instanceof StructuredSelection) {
-			StructuredSelection structuredSelection = (StructuredSelection)selection;
-			if (!structuredSelection.isEmpty() && !"".equals(structuredSelection.getFirstElement())) {
-				setSelection((EObject)structuredSelection.getFirstElement());
+			StructuredSelection structuredSelection = (StructuredSelection) selection;
+			if (!structuredSelection.isEmpty()
+					&& !"".equals(structuredSelection.getFirstElement())) {
+				setSelection((EObject) structuredSelection.getFirstElement());
 			} else {
 				this.valueText.setText(UNDEFINED_VALUE);
 				// this.parent.pack();
@@ -314,28 +321,29 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 	 */
 	protected void browseButtonPressed() {
 		switch (button_mode) {
-			case BROWSE:
-				TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(input, filters,
-						brFilters, dialogTitle, adapterFactory, mainResource) {
-					@SuppressWarnings("unchecked")
-					@Override
-					public void process(IStructuredSelection selection) {
-						if (selection != null && !selection.isEmpty()) {
-							handleSelection((EObject)selection.getFirstElement());
-						}
+		case BROWSE:
+			TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(
+					input, filters, brFilters, dialogTitle, adapterFactory,
+					getMainResource()) {
+				@SuppressWarnings("unchecked")
+				@Override
+				public void process(IStructuredSelection selection) {
+					if (selection != null && !selection.isEmpty()) {
+						handleSelection((EObject) selection.getFirstElement());
 					}
-				};
-				// Select the actual element in dialog
-				if (selection != null) {
-					dialog.setSelection(new StructuredSelection(selection));
 				}
-				dialog.open();
-				break;
-			case CREATE:
-				handleCreate();
-				break;
-			default:
-				break;
+			};
+			// Select the actual element in dialog
+			if (selection != null) {
+				dialog.setSelection(new StructuredSelection(selection));
+			}
+			dialog.open();
+			break;
+		case CREATE:
+			handleCreate();
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -382,6 +390,41 @@ public class AdvancedEObjectFlatComboViewer implements IPropertiesFilteredWidget
 
 	public void setButtonMode(ButtonsModeEnum button_mode) {
 		this.button_mode = button_mode;
+	}
+	
+	/**
+	 * Returns the main resource.
+	 * 
+	 * @return the main resource.
+	 */
+
+	public Resource getMainResource() {
+		if (this.mainResource == null && this.input instanceof EEFEditorSettings) {
+			Resource mainResourceFromSettings = null;
+
+			// Gets the mainResource from the settings.
+			EEFEditorSettings settings = (EEFEditorSettings) this.input;
+			if (settings.getSource() != null) {
+				// The default mainResource is the resource of the edited
+				// object.
+				mainResourceFromSettings = settings.getSource().eResource();
+				if (settings.getValue() instanceof EObject && ((EObject) settings.getValue()).eResource() != null) {
+
+					// The mainResource is the resource of the value.
+					mainResourceFromSettings = ((EObject) settings.getValue()).eResource();
+				}
+			}
+			if (mainResourceFromSettings != null) {
+				return mainResourceFromSettings;
+			}
+		}
+
+		//
+
+		// Client has specified a main resource. Let's use it !
+
+		return this.mainResource;
+
 	}
 
 	public void setMainResource(Resource mainResource) {
