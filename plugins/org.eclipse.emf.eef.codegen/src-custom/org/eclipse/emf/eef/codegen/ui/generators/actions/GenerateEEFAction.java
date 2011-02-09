@@ -39,7 +39,7 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#inutEEFGenModel()
+	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#initEEFGenModel()
 	 */
 	protected List<EEFGenModel> initEEFGenModel() throws IOException {
 		if (!selectedFiles.isEmpty()) {
