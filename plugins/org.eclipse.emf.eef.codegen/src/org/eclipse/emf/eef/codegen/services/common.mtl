@@ -552,4 +552,3 @@ Object
 	then view.eInverse()->select(oclIsTypeOf(components::PropertiesEditionComponent))->first()
 	else null
 	endif/]
-	 
