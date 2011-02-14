@@ -74,12 +74,15 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 			EEFExtendedRuntime.getPlugin().log(e);
 		}
 	}
+	
+	[additionalMethods()/]
 
 }
 	[/file]
 	
 [/template]
 
+[template public additionalMethods (peContext : PropertiesEditionContext) /]
 
 [template public fullFilePath(peContext : PropertiesEditionContext)]
 [peContext.model.qualifiedEditorClassName().toPath()/].java
