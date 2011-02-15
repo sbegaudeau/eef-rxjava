@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.acceleo.common.IAcceleoConstants;
-import org.eclipse.acceleo.common.internal.utils.workspace.BundleURLConverter;
 import org.eclipse.acceleo.common.utils.ModelUtils;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
@@ -28,7 +27,6 @@ import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 
 /**
  * Entry point of the 'EEFEditorLauncher' generation module.
@@ -290,15 +288,15 @@ public class EEFEditorLauncher extends AbstractAcceleoGenerator {
 	@Override
 	public void initialize(EObject element, File folder, List<? extends Object> arguments) throws IOException {
 		ResourceSet resourceSet = element.eResource().getResourceSet();
-		resourceSet.setURIConverter(new ExtensibleURIConverterImpl() {
-			public URI normalize(URI uri) {
-				BundleURLConverter conv = new BundleURLConverter(uri.toString());
-				if (conv.resolveBundle() != null) { 
-					return URI.createURI(conv.resolveAsPlatformPlugin());
-				}
-				return super.normalize(uri);
-			}
-		});
+//		resourceSet.setURIConverter(new ExtensibleURIConverterImpl() {
+//			public URI normalize(URI uri) {
+//				BundleURLConverter conv = new BundleURLConverter(uri.toString());
+//				if (conv.resolveBundle() != null) { 
+//					return URI.createURI(conv.resolveAsPlatformPlugin());
+//				}
+//				return super.normalize(uri);
+//			}
+//		});
 
 		registerResourceFactories(resourceSet);
 		registerPackages(resourceSet);
