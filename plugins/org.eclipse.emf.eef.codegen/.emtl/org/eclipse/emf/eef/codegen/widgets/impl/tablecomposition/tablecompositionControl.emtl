@@ -1989,6 +1989,53 @@
       <parameter name="editingElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
       </parameter>
+      <expression xsi:type="ocl.ecore:IfExp">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        <condition xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" eType="/36/OrderedSet(StrictTypingFilter)" referredOperation="/1/Collection(T)_Class/filter">
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/36/OrderedSet(BindingFilter)">
+                <source xsi:type="ocl.ecore:VariableExp" name="editingElement" referredVariable="/0/strictFilterType/editingElement">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//AbstractPropertyBinding/bindingFilters"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/17/StrictTypingFilter">
+                <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter"/>
+              </argument>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+          </source>
+          <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="0">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/%3E"/>
+        </condition>
+        <thenExpression xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" eType="/36/OrderedSet(StrictTypingFilter)" referredOperation="/1/Collection(T)_Class/filter">
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/36/OrderedSet(BindingFilter)">
+                <source xsi:type="ocl.ecore:VariableExp" name="editingElement" referredVariable="/0/strictFilterType/editingElement">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//AbstractPropertyBinding/bindingFilters"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/17/StrictTypingFilter">
+                <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter"/>
+              </argument>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/first"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter/type"/>
+        </thenExpression>
+        <elseExpression xsi:type="ocl.ecore:NullLiteralExp">
+          <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+        </elseExpression>
+      </expression>
       <type xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
     </ownedModuleElement>
   </mtl:Module>
@@ -6817,6 +6864,9 @@
     <eClassifiers xsi:type="ocl.ecore:TypeType" name="SimpleModelNavigation">
       <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//navigation/SimpleModelNavigation"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="StrictTypingFilter">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter"/>
+    </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -6879,8 +6929,11 @@
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(BindingFilter)" instanceClassName="java.util.LinkedHashSet">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/BindingFilter"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(OclVoid)" instanceClassName="java.util.Set">
-      <elementType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(StrictTypingFilter)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mapping/1.0.0#//filters/StrictTypingFilter"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
@@ -7356,15 +7409,6 @@
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
@@ -10732,6 +10776,81 @@
       <details key="start" value="18968"/>
       <details key="end" value="19009"/>
       <details key="line" value="307"/>
+    </eAnnotations>
+    <eAnnotations source="positions.672" references="/0/strictFilterType/@expression">
+      <details key="start" value="19029"/>
+      <details key="end" value="19200"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.673" references="/0/strictFilterType/@expression/@condition">
+      <details key="start" value="19032"/>
+      <details key="end" value="19103"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.674" references="/0/strictFilterType/@expression/@condition/@source">
+      <details key="start" value="19033"/>
+      <details key="end" value="19098"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.675" references="/0/strictFilterType/@expression/@condition/@source/@source">
+      <details key="start" value="19033"/>
+      <details key="end" value="19090"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.676" references="/0/strictFilterType/@expression/@condition/@source/@source/@source">
+      <details key="start" value="19033"/>
+      <details key="end" value="19062"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.677" references="/0/strictFilterType/@expression/@condition/@source/@source/@source/editingElement">
+      <details key="start" value="19033"/>
+      <details key="end" value="19047"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.678" references="/0/strictFilterType/@expression/@condition/@source/@source/@argument.0">
+      <details key="start" value="19071"/>
+      <details key="end" value="19089"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.679" references="/0/strictFilterType/@expression/@condition/@argument.0">
+      <details key="start" value="19101"/>
+      <details key="end" value="19102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.680" references="/0/strictFilterType/@expression/@thenExpression">
+      <details key="start" value="19111"/>
+      <details key="end" value="19182"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.681" references="/0/strictFilterType/@expression/@thenExpression/@source">
+      <details key="start" value="19111"/>
+      <details key="end" value="19177"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.682" references="/0/strictFilterType/@expression/@thenExpression/@source/@source">
+      <details key="start" value="19111"/>
+      <details key="end" value="19168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.683" references="/0/strictFilterType/@expression/@thenExpression/@source/@source/@source">
+      <details key="start" value="19111"/>
+      <details key="end" value="19140"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.684" references="/0/strictFilterType/@expression/@thenExpression/@source/@source/@source/editingElement">
+      <details key="start" value="19111"/>
+      <details key="end" value="19125"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.685" references="/0/strictFilterType/@expression/@thenExpression/@source/@source/@argument.0">
+      <details key="start" value="19149"/>
+      <details key="end" value="19167"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.686" references="/0/strictFilterType/@expression/@elseExpression">
+      <details key="start" value="19189"/>
+      <details key="end" value="19193"/>
+      <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
