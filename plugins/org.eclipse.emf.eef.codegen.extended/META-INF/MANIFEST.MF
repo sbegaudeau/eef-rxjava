@@ -23,4 +23,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.emf.eef.codegen.extended.files,
+ org.eclipse.emf.eef.codegen.extended.flow,
+ org.eclipse.emf.eef.codegen.extended.initializer,
  org.eclipse.emf.eef.codegen.extended.launcher
