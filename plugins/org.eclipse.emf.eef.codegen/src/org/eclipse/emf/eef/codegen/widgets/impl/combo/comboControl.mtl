@@ -73,14 +73,14 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [defaultInitialization()/]
 // [/protected]
 [/if]
-[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](input, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
+[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](input[editionElement.name.toJavaClassifier()/], [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/template]
 
 [template private defaultInitialization(editionElement : PropertiesEditionElement) ]
-Collection<Object> input = new ArrayList<Object>(3);
-input.add("one");
-input.add("two");
-input.add("three");
+java.util.Collection<Object> input[editionElement.name.toJavaClassifier()/] = new ArrayList<Object>(3);
+input[editionElement.name.toJavaClassifier()/].add("one");
+input[editionElement.name.toJavaClassifier()/].add("two");
+input[editionElement.name.toJavaClassifier()/].add("three");
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Combo'))]
