@@ -112,7 +112,7 @@
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.initSignature()/] {
 		[elementEditor.name.toJavaIdentifier()/].setInput(input);
-		if (current != null) {
+		if (currentValue != null) {
 			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(currentValue));
 		}
 	}
