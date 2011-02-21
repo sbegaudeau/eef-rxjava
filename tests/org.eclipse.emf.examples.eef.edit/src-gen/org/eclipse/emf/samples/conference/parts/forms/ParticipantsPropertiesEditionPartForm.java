@@ -129,6 +129,9 @@ public class ParticipantsPropertiesEditionPartForm extends CompositePropertiesEd
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.participantsFilters) {
+			this.participants.addFilter(filter);
+		}
 		this.participants.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Participants.participants_, ConferenceViewsRepository.FORM_KIND));
 		this.participants.createControls(parent, widgetFactory);
 		this.participants.addSelectionListener(new SelectionAdapter() {
@@ -160,8 +163,8 @@ public class ParticipantsPropertiesEditionPartForm extends CompositePropertiesEd
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 
@@ -197,6 +200,9 @@ public class ParticipantsPropertiesEditionPartForm extends CompositePropertiesEd
 	 */
 	public void addFilterToParticipants(ViewerFilter filter) {
 		participantsFilters.add(filter);
+		if (this.participants != null) {
+			this.participants.addFilter(filter);
+		}
 	}
 
 	/**

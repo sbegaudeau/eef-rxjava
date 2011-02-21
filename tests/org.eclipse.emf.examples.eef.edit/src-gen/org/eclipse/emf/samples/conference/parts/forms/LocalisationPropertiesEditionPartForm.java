@@ -182,6 +182,9 @@ public class LocalisationPropertiesEditionPartForm extends CompositePropertiesEd
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.sitesFilters) {
+			this.sites.addFilter(filter);
+		}
 		this.sites.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Localisation.sites, ConferenceViewsRepository.FORM_KIND));
 		this.sites.createControls(parent, widgetFactory);
 		this.sites.addSelectionListener(new SelectionAdapter() {
@@ -213,8 +216,8 @@ public class LocalisationPropertiesEditionPartForm extends CompositePropertiesEd
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**
@@ -275,6 +278,9 @@ public class LocalisationPropertiesEditionPartForm extends CompositePropertiesEd
 	 */
 	public void addFilterToSites(ViewerFilter filter) {
 		sitesFilters.add(filter);
+		if (this.sites != null) {
+			this.sites.addFilter(filter);
+		}
 	}
 
 	/**

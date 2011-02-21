@@ -184,6 +184,9 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.sitesFilters) {
+			this.sites.addFilter(filter);
+		}
 		this.sites.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Localisation.sites, ConferenceViewsRepository.SWT_KIND));
 		this.sites.createControls(parent);
 		this.sites.addSelectionListener(new SelectionAdapter() {
@@ -215,8 +218,8 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**
@@ -277,6 +280,9 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void addFilterToSites(ViewerFilter filter) {
 		sitesFilters.add(filter);
+		if (this.sites != null) {
+			this.sites.addFilter(filter);
+		}
 	}
 
 	/**

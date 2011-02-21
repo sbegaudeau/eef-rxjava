@@ -52,12 +52,12 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 	/**
 	 * Settings for talks ReferencesTable
 	 */
-	private	ReferencesTableSettings talksSettings;
+	protected ReferencesTableSettings talksSettings;
 	
 	/**
 	 * Settings for topics ReferencesTable
 	 */
-	private	ReferencesTableSettings topicsSettings;
+	protected ReferencesTableSettings topicsSettings;
 	
 	/**
 	 * Default constructor
@@ -142,16 +142,12 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 		Conference conference = (Conference)semanticObject;
 		if (ConferenceViewsRepository.TalksAndTopics.talks == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ConferencePackage.eINSTANCE.getConference_Talks(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, talksSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							talksSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
@@ -169,16 +165,12 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 		}
 		if (ConferenceViewsRepository.TalksAndTopics.topics == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ConferencePackage.eINSTANCE.getConference_Topics(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, topicsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							topicsSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {

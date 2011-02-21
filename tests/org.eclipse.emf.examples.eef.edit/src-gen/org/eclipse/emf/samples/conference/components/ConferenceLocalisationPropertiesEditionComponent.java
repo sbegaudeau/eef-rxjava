@@ -55,7 +55,7 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 	/**
 	 * Settings for sites ReferencesTable
 	 */
-	private	ReferencesTableSettings sitesSettings;
+	protected ReferencesTableSettings sitesSettings;
 	
 	/**
 	 * Default constructor
@@ -129,16 +129,12 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 		}
 		if (ConferenceViewsRepository.Localisation.sites == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ConferencePackage.eINSTANCE.getConference_Sites(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, sitesSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							sitesSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {

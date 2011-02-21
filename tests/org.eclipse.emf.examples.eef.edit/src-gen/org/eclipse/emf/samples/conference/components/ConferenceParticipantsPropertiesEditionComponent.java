@@ -51,7 +51,7 @@ public class ConferenceParticipantsPropertiesEditionComponent extends SinglePart
 	/**
 	 * Settings for participants ReferencesTable
 	 */
-	private	ReferencesTableSettings participantsSettings;
+	protected ReferencesTableSettings participantsSettings;
 	
 	/**
 	 * Default constructor
@@ -117,16 +117,12 @@ public class ConferenceParticipantsPropertiesEditionComponent extends SinglePart
 		Conference conference = (Conference)semanticObject;
 		if (ConferenceViewsRepository.Participants.participants_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, semanticObject, ConferencePackage.eINSTANCE.getConference_Participants(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, participantsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
 					if (policy instanceof CreateEditingPolicy) {
 						policy.execute();
-						EObject resultEObject = (EObject) ((CreateEditingPolicy) policy).getResult();
-						if (resultEObject != null) {
-							participantsSettings.addToReference(resultEObject);
-						}
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {

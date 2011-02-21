@@ -126,6 +126,9 @@ protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>()
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.participantsFilters) {
+			this.participants.addFilter(filter);
+		}
 		this.participants.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Participants.participants_, ConferenceViewsRepository.SWT_KIND));
 		this.participants.createControls(parent);
 		this.participants.addSelectionListener(new SelectionAdapter() {
@@ -157,8 +160,8 @@ protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>()
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 
@@ -194,6 +197,9 @@ protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>()
 	 */
 	public void addFilterToParticipants(ViewerFilter filter) {
 		participantsFilters.add(filter);
+		if (this.participants != null) {
+			this.participants.addFilter(filter);
+		}
 	}
 
 	/**

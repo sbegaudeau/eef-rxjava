@@ -133,6 +133,9 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.talksFilters) {
+			this.talks.addFilter(filter);
+		}
 		this.talks.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.TalksAndTopics.talks, ConferenceViewsRepository.SWT_KIND));
 		this.talks.createControls(parent);
 		this.talks.addSelectionListener(new SelectionAdapter() {
@@ -178,6 +181,9 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.topicsFilters) {
+			this.topics.addFilter(filter);
+		}
 		this.topics.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.TalksAndTopics.topics, ConferenceViewsRepository.SWT_KIND));
 		this.topics.createControls(parent);
 		this.topics.addSelectionListener(new SelectionAdapter() {
@@ -209,8 +215,8 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 
@@ -246,6 +252,9 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void addFilterToTalks(ViewerFilter filter) {
 		talksFilters.add(filter);
+		if (this.talks != null) {
+			this.talks.addFilter(filter);
+		}
 	}
 
 	/**
@@ -302,6 +311,9 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void addFilterToTopics(ViewerFilter filter) {
 		topicsFilters.add(filter);
+		if (this.topics != null) {
+			this.topics.addFilter(filter);
+		}
 	}
 
 	/**

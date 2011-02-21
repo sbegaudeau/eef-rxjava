@@ -136,6 +136,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends CompositeProperties
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.talksFilters) {
+			this.talks.addFilter(filter);
+		}
 		this.talks.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.TalksAndTopics.talks, ConferenceViewsRepository.FORM_KIND));
 		this.talks.createControls(parent, widgetFactory);
 		this.talks.addSelectionListener(new SelectionAdapter() {
@@ -181,6 +184,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends CompositeProperties
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.topicsFilters) {
+			this.topics.addFilter(filter);
+		}
 		this.topics.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.TalksAndTopics.topics, ConferenceViewsRepository.FORM_KIND));
 		this.topics.createControls(parent, widgetFactory);
 		this.topics.addSelectionListener(new SelectionAdapter() {
@@ -212,8 +218,8 @@ public class TalksAndTopicsPropertiesEditionPartForm extends CompositeProperties
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 
@@ -249,6 +255,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends CompositeProperties
 	 */
 	public void addFilterToTalks(ViewerFilter filter) {
 		talksFilters.add(filter);
+		if (this.talks != null) {
+			this.talks.addFilter(filter);
+		}
 	}
 
 	/**
@@ -305,6 +314,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends CompositeProperties
 	 */
 	public void addFilterToTopics(ViewerFilter filter) {
 		topicsFilters.add(filter);
+		if (this.topics != null) {
+			this.topics.addFilter(filter);
+		}
 	}
 
 	/**
