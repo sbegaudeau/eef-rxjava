@@ -43,6 +43,7 @@ public class UIConstants {
 	public static final String PACKAGE_EXPLORER_VIEW_NAME = "Package Explorer";
 	public static final String PROPERTIES_VIEW_NAME = "Properties";
 	public static final String JAVA_LABEL = "Java";
+	public static final String JAVA_DEFAULT_LABEL = "Java (default)";
 	public static final String WELCOME_LABEL = "Welcome";
 	
 	/*****************************************************************************

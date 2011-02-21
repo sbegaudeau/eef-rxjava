@@ -1134,7 +1134,11 @@ public class SWTEEFBot extends SWTWorkbenchBot {
 		SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
 		activateShell(openPerspectiveShell);
 
-		table().select(UIConstants.JAVA_LABEL);
+		try {
+			table().select(UIConstants.JAVA_LABEL);
+		} catch (IllegalArgumentException e) {
+			table().select(UIConstants.JAVA_DEFAULT_LABEL);
+		}
 		button(UIConstants.OK_BUTTON).click();
 	}
 
