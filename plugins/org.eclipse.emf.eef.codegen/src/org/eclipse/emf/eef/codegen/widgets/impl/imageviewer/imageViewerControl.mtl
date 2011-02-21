@@ -17,34 +17,40 @@
 [import typeUtils /]
 
 [comment ===== Case : model = Attribute(1) - view = Text ===== /]
+[comment @Override widgetControl.declareEObjectUpdater /]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
+[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/]((String)event.getNewValue());
+[/template]
+
 [comment @Override widgetControl.liveUpdater /]
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
-		if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible([editionElement.views->first().editorID()/])){
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible([editionElement.views->first().editorID()/])){
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			if (msg.getNewValue() != null)
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
+	if (msg.getNewValue() != null) {
+		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]((String)msg.getNewValue());
+	}
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
 [/if]
-			else
-				[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
-		}
+	else {
+		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
+	}
+}
 [/template]
 
 [comment @Override widgetControl.updater /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
 [if (editionElement.model.oclAsType(ecore::EAttribute).isString())]
-			if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
-				[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](EcoreUtil.getIdentification([pec.model.name.toJavaIdentifier()/]), [pec.model.name.toJavaIdentifier()/].getPics());
+if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/])) {
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](EcoreUtil.getIdentification([pec.model.name.toJavaIdentifier()/]), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+}
 [else]
-			//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = ImageViewer
 [/if]
 [/template]
 
 [comment @Override widgetControl.filterUpdater /]
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
-[comment no filters for imageViewer /]
 [/template]
-
 
 
