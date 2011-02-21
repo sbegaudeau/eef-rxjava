@@ -22,39 +22,6 @@ public class FiltersViewsRepository {
 
 
 	/**
-	 * AbstractReferenceOwnerSample view descriptor
-	 * 
-	 */
-	public static class AbstractReferenceOwnerSample {
-		public static class Properties {
-	
-			
-			public static String name = "filters::AbstractReferenceOwnerSample::properties::name";
-			
-			
-			public static String abstractTarget = "filters::AbstractReferenceOwnerSample::properties::abstractTarget";
-			
-	
-		}
-	
-	}
-
-	/**
-	 * AbstractReferenceTargetSample view descriptor
-	 * 
-	 */
-	public static class AbstractReferenceTargetSample {
-		public static class Properties {
-	
-			
-			public static String name = "filters::AbstractReferenceTargetSample::properties::name";
-			
-	
-		}
-	
-	}
-
-	/**
 	 * ConcreteReferenceOwnerSample view descriptor
 	 * 
 	 */
@@ -66,6 +33,9 @@ public class FiltersViewsRepository {
 			
 			
 			public static String abstractTarget = "filters::ConcreteReferenceOwnerSample::properties::abstractTarget";
+			
+			
+			public static String strictTyping = "filters::ConcreteReferenceOwnerSample::properties::strictTyping";
 			
 	
 		}

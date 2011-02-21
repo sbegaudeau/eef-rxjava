@@ -214,6 +214,9 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.tablecompositionRequiredPropertyFilters) {
+			this.tablecompositionRequiredProperty.addFilter(filter);
+		}
 		this.tablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		this.tablecompositionRequiredProperty.createControls(parent);
 		this.tablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -259,6 +262,9 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.tablecompositionOptionalPropertyFilters) {
+			this.tablecompositionOptionalProperty.addFilter(filter);
+		}
 		this.tablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		this.tablecompositionOptionalProperty.createControls(parent);
 		this.tablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -352,6 +358,9 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyFilters.add(filter);
+		if (this.tablecompositionRequiredProperty != null) {
+			this.tablecompositionRequiredProperty.addFilter(filter);
+		}
 	}
 
 	/**
@@ -408,6 +417,9 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyFilters.add(filter);
+		if (this.tablecompositionOptionalProperty != null) {
+			this.tablecompositionOptionalProperty.addFilter(filter);
+		}
 	}
 
 	/**

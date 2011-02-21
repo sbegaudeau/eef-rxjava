@@ -160,6 +160,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.advancedtablecompositionRequiredPropertyFilters) {
+			this.advancedtablecompositionRequiredProperty.addFilter(filter);
+		}
 		this.advancedtablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		this.advancedtablecompositionRequiredProperty.createControls(parent, widgetFactory);
 		this.advancedtablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -205,6 +208,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.advancedtablecompositionOptionalPropertyFilters) {
+			this.advancedtablecompositionOptionalProperty.addFilter(filter);
+		}
 		this.advancedtablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		this.advancedtablecompositionOptionalProperty.createControls(parent, widgetFactory);
 		this.advancedtablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -273,6 +279,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	public void addFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionRequiredPropertyFilters.add(filter);
+		if (this.advancedtablecompositionRequiredProperty != null) {
+			this.advancedtablecompositionRequiredProperty.addFilter(filter);
+		}
 	}
 
 	/**
@@ -329,6 +338,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	public void addFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionOptionalPropertyFilters.add(filter);
+		if (this.advancedtablecompositionOptionalProperty != null) {
+			this.advancedtablecompositionOptionalProperty.addFilter(filter);
+		}
 	}
 
 	/**

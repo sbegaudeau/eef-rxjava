@@ -21,12 +21,6 @@ public class FiltersMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.eef.eefnr.filters.providers.filtersMessages"; //$NON-NLS-1$
 
 	
-	public static String AbstractReferenceOwnerSamplePropertiesEditionPart_PropertiesGroupLabel;
-
-	
-	public static String AbstractReferenceTargetSamplePropertiesEditionPart_PropertiesGroupLabel;
-
-	
 	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -34,18 +28,6 @@ public class FiltersMessages extends NLS {
 
 	
 	public static String ConcreteReferenceTargetSample2PropertiesEditionPart_PropertiesGroupLabel;
-
-	
-	public static String AbstractReferenceOwnerSample_ReadOnly;
-
-	
-	public static String AbstractReferenceOwnerSample_Part_Title;
-
-	
-	public static String AbstractReferenceTargetSample_ReadOnly;
-
-	
-	public static String AbstractReferenceTargetSample_Part_Title;
 
 	
 	public static String ConcreteReferenceOwnerSample_ReadOnly;
@@ -66,19 +48,13 @@ public class FiltersMessages extends NLS {
 	public static String ConcreteReferenceTargetSample2_Part_Title;
 
 	
-	public static String AbstractReferenceOwnerSamplePropertiesEditionPart_NameLabel;
-
-	
-	public static String AbstractReferenceOwnerSamplePropertiesEditionPart_AbstractTargetLabel;
-
-	
-	public static String AbstractReferenceTargetSamplePropertiesEditionPart_NameLabel;
-
-	
 	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel;
 
 	
 	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_AbstractTargetLabel;
+
+	
+	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel;
 
 	
 	public static String ConcreteReferenceTargetSample1PropertiesEditionPart_NameLabel;

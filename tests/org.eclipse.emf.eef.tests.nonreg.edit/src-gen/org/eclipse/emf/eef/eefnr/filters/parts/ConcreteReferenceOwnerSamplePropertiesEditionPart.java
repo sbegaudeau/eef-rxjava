@@ -83,6 +83,50 @@ public interface ConcreteReferenceOwnerSamplePropertiesEditionPart {
 
 
 
+	/**
+	 * Init the strictTyping
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initStrictTyping(ReferencesTableSettings settings);
+
+	/**
+	 * Update the strictTyping
+	 * @param newValue the strictTyping to update
+	 * 
+	 */
+	public void updateStrictTyping();
+
+	/**
+	 * Adds the given filter to the strictTyping edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToStrictTyping(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the strictTyping edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToStrictTyping(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the strictTyping table
+	 * 
+	 */
+	public boolean isContainedInStrictTypingTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

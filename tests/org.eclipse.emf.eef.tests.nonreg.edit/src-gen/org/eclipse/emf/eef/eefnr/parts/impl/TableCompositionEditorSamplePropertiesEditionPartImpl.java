@@ -222,6 +222,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		tablecompositionRequiredPropertyData.minimumHeight = 120;
 		tablecompositionRequiredPropertyData.heightHint = 120;
 		tablecompositionRequiredProperty.getTable().setLayoutData(tablecompositionRequiredPropertyData);
+		for (ViewerFilter filter : this.tablecompositionRequiredPropertyFilters) {
+			tablecompositionRequiredProperty.addFilter(filter);
+		}
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(tableContainer);
@@ -390,6 +393,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		tablecompositionOptionalPropertyData.minimumHeight = 120;
 		tablecompositionOptionalPropertyData.heightHint = 120;
 		tablecompositionOptionalProperty.getTable().setLayoutData(tablecompositionOptionalPropertyData);
+		for (ViewerFilter filter : this.tablecompositionOptionalPropertyFilters) {
+			tablecompositionOptionalProperty.addFilter(filter);
+		}
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(tableContainer);
@@ -525,6 +531,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyFilters.add(filter);
+		if (this.tablecompositionRequiredProperty != null) {
+			this.tablecompositionRequiredProperty.addFilter(filter);
+		}
 	}
 
 	/**
@@ -581,6 +590,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyFilters.add(filter);
+		if (this.tablecompositionOptionalProperty != null) {
+			this.tablecompositionOptionalProperty.addFilter(filter);
+		}
 	}
 
 	/**

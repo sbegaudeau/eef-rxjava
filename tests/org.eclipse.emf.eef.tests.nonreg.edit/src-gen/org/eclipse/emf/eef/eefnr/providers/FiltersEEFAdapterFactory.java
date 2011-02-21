@@ -12,8 +12,6 @@ package org.eclipse.emf.eef.eefnr.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory;
-import org.eclipse.emf.eef.filters.providers.AbstractReferenceOwnerSamplePropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.AbstractReferenceTargetSamplePropertiesEditionProvider;
 import org.eclipse.emf.eef.filters.providers.ConcreteReferenceOwnerSamplePropertiesEditionProvider;
 import org.eclipse.emf.eef.filters.providers.ConcreteReferenceTargetSample1PropertiesEditionProvider;
 import org.eclipse.emf.eef.filters.providers.ConcreteReferenceTargetSample2PropertiesEditionProvider;
@@ -33,22 +31,6 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 	 */
 	public Adapter createAbstractSampleAdapter() {
 		return new AbstractSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractReferenceOwnerSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractReferenceOwnerSampleAdapter() {
-		return new AbstractReferenceOwnerSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractReferenceTargetSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractReferenceTargetSampleAdapter() {
-		return new AbstractReferenceTargetSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

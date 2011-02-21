@@ -378,6 +378,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		multipleSampleForTableCompositionData.minimumHeight = 120;
 		multipleSampleForTableCompositionData.heightHint = 120;
 		multipleSampleForTableComposition.getTable().setLayoutData(multipleSampleForTableCompositionData);
+		for (ViewerFilter filter : this.multipleSampleForTableCompositionFilters) {
+			multipleSampleForTableComposition.addFilter(filter);
+		}
 		EditingUtils.setID(multipleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(multipleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createMultipleSampleForTableCompositionPanel(tableContainer);
@@ -490,6 +493,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.multipleSampleForAdvancedTableCompositionFilters) {
+			this.multipleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 		this.multipleSampleForAdvancedTableComposition.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, NavigationViewsRepository.SWT_KIND));
 		this.multipleSampleForAdvancedTableComposition.createControls(parent);
 		this.multipleSampleForAdvancedTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -855,6 +861,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		singleSampleForTableCompositionData.minimumHeight = 120;
 		singleSampleForTableCompositionData.heightHint = 120;
 		singleSampleForTableComposition.getTable().setLayoutData(singleSampleForTableCompositionData);
+		for (ViewerFilter filter : this.singleSampleForTableCompositionFilters) {
+			singleSampleForTableComposition.addFilter(filter);
+		}
 		EditingUtils.setID(singleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(singleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createSingleSampleForTableCompositionPanel(tableContainer);
@@ -967,6 +976,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.singleSampleForAdvancedTableCompositionFilters) {
+			this.singleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 		this.singleSampleForAdvancedTableComposition.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, NavigationViewsRepository.SWT_KIND));
 		this.singleSampleForAdvancedTableComposition.createControls(parent);
 		this.singleSampleForAdvancedTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -1503,6 +1515,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 */
 	public void addFilterToMultipleSampleForTableComposition(ViewerFilter filter) {
 		multipleSampleForTableCompositionFilters.add(filter);
+		if (this.multipleSampleForTableComposition != null) {
+			this.multipleSampleForTableComposition.addFilter(filter);
+		}
 	}
 
 	/**
@@ -1559,6 +1574,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 */
 	public void addFilterToMultipleSampleForAdvancedTableComposition(ViewerFilter filter) {
 		multipleSampleForAdvancedTableCompositionFilters.add(filter);
+		if (this.multipleSampleForAdvancedTableComposition != null) {
+			this.multipleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 	}
 
 	/**
@@ -1781,6 +1799,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 */
 	public void addFilterToSingleSampleForTableComposition(ViewerFilter filter) {
 		singleSampleForTableCompositionFilters.add(filter);
+		if (this.singleSampleForTableComposition != null) {
+			this.singleSampleForTableComposition.addFilter(filter);
+		}
 	}
 
 	/**
@@ -1837,6 +1858,9 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 */
 	public void addFilterToSingleSampleForAdvancedTableComposition(ViewerFilter filter) {
 		singleSampleForAdvancedTableCompositionFilters.add(filter);
+		if (this.singleSampleForAdvancedTableComposition != null) {
+			this.singleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 	}
 
 	/**

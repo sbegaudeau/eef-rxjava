@@ -153,6 +153,9 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.samplesFilters) {
+			this.samples.addFilter(filter);
+		}
 		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.FORM_KIND));
 		this.samples.createControls(parent, widgetFactory);
 		this.samples.addSelectionListener(new SelectionAdapter() {
@@ -221,6 +224,9 @@ public class RootPropertiesEditionPartForm extends CompositePropertiesEditionPar
 	 */
 	public void addFilterToSamples(ViewerFilter filter) {
 		samplesFilters.add(filter);
+		if (this.samples != null) {
+			this.samples.addFilter(filter);
+		}
 	}
 
 	/**

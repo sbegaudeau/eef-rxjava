@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.eefnr.filters.providers.FiltersMessages;
@@ -65,6 +66,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 	protected ReferencesTable abstractTarget;
 	protected List<ViewerFilter> abstractTargetBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> abstractTargetFilters = new ArrayList<ViewerFilter>();
+protected ReferencesTable strictTyping;
+protected List<ViewerFilter> strictTypingBusinessFilters = new ArrayList<ViewerFilter>();
+protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -105,6 +109,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		CompositionStep propertiesStep = concreteReferenceOwnerSampleStep.addStep(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.class);
 		propertiesStep.addStep(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
 		propertiesStep.addStep(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget);
+		propertiesStep.addStep(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
 		
 		
 		composer = new PartComposer(concreteReferenceOwnerSampleStep) {
@@ -119,6 +124,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 				}
 				if (key == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget) {
 					return createAbstractTargetAdvancedReferencesTable(parent);
+				}
+				if (key == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping) {
+					return createStrictTypingAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -268,6 +276,54 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		}
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createStrictTypingAdvancedTableComposition(Composite parent) {
+		this.strictTyping = new ReferencesTable(FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel, new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				strictTyping.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				strictTyping.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				strictTyping.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				strictTyping.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.strictTypingFilters) {
+			this.strictTyping.addFilter(filter);
+		}
+		this.strictTyping.setHelpText(propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, FiltersViewsRepository.SWT_KIND));
+		this.strictTyping.createControls(parent);
+		this.strictTyping.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData strictTypingData = new GridData(GridData.FILL_HORIZONTAL);
+		strictTypingData.horizontalSpan = 3;
+		this.strictTyping.setLayoutData(strictTypingData);
+		this.strictTyping.setLowerBound(0);
+		this.strictTyping.setUpperBound(-1);
+		strictTyping.setID(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
+		strictTyping.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		return parent;
+	}
+
 
 
 	/**
@@ -360,6 +416,65 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 	 */
 	public boolean isContainedInAbstractTargetTable(EObject element) {
 		return ((ReferencesTableSettings)abstractTarget.getInput()).contains(element);
+	}
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart#initStrictTyping(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initStrictTyping(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		strictTyping.setContentProvider(contentProvider);
+		strictTyping.setInput(settings);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart#updateStrictTyping()
+	 * 
+	 */
+	public void updateStrictTyping() {
+	strictTyping.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart#addFilterStrictTyping(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToStrictTyping(ViewerFilter filter) {
+		strictTypingFilters.add(filter);
+		if (this.strictTyping != null) {
+			this.strictTyping.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart#addBusinessFilterStrictTyping(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToStrictTyping(ViewerFilter filter) {
+		strictTypingBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart#isContainedInStrictTypingTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInStrictTypingTable(EObject element) {
+		return ((ReferencesTableSettings)strictTyping.getInput()).contains(element);
 	}
 
 

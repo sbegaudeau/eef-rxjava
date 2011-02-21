@@ -377,6 +377,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		multipleSampleForTableCompositionData.minimumHeight = 120;
 		multipleSampleForTableCompositionData.heightHint = 120;
 		multipleSampleForTableComposition.getTable().setLayoutData(multipleSampleForTableCompositionData);
+		for (ViewerFilter filter : this.multipleSampleForTableCompositionFilters) {
+			multipleSampleForTableComposition.addFilter(filter);
+		}
 		EditingUtils.setID(multipleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(multipleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createMultipleSampleForTableCompositionPanel(widgetFactory, tableContainer);
@@ -486,6 +489,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.multipleSampleForAdvancedTableCompositionFilters) {
+			this.multipleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 		this.multipleSampleForAdvancedTableComposition.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, NavigationViewsRepository.FORM_KIND));
 		this.multipleSampleForAdvancedTableComposition.createControls(parent, widgetFactory);
 		this.multipleSampleForAdvancedTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -851,6 +857,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 		singleSampleForTableCompositionData.minimumHeight = 120;
 		singleSampleForTableCompositionData.heightHint = 120;
 		singleSampleForTableComposition.getTable().setLayoutData(singleSampleForTableCompositionData);
+		for (ViewerFilter filter : this.singleSampleForTableCompositionFilters) {
+			singleSampleForTableComposition.addFilter(filter);
+		}
 		EditingUtils.setID(singleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(singleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createSingleSampleForTableCompositionPanel(widgetFactory, tableContainer);
@@ -960,6 +969,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.singleSampleForAdvancedTableCompositionFilters) {
+			this.singleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 		this.singleSampleForAdvancedTableComposition.setHelpText(propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, NavigationViewsRepository.FORM_KIND));
 		this.singleSampleForAdvancedTableComposition.createControls(parent, widgetFactory);
 		this.singleSampleForAdvancedTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -1512,6 +1524,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 */
 	public void addFilterToMultipleSampleForTableComposition(ViewerFilter filter) {
 		multipleSampleForTableCompositionFilters.add(filter);
+		if (this.multipleSampleForTableComposition != null) {
+			this.multipleSampleForTableComposition.addFilter(filter);
+		}
 	}
 
 	/**
@@ -1568,6 +1583,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 */
 	public void addFilterToMultipleSampleForAdvancedTableComposition(ViewerFilter filter) {
 		multipleSampleForAdvancedTableCompositionFilters.add(filter);
+		if (this.multipleSampleForAdvancedTableComposition != null) {
+			this.multipleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 	}
 
 	/**
@@ -1790,6 +1808,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 */
 	public void addFilterToSingleSampleForTableComposition(ViewerFilter filter) {
 		singleSampleForTableCompositionFilters.add(filter);
+		if (this.singleSampleForTableComposition != null) {
+			this.singleSampleForTableComposition.addFilter(filter);
+		}
 	}
 
 	/**
@@ -1846,6 +1867,9 @@ public class OwnerPropertiesEditionPartForm extends CompositePropertiesEditionPa
 	 */
 	public void addFilterToSingleSampleForAdvancedTableComposition(ViewerFilter filter) {
 		singleSampleForAdvancedTableCompositionFilters.add(filter);
+		if (this.singleSampleForAdvancedTableComposition != null) {
+			this.singleSampleForAdvancedTableComposition.addFilter(filter);
+		}
 	}
 
 	/**

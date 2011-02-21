@@ -31,22 +31,6 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractReferenceOwnerSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractReferenceOwnerSampleAdapter() {
-		return new AbstractReferenceOwnerSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractReferenceTargetSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractReferenceTargetSampleAdapter() {
-		return new AbstractReferenceTargetSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceOwnerSampleAdapter()
 	 * 
 	 */

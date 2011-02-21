@@ -11,13 +11,9 @@
 package org.eclipse.emf.eef.eefnr.filters.providers;
 
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
-import org.eclipse.emf.eef.eefnr.filters.parts.forms.AbstractReferenceOwnerSamplePropertiesEditionPartForm;
-import org.eclipse.emf.eef.eefnr.filters.parts.forms.AbstractReferenceTargetSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceOwnerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceTargetSample1PropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceTargetSample2PropertiesEditionPartForm;
-import org.eclipse.emf.eef.eefnr.filters.parts.impl.AbstractReferenceOwnerSamplePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.eefnr.filters.parts.impl.AbstractReferenceTargetSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.filters.parts.impl.ConcreteReferenceOwnerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.filters.parts.impl.ConcreteReferenceTargetSample1PropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.filters.parts.impl.ConcreteReferenceTargetSample2PropertiesEditionPartImpl;
@@ -49,18 +45,6 @@ public class FiltersPropertiesEditionPartProvider implements IPropertiesEditionP
 	 * 
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
-		if (key == FiltersViewsRepository.AbstractReferenceOwnerSample.class) {
-			if (kind == FiltersViewsRepository.SWT_KIND)
-				return new AbstractReferenceOwnerSamplePropertiesEditionPartImpl(component);
-			if (kind == FiltersViewsRepository.FORM_KIND)
-				return new AbstractReferenceOwnerSamplePropertiesEditionPartForm(component);
-		}
-		if (key == FiltersViewsRepository.AbstractReferenceTargetSample.class) {
-			if (kind == FiltersViewsRepository.SWT_KIND)
-				return new AbstractReferenceTargetSamplePropertiesEditionPartImpl(component);
-			if (kind == FiltersViewsRepository.FORM_KIND)
-				return new AbstractReferenceTargetSamplePropertiesEditionPartForm(component);
-		}
 		if (key == FiltersViewsRepository.ConcreteReferenceOwnerSample.class) {
 			if (kind == FiltersViewsRepository.SWT_KIND)
 				return new ConcreteReferenceOwnerSamplePropertiesEditionPartImpl(component);

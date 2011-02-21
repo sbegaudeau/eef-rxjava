@@ -455,7 +455,7 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					multipleSampleForTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
+				multipleSampleForTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition == event.getAffectedEditor()) {
@@ -478,7 +478,7 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					multipleSampleForAdvancedTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
+				multipleSampleForAdvancedTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable == event.getAffectedEditor()) {

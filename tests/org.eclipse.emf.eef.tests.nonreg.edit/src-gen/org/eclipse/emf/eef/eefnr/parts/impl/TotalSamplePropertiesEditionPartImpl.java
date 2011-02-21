@@ -1016,6 +1016,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		tablecompositionRequiredPropertyData.minimumHeight = 120;
 		tablecompositionRequiredPropertyData.heightHint = 120;
 		tablecompositionRequiredProperty.getTable().setLayoutData(tablecompositionRequiredPropertyData);
+		for (ViewerFilter filter : this.tablecompositionRequiredPropertyFilters) {
+			tablecompositionRequiredProperty.addFilter(filter);
+		}
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(tableContainer);
@@ -1184,6 +1187,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		tablecompositionOptionalPropertyData.minimumHeight = 120;
 		tablecompositionOptionalPropertyData.heightHint = 120;
 		tablecompositionOptionalProperty.getTable().setLayoutData(tablecompositionOptionalPropertyData);
+		for (ViewerFilter filter : this.tablecompositionOptionalPropertyFilters) {
+			tablecompositionOptionalProperty.addFilter(filter);
+		}
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(tableContainer);
@@ -1504,6 +1510,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.advancedtablecompositionRequiredPropertyFilters) {
+			this.advancedtablecompositionRequiredProperty.addFilter(filter);
+		}
 		this.advancedtablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		this.advancedtablecompositionRequiredProperty.createControls(parent);
 		this.advancedtablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1549,6 +1558,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.advancedtablecompositionOptionalPropertyFilters) {
+			this.advancedtablecompositionOptionalProperty.addFilter(filter);
+		}
 		this.advancedtablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		this.advancedtablecompositionOptionalProperty.createControls(parent);
 		this.advancedtablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -2283,6 +2295,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	public void addFilterToTablecompositionRequiredProperty(ViewerFilter filter) {
 		tablecompositionRequiredPropertyFilters.add(filter);
+		if (this.tablecompositionRequiredProperty != null) {
+			this.tablecompositionRequiredProperty.addFilter(filter);
+		}
 	}
 
 	/**
@@ -2339,6 +2354,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	public void addFilterToTablecompositionOptionalProperty(ViewerFilter filter) {
 		tablecompositionOptionalPropertyFilters.add(filter);
+		if (this.tablecompositionOptionalProperty != null) {
+			this.tablecompositionOptionalProperty.addFilter(filter);
+		}
 	}
 
 	/**
@@ -2649,6 +2667,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	public void addFilterToAdvancedtablecompositionRequiredProperty(ViewerFilter filter) {
 		advancedtablecompositionRequiredPropertyFilters.add(filter);
+		if (this.advancedtablecompositionRequiredProperty != null) {
+			this.advancedtablecompositionRequiredProperty.addFilter(filter);
+		}
 	}
 
 	/**
@@ -2705,6 +2726,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	public void addFilterToAdvancedtablecompositionOptionalProperty(ViewerFilter filter) {
 		advancedtablecompositionOptionalPropertyFilters.add(filter);
+		if (this.advancedtablecompositionOptionalProperty != null) {
+			this.advancedtablecompositionOptionalProperty.addFilter(filter);
+		}
 	}
 
 	/**

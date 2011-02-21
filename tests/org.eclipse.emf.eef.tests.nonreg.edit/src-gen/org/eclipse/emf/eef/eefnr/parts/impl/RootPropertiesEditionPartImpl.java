@@ -149,6 +149,9 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 			}
 			public void navigateTo(EObject element) { }
 		});
+		for (ViewerFilter filter : this.samplesFilters) {
+			this.samples.addFilter(filter);
+		}
 		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.SWT_KIND));
 		this.samples.createControls(parent);
 		this.samples.addSelectionListener(new SelectionAdapter() {
@@ -217,6 +220,9 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void addFilterToSamples(ViewerFilter filter) {
 		samplesFilters.add(filter);
+		if (this.samples != null) {
+			this.samples.addFilter(filter);
+		}
 	}
 
 	/**
