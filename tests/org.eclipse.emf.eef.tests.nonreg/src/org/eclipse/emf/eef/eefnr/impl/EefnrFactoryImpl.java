@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrFactoryImpl.java,v 1.5 2010/04/15 12:48:57 glefur Exp $
+ * $Id: EefnrFactoryImpl.java,v 1.6 2011/02/22 08:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -79,6 +79,9 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 			case EefnrPackage.SAMPLE: return createSample();
 			case EefnrPackage.TEXT_SAMPLE_WITH_TWO_TABS: return createTextSampleWithTwoTabs();
 			case EefnrPackage.TABLE_COMPOSITION_EXTENSION_EDITOR_SAMPLE: return createTableCompositionExtensionEditorSample();
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE: return createImageViewerSample();
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE: return createSelectionDialogSample();
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE: return createSingleCompositionViewerSample();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -292,6 +295,36 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 	public TableCompositionExtensionEditorSample createTableCompositionExtensionEditorSample() {
 		TableCompositionExtensionEditorSampleImpl tableCompositionExtensionEditorSample = new TableCompositionExtensionEditorSampleImpl();
 		return tableCompositionExtensionEditorSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImageViewerSample createImageViewerSample() {
+		ImageViewerSampleImpl imageViewerSample = new ImageViewerSampleImpl();
+		return imageViewerSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SelectionDialogSample createSelectionDialogSample() {
+		SelectionDialogSampleImpl selectionDialogSample = new SelectionDialogSampleImpl();
+		return selectionDialogSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SingleCompositionViewerSample createSingleCompositionViewerSample() {
+		SingleCompositionViewerSampleImpl singleCompositionViewerSample = new SingleCompositionViewerSampleImpl();
+		return singleCompositionViewerSample;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackageImpl.java,v 1.9 2011/02/01 09:54:40 glefur Exp $
+ * $Id: EefnrPackageImpl.java,v 1.10 2011/02/22 08:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.impl;
 
@@ -25,12 +25,15 @@ import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.ImageViewerSample;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.RadioSample;
 import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.Root;
 import org.eclipse.emf.eef.eefnr.Sample;
+import org.eclipse.emf.eef.eefnr.SelectionDialogSample;
+import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
 import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.TextSample;
@@ -199,6 +202,27 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * @generated
 	 */
 	private EClass namedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass imageViewerSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass selectionDialogSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass singleCompositionViewerSampleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1034,6 +1058,105 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getImageViewerSample() {
+		return imageViewerSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImageViewerSample_ImageviewerRequiredProperty() {
+		return (EAttribute)imageViewerSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImageViewerSample_ImageviewerOptionalProperty() {
+		return (EAttribute)imageViewerSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSelectionDialogSample() {
+		return selectionDialogSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSelectionDialogSample_SelectionDialogRequiredProperty() {
+		return (EAttribute)selectionDialogSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSelectionDialogSample_SelectionDialogOptionalProperty() {
+		return (EAttribute)selectionDialogSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSingleCompositionViewerSample() {
+		return singleCompositionViewerSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty() {
+		return (EReference)singleCompositionViewerSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty() {
+		return (EReference)singleCompositionViewerSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty() {
+		return (EReference)singleCompositionViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty() {
+		return (EReference)singleCompositionViewerSampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -1170,6 +1293,20 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 
+		imageViewerSampleEClass = createEClass(IMAGE_VIEWER_SAMPLE);
+		createEAttribute(imageViewerSampleEClass, IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_REQUIRED_PROPERTY);
+		createEAttribute(imageViewerSampleEClass, IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY);
+
+		selectionDialogSampleEClass = createEClass(SELECTION_DIALOG_SAMPLE);
+		createEAttribute(selectionDialogSampleEClass, SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_REQUIRED_PROPERTY);
+		createEAttribute(selectionDialogSampleEClass, SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY);
+
+		singleCompositionViewerSampleEClass = createEClass(SINGLE_COMPOSITION_VIEWER_SAMPLE);
+		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_REQUIRED_PROPERTY);
+		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY);
+		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY);
+		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY);
+
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
 	}
@@ -1231,6 +1368,9 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		tableCompositionExtensionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		abstractTableCompositionTargetExtensionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		namedElementEClass.getESuperTypes().add(this.getAbstractSample());
+		imageViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		selectionDialogSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		singleCompositionViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1336,6 +1476,20 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEClass(abstractTableCompositionTargetExtensionEditorSampleEClass, AbstractTableCompositionTargetExtensionEditorSample.class, "AbstractTableCompositionTargetExtensionEditorSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(imageViewerSampleEClass, ImageViewerSample.class, "ImageViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getImageViewerSample_ImageviewerRequiredProperty(), ecorePackage.getEString(), "imageviewerRequiredProperty", null, 1, 1, ImageViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getImageViewerSample_ImageviewerOptionalProperty(), ecorePackage.getEString(), "imageviewerOptionalProperty", null, 0, 1, ImageViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(selectionDialogSampleEClass, SelectionDialogSample.class, "SelectionDialogSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSelectionDialogSample_SelectionDialogRequiredProperty(), ecorePackage.getEString(), "selectionDialogRequiredProperty", null, 1, 1, SelectionDialogSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSelectionDialogSample_SelectionDialogOptionalProperty(), ecorePackage.getEString(), "selectionDialogOptionalProperty", null, 0, 1, SelectionDialogSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(singleCompositionViewerSampleEClass, SingleCompositionViewerSample.class, "SingleCompositionViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty(), this.getSample(), null, "singlecompositionviewSingleRequiredProperty", null, 1, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty(), this.getSample(), null, "singlecompositionviewSingleOptionalProperty", null, 0, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty(), this.getAbstractSample(), null, "singlecompositionviewMultiRequiredProperty", null, 1, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty(), this.getAbstractSample(), null, "singlecompositionviewMultiOptionalProperty", null, 0, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

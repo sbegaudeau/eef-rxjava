@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.6 2010/11/30 08:23:18 glefur Exp $
+ * $Id: EefnrSwitch.java,v 1.7 2011/02/22 08:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -229,6 +229,27 @@ public class EefnrSwitch<T> {
 				NamedElement namedElement = (NamedElement)theEObject;
 				T result = caseNamedElement(namedElement);
 				if (result == null) result = caseAbstractSample(namedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE: {
+				ImageViewerSample imageViewerSample = (ImageViewerSample)theEObject;
+				T result = caseImageViewerSample(imageViewerSample);
+				if (result == null) result = caseAbstractSample(imageViewerSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE: {
+				SelectionDialogSample selectionDialogSample = (SelectionDialogSample)theEObject;
+				T result = caseSelectionDialogSample(selectionDialogSample);
+				if (result == null) result = caseAbstractSample(selectionDialogSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE: {
+				SingleCompositionViewerSample singleCompositionViewerSample = (SingleCompositionViewerSample)theEObject;
+				T result = caseSingleCompositionViewerSample(singleCompositionViewerSample);
+				if (result == null) result = caseAbstractSample(singleCompositionViewerSample);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -548,6 +569,51 @@ public class EefnrSwitch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Image Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Image Viewer Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseImageViewerSample(ImageViewerSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Selection Dialog Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Selection Dialog Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSelectionDialogSample(SelectionDialogSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Composition Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Composition Viewer Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSingleCompositionViewerSample(SingleCompositionViewerSample object) {
 		return null;
 	}
 

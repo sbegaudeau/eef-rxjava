@@ -116,6 +116,20 @@
     </genClasses>
     <genClasses image="false" ecoreClass="eefnr.ecore#//AbstractTableCompositionTargetExtensionEditorSample"/>
     <genClasses image="false" ecoreClass="eefnr.ecore#//NamedElement"/>
+    <genClasses ecoreClass="eefnr.ecore#//ImageViewerSample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//ImageViewerSample/imageviewerRequiredProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//ImageViewerSample/imageviewerOptionalProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//SelectionDialogSample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//SelectionDialogSample/selectionDialogRequiredProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//SelectionDialogSample/selectionDialogOptionalProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//SingleCompositionViewerSample">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleRequiredProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiRequiredProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiOptionalProperty"/>
+    </genClasses>
     <nestedGenPackages prefix="References" basePackage="org.eclipse.emf.eef.eefnr"
         disposableProviderFactory="true" ecorePackage="eefnr.ecore#//references">
       <genClasses image="false" ecoreClass="eefnr.ecore#//references/AbstractEnabledSample">

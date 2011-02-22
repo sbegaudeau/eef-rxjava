@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrAdapterFactory.java,v 1.6 2010/11/30 08:23:18 glefur Exp $
+ * $Id: EefnrAdapterFactory.java,v 1.7 2011/02/22 08:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
@@ -154,6 +154,18 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
 				return createNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseImageViewerSample(ImageViewerSample object) {
+				return createImageViewerSampleAdapter();
+			}
+			@Override
+			public Adapter caseSelectionDialogSample(SelectionDialogSample object) {
+				return createSelectionDialogSampleAdapter();
+			}
+			@Override
+			public Adapter caseSingleCompositionViewerSample(SingleCompositionViewerSample object) {
+				return createSingleCompositionViewerSampleAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -466,6 +478,48 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.ImageViewerSample <em>Image Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.ImageViewerSample
+	 * @generated
+	 */
+	public Adapter createImageViewerSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample <em>Selection Dialog Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.SelectionDialogSample
+	 * @generated
+	 */
+	public Adapter createSelectionDialogSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample <em>Single Composition Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample
+	 * @generated
+	 */
+	public Adapter createSingleCompositionViewerSampleAdapter() {
 		return null;
 	}
 

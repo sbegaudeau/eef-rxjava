@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrFactory.java,v 1.5 2010/04/15 12:48:57 glefur Exp $
+ * $Id: EefnrFactory.java,v 1.6 2011/02/22 08:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -186,6 +186,33 @@ public interface EefnrFactory extends EFactory {
 	 * @generated
 	 */
 	TableCompositionExtensionEditorSample createTableCompositionExtensionEditorSample();
+
+	/**
+	 * Returns a new object of class '<em>Image Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Image Viewer Sample</em>'.
+	 * @generated
+	 */
+	ImageViewerSample createImageViewerSample();
+
+	/**
+	 * Returns a new object of class '<em>Selection Dialog Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Selection Dialog Sample</em>'.
+	 * @generated
+	 */
+	SelectionDialogSample createSelectionDialogSample();
+
+	/**
+	 * Returns a new object of class '<em>Single Composition Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Composition Viewer Sample</em>'.
+	 * @generated
+	 */
+	SingleCompositionViewerSample createSingleCompositionViewerSample();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrPackage.java,v 1.7 2010/11/30 08:23:17 glefur Exp $
+ * $Id: EefnrPackage.java,v 1.8 2011/02/22 08:54:40 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr;
 
@@ -1189,6 +1189,162 @@ public interface EefnrPackage extends EPackage {
 	int NAMED_ELEMENT_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl <em>Image Viewer Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getImageViewerSample()
+	 * @generated
+	 */
+	int IMAGE_VIEWER_SAMPLE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Imageviewer Required Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Imageviewer Optional Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Image Viewer Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl <em>Selection Dialog Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSelectionDialogSample()
+	 * @generated
+	 */
+	int SELECTION_DIALOG_SAMPLE = 22;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECTION_DIALOG_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Selection Dialog Required Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Selection Dialog Optional Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Selection Dialog Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECTION_DIALOG_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl <em>Single Composition Viewer Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSingleCompositionViewerSample()
+	 * @generated
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE = 23;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositionview Single Required Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositionview Single Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositionview Multi Required Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositionview Multi Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Single Composition Viewer Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1196,7 +1352,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 21;
+	int ENUM_SAMPLE = 24;
 
 
 	/**
@@ -2092,6 +2248,124 @@ public interface EefnrPackage extends EPackage {
 	EClass getNamedElement();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.ImageViewerSample <em>Image Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Image Viewer Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.ImageViewerSample
+	 * @generated
+	 */
+	EClass getImageViewerSample();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerRequiredProperty <em>Imageviewer Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Imageviewer Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerRequiredProperty()
+	 * @see #getImageViewerSample()
+	 * @generated
+	 */
+	EAttribute getImageViewerSample_ImageviewerRequiredProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerOptionalProperty <em>Imageviewer Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Imageviewer Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerOptionalProperty()
+	 * @see #getImageViewerSample()
+	 * @generated
+	 */
+	EAttribute getImageViewerSample_ImageviewerOptionalProperty();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample <em>Selection Dialog Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Selection Dialog Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SelectionDialogSample
+	 * @generated
+	 */
+	EClass getSelectionDialogSample();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogRequiredProperty <em>Selection Dialog Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selection Dialog Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogRequiredProperty()
+	 * @see #getSelectionDialogSample()
+	 * @generated
+	 */
+	EAttribute getSelectionDialogSample_SelectionDialogRequiredProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogOptionalProperty <em>Selection Dialog Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selection Dialog Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogOptionalProperty()
+	 * @see #getSelectionDialogSample()
+	 * @generated
+	 */
+	EAttribute getSelectionDialogSample_SelectionDialogOptionalProperty();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample <em>Single Composition Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Single Composition Viewer Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample
+	 * @generated
+	 */
+	EClass getSingleCompositionViewerSample();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleRequiredProperty <em>Singlecompositionview Single Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositionview Single Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleRequiredProperty()
+	 * @see #getSingleCompositionViewerSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleOptionalProperty <em>Singlecompositionview Single Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositionview Single Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleOptionalProperty()
+	 * @see #getSingleCompositionViewerSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewMultiRequiredProperty <em>Singlecompositionview Multi Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositionview Multi Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewMultiRequiredProperty()
+	 * @see #getSingleCompositionViewerSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewMultiOptionalProperty <em>Singlecompositionview Multi Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositionview Multi Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewMultiOptionalProperty()
+	 * @see #getSingleCompositionViewerSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2828,6 +3102,100 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl <em>Image Viewer Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getImageViewerSample()
+		 * @generated
+		 */
+		EClass IMAGE_VIEWER_SAMPLE = eINSTANCE.getImageViewerSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Imageviewer Required Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_REQUIRED_PROPERTY = eINSTANCE.getImageViewerSample_ImageviewerRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Imageviewer Optional Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl <em>Selection Dialog Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSelectionDialogSample()
+		 * @generated
+		 */
+		EClass SELECTION_DIALOG_SAMPLE = eINSTANCE.getSelectionDialogSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection Dialog Required Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_REQUIRED_PROPERTY = eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection Dialog Optional Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY = eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl <em>Single Composition Viewer Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSingleCompositionViewerSample()
+		 * @generated
+		 */
+		EClass SINGLE_COMPOSITION_VIEWER_SAMPLE = eINSTANCE.getSingleCompositionViewerSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositionview Single Required Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_REQUIRED_PROPERTY = eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositionview Single Optional Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositionview Multi Required Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY = eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositionview Multi Optional Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

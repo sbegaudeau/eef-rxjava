@@ -174,6 +174,28 @@
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTableCompositionTargetExtensionEditorSample"
       abstract="true" eSuperTypes="#//AbstractSample"/>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//AbstractSample"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ImageViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageviewerRequiredProperty"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageviewerOptionalProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionDialogSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selectionDialogRequiredProperty"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selectionDialogOptionalProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleCompositionViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositionviewSingleRequiredProperty"
+        lowerBound="1" eType="#//Sample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositionviewSingleOptionalProperty"
+        eType="#//Sample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositionviewMultiRequiredProperty"
+        lowerBound="1" eType="#//AbstractSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositionviewMultiOptionalProperty"
+        eType="#//AbstractSample" containment="true"/>
+  </eClassifiers>
   <eSubpackages name="references" nsURI="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
       nsPrefix="eefnr-ref">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractEnabledSample" abstract="true"
