@@ -131,6 +131,8 @@
 
 [query public getImportedEditorPluginClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedEditorPluginClassName())/]
 
+[query public getImportedItemProviderAdapterFactoryClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedItemProviderAdapterFactoryClassName())/]
+
 [query public getExtendedChildCreationDataEntrySet(genPackage : GenPackage) : Set(OclAny)
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
 

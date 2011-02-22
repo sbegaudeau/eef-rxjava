@@ -14,10 +14,17 @@ import java.util.Locale;
 public class StringUtil {
 
 	public String toLowerCase(String string, Object locale) {
-		if (locale instanceof Locale){
-			return string.toUpperCase((Locale) locale);
+		if (locale instanceof Locale) {
+			return string.toLowerCase((Locale) locale);
 		}
 		return string;
-		
+	}
+
+	public String genSquareBrackets(String string) {
+		StringBuffer buf = new StringBuffer(string.length() + 2);
+		buf.append("[");
+		buf.append(string);
+		buf.append("]");
+		return buf.toString();
 	}
 }

@@ -102,9 +102,9 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 	 * @generated
 	 */
   <%if (genModel.getAllGenPackagesWithConcreteClasses().size() == 1) {%>
-	private static final String[ '[' /][ ']' /] FILE_EXTENSION_FILTERS = <%if (!genModel.useGenerics()) {%>(String[ '[' /][ ']' /])<%}%><%=genModel.getAllGenPackagesWithConcreteClasses().get(0).getImportedEditorClassName()%>.FILE_EXTENSION_FILTERS.toArray(new String[ '[' /]0[ ']' /]);
+	private static final String[genModel.genSquareBrackets('')/] FILE_EXTENSION_FILTERS = <%if (!genModel.useGenerics()) {%>(String[genModel.genSquareBrackets('')/])<%}%><%=genModel.getAllGenPackagesWithConcreteClasses().get(0).getImportedEditorClassName()%>.FILE_EXTENSION_FILTERS.toArray(new String[genModel.genSquareBrackets('0')/]);
   <%} else {%>
-	private static final String[ '[' /][ ']' /] FILE_EXTENSION_FILTERS = getFileExtensionFilters();
+	private static final String[genModel.genSquareBrackets('')/] FILE_EXTENSION_FILTERS = getFileExtensionFilters();
 
 	/**
 	 * Returns the default file extension filters. This method should only be used to initialize {@link #FILE_EXTENSION_FILTERS}.
@@ -112,13 +112,13 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static String[ '[' /][ ']' /] getFileExtensionFilters()
+	private static String[genModel.genSquareBrackets('')/] getFileExtensionFilters()
 	{
 		<%=_ListOfString%> result = new <%=_UniqueEListOfString%>();
     <%for (GenPackage genPackage : genModel.getAllGenPackagesWithConcreteClasses()) {%>
 		result.addAll(<%=genPackage.getImportedEditorClassName()%>.FILE_EXTENSION_FILTERS);
     <%}%>
-		return <%if (!genModel.useGenerics()) {%>(String[ '[' /][ ']' /])<%}%>result.toArray(new String[ '[' /]0[ ']' /]);
+		return <%if (!genModel.useGenerics()) {%>(String[genModel.genSquareBrackets('')/])<%}%>result.toArray(new String[genModel.genSquareBrackets('0')/]);
 	}
   <%}%> 
 <%}%>
@@ -142,7 +142,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 	 */
 	private static String getString(String key, Object s1)
 	{
-		return <%=genModel.getQualifiedEditorPluginClassName()%>.INSTANCE.getString(key, new Object [ '[' /][ ']' /] { s1 });
+		return <%=genModel.getQualifiedEditorPluginClassName()%>.INSTANCE.getString(key, new Object [genModel.genSquareBrackets('')/] { s1 });
 	}
 
 	/**
@@ -473,10 +473,10 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 		 */
 		public void run(IAction action)
 		{
-			String[ '[' /][ ']' /] filePaths = openFilePathDialog(getWindow().getShell(), SWT.OPEN, null);
+			String[genModel.genSquareBrackets('')/] filePaths = openFilePathDialog(getWindow().getShell(), SWT.OPEN, null);
 			if (filePaths.length > 0)
 			{
-				openEditor(getWindow().getWorkbench(), URI.createFileURI(filePaths[ '[' /]0[ ']' /]));
+				openEditor(getWindow().getWorkbench(), URI.createFileURI(filePaths[genModel.genSquareBrackets('0')/]));
 			}
 		}
 	}
@@ -522,7 +522,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static String[ '[' /][ ']' /] openFilePathDialog(Shell shell, int style, String[ '[' /][ ']' /] fileExtensionFilters)
+	public static String[genModel.genSquareBrackets('')/] openFilePathDialog(Shell shell, int style, String[genModel.genSquareBrackets('')/] fileExtensionFilters)
 	{
 		return openFilePathDialog(shell, style, fileExtensionFilters, (style & SWT.OPEN) != 0, (style & SWT.OPEN) != 0, (style & SWT.SAVE) != 0);
 	}
@@ -532,7 +532,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static String[ '[' /][ ']' /] openFilePathDialog(Shell shell, int style, String[ '[' /][ ']' /] fileExtensionFilters, boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension)
+	public static String[genModel.genSquareBrackets('')/] openFilePathDialog(Shell shell, int style, String[genModel.genSquareBrackets('')/] fileExtensionFilters, boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension)
 	{
 		FileDialog fileDialog = new FileDialog(shell, style);
 		if (fileExtensionFilters == null)
@@ -549,7 +549,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 		if (includeGroupFilter || includeAllFilter)
 		{
 			int size = fileExtensionFilters.length + offset + (includeAllFilter ? 1 : 0);
-			String[ '[' /][ ']' /] allFilters = new String[ '[' /]size[ ']' /];
+			String[genModel.genSquareBrackets('')/] allFilters = new String[genModel.genSquareBrackets('size')/];
 			<%=_StringBuilder%> group = includeGroupFilter ? new <%=_StringBuilder%>() : null;
 			
 			for (int i = 0; i < fileExtensionFilters.length; i++)
@@ -560,18 +560,18 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 					{
 						group.append(';');
 					}
-					group.append(fileExtensionFilters[ '[' /]i[ ']' /]);
+					group.append(fileExtensionFilters[genModel.genSquareBrackets('i')/]);
 				}
-				allFilters[ '[' /]i + offset[ ']' /] = fileExtensionFilters[ '[' /]i[ ']' /];
+				allFilters[genModel.genSquareBrackets('i + offset')/] = fileExtensionFilters[genModel.genSquareBrackets('i')/];
 			}
 			
 			if (includeGroupFilter)
 			{
-				allFilters[ '[' /]0[ ']' /] = group.toString();
+				allFilters[genModel.genSquareBrackets('0')/] = group.toString();
 			}
 			if (includeAllFilter)
 			{
-				allFilters[ '[' /]allFilters.length - 1[ ']' /] = "*.*";[genModel.getNonNLS()/]
+				allFilters[genModel.genSquareBrackets('allFilters.length - 1')/] = "*.*";[genModel.getNonNLS()/]
 			}
 			
 			fileDialog.setFilterExtensions(allFilters);
@@ -582,8 +582,8 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 		}
 		fileDialog.open();
 		
-		String[ '[' /][ ']' /] filenames = fileDialog.getFileNames();
-		String[ '[' /][ ']' /] result = new String[ '[' /]filenames.length[ ']' /];
+		String[genModel.genSquareBrackets('')/] filenames = fileDialog.getFileNames();
+		String[genModel.genSquareBrackets('')/] result = new String[genModel.genSquareBrackets('filenames.length')/];
 		String path = fileDialog.getFilterPath() + File.separator;
 		String extension = null;
 		
@@ -595,7 +595,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 			if (i != -1 && (!includeAllFilter || i != fileExtensionFilters.length))
 			{
 				i = includeGroupFilter && i == 0 ? 0 : i - offset;
-				String filter = fileExtensionFilters[ '[' /]i[ ']' /];
+				String filter = fileExtensionFilters[genModel.genSquareBrackets('i')/];
 				int dot = filter.lastIndexOf('.');
 				if (dot == 1 && filter.charAt(0) == '*')
 				{
@@ -608,7 +608,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 		//
 		for (int i = 0; i < filenames.length; i++)
 		{
-			String filename = path + filenames[ '[' /]i[ ']' /];
+			String filename = path + filenames[genModel.genSquareBrackets('i')/];
 			if (extension != null)
 			{
 				int dot = filename.lastIndexOf('.');
@@ -617,7 +617,7 @@ public final class [genModel.getEditorAdvisorClassName()/] extends WorkbenchAdvi
 					filename += extension;
 				}
 			}
-			result[ '[' /]i[ ']' /] = filename;
+			result[genModel.genSquareBrackets('i')/] = filename;
 		}
 		return result;
 	}

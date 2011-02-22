@@ -118,6 +118,12 @@
 [query public getEditorPluginID(genModel : GenModel) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginID()', Sequence{genModel}) /]
 
+[query public getQualifiedEditorAdvisorClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getQualifiedEditorAdvisorClassName()', Sequence{genModel}) /]
+
+[query public getAllUsedGenPackagesWithClassifiers(genModel : GenModel) : Sequence(OclAny)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllUsedGenPackagesWithClassifiers()', Sequence{genModel}) /]
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public getImportedName(genModel : GenModel,qualifiedName : String) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.ImportManagerWrapper', 'getImportedName(java.lang.String)', Sequence{qualifiedName}) /]

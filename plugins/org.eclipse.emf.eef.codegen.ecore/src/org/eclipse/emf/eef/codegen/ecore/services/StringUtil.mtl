@@ -4,3 +4,5 @@
 [query public toLowerCase(genModel : GenModel, string : String, locale : OclAny) : String 
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.StringUtil', 'toLowerCase(java.lang.String, java.lang.Object)', Sequence{string, locale}) /]
 
+[query public genSquareBrackets(genModel : GenModel, string : String) : String 
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.StringUtil', 'genSquareBrackets(java.lang.String)', Sequence{string}) /]

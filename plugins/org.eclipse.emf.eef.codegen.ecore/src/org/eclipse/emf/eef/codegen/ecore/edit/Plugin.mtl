@@ -3,12 +3,12 @@
 
 [import org::eclipse::emf::eef::codegen::ecore::services::header /]
 [import org::eclipse::emf::eef::codegen::ecore::services::common /]
+[import org::eclipse::emf::eef::codegen::ecore::services::StringUtil /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenClass /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenFeature /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnum /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnumLiteral /]
-
 
 [template public Plugin(genModel : GenModel)]
 [file (pluginPath(), false, 'UTF-8')]
@@ -62,7 +62,7 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 	public [genModel.getEditPluginClassName()/]()
 	{
 		super
-		  (new ResourceLocator ['['/][']'/] 
+		  (new ResourceLocator [genModel.genSquareBrackets('')/] 
 		   {
 [for (pluginClassName : String | genModel.getEditResourceDelegateImportedPluginClassNames())]
 		     [pluginClassName/].INSTANCE,
@@ -183,17 +183,17 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 	 * @generated
 	 */
 	@Override
-	public String getString(String key, Object ['['/][']'/] substitutions, boolean translate)
+	public String getString(String key, Object [genModel.genSquareBrackets('')/] substitutions, boolean translate)
 	{
 [if (genModel.creationCommands)]
-		if ("_UI_CreateChild_text".equals(key)) return PROPERTIES.createChildText(substitutions['['/]0[']'/]);
-		else if ("_UI_CreateChild_text2".equals(key)) return PROPERTIES.createChildText2(substitutions['['/]0[']'/], substitutions['['/]1[']'/]);
-		else if ("_UI_CreateChild_text3".equals(key)) return PROPERTIES.createChildText3(substitutions['['/]1[']'/]);
-		else if ("_UI_CreateChild_tooltip".equals(key)) return PROPERTIES.createChildTooltip(substitutions['['/]0[']'/], substitutions['['/]1[']'/]);
-		else if ("_UI_CreateChild_description".equals(key)) return PROPERTIES.createChildDescripition(substitutions['['/]0[']'/], substitutions['['/]1[']'/], substitutions['['/]2[']'/]);
-		else if ("_UI_CreateSibling_description".equals(key)) return PROPERTIES.createSiblingDescription(substitutions['['/]0[']'/], substitutions['['/]1[']'/], substitutions['['/]2[']'/]);
+		if ("_UI_CreateChild_text".equals(key)) return PROPERTIES.createChildText(substitutions[genModel.genSquareBrackets('0')/]);
+		else if ("_UI_CreateChild_text2".equals(key)) return PROPERTIES.createChildText2(substitutions[genModel.genSquareBrackets('0')/], substitutions[genModel.genSquareBrackets('1')/]);
+		else if ("_UI_CreateChild_text3".equals(key)) return PROPERTIES.createChildText3(substitutions[genModel.genSquareBrackets('1')/]);
+		else if ("_UI_CreateChild_tooltip".equals(key)) return PROPERTIES.createChildTooltip(substitutions[genModel.genSquareBrackets('0')/], substitutions[genModel.genSquareBrackets('1')/]);
+		else if ("_UI_CreateChild_description".equals(key)) return PROPERTIES.createChildDescripition(substitutions[genModel.genSquareBrackets('0')/], substitutions[genModel.genSquareBrackets('1')/], substitutions[genModel.genSquareBrackets('2')/]);
+		else if ("_UI_CreateSibling_description".equals(key)) return PROPERTIES.createSiblingDescription(substitutions[genModel.genSquareBrackets('0')/], substitutions[genModel.genSquareBrackets('1')/], substitutions[genModel.genSquareBrackets('2')/]);
 [/if]
-		[if (not genModel.creationCommands)]else [/if]if ("_UI_PropertyDescriptor_description".equals(key)) return PROPERTIES.propertyDescriptorDescription(substitutions['['/]0[']'/], substitutions['['/]1[']'/]);
+		[if (not genModel.creationCommands)]else [/if]if ("_UI_PropertyDescriptor_description".equals(key)) return PROPERTIES.propertyDescriptorDescription(substitutions[genModel.genSquareBrackets('0')/], substitutions[genModel.genSquareBrackets('1')/]);
 		else return key;
 	}
 

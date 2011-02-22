@@ -141,7 +141,7 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_CollectionOfIAction()/] createChildActions;
+	protected [genModel._CollectionOfIAction()/] createChildActions;
 
   [if (genModel.creationSubmenus)]
 	/**
@@ -150,7 +150,7 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_MapOfStringToCollectionOfIAction()/] createChildSubmenuActions;
+	protected [genModel._MapOfStringToCollectionOfIAction()/] createChildSubmenuActions;
 
   [/if]
 	/**
@@ -168,7 +168,7 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_CollectionOfIAction()/] createSiblingActions;
+	protected [genModel._CollectionOfIAction()/] createSiblingActions;
 
   [if (genModel.creationSubmenus)]
 	/**
@@ -177,7 +177,7 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_MapOfStringToCollectionOfIAction()/] createSiblingSubmenuActions;
+	protected [genModel._MapOfStringToCollectionOfIAction()/] createSiblingSubmenuActions;
 
   [/if]
 	/**
@@ -214,8 +214,8 @@ public class [genPackage.getActionBarContributorClassName()/]
 [/if]
 	public void contributeToToolBar(org.eclipse.jface.action.IToolBarManager toolBarManager)
 	{
-		toolBarManager.add(new org.eclipse.jface.action.Separator("[toLowerCase(genPackage.getPrefix(), genModel.getLocale())/]-settings"));[genModel.getNonNLS()/]
-		toolBarManager.add(new org.eclipse.jface.action.Separator("[toLowerCase(genPackage.getPrefix(), genModel.getLocale())/]-additions"));[genModel.getNonNLS()/]
+		toolBarManager.add(new org.eclipse.jface.action.Separator("[genModel.toLowerCase(genPackage.getPrefix(), genModel.getLocale())/]-settings"));[genModel.getNonNLS()/]
+		toolBarManager.add(new org.eclipse.jface.action.Separator("[genModel.toLowerCase(genPackage.getPrefix(), genModel.getLocale())/]-additions"));[genModel.getNonNLS()/]
 	}
 
 	/**
@@ -337,8 +337,8 @@ public class [genPackage.getActionBarContributorClassName()/]
 
 		// Query the new selection for appropriate new child/sibling descriptors
 		//
-		[_CollectionOfAnything()/] newChildDescriptors = null;
-		[_CollectionOfAnything()/] newSiblingDescriptors = null;
+		[genModel._CollectionOfAnything()/] newChildDescriptors = null;
+		[genModel._CollectionOfAnything()/] newSiblingDescriptors = null;
 
 		org.eclipse.jface.viewers.ISelection selection = event.getSelection();
 		if (selection instanceof org.eclipse.jface.viewers.IStructuredSelection && ((IStructuredSelection)selection).size() == 1)
@@ -392,9 +392,9 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_CollectionOfIAction()/] generateCreateChildActions([_CollectionOfAnything()/] descriptors, org.eclipse.jface.viewers.ISelection selection)
+	protected [genModel._CollectionOfIAction()/] generateCreateChildActions([genModel._CollectionOfAnything()/] descriptors, org.eclipse.jface.viewers.ISelection selection)
 	{
-		[_CollectionOfIAction()/] actions = new [_ArrayListOfIAction()/]();
+		[genModel._CollectionOfIAction()/] actions = new [genModel._ArrayListOfIAction()/]();
 		if (descriptors != null)
 		{
 [if (genModel.useGenerics())]
@@ -416,9 +416,9 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_CollectionOfIAction()/] generateCreateSiblingActions([_CollectionOfAnything()/] descriptors, org.eclipse.jface.viewers.ISelection selection)
+	protected [genModel._CollectionOfIAction()/] generateCreateSiblingActions([genModel._CollectionOfAnything()/] descriptors, org.eclipse.jface.viewers.ISelection selection)
 	{
-		[_CollectionOfIAction()/] actions = new [_ArrayListOfIAction()/]();
+		[genModel._CollectionOfIAction()/] actions = new [genModel._ArrayListOfIAction()/]();
 		if (descriptors != null)
 		{
 [if (genModel.useGenerics())]
@@ -442,7 +442,7 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void populateManager(org.eclipse.jface.action.IContributionManager manager, [_CollectionOfExtendsIAction()/] actions, String contributionID)
+	protected void populateManager(org.eclipse.jface.action.IContributionManager manager, [genModel._CollectionOfExtendsIAction()/] actions, String contributionID)
 	{
 		if (actions != null)
 		{
@@ -474,16 +474,16 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void depopulateManager(org.eclipse.jface.action.IContributionManager manager, [_CollectionOfExtendsIAction()/] actions)
+	protected void depopulateManager(org.eclipse.jface.action.IContributionManager manager, [genModel._CollectionOfExtendsIAction()/] actions)
 	{
 		if (actions != null)
 		{
-			org.eclipse.jface.action.IContributionItem[ '[' /][ ']' /] items = manager.getItems();
+			org.eclipse.jface.action.IContributionItem[genModel.genSquareBrackets('')/] items = manager.getItems();
 			for (int i = 0; i < items.length; i++)
 			{
 				// Look into SubContributionItems
 				//
-				org.eclipse.jface.action.IContributionItem contributionItem = items[ '[' /]i[ ']' /];
+				org.eclipse.jface.action.IContributionItem contributionItem = items[genModel.genSquareBrackets('i')/];
 				while (contributionItem instanceof org.eclipse.jface.action.SubContributionItem)
 				{
 					contributionItem = ((org.eclipse.jface.action.SubContributionItem)contributionItem).getInnerItem();
@@ -511,22 +511,22 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_MapOfStringToCollectionOfIAction()/] extractSubmenuActions([_CollectionOfIAction()/] createActions)
+	protected [genModel._MapOfStringToCollectionOfIAction()/] extractSubmenuActions([genModel._CollectionOfIAction()/] createActions)
 	{
-		[_MapOfStringToCollectionOfIAction()/] createSubmenuActions = new [_LinkedHashMapOfStringToCollectionOfIAction()/]();
+		[genModel._MapOfStringToCollectionOfIAction()/] createSubmenuActions = new [genModel._LinkedHashMapOfStringToCollectionOfIAction()/]();
 		if (createActions != null)
 		{
-			for ([_IteratorOfIAction()/] actions = createActions.iterator(); actions.hasNext(); )
+			for ([genModel._IteratorOfIAction()/] actions = createActions.iterator(); actions.hasNext(); )
 			{
 				org.eclipse.jface.action.IAction action = [if (not genModel.useGenerics())](org.eclipse.jface.action.IAction)[/if]actions.next();
 				java.util.StringTokenizer st = new java.util.StringTokenizer(action.getText(), "|");[genModel.getNonNLS()/]
 				if (st.countTokens() == 2)
 				{
 					String text = st.nextToken().trim();
-					[_CollectionOfIAction()/] submenuActions = [if ( not genModel.useGenerics())]([_CollectionOfIAction()/])[/if]createSubmenuActions.get(text);
+					[genModel._CollectionOfIAction()/] submenuActions = [if ( not genModel.useGenerics())]([genModel._CollectionOfIAction()/])[/if]createSubmenuActions.get(text);
 					if (submenuActions == null)
 					{
-						createSubmenuActions.put(text, submenuActions = new [_ArrayListOfIAction()/]());
+						createSubmenuActions.put(text, submenuActions = new [genModel._ArrayListOfIAction()/]());
 					}
 					action.setText(st.nextToken().trim());
 					submenuActions.add(action);
@@ -547,16 +547,16 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void populateManager(org.eclipse.jface.action.IContributionManager manager, [_MapOfStringToCollectionOfIAction()/] submenuActions, String contributionID)
+	protected void populateManager(org.eclipse.jface.action.IContributionManager manager, [genModel._MapOfStringToCollectionOfIAction()/] submenuActions, String contributionID)
 	{
 		if (submenuActions != null)
 		{
     [if (genModel.getComplianceLevel() = GenJDKLevel::JDK14)]
 			for (java.util.Iterator entries = submenuActions.entrySet().iterator(); entries.hasNext();)
 			{
-				[_MapEntryOfStringToCollectionOfIAction()/] entry = ([_MapEntryOfStringToCollectionOfIAction()/])entries.next();
+				[genModel._MapEntryOfStringToCollectionOfIAction()/] entry = ([genModel._MapEntryOfStringToCollectionOfIAction()/])entries.next();
     [else]
-			for ([_MapEntryOfStringToCollectionOfIAction()/] entry : submenuActions.entrySet())
+			for ([genModel._MapEntryOfStringToCollectionOfIAction()/] entry : submenuActions.entrySet())
 			{
     [/if]
 				org.eclipse.jface.action.MenuManager submenuManager = new org.eclipse.jface.action.MenuManager([if (not genModel.useGenerics())](String)[/if]entry.getKey());
@@ -568,7 +568,7 @@ public class [genPackage.getActionBarContributorClassName()/]
 				{
 					manager.add(submenuManager);
 				}
-				populateManager(submenuManager, [if (not genModel.useGenerics())]([_CollectionOfIAction()/])[/if]entry.getValue(), null);
+				populateManager(submenuManager, [if (not genModel.useGenerics())]([genModel._CollectionOfIAction()/])[/if]entry.getValue(), null);
 			}
 		}
 	}
@@ -581,20 +581,20 @@ public class [genPackage.getActionBarContributorClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void depopulateManager(org.eclipse.jface.action.IContributionManager manager, [_MapOfStringToCollectionOfIAction()/] submenuActions)
+	protected void depopulateManager(org.eclipse.jface.action.IContributionManager manager, [genModel._MapOfStringToCollectionOfIAction()/] submenuActions)
 	{
 		if (submenuActions != null)
 		{
-			org.eclipse.jface.action.IContributionItem[ '[' /][ ']' /] items = manager.getItems();
+			org.eclipse.jface.action.IContributionItem[genModel.genSquareBrackets('')/] items = manager.getItems();
 			for (int i = 0; i < items.length; i++)
 			{
-				org.eclipse.jface.action.IContributionItem contributionItem = items[ '[' /]i[ ']' /];
+				org.eclipse.jface.action.IContributionItem contributionItem = items[genModel.genSquareBrackets('i')/];
 				if (contributionItem instanceof org.eclipse.jface.action.MenuManager)
 				{
 					org.eclipse.jface.action.MenuManager submenuManager = (org.eclipse.jface.action.MenuManager)contributionItem;
 					if (submenuActions.containsKey(submenuManager.getMenuText()))
 					{
-						depopulateManager(submenuManager, [if (not genModel.useGenerics())]([_CollectionOfIAction()/])[/if]submenuActions.get(contributionItem));
+						depopulateManager(submenuManager, [if (not genModel.useGenerics())]([genModel._CollectionOfIAction()/])[/if]submenuActions.get(contributionItem));
 						manager.remove(contributionItem);
 					}
 				}

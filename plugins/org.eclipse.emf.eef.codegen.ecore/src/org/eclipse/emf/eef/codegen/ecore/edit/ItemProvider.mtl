@@ -3,6 +3,7 @@
 
 [import org::eclipse::emf::eef::codegen::ecore::services::common /]
 [import org::eclipse::emf::eef::codegen::ecore::services::header /]
+[import org::eclipse::emf::eef::codegen::ecore::services::StringUtil /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenClass /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenPackage /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
@@ -114,7 +115,7 @@ public class [genClass.getProviderClassName()/]
   [if (genFeature.propertyFilterFlags->isEmpty())]
 				 null));
   [else]
-				 new String[ '[' /][ ']' /]  {
+				 new String[genModel.genSquareBrackets('')/]  {
     	[genFeature.propertyFilterFlags.declareFilterFlag()->sep(',\n'.concat(genModel.getNonNLS()))/]
 				 }));
   [/if]
@@ -432,7 +433,7 @@ public class [genClass.getProviderClassName()/]
 		{
 			return getString
 				("_UI_CreateChild_text2",[genModel.getNonNLS()/]
-				 new Object[ '[' /][ ']' /] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+				 new Object[genModel.genSquareBrackets('')/] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}
