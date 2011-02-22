@@ -37,6 +37,17 @@ public class SelectionDialog extends Composite {
 	 * 
 	 * @param parent
 	 * @param style
+	 */
+	public SelectionDialog(Composite parent, int style) {
+		super(parent, style);
+		createControl();
+	}
+
+	/**
+	 * The constructor.
+	 * 
+	 * @param parent
+	 * @param style
 	 * @param widgetFactory
 	 */
 	public SelectionDialog(Composite parent, int style, FormToolkit widgetFactory) {
@@ -54,14 +65,15 @@ public class SelectionDialog extends Composite {
 		this.setLayout(layout);
 		if (widgetFactory != null) {
 			text = widgetFactory.createText(this, "");
-
 			text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-
 			widgetFactory.paintBordersFor(this);
-
 			browseButton = widgetFactory.createButton(this, "Browse...", SWT.PUSH);
-
 			text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		} else {
+			text = new Text(this, SWT.NONE);
+			text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			browseButton = new Button(this, SWT.PUSH);
+			browseButton.setText("Browse...");
 		}
 	}
 
