@@ -18,6 +18,12 @@
 [comment I don't see a better way to get specific form services for the moment /]
 [import widgetFormImpl /]
 
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'SelectionDialog')]
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog;
+[/template]
+
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('SelectionDialog'))]
 protected SelectionDialog [editor.name.toJavaIdentifier()/];
 [/template]
@@ -33,7 +39,6 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/] = new SelectionDialog(parent, SWT.NONE, widgetFactory);
 
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
-		generatorData.horizontalSpan = 2;
 		[editor.name.toJavaIdentifier()/].setLayoutData(generatorData);
 
 		[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
@@ -69,6 +74,7 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, parent);
 				}
 			}
 		});
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 

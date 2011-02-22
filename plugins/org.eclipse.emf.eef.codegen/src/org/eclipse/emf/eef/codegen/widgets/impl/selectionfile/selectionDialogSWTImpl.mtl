@@ -21,34 +21,35 @@
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'SelectionDialog')]
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('SelectionDialog'))]
-	protected Text [editor.name.toJavaIdentifier()/];
+protected SelectionDialog [editor.name.toJavaIdentifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('SelectionDialog'))]
-create[editor.name.toJavaClassifier()/]Text(parent);
+create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representationName('SelectionDialog'))]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
-	protected Composite create[editor.name.toJavaClassifier()/]Text(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]SelectionDialog(Composite parent) {
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
-		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER);
-		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
+		[editor.name.toJavaIdentifier()/] = new SelectionDialog(parent, SWT.NONE);
 
+		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/].setLayoutData(generatorData);
+
+		[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+					[editor.name.toJavaIdentifier()/]SelectionDialog();
+			}
+		});
+
+		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
@@ -58,13 +59,9 @@ create[editor.name.toJavaClassifier()/]Text(parent);
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 			}
-
 		});
 		[editor.name.toJavaIdentifier()/].addKeyListener(new KeyAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 			 */
@@ -76,9 +73,21 @@ create[editor.name.toJavaClassifier()/]Text(parent);
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
 				}
 			}
-
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 		return parent;
+	}
+	
+	protected void [editor.name.toJavaIdentifier()/]SelectionDialog() {
+	//[protected ('browse button selection dialog')]
+		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+			Shell theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+			IFile['['/][']'/] file = WorkspaceResourceDialog.openFileSelection(theShell, "File Selection", "", false, null, null);
+			if(file.length == 1) {
+				[editor.name.toJavaIdentifier()/].setText(file['['/]0[']'/].getProject().getName() + "/" + file['['/]0[']'/].getProjectRelativePath().toString());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
+			}
+		}
+	//[/protected]
 	}
 [/template]
