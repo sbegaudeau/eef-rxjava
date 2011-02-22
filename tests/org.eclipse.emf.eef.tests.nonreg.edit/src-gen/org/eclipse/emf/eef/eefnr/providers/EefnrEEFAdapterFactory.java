@@ -182,5 +182,29 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	public Adapter createNamedElementAdapter() {
 		return new NamedElementPropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createImageViewerSampleAdapter()
+	 * 
+	 */
+	public Adapter createImageViewerSampleAdapter() {
+		return new ImageViewerSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createSelectionDialogSampleAdapter()
+	 * 
+	 */
+	public Adapter createSelectionDialogSampleAdapter() {
+		return new SelectionDialogSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createSingleCompositionViewerSampleAdapter()
+	 * 
+	 */
+	public Adapter createSingleCompositionViewerSampleAdapter() {
+		return new SingleCompositionViewerSamplePropertiesEditionProvider();
+	}
 
 }

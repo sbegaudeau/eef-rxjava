@@ -432,4 +432,64 @@ public class EefnrViewsRepository {
 	
 	}
 
+	/**
+	 * ImageViewerSample view descriptor
+	 * 
+	 */
+	public static class ImageViewerSample {
+		public static class Properties {
+	
+			
+			public static String imageviewerRequiredProperty = "eefnr::ImageViewerSample::properties::imageviewerRequiredProperty";
+			
+			
+			public static String imageviewerOptionalProperty = "eefnr::ImageViewerSample::properties::imageviewerOptionalProperty";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * SelectionDialogSample view descriptor
+	 * 
+	 */
+	public static class SelectionDialogSample {
+		public static class Properties {
+	
+			
+			public static String selectionDialogRequiredProperty = "eefnr::SelectionDialogSample::properties::selectionDialogRequiredProperty";
+			
+			
+			public static String selectionDialogOptionalProperty = "eefnr::SelectionDialogSample::properties::selectionDialogOptionalProperty";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * SingleCompositionViewerSample view descriptor
+	 * 
+	 */
+	public static class SingleCompositionViewerSample {
+		public static class Properties {
+	
+			
+			public static String singlecompositionviewerSingleRequiredProperty = "eefnr::SingleCompositionViewerSample::properties::singlecompositionviewerSingleRequiredProperty";
+			
+			
+			public static String singlecompositionviewerSingleOptionalProperty = "eefnr::SingleCompositionViewerSample::properties::singlecompositionviewerSingleOptionalProperty";
+			
+			
+			public static String singlecompositionviewerMultiRequiredProperty = "eefnr::SingleCompositionViewerSample::properties::singlecompositionviewerMultiRequiredProperty";
+			
+			
+			public static String singlecompositionviewerMultiOptionalProperty = "eefnr::SingleCompositionViewerSample::properties::singlecompositionviewerMultiOptionalProperty";
+			
+	
+		}
+	
+	}
+
 }

@@ -21,5 +21,6 @@ Export-Package: org.eclipse.emf.eef.eefnr.navigation.provider,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.eef.tests.nonreg;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- org.eclipse.emf.eef.runtime;visibility:=reexport
+ org.eclipse.emf.eef.runtime;visibility:=reexport,
+ org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy

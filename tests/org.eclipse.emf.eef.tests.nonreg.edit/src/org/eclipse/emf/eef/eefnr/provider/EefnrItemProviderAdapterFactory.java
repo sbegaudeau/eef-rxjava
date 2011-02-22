@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrItemProviderAdapterFactory.java,v 1.5 2010/04/15 12:48:48 glefur Exp $
+ * $Id: EefnrItemProviderAdapterFactory.java,v 1.6 2011/02/22 08:54:51 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -490,6 +490,75 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.ImageViewerSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ImageViewerSampleItemProvider imageViewerSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.ImageViewerSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createImageViewerSampleAdapter() {
+		if (imageViewerSampleItemProvider == null) {
+			imageViewerSampleItemProvider = new ImageViewerSampleItemProvider(this);
+		}
+
+		return imageViewerSampleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.SelectionDialogSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SelectionDialogSampleItemProvider selectionDialogSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.SelectionDialogSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSelectionDialogSampleAdapter() {
+		if (selectionDialogSampleItemProvider == null) {
+			selectionDialogSampleItemProvider = new SelectionDialogSampleItemProvider(this);
+		}
+
+		return selectionDialogSampleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SingleCompositionViewerSampleItemProvider singleCompositionViewerSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSingleCompositionViewerSampleAdapter() {
+		if (singleCompositionViewerSampleItemProvider == null) {
+			singleCompositionViewerSampleItemProvider = new SingleCompositionViewerSampleItemProvider(this);
+		}
+
+		return singleCompositionViewerSampleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -606,6 +675,9 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 		if (sampleItemProvider != null) sampleItemProvider.dispose();
 		if (textSampleWithTwoTabsItemProvider != null) textSampleWithTwoTabsItemProvider.dispose();
 		if (tableCompositionExtensionEditorSampleItemProvider != null) tableCompositionExtensionEditorSampleItemProvider.dispose();
+		if (imageViewerSampleItemProvider != null) imageViewerSampleItemProvider.dispose();
+		if (selectionDialogSampleItemProvider != null) selectionDialogSampleItemProvider.dispose();
+		if (singleCompositionViewerSampleItemProvider != null) singleCompositionViewerSampleItemProvider.dispose();
 	}
 
 }

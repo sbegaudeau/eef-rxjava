@@ -236,6 +236,39 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionExtensionEditorSample"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_gGKD8D3AEeCcBM_A84SeOQ" name="ImageViewerSample" views="_UVM-YT3AEeCcBM_A84SeOQ" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kzShcD3AEeCcBM_A84SeOQ" name="imageviewerRequiredProperty" views="_bG8X8D3AEeCcBM_A84SeOQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ImageViewerSample/imageviewerRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qVdwkD3AEeCcBM_A84SeOQ" name="imageviewerOptionalProperty" views="_eK4qED3AEeCcBM_A84SeOQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ImageViewerSample/imageviewerOptionalProperty"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ImageViewerSample"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_pUBDMD3XEeCUIo-uNw_UtA" name="SelectionDialogSample" views="_bhVWcD3XEeCUIo-uNw_UtA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vgXQsD3XEeCUIo-uNw_UtA" name="selectionDialogRequiredProperty" views="_f03oMD3XEeCUIo-uNw_UtA" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SelectionDialogSample/selectionDialogRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_zaeV0D3XEeCUIo-uNw_UtA" name="selectionDialogOptionalProperty" views="_lOCsUD3XEeCUIo-uNw_UtA" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SelectionDialogSample/selectionDialogOptionalProperty"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SelectionDialogSample"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_i78agD5eEeCwE69ZEpp39A" name="SingleCompositionViewerSample" views="_TWE44T5eEeCwE69ZEpp39A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ns3y4D5eEeCwE69ZEpp39A" name="singlecompositionviewSingleRequiredProperty" views="_XiZvYD5eEeCwE69ZEpp39A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sD-9ED5eEeCwE69ZEpp39A" name="singlecompositionviewSingleOptionalProperty" views="_bFrB0D5eEeCwE69ZEpp39A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_saq-wD5eEeCwE69ZEpp39A" name="singlecompositionviewMultiRequiredProperty" views="_bN5wwD5eEeCwE69ZEpp39A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sxuM0D5eEeCwE69ZEpp39A" name="singlecompositionviewMultiOptionalProperty" views="_bUKJwD5eEeCwE69ZEpp39A">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiOptionalProperty"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr"/>
   </eef-components:PropertiesEditionContext>
@@ -755,6 +788,45 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_3tHRtD1oEd-LLuOHydFNYw" name="tablecompositionOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_UVM-YT3AEeCcBM_A84SeOQ" name="ImageViewerSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_YzoRgD3AEeCcBM_A84SeOQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bG8X8D3AEeCcBM_A84SeOQ" name="imageviewerRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_eK4qED3AEeCcBM_A84SeOQ" name="imageviewerOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_bhVWcD3XEeCUIo-uNw_UtA" name="SelectionDialogSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_dVMgwD3XEeCUIo-uNw_UtA" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_f03oMD3XEeCUIo-uNw_UtA" name="selectionDialogRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.13"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_lOCsUD3XEeCUIo-uNw_UtA" name="selectionDialogOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.13"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_TWE44T5eEeCwE69ZEpp39A" name="SingleCompositionViewerSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_U6ZLUD5eEeCwE69ZEpp39A" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_XiZvYD5eEeCwE69ZEpp39A" name="singlecompositionviewerSingleRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.12"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bFrB0D5eEeCwE69ZEpp39A" name="singlecompositionviewerSingleOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.12"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bN5wwD5eEeCwE69ZEpp39A" name="singlecompositionviewerMultiRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.12"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_bUKJwD5eEeCwE69ZEpp39A" name="singlecompositionviewerMultiOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.12"/>
           </elements>
         </elements>
       </views>

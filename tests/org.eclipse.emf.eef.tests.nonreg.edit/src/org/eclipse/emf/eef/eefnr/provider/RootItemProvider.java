@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RootItemProvider.java,v 1.10 2011/02/01 09:55:16 glefur Exp $
+ * $Id: RootItemProvider.java,v 1.11 2011/02/22 08:54:51 glefur Exp $
  */
 package org.eclipse.emf.eef.eefnr.provider;
 
@@ -239,6 +239,21 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 EefnrFactory.eINSTANCE.createTableCompositionExtensionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createImageViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createSelectionDialogSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createSingleCompositionViewerSample()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -78,6 +78,15 @@ public class EefnrMessages extends NLS {
 	public static String TableCompositionExtensionEditorSamplePropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String ImageViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SelectionDialogSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SingleCompositionViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String Root_ReadOnly;
 
 	
@@ -190,6 +199,24 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String TableCompositionExtensionEditorSample_Part_Title;
+
+	
+	public static String ImageViewerSample_ReadOnly;
+
+	
+	public static String ImageViewerSample_Part_Title;
+
+	
+	public static String SelectionDialogSample_ReadOnly;
+
+	
+	public static String SelectionDialogSample_Part_Title;
+
+	
+	public static String SingleCompositionViewerSample_ReadOnly;
+
+	
+	public static String SingleCompositionViewerSample_Part_Title;
 
 	
 	public static String RootPropertiesEditionPart_SamplesLabel;
@@ -373,6 +400,30 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String TableCompositionExtensionEditorSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel;
+
+	
+	public static String ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel;
+
+	
+	public static String ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel;
+
+	
+	public static String SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel;
+
+	
+	public static String SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel;
+
+	
+	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleRequiredPropertyLabel;
+
+	
+	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleOptionalPropertyLabel;
+
+	
+	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiRequiredPropertyLabel;
+
+	
+	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiOptionalPropertyLabel;
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

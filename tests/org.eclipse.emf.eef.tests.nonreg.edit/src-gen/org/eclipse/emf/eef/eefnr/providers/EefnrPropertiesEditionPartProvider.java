@@ -18,11 +18,14 @@ import org.eclipse.emf.eef.eefnr.parts.forms.CheckboxSamplePropertiesEditionPart
 import org.eclipse.emf.eef.eefnr.parts.forms.EMFComboViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.EObjectFlatComboViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.FlatReferenceTableSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.ImageViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.MultiValuedEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.RootPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.SamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.SelectionDialogSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.SingleCompositionViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionExtensionEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSampleFirstTabPropertiesEditionPartForm;
@@ -37,11 +40,14 @@ import org.eclipse.emf.eef.eefnr.parts.impl.CheckboxSamplePropertiesEditionPartI
 import org.eclipse.emf.eef.eefnr.parts.impl.EMFComboViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.EObjectFlatComboViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.FlatReferenceTableSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.ImageViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.MultiValuedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.RadioSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.ReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.RootPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.SamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.SelectionDialogSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.SingleCompositionViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TableCompositionEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TableCompositionExtensionEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleFirstTabPropertiesEditionPartImpl;
@@ -190,6 +196,24 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 				return new TableCompositionExtensionEditorSamplePropertiesEditionPartImpl(component);
 			if (kind == EefnrViewsRepository.FORM_KIND)
 				return new TableCompositionExtensionEditorSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.ImageViewerSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new ImageViewerSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new ImageViewerSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.SelectionDialogSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new SelectionDialogSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new SelectionDialogSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.SingleCompositionViewerSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new SingleCompositionViewerSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new SingleCompositionViewerSamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}
