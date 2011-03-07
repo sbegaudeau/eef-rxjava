@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -62,7 +63,7 @@ public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvi
 	 */
 	public Object[] getElements(Object object) {
 		if (object instanceof EEFEditorSettings) {
-			EList<Resource> resources = ((EEFEditorSettings)object).getSource().eResource().getResourceSet().getResources();
+			EList<Resource> resources = new BasicEList<Resource>(((EEFEditorSettings)object).getSource().eResource().getResourceSet().getResources());
             resources.retainAll(this.choiceOfValues);
 			return resources.toArray();
 		}
