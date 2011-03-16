@@ -33,7 +33,6 @@ Export-Package: org.eclipse.emf.eef.runtime.query,
  org.eclipse.emf.eef.runtime.ui.widgets.masterdetails,
  org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.eefviewer,
  org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.tree,
- org.eclipse.emf.eef.runtime.ui.widgets.richtext,
  org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions
 Bundle-Activator: org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime$Implementation
 Bundle-ActivationPolicy: lazy
