@@ -186,7 +186,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 		}
 	}
 
-	private PropertiesEditingProvider getProvider(EObject eObject) {
+	protected PropertiesEditingProvider getProvider(EObject eObject) {
 		if (this.adapterFactory == null) {
 			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		}
