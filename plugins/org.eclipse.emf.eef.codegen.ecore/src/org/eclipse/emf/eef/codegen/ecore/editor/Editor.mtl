@@ -1268,7 +1268,7 @@ public class [genPackage.getEditorClassName()/]
 	 * @generated
 	 */
 [if (genModel.useClassOverrideAnnotation())]
-		@Override
+	@Override
 [/if]
 	public void createPages()
 	{

@@ -13,7 +13,7 @@
 [template public GenAllGenClass(model : GenModel)]
 	[comment @main /]
 	[comment edit generation/]
-	[model.initEdit()/]
+[comment]	[model.initEdit()/][/comment]
 	[model.buildproperties()/]
 	[model.manifestmf()/]
 	[model.Plugin()/]

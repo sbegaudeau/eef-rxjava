@@ -2,12 +2,30 @@
 
 [query public hasCopyright(genBase : GenBase) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'hasCopyright()', Sequence{genBase}) /]
-	
+
 [query public getCopyright(genBase : GenBase, indentation : String) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getCopyright(java.lang.String)', Sequence{genBase, indentation}) /]
-	
+
 [query public getGenModel(genBase : GenBase) : GenModel
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'genGenModel()', Sequence{genBase}) /]
+
+[query public getEffectiveFeatureMapWrapperInterface(genBase : GenBase) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getEffectiveFeatureMapWrapperInterface()', Sequence{genBase}) /]
+
+[query public getEffectiveMapType(genBase : GenBase) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getEffectiveMapType()', Sequence{genBase}) /]
+
+[query public getEffectiveMapEntryType(genBase : GenBase) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getEffectiveMapEntryType()', Sequence{genBase}) /]
+
+[query public getEffectiveListType(genBase : GenBase) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getEffectiveListType()', Sequence{genBase}) /]
+
+[query public getEffectiveEObjectType(genBase : GenBase) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getEffectiveEObjectType()', Sequence{genBase}) /]
+
+[query public getImportedType(genBase : GenBase) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenBaseImpl', 'getImportedType(GenClass context, EClassifier eType, boolean primitiveAsObject)', Sequence{genBase}) /]
 
 [comment special handling for avoiding NPE due to importManager /]
 [query public getEffectiveComplianceLevel(genBase : GenBase) : GenJDKLevel = getGenModel().complianceLevel/]

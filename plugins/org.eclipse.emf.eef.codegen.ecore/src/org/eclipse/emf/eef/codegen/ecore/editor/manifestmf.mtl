@@ -1,0 +1,71 @@
+[comment encoding = UTF-8 /]
+[module manifestmf('http://www.eclipse.org/emf/2002/GenModel')/]
+
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
+
+[template public manifestmf(genModel : GenModel)]
+[file (manifestmfPath(), false, 'UTF-8')]
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: [genModel.getEditorPluginID()/];singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: [if (genModel.runtimeJar)][genModel.getEditorPluginID()/].jar[else].[/if]
+[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+Bundle-Activator: [genModel.getQualifiedEditorPluginClassName()/]$Implementation
+[/if]
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+[if (genModel.getComplianceLevel() = GenJDKLevel::JDK50)]
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+[elseif (genModel.getComplianceLevel() = GenJDKLevel::JDK60)]
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+[/if]
+[for (pack : String | genModel.getEditorQualifiedPackageNames()) before ('Export-Package:') separator (',\n')]
+ [pack/][/for]
+
+[for (pluginID : String | genModel.getEditorRequiredPlugins()) before ('Require-Bundle:') separator (',\n')]
+ [pluginID/][if (not pluginID.startsWith('org.eclipse.core.runtime'))];visibility:=reexport[/if][/for]
+
+[if (genModel.isRichAjaxPlatform())]
+Import-Package: org.eclipse.emf.common.ui,
+ org.eclipse.emf.common.ui.action,
+ org.eclipse.emf.common.ui.dialogs,
+ org.eclipse.emf.common.ui.editor,
+ org.eclipse.emf.common.ui.viewer,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.emf.edit.ui.action,
+ org.eclipse.emf.edit.ui.celleditor,
+ org.eclipse.emf.edit.ui.dnd,
+ org.eclipse.emf.edit.ui.provider,
+ org.eclipse.emf.edit.ui.util,
+ org.eclipse.emf.edit.ui.view,
+ org.eclipse.jface.action,
+ org.eclipse.jface.dialogs,
+ org.eclipse.jface.operation,
+ org.eclipse.jface.viewers,
+ org.eclipse.jface.window,
+ org.eclipse.jface.wizard,
+ org.eclipse.swt,
+ org.eclipse.swt.custom,
+ org.eclipse.swt.dnd,
+ org.eclipse.swt.events,
+ org.eclipse.swt.graphics,
+ org.eclipse.swt.layout,
+ org.eclipse.swt.widgets,
+ org.eclipse.ui;ui.workbench="split",
+ org.eclipse.ui.actions;ui.workbench="split",
+ org.eclipse.ui.application,
+ org.eclipse.ui.part;ui.workbench="split",
+ org.eclipse.ui.views,
+ org.eclipse.ui.views.contentoutline,
+ org.eclipse.ui.views.properties;ui.views="split"
+[/if]
+[if (genModel.getRuntimeVersion() = GenRuntimeVersion::EMF22 or genModel.getRuntimeVersion() = GenRuntimeVersion::EMF23)]
+Eclipse-LazyStart: true
+[/if]
+Bundle-ActivationPolicy: lazy
+[/file]
+[/template]
+
+[query public manifestmfPath(genModel : GenModel) : String = 'META-INF/MANIFEST.MF' /]

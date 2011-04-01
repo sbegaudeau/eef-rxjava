@@ -21,12 +21,11 @@ jars.compile.order = [pluginClassesLocation()/]
 source.[pluginClassesLocation()/] = [for (sourceFolder : String | genModel.getEditorSourceFolders()) separator (',\\           ')]
 [sourceFolder/]
 [/for]
-output.[pluginClassesLocation()/] = [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]bin/[else]war/WEB-INF/classes[/if]
-
+output.[pluginClassesLocation()/] = [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]bin[else]war/WEB-INF/classes[/if]
 [/file]
 [/template]
 
 [query public buildpropertiesPath(genModel : GenModel) : String = 'build.properties' /]
 
-[query public pluginClassesLocation(genModel : GenModel) : String = if genModel.runtimeJar then genModel.getEditPluginID().concat('.jar') else '.' endif/]
+[query public pluginClassesLocation(genModel : GenModel) : String = if genModel.runtimeJar then genModel.getEditorPluginID().concat('.jar') else '.' endif/]
 

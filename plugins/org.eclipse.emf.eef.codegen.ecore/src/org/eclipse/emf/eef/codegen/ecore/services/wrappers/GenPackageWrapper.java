@@ -9,8 +9,6 @@ import java.util.Set;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass.ChildCreationData;
-import org.eclipse.emf.codegen.ecore.genmodel.GenClassifier;
-import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl;
 
@@ -25,6 +23,7 @@ public class GenPackageWrapper {
 	}
 
 	public Set<?> getPackageEntryValueEntrySet(Object packageEntry) {
-		return ((Map<GenPackage, Map<GenClass, List<ChildCreationData>>>) ((Map.Entry)packageEntry).getValue()).entrySet();
+		Map<GenPackage, Map<GenClass, List<ChildCreationData>>> map = (Map<GenPackage, Map<GenClass, List<ChildCreationData>>>) ((Map.Entry)packageEntry).getValue();
+		return map.entrySet();
 	}
 }

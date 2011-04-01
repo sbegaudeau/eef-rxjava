@@ -124,7 +124,19 @@
 [query public getAllUsedGenPackagesWithClassifiers(genModel : GenModel) : Sequence(OclAny)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllUsedGenPackagesWithClassifiers()', Sequence{genModel}) /]
 
+[query public getEditorQualifiedPackageNames(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorQualifiedPackageNames()', Sequence{genModel}) /]
+
+[query public getEditorRequiredPlugins(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorRequiredPlugins()', Sequence{genModel}) /]
+
+[query public getEditorPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginClassName()', Sequence{genModel}) /]
+
+[query public getXMLEncodingChoices(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getXMLEncodingChoices()', Sequence{genModel}) /]
+
 [comment special handling for avoiding NPE due to importManager /]
-[query public getImportedName(genModel : GenModel,qualifiedName : String) : String
+[query public getImportedName(genModel : GenModel, qualifiedName : String) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.ImportManagerWrapper', 'getImportedName(java.lang.String)', Sequence{qualifiedName}) /]
 	

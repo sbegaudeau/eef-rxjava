@@ -116,6 +116,34 @@
 [query public getImportedModelWizardClassName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getImportedModelWizardClassName()', Sequence{genPackage}) /]
 
+[query public isMultipleFileExtensions(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'isMultipleFileExtensions()', Sequence{genPackage}) /]
+
+[query public getFileExtensions(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getFileExtensions()', Sequence{genPackage}) /]
+
+[query public getPackageInterfaceName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getPackageInterfaceName()', Sequence{genPackage}) /]
+
+[query public getUncapPackageName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getUncapPackageName()', Sequence{genPackage}) /]
+
+[query public getQualifiedEditorClassName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getQualifiedEditorClassName()', Sequence{genPackage}) /]
+
+[query public getFactoryInterfaceName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getFactoryInterfaceName()', Sequence{genPackage}) /]
+
+[query public getUncapFactoryName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getUncapFactoryName()', Sequence{genPackage}) /]
+
+[query public getFactoryName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'getFactoryName()', Sequence{genPackage}) /]
+
+[query public hasDocumentRoot(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl', 'hasDocumentRoot()', Sequence{genPackage}) /]
+
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public isLiteralsInterface(genPackage : GenPackage) : Boolean = genPackage.literalsInterface/]
 
@@ -144,3 +172,5 @@
 
 [query public getClassEntryKey(oclAny : OclAny) : GenClass
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getClassEntryKey(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getImportedEditorClassName(genPackage : GenPackage) : String = genModel.getImportedName(getQualifiedEditorClassName())/]

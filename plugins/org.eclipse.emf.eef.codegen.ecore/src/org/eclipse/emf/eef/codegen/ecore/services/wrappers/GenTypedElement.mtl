@@ -1,0 +1,37 @@
+[module GenTypedElement('http://www.eclipse.org/emf/2002/GenModel','http://www.eclipse.org/emf/2002/Ecore')/]
+
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenBase /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
+
+[query public isFeatureMapType(genTypedElement : GenTypedElement) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenTypedElementImpl', 'isFeatureMapType()', Sequence{genTypedElement}) /]
+
+[query public isMapEntryType(genTypedElement : GenTypedElement) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenTypedElementImpl', 'isMapEntryType()', Sequence{genTypedElement}) /]
+
+[query public isMapType(genTypedElement : GenTypedElement) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenTypedElementImpl', 'isMapType()', Sequence{genTypedElement}) /]
+
+[query public isListType(genTypedElement : GenTypedElement) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenTypedElementImpl', 'isListType()', Sequence{genTypedElement}) /]
+
+[query public isEObjectType(genTypedElement : GenTypedElement) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenTypedElementImpl', 'isEObjectType()', Sequence{genTypedElement}) /]
+
+[comment special handling for avoiding NPE due to importManager /]
+[query public getRawImportedType(genTypedElement : GenTypedElement) : String =
+if (isFeatureMapType()) then getGenModel().getImportedName(getEffectiveFeatureMapWrapperInterface())
+else if (isMapType()) then getGenModel().getImportedName(getEffectiveMapType())
+	else if (isMapEntryType()) then getGenModel().getImportedName(getEffectiveMapEntryType())
+		else if (isListType()) then getGenModel().getImportedName(getEffectiveListType())
+			else if (isEObjectType()) then getGenModel().getImportedName(getEffectiveEObjectType())
+				else getImportedType(getEcoreTypedElement().eType, false)
+				endif
+			endif
+		endif
+	endif
+endif/]
+
+[query public getEcoreTypedElement (genTypedElement : GenTypedElement) : ETypedElement = null /]
+
+[query public getImportedType (genTypedElement : GenTypedElement, eTypedElement : EClassifier, bool : Boolean) : String = '' /]

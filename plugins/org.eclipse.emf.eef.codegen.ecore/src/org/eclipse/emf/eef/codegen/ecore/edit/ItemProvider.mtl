@@ -10,6 +10,7 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenFeature /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnum /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenDataType /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenTypedElement /]
 
 [template public ItemProvider(genClass : GenClass)]
 [let genPackage : GenPackage = genClass.genPackage]
