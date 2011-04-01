@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrEditor.java,v 1.4 2010/11/02 11:58:44 glefur Exp $
+ * $Id: EefnrEditor.java,v 1.5 2011/04/01 10:05:56 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.presentation;
 
@@ -304,7 +304,6 @@ public class EefnrEditor
 	 */
 	protected boolean updateProblemIndication = true;
 
-	
 	/**
 	 * @generated NOT
 	 */
@@ -478,7 +477,7 @@ public class EefnrEditor
 	 * Handles what to do with changed resources on activation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleChangedResources() {
 		if (!changedResources.isEmpty() && (!isDirty() || (!isSaving && handleDirtyConflict()))) {
