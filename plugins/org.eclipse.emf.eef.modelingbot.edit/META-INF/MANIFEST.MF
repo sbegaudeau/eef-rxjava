@@ -10,6 +10,7 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.eef.modelingBot.EEFActions.provider,
  org.eclipse.emf.eef.modelingBot.EclipseActions.provider,
+ org.eclipse.emf.eef.modelingBot.edit.actions,
  org.eclipse.emf.eef.modelingBot.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.eef.modelingbot;visibility:=reexport,
