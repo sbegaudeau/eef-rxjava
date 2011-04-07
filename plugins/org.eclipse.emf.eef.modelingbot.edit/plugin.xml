@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.2 2011/04/07 14:29:33 glefur Exp $
+ $Id: plugin.xml,v 1.3 2011/04/07 14:39:02 glefur Exp $
 -->
 
 <plugin>
@@ -59,7 +59,7 @@
             </separator>
          </menu>
          <action
-               class="org.eclipse.emf.eef.modelingbot.edit.actions.OpenWithEEFAction"
+               class="org.eclipse.emf.eef.modelingBot.edit.actions.OpenWithEEFAction"
                enablesFor="1"
                id="org.eclipse.emf.eef.modelingbot.edit.newAction"
                label="Open With Interactive EEF Editor"

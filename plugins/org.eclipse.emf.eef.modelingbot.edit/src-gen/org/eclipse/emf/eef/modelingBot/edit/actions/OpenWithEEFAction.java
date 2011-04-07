@@ -1,4 +1,4 @@
-package org.eclipse.emf.eef.modelingbot.edit.actions;
+package org.eclipse.emf.eef.modelingBot.edit.actions;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.IAction;
