@@ -5,6 +5,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.extended.editor.*;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
 import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContribution;
@@ -141,6 +142,10 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDynamicEEFEditorContribution(DynamicEEFEditorContribution object) {
 				return createDynamicEEFEditorContributionAdapter();
+			}
+			@Override
+			public Adapter caseReferenceableObject(ReferenceableObject object) {
+				return createReferenceableObjectAdapter();
 			}
 			@Override
 			public Adapter caseDocumentedElement(DocumentedElement object) {
@@ -399,6 +404,20 @@ public class EditorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDynamicEEFEditorContributionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.extended.editor.ReferenceableObject <em>Referenceable Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.extended.editor.ReferenceableObject
+	 * @generated
+	 */
+	public Adapter createReferenceableObjectAdapter() {
 		return null;
 	}
 

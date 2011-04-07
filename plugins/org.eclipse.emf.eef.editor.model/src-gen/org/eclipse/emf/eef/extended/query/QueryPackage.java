@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.extended.editor.EditorPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +81,7 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_UNDERSTANDABLE_QUERY_FEATURE_COUNT = 0;
+	int EEF_UNDERSTANDABLE_QUERY_FEATURE_COUNT = EditorPackage.REFERENCEABLE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.extended.query.impl.OCLQueryImpl <em>OCL Query</em>}' class.

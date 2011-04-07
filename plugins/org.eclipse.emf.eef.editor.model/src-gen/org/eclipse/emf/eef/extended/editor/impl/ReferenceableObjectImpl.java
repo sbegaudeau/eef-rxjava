@@ -8,30 +8,31 @@
  * Contributors:
  *     Obeo - initial API and implementation
  */
-package org.eclipse.emf.eef.extended.query.impl;
+package org.eclipse.emf.eef.extended.editor.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.eef.extended.editor.impl.ReferenceableObjectImpl;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.eef.extended.query.EEFUnderstandableQuery;
-import org.eclipse.emf.eef.extended.query.QueryPackage;
+
+import org.eclipse.emf.eef.extended.editor.EditorPackage;
+import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>EEF Understandable Query</b></em>'.
+ * An implementation of the model object '<em><b>Referenceable Object</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public abstract class EEFUnderstandableQueryImpl extends ReferenceableObjectImpl implements EEFUnderstandableQuery {
+public class ReferenceableObjectImpl extends EObjectImpl implements ReferenceableObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EEFUnderstandableQueryImpl() {
+	protected ReferenceableObjectImpl() {
 		super();
 	}
 
@@ -42,7 +43,7 @@ public abstract class EEFUnderstandableQueryImpl extends ReferenceableObjectImpl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QueryPackage.Literals.EEF_UNDERSTANDABLE_QUERY;
+		return EditorPackage.Literals.REFERENCEABLE_OBJECT;
 	}
 
-} //EEFUnderstandableQueryImpl
+} //ReferenceableObjectImpl

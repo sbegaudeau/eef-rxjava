@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
+import org.eclipse.emf.eef.extended.query.*;
 import org.eclipse.emf.eef.extended.query.EEFUnderstandableQuery;
 import org.eclipse.emf.eef.extended.query.ExplicitPathQuery;
 import org.eclipse.emf.eef.extended.query.OCLQuery;
@@ -96,6 +98,7 @@ public class QuerySwitch<T> {
 			case QueryPackage.EEF_UNDERSTANDABLE_QUERY: {
 				EEFUnderstandableQuery eefUnderstandableQuery = (EEFUnderstandableQuery)theEObject;
 				T result = caseEEFUnderstandableQuery(eefUnderstandableQuery);
+				if (result == null) result = caseReferenceableObject(eefUnderstandableQuery);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -103,6 +106,7 @@ public class QuerySwitch<T> {
 				OCLQuery oclQuery = (OCLQuery)theEObject;
 				T result = caseOCLQuery(oclQuery);
 				if (result == null) result = caseEEFUnderstandableQuery(oclQuery);
+				if (result == null) result = caseReferenceableObject(oclQuery);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,6 +114,7 @@ public class QuerySwitch<T> {
 				ExplicitPathQuery explicitPathQuery = (ExplicitPathQuery)theEObject;
 				T result = caseExplicitPathQuery(explicitPathQuery);
 				if (result == null) result = caseEEFUnderstandableQuery(explicitPathQuery);
+				if (result == null) result = caseReferenceableObject(explicitPathQuery);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -159,6 +164,21 @@ public class QuerySwitch<T> {
 	 * @generated
 	 */
 	public T caseExplicitPathQuery(ExplicitPathQuery object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Referenceable Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Referenceable Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferenceableObject(ReferenceableObject object) {
 		return null;
 	}
 

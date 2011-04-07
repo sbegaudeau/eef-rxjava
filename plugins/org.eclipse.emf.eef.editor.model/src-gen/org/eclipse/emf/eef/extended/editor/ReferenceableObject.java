@@ -8,20 +8,19 @@
  * Contributors:
  *     Obeo - initial API and implementation
  */
-package org.eclipse.emf.eef.extended.query;
+package org.eclipse.emf.eef.extended.editor;
 
-import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>EEF Understandable Query</b></em>'.
+ * A representation of the model object '<em><b>Referenceable Object</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.emf.eef.extended.query.QueryPackage#getEEFUnderstandableQuery()
- * @model abstract="true"
+ * @see org.eclipse.emf.eef.extended.editor.EditorPackage#getReferenceableObject()
+ * @model
  * @generated
  */
-public interface EEFUnderstandableQuery extends ReferenceableObject {
-} // EEFUnderstandableQuery
+public interface ReferenceableObject extends EObject {
+} // ReferenceableObject

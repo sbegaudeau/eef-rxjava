@@ -1190,6 +1190,26 @@ public interface EditorPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.extended.editor.impl.ReferenceableObjectImpl <em>Referenceable Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.extended.editor.impl.ReferenceableObjectImpl
+	 * @see org.eclipse.emf.eef.extended.editor.impl.EditorPackageImpl#getReferenceableObject()
+	 * @generated
+	 */
+	int REFERENCEABLE_OBJECT = 14;
+
+	/**
+	 * The number of structural features of the '<em>Referenceable Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCEABLE_OBJECT_FEATURE_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.extended.editor.EEFEditorContribution <em>EEF Editor Contribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1418,6 +1438,16 @@ public interface EditorPackage extends EPackage {
 	EClass getDynamicEEFEditorContribution();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.extended.editor.ReferenceableObject <em>Referenceable Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Referenceable Object</em>'.
+	 * @see org.eclipse.emf.eef.extended.editor.ReferenceableObject
+	 * @generated
+	 */
+	EClass getReferenceableObject();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1642,6 +1672,16 @@ public interface EditorPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DYNAMIC_EEF_EDITOR_CONTRIBUTION = eINSTANCE.getDynamicEEFEditorContribution();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.extended.editor.impl.ReferenceableObjectImpl <em>Referenceable Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.extended.editor.impl.ReferenceableObjectImpl
+		 * @see org.eclipse.emf.eef.extended.editor.impl.EditorPackageImpl#getReferenceableObject()
+		 * @generated
+		 */
+		EClass REFERENCEABLE_OBJECT = eINSTANCE.getReferenceableObject();
 
 	}
 
