@@ -5,6 +5,7 @@ package org.eclipse.emf.eef.modelingBot.interpreter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFolder;
@@ -12,10 +13,12 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.ModelingBot;
@@ -24,9 +27,11 @@ import org.eclipse.emf.eef.modelingBot.Scenario;
 import org.eclipse.emf.eef.modelingBot.Sequence;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
+import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 import org.eclipse.emf.eef.modelingBot.EEFActions.OpenEEFEditor;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
+import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.emf.eef.modelingBot.utils.EEFTestsResourceUtils;
 
 /**
@@ -35,12 +40,27 @@ import org.eclipse.emf.eef.modelingBot.utils.EEFTestsResourceUtils;
  */
 public class EEFInterpreter implements ModelingBotInterpreter{
 
-	/**
-	 * The ResourceSet where to operate
-	 */
-	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(
-			EEFRuntimePlugin.getDefault().getAdapterFactory(),
-			new BasicCommandStack());
+	private AdapterFactoryEditingDomain editingDomain;
+	
+	private Map<ReferenceableObject, EObject> refObjectToEObject = new HashMap<ReferenceableObject, EObject>();
+
+	public Map<ReferenceableObject, EObject> getRefObjectToEObject() {
+		return refObjectToEObject;
+	}
+
+	public void setRefObjectToEObject(
+			Map<ReferenceableObject, EObject> refObjectToEObject) {
+		this.refObjectToEObject = refObjectToEObject;
+	}
+	
+	public EObject getEObjectFromReferenceableEObject(ReferenceableObject ref) {
+		return refObjectToEObject.get(ref);
+	}
+
+	public EEFInterpreter(AdapterFactoryEditingDomain editingDomain) {
+		super();
+		this.editingDomain = editingDomain;
+	}
 
 	private IProject testProject;
 	private IFolder modelFolder;
@@ -88,12 +108,29 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 		} else if (action instanceof OpenEEFEditor) {
 			bot.openEEFEditor(((OpenEEFEditor) action).getEditorName());
 		} else if (action instanceof CreateModel) {
-			bot.createModel(((CreateModel) action).getPath(), ((CreateModel) action).getModelName(), ((CreateModel) action).getRoot());
+			EObject addedObject = bot.createModel(((CreateModel) action).getPath(), ((CreateModel) action).getModelName(), ((CreateModel) action).getRoot());
+			addModelMap((CreateModel)action, addedObject);
 		} else if (action instanceof Add) {
-			bot.add(((Add) action).getPropertiesEditionElement(), ((Add) action).getReferenceableObject(), ((Add) action).getEContainingFeature());
+			EObject addedObject = bot.add(((Add) action).getPropertiesEditionElement(), ((Add) action).getReferenceableObject(), ((Add) action).getEContainingFeature(), ((Add) action).getType());
+			addActionMap((Add) action, addedObject);
 		} else if (action instanceof SetAttribute) {
 			bot.set(((SetAttribute) action).getPropertiesEditionElement(), ((SetAttribute) action).getReferenceableObject(), ((SetAttribute) action).getEContainingFeature(), ((SetAttribute) action).getValue());
 		}
+	}
+
+	private void addActionMap(EditAction action, EObject obj) {
+		refObjectToEObject.put(action, obj);
+	}
+
+	private void addModelMap(CreateModel action,  EObject obj) {
+		refObjectToEObject.put(action, obj);
+//			URI fileURI = URI.createPlatformResourceURI(action.getPath()+"/"+action.getModelName(), true);
+//			Resource resource = editingDomain.getResourceSet().getResource(fileURI,
+//					true);
+//			bot.setTestModelResource(resource);
+//			if (!resource.getContents().isEmpty()) {
+//				refObjectToEObject.put(action, resource.getContents().get(0));
+//			}	
 	}
 
 }

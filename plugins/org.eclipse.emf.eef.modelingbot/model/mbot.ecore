@@ -39,7 +39,9 @@
           eType="ecore:EClass platform:/plugin/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/ReferenceableObject"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="eContainingFeature" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Add" eSuperTypes="#//EEFActions/EditAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Add" eSuperTypes="#//EEFActions/EditAction">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Remove" eSuperTypes="#//EEFActions/EditAction"/>
     <eClassifiers xsi:type="ecore:EClass" name="SetAttribute" eSuperTypes="#//EEFActions/EditAction">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

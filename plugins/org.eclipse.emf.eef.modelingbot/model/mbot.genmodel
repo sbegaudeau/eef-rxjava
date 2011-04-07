@@ -41,7 +41,10 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference mbot.ecore#//EEFActions/EditAction/eContainingFeature"/>
       </genClasses>
-      <genClasses ecoreClass="mbot.ecore#//EEFActions/Add"/>
+      <genClasses ecoreClass="mbot.ecore#//EEFActions/Add">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mbot.ecore#//EEFActions/Add/type"/>
+      </genClasses>
       <genClasses ecoreClass="mbot.ecore#//EEFActions/Remove"/>
       <genClasses ecoreClass="mbot.ecore#//EEFActions/SetAttribute">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EEFActions/SetAttribute/value"/>

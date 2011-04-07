@@ -1,3 +1,4 @@
+package org.eclipse.emf.eef.modelingBot.testcase;
 /*******************************************************************************
  * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -8,11 +9,9 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.modelingBot.testcase;
 
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.junit.Before;
 
 /**
@@ -33,9 +32,9 @@ public class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-//		bot.closeWelcomePage();
-//		bot.openJavaPerspective();
-//		bot.openPropertiesView();
+		bot.closeWelcomePage();
+		bot.openJavaPerspective();
+		bot.openPropertiesView();
 //		initWorkspaceForTests();
 	}
 	
@@ -46,6 +45,6 @@ public class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 	}
 	
 	public void testModelingBot() throws Exception {
-		bot.runModelingBot("");
+		bot.runModelingBot("/model/My.modelingbot");
 	}
 }

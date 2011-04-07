@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EEFActionsPackage.java,v 1.1 2011/04/06 13:07:28 nlepine Exp $
+ * $Id: EEFActionsPackage.java,v 1.2 2011/04/07 15:59:04 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions;
 
@@ -218,13 +218,22 @@ public interface EEFActionsPackage extends EPackage {
 	int ADD__ECONTAINING_FEATURE = EDIT_ACTION__ECONTAINING_FEATURE;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__TYPE = EDIT_ACTION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Add</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADD_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 0;
+	int ADD_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.RemoveImpl <em>Remove</em>}' class.
@@ -686,6 +695,17 @@ public interface EEFActionsPackage extends EPackage {
 	EClass getAdd();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.Add#getType()
+	 * @see #getAdd()
+	 * @generated
+	 */
+	EReference getAdd_Type();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Remove <em>Remove</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -863,6 +883,14 @@ public interface EEFActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ADD = eINSTANCE.getAdd();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD__TYPE = eINSTANCE.getAdd_Type();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.RemoveImpl <em>Remove</em>}' class.

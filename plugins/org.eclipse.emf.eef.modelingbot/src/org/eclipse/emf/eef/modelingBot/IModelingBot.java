@@ -14,6 +14,8 @@ import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
@@ -95,8 +97,9 @@ public interface IModelingBot {
 	 * @param propertiesEditionElement
 	 * @param referenceableObject
 	 * @param eContainingFeature
+	 * @return 
 	 */
-	void add(org.eclipse.emf.eef.components.PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature);
+	EObject add(org.eclipse.emf.eef.components.PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type);
 
 	/**
 	 * Remove an element.
@@ -133,7 +136,8 @@ public interface IModelingBot {
 	/**
 	 * Create a new resource.
 	 * @param modelName
+	 * @return 
 	 */
-	void createModel(String path, String modelName, EClass root);
+	EObject createModel(String path, String modelName, EClass eClass);
 
 }

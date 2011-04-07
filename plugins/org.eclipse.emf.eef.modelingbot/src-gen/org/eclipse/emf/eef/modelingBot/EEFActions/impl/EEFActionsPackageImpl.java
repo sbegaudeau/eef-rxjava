@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EEFActionsPackageImpl.java,v 1.1 2011/04/06 13:07:28 nlepine Exp $
+ * $Id: EEFActionsPackageImpl.java,v 1.2 2011/04/07 15:59:04 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.impl;
 
@@ -250,6 +250,15 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAdd_Type() {
+		return (EReference)addEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRemove() {
 		return removeEClass;
 	}
@@ -371,6 +380,7 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		createEReference(editActionEClass, EDIT_ACTION__ECONTAINING_FEATURE);
 
 		addEClass = createEClass(ADD);
+		createEReference(addEClass, ADD__TYPE);
 
 		removeEClass = createEClass(REMOVE);
 
@@ -445,6 +455,7 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		initEReference(getEditAction_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAdd_Type(), theEcorePackage.getEClass(), null, "type", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(removeEClass, Remove.class, "Remove", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
