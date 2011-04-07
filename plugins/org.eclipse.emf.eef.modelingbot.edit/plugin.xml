@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2011/04/06 13:08:31 nlepine Exp $
+ $Id: plugin.xml,v 1.2 2011/04/07 14:29:33 glefur Exp $
 -->
 
 <plugin>
@@ -44,6 +44,28 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.eclipse.emf.eef.modelingbot.edit.contribution1"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.emf.eef.modelingbot.edit.menu1"
+               label="EEF"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.eef.modelingbot.edit.actions.OpenWithEEFAction"
+               enablesFor="1"
+               id="org.eclipse.emf.eef.modelingbot.edit.newAction"
+               label="Open With Interactive EEF Editor"
+               menubarPath="org.eclipse.emf.eef.modelingbot.edit.menu1/group1">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>
