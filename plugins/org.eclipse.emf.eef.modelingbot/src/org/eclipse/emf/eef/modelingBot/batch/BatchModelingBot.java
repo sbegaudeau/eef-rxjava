@@ -4,9 +4,7 @@
 package org.eclipse.emf.eef.modelingBot.batch;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -43,7 +41,7 @@ public class BatchModelingBot implements IModelingBot {
 	private IProgressMonitor monitor;
 	private EditingDomain editingDomain;
 	private AdapterFactory adapterFactory;
-	private List<Resource> activeResources;
+	private Resource activeResource;
 	private EEFInterpreter interpreter;
 	
 	/**
@@ -53,7 +51,6 @@ public class BatchModelingBot implements IModelingBot {
 		monitor = new NullProgressMonitor();
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack());
-		activeResources = new ArrayList<Resource>();
 		interpreter = new EEFInterpreter(editingDomain);
 	}
 
@@ -133,7 +130,7 @@ public class BatchModelingBot implements IModelingBot {
 	public void openEEFEditor(String path) {
 		URI uri = URI.createPlatformResourceURI(path, true);
 		Resource activeResource = editingDomain.getResourceSet().getResource(uri, true);
-		activeResources.add(activeResource);
+		this.activeResource = activeResource;
 	}
 
 	/**
@@ -141,27 +138,26 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeEditor(java.lang.String)
 	 */
 	public void closeEditor(String path) {
-		Resource activeResource = searchResource(path);
 		activeResource.unload();
+		activeResource = null;
 		editingDomain.getResourceSet().getResources().remove(activeResource);
 	}
 
 	
-	public void save(String path) {
-		try {
-			Resource activeResource = searchResource(path);
-			activeResource.save(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
 	 */
 	public void save() {
-		
+		if (activeResource != null) {
+			try {
+				activeResource.save(Collections.EMPTY_MAP);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			//TODO: Error
+		}
 	}
 	
 	/**
@@ -170,6 +166,7 @@ public class BatchModelingBot implements IModelingBot {
 	 */
 	public EObject add(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type) {
 		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		activeResource = eObjectFromReferenceableEObject.eResource();
 		EObject value = EcoreUtil.create(type);
 		Command command = AddCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, value);
 		editingDomain.getCommandStack().execute(command);
@@ -181,7 +178,9 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
 	public void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject) {
-		// TODO Auto-generated method stub
+		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		activeResource = eObjectFromReferenceableEObject.eResource();
+		EcoreUtil.remove(eObjectFromReferenceableEObject);
 	}
 
 	/**
@@ -191,6 +190,7 @@ public class BatchModelingBot implements IModelingBot {
 	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,	EStructuralFeature eContainingFeature, String value) {
 		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
 		if (eContainingFeature instanceof EAttribute) {
+			activeResource = eObjectFromReferenceableEObject.eResource();
 			Object createFromString = EcoreUtil.createFromString(((EAttribute)eContainingFeature).getEAttributeType(), value);
 			Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, createFromString);
 			editingDomain.getCommandStack().execute(command);
@@ -206,6 +206,7 @@ public class BatchModelingBot implements IModelingBot {
 	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,	EStructuralFeature eContainingFeature, ReferenceableObject value) {
 		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
 		if (eContainingFeature instanceof EReference) {
+			activeResource = eObjectFromReferenceableEObject.eResource();
 			Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, interpreter.getEObjectFromReferenceableEObject(value));
 			editingDomain.getCommandStack().execute(command);
 		} else {
@@ -233,27 +234,12 @@ public class BatchModelingBot implements IModelingBot {
 			EObject create = EcoreUtil.create(eClass);
 			activeResource.getContents().add(create);
 			activeResource.save(Collections.EMPTY_MAP);
+			this.activeResource = activeResource;
 			return create;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	/**
-	 * @param path
-	 * @return
-	 */
-	private Resource searchResource(String path) {
-		URI searchResource = URI.createPlatformResourceURI(path, true);
-		Resource activeResource = null;
-		for (Resource resource : activeResources) {
-			if (resource.getURI().equals(searchResource)) {
-				activeResource = resource;
-				break;
-			}
-		}
-		return activeResource;
 	}
 
 }
