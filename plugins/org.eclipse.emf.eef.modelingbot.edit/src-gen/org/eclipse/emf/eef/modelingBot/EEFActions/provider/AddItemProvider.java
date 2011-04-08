@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddItemProvider.java,v 1.2 2011/04/07 15:59:05 nlepine Exp $
+ * $Id: AddItemProvider.java,v 1.3 2011/04/08 09:00:17 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.provider;
 
@@ -61,6 +61,7 @@ public class AddItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
+			addEContainingFeaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -79,6 +80,28 @@ public class AddItemProvider
 				 getString("_UI_Add_type_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Add_type_feature", "_UI_Add_type"),
 				 EEFActionsPackage.Literals.ADD__TYPE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the EContaining Feature feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEContainingFeaturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Add_eContainingFeature_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Add_eContainingFeature_feature", "_UI_Add_type"),
+				 EEFActionsPackage.Literals.ADD__ECONTAINING_FEATURE,
 				 true,
 				 false,
 				 true,

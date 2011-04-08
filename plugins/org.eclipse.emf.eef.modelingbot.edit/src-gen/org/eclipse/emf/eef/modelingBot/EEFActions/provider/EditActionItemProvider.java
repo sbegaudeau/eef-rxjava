@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EditActionItemProvider.java,v 1.1 2011/04/06 13:08:31 nlepine Exp $
+ * $Id: EditActionItemProvider.java,v 1.2 2011/04/08 09:00:17 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.provider;
 
@@ -62,7 +62,6 @@ public class EditActionItemProvider
 
 			addPropertiesEditionElementPropertyDescriptor(object);
 			addReferenceableObjectPropertyDescriptor(object);
-			addEContainingFeaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -103,28 +102,6 @@ public class EditActionItemProvider
 				 getString("_UI_EditAction_referenceableObject_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EditAction_referenceableObject_feature", "_UI_EditAction_type"),
 				 EEFActionsPackage.Literals.EDIT_ACTION__REFERENCEABLE_OBJECT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the EContaining Feature feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEContainingFeaturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EditAction_eContainingFeature_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EditAction_eContainingFeature_feature", "_UI_EditAction_type"),
-				 EEFActionsPackage.Literals.EDIT_ACTION__ECONTAINING_FEATURE,
 				 true,
 				 false,
 				 true,

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UnsetItemProvider.java,v 1.1 2011/04/06 13:08:31 nlepine Exp $
+ * $Id: UnsetItemProvider.java,v 1.2 2011/04/08 09:00:17 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.provider;
 
@@ -13,6 +13,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -20,6 +21,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Unset;
 import org.eclipse.emf.eef.modelingBot.ModelingBotPackage;
 
@@ -58,8 +60,31 @@ public class UnsetItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addFeaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Feature feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFeaturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Unset_feature_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Unset_feature_feature", "_UI_Unset_type"),
+				 EEFActionsPackage.Literals.UNSET__FEATURE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
