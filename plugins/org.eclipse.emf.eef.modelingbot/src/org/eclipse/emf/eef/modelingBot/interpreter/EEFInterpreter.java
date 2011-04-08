@@ -11,13 +11,11 @@ import java.util.Map;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
@@ -25,13 +23,12 @@ import org.eclipse.emf.eef.modelingBot.ModelingBot;
 import org.eclipse.emf.eef.modelingBot.Processing;
 import org.eclipse.emf.eef.modelingBot.Scenario;
 import org.eclipse.emf.eef.modelingBot.Sequence;
-import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
-import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
+import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 import org.eclipse.emf.eef.modelingBot.EEFActions.OpenEEFEditor;
-import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
-import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
+import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
+import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
 import org.eclipse.emf.eef.modelingBot.utils.EEFTestsResourceUtils;
 
 /**
@@ -40,7 +37,7 @@ import org.eclipse.emf.eef.modelingBot.utils.EEFTestsResourceUtils;
  */
 public class EEFInterpreter implements ModelingBotInterpreter{
 
-	private AdapterFactoryEditingDomain editingDomain;
+	private EditingDomain editingDomain;
 	
 	private Map<ReferenceableObject, EObject> refObjectToEObject = new HashMap<ReferenceableObject, EObject>();
 
@@ -57,7 +54,7 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 		return refObjectToEObject.get(ref);
 	}
 
-	public EEFInterpreter(AdapterFactoryEditingDomain editingDomain) {
+	public EEFInterpreter(EditingDomain editingDomain) {
 		super();
 		this.editingDomain = editingDomain;
 	}
