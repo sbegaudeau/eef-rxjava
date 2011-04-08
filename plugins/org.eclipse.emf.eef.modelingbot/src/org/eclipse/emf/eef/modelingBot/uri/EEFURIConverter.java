@@ -13,7 +13,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
@@ -55,7 +54,6 @@ public class EEFURIConverter extends ExtensibleURIConverterImpl {
 					}
 				} catch (IOException e) {
 					// silent catch
-					e.printStackTrace();
 				}
 			}
 		}

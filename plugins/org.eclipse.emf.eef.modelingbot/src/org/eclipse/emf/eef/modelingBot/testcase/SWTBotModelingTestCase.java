@@ -18,7 +18,7 @@ import org.junit.Before;
  * @author nlepine
  *
  */
-public class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
+public abstract class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 	
 	/**
 	 * An instance of SWTEclipseBot.
@@ -35,7 +35,6 @@ public class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 		bot.closeWelcomePage();
 		bot.openJavaPerspective();
 		bot.openPropertiesView();
-//		initWorkspaceForTests();
 	}
 	
 	@Override
@@ -44,7 +43,5 @@ public class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 		super.tearDown();
 	}
 	
-	public void testModelingBot() throws Exception {
-		bot.runModelingBot("/model/My.modelingbot");
-	}
+	public abstract void testModelingBot() throws Exception;
 }
