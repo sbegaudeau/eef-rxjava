@@ -181,6 +181,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 
 	public void save() {
 		SWTBotUtils.waitAllUiEvents();
+		sleep(1000);
 		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
 	}
 
@@ -234,8 +235,16 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotUtils.waitAllUiEvents();
 		final SWTBotTreeItem selectNode = selectNode(editor, container);
 		assertNotNull("No element is selected in the editor",selectNode);
+		initTab(propertiesEditionElement);
 		assertFalse("The set action must be define in a sequence.", sequenceType==null);
 		propertiesEdition.updateFeature(selectNode, propertiesEditionElement, value, sequenceType);
+	}
+	
+	public void initTab(PropertiesEditionElement propertiesEditionElement){
+		if (propertiesEditionElement.getName() != null) {
+			cTabItem(propertiesEditionElement.getName()).activate();
+			cTabItem(propertiesEditionElement.getName()).setFocus();
+		}
 	}
 	
 	public void set(PropertiesEditionElement propertiesEditionElement,
@@ -387,6 +396,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		Object next = null;
 		SWTBotTreeItem node2 = editor.bot().tree().getTreeItem(testModelResource.getURI().toString());
 		while (iterator.hasNext()) {
+			sleep(1000);
 			node2.expand();
 			next = iterator.next();
 			node2 = selectSubNode(node2, next);
