@@ -9,7 +9,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.eef.modelingBot.utils;
+package org.eclipse.emf.eef.modelingBot.menu;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

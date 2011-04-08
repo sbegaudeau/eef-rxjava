@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.modelingBot.utils;
 
 import java.util.List;
 
+import org.eclipse.emf.eef.modelingBot.menu.SWTBotContextMenu;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;

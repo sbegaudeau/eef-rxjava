@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.eclipse.emf.eef.modelingBot.utils;
+package org.eclipse.emf.eef.modelingBot.uri;
 
 import java.io.IOException;
 import java.util.Collections;

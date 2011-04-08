@@ -86,11 +86,10 @@ public interface IModelingBot {
 	void closeEditor(String path);
 	
 	/**
-	 * Close an editor.
+	 * Save an editor.
 	 * 
-	 * @param path editor path from its project
 	 */
-	void save(String path);
+	void save();
 	
 	/**
 	 * Add an element.

@@ -51,6 +51,8 @@ Export-Package: org.eclipse.emf.eef.modelingBot;
    org.eclipse.emf.eef.components,
    org.eclipse.emf.ecore.impl,
    org.eclipse.emf.common.notify",
+ org.eclipse.emf.eef.modelingBot.interpreter,
+ org.eclipse.emf.eef.modelingBot.menu,
  org.eclipse.emf.eef.modelingBot.swtbot;
   uses:="org.eclipse.emf.eef.extended.editor,
    org.eclipse.emf.ecore,
@@ -59,12 +61,14 @@ Export-Package: org.eclipse.emf.eef.modelingBot;
    org.eclipse.swtbot.swt.finder.widgets,
    org.eclipse.swtbot.swt.finder",
  org.eclipse.emf.eef.modelingBot.testcase;uses:="org.eclipse.swtbot.eclipse.finder,org.eclipse.emf.eef.modelingBot.swtbot",
+ org.eclipse.emf.eef.modelingBot.uri,
  org.eclipse.emf.eef.modelingBot.util;
   uses:="org.eclipse.emf.ecore,
    org.eclipse.emf.common.notify.impl,
    org.eclipse.emf.eef.modelingBot,
    org.eclipse.emf.common.notify",
- org.eclipse.emf.eef.modelingBot.utils;uses:="org.eclipse.emf.ecore.resource,org.eclipse.core.resources"
+ org.eclipse.emf.eef.modelingBot.utils;uses:="org.eclipse.emf.ecore.resource,org.eclipse.core.resources",
+ org.eclipse.emf.eef.modelingBot.widget
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.eef.components;visibility:=reexport,
