@@ -113,6 +113,7 @@ public interface IModelingBot {
 	 * @param propertiesEditionElement
 	 * @param referenceableObject
 	 * @param eContainingFeature
+	 * @return 
 	 */
 	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, String value);
 

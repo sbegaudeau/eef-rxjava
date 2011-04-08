@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModelingBotFactoryImpl.java,v 1.1 2011/04/06 13:07:28 nlepine Exp $
+ * $Id: ModelingBotFactoryImpl.java,v 1.2 2011/04/08 15:31:04 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -75,6 +76,36 @@ public class ModelingBotFactoryImpl extends EFactoryImpl implements ModelingBotF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case ModelingBotPackage.SEQUENCE_TYPE:
+				return createSequenceTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case ModelingBotPackage.SEQUENCE_TYPE:
+				return convertSequenceTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Scenario createScenario() {
 		ScenarioImpl scenario = new ScenarioImpl();
 		return scenario;
@@ -118,6 +149,26 @@ public class ModelingBotFactoryImpl extends EFactoryImpl implements ModelingBotF
 	public PropertiesView createPropertiesView() {
 		PropertiesViewImpl propertiesView = new PropertiesViewImpl();
 		return propertiesView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SequenceType createSequenceTypeFromString(EDataType eDataType, String initialValue) {
+		SequenceType result = SequenceType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSequenceTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

@@ -29,6 +29,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Processing" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="SequenceType">
+    <eLiterals name="DETAILS_PAGE"/>
+    <eLiterals name="WIZARD" value="1"/>
+    <eLiterals name="PROPERTIES_VIEW" value="2"/>
+  </eClassifiers>
   <eSubpackages name="EEFActions" nsURI="http://www.eclipse.org/emf/eef/test/EEFActions/1.0.0"
       nsPrefix="eef-test">
     <eClassifiers xsi:type="ecore:EClass" name="EEFAction" abstract="true" eSuperTypes="#//Action"/>

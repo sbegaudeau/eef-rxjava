@@ -3,6 +3,10 @@
  */
 package org.eclipse.emf.eef.modelingBot.interpreter;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,17 +19,25 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.Action;
+import org.eclipse.emf.eef.modelingBot.DetailsPage;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.ModelingBot;
 import org.eclipse.emf.eef.modelingBot.Processing;
+import org.eclipse.emf.eef.modelingBot.PropertiesView;
 import org.eclipse.emf.eef.modelingBot.Scenario;
 import org.eclipse.emf.eef.modelingBot.Sequence;
+import org.eclipse.emf.eef.modelingBot.SequenceType;
+import org.eclipse.emf.eef.modelingBot.Wizard;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
+import org.eclipse.emf.eef.modelingBot.EEFActions.Remove;
+import org.eclipse.emf.eef.modelingBot.EEFActions.Unset;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 import org.eclipse.emf.eef.modelingBot.EEFActions.OpenEEFEditor;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
+import org.eclipse.emf.eef.modelingBot.EclipseActions.Save;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
+import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 
 /**
  * @author nlepine
@@ -59,24 +71,39 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 		URI fileURI = URI.createPlatformPluginURI(path, true);
 		Resource resource = editingDomain.getResourceSet().getResource(fileURI,
 				true);
+		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
 	}
 
 	public void runModelingBot(String path, IModelingBot bot) throws CoreException, IOException {
 		Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
+		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
 		ModelingBot mbot = (ModelingBot) modelingBotResource
 				.getContents().get(0);
+		assertNotNull("The modeling bot resource is empty.", mbot);
+		assertTrue("The modeling bot is not a SWTEEFBot.", bot instanceof SWTEEFBot);
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
 				Scenario scenario = (Scenario) sequence;
-				for (Processing processing : scenario.getProcessings()) {
-					if (processing instanceof Action) {
-						runAction((Action) processing, bot);
-					} else if (processing instanceof Sequence) {
-						
-					}
-				}
+				runSequence(bot, scenario);
+			}
+		}
+	}
+
+	private void runSequence(IModelingBot bot, Sequence sequence) {
+		for (Processing processing : sequence.getProcessings()) {
+			if (processing instanceof Action) {
+				runAction((Action) processing, bot);
+			} else if (processing instanceof DetailsPage) {
+				((SWTEEFBot)bot).setSequenceType(SequenceType.DETAILS_PAGE);
+				runSequence(bot, (DetailsPage) processing);
+			} else if (processing instanceof PropertiesView) {
+				((SWTEEFBot)bot).setSequenceType(SequenceType.PROPERTIES_VIEW);
+				runSequence(bot, (PropertiesView) processing);
+			} else if (processing instanceof Wizard) {
+				((SWTEEFBot)bot).setSequenceType(SequenceType.WIZARD);
+				runSequence(bot, (Wizard) processing);
 			}
 		}
 	}
@@ -94,10 +121,17 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 			addActionMap((Add) action, addedObject);
 		} else if (action instanceof SetAttribute) {
 			bot.set(((SetAttribute) action).getPropertiesEditionElement(), ((SetAttribute) action).getReferenceableObject(), ((SetAttribute) action).getEContainingFeature(), ((SetAttribute) action).getValue());
-		}
+		} else if (action instanceof Save) {
+			bot.save();
+		} else if (action instanceof Unset) {
+			bot.unset(((Unset) action).getPropertiesEditionElement(), ((Unset) action).getReferenceableObject(), ((Unset) action).getFeature());
+		} else if (action instanceof Remove) {
+			bot.remove(((Remove) action).getPropertiesEditionElement(), ((Remove) action).getReferenceableObject());
+			refObjectToEObject.remove(((Remove) action).getReferenceableObject());
+		} 
 	}
 
-	private void addActionMap(EditAction action, EObject obj) {
+	private void addActionMap(ReferenceableObject action, EObject obj) {
 		refObjectToEObject.put(action, obj);
 	}
 

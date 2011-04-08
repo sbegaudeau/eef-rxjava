@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModelingBotPackageImpl.java,v 1.1 2011/04/06 13:07:28 nlepine Exp $
+ * $Id: ModelingBotPackageImpl.java,v 1.2 2011/04/08 15:31:04 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -39,6 +40,7 @@ import org.eclipse.emf.eef.modelingBot.Processing;
 import org.eclipse.emf.eef.modelingBot.PropertiesView;
 import org.eclipse.emf.eef.modelingBot.Scenario;
 import org.eclipse.emf.eef.modelingBot.Sequence;
+import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.Wizard;
 
 /**
@@ -110,6 +112,13 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 	 * @generated
 	 */
 	private EClass processingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sequenceTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -342,6 +351,15 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSequenceType() {
+		return sequenceTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ModelingBotFactory getModelingBotFactory() {
 		return (ModelingBotFactory)getEFactoryInstance();
 	}
@@ -390,6 +408,9 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 		createEAttribute(propertiesViewEClass, PROPERTIES_VIEW__ID);
 
 		processingEClass = createEClass(PROCESSING);
+
+		// Create enums
+		sequenceTypeEEnum = createEEnum(SEQUENCE_TYPE);
 	}
 
 	/**
@@ -465,6 +486,12 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 		initEAttribute(getPropertiesView_Id(), theEcorePackage.getEString(), "id", null, 0, 1, PropertiesView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processingEClass, Processing.class, "Processing", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(sequenceTypeEEnum, SequenceType.class, "SequenceType");
+		addEEnumLiteral(sequenceTypeEEnum, SequenceType.DETAILS_PAGE);
+		addEEnumLiteral(sequenceTypeEEnum, SequenceType.WIZARD);
+		addEEnumLiteral(sequenceTypeEEnum, SequenceType.PROPERTIES_VIEW);
 
 		// Create resource
 		createResource(eNS_URI);

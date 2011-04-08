@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModelingBotPackage.java,v 1.1 2011/04/06 13:07:27 nlepine Exp $
+ * $Id: ModelingBotPackage.java,v 1.2 2011/04/08 15:31:04 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -522,6 +523,17 @@ public interface ModelingBotPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.SequenceType <em>Sequence Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.modelingBot.SequenceType
+	 * @see org.eclipse.emf.eef.modelingBot.impl.ModelingBotPackageImpl#getSequenceType()
+	 * @generated
+	 */
+	int SEQUENCE_TYPE = 9;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.Scenario <em>Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -700,6 +712,16 @@ public interface ModelingBotPackage extends EPackage {
 	EClass getProcessing();
 
 	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.modelingBot.SequenceType <em>Sequence Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Sequence Type</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.SequenceType
+	 * @generated
+	 */
+	EEnum getSequenceType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -874,6 +896,16 @@ public interface ModelingBotPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROCESSING = eINSTANCE.getProcessing();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.SequenceType <em>Sequence Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.modelingBot.SequenceType
+		 * @see org.eclipse.emf.eef.modelingBot.impl.ModelingBotPackageImpl#getSequenceType()
+		 * @generated
+		 */
+		EEnum SEQUENCE_TYPE = eINSTANCE.getSequenceType();
 
 	}
 

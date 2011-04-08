@@ -9,6 +9,11 @@
   <foreignModel>mbot.ecore</foreignModel>
   <genPackages prefix="ModelingBot" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       ecorePackage="mbot.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mbot.ecore#//SequenceType">
+      <genEnumLiterals ecoreEnumLiteral="mbot.ecore#//SequenceType/DETAILS_PAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="mbot.ecore#//SequenceType/WIZARD"/>
+      <genEnumLiterals ecoreEnumLiteral="mbot.ecore#//SequenceType/PROPERTIES_VIEW"/>
+    </genEnums>
     <genClasses ecoreClass="mbot.ecore#//Scenario"/>
     <genClasses image="false" ecoreClass="mbot.ecore#//Action"/>
     <genClasses image="false" ecoreClass="mbot.ecore#//Sequence">
