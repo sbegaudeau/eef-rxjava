@@ -19,6 +19,7 @@ import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.editors.pages.EEFDetailsPage;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
+import org.eclipse.emf.eef.runtime.ui.notify.OpenWizardOnDoubleClick;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -88,6 +89,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		Section section = masterPart.getSection();
 		section.setLayout(EEFFormLayoutFactory.createClearGridLayout(false, 1));
 		section.setLayoutData(new GridData(GridData.FILL_BOTH));
+		masterPart.getModelViewer().addDoubleClickListener((new OpenWizardOnDoubleClick(editingDomain, getAdapterFactory())));
 		if (showValidateAction) {
 			masterPart.addSelectionChangeListener(new ISelectionChangedListener() {
 
