@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EEFActionsPackageImpl.java,v 1.2 2011/04/07 15:59:04 nlepine Exp $
+ * $Id: EEFActionsPackageImpl.java,v 1.3 2011/04/08 09:00:15 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.impl;
 
@@ -232,15 +232,6 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEditAction_EContainingFeature() {
-		return (EReference)editActionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAdd() {
 		return addEClass;
 	}
@@ -252,6 +243,15 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 */
 	public EReference getAdd_Type() {
 		return (EReference)addEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAdd_EContainingFeature() {
+		return (EReference)addEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -286,8 +286,26 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSetAttribute_EContainingFeature() {
+		return (EReference)setAttributeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnset() {
 		return unsetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnset_Feature() {
+		return (EReference)unsetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -377,17 +395,19 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		editActionEClass = createEClass(EDIT_ACTION);
 		createEReference(editActionEClass, EDIT_ACTION__PROPERTIES_EDITION_ELEMENT);
 		createEReference(editActionEClass, EDIT_ACTION__REFERENCEABLE_OBJECT);
-		createEReference(editActionEClass, EDIT_ACTION__ECONTAINING_FEATURE);
 
 		addEClass = createEClass(ADD);
 		createEReference(addEClass, ADD__TYPE);
+		createEReference(addEClass, ADD__ECONTAINING_FEATURE);
 
 		removeEClass = createEClass(REMOVE);
 
 		setAttributeEClass = createEClass(SET_ATTRIBUTE);
 		createEAttribute(setAttributeEClass, SET_ATTRIBUTE__VALUE);
+		createEReference(setAttributeEClass, SET_ATTRIBUTE__ECONTAINING_FEATURE);
 
 		unsetEClass = createEClass(UNSET);
+		createEReference(unsetEClass, UNSET__FEATURE);
 
 		cancelEClass = createEClass(CANCEL);
 
@@ -452,17 +472,19 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		initEClass(editActionEClass, EditAction.class, "EditAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEditAction_PropertiesEditionElement(), theComponentsPackage.getPropertiesEditionElement(), null, "propertiesEditionElement", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEditAction_ReferenceableObject(), theEditorPackage.getReferenceableObject(), null, "referenceableObject", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEditAction_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdd_Type(), theEcorePackage.getEClass(), null, "type", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdd_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(removeEClass, Remove.class, "Remove", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(setAttributeEClass, SetAttribute.class, "SetAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSetAttribute_Value(), theEcorePackage.getEString(), "value", null, 0, 1, SetAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetAttribute_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, SetAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unsetEClass, Unset.class, "Unset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnset_Feature(), theEcorePackage.getEStructuralFeature(), null, "feature", null, 0, 1, Unset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cancelEClass, Cancel.class, "Cancel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

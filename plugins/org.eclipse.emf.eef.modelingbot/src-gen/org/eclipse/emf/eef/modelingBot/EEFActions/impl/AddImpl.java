@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddImpl.java,v 1.2 2011/04/07 15:59:04 nlepine Exp $
+ * $Id: AddImpl.java,v 1.3 2011/04/08 09:00:15 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
@@ -22,6 +23,7 @@ import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.AddImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.AddImpl#getEContainingFeature <em>EContaining Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,6 +39,16 @@ public class AddImpl extends EditActionImpl implements Add {
 	 * @ordered
 	 */
 	protected EClass type;
+
+	/**
+	 * The cached value of the '{@link #getEContainingFeature() <em>EContaining Feature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEContainingFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected EStructuralFeature eContainingFeature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,12 +112,53 @@ public class AddImpl extends EditActionImpl implements Add {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EStructuralFeature getEContainingFeature() {
+		if (eContainingFeature != null && eContainingFeature.eIsProxy()) {
+			InternalEObject oldEContainingFeature = (InternalEObject)eContainingFeature;
+			eContainingFeature = (EStructuralFeature)eResolveProxy(oldEContainingFeature);
+			if (eContainingFeature != oldEContainingFeature) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EEFActionsPackage.ADD__ECONTAINING_FEATURE, oldEContainingFeature, eContainingFeature));
+			}
+		}
+		return eContainingFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EStructuralFeature basicGetEContainingFeature() {
+		return eContainingFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEContainingFeature(EStructuralFeature newEContainingFeature) {
+		EStructuralFeature oldEContainingFeature = eContainingFeature;
+		eContainingFeature = newEContainingFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFActionsPackage.ADD__ECONTAINING_FEATURE, oldEContainingFeature, eContainingFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EEFActionsPackage.ADD__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case EEFActionsPackage.ADD__ECONTAINING_FEATURE:
+				if (resolve) return getEContainingFeature();
+				return basicGetEContainingFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,6 +173,9 @@ public class AddImpl extends EditActionImpl implements Add {
 		switch (featureID) {
 			case EEFActionsPackage.ADD__TYPE:
 				setType((EClass)newValue);
+				return;
+			case EEFActionsPackage.ADD__ECONTAINING_FEATURE:
+				setEContainingFeature((EStructuralFeature)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,6 +192,9 @@ public class AddImpl extends EditActionImpl implements Add {
 			case EEFActionsPackage.ADD__TYPE:
 				setType((EClass)null);
 				return;
+			case EEFActionsPackage.ADD__ECONTAINING_FEATURE:
+				setEContainingFeature((EStructuralFeature)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -150,6 +209,8 @@ public class AddImpl extends EditActionImpl implements Add {
 		switch (featureID) {
 			case EEFActionsPackage.ADD__TYPE:
 				return type != null;
+			case EEFActionsPackage.ADD__ECONTAINING_FEATURE:
+				return eContainingFeature != null;
 		}
 		return super.eIsSet(featureID);
 	}

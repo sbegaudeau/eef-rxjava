@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetAttribute.java,v 1.1 2011/04/06 13:07:29 nlepine Exp $
+ * $Id: SetAttribute.java,v 1.2 2011/04/08 09:00:15 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 
 /**
@@ -16,6 +18,7 @@ package org.eclipse.emf.eef.modelingBot.EEFActions;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getEContainingFeature <em>EContaining Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,5 +52,31 @@ public interface SetAttribute extends EditAction {
 	 * @generated
 	 */
 	void setValue(String value);
+
+	/**
+	 * Returns the value of the '<em><b>EContaining Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>EContaining Feature</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>EContaining Feature</em>' reference.
+	 * @see #setEContainingFeature(EStructuralFeature)
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getSetAttribute_EContainingFeature()
+	 * @model
+	 * @generated
+	 */
+	EStructuralFeature getEContainingFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getEContainingFeature <em>EContaining Feature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>EContaining Feature</em>' reference.
+	 * @see #getEContainingFeature()
+	 * @generated
+	 */
+	void setEContainingFeature(EStructuralFeature value);
 
 } // SetAttribute

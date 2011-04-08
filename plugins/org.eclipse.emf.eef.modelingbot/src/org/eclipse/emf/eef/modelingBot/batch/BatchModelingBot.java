@@ -146,10 +146,7 @@ public class BatchModelingBot implements IModelingBot {
 		editingDomain.getResourceSet().getResources().remove(activeResource);
 	}
 
-	/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save(java.lang.String)
-	 */
+	
 	public void save(String path) {
 		try {
 			Resource activeResource = searchResource(path);
@@ -181,9 +178,9 @@ public class BatchModelingBot implements IModelingBot {
 
 	/**
 	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
-	public void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature) {
+	public void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject) {
 		// TODO Auto-generated method stub
 	}
 

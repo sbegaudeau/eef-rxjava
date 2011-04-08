@@ -198,8 +198,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	}
 
 	public void remove(PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature) {
+			ReferenceableObject referenceableObject) {
 		// TODO Auto-generated method stub
 		
 	}

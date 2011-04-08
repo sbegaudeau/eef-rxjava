@@ -106,7 +106,7 @@ public interface IModelingBot {
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature);
+	void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
 
 	/**
 	 * Set an element.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EditActionImpl.java,v 1.1 2011/04/06 13:07:28 nlepine Exp $
+ * $Id: EditActionImpl.java,v 1.2 2011/04/08 09:00:15 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getPropertiesEditionElement <em>Properties Edition Element</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getReferenceableObject <em>Referenceable Object</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getEContainingFeature <em>EContaining Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,16 +56,6 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	 * @ordered
 	 */
 	protected ReferenceableObject referenceableObject;
-
-	/**
-	 * The cached value of the '{@link #getEContainingFeature() <em>EContaining Feature</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEContainingFeature()
-	 * @generated
-	 * @ordered
-	 */
-	protected EStructuralFeature eContainingFeature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,44 +157,6 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EStructuralFeature getEContainingFeature() {
-		if (eContainingFeature != null && eContainingFeature.eIsProxy()) {
-			InternalEObject oldEContainingFeature = (InternalEObject)eContainingFeature;
-			eContainingFeature = (EStructuralFeature)eResolveProxy(oldEContainingFeature);
-			if (eContainingFeature != oldEContainingFeature) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EEFActionsPackage.EDIT_ACTION__ECONTAINING_FEATURE, oldEContainingFeature, eContainingFeature));
-			}
-		}
-		return eContainingFeature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EStructuralFeature basicGetEContainingFeature() {
-		return eContainingFeature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEContainingFeature(EStructuralFeature newEContainingFeature) {
-		EStructuralFeature oldEContainingFeature = eContainingFeature;
-		eContainingFeature = newEContainingFeature;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EEFActionsPackage.EDIT_ACTION__ECONTAINING_FEATURE, oldEContainingFeature, eContainingFeature));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -215,9 +166,6 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 			case EEFActionsPackage.EDIT_ACTION__REFERENCEABLE_OBJECT:
 				if (resolve) return getReferenceableObject();
 				return basicGetReferenceableObject();
-			case EEFActionsPackage.EDIT_ACTION__ECONTAINING_FEATURE:
-				if (resolve) return getEContainingFeature();
-				return basicGetEContainingFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -235,9 +183,6 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 				return;
 			case EEFActionsPackage.EDIT_ACTION__REFERENCEABLE_OBJECT:
 				setReferenceableObject((ReferenceableObject)newValue);
-				return;
-			case EEFActionsPackage.EDIT_ACTION__ECONTAINING_FEATURE:
-				setEContainingFeature((EStructuralFeature)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -257,9 +202,6 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 			case EEFActionsPackage.EDIT_ACTION__REFERENCEABLE_OBJECT:
 				setReferenceableObject((ReferenceableObject)null);
 				return;
-			case EEFActionsPackage.EDIT_ACTION__ECONTAINING_FEATURE:
-				setEContainingFeature((EStructuralFeature)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -276,8 +218,6 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 				return propertiesEditionElement != null;
 			case EEFActionsPackage.EDIT_ACTION__REFERENCEABLE_OBJECT:
 				return referenceableObject != null;
-			case EEFActionsPackage.EDIT_ACTION__ECONTAINING_FEATURE:
-				return eContainingFeature != null;
 		}
 		return super.eIsSet(featureID);
 	}
