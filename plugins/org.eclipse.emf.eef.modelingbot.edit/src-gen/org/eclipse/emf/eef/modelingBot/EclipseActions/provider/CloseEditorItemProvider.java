@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CloseEditorItemProvider.java,v 1.1 2011/04/06 13:08:32 nlepine Exp $
+ * $Id: CloseEditorItemProvider.java,v 1.2 2011/04/11 16:48:00 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.provider;
 
@@ -13,6 +13,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -20,7 +21,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CloseEditor;
+import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
 import org.eclipse.emf.eef.modelingBot.ModelingBotPackage;
 
 /**
@@ -58,8 +62,31 @@ public class CloseEditorItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addPathPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CloseEditor_path_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CloseEditor_path_feature", "_UI_CloseEditor_type"),
+				 EclipseActionsPackage.Literals.CLOSE_EDITOR__PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -97,6 +124,12 @@ public class CloseEditorItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(CloseEditor.class)) {
+			case EclipseActionsPackage.CLOSE_EDITOR__PATH:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
