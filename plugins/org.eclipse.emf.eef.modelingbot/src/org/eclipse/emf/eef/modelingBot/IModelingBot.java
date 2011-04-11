@@ -139,5 +139,14 @@ public interface IModelingBot {
 	 * @return 
 	 */
 	EObject createModel(String path, String modelName, EClass eClass);
+	
+	/**
+	 * Cancel.
+	 */
+	void cancel();
+
+	void setSequenceType(SequenceType detailsPage);
+
+	void validateBatchEditing();
 
 }

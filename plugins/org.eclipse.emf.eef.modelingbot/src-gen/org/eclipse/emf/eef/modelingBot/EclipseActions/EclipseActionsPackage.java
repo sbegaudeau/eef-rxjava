@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseActionsPackage.java,v 1.1 2011/04/06 13:07:27 nlepine Exp $
+ * $Id: EclipseActionsPackage.java,v 1.2 2011/04/11 16:48:02 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions;
 
@@ -468,13 +468,22 @@ public interface EclipseActionsPackage extends EPackage {
 	int CLOSE_EDITOR__DOCUMENTATION = ECLIPSE_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOSE_EDITOR__PATH = ECLIPSE_ACTION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Close Editor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLOSE_EDITOR_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 0;
+	int CLOSE_EDITOR_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 1;
 
 
 	/**
@@ -698,6 +707,17 @@ public interface EclipseActionsPackage extends EPackage {
 	EClass getCloseEditor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CloseEditor#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.CloseEditor#getPath()
+	 * @see #getCloseEditor()
+	 * @generated
+	 */
+	EAttribute getCloseEditor_Path();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel <em>Create Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -901,6 +921,14 @@ public interface EclipseActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CLOSE_EDITOR = eINSTANCE.getCloseEditor();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLOSE_EDITOR__PATH = eINSTANCE.getCloseEditor_Path();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl <em>Create Model</em>}' class.

@@ -85,7 +85,9 @@
     <eClassifiers xsi:type="ecore:EClass" name="RemoveProject" eSuperTypes="#//EclipseActions/EclipseAction">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="CloseEditor" eSuperTypes="#//EclipseActions/EclipseAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CloseEditor" eSuperTypes="#//EclipseActions/EclipseAction">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CreateModel" eSuperTypes="#//EclipseActions/EclipseAction platform:/plugin/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/ReferenceableObject">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

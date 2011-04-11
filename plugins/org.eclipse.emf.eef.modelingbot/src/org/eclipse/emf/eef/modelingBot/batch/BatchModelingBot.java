@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
+import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.interpreter.EEFInterpreter;
 
 /**
@@ -240,6 +241,21 @@ public class BatchModelingBot implements IModelingBot {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public void cancel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setSequenceType(SequenceType detailsPage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void validateBatchEditing() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

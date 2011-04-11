@@ -91,7 +91,9 @@
       <genClasses ecoreClass="mbot.ecore#//EclipseActions/RemoveProject">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EclipseActions/RemoveProject/projectName"/>
       </genClasses>
-      <genClasses ecoreClass="mbot.ecore#//EclipseActions/CloseEditor"/>
+      <genClasses ecoreClass="mbot.ecore#//EclipseActions/CloseEditor">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EclipseActions/CloseEditor/path"/>
+      </genClasses>
       <genClasses ecoreClass="mbot.ecore#//EclipseActions/CreateModel">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EclipseActions/CreateModel/modelName"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EclipseActions/CreateModel/path"/>

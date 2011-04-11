@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseActionsPackageImpl.java,v 1.1 2011/04/06 13:07:27 nlepine Exp $
+ * $Id: EclipseActionsPackageImpl.java,v 1.2 2011/04/11 16:48:02 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.impl;
 
@@ -337,6 +337,15 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCloseEditor_Path() {
+		return (EAttribute)closeEditorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCreateModel() {
 		return createModelEClass;
 	}
@@ -420,6 +429,7 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		createEAttribute(removeProjectEClass, REMOVE_PROJECT__PROJECT_NAME);
 
 		closeEditorEClass = createEClass(CLOSE_EDITOR);
+		createEAttribute(closeEditorEClass, CLOSE_EDITOR__PATH);
 
 		createModelEClass = createEClass(CREATE_MODEL);
 		createEAttribute(createModelEClass, CREATE_MODEL__MODEL_NAME);
@@ -498,6 +508,7 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		initEAttribute(getRemoveProject_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, RemoveProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(closeEditorEClass, CloseEditor.class, "CloseEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCloseEditor_Path(), ecorePackage.getEString(), "path", null, 0, 1, CloseEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(createModelEClass, CreateModel.class, "CreateModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCreateModel_ModelName(), ecorePackage.getEString(), "modelName", null, 0, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
