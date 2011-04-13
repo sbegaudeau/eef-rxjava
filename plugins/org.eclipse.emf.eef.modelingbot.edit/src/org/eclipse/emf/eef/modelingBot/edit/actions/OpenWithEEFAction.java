@@ -1,6 +1,7 @@
 package org.eclipse.emf.eef.modelingBot.edit.actions;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.eef.modelingBot.provider.MbotEditPlugin;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -36,7 +37,7 @@ public class OpenWithEEFAction implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		try {
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new FileEditorInput(iFile), "org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditorID");
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new FileEditorInput(iFile), MbotEditPlugin.INTERACTIVE_EEF_EDITOR_ID);
 		} catch (PartInitException e) {
 			
 		}

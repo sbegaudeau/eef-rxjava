@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MbotEditPlugin.java,v 1.1 2011/04/06 13:08:31 nlepine Exp $
+ * $Id: MbotEditPlugin.java,v 1.2 2011/04/13 21:31:27 glefur Exp $
  */
 package org.eclipse.emf.eef.modelingBot.provider;
 
@@ -36,6 +36,11 @@ public final class MbotEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public static final MbotEditPlugin INSTANCE = new MbotEditPlugin();
+
+	/**
+	 * EEF Editor ID 
+	 */
+	public static final String INTERACTIVE_EEF_EDITOR_ID = "org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditorID";
 
 	/**
 	 * Keep track of the singleton.
