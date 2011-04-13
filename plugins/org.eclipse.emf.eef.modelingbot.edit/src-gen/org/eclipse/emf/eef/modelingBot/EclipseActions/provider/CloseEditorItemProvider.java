@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CloseEditorItemProvider.java,v 1.2 2011/04/11 16:48:00 nlepine Exp $
+ * $Id: CloseEditorItemProvider.java,v 1.3 2011/04/13 13:50:06 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.provider;
 
@@ -98,6 +98,16 @@ public class CloseEditorItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/CloseEditor"));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**

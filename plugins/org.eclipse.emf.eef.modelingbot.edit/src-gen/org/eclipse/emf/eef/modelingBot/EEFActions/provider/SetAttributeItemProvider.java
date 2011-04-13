@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetAttributeItemProvider.java,v 1.2 2011/04/08 09:00:17 nlepine Exp $
+ * $Id: SetAttributeItemProvider.java,v 1.3 2011/04/13 13:50:06 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.provider;
 
@@ -121,6 +121,16 @@ public class SetAttributeItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/SetAttribute"));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**

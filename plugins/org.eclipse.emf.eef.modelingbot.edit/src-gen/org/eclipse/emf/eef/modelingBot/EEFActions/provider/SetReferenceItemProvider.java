@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetReferenceItemProvider.java,v 1.1 2011/04/06 13:08:31 nlepine Exp $
+ * $Id: SetReferenceItemProvider.java,v 1.2 2011/04/13 13:50:07 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.provider;
 
@@ -61,6 +61,7 @@ public class SetReferenceItemProvider
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
+			addEContainingFeaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -88,6 +89,28 @@ public class SetReferenceItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the EContaining Feature feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEContainingFeaturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SetReference_eContainingFeature_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SetReference_eContainingFeature_feature", "_UI_SetReference_type"),
+				 EEFActionsPackage.Literals.SET_REFERENCE__ECONTAINING_FEATURE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SetReference.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,6 +119,16 @@ public class SetReferenceItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/SetReference"));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**

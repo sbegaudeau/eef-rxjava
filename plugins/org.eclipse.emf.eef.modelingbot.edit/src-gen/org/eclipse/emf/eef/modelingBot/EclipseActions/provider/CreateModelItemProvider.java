@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CreateModelItemProvider.java,v 1.1 2011/04/06 13:08:32 nlepine Exp $
+ * $Id: CreateModelItemProvider.java,v 1.2 2011/04/13 13:50:06 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.provider;
 
@@ -144,6 +144,16 @@ public class CreateModelItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateModel"));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**

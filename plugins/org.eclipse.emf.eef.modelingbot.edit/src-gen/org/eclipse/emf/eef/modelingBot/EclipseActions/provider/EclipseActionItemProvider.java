@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseActionItemProvider.java,v 1.1 2011/04/06 13:08:32 nlepine Exp $
+ * $Id: EclipseActionItemProvider.java,v 1.2 2011/04/13 13:50:06 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.provider;
 
@@ -65,6 +65,16 @@ public class EclipseActionItemProvider
 
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**

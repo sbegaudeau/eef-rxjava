@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentedElementItemProvider.java,v 1.1 2011/04/06 13:08:31 nlepine Exp $
+ * $Id: DocumentedElementItemProvider.java,v 1.2 2011/04/13 13:50:07 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.provider;
 
@@ -112,6 +112,16 @@ public class DocumentedElementItemProvider
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**
