@@ -6,7 +6,10 @@ Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.3.0,4.0.0)",
+Require-Bundle: org.eclipse.epf.common;bundle-version="1.5.0";resolution:=optional,
+ org.eclipse.epf.richtext;bundle-version="1.5.0";resolution:=optional;visibility:=reexport,
+ org.eclipse.epf.common.html;bundle-version="1.5.0";resolution:=optional,
+ org.eclipse.core.runtime;bundle-version="[3.3.0,4.0.0)",
  org.eclipse.emf.ecore;bundle-version="2.3.0";visibility:=reexport,
  org.eclipse.ui;bundle-version="[3.3.0,4.0.0)",
  org.eclipse.emf.edit.ui;bundle-version="2.3.0";visibility:=reexport,
@@ -33,7 +36,3 @@ Export-Package: org.eclipse.emf.eef.runtime.query,
  org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions
 Bundle-Activator: org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime$Implementation
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.epf.common.ui.actions,
- org.eclipse.epf.richtext,
- org.eclipse.epf.richtext.actions,
- org.eclipse.epf.richtext.html
