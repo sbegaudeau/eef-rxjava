@@ -30,19 +30,17 @@ import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.Wizard;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Cancel;
-import org.eclipse.emf.eef.modelingBot.EEFActions.Remove;
-import org.eclipse.emf.eef.modelingBot.EEFActions.Unset;
-import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 import org.eclipse.emf.eef.modelingBot.EEFActions.OpenEEFEditor;
+import org.eclipse.emf.eef.modelingBot.EEFActions.Remove;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
+import org.eclipse.emf.eef.modelingBot.EEFActions.Unset;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CloseEditor;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CloseProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
+import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.RemoveProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.Save;
-import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
-import org.eclipse.emf.eef.modelingBot.utils.UIConstants;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 /**
@@ -136,6 +134,10 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 		mapSequenceToCancel.remove(processing);
 	}
 	
+	/**
+	 * @param action
+	 * @param bot
+	 */
 	private void runAction(Action action, IModelingBot bot) {
 		if (action instanceof CreateProject) {
 			bot.createProject(((CreateProject) action).getProjectName());

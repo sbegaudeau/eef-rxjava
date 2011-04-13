@@ -15,9 +15,7 @@ import java.io.IOException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 
@@ -145,8 +143,15 @@ public interface IModelingBot {
 	 */
 	void cancel();
 
-	void setSequenceType(SequenceType detailsPage);
+	/**
+	 * Set the sequence type : wizard, details page, properties view...
+	 * @param sequenceType
+	 */
+	void setSequenceType(SequenceType sequenceType);
 
+	/**
+	 * Validate batch editing
+	 */
 	void validateBatchEditing();
 
 }

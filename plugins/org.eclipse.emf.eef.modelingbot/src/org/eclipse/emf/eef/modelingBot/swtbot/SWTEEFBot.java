@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
@@ -44,14 +45,11 @@ import org.eclipse.emf.eef.modelingBot.widget.PropertiesEditionHelper;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.View;
-import org.eclipse.emf.eef.views.ViewsRepository;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -60,39 +58,47 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 
 /**
  * @author nlepine
- *
+ * 
  */
 public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
-	
+
 	private EEFInterpreter interpreter;
-	
+
 	/**
-	 * The ResourceSet where to operate
+	 * The ResourceSet where to operate.
 	 */
-	protected AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(
+	protected EditingDomain editingDomain = new AdapterFactoryEditingDomain(
 			EEFRuntimePlugin.getDefault().getAdapterFactory(),
 			new BasicCommandStack());
 
+	/**
+	 * The swtbot editor.
+	 */
 	private SWTBotEditor editor;
 
+	/**
+	 * The test model resource.
+	 */
 	private Resource testModelResource;
 
+	/**
+	 * Helper to edit feature.
+	 */
 	private PropertiesEditionHelper propertiesEdition;
-	
+
+	/**
+	 * Sequence type : wizard, detail page, properties view...
+	 */
 	private SequenceType sequenceType;
-	
+
+	/**
+	 * Bot Helper.
+	 */
 	private SWTEEFBotHelper helper;
 
-	private String modelingBotPath;
-
-	public String getModelingBotPath() {
-		return modelingBotPath;
-	}
-
-	public void setSequenceType(SequenceType sequenceType) {
-		this.sequenceType = sequenceType;
-	}
-
+	/**
+	 * 
+	 */
 	public SWTEEFBot() {
 		super();
 		editingDomain.getResourceSet().setURIConverter(new EEFURIConverter());
@@ -101,21 +107,29 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		helper = new SWTEEFBotHelper(this);
 	}
 
+	/**
+	 * Open the properties view
+	 */
 	public void openPropertiesView() {
-		menu(UIConstants.WINDOW_MENU).menu(UIConstants.SHOW_VIEW_MENU).menu(UIConstants.OTHER_MENU).click();
+		menu(UIConstants.WINDOW_MENU).menu(UIConstants.SHOW_VIEW_MENU)
+				.menu(UIConstants.OTHER_MENU).click();
 
 		SWTBotShell shell = shell(UIConstants.SHOW_VIEW_MENU);
 		activateShell(shell);
 
 		SWTBotTree viewSelectionTree = tree();
-		viewSelectionTree.expandNode(UIConstants.GENERAL_MENU).select(UIConstants.PROPERTIES_VIEW_NAME);
+		viewSelectionTree.expandNode(UIConstants.GENERAL_MENU).select(
+				UIConstants.PROPERTIES_VIEW_NAME);
 		button(UIConstants.OK_BUTTON).click();
 		waitUntil(Conditions.shellCloses(shell));
 	}
 
+	/**
+	 * Open Java Perspective
+	 */
 	public void openJavaPerspective() {
-		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU)
-				.click();
+		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU)
+				.menu(UIConstants.OTHER_MENU).click();
 		SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
 		activateShell(openPerspectiveShell);
 
@@ -126,8 +140,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		}
 		button(UIConstants.OK_BUTTON).click();
 	}
-	
+
 	/**
+	 * Activate the shell
+	 * 
 	 * @param shell
 	 */
 	public void activateShell(SWTBotShell shell) {
@@ -135,7 +151,8 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	}
 
 	/**
-	 * This method close the welcome page if we use the workspace of test for the first time
+	 * This method close the welcome page if we use the workspace of test for
+	 * the first time
 	 */
 	public void closeWelcomePage() {
 		try {
@@ -145,40 +162,61 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		}
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createProject(java.lang.String)
+	 */
 	public void createProject(String projectName) {
 		activateShell(shells()[0]);
-		menu(UIConstants.FILE_MENU).menu("Project...").click();
-		SWTBotShell openProjectShell = shell("New Project");
+		menu(UIConstants.FILE_MENU).menu(UIConstants.PROJECT_MENU).click();
+		SWTBotShell openProjectShell = shell(UIConstants.NEW_PROJECT_MENU);
 		activateShell(openProjectShell);
 
-		tree().expandNode("General").select("Project");
-		button("Next >").click();
+		tree().expandNode(UIConstants.GENERAL_MENU).select(
+				UIConstants.PROJECT_CREATION_MENU);
+		button(UIConstants.NEXT_BUTTON).click();
 		text().setText(projectName);
 		button(UIConstants.FINISH_BUTTON).click();
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openProject(java.lang.String)
+	 */
 	public void openProject(String projectName) {
 		SWTBotTreeItem treeItem = selectInProjectExplorer(projectName);
-		SWTBotUtils.clickContextMenu(treeItem, "Open Project");
+		SWTBotUtils.clickContextMenu(treeItem, UIConstants.OPEN_PROJECT_MENU);
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeProject(java.lang.String)
+	 */
 	public void closeProject(String projectName) {
 		SWTBotTreeItem treeItem = selectInProjectExplorer(projectName);
-		SWTBotUtils.clickContextMenu(treeItem, "Close Project");
+		SWTBotUtils.clickContextMenu(treeItem, UIConstants.CLOSE_PROJECT_MENU);
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#removeProject(java.lang.String)
+	 */
 	public void removeProject(String projectName) {
 		SWTBotTreeItem treeItem = selectInProjectExplorer(projectName);
-		SWTBotUtils.clickContextMenu(treeItem, "Delete");
+		SWTBotUtils.clickContextMenu(treeItem, UIConstants.DELETE_MENU);
 		checkBox().select();
 		button(UIConstants.OK_BUTTON).click();
 		SWTBotUtils.waitAllUiEvents();
 		sleep(1000);
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openPerspective(java.lang.String)
+	 */
 	public void openPerspective(String name) {
-		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU)
-		.click();
+		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU)
+				.menu(UIConstants.OTHER_MENU).click();
 		SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
 		activateShell(openPerspectiveShell);
 
@@ -191,13 +229,19 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openEEFEditor(java.lang.String)
+	 */
 	public void openEEFEditor(String path) {
 		SWTBotTreeItem treeItem = selectInProjectExplorer(path);
-		SWTBotUtils.clickContextMenu(treeItem, "Interactive EEF Editor");
+		SWTBotUtils.clickContextMenu(treeItem,
+				UIConstants.INTERACTIVE_EEF_EDITOR_MENU);
 	}
 
 	private SWTBotTreeItem selectInProjectExplorer(String path) {
-		SWTBotTree wizardTree = viewByTitle(UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
+		SWTBotTree wizardTree = viewByTitle(
+				UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
 		String[] split = path.split("/");
 		SWTBotTreeItem treeItem = wizardTree.expandNode(split[0]).select();
 		for (int i = 1; i < split.length; i++) {
@@ -206,99 +250,127 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		return treeItem;
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeEditor(java.lang.String)
+	 */
 	public void closeEditor(String path) {
 		SWTBotTreeItem treeItem = selectInProjectExplorer(path);
-		menu(UIConstants.FILE_MENU).menu("Close").click();
+		menu(UIConstants.FILE_MENU).menu(UIConstants.CLOSE_MENU).click();
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
+	 */
 	public void save() {
 		SWTBotUtils.waitAllUiEvents();
 		sleep(1000);
 		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
 	}
 
-	/* (non-Javadoc)
+	/** 
+	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#add(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EClass)
 	 */
 	public EObject add(PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject,
 			final EStructuralFeature eContainingFeature, EClass type) {
-		if (propertiesEditionElement!=null) {
+		if (propertiesEditionElement != null) {
 			// work on table composition
 			SWTBotUtils.waitAllUiEvents();
 			assertNotNull("The editeur is not opened.", editor);
 			EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("No container is found to launch wizard.",container);
+			assertNotNull("No container is found to launch wizard.", container);
 			SWTBotUtils.waitAllUiEvents();
 			final SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor",selectNode);
+			assertNotNull("No element is selected in the editor", selectNode);
 			initTab(propertiesEditionElement);
-			assertFalse("The set action must be define in a sequence.", sequenceType==null);
-			propertiesEdition.addFeature(selectNode, propertiesEditionElement, sequenceType);
+			assertFalse("The set action must be define in a sequence.",
+					sequenceType == null);
+			propertiesEdition.addFeature(selectNode, propertiesEditionElement,
+					sequenceType);
 			SWTBotUtils.waitAllUiEvents();
-			return (EObject) EEFModelUtils.eGet(container, propertiesEditionElement.getModel());
+			return (EObject) EEFModelUtils.eGet(container,
+					propertiesEditionElement.getModel());
 		} else {
 			// work on the model
 			assertNotNull("The editeur is not opened.", editor);
 			final EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("No container is found to launch add action.",container);
+			assertNotNull("No container is found to launch add action.",
+					container);
 			SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor",selectNode);
-			SWTBotUtils.clickContextMenu(selectNode, eContainingFeature.getEType().getName());
+			assertNotNull("No element is selected in the editor", selectNode);
+			SWTBotUtils.clickContextMenu(selectNode, eContainingFeature
+					.getEType().getName());
 			SWTBotUtils.waitAllUiEvents();
 			return (EObject) EEFModelUtils.eGet(container, eContainingFeature);
 		}
-		
+
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
+	 */
 	public void remove(PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject) {
-		if (propertiesEditionElement!=null) {
+		if (propertiesEditionElement != null) {
 			// work on widget
 		} else {
 			// work on the model
 			assertNotNull("The editeur is not opened.", editor);
 			final EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("No container is found to launch add action.",container);
+			assertNotNull("No container is found to launch add action.",
+					container);
 			SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor",selectNode);
-			SWTBotUtils.clickContextMenu(selectNode, "Delete");
+			assertNotNull("No element is selected in the editor", selectNode);
+			SWTBotUtils.clickContextMenu(selectNode, UIConstants.DELETE_MENU);
 			SWTBotUtils.waitAllUiEvents();
 		}
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
+	 */
 	public void set(PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature, String value) {
 		SWTBotUtils.waitAllUiEvents();
-		assertNotNull("The properties edition element is not set.", propertiesEditionElement);
+		assertNotNull("The properties edition element is not set.",
+				propertiesEditionElement);
 		assertNotNull("The editeur is not opened.", editor);
 		EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-		assertNotNull("No container is found to launch add action.",container);
+		assertNotNull("No container is found to launch add action.", container);
 		SWTBotUtils.waitAllUiEvents();
-		assertFalse("The set action must be define in a sequence.", sequenceType==null);
+		assertFalse("The set action must be define in a sequence.",
+				sequenceType == null);
 		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
 			final SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor",selectNode);
+			assertNotNull("No element is selected in the editor", selectNode);
 			initTab(propertiesEditionElement);
-			propertiesEdition.updateFeature(selectNode, propertiesEditionElement, value, sequenceType);
+			propertiesEdition.updateFeature(selectNode,
+					propertiesEditionElement, value, sequenceType);
 		} else if (sequenceType.equals(SequenceType.WIZARD)) {
-			propertiesEdition.updateFeature(null, propertiesEditionElement, value, sequenceType);
+			propertiesEdition.updateFeature(null, propertiesEditionElement,
+					value, sequenceType);
 		}
 	}
-	
-	public void initTab(PropertiesEditionElement propertiesEditionElement){
+
+	public void initTab(PropertiesEditionElement propertiesEditionElement) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
-		ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
+		ElementEditor elementEditor = propertiesEditionElement.getViews()
+				.get(0);
 		View view = getView(elementEditor);
 		if (view.getName() != null) {
 			cTabItem(view.getName()).activate();
 			cTabItem(view.getName()).setFocus();
 		}
 	}
-	
+
 	private View getView(ElementEditor obj) {
-		EObject container  = obj.eContainer();
+		EObject container = obj.eContainer();
 		while (container != null) {
 			if (container instanceof View) {
 				return (View) container;
@@ -308,74 +380,95 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		return null;
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
+	 */
 	public void set(PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature, ReferenceableObject value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#unset(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
+	 */
 	public void unset(PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature) {
-		set(propertiesEditionElement, referenceableObject, eContainingFeature, "");
+		set(propertiesEditionElement, referenceableObject, eContainingFeature,
+				"");
 	}
 
-	public void runModelingBot(String path) throws CoreException,
-			IOException {
-		this.modelingBotPath = path;
-			interpreter.runModelingBot(path, this);
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#runModelingBot(java.lang.String)
+	 */
+	public void runModelingBot(String path) throws CoreException, IOException {
+		interpreter.runModelingBot(path, this);
 	}
 
-
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createModel(java.lang.String, java.lang.String, org.eclipse.emf.ecore.EClass)
+	 */
 	public EObject createModel(String path, String modelName, EClass root) {
 		String[] split = modelName.split("\\.");
-		final String extension = split[split.length-1];
-		
+		final String extension = split[split.length - 1];
+
 		selectInProjectExplorer(path);
-		
+
 		menu(UIConstants.FILE_MENU).menu(UIConstants.OTHER_MENU).click();
 		SWTBotShell newFileShell = shell("New");
 		activateShell(newFileShell);
 
-		text().setText(extension + " Model");
-		SWTBotTreeItem[] allItems = tree().getAllItems();
-		List<SWTBotTreeItem> visibleItems = getVisibleItems(allItems);
-		SWTBotUtils.waitAllUiEvents();
 		String modelType = StringUtils.toU1Case(extension) + " Model";
+		text().setText(modelType);
+		SWTBotTreeItem[] allItems = tree().getAllItems();
+		SWTBotUtils.waitAllUiEvents();
 		SWTBotTreeItem item = getItem(allItems, modelType);
-		//TODO
-		if (item==null) {
-			tree().expandNode("Example EMF Model Creation Wizards").select(modelType);
+		// TODO
+		if (item == null) {
+			tree().expandNode("Example EMF Model Creation Wizards").select(
+					modelType);
 		} else {
-		assertNotNull("The model " + modelType + " can not be created.", item);
-		item.select();
+			assertNotNull("The model " + modelType + " can not be created.",
+					item);
+			item.select();
 		}
-		button("Next >").click();
-		
-		textWithLabel(IDEWorkbenchMessages.WizardNewFileCreationPage_fileLabel).setText(modelName);
-		button("Next >").click();
-		assertNotNull("The class "+ root.toString() + " can not be loaded", root.getName());
-		
+		button(UIConstants.NEXT_BUTTON).click();
+
+		textWithLabel(IDEWorkbenchMessages.WizardNewFileCreationPage_fileLabel)
+				.setText(modelName);
+		button(UIConstants.NEXT_BUTTON).click();
+		assertNotNull("The class " + root.toString() + " can not be loaded",
+				root.getName());
+
 		comboBox().setSelection(root.getName());
 		button(UIConstants.FINISH_BUTTON).click();
-		
+
 		// close the default editor
-		menu(UIConstants.FILE_MENU).menu("Close").click();
-		
+		menu(UIConstants.FILE_MENU).menu(UIConstants.CLOSE_MENU).click();
+
 		// open with EEF Editor
-		SWTBotTree wizardTree = viewByTitle(UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
-		SWTBotTreeItem treeItem = wizardTree.expandNode(path).expandNode(modelName).select();
-		SWTBotUtils.clickContextMenu(treeItem, "Open With Interactive EEF Editor");
-//		openEEFEditor(path+"/"+modelName);
-		
+		SWTBotTree wizardTree = viewByTitle(
+				UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
+		SWTBotTreeItem treeItem = wizardTree.expandNode(path)
+				.expandNode(modelName).select();
+		SWTBotUtils.clickContextMenu(treeItem,
+				UIConstants.OPEN_WITH_INTERACTIVE_EEF_EDITOR_MENU);
+
 		editor = editorByTitle(modelName);
-		URI fileURI = URI.createPlatformResourceURI(path+"/"+modelName, true);
+		URI fileURI = URI.createPlatformResourceURI(path + "/" + modelName,
+				true);
 		Resource resource = editingDomain.getResourceSet().getResource(fileURI,
 				true);
 		setTestModelResource(resource);
-		final SWTBotTreeItem modelTreeItem = editor.bot().tree().getTreeItem(testModelResource.getURI().toString());
-				
+		final SWTBotTreeItem modelTreeItem = editor.bot().tree()
+				.getTreeItem(testModelResource.getURI().toString());
+
 		resource = (Resource) syncExec(new Result<Object>() {
 
 			public Object run() {
@@ -397,19 +490,20 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 				return swtBotTreeItem;
 			}
 			try {
-			SWTBotTreeItem item = getItem(swtBotTreeItem.getNodes(string), string);
-			if (item != null) {
-				return item;
-			}
-			}catch (WidgetNotFoundException e) {
+				SWTBotTreeItem item = getItem(swtBotTreeItem.getNodes(string),
+						string);
+				if (item != null) {
+					return item;
+				}
+			} catch (WidgetNotFoundException e) {
 				// TODO: handle exception
 			}
-			
+
 		}
 		return null;
-		
+
 	}
-	
+
 	private SWTBotTreeItem getItem(List<SWTBotTreeItem> allItems, String string) {
 		for (SWTBotTreeItem swtBotTreeItem : allItems) {
 			if (swtBotTreeItem.widget.isDisposed()) {
@@ -418,21 +512,23 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 			if (swtBotTreeItem.getText().equals(string)) {
 				return swtBotTreeItem;
 			}
-			SWTBotTreeItem item = getItem(swtBotTreeItem.getNodes(string), string);
+			SWTBotTreeItem item = getItem(swtBotTreeItem.getNodes(string),
+					string);
 			if (item != null) {
 				return item;
 			}
 		}
 		return null;
-		
+
 	}
-	
+
 	private List<SWTBotTreeItem> getVisibleItems(SWTBotTreeItem[] allItems) {
 		List<SWTBotTreeItem> list = new ArrayList<SWTBotTreeItem>();
 		for (int i = 0; i < allItems.length; i++) {
 			SWTBotTreeItem swtBotTreeItem = allItems[i];
-			if (!swtBotTreeItem.widget.isDisposed() && swtBotTreeItem.isExpanded()) {
-				list .add(swtBotTreeItem);
+			if (!swtBotTreeItem.widget.isDisposed()
+					&& swtBotTreeItem.isExpanded()) {
+				list.add(swtBotTreeItem);
 			}
 		}
 		return list;
@@ -441,7 +537,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public EObject getEObjectFromReferenceableEObject(ReferenceableObject ref) {
 		return interpreter.getEObjectFromReferenceableEObject(ref);
 	}
-	
+
 	/**
 	 * Select the given element in the given editor
 	 * 
@@ -456,7 +552,8 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		List<Object> expansionPath = EEFModelUtils.getExpansionPath(element);
 		Iterator<Object> iterator = expansionPath.iterator();
 		Object next = null;
-		SWTBotTreeItem node2 = editor.bot().tree().getTreeItem(testModelResource.getURI().toString());
+		SWTBotTreeItem node2 = editor.bot().tree()
+				.getTreeItem(testModelResource.getURI().toString());
 		while (iterator.hasNext()) {
 			sleep(1000);
 			node2.expand();
@@ -480,7 +577,8 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		List<Object> expansionPath = EEFModelUtils.getExpansionPath(element);
 		Iterator<Object> iterator = expansionPath.iterator();
 		Object next = null;
-		SWTBotTreeItem node2 = tree.getTreeItem(testModelResource.getURI().toString());
+		SWTBotTreeItem node2 = tree.getTreeItem(testModelResource.getURI()
+				.toString());
 		while (iterator.hasNext()) {
 			node2.expand();
 			next = iterator.next();
@@ -488,11 +586,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		}
 		return node2;
 	}
-	
-	
-	
+
 	/**
-	 * Select the object <code>next</code> as a subnode of the <code>currentNode</code>
+	 * Select the object <code>next</code> as a subnode of the
+	 * <code>currentNode</code>
 	 * 
 	 * @param currentNode
 	 *            the currentNode
@@ -501,9 +598,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * @return the selected node
 	 */
 	private SWTBotTreeItem selectSubNode(SWTBotTreeItem currentNode, Object next) {
-		AdapterFactory adapterFactory = EEFRuntimePlugin.getDefault().getAdapterFactory();
-		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(next,
-				IItemLabelProvider.class);
+		AdapterFactory adapterFactory = EEFRuntimePlugin.getDefault()
+				.getAdapterFactory();
+		IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory
+				.adapt(next, IItemLabelProvider.class);
 		String text = labelProvider.getText(next);
 		SWTBotTreeItem node2 = currentNode.getNode(text);
 		node2.select();
@@ -511,34 +609,46 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	}
 
 	public void setTestModelResource(Resource resource) {
-		this.testModelResource =  resource;		
+		this.testModelResource = resource;
 	}
-	
 
 	/**
-	 * @param viewID the edited advEOFCV
+	 * @param viewID
+	 *            the edited advEOFCV
 	 * @return the browse button of the given advEOFCV
 	 */
 	public SWTBotButton addButtonAdvancedTableComposition(String viewID) {
 		return helper.addButtonAdvancedTableComposition(viewID);
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#cancel()
+	 */
 	public void cancel() {
 		button(UIConstants.CANCEL_BUTTON).click();
 	}
-	
-    /**
-     * Toggle Active view/editor maximize.
-     */
-    public void maximizeEditor() {
-        menu("Window").menu("Navigation").menu("Maximize Active View or Editor").click();
-    }
-    
-    public void dispose() {
-    	interpreter.dispose();
-    }
 
+	/**
+	 * Dispose the interpreter.
+	 */
+	public void dispose() {
+		interpreter.dispose();
+	}
+
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#validateBatchEditing()
+	 */
 	public void validateBatchEditing() {
 		button(UIConstants.FINISH_BUTTON).click();
+	}
+
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setSequenceType(org.eclipse.emf.eef.modelingBot.SequenceType)
+	 */
+	public void setSequenceType(SequenceType sequenceType) {
+		this.sequenceType = sequenceType;
 	}
 }

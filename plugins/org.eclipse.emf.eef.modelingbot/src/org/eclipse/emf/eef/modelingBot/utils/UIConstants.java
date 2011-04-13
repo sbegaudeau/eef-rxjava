@@ -11,10 +11,10 @@
 
 package org.eclipse.emf.eef.modelingBot.utils;
 
-
 /**
- * Regroups the UI label constants from the Eclipse UI perspective
- * The resource perspective is used for all the tests. 
+ * Regroups the UI label constants from the Eclipse UI perspective The resource
+ * perspective is used for all the tests.
+ * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
@@ -23,7 +23,7 @@ public class UIConstants {
 	/*****************************************************************************
 	 * * UI Constants * *
 	 *****************************************************************************/
-	
+
 	/*****************************************************************************
 	 * * UI Menus * *
 	 *****************************************************************************/
@@ -36,7 +36,16 @@ public class UIConstants {
 	public static final String SAVE_MENU = "Save";
 	public static final String NAVIGATE_MENU = "Navigate";
 	public static final String OPEN_MENU = "Open";
-	
+	public static final String OPEN_WITH_INTERACTIVE_EEF_EDITOR_MENU = "Open With Interactive EEF Editor";
+	public static final String CLOSE_MENU = "Close";
+	public static final String INTERACTIVE_EEF_EDITOR_MENU = "Interactive EEF Editor";
+	public static final String DELETE_MENU = "Delete";
+	public static final String CLOSE_PROJECT_MENU = "Close Project";
+	public static final String OPEN_PROJECT_MENU = "Open Project";
+	public static final String PROJECT_CREATION_MENU = "Project";
+	public static final String NEW_PROJECT_MENU = "New Project";
+	public static final String PROJECT_MENU = "Project...";
+
 	/*****************************************************************************
 	 * * UI Views * *
 	 *****************************************************************************/
@@ -45,7 +54,7 @@ public class UIConstants {
 	public static final String JAVA_LABEL = "Java";
 	public static final String JAVA_DEFAULT_LABEL = "Java (default)";
 	public static final String WELCOME_LABEL = "Welcome";
-	
+
 	/*****************************************************************************
 	 * * UI Buttons * *
 	 *****************************************************************************/
@@ -53,5 +62,6 @@ public class UIConstants {
 	public static final String FINISH_BUTTON = "Finish";
 	public static final String ADD_BUTTON = "Add";
 	public static final String CANCEL_BUTTON = "Cancel";
+	public static final String NEXT_BUTTON = "Next >";
 
 }
