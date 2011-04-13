@@ -1,13 +1,13 @@
-/**
- * Copyright (c) 2010 Obeo.
+/*******************************************************************************
+ * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
- */
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.editor.provider;
 
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EditorFactory;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;

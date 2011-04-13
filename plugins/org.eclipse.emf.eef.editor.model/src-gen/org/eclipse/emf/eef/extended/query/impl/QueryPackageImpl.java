@@ -1,13 +1,13 @@
-/**
- * Copyright (c) 2010 Obeo.
+/*******************************************************************************
+ * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
- */
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.query.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -238,7 +238,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EditorPackage theEditorPackage = (EditorPackage)EPackage.Registry.INSTANCE.getEPackage(EditorPackage.eNS_URI);
 		NavigationPackage theNavigationPackage = (NavigationPackage)EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI);
 
 		// Create type parameters
@@ -246,7 +245,6 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		eefUnderstandableQueryEClass.getESuperTypes().add(theEditorPackage.getReferenceableObject());
 		oclQueryEClass.getESuperTypes().add(this.getEEFUnderstandableQuery());
 		explicitPathQueryEClass.getESuperTypes().add(this.getEEFUnderstandableQuery());
 

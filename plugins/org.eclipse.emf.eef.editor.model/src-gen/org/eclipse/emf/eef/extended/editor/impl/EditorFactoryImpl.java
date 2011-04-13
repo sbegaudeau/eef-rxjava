@@ -1,13 +1,13 @@
-/**
- * Copyright (c) 2010 Obeo.
+/*******************************************************************************
+ * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
- */
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.editor.impl;
 
 import org.eclipse.emf.ecore.EClass;
@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.extended.editor.*;
 import org.eclipse.emf.eef.extended.editor.AllResourcesRootsRelativeInput;
 import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.EEFEditorContributions;
@@ -83,7 +82,6 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 			case EditorPackage.EEF_EDITOR_PAGES: return createEEFEditorPages();
 			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION: return createStaticEEFEditorContribution();
 			case EditorPackage.DYNAMIC_EEF_EDITOR_CONTRIBUTION: return createDynamicEEFEditorContribution();
-			case EditorPackage.REFERENCEABLE_OBJECT: return createReferenceableObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -187,16 +185,6 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 	public DynamicEEFEditorContribution createDynamicEEFEditorContribution() {
 		DynamicEEFEditorContributionImpl dynamicEEFEditorContribution = new DynamicEEFEditorContributionImpl();
 		return dynamicEEFEditorContribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ReferenceableObject createReferenceableObject() {
-		ReferenceableObjectImpl referenceableObject = new ReferenceableObjectImpl();
-		return referenceableObject;
 	}
 
 	/**

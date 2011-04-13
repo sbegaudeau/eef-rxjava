@@ -1,13 +1,13 @@
-/**
- * Copyright (c) 2010 Obeo.
+/*******************************************************************************
+ * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
- */
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.editor.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -30,7 +30,6 @@ import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.MasterDetailsPage;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
-import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
 import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
@@ -144,13 +143,6 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 	 * @generated
 	 */
 	private EClass dynamicEEFEditorContributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass referenceableObjectEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -424,15 +416,6 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getReferenceableObject() {
-		return referenceableObjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EditorFactory getEditorFactory() {
 		return (EditorFactory)getEFactoryInstance();
 	}
@@ -491,8 +474,6 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		staticEEFEditorContributionEClass = createEClass(STATIC_EEF_EDITOR_CONTRIBUTION);
 
 		dynamicEEFEditorContributionEClass = createEClass(DYNAMIC_EEF_EDITOR_CONTRIBUTION);
-
-		referenceableObjectEClass = createEClass(REFERENCEABLE_OBJECT);
 	}
 
 	/**
@@ -582,8 +563,6 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		initEClass(staticEEFEditorContributionEClass, StaticEEFEditorContribution.class, "StaticEEFEditorContribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dynamicEEFEditorContributionEClass, DynamicEEFEditorContribution.class, "DynamicEEFEditorContribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(referenceableObjectEClass, ReferenceableObject.class, "ReferenceableObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
