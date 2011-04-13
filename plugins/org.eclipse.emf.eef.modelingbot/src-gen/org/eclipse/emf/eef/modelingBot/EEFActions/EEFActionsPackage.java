@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EEFActionsPackage.java,v 1.3 2011/04/08 09:00:15 nlepine Exp $
+ * $Id: EEFActionsPackage.java,v 1.4 2011/04/13 13:50:10 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions;
 
@@ -595,13 +595,22 @@ public interface EEFActionsPackage extends EPackage {
 	int SET_REFERENCE__VALUE = EDIT_ACTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>EContaining Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_REFERENCE__ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Set Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_REFERENCE_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 1;
+	int SET_REFERENCE_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 2;
 
 
 	/**
@@ -804,6 +813,17 @@ public interface EEFActionsPackage extends EPackage {
 	EReference getSetReference_Value();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetReference#getEContainingFeature <em>EContaining Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>EContaining Feature</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.SetReference#getEContainingFeature()
+	 * @see #getSetReference()
+	 * @generated
+	 */
+	EReference getSetReference_EContainingFeature();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -996,6 +1016,14 @@ public interface EEFActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SET_REFERENCE__VALUE = eINSTANCE.getSetReference_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>EContaining Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SET_REFERENCE__ECONTAINING_FEATURE = eINSTANCE.getSetReference_EContainingFeature();
 
 	}
 

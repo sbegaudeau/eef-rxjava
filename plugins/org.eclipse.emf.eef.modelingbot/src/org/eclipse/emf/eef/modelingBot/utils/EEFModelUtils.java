@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2011 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
+
 package org.eclipse.emf.eef.modelingBot.utils;
 
 import java.util.ArrayList;
@@ -6,9 +17,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.views.ElementEditor;
+import org.eclipse.emf.eef.views.View;
 
 public class EEFModelUtils {
 	
+	/**
+	 * Get the object from the feature.
+	 * @param container
+	 * @param eContainingFeature
+	 * @return the object from the feature.
+	 */
 	public static Object eGet(EObject container, EStructuralFeature eContainingFeature) {
 		Object eGet = container.eGet(container.eClass().getEStructuralFeature(eContainingFeature.getName()));
 		if (eGet instanceof EList) {
@@ -31,6 +50,21 @@ public class EEFModelUtils {
 			container = container.eContainer();
 		}
 		return result;
+	}
+	
+	/**
+	 * @param obj
+	 * @return the view corresponding to the ElementEditor.
+	 */
+	public static View getView(ElementEditor obj) {
+		EObject container = obj.eContainer();
+		while (container != null) {
+			if (container instanceof View) {
+				return (View) container;
+			}
+			container = container.eContainer();
+		}
+		return null;
 	}
 
 }

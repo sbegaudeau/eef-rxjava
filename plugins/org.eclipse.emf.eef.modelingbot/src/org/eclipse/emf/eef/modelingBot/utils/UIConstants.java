@@ -54,6 +54,7 @@ public class UIConstants {
 	public static final String JAVA_LABEL = "Java";
 	public static final String JAVA_DEFAULT_LABEL = "Java (default)";
 	public static final String WELCOME_LABEL = "Welcome";
+	public static final String NEW = "New";
 
 	/*****************************************************************************
 	 * * UI Buttons * *

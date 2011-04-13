@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EEFActionsPackageImpl.java,v 1.3 2011/04/08 09:00:15 nlepine Exp $
+ * $Id: EEFActionsPackageImpl.java,v 1.4 2011/04/13 13:50:10 nlepine Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.impl;
 
@@ -367,6 +367,15 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSetReference_EContainingFeature() {
+		return (EReference)setReferenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEFActionsFactory getEEFActionsFactory() {
 		return (EEFActionsFactory)getEFactoryInstance();
 	}
@@ -418,6 +427,7 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 
 		setReferenceEClass = createEClass(SET_REFERENCE);
 		createEReference(setReferenceEClass, SET_REFERENCE__VALUE);
+		createEReference(setReferenceEClass, SET_REFERENCE__ECONTAINING_FEATURE);
 	}
 
 	/**
@@ -495,6 +505,7 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 
 		initEClass(setReferenceEClass, SetReference.class, "SetReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSetReference_Value(), theEditorPackage.getReferenceableObject(), null, "value", null, 0, 1, SetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetReference_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, SetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //EEFActionsPackageImpl

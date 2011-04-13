@@ -1,4 +1,3 @@
-package org.eclipse.emf.eef.modelingBot.testcase;
 /*******************************************************************************
  * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -9,11 +8,8 @@ package org.eclipse.emf.eef.modelingBot.testcase;
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
+package org.eclipse.emf.eef.modelingBot.testcase;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.emf.eef.modelingBot.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
@@ -22,6 +18,8 @@ import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 
 /**
+ * SwtBot modeling test case with SWTEEFBot.
+ * 
  * @author nlepine
  *
  */
@@ -71,22 +69,10 @@ public abstract class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 		super.tearDown();
 	}
 	
-	/**
-     * Delete the project.
-     * 
-     * @param projectName
-     *            name of the project to delete.
-     */
-    public void deleteProject(final String projectName) {
-        final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject();
-        try {
-            if (project.exists())
-                project.delete(true, new NullProgressMonitor());
-        } catch (final CoreException e) {
-            // Propagate as runtime exception
-            throw new RuntimeException(e);
-        }
-    }
 	
+	/**
+	 * Test method : call bot.runModelingBot("test/model/My2.modelingbot");
+	 * @throws Exception
+	 */
 	public abstract void testModelingBot() throws Exception;
 }

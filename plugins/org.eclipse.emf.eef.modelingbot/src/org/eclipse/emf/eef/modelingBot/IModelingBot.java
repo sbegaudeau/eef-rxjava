@@ -20,6 +20,8 @@ import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 
 /**
+ * Interface for modeling bot : define the actions modelised in modeling bot resource 
+ * 
  * @author nlepine
  *
  */
@@ -27,8 +29,8 @@ public interface IModelingBot {
 	
 	
 	/**
-	 * Run the scenarios of the modeling bot
-	 * @param path
+	 * Run the scenarios of the modeling bot.
+	 * @param path the path
 	 * @throws CoreException 
 	 * @throws IOException 
 	 */
