@@ -148,6 +148,7 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		ModelingBot mbot = (ModelingBot) modelingBotResource
 				.getContents().get(0);
 		assertNotNull("The modeling bot resource is empty.", mbot);
+		bot.setPropertiesEditionContext(mbot.getPropertiesEditionContext());
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
 				Scenario scenario = (Scenario) sequence;

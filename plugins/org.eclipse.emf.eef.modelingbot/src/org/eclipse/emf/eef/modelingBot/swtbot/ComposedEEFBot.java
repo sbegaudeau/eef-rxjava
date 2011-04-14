@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
@@ -291,6 +292,15 @@ public class ComposedEEFBot implements IModelingBot {
 	 */
 	public IModelingBotInterpreter getModelingBotInterpreter() {
 		return interpreter;
+	}
+
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setPropertiesEditionContext(org.eclipse.emf.eef.components.PropertiesEditionContext)
+	 */
+	public void setPropertiesEditionContext(
+			PropertiesEditionContext propertiesEditionContext) {
+		
 	}
 
 }

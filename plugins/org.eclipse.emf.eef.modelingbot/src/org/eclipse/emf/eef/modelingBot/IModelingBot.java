@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
@@ -173,5 +174,12 @@ public interface IModelingBot {
 	 * @return the modeling bot interpreter
 	 */
 	IModelingBotInterpreter getModelingBotInterpreter();
+
+	/**
+	 * Set the propertiesEditionContext
+	 * @param propertiesEditionContext
+	 */
+	void setPropertiesEditionContext(
+			PropertiesEditionContext propertiesEditionContext);
 
 }

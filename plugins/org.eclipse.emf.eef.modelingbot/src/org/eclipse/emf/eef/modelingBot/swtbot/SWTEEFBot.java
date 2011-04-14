@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
@@ -103,6 +104,11 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Bot Helper.
 	 */
 	private SWTEEFBotHelper helper;
+
+	/**
+	 * PropertiesEditionContext.
+	 */
+	private PropertiesEditionContext propertiesEditionContext;
 
 	/**
 	 * Create a SWTEEFBot.
@@ -215,7 +221,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		checkBox().select();
 		button(UIConstants.OK_BUTTON).click();
 		SWTBotUtils.waitAllUiEvents();
-		sleep(1000);
+		sleep(3000);
 	}
 
 	/** 
@@ -440,43 +446,24 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotShell newFileShell = shell(UIConstants.NEW);
 		activateShell(newFileShell);
 
-		String modelType = StringUtils.toU1Case(extension) + " Model";
-		text().setText(modelType);
-		SWTBotTreeItem[] allItems = tree().getAllItems();
-		SWTBotUtils.waitAllUiEvents();
-		SWTBotTreeItem item = getItem(allItems, modelType);
-		// TODO
-		if (item == null) {
-			tree().expandNode("Example EMF Model Creation Wizards").select(
-					modelType);
-		} else {
-			assertNotNull("The model " + modelType + " can not be created.",
-					item);
-			item.select();
-		}
-		button(UIConstants.NEXT_BUTTON).click();
-
-		textWithLabel(IDEWorkbenchMessages.WizardNewFileCreationPage_fileLabel)
-				.setText(modelName);
-		button(UIConstants.NEXT_BUTTON).click();
-		assertNotNull("The class " + root.toString() + " can not be loaded",
-				root.getName());
-
-		comboBox().setSelection(root.getName());
-		button(UIConstants.FINISH_BUTTON).click();
+		createModel(modelName, root, extension);
 
 		// close the default editor
 		menu(UIConstants.FILE_MENU).menu(UIConstants.CLOSE_MENU).click();
 
 		// open with EEF Editor
-		SWTBotTree wizardTree = viewByTitle(
-				UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
-		SWTBotTreeItem treeItem = wizardTree.expandNode(path)
-				.expandNode(modelName).select();
-		SWTBotUtils.clickContextMenu(treeItem,
-				UIConstants.OPEN_WITH_INTERACTIVE_EEF_EDITOR_MENU);
+		openWithEEFEditor(path, modelName);
 
 		editor = editorByTitle(modelName);
+		return getRoot(path, modelName);
+	}
+
+	/**
+	 * @param path
+	 * @param modelName
+	 * @return the root of the new resource
+	 */
+	private EObject getRoot(String path, String modelName) {
 		URI fileURI = URI.createPlatformResourceURI(path + "/" + modelName,
 				true);
 		Resource resource = editingDomain.getResourceSet().getResource(fileURI,
@@ -494,6 +481,51 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		setTestModelResource(resource);
 		assertFalse("The model is empty.", resource.getContents().isEmpty());
 		return resource.getContents().get(0);
+	}
+
+	/**
+	 * Open eef editor
+	 * @param path
+	 * @param modelName
+	 */
+	private void openWithEEFEditor(String path, String modelName) {
+		SWTBotTree wizardTree = viewByTitle(
+				UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
+		SWTBotTreeItem treeItem = wizardTree.expandNode(path)
+				.expandNode(modelName).select();
+		SWTBotUtils.clickContextMenu(treeItem,
+				UIConstants.OPEN_WITH_INTERACTIVE_EEF_EDITOR_MENU);
+	}
+
+	/**
+	 * Create the new model
+	 * @param modelName
+	 * @param root
+	 * @param extension
+	 */
+	private void createModel(String modelName, EClass root,
+			final String extension) {
+		String modelType = StringUtils.toU1Case(extension) + " Model";
+		SWTBotTreeItem item = tree().expandNode("EMF Editing Framework").expandNode(
+		"EMF Model").select();
+		assertNotNull("The model " + modelType + " can not be created.",
+				item);
+		button(UIConstants.NEXT_BUTTON).click();
+		
+		button("Browse Registered Packages...").click();
+		String nsURI = propertiesEditionContext.getModel().getEcorePackage().getNsURI();
+		table().getTableItem(nsURI).select();
+		button(UIConstants.OK_BUTTON).click();
+		button(UIConstants.NEXT_BUTTON).click();
+
+		textWithLabel(IDEWorkbenchMessages.WizardNewFileCreationPage_fileLabel)
+				.setText(modelName);
+		button(UIConstants.NEXT_BUTTON).click();
+		assertNotNull("The class " + root.toString() + " can not be loaded",
+				root.getName());
+
+		comboBox().setSelection(root.getName());
+		button(UIConstants.FINISH_BUTTON).click();
 	}
 
 	private SWTBotTreeItem getItem(SWTBotTreeItem[] allItems, String string) {
@@ -741,5 +773,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 */
 	public IModelingBotInterpreter getModelingBotInterpreter() {
 		return interpreter;
+	}
+
+	public void setPropertiesEditionContext(
+			PropertiesEditionContext propertiesEditionContext) {
+		this.propertiesEditionContext = propertiesEditionContext;		
 	}
 }

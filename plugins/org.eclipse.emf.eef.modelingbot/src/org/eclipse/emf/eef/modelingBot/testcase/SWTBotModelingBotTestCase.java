@@ -11,9 +11,7 @@
 package org.eclipse.emf.eef.modelingBot.testcase;
 
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
-import org.eclipse.emf.eef.modelingBot.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 
@@ -51,20 +49,20 @@ public abstract class SWTBotModelingBotTestCase extends SWTBotEclipseTestCase {
 	@Override
 	protected void tearDown() throws Exception {
         // Close an eventual popup if the test failed and a popup remain opened
-        final SWTBotShell[] foundShells = bot.shells();
-        for (final SWTBotShell swtBotShell : foundShells) {
-            // Close all opened windows except Eclipse
-            if (swtBotShell.isOpen() && !swtBotShell.getText().endsWith("Eclipse SDK") && !swtBotShell.getText().endsWith("Eclipse Platform")) {
-                swtBotShell.close();
-            }
-        }
-
-        SWTBotUtils.waitAllUiEvents();
-
-        bot.closeAllEditors();
-        bot.dispose();
-
-        SWTBotUtils.waitAllUiEvents();
+//        final SWTBotShell[] foundShells = bot.shells();
+//        for (final SWTBotShell swtBotShell : foundShells) {
+//            // Close all opened windows except Eclipse
+//            if (swtBotShell.isOpen() && !swtBotShell.getText().endsWith("Eclipse SDK") && !swtBotShell.getText().endsWith("Eclipse Platform")) {
+//                swtBotShell.close();
+//            }
+//        }
+//
+//        SWTBotUtils.waitAllUiEvents();
+//
+//        bot.closeAllEditors();
+//        bot.dispose();
+//
+//        SWTBotUtils.waitAllUiEvents();
 
 		super.tearDown();
 	}
