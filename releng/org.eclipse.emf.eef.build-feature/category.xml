@@ -25,6 +25,9 @@
    <feature id="org.eclipse.emf.eef.extended" version="0.0.0">
       <category name="eef.extension"/>
    </feature>
+   <feature id="org.eclipse.emf.eef.indigo" version="0.0.0">
+      <category name="eef.sdk"/>
+   </feature>
    <category-def name="eef.sdk" label="EEF SDK (Incubation)">
       <description>
          EEF SDK package. It contains runtime, metamodels, generators, documentation and extended capabilities (with source).
@@ -42,7 +45,7 @@
    </category-def>
    <category-def name="eef.extension" label="EEF Extension (Incubation)">
       <description>
-         EEF with thirdparties.
+         EEF using third parties capabilities.
       </description>
    </category-def>
 </site>
