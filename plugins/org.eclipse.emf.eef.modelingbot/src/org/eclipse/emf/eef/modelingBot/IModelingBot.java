@@ -16,8 +16,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
+import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 
 /**
  * Interface for modeling bot : define the actions modelised in modeling bot resource 
@@ -155,5 +157,21 @@ public interface IModelingBot {
 	 * Validate batch editing
 	 */
 	void validateBatchEditing();
+	
+	/**
+	 * Check
+	 */
+	void check();
+	
+	/**
+	 * 
+	 * @return the test model resource.
+	 */
+	Resource getActiveResource();
+	
+	/**
+	 * @return the modeling bot interpreter
+	 */
+	IModelingBotInterpreter getModelingBotInterpreter();
 
 }

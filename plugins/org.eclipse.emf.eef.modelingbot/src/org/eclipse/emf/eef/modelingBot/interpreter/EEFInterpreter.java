@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.modelingBot.interpreter;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,16 +47,15 @@ import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.RemoveProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.Save;
-import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 /**
- * Interpreter for SWTEEFBot and BatchModelingBot.
+ * Interpreter for SWTEEFBot or BatchModelingBot.
  * 
  * @author nlepine
  * 
  */
-public class EEFInterpreter implements ModelingBotInterpreter{
+public class EEFInterpreter implements IModelingBotInterpreter{
 
 	/**
 	 * Editing domain
@@ -75,12 +73,18 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 	private Map<Sequence, Boolean> mapSequenceToCancel = new HashMap<Sequence, Boolean>();
 
 	/**
+	 * Modeling bot
+	 */
+	private IModelingBot bot;
+
+	/**
 	 * Create the interpreter.
 	 * @param editingDomain editing domain
 	 */
-	public EEFInterpreter(EditingDomain editingDomain) {
+	public EEFInterpreter(IModelingBot bot, EditingDomain editingDomain) {
 		super();
 		this.editingDomain = editingDomain;
+		this.bot = bot;
 	}
 	
 	/**
@@ -135,53 +139,51 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 
 	/** 
 	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.ModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
 	 */
-	public void runModelingBot(String path, IModelingBot bot) throws CoreException, IOException {
+	public void runModelingBot(String path) throws CoreException, IOException {
 		Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
 		ModelingBot mbot = (ModelingBot) modelingBotResource
 				.getContents().get(0);
 		assertNotNull("The modeling bot resource is empty.", mbot);
-		assertTrue("The modeling bot is not a SWTEEFBot.", bot instanceof SWTEEFBot);
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
 				Scenario scenario = (Scenario) sequence;
-				runSequence(bot, scenario);
+				runSequence(scenario);
 			}
 		}
 	}
 
-	/**
-	 * Interprete a sequence.
-	 * @param bot IModelingBot
-	 * @param sequence Sequence
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
-	private void runSequence(IModelingBot bot, Sequence sequence) {
+	public void runSequence(Sequence sequence) {
 		for (Processing processing : sequence.getProcessings()) {
 			if (processing instanceof Action) {
-				runAction((Action) processing, bot);
+				runAction((Action) processing);
 			} else if (processing instanceof DetailsPage) {
 				bot.setSequenceType(SequenceType.DETAILS_PAGE);
-				runSequence(bot, (DetailsPage) processing);
+				runSequence((DetailsPage) processing);
 			} else if (processing instanceof PropertiesView) {
 				bot.setSequenceType(SequenceType.PROPERTIES_VIEW);
-				runSequence(bot, (PropertiesView) processing);
+				runSequence((PropertiesView) processing);
 			} else if (processing instanceof Wizard) {
 				bot.setSequenceType(SequenceType.WIZARD);
-				runSequence(bot, (Wizard) processing);
-				finishBatchEditing(bot, processing);
+				runSequence((Wizard) processing);
+				finishBatchEditing(processing);
 			}
 		}
 	}
 
-	/**
-	 * Finish batch editinh : ok or cancel.
-	 * @param bot
-	 * @param processing
+	
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
 	 */
-	private void finishBatchEditing(IModelingBot bot, Processing processing) {
+	public void finishBatchEditing(Processing processing) {
 		Boolean hasCanceled = mapSequenceToCancel.get(processing);
 		if (hasCanceled==null || !hasCanceled) {
 			try{
@@ -192,13 +194,12 @@ public class EEFInterpreter implements ModelingBotInterpreter{
 		}
 		mapSequenceToCancel.remove(processing);
 	}
-	
-	/**
-	 * Run the modeling bot actions.
-	 * @param action Action
-	 * @param bot IModelingBot
+
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runAction(org.eclipse.emf.eef.modelingBot.Action)
 	 */
-	private void runAction(Action action, IModelingBot bot) {
+	public void runAction(Action action) {
 		if (action instanceof CreateProject) {
 			bot.createProject(((CreateProject) action).getProjectName());
 		} else if (action instanceof OpenEEFEditor) {

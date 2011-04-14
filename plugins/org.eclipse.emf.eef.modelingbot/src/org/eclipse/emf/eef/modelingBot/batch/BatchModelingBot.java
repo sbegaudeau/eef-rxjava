@@ -11,10 +11,7 @@
 package org.eclipse.emf.eef.modelingBot.batch;
 
 import java.io.IOException;
-import java.util.Collections;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -39,6 +36,7 @@ import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.interpreter.EEFInterpreter;
+import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -50,6 +48,8 @@ public class BatchModelingBot implements IModelingBot {
 	private EditingDomain editingDomain;
 	private AdapterFactory adapterFactory;
 	private Resource activeResource;
+	
+
 	private EEFInterpreter interpreter;
 	
 	/**
@@ -59,7 +59,7 @@ public class BatchModelingBot implements IModelingBot {
 		monitor = new NullProgressMonitor();
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack());
-		interpreter = new EEFInterpreter(editingDomain);
+		interpreter = new EEFInterpreter(this, editingDomain);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#runModelingBot(java.lang.String)
 	 */
 	public void runModelingBot(String path) throws CoreException, IOException {
-		interpreter.runModelingBot(path, this);
+		interpreter.runModelingBot(path);
 	}
 
 	/**
@@ -75,12 +75,12 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createProject(java.lang.String)
 	 */
 	public void createProject(String projectName) {
-		try {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-			project.create(new NullProgressMonitor());
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+//			project.create(new NullProgressMonitor());
+//		} catch (CoreException e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 
@@ -89,12 +89,12 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openProject(java.lang.String)
 	 */
 	public void openProject(String projectName) {
-		try {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-			project.open(monitor);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+//			project.open(monitor);
+//		} catch (CoreException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	/**
@@ -102,12 +102,12 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeProject(java.lang.String)
 	 */
 	public void closeProject(String projectName) {
-		try {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-			project.open(monitor);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}		
+//		try {
+//			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+//			project.open(monitor);
+//		} catch (CoreException e) {
+//			e.printStackTrace();
+//		}		
 	}
 
 	/**
@@ -115,12 +115,12 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#removeProject(java.lang.String)
 	 */
 	public void removeProject(String projectName) {
-		try {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-			project.delete(true, monitor);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+//			project.delete(true, monitor);
+//		} catch (CoreException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	/**
@@ -157,15 +157,15 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
 	 */
 	public void save() {
-		if (activeResource != null) {
-			try {
-				activeResource.save(Collections.EMPTY_MAP);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			//TODO: Error
-		}
+//		if (activeResource != null) {
+//			try {
+//				activeResource.save(Collections.EMPTY_MAP);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		} else {
+//			//TODO: Error
+//		}
 	}
 	
 	/**
@@ -236,18 +236,18 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createModel(java.lang.String, java.lang.String, org.eclipse.emf.ecore.EClass)
 	 */
 	public EObject createModel(String path, String modelName, EClass eClass) {
-		try {
+//		try {
 			URI uri = URI.createPlatformResourceURI(path + "/" + modelName , true);
 			Resource activeResource = editingDomain.getResourceSet().createResource(uri);
 			EObject create = EcoreUtil.create(eClass);
 			activeResource.getContents().add(create);
-			activeResource.save(Collections.EMPTY_MAP);
+//			activeResource.save(Collections.EMPTY_MAP);
 			this.activeResource = activeResource;
 			return create;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
 	}
 
 	public void cancel() {
@@ -265,4 +265,16 @@ public class BatchModelingBot implements IModelingBot {
 		
 	}
 
+	public void check() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Resource getActiveResource() {
+		return activeResource;
+	}
+
+	public IModelingBotInterpreter getModelingBotInterpreter() {
+		return interpreter;
+	}
 }

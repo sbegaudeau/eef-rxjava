@@ -23,7 +23,7 @@ import org.junit.Before;
  * @author nlepine
  *
  */
-public abstract class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
+public abstract class SWTBotModelingBotTestCase extends SWTBotEclipseTestCase {
 	
 	/**
 	 * An instance of SWTEclipseBot.
@@ -71,7 +71,7 @@ public abstract class SWTBotModelingTestCase extends SWTBotEclipseTestCase {
 	
 	
 	/**
-	 * Test method : call bot.runModelingBot("test/model/My2.modelingbot");
+	 * Test method : call bot.runModelingBot("test/model/My.modelingbot");
 	 * @throws Exception
 	 */
 	public abstract void testModelingBot() throws Exception;

@@ -36,6 +36,7 @@ import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.interpreter.EEFInterpreter;
+import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 import org.eclipse.emf.eef.modelingBot.uri.EEFURIConverter;
 import org.eclipse.emf.eef.modelingBot.utils.EEFModelUtils;
 import org.eclipse.emf.eef.modelingBot.utils.SWTBotUtils;
@@ -109,7 +110,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public SWTEEFBot() {
 		super();
 		editingDomain.getResourceSet().setURIConverter(new EEFURIConverter());
-		interpreter = new EEFInterpreter(editingDomain);
+		interpreter = new EEFInterpreter(this, editingDomain);
 		propertiesEdition = new PropertiesEditionHelper(this);
 		helper = new SWTEEFBotHelper(this);
 	}
@@ -422,7 +423,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#runModelingBot(java.lang.String)
 	 */
 	public void runModelingBot(String path) throws CoreException, IOException {
-		interpreter.runModelingBot(path, this);
+		interpreter.runModelingBot(path);
 	}
 
 	/** 
@@ -635,6 +636,14 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		this.testModelResource = resource;
 	}
 
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#getActiveResource()
+	 */
+	public Resource getActiveResource() {
+		return testModelResource;
+	}
+
 	/**
 	 * @param viewID
 	 *            the edited advEOFCV
@@ -716,5 +725,21 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 			}
 		}
 		return null;
+	}
+
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#check()
+	 */
+	public void check() {
+		
+	}
+	
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#getModelingBotInterpreter()
+	 */
+	public IModelingBotInterpreter getModelingBotInterpreter() {
+		return interpreter;
 	}
 }

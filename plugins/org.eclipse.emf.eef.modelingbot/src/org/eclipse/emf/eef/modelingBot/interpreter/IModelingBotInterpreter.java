@@ -13,17 +13,35 @@ package org.eclipse.emf.eef.modelingBot.interpreter;
 import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.eef.modelingBot.IModelingBot;
+import org.eclipse.emf.eef.modelingBot.Action;
+import org.eclipse.emf.eef.modelingBot.Processing;
+import org.eclipse.emf.eef.modelingBot.Sequence;
 
-public interface ModelingBotInterpreter {
+public interface IModelingBotInterpreter {
 	
 	/**
 	 * Run the modeling bot : interprete the sequence and actions of the model.
 	 * @param path
-	 * @param swteefBot 
 	 * @throws CoreException
 	 * @throws IOException
 	 */
-	void runModelingBot(String path, IModelingBot modelingBot) throws CoreException, IOException;
+	void runModelingBot(String path) throws CoreException, IOException;
+
+	/**
+	 * Run an action
+	 * @param action Action
+	 */
+	void runAction(Action action);
+	
+	/**
+	 * Run a sequence
+	 * @param sequence Sequence
+	 */
+	void runSequence(Sequence sequence);
+
+	/**
+	 * @param processing
+	 */
+	void finishBatchEditing(Processing processing);
 
 }
