@@ -43,10 +43,10 @@
 [query public hasOwningViewsRepository(view : View) : Boolean = view.ancestors()->select(oclIsTypeOf(views::ViewsRepository))->notEmpty()/]
 
 [query public owningViewsRepository(view : View) : ViewsRepository = 
-        if (view.hasOwningViewsRepository()) then 
-        view.ancestors()->select(oclIsTypeOf(ViewsRepository))->first().oclAsType(views::ViewsRepository)
-        else null
-        endif/]
+	if (view.hasOwningViewsRepository()) then 
+	view.ancestors()->select(oclIsTypeOf(ViewsRepository))->first().oclAsType(views::ViewsRepository)
+	else null
+	endif/]
 
 [query public owningViewsRepository(element : ViewElement) : ViewsRepository = 
 	element.owningView().owningViewsRepository()/]
@@ -61,7 +61,7 @@
 	pec.involvedEditionElements().oclAsType(PropertiesEditionElement)->select(views->first().ownedBy(v))/]
 
 [query public propertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	 pec.properties->select(views->includes(element))->first()/]
+	pec.properties->select(views->includes(element))->first()/]
 
 [query public relatedComponent(view : View, pec : PropertiesEditionComponent) : PropertiesEditionComponent =
 	if (pec.views->includes(view))
@@ -84,8 +84,8 @@
 [query public associatedGenContext(peco : PropertiesEditionContext) : GenEditionContext = 
 	peco.eInverse()->select(oclIsKindOf(EEFGen::GenEditionContext))->first().oclAsType(EEFGen::GenEditionContext)/]
 
-[query public associatedGenContext(peco : PropertiesEditionComponent) : GenEditionContext =  
-		peco.editionContext().associatedGenContext() /]
+[query public associatedGenContext(peco : PropertiesEditionComponent) : GenEditionContext = 
+	peco.editionContext().associatedGenContext() /]
 
 [query public associatedGenModel(pec : PropertiesEditionContext) : EEFGenModel = 
 	pec.associatedGenContext().eefGenModel/]
@@ -395,8 +395,8 @@ Object
    ) /]
 
 [comment TODO: fixed in Acceleo 3.0.0M7/]
-[comment][query public startsWithADigit(s : String) : Boolean = not s.first(1).isAlpha()/][/comment]
-[query public startsWithADigit(s : String) : Boolean =
+[query public startsWithADigit(s : String) : Boolean = not s.first(1).isAlpha()/]
+[comment][query public startsWithADigit(s : String) : Boolean =
 	s.firstChar() = '0' 
 	or s.firstChar() = '1' 
 	or s.firstChar() = '2' 
@@ -406,7 +406,7 @@ Object
 	or s.firstChar() = '6' 
 	or s.firstChar() = '7' 
 	or s.firstChar() = '8' 
-	or s.firstChar() = '9'/]
+	or s.firstChar() = '9'/][/comment]
 
 [template public firstChar(s : String)]
 [if (s.oclIsUndefined())][''/][elseif (s = '')][''/][else][s.substring(1,1)/][/if]
@@ -532,7 +532,7 @@ Object
 	endif/]
 
 [comment] 
-@param PropertiesEditionElement the  PEE of the composition
+@param PropertiesEditionElement the PEE of the composition
 @param EStructuralFeature : the feature of the composition 
 [/comment]
 [query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =

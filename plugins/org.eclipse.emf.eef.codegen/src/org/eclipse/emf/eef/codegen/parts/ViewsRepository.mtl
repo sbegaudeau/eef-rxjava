@@ -53,7 +53,7 @@ public class [viewRepository.vrClass()/] {
 [/for]
 [/template]
 
-[comment  Template used to generate code for each views /]
+[comment Template used to generate code for each views /]
 [template public viewDescriptor(view : View)]
 
 	/**

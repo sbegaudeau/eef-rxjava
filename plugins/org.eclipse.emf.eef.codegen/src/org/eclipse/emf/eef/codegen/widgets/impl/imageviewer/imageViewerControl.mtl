@@ -53,4 +53,3 @@ if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFi
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived)]
 [/template]
 
-
