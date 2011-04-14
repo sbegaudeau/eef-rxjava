@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.modelingBot.widget;
+package org.eclipse.emf.eef.modelingBot.helper;
 
 import static org.junit.Assert.assertFalse;
 
@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
-import org.eclipse.emf.eef.modelingBot.utils.SWTBotUtils;
-import org.eclipse.emf.eef.modelingBot.utils.StringUtils;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -81,12 +79,12 @@ public class PropertiesEditionHelper {
 	 * @param value
 	 */
 	private void updateText(ElementEditor elementEditor, String value) {
-		SWTBotUtils.waitAllUiEvents();
-		SWTBotText textWithLabel = bot.textWithLabel(StringUtils.toU1Case(elementEditor.getName())+" : ");
+		SWTBotHelper.waitAllUiEvents();
+		SWTBotText textWithLabel = bot.textWithLabel(StringHelper.toU1Case(elementEditor.getName())+" : ");
 		textWithLabel.setText(value);
-		SWTBotUtils.pressEnterKey(textWithLabel.widget);
-		SWTBotUtils.sendFocusLost(textWithLabel.widget);
-		SWTBotUtils.waitAllUiEvents();
+		SWTBotHelper.pressEnterKey(textWithLabel.widget);
+		SWTBotHelper.sendFocusLost(textWithLabel.widget);
+		SWTBotHelper.waitAllUiEvents();
 	}
 
 	public void setBot(SWTEEFBot bot) {

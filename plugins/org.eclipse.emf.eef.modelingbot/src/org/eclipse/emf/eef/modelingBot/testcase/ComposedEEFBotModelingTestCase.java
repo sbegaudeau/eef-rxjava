@@ -15,9 +15,9 @@ import java.util.List;
 
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.batch.BatchModelingBot;
+import org.eclipse.emf.eef.modelingBot.helper.SWTBotHelper;
 import org.eclipse.emf.eef.modelingBot.swtbot.ComposedEEFBot;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
-import org.eclipse.emf.eef.modelingBot.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.ui.PlatformUI;
@@ -26,7 +26,7 @@ import org.junit.Before;
 /**
  * SwtBot modeling test case with SWTEEFBot.
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  *
  */
 public abstract class ComposedEEFBotModelingTestCase extends SWTBotEclipseTestCase {
@@ -76,12 +76,12 @@ public abstract class ComposedEEFBotModelingTestCase extends SWTBotEclipseTestCa
             }
         }
 
-        SWTBotUtils.waitAllUiEvents();
+        SWTBotHelper.waitAllUiEvents();
 
         swtEEFBot.closeAllEditors();
         swtEEFBot.dispose();
 
-        SWTBotUtils.waitAllUiEvents();
+        SWTBotHelper.waitAllUiEvents();
 
 		super.tearDown();
 	}

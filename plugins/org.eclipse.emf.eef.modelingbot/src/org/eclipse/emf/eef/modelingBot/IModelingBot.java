@@ -25,7 +25,7 @@ import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 /**
  * Interface for modeling bot : define the actions modelised in modeling bot resource 
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  *
  */
 public interface IModelingBot {

@@ -38,7 +38,7 @@ import org.eclipse.emf.eef.modelingBot.swtbot.ComposedEEFBot;
 /**
  * Interpreter for a list of modeling bots.
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  *
  */
 public class ComposedEEFInterpreter implements IModelingBotInterpreter {

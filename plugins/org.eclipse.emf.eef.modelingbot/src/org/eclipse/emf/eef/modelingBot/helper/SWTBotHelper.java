@@ -9,7 +9,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.eef.modelingBot.utils;
+package org.eclipse.emf.eef.modelingBot.helper;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ import org.hamcrest.Matcher;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class SWTBotUtils {
+public class SWTBotHelper {
 	/**
 	 * SWTWorkbenchBot
 	 */

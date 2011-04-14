@@ -52,7 +52,7 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 /**
  * Interpreter for SWTEEFBot or BatchModelingBot.
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
 public class EEFInterpreter implements IModelingBotInterpreter{

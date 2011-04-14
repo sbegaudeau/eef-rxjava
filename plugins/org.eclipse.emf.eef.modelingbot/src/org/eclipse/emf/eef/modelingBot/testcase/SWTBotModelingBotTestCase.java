@@ -18,7 +18,7 @@ import org.junit.Before;
 /**
  * SwtBot modeling test case with SWTEEFBot.
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  *
  */
 public abstract class SWTBotModelingBotTestCase extends SWTBotEclipseTestCase {

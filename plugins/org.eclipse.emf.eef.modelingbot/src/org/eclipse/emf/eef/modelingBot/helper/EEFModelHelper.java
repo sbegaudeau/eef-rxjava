@@ -9,7 +9,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.eef.modelingBot.utils;
+package org.eclipse.emf.eef.modelingBot.helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.View;
 
-public class EEFModelUtils {
+public class EEFModelHelper {
 	
 	/**
 	 * Get the object from the feature.

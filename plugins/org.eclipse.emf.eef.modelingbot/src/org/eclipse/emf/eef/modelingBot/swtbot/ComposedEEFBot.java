@@ -47,7 +47,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 /**
  * Composed eef bot : SWTEEFbot and BatchModeling bot.
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  *
  */
 public class ComposedEEFBot implements IModelingBot {

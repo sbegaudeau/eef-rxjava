@@ -9,14 +9,14 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.eef.modelingBot.utils;
+package org.eclipse.emf.eef.modelingBot.helper;
 
 /**
  * 
- * @author nlepine
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  *
  */
-public class StringUtils {
+public class StringHelper {
 	
 	public static String toU1Case(String from) {
 		String ret = ""; //$NON-NLS-1$
