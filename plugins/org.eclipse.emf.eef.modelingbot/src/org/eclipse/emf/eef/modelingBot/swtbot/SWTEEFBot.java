@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
@@ -104,11 +103,6 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Bot Helper.
 	 */
 	private SWTEEFBotHelper helper;
-
-	/**
-	 * PropertiesEditionContext.
-	 */
-	private PropertiesEditionContext propertiesEditionContext;
 
 	/**
 	 * Create a SWTEEFBot.
@@ -513,7 +507,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		button(UIConstants.NEXT_BUTTON).click();
 		
 		button("Browse Registered Packages...").click();
-		String nsURI = propertiesEditionContext.getModel().getEcorePackage().getNsURI();
+		String nsURI = interpreter.getPropertiesEditionContext().getModel().getEcorePackage().getNsURI();
 		table().getTableItem(nsURI).select();
 		button(UIConstants.OK_BUTTON).click();
 		button(UIConstants.NEXT_BUTTON).click();
@@ -719,10 +713,5 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 */
 	public IModelingBotInterpreter getModelingBotInterpreter() {
 		return interpreter;
-	}
-
-	public void setPropertiesEditionContext(
-			PropertiesEditionContext propertiesEditionContext) {
-		this.propertiesEditionContext = propertiesEditionContext;		
 	}
 }

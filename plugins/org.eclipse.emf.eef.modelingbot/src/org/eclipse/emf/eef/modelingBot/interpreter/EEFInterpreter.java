@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.DetailsPage;
@@ -76,6 +77,11 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 	 * Modeling bot
 	 */
 	private IModelingBot bot;
+
+	/**
+	 * PropertiesEditionContext
+	 */
+	private PropertiesEditionContext propertiesEditionContext;
 
 	/**
 	 * Create the interpreter.
@@ -148,7 +154,7 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		ModelingBot mbot = (ModelingBot) modelingBotResource
 				.getContents().get(0);
 		assertNotNull("The modeling bot resource is empty.", mbot);
-		bot.setPropertiesEditionContext(mbot.getPropertiesEditionContext());
+		propertiesEditionContext = mbot.getPropertiesEditionContext();
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
 				Scenario scenario = (Scenario) sequence;
@@ -240,6 +246,14 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 
 	private void addModelMap(CreateModel action,  EObject obj) {
 		refObjectToEObject.put(action, obj);
+	}
+	
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
+	 */
+	public PropertiesEditionContext getPropertiesEditionContext() {
+		return propertiesEditionContext;
 	}
 
 }

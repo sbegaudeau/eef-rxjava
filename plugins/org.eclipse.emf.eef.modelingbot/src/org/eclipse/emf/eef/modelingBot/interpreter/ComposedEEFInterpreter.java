@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.DetailsPage;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
@@ -170,5 +171,13 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 				true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
+	}
+	
+	/** 
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
+	 */
+	public PropertiesEditionContext getPropertiesEditionContext() {
+		return null;
 	}
 }
