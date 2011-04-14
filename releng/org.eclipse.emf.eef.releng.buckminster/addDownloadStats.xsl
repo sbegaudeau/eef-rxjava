@@ -39,6 +39,10 @@ Stephane Bouchet (Obeo) - modification for EEF
 		<xsl:call-template name="artifact_properties"/>
 	</xsl:template>
 	
+		<xsl:template match="artifact[@classifier='org.eclipse.update.feature' and @id='org.eclipse.emf.eef.indigo']/properties">
+		<xsl:call-template name="artifact_properties"/>
+	</xsl:template>
+	
 	<xsl:template match="artifact[@classifier='org.eclipse.update.feature' and @id='org.eclipse.emf.eef.extended']/properties">
 		<xsl:call-template name="artifact_properties"/>
 	</xsl:template>
