@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.extended.editor.EditorFactory;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
+import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
 import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
@@ -82,6 +83,7 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 			case EditorPackage.EEF_EDITOR_PAGES: return createEEFEditorPages();
 			case EditorPackage.STATIC_EEF_EDITOR_CONTRIBUTION: return createStaticEEFEditorContribution();
 			case EditorPackage.DYNAMIC_EEF_EDITOR_CONTRIBUTION: return createDynamicEEFEditorContribution();
+			case EditorPackage.REFERENCEABLE_OBJECT: return createReferenceableObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -185,6 +187,16 @@ public class EditorFactoryImpl extends EFactoryImpl implements EditorFactory {
 	public DynamicEEFEditorContribution createDynamicEEFEditorContribution() {
 		DynamicEEFEditorContributionImpl dynamicEEFEditorContribution = new DynamicEEFEditorContributionImpl();
 		return dynamicEEFEditorContribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReferenceableObject createReferenceableObject() {
+		ReferenceableObjectImpl referenceableObject = new ReferenceableObjectImpl();
+		return referenceableObject;
 	}
 
 	/**

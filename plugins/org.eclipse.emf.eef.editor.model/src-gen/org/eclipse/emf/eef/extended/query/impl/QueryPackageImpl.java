@@ -238,6 +238,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		EditorPackage theEditorPackage = (EditorPackage)EPackage.Registry.INSTANCE.getEPackage(EditorPackage.eNS_URI);
 		NavigationPackage theNavigationPackage = (NavigationPackage)EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI);
 
 		// Create type parameters
@@ -245,6 +246,7 @@ public class QueryPackageImpl extends EPackageImpl implements QueryPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		eefUnderstandableQueryEClass.getESuperTypes().add(theEditorPackage.getReferenceableObject());
 		oclQueryEClass.getESuperTypes().add(this.getEEFUnderstandableQuery());
 		explicitPathQueryEClass.getESuperTypes().add(this.getEEFUnderstandableQuery());
 

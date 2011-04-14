@@ -23,8 +23,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.eef.extended.editor.provider.ExtendedEditPlugin;
+import org.eclipse.emf.eef.extended.editor.provider.ReferenceableObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.extended.query.EEFUnderstandableQuery} object.
@@ -33,7 +33,7 @@ import org.eclipse.emf.eef.extended.editor.provider.ExtendedEditPlugin;
  * @generated
  */
 public class EEFUnderstandableQueryItemProvider
-	extends ItemProviderAdapter
+	extends ReferenceableObjectItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

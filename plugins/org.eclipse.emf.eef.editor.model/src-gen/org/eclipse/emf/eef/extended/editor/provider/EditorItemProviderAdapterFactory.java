@@ -335,6 +335,29 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.extended.editor.ReferenceableObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReferenceableObjectItemProvider referenceableObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.extended.editor.ReferenceableObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReferenceableObjectAdapter() {
+		if (referenceableObjectItemProvider == null) {
+			referenceableObjectItemProvider = new ReferenceableObjectItemProvider(this);
+		}
+
+		return referenceableObjectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +493,7 @@ public class EditorItemProviderAdapterFactory extends EditorAdapterFactory imple
 		if (eefEditorPagesItemProvider != null) eefEditorPagesItemProvider.dispose();
 		if (staticEEFEditorContributionItemProvider != null) staticEEFEditorContributionItemProvider.dispose();
 		if (dynamicEEFEditorContributionItemProvider != null) dynamicEEFEditorContributionItemProvider.dispose();
+		if (referenceableObjectItemProvider != null) referenceableObjectItemProvider.dispose();
 	}
 
 	/**

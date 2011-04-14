@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.FirstResourceRootRelativeInput;
 import org.eclipse.emf.eef.extended.editor.MasterDetailsPage;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
+import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
 import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
@@ -244,6 +245,12 @@ public class EditorSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EditorPackage.REFERENCEABLE_OBJECT: {
+				ReferenceableObject referenceableObject = (ReferenceableObject)theEObject;
+				T result = caseReferenceableObject(referenceableObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -455,6 +462,21 @@ public class EditorSwitch<T> {
 	 * @generated
 	 */
 	public T caseDynamicEEFEditorContribution(DynamicEEFEditorContribution object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Referenceable Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Referenceable Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferenceableObject(ReferenceableObject object) {
 		return null;
 	}
 

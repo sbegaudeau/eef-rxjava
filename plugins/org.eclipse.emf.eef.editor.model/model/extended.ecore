@@ -38,10 +38,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="EEFEditorPages" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.views/model/views.ecore#//Category"/>
     <eClassifiers xsi:type="ecore:EClass" name="StaticEEFEditorContribution" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding #//editor/EEFEditorContribution"/>
     <eClassifiers xsi:type="ecore:EClass" name="DynamicEEFEditorContribution" eSuperTypes="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFElementBinding #//editor/EEFEditorContribution"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ReferenceableObject"/>
   </eSubpackages>
   <eSubpackages name="query" nsURI="http://www.eclipse.org/emf/eef/extended/query/1.0.0"
       nsPrefix="eef-ext-qry">
-    <eClassifiers xsi:type="ecore:EClass" name="EEFUnderstandableQuery" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EEFUnderstandableQuery" abstract="true"
+        eSuperTypes="#//editor/ReferenceableObject"/>
     <eClassifiers xsi:type="ecore:EClass" name="OCLQuery" eSuperTypes="#//query/EEFUnderstandableQuery">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="query" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

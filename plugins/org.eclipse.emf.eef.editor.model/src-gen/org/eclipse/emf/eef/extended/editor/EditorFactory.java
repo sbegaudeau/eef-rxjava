@@ -120,6 +120,15 @@ public interface EditorFactory extends EFactory {
 	DynamicEEFEditorContribution createDynamicEEFEditorContribution();
 
 	/**
+	 * Returns a new object of class '<em>Referenceable Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Referenceable Object</em>'.
+	 * @generated
+	 */
+	ReferenceableObject createReferenceableObject();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
