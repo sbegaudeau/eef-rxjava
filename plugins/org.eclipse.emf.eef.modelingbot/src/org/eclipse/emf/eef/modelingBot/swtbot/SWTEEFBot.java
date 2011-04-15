@@ -286,35 +286,57 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 			final EStructuralFeature eContainingFeature, EClass type) {
 		if (propertiesEditionElement != null) {
 			// work on table composition
-			SWTBotHelper.waitAllUiEvents();
-			assertNotNull("The editeur is not opened.", editor);
-			EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("No container is found to launch wizard.", container);
-			SWTBotHelper.waitAllUiEvents();
-			final SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor", selectNode);
-			initTab(propertiesEditionElement);
-			assertFalse("The set action must be define in a sequence.",
-					sequenceType == null);
-			propertiesEdition.addFeature(selectNode, propertiesEditionElement,
-					sequenceType);
-			SWTBotHelper.waitAllUiEvents();
-			return (EObject) EEFModelHelper.eGet(container,
-					propertiesEditionElement.getModel());
+			return add(propertiesEditionElement, referenceableObject);
 		} else {
 			// work on context menu
-			assertNotNull("The editeur is not opened.", editor);
-			final EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("No container is found to launch add action.",
-					container);
-			SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor", selectNode);
-			SWTBotHelper.clickContextMenu(selectNode, eContainingFeature
-					.getEType().getName());
-			SWTBotHelper.waitAllUiEvents();
-			return (EObject) EEFModelHelper.eGet(container, eContainingFeature);
+			return add(referenceableObject, eContainingFeature);
 		}
 
+	}
+
+	/**
+	 * Add PropertiesEditionElement
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 * @return
+	 */
+	private EObject add(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
+		SWTBotHelper.waitAllUiEvents();
+		assertNotNull("The editeur is not opened.", editor);
+		EObject container = getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull("No container is found to launch wizard.", container);
+		SWTBotHelper.waitAllUiEvents();
+		final SWTBotTreeItem selectNode = selectNode(editor, container);
+		assertNotNull("No element is selected in the editor", selectNode);
+		initTab(propertiesEditionElement);
+		assertFalse("The set action must be define in a sequence.",
+				sequenceType == null);
+		propertiesEdition.addFeature(selectNode, propertiesEditionElement,
+				sequenceType);
+		SWTBotHelper.waitAllUiEvents();
+		return (EObject) EEFModelHelper.eGet(container,
+				propertiesEditionElement.getModel());
+	}
+
+	/**
+	 * Add ReferenceableObject
+	 * @param referenceableObject
+	 * @param eContainingFeature
+	 * @return
+	 */
+	private EObject add(ReferenceableObject referenceableObject,
+			final EStructuralFeature eContainingFeature) {
+		assertNotNull("The editeur is not opened.", editor);
+		final EObject container = getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull("No container is found to launch add action.",
+				container);
+		SWTBotTreeItem selectNode = selectNode(editor, container);
+		assertNotNull("No element is selected in the editor", selectNode);
+		SWTBotHelper.clickContextMenu(selectNode, eContainingFeature
+				.getEType().getName());
+		SWTBotHelper.waitAllUiEvents();
+		return (EObject) EEFModelHelper.eGet(container, eContainingFeature);
 	}
 
 	/** 
@@ -325,32 +347,52 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 			ReferenceableObject referenceableObject) {
 		if (propertiesEditionElement != null) {
 			// work on table composition
-			SWTBotHelper.waitAllUiEvents();
-			assertNotNull("The editeur is not opened.", editor);
-			EObject remove = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("Element to remove does not exist.", remove);
-			EObject container = remove.eContainer();
-			assertNotNull("The container of the element to remove does not exist.", container);
-			SWTBotHelper.waitAllUiEvents();
-			final SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor", selectNode);
-			initTab(propertiesEditionElement);
-			assertFalse("The set action must be define in a sequence.",
-					sequenceType == null);
-			propertiesEdition.removeFeature(remove, propertiesEditionElement,
-					sequenceType);
-			SWTBotHelper.waitAllUiEvents();
+			removePropertiesEditionElement(propertiesEditionElement,
+					referenceableObject);
 		} else {
 			// work on context menu
-			assertNotNull("The editeur is not opened.", editor);
-			final EObject container = getEObjectFromReferenceableEObject(referenceableObject);
-			assertNotNull("No container is found to launch add action.",
-					container);
-			SWTBotTreeItem selectNode = selectNode(editor, container);
-			assertNotNull("No element is selected in the editor", selectNode);
-			SWTBotHelper.clickContextMenu(selectNode, UIConstants.DELETE_MENU);
-			SWTBotHelper.waitAllUiEvents();
+			remove(referenceableObject);
 		}
+	}
+
+	/**
+	 * Remove propertiesEditionElement
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 */
+	private void removePropertiesEditionElement(
+			PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
+		SWTBotHelper.waitAllUiEvents();
+		assertNotNull("The editeur is not opened.", editor);
+		EObject remove = getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull("Element to remove does not exist.", remove);
+		EObject container = remove.eContainer();
+		assertNotNull("The container of the element to remove does not exist.", container);
+		SWTBotHelper.waitAllUiEvents();
+		final SWTBotTreeItem selectNode = selectNode(editor, container);
+		assertNotNull("No element is selected in the editor", selectNode);
+		initTab(propertiesEditionElement);
+		assertFalse("The set action must be define in a sequence.",
+				sequenceType == null);
+		propertiesEdition.removeFeature(remove, propertiesEditionElement,
+				sequenceType);
+		SWTBotHelper.waitAllUiEvents();
+	}
+
+	/**
+	 * Remove referenceableObject
+	 * @param referenceableObject
+	 */
+	private void remove(ReferenceableObject referenceableObject) {
+		assertNotNull("The editeur is not opened.", editor);
+		final EObject container = getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull("No container is found to launch add action.",
+				container);
+		SWTBotTreeItem selectNode = selectNode(editor, container);
+		assertNotNull("No element is selected in the editor", selectNode);
+		SWTBotHelper.clickContextMenu(selectNode, UIConstants.DELETE_MENU);
+		SWTBotHelper.waitAllUiEvents();
 	}
 
 	/** 

@@ -63,7 +63,7 @@ public class PropertiesEditionHelper {
 	 * @param value
 	 * @param sequenceType
 	 */
-	public void updateText(SWTBotTreeItem selectNode, ElementEditor elementEditor, String value, SequenceType sequenceType) {
+	private void updateText(SWTBotTreeItem selectNode, ElementEditor elementEditor, String value, SequenceType sequenceType) {
 		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
 			updateText(elementEditor, value);
 		} else if (sequenceType.equals(SequenceType.WIZARD)) {
