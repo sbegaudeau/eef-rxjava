@@ -17,6 +17,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.components.PropertiesEditionComponent;
+import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.View;
 
@@ -60,7 +62,24 @@ public class EEFModelHelper {
 		EObject container = obj.eContainer();
 		while (container != null) {
 			if (container instanceof View) {
+				
 				return (View) container;
+			}
+			container = container.eContainer();
+		}
+		return null;
+	}
+	
+	/**
+	 * @param editingElement
+	 * @return the {@link PropertiesEditionComponent} containing the given editingElement
+	 */
+	public static PropertiesEditionComponent getComponent(PropertiesEditionElement editingElement) {
+		EObject container = editingElement.eContainer();
+		while (container != null) {
+			if (container instanceof PropertiesEditionComponent) {
+				
+				return (PropertiesEditionComponent) container;
 			}
 			container = container.eContainer();
 		}
