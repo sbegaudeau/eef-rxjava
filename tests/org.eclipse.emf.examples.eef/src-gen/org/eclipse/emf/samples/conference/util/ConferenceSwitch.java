@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceSwitch.java,v 1.3 2011/01/05 15:06:12 glefur Exp $
+ * $Id: ConferenceSwitch.java,v 1.4 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.util;
 
@@ -117,6 +117,12 @@ public class ConferenceSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ConferencePackage.ROOM: {
+				Room room = (Room)theEObject;
+				T result = caseRoom(room);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -193,6 +199,21 @@ public class ConferenceSwitch<T> {
 	 * @generated
 	 */
 	public T caseSite(Site object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Room</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Room</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoom(Room object) {
 		return null;
 	}
 

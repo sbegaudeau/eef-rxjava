@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceAdapterFactory.java,v 1.3 2011/01/05 15:06:12 glefur Exp $
+ * $Id: ConferenceAdapterFactory.java,v 1.4 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.util;
 
@@ -92,6 +92,10 @@ public class ConferenceAdapterFactory extends AdapterFactoryImpl {
 				return createSiteAdapter();
 			}
 			@Override
+			public Adapter caseRoom(Room object) {
+				return createRoomAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -178,6 +182,20 @@ public class ConferenceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSiteAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.samples.conference.Room <em>Room</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.samples.conference.Room
+	 * @generated
+	 */
+	public Adapter createRoomAdapter() {
 		return null;
 	}
 

@@ -72,6 +72,11 @@
       <genFeatures createChild="false" propertyDescription="Information about this site"
           ecoreFeature="ecore:EAttribute conference.ecore#//Site/documentation"/>
       <genFeatures createChild="false" propertyDescription="Name of the place" ecoreFeature="ecore:EAttribute conference.ecore#//Site/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference conference.ecore#//Site/rooms"/>
+    </genClasses>
+    <genClasses ecoreClass="conference.ecore#//Room">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute conference.ecore#//Room/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute conference.ecore#//Room/capacity"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

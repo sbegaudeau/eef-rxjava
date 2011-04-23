@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferencePackageImpl.java,v 1.5 2011/01/05 15:06:12 glefur Exp $
+ * $Id: ConferencePackageImpl.java,v 1.6 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferenceFactory;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
+import org.eclipse.emf.samples.conference.Room;
 import org.eclipse.emf.samples.conference.Site;
 import org.eclipse.emf.samples.conference.Talk;
 import org.eclipse.emf.samples.conference.Topic;
@@ -63,6 +64,13 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 	 * @generated
 	 */
 	private EClass siteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass roomEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -414,6 +422,42 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSite_Rooms() {
+		return (EReference)siteEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRoom() {
+		return roomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRoom_Name() {
+		return (EAttribute)roomEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRoom_Capacity() {
+		return (EAttribute)roomEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTALK_TYPE() {
 		return talK_TYPEEEnum;
 	}
@@ -489,6 +533,11 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 		siteEClass = createEClass(SITE);
 		createEAttribute(siteEClass, SITE__DOCUMENTATION);
 		createEAttribute(siteEClass, SITE__NAME);
+		createEReference(siteEClass, SITE__ROOMS);
+
+		roomEClass = createEClass(ROOM);
+		createEAttribute(roomEClass, ROOM__NAME);
+		createEAttribute(roomEClass, ROOM__CAPACITY);
 
 		// Create enums
 		talK_TYPEEEnum = createEEnum(TALK_TYPE);
@@ -559,6 +608,11 @@ public class ConferencePackageImpl extends EPackageImpl implements ConferencePac
 		initEClass(siteEClass, Site.class, "Site", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSite_Documentation(), ecorePackage.getEString(), "documentation", null, 1, 1, Site.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSite_Name(), ecorePackage.getEString(), "name", null, 1, 1, Site.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSite_Rooms(), this.getRoom(), null, "rooms", null, 0, -1, Site.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(roomEClass, Room.class, "Room", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRoom_Name(), ecorePackage.getEString(), "name", null, 1, 1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoom_Capacity(), ecorePackage.getEInt(), "capacity", null, 0, 1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(talK_TYPEEEnum, org.eclipse.emf.samples.conference.TALK_TYPE.class, "TALK_TYPE");

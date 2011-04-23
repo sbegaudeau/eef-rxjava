@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferencePackage.java,v 1.4 2011/01/05 15:06:12 glefur Exp $
+ * $Id: ConferencePackage.java,v 1.5 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference;
 
@@ -372,13 +372,59 @@ public interface ConferencePackage extends EPackage {
 	int SITE__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Rooms</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE__ROOMS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Site</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SITE_FEATURE_COUNT = 2;
+	int SITE_FEATURE_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.samples.conference.impl.RoomImpl <em>Room</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.samples.conference.impl.RoomImpl
+	 * @see org.eclipse.emf.samples.conference.impl.ConferencePackageImpl#getRoom()
+	 * @generated
+	 */
+	int ROOM = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOM__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOM__CAPACITY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Room</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOM_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.samples.conference.TALK_TYPE <em>TALK TYPE</em>}' enum.
@@ -388,7 +434,7 @@ public interface ConferencePackage extends EPackage {
 	 * @see org.eclipse.emf.samples.conference.impl.ConferencePackageImpl#getTALK_TYPE()
 	 * @generated
 	 */
-	int TALK_TYPE = 5;
+	int TALK_TYPE = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.samples.conference.GENDER <em>GENDER</em>}' enum.
@@ -398,7 +444,7 @@ public interface ConferencePackage extends EPackage {
 	 * @see org.eclipse.emf.samples.conference.impl.ConferencePackageImpl#getGENDER()
 	 * @generated
 	 */
-	int GENDER = 6;
+	int GENDER = 7;
 
 
 	/**
@@ -727,6 +773,49 @@ public interface ConferencePackage extends EPackage {
 	EAttribute getSite_Name();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.samples.conference.Site#getRooms <em>Rooms</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rooms</em>'.
+	 * @see org.eclipse.emf.samples.conference.Site#getRooms()
+	 * @see #getSite()
+	 * @generated
+	 */
+	EReference getSite_Rooms();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.samples.conference.Room <em>Room</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Room</em>'.
+	 * @see org.eclipse.emf.samples.conference.Room
+	 * @generated
+	 */
+	EClass getRoom();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.samples.conference.Room#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.samples.conference.Room#getName()
+	 * @see #getRoom()
+	 * @generated
+	 */
+	EAttribute getRoom_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.samples.conference.Room#getCapacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Capacity</em>'.
+	 * @see org.eclipse.emf.samples.conference.Room#getCapacity()
+	 * @see #getRoom()
+	 * @generated
+	 */
+	EAttribute getRoom_Capacity();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.samples.conference.TALK_TYPE <em>TALK TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1017,6 +1106,40 @@ public interface ConferencePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SITE__NAME = eINSTANCE.getSite_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Rooms</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SITE__ROOMS = eINSTANCE.getSite_Rooms();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.samples.conference.impl.RoomImpl <em>Room</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.samples.conference.impl.RoomImpl
+		 * @see org.eclipse.emf.samples.conference.impl.ConferencePackageImpl#getRoom()
+		 * @generated
+		 */
+		EClass ROOM = eINSTANCE.getRoom();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROOM__NAME = eINSTANCE.getRoom_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Capacity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROOM__CAPACITY = eINSTANCE.getRoom_Capacity();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.samples.conference.TALK_TYPE <em>TALK TYPE</em>}' enum.

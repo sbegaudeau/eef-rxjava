@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Site.java,v 1.3 2011/01/05 15:06:12 glefur Exp $
+ * $Id: Site.java,v 1.4 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.samples.conference.Site#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.eclipse.emf.samples.conference.Site#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.samples.conference.Site#getRooms <em>Rooms</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +79,21 @@ public interface Site extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rooms</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.samples.conference.Room}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rooms</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rooms</em>' containment reference list.
+	 * @see org.eclipse.emf.samples.conference.ConferencePackage#getSite_Rooms()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Room> getRooms();
 
 } // Site

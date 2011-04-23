@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceFactoryImpl.java,v 1.3 2011/01/05 15:06:12 glefur Exp $
+ * $Id: ConferenceFactoryImpl.java,v 1.4 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.impl;
 
@@ -66,6 +66,7 @@ public class ConferenceFactoryImpl extends EFactoryImpl implements ConferenceFac
 			case ConferencePackage.TALK: return createTalk();
 			case ConferencePackage.TOPIC: return createTopic();
 			case ConferencePackage.SITE: return createSite();
+			case ConferencePackage.ROOM: return createRoom();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -153,6 +154,16 @@ public class ConferenceFactoryImpl extends EFactoryImpl implements ConferenceFac
 	public Site createSite() {
 		SiteImpl site = new SiteImpl();
 		return site;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Room createRoom() {
+		RoomImpl room = new RoomImpl();
+		return room;
 	}
 
 	/**

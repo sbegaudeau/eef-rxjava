@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceFactory.java,v 1.3 2011/01/05 15:06:12 glefur Exp $
+ * $Id: ConferenceFactory.java,v 1.4 2011/04/23 20:13:47 glefur Exp $
  */
 package org.eclipse.emf.samples.conference;
 
@@ -69,6 +69,15 @@ public interface ConferenceFactory extends EFactory {
 	 * @generated
 	 */
 	Site createSite();
+
+	/**
+	 * Returns a new object of class '<em>Room</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Room</em>'.
+	 * @generated
+	 */
+	Room createRoom();
 
 	/**
 	 * Returns the package supported by this factory.
