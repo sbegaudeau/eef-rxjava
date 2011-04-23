@@ -27,34 +27,39 @@ import org.hamcrest.Matcher;
 
 /**
  * A context menu wrapper to handle click correctly.
+ * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class SWTBotContextMenu {
 
-	
 	private Control control;
-	
+
 	/**
 	 * .
-	 * @param treeItem .
+	 * 
+	 * @param treeItem
+	 *            .
 	 */
 	public SWTBotContextMenu(final SWTBotTreeItem treeItem) {
 		this.control = treeItem.widget.getParent();
-		
+
 	}
-	
+
 	/**
 	 * .
-	 * @param tree .
+	 * 
+	 * @param tree
+	 *            .
 	 */
 	public SWTBotContextMenu(final SWTBotTree tree) {
 		this.control = tree.widget;
 	}
-	
+
 	/**
 	 * Click on the first menu item matching the text.
 	 * 
-	 * @param text the text on the context menu.
+	 * @param text
+	 *            the text on the context menu.
 	 * @return the context menu
 	 */
 	@SuppressWarnings("unchecked")
@@ -63,7 +68,7 @@ public class SWTBotContextMenu {
 		Matcher<MenuItem> withMnemonic = WidgetMatcherFactory.withMnemonic(text);
 		final Matcher<MenuItem> matcher = WidgetMatcherFactory.allOf(WidgetMatcherFactory.widgetOfType(MenuItem.class), withMnemonic);
 		final ContextMenuFinder menuFinder = new FirstContextMenuFinder(control);
-		
+
 		final List<MenuItem> items = new ArrayList<MenuItem>();
 
 		new SWTBot().waitUntil(new DefaultCondition() {
@@ -76,13 +81,13 @@ public class SWTBotContextMenu {
 				return !items.isEmpty();
 			}
 		});
-		
+
 		MenuItem menuItem = items.get(0);
 		if (!menuItem.isDisposed()) {
-			 new SWTBotMenu(menuItem, matcher).click();
+			new SWTBotMenu(menuItem, matcher).click();
 		} else {
-			//do nothing or print something in debug
+			// do nothing or print something in debug
 		}
 		return this;
-	}	
+	}
 }

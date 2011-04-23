@@ -40,10 +40,10 @@ import org.eclipse.emf.eef.modelingBot.swtbot.ComposedEEFBot;
  * Interpreter for a list of modeling bots.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
+ * 
  */
 public class ComposedEEFInterpreter implements IModelingBotInterpreter {
-	
+
 	/**
 	 * Editing domain
 	 */
@@ -55,22 +55,25 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	/**
 	 * Map Bot <-> interpreter.
 	 */
-//	private Map<IModelingBot, IModelingBotInterpreter> mapModelingBotInterpreter = new HashMap<IModelingBot, IModelingBotInterpreter>();
+	// private Map<IModelingBot, IModelingBotInterpreter>
+	// mapModelingBotInterpreter = new HashMap<IModelingBot,
+	// IModelingBotInterpreter>();
 	/**
 	 * ComposedEEFBot
 	 */
 	private IModelingBot composedEEFBot;
-	
+
 	/**
 	 * Create the interpreter.
-	 * @param editingDomain editing domain
+	 * 
+	 * @param editingDomain
+	 *            editing domain
 	 */
 	public ComposedEEFInterpreter(Collection<IModelingBot> modelingBots, EditingDomain editingDomain) {
 		super();
 		this.editingDomain = editingDomain;
 		initInterpreter(modelingBots);
 	}
-
 
 	private void initInterpreter(Collection<IModelingBot> collection) {
 		for (IModelingBot iModelingBot : collection) {
@@ -85,17 +88,16 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	public void dispose() {
 
 	}
-	/** 
+
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
 	 */
-	public void runModelingBot(String path)
-			throws CoreException, IOException {
+	public void runModelingBot(String path) throws CoreException, IOException {
 		Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
-		ModelingBot mbot = (ModelingBot) modelingBotResource
-				.getContents().get(0);
+		ModelingBot mbot = (ModelingBot) modelingBotResource.getContents().get(0);
 		assertNotNull("The modeling bot resource is empty.", mbot);
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
@@ -105,8 +107,8 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		}
 
 	}
-	
-	/** 
+
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
@@ -127,8 +129,8 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 			}
 		}
 	}
-	
-	/** 
+
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runAction(org.eclipse.emf.eef.modelingBot.Action)
 	 */
@@ -141,8 +143,8 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 			}
 		}
 	}
-	
-	/** 
+
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
 	 */
@@ -151,7 +153,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 			iModelingBot.getModelingBotInterpreter().finishBatchEditing(processing);
 		}
 	}
-	
+
 	private void setSequenceType(SequenceType sequenceType) {
 		for (IModelingBot iModelingBot : modelingBots) {
 			iModelingBot.setSequenceType(sequenceType);
@@ -160,20 +162,21 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	/**
 	 * Get the loaded resource.
-	 * @param path path of the model
+	 * 
+	 * @param path
+	 *            path of the model
 	 * @return the resource loaded
 	 * @throws IOException
 	 * @throws CoreException
 	 */
 	public Resource loadModel(String path) throws IOException, CoreException {
 		URI fileURI = URI.createPlatformPluginURI(path, true);
-		Resource resource = editingDomain.getResourceSet().getResource(fileURI,
-				true);
+		Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
 	}
-	
-	/** 
+
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
 	 */

@@ -42,7 +42,6 @@ public class SWTBotHelper {
 	 */
 	private static SWTWorkbenchBot bot = new SWTWorkbenchBot();
 
-
 	/**
 	 * Press the enter key
 	 * 
@@ -52,8 +51,7 @@ public class SWTBotHelper {
 	public static void pressEnterKey(final Widget widget) {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				widget.notifyListeners(SWT.KeyDown, keyEvent(SWT.NONE, SWT.CR,
-						SWT.Selection, widget));
+				widget.notifyListeners(SWT.KeyDown, keyEvent(SWT.NONE, SWT.CR, SWT.Selection, widget));
 			}
 		});
 	}
@@ -63,13 +61,12 @@ public class SWTBotHelper {
 			public void run() {
 				Event event = createEvent(widget);
 				event.type = SWT.FocusOut;
-				
+
 				widget.notifyListeners(SWT.FocusOut, event);
 			}
 		});
 	}
 
-	
 	/**
 	 * Press the enter key
 	 * 
@@ -79,22 +76,20 @@ public class SWTBotHelper {
 	public static void pressEnterKeyInTabContainer(final Widget widget) {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				searchTabContainer(widget).notifyListeners(SWT.Traverse, keyEvent(SWT.NONE, SWT.CR,
-						SWT.Selection, widget));
+				searchTabContainer(widget).notifyListeners(SWT.Traverse, keyEvent(SWT.NONE, SWT.CR, SWT.Selection, widget));
 			}
 		});
 	}
 
 	private static Composite searchTabContainer(final Widget wid) {
-		Composite parent = ((Text)wid).getParent();
+		Composite parent = ((Text) wid).getParent();
 		while (parent != null) {
-			if (parent instanceof Composite) 
+			if (parent instanceof Composite)
 				return parent;
 			parent = parent.getParent();
 		}
 		return null;
 	}
-
 
 	/**
 	 * @param c
@@ -109,8 +104,7 @@ public class SWTBotHelper {
 	 * @see Event#stateMask
 	 * @since 1.2
 	 */
-	private static Event keyEvent(int modificationKey, char c, int keyCode,
-			Widget widget) {
+	private static Event keyEvent(int modificationKey, char c, int keyCode, Widget widget) {
 		Event keyEvent = createEvent(widget);
 		keyEvent.stateMask = modificationKey;
 		keyEvent.character = c;
@@ -127,140 +121,139 @@ public class SWTBotHelper {
 		return event;
 	}
 
+	/**
+	 * Select the tab with the name label in the property views.
+	 * 
+	 * @param label
+	 *            Label to find.
+	 */
+	// CHECKSTYLE:OFF
+	@SuppressWarnings({ "restriction", "unchecked" })
+	// CHECKSTYLE:ON
+	public static void selectPropertyTabItem(final String label) {
+		final Matcher<TabbedPropertyList> matcher = WidgetMatcherFactory.allOf(WidgetMatcherFactory.widgetOfType(TabbedPropertyList.class));
+		final List<TabbedPropertyList> widgets = widget(matcher);
+
+		UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+			public void run() {
+				for (final TabbedPropertyList tabbedProperty : widgets) {
+					final ListElement tabItem = getTabItem(label, tabbedProperty);
+					if (tabItem != null) {
+						final Event mouseEvent = createEvent(tabItem, tabItem.getBounds().x, tabItem.getBounds().y, 1, SWT.BUTTON1, 1);
+						tabItem.notifyListeners(SWT.MouseUp, mouseEvent);
+					}
+				}
+			}
+		});
+	}
 
 	/**
-     * Select the tab with the name label in the property views.
-     * 
-     * @param label
-     *            Label to find.
-     */
-    // CHECKSTYLE:OFF
-    @SuppressWarnings( { "restriction", "unchecked" })
-    // CHECKSTYLE:ON
-    public static void selectPropertyTabItem(final String label) {
-        final Matcher<TabbedPropertyList> matcher = WidgetMatcherFactory.allOf(WidgetMatcherFactory.widgetOfType(TabbedPropertyList.class));
-        final List<TabbedPropertyList> widgets = widget(matcher);
+	 * Find widget.
+	 * 
+	 * @param matcher
+	 *            the matcher used to match widgets.
+	 * @return all the widgets matching the matcher.
+	 */
+	@SuppressWarnings("restriction")
+	public static List<TabbedPropertyList> widget(final Matcher<TabbedPropertyList> matcher) {
+		final WaitForObjectCondition<TabbedPropertyList> waitForWidget = Conditions.waitForWidget(matcher);
+		bot.waitUntilWidgetAppears(waitForWidget);
+		return waitForWidget.getAllMatches();
+	}
 
-        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
-            public void run() {
-                for (final TabbedPropertyList tabbedProperty : widgets) {
-                    final ListElement tabItem = getTabItem(label, tabbedProperty);
-                    if (tabItem != null) {
-                        final Event mouseEvent = createEvent(tabItem, tabItem.getBounds().x, tabItem.getBounds().y, 1, SWT.BUTTON1, 1);
-                        tabItem.notifyListeners(SWT.MouseUp, mouseEvent);
-                    }
-                }
-            }
-        });
-    }
-    
-    /**
-     * Find widget.
-     * 
-     * @param matcher
-     *            the matcher used to match widgets.
-     * @return all the widgets matching the matcher.
-     */
-    @SuppressWarnings("restriction")
-    public static List<TabbedPropertyList> widget(final Matcher<TabbedPropertyList> matcher) {
-        final WaitForObjectCondition<TabbedPropertyList> waitForWidget = Conditions.waitForWidget(matcher);
-        bot.waitUntilWidgetAppears(waitForWidget);
-        return waitForWidget.getAllMatches();
-    }
+	/**
+	 * Create a event <br>
+	 * 
+	 * @param x
+	 *            the x coordinate of the mouse event.
+	 * @param y
+	 *            the y coordinate of the mouse event.
+	 * @param button
+	 *            the mouse button that was clicked.
+	 * @param stateMask
+	 *            the state of the keyboard modifier keys.
+	 * @param count
+	 *            the number of times the mouse was clicked.
+	 * @return an event that encapsulates {@link #widget} and {@link #display}
+	 */
+	private static Event createEvent(final Widget widget, final int x, final int y, final int button, final int stateMask, final int count) {
+		final Event event = new Event();
+		event.time = (int) System.currentTimeMillis();
+		event.widget = widget;
+		event.display = bot.getDisplay();
+		event.x = x;
+		event.y = y;
+		event.button = button;
+		event.stateMask = stateMask;
+		event.count = count;
+		return event;
+	}
 
-    /**
-     * Create a event <br>
-     * 
-     * @param x
-     *            the x coordinate of the mouse event.
-     * @param y
-     *            the y coordinate of the mouse event.
-     * @param button
-     *            the mouse button that was clicked.
-     * @param stateMask
-     *            the state of the keyboard modifier keys.
-     * @param count
-     *            the number of times the mouse was clicked.
-     * @return an event that encapsulates {@link #widget} and {@link #display}
-     */
-    private static Event createEvent(final Widget widget, final int x, final int y, final int button, final int stateMask, final int count) {
-        final Event event = new Event();
-        event.time = (int) System.currentTimeMillis();
-        event.widget = widget;
-        event.display = bot.getDisplay();
-        event.x = x;
-        event.y = y;
-        event.button = button;
-        event.stateMask = stateMask;
-        event.count = count;
-        return event;
-    }
+	/**
+	 * Select the tab with the name label in the property views
+	 * 
+	 * @param label
+	 */
+	@SuppressWarnings("restriction")
+	private static ListElement getTabItem(final String label, final TabbedPropertyList tabbedProperty) {
+		for (final Object listElement : tabbedProperty.getTabList()) {
+			if (listElement instanceof ListElement && ((ListElement) listElement).getTabItem().getText().equals(label)) {
+				return (ListElement) listElement;
+			}
+		}
+		return null;
+	}
 
-    /**
-     * Select the tab with the name label in the property views
-     * 
-     * @param label
-     */
-    @SuppressWarnings("restriction")
-    private static ListElement getTabItem(final String label, final TabbedPropertyList tabbedProperty) {
-        for (final Object listElement : tabbedProperty.getTabList()) {
-            if (listElement instanceof ListElement && ((ListElement) listElement).getTabItem().getText().equals(label)) {
-                return (ListElement) listElement;
-            }
-        }
-        return null;
-    }
+	/**
+	 * WARNING this class should move in SWTBot one day. WARNING if the text is
+	 * not found it will not failed this method to get disposed elements with
+	 * the current click on context menu SWTBot method
+	 * 
+	 * @param treeItem
+	 *            the current item
+	 * @param text
+	 *            the menu text
+	 */
+	public static void clickContextMenu(final SWTBotTreeItem treeItem, final String text) {
+		UIThreadRunnable.asyncExec(new VoidResult() {
 
-    /**
-     * WARNING this class should move in SWTBot one day. WARNING if the text is
-     * not found it will not failed this method to get disposed elements with
-     * the current click on context menu SWTBot method
-     * 
-     * @param treeItem
-     *            the current item
-     * @param text
-     *            the menu text
-     */
-    public static void clickContextMenu(final SWTBotTreeItem treeItem, final String text) {
-        UIThreadRunnable.asyncExec(new VoidResult() {
+			public void run() {
+				final SWTBotContextMenu menu = new SWTBotContextMenu(treeItem);
+				menu.click(text);
+			}
+		});
+	}
 
-            public void run() {
-                final SWTBotContextMenu menu = new SWTBotContextMenu(treeItem);
-                menu.click(text);
-            }
-        });
-    }
+	/**
+	 * WARNING this class should move in SWTBot one day. WARNING if the text is
+	 * not found it will not failed this method to get disposed elements with
+	 * the current click on context menu SWTBot method
+	 * 
+	 * @param tree
+	 *            the tree
+	 * @param text
+	 *            the menu text
+	 */
+	public static void clickContextMenu(final SWTBotTree tree, final String text) {
+		UIThreadRunnable.asyncExec(new VoidResult() {
+			public void run() {
+				final SWTBotContextMenu menu = new SWTBotContextMenu(tree);
+				menu.click(text);
+			}
+		});
+	}
 
-    /**
-     * WARNING this class should move in SWTBot one day. WARNING if the text is
-     * not found it will not failed this method to get disposed elements with
-     * the current click on context menu SWTBot method
-     * 
-     * @param tree
-     *            the tree
-     * @param text
-     *            the menu text
-     */
-    public static void clickContextMenu(final SWTBotTree tree, final String text) {
-        UIThreadRunnable.asyncExec(new VoidResult() {
-            public void run() {
-                final SWTBotContextMenu menu = new SWTBotContextMenu(tree);
-                menu.click(text);
-            }
-        });
-    }
-    
-    /**
-     * Hack method to ensure that previous call was processed fully.
-     */
-    public static void waitAllUiEvents() {
-        // use another sync exec to ensure that previous call was processed
-        // fully
-        UIThreadRunnable.syncExec(new VoidResult() {
-            public void run() {
-                // do nothing, just wait for all events to be processed
-            }
-        });
-    }
+	/**
+	 * Hack method to ensure that previous call was processed fully.
+	 */
+	public static void waitAllUiEvents() {
+		// use another sync exec to ensure that previous call was processed
+		// fully
+		UIThreadRunnable.syncExec(new VoidResult() {
+			public void run() {
+				// do nothing, just wait for all events to be processed
+			}
+		});
+	}
 
 }

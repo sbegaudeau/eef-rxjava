@@ -28,44 +28,49 @@ import org.hamcrest.Matcher;
 
 /**
  * A context menu finder, which stops to search when he found one result.
+ * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class FirstContextMenuFinder extends ContextMenuFinder {
 
 	/**
 	 * Constructs the context menu finder for the given control to be searched.
-	 *
-	 * @param control the control that has a context menu.
+	 * 
+	 * @param control
+	 *            the control that has a context menu.
 	 */
 	public FirstContextMenuFinder(Control control) {
 		super(control);
 	}
 
-	
 	/**
-	 * Finds all the menus using the given matcher in the set of shells provided. If recursive is set, it will attempt
-	 * to find the controls recursively in each of the menus it that is found.
-	 *
-	 * @param shells the shells to probe for menus.
-	 * @param matcher the matcher that can match menus and menu items.
-	 * @param recursive if set to true, will find sub-menus as well.
+	 * Finds all the menus using the given matcher in the set of shells
+	 * provided. If recursive is set, it will attempt to find the controls
+	 * recursively in each of the menus it that is found.
+	 * 
+	 * @param shells
+	 *            the shells to probe for menus.
+	 * @param matcher
+	 *            the matcher that can match menus and menu items.
+	 * @param recursive
+	 *            if set to true, will find sub-menus as well.
 	 * @return all menus in the specified shells that match the matcher.
 	 */
 	public List<MenuItem> findMenus(Shell[] shells, Matcher<MenuItem> matcher, boolean recursive) {
 		LinkedHashSet<MenuItem> result = new LinkedHashSet<MenuItem>();
-		for (Shell shell : shells)  {
+		for (Shell shell : shells) {
 			result.addAll(findMenus(shell, matcher, recursive));
 			if (!result.isEmpty())
 				break;
-		}	
+		}
 		return new ArrayList<MenuItem>(result);
 	}
 
-	
-	
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.swtbot.swt.finder.finders.MenuFinder#findMenus(org.eclipse.swt.widgets.Menu, org.hamcrest.Matcher, boolean)
+	 * 
+	 * @see org.eclipse.swtbot.swt.finder.finders.MenuFinder#findMenus(org.eclipse.swt.widgets.Menu,
+	 *      org.hamcrest.Matcher, boolean)
 	 */
 	public List<MenuItem> findMenus(final Menu bar, final Matcher<MenuItem> matcher, final boolean recursive) {
 		return UIThreadRunnable.syncExec(display, new ListResult<MenuItem>() {
@@ -74,7 +79,7 @@ public class FirstContextMenuFinder extends ContextMenuFinder {
 			}
 		});
 	}
-	
+
 	/**
 	 * @param bar
 	 * @param matcher
@@ -92,7 +97,7 @@ public class FirstContextMenuFinder extends ContextMenuFinder {
 				}
 				if (matcher.matches(menuItem)) {
 					result.add(menuItem);
-					/* we found one, do not continue*/
+					/* we found one, do not continue */
 					break;
 				}
 				if (recursive) {
@@ -100,7 +105,7 @@ public class FirstContextMenuFinder extends ContextMenuFinder {
 					if (!result.isEmpty())
 						break;
 				}
-					
+
 			}
 			bar.notifyListeners(SWT.Hide, new Event());
 		}
@@ -110,7 +115,5 @@ public class FirstContextMenuFinder extends ContextMenuFinder {
 	private boolean isSeparator(MenuItem menuItem) {
 		return (menuItem.getStyle() & SWT.SEPARATOR) != 0;
 	}
-	
+
 }
-
-

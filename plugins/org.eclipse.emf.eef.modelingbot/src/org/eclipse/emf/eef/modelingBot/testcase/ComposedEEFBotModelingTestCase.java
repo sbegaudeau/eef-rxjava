@@ -27,10 +27,10 @@ import org.junit.Before;
  * SwtBot modeling test case with SWTEEFBot.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
+ * 
  */
 public abstract class ComposedEEFBotModelingTestCase extends SWTBotEclipseTestCase {
-	
+
 	/**
 	 * An instance of composed bot.
 	 * 
@@ -49,10 +49,10 @@ public abstract class ComposedEEFBotModelingTestCase extends SWTBotEclipseTestCa
 		super.setUp();
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
-            public void run() {
-            	PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(true);
-            }
-        });
+			public void run() {
+				PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(true);
+			}
+		});
 
 		List<IModelingBot> bots = new ArrayList<IModelingBot>(2);
 		swtEEFBot = new SWTEEFBot();
@@ -64,31 +64,31 @@ public abstract class ComposedEEFBotModelingTestCase extends SWTBotEclipseTestCa
 		bots.add(batchModeling);
 		composedBot = new ComposedEEFBot(bots);
 	}
-	
+
 	@Override
 	protected void tearDown() throws Exception {
-        // Close an eventual popup if the test failed and a popup remain opened
-        final SWTBotShell[] foundShells = bot.shells();
-        for (final SWTBotShell swtBotShell : foundShells) {
-            // Close all opened windows except Eclipse
-            if (swtBotShell.isOpen() && !swtBotShell.getText().endsWith("Eclipse SDK") && !swtBotShell.getText().endsWith("Eclipse Platform")) {
-                swtBotShell.close();
-            }
-        }
+		// Close an eventual popup if the test failed and a popup remain opened
+		final SWTBotShell[] foundShells = bot.shells();
+		for (final SWTBotShell swtBotShell : foundShells) {
+			// Close all opened windows except Eclipse
+			if (swtBotShell.isOpen() && !swtBotShell.getText().endsWith("Eclipse SDK") && !swtBotShell.getText().endsWith("Eclipse Platform")) {
+				swtBotShell.close();
+			}
+		}
 
-        SWTBotHelper.waitAllUiEvents();
+		SWTBotHelper.waitAllUiEvents();
 
-        swtEEFBot.closeAllEditors();
-        swtEEFBot.dispose();
+		swtEEFBot.closeAllEditors();
+		swtEEFBot.dispose();
 
-        SWTBotHelper.waitAllUiEvents();
+		SWTBotHelper.waitAllUiEvents();
 
 		super.tearDown();
 	}
-	
-	
+
 	/**
 	 * Test method : call bot.runModelingBot("test/model/My.modelingbot");
+	 * 
 	 * @throws Exception
 	 */
 	public abstract void testModelingBot() throws Exception;

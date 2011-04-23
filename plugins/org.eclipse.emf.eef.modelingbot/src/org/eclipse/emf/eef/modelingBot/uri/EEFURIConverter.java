@@ -25,24 +25,21 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
+ * 
  */
 public class EEFURIConverter extends ExtensibleURIConverterImpl {
-	
+
 	private ResourceSet myResourceSet;
-	
+
 	public EEFURIConverter() {
 		super();
 		myResourceSet = new ResourceSetImpl();
-		myResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
-		(Resource.Factory.Registry.DEFAULT_EXTENSION, 
-		 new XMIResourceFactoryImpl());
+		myResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 	}
-
-
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl#normalize(org.eclipse.emf.common.util.URI)
 	 */
 	public URI normalize(URI uri) {
@@ -64,7 +61,5 @@ public class EEFURIConverter extends ExtensibleURIConverterImpl {
 		}
 		return result;
 	}
-	
-	
 
 }

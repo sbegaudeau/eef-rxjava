@@ -166,7 +166,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		}
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createProject(java.lang.String)
 	 */
@@ -182,7 +182,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		button(UIConstants.FINISH_BUTTON).click();
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openProject(java.lang.String)
 	 */
@@ -191,7 +191,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotHelper.clickContextMenu(treeItem, UIConstants.OPEN_PROJECT_MENU);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeProject(java.lang.String)
 	 */
@@ -200,7 +200,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotHelper.clickContextMenu(treeItem, UIConstants.CLOSE_PROJECT_MENU);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#removeProject(java.lang.String)
 	 */
@@ -213,7 +213,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		sleep(3000);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openPerspective(java.lang.String)
 	 */
@@ -231,7 +231,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openEEFEditor(java.lang.String)
 	 */
@@ -250,7 +250,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		return treeItem;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeEditor(java.lang.String)
 	 */
@@ -259,7 +259,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		menu(UIConstants.FILE_MENU).menu(UIConstants.CLOSE_MENU).click();
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
 	 */
@@ -269,7 +269,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		menu(UIConstants.FILE_MENU).menu(UIConstants.SAVE_MENU).click();
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#add(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EClass)
 	 */
@@ -324,7 +324,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		return (EObject) EEFModelHelper.eGet(container, eContainingFeature);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
@@ -375,7 +375,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotHelper.waitAllUiEvents();
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
 	 */
@@ -415,7 +415,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		}
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
@@ -424,7 +424,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#unset(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
 	 */
@@ -432,7 +432,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		set(propertiesEditionElement, referenceableObject, eContainingFeature, "");
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#runModelingBot(java.lang.String)
 	 */
@@ -440,7 +440,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		interpreter.runModelingBot(path);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createModel(java.lang.String, java.lang.String, org.eclipse.emf.ecore.EClass)
 	 */
@@ -612,7 +612,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		this.testModelResource = resource;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#getActiveResource()
 	 */
@@ -629,7 +629,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		return helper.addButtonAdvancedTableComposition(viewID);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#cancel()
 	 */
@@ -644,7 +644,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		interpreter.dispose();
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#validateBatchEditing()
 	 */
@@ -652,7 +652,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		button(UIConstants.FINISH_BUTTON).click();
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setSequenceType(org.eclipse.emf.eef.modelingBot.SequenceType)
 	 */
@@ -707,7 +707,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		return null;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#check()
 	 */
@@ -715,7 +715,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#getModelingBotInterpreter()
 	 */

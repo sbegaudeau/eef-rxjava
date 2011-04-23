@@ -23,9 +23,10 @@ import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.View;
 
 public class EEFModelHelper {
-	
+
 	/**
 	 * Get the object from the feature.
+	 * 
 	 * @param container
 	 * @param eContainingFeature
 	 * @return the object from the feature.
@@ -33,11 +34,11 @@ public class EEFModelHelper {
 	public static Object eGet(EObject container, EStructuralFeature eContainingFeature) {
 		Object eGet = container.eGet(container.eClass().getEStructuralFeature(eContainingFeature.getName()));
 		if (eGet instanceof EList) {
-			return (EObject) ((EList) eGet).get(((EList) eGet).size()-1);
+			return (EObject) ((EList) eGet).get(((EList) eGet).size() - 1);
 		}
-		return (EObject)eGet;
+		return (EObject) eGet;
 	}
-	
+
 	/**
 	 * @param modelElement
 	 *            the element to process
@@ -53,7 +54,7 @@ public class EEFModelHelper {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @param obj
 	 * @return the view corresponding to the ElementEditor.
@@ -62,23 +63,24 @@ public class EEFModelHelper {
 		EObject container = obj.eContainer();
 		while (container != null) {
 			if (container instanceof View) {
-				
+
 				return (View) container;
 			}
 			container = container.eContainer();
 		}
 		return null;
 	}
-	
+
 	/**
 	 * @param editingElement
-	 * @return the {@link PropertiesEditionComponent} containing the given editingElement
+	 * @return the {@link PropertiesEditionComponent} containing the given
+	 *         editingElement
 	 */
 	public static PropertiesEditionComponent getComponent(PropertiesEditionElement editingElement) {
 		EObject container = editingElement.eContainer();
 		while (container != null) {
 			if (container instanceof PropertiesEditionComponent) {
-				
+
 				return (PropertiesEditionComponent) container;
 			}
 			container = container.eContainer();

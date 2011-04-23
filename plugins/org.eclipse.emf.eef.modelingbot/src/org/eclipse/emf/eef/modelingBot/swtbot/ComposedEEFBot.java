@@ -47,16 +47,14 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
  * Composed eef bot : SWTEEFbot and BatchModeling bot.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
+ * 
  */
 public class ComposedEEFBot implements IModelingBot {
-	
+
 	/**
 	 * The ResourceSet where to operate.
 	 */
-	protected EditingDomain editingDomain = new AdapterFactoryEditingDomain(
-			EEFRuntimePlugin.getDefault().getAdapterFactory(),
-			new BasicCommandStack());
+	protected EditingDomain editingDomain = new AdapterFactoryEditingDomain(EEFRuntimePlugin.getDefault().getAdapterFactory(), new BasicCommandStack());
 	/**
 	 * Composed eef interpreter
 	 */
@@ -76,7 +74,7 @@ public class ComposedEEFBot implements IModelingBot {
 		interpreter = new ComposedEEFInterpreter(list, editingDomain);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#runModelingBot(java.lang.String)
 	 */
@@ -84,7 +82,7 @@ public class ComposedEEFBot implements IModelingBot {
 		interpreter.runModelingBot(path);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createProject(java.lang.String)
 	 */
@@ -92,7 +90,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openProject(java.lang.String)
 	 */
@@ -100,7 +98,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeProject(java.lang.String)
 	 */
@@ -108,7 +106,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#removeProject(java.lang.String)
 	 */
@@ -116,7 +114,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openPerspective(java.lang.String)
 	 */
@@ -124,7 +122,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openEEFEditor(java.lang.String)
 	 */
@@ -132,7 +130,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeEditor(java.lang.String)
 	 */
@@ -140,7 +138,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
 	 */
@@ -148,57 +146,48 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#add(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EClass)
 	 */
-	public EObject add(PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, EClass type) {
+	public EObject add(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type) {
 		// do nothing
 		return null;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
-	public void remove(PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject) {
+	public void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject) {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, String value) {
+	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, String value) {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, ReferenceableObject value) {
+	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, ReferenceableObject value) {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#unset(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public void unset(PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature) {
+	public void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature) {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createModel(java.lang.String, java.lang.String, org.eclipse.emf.ecore.EClass)
 	 */
@@ -207,7 +196,7 @@ public class ComposedEEFBot implements IModelingBot {
 		return null;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#cancel()
 	 */
@@ -215,7 +204,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setSequenceType(org.eclipse.emf.eef.modelingBot.SequenceType)
 	 */
@@ -223,7 +212,7 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#validateBatchEditing()
 	 */
@@ -231,21 +220,21 @@ public class ComposedEEFBot implements IModelingBot {
 		// do nothing
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#check()
 	 */
 	public void check() {
 		for (IModelingBot bot : bots) {
-				bot.check();
+			bot.check();
 		}
 		for (int i = 0; i < bots.size(); i++) {
-			for (int j = i+1; j < bots.size(); j++) {
+			for (int j = i + 1; j < bots.size(); j++) {
 				assertExpectedModelReached(((IModelingBot) bots.toArray()[i]).getActiveResource(), ((IModelingBot) bots.toArray()[j]).getActiveResource());
 			}
 		}
-}
-	
+	}
+
 	public void assertExpectedModelReached(Resource expectedModel, Resource batchModel) {
 		try {
 			Map<String, Object> options = new HashMap<String, Object>();
@@ -260,7 +249,7 @@ public class ComposedEEFBot implements IModelingBot {
 			assertTrue("Error during model comparison", false);
 		}
 	}
-	
+
 	/**
 	 * TODO: check this with the EMF Compare team
 	 * 
@@ -271,13 +260,13 @@ public class ComposedEEFBot implements IModelingBot {
 	private List<EObject> filterAbnormalDiffElement(List<EObject> diffList) {
 		List<EObject> result = new ArrayList<EObject>();
 		for (EObject object : diffList) {
-			if (!(object instanceof DiffGroup) || (((DiffGroup)object).eContents().size() > 0))
+			if (!(object instanceof DiffGroup) || (((DiffGroup) object).eContents().size() > 0))
 				result.add(object);
 		}
 		return result;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#getActiveResource()
 	 */
@@ -285,7 +274,7 @@ public class ComposedEEFBot implements IModelingBot {
 		return null;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#getModelingBotInterpreter()
 	 */

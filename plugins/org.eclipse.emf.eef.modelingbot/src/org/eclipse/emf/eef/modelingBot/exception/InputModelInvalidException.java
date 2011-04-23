@@ -12,7 +12,7 @@ package org.eclipse.emf.eef.modelingBot.exception;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
-  *
+ * 
  */
 public class InputModelInvalidException extends Exception {
 
@@ -20,11 +20,11 @@ public class InputModelInvalidException extends Exception {
 	 * Serialization
 	 */
 	private static final long serialVersionUID = 5938605662196039272L;
-	
+
 	private String messageInfo;
-	
+
 	/**
-	 * default constructor 
+	 * default constructor
 	 */
 	public InputModelInvalidException() {
 		super();
@@ -32,15 +32,18 @@ public class InputModelInvalidException extends Exception {
 
 	/**
 	 * constructor with info
-	 * @param info the info
+	 * 
+	 * @param info
+	 *            the info
 	 */
 	public InputModelInvalidException(String info) {
 		super();
-		this.messageInfo = "The input model doesn't contain enough instance of " + info+ " EClass";
+		this.messageInfo = "The input model doesn't contain enough instance of " + info + " EClass";
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see java.lang.Throwable#getMessage()
 	 */
 	@Override
@@ -54,7 +57,5 @@ public class InputModelInvalidException extends Exception {
 		}
 		return message;
 	}
-	
-	
 
 }

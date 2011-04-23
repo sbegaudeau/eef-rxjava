@@ -19,9 +19,10 @@ import org.eclipse.emf.eef.modelingBot.Processing;
 import org.eclipse.emf.eef.modelingBot.Sequence;
 
 public interface IModelingBotInterpreter {
-	
+
 	/**
 	 * Run the modeling bot : interprete the sequence and actions of the model.
+	 * 
 	 * @param path
 	 * @throws CoreException
 	 * @throws IOException
@@ -30,13 +31,17 @@ public interface IModelingBotInterpreter {
 
 	/**
 	 * Run an action
-	 * @param action Action
+	 * 
+	 * @param action
+	 *            Action
 	 */
 	void runAction(Action action);
-	
+
 	/**
 	 * Run a sequence
-	 * @param sequence Sequence
+	 * 
+	 * @param sequence
+	 *            Sequence
 	 */
 	void runSequence(Sequence sequence);
 
@@ -44,7 +49,7 @@ public interface IModelingBotInterpreter {
 	 * @param processing
 	 */
 	void finishBatchEditing(Processing processing);
-	
+
 	/**
 	 * @return the PropertiesEditionContext
 	 */

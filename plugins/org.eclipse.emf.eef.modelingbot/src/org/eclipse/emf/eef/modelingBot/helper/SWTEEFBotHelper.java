@@ -29,7 +29,7 @@ import org.hamcrest.Matcher;
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class SWTEEFBotHelper {
-	
+
 	private SWTBot bot;
 
 	/**
@@ -39,63 +39,67 @@ public class SWTEEFBotHelper {
 		super();
 		this.bot = bot;
 	}
-	
 
 	/**
-	 * @param viewID the edited advEOFCV
+	 * @param viewID
+	 *            the edited advEOFCV
 	 * @return the browse button of the given advEOFCV
 	 */
 	public SWTBotButton browseButtonAdvancedEObjectFlatComboViewer(String viewID) {
-		return new SWTBotButton((Button)bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedEObjectFlatComboViewer::browsebutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedEObjectFlatComboViewer::browsebutton"))));
 	}
-	
+
 	/**
-	 * @param viewID the edited advEOFCV
+	 * @param viewID
+	 *            the edited advEOFCV
 	 * @return the remove button of the given advEOFCV
 	 */
 	public SWTBotButton removeButtonAdvancedEObjectFlatComboViewer(String viewID) {
-		return new SWTBotButton((Button)bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedEObjectFlatComboViewer::removebutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedEObjectFlatComboViewer::removebutton"))));
 	}
-	
+
 	/**
-	 * @param viewID the edited advReferencesTable
+	 * @param viewID
+	 *            the edited advReferencesTable
 	 * @return the add button of the given advReferencesTable
 	 */
 	public SWTBotButton addButtonAdvancedReferencesTable(String viewID) {
-		return new SWTBotButton((Button)bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedReferencesTable::addbutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedReferencesTable::addbutton"))));
 	}
-	
+
 	/**
-	 * @param viewID the edited advReferencesTable
+	 * @param viewID
+	 *            the edited advReferencesTable
 	 * @return the remove button of the given advReferencesTable
 	 */
 	public SWTBotButton removeButtonAdvancedReferencesTable(String viewID) {
-		return new SWTBotButton((Button)bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedReferencesTable::removebutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedReferencesTable::removebutton"))));
 	}
-	
+
 	/**
-	 * @param viewID the edited advTableComposition
+	 * @param viewID
+	 *            the edited advTableComposition
 	 * @return the add button of the given advTableComposition
 	 */
 	public SWTBotButton addButtonAdvancedTableComposition(String viewID) {
 		Matcher<Widget> allOf = allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedTableComposition::addbutton"));
-		return new SWTBotButton((Button)bot.widget(allOf));
+		return new SWTBotButton((Button) bot.widget(allOf));
 	}
-	
+
 	/**
-	 * @param viewID the edited advTableComposition
+	 * @param viewID
+	 *            the edited advTableComposition
 	 * @return the remove button of the given advTableComposition
 	 */
 	public SWTBotButton removeButtonAdvancedTableComposition(String viewID) {
-		return new SWTBotButton((Button)bot.widget(
-				allOf(widgetOfType(Button.class), 
-				withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), 
-				withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedTableComposition::removebutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::AdvancedTableComposition::removebutton"))));
 	}
-	
+
 	/**
-	 * @param viewID the edited radio
-	 * @param mnemonicText the mnemonic to select
+	 * @param viewID
+	 *            the edited radio
+	 * @param mnemonicText
+	 *            the mnemonic to select
 	 * @return the radio to select
 	 */
 	public SWTBotRadio radioWithIdAndMnemonic(String viewID, String mnemonicText) {
@@ -104,38 +108,41 @@ public class SWTEEFBotHelper {
 	}
 
 	/**
-	 * @param viewID the edited ReferencesTable
+	 * @param viewID
+	 *            the edited ReferencesTable
 	 * @return the browse button of the given ReferencesTable
 	 */
 	public SWTBotButton addButtonReferencesTable(String viewID) {
-		return new SWTBotButton((Button)bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::ReferencesTable::addbutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::ReferencesTable::addbutton"))));
 	}
-	
+
 	/**
-	 * @param viewID the edited ReferencesTable
+	 * @param viewID
+	 *            the edited ReferencesTable
 	 * @return the remove button of the given ReferencesTable
 	 */
 	public SWTBotButton removeButtonReferencesTable(String viewID) {
-		return new SWTBotButton((Button)bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::ReferencesTable::removebutton"))));
+		return new SWTBotButton((Button) bot.widget(allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::ReferencesTable::removebutton"))));
 	}
 
-
 	/**
-	 * @param viewID the edited ReferencesTable
+	 * @param viewID
+	 *            the edited ReferencesTable
 	 * @return the add button of the given ReferencesTable
 	 */
 	public SWTBotButton addButtonTableComposition(String viewID) {
 		Matcher<Widget> allOf = allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::TableComposition::addbutton"));
-		return new SWTBotButton((Button)bot.widget(allOf));
+		return new SWTBotButton((Button) bot.widget(allOf));
 	}
-	
+
 	/**
-	 * @param viewID the edited ReferencesTable
+	 * @param viewID
+	 *            the edited ReferencesTable
 	 * @return the remove button of the given ReferencesTable
 	 */
 	public SWTBotButton removeButtonTableComposition(String viewID) {
 		Matcher<Widget> allOf = allOf(widgetOfType(Button.class), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, viewID), withId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_TYPE_KEY, "eef::TableComposition::removebutton"));
-		return new SWTBotButton((Button)bot.widget(allOf));
+		return new SWTBotButton((Button) bot.widget(allOf));
 	}
-	
+
 }

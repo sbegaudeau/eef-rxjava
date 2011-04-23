@@ -22,10 +22,10 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
+ * 
  */
 public class PropertiesEditionHelper {
-	
+
 	/**
 	 * SWT EEF Bot
 	 */
@@ -33,7 +33,9 @@ public class PropertiesEditionHelper {
 
 	/**
 	 * Create a PropertiesEditionHelper
-	 * @param bot SWTEEFBot
+	 * 
+	 * @param bot
+	 *            SWTEEFBot
 	 */
 	public PropertiesEditionHelper(SWTEEFBot bot) {
 		this.bot = bot;
@@ -41,23 +43,25 @@ public class PropertiesEditionHelper {
 
 	/**
 	 * Update a feature.
+	 * 
 	 * @param selectNode
 	 * @param propertiesEditionElement
 	 * @param value
 	 * @param sequenceType
 	 */
 	public void updateFeature(SWTBotTreeItem selectNode, PropertiesEditionElement propertiesEditionElement, String value, SequenceType sequenceType) {
-		if(!propertiesEditionElement.getViews().isEmpty()) {
+		if (!propertiesEditionElement.getViews().isEmpty()) {
 			ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
 			if (elementEditor.getRepresentation().getName().equals("Text")) {
 				updateText(selectNode, elementEditor, value, sequenceType);
 			}
 		}
-		
+
 	}
 
 	/**
 	 * Update widget text
+	 * 
 	 * @param selectNode
 	 * @param elementEditor
 	 * @param value
@@ -67,7 +71,7 @@ public class PropertiesEditionHelper {
 		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
 			updateText(elementEditor, value);
 		} else if (sequenceType.equals(SequenceType.WIZARD)) {
-			if (selectNode!=null) {
+			if (selectNode != null) {
 				selectNode.doubleClick();
 			}
 			updateText(elementEditor, value);
@@ -80,7 +84,7 @@ public class PropertiesEditionHelper {
 	 */
 	private void updateText(ElementEditor elementEditor, String value) {
 		SWTBotHelper.waitAllUiEvents();
-		SWTBotText textWithLabel = bot.textWithLabel(StringHelper.toU1Case(elementEditor.getName())+" : ");
+		SWTBotText textWithLabel = bot.textWithLabel(StringHelper.toU1Case(elementEditor.getName()) + " : ");
 		textWithLabel.setText(value);
 		SWTBotHelper.pressEnterKey(textWithLabel.widget);
 		SWTBotHelper.sendFocusLost(textWithLabel.widget);
@@ -91,9 +95,7 @@ public class PropertiesEditionHelper {
 		this.bot = bot;
 	}
 
-	public void addFeature(SWTBotTreeItem selectNode,
-			PropertiesEditionElement propertiesEditionElement,
-			SequenceType sequenceType) {
+	public void addFeature(SWTBotTreeItem selectNode, PropertiesEditionElement propertiesEditionElement, SequenceType sequenceType) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
 		ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
 		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
@@ -101,12 +103,10 @@ public class PropertiesEditionHelper {
 		} else if (sequenceType.equals(SequenceType.WIZARD)) {
 			bot.addButtonAdvancedTableComposition(elementEditor.getQualifiedIdentifier()).click();
 		}
-		
+
 	}
 
-	public void removeFeature(EObject remove,
-			PropertiesEditionElement propertiesEditionElement,
-			SequenceType sequenceType) {
+	public void removeFeature(EObject remove, PropertiesEditionElement propertiesEditionElement, SequenceType sequenceType) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
 		ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
 		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {

@@ -12,7 +12,7 @@ package org.eclipse.emf.eef.modelingBot.exception;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
-  *
+ * 
  */
 public class WidgetInvalidException extends Exception {
 
@@ -20,11 +20,11 @@ public class WidgetInvalidException extends Exception {
 	 * Serialization
 	 */
 	private static final long serialVersionUID = 5938605662196039272L;
-	
+
 	private String messageInfo;
-	
+
 	/**
-	 * default constructor 
+	 * default constructor
 	 */
 	public WidgetInvalidException() {
 		super();
@@ -32,7 +32,9 @@ public class WidgetInvalidException extends Exception {
 
 	/**
 	 * constructor with info
-	 * @param info the info
+	 * 
+	 * @param info
+	 *            the info
 	 */
 	public WidgetInvalidException(String info) {
 		super();
@@ -41,6 +43,7 @@ public class WidgetInvalidException extends Exception {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see java.lang.Throwable#getMessage()
 	 */
 	@Override
@@ -54,7 +57,5 @@ public class WidgetInvalidException extends Exception {
 		}
 		return message;
 	}
-	
-	
 
 }

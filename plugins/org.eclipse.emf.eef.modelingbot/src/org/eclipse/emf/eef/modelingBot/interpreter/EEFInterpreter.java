@@ -56,13 +56,13 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class EEFInterpreter implements IModelingBotInterpreter{
+public class EEFInterpreter implements IModelingBotInterpreter {
 
 	/**
 	 * Editing domain
 	 */
 	private EditingDomain editingDomain;
-	
+
 	/**
 	 * Map ReFerenceableObject -> EObject created
 	 */
@@ -85,16 +85,18 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 
 	/**
 	 * Create the interpreter.
-	 * @param editingDomain editing domain
+	 * 
+	 * @param editingDomain
+	 *            editing domain
 	 */
 	public EEFInterpreter(IModelingBot bot, EditingDomain editingDomain) {
 		super();
 		this.editingDomain = editingDomain;
 		this.bot = bot;
 	}
-	
+
 	/**
-	 * @return  the map of ReferenceableObject
+	 * @return the map of ReferenceableObject
 	 */
 	public Map<ReferenceableObject, EObject> getRefObjectToEObject() {
 		return refObjectToEObject;
@@ -102,21 +104,22 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 
 	/**
 	 * Set the object corresponding to the referenceable object.
-	 * @param refObjectToEObject ReferenceableObject
+	 * 
+	 * @param refObjectToEObject
+	 *            ReferenceableObject
 	 */
-	public void setRefObjectToEObject(
-			Map<ReferenceableObject, EObject> refObjectToEObject) {
+	public void setRefObjectToEObject(Map<ReferenceableObject, EObject> refObjectToEObject) {
 		this.refObjectToEObject = refObjectToEObject;
 	}
-	
+
 	/**
-	 * @param ref ReferenceableObject
+	 * @param ref
+	 *            ReferenceableObject
 	 * @return the object corresponding to the referenceable object
 	 */
 	public EObject getEObjectFromReferenceableEObject(ReferenceableObject ref) {
 		return refObjectToEObject.get(ref);
 	}
-
 
 	/**
 	 * Dispose the maps of the interpreter.
@@ -127,23 +130,24 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		refObjectToEObject = null;
 		mapSequenceToCancel = null;
 	}
-	
+
 	/**
 	 * Get the loaded resource.
-	 * @param path path of the model
+	 * 
+	 * @param path
+	 *            path of the model
 	 * @return the resource loaded
 	 * @throws IOException
 	 * @throws CoreException
 	 */
 	public Resource loadModel(String path) throws IOException, CoreException {
 		URI fileURI = URI.createPlatformPluginURI(path, true);
-		Resource resource = editingDomain.getResourceSet().getResource(fileURI,
-				true);
+		Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
 	 */
@@ -151,8 +155,7 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
-		ModelingBot mbot = (ModelingBot) modelingBotResource
-				.getContents().get(0);
+		ModelingBot mbot = (ModelingBot) modelingBotResource.getContents().get(0);
 		assertNotNull("The modeling bot resource is empty.", mbot);
 		propertiesEditionContext = mbot.getPropertiesEditionContext();
 		for (Sequence sequence : mbot.getSequences()) {
@@ -163,7 +166,7 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		}
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
@@ -185,24 +188,23 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		}
 	}
 
-	
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
 	 */
 	public void finishBatchEditing(Processing processing) {
 		Boolean hasCanceled = mapSequenceToCancel.get(processing);
-		if (hasCanceled==null || !hasCanceled) {
-			try{
+		if (hasCanceled == null || !hasCanceled) {
+			try {
 				bot.validateBatchEditing();
-			}catch (WidgetNotFoundException e) {
+			} catch (WidgetNotFoundException e) {
 				// Cancel has been done
 			}
 		}
 		mapSequenceToCancel.remove(processing);
 	}
 
-	/** 
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runAction(org.eclipse.emf.eef.modelingBot.Action)
 	 */
@@ -213,7 +215,7 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 			bot.openEEFEditor(((OpenEEFEditor) action).getEditorName());
 		} else if (action instanceof CreateModel) {
 			EObject addedObject = bot.createModel(((CreateModel) action).getPath(), ((CreateModel) action).getModelName(), ((CreateModel) action).getRoot());
-			addModelMap((CreateModel)action, addedObject);
+			addModelMap((CreateModel) action, addedObject);
 		} else if (action instanceof Add) {
 			EObject addedObject = bot.add(((Add) action).getPropertiesEditionElement(), ((Add) action).getReferenceableObject(), ((Add) action).getEContainingFeature(), ((Add) action).getType());
 			addActionMap((Add) action, addedObject);
@@ -237,18 +239,18 @@ public class EEFInterpreter implements IModelingBotInterpreter{
 		} else if (action instanceof Remove) {
 			bot.remove(((Remove) action).getPropertiesEditionElement(), ((Remove) action).getReferenceableObject());
 			refObjectToEObject.remove(((Remove) action).getReferenceableObject());
-		} 
+		}
 	}
 
 	private void addActionMap(ReferenceableObject action, EObject obj) {
 		refObjectToEObject.put(action, obj);
 	}
 
-	private void addModelMap(CreateModel action,  EObject obj) {
+	private void addModelMap(CreateModel action, EObject obj) {
 		refObjectToEObject.put(action, obj);
 	}
-	
-	/** 
+
+/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
 	 */
