@@ -60,5 +60,13 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 	public Adapter createSiteAdapter() {
 		return new SitePropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createRoomAdapter()
+	 * 
+	 */
+	public Adapter createRoomAdapter() {
+		return new RoomPropertiesEditionProvider();
+	}
 
 }

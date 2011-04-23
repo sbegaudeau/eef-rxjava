@@ -90,7 +90,19 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KvJBO5kmEd6sxtwdpecy3w" name="documentation" views="_KvKPRJkmEd6sxtwdpecy3w">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Site/documentation"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_r1ZxAG3eEeC0ELVFaUipLQ" name="rooms" views="_y6Hw8G3eEeC0ELVFaUipLQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Site/rooms"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Site"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_AI6_cG3dEeC0ELVFaUipLQ" name="Room" views="_xO3a8G3cEeC0ELVFaUipLQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_O_1wYG3dEeC0ELVFaUipLQ" name="name" views="_5Sn2AG3cEeC0ELVFaUipLQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Room/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_SM3tEG3dEeC0ELVFaUipLQ" name="capacity" views="_7cu9IG3cEeC0ELVFaUipLQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Room/capacity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Room"/>
       </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.genmodel#//conference"/>
@@ -210,6 +222,20 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_KvKPRJkmEd6sxtwdpecy3w" name="documentation">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_y6Hw8G3eEeC0ELVFaUipLQ" name="rooms">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_xO3a8G3cEeC0ELVFaUipLQ" name="Room">
+        <elements xsi:type="eef-views:Container" xmi:id="_0XjqMG3cEeC0ELVFaUipLQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_5Sn2AG3cEeC0ELVFaUipLQ" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_7cu9IG3cEeC0ELVFaUipLQ" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

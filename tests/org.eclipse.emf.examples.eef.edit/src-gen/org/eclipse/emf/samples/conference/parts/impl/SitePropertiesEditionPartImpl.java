@@ -11,24 +11,37 @@
 package org.eclipse.emf.samples.conference.parts.impl;
 
 // Start of user code for imports
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -47,6 +60,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	protected Text name;
 	protected Text documentation;
+protected ReferencesTable rooms;
+protected List<ViewerFilter> roomsBusinessFilters = new ArrayList<ViewerFilter>();
+protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -83,10 +99,11 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence siteStep = new CompositionSequence();
+		CompositionSequence siteStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = siteStep.addStep(ConferenceViewsRepository.Site.Properties.class);
 		propertiesStep.addStep(ConferenceViewsRepository.Site.Properties.name);
 		propertiesStep.addStep(ConferenceViewsRepository.Site.Properties.documentation);
+		propertiesStep.addStep(ConferenceViewsRepository.Site.Properties.rooms);
 		
 		
 		composer = new PartComposer(siteStep) {
@@ -101,6 +118,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 				}
 				if (key == ConferenceViewsRepository.Site.Properties.documentation) {
 					return createDocumentationTextarea(parent);
+				}
+				if (key == ConferenceViewsRepository.Site.Properties.rooms) {
+					return createRoomsAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -201,6 +221,54 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createRoomsAdvancedTableComposition(Composite parent) {
+		this.rooms = new ReferencesTable(ConferenceMessages.SitePropertiesEditionPart_RoomsLabel, new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartImpl.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				rooms.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartImpl.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				rooms.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartImpl.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				rooms.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartImpl.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				rooms.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.roomsFilters) {
+			this.rooms.addFilter(filter);
+		}
+		this.rooms.setHelpText(propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.Properties.rooms, ConferenceViewsRepository.SWT_KIND));
+		this.rooms.createControls(parent);
+		this.rooms.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartImpl.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData roomsData = new GridData(GridData.FILL_HORIZONTAL);
+		roomsData.horizontalSpan = 3;
+		this.rooms.setLayoutData(roomsData);
+		this.rooms.setLowerBound(0);
+		this.rooms.setUpperBound(-1);
+		rooms.setID(ConferenceViewsRepository.Site.Properties.rooms);
+		rooms.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		return parent;
+	}
+
 
 
 	/**
@@ -260,8 +328,67 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		if (newValue != null) {
 			documentation.setText(newValue);
 		} else {
-			documentation.setText("");  //$NON-NLS-1$
+			documentation.setText(""); //$NON-NLS-1$
 		}
+	}
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#initRooms(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initRooms(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		rooms.setContentProvider(contentProvider);
+		rooms.setInput(settings);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#updateRooms()
+	 * 
+	 */
+	public void updateRooms() {
+	rooms.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#addFilterRooms(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToRooms(ViewerFilter filter) {
+		roomsFilters.add(filter);
+		if (this.rooms != null) {
+			this.rooms.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#addBusinessFilterRooms(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToRooms(ViewerFilter filter) {
+		roomsBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart#isContainedInRoomsTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInRoomsTable(EObject element) {
+		return ((ReferencesTableSettings)rooms.getInput()).contains(element);
 	}
 
 

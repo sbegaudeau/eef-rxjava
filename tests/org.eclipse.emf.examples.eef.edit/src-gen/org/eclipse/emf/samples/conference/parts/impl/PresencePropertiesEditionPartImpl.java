@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -92,7 +93,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence presenceStep = new CompositionSequence();
+		CompositionSequence presenceStep = new BindingCompositionSequence(propertiesEditionComponent);
 		presenceStep
 			.addStep(ConferenceViewsRepository.Presence.Talks.class)
 			.addStep(ConferenceViewsRepository.Presence.Talks.assists);

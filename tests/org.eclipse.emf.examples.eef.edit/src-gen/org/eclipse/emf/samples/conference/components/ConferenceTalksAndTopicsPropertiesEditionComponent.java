@@ -84,10 +84,14 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 			final Conference conference = (Conference)elt;
 			final TalksAndTopicsPropertiesEditionPart talksAndTopicsPart = (TalksAndTopicsPropertiesEditionPart)editingPart;
 			// init values
-			talksSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Talks());
-			talksAndTopicsPart.initTalks(talksSettings);
-			topicsSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Topics());
-			talksAndTopicsPart.initTopics(topicsSettings);
+			if (isAccessible(ConferenceViewsRepository.TalksAndTopics.talks)) {
+				talksSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Talks());
+				talksAndTopicsPart.initTalks(talksSettings);
+			}
+			if (isAccessible(ConferenceViewsRepository.TalksAndTopics.topics)) {
+				topicsSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Topics());
+				talksAndTopicsPart.initTopics(topicsSettings);
+			}
 			// init filters
 			talksAndTopicsPart.addFilterToTalks(new ViewerFilter() {
 			
@@ -141,7 +145,7 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Conference conference = (Conference)semanticObject;
 		if (ConferenceViewsRepository.TalksAndTopics.talks == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, talksSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -164,7 +168,7 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 			}
 		}
 		if (ConferenceViewsRepository.TalksAndTopics.topics == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, topicsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -195,9 +199,9 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			TalksAndTopicsPropertiesEditionPart talksAndTopicsPart = (TalksAndTopicsPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getConference_Talks().equals(msg.getFeature()))
+			if (ConferencePackage.eINSTANCE.getConference_Talks().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.TalksAndTopics.talks))
 				talksAndTopicsPart.updateTalks();
-			if (ConferencePackage.eINSTANCE.getConference_Topics().equals(msg.getFeature()))
+			if (ConferencePackage.eINSTANCE.getConference_Topics().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.TalksAndTopics.topics))
 				talksAndTopicsPart.updateTopics();
 			
 		}

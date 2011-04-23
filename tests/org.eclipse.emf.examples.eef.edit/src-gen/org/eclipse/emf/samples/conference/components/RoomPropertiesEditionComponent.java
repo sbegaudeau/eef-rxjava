@@ -24,10 +24,10 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferencePackage;
-import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
+import org.eclipse.emf.samples.conference.Room;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+import org.eclipse.emf.samples.conference.parts.RoomPropertiesEditionPart;
 
 
 // End of user code
@@ -36,7 +36,7 @@ import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class ConferenceBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
@@ -46,11 +46,11 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 	 * Default constructor
 	 * 
 	 */
-	public ConferenceBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject conference, String editing_mode) {
-		super(editingContext, conference, editing_mode);
+	public RoomPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject room, String editing_mode) {
+		super(editingContext, room, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = ConferenceViewsRepository.class;
-		partKey = ConferenceViewsRepository.Conference_.class;
+		partKey = ConferenceViewsRepository.Room.class;
 	}
 
 	/**
@@ -64,14 +64,16 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			final Conference conference = (Conference)elt;
-			final ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
+			final Room room = (Room)elt;
+			final RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
 			// init values
-			if (conference.getName() != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getName()));
+			if (room.getName() != null && isAccessible(ConferenceViewsRepository.Room.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), room.getName()));
 			
-			if (conference.getOverview() != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.overview))
-				basePart.setOverview(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getOverview()));
+			if (isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
+				basePart.setCapacity(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), room.getCapacity()));
+			}
+			
 			// init filters
 			
 			
@@ -93,12 +95,12 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Conference conference = (Conference)semanticObject;
-		if (ConferenceViewsRepository.Conference_.Properties.name == event.getAffectedEditor()) {
-			conference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		Room room = (Room)semanticObject;
+		if (ConferenceViewsRepository.Room.Properties.name == event.getAffectedEditor()) {
+			room.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (ConferenceViewsRepository.Conference_.Properties.overview == event.getAffectedEditor()) {
-			conference.setOverview((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		if (ConferenceViewsRepository.Room.Properties.capacity == event.getAffectedEditor()) {
+			room.setCapacity((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
 		}
 	}
 
@@ -108,19 +110,19 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
-			ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getConference_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.name)) {
+			RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
+			if (ConferencePackage.eINSTANCE.getRoom_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getConference_Overview().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.overview)){
+			if (ConferencePackage.eINSTANCE.getRoom_Capacity().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
 				if (msg.getNewValue() != null) {
-					basePart.setOverview(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setCapacity(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
 				} else {
-					basePart.setOverview("");
+					basePart.setCapacity("");
 				}
 			}
 			
@@ -135,27 +137,7 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == ConferenceViewsRepository.Localisation.place || key == ConferenceViewsRepository.Conference_.Properties.name;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
-	 * 
-	 */
-	public String getHelpContent(Object key, int kind) {
-		if (key == ConferenceViewsRepository.Localisation.place)
-			return "The conference's place"; //$NON-NLS-1$
-		if (key == ConferenceViewsRepository.Localisation.sites)
-			return "Where the conference take place"; //$NON-NLS-1$
-		if (key == ConferenceViewsRepository.Participants.participants_)
-			return "Person attending to the conference"; //$NON-NLS-1$
-		if (key == ConferenceViewsRepository.TalksAndTopics.talks)
-			return "Talks of the conference"; //$NON-NLS-1$
-		if (key == ConferenceViewsRepository.TalksAndTopics.topics)
-			return "Topics discussed during the conference"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
+		return key == ConferenceViewsRepository.Room.Properties.name;
 	}
 
 	/**
@@ -168,19 +150,19 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (ConferenceViewsRepository.Conference_.Properties.name == event.getAffectedEditor()) {
+				if (ConferenceViewsRepository.Room.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getConference_Name().getEAttributeType(), (String)newValue);
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getRoom_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getConference_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getRoom_Name().getEAttributeType(), newValue);
 				}
-				if (ConferenceViewsRepository.Conference_.Properties.overview == event.getAffectedEditor()) {
+				if (ConferenceViewsRepository.Room.Properties.capacity == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getConference_Overview().getEAttributeType(), (String)newValue);
+						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getRoom_Capacity().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getConference_Overview().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getRoom_Capacity().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -144,6 +144,14 @@
                     type="org.eclipse.emf.samples.conference.Site">
              </input>
          </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               id="org.eclipse.emf.samples.conference.section.Room"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.samples.conference.Room">
+             </input>
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

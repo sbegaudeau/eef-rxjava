@@ -22,12 +22,22 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.Room;
 import org.eclipse.emf.samples.conference.Site;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -41,6 +51,11 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for rooms ReferencesTable
+	 */
+	protected ReferencesTableSettings roomsSettings;
 	
 	/**
 	 * Default constructor
@@ -67,13 +82,33 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final Site site = (Site)elt;
 			final SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
 			// init values
-			if (site.getName() != null)
+			if (site.getName() != null && isAccessible(ConferenceViewsRepository.Site.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getName()));
 			
-			if (site.getDocumentation() != null)
+			if (site.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation))
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getDocumentation()));
+			if (isAccessible(ConferenceViewsRepository.Site.Properties.rooms)) {
+				roomsSettings = new ReferencesTableSettings(site, ConferencePackage.eINSTANCE.getSite_Rooms());
+				basePart.initRooms(roomsSettings);
+			}
 			// init filters
 			
+			
+			basePart.addFilterToRooms(new ViewerFilter() {
+			
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Room); //$NON-NLS-1$ 
+					}
+			
+			});
+			// Start of user code for additional businessfilters for rooms
+			
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -82,6 +117,7 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -100,6 +136,29 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		if (ConferenceViewsRepository.Site.Properties.documentation == event.getAffectedEditor()) {
 			site.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
+		if (ConferenceViewsRepository.Site.Properties.rooms == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, roomsSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+					roomsSettings.removeFromReference((EObject) event.getNewValue());
+			}
+		}
 	}
 
 	/**
@@ -109,20 +168,22 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null){
+			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null){
+			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setDocumentation("");
 				}
 			}
+			if (ConferencePackage.eINSTANCE.getSite_Rooms().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Site.Properties.rooms))
+				basePart.updateRooms();
 			
 		}
 	}

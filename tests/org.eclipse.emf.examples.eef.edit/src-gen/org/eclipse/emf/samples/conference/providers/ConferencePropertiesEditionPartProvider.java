@@ -19,6 +19,7 @@ import org.eclipse.emf.samples.conference.parts.forms.LocalisationPropertiesEdit
 import org.eclipse.emf.samples.conference.parts.forms.ParticipantsPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.PersonPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.PresencePropertiesEditionPartForm;
+import org.eclipse.emf.samples.conference.parts.forms.RoomPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.SitePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TalkPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TalksAndTopicsPropertiesEditionPartForm;
@@ -28,6 +29,7 @@ import org.eclipse.emf.samples.conference.parts.impl.LocalisationPropertiesEditi
 import org.eclipse.emf.samples.conference.parts.impl.ParticipantsPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.PersonPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.PresencePropertiesEditionPartImpl;
+import org.eclipse.emf.samples.conference.parts.impl.RoomPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.SitePropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.TalkPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.TalksAndTopicsPropertiesEditionPartImpl;
@@ -110,6 +112,12 @@ public class ConferencePropertiesEditionPartProvider implements IPropertiesEditi
 				return new SitePropertiesEditionPartImpl(component);
 			if (kind == ConferenceViewsRepository.FORM_KIND)
 				return new SitePropertiesEditionPartForm(component);
+		}
+		if (key == ConferenceViewsRepository.Room.class) {
+			if (kind == ConferenceViewsRepository.SWT_KIND)
+				return new RoomPropertiesEditionPartImpl(component);
+			if (kind == ConferenceViewsRepository.FORM_KIND)
+				return new RoomPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

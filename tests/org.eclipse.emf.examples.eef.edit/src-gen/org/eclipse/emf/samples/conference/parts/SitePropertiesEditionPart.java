@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.samples.conference.parts;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.viewers.ViewerFilter;
+
 // Start of user code for imports
 
 
@@ -49,6 +53,50 @@ public interface SitePropertiesEditionPart {
 	 * 
 	 */
 	public void setDocumentation(String newValue);
+
+
+
+
+	/**
+	 * Init the rooms
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initRooms(ReferencesTableSettings settings);
+
+	/**
+	 * Update the rooms
+	 * @param newValue the rooms to update
+	 * 
+	 */
+	public void updateRooms();
+
+	/**
+	 * Adds the given filter to the rooms edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToRooms(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the rooms edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToRooms(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the rooms table
+	 * 
+	 */
+	public boolean isContainedInRoomsTable(EObject element);
 
 
 

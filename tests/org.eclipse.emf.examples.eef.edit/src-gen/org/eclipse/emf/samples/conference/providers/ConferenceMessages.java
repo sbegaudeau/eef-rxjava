@@ -42,6 +42,9 @@ public class ConferenceMessages extends NLS {
 	public static String SitePropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String RoomPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String Conference_ReadOnly;
 
 	
@@ -94,6 +97,12 @@ public class ConferenceMessages extends NLS {
 
 	
 	public static String Site_Part_Title;
+
+	
+	public static String Room_ReadOnly;
+
+	
+	public static String Room_Part_Title;
 
 	
 	public static String ConferencePropertiesEditionPart_NameLabel;
@@ -169,6 +178,15 @@ public class ConferenceMessages extends NLS {
 
 	
 	public static String SitePropertiesEditionPart_DocumentationLabel;
+
+	
+	public static String SitePropertiesEditionPart_RoomsLabel;
+
+	
+	public static String RoomPropertiesEditionPart_NameLabel;
+
+	
+	public static String RoomPropertiesEditionPart_CapacityLabel;
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

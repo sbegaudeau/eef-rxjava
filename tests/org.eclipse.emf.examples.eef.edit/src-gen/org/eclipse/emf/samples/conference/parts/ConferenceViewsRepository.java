@@ -189,6 +189,27 @@ public class ConferenceViewsRepository {
 			
 			public static String documentation = "conference::Site::properties::documentation";
 			
+			
+			public static String rooms = "conference::Site::properties::rooms";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * Room view descriptor
+	 * 
+	 */
+	public static class Room {
+		public static class Properties {
+	
+			
+			public static String name = "conference::Room::properties::name";
+			
+			
+			public static String capacity = "conference::Room::properties::capacity";
+			
 	
 		}
 	

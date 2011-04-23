@@ -78,8 +78,10 @@ public class ConferenceParticipantsPropertiesEditionComponent extends SinglePart
 			final Conference conference = (Conference)elt;
 			final ParticipantsPropertiesEditionPart participantsPart = (ParticipantsPropertiesEditionPart)editingPart;
 			// init values
-			participantsSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Participants());
-			participantsPart.initParticipants(participantsSettings);
+			if (isAccessible(ConferenceViewsRepository.Participants.participants_)) {
+				participantsSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Participants());
+				participantsPart.initParticipants(participantsSettings);
+			}
 			// init filters
 			participantsPart.addFilterToParticipants(new ViewerFilter() {
 			
@@ -116,7 +118,7 @@ public class ConferenceParticipantsPropertiesEditionComponent extends SinglePart
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Conference conference = (Conference)semanticObject;
 		if (ConferenceViewsRepository.Participants.participants_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, participantsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -147,7 +149,7 @@ public class ConferenceParticipantsPropertiesEditionComponent extends SinglePart
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			ParticipantsPropertiesEditionPart participantsPart = (ParticipantsPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getConference_Participants().equals(msg.getFeature()))
+			if (ConferencePackage.eINSTANCE.getConference_Participants().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Participants.participants_))
 				participantsPart.updateParticipants();
 			
 		}

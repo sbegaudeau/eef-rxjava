@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceItemProviderAdapterFactory.java,v 1.4 2011/01/02 14:10:47 glefur Exp $
+ * $Id: ConferenceItemProviderAdapterFactory.java,v 1.5 2011/04/23 20:13:43 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.provider;
 
@@ -189,6 +189,29 @@ public class ConferenceItemProviderAdapterFactory extends ConferenceAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.samples.conference.Room} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RoomItemProvider roomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.samples.conference.Room}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRoomAdapter() {
+		if (roomItemProvider == null) {
+			roomItemProvider = new RoomItemProvider(this);
+		}
+
+		return roomItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -292,6 +315,7 @@ public class ConferenceItemProviderAdapterFactory extends ConferenceAdapterFacto
 		if (talkItemProvider != null) talkItemProvider.dispose();
 		if (topicItemProvider != null) topicItemProvider.dispose();
 		if (siteItemProvider != null) siteItemProvider.dispose();
+		if (roomItemProvider != null) roomItemProvider.dispose();
 	}
 
 }

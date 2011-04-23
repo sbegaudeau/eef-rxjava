@@ -75,8 +75,10 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 			final Person person = (Person)elt;
 			final PresencePropertiesEditionPart presencePart = (PresencePropertiesEditionPart)editingPart;
 			// init values
-			assistsSettings = new ReferencesTableSettings(person, ConferencePackage.eINSTANCE.getPerson_Assists());
-			presencePart.initAssists(assistsSettings);
+			if (isAccessible(ConferenceViewsRepository.Presence.Talks.assists)) {
+				assistsSettings = new ReferencesTableSettings(person, ConferencePackage.eINSTANCE.getPerson_Assists());
+				presencePart.initAssists(assistsSettings);
+			}
 			// init filters
 			presencePart.addFilterToAssists(new ViewerFilter() {
 			
@@ -116,7 +118,7 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Person person = (Person)semanticObject;
 		if (ConferenceViewsRepository.Presence.Talks.assists == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Talk) {
 					assistsSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -133,7 +135,7 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			PresencePropertiesEditionPart presencePart = (PresencePropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature()))
+			if (ConferencePackage.eINSTANCE.getPerson_Assists().equals(msg.getFeature())  && isAccessible(ConferenceViewsRepository.Presence.Talks.assists))
 				presencePart.updateAssists();
 			
 		}
