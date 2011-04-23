@@ -18,7 +18,7 @@ package org.eclipse.emf.samples.conference.tests.junit.modelingbot;
 public class SWTBotModelingTestCase3 extends org.eclipse.emf.eef.modelingBot.testcase.SWTBotModelingBotTestCase {
 	
 	public void testModelingBot() throws Exception {
-		bot.runModelingBot("test/model/My3.modelingbot");
+		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/functional/My3.modelingbot");
 	}
 	
 }

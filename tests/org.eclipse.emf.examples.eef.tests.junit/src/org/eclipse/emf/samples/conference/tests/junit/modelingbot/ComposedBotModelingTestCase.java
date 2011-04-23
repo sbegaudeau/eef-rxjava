@@ -17,7 +17,7 @@ package org.eclipse.emf.samples.conference.tests.junit.modelingbot;
  */
 public class ComposedBotModelingTestCase extends org.eclipse.emf.eef.modelingBot.testcase.ComposedEEFBotModelingTestCase {
 	public void testModelingBot() throws Exception {
-		composedBot.runModelingBot("test/model/check.modelingbot");
+		composedBot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/functional/check.modelingbot");
 	}
 	
 }
