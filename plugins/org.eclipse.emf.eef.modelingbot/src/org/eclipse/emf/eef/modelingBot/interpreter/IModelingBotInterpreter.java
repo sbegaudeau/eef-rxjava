@@ -55,4 +55,9 @@ public interface IModelingBotInterpreter {
 	 */
 	PropertiesEditionContext getPropertiesEditionContext();
 
+	/**
+	 * @param context propertiesEditionContext to set
+	 */
+	void setPropertiesEditionContext(PropertiesEditionContext context);
+	
 }

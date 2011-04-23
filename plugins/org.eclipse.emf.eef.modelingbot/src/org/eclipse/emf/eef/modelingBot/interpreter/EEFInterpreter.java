@@ -147,7 +147,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		return resource;
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
 	 */
@@ -166,7 +166,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		}
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
@@ -188,7 +188,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		}
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
 	 */
@@ -204,7 +204,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		mapSequenceToCancel.remove(processing);
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runAction(org.eclipse.emf.eef.modelingBot.Action)
 	 */
@@ -250,7 +250,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		refObjectToEObject.put(action, obj);
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
 	 */
@@ -258,4 +258,11 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		return propertiesEditionContext;
 	}
 
+	/**
+	 * @param propertiesEditionContext the propertiesEditionContext to set
+	 */
+	public void setPropertiesEditionContext(PropertiesEditionContext propertiesEditionContext) {
+		this.propertiesEditionContext = propertiesEditionContext;
+	}
+	
 }

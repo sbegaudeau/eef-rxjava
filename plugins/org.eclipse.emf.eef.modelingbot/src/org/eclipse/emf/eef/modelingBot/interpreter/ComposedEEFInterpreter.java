@@ -89,7 +89,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
 	 */
@@ -99,6 +99,9 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
 		ModelingBot mbot = (ModelingBot) modelingBotResource.getContents().get(0);
 		assertNotNull("The modeling bot resource is empty.", mbot);
+		for (IModelingBot bot : modelingBots) {
+			bot.getModelingBotInterpreter().setPropertiesEditionContext(mbot.getPropertiesEditionContext());
+		}
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
 				Scenario scenario = (Scenario) sequence;
@@ -108,7 +111,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
@@ -130,7 +133,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		}
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runAction(org.eclipse.emf.eef.modelingBot.Action)
 	 */
@@ -144,7 +147,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		}
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
 	 */
@@ -176,11 +179,21 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		return resource;
 	}
 
-/** 
+	/** 
 	 * {@inheritDoc)
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
 	 */
 	public PropertiesEditionContext getPropertiesEditionContext() {
 		return null;
 	}
+
+	/**
+	 * {@inheritDoc)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#setPropertiesEditionContext(org.eclipse.emf.eef.components.PropertiesEditionContext)
+	 */
+	public void setPropertiesEditionContext(PropertiesEditionContext context) {
+
+	}
+
+
 }
