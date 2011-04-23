@@ -112,7 +112,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 public class InteractiveEEFEditor extends FormEditor
 	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
 	
-	public static final String EDITOR_ID = "fr.obeo.eef.appmaster.editor.InteractiveEEFEditorID";
+	public static final String EDITOR_ID = "org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditorID";
 	
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
