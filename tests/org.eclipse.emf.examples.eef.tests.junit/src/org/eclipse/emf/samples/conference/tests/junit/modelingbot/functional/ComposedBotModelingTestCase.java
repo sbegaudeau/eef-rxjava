@@ -1,4 +1,4 @@
-package org.eclipse.emf.samples.conference.tests.junit.modelingbot;
+package org.eclipse.emf.samples.conference.tests.junit.modelingbot.functional;
 /*******************************************************************************
  * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -15,10 +15,9 @@ package org.eclipse.emf.samples.conference.tests.junit.modelingbot;
  * @author nlepine
  *
  */
-public class SWTBotModelingTestCase3 extends org.eclipse.emf.eef.modelingBot.testcase.SWTBotModelingBotTestCase {
-	
+public class ComposedBotModelingTestCase extends org.eclipse.emf.eef.modelingBot.testcase.ComposedEEFBotModelingTestCase {
 	public void testModelingBot() throws Exception {
-		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/functional/My3.modelingbot");
+		composedBot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/functional/check.modelingbot");
 	}
 	
 }

@@ -3,10 +3,10 @@ package org.eclipse.emf.samples.conference.tests.junit;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.eclipse.emf.samples.conference.tests.junit.modelingbot.ComposedBotModelingTestCase;
-import org.eclipse.emf.samples.conference.tests.junit.modelingbot.SWTBotModelingTestCase;
-import org.eclipse.emf.samples.conference.tests.junit.modelingbot.SWTBotModelingTestCase2;
-import org.eclipse.emf.samples.conference.tests.junit.modelingbot.SWTBotModelingTestCase3;
+import org.eclipse.emf.samples.conference.tests.junit.modelingbot.functional.ComposedBotModelingTestCase;
+import org.eclipse.emf.samples.conference.tests.junit.modelingbot.functional.SWTBotModelingTestCase;
+import org.eclipse.emf.samples.conference.tests.junit.modelingbot.functional.SWTBotModelingTestCase2;
+import org.eclipse.emf.samples.conference.tests.junit.modelingbot.functional.SWTBotModelingTestCase3;
 
 public class AllModelingBotTests {
 

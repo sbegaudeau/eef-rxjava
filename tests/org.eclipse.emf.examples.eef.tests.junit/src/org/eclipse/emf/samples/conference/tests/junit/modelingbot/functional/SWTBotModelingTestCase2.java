@@ -1,4 +1,4 @@
-package org.eclipse.emf.samples.conference.tests.junit.modelingbot;
+package org.eclipse.emf.samples.conference.tests.junit.modelingbot.functional;
 /*******************************************************************************
  * Copyright (c) 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
