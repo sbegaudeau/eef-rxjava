@@ -28,22 +28,22 @@
    <feature id="org.eclipse.emf.eef.indigo" version="0.0.0">
       <category name="eef.sdk"/>
    </feature>
-   <category-def name="eef.sdk" label="EEF SDK (Incubation)">
+   <category-def name="eef.sdk" label="EEF SDK">
       <description>
          EEF SDK package. It contains runtime, metamodels, generators, documentation and extended capabilities (with source).
       </description>
    </category-def>
-   <category-def name="eef.features" label="EEF Common (Incubation)">
+   <category-def name="eef.features" label="EEF Common">
       <description>
          Contains all necessary features for EEF : EEF runtime, EEF metamodels, EEF generators and EEF documentation.
       </description>
    </category-def>
-   <category-def name="eef.integration" label="EEF Integration (Incubation)">
+   <category-def name="eef.integration" label="EEF Integration">
       <description>
          EEF integration for specific cases, like UML2.
       </description>
    </category-def>
-   <category-def name="eef.extension" label="EEF Extension (Incubation)">
+   <category-def name="eef.extension" label="EEF Extension">
       <description>
          EEF using third parties capabilities.
       </description>
