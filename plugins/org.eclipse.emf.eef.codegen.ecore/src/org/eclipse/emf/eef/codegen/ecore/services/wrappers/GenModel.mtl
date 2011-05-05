@@ -1,142 +1,697 @@
 [comment encoding = UTF-8 /]
-[module GenModel('http://www.eclipse.org/emf/2002/GenModel')/]
+[module GenModel('http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[query public getIndentation(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getIndentation(java.lang.StringBuffer)', Sequence{genModel}) /]
-	
-[query public hasCopyrightField(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'hasCopyrightField()', Sequence{genModel}) /]
-	
-[query public getCopyrightFieldLiteral(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getCopyrightFieldLiteral()', Sequence{genModel}) /]
+[query public computeMissingUsedGenPackages(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'computeMissingUsedGenPackages()', Sequence{genModel}) /]
 
-[query public getNonNLS(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getNonNLS()', Sequence{genModel}) /]
-	
-[query public getNonNLS(genModel : GenModel, occured : Integer) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getNonNLS(int)', Sequence{genModel, occured}) /]
+[query public create(genModel : GenModel, eClass : EClass) : GenBase
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'create(org.eclipse.emf.ecore.EClass)', Sequence{genModel, eClass}) /]
 
-[query public useClassOverrideAnnotation(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'useClassOverrideAnnotation()', Sequence{genModel}) /]
+[query public createGenAnnotation(genModel : GenModel) : GenAnnotation
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenAnnotation()', Sequence{genModel}) /]
 
-[query public getPropertyCategoryKey(genModel : GenModel, category : String) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getPropertyCategoryKey(int)', Sequence{genModel, category}) /]
-	
-[query public useGenerics(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'useGenerics()', Sequence{genModel}) /]
+[query public createGenClass(genModel : GenModel) : GenClass
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenClass()', Sequence{genModel}) /]
 
-[query public getProviderRootExtendsClass(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getProviderRootExtendsClass()', Sequence{genModel}) /]
+[query public createGenDataType(genModel : GenModel) : GenDataType
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenDataType()', Sequence{genModel}) /]
 
-[query public getEditPluginID(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditPluginID()', Sequence{genModel}) /]
+[query public createGenEnum(genModel : GenModel) : GenEnum
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenEnum()', Sequence{genModel}) /]
 
-[query public getRuntimePlatform(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getRuntimePlatform()', Sequence{genModel}) /]
+[query public createGenEnumLiteral(genModel : GenModel) : GenEnumLiteral
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenEnumLiteral()', Sequence{genModel}) /]
 
-[query public getEditSourceFolders(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditSourceFolders()', Sequence{genModel}) /]
+[query public createGenFeature(genModel : GenModel) : GenFeature
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenFeature()', Sequence{genModel}) /]
 
-[query public getComplianceLevel(genModel : GenModel) : GenJDKLevel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getComplianceLevel()', Sequence{genModel}) /]
+[query public createGenModel(genModel : GenModel) : GenModel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenModel()', Sequence{genModel}) /]
 
-[query public getQualifiedEditPluginClassName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getQualifiedEditPluginClassName()', Sequence{genModel}) /]
+[query public createGenOperation(genModel : GenModel) : GenOperation
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenOperation()', Sequence{genModel}) /]
 
-[query public getRuntimeVersion(genModel : GenModel) : GenRuntimeVersion
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getRuntimeVersion()', Sequence{genModel}) /]
+[query public createGenPackage(genModel : GenModel) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenPackage()', Sequence{genModel}) /]
 
-[query public getEditQualifiedPackageNames(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditQualifiedPackageNames()', Sequence{genModel}) /]
+[query public createGenParameter(genModel : GenModel) : GenParameter
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenParameter()', Sequence{genModel}) /]
 
-[query public getEditRequiredPlugins(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditRequiredPlugins()', Sequence{genModel}) /]
+[query public createGenTypeParameter(genModel : GenModel) : GenTypeParameter
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'createGenTypeParameter()', Sequence{genModel}) /]
 
-[query public getEditPluginPackageName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditPluginPackageName()', Sequence{genModel}) /]
+[query public findGenClassifier(genModel : GenModel, eClassifier : EClassifier) : GenClassifier
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'findGenClassifier(org.eclipse.emf.ecore.EClassifier)', Sequence{genModel, eClassifier}) /]
 
-[query public getEditPluginClassName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditPluginClassName()', Sequence{genModel}) /]
-
-[query public getModelName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getModelName()', Sequence{genModel}) /]
-
-[query public getEditResourceDelegateImportedPluginClassNames(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditResourceDelegateImportedPluginClassNames()', Sequence{genModel}) /]
-
-[query public needsRuntimeCompatibility(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'needsRuntimeCompatibility()', Sequence{genModel}) /]
+[query public findGenPackage(genModel : GenModel, ePackage : EPackage) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'findGenPackage(org.eclipse.emf.ecore.EPackage)', Sequence{genModel, ePackage}) /]
 
 [query public getAllGenAndUsedGenPackagesWithClassifiers(genModel : GenModel) : Sequence(GenPackage)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllGenAndUsedGenPackagesWithClassifiers()', Sequence{genModel}) /]
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getAllGenAndUsedGenPackagesWithClassifiers()', Sequence{genModel}) /]
 
-[query public hasEditSupport(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'hasEditSupport()', Sequence{genModel}) /]
-
-[query public getPropertyCategories(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getPropertyCategories()', Sequence{genModel}) /]
-
-[query public getFilteredAllGenFeatures(genModel : GenModel) : Sequence(GenFeature)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getFilteredAllGenFeatures()', Sequence{genModel}) /]
+[query public getAllGenFeatures(genModel : GenModel) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getAllGenFeatures()', Sequence{genModel}) /]
 
 [query public getAllGenPackagesWithClassifiers(genModel : GenModel) : Sequence(GenPackage)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllGenPackagesWithClassifiers()', Sequence{genModel}) /]
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getAllGenPackagesWithClassifiers()', Sequence{genModel}) /]
 
-[query public sameModelEditProject(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'sameModelEditProject()', Sequence{genModel}) /]
+[query public getAllGenPackagesWithConcreteClasses(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getAllGenPackagesWithConcreteClasses()', Sequence{genModel}) /]
 
-[query public hasLocalGenModel(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'hasLocalGenModel()', Sequence{genModel}) /]
+[query public getAllGenUsedAndStaticGenPackagesWithClassifiers(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getAllGenUsedAndStaticGenPackagesWithClassifiers()', Sequence{genModel}) /]
+
+[query public getAllUsedGenPackagesWithClassifiers(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getAllUsedGenPackagesWithClassifiers()', Sequence{genModel}) /]
+
+[query public getBooleanFlagsField(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getBooleanFlagsField()', Sequence{genModel}) /]
+
+[query public getBooleanFlagsReservedBits(genModel : GenModel) : Integer
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getBooleanFlagsReservedBits()', Sequence{genModel}) /]
+
+[query public getClassNamePattern(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getClassNamePattern()', Sequence{genModel}) /]
+
+[query public getComplianceLevel(genModel : GenModel) : GenJDKLevel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getComplianceLevel()', Sequence{genModel}) /]
+
+[query public getCopyrightFieldLiteral(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getCopyrightFieldLiteral()', Sequence{genModel}) /]
+
+[query public getCopyrightText(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getCopyrightText()', Sequence{genModel}) /]
+
+[query public getDate(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getDate()', Sequence{genModel}) /]
+
+[query public getDriverNumber(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getDriverNumber()', Sequence{genModel}) /]
+
+[query public getEcoreGenPackage(genModel : GenModel) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEcoreGenPackage()', Sequence{genModel}) /]
+
+[query public getEditDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditDirectory()', Sequence{genModel}) /]
+
+[query public getEditIconsDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditIconsDirectory()', Sequence{genModel}) /]
+
+[query public getEditModuleInherits(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditModuleInherits()', Sequence{genModel}) /]
+
+[query public getEditModuleSources(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditModuleSources()', Sequence{genModel}) /]
+
+[query public getEditPluginClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditPluginClass()', Sequence{genModel}) /]
+
+[query public getEditPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditPluginClassName()', Sequence{genModel}) /]
+
+[query public getEditPluginDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditPluginDirectory()', Sequence{genModel}) /]
+
+[query public getEditPluginID(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditPluginID()', Sequence{genModel}) /]
+
+[query public getEditPluginPackageName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditPluginPackageName()', Sequence{genModel}) /]
+
+[query public getEditPluginVariables(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditPluginVariables()', Sequence{genModel}) /]
+
+[query public getEditProjectDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditProjectDirectory()', Sequence{genModel}) /]
+
+[query public getEditQualifiedPackageNames(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditQualifiedPackageNames()', Sequence{genModel}) /]
+
+[query public getEditRequiredPlugins(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditRequiredPlugins()', Sequence{genModel}) /]
+
+[query public getEditResourceDelegateImportedPluginClassNames(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditResourceDelegateImportedPluginClassNames()', Sequence{genModel}) /]
+
+[query public getEditSourceFolders(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditSourceFolders()', Sequence{genModel}) /]
+
+[query public getEditorAdvisorClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorAdvisorClassName()', Sequence{genModel}) /]
+
+[query public getEditorDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorDirectory()', Sequence{genModel}) /]
+
+[query public getEditorEntryPointClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorEntryPointClassName()', Sequence{genModel}) /]
+
+[query public getEditorHomePageName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorHomePageName()', Sequence{genModel}) /]
+
+[query public getEditorIconsDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorIconsDirectory()', Sequence{genModel}) /]
+
+[query public getEditorModuleInherits(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorModuleInherits()', Sequence{genModel}) /]
+
+[query public getEditorModuleSources(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorModuleSources()', Sequence{genModel}) /]
+
+[query public getEditorPluginClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorPluginClass()', Sequence{genModel}) /]
+
+[query public getEditorPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorPluginClassName()', Sequence{genModel}) /]
+
+[query public getEditorPluginDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorPluginDirectory()', Sequence{genModel}) /]
+
+[query public getEditorPluginID(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorPluginID()', Sequence{genModel}) /]
+
+[query public getEditorPluginPackageName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorPluginPackageName()', Sequence{genModel}) /]
+
+[query public getEditorPluginVariables(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorPluginVariables()', Sequence{genModel}) /]
+
+[query public getEditorProjectDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorProjectDirectory()', Sequence{genModel}) /]
+
+[query public getEditorQualifiedPackageNames(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorQualifiedPackageNames()', Sequence{genModel}) /]
+
+[query public getEditorRequiredPlugins(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorRequiredPlugins()', Sequence{genModel}) /]
+
+[query public getEditorSourceFolders(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEditorSourceFolders()', Sequence{genModel}) /]
+
+[query public getEffectiveModelPluginVariables(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEffectiveModelPluginVariables()', Sequence{genModel}) /]
+
+[query public getFacadeHelperClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getFacadeHelperClass()', Sequence{genModel}) /]
+
+[query public getFeatureDelegation(genModel : GenModel) : GenDelegationKind
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getFeatureDelegation()', Sequence{genModel}) /]
+
+[query public getFeatureMapWrapperClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getFeatureMapWrapperClass()', Sequence{genModel}) /]
+
+[query public getFeatureMapWrapperInterface(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getFeatureMapWrapperInterface()', Sequence{genModel}) /]
+
+[query public getFeatureMapWrapperInternalInterface(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getFeatureMapWrapperInternalInterface()', Sequence{genModel}) /]
+
+[query public getFilteredAllGenFeatures(genModel : GenModel) : Sequence(GenFeature)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getFilteredAllGenFeatures()', Sequence{genModel}) /]
+
+[query public getForeignModel(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getForeignModel()', Sequence{genModel}) /]
+
+[query public getGenPackages(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getGenPackages()', Sequence{genModel}) /]
+
+[query public getImportedName(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getImportedName(java.lang.String)', Sequence{genModel, qualifiedName}) /]
+
+[query public getImporterID(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getImporterID()', Sequence{genModel}) /]
+
+[query public getInterfaceNamePattern(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getInterfaceNamePattern()', Sequence{genModel}) /]
+
+[query public getLanguage(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getLanguage()', Sequence{genModel}) /]
+
+[query public getLineDelimiter(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getLineDelimiter()', Sequence{genModel}) /]
+
+[query public getMainGenModel(genModel : GenModel) : GenModel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getMainGenModel()', Sequence{genModel}) /]
+
+[query public getMergeRulesLocation(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getMergeRulesLocation()', Sequence{genModel}) /]
+
+[query public getMissingPackages(genModel : GenModel) : Sequence(EPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getMissingPackages()', Sequence{genModel}) /]
+
+[query public getModelDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelDirectory()', Sequence{genModel}) /]
+
+[query public getModelModuleInherits(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelModuleInherits()', Sequence{genModel}) /]
+
+[query public getModelModuleSources(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelModuleSources()', Sequence{genModel}) /]
+
+[query public getModelName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelName()', Sequence{genModel}) /]
+
+[query public getModelPluginClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelPluginClass()', Sequence{genModel}) /]
+
+[query public getModelPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelPluginClassName()', Sequence{genModel}) /]
+
+[query public getModelPluginID(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelPluginID()', Sequence{genModel}) /]
+
+[query public getModelPluginPackageName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelPluginPackageName()', Sequence{genModel}) /]
+
+[query public getModelPluginVariables(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelPluginVariables()', Sequence{genModel}) /]
+
+[query public getModelProjectDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelProjectDirectory()', Sequence{genModel}) /]
+
+[query public getModelQualifiedPackageNames(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelQualifiedPackageNames()', Sequence{genModel}) /]
+
+[query public getModelRequiredPlugins(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelRequiredPlugins()', Sequence{genModel}) /]
+
+[query public getModelSourceFolders(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getModelSourceFolders()', Sequence{genModel}) /]
+
+[query public getNonExternalizedStringTag(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getNonExternalizedStringTag()', Sequence{genModel}) /]
+
+[query public getNonNLS(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getNonNLS()', Sequence{genModel}) /]
+
+[query public getNonNLS(genModel : GenModel, i : Integer) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getNonNLS(int)', Sequence{genModel, i}) /]
+
+[query public getNonNLS(genModel : GenModel, s : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getNonNLS(java.lang.String)', Sequence{genModel, s}) /]
+
+[query public getNonNLS(genModel : GenModel, s : String, i : Integer) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getNonNLS(java.lang.String, int)', Sequence{genModel, s, i}) /]
+
+[query public getPropertyCategoryKey(genModel : GenModel, category : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getPropertyCategoryKey(java.lang.String)', Sequence{genModel, category}) /]
+
+[query public getPropertyCategories(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getPropertyCategories()', Sequence{genModel}) /]
+
+[query public getProviderRootExtendsClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getProviderRootExtendsClass()', Sequence{genModel}) /]
+
+[query public getQualifiedEditModuleName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedEditModuleName()', Sequence{genModel}) /]
+
+[query public getQualifiedEditPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedEditPluginClassName()', Sequence{genModel}) /]
+
+[query public getQualifiedEditorAdvisorClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedEditorAdvisorClassName()', Sequence{genModel}) /]
+
+[query public getQualifiedEditorEntryPointClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedEditorEntryPointClassName()', Sequence{genModel}) /]
+
+[query public getQualifiedEditorModuleName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedEditorModuleName()', Sequence{genModel}) /]
+
+[query public getQualifiedEditorPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedEditorPluginClassName()', Sequence{genModel}) /]
+
+[query public getQualifiedModelModuleName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedModelModuleName()', Sequence{genModel}) /]
+
+[query public getQualifiedModelPluginClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedModelPluginClassName()', Sequence{genModel}) /]
+
+[query public getQualifiedTestSuiteClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getQualifiedTestSuiteClassName()', Sequence{genModel}) /]
+
+[query public getRedirection(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRedirection()', Sequence{genModel}) /]
 
 [query public getRelativeGenModelLocation(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getRelativeGenModelLocation()', Sequence{genModel}) /]
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRelativeGenModelLocation()', Sequence{genModel}) /]
+
+[query public getRootExtendsClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRootExtendsClass()', Sequence{genModel}) /]
+
+[query public getRootExtendsInterface(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRootExtendsInterface()', Sequence{genModel}) /]
+
+[query public getRootImplementsInterface(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRootImplementsInterface()', Sequence{genModel}) /]
+
+[query public getRootImplementsInterfaceGenClass(genModel : GenModel) : GenClass
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRootImplementsInterfaceGenClass()', Sequence{genModel}) /]
+
+[query public getRuntimePlatform(genModel : GenModel) : GenRuntimePlatform
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRuntimePlatform()', Sequence{genModel}) /]
+
+[query public getRuntimeVersion(genModel : GenModel) : GenRuntimeVersion
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getRuntimeVersion()', Sequence{genModel}) /]
+
+[query public getStaticGenPackages(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getStaticGenPackages()', Sequence{genModel}) /]
+
+[query public getStaticPackages(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getStaticPackages()', Sequence{genModel}) /]
+
+[query public getTemplateDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTemplateDirectory()', Sequence{genModel}) /]
+
+[query public getTemplatePluginVariables(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTemplatePluginVariables()', Sequence{genModel}) /]
+
+[query public getTestSuiteClass(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestSuiteClass()', Sequence{genModel}) /]
+
+[query public getTestSuiteClassName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestSuiteClassName()', Sequence{genModel}) /]
+
+[query public getTestSuitePackageName(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestSuitePackageName()', Sequence{genModel}) /]
+
+[query public getTestsDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsDirectory()', Sequence{genModel}) /]
+
+[query public getTestsPluginID(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsPluginID()', Sequence{genModel}) /]
+
+[query public getTestsPluginVariables(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsPluginVariables()', Sequence{genModel}) /]
+
+[query public getTestsProjectDirectory(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsProjectDirectory()', Sequence{genModel}) /]
+
+[query public getTestsQualifiedPackageNames(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsQualifiedPackageNames()', Sequence{genModel}) /]
+
+[query public getTestsRequiredPlugins(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsRequiredPlugins()', Sequence{genModel}) /]
+
+[query public getTestsSourceFolders(genModel : GenModel) : Sequence(String)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getTestsSourceFolders()', Sequence{genModel}) /]
+
+[query public getUsedGenPackages(genModel : GenModel) : Sequence(GenPackage)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getUsedGenPackages()', Sequence{genModel}) /]
+
+[query public getXMLEncodingChoices(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getXMLEncodingChoices()', Sequence{genModel}) /]
+
+[query public getXMLNamespaceGenPackage(genModel : GenModel) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getXMLNamespaceGenPackage()', Sequence{genModel}) /]
+
+[query public getXMLTypeGenPackage(genModel : GenModel) : GenPackage
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getXMLTypeGenPackage()', Sequence{genModel}) /]
+
+[query public hasCopyrightField(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasCopyrightField()', Sequence{genModel}) /]
+
+[query public hasEditSupport(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasEditSupport()', Sequence{genModel}) /]
+
+[query public hasEditorSupport(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasEditorSupport()', Sequence{genModel}) /]
+
+[query public hasLocalGenModel(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasLocalGenModel()', Sequence{genModel}) /]
+
+[query public hasModelPluginClass(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasModelPluginClass()', Sequence{genModel}) /]
+
+[query public hasPluginSupport(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasPluginSupport()', Sequence{genModel}) /]
+
+[query public hasTestSuiteClass(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasTestSuiteClass()', Sequence{genModel}) /]
+
+[query public hasTestSupport(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasTestSupport()', Sequence{genModel}) /]
+
+[query public hasXMLDependency(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasXMLDependency()', Sequence{genModel}) /]
+
+[query public isArrayAccessors(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isArrayAccessors()', Sequence{genModel}) /]
+
+[query public isBinaryCompatibleReflectiveMethods(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isBinaryCompatibleReflectiveMethods()', Sequence{genModel}) /]
+
+[query public isBooleanFlagsEnabled(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isBooleanFlagsEnabled()', Sequence{genModel}) /]
+
+[query public isBundleManifest(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isBundleManifest()', Sequence{genModel}) /]
+
+[query public isCodeFormatting(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isCodeFormatting()', Sequence{genModel}) /]
+
+[query public isColorProviders(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isColorProviders()', Sequence{genModel}) /]
+
+[query public isContainmentProxies(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isContainmentProxies()', Sequence{genModel}) /]
+
+[query public isCopyrightFields(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isCopyrightFields()', Sequence{genModel}) /]
+
+[query public isCreationCommands(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isCreationCommands()', Sequence{genModel}) /]
+
+[query public isCreationIcons(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isCreationIcons()', Sequence{genModel}) /]
+
+[query public isCreationSubmenus(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isCreationSubmenus()', Sequence{genModel}) /]
+
+[query public isDynamicDelegation(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isDynamicDelegation()', Sequence{genModel}) /]
+
+[query public isDynamicTemplates(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isDynamicTemplates()', Sequence{genModel}) /]
+
+[query public isFontProviders(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isFontProviders()', Sequence{genModel}) /]
+
+[query public isForceOverwrite(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isForceOverwrite()', Sequence{genModel}) /]
+
+[query public isGenerateSchema(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isGenerateSchema()', Sequence{genModel}) /]
+
+[query public isMinimalReflectiveMethods(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isMinimalReflectiveMethods()', Sequence{genModel}) /]
+
+[query public isNonNLSMarkers(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isNonNLSMarkers()', Sequence{genModel}) /]
+
+[query public isOperationReflection(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isOperationReflection()', Sequence{genModel}) /]
+
+[query public isOptimizedHasChildren(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isOptimizedHasChildren()', Sequence{genModel}) /]
+
+[query public isPackedEnums(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isPackedEnums()', Sequence{genModel}) /]
+
+[query public isPublicConstructors(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isPublicConstructors()', Sequence{genModel}) /]
+
+[query public isReflectiveDelegation(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isReflectiveDelegation()', Sequence{genModel}) /]
+
+[query public isRichAjaxPlatform(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isRichAjaxPlatform()', Sequence{genModel}) /]
 
 [query public isRichClientPlatform(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'isRichClientPlatform()', Sequence{genModel}) /]
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isRichClientPlatform()', Sequence{genModel}) /]
+
+[query public isRuntimeCompatibility(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isRuntimeCompatibility()', Sequence{genModel}) /]
+
+[query public isRuntimeJar(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isRuntimeJar()', Sequence{genModel}) /]
+
+[query public isSetEditDirectory(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetEditDirectory()', Sequence{genModel}) /]
+
+[query public isSetEditPluginClass(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetEditPluginClass()', Sequence{genModel}) /]
+
+[query public isSetEditorDirectory(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetEditorDirectory()', Sequence{genModel}) /]
+
+[query public isSetEditorPluginClass(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetEditorPluginClass()', Sequence{genModel}) /]
+
+[query public isSetRuntimeVersion(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetRuntimeVersion()', Sequence{genModel}) /]
+
+[query public isSetTestSuiteClass(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetTestSuiteClass()', Sequence{genModel}) /]
+
+[query public isSetTestsDirectory(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSetTestsDirectory()', Sequence{genModel}) /]
+
+[query public isSuppressContainment(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressContainment()', Sequence{genModel}) /]
+
+[query public isSuppressEMFMetaData(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressEMFMetaData()', Sequence{genModel}) /]
+
+[query public isSuppressEMFModelTags(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressEMFModelTags()', Sequence{genModel}) /]
+
+[query public isSuppressEMFTypes(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressEMFTypes()', Sequence{genModel}) /]
+
+[query public isSuppressGenModelAnnotations(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressGenModelAnnotations()', Sequence{genModel}) /]
+
+[query public isSuppressInterfaces(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressInterfaces()', Sequence{genModel}) /]
+
+[query public isSuppressNotification(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressNotification()', Sequence{genModel}) /]
+
+[query public isSuppressUnsettable(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressUnsettable()', Sequence{genModel}) /]
+
+[query public isSuppressedAnnotation(genModel : GenModel, source : String) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isSuppressedAnnotation(java.lang.String)', Sequence{genModel, source}) /]
+
+[query public isTableProviders(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isTableProviders()', Sequence{genModel}) /]
+
+[query public isUpdateClasspath(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isUpdateClasspath()', Sequence{genModel}) /]
+
+[query public isValidateModel(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isValidateModel()', Sequence{genModel}) /]
+
+[query public isVirtualDelegation(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'isVirtualDelegation()', Sequence{genModel}) /]
+
+[query public needsRuntimeCompatibility(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'needsRuntimeCompatibility()', Sequence{genModel}) /]
+
+[query public reconcile(genModel : GenModel, oldGenModelVersion : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'reconcile(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel, oldGenModelVersion}) /]
+
+[query public sameEditEditorProject(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'sameEditEditorProject()', Sequence{genModel}) /]
+
+[query public sameModelEditProject(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'sameModelEditProject()', Sequence{genModel}) /]
+
+[query public sameModelEditorProject(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'sameModelEditorProject()', Sequence{genModel}) /]
+
+[query public sameModelTestsProject(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'sameModelTestsProject()', Sequence{genModel}) /]
+
+[query public useClassOverrideAnnotation(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'useClassOverrideAnnotation()', Sequence{genModel}) /]
+
+[query public useGenerics(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'useGenerics()', Sequence{genModel}) /]
+
+[comment
+    Override of services for super interface GenBase 
+/]
+[query public canGenerate(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'canGenerate()', Sequence{genModel}) /]
+
+[query public canGenerateEdit(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'canGenerateEdit()', Sequence{genModel}) /]
+
+[query public canGenerateEditor(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'canGenerateEditor()', Sequence{genModel}) /]
+
+[query public canGenerateSchema(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'canGenerateSchema()', Sequence{genModel}) /]
+
+[query public canGenerateTests(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'canGenerateTests()', Sequence{genModel}) /]
+
+[query public capName(genModel : GenModel, name : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'capName(String)', Sequence{genModel, name}) /]
+
+[query public getCopyright(genModel : GenModel, indentation : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getCopyright(java.lang.String)', Sequence{genModel, indentation}) /]
+
+[query public getDocumentation(genModel : GenModel, indentation : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getDocumentation(java.lang.String)', Sequence{genModel, indentation}) /]
+
+[query public getEcoreModelElement(genModel : GenModel) : EModelElement
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getEcoreModelElement()', Sequence{genModel}) /]
+
+[query public getGenAnnotation(genModel : GenModel, source : String) : GenAnnotation
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getGenAnnotation(java.lang.String)', Sequence{genModel, source}) /]
+
+[query public getGenAnnotations(genModel : GenModel) : Sequence(GenAnnotation)
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getGenAnnotations()', Sequence{genModel}) /]
+
+[query public getGenModel(genModel : GenModel) : GenModel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getGenModel()', Sequence{genModel}) /]
+
+[query public hasCopyright(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasCopyright()', Sequence{genModel}) /]
+
+[query public hasDocumentation(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'hasDocumentation()', Sequence{genModel}) /]
+
+[query public reconcile(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'reconcile()', Sequence{genModel}) /]
+
+[query public safeName(genModel : GenModel, name : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'safeName(java.lang.String)', Sequence{genModel, name}) /]
+
+[query public uncapName(genModel : GenModel, name : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'uncapName(java.lang.String)', Sequence{genModel, name}) /]
+
+[query public uncapPrefixedName(genModel : GenModel, input : String) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'uncapPrefixedName(java.lang.String)', Sequence{genModel, input}) /]
+
+
+
 
 [query public getLocale(genModel : GenModel) : OclAny
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getLocale()', Sequence{genModel}) /]
 
-[query public getEditorPluginPackageName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginPackageName()', Sequence{genModel}) /]
+[query public addImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
 
-[query public getEditorAdvisorClassName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorAdvisorClassName()', Sequence{genModel}) /]
+[query public addPseudoImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addPseudoImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
 
-[query public isRichAjaxPlatform(genModel : GenModel) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'isRichAjaxPlatform()', Sequence{genModel}) /]
+[query public isJDK50(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'isJDK50(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
 
-[query public getAllGenPackagesWithConcreteClasses(genModel : GenModel) : Sequence(OclAny)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllGenPackagesWithConcreteClasses()', Sequence{genModel}) /]
+[query public isEMF26(genModel : GenModel) : Boolean
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'isEMF26(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
 
-[query public getQualifiedEditorPluginClassName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getQualifiedEditorPluginClassName()', Sequence{genModel}) /]
+[query public getIndentation(genModel : GenModel) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'getIndentation(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
 
-[query public getEditorSourceFolders(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorSourceFolders()', Sequence{genModel}) /]
+[comment
+	Returns the imports to insert at the relevant position in the output file.
+	@param packageName is here to prevent Acceleo from caching things.
+	@param className is here to prevent Acceleo from caching things.
+/]
+[query public genSortedImports(genModel : GenModel, packageName : String, className : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'genSortedImports(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
 
-[query public getEditorPluginID(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginID()', Sequence{genModel}) /]
+[comment
+	Creates a new importManager and sets it on the current GenModel, to manage the imports
+	of the class currently being generated.
+	@param packageName Qualified package name of the class being generated.
+	@param className Name of the class being generated.
+/]
+[query public initializeImportManager(genModel : GenModel, packageName : String, className : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'initializeImportManager(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String, java.lang.String)', Sequence{genModel, packageName, className}) /]
 
-[query public getQualifiedEditorAdvisorClassName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getQualifiedEditorAdvisorClassName()', Sequence{genModel}) /]
-
-[query public getAllUsedGenPackagesWithClassifiers(genModel : GenModel) : Sequence(OclAny)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getAllUsedGenPackagesWithClassifiers()', Sequence{genModel}) /]
-
-[query public getEditorQualifiedPackageNames(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorQualifiedPackageNames()', Sequence{genModel}) /]
-
-[query public getEditorRequiredPlugins(genModel : GenModel) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorRequiredPlugins()', Sequence{genModel}) /]
-
-[query public getEditorPluginClassName(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getEditorPluginClassName()', Sequence{genModel}) /]
-
-[query public getXMLEncodingChoices(genModel : GenModel) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getXMLEncodingChoices()', Sequence{genModel}) /]
-
-[comment special handling for avoiding NPE due to importManager /]
-[query public getImportedName(genModel : GenModel, qualifiedName : String) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.ImportManagerWrapper', 'getImportedName(java.lang.String)', Sequence{qualifiedName}) /]
-	
+[query public toStringLiteral(genModel : GenModel, literal : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'toStringLiteral(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, literal}) /]

@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 Obeo.
+ * Copyright (c) 2008, 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Obeo - Initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ecore.main;
 
@@ -26,36 +26,35 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
  * Entry point of the 'GenEditor' generation module.
- *
+ * 
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * @generated
  */
 public class GenEditor extends AbstractAcceleoGenerator {
 	/**
 	 * The name of the module.
-	 *
+	 * 
 	 * @generated
 	 */
 	public static final String MODULE_FILE_NAME = "GenEditor";
-	
+
 	/**
 	 * The name of the templates that are to be generated.
-	 *
+	 * 
 	 * @generated
 	 */
 	public static final String[] TEMPLATE_NAMES = { "GenAllGenClass", };
 
 	/**
-	 * Allows the public constructor to be used. Note that a generator created
-	 * this way cannot be used to launch generations before one of
-	 * {@link #initialize(EObject, File, List)} or
+	 * Allows the public constructor to be used. Note that a generator created this way cannot be used to
+	 * launch generations before one of {@link #initialize(EObject, File, List)} or
 	 * {@link #initialize(URI, File, List)} is called.
 	 * <p>
-	 * The main reason for this constructor is to allow clients of this
-	 * generation to call it from another Java file, as it allows for the
-	 * retrieval of {@link #getProperties()} and
+	 * The main reason for this constructor is to allow clients of this generation to call it from another
+	 * Java file, as it allows for the retrieval of {@link #getProperties()} and
 	 * {@link #getGenerationListeners()}.
 	 * </p>
-	 *
+	 * 
 	 * @generated
 	 */
 	public GenEditor() {
@@ -78,8 +77,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
 	 *             the model cannot be loaded.
 	 * @generated
 	 */
-	public GenEditor(URI modelURI, File targetFolder,
-			List<? extends Object> arguments) throws IOException {
+	public GenEditor(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
     initialize(modelURI, targetFolder, arguments);
   }
 
@@ -99,11 +97,10 @@ public class GenEditor extends AbstractAcceleoGenerator {
 	 *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
 	 * @generated
 	 */
-	public GenEditor(EObject model, File targetFolder,
-			List<? extends Object> arguments) throws IOException {
+	public GenEditor(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
     initialize(model, targetFolder, arguments);
   }
-	
+
 	/**
 	 * This can be used to launch the generation from a standalone application.
 	 * 
@@ -147,7 +144,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
      */
     super.doGenerate(monitor);
   }
-	
+
 	/**
 	 * If this generator needs to listen to text generation events, listeners can be returned from here.
 	 * 
@@ -160,7 +157,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
     // TODO if you need to listen to generation event, add listeners to the list here
     return listeners;
   }
-	
+
 	/**
 	 * If you need to change the way files are generated, this is your entry point.
 	 * <p>
@@ -172,7 +169,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
 	 * <p>
 	 * If you need the file generation to be aware of the workspace (A typical example is when you wanna
 	 * override files that are under clear case or any other VCS that could forbid the overriding), then
-	 * return a new {@link org.eclipse.acceleo.engine.generation.strategy.WorkspaceAwareStrategy}.
+	 * return a new {@link org.eclipse.acceleo.engine.generation.strategy.WorkspaceAwareStrategy} .
 	 * <b>Note</b>, however, that this <b>cannot</b> be used standalone.
 	 * </p>
 	 * <p>
@@ -185,7 +182,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
 	public IAcceleoGenerationStrategy getGenerationStrategy() {
     return super.getGenerationStrategy();
   }
-	
+
 	/**
 	 * This will be called in order to find and load the module that will be launched through this launcher.
 	 * We expect this name not to contain file extension, and the module to be located beside the launcher.
@@ -197,7 +194,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
 	public String getModuleName() {
     return MODULE_FILE_NAME;
   }
-	
+
 	/**
 	 * If the module(s) called by this launcher require properties files, return their qualified path from
 	 * here.Take note that the first added properties files will take precedence over subsequent ones if they
@@ -227,7 +224,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
      */
     return propertiesFiles;
   }
-	
+
 	/**
 	 * This will be used to get the list of templates that are to be launched by this launcher.
 	 * 
@@ -238,7 +235,7 @@ public class GenEditor extends AbstractAcceleoGenerator {
 	public String[] getTemplateNames() {
     return TEMPLATE_NAMES;
   }
-	
+
 	/**
 	 * This can be used to update the resource set's package registry with all needed EPackages.
 	 * 
@@ -268,5 +265,5 @@ public class GenEditor extends AbstractAcceleoGenerator {
     // TODO If you need additional resource factories registrations, do them here. The following line is an example for UML.
     // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
   }
-	
+
 }

@@ -1,8 +1,0 @@
-[comment encoding = UTF-8 /]
-[module initializers('http://www.eclipse.org/emf/2002/GenModel')/]
-
-[query public initEdit(genModel : GenModel) : OclVoid 
-= invoke('org.eclipse.emf.eef.codegen.ecore.services.Initializer', 'initEdit(org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl)', Sequence{genModel}) /]
-
-[query public initEditor(genModel : GenModel) : OclVoid 
-= invoke('org.eclipse.emf.eef.codegen.ecore.services.Initializer', 'initEditor(org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl)', Sequence{genModel}) /]

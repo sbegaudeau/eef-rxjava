@@ -1,6 +1,11 @@
 [comment encoding = UTF-8 /]
 [module common('http://www.eclipse.org/emf/2002/GenModel')/]
 
-[template public toPath(s : String)][s.substituteAll('.', '/')/][/template]
+[import org::eclipse::emf::eef::codegen::ecore::services::StringUtil /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
 
-[query public isBlank(string : String) : Boolean = string.oclIsUndefined() or string->size() = 0/]
+[query public editPath(genModel : GenModel, packageName : String, className : String) : String = (extractSourceDirectory(genModel.getEditDirectory()).concat('.').concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
+
+[query public editorPath(genModel : GenModel, packageName : String, className : String) : String = (extractSourceDirectory(genModel.getEditorDirectory()).concat('.').concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
+
+[query public modelPath(genModel : GenModel, packageName : String, className : String) : String = (extractSourceDirectory(genModel.getModelDirectory()).concat('.').concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]

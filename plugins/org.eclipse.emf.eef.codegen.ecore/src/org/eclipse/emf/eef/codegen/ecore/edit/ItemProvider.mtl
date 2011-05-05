@@ -1,4 +1,21 @@
 [comment encoding = UTF-8 /]
+[comment
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2002-2011 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - Initial API and implementation
+ *   Obeo - Migrate to Acceleo
+ *
+ * </copyright>
+ */
+[/comment]
 [module ItemProvider('http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::common /]
@@ -12,12 +29,11 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenDataType /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenTypedElement /]
 
-[template public ItemProvider(genClass : GenClass)]
-[let genPackage : GenPackage = genClass.genPackage]
-[let genModel : GenModel = genPackage.genModel]
-[file (itemProviderPath(genPackage, genClass), false, 'UTF-8')]
+[template public ItemProvider(genClass : GenClass) { genPackage : GenPackage = genClass.genPackage ; genModel : GenModel = genPackage.genModel ; packageName : String = genPackage.getProviderPackageName() ; className : String = genClass.getProviderClassName() }]
+[genModel.initializeImportManager(packageName, className)/]
+[file (genModel.editPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
-package [genPackage.getProviderPackageName()/];
+package [packageName/];
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -26,14 +42,24 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+[let content : String = genModel.fileContent(genPackage, genClass, packageName, className)]
+[genModel.genSortedImports(packageName, className)/]
+
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template public fileContent(genModel : GenModel, genPackage : GenPackage, genClass : GenClass, packageName : String, className : String)]
 /**
  * This is the item provider adapter for a {@link [genClass.getQualifiedInterfaceName()/]} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class [genClass.getProviderClassName()/]
-	extends [if (not genClass.getProviderBaseClassName().oclIsUndefined())][genClass.getProviderBaseClassName()/][else]org.eclipse.emf.edit.provider.ItemProviderAdapter[/if]
+public class [className/]
+	extends [if (not genClass.getProviderBaseClassName().oclIsUndefined())][genClass.getProviderBaseClassName()/][else][genModel.getImportedName('org.eclipse.emf.edit.provider.ItemProviderAdapter',packageName, className)/][/if]
 	implements [if (genPackage.getProviderSupportedTypes()->size() > 0)][genPackage.getProviderSupportedTypes()->sep(', ')/][/if]
 {
 [if (genModel.hasCopyrightField())]
@@ -42,7 +68,7 @@ public class [genClass.getProviderClassName()/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final java.lang.String copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String',packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
 	/**
@@ -91,7 +117,7 @@ public class [genClass.getProviderClassName()/]
 <%@ start %>[/comment]
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((org.eclipse.emf.edit.provider.ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((([genModel.getImportedName('org.eclipse.emf.edit.provider.ComposeableAdapterFactory',packageName, className)/])adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_[genFeature.genClass.getName()/]_[genFeature.getName()/]_feature"),[genModel.getNonNLS()/]
   [if (genFeature.propertyDescription.oclIsUndefined() or genFeature.propertyDescription.size() = 0)]
@@ -106,7 +132,7 @@ public class [genClass.getProviderClassName()/]
   [if (genFeature.isReferenceType())]
 				 null,
   [else]
-				 org.eclipse.emf.edit.provider.ItemPropertyDescriptor.[genFeature.getPropertyImageName()/],
+				 [genModel.getImportedName('org.eclipse.emf.edit.provider.ItemPropertyDescriptor',packageName, className)/].[genFeature.getPropertyImageName()/],
   [/if]
   [if (genFeature.propertyCategory.oclIsUndefined() or genFeature.propertyCategory.size() = 0)]
 				 null,
@@ -136,7 +162,7 @@ public class [genClass.getProviderClassName()/]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
 [/if]
-	public java.util.Collection[if (genModel.useGenerics())]<? extends org.eclipse.emf.ecore.EStructuralFeature>[/if] getChildrenFeatures(Object object)
+	public [genModel.getImportedName('java.util.Collection',packageName, className)/][if (genModel.useGenerics())]<? extends [genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature',packageName, className)/]>[/if] getChildrenFeatures(Object object)
 	{
 		if (childrenFeatures == null)
 		{
@@ -157,7 +183,7 @@ public class [genClass.getProviderClassName()/]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
 [/if]
-	protected org.eclipse.emf.ecore.EStructuralFeature getChildFeature(Object object, Object child)
+	protected [genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature',packageName, className)/] getChildFeature(Object object, Object child)
 	{
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -295,21 +321,21 @@ public class [genClass.getProviderClassName()/]
     [for (genFeature : GenFeature | genClass.getLabelNotifyFeatures())]
 			case [genClass.getQualifiedFeatureID(genFeature)/]:
     [/for]
-				fireNotifyChanged(new org.eclipse.emf.edit.provider.ViewerNotification(notification, notification.getNotifier(), false, true));
+				fireNotifyChanged(new [genModel.getImportedName('org.eclipse.emf.edit.provider.ViewerNotification',packageName, className)/](notification, notification.getNotifier(), false, true));
 				return;
   [/if]
   [if (genClass.getContentNotifyFeatures()->notEmpty())]
     [for (genFeature : GenFeature | genClass.getContentNotifyFeatures())]
 			case [genClass.getQualifiedFeatureID(genFeature)/]:
     [/for]
-				fireNotifyChanged(new org.eclipse.emf.edit.provider.ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new [genModel.getImportedName('org.eclipse.emf.edit.provider.ViewerNotification',packageName, className)/](notification, notification.getNotifier(), true, false));
 				return;
   [/if]
   [if (genClass.getLabelAndContentNotifyFeatures()->notEmpty())]
     [for (genFeature : GenFeature | genClass.getLabelAndContentNotifyFeatures())]
 			case [genClass.getQualifiedFeatureID(genFeature)/]:
     [/for]
-				fireNotifyChanged(new org.eclipse.emf.edit.provider.ViewerNotification(notification, notification.getNotifier(), true, true));
+				fireNotifyChanged(new [genModel.getImportedName('org.eclipse.emf.edit.provider.ViewerNotification',packageName, className)/](notification, notification.getNotifier(), true, true));
 				return;
   [/if]
 		}
@@ -328,7 +354,7 @@ public class [genClass.getProviderClassName()/]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
 [/if]
-	protected void collectNewChildDescriptors(java.util.Collection[if (genModel.useGenerics())]<java.lang.Object>[/if] newChildDescriptors, Object object)
+	protected void collectNewChildDescriptors([genModel.getImportedName('java.util.Collection',packageName, className)/][if (genModel.useGenerics())]<[genModel.getImportedName('java.lang.Object',packageName, className)/]>[/if] newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
     [for (genClass.getChildCreationData())]
@@ -340,7 +366,7 @@ public class [genClass.getProviderClassName()/]
 		newChildDescriptors.add
 			(createChildParameter
 				([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
-				 org.eclipse.emf.ecore.util.FeatureMapUtil.createEntry
+				 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil',packageName, className)/].createEntry
 					([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataCreateClassifier().oclAsType(GenClass).isMapEntry())]
 					 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/]))));
@@ -356,7 +382,7 @@ public class [genClass.getProviderClassName()/]
 		newChildDescriptors.add
 			(createChildParameter
 				([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
-				 org.eclipse.emf.ecore.util.FeatureMapUtil.createEntry
+				 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil',packageName, className)/].createEntry
 					([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataDelegatedFeature().isEnumBasedType())]
 					 [getChildCreationDataDelegatedFeature().getTypeGenEnum().getStaticValue(getChildCreationDataDelegatedFeature().getEcoreFeature().defaultValueLiteral)/])));
@@ -412,15 +438,15 @@ public class [genClass.getProviderClassName()/]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
 [/if]
-	public String getCreateChildText(Object owner, Object feature, Object child, java.util.Collection[if genModel.useGenerics()]<?>[/if] selection)
+	public String getCreateChildText(Object owner, Object feature, Object child, [genModel.getImportedName('java.util.Collection',packageName, className)/][if genModel.useGenerics()]<?>[/if] selection)
 	{
 		Object childFeature = feature;
 		Object childObject = child;
 
     [if (genClass.hasFeatureMapCreateChildFeatures())]
-		if (childFeature instanceof org.eclipse.emf.ecore.EStructuralFeature && org.eclipse.emf.ecore.util.FeatureMapUtil.isFeatureMap((EStructuralFeature)childFeature))
+		if (childFeature instanceof [genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature',packageName, className)/] && [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil',packageName, className)/].isFeatureMap((EStructuralFeature)childFeature))
 		{
-			org.eclipse.emf.ecore.util.FeatureMap.Entry entry = (FeatureMap.Entry)childObject;
+			[genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap',packageName, className)/].Entry entry = (FeatureMap.Entry)childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
@@ -451,10 +477,10 @@ public class [genClass.getProviderClassName()/]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
 [/if]
-	public org.eclipse.emf.common.util.ResourceLocator getResourceLocator()
+	public [genModel.getImportedName('org.eclipse.emf.common.util.ResourceLocator',packageName, className)/] getResourceLocator()
 	{
 [if (genPackage.isExtensibleProviderFactory())]
-		return ((org.eclipse.emf.edit.provider.IChildCreationExtender)adapterFactory).getResourceLocator();
+		return (([genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender',packageName, className)/])adapterFactory).getResourceLocator();
 [else]
 		return [genPackage.getImportedEditPluginClassName()/].INSTANCE;
 [/if]
@@ -464,12 +490,7 @@ public class [genClass.getProviderClassName()/]
 [comment]<%@ include file="ItemProvider/insert.javajetinc" fail="silent" %>[/comment]
 }
 
-[/file]
-[/let]
-[/let]
 [/template]
-
-[query public itemProviderPath(genPackage : GenPackage, genClass : GenClass) : String = 'src.'.concat(genPackage.getProviderPackageName().concat('.').concat(genClass.getProviderClassName())).toPath().concat('.java') /]
 
 [query public _List(genModel : GenModel) : String = if genModel.useGenerics().oclIsUndefined() then 'java.util.List' else 'java.util.List<org.eclipse.emf.edit.provider.IItemPropertyDescriptor>' endif/]
 

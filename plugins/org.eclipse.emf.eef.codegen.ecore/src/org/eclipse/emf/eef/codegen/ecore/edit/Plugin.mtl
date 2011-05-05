@@ -1,4 +1,21 @@
 [comment encoding = UTF-8 /]
+[comment
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2002-2011 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - Initial API and implementation
+ *   Obeo - Migrate to Acceleo
+ *
+ * </copyright>
+ */
+[/comment]
 [module Plugin('http://www.eclipse.org/emf/2002/GenModel')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::header /]
@@ -10,21 +27,31 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnum /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnumLiteral /]
 
-[template public Plugin(genModel : GenModel)]
-[file (pluginPath(), false, 'UTF-8')]
+[template public Plugin(genModel : GenModel) { packageName : String = genModel.getEditPluginPackageName() ; className : String = genModel.getEditPluginClassName() }]
+[initializeImportManager(packageName, className)/]
+[file (genModel.editPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
-package [genModel.getEditPluginPackageName()/];
+package [packageName/];
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+[let content : String = pluginFileContent(packageName, className)]
+[genModel.genSortedImports(packageName, className)/]
+
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template public pluginFileContent(genModel : GenModel, packageName : String, className : String)]
 /**
  * This is the central singleton for the [genModel.getModelName()/] edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
+public final class [className/] extends EMFPlugin
 {
 [if (genModel.hasCopyrightField())]
 	/**
@@ -32,7 +59,7 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final java.lang.String copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String',packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
 	/**
@@ -41,7 +68,7 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final [genModel.getEditPluginClassName()/] INSTANCE = new [genModel.getEditPluginClassName()/]();
+	public static final [className/] INSTANCE = new [className/]();
 
 [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
 	/**
@@ -59,7 +86,7 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public [genModel.getEditPluginClassName()/]()
+	public [className/]()
 	{
 		super
 		  (new ResourceLocator [genModel.genSquareBrackets('')/] 
@@ -119,7 +146,7 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 [/if]
 		 * @generated
 		 */
-		public Implementation([if (genModel.needsRuntimeCompatibility())]org.eclipse.core.runtime.IPluginDescriptor descriptor[/if])
+		public Implementation([if (genModel.needsRuntimeCompatibility())][genModel.getImportedName('org.eclipse.core.runtime.IPluginDescriptor',packageName, className)/] descriptor[/if])
 		{
 			super([if (genModel.needsRuntimeCompatibility())]descriptor[/if]);
 
@@ -224,9 +251,6 @@ public final class [genModel.getEditPluginClassName()/] extends EMFPlugin
 
 [/if]
 }
-[/file]
 [/template]
-
-[query public pluginPath (genModel : GenModel) : String = 'src.'.concat(genModel.getEditPluginPackageName().concat('.').concat(genModel.getEditPluginClassName())).toPath().concat('.java') /]
 
 [query public image(genClass : GenClass) : String = genClass.getItemIconFileName().substring(genClass.getItemIconFileName().lastIndex('/icons/') + 7, genClass.getItemIconFileName()->size() - 4) /]

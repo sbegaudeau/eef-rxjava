@@ -25,18 +25,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * Entry point of the 'GenAll' generation module.
+ * Entry point of the 'GenModel' generation module.
  * 
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * @generated
  */
-public class GenEdit extends AbstractAcceleoGenerator {
+public class GenModel extends AbstractAcceleoGenerator {
 	/**
 	 * The name of the module.
 	 * 
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "GenEdit";
+	public static final String MODULE_FILE_NAME = "GenModel";
 
 	/**
 	 * The name of the templates that are to be generated.
@@ -57,7 +57,7 @@ public class GenEdit extends AbstractAcceleoGenerator {
 	 * 
 	 * @generated
 	 */
-	public GenEdit() {
+	public GenModel() {
     // Empty implementation
   }
 
@@ -77,7 +77,7 @@ public class GenEdit extends AbstractAcceleoGenerator {
 	 *             the model cannot be loaded.
 	 * @generated
 	 */
-	public GenEdit(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
+	public GenModel(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
     initialize(modelURI, targetFolder, arguments);
   }
 
@@ -97,7 +97,7 @@ public class GenEdit extends AbstractAcceleoGenerator {
 	 *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
 	 * @generated
 	 */
-	public GenEdit(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
+	public GenModel(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
     initialize(model, targetFolder, arguments);
   }
 
@@ -119,7 +119,7 @@ public class GenEdit extends AbstractAcceleoGenerator {
         for (int i = 2; i < args.length; i++) {
           arguments.add(args[i]);
         }
-        GenEdit generator = new GenEdit(modelURI, folder, arguments);
+        GenModel generator = new GenModel(modelURI, folder, arguments);
         generator.doGenerate(new BasicMonitor());
       }
     } catch (IOException e) {

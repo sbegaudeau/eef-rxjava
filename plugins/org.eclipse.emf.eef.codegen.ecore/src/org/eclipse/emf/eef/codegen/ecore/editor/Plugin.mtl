@@ -10,21 +10,31 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnum /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnumLiteral /]
 
-[template public Plugin(genModel : GenModel)]
-[file (pluginPath(), false, 'UTF-8')]
+[template public Plugin(genModel : GenModel) { packageName : String = genModel.getEditorPluginPackageName() ; className : String = genModel.getEditorPluginClassName() }]
+[genModel.initializeImportManager(packageName, className)/]
+[file (pluginPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
-package [genModel.getEditorPluginPackageName()/];
+package [packageName/];
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+[let content : String = genModel.pluginFileContent(genModel, packageName, className)]
+[genModel.genSortedImports(packageName, className)/]
+
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template public pluginFileContent(genModel : GenModel, packageName : String, className : String)]
 /**
  * This is the central singleton for the [genModel.getModelName()/] editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
+public final class [className/] extends EMFPlugin
 {
 [if (genModel.hasCopyrightField())]
 	/**
@@ -32,7 +42,7 @@ public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final java.lang.String copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String',packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 	
 [/if]
 	/**
@@ -41,7 +51,7 @@ public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final [genModel.getEditorPluginClassName()/] INSTANCE = new [genModel.getEditorPluginClassName()/]();
+	public static final [className/] INSTANCE = new [className/]();
 	
 [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
 	/**
@@ -59,7 +69,7 @@ public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public [genModel.getEditorPluginClassName()/]()
+	public [className/]()
 	{
 		super
 			(new ResourceLocator [genModel.genSquareBrackets('')/] 
@@ -108,7 +118,7 @@ public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends org.eclipse.emf.common.ui.EclipseUIPlugin
+	public static class Implementation extends [genModel.getImportedName('org.eclipse.emf.common.ui.EclipseUIPlugin',packageName, className)/]
 	{
 		/**
 		 * Creates an instance.
@@ -119,7 +129,7 @@ public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
 [/if]
 		 * @generated
 		 */
-		public Implementation([if (genModel.needsRuntimeCompatibility())]org.eclipse.core.runtime.IPluginDescriptor descriptor[/if])
+		public Implementation([if (genModel.needsRuntimeCompatibility())][genModel.getImportedName('org.eclipse.core.runtime.IPluginDescriptor',packageName, className)/] descriptor[/if])
 		{
 			super([if (genModel.needsRuntimeCompatibility())]descriptor[/if]);
 	
@@ -131,8 +141,7 @@ public final class [genModel.getEditorPluginClassName()/] extends EMFPlugin
 
 [/if]
 }
-[/file]
 [/template]
 
-[query public pluginPath (genModel : GenModel) : String = 'src.'.concat(genModel.getEditorPluginPackageName().concat('.').concat(genModel.getEditorPluginClassName())).toPath().concat('.java') /]
+[query public pluginPath (genModel : GenModel, packageName : String, className : String) : String = ('src.'.concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
 

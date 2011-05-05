@@ -6,3 +6,11 @@
 
 [query public genSquareBrackets(genModel : GenModel, string : String) : String 
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.StringUtil', 'genSquareBrackets(java.lang.String)', Sequence{string}) /]
+
+[query public extractSourceDirectory(genModel : GenModel, string : String) : String
+	= string.tokenize('/')->last()/]
+
+[query public toPath(s : String): String = s.substituteAll('.', '/')/]
+
+[query public isBlank(string : String) : Boolean = string.oclIsUndefined() or string->size() = 0/]
+	
