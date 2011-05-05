@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Ecore Module Runtime Plug-in
-Bundle-SymbolicName: org.eclipse.emf.eef.codegen.ecore
+Bundle-SymbolicName: org.eclipse.emf.eef.codegen.ecore;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.eclipse.emf.eef.codegen.ecore.Activator
+Bundle-Activator: org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.codegen.ecore,
@@ -14,7 +14,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ocl.ecore,
  org.eclipse.acceleo.model,
  org.eclipse.acceleo.engine,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.eclipse.ui,
+ org.eclipse.emf.eef.codegen
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
