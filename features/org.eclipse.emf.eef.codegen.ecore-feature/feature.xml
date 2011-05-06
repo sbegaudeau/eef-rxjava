@@ -10,7 +10,7 @@
         Obeo - initial API and implementation
  -->
 <feature
-      id="org.eclipse.emf.eef.codegen.ecore.feature"
+      id="org.eclipse.emf.eef.codegen.ecore"
       label="%featureName"
       version="1.0.0.qualifier"
       provider-name="%providerName">
