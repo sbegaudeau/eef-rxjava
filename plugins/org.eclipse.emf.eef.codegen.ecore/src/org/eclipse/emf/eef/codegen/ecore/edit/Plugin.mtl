@@ -15,7 +15,7 @@
  *
  * </copyright>
  */
-[/comment]
+/]
 [module Plugin('http://www.eclipse.org/emf/2002/GenModel')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::header /]
@@ -183,7 +183,7 @@ public final class [className/] extends EMFPlugin
 		else if ("_UI_Unknown_datatype".equals(key)) return PROPERTIES.unknownDatatype();
 [for (genFeature : GenFeature | genModel.getFilteredAllGenFeatures())]
 		else if ("_UI_[genFeature.genClass.getName()/]_[genFeature.getName()/]_feature".equals(key)) return PROPERTIES.[genFeature.genClass.getUncapName()/]_[genFeature.getCapName()/]Feature();
-  [if (not genFeature.propertyDescription.oclIsUndefined()and genFeature.propertyDescription->size() > 0)]
+  [if (not genFeature.propertyDescription.oclIsUndefined() and genFeature.propertyDescription->size() > 0)]
 		else if ("_UI_[genFeature.genClass.getName()/]_[genFeature.getName()/]_description".equals(key)) return PROPERTIES.[genFeature.genClass.getUncapName()/]_[genFeature.getCapName()/]Description();
   [/if]
 [/for]

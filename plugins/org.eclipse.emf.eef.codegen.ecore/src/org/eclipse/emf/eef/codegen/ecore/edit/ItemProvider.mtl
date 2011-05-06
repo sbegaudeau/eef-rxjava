@@ -15,7 +15,7 @@
  *
  * </copyright>
  */
-[/comment]
+/]
 [module ItemProvider('http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::common /]

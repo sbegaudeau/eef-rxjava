@@ -15,7 +15,7 @@
  *
  * </copyright>
  */
-[/comment]
+/]
 [module ItemProviderAdapterFactory('http://www.eclipse.org/emf/2002/GenModel','http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::common /]
@@ -477,7 +477,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 			public [genClass.getTypeParameters()/]Object case[genPackage.getClassUniqueName(genClass)/]([genClass.getImportedInterfaceName()/][genClass.getInterfaceTypeArguments()/] object)
 			{
 [comment <%for (GenClass.ChildCreationData childCreationData : classEntry.getValue()) { GenFeature createFeature = childCreationData.createFeature; GenFeature delegatedFeature = childCreationData.delegatedFeature; GenClassifier createClassifier = childCreationData.createClassifier;%>/]
-     [for (getChildCreationData())]
+     [for (genClass.getChildCreationData())]
       [if (getChildCreationDataCreateFeature().isFeatureMapType())]
         [if (getChildCreationDataDelegatedFeature().isReferenceType())]
 [comment]<%@ include file="ItemProvider/newChildDescriptorsReferenceDelegatedFeature.override.javajetinc" fail="alternative"%>
