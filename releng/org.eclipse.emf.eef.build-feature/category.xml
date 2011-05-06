@@ -22,6 +22,9 @@
    <feature id="org.eclipse.emf.eef.runtime" version="0.0.0">
       <category name="eef.features"/>
    </feature>
+   <feature id="org.eclipse.emf.eef.codegen.ecore.feature" version="0.0.0">
+      <category name="eef.extension"/>
+   </feature>
    <feature id="org.eclipse.emf.eef.extended" version="0.0.0">
       <category name="eef.extension"/>
    </feature>
@@ -45,7 +48,7 @@
    </category-def>
    <category-def name="eef.extension" label="EEF Extension">
       <description>
-         EEF using third parties capabilities.
+         EEF Extensions.
       </description>
    </category-def>
 </site>
