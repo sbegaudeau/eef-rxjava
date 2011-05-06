@@ -2,7 +2,7 @@
 <cs:cspec xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0" name="org.eclipse.emf.eef.releng.buckminster" componentType="buckminster" version="1.0.0.qualifier">
     <cs:dependencies>
         <cs:dependency name="org.apache.log4j" componentType="osgi.bundle"/>
-        <cs:dependency name="org.eclipse.acceleo" componentType="eclipse.feature" versionDesignator="3.0.0"/>
+        <cs:dependency name="org.eclipse.acceleo" componentType="eclipse.feature" versionDesignator="3.1.0"/>
         <cs:dependency name="org.eclipse.emf.codegen.ecore.ui" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.emf.compare.diff" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.emf.compare.match" componentType="osgi.bundle"/>
