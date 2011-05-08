@@ -21,11 +21,11 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DeferedReferencesTableSamplePropertiesEditionPart {
+public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, DeferedReferencesTableSamplePropertiesEditionPart {
 
 	protected Text name;
 	protected TableViewer referencesTableSampleEditor;
@@ -77,17 +77,17 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public DeferedReferencesTableSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public DeferedReferencesTableSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -103,7 +103,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -150,7 +150,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditingComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -165,8 +165,8 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
 			}
 
 		});
@@ -182,15 +182,15 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -199,7 +199,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	protected Composite createReferencesTableSampleEditorReferencesTable(Composite parent) {
-		Label referencesTableSampleEditorLabel = SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationViewsRepository.SWT_KIND));
+		Label referencesTableSampleEditorLabel = SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditingComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationViewsRepository.SWT_KIND));
 		GridData referencesTableSampleEditorLabelData = new GridData();
 		referencesTableSampleEditorLabelData.horizontalSpan = 3;
 		referencesTableSampleEditorLabel.setLayoutData(referencesTableSampleEditorLabelData);
@@ -331,7 +331,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
 				}
 			}
 
@@ -347,7 +347,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	protected void removeReferencesTableSampleEditor(IStructuredSelection selection) {
 		for (Iterator iter = selection.iterator(); iter.hasNext();) {
 			EObject elem = (EObject) iter.next();
-			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
+			propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(DeferedReferencesTableSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, elem));
 		}
 		referencesTableSampleEditor.refresh();
 	}
@@ -357,10 +357,10 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -455,7 +455,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

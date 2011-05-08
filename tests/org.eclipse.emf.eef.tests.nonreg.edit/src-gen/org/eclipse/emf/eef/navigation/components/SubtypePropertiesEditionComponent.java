@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.SubtypePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 	
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class SubtypePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+public class SubtypePropertiesEditionComponent extends ComposedPropertiesEditingComponent {
 
 	/**
 	 * The Base part
@@ -69,29 +69,29 @@ public class SubtypePropertiesEditionComponent extends ComposedPropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      getPropertiesEditingPart(int, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+	public PropertiesEditingPart getPropertiesEditingPart(int kind, String key) {
 		if (SubtypeBasePropertiesEditionComponent.BASE_PART.equals(key)) {
-			basePart = (SubtypePropertiesEditionPart)subtypeBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)basePart;
+			basePart = (SubtypePropertiesEditionPart)subtypeBasePropertiesEditionComponent.getPropertiesEditingPart(kind, key);
+			return (PropertiesEditingPart)basePart;
 		}
-		return super.getPropertiesEditionPart(kind, key);
+		return super.getPropertiesEditingPart(kind, key);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      setPropertiesEditingPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart)
 	 * 
 	 */
-	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditingPart(java.lang.Object key, int kind, PropertiesEditingPart propertiesEditionPart) {
 		if (NavigationViewsRepository.Subtype.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
 			basePart = (SubtypePropertiesEditionPart)propertiesEditionPart;
 		}
 	}
@@ -99,7 +99,7 @@ public class SubtypePropertiesEditionComponent extends ComposedPropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
@@ -107,7 +107,7 @@ public class SubtypePropertiesEditionComponent extends ComposedPropertiesEdition
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == NavigationViewsRepository.Subtype.class) {
 			super.initPart(key, kind, element, allResource);
-			ownerPropertiesEditionComponent.setPropertiesEditionPart(NavigationViewsRepository.Owner.class, kind, basePart.getOwnerReferencedView());
+			ownerPropertiesEditionComponent.setPropertiesEditingPart(NavigationViewsRepository.Owner.class, kind, basePart.getOwnerReferencedView());
 			ownerPropertiesEditionComponent.initPart(NavigationViewsRepository.Owner.class, kind, element, allResource);
 		}
 		if (key == NavigationViewsRepository.Owner.class) {

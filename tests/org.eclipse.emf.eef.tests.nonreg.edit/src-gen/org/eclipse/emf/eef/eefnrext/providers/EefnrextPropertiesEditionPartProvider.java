@@ -19,9 +19,9 @@ import org.eclipse.emf.eef.eefnrext.parts.impl.CheckBoxExtendedEditorSamplePrope
 import org.eclipse.emf.eef.eefnrext.parts.impl.FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnrext.parts.impl.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnrext.parts.impl.TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
 
 
 
@@ -30,11 +30,11 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class EefnrextPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
+public class EefnrextPropertiesEditionPartProvider implements PropertiesEditingPartProvider {
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider.IPropertiesEditionPartProvider#provides(java.lang.Object)
 	 * 
 	 */
 	public boolean provides(Object key) {
@@ -43,10 +43,10 @@ public class EefnrextPropertiesEditionPartProvider implements IPropertiesEdition
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider.IPropertiesEditionPartProvider#getPropertiesEditingPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
+	public PropertiesEditingPart getPropertiesEditingPart(Object key, int kind, PropertiesEditingComponent component) {
 		if (key == EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.class) {
 			if (kind == EefnrextViewsRepository.SWT_KIND)
 				return new TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImpl(component);

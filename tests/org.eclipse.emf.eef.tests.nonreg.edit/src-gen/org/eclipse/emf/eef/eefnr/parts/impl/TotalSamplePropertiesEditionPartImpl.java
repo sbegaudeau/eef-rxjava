@@ -28,12 +28,12 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -87,7 +87,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TotalSamplePropertiesEditionPart {
+public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, TotalSamplePropertiesEditionPart {
 
 	protected Text textRequiredProperty;
 	protected Text textOptionalProperty;
@@ -139,17 +139,17 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public TotalSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public TotalSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -165,7 +165,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -304,7 +304,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 	
 	protected Composite createTextRequiredPropertyText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		textRequiredProperty = new Text(parent, SWT.BORDER);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
@@ -319,8 +319,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredProperty.getText()));
 			}
 
 		});
@@ -336,21 +336,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredProperty.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredProperty.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextOptionalPropertyText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		textOptionalProperty = new Text(parent, SWT.BORDER);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
@@ -365,8 +365,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalProperty.getText()));
 			}
 
 		});
@@ -382,15 +382,15 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalProperty.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalProperty.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -407,8 +407,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(checkboxRequiredProperty.getSelection())));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new Boolean(checkboxRequiredProperty.getSelection())));
 			}
 
 		});
@@ -417,7 +417,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		checkboxRequiredProperty.setLayoutData(checkboxRequiredPropertyData);
 		EditingUtils.setID(checkboxRequiredProperty, EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty);
 		EditingUtils.setEEFtype(checkboxRequiredProperty, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -434,8 +434,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(checkboxOptionalProperty.getSelection())));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new Boolean(checkboxOptionalProperty.getSelection())));
 			}
 
 		});
@@ -444,13 +444,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		checkboxOptionalProperty.setLayoutData(checkboxOptionalPropertyData);
 		EditingUtils.setID(checkboxOptionalProperty, EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty);
 		EditingUtils.setEEFtype(checkboxOptionalProperty, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextareaRequiredPropertyText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		textareaRequiredProperty = new Text(parent, SWT.BORDER);
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredProperty.setLayoutData(textareaRequiredPropertyData);
@@ -465,8 +465,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaRequiredProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textareaRequiredProperty.getText()));
 			}
 
 		});
@@ -482,21 +482,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaRequiredProperty.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textareaRequiredProperty.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty);
 		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextareaOptionalPropertyText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		textareaOptionalProperty = new Text(parent, SWT.BORDER);
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalProperty.setLayoutData(textareaOptionalPropertyData);
@@ -511,8 +511,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaOptionalProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textareaOptionalProperty.getText()));
 			}
 
 		});
@@ -528,21 +528,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaOptionalProperty.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textareaOptionalProperty.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty);
 		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createRadioRequiredPropertyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		radioRequiredProperty = new EMFComboViewer(parent);
 		radioRequiredProperty.setContentProvider(new ArrayContentProvider());
 		radioRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -557,19 +557,19 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRadioRequiredProperty()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getRadioRequiredProperty()));
 			}
 
 		});
 		radioRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createRadioOptionalPropertyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		radioOptionalProperty = new EMFComboViewer(parent);
 		radioOptionalProperty.setContentProvider(new ArrayContentProvider());
 		radioOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -584,13 +584,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRadioOptionalProperty()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getRadioOptionalProperty()));
 			}
 
 		});
 		radioOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -599,21 +599,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createEobjectflatcomboviewerRequiredPropertyFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
-		eobjectflatcomboviewerRequiredProperty = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		eobjectflatcomboviewerRequiredProperty = new EObjectFlatComboViewer(parent, !propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		eobjectflatcomboviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getEobjectflatcomboviewerRequiredProperty()));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SET, null, getEobjectflatcomboviewerRequiredProperty()));
 			}
 
 		});
 		GridData eobjectflatcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		eobjectflatcomboviewerRequiredProperty.setLayoutData(eobjectflatcomboviewerRequiredPropertyData);
 		eobjectflatcomboviewerRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -622,21 +622,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createEobjectflatcomboviewerOptionalPropertyFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
-		eobjectflatcomboviewerOptionalProperty = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		eobjectflatcomboviewerOptionalProperty = new EObjectFlatComboViewer(parent, !propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		eobjectflatcomboviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getEobjectflatcomboviewerOptionalProperty()));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SET, null, getEobjectflatcomboviewerOptionalProperty()));
 			}
 
 		});
 		GridData eobjectflatcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		eobjectflatcomboviewerOptionalProperty.setLayoutData(eobjectflatcomboviewerOptionalPropertyData);
 		eobjectflatcomboviewerOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -651,13 +651,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			public void handleRemove(EObject element) { removeFromReferencestableRequiredProperty(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.referencestableRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		this.referencestableRequiredProperty.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		this.referencestableRequiredProperty.createControls(parent);
 		this.referencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -676,13 +676,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void addReferencestableRequiredProperty() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(referencestableRequiredProperty.getInput(), referencestableRequiredPropertyFilters, referencestableRequiredPropertyBusinessFilters,
-		"referencestableRequiredProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+		"referencestableRequiredProperty", propertiesEditingComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 			@Override
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty,
+						PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
 				}
 				referencestableRequiredProperty.refresh();
 			}
@@ -694,7 +694,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void moveReferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 		referencestableRequiredProperty.refresh();
 	}
 
@@ -702,7 +702,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void removeFromReferencestableRequiredProperty(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 		referencestableRequiredProperty.refresh();
 	}
 
@@ -710,7 +710,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void editReferencestableRequiredProperty(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(propertiesEditingComponent.getEditingContext(), propertiesEditingComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -732,13 +732,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			public void handleRemove(EObject element) { removeFromReferencestableOptionalProperty(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.referencestableOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		this.referencestableOptionalProperty.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		this.referencestableOptionalProperty.createControls(parent);
 		this.referencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -757,13 +757,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void addReferencestableOptionalProperty() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(referencestableOptionalProperty.getInput(), referencestableOptionalPropertyFilters, referencestableOptionalPropertyBusinessFilters,
-		"referencestableOptionalProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+		"referencestableOptionalProperty", propertiesEditingComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 			@Override
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty,
+						PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
 				}
 				referencestableOptionalProperty.refresh();
 			}
@@ -775,7 +775,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void moveReferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 		referencestableOptionalProperty.refresh();
 	}
 
@@ -783,7 +783,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void removeFromReferencestableOptionalProperty(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 		referencestableOptionalProperty.refresh();
 	}
 
@@ -791,7 +791,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void editReferencestableOptionalProperty(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(propertiesEditingComponent.getEditingContext(), propertiesEditingComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -804,7 +804,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 	
 	protected Composite createEmfcomboviewerRequiredPropertyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
 		emfcomboviewerRequiredProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -819,19 +819,19 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEmfcomboviewerRequiredProperty()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getEmfcomboviewerRequiredProperty()));
 			}
 
 		});
 		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createEmfcomboviewerOptionalPropertyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
 		emfcomboviewerOptionalProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -846,13 +846,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEmfcomboviewerOptionalProperty()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getEmfcomboviewerOptionalProperty()));
 			}
 
 		});
 		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -886,7 +886,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 						multivaluededitorRequiredPropertyList = new BasicEList();
 					}
 					multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorRequiredPropertyList)));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new BasicEList(multivaluededitorRequiredPropertyList)));
 					setHasChanged(true);
 				}
 			}
@@ -926,7 +926,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 						multivaluededitorOptionalPropertyList = new BasicEList();
 					}
 					multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorOptionalPropertyList)));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new BasicEList(multivaluededitorOptionalPropertyList)));
 					setHasChanged(true);
 				}
 			}
@@ -1005,7 +1005,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionRequiredProperty.refresh();
 					}
 				}
@@ -1047,7 +1047,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
 				tablecompositionRequiredProperty.refresh();
 			}
 		});
@@ -1070,7 +1070,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
 						EObject selectedElement = (EObject) selection.getFirstElement();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.REMOVE, null, selectedElement));
 						tablecompositionRequiredProperty.refresh();
 					}
 				}
@@ -1095,7 +1095,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionRequiredProperty.refresh();
 					}
 				}
@@ -1176,7 +1176,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionOptionalProperty.refresh();
 					}
 				}
@@ -1218,7 +1218,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
 				tablecompositionOptionalProperty.refresh();
 			}
 		});
@@ -1241,7 +1241,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
 						EObject selectedElement = (EObject) selection.getFirstElement();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.REMOVE, null, selectedElement));
 						tablecompositionOptionalProperty.refresh();
 					}
 				}
@@ -1266,7 +1266,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionOptionalProperty.refresh();
 					}
 				}
@@ -1289,13 +1289,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			public void handleRemove(EObject element) { removeFromAdvancedreferencestableRequiredProperty(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.advancedreferencestableRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		this.advancedreferencestableRequiredProperty.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		this.advancedreferencestableRequiredProperty.createControls(parent);
 		this.advancedreferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -1314,13 +1314,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void addAdvancedreferencestableRequiredProperty() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableRequiredProperty.getInput(), advancedreferencestableRequiredPropertyFilters, advancedreferencestableRequiredPropertyBusinessFilters,
-		"advancedreferencestableRequiredProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+		"advancedreferencestableRequiredProperty", propertiesEditingComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 			@Override
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty,
+						PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
 				}
 				advancedreferencestableRequiredProperty.refresh();
 			}
@@ -1332,7 +1332,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void moveAdvancedreferencestableRequiredProperty(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 		advancedreferencestableRequiredProperty.refresh();
 	}
 
@@ -1340,7 +1340,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void removeFromAdvancedreferencestableRequiredProperty(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 		advancedreferencestableRequiredProperty.refresh();
 	}
 
@@ -1348,7 +1348,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void editAdvancedreferencestableRequiredProperty(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(propertiesEditingComponent.getEditingContext(), propertiesEditingComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -1370,13 +1370,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			public void handleRemove(EObject element) { removeFromAdvancedreferencestableOptionalProperty(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.advancedreferencestableOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		this.advancedreferencestableOptionalProperty.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		this.advancedreferencestableOptionalProperty.createControls(parent);
 		this.advancedreferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -1395,13 +1395,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	protected void addAdvancedreferencestableOptionalProperty() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableOptionalProperty.getInput(), advancedreferencestableOptionalPropertyFilters, advancedreferencestableOptionalPropertyBusinessFilters,
-		"advancedreferencestableOptionalProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+		"advancedreferencestableOptionalProperty", propertiesEditingComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 			@Override
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty,
+						PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
 				}
 				advancedreferencestableOptionalProperty.refresh();
 			}
@@ -1413,7 +1413,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void moveAdvancedreferencestableOptionalProperty(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 		advancedreferencestableOptionalProperty.refresh();
 	}
 
@@ -1421,7 +1421,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void removeFromAdvancedreferencestableOptionalProperty(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 		advancedreferencestableOptionalProperty.refresh();
 	}
 
@@ -1429,7 +1429,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected void editAdvancedreferencestableOptionalProperty(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(propertiesEditingComponent.getEditingContext(), propertiesEditingComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -1445,21 +1445,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createAdvancedeobjectflatcomboviewerRequiredProperyFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerRequiredProperyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
-		advancedeobjectflatcomboviewerRequiredPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerRequiredProperyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
+		advancedeobjectflatcomboviewerRequiredPropery = new EObjectFlatComboViewer(parent, !propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
 		advancedeobjectflatcomboviewerRequiredPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		advancedeobjectflatcomboviewerRequiredPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getAdvancedeobjectflatcomboviewerRequiredPropery()));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SET, null, getAdvancedeobjectflatcomboviewerRequiredPropery()));
 			}
 
 		});
 		GridData advancedeobjectflatcomboviewerRequiredProperyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerRequiredPropery.setLayoutData(advancedeobjectflatcomboviewerRequiredProperyData);
 		advancedeobjectflatcomboviewerRequiredPropery.setID(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -1468,21 +1468,21 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 * 
 	 */
 	protected Composite createAdvancedeobjectflatcomboviewerOptionalProperyFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerOptionalProperyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
-		advancedeobjectflatcomboviewerOptionalPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerOptionalProperyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
+		advancedeobjectflatcomboviewerOptionalPropery = new EObjectFlatComboViewer(parent, !propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
 		advancedeobjectflatcomboviewerOptionalPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
 		advancedeobjectflatcomboviewerOptionalPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getAdvancedeobjectflatcomboviewerOptionalPropery()));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SET, null, getAdvancedeobjectflatcomboviewerOptionalPropery()));
 			}
 
 		});
 		GridData advancedeobjectflatcomboviewerOptionalProperyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerOptionalPropery.setLayoutData(advancedeobjectflatcomboviewerOptionalProperyData);
 		advancedeobjectflatcomboviewerOptionalPropery.setID(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -1493,19 +1493,19 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	protected Composite createAdvancedtablecompositionRequiredPropertyAdvancedTableComposition(Composite parent) {
 		this.advancedtablecompositionRequiredProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel, new ReferencesTableListener() {
 			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
 			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 				advancedtablecompositionRequiredProperty.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -1513,13 +1513,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		for (ViewerFilter filter : this.advancedtablecompositionRequiredPropertyFilters) {
 			this.advancedtablecompositionRequiredProperty.addFilter(filter);
 		}
-		this.advancedtablecompositionRequiredProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		this.advancedtablecompositionRequiredProperty.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		this.advancedtablecompositionRequiredProperty.createControls(parent);
 		this.advancedtablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -1541,19 +1541,19 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	protected Composite createAdvancedtablecompositionOptionalPropertyAdvancedTableComposition(Composite parent) {
 		this.advancedtablecompositionOptionalProperty = new ReferencesTable(EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel, new ReferencesTableListener() {
 			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
 			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 				advancedtablecompositionOptionalProperty.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -1561,13 +1561,13 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		for (ViewerFilter filter : this.advancedtablecompositionOptionalPropertyFilters) {
 			this.advancedtablecompositionOptionalProperty.addFilter(filter);
 		}
-		this.advancedtablecompositionOptionalProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		this.advancedtablecompositionOptionalProperty.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		this.advancedtablecompositionOptionalProperty.createControls(parent);
 		this.advancedtablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -1584,7 +1584,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.name, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.name, EefnrViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -1599,8 +1599,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
 			}
 
 		});
@@ -1616,15 +1616,15 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TotalSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TotalSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(name, EefnrViewsRepository.TotalSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.name, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.name, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -1633,10 +1633,10 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -2785,7 +2785,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

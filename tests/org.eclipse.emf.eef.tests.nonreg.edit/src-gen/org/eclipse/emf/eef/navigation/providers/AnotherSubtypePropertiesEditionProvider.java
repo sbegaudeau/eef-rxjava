@@ -18,7 +18,7 @@ import org.eclipse.emf.eef.navigation.components.AnotherSubtypeBasePropertiesEdi
 import org.eclipse.emf.eef.navigation.components.AnotherSubtypePropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.SubtypeBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.SubtypePropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
@@ -88,7 +88,7 @@ public class AnotherSubtypePropertiesEditionProvider extends PropertiesEditingPr
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof AnotherSubType) {
 			return new AnotherSubtypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -100,7 +100,7 @@ public class AnotherSubtypePropertiesEditionProvider extends PropertiesEditingPr
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof AnotherSubType) {
 			if (AnotherSubtypeBasePropertiesEditionComponent.BASE_PART.equals(part))
 				return new AnotherSubtypeBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
@@ -115,7 +115,7 @@ public class AnotherSubtypePropertiesEditionProvider extends PropertiesEditingPr
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof AnotherSubType) {
 			if (AnotherSubtypeBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == AnotherSubtypeBasePropertiesEditionComponent.class)

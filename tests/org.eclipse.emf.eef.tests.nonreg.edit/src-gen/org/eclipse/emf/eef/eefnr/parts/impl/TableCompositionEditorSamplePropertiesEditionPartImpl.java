@@ -20,11 +20,11 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TableCompositionEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -58,7 +58,7 @@ import org.eclipse.swt.widgets.TableColumn;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TableCompositionEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TableCompositionEditorSamplePropertiesEditionPart {
+public class TableCompositionEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, TableCompositionEditorSamplePropertiesEditionPart {
 
 	protected TableViewer tablecompositionRequiredProperty;
 	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
@@ -71,17 +71,17 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public TableCompositionEditorSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public TableCompositionEditorSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -97,7 +97,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -211,7 +211,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 				if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionRequiredProperty.refresh();
 					}
 				}
@@ -253,7 +253,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
 				tablecompositionRequiredProperty.refresh();
 			}
 		});
@@ -276,7 +276,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
 						EObject selectedElement = (EObject) selection.getFirstElement();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.REMOVE, null, selectedElement));
 						tablecompositionRequiredProperty.refresh();
 					}
 				}
@@ -301,7 +301,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 				if (tablecompositionRequiredProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionRequiredProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionRequiredProperty.refresh();
 					}
 				}
@@ -382,7 +382,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 				if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionOptionalProperty.refresh();
 					}
 				}
@@ -424,7 +424,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			 * 
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
 				tablecompositionOptionalProperty.refresh();
 			}
 		});
@@ -447,7 +447,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
 						EObject selectedElement = (EObject) selection.getFirstElement();
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.REMOVE, null, selectedElement));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.REMOVE, null, selectedElement));
 						tablecompositionOptionalProperty.refresh();
 					}
 				}
@@ -472,7 +472,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 				if (tablecompositionOptionalProperty.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) tablecompositionOptionalProperty.getSelection();
 					if (selection.getFirstElement() instanceof EObject) {
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, selection.getFirstElement()));
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, selection.getFirstElement()));
 						tablecompositionOptionalProperty.refresh();
 					}
 				}
@@ -489,10 +489,10 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -624,7 +624,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

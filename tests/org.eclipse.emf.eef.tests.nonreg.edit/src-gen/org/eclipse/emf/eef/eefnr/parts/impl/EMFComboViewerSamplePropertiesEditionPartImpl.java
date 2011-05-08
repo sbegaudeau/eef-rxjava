@@ -19,11 +19,11 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -47,7 +47,7 @@ import org.eclipse.swt.widgets.Group;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, EMFComboViewerSamplePropertiesEditionPart {
+public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, EMFComboViewerSamplePropertiesEditionPart {
 
 	protected EMFComboViewer emfcomboviewerRequiredProperty;
 	protected EMFComboViewer emfcomboviewerOptionalProperty;
@@ -56,17 +56,17 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public EMFComboViewerSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public EMFComboViewerSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -82,7 +82,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -129,7 +129,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 
 	
 	protected Composite createEmfcomboviewerRequiredPropertyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
 		emfcomboviewerRequiredProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -144,19 +144,19 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEmfcomboviewerRequiredProperty()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(EMFComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getEmfcomboviewerRequiredProperty()));
 			}
 
 		});
 		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createEmfcomboviewerOptionalPropertyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
 		emfcomboviewerOptionalProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -171,13 +171,13 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 			 * 	
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEmfcomboviewerOptionalProperty()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(EMFComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getEmfcomboviewerOptionalProperty()));
 			}
 
 		});
 		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -186,10 +186,10 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -267,7 +267,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

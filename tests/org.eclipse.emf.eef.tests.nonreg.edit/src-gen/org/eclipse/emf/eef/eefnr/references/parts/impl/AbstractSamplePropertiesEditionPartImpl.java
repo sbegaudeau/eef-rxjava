@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.references.parts.impl;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.eefnr.references.providers.ReferencesMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AbstractSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, AbstractSamplePropertiesEditionPart {
+public class AbstractSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, AbstractSamplePropertiesEditionPart {
 
 	protected Text name;
 
@@ -50,17 +50,17 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public AbstractSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public AbstractSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -76,7 +76,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -120,7 +120,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditingComponent.isRequired(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -135,8 +135,8 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
 			}
 
 		});
@@ -152,15 +152,15 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(AbstractSamplePropertiesEditionPartImpl.this, ReferencesViewsRepository.AbstractSample.NameProperties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -169,10 +169,10 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -211,7 +211,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

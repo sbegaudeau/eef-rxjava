@@ -24,9 +24,9 @@ import org.eclipse.emf.eef.eefnr.navigation.Element;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.ElementPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
 	
 
 // End of user code
@@ -55,7 +55,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -86,10 +86,10 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final PropertiesEditingEvent event) {
 		Element element = (Element)semanticObject;
 		if (NavigationViewsRepository.Element.Properties.isVisible == event.getAffectedEditor()) {
 			element.setVisible((Boolean)event.getNewValue());
@@ -98,7 +98,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -114,10 +114,10 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditingEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

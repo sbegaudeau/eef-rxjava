@@ -28,14 +28,14 @@ import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
 import org.eclipse.emf.eef.runtime.ui.widgets.SingleCompositionViewer;
+import org.eclipse.emf.eef.runtime.util.EEFUtils;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
 
@@ -66,7 +66,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -88,11 +88,11 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 									((SingleCompositionViewer<?>)e.getSource()).removeControlListener(this);
 								}
 								EObject element = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
-								if(IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.LIVE_MODE.equals(editing_mode))
 									setInitializing(false);
-								firePropertiesChanged(new PropertiesEditionEvent((IPropertiesEditionListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+								firePropertiesChanged(new PropertiesEditingEventImpl((PropertiesEditingListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, element));
 								setInitializing(true);
-								if(IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.BATCH_MODE.equals(editing_mode))
 									basePart.setSinglecompositionviewerSingleRequiredProperty(element);
 							}
 			
@@ -116,11 +116,11 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 									((SingleCompositionViewer<?>)e.getSource()).removeControlListener(this);
 								}
 								EObject element = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
-								if(IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.LIVE_MODE.equals(editing_mode))
 									setInitializing(false);
-								firePropertiesChanged(new PropertiesEditionEvent((IPropertiesEditionListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+								firePropertiesChanged(new PropertiesEditingEventImpl((PropertiesEditingListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, element));
 								setInitializing(true);
-								if(IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.BATCH_MODE.equals(editing_mode))
 									basePart.setSinglecompositionviewerSingleOptionalProperty(element);
 							}
 			
@@ -144,11 +144,11 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 									((SingleCompositionViewer<?>)e.getSource()).removeControlListener(this);
 								}
 								EObject element = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
-								if(IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.LIVE_MODE.equals(editing_mode))
 									setInitializing(false);
-								firePropertiesChanged(new PropertiesEditionEvent((IPropertiesEditionListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+								firePropertiesChanged(new PropertiesEditingEventImpl((PropertiesEditingListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, element));
 								setInitializing(true);
-								if(IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.BATCH_MODE.equals(editing_mode))
 									basePart.setSinglecompositionviewerMultiRequiredProperty(element);
 							}
 			
@@ -172,11 +172,11 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 									((SingleCompositionViewer<?>)e.getSource()).removeControlListener(this);
 								}
 								EObject element = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
-								if(IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.LIVE_MODE.equals(editing_mode))
 									setInitializing(false);
-								firePropertiesChanged(new PropertiesEditionEvent((IPropertiesEditionListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+								firePropertiesChanged(new PropertiesEditingEventImpl((PropertiesEditingListener) basePart, EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, element));
 								setInitializing(true);
-								if(IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode))
+								if(PropertiesEditingComponent.BATCH_MODE.equals(editing_mode))
 									basePart.setSinglecompositionviewerMultiOptionalProperty(element);
 							}
 			
@@ -210,10 +210,10 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final PropertiesEditingEvent event) {
 		SingleCompositionViewerSample singleCompositionViewerSample = (SingleCompositionViewerSample)semanticObject;
 		if (EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty == event.getAffectedEditor()) {
 			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : singlecompositionviewSingleRequiredProperty, SingleCompositionViewerSample, SingleCompositionViewerSample.
@@ -231,7 +231,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -252,7 +252,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -262,10 +262,10 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditingEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

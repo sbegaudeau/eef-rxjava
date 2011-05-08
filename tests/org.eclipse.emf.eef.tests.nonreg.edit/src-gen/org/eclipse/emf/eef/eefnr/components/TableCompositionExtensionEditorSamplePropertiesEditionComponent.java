@@ -22,12 +22,12 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TableCompositionExtensionEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
@@ -72,7 +72,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -134,14 +134,14 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final PropertiesEditingEvent event) {
 		TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)semanticObject;
 		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, tablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, tablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -149,8 +149,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
+				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -158,13 +158,13 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
 					tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, tablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, tablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -172,8 +172,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
+				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -181,7 +181,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
 					tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
@@ -189,7 +189,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -206,7 +206,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -216,10 +216,10 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditingEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPropertiesEditingComponent {
 
 	/**
 	 * The Base part
@@ -69,29 +69,29 @@ public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      getPropertiesEditingPart(int, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+	public PropertiesEditingPart getPropertiesEditingPart(int kind, String key) {
 		if (ReferenceEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(key)) {
-			basePart = (ReferenceEnabledSamplePropertiesEditionPart)referenceEnabledSampleBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)basePart;
+			basePart = (ReferenceEnabledSamplePropertiesEditionPart)referenceEnabledSampleBasePropertiesEditionComponent.getPropertiesEditingPart(kind, key);
+			return (PropertiesEditingPart)basePart;
 		}
-		return super.getPropertiesEditionPart(kind, key);
+		return super.getPropertiesEditingPart(kind, key);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      setPropertiesEditingPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart)
 	 * 
 	 */
-	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditingPart(java.lang.Object key, int kind, PropertiesEditingPart propertiesEditionPart) {
 		if (ReferencesViewsRepository.ReferenceEnabledSample.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
 			basePart = (ReferenceEnabledSamplePropertiesEditionPart)propertiesEditionPart;
 		}
 	}
@@ -99,7 +99,7 @@ public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 

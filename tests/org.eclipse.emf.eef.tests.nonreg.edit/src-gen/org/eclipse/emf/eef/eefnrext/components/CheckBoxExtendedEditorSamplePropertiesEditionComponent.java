@@ -18,9 +18,9 @@ import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends ComposedPropertiesEditingComponent {
 
 	/**
 	 * The Base part
@@ -71,29 +71,29 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      getPropertiesEditingPart(int, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+	public PropertiesEditingPart getPropertiesEditingPart(int kind, String key) {
 		if (CheckBoxExtendedEditorSampleBasePropertiesEditionComponent.BASE_PART.equals(key)) {
-			basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)checkBoxExtendedEditorSampleBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)basePart;
+			basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)checkBoxExtendedEditorSampleBasePropertiesEditionComponent.getPropertiesEditingPart(kind, key);
+			return (PropertiesEditingPart)basePart;
 		}
-		return super.getPropertiesEditionPart(kind, key);
+		return super.getPropertiesEditingPart(kind, key);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      setPropertiesEditingPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart)
 	 * 
 	 */
-	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditingPart(java.lang.Object key, int kind, PropertiesEditingPart propertiesEditionPart) {
 		if (EefnrextViewsRepository.CheckBoxExtendedEditorSample.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
 			basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)propertiesEditionPart;
 		}
 	}
@@ -101,7 +101,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
@@ -109,7 +109,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends Comp
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == EefnrextViewsRepository.CheckBoxExtendedEditorSample.class) {
 			super.initPart(key, kind, element, allResource);
-			abstractSamplePropertiesEditionComponent.setPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, kind, basePart.getAbstractSampleReferencedView());
+			abstractSamplePropertiesEditionComponent.setPropertiesEditingPart(ReferencesViewsRepository.AbstractSample.class, kind, basePart.getAbstractSampleReferencedView());
 			abstractSamplePropertiesEditionComponent.initPart(ReferencesViewsRepository.AbstractSample.class, kind, element, allResource);
 		}
 		if (key == ReferencesViewsRepository.AbstractSample.class) {

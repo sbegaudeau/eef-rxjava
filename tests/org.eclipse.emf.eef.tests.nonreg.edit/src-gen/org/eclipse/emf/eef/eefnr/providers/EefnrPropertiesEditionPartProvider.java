@@ -55,9 +55,9 @@ import org.eclipse.emf.eef.eefnr.parts.impl.TextSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleSecondTabPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextareaSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TotalSamplePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
 
 
 
@@ -66,11 +66,11 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
+public class EefnrPropertiesEditionPartProvider implements PropertiesEditingPartProvider {
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider.IPropertiesEditionPartProvider#provides(java.lang.Object)
 	 * 
 	 */
 	public boolean provides(Object key) {
@@ -79,10 +79,10 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
+	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider.IPropertiesEditionPartProvider#getPropertiesEditingPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
+	public PropertiesEditingPart getPropertiesEditingPart(Object key, int kind, PropertiesEditingComponent component) {
 		if (key == EefnrViewsRepository.Root.class) {
 			if (kind == EefnrViewsRepository.SWT_KIND)
 				return new RootPropertiesEditionPartImpl(component);

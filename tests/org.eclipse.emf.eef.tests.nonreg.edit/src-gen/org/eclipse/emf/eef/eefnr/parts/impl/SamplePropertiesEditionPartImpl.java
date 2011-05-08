@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -43,7 +43,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SamplePropertiesEditionPart {
+public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, SamplePropertiesEditionPart {
 
 	protected Text textRequiredProperty;
 	protected Text textOptionalProperty;
@@ -52,17 +52,17 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public SamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public SamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -78,7 +78,7 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -125,7 +125,7 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	
 	protected Composite createTextRequiredPropertyText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		textRequiredProperty = new Text(parent, SWT.BORDER);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
@@ -140,8 +140,8 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredProperty.getText()));
 			}
 
 		});
@@ -157,21 +157,21 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredProperty.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredProperty.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.Sample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextOptionalPropertyText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		textOptionalProperty = new Text(parent, SWT.BORDER);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
@@ -186,8 +186,8 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalProperty.getText()));
 			}
 
 		});
@@ -203,15 +203,15 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalProperty.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SamplePropertiesEditionPartImpl.this, EefnrViewsRepository.Sample.Properties.textOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalProperty.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.Sample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -220,10 +220,10 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -287,7 +287,7 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

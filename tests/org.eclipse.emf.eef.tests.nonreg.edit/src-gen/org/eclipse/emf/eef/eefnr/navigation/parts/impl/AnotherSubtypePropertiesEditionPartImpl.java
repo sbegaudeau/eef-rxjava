@@ -17,14 +17,14 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.AnotherSubtypePropertiesEditio
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.SubtypePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
+import org.eclipse.emf.eef.runtime.services.PropertiesEditingPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -51,7 +51,7 @@ import org.eclipse.swt.widgets.Group;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AnotherSubtypePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, AnotherSubtypePropertiesEditionPart {
+public class AnotherSubtypePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, AnotherSubtypePropertiesEditionPart {
 
 	protected Button anotherSpecialisationElement;
 	private SubtypePropertiesEditionPart subtypePropertiesEditionPart;
@@ -60,17 +60,17 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public AnotherSubtypePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public AnotherSubtypePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -86,7 +86,7 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -118,9 +118,9 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	protected Composite createSubtype(Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NavigationViewsRepository.class);
-		subtypePropertiesEditionPart = (SubtypePropertiesEditionPart)provider.getPropertiesEditionPart(NavigationViewsRepository.Subtype.class, NavigationViewsRepository.SWT_KIND, propertiesEditionComponent);
-		((ISWTPropertiesEditionPart)subtypePropertiesEditionPart).createControls(container);
+		PropertiesEditingPartProvider provider = PropertiesEditingPartProviderService.getInstance().getProvider(NavigationViewsRepository.class);
+		subtypePropertiesEditionPart = (SubtypePropertiesEditionPart)provider.getPropertiesEditingPart(NavigationViewsRepository.Subtype.class, NavigationViewsRepository.SWT_KIND, propertiesEditingComponent);
+		((SWTPropertiesEditingPart)subtypePropertiesEditionPart).createControls(container);
 		return container;
 	}
 
@@ -153,8 +153,8 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AnotherSubtypePropertiesEditionPartImpl.this, NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(anotherSpecialisationElement.getSelection())));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(AnotherSubtypePropertiesEditionPartImpl.this, NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new Boolean(anotherSpecialisationElement.getSelection())));
 			}
 
 		});
@@ -163,7 +163,7 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 		anotherSpecialisationElement.setLayoutData(anotherSpecialisationElementData);
 		EditingUtils.setID(anotherSpecialisationElement, NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
 		EditingUtils.setEEFtype(anotherSpecialisationElement, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -172,10 +172,10 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -212,8 +212,8 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	 * @see org.eclipse.emf.eef.navigation.parts.AnotherSubtypePropertiesEditionPart#getSubtypeReferencedView()
 	 * 
 	 */
-		public IPropertiesEditionPart getSubtypeReferencedView() {
-			return (IPropertiesEditionPart) subtypePropertiesEditionPart;
+		public PropertiesEditingPart getSubtypeReferencedView() {
+			return (PropertiesEditingPart) subtypePropertiesEditionPart;
 		}
 	/**
 	 * {@inheritDoc}
@@ -1009,7 +1009,7 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleFirstTabPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -45,7 +45,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TextSampleFirstTabPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TextSampleFirstTabPropertiesEditionPart {
+public class TextSampleFirstTabPropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, TextSampleFirstTabPropertiesEditionPart {
 
 	protected Text textRequiredPropertyInFirstTab;
 	protected Text textOptionalPropertyInFirstTab;
@@ -54,17 +54,17 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public TextSampleFirstTabPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public TextSampleFirstTabPropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -82,7 +82,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -130,7 +130,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 
 	
 	protected Composite createTextRequiredPropertyInFirstTabText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.FORM_KIND));
 		textRequiredPropertyInFirstTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		textRequiredPropertyInFirstTab.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -144,8 +144,8 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredPropertyInFirstTab.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredPropertyInFirstTab.getText()));
 			}
 		});
 		textRequiredPropertyInFirstTab.addKeyListener(new KeyAdapter() {
@@ -157,20 +157,20 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredPropertyInFirstTab.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredPropertyInFirstTab.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(textRequiredPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
 		EditingUtils.setEEFtype(textRequiredPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextOptionalPropertyInFirstTabText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.FORM_KIND));
 		textOptionalPropertyInFirstTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		textOptionalPropertyInFirstTab.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -184,8 +184,8 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalPropertyInFirstTab.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalPropertyInFirstTab.getText()));
 			}
 		});
 		textOptionalPropertyInFirstTab.addKeyListener(new KeyAdapter() {
@@ -197,14 +197,14 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalPropertyInFirstTab.getText()));
+					if (propertiesEditingComponent != null)
+						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSampleFirstTabPropertiesEditionPartForm.this, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalPropertyInFirstTab.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(textOptionalPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
 		EditingUtils.setEEFtype(textOptionalPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -213,10 +213,10 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -277,7 +277,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

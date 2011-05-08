@@ -23,11 +23,11 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -70,7 +70,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -108,17 +108,17 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final PropertiesEditingEvent event) {
 		AdvancedEObjectFlatComboViewerSample advancedEObjectFlatComboViewerSample = (AdvancedEObjectFlatComboViewerSample)semanticObject;
 		if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
 				advancedeobjectflatcomboviewerRequiredPropertySettings.setToReference((TotalSample)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -130,11 +130,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 			}
 		}
 		if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
 				advancedeobjectflatcomboviewerOptionalPropertySettings.setToReference((TotalSample)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -149,7 +149,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -166,7 +166,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -176,10 +176,10 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditingEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ImageViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -44,7 +44,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ImageViewerSamplePropertiesEditionPart {
+public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, ImageViewerSamplePropertiesEditionPart {
 
 	protected EEFImageViewer imageviewerRequiredProperty;
 	protected EEFImageViewer imageviewerOptionalProperty;
@@ -53,17 +53,17 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public ImageViewerSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public ImageViewerSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -81,7 +81,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -131,7 +131,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 	 * 
 	 */
 	protected Composite createImageviewerRequiredPropertyImageViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		imageviewerRequiredProperty = new EEFImageViewer(parent, SWT.BORDER);
 		GridData imageviewerRequiredPropertyData = new GridData();
 		// Start of user code for imageviewerRequiredProperty layout data customization
@@ -145,11 +145,11 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 		imageviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ImageViewerSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getImageviewerRequiredProperty()));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ImageViewerSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getImageviewerRequiredProperty()));
 			}
 		});
 		imageviewerRequiredProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -157,7 +157,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 	 * 
 	 */
 	protected Composite createImageviewerOptionalPropertyImageViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		imageviewerOptionalProperty = new EEFImageViewer(parent, SWT.BORDER);
 		GridData imageviewerOptionalPropertyData = new GridData();
 		// Start of user code for imageviewerOptionalProperty layout data customization
@@ -171,11 +171,11 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 		imageviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ImageViewerSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getImageviewerOptionalProperty()));
+				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ImageViewerSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getImageviewerOptionalProperty()));
 			}
 		});
 		imageviewerOptionalProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -184,10 +184,10 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -282,7 +282,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends CompositePropert
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

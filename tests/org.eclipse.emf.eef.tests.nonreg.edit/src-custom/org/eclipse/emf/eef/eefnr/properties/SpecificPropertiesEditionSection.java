@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection;
+import org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditingSection;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
@@ -19,7 +19,7 @@ import org.eclipse.ui.PlatformUI;
  * @author glefur
  *
  */
-public class SpecificPropertiesEditionSection extends PropertiesEditionSection {
+public class SpecificPropertiesEditionSection extends PropertiesEditingSection {
 	
 	private ResourceSet resourceSet;
 
@@ -48,10 +48,10 @@ public class SpecificPropertiesEditionSection extends PropertiesEditionSection {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection#initSemanticContents(java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditingSection#initSemanticContents(java.lang.String)
 	 */
 	protected void initSemanticContents(String descriptor) {
-		propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(descriptor), 1, eObject, resourceSet);
+		propertiesEditingComponent.initPart(propertiesEditingComponent.translatePart(descriptor), 1, eObject, resourceSet);
 	}
 	
 

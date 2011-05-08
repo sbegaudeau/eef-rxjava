@@ -11,7 +11,7 @@
 package org.eclipse.emf.eef.eefnrext.parts;
 
 // Start of user code for imports
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
 
 
 
@@ -42,7 +42,7 @@ public interface CheckBoxExtendedEditorSamplePropertiesEditionPart {
 		 * @return the AbstractSample referenced view
 		 * 
 		 */
-		public IPropertiesEditionPart getAbstractSampleReferencedView();
+		public PropertiesEditingPart getAbstractSampleReferencedView();
 	/**
 	 * @return the name
 	 * 

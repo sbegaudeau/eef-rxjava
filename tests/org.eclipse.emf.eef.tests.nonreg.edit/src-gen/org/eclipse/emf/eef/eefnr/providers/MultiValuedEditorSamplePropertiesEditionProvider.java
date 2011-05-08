@@ -15,7 +15,7 @@ import java.util.List;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.components.MultiValuedEditorSamplePropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
@@ -85,7 +85,7 @@ public class MultiValuedEditorSamplePropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof MultiValuedEditorSample) {
 			return new MultiValuedEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -97,7 +97,7 @@ public class MultiValuedEditorSamplePropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof MultiValuedEditorSample) {
 			if (MultiValuedEditorSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new MultiValuedEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
@@ -110,7 +110,7 @@ public class MultiValuedEditorSamplePropertiesEditionProvider extends Properties
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof MultiValuedEditorSample) {
 			if (MultiValuedEditorSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == MultiValuedEditorSamplePropertiesEditionComponent.class)

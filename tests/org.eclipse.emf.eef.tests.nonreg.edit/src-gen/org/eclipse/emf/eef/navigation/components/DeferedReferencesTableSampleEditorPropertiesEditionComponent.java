@@ -27,12 +27,12 @@ import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 	
@@ -68,7 +68,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -116,20 +116,20 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final PropertiesEditingEvent event) {
 		DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)semanticObject;
 		if (NavigationViewsRepository.DeferedReferencesTableSample.Properties.name == event.getAffectedEditor()) {
 			deferedReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					flatReferencesTableSampleEditorSettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
 					flatReferencesTableSampleEditorSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
@@ -137,7 +137,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -159,7 +159,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -169,10 +169,10 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditingEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

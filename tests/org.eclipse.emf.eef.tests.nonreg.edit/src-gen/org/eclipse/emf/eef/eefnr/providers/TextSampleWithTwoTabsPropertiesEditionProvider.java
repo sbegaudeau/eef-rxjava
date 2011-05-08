@@ -17,7 +17,7 @@ import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
 import org.eclipse.emf.eef.eefnr.components.TextSampleWithTwoTabsPropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnr.components.TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnr.components.TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
@@ -87,7 +87,7 @@ public class TextSampleWithTwoTabsPropertiesEditionProvider extends PropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof TextSampleWithTwoTabs) {
 			return new TextSampleWithTwoTabsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -99,7 +99,7 @@ public class TextSampleWithTwoTabsPropertiesEditionProvider extends PropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof TextSampleWithTwoTabs) {
 			if (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part))
 				return new TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
@@ -114,7 +114,7 @@ public class TextSampleWithTwoTabsPropertiesEditionProvider extends PropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof TextSampleWithTwoTabs) {
 			if (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(part)
 				&& refinement == TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.class)

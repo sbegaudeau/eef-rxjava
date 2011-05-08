@@ -15,14 +15,14 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.ElementPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NamedElementPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
+import org.eclipse.emf.eef.runtime.services.PropertiesEditingPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -47,7 +47,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ElementPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ElementPropertiesEditionPart {
+public class ElementPropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, ElementPropertiesEditionPart {
 
 	protected Button isVisible;
 	private NamedElementPropertiesEditionPart namedElementPropertiesEditionPart;
@@ -56,17 +56,17 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public ElementPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public ElementPropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -84,7 +84,7 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -143,8 +143,8 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementPropertiesEditionPartForm.this, NavigationViewsRepository.Element.Properties.isVisible, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isVisible.getSelection())));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ElementPropertiesEditionPartForm.this, NavigationViewsRepository.Element.Properties.isVisible, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new Boolean(isVisible.getSelection())));
 			}
 
 		});
@@ -153,14 +153,14 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 		isVisible.setLayoutData(isVisibleData);
 		EditingUtils.setID(isVisible, NavigationViewsRepository.Element.Properties.isVisible);
 		EditingUtils.setEEFtype(isVisible, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Element.Properties.isVisible, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(NavigationViewsRepository.Element.Properties.isVisible, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	protected Composite createNamedElement(FormToolkit widgetFactory, Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(NavigationViewsRepository.class);
-		namedElementPropertiesEditionPart = (NamedElementPropertiesEditionPart)provider.getPropertiesEditionPart(NavigationViewsRepository.NamedElement.class, NavigationViewsRepository.FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)namedElementPropertiesEditionPart).createControls(widgetFactory, container);
+		PropertiesEditingPartProvider provider = PropertiesEditingPartProviderService.getInstance().getProvider(NavigationViewsRepository.class);
+		namedElementPropertiesEditionPart = (NamedElementPropertiesEditionPart)provider.getPropertiesEditingPart(NavigationViewsRepository.NamedElement.class, NavigationViewsRepository.FORM_KIND, propertiesEditingComponent);
+		((FormPropertiesEditingPart)namedElementPropertiesEditionPart).createControls(widgetFactory, container);
 		return container;
 	}
 
@@ -170,10 +170,10 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -209,8 +209,8 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 	 * @see org.eclipse.emf.eef.navigation.parts.ElementPropertiesEditionPart#getNamedElementReferencedView()
 	 * 
 	 */
-		public IPropertiesEditionPart getNamedElementReferencedView() {
-			return (IPropertiesEditionPart) namedElementPropertiesEditionPart;
+		public PropertiesEditingPart getNamedElementReferencedView() {
+			return (PropertiesEditingPart) namedElementPropertiesEditionPart;
 		}
 	/**
 	 * {@inheritDoc}
@@ -239,7 +239,7 @@ public class ElementPropertiesEditionPartForm extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

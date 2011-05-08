@@ -25,10 +25,10 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
 	
 
 // End of user code
@@ -57,7 +57,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -91,19 +91,19 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+	public void updateSemanticModel(final PropertiesEditingEvent event) {
 		MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)semanticObject;
 		if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
+			if (event.getKind() == PropertiesEditingEventImpl.SET) {
 				multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
 				multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
 			}
 		}
 		if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
+			if (event.getKind() == PropertiesEditingEventImpl.SET) {
 				multiValuedEditorSample.getMultivaluededitorOptionalProperty().clear();
 				multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
 			}
@@ -112,7 +112,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -139,7 +139,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -149,10 +149,10 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+	public Diagnostic validateValue(PropertiesEditingEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TextareaSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TextareaSamplePropertiesEditionPart {
+public class TextareaSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, TextareaSamplePropertiesEditionPart {
 
 	protected Text textareaRequiredProperty;
 	protected Text textareaOptionalProperty;
@@ -51,17 +51,17 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public TextareaSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public TextareaSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -77,7 +77,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -124,7 +124,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTextareaRequiredPropertyTextarea(Composite parent) {
-		Label textareaRequiredPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		Label textareaRequiredPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		GridData textareaRequiredPropertyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredPropertyLabelData.horizontalSpan = 3;
 		textareaRequiredPropertyLabel.setLayoutData(textareaRequiredPropertyLabelData);
@@ -143,20 +143,20 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 			 * 
 			 */
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextareaSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaRequiredProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextareaSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textareaRequiredProperty.getText()));
 			}
 
 		});
 		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
 		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Textarea"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextareaOptionalPropertyTextarea(Composite parent) {
-		Label textareaOptionalPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		Label textareaOptionalPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		GridData textareaOptionalPropertyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalPropertyLabelData.horizontalSpan = 3;
 		textareaOptionalPropertyLabel.setLayoutData(textareaOptionalPropertyLabelData);
@@ -175,14 +175,14 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 			 * 
 			 */
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextareaSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaOptionalProperty.getText()));
+				if (propertiesEditingComponent != null)
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextareaSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textareaOptionalProperty.getText()));
 			}
 
 		});
 		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
 		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Textarea"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -191,10 +191,10 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -258,7 +258,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

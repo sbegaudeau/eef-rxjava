@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPropertiesEditingComponent {
 
 	/**
 	 * The Base part
@@ -69,29 +69,29 @@ public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      getPropertiesEditionPart(int, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      getPropertiesEditingPart(int, java.lang.String)
 	 * 
 	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
+	public PropertiesEditingPart getPropertiesEditingPart(int kind, String key) {
 		if (AbstractEnabledSampleBasePropertiesEditionComponent.BASE_PART.equals(key)) {
-			basePart = (AbstractEnabledSamplePropertiesEditionPart)abstractEnabledSampleBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)basePart;
+			basePart = (AbstractEnabledSamplePropertiesEditionPart)abstractEnabledSampleBasePropertiesEditionComponent.getPropertiesEditingPart(kind, key);
+			return (PropertiesEditingPart)basePart;
 		}
-		return super.getPropertiesEditionPart(kind, key);
+		return super.getPropertiesEditingPart(kind, key);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 *      setPropertiesEditingPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart)
 	 * 
 	 */
-	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
+	public void setPropertiesEditingPart(java.lang.Object key, int kind, PropertiesEditingPart propertiesEditionPart) {
 		if (ReferencesViewsRepository.AbstractEnabledSample.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
 			basePart = (AbstractEnabledSamplePropertiesEditionPart)propertiesEditionPart;
 		}
 	}
@@ -99,7 +99,7 @@ public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
@@ -107,7 +107,7 @@ public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPro
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == ReferencesViewsRepository.AbstractEnabledSample.class) {
 			super.initPart(key, kind, element, allResource);
-			abstractSamplePropertiesEditionComponent.setPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, kind, basePart.getAbstractSampleReferencedView());
+			abstractSamplePropertiesEditionComponent.setPropertiesEditingPart(ReferencesViewsRepository.AbstractSample.class, kind, basePart.getAbstractSampleReferencedView());
 			abstractSamplePropertiesEditionComponent.initPart(ReferencesViewsRepository.AbstractSample.class, kind, element, allResource);
 		}
 		if (key == ReferencesViewsRepository.AbstractSample.class) {

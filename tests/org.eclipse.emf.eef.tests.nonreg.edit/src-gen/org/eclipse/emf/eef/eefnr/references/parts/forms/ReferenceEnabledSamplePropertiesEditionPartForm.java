@@ -20,17 +20,17 @@ import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertie
 import org.eclipse.emf.eef.eefnr.references.parts.ReferenceEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.eefnr.references.providers.ReferencesMessages;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.services.PropertiesEditingPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -58,7 +58,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ReferenceEnabledSamplePropertiesEditionPart {
+public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, ReferenceEnabledSamplePropertiesEditionPart {
 
 		protected ReferencesTable reference;
 		protected List<ViewerFilter> referenceBusinessFilters = new ArrayList<ViewerFilter>();
@@ -69,17 +69,17 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
+	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
 	 * 
 	 */
-	public ReferenceEnabledSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+	public ReferenceEnabledSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -97,7 +97,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
+	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -155,13 +155,13 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 			public void handleRemove(EObject element) { removeFromReference(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.reference.setHelpText(propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, ReferencesViewsRepository.FORM_KIND));
+		this.reference.setHelpText(propertiesEditingComponent.getHelpContent(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, ReferencesViewsRepository.FORM_KIND));
 		this.reference.createControls(parent, widgetFactory);
 		this.reference.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -180,13 +180,13 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 */
 	protected void addReference() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(reference.getInput(), referenceFilters, referenceBusinessFilters,
-		"reference", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+		"reference", propertiesEditingComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 			@Override
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference,
+						PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
 				}
 				reference.refresh();
 			}
@@ -198,7 +198,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 * 
 	 */
 	protected void moveReference(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
 		reference.refresh();
 	}
 
@@ -206,7 +206,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 * 
 	 */
 	protected void removeFromReference(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferenceEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
 		reference.refresh();
 	}
 
@@ -214,7 +214,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 * 
 	 */
 	protected void editReference(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(propertiesEditingComponent.getEditingContext(), propertiesEditingComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -226,9 +226,9 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	}
 
 	protected Composite createAbstractEnabledSample(FormToolkit widgetFactory, Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
-		abstractEnabledSamplePropertiesEditionPart = (AbstractEnabledSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractEnabledSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditionComponent);
-		((IFormPropertiesEditionPart)abstractEnabledSamplePropertiesEditionPart).createControls(widgetFactory, container);
+		PropertiesEditingPartProvider provider = PropertiesEditingPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
+		abstractEnabledSamplePropertiesEditionPart = (AbstractEnabledSamplePropertiesEditionPart)provider.getPropertiesEditingPart(ReferencesViewsRepository.AbstractEnabledSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditingComponent);
+		((FormPropertiesEditingPart)abstractEnabledSamplePropertiesEditionPart).createControls(widgetFactory, container);
 		return container;
 	}
 
@@ -238,10 +238,10 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
+	public void firePropertiesChanged(PropertiesEditingEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -308,8 +308,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	 * @see org.eclipse.emf.eef.references.parts.ReferenceEnabledSamplePropertiesEditionPart#getAbstractEnabledSampleReferencedView()
 	 * 
 	 */
-		public IPropertiesEditionPart getAbstractEnabledSampleReferencedView() {
-			return (IPropertiesEditionPart) abstractEnabledSamplePropertiesEditionPart;
+		public PropertiesEditingPart getAbstractEnabledSampleReferencedView() {
+			return (PropertiesEditingPart) abstractEnabledSamplePropertiesEditionPart;
 		}
 	/**
 	 * {@inheritDoc}
@@ -359,7 +359,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {
