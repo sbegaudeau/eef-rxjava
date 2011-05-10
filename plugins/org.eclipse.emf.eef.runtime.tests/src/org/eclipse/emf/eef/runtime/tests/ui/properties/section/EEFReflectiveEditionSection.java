@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener;
+import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditingContentProvider;
-import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditingMessageManager;
-import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditingViewer;
-import org.eclipse.emf.eef.runtime.util.SemanticAdapter;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
+import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
@@ -45,7 +45,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EEFReflectiveEditionSection extends AbstractPropertySection implements IFilter, PropertiesEditingListener {
+public class EEFReflectiveEditionSection extends AbstractPropertySection implements IFilter, IPropertiesEditionListener {
 
 	/**
 	 * the property sheet page for this section.
@@ -60,7 +60,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	/**
 	 * The section's viewer
 	 */
-	protected PropertiesEditingViewer viewer;
+	protected PropertiesEditionViewer viewer;
 
 	/**
 	 * The editingDomain where the viewer must perform editing commands.
@@ -85,14 +85,14 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	/**
      * Manager for error message
      */
-	private PropertiesEditingMessageManager messageManager;
+	private PropertiesEditionMessageManager messageManager;
 
 	/**
 	 * global register edition provider
 	 */
 	private AdapterFactory adapterFactory;
 	
-	private PropertiesEditingComponent propertiesEditionComponent;
+	private IPropertiesEditionComponent propertiesEditionComponent;
 
 	/**
 	 * @return the associated ProviderEditionProvider
@@ -128,11 +128,11 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 		container.setLayout(containerLayout);
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 		getWidgetFactory().decorateFormHeading(scrolledForm);
-		viewer = new PropertiesEditingViewer(container, null, SWT.NONE, 1);
+		viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
 		viewer.setToolkit(getWidgetFactory());
 		viewer.setDynamicTabHeader(true);
 		getWidgetFactory().decorateFormHeading(scrolledForm);
-		messageManager = new PropertiesEditingMessageManager() {
+		messageManager = new PropertiesEditionMessageManager() {
 
 			@Override
 			protected void updateStatus(String message) {
@@ -151,7 +151,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
 		initializeEditingDomain(part);
-		PropertiesEditingContentProvider propertiesEditionContentProvider = new PropertiesEditingContentProvider(getAdapterFactory(), PropertiesEditingComponent.LIVE_MODE, editingDomain);
+		PropertiesEditionContentProvider propertiesEditionContentProvider = new PropertiesEditionContentProvider(getAdapterFactory(), IPropertiesEditionComponent.LIVE_MODE, editingDomain);
 		viewer.setContentProvider(propertiesEditionContentProvider);
 		if (!(selection instanceof IStructuredSelection)) {
 			return;
@@ -162,7 +162,7 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 				eObject = newEObject;
 				if (eObject != null) {
 					disposeComponent();
-					viewer.setInput(new DomainPropertiesEditingContext(null, null, editingDomain, adapterFactory, eObject));
+					viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject));
 				}
 			}
 		}
@@ -233,11 +233,11 @@ public class EEFReflectiveEditionSection extends AbstractPropertySection impleme
 		return false;
 	}
 
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		handleChange(event);
 	}
 
-	private void handleChange(PropertiesEditingEvent event) {
+	private void handleChange(IPropertiesEditionEvent event) {
 		// do not handle changes if you are in initialization.
 //		if (viewer.isInitializing())
 //			return;
