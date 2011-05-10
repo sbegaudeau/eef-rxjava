@@ -16,14 +16,14 @@ import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.providers.EefnrextMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
-import org.eclipse.emf.eef.runtime.services.PropertiesEditingPartProviderService;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -48,7 +48,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, CheckBoxExtendedEditorSamplePropertiesEditionPart {
+public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, CheckBoxExtendedEditorSamplePropertiesEditionPart {
 
 	protected Button checkboxEditorSample;
 	private AbstractSamplePropertiesEditionPart abstractSamplePropertiesEditionPart;
@@ -57,17 +57,17 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public CheckBoxExtendedEditorSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public CheckBoxExtendedEditorSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -85,7 +85,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -144,8 +144,8 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(CheckBoxExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new Boolean(checkboxEditorSample.getSelection())));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CheckBoxExtendedEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(checkboxEditorSample.getSelection())));
 			}
 
 		});
@@ -154,14 +154,14 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 		checkboxEditorSample.setLayoutData(checkboxEditorSampleData);
 		EditingUtils.setID(checkboxEditorSample, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample);
 		EditingUtils.setEEFtype(checkboxEditorSample, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	protected Composite createAbstractSample(FormToolkit widgetFactory, Composite container) {
-		PropertiesEditingPartProvider provider = PropertiesEditingPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
-		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditingPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditingComponent);
-		((FormPropertiesEditingPart)abstractSamplePropertiesEditionPart).createControls(widgetFactory, container);
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
+		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditionComponent);
+		((IFormPropertiesEditionPart)abstractSamplePropertiesEditionPart).createControls(widgetFactory, container);
 		return container;
 	}
 
@@ -171,10 +171,10 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -210,8 +210,8 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 	 * @see org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart#getAbstractSampleReferencedView()
 	 * 
 	 */
-		public PropertiesEditingPart getAbstractSampleReferencedView() {
-			return (PropertiesEditingPart) abstractSamplePropertiesEditionPart;
+		public IPropertiesEditionPart getAbstractSampleReferencedView() {
+			return (IPropertiesEditionPart) abstractSamplePropertiesEditionPart;
 		}
 	/**
 	 * {@inheritDoc}
@@ -240,7 +240,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

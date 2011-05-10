@@ -25,9 +25,9 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.impl.ElementPropertiesEditionP
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.NamedElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.OwnerPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SubtypePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 
 
@@ -36,11 +36,11 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class NavigationPropertiesEditionPartProvider implements PropertiesEditingPartProvider {
+public class NavigationPropertiesEditionPartProvider implements IPropertiesEditionPartProvider {
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider.IPropertiesEditionPartProvider#provides(java.lang.Object)
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
 	 * 
 	 */
 	public boolean provides(Object key) {
@@ -49,10 +49,10 @@ public class NavigationPropertiesEditionPartProvider implements PropertiesEditin
 
 	/** 
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider.IPropertiesEditionPartProvider#getPropertiesEditingPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent)
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object, int, org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
 	 * 
 	 */
-	public PropertiesEditingPart getPropertiesEditingPart(Object key, int kind, PropertiesEditingComponent component) {
+	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
 		if (key == NavigationViewsRepository.DeferedFlatReferencesTableSample.class) {
 			if (kind == NavigationViewsRepository.SWT_KIND)
 				return new DeferedFlatReferencesTableSamplePropertiesEditionPartImpl(component);

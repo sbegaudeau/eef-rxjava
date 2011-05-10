@@ -30,20 +30,20 @@ import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
-import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.runtime.ui.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.util.EEFUtils;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -84,7 +84,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -172,26 +172,26 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final PropertiesEditingEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ConcreteReferenceOwnerSample concreteReferenceOwnerSample = (ConcreteReferenceOwnerSample)semanticObject;
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name == event.getAffectedEditor()) {
 			concreteReferenceOwnerSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof AbstractReferenceTargetSample) {
 					abstractTargetSettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					abstractTargetSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, strictTypingSettings, FiltersPackage.eINSTANCE.getConcreteReferenceTargetSample2(), editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, strictTypingSettings, FiltersPackage.eINSTANCE.getConcreteReferenceTargetSample2(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -199,8 +199,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -208,7 +208,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					strictTypingSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
@@ -216,7 +216,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -240,10 +240,10 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(PropertiesEditingEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

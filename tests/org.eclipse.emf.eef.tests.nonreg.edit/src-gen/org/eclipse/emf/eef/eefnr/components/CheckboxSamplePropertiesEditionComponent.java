@@ -23,9 +23,9 @@ import org.eclipse.emf.eef.eefnr.CheckboxSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
-import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 	
 
 // End of user code
@@ -54,7 +54,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -86,10 +86,10 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final PropertiesEditingEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CheckboxSample checkboxSample = (CheckboxSample)semanticObject;
 		if (EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty == event.getAffectedEditor()) {
 			checkboxSample.setCheckboxRequiredProperty((Boolean)event.getNewValue());
@@ -101,7 +101,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -120,7 +120,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -130,10 +130,10 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(PropertiesEditingEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

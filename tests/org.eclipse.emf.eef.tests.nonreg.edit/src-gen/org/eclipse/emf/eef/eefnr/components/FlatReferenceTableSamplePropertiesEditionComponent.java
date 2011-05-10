@@ -23,11 +23,11 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.ui.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -69,7 +69,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -137,24 +137,24 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final PropertiesEditingEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)
+			if (event.getKind() == PropertiesEditionEvent.SET)
 				flatreferencetableRequiredPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
 		if (EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)
+			if (event.getKind() == PropertiesEditionEvent.SET)
 				flatreferencetableOptionalPropertySettings.setToReference((List<EObject>) event.getNewValue());
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -171,7 +171,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -181,10 +181,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(PropertiesEditingEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

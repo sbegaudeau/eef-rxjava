@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnrext.parts.forms;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.TableCompositionTargetExtensionEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.providers.EefnrextMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -44,7 +44,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, TableCompositionTargetExtensionEditorSamplePropertiesEditionPart {
+public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TableCompositionTargetExtensionEditorSamplePropertiesEditionPart {
 
 	protected Text name;
 
@@ -52,17 +52,17 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -80,7 +80,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -125,7 +125,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrextMessages.TableCompositionTargetExtensionEditorSamplePropertiesEditionPart_NameLabel, propertiesEditingComponent.isRequired(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrextMessages.TableCompositionTargetExtensionEditorSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -139,8 +139,8 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -152,14 +152,14 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditingComponent != null)
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm.this, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(name, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -168,10 +168,10 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -207,7 +207,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

@@ -17,9 +17,9 @@ import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleFirstTabPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPropertiesEditingComponent {
+public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The TextSampleFirstTab part
@@ -76,37 +76,37 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
-	 *      getPropertiesEditingPart(int, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingPart getPropertiesEditingPart(int kind, String key) {
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.TEXTSAMPLEFIRSTTAB_PART.equals(key)) {
-			textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.getPropertiesEditingPart(kind, key);
-			return (PropertiesEditingPart)textSampleFirstTabPart;
+			textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)textSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)textSampleFirstTabPart;
 		}
 		if (TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.TEXTSAMPLESECONDTAB_PART.equals(key)) {
-			textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.getPropertiesEditingPart(kind, key);
-			return (PropertiesEditingPart)textSampleSecondTabPart;
+			textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)textSampleSecondTabPart;
 		}
-		return super.getPropertiesEditingPart(kind, key);
+		return super.getPropertiesEditionPart(kind, key);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
-	 *      setPropertiesEditingPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 * 
 	 */
-	public void setPropertiesEditingPart(java.lang.Object key, int kind, PropertiesEditingPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (EefnrViewsRepository.TextSampleFirstTab.class == key) {
-			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)propertiesEditionPart;
 		}
 		if (EefnrViewsRepository.TextSampleSecondTab.class == key) {
-			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)propertiesEditionPart;
 		}
 	}
@@ -114,7 +114,7 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 

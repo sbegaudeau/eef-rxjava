@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -45,7 +45,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, TextSamplePropertiesEditionPart {
+public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TextSamplePropertiesEditionPart {
 
 	protected Text textRequiredProperty;
 	protected Text textOptionalProperty;
@@ -54,17 +54,17 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public TextSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public TextSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -82,7 +82,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -130,7 +130,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 
 	
 	protected Composite createTextRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		textRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		textRequiredProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -144,8 +144,8 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredProperty.getText()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredProperty.getText()));
 			}
 		});
 		textRequiredProperty.addKeyListener(new KeyAdapter() {
@@ -157,20 +157,20 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditingComponent != null)
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textRequiredProperty.getText()));
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textRequiredProperty.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createTextOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		textOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		textOptionalProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -184,8 +184,8 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalProperty.getText()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalProperty.getText()));
 			}
 		});
 		textOptionalProperty.addKeyListener(new KeyAdapter() {
@@ -197,14 +197,14 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditingComponent != null)
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, textOptionalProperty.getText()));
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textOptionalProperty.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -213,10 +213,10 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -277,7 +277,7 @@ public class TextSamplePropertiesEditionPartForm extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

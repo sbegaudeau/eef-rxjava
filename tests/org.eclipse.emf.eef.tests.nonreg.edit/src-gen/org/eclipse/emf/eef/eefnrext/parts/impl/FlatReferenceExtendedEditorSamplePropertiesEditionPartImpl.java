@@ -17,14 +17,14 @@ import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSampleProperties
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.providers.EefnrextMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
-import org.eclipse.emf.eef.runtime.services.PropertiesEditingPartProviderService;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
@@ -49,7 +49,7 @@ import org.eclipse.swt.widgets.Group;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, FlatReferenceExtendedEditorSamplePropertiesEditionPart {
+public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, FlatReferenceExtendedEditorSamplePropertiesEditionPart {
 
 	protected FlatReferencesTable flatReferenceEditorSample;
 	private CheckBoxExtendedEditorSamplePropertiesEditionPart checkBoxExtendedEditorSamplePropertiesEditionPart;
@@ -58,17 +58,17 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
+	public FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -84,7 +84,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -135,7 +135,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	 * 
 	 */
 	protected Composite createFlatReferenceEditorSampleFlatReferencesTable(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel, propertiesEditingComponent.isRequired(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel, propertiesEditionComponent.isRequired(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND));
 		flatReferenceEditorSample = new FlatReferencesTable(parent);
 		flatReferenceEditorSample.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -143,22 +143,22 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (event.getSelection() instanceof StructuredSelection) 
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, ((StructuredSelection)event.getSelection()).toList()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl.this, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
 			}
 
 		});
 		GridData flatReferenceEditorSampleData = new GridData(GridData.FILL_HORIZONTAL);
 		flatReferenceEditorSample.setLayoutData(flatReferenceEditorSampleData);
 		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
-		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 
 	protected Composite createCheckBoxExtendedEditorSample(Composite container) {
-		PropertiesEditingPartProvider provider = PropertiesEditingPartProviderService.getInstance().getProvider(EefnrextViewsRepository.class);
-		checkBoxExtendedEditorSamplePropertiesEditionPart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)provider.getPropertiesEditingPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, EefnrextViewsRepository.SWT_KIND, propertiesEditingComponent);
-		((SWTPropertiesEditingPart)checkBoxExtendedEditorSamplePropertiesEditionPart).createControls(container);
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(EefnrextViewsRepository.class);
+		checkBoxExtendedEditorSamplePropertiesEditionPart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)provider.getPropertiesEditionPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, EefnrextViewsRepository.SWT_KIND, propertiesEditionComponent);
+		((ISWTPropertiesEditionPart)checkBoxExtendedEditorSamplePropertiesEditionPart).createControls(container);
 		return container;
 	}
 
@@ -168,10 +168,10 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -237,8 +237,8 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	 * @see org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart#getCheckBoxExtendedEditorSampleReferencedView()
 	 * 
 	 */
-		public PropertiesEditingPart getCheckBoxExtendedEditorSampleReferencedView() {
-			return (PropertiesEditingPart) checkBoxExtendedEditorSamplePropertiesEditionPart;
+		public IPropertiesEditionPart getCheckBoxExtendedEditorSampleReferencedView() {
+			return (IPropertiesEditionPart) checkBoxExtendedEditorSamplePropertiesEditionPart;
 		}
 	/**
 	 * {@inheritDoc}
@@ -290,7 +290,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

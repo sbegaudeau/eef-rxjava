@@ -33,20 +33,20 @@ import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.runtime.ui.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 	
@@ -137,7 +137,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -476,10 +476,10 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final PropertiesEditingEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TotalSample totalSample = (TotalSample)semanticObject;
 		if (EefnrViewsRepository.TotalSample.Properties.textRequiredProperty == event.getAffectedEditor()) {
 			totalSample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
@@ -506,11 +506,11 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			totalSample.setRadioOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				eobjectflatcomboviewerRequiredPropertySettings.setToReference((TotalSample)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -522,11 +522,11 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				eobjectflatcomboviewerOptionalPropertySettings.setToReference((TotalSample)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -538,20 +538,20 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					referencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					referencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					referencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					referencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
@@ -562,20 +562,20 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			totalSample.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)event.getNewValue());
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				totalSample.getMultivaluededitorRequiredProperty().clear();
 				totalSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				totalSample.getMultivaluededitorOptionalProperty().clear();
 				totalSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, tablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, tablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -583,8 +583,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -592,13 +592,13 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					tablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, tablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, tablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -606,8 +606,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -615,34 +615,34 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					tablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				advancedeobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -654,11 +654,11 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				advancedeobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -670,8 +670,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, advancedtablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, advancedtablecompositionRequiredPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -679,8 +679,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -688,13 +688,13 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedtablecompositionRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, advancedtablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, advancedtablecompositionOptionalPropertySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -702,8 +702,8 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -711,7 +711,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedtablecompositionOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
@@ -722,7 +722,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -826,7 +826,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -836,10 +836,10 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(PropertiesEditingEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

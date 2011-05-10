@@ -21,11 +21,11 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -59,7 +59,7 @@ import org.eclipse.swt.widgets.TableColumn;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, ReferencesTableSamplePropertiesEditionPart {
+public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ReferencesTableSamplePropertiesEditionPart {
 
 	protected TableViewer referencestableRequiredProperty;
 	protected Button addReferencestableRequiredProperty;
@@ -76,17 +76,17 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public ReferencesTableSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
+	public ReferencesTableSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -102,7 +102,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -152,7 +152,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * 
 	 */
 	protected Composite createReferencestableRequiredPropertyReferencesTable(Composite parent) {
-		Label referencestableRequiredPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		Label referencestableRequiredPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		GridData referencestableRequiredPropertyLabelData = new GridData();
 		referencestableRequiredPropertyLabelData.horizontalSpan = 3;
 		referencestableRequiredPropertyLabel.setLayoutData(referencestableRequiredPropertyLabelData);
@@ -284,7 +284,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 			}
 
@@ -300,7 +300,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	protected void removeReferencestableRequiredProperty(IStructuredSelection selection) {
 		for (Iterator iter = selection.iterator(); iter.hasNext();) {
 			EObject elem = (EObject) iter.next();
-			propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, elem));
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
 		referencestableRequiredProperty.refresh();
 	}
@@ -310,7 +310,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 * 
 	 */
 	protected Composite createReferencestableOptionalPropertyReferencesTable(Composite parent) {
-		Label referencestableOptionalPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, propertiesEditingComponent.isRequired(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		Label referencestableOptionalPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		GridData referencestableOptionalPropertyLabelData = new GridData();
 		referencestableOptionalPropertyLabelData.horizontalSpan = 3;
 		referencestableOptionalPropertyLabel.setLayoutData(referencestableOptionalPropertyLabelData);
@@ -442,7 +442,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			public void process(IStructuredSelection selection) {
 				for (Iterator iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 			}
 
@@ -458,7 +458,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	protected void removeReferencestableOptionalProperty(IStructuredSelection selection) {
 		for (Iterator iter = selection.iterator(); iter.hasNext();) {
 			EObject elem = (EObject) iter.next();
-			propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, elem));
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
 		referencestableOptionalProperty.refresh();
 	}
@@ -468,10 +468,10 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -597,7 +597,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

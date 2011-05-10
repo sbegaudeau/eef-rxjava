@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -44,7 +44,7 @@ import org.eclipse.swt.widgets.Group;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, RadioSamplePropertiesEditionPart {
+public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RadioSamplePropertiesEditionPart {
 
 	protected RadioViewer radioRequiredPropertyRadioViewer;
 	protected RadioViewer radioOptionalPropertyRadioViewer;
@@ -53,17 +53,17 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public RadioSamplePropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
+	public RadioSamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -79,7 +79,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -132,16 +132,16 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredPropertyData.horizontalSpan = 2;
 		radioRequiredPropertyRadioViewer.setLayoutData(radioRequiredPropertyData);
-		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null);
 		radioRequiredPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RadioSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
 		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null);
 		return parent;
 	}
 
@@ -153,16 +153,16 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalPropertyData.horizontalSpan = 2;
 		radioOptionalPropertyRadioViewer.setLayoutData(radioOptionalPropertyData);
-		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.FORM_KIND), null);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.FORM_KIND), null);
 		radioOptionalPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RadioSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((EEnumLiteral)((StructuredSelection)event.getSelection()).getFirstElement()).getInstance()));
 			}
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
-		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null);
 		return parent;
 	}
 
@@ -171,10 +171,10 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -258,7 +258,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

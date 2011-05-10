@@ -19,7 +19,7 @@ import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSamplePrope
 import org.eclipse.emf.eef.eefnrext.components.FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.FlatReferenceExtendedEditorSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
@@ -89,7 +89,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionProvider extends 
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof FlatReferenceExtendedEditorSample) {
 			return new FlatReferenceExtendedEditorSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -101,7 +101,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionProvider extends 
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof FlatReferenceExtendedEditorSample) {
 			if (FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent.BASE_PART.equals(part))
 				return new FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
@@ -118,7 +118,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionProvider extends 
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof FlatReferenceExtendedEditorSample) {
 			if (FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent.class)

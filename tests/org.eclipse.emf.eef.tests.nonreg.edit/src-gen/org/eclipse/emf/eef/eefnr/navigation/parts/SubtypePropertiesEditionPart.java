@@ -12,7 +12,7 @@ package org.eclipse.emf.eef.eefnr.navigation.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
@@ -45,7 +45,7 @@ public interface SubtypePropertiesEditionPart {
 		 * @return the Owner referenced view
 		 * 
 		 */
-		public PropertiesEditingPart getOwnerReferencedView();
+		public IPropertiesEditionPart getOwnerReferencedView();
 	/**
 	 * @return the name
 	 * 

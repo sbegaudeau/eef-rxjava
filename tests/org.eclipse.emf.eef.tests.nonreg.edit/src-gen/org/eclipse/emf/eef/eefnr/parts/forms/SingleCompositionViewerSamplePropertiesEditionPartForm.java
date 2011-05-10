@@ -18,11 +18,11 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -49,7 +49,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class SingleCompositionViewerSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, SingleCompositionViewerSamplePropertiesEditionPart {
+public class SingleCompositionViewerSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, SingleCompositionViewerSamplePropertiesEditionPart {
 
 		protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleRequiredProperty;
 		protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleOptionalProperty;
@@ -60,17 +60,17 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public SingleCompositionViewerSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public SingleCompositionViewerSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -88,7 +88,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -146,7 +146,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	protected Composite createSinglecompositionviewerSingleRequiredPropertySingleCompositionViewer(FormToolkit widgetFactory, Composite parent) {
 		GridData singlecompositionviewerSingleRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		singlecompositionviewerSingleRequiredPropertyData.horizontalSpan = 3;
-		this.singlecompositionviewerSingleRequiredProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleRequiredPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditingComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, EefnrViewsRepository.FORM_KIND));
+		this.singlecompositionviewerSingleRequiredProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleRequiredPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditionComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		this.singlecompositionviewerSingleRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		this.singlecompositionviewerSingleRequiredProperty.setLayoutData(singlecompositionviewerSingleRequiredPropertyData);
 			this.singlecompositionviewerSingleRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -157,8 +157,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 				 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
 				 */
 				public void selectionChanged(SelectionChangedEvent event) {
-					if (propertiesEditingComponent != null) {
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getSinglecompositionviewerSingleRequiredProperty()));
+					if (propertiesEditionComponent != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSinglecompositionviewerSingleRequiredProperty()));
 					}
 				}
 			});
@@ -167,8 +167,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 
 				public void widgetSelected(SelectionEvent e) {
 					if(!singlecompositionviewerSingleRequiredProperty.getCheckBoxSelection()) {
-						if (propertiesEditingComponent != null) {
-							propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, null));
+						if (propertiesEditionComponent != null) {
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, null));
 						}
 					}
 				}
@@ -184,7 +184,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	protected Composite createSinglecompositionviewerSingleOptionalPropertySingleCompositionViewer(FormToolkit widgetFactory, Composite parent) {
 		GridData singlecompositionviewerSingleOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		singlecompositionviewerSingleOptionalPropertyData.horizontalSpan = 3;
-		this.singlecompositionviewerSingleOptionalProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleOptionalPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditingComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, EefnrViewsRepository.FORM_KIND));
+		this.singlecompositionviewerSingleOptionalProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleOptionalPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditionComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		this.singlecompositionviewerSingleOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		this.singlecompositionviewerSingleOptionalProperty.setLayoutData(singlecompositionviewerSingleOptionalPropertyData);
 			this.singlecompositionviewerSingleOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -195,8 +195,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 				 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
 				 */
 				public void selectionChanged(SelectionChangedEvent event) {
-					if (propertiesEditingComponent != null) {
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getSinglecompositionviewerSingleOptionalProperty()));
+					if (propertiesEditionComponent != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSinglecompositionviewerSingleOptionalProperty()));
 					}
 				}
 			});
@@ -205,8 +205,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 
 				public void widgetSelected(SelectionEvent e) {
 					if(!singlecompositionviewerSingleOptionalProperty.getCheckBoxSelection()) {
-						if (propertiesEditingComponent != null) {
-							propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, null));
+						if (propertiesEditionComponent != null) {
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, null));
 						}
 					}
 				}
@@ -222,7 +222,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	protected Composite createSinglecompositionviewerMultiRequiredPropertySingleCompositionViewer(FormToolkit widgetFactory, Composite parent) {
 		GridData singlecompositionviewerMultiRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		singlecompositionviewerMultiRequiredPropertyData.horizontalSpan = 3;
-		this.singlecompositionviewerMultiRequiredProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiRequiredPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditingComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, EefnrViewsRepository.FORM_KIND));
+		this.singlecompositionviewerMultiRequiredProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiRequiredPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditionComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		this.singlecompositionviewerMultiRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		this.singlecompositionviewerMultiRequiredProperty.setLayoutData(singlecompositionviewerMultiRequiredPropertyData);
 			this.singlecompositionviewerMultiRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -233,8 +233,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 				 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
 				 */
 				public void selectionChanged(SelectionChangedEvent event) {
-					if (propertiesEditingComponent != null) {
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getSinglecompositionviewerMultiRequiredProperty()));
+					if (propertiesEditionComponent != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSinglecompositionviewerMultiRequiredProperty()));
 					}
 				}
 			});
@@ -243,8 +243,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 
 				public void widgetSelected(SelectionEvent e) {
 					if(!singlecompositionviewerMultiRequiredProperty.getCheckBoxSelection()) {
-						if (propertiesEditingComponent != null) {
-							propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, null));
+						if (propertiesEditionComponent != null) {
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, null));
 						}
 					}
 				}
@@ -260,7 +260,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	protected Composite createSinglecompositionviewerMultiOptionalPropertySingleCompositionViewer(FormToolkit widgetFactory, Composite parent) {
 		GridData singlecompositionviewerMultiOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		singlecompositionviewerMultiOptionalPropertyData.horizontalSpan = 3;
-		this.singlecompositionviewerMultiOptionalProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiOptionalPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditingComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, EefnrViewsRepository.FORM_KIND));
+		this.singlecompositionviewerMultiOptionalProperty = new SingleCompositionViewer<EObject>(EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiOptionalPropertyLabel, parent, SWT.NONE, widgetFactory, EefnrViewsRepository.FORM_KIND, propertiesEditionComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		this.singlecompositionviewerMultiOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		this.singlecompositionviewerMultiOptionalProperty.setLayoutData(singlecompositionviewerMultiOptionalPropertyData);
 			this.singlecompositionviewerMultiOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -271,8 +271,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 				 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
 				 */
 				public void selectionChanged(SelectionChangedEvent event) {
-					if (propertiesEditingComponent != null) {
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, getSinglecompositionviewerMultiOptionalProperty()));
+					if (propertiesEditionComponent != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSinglecompositionviewerMultiOptionalProperty()));
 					}
 				}
 			});
@@ -281,8 +281,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 
 				public void widgetSelected(SelectionEvent e) {
 					if(!singlecompositionviewerMultiOptionalProperty.getCheckBoxSelection()) {
-						if (propertiesEditingComponent != null) {
-							propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, null));
+						if (propertiesEditionComponent != null) {
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionViewerSamplePropertiesEditionPartForm.this,  EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, null));
 						}
 					}
 				}
@@ -299,10 +299,10 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -493,7 +493,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Comp
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

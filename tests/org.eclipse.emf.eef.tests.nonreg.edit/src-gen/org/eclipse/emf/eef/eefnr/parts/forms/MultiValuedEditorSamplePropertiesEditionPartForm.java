@@ -18,11 +18,11 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
@@ -49,7 +49,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, MultiValuedEditorSamplePropertiesEditionPart {
+public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, MultiValuedEditorSamplePropertiesEditionPart {
 
 	protected Text multivaluededitorRequiredProperty;
 		protected Button editMultivaluededitorRequiredProperty;
@@ -62,17 +62,17 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public MultiValuedEditorSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public MultiValuedEditorSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -90,7 +90,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -169,7 +169,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 						multivaluededitorRequiredPropertyList = new BasicEList();
 					}
 					multivaluededitorRequiredProperty.setText(multivaluededitorRequiredPropertyList.toString());
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new BasicEList(multivaluededitorRequiredPropertyList)));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorRequiredPropertyList)));
 					setHasChanged(true);
 				}
 			}
@@ -212,7 +212,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 						multivaluededitorOptionalPropertyList = new BasicEList();
 					}
 					multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new BasicEList(multivaluededitorOptionalPropertyList)));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartForm.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorOptionalPropertyList)));
 					setHasChanged(true);
 				}
 			}
@@ -227,10 +227,10 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -329,7 +329,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends CompositeP
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

@@ -15,7 +15,7 @@ import java.util.List;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.navigation.components.DeferedReferencesTableSampleEditorPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
@@ -85,7 +85,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
 			return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -97,7 +97,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
 			if (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part))
 				return new DeferedReferencesTableSampleEditorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
@@ -110,7 +110,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) {
 			if (DeferedReferencesTableSampleEditorPropertiesEditionComponent.DEFEREDREFERENCESTABLESAMPLE_PART.equals(part)
 				&& refinement == DeferedReferencesTableSampleEditorPropertiesEditionComponent.class)

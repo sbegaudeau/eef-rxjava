@@ -15,7 +15,7 @@ import java.util.List;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
 import org.eclipse.emf.eef.filters.components.ConcreteReferenceOwnerSamplePropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
@@ -85,7 +85,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionProvider extends Prope
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof ConcreteReferenceOwnerSample) {
 			return new ConcreteReferenceOwnerSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -97,7 +97,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionProvider extends Prope
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof ConcreteReferenceOwnerSample) {
 			if (ConcreteReferenceOwnerSamplePropertiesEditionComponent.BASE_PART.equals(part))
 				return new ConcreteReferenceOwnerSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
@@ -110,7 +110,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionProvider extends Prope
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
-	public PropertiesEditingComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof ConcreteReferenceOwnerSample) {
 			if (ConcreteReferenceOwnerSamplePropertiesEditionComponent.BASE_PART.equals(part)
 				&& refinement == ConcreteReferenceOwnerSamplePropertiesEditionComponent.class)

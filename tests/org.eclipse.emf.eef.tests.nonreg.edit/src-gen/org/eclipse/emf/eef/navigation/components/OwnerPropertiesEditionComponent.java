@@ -30,21 +30,21 @@ import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.Owner;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.OwnerPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.runtime.ui.filters.EObjectFilter;
-import org.eclipse.emf.eef.runtime.ui.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.eef.runtime.util.EEFConverterUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 	
@@ -145,7 +145,7 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -427,17 +427,17 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final PropertiesEditingEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Owner owner = (Owner)semanticObject;
 		if (NavigationViewsRepository.Owner.Properties.name == event.getAffectedEditor()) {
 			owner.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, multipleSampleForTableCompositionSettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, multipleSampleForTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -445,8 +445,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -454,13 +454,13 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				multipleSampleForTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, multipleSampleForAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, multipleSampleForAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -468,8 +468,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -477,35 +477,35 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				multipleSampleForAdvancedTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof Owner) {
 					multipleSampleForReferencesTableSettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					multipleSampleForReferencesTableSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof Owner) {
 					multipleSampleForAdvancedReferencesTableSettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					multipleSampleForAdvancedReferencesTableSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)
+			if (event.getKind() == PropertiesEditionEvent.SET)
 				multipleSampleForFlatReferencesTablesSettings.setToReference((List<EObject>) event.getNewValue());
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, singleSampleForTableCompositionSettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, singleSampleForTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -513,8 +513,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -522,13 +522,13 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					singleSampleForTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
-				EReferencePropertiesEditingContext context = new EReferencePropertiesEditingContext(editingContext, this, singleSampleForAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, singleSampleForAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -536,8 +536,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						policy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.EDIT) {
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -545,38 +545,38 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						editionPolicy.execute();
 					}
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					singleSampleForAdvancedTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof Owner) {
 					singleSampleForReferencesTableSettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				singleSampleForReferencesTableSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof Owner) {
 					singleSampleForAdvancedReferencesTableSettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				singleSampleForAdvancedReferencesTableSettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)
+			if (event.getKind() == PropertiesEditionEvent.SET)
 				singleSampleForFlatReferencesTableSettings.setToReference((List<EObject>) event.getNewValue());
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				singleContainmentForEObjectFlatComboViewerSettings.setToReference((Owner)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				Owner eObject = NavigationFactory.eINSTANCE.createOwner();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -588,11 +588,11 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				singleReferenceForEObjectFlatComboViewerSettings.setToReference((Owner)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				Owner eObject = NavigationFactory.eINSTANCE.createOwner();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -604,11 +604,11 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				singleContainmentForAdvancedEObjectFlatComboViewerSettings.setToReference((Owner)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				Owner eObject = NavigationFactory.eINSTANCE.createOwner();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -620,11 +620,11 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 		}
 		if (NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET)  {
 				singleReferenceForAdvancedEObjectFlatComboViewerSettings.setToReference((Owner)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				Owner eObject = NavigationFactory.eINSTANCE.createOwner();
-				EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -639,7 +639,7 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -687,10 +687,10 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(PropertiesEditingEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

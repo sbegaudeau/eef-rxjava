@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.eefnr.filters.providers.FiltersMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -63,7 +63,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, ConcreteReferenceOwnerSamplePropertiesEditionPart {
+public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ConcreteReferenceOwnerSamplePropertiesEditionPart {
 
 	protected Text name;
 		protected ReferencesTable abstractTarget;
@@ -77,17 +77,17 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public ConcreteReferenceOwnerSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public ConcreteReferenceOwnerSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -105,7 +105,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -157,7 +157,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel, propertiesEditingComponent.isRequired(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.FORM_KIND));
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -171,8 +171,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -184,14 +184,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditingComponent != null)
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
 		EditingUtils.setID(name, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -206,13 +206,13 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 			public void handleRemove(EObject element) { removeFromAbstractTarget(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.abstractTarget.setHelpText(propertiesEditingComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, FiltersViewsRepository.FORM_KIND));
+		this.abstractTarget.setHelpText(propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, FiltersViewsRepository.FORM_KIND));
 		this.abstractTarget.createControls(parent, widgetFactory);
 		this.abstractTarget.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -231,13 +231,13 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	 */
 	protected void addAbstractTarget() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(abstractTarget.getInput(), abstractTargetFilters, abstractTargetBusinessFilters,
-		"abstractTarget", propertiesEditingComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+		"abstractTarget", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
 			@Override
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget,
-						PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, elem));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 				abstractTarget.refresh();
 			}
@@ -249,7 +249,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 */
 	protected void moveAbstractTarget(EObject element, int oldIndex, int newIndex) {
-		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		abstractTarget.refresh();
 	}
 
@@ -257,7 +257,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 */
 	protected void removeFromAbstractTarget(EObject element) {
-		propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		abstractTarget.refresh();
 	}
 
@@ -265,7 +265,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	 * 
 	 */
 	protected void editAbstractTarget(EObject element) {
-		EObjectPropertiesEditingContext context = new EObjectPropertiesEditingContext(propertiesEditingComponent.getEditingContext(), propertiesEditingComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -283,19 +283,19 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	protected Composite createStrictTypingTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.strictTyping = new ReferencesTable(FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel, new ReferencesTableListener() {
 			public void handleAdd() {
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				strictTyping.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				strictTyping.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				strictTyping.refresh();
 			}
 			public void handleRemove(EObject element) {
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				strictTyping.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -303,13 +303,13 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 		for (ViewerFilter filter : this.strictTypingFilters) {
 			this.strictTyping.addFilter(filter);
 		}
-		this.strictTyping.setHelpText(propertiesEditingComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, FiltersViewsRepository.FORM_KIND));
+		this.strictTyping.setHelpText(propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, FiltersViewsRepository.FORM_KIND));
 		this.strictTyping.createControls(parent, widgetFactory);
 		this.strictTyping.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -329,10 +329,10 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -483,7 +483,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Compo
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

@@ -15,14 +15,14 @@ import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertie
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
 import org.eclipse.emf.eef.eefnr.references.providers.ReferencesMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingPartProvider;
-import org.eclipse.emf.eef.runtime.services.PropertiesEditingPartProviderService;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -47,7 +47,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePropertiesEditingPart implements FormPropertiesEditingPart, AbstractEnabledSamplePropertiesEditionPart {
+public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, AbstractEnabledSamplePropertiesEditionPart {
 
 	protected Button enabled;
 	private AbstractSamplePropertiesEditionPart abstractSamplePropertiesEditionPart;
@@ -56,17 +56,17 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public AbstractEnabledSamplePropertiesEditionPartForm(PropertiesEditingComponent editionComponent) {
+	public AbstractEnabledSamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
 	 * 
 	 */
@@ -84,7 +84,7 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.FormPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -143,8 +143,8 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 			 * 	
 			 */
 			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(AbstractEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, new Boolean(enabled.getSelection())));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractEnabledSamplePropertiesEditionPartForm.this, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(enabled.getSelection())));
 			}
 
 		});
@@ -153,14 +153,14 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 		enabled.setLayoutData(enabledData);
 		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditingComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	protected Composite createAbstractSample(FormToolkit widgetFactory, Composite container) {
-		PropertiesEditingPartProvider provider = PropertiesEditingPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
-		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditingPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditingComponent);
-		((FormPropertiesEditingPart)abstractSamplePropertiesEditionPart).createControls(widgetFactory, container);
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(ReferencesViewsRepository.class);
+		abstractSamplePropertiesEditionPart = (AbstractSamplePropertiesEditionPart)provider.getPropertiesEditionPart(ReferencesViewsRepository.AbstractSample.class, ReferencesViewsRepository.FORM_KIND, propertiesEditionComponent);
+		((IFormPropertiesEditionPart)abstractSamplePropertiesEditionPart).createControls(widgetFactory, container);
 		return container;
 	}
 
@@ -170,10 +170,10 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -209,8 +209,8 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 	 * @see org.eclipse.emf.eef.references.parts.AbstractEnabledSamplePropertiesEditionPart#getAbstractSampleReferencedView()
 	 * 
 	 */
-		public PropertiesEditingPart getAbstractSampleReferencedView() {
-			return (PropertiesEditingPart) abstractSamplePropertiesEditionPart;
+		public IPropertiesEditionPart getAbstractSampleReferencedView() {
+			return (IPropertiesEditionPart) abstractSamplePropertiesEditionPart;
 		}
 	/**
 	 * {@inheritDoc}
@@ -239,7 +239,7 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

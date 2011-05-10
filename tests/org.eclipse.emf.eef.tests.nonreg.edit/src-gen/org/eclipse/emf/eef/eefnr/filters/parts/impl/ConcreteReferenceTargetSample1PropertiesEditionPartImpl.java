@@ -14,11 +14,11 @@ package org.eclipse.emf.eef.eefnr.filters.parts.impl;
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceTargetSample1PropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.eefnr.filters.providers.FiltersMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -41,7 +41,7 @@ import org.eclipse.swt.widgets.Text;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, ConcreteReferenceTargetSample1PropertiesEditionPart {
+public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ConcreteReferenceTargetSample1PropertiesEditionPart {
 
 	protected Text name;
 
@@ -49,17 +49,17 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public ConcreteReferenceTargetSample1PropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
+	public ConcreteReferenceTargetSample1PropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -75,7 +75,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -119,7 +119,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, FiltersMessages.ConcreteReferenceTargetSample1PropertiesEditionPart_NameLabel, propertiesEditingComponent.isRequired(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, FiltersViewsRepository.SWT_KIND));
+		SWTUtils.createPartLabel(parent, FiltersMessages.ConcreteReferenceTargetSample1PropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, FiltersViewsRepository.SWT_KIND));
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -134,8 +134,8 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditingComponent != null)
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceTargetSample1PropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceTargetSample1PropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -151,15 +151,15 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
-					if (propertiesEditingComponent != null)
-						propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(ConcreteReferenceTargetSample1PropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.SET, null, name.getText()));
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceTargetSample1PropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
 		EditingUtils.setID(name, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditingComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -168,10 +168,10 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -210,7 +210,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {

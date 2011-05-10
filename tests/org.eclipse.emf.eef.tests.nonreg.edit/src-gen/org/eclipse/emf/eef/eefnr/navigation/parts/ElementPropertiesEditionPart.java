@@ -11,7 +11,7 @@
 package org.eclipse.emf.eef.eefnr.navigation.parts;
 
 // Start of user code for imports
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
 
@@ -42,7 +42,7 @@ public interface ElementPropertiesEditionPart {
 		 * @return the NamedElement referenced view
 		 * 
 		 */
-		public PropertiesEditingPart getNamedElementReferencedView();
+		public IPropertiesEditionPart getNamedElementReferencedView();
 	/**
 	 * @return the name
 	 * 

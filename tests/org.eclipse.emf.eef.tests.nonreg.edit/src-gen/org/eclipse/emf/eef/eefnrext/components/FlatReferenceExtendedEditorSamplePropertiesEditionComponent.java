@@ -17,9 +17,9 @@ import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class FlatReferenceExtendedEditorSamplePropertiesEditionComponent extends ComposedPropertiesEditingComponent {
+public class FlatReferenceExtendedEditorSamplePropertiesEditionComponent extends ComposedPropertiesEditionComponent {
 
 	/**
 	 * The Base part
@@ -85,37 +85,37 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionComponent extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
-	 *      getPropertiesEditingPart(int, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      getPropertiesEditionPart(int, java.lang.String)
 	 * 
 	 */
-	public PropertiesEditingPart getPropertiesEditingPart(int kind, String key) {
+	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if (FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent.BASE_PART.equals(key)) {
-			basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)flatReferenceExtendedEditorSampleBasePropertiesEditionComponent.getPropertiesEditingPart(kind, key);
-			return (PropertiesEditingPart)basePart;
+			basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)flatReferenceExtendedEditorSampleBasePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)basePart;
 		}
 		if (FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent.SECONDFLATREFERENCEEXTENDEDEDITORSAMPLE_PART.equals(key)) {
-			secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)flatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent.getPropertiesEditingPart(kind, key);
-			return (PropertiesEditingPart)secondFlatReferenceExtendedEditorSamplePart;
+			secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)flatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)secondFlatReferenceExtendedEditorSamplePart;
 		}
-		return super.getPropertiesEditingPart(kind, key);
+		return super.getPropertiesEditionPart(kind, key);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
-	 *      setPropertiesEditingPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
+	 *      setPropertiesEditionPart(java.lang.Object, int,
+	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
 	 * 
 	 */
-	public void setPropertiesEditingPart(java.lang.Object key, int kind, PropertiesEditingPart propertiesEditionPart) {
+	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
 		if (EefnrextViewsRepository.FlatReferenceExtendedEditorSample.class == key) {
-			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)propertiesEditionPart;
 		}
 		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class == key) {
-			super.setPropertiesEditingPart(key, kind, propertiesEditionPart);
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)propertiesEditionPart;
 		}
 	}
@@ -123,7 +123,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionComponent extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.ComposedPropertiesEditingComponent#
+	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
 	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
@@ -131,7 +131,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionComponent extends
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == EefnrextViewsRepository.FlatReferenceExtendedEditorSample.class) {
 			super.initPart(key, kind, element, allResource);
-			checkBoxExtendedEditorSamplePropertiesEditionComponent.setPropertiesEditingPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, kind, basePart.getCheckBoxExtendedEditorSampleReferencedView());
+			checkBoxExtendedEditorSamplePropertiesEditionComponent.setPropertiesEditionPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, kind, basePart.getCheckBoxExtendedEditorSampleReferencedView());
 			checkBoxExtendedEditorSamplePropertiesEditionComponent.initPart(EefnrextViewsRepository.CheckBoxExtendedEditorSample.class, kind, element, allResource);
 		}
 		if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.class) {

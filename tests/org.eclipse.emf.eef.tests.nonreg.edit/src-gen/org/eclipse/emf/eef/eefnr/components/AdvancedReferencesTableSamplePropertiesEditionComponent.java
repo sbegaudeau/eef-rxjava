@@ -23,11 +23,11 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
-import org.eclipse.emf.eef.runtime.components.impl.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.ui.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -69,7 +69,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * 
 	 */
@@ -137,26 +137,26 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void updateSemanticModel(final PropertiesEditingEvent event) {
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AdvancedReferencesTableSample advancedReferencesTableSample = (AdvancedReferencesTableSample)semanticObject;
 		if (EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					advancedreferencestableRequiredPropertySettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedreferencestableRequiredPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
 		if (EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditingEventImpl.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD)  {
 				if (event.getNewValue() instanceof TotalSample) {
 					advancedreferencestableOptionalPropertySettings.addToReference((EObject) event.getNewValue());
 				}
-			} else if (event.getKind() == PropertiesEditingEventImpl.REMOVE) {
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 					advancedreferencestableOptionalPropertySettings.removeFromReference((EObject) event.getNewValue());
 			}
 		}
@@ -164,7 +164,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
@@ -181,7 +181,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.impl.StandardPropertiesEditingComponent#isRequired(java.lang.Object, int)
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
@@ -191,10 +191,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent#validateValue(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public Diagnostic validateValue(PropertiesEditingEvent event) {
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {

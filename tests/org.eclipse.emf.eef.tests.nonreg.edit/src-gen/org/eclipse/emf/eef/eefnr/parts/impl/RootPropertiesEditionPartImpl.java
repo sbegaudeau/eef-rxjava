@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RootPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
-import org.eclipse.emf.eef.runtime.components.PropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent;
-import org.eclipse.emf.eef.runtime.notify.impl.PropertiesEditingEventImpl;
-import org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.parts.impl.CompositePropertiesEditingPart;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -47,7 +47,7 @@ import org.eclipse.swt.widgets.Group;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class RootPropertiesEditionPartImpl extends CompositePropertiesEditingPart implements SWTPropertiesEditingPart, RootPropertiesEditionPart {
+public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RootPropertiesEditionPart {
 
 protected ReferencesTable samples;
 protected List<ViewerFilter> samplesBusinessFilters = new ArrayList<ViewerFilter>();
@@ -57,17 +57,17 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 
 	/**
 	 * Default constructor
-	 * @param editionComponent the {@link PropertiesEditingComponent} that manage this part
+	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public RootPropertiesEditionPartImpl(PropertiesEditingComponent editionComponent) {
+	public RootPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -83,7 +83,7 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.parts.SWTPropertiesEditingPart#
+	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
 	 * 
 	 */
@@ -132,19 +132,19 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	protected Composite createSamplesAdvancedTableComposition(Composite parent) {
 		this.samples = new ReferencesTable(EefnrMessages.RootPropertiesEditionPart_SamplesLabel, new ReferencesTableListener() {
 			public void handleAdd() { 
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.ADD, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				samples.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.EDIT, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				samples.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.MOVE, element, newIndex));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				samples.refresh();
 			}
 			public void handleRemove(EObject element) { 
-				propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditingEventImpl.COMMIT, PropertiesEditingEventImpl.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				samples.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -152,13 +152,13 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 		for (ViewerFilter filter : this.samplesFilters) {
 			this.samples.addFilter(filter);
 		}
-		this.samples.setHelpText(propertiesEditingComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.SWT_KIND));
+		this.samples.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Root.Properties.samples, EefnrViewsRepository.SWT_KIND));
 		this.samples.createControls(parent);
 		this.samples.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditingComponent.firePropertiesChanged(new PropertiesEditingEventImpl(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditingEventImpl.CHANGE, PropertiesEditingEventImpl.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartImpl.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -178,10 +178,10 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.notify.PropertiesEditingListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.notify.PropertiesEditingEvent)
+	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
-	public void firePropertiesChanged(PropertiesEditingEvent event) {
+	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
 // End of user code
@@ -254,7 +254,7 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.eef.runtime.parts.PropertiesEditingPart#getTitle()
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
 	 * 
 	 */
 	public String getTitle() {
