@@ -117,12 +117,12 @@ public class InteractiveEEFEditor extends FormEditor
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 */
-	protected AdapterFactoryEditingDomain editingDomain;
+	protected EditingDomain editingDomain;
 
 	/**
 	 * This is the one adapter factory used for providing views of the model.
 	 */
-	protected ComposedAdapterFactory adapterFactory;
+	protected AdapterFactory adapterFactory;
 
 	/**
 	 * This is the content outline page.
@@ -279,8 +279,8 @@ public class InteractiveEEFEditor extends FormEditor
 	protected void handleActivate() {
 		// Recompute the read only state.
 		//
-		if (editingDomain.getResourceToReadOnlyMap() != null) {
-		  editingDomain.getResourceToReadOnlyMap().clear();
+		if (editingDomain instanceof AdapterFactoryEditingDomain && ((AdapterFactoryEditingDomain)editingDomain).getResourceToReadOnlyMap() != null) {
+			((AdapterFactoryEditingDomain)editingDomain).getResourceToReadOnlyMap().clear();
 
 		  // Refresh any actions that may become enabled or disabled.
 		  //
@@ -407,8 +407,8 @@ public class InteractiveEEFEditor extends FormEditor
 		// Create an adapter factory that yields item providers.
 		//
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+		((ComposedAdapterFactory)adapterFactory).addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		((ComposedAdapterFactory)adapterFactory).addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 	}
 
@@ -1161,7 +1161,8 @@ public class InteractiveEEFEditor extends FormEditor
 
 		getSite().getPage().removePartListener(partListener);
 
-		adapterFactory.dispose();
+		if (adapterFactory instanceof ComposedAdapterFactory)
+			((ComposedAdapterFactory)adapterFactory).dispose();
 
 		if (getActionBarContributor().getActiveEditor() == this) {
 			getActionBarContributor().setActiveEditor(null);
