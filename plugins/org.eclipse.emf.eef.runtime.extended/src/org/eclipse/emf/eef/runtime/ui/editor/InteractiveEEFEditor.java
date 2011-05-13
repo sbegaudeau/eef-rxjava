@@ -1023,9 +1023,10 @@ public class InteractiveEEFEditor extends FormEditor
 		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
+		IActionBars actionBars = getActionBars();
 		IProgressMonitor progressMonitor =
-			getActionBars().getStatusLineManager() != null ?
-				getActionBars().getStatusLineManager().getProgressMonitor() :
+			actionBars != null && actionBars.getStatusLineManager() != null ?
+				actionBars.getStatusLineManager().getProgressMonitor() :
 				new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
@@ -1086,13 +1087,15 @@ public class InteractiveEEFEditor extends FormEditor
 	/**
 	 */
 	public void setStatusLineManager(ISelection selection) {
-		IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ?
-			contentOutlineStatusLineManager : getActionBars().getStatusLineManager();
+		IActionBars actionBars = getActionBars();
+		if (actionBars != null) {
+			IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ?
+					contentOutlineStatusLineManager : actionBars.getStatusLineManager();
 
-		if (statusLineManager != null) {
-			if (selection instanceof IStructuredSelection) {
-				Collection<?> collection = ((IStructuredSelection)selection).toList();
-				switch (collection.size()) {
+			if (statusLineManager != null) {
+				if (selection instanceof IStructuredSelection) {
+					Collection<?> collection = ((IStructuredSelection)selection).toList();
+					switch (collection.size()) {
 					case 0: {
 						statusLineManager.setMessage(getString("UI_InteractiveEEFEditor_NoObjectSelected"));
 						break;
@@ -1106,10 +1109,11 @@ public class InteractiveEEFEditor extends FormEditor
 						statusLineManager.setMessage(getString("UI_InteractiveEEFEditor_MultiObjectSelected", Integer.toString(collection.size())));
 						break;
 					}
+					}
 				}
-			}
-			else {
-				statusLineManager.setMessage("");
+				else {
+					statusLineManager.setMessage("");
+				}
 			}
 		}
 	}
@@ -1144,7 +1148,11 @@ public class InteractiveEEFEditor extends FormEditor
 	/**
 	 */
 	public IActionBars getActionBars() {
-		return getActionBarContributor().getActionBars();
+		if (getActionBarContributor() != null) {
+			return getActionBarContributor().getActionBars();
+		} else {
+			return null;
+		}
 	}
 
 	/**
