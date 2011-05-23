@@ -22,7 +22,7 @@
    <feature id="org.eclipse.emf.eef.runtime" version="0.0.0">
       <category name="eef.features"/>
    </feature>
-   <feature id="org.eclipse.emf.eef.codegen.ecore.feature" version="0.0.0">
+   <feature id="org.eclipse.emf.eef.codegen.ecore" version="0.0.0">
       <category name="eef.extension"/>
    </feature>
    <feature id="org.eclipse.emf.eef.extended" version="0.0.0">
