@@ -620,13 +620,13 @@
 
 [comment special handling for avoiding NPE due to importManager and other stuff/]
 [query public getInternalQualifiedInterfaceName(genClass : GenClass) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl)', Sequence{genClass}) /]
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
 
 [query public getInternalQualifiedInterfaceName(genClass : GenClass, boolean : Boolean) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl, java.lang.Boolean)', Sequence{genClass, boolean}) /]
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.GenClass, java.lang.Boolean)', Sequence{genClass, boolean}) /]
 
 [query public getChildCreationData(genClass : GenClass) : Sequence(OclAny)
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getChildCreationData(org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl)', Sequence{genClass}) /]
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getChildCreationData(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
 
 [query public getChildCreationDataCreateFeature(oclAny : OclAny ) : GenFeature
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateFeature(java.lang.Object)', Sequence{oclAny}) /]

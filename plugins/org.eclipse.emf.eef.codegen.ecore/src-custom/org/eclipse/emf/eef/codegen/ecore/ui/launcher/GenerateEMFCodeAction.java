@@ -90,7 +90,7 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 					final Workflow flow = new Workflow("Generate EMF Edit and Editors ", shell);
 					for (final GenModel emfGenModel : emfGenModels) {
 						String s1 = "Generate EMF Edit code for "
-								+ emfGenModel.eResource().getURI().toString();
+								+ emfGenModel.eResource().getURI().lastSegment();
 						// use this once we can add acceleo inside emf generator
 						// Step emfEditCode = new GenerateEMFEditCode(s,
 						// emfGenModel);
@@ -99,7 +99,6 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 
 							@Override
 							public IStatus execute(IProgressMonitor monitor) {
-								monitor.worked(1);
 								// create the edit project
 								IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
 								if (!workspace.getRoot().exists(editProject.getFullPath())) {
@@ -136,7 +135,6 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 
 							@Override
 							public IStatus execute(IProgressMonitor monitor) {
-								monitor.worked(1);
 								// create the editor project
 								IProject editorProject = extractProject(emfGenModel
 										.getEditorProjectDirectory());
@@ -173,12 +171,17 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 
 							@Override
 							public IStatus execute(IProgressMonitor monitor) {
-								monitor.worked(1);
 								// refresh edit and editor
 								IProject editorProject = extractProject(emfGenModel
 										.getEditorProjectDirectory());
 								IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
 								try {
+									if (!editProject.isOpen()) {
+										editProject.open(monitor);
+									}
+									if (!editorProject.isOpen()) {
+										editorProject.open(monitor);
+									}
 									editorProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 									editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 								} catch (CoreException e) {
