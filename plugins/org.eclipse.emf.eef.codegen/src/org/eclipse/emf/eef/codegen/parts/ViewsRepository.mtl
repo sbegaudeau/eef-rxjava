@@ -63,7 +63,7 @@ public class [viewRepository.vrClass()/] {
 	public static class [view.identifiedElementKey().toJavaClassifier()/] {
 [if (view.oclIsTypeOf(views::CustomView) and not view.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for '.concat(view.name).concat(' keys'))]
-
+		
 		// [/protected]
 [else]
 [for (viewElement : ViewElement | view.elements)]

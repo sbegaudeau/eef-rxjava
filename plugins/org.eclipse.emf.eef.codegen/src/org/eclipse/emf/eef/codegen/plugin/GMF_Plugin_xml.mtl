@@ -110,5 +110,5 @@ org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
 [/template]
 
 [query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
-	pec.involvedViews()->at(pec.involvedViews()->indexOf(view) - 1).oclAsType(views::View)/]
+	pec.involvedViews()->at(pec.involvedViews()->indexOf(view) - 1).oclAsType(View)/]
 

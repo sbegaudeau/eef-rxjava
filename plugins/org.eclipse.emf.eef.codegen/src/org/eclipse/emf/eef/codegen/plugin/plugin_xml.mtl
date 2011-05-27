@@ -32,7 +32,7 @@
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
   [/for]
-[for (repository : ViewsRepository | views::ViewsRepository.allInstances())]
+[for (repository : ViewsRepository | ViewsRepository.allInstances())]
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
@@ -112,4 +112,4 @@ org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
 [/template]
 
 [query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
-	pec.involvedViews()->at(pec.involvedViews()->indexOf(view)).oclAsType(views::View)/]
+	pec.involvedViews()->at(pec.involvedViews()->indexOf(view)).oclAsType(View)/]

@@ -29,7 +29,7 @@
 				</dictionary>
 				<dictionary>
 					<key>resource.kind</key>
-					<value>binary</value>
+					<value>xmi</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>

@@ -36,8 +36,8 @@ private	EObjectFlatComboSettings [editionElement.name.toJavaIdentifier()/]Settin
 if (event.getKind() == PropertiesEditionEvent.SET) {
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([editionElement.model.eType.name/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.ADD) {
-	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
-		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
+	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
+		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
 	[editionElement.model.eType.name/] eObject = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eType.name/]();
 	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -93,10 +93,8 @@ public boolean select(Viewer viewer, Object parentElement, Object element) {
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
-[if (not editionElement.element.eContainer(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-// [protected ('for additional businessfilters for '.concat(editionElement.name))]
-
-// [/protected]
+[if (not editionElement.element.eContainer(PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+[additionalBusinessFilterProtectedArea(editionElement)/]
 [/if]
 [/template]
 
@@ -106,7 +104,7 @@ public boolean select(Viewer viewer, Object parentElement, Object element) {
 [comment ===== Case : model = Simple Navigation A (0-1) -> B (0-1) -> C - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [query public validCaseForContainmentNavigation(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation()
-	and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle()
+	and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle()
 	and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) /]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForContainmentNavigation())]
@@ -122,8 +120,8 @@ private	EObjectFlatComboSettings [editionElement.name.toJavaIdentifier()/]Settin
 if (event.getKind() == PropertiesEditionEvent.SET) {
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([editionElement.model.eType.name/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.ADD) {
-	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
-		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
+	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
+		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
 	[editionElement.model.eType.name/] eObject = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eType.name/]();
 	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -156,14 +154,14 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForContainmentNavigation())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	// init part
-	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 	// set the button mode
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.BROWSE);
 }
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer')))]
 [view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
 
 	/**
@@ -179,14 +177,12 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
-[if (not editionElement.element.eContainer(components::PropertiesEditionContext).oclAsType(components::PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
-// [protected ('for additional businessfilters for '.concat(editionElement.name))]
-
-// [/protected]
+[if (not editionElement.element.eContainer(PropertiesEditionContext).oclAsType(PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
+[additionalBusinessFilterProtectedArea(editionElement)/]
 [/if]
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 [view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [/template]
 
@@ -208,8 +204,8 @@ private	EObjectFlatComboSettings [editionElement.name.toJavaIdentifier()/]Settin
 if (event.getKind() == PropertiesEditionEvent.SET) {
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([editionElement.model.eType.name/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.ADD) {
-	[if (editionElement.model.eType.oclIsTypeOf(ecore::EClass))]
-		[if (not editionElement.model.eType.oclAsType(ecore::EClass).abstract)]
+	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
+		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
 	[editionElement.model.eType.name/] eObject = [editionElement.metamodelFactory()/].eINSTANCE.create[editionElement.model.eType.name/]();
 	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -243,7 +239,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForContainment())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	// init part
-	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(mapping::navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 	// set the button mode
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode(ButtonsModeEnum.CREATE);
