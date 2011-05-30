@@ -168,10 +168,8 @@
             <loopVariable name="view">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
             </loopVariable>
-            <iterSet xsi:type="ocl.ecore:OperationCallExp">
-              <eType xsi:type="ocl.ecore:OrderedSetType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
-              <source xsi:type="mtl:QueryInvocation">
-                <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+            <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/OrderedSet(View)">
+              <source xsi:type="mtl:QueryInvocation" eType="/8/Sequence(View)">
                 <definition href="../services/common.emtl#/0/involvedViews"/>
                 <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/plugin_xml/@body.0/@body.8/pec">
                   <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
@@ -285,10 +283,8 @@
             <loopVariable name="view">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
             </loopVariable>
-            <iterSet xsi:type="ocl.ecore:OperationCallExp">
-              <eType xsi:type="ocl.ecore:OrderedSetType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
-              <source xsi:type="mtl:QueryInvocation">
-                <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+            <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/8/OrderedSet(View)">
+              <source xsi:type="mtl:QueryInvocation" eType="/8/Sequence(View)">
                 <definition href="../services/common.emtl#/0/involvedViews"/>
                 <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/plugin_xml/@body.0/@body.12/pec">
                   <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
@@ -396,8 +392,7 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
           <source xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
-            <source xsi:type="mtl:QueryInvocation">
-              <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+            <source xsi:type="mtl:QueryInvocation" eType="/8/Sequence(View)">
               <definition href="../services/common.emtl#/0/involvedViews"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/propertyTab/pec">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
@@ -465,9 +460,8 @@
       <expression xsi:type="ocl.ecore:OperationCallExp">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         <source xsi:type="ocl.ecore:OperationCallExp">
-          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/T"/>
-          <source xsi:type="mtl:QueryInvocation">
-            <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+          <source xsi:type="mtl:QueryInvocation" eType="/8/Sequence(View)">
             <definition href="../services/common.emtl#/0/involvedViews"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/previousView/pec">
               <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
@@ -475,8 +469,7 @@
           </source>
           <argument xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
-            <source xsi:type="mtl:QueryInvocation">
-              <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+            <source xsi:type="mtl:QueryInvocation" eType="/8/Sequence(View)">
               <definition href="../services/common.emtl#/0/involvedViews"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="pec" referredVariable="/0/previousView/pec">
                 <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
@@ -953,7 +946,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/involvedViews"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../services/common.emtl#/3/Sequence(View)"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
@@ -1352,7 +1345,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/partToManage"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../services/common.emtl#/3/Sequence(View)"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
@@ -1604,7 +1597,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/ecoreGenModelAnnotation"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+        <eType xsi:type="ocl.ecore:OrderedSetType" href="../services/common.emtl#/3/OrderedSet(EAnnotation)"/>
         <eParameters name="modelElement">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
         </eParameters>
@@ -1616,7 +1609,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/ecoreDocumentationAnnotation"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../services/common.emtl#/3/Sequence(EStringToStringMapEntry)"/>
         <eParameters name="modelElement">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
         </eParameters>
@@ -3225,7 +3218,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/involvedViews"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../services/common.emtl#/3/Sequence(View)"/>
       </eOperations>
       <eOperations name="involvedEditionElements">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -3324,7 +3317,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/partToManage"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SetType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../services/common.emtl#/3/Sequence(View)"/>
       </eOperations>
       <eOperations name="componentsPackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -4437,7 +4430,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/ecoreGenModelAnnotation"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+        <eType xsi:type="ocl.ecore:OrderedSetType" href="../services/common.emtl#/3/OrderedSet(EAnnotation)"/>
       </eOperations>
       <eOperations name="ecoreDocumentationAnnotation">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -4446,7 +4439,7 @@
         <eAnnotations source="MTL">
           <references href="../services/common.emtl#/0/ecoreDocumentationAnnotation"/>
         </eAnnotations>
-        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../services/common.emtl#/3/Sequence(EStringToStringMapEntry)"/>
       </eOperations>
       <eOperations name="ecoreHelp">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -4638,6 +4631,12 @@
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(PropertiesEditionComponent)" instanceClassName="java.util.List">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(View)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(View)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">

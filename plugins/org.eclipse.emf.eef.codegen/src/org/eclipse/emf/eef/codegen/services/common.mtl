@@ -16,7 +16,7 @@
 [comment --------------- Common queries --------------- /]
 
 [comment Check if at least one views of the propertyBinding is contained by the given view /]
-[query public involvedViews(pec : PropertiesEditionComponent) : Sequence(T) = 
+[query public involvedViews(pec : PropertiesEditionComponent) : Sequence(View) = 
 	pec.views->asSequence()->union(pec.referencedBinding.binding.views->select(ancestors(View)->excludesAll(pec.views->asSequence())))/]
 
 [query public involvedEditionElements(pec : PropertiesEditionComponent) : Sequence(T) = 
@@ -147,7 +147,7 @@
 	pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent) and oclAsType(PropertiesEditionComponent).mustBeGenerated()).views->select(ancestors()->includes(topLevelView))/]
 
 [comment TODOGLF: List of parts that a component have to manage/]
-[query public partToManage(pec : PropertiesEditionComponent) : Set(T) = pec.involvedViews()/]
+[query public partToManage(pec : PropertiesEditionComponent) : Sequence(View) = pec.involvedViews()/]
 
 [query public mustBeGenerated(view : View, pec : PropertiesEditionComponent) : Boolean =
 	view.oclAsType(EObject).eResource() = pec.oclAsType(EObject).eResource()/]
@@ -229,17 +229,17 @@ get[s.feature.ecorePackageSignature()/]()
 set[editor.model.ecorePackageSignature()/]()
 [/template]
 
-[query public ecoreGenModelAnnotation(modelElement : EModelElement) : Sequence(T) = 
+[query public ecoreGenModelAnnotation(modelElement : EModelElement) : OrderedSet(EAnnotation) = 
 	modelElement.eAnnotations->select(annot : EAnnotation | annot.source = 'http://www.eclipse.org/emf/2002/GenModel')/]
 
-[query public ecoreDocumentationAnnotation(modelElement : EModelElement) : Sequence(T) = 
-	modelElement.ecoreGenModelAnnotation()->first().oclAsType(EAnnotation).details.oclAsType(EStringToStringMapEntry)
+[query public ecoreDocumentationAnnotation(modelElement : EModelElement) : Sequence(EStringToStringMapEntry) = 
+	modelElement.ecoreGenModelAnnotation()->first().details.oclAsType(EStringToStringMapEntry)
 				->select(entry : EStringToStringMapEntry | entry.key = 'documentation')/]
 
 [query public ecoreHelp(modelElement : EModelElement) : String = 
 	if (modelElement.ecoreGenModelAnnotation()->size() = 1)
 	then if (modelElement.ecoreDocumentationAnnotation()->size() = 1)
-		 then modelElement.ecoreDocumentationAnnotation()->first().oclAsType(EStringToStringMapEntry).value.replaceAll('"','\\"').replaceAll('\n','').replaceAll('\r','')
+		 then modelElement.ecoreDocumentationAnnotation()->first().value.replaceAll('"','\\"').replaceAll('\n','').replaceAll('\r','')
 		 else null
 		 endif
 	else null
@@ -267,7 +267,7 @@ set[editor.model.ecorePackageSignature()/]()
 
 [template public propertiesLicenceText(eefGenModel : EEFGenModel)]
 [if (not eefGenModel.license.oclIsUndefined())]
-[eefGenModel.license.replaceAll('/\\*\\*', '#').replaceAll(' \\*/', '#').replaceAll(' \\*', '#').replaceAll('*', '#')/]
+[eefGenModel.license.replaceAll('/\\*\\*', '#').replaceAll(' \\*/', '#').replaceAll(' \\*', '#')/]
 [else]
 #
 # Generated with Acceleo
