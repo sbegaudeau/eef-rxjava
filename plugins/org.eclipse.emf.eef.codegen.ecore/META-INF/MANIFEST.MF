@@ -6,7 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.codegen.ecore,
  org.eclipse.emf.codegen,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
@@ -21,4 +20,5 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.emf.eef.codegen.ecore.main,
- org.eclipse.emf.eef.codegen.ecore.services
+ org.eclipse.emf.eef.codegen.ecore.services,
+ org.eclipse.emf.eef.codegen.ecore.services.wrappers

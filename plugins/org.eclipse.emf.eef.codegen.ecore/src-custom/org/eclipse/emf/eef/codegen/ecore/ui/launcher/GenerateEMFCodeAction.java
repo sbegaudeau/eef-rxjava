@@ -29,9 +29,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.emf.codegen.ecore.Generator;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -101,13 +104,13 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 							public IStatus execute(IProgressMonitor monitor) {
 								// create the edit project
 								IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
+								List<IProject> referencedProjects = new UniqueEList<IProject>();
 								if (!workspace.getRoot().exists(editProject.getFullPath())) {
-									try {
-										editProject.create(monitor);
-									} catch (CoreException e) {
-										return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-												.getMessage(), e);
-									}
+									Generator.createEMFProject(
+											new Path(emfGenModel.getEditProjectDirectory()),
+											null, referencedProjects,
+											new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
+											Generator.EMF_EDIT_PROJECT_STYLE);
 								} else if (!editProject.isAccessible()) {
 									try {
 										editProject.open(monitor);
@@ -121,7 +124,8 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 								File editDirectory = editProject.getLocation().toFile();
 								try {
 									GenEdit generator = new GenEdit(emfGenModel, editDirectory, args);
-									generator.doGenerate(BasicMonitor.toMonitor(monitor));
+									generator.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(
+											monitor, IProgressMonitor.UNKNOWN)));
 								} catch (IOException e) {
 									return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
 											.getMessage(), e);
@@ -138,13 +142,13 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 								// create the editor project
 								IProject editorProject = extractProject(emfGenModel
 										.getEditorProjectDirectory());
+								List<IProject> referencedProjects = new UniqueEList<IProject>();
 								if (!workspace.getRoot().exists(editorProject.getFullPath())) {
-									try {
-										editorProject.create(monitor);
-									} catch (CoreException e) {
-										return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-												.getMessage(), e);
-									}
+										Generator.createEMFProject(
+												new Path(emfGenModel.getEditorProjectDirectory()),
+												editorProject.getLocation(), referencedProjects,
+												new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
+												Generator.EMF_EDITOR_PROJECT_STYLE);
 								} else if (!editorProject.isAccessible()) {
 									try {
 										editorProject.open(monitor);
@@ -158,7 +162,8 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 								File editorDirectory = editorProject.getLocation().toFile();
 								try {
 									GenEditor generator = new GenEditor(emfGenModel, editorDirectory, args);
-									generator.doGenerate(BasicMonitor.toMonitor(monitor));
+									generator.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(
+											monitor, IProgressMonitor.UNKNOWN)));
 								} catch (IOException e) {
 									return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
 											.getMessage(), e);
