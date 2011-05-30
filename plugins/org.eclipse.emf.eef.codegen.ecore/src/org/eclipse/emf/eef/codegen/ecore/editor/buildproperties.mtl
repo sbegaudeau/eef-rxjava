@@ -15,7 +15,7 @@
  *
  * </copyright>
  */
-[/comment]
+/]
 [module buildproperties('http://www.eclipse.org/emf/2002/GenModel')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::common /]
@@ -38,7 +38,7 @@ jars.compile.order = [pluginClassesLocation()/]
 source.[pluginClassesLocation()/] = [for (sourceFolder : String | genModel.getEditorSourceFolders()) separator (',\\           ')]
 [sourceFolder/]
 [/for]
-output.[pluginClassesLocation()/] = [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]bin[else]war/WEB-INF/classes[/if]
+output.[pluginClassesLocation()/] = [if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]bin/[else]war/WEB-INF/classes[/if]
 [/file]
 [/template]
 

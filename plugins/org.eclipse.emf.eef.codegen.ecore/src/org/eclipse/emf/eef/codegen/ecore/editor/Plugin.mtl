@@ -15,7 +15,7 @@
  *
  * </copyright>
  */
-[/comment]
+/]
 [module Plugin('http://www.eclipse.org/emf/2002/GenModel')/]
 
 [import org::eclipse::emf::eef::codegen::ecore::services::header /]
@@ -29,14 +29,14 @@
 
 [template public Plugin(genModel : GenModel) { packageName : String = genModel.getEditorPluginPackageName() ; className : String = genModel.getEditorPluginClassName() }]
 [genModel.initializeImportManager(packageName, className)/]
-[file (pluginPath(packageName, className), false, 'UTF-8')]
+[file (genModel.editorPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
 package [packageName/];
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
-[let content : String = genModel.pluginFileContent(genModel, packageName, className)]
+[let content : String = genModel.fileContent(genModel, packageName, className)]
 [genModel.genSortedImports(packageName, className)/]
 
 [content/]
@@ -44,7 +44,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 [/file]
 [/template]
 
-[template public pluginFileContent(genModel : GenModel, packageName : String, className : String)]
+[template public fileContent(genModel : GenModel, packageName : String, className : String)]
 /**
  * This is the central singleton for the [genModel.getModelName()/] editor plugin.
  * <!-- begin-user-doc -->
@@ -159,6 +159,4 @@ public final class [className/] extends EMFPlugin
 [/if]
 }
 [/template]
-
-[query public pluginPath (genModel : GenModel, packageName : String, className : String) : String = ('src.'.concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
 

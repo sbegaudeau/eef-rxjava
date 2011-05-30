@@ -572,7 +572,7 @@
 [query public getExtendedChildCreationDataEntrySet(genPackage : GenPackage) : Set(OclAny)
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
 
-[query public getPackageEntryKey(oclAny : OclAny) : GenFeature
+[query public getPackageEntryKey(oclAny : OclAny) : GenPackage
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getPackageEntryKey(java.lang.Object)', Sequence{oclAny}) /]
 
 [query public getPackageEntryValueEntrySet(oclAny : OclAny) : Set(OclAny)
