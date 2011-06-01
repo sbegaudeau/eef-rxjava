@@ -592,3 +592,9 @@
 [comment For Icons generation /]
 [query public generateCreateChildIcons(genPackage : GenPackage) : OclVoid
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'generateCreateChildIcons(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
+
+[query public generateModelIcon(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'generateModelIcon(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
+
+[query public generateModelWizardIcon(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'generateModelWizardIcon(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]

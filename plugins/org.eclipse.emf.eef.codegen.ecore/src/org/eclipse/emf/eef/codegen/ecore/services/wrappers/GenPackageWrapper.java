@@ -76,4 +76,35 @@ public class GenPackageWrapper {
 		}
 	}
 
+	/**
+	 * used to wrap icon creation.
+	 * 
+	 * @see GenPackageGeneratorAdapter#generateModelIcon(GenPackage, Monitor)
+	 * @param genPackage
+	 */
+	public void generateModelIcon(GenPackage genPackage) {
+		if (genPackage.hasConcreteClasses()) {
+			String inputFile = getClass().getResource("/templates/editor/ModelFile.gif").toString();
+			GIFEmitter gifEmitter = new GIFEmitter(inputFile);
+			byte[] contents = gifEmitter.generateGIF(genPackage.getPrefix(), null);
+			Path targetPath = new Path(genPackage.getModelIconFileName());
+			EMFCodegenPlugin.getDefault().createGIF(contents, targetPath);
+		}
+	}
+
+	/**
+	 * used to wrap icon creation.
+	 * 
+	 * @see GenPackageGeneratorAdapter#generateModelWizardIcon(GenPackage, Monitor)
+	 * @param genPackage
+	 */
+	public void generateModelWizardIcon(GenPackage genPackage) {
+		if (genPackage.hasConcreteClasses() && genPackage.isGenerateModelWizard()) {
+			String inputFile = getClass().getResource("/templates/editor/NewModel.gif").toString();
+			GIFEmitter gifEmitter = new GIFEmitter(inputFile);
+			byte[] contents = gifEmitter.generateGIF(genPackage.getPrefix(), null);
+			Path targetPath = new Path(genPackage.getModelWizardIconFileName());
+			EMFCodegenPlugin.getDefault().createGIF(contents, targetPath);
+		}
+	}
 }

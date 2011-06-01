@@ -12,7 +12,7 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenParameter /]
 
 [template public genOperation(genOperation : GenOperation, genClass : GenClass, genPackage : GenPackage, genModel : GenModel, isJDK50 : Boolean, isInterface : Boolean, isImplementation : Boolean, isGWT : Boolean, packageName : String, className : String)]
-<%@ start %>
+[comment]<%@ start %>[/comment]
 [if (isImplementation) ]
   [if (genOperation.isInvariant() and genOperation.hasInvariantExpression()) ]
 	/**

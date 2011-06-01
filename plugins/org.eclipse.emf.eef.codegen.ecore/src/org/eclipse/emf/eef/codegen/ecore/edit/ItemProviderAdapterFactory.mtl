@@ -219,7 +219,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 [/for]
 [for (genClass : GenClass | genPackage.getAdapterDelegateSuperClasses())]
 	/**
-	 * <[genClass.getName()/]%> of [genClass.getItemProviderAdapterFactoryClassName()/]
+	 * <[genClass.getName()/] of [genClass.getItemProviderAdapterFactoryClassName()/]
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

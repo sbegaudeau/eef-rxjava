@@ -1,5 +1,4 @@
-[comment encoding = UTF-8 /]
-[comment
+[comment encoding = UTF-8
 /**
  * <copyright>
  *
@@ -42,7 +41,7 @@
 
    <requires>
   [for (pluginID : String | genModel.getEditRequiredPlugins())]
-      <import plugin="[pluginID/]"[if ( not pluginID.startsWith('org.eclipse.core.runtime'))] export="true"[/if]/>
+      <import plugin="[pluginID/]"[if (not pluginID.startsWith('org.eclipse.core.runtime'))] export="true"[/if]/>
   [/for]
    </requires>
 
@@ -78,7 +77,7 @@
         [/let]
         [/for]
    </extension>
-    [/if]
+[/if]
   [/if]
 [/for]
 [if (genModel.sameModelEditProject())]

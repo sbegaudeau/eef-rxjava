@@ -104,13 +104,15 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 							public IStatus execute(IProgressMonitor monitor) {
 								// create the edit project
 								IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
+								IProject modelProject = workspace.getRoot().getProject(emfGenModel.getModelProjectDirectory());
 								List<IProject> referencedProjects = new UniqueEList<IProject>();
+								referencedProjects.add(modelProject);
 								if (!workspace.getRoot().exists(editProject.getFullPath())) {
 									Generator.createEMFProject(
-											new Path(emfGenModel.getEditProjectDirectory()),
+											new Path(emfGenModel.getEditDirectory()),
 											null, referencedProjects,
 											new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
-											Generator.EMF_EDIT_PROJECT_STYLE);
+											Generator.EMF_EDIT_PROJECT_STYLE | Generator.EMF_PLUGIN_PROJECT_STYLE);
 								} else if (!editProject.isAccessible()) {
 									try {
 										editProject.open(monitor);
@@ -143,12 +145,16 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 								IProject editorProject = extractProject(emfGenModel
 										.getEditorProjectDirectory());
 								List<IProject> referencedProjects = new UniqueEList<IProject>();
+								IProject modelProject = workspace.getRoot().getProject(emfGenModel.getModelProjectDirectory());
+								IProject editProject = workspace.getRoot().getProject(emfGenModel.getEditProjectDirectory());
+								referencedProjects.add(modelProject);
+								referencedProjects.add(editProject);
 								if (!workspace.getRoot().exists(editorProject.getFullPath())) {
 										Generator.createEMFProject(
-												new Path(emfGenModel.getEditorProjectDirectory()),
+												new Path(emfGenModel.getEditorDirectory()),
 												editorProject.getLocation(), referencedProjects,
 												new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
-												Generator.EMF_EDITOR_PROJECT_STYLE);
+												Generator.EMF_EDITOR_PROJECT_STYLE | Generator.EMF_PLUGIN_PROJECT_STYLE);
 								} else if (!editorProject.isAccessible()) {
 									try {
 										editorProject.open(monitor);
