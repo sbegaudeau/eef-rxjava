@@ -50,7 +50,6 @@ import [vr.vrQualifiedClass()/];
 [/template]
 
 [template public PropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.needComposedEditionComponent())]
 [file (pec.fullFilePath(), false)]

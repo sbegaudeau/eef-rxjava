@@ -28,7 +28,7 @@
     <ownedModuleElement xsi:type="mtl:Comment">
       <body startPosition="915" endPosition="998" value=" Check if at least one views of the propertyBinding is contained by the given view "/>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="involvedViews" visibility="Public" type="/3/Sequence(View)">
+    <ownedModuleElement xsi:type="mtl:Query" name="involvedViews" visibility="Public">
       <parameter name="pec">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
       </parameter>
@@ -99,6 +99,7 @@
         </argument>
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/union"/>
       </expression>
+      <type xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(View)"/>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="involvedEditionElements" visibility="Public">
       <parameter name="pec">
@@ -1106,7 +1107,7 @@
       </expression>
       <type xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="significantClass" visibility="Public" type="/3/Set(EClass)">
+    <ownedModuleElement xsi:type="mtl:Query" name="significantClass" visibility="Public">
       <parameter name="ePackage">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
       </parameter>
@@ -1159,6 +1160,7 @@
         </source>
         <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/asOrderedSet"/>
       </expression>
+      <type xsi:type="ocl.ecore:SetType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="classAndHierarchy" type="/3/Set(EClass)">
       <parameter name="eclass">
@@ -1480,7 +1482,7 @@
     <ownedModuleElement xsi:type="mtl:Comment">
       <body startPosition="8097" endPosition="8152" value=" TODOGLF: List of parts that a component have to manage"/>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="partToManage" visibility="Public" type="/3/Sequence(View)">
+    <ownedModuleElement xsi:type="mtl:Query" name="partToManage" visibility="Public">
       <parameter name="pec">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
       </parameter>
@@ -1489,6 +1491,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </argument>
       </expression>
+      <type xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(View)"/>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="mustBeGenerated" visibility="Public">
       <parameter name="view">
@@ -2180,7 +2183,7 @@
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
       </parameter>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="ecoreGenModelAnnotation" visibility="Public" type="/3/OrderedSet(EAnnotation)">
+    <ownedModuleElement xsi:type="mtl:Query" name="ecoreGenModelAnnotation" visibility="Public">
       <parameter name="modelElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
       </parameter>
@@ -2209,8 +2212,9 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
         </iterator>
       </expression>
+      <type xsi:type="ocl.ecore:OrderedSetType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/OrderedSet(EAnnotation)"/>
     </ownedModuleElement>
-    <ownedModuleElement xsi:type="mtl:Query" name="ecoreDocumentationAnnotation" visibility="Public" type="/3/Sequence(EStringToStringMapEntry)">
+    <ownedModuleElement xsi:type="mtl:Query" name="ecoreDocumentationAnnotation" visibility="Public">
       <parameter name="modelElement">
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
       </parameter>
@@ -2260,6 +2264,7 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
         </iterator>
       </expression>
+      <type xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(EStringToStringMapEntry)"/>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="ecoreHelp" visibility="Public">
       <parameter name="modelElement">
@@ -5094,11 +5099,12 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </eParameters>
       </eOperations>
-      <eOperations name="involvedViews" eType="/3/Sequence(View)">
+      <eOperations name="involvedViews">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/involvedViews"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(View)"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
@@ -5364,11 +5370,12 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionContext"/>
         </eParameters>
       </eOperations>
-      <eOperations name="significantClass" eType="/3/Set(EClass)">
+      <eOperations name="significantClass">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/significantClass"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
         <eParameters name="ePackage">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
         </eParameters>
@@ -5438,11 +5445,12 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         </eParameters>
       </eOperations>
-      <eOperations name="partToManage" eType="/3/Sequence(View)">
+      <eOperations name="partToManage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/partToManage"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(View)"/>
         <eParameters name="pec">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
         </eParameters>
@@ -5649,20 +5657,22 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionElement"/>
         </eParameters>
       </eOperations>
-      <eOperations name="ecoreGenModelAnnotation" eType="/3/OrderedSet(EAnnotation)">
+      <eOperations name="ecoreGenModelAnnotation">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/ecoreGenModelAnnotation"/>
+        <eType xsi:type="ocl.ecore:OrderedSetType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/OrderedSet(EAnnotation)"/>
         <eParameters name="modelElement">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
         </eParameters>
       </eOperations>
-      <eOperations name="ecoreDocumentationAnnotation" eType="/3/Sequence(EStringToStringMapEntry)">
+      <eOperations name="ecoreDocumentationAnnotation">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/ecoreDocumentationAnnotation"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(EStringToStringMapEntry)"/>
         <eParameters name="modelElement">
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
         </eParameters>
@@ -6294,11 +6304,12 @@
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://www.eclipse.org/emf/eef/components/1.0.0#//PropertiesEditionComponent"/>
       </eAnnotations>
-      <eOperations name="involvedViews" eType="/3/Sequence(View)">
+      <eOperations name="involvedViews">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/involvedViews"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(View)"/>
       </eOperations>
       <eOperations name="involvedEditionElements">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -6372,11 +6383,12 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
         </eParameters>
       </eOperations>
-      <eOperations name="partToManage" eType="/3/Sequence(View)">
+      <eOperations name="partToManage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/partToManage"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(View)"/>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ViewElement_Class">
@@ -6664,11 +6676,12 @@
         <eAnnotations source="MTL" references="/0/associatedGenPackage"/>
         <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
       </eOperations>
-      <eOperations name="significantClass" eType="/3/Set(EClass)">
+      <eOperations name="significantClass">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/significantClass"/>
+        <eType xsi:type="ocl.ecore:SetType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Set(EClass)"/>
       </eOperations>
       <eOperations name="completePackage">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -6921,17 +6934,19 @@
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
         <references href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
       </eAnnotations>
-      <eOperations name="ecoreGenModelAnnotation" eType="/3/OrderedSet(EAnnotation)">
+      <eOperations name="ecoreGenModelAnnotation">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/ecoreGenModelAnnotation"/>
+        <eType xsi:type="ocl.ecore:OrderedSetType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/OrderedSet(EAnnotation)"/>
       </eOperations>
-      <eOperations name="ecoreDocumentationAnnotation" eType="/3/Sequence(EStringToStringMapEntry)">
+      <eOperations name="ecoreDocumentationAnnotation">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/ecoreDocumentationAnnotation"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../components/DynamicPropertiesEditionComponent.emtl#/3/Sequence(EStringToStringMapEntry)"/>
       </eOperations>
       <eOperations name="ecoreHelp">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -7046,19 +7061,13 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EPackage name="collections">
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(View)" instanceClassName="java.util.List">
-      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(EClass)" instanceClassName="java.util.Set">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(EAnnotation)" instanceClassName="java.util.LinkedHashSet">
-      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(EStringToStringMapEntry)" instanceClassName="java.util.List">
-      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(View)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(View)" instanceClassName="java.util.List">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/views/1.0.0#//View"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(ElementBindingReference)" instanceClassName="java.util.LinkedHashSet">
@@ -7136,7 +7145,13 @@
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
       <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(EAnnotation)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(EStringToStringMapEntry)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(EStringToStringMapEntry)" instanceClassName="java.util.List">
       <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(EAnnotation)" instanceClassName="java.util.Set">

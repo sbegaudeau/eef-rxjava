@@ -29,7 +29,6 @@ import java.util.Map;
 [/template]
 
 [template public IPropertiesEditionPart(viewRepository : ViewsRepository)]
-[comment @main /]
 [for (view : View | viewRepository.eAllContents(View).oclAsType(View))]
 [file (fullFilePath(view), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]

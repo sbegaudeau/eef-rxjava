@@ -18,7 +18,6 @@
 [import typeUtils /]
 
 [template public DynamicPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 	[for (topLevelView : View | pec.views) ? (topLevelView.explicit)]
 [if (pec.mustDynamicPecBeGenerated(topLevelView))]

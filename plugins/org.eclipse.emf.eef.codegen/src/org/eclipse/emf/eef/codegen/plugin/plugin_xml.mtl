@@ -10,13 +10,12 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
+[module plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import common /]
 [import naming /]
 
 [template public plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
@@ -32,11 +31,11 @@
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
   [/for]
-[for (repository : ViewsRepository | ViewsRepository.allInstances())]
+[for (genViewRepository : GenViewsRepository | editionContext.associatedGenModel().viewsRepositories)]
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="[repository.pepQualifiedProvider()/]">
+            providerClass="[genViewRepository.viewsRepository.pepQualifiedProvider()/]">
       </PropertiesEditionPartProvider>
    </extension>
 [/for]

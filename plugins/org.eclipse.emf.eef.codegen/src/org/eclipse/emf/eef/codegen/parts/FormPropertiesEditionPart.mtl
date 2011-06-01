@@ -128,7 +128,6 @@ import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
 [/template]
 
 [template public FormPropertiesEdionPart(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 [for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [for (view : View | inputPEC.involvedViews()) ? (view.oclIsTypeOf(View))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
 	then inputPEC

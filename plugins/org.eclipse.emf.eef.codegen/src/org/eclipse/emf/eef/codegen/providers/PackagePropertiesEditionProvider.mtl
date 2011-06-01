@@ -16,7 +16,6 @@
 [import naming /]
 
 [template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, ePackage : EPackage)]
-[comment @main /]
 	[file (peContext.fullFilePath(ePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
 package [peContext.providersPackage()/];

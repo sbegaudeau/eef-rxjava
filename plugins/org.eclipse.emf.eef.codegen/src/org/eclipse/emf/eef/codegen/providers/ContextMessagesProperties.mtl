@@ -16,7 +16,6 @@
 [import naming /]
 
 [template public ContextMessagesProperties(viewsRepository : ViewsRepository)]
-[comment @main /]
 	[file (viewsRepository.fullFilePath(), false)]
 [viewsRepository.associatedGenModel().propertiesLicenceText().trim()/]
 

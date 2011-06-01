@@ -16,7 +16,6 @@
 [import naming /]
 
 [template public GMF_Plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
 
 	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">

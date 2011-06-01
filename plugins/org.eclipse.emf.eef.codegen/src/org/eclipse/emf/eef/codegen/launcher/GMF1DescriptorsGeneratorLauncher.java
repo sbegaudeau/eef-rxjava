@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2010 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.codegen.plugin;
+package org.eclipse.emf.eef.codegen.launcher;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,25 +25,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * Entry point of the 'GMF_Plugin_xml' generation module.
+ * Entry point of the 'EMFPropertiesLauncher' generation module.
  *
- * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * @generated
  */
-public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
+public class GMF1DescriptorsGeneratorLauncher extends AbstractAcceleoGenerator {
 	/**
 	 * The name of the module.
 	 *
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "/org/eclipse/emf/eef/codegen/plugin/GMF_Plugin_xml";
+	public static final String MODULE_FILE_NAME = "/org/eclipse/emf/eef/codegen/launcher/GMF1DescriptorsGeneratorLauncher";
 	
 	/**
 	 * The name of the templates that are to be generated.
 	 *
 	 * @generated
 	 */
-	public static final String[] TEMPLATE_NAMES = { "GMF_Plugin_xml" };
+	public static final String[] TEMPLATE_NAMES = { "GMF1DescriptorsGeneratorLauncher" };
 
 	/**
      * The list of properties files from the launch parameters (Launch configuration).
@@ -66,7 +65,7 @@ public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
 	 *
 	 * @generated
 	 */
-	public GMF_Plugin_xml() {
+	public GMF1DescriptorsGeneratorLauncher() {
         // Empty implementation
     }
 
@@ -86,7 +85,7 @@ public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
 	 *             the model cannot be loaded.
 	 * @generated
 	 */
-	public GMF_Plugin_xml(URI modelURI, File targetFolder,
+	public GMF1DescriptorsGeneratorLauncher(URI modelURI, File targetFolder,
 			List<? extends Object> arguments) throws IOException {
         initialize(modelURI, targetFolder, arguments);
     }
@@ -107,7 +106,7 @@ public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
 	 *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
 	 * @generated
 	 */
-	public GMF_Plugin_xml(EObject model, File targetFolder,
+	public GMF1DescriptorsGeneratorLauncher(EObject model, File targetFolder,
 			List<? extends Object> arguments) throws IOException {
         initialize(model, targetFolder, arguments);
     }
@@ -135,7 +134,7 @@ public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
                  * add in "arguments" this "String" attribute.
                  */
                 
-                GMF_Plugin_xml generator = new GMF_Plugin_xml(modelURI, folder, arguments);
+                GMF1DescriptorsGeneratorLauncher generator = new GMF1DescriptorsGeneratorLauncher(modelURI, folder, arguments);
                 
                 /*
                  * Add the properties from the launch arguments.
@@ -314,17 +313,26 @@ public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
         if (!isInWorkspace(org.eclipse.emf.eef.components.ComponentsPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
         }
+        if (!isInWorkspace(org.eclipse.emf.eef.mapping.MappingPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.emf.eef.mapping.navigation.NavigationPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.emf.eef.mapping.filters.FiltersPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+        }
         if (!isInWorkspace(org.eclipse.emf.eef.views.ViewsPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE);
         }
         if (!isInWorkspace(org.eclipse.emf.eef.toolkits.ToolkitsPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE);
         }
-        if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
+        if (!isInWorkspace(org.eclipse.emf.eef.EEFGen.EEFGenPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE);
         }
         
         /*
@@ -368,7 +376,4 @@ public class GMF_Plugin_xml extends AbstractAcceleoGenerator {
         // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
     }
 	
-	protected void postGenerate(ResourceSet rs) {
-		// Don't unload resources
-	}
 }

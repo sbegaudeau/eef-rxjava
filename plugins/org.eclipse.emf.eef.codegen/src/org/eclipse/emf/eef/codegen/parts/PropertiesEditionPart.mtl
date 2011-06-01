@@ -115,7 +115,6 @@ import [view.pepQualifiedInterface()/];
 [/template]
 
 [template public PropertiesEditionPart(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 [for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [for (view : View | inputPEC.involvedViews()) ? (view.oclIsTypeOf(views::View))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
 	then inputPEC

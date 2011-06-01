@@ -16,7 +16,6 @@
 [import naming /]
 
 [template public PropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.mustBeGenerated())]
 	[file (pec.fullFilePath(), false)]

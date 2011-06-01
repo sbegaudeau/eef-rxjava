@@ -19,7 +19,6 @@
  This template will generate a file for each ViewRepository in the EEF model.
  /]
 [template public ViewsRepository(viewRepository : ViewsRepository)]
-[comment @main /]
 [file (viewRepository.fullFilePath(), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [viewRepository.partsPackage()/];

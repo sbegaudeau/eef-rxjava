@@ -145,7 +145,6 @@ import org.eclipse.ui.PlatformUI;
 [/template]
 
 [template public SubPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
-[comment @main /]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.mustBeGenerated())]
 	[for (view : View | pec.views) ? (not view.isDynamicView())]
