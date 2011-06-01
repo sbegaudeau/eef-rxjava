@@ -3,7 +3,7 @@
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
-[import org::eclipse::emf::eef::codegen::extended::query::query /]
+[import org::eclipse::emf::eef::codegen::extended::query::oclquery /]
 [import org::eclipse::emf::eef::codegen::extended::services::editor-common /]
 [import org::eclipse::emf::eef::codegen::extended::editor::api::EditorContribution /]
 
