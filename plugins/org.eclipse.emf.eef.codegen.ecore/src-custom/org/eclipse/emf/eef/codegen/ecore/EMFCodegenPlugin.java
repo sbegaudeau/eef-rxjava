@@ -10,7 +10,15 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ecore;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -75,5 +83,22 @@ public class EMFCodegenPlugin extends AbstractUIPlugin {
 	public void logWarning(Exception e) {
 		IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, e.getMessage(), e);
 		getLog().log(status);
+	}
+	
+	public void createGIF(byte[] result, Path itemIconFilePath) {
+		OutputStream outputStream;
+		try {
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(itemIconFilePath);
+			File f = new File(file.getLocation().toString());
+			if (!f.exists()) {
+				f.getParentFile().mkdirs();
+				f.createNewFile();
+			}
+			outputStream = new FileOutputStream(f);
+			outputStream.write(result);
+			outputStream.close();
+		} catch (IOException e) {
+			EMFCodegenPlugin.getDefault().logError(e);
+		}
 	}
 }

@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.codegen.ecore.services.wrappers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass.ChildCreationData;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClassifier;
@@ -21,8 +22,12 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.codegen.ecore.genmodel.generator.GenClassGeneratorAdapter;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
+import org.eclipse.emf.codegen.util.GIFEmitter;
 import org.eclipse.emf.codegen.util.ImportManager;
+import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -167,5 +172,42 @@ public class GenClassWrapper {
 	public String addClassPseudoImports(GenClass genClass) {
 		genClass.addClassPsuedoImports();
 		return "";
+	}
+
+	/**
+	 * used to wrap icon creation.
+	 * 
+	 * @see GenClassGeneratorAdapter#generateItemIcon(GenClass, Monitor)
+	 * @param genClass
+	 */
+	public void generateItemIcon(GenClass genClass) {
+		if (genClass.isImage()) {
+			String inputFile = getClass().getResource("/templates/edit/Item.gif").toString();
+			GIFEmitter gifEmitter = new GIFEmitter(inputFile);
+			byte[] contents = gifEmitter.generateGIF(genClass.getName(), null);
+			Path targetPath = new Path(genClass.getItemIconFileName());
+			EMFCodegenPlugin.getDefault().createGIF(contents, targetPath);
+		}
+	}
+
+	/**
+	 * used to wrap icon creation.
+	 * 
+	 * @see GenClassGeneratorAdapter#generateCreateChildIcons(GenClass, Monitor)
+	 * @param genClass
+	 */
+	public void generateCreateChildIcons(GenClass genClass) {
+		GenModel genModel = genClass.getGenModel();
+		if (genModel.isCreationCommands() && genModel.isCreationIcons()) {
+			for (GenFeature feature : genClass.getCreateChildFeaturesIncludingDelegation()) {
+				for (GenClass childClass : genClass.getChildrenClasses(feature)) {
+					String inputFile = getClass().getResource("/templates/edit/CreateChild.gif").toString();
+					GIFEmitter gifEmitter = new GIFEmitter(inputFile);
+					byte[] contents = gifEmitter.generateGIF(genClass.getName(), childClass.getName());
+					Path targetPath = new Path(genClass.getCreateChildIconFileName(feature, childClass));
+					EMFCodegenPlugin.getDefault().createGIF(contents, targetPath);
+				}
+			}
+		}
 	}
 }

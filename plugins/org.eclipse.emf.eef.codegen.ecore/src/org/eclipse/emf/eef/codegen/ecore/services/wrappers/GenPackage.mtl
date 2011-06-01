@@ -588,3 +588,7 @@
 /]
 [query public getDefaultClassUniqueName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getDefaultClassUniqueName(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
+
+[comment For Icons generation /]
+[query public generateCreateChildIcons(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'generateCreateChildIcons(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
