@@ -151,6 +151,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
+		eefGenModels.clear();
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
 			for (Object selectedElement : sSelection.toList()) {
