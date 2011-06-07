@@ -36,6 +36,18 @@
                menubarPath="org.eclipse.emf.eef.ui.menu/generation">
          </action>
       </objectContribution>
+      <objectContribution
+            id="org.eclipse.emf.eef.ui.contribution.initializer"
+            nameFilter="*.genmodel"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.eclipse.emf.eef.codegen.extended.ui.initializer.InitializeEEFEditorModelsAction"
+               enablesFor="1"
+               id="org.eclipse.emf.eef.codegen.initialize"
+               label="Initialize EEF Editor models"
+               menubarPath="org.eclipse.emf.eef.ui.menu/editor-initializer">
+         </action>
+      </objectContribution>
 
    </extension>
   <extension
