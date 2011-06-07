@@ -511,11 +511,5 @@
 [query public uncapPrefixedName(genFeature : GenFeature, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'uncapPrefixedName(java.lang.String)', Sequence{genFeature, input}) /]
 
-
-
-
-
-
-[comment special handling for avoiding NPE due to importManager /]
-[query public getQualifiedFeatureAccessor(genFeature : GenFeature) : String = if getGenPackage().isLiteralsInterface() 
-	then getGenPackage().getImportedPackageInterfaceName().concat('.Literals.').concat(genClass.getFeatureID(genFeature)) else getQualifiedFeatureAccessorName().concat('()') endif/]
+[query public getQualifiedFeatureAccessor(genFeature : GenFeature) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getQualifiedFeatureAccessor()', Sequence{genFeature}) /]

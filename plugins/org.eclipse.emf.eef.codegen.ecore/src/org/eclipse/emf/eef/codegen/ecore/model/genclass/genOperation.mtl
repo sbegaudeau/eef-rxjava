@@ -23,7 +23,7 @@
 	 * @generated
 	 * @ordered
 	 */
-	protected static final [genModel.getImportedName('java.lang.String', packageName, className)/] [genClass.getUniqueNameUpperCase(genOperation)/]__EEXPRESSION = "[genOperation.getInvariantExpression('\t\t')/]";[genModel.getNonNLS()/]
+	protected static final [genModel.getImportedName('java.lang.String')/] [genClass.getUniqueNameUpperCase(genOperation)/]__EEXPRESSION = "[genOperation.getInvariantExpression('\t\t')/]";[genModel.getNonNLS()/]
 
   [else][if (genOperation.hasInvocationDelegate()) ]
 	/**
@@ -34,7 +34,7 @@
 	 * @generated
 	 * @ordered
 	 */
-	protected static final [genModel.getImportedName('org.eclipse.emf.ecore.EOperation', packageName, className)/].Internal.InvocationDelegate [genClass.getUniqueNameUpperCase(genOperation)/]__EINVOCATION_DELEGATE = (([genModel.getImportedName('org.eclipse.emf.ecore.EOperation', packageName, className)/].Internal)[genOperation.getQualifiedOperationAccessor()/]).getInvocationDelegate();
+	protected static final [genModel.getImportedName('org.eclipse.emf.ecore.EOperation')/].Internal.InvocationDelegate [genClass.getUniqueNameUpperCase(genOperation)/]__EINVOCATION_DELEGATE = (([genModel.getImportedName('org.eclipse.emf.ecore.EOperation')/].Internal)[genOperation.getQualifiedOperationAccessor()/]).getInvocationDelegate();
 
   [/if][/if]
 [/if]
@@ -107,7 +107,7 @@
 				 "[genOperation.getValidationDelegate()/]",[genModel.getNonNLS()/]
 				 [genOperation.getQualifiedOperationAccessor()/],
 				 [genClass.getUniqueNameUpperCase(genOperation)/]__EEXPRESSION,
-				 [genModel.getImportedName('org.eclipse.emf.common.util.Diagnostic', packageName, className)/].ERROR,
+				 [genModel.getImportedName('org.eclipse.emf.common.util.Diagnostic')/].ERROR,
 				 [opClass.getGenPackage().getImportedValidatorClassName()/].DIAGNOSTIC_SOURCE,
 				 [opClass.getGenPackage().getImportedValidatorClassName()/].[opClass.getOperationID(genOperation)/]);
           [else]
@@ -118,11 +118,11 @@
 		if (false) {
 			if ([diagnostics/] != null) {
 				[diagnostics/].add
-					(new [genModel.getImportedName('org.eclipse.emf.common.util.BasicDiagnostic', packageName, className)/]
-						([genModel.getImportedName('org.eclipse.emf.common.util.Diagnostic', packageName, className)/].ERROR,
+					(new [genModel.getImportedName('org.eclipse.emf.common.util.BasicDiagnostic')/]
+						([genModel.getImportedName('org.eclipse.emf.common.util.Diagnostic')/].ERROR,
 						 [opClass.getGenPackage().getImportedValidatorClassName()/].DIAGNOSTIC_SOURCE,
 						 [opClass.getGenPackage().getImportedValidatorClassName()/].[opClass.getOperationID(genOperation)/],
-						 [genModel.getImportedName('org.eclipse.emf.ecore.plugin.EcorePlugin', packageName, className)/].INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object['[]'/] { "[genOperation.getName()/]", [genModel.getImportedName('org.eclipse.emf.ecore.util.EObjectValidator', packageName, className)/].getObjectLabel(this, [ctx/]) }),[genModel.getNonNLS()/][genModel.getNonNLS(2)/]
+						 [genModel.getImportedName('org.eclipse.emf.ecore.plugin.EcorePlugin')/].INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object['[]'/] { "[genOperation.getName()/]", [genModel.getImportedName('org.eclipse.emf.ecore.util.EObjectValidator')/].getObjectLabel(this, [ctx/]) }),[genModel.getNonNLS()/][genModel.getNonNLS(2)/]
 						 new Object ['[]'/] { this }));
 			}
 			return false;
@@ -136,13 +136,13 @@
     [let size : Integer = genOperation.getGenParameters()->size()]
 		try {
       [if (genOperation.isVoid()) ]
-			[genClass.getUniqueNameUpperCase(genOperation)/]__EINVOCATION_DELEGATE.dynamicInvoke(this, [if (size > 0) ]new [genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/].UnmodifiableEList<Object>([size/], [genOperation.getParametersArray(genClass)/])[else]null[/if]);
+			[genClass.getUniqueNameUpperCase(genOperation)/]__EINVOCATION_DELEGATE.dynamicInvoke(this, [if (size > 0) ]new [genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/].UnmodifiableEList<Object>([size/], [genOperation.getParametersArray(genClass)/])[else]null[/if]);
       [else]
-			return [if (not isJDK50 and genOperation.isPrimitiveType()) ]([/if]([genOperation.getObjectType(genClass)/])[genClass.getUniqueNameUpperCase(genOperation)/]__EINVOCATION_DELEGATE.dynamicInvoke(this, [if (size > 0) ]new [genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/].UnmodifiableEList<Object>([size/], [genOperation.getParametersArray(genClass)/])[else]null[/if])[if (not isJDK50 and genOperation.isPrimitiveType()) ]).[genOperation.getPrimitiveValueFunction()/]()[/if];
+			return [if (not isJDK50 and genOperation.isPrimitiveType()) ]([/if]([genOperation.getObjectType(genClass)/])[genClass.getUniqueNameUpperCase(genOperation)/]__EINVOCATION_DELEGATE.dynamicInvoke(this, [if (size > 0) ]new [genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/].UnmodifiableEList<Object>([size/], [genOperation.getParametersArray(genClass)/])[else]null[/if])[if (not isJDK50 and genOperation.isPrimitiveType()) ]).[genOperation.getPrimitiveValueFunction()/]()[/if];
       [/if]
 		}
-		catch ([genModel.getImportedName(if (isGWT) then 'org.eclipse.emf.common.util.InvocationTargetException' else 'java.lang.reflect.InvocationTargetException' endif, packageName, className)/] ite) {
-			throw new [genModel.getImportedName('org.eclipse.emf.common.util.WrappedException', packageName, className)/](ite);
+		catch ([genModel.getImportedName(if (isGWT) then 'org.eclipse.emf.common.util.InvocationTargetException' else 'java.lang.reflect.InvocationTargetException' endif)/] ite) {
+			throw new [genModel.getImportedName('org.eclipse.emf.common.util.WrappedException')/](ite);
 		}
     [/let]
   [else]

@@ -24,11 +24,11 @@
   [else]
 	public [genFeature.getListItemType(genClass)/]['[]'/] [genFeature.getGetArrayAccessor()/]() {
     [if (genFeature.isVolatile()) ]
-		[genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/][genFeature.getListTemplateArguments(genClass)/] list = ([genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/][genFeature.getListTemplateArguments(genClass)/])[genFeature.getGetAccessor()/]();
+		[genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/][genFeature.getListTemplateArguments(genClass)/] list = ([genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/][genFeature.getListTemplateArguments(genClass)/])[genFeature.getGetAccessor()/]();
 		if (list.isEmpty()) return [if (genModel.useGenerics() and not genFeature.getListItemType(genClass).contains('<') and genFeature.getListItemType(null) <> genFeature.getListItemType(genClass)) ]([genFeature.getListItemType(genClass)/]['[]'/])[/if][genFeature.getUpperName()/]_EEMPTY_ARRAY;
     [else]
 		if ([genFeature.getSafeName()/] == null || [genFeature.getSafeName()/].isEmpty()) return [if (genModel.useGenerics() and not genFeature.getListItemType(genClass).contains('<') and genFeature.getListItemType(null) <> genFeature.getListItemType(genClass)) ]([genFeature.getListItemType(genClass)/]['[]'/])[/if][genFeature.getUpperName()/]_EEMPTY_ARRAY;
-		[genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/][genFeature.getListTemplateArguments(genClass)/] list = ([genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/][genFeature.getListTemplateArguments(genClass)/])[genFeature.getSafeName()/];
+		[genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/][genFeature.getListTemplateArguments(genClass)/] list = ([genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/][genFeature.getListTemplateArguments(genClass)/])[genFeature.getSafeName()/];
     [/if]
 		list.shrink();
 		return ([genFeature.getListItemType(genClass)/]['[]'/])list.data();
@@ -77,7 +77,7 @@
 
   [else]
 	public void set[genFeature.getAccessorName()/]([genFeature.getListItemType(genClass)/]['[]'/] new[genFeature.getCapName()/]) {
-		(([genModel.getImportedName('org.eclipse.emf.common.util.BasicEList', packageName, className)/][genFeature.getListTemplateArguments(genClass)/])[genFeature.getGetAccessor()/]()).setData(new[genFeature.getCapName()/].length, new[genFeature.getCapName()/]);
+		(([genModel.getImportedName('org.eclipse.emf.common.util.BasicEList')/][genFeature.getListTemplateArguments(genClass)/])[genFeature.getGetAccessor()/]()).setData(new[genFeature.getCapName()/].length, new[genFeature.getCapName()/]);
 	}
 
   [/if]
@@ -232,18 +232,18 @@
 		[genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/] = ([genFeature.getImportedType(genClass)/])eVirtualGet([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/][if (genFeature.hasEDefault()) ], [genFeature.getEDefault()/][/if]);
           [/if]
 		if ([genFeature.getSafeName()/] != null && [genFeature.getSafeNameAsEObject()/].eIsProxy()) {
-			[genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/] old[genFeature.getCapName()/] = ([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/];
+			[genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/] old[genFeature.getCapName()/] = ([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/];
 			[genFeature.getSafeName()/] = [genFeature.getNonEObjectInternalTypeCast(genClass)/]eResolveProxy(old[genFeature.getCapName()/]);
 			if ([genFeature.getSafeName()/] != old[genFeature.getCapName()/]) {
           [if (genFeature.isEffectiveContains()) ]
-				[genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/] new[genFeature.getCapName()/] = ([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/];
+				[genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/] new[genFeature.getCapName()/] = ([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/];
             [if (not genFeature.isBidirectional()) ]
-				[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs = old[genFeature.getCapName()/].eInverseRemove(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, null);
+				[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs = old[genFeature.getCapName()/].eInverseRemove(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, null);
             [else]
               [let reverseFeature : GenFeature = genFeature.getReverse()]
                 [let targetClass : GenClass = reverseFeature.getGenClass()]
                   [let reverseOffsetCorrection : String = if (targetClass.hasOffsetCorrection()) then ' + ' + genClass.getOffsetCorrectionField(genFeature) else '' endif]
-				[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs =  old[genFeature.getCapName()/].eInverseRemove(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, null);
+				[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs =  old[genFeature.getCapName()/].eInverseRemove(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, null);
                   [/let]
                 [/let]
               [/let]
@@ -267,7 +267,7 @@
           [/if][/if]
           [if (not genModel.isSuppressNotification()) ]
 				if (eNotificationRequired())
-					eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].RESOLVE, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], old[genFeature.getCapName()/], [genFeature.getSafeName()/]));
+					eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].RESOLVE, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], old[genFeature.getCapName()/], [genFeature.getSafeName()/]));
           [/if]
 			}
 		}
@@ -287,26 +287,26 @@
     [else][comment volatile/]
       [if (genFeature.isResolveProxies() and not genFeature.isListType()) ]
 		[genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/] = basicGet[genFeature.getAccessorName()/]();
-		return [genFeature.getSafeName()/] != null && [genFeature.getSafeNameAsEObject()/].eIsProxy() ? [genFeature.getNonEObjectInternalTypeCast(genClass)/]eResolveProxy(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/]) : [genFeature.getSafeName()/];
+		return [genFeature.getSafeName()/] != null && [genFeature.getSafeNameAsEObject()/].eIsProxy() ? [genFeature.getNonEObjectInternalTypeCast(genClass)/]eResolveProxy(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/]) : [genFeature.getSafeName()/];
       [else][if (genFeature.hasDelegateFeature())]
         [let delegateFeature : GenFeature = genFeature.getDelegateFeature()]
           [if (genFeature.isFeatureMapType()) ]
-            [let featureMapEntryTemplateArgument : String = if (isJDK50) then '<' + genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className) + '.Entry>' else '' endif]
+            [let featureMapEntryTemplateArgument : String = if (isJDK50) then '<' + genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap') + '.Entry>' else '' endif]
               [if (delegateFeature.isWrappedFeatureMapType()) ]
-		return new [genFeature.getImportedEffectiveFeatureMapWrapperClass()/](([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().[featureMapEntryTemplateArgument/]list([genFeature.getQualifiedFeatureAccessor()/]));
+		return new [genFeature.getImportedEffectiveFeatureMapWrapperClass()/](([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().[featureMapEntryTemplateArgument/]list([genFeature.getQualifiedFeatureAccessor()/]));
               [else]
-		return ([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/])get[delegateFeature.getAccessorName()/]().[featureMapEntryTemplateArgument/]list([genFeature.getQualifiedFeatureAccessor()/]);
+		return ([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/])get[delegateFeature.getAccessorName()/]().[featureMapEntryTemplateArgument/]list([genFeature.getQualifiedFeatureAccessor()/]);
               [/if]
             [/let]
           [else][if (genFeature.isListType()) ]
             [if (delegateFeature.isWrappedFeatureMapType()) ]
-		return (([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().list([genFeature.getQualifiedFeatureAccessor()/]);
+		return (([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().list([genFeature.getQualifiedFeatureAccessor()/]);
             [else]
 		return get[delegateFeature.getAccessorName()/]().list([genFeature.getQualifiedFeatureAccessor()/]);
             [/if]
           [else]
             [if (delegateFeature.isWrappedFeatureMapType()) ]
-		return [if (not isJDK50 and genFeature.isPrimitiveType()) ]([/if][if (genFeature.getTypeGenDataType() = null or not genFeature.getTypeGenDataType().isObjectType()) ]([genFeature.getObjectType(genClass)/])[/if](([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().get([genFeature.getQualifiedFeatureAccessor()/], true)[if (not isJDK50 and genFeature.isPrimitiveType()) ]).[genFeature.getPrimitiveValueFunction()/]()[/if];
+		return [if (not isJDK50 and genFeature.isPrimitiveType()) ]([/if][if (genFeature.getTypeGenDataType() = null or not genFeature.getTypeGenDataType().isObjectType()) ]([genFeature.getObjectType(genClass)/])[/if](([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().get([genFeature.getQualifiedFeatureAccessor()/], true)[if (not isJDK50 and genFeature.isPrimitiveType()) ]).[genFeature.getPrimitiveValueFunction()/]()[/if];
             [else]
 		return [if (not isJDK50 and genFeature.isPrimitiveType()) ]([/if][if (genFeature.getTypeGenDataType() = null or not genFeature.getTypeGenDataType().isObjectType()) ]([genFeature.getObjectType(genClass)/])[/if]get[delegateFeature.getAccessorName()/]().get([genFeature.getQualifiedFeatureAccessor()/], true)[if (not isJDK50 and genFeature.isPrimitiveType()) ]).[genFeature.getPrimitiveValueFunction()/]()[/if];
             [/if]
@@ -359,7 +359,7 @@
   [else][if (genFeature.hasDelegateFeature())]
     [let delegateFeature : GenFeature = genFeature.getDelegateFeature()]
       [if (delegateFeature.isWrappedFeatureMapType()) ]
-		return ([genFeature.getImportedType(genClass)/])(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().get([genFeature.getQualifiedFeatureAccessor()/], false);
+		return ([genFeature.getImportedType(genClass)/])(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap().get([genFeature.getQualifiedFeatureAccessor()/], false);
       [else]
 		return ([genFeature.getImportedType(genClass)/])get[delegateFeature.getAccessorName()/]().get([genFeature.getQualifiedFeatureAccessor()/], false);
       [/if]
@@ -386,15 +386,15 @@
   [if (isJDK50)][comment] { //Class/basicSetGenFeature.annotations.insert.javajetinc[/comment]
 [comment]<%@ include file="Class/basicSetGenFeature.annotations.insert.javajetinc" fail="silent" %>[/comment]
   [/if]
-	public [genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] basicSet[genFeature.getAccessorName()/]([genFeature.getImportedInternalType(genClass)/] new[genFeature.getCapName()/], [genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs) {
+	public [genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] basicSet[genFeature.getAccessorName()/]([genFeature.getImportedInternalType(genClass)/] new[genFeature.getCapName()/], [genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs) {
   [if (genFeature.isContainer()) ]
 [comment]<%@ include file="Class/basicSetGenFeature.pre.insert.javajetinc" fail="silent" %>[/comment]
-		msgs = eBasicSetContainer(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])new[genFeature.getCapName()/], [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], msgs);
+		msgs = eBasicSetContainer(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])new[genFeature.getCapName()/], [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], msgs);
 [comment]<%@ include file="Class/basicSetGenFeature.post.insert.javajetinc" fail="silent" %>[/comment]
 		return msgs;
   [else][if (genModel.isDynamicDelegation()) ]
 [comment]<%@ include file="Class/basicSetGenFeature.pre.insert.javajetinc" fail="silent" %>[/comment]
-		msgs = eDynamicInverseAdd(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])new[genFeature.getCapName()/], [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], msgs);
+		msgs = eDynamicInverseAdd(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])new[genFeature.getCapName()/], [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], msgs);
 [comment]<%@ include file="Class/basicSetGenFeature.post.insert.javajetinc" fail="silent" %>[/comment]
 		return msgs;
   [else][if (not genFeature.isVolatile()) ]
@@ -425,9 +425,9 @@
     [if (not genModel.isSuppressNotification()) ]
 		if (eNotificationRequired()) {
       [if (genFeature.isUnsettable()) ]
-			[genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/] notification = new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]isSetChange ? null : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], new[genFeature.getCapName()/], [if (genModel.isVirtualDelegation()) ]isSetChange[else]!old[genFeature.getCapName()/]ESet[/if]);
+			[genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/] notification = new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]isSetChange ? null : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], new[genFeature.getCapName()/], [if (genModel.isVirtualDelegation()) ]isSetChange[else]!old[genFeature.getCapName()/]ESet[/if]);
       [else]
-			[genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/] notification = new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]old[genFeature.getCapName()/] == EVIRTUAL_NO_VALUE ? null : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], new[genFeature.getCapName()/]);
+			[genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/] notification = new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]old[genFeature.getCapName()/] == EVIRTUAL_NO_VALUE ? null : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], new[genFeature.getCapName()/]);
       [/if]
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
@@ -437,9 +437,9 @@
   [else][if (genFeature.hasDelegateFeature())]
     [let delegateFeature : GenFeature = genFeature.getDelegateFeature()]
       [if (delegateFeature.isWrappedFeatureMapType()) ]
-		return (([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).basicAdd([genFeature.getQualifiedFeatureAccessor()/], new[genFeature.getCapName()/], msgs);
+		return (([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).basicAdd([genFeature.getQualifiedFeatureAccessor()/], new[genFeature.getCapName()/], msgs);
       [else]
-		return (([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)get[delegateFeature.getAccessorName()/]()).basicAdd([genFeature.getQualifiedFeatureAccessor()/], new[genFeature.getCapName()/], msgs);
+		return (([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)get[delegateFeature.getAccessorName()/]()).basicAdd([genFeature.getQualifiedFeatureAccessor()/], new[genFeature.getCapName()/], msgs);
       [/if]
     [/let]
   [else]
@@ -511,19 +511,19 @@
           [let targetClass : GenClass = reverseFeature.getGenClass()]
             [let reverseOffsetCorrection : String = if (targetClass.hasOffsetCorrection()) then ' + ' + genClass.getOffsetCorrectionField(genFeature) else '' endif]
 		if (new[genFeature.getCapName()/] != eInternalContainer() || (eContainerFeatureID() != [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/] && new[genFeature.getCapName()/] != null)) {
-			if ([genModel.getImportedName('org.eclipse.emf.ecore.util.EcoreUtil', packageName, className)/].isAncestor(this, [genFeature.getEObjectCast()/]new[genFeature.getCapName()/]))
-				throw new [genModel.getImportedName('java.lang.IllegalArgumentException', packageName, className)/]("Recursive containment not allowed for " + toString());[genModel.getNonNLS()/]
-			[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs = null;
+			if ([genModel.getImportedName('org.eclipse.emf.ecore.util.EcoreUtil')/].isAncestor(this, [genFeature.getEObjectCast()/]new[genFeature.getCapName()/]))
+				throw new [genModel.getImportedName('java.lang.IllegalArgumentException')/]("Recursive containment not allowed for " + toString());[genModel.getNonNLS()/]
+			[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (new[genFeature.getCapName()/] != null)
-				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])new[genFeature.getCapName()/]).eInverseAdd(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
+				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])new[genFeature.getCapName()/]).eInverseAdd(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
 			msgs = basicSet[genFeature.getAccessorName()/]([genFeature.getInternalTypeCast()/]new[genFeature.getCapName()/], msgs);
 			if (msgs != null) msgs.dispatch();
 		}
               [if (not genModel.isSuppressNotification()) ]
 		else if (eNotificationRequired())
-			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], new[genFeature.getCapName()/], new[genFeature.getCapName()/]));
+			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], new[genFeature.getCapName()/], new[genFeature.getCapName()/]));
               [/if]
             [/let]
           [/let]
@@ -533,19 +533,19 @@
 		[genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/] = ([genFeature.getImportedType(genClass)/])eVirtualGet([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/]);
         [/if]
 		if (new[genFeature.getCapName()/] != [genFeature.getSafeName()/]) {
-			[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs = null;
+			[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs = null;
 			if ([genFeature.getSafeName()/] != null)
         [if (not genFeature.isBidirectional()) ]
-				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/]).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, msgs);
+				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/]).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, msgs);
 			if (new[genFeature.getCapName()/] != null)
-				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])new[genFeature.getCapName()/]).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, msgs);
+				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])new[genFeature.getCapName()/]).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, msgs);
         [else]
           [let reverseFeature : GenFeature = genFeature.getReverse()]
             [let targetClass : GenClass = reverseFeature.getGenClass()]
               [let reverseOffsetCorrection : String = if (targetClass.hasOffsetCorrection()) then ' + ' + genClass.getOffsetCorrectionField(genFeature) else '' endif]
-				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/]).eInverseRemove(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
+				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/]).eInverseRemove(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
 			if (new[genFeature.getCapName()/] != null)
-				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])new[genFeature.getCapName()/]).eInverseAdd(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
+				msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])new[genFeature.getCapName()/]).eInverseAdd(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
               [/let]
             [/let]
           [/let]
@@ -568,12 +568,12 @@
           [/if][/if]
           [if (not genModel.isSuppressNotification()) ]
 			if (eNotificationRequired())
-				eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], new[genFeature.getCapName()/], new[genFeature.getCapName()/], not old[genFeature.getCapName()/]ESet));
+				eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], new[genFeature.getCapName()/], new[genFeature.getCapName()/], not old[genFeature.getCapName()/]ESet));
           [/if]
 		}
         [else][comment genFeature.isUnsettable() /]
           [if (not genModel.isSuppressNotification()) ] else if (eNotificationRequired())
-			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], new[genFeature.getCapName()/], new[genFeature.getCapName()/]));
+			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], new[genFeature.getCapName()/], new[genFeature.getCapName()/]));
           [else][comment carriage return /]
 
           [/if]
@@ -632,12 +632,12 @@
           [/if][/if]
           [if (not genModel.isSuppressNotification()) ]
 		if (eNotificationRequired())
-			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange ? [genFeature.getEDefault()/] : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], [if (genClass.isFlag(genFeature)) ]new[genFeature.getCapName()/][else][genFeature.getSafeName()/][/if], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange[else]!old[genFeature.getCapName()/]ESet[/if]));
+			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange ? [genFeature.getEDefault()/] : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], [if (genClass.isFlag(genFeature)) ]new[genFeature.getCapName()/][else][genFeature.getSafeName()/][/if], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange[else]!old[genFeature.getCapName()/]ESet[/if]));
           [/if]
         [else][comment (genFeature.isUnsettable()) /]
           [if (not genModel.isSuppressNotification()) ]
 		if (eNotificationRequired())
-			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]old[genFeature.getCapName()/] == EVIRTUAL_NO_VALUE ? [genFeature.getEDefault()/] : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], [if (genClass.isFlag(genFeature)) ]new[genFeature.getCapName()/][else][genFeature.getSafeName()/][/if]));
+			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].SET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]old[genFeature.getCapName()/] == EVIRTUAL_NO_VALUE ? [genFeature.getEDefault()/] : old[genFeature.getCapName()/][else]old[genFeature.getCapName()/][/if], [if (genClass.isFlag(genFeature)) ]new[genFeature.getCapName()/][else][genFeature.getSafeName()/][/if]));
           [/if]
         [/if][comment (genFeature.isUnsettable()) /]
       [/if][/if]
@@ -645,9 +645,9 @@
     [else][if (genFeature.hasDelegateFeature())]
       [let delegateFeature : GenFeature = genFeature.getDelegateFeature()]
         [if (delegateFeature.isWrappedFeatureMapType()) ]
-		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).set([genFeature.getQualifiedFeatureAccessor()/], [if (not isJDK50 and genFeature.isPrimitiveType()) ]new [genFeature.getObjectType(genClass)/]([/if]new[genFeature.getCapName()/][if (not isJDK50 and genFeature.isPrimitiveType()) ])[/if]);
+		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).set([genFeature.getQualifiedFeatureAccessor()/], [if (not isJDK50 and genFeature.isPrimitiveType()) ]new [genFeature.getObjectType(genClass)/]([/if]new[genFeature.getCapName()/][if (not isJDK50 and genFeature.isPrimitiveType()) ])[/if]);
         [else]
-		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)get[delegateFeature.getAccessorName()/]()).set([genFeature.getQualifiedFeatureAccessor()/], [if (not isJDK50 and genFeature.isPrimitiveType()) ]new [genFeature.getObjectType(genClass)/]([/if]new[genFeature.getCapName()/][if (not isJDK50 and genFeature.isPrimitiveType()) ])[/if]);
+		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)get[delegateFeature.getAccessorName()/]()).set([genFeature.getQualifiedFeatureAccessor()/], [if (not isJDK50 and genFeature.isPrimitiveType()) ]new [genFeature.getObjectType(genClass)/]([/if]new[genFeature.getCapName()/][if (not isJDK50 and genFeature.isPrimitiveType()) ])[/if]);
         [/if]
       [/let]
     [else][if (genClass.getSetAccessorOperation(genFeature) <> null) ]
@@ -675,9 +675,9 @@
   [if (isJDK50)][comment] { //Class/basicUnsetGenFeature.annotations.insert.javajetinc[/comment]
 [comment]<%@ include file="Class/basicUnsetGenFeature.annotations.insert.javajetinc" fail="silent" %>[/comment]
   [/if]
-	public [genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] basicUnset[genFeature.getAccessorName()/]([genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs) {
+	public [genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] basicUnset[genFeature.getAccessorName()/]([genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs) {
   [if (genModel.isDynamicDelegation()) ]
-		return eDynamicInverseRemove(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[if (genFeature.isResolveProxies()) ]basicGet[genFeature.getAccessorName()/][else][genFeature.getGetAccessor()/][/if](), [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], msgs);
+		return eDynamicInverseRemove(([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[if (genFeature.isResolveProxies()) ]basicGet[genFeature.getAccessorName()/][else][genFeature.getGetAccessor()/][/if](), [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], msgs);
   [else][if (not genFeature.isVolatile()) ]
     [if (genModel.isVirtualDelegation()) ]
       [if (not genModel.isSuppressNotification()) ]Object old[genFeature.getCapName()/] = [/if]eVirtualUnset([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/]);
@@ -704,7 +704,7 @@
     [/if][/if]
     [if (not genModel.isSuppressNotification()) ]
 		if (eNotificationRequired()) {
-			[genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/] notification = new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]isSetChange ? old[genFeature.getCapName()/] : null[else]old[genFeature.getCapName()/][/if], null, [if (genModel.isVirtualDelegation()) ]isSetChange[else]old[genFeature.getCapName()/]ESet[/if]);
+			[genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/] notification = new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]isSetChange ? old[genFeature.getCapName()/] : null[else]old[genFeature.getCapName()/][/if], null, [if (genModel.isVirtualDelegation()) ]isSetChange[else]old[genFeature.getCapName()/]ESet[/if]);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -768,20 +768,20 @@
         [if (genModel.isVirtualDelegation()) ]
 		[genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/] = ([genFeature.getImportedType(genClass)/])eVirtualGet([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/]);
         [/if]
-		if ([genFeature.getSafeName()/] != null) (([genModel.getImportedName('org.eclipse.emf.ecore.util.InternalEList', packageName, className)/].Unsettable[singleWildcard/])[genFeature.getSafeName()/]).unset();
+		if ([genFeature.getSafeName()/] != null) (([genModel.getImportedName('org.eclipse.emf.ecore.util.InternalEList')/].Unsettable[singleWildcard/])[genFeature.getSafeName()/]).unset();
       [else][if (genFeature.isBidirectional() or genFeature.isEffectiveContains()) ]
         [if (genModel.isVirtualDelegation()) ]
 		[genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/] = ([genFeature.getImportedType(genClass)/])eVirtualGet([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/]);
         [/if]
 		if ([genFeature.getSafeName()/] != null) {
-			[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain', packageName, className)/] msgs = null;
+			[genModel.getImportedName('org.eclipse.emf.common.notify.NotificationChain')/] msgs = null;
         [if (not genFeature.isBidirectional()) ]
-			msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/]).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, msgs);
+			msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/]).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - [genClass.getQualifiedFeatureID(genFeature)/][negativeOffsetCorrection/], null, msgs);
         [else]
           [let reverseFeature : GenFeature = genFeature.getReverse()]
             [let targetClass : GenClass = reverseFeature.getGenClass()]
               [let reverseOffsetCorrection : String = if (targetClass.hasOffsetCorrection()) then ' + ' + genClass.getOffsetCorrectionField(genFeature) else '' endif]
-			msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject', packageName, className)/])[genFeature.getSafeName()/]).eInverseRemove(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
+			msgs = (([genModel.getImportedName('org.eclipse.emf.ecore.InternalEObject')/])[genFeature.getSafeName()/]).eInverseRemove(this, [targetClass.getQualifiedFeatureID(reverseFeature)/][reverseOffsetCorrection/], [targetClass.getRawImportedInterfaceName()/].class, msgs);
               [/let]
             [/let]
           [/let]
@@ -804,7 +804,7 @@
         [/if][/if]
         [if (not genModel.isSuppressNotification()) ]
 			if (eNotificationRequired())
-				eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], null, null, old[genFeature.getCapName()/]ESet));
+				eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], null, null, old[genFeature.getCapName()/]ESet));
         [/if]
 		}
       [else]
@@ -843,7 +843,7 @@
           [/if]
           [if (not genModel.isSuppressNotification()) ]
 		if (eNotificationRequired())
-			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]isSetChange ? old[genFeature.getCapName()/] : null[else]old[genFeature.getCapName()/][/if], null, [if (genModel.isVirtualDelegation()) ]isSetChange[else]old[genFeature.getCapName()/]ESet[/if]));
+			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation()) ]isSetChange ? old[genFeature.getCapName()/] : null[else]old[genFeature.getCapName()/][/if], null, [if (genModel.isVirtualDelegation()) ]isSetChange[else]old[genFeature.getCapName()/]ESet[/if]));
           [/if]
         [else]
           [if (genClass.isFlag(genFeature)) ]
@@ -864,16 +864,16 @@
           [/if]
           [if (not genModel.isSuppressNotification()) ]
 		if (eNotificationRequired())
-			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl', packageName, className)/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification', packageName, className)/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange ? old[genFeature.getCapName()/] : [genFeature.getEDefault()/][else]old[genFeature.getCapName()/][/if], [genFeature.getEDefault()/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange[else]old[genFeature.getCapName()/]ESet[/if]));
+			eNotify(new [genModel.getImportedName('org.eclipse.emf.ecore.impl.ENotificationImpl')/](this, [genModel.getImportedName('org.eclipse.emf.common.notify.Notification')/].UNSET, [genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange ? old[genFeature.getCapName()/] : [genFeature.getEDefault()/][else]old[genFeature.getCapName()/][/if], [genFeature.getEDefault()/], [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]isSetChange[else]old[genFeature.getCapName()/]ESet[/if]));
           [/if]
         [/if]
       [/if][/if]
     [else]][if (genFeature.hasDelegateFeature())]
       [let delegateFeature : GenFeature = genFeature.getDelegateFeature()]
         [if (delegateFeature.isWrappedFeatureMapType()) ]
-		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).clear([genFeature.getQualifiedFeatureAccessor()/]);
+		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).clear([genFeature.getQualifiedFeatureAccessor()/]);
         [else]
-		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)get[delegateFeature.getAccessorName()/]()).clear([genFeature.getQualifiedFeatureAccessor()/]);
+		(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)get[delegateFeature.getAccessorName()/]()).clear([genFeature.getQualifiedFeatureAccessor()/]);
         [/if]
       [/let]
     [else][if (genClass.getUnsetAccessorOperation(genFeature) <> null) ]
@@ -936,7 +936,7 @@
         [if (genModel.isVirtualDelegation()) ]
 		[genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/] = ([genFeature.getImportedType(genClass)/])eVirtualGet([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/]);
         [/if]
-		return [genFeature.getSafeName()/] != null && (([genModel.getImportedName('org.eclipse.emf.ecore.util.InternalEList', packageName, className)/].Unsettable[singleWildcard/])[genFeature.getSafeName()/]).isSet();
+		return [genFeature.getSafeName()/] != null && (([genModel.getImportedName('org.eclipse.emf.ecore.util.InternalEList')/].Unsettable[singleWildcard/])[genFeature.getSafeName()/]).isSet();
       [else]
         [if (genModel.isVirtualDelegation() and not genFeature.isPrimitiveType()) ]
 		return eVirtualIsSet([genClass.getQualifiedFeatureID(genFeature)/][positiveOffsetCorrection/]);
@@ -949,9 +949,9 @@
     [else][if (genFeature.hasDelegateFeature())]
       [let delegateFeature : GenFeature = genFeature.getDelegateFeature()]
         [if (delegateFeature.isWrappedFeatureMapType()) ]
-		return !(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).isEmpty([genFeature.getQualifiedFeatureAccessor()/]);
+		return !(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)get[delegateFeature.getAccessorName()/]()).featureMap()).isEmpty([genFeature.getQualifiedFeatureAccessor()/]);
         [else]
-		return !(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal)get[delegateFeature.getAccessorName()/]()).isEmpty([genFeature.getQualifiedFeatureAccessor()/]);
+		return !(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal)get[delegateFeature.getAccessorName()/]()).isEmpty([genFeature.getQualifiedFeatureAccessor()/]);
         [/if]
       [/let]
     [else][if (genClass.getIsSetAccessorOperation(genFeature) <> null) ]

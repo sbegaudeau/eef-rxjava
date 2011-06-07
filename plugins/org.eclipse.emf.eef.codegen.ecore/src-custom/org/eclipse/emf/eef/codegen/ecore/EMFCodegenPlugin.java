@@ -93,10 +93,11 @@ public class EMFCodegenPlugin extends AbstractUIPlugin {
 			if (!f.exists()) {
 				f.getParentFile().mkdirs();
 				f.createNewFile();
+				
+				outputStream = new FileOutputStream(f);
+				outputStream.write(result);
+				outputStream.close();
 			}
-			outputStream = new FileOutputStream(f);
-			outputStream.write(result);
-			outputStream.close();
 		} catch (IOException e) {
 			EMFCodegenPlugin.getDefault().logError(e);
 		}

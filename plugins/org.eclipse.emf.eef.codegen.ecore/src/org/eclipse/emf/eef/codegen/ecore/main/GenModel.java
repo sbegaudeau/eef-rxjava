@@ -43,7 +43,7 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 * 
 	 * @generated
 	 */
-	public static final String[] TEMPLATE_NAMES = { "GenAllGenClass", };
+	public static final String[] TEMPLATE_NAMES = {"GenAllGenClass",};
 
 	/**
 	 * Allows the public constructor to be used. Note that a generator created this way cannot be used to
@@ -58,8 +58,8 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 * @generated
 	 */
 	public GenModel() {
-    // Empty implementation
-  }
+		// Empty implementation
+	}
 
 	/**
 	 * This allows clients to instantiates a generator with all required information.
@@ -78,8 +78,8 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 * @generated
 	 */
 	public GenModel(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
-    initialize(modelURI, targetFolder, arguments);
-  }
+		initialize(modelURI, targetFolder, arguments);
+	}
 
 	/**
 	 * This allows clients to instantiates a generator with all required information.
@@ -98,8 +98,8 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 * @generated
 	 */
 	public GenModel(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
-    initialize(model, targetFolder, arguments);
-  }
+		initialize(model, targetFolder, arguments);
+	}
 
 	/**
 	 * This can be used to launch the generation from a standalone application.
@@ -109,23 +109,23 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-    try {
-      if (args.length < 2) {
-        System.out.println("Arguments not valid : {model, folder}.");
-      } else {
-        URI modelURI = URI.createFileURI(args[0]);
-        File folder = new File(args[1]);
-        List<String> arguments = new ArrayList<String>();
-        for (int i = 2; i < args.length; i++) {
-          arguments.add(args[i]);
-        }
-        GenModel generator = new GenModel(modelURI, folder, arguments);
-        generator.doGenerate(new BasicMonitor());
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
+		try {
+			if (args.length < 2) {
+				System.out.println("Arguments not valid : {model, folder}.");
+			} else {
+				URI modelURI = URI.createFileURI(args[0]);
+				File folder = new File(args[1]);
+				List<String> arguments = new ArrayList<String>();
+				for (int i = 2; i < args.length; i++) {
+					arguments.add(args[i]);
+				}
+				GenModel generator = new GenModel(modelURI, folder, arguments);
+				generator.doGenerate(new BasicMonitor());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Launches the generation described by this instance.
@@ -138,12 +138,12 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public void doGenerate(Monitor monitor) throws IOException {
-    /*
-     * TODO if you wish to change the generation as a whole, override this.
-     * The default behavior should be sufficient in most cases.
-     */
-    super.doGenerate(monitor);
-  }
+		/*
+		 * TODO if you wish to change the generation as a whole, override this. The default behavior should be
+		 * sufficient in most cases.
+		 */
+		super.doGenerate(monitor);
+	}
 
 	/**
 	 * If this generator needs to listen to text generation events, listeners can be returned from here.
@@ -153,10 +153,10 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public List<IAcceleoTextGenerationListener> getGenerationListeners() {
-    List<IAcceleoTextGenerationListener> listeners = super.getGenerationListeners();
-    // TODO if you need to listen to generation event, add listeners to the list here
-    return listeners;
-  }
+		List<IAcceleoTextGenerationListener> listeners = super.getGenerationListeners();
+		// TODO if you need to listen to generation event, add listeners to the list here
+		return listeners;
+	}
 
 	/**
 	 * If you need to change the way files are generated, this is your entry point.
@@ -180,8 +180,8 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 * @generated
 	 */
 	public IAcceleoGenerationStrategy getGenerationStrategy() {
-    return super.getGenerationStrategy();
-  }
+		return super.getGenerationStrategy();
+	}
 
 	/**
 	 * This will be called in order to find and load the module that will be launched through this launcher.
@@ -192,8 +192,8 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public String getModuleName() {
-    return MODULE_FILE_NAME;
-  }
+		return MODULE_FILE_NAME;
+	}
 
 	/**
 	 * If the module(s) called by this launcher require properties files, return their qualified path from
@@ -212,18 +212,16 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public List<String> getProperties() {
-    List<String> propertiesFiles = super.getProperties();
-    /*
-     * TODO if your generation module requires access to properties files,
-     * add their qualified path to the list here. Properties files are
-     * expected to be in source folders, and the path here to be the
-     * qualified path as if referring to a Java class. For example, if you
-     * have a file named "messages.properties" in package
-     * "org.eclipse.acceleo.sample", the path that needs be added to this
-     * list is "org.eclipse.acceleo.sample.messages".
-     */
-    return propertiesFiles;
-  }
+		List<String> propertiesFiles = super.getProperties();
+		/*
+		 * TODO if your generation module requires access to properties files, add their qualified path to the
+		 * list here. Properties files are expected to be in source folders, and the path here to be the
+		 * qualified path as if referring to a Java class. For example, if you have a file named
+		 * "messages.properties" in package "org.eclipse.acceleo.sample", the path that needs be added to this
+		 * list is "org.eclipse.acceleo.sample.messages".
+		 */
+		return propertiesFiles;
+	}
 
 	/**
 	 * This will be used to get the list of templates that are to be launched by this launcher.
@@ -233,8 +231,8 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public String[] getTemplateNames() {
-    return TEMPLATE_NAMES;
-  }
+		return TEMPLATE_NAMES;
+	}
 
 	/**
 	 * This can be used to update the resource set's package registry with all needed EPackages.
@@ -245,12 +243,16 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public void registerPackages(ResourceSet resourceSet) {
-    super.registerPackages(resourceSet);
-    resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
-    resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
-    // TODO If you need additional package registrations, do them here. The following line is an example for UML.
-    // resourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
-  }
+		super.registerPackages(resourceSet);
+		resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(),
+				org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(
+				org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(),
+				org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
+		// TODO If you need additional package registrations, do them here. The following line is an example
+		// for UML.
+		// resourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
+	}
 
 	/**
 	 * This can be used to update the resource set's resource factory registry with all needed factories.
@@ -261,9 +263,11 @@ public class GenModel extends AbstractAcceleoGenerator {
 	 */
 	@Override
 	public void registerResourceFactories(ResourceSet resourceSet) {
-    super.registerResourceFactories(resourceSet);
-    // TODO If you need additional resource factories registrations, do them here. The following line is an example for UML.
-    // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
-  }
+		super.registerResourceFactories(resourceSet);
+		// TODO If you need additional resource factories registrations, do them here. The following line is
+		// an example for UML.
+		// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+		// UMLResource.Factory.INSTANCE);
+	}
 
 }

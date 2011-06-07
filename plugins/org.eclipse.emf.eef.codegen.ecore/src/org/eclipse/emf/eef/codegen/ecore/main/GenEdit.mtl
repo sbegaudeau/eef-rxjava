@@ -9,15 +9,29 @@
 [import org::eclipse::emf::eef::codegen::ecore::edit::pluginproperties /]
 [import org::eclipse::emf::eef::codegen::ecore::edit::pluginxml /]
 [import org::eclipse::emf::eef::codegen::ecore::edit::editIcons /]
+[import org::eclipse::emf::eef::codegen::ecore::services::fileUtil /]
 
 [template public GenAllGenClass(model : GenModel)]
 	[comment @main /]
 	[comment edit generation/]
-	[model.buildproperties()/]
-	[model.manifestmf()/]
+	[if (not model.fileExistsEdit(model.buildpropertiesPath()))]
+		[model.buildproperties()/]
+	[/if]
+
+	[if (not model.fileExistsEdit(model.manifestmfPath()))]
+		[model.manifestmf()/]
+	[/if]
+
 	[model.Plugin()/]
-	[model.pluginproperties()/]
-	[model.pluginxml()/]
+
+	[if (not model.fileExistsEdit(model.pluginpropertiesPath()))]
+		[model.pluginproperties()/]
+	[/if]
+
+	[if (not model.fileExistsEdit(model.pluginxmlPath()))]
+		[model.pluginxml()/]
+	[/if]
+
 	[for (p : GenPackage | model.eAllContents(GenPackage))]
 		[p.ItemProviderAdapterFactory()/]
 		[p.CreateChildIcons()/]

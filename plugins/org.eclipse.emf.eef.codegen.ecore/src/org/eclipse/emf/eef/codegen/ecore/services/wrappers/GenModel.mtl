@@ -214,9 +214,6 @@
 [query public getGenPackages(genModel : GenModel) : Sequence(GenPackage)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getGenPackages()', Sequence{genModel}) /]
 
-[query public getImportedName(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getImportedName(java.lang.String)', Sequence{genModel, qualifiedName}) /]
-
 [query public getImporterID(genModel : GenModel) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getImporterID()', Sequence{genModel}) /]
 
@@ -661,11 +658,8 @@
 [query public getLocale(genModel : GenModel) : OclAny
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getLocale()', Sequence{genModel}) /]
 
-[query public addImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : OclVoid
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
-
-[query public addPseudoImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : OclVoid
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addPseudoImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
+[query public toStringLiteral(genModel : GenModel, literal : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'toStringLiteral(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, literal}) /]
 
 [query public isJDK50(genModel : GenModel) : Boolean
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'isJDK50(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
@@ -676,13 +670,7 @@
 [query public getIndentation(genModel : GenModel) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'getIndentation(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
 
-[comment
-	Returns the imports to insert at the relevant position in the output file.
-	@param packageName is here to prevent Acceleo from caching things.
-	@param className is here to prevent Acceleo from caching things.
-/]
-[query public genSortedImports(genModel : GenModel, packageName : String, className : String) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'genSortedImports(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
+[comment ************ IMPORT MANAGER ****************************************** /]
 
 [comment
 	Creates a new importManager and sets it on the current GenModel, to manage the imports
@@ -693,5 +681,19 @@
 [query public initializeImportManager(genModel : GenModel, packageName : String, className : String) : OclVoid
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'initializeImportManager(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String, java.lang.String)', Sequence{genModel, packageName, className}) /]
 
-[query public toStringLiteral(genModel : GenModel, literal : String) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'toStringLiteral(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, literal}) /]
+[comment returns the imports to insert at the relevant position in the output file./]
+[template public genSortedImports(genModel : GenModel) post(trim())]
+[invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'genSortedImports(org.eclipse.emf.codegen.ecore.genmodel.GenModel)', Sequence{genModel}) /]
+[/template]
+
+[template public addImport(genModel : GenModel, qualifiedName : String) post(trim())]
+[invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
+[/template]
+
+[template public addPseudoImport(genModel : GenModel, qualifiedName : String) post(trim())]
+[invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addPseudoImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
+[/template]
+
+[template public getImportedName(genModel : GenModel, qualifiedName : String) post(trim())]
+[invoke('org.eclipse.emf.codegen.ecore.genmodel.GenModel', 'getImportedName(java.lang.String)', Sequence{genModel, qualifiedName}) /]
+[/template]

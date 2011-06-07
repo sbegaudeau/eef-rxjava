@@ -220,7 +220,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import [genPackage.getQualifiedItemProviderAdapterFactoryClassName()/];
 
 [let content : String = genModel.fileContent(genPackage, genModel, packageName, className)]
-[genModel.genSortedImports(packageName, className)/]
+[genModel.genSortedImports()/]
 
 [content/]
 [/let]
@@ -244,7 +244,7 @@ public class [className/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final [genModel.getImportedName('java.lang.String', packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String')/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
 [if (genModel.isRichClientPlatform())]
@@ -256,7 +256,7 @@ public class [className/]
 	 */[if (genPackage.generateModelWizard)]
 	public static final [genModel._ListOfString()/] FILE_EXTENSION_FILTERS = prefixExtensions([genPackage.getImportedModelWizardClassName()/].FILE_EXTENSIONS, "*.");[genModel.getNonNLS()/]
 	[else]
-	public static final [genModel._ListOfString()/] FILE_EXTENSION_FILTERS = prefixExtensions([genModel.getImportedName('java.util.Arrays', packageName, className)/].asList([genPackage.getImportedEditorPluginClassName()/].INSTANCE.getString("_UI_[genPackage.getEditorClassName()/]FilenameExtensions").split("\\s*,\\s*")), "*.");[genModel.getNonNLS()/][genModel.getNonNLS(2)/][genModel.getNonNLS(3)/]
+	public static final [genModel._ListOfString()/] FILE_EXTENSION_FILTERS = prefixExtensions([genModel.getImportedName('java.util.Arrays')/].asList([genPackage.getImportedEditorPluginClassName()/].INSTANCE.getString("_UI_[genPackage.getEditorClassName()/]FilenameExtensions").split("\\s*,\\s*")), "*.");[genModel.getNonNLS()/][genModel.getNonNLS(2)/][genModel.getNonNLS(3)/]
 	[/if]
 	/**
 	 * Returns a new unmodifiable list containing prefixed versions of the extensions in the given list.
@@ -2035,7 +2035,7 @@ public class [className/]
 	{
 [if (genModel.isRichClientPlatform())]
   [if (genModel.isRichAjaxPlatform())]
-		new [genModel.getImportedName('org.eclipse.emf.common.ui.dialogs.ResourceDialog', packageName, className)/](getSite().getShell(), null, SWT.NONE)
+		new [genModel.getImportedName('org.eclipse.emf.common.ui.dialogs.ResourceDialog')/](getSite().getShell(), null, SWT.NONE)
 			{
 [if (genModel.useClassOverrideAnnotation())]
 				@Override
@@ -2054,7 +2054,7 @@ public class [className/]
 					if (uris.size() > 0)
 					{
 						URI uri = [if (not genModel.useGenerics())](URI)[/if]uris.get(0);
-						doSaveAs(uri, new [genModel.getImportedName('org.eclipse.emf.common.ui.URIEditorInput', packageName, className)/](uri));
+						doSaveAs(uri, new [genModel.getImportedName('org.eclipse.emf.common.ui.URIEditorInput')/](uri));
 						return true;
 					}
 					else
@@ -2065,11 +2065,11 @@ public class [className/]
 			}.open();
   [else]
 		String[genModel.genSquareBrackets('')/] filters = [if (not genModel.useGenerics())](String[genModel.genSquareBrackets('')/])[/if]FILE_EXTENSION_FILTERS.toArray(new String[genModel.genSquareBrackets('FILE_EXTENSION_FILTERS.size()')/]);
-		String[genModel.genSquareBrackets('')/] files = [genModel.getQualifiedEditorAdvisorClassName()/].openFilePathDialog(getSite().getShell(), [genModel.getImportedName('org.eclipse.swt.SWT', packageName, className)/].SAVE, filters);
+		String[genModel.genSquareBrackets('')/] files = [genModel.getQualifiedEditorAdvisorClassName()/].openFilePathDialog(getSite().getShell(), [genModel.getImportedName('org.eclipse.swt.SWT')/].SAVE, filters);
 		if (files.length > 0)
 		{
 			URI uri = URI.createFileURI(files[genModel.genSquareBrackets('0')/]);
-			doSaveAs(uri, new [genModel.getImportedName('org.eclipse.emf.common.ui.URIEditorInput', packageName, className)/](uri));
+			doSaveAs(uri, new [genModel.getImportedName('org.eclipse.emf.common.ui.URIEditorInput')/](uri));
 		}
   [/if]
 [else]
@@ -2100,7 +2100,7 @@ public class [className/]
 		IProgressMonitor progressMonitor =
 			getActionBars().getStatusLineManager() != null ?
 				getActionBars().getStatusLineManager().getProgressMonitor() :
-				new [genModel.getImportedName('org.eclipse.core.runtime.NullProgressMonitor', packageName, className)/]();
+				new [genModel.getImportedName('org.eclipse.core.runtime.NullProgressMonitor')/]();
 		doSave(progressMonitor);
 	}
 [if (not genModel.isRichClientPlatform())]
@@ -2397,7 +2397,7 @@ public class [className/]
 [query public operationMethodName(genModel : GenModel) : String = if genModel.isRichClientPlatform() then'run' else 'execute' endif/]
 
 [template public importedOperationClassName (genModel : GenModel, packageName : String, className : String)]
-[if genModel.isRichClientPlatform()][genModel.getImportedName('org.eclipse.jface.operation.IRunnableWithProgress', packageName, className)/][else][genModel.getImportedName('org.eclipse.ui.actions.WorkspaceModifyOperation', packageName, className)/][/if]
+[if genModel.isRichClientPlatform()][genModel.getImportedName('org.eclipse.jface.operation.IRunnableWithProgress')/][else][genModel.getImportedName('org.eclipse.ui.actions.WorkspaceModifyOperation')/][/if]
 [/template]
 
 [query public _ArrayListOfObject(genModel : GenModel) : String = if genModel.useGenerics() then 'ArrayList<Object>' else 'ArrayList' endif/]

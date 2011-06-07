@@ -35,15 +35,15 @@ package [packageName/];
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
-[let content : String = genModel.fileContent(genModel, packageName, className)]
-[genModel.genSortedImports(packageName, className)/]
+[let content : String = genModel.fileContent(genModel, className)]
+[genModel.genSortedImports()/]
 
 [content/]
 [/let]
 [/file]
 [/template]
 
-[template public fileContent(genModel : GenModel, packageName : String, className : String)]
+[template public fileContent(genModel : GenModel, className : String)]
 /**
  * This is the central singleton for the [genModel.getModelName()/] editor plugin.
  * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public final class [className/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final [genModel.getImportedName('java.lang.String',packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String')/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 	
 [/if]
 	/**
@@ -134,7 +134,7 @@ public final class [className/] extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends [genModel.getImportedName('org.eclipse.emf.common.ui.EclipseUIPlugin',packageName, className)/]
+	public static class Implementation extends [genModel.getImportedName('org.eclipse.emf.common.ui.EclipseUIPlugin')/]
 	{
 		/**
 		 * Creates an instance.
@@ -145,7 +145,7 @@ public final class [className/] extends EMFPlugin
 [/if]
 		 * @generated
 		 */
-		public Implementation([if (genModel.needsRuntimeCompatibility())][genModel.getImportedName('org.eclipse.core.runtime.IPluginDescriptor',packageName, className)/] descriptor[/if])
+		public Implementation([if (genModel.needsRuntimeCompatibility())][genModel.getImportedName('org.eclipse.core.runtime.IPluginDescriptor')/] descriptor[/if])
 		{
 			super([if (genModel.needsRuntimeCompatibility())]descriptor[/if]);
 	

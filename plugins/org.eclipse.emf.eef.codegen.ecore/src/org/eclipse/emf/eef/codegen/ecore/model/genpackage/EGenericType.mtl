@@ -45,7 +45,7 @@
 
 [query public prefix(eGenericType : EGenericType, genModel : GenModel, packageName : String, className : String) : String =
 	if (eGenericType.eAllContents(EGenericType)->isEmpty()) then
-		genModel.getImportedName('org.eclipse.emf.ecore.EGenericType', packageName, className) + ' '
+		genModel.getImportedName('org.eclipse.emf.ecore.EGenericType') + ' '
 	else
 		''
 	endif

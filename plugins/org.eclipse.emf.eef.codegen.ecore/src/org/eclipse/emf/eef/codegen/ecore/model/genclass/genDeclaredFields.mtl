@@ -17,9 +17,9 @@
 	 * @ordered
 	 */
       [if (isGWT) ]
-	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient', packageName, className)/]
+	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient')/]
       [/if]
-	protected [genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature', packageName, className)/].Internal.SettingDelegate [genFeature.getUpperName()/]__ESETTING_DELEGATE = (([genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature', packageName, className)/].Internal)[genFeature.getQualifiedFeatureAccessor()/]).getSettingDelegate();
+	protected [genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature')/].Internal.SettingDelegate [genFeature.getUpperName()/]__ESETTING_DELEGATE = (([genModel.getImportedName('org.eclipse.emf.ecore.EStructuralFeature')/].Internal)[genFeature.getQualifiedFeatureAccessor()/]).getSettingDelegate();
 
     [else][if (genFeature.isListType() or genFeature.isReferenceType())]
       [if (genClass.isField(genFeature)) ]
@@ -32,7 +32,7 @@
 	 * @ordered
 	 */
         [if (isGWT) ]
-	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient', packageName, className)/]
+	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient')/]
         [/if]
 	protected [genFeature.getImportedInternalType(genClass)/] [genFeature.getSafeName()/];
 
@@ -90,7 +90,7 @@
 	 * @ordered
 	 */
               [if (isGWT)]
-	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient', packageName, className)/]
+	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient')/]
               [/if]
 	protected int [genClass.getFlagsField(genFeature)/] = 0;
 
@@ -145,7 +145,7 @@
 	 * @ordered
 	 */
           [if (isGWT) ]
-	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient', packageName, className)/]
+	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient')/]
           [/if]
 	protected [genFeature.getImportedType(genClass)/] [genFeature.getSafeName()/][if (genFeature.hasEDefault()) ] = [genFeature.getEDefault()/][/if];
 
@@ -164,7 +164,7 @@
 	 * @ordered
 	 */
             [if (isGWT) ]
-	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient', packageName, className)/]
+	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient')/]
             [/if]
 	protected int [genClass.getESetFlagsField(genFeature)/] = 0;
 
@@ -187,7 +187,7 @@
 	 * @ordered
 	 */
         [if (isGWT) ]
-	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient', packageName, className)/]
+	@[genModel.getImportedName('com.google.gwt.user.client.rpc.GwtTransient')/]
         [/if]
 	protected boolean [genFeature.getUncapName()/]ESet;
 

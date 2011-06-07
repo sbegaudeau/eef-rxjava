@@ -21,7 +21,7 @@
 			case [genClass.getQualifiedFeatureID(genFeature)/]:
     [if (genFeature.isListType() and not genFeature.isUnsettable()) ]
       [if (genFeature.isWrappedFeatureMapType()) ]
-				(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap', packageName, className)/].Internal.Wrapper)[genFeature.getGetAccessor()/]()).featureMap().clear();
+				(([genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMap')/].Internal.Wrapper)[genFeature.getGetAccessor()/]()).featureMap().clear();
       [else]
 				[genFeature.getGetAccessor()/]().clear();
       [/if]

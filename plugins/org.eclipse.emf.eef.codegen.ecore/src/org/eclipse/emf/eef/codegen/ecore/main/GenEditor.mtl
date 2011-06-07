@@ -10,15 +10,29 @@
 [import org::eclipse::emf::eef::codegen::ecore::editor::ModelWizard /]
 [import org::eclipse::emf::eef::codegen::ecore::editor::pluginxml /]
 [import org::eclipse::emf::eef::codegen::ecore::editor::editorIcons /]
+[import org::eclipse::emf::eef::codegen::ecore::services::fileUtil /]
 
 [template public GenAllGenClass(model : GenModel)]
 	[comment @main /]
 	[comment editor generation/]
-	[model.buildproperties()/]
-	[model.manifestmf()/]
+	[if (not model.fileExistsEditor(model.buildpropertiesPath()))]
+		[model.buildproperties()/]
+	[/if]
+
+	[if (not model.fileExistsEditor(model.manifestmfPath()))]
+		[model.manifestmf()/]
+	[/if]
+
 	[model.Plugin()/]
-	[model.pluginproperties()/]
-	[model.pluginxml()/]
+
+	[if (not model.fileExistsEditor(model.pluginpropertiesPath()))]
+		[model.pluginproperties()/]
+	[/if]
+
+	[if (not model.fileExistsEditor(model.pluginxmlPath()))]
+		[model.pluginxml()/]
+	[/if]
+
 	[for (p : GenPackage | model.eAllContents(GenPackage))]
 		[p.ActionBarContributor()/]
 		[p.Editor()/]
