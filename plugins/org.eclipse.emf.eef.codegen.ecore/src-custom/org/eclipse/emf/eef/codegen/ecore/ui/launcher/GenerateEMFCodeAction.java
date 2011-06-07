@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ecore.ui.launcher;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -20,21 +19,13 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.codegen.ecore.Generator;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -42,9 +33,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
-import org.eclipse.emf.eef.codegen.ecore.main.GenEdit;
-import org.eclipse.emf.eef.codegen.ecore.main.GenEditor;
-import org.eclipse.emf.eef.codegen.flow.Step;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -59,15 +47,15 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  */
-public class GenerateEMFCodeAction implements IObjectActionDelegate {
+public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 
 	private LinkedHashSet<IFile> selectedFiles;
 
-	private Shell shell;
+	protected Shell shell;
 
-	private List<GenModel> emfGenModels;
+	protected List<GenModel> emfGenModels;
 
-	private IWorkspace workspace = ResourcesPlugin.getWorkspace();
+	protected IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
 	public GenerateEMFCodeAction() {
 		selectedFiles = new LinkedHashSet<IFile>();
@@ -90,119 +78,7 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 				emfGenModels = initEMFGenModel();
 
 				if (emfGenModels != null) {
-					final Workflow flow = new Workflow("Generate EMF Edit and Editors ", shell);
-					for (final GenModel emfGenModel : emfGenModels) {
-						String s1 = "Generate EMF Edit code for "
-								+ emfGenModel.eResource().getURI().lastSegment();
-						// use this once we can add acceleo inside emf generator
-						// Step emfEditCode = new GenerateEMFEditCode(s,
-						// emfGenModel);
-						// flow.addStep(s, emfEditCode);
-						flow.addStep(s1, new Step("EMF EDIT") {
-
-							@Override
-							public IStatus execute(IProgressMonitor monitor) {
-								// create the edit project
-								IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
-								IProject modelProject = workspace.getRoot().getProject(emfGenModel.getModelProjectDirectory());
-								List<IProject> referencedProjects = new UniqueEList<IProject>();
-								referencedProjects.add(modelProject);
-								if (!workspace.getRoot().exists(editProject.getFullPath())) {
-									Generator.createEMFProject(
-											new Path(emfGenModel.getEditDirectory()),
-											null, referencedProjects,
-											new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
-											Generator.EMF_EDIT_PROJECT_STYLE | Generator.EMF_PLUGIN_PROJECT_STYLE);
-								} else if (!editProject.isAccessible()) {
-									try {
-										editProject.open(monitor);
-									} catch (CoreException e) {
-										return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-												.getMessage(), e);
-									}
-								}
-								// generate using acceleo
-								List<String> args = new ArrayList<String>();
-								File editDirectory = editProject.getLocation().toFile();
-								try {
-									GenEdit generator = new GenEdit(emfGenModel, editDirectory, args);
-									generator.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(
-											monitor, IProgressMonitor.UNKNOWN)));
-								} catch (IOException e) {
-									return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-											.getMessage(), e);
-								}
-								return Status.OK_STATUS;
-							}
-						});
-						String s2 = "Generate EMF Editor code for "
-								+ emfGenModel.eResource().getURI().toString();
-						flow.addStep(s2, new Step("EMF EDITOR") {
-
-							@Override
-							public IStatus execute(IProgressMonitor monitor) {
-								// create the editor project
-								IProject editorProject = extractProject(emfGenModel
-										.getEditorProjectDirectory());
-								List<IProject> referencedProjects = new UniqueEList<IProject>();
-								IProject modelProject = workspace.getRoot().getProject(emfGenModel.getModelProjectDirectory());
-								IProject editProject = workspace.getRoot().getProject(emfGenModel.getEditProjectDirectory());
-								referencedProjects.add(modelProject);
-								referencedProjects.add(editProject);
-								if (!workspace.getRoot().exists(editorProject.getFullPath())) {
-										Generator.createEMFProject(
-												new Path(emfGenModel.getEditorDirectory()),
-												editorProject.getLocation(), referencedProjects,
-												new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
-												Generator.EMF_EDITOR_PROJECT_STYLE | Generator.EMF_PLUGIN_PROJECT_STYLE);
-								} else if (!editorProject.isAccessible()) {
-									try {
-										editorProject.open(monitor);
-									} catch (CoreException e) {
-										return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-												.getMessage(), e);
-									}
-								}
-								// generate using acceleo
-								List<String> args = new ArrayList<String>();
-								File editorDirectory = editorProject.getLocation().toFile();
-								try {
-									GenEditor generator = new GenEditor(emfGenModel, editorDirectory, args);
-									generator.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(
-											monitor, IProgressMonitor.UNKNOWN)));
-								} catch (IOException e) {
-									return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-											.getMessage(), e);
-								}
-								return Status.OK_STATUS;
-							}
-						});
-						String s3 = "Refresh workspace " + emfGenModel.eResource().getURI().toString();
-						flow.addStep(s3, new Step("REFRESH") {
-
-							@Override
-							public IStatus execute(IProgressMonitor monitor) {
-								// refresh edit and editor
-								IProject editorProject = extractProject(emfGenModel
-										.getEditorProjectDirectory());
-								IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
-								try {
-									if (!editProject.isOpen()) {
-										editProject.open(monitor);
-									}
-									if (!editorProject.isOpen()) {
-										editorProject.open(monitor);
-									}
-									editorProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-									editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-								} catch (CoreException e) {
-									return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e
-											.getMessage(), e);
-								}
-								return Status.OK_STATUS;
-							}
-						});
-					}
+					final Workflow flow = initEMFGenFlow();
 					flow.prepare();
 					IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
@@ -227,6 +103,11 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 	}
 
 	/**
+	 * @return the flow to execute in order to generate EMF code.
+	 */
+	protected abstract Workflow initEMFGenFlow();
+	
+	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
@@ -243,6 +124,7 @@ public class GenerateEMFCodeAction implements IObjectActionDelegate {
 	}
 
 	protected List<GenModel> initEMFGenModel() throws IOException {
+		emfGenModels.clear();
 		if (!selectedFiles.isEmpty()) {
 			ResourceSet resourceSet = new ResourceSetImpl();
 			for (IFile selectedFile : selectedFiles) {

@@ -4,15 +4,33 @@
    <extension
          point="org.eclipse.ui.popupMenus">
          <objectContribution
-            id="org.eclipse.emf.eef.codegen.ecore.ui.launcher"
-            nameFilter="*.genmodel"
-            objectClass="org.eclipse.core.resources.IFile">
-         <action
-               class="org.eclipse.emf.eef.codegen.ecore.ui.launcher.GenerateEMFCodeAction"
+               adaptable="true"
+               id="org.eclipse.emf.eef.codegen.ecore.ui.launcher"
+               objectClass="org.eclipse.emf.codegen.ecore.genmodel.GenModel">
+          <menu
+               id="org.eclipse.emf.eef.ui.menu"
+               label="EEF"
+               path="edit">
+             <groupMarker
+                   name="edit-generation">
+             </groupMarker>
+             <groupMarker
+                   name="editor-generation">
+             </groupMarker>
+         </menu>
+          <action
+               class="org.eclipse.emf.eef.codegen.ecore.ui.launcher.GenerateEMFEditCodeAction"
                enablesFor="*"
-               id="org.eclipse.emf.eef.codegen.ecore.ui.generateemfcode"
-               label="Generate EMF Edit and Editor projects"
-               menubarPath="org.eclipse.emf.eef.ui.menu/generation">
+               id="org.eclipse.emf.eef.codegen.ecore.ui.generateemfeditcode"
+               label="Generate Edit Code"
+               menubarPath="org.eclipse.emf.eef.ui.menu/edit-generation">
+         </action>
+         <action
+               class="org.eclipse.emf.eef.codegen.ecore.ui.launcher.GenerateEMFEditorCodeAction"
+               enablesFor="*"
+               id="org.eclipse.emf.eef.codegen.ecore.ui.generateemfeditorcode"
+               label="Generate Editor Code"
+               menubarPath="org.eclipse.emf.eef.ui.menu/editor-generation">
          </action>
       </objectContribution>
    </extension>
