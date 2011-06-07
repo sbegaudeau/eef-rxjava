@@ -17,7 +17,7 @@
     <target name="post.compile.@dot">
         <acceleoCompiler 
             sourceFolder="${target.folder}" 
-            dependencies="${target.folder}/../../org.eclipse.emf.codegen;${target.folder}/../../org.eclipse.emf.codegen.ecore;${target.folder}/../../org.eclipse.emf.eef.codegen;"
+            dependencies="${target.folder}/../../org.eclipse.emf.eef.codegen;"
             binaryResource="true">
         </acceleoCompiler>
     </target>    

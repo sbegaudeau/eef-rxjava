@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.URI;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- * 
  */
 public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 
@@ -51,9 +50,10 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 	 */
 	@Override
 	protected Diagnostic doGenerate(Object object, Object projectType, Monitor monitor) throws Exception {
-		GenModel genmodel = (GenModel) object;
+		GenModel genmodel = (GenModel)object;
 		IFolder folder = null;
-		final Object codeFormatter = createCodeFormatter(null, URI.createPlatformResourceURI(genmodel.getEditDirectory(), true));
+		final Object codeFormatter = createCodeFormatter(null,
+				URI.createPlatformResourceURI(genmodel.getEditDirectory(), true));
 		final IProgressMonitor progressMonitor = BasicMonitor.toIProgressMonitor(monitor);
 		if (projectType == GenBaseGeneratorAdapter.EDIT_PROJECT_TYPE) {
 			for (GenPackage genPack : genmodel.getGenPackages()) {
@@ -61,7 +61,7 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 				folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(path);
 				if (folder != null && folder.isAccessible()) {
 					folder.accept(new ResourceVisitorFormatter(codeFormatter, progressMonitor));
-				}				
+				}
 			}
 		} else if (projectType == GenBaseGeneratorAdapter.EDITOR_PROJECT_TYPE) {
 			for (GenPackage genPack : genmodel.getGenPackages()) {
@@ -69,7 +69,7 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 				folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(path);
 				if (folder != null && folder.isAccessible()) {
 					folder.accept(new ResourceVisitorFormatter(codeFormatter, progressMonitor));
-				}				
+				}
 			}
 		}
 		return Diagnostic.OK_INSTANCE;
@@ -110,6 +110,7 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 	 */
 	private final class ResourceVisitorFormatter implements IResourceVisitor {
 		private final Object codeFormatter;
+
 		private final IProgressMonitor progressMonitor;
 
 		private ResourceVisitorFormatter(Object codeFormatter, IProgressMonitor progressMonitor) {
@@ -119,8 +120,8 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 
 		public boolean visit(IResource resource) throws CoreException {
 			try {
-				if (resource instanceof IFile && ((IFile) resource).getFileExtension().equals(JAVA_EXT_FILE)) {
-					formatFile((IFile) resource, codeFormatter, progressMonitor);
+				if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals(JAVA_EXT_FILE)) {
+					formatFile((IFile)resource, codeFormatter, progressMonitor);
 				}
 				return true;
 			} catch (Exception e) {
@@ -132,9 +133,10 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 		 * @param file
 		 * @param codeFormatter
 		 * @param progressMonitor
-		 * @throws Exception 
+		 * @throws Exception
 		 */
-		private void formatFile(IFile file, Object codeFormatter, IProgressMonitor progressMonitor) throws Exception {
+		private void formatFile(IFile file, Object codeFormatter, IProgressMonitor progressMonitor)
+				throws Exception {
 			URI createPlatformResourceURI = URI.createURI(file.getFullPath().toString(), true);
 			final String contentsStr = getContents(createPlatformResourceURI, null);
 			String formatedContentsStr = formatCode(contentsStr, codeFormatter);

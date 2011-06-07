@@ -10,14 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ecore.ui.launcher;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -25,13 +21,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.jface.action.IAction;
@@ -49,8 +38,6 @@ import org.eclipse.ui.IWorkbenchPart;
  */
 public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 
-	private LinkedHashSet<IFile> selectedFiles;
-
 	protected Shell shell;
 
 	protected List<GenModel> emfGenModels;
@@ -58,7 +45,6 @@ public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 	protected IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
 	public GenerateEMFCodeAction() {
-		selectedFiles = new LinkedHashSet<IFile>();
 		emfGenModels = new ArrayList<GenModel>();
 	}
 
@@ -74,31 +60,24 @@ public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		try {
-			if (selectedFiles != null) {
-				emfGenModels = initEMFGenModel();
+			if (emfGenModels != null) {
+				final Workflow flow = initEMFGenFlow();
+				flow.prepare();
+				IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-				if (emfGenModels != null) {
-					final Workflow flow = initEMFGenFlow();
-					flow.prepare();
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
+					public void run(IProgressMonitor monitor) throws InvocationTargetException,
+							InterruptedException {
+						flow.execute(monitor);
+						monitor.done();
+					}
 
-						public void run(IProgressMonitor monitor) throws InvocationTargetException,
-								InterruptedException {
-							flow.execute(monitor);
-							monitor.done();
-							selectedFiles.clear();
-						}
-
-					};
-					new ProgressMonitorDialog(shell).run(true, true, runnable);
-				}
+				};
+				new ProgressMonitorDialog(shell).run(true, true, runnable);
 			}
 		} catch (InvocationTargetException e) {
 			EMFCodegenPlugin.getDefault().logError(e);
 		} catch (InterruptedException e) {
 			EMFCodegenPlugin.getDefault().logWarning(e);
-		} catch (IOException e) {
-			EMFCodegenPlugin.getDefault().logError(e);
 		}
 	}
 
@@ -106,58 +85,28 @@ public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 	 * @return the flow to execute in order to generate EMF code.
 	 */
 	protected abstract Workflow initEMFGenFlow();
-	
+
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
+		emfGenModels.clear();
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
-			this.selectedFiles.clear();
 			for (Object selectedElement : sSelection.toList()) {
-				if (selectedElement instanceof IFile) {
-					this.selectedFiles.add((IFile)selectedElement);
+				if (selectedElement instanceof GenModel) {
+					emfGenModels.add((GenModel)selectedElement);
 				}
 			}
 
 		}
-	}
-
-	protected List<GenModel> initEMFGenModel() throws IOException {
-		emfGenModels.clear();
-		if (!selectedFiles.isEmpty()) {
-			ResourceSet resourceSet = new ResourceSetImpl();
-			for (IFile selectedFile : selectedFiles) {
-				URI modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
-				String fileExtension = modelURI.fileExtension();
-				if (fileExtension == null || fileExtension.length() == 0) {
-					fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;
-				}
-				final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
-				final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
-				if (resourceFactory != null) {
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-							.put(fileExtension, resourceFactory);
-				} else {
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-							.put(fileExtension, new XMIResourceFactoryImpl());
-				}
-				Resource res = resourceSet.createResource(modelURI);
-				res.load(Collections.EMPTY_MAP);
-				EcoreUtil.resolveAll(resourceSet);
-				if (res.getContents().size() > 0) {
-					EObject object = res.getContents().get(0);
-					if (object instanceof GenModel) {
-						emfGenModels.add((GenModel)object);
-					}
-				}
-			}
-		}
-		return emfGenModels;
 	}
 
 	protected IProject extractProject(String sPath) {
 		IPath path = new Path(sPath);
+		if (path.isEmpty()) {
+			return null;
+		}
 		return workspace.getRoot().getProject(path.segment(0));
 	}
 

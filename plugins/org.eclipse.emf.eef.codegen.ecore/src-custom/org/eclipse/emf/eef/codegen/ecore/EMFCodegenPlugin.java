@@ -84,7 +84,7 @@ public class EMFCodegenPlugin extends AbstractUIPlugin {
 		IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, e.getMessage(), e);
 		getLog().log(status);
 	}
-	
+
 	public void createGIF(byte[] result, Path itemIconFilePath) {
 		OutputStream outputStream;
 		try {
