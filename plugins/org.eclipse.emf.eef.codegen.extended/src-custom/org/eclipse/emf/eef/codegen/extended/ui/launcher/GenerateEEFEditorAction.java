@@ -123,6 +123,7 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#inutEEFGenModel()
 	 */
 	protected List<EEFGenModel> initEEFGenModel() throws IOException {
+		eefGenModels.clear();
 		if (!selectedFiles.isEmpty()) {
 			ResourceSet resourceSet = new ResourceSetImpl();
 			for (IFile selectedFile : selectedFiles) {
