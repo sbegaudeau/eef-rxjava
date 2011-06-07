@@ -64,27 +64,19 @@ public class GenModelWrapper {
 	}
 
 	/**
-	 * Initialise l'importManager utilisé par EMF pour générer les noms des classes, variables, etc en gérant
-	 * les imports.
-	 * 
-	 * @param genClass
-	 * @param extendedGenClass
-	 * @return
+	 * Initializing EMF importManager.
 	 */
-	public String initializeImportManager(GenModel genModel, String packageName, String className) {
+	public void initializeImportManager(GenModel genModel, String packageName, String className) {
 		ImportManager importManager = new ImportManager(packageName, className);
 		genModel.setImportManager(importManager);
-		return "";
 	}
 
-	public String addImport(GenModel genModel, String qualifiedName) {
+	public void addImport(GenModel genModel, String qualifiedName) {
 		genModel.addImport(qualifiedName);
-		return "";
 	}
 
-	public String addPseudoImport(GenModel genModel, String qualifiedName) {
+	public void addPseudoImport(GenModel genModel, String qualifiedName) {
 		genModel.addPseudoImport(qualifiedName);
-		return "";
 	}
 
 	/**

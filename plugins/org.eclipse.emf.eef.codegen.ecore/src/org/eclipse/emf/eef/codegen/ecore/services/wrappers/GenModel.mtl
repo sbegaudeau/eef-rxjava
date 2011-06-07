@@ -661,10 +661,10 @@
 [query public getLocale(genModel : GenModel) : OclAny
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl', 'getLocale()', Sequence{genModel}) /]
 
-[query public addImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : String
+[query public addImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : OclVoid
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
 
-[query public addPseudoImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : String
+[query public addPseudoImport(genModel : GenModel, qualifiedName : String, packageName : String, className : String) : OclVoid
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'addPseudoImport(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String)', Sequence{genModel, qualifiedName}) /]
 
 [query public isJDK50(genModel : GenModel) : Boolean
@@ -690,7 +690,7 @@
 	@param packageName Qualified package name of the class being generated.
 	@param className Name of the class being generated.
 /]
-[query public initializeImportManager(genModel : GenModel, packageName : String, className : String) : String
+[query public initializeImportManager(genModel : GenModel, packageName : String, className : String) : OclVoid
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'initializeImportManager(org.eclipse.emf.codegen.ecore.genmodel.GenModel, java.lang.String, java.lang.String)', Sequence{genModel, packageName, className}) /]
 
 [query public toStringLiteral(genModel : GenModel, literal : String) : String

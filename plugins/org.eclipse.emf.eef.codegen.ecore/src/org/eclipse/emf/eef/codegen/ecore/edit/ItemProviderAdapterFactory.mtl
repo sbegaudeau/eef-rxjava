@@ -1,5 +1,4 @@
-[comment encoding = UTF-8 /]
-[comment
+[comment encoding = UTF-8
 /**
  * <copyright>
  *
@@ -35,19 +34,19 @@
 [includeHeader()/]
 package [packageName/];
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.edit.provider.ChangeNotifier;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.IChangeNotifier;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.INotifyChangedListener;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+[genModel.addImport('org.eclipse.emf.common.notify.Adapter', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.common.notify.Notification', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.common.notify.Notifier', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.ChangeNotifier', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.ComposeableAdapterFactory', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.ComposedAdapterFactory', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IChangeNotifier', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IEditingDomainItemProvider', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IItemLabelProvider', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IItemPropertySource', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.INotifyChangedListener', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IStructuredItemContentProvider', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.ITreeItemContentProvider', packageName, className)/]
 
 [let content : String = genModel.fileContent(genPackage, packageName, className)]
 [genModel.genSortedImports(packageName, className)/]
@@ -67,7 +66,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [genPackage.getImportedAdapterFactoryClassName()/] implements ComposeableAdapterFactory, IChangeNotifier[if (genPackage.isDisposableProviderFactory())], org.eclipse.emf.edit.provider.IDisposable[/if][if (genPackage.isExtensibleProviderFactory())], org.eclipse.emf.edit.provider.IChildCreationExtender[/if]
+public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [genPackage.getImportedAdapterFactoryClassName()/] implements ComposeableAdapterFactory, IChangeNotifier[if (genPackage.isDisposableProviderFactory())], [genModel.getImportedName('org.eclipse.emf.edit.provider.IDisposable', packageName, className)/][/if][if (genPackage.isExtensibleProviderFactory())], [genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender', packageName, className)/][/if]
 {
 [if (genModel.hasCopyrightField())]
 	/**
@@ -101,7 +100,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected org.eclipse.emf.edit.provider.Disposable disposable = new Disposable();
+	protected [genModel.getImportedName('org.eclipse.emf.edit.provider.Disposable', packageName, className)/] disposable = new Disposable();
 
 [/if]
 [if (genPackage.isExtensibleProviderFactory())]
@@ -111,7 +110,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected org.eclipse.emf.edit.provider.ChildCreationExtenderManager childCreationExtenderManager = new org.eclipse.emf.edit.provider.ChildCreationExtenderManager([genPackage.getImportedEditPluginClassName()/].INSTANCE, [genPackage.getImportedPackageInterfaceName()/]eNS_URI);
+	protected [genModel.getImportedName('org.eclipse.emf.edit.provider.ChildCreationExtenderManager', packageName, className)/] childCreationExtenderManager = new [genModel.getImportedName('org.eclipse.emf.edit.provider.ChildCreationExtenderManager', packageName, className)/]([genPackage.getImportedEditPluginClassName()/].INSTANCE, [genPackage.getImportedPackageInterfaceName()/].eNS_URI);
 
 [/if]
 	/**
@@ -120,7 +119,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [_Collection(genPackage)/] supportedTypes = new [_ArrayList(genPackage)/]();
+	protected [_Collection(genPackage, packageName, className)/] supportedTypes = new [_ArrayList(genPackage, packageName, className)/]();
 
 	/**
 	 * This constructs an instance.
@@ -154,10 +153,10 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	{
 		if ([genPackage.getUncapAdapterFactoryDelegateName(genDelegate)/] == null)
 		{
-			org.eclipse.emf.common.notify.AdapterFactory rootAdapterFactory = getRootAdapterFactory();
+			[genModel.getImportedName('org.eclipse.emf.common.notify.AdapterFactory', packageName, className)/] rootAdapterFactory = getRootAdapterFactory();
 			if (rootAdapterFactory instanceof ComposedAdapterFactory)
 			{
-				org.eclipse.emf.common.notify.AdapterFactory delegateAdapterFactory =
+				[genModel.getImportedName('org.eclipse.emf.common.notify.AdapterFactory', packageName, className)/] delegateAdapterFactory =
 					((ComposedAdapterFactory)rootAdapterFactory).getFactoryForType([genDelegate.getImportedAdapterFactoryClassName()/].getPackage());
 				if (delegateAdapterFactory instanceof [genDelegate.getImportedAdapterFactoryClassName()/])
 				{
@@ -295,7 +294,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class[if (genModel.useGenerics())]<?>[/if]) || [if (genModel.runtimePlatform = GenRuntimePlatform::GWT)]org.eclipse.emf.common.util.Reflect.isInstance((Class[if (genModel.useGenerics())]<?>[/if])type, adapter)[else](((Class[if (genModel.useGenerics())]<?>[/if])type).isInstance(adapter))[/if])
+			if (!(type instanceof Class[if (genModel.useGenerics())]<?>[/if]) || [if (genModel.runtimePlatform = GenRuntimePlatform::GWT)][genModel.getImportedName('org.eclipse.emf.common.util.Reflect', packageName, className)/].isInstance((Class[if (genModel.useGenerics())]<?>[/if])type, adapter)[else](((Class[if (genModel.useGenerics())]<?>[/if])type).isInstance(adapter))[/if])
 			{
 				return adapter;
 			}
@@ -330,7 +329,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public [if useGenerics(genPackage)]java.util.List<org.eclipse.emf.edit.provider.IChildCreationExtender>[else]java.util.List[/if] getChildCreationExtenders()
+	public [if useGenerics(genPackage)][genModel.getImportedName('java.util.List', packageName, className)/]<[genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender', packageName, className)/]>[else][genModel.getImportedName('java.util.List', packageName, className)/][/if] getChildCreationExtenders()
 	{
 		return childCreationExtenderManager.getChildCreationExtenders();
 	}
@@ -340,7 +339,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public [if useGenerics(genPackage)]java.util.Collection<?>[else]java.util.Collection[/if] getNewChildDescriptors(Object object, org.eclipse.emf.edit.domain.EditingDomain editingDomain)
+	public [if useGenerics(genPackage)][genModel.getImportedName('java.util.Collection', packageName, className)/]<?>[else][genModel.getImportedName('java.util.Collection', packageName, className)/][/if] getNewChildDescriptors(Object object, [genModel.getImportedName('org.eclipse.emf.edit.domain.EditingDomain', packageName, className)/] editingDomain)
 	{
 		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
 	}
@@ -350,7 +349,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.eclipse.emf.common.util.ResourceLocator getResourceLocator()
+	public [genModel.getImportedName('org.eclipse.emf.common.util.ResourceLocator', packageName, className)/] getResourceLocator()
 	{
 		return childCreationExtenderManager;
 	}
@@ -426,7 +425,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class [genPackage.getChildCreationExtenderName(key)/] implements org.eclipse.emf.edit.provider.IChildCreationExtender
+	public static class [genPackage.getChildCreationExtenderName(key)/] implements [genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender', packageName, className)/]
 	{
 		/**
 		 * The switch for creating child descriptors specific to each extended class.
@@ -434,7 +433,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected static class CreationSwitch extends packageEntry.getKey().getQualifiedSwitchClassName())[if useGenerics(genPackage)]<Object>[/if]
+		protected static class CreationSwitch extends [genModel.getImportedName(key.getQualifiedSwitchClassName(), packageName, className)/][if useGenerics(genPackage)]<Object>[/if]
 		{
 			/**
 			 * The child descriptors being populated.
@@ -442,7 +441,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected java.util.List[if useGenerics(genPackage)]<Object>[/if] newChildDescriptors;
+			protected [genModel.getImportedName('java.util.List', packageName, className)/][if useGenerics(genPackage)]<Object>[/if] newChildDescriptors;
 
 			/**
 			 * The domain in which to create the children.
@@ -450,7 +449,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected org.eclipse.emf.edit.domain.EditingDomain editingDomain;
+			protected [genModel.getImportedName('org.eclipse.emf.edit.domain.EditingDomain', packageName, className)/] editingDomain;
 
 			/**
 			 * Creates the a switch for populating child descriptors in the given domain.
@@ -458,7 +457,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			CreationSwitch(java.util.List[if useGenerics(genPackage)]<Object>[/if] newChildDescriptors, org.eclipse.emf.edit.domain.EditingDomain editingDomain) 
+			CreationSwitch([genModel.getImportedName('java.util.List', packageName, className)/][if useGenerics(genPackage)]<Object>[/if] newChildDescriptors, [genModel.getImportedName('org.eclipse.emf.edit.domain.EditingDomain', packageName, className)/] editingDomain) 
 			{
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
@@ -477,7 +476,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 			public [genClass.getTypeParameters()/]Object case[genPackage.getClassUniqueName(genClass)/]([genClass.getImportedInterfaceName()/][genClass.getInterfaceTypeArguments()/] object)
 			{
 [comment <%for (GenClass.ChildCreationData childCreationData : classEntry.getValue()) { GenFeature createFeature = childCreationData.createFeature; GenFeature delegatedFeature = childCreationData.delegatedFeature; GenClassifier createClassifier = childCreationData.createClassifier;%>/]
-     [for (genClass.getChildCreationData())]
+     [for (getClassEntryChildCreationData())]
       [if (getChildCreationDataCreateFeature().isFeatureMapType())]
         [if (getChildCreationDataDelegatedFeature().isReferenceType())]
 [comment]<%@ include file="ItemProvider/newChildDescriptorsReferenceDelegatedFeature.override.javajetinc" fail="alternative"%>
@@ -485,7 +484,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 				newChildDescriptors.add
 					(createChildParameter
 						([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
-						 org.eclipse.emf.ecore.util.FeatureMapUtil.createEntry
+						 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil', packageName, className)/].createEntry
 							([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataCreateClassifier().oclAsType(GenClass).isMapEntry())]
 							 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/]))));
@@ -500,7 +499,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 				newChildDescriptors.add
 					(createChildParameter
 						([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
-						 org.eclipse.emf.ecore.util.FeatureMapUtil.createEntry
+						 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil', packageName, className)/].createEntry
 							([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataDelegatedFeature().isEnumBasedType())]
 							 [getChildCreationDataDelegatedFeature().getTypeGenEnum().getStaticValue(getChildCreationDataDelegatedFeature().getEcoreFeature().defaultValueLiteral)/])));
@@ -553,9 +552,9 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 			 * <!-- end-user-doc -->
 			 * @generated
 			 */
-			protected org.eclipse.emf.edit.command.CommandParameter createChildParameter(Object feature, Object child)
+			protected [genModel.getImportedName('org.eclipse.emf.edit.command.CommandParameter', packageName, className)/] createChildParameter(Object feature, Object child)
 			{
-				return new org.eclipse.emf.edit.command.CommandParameter(null, feature, child);
+				return new [genModel.getImportedName('org.eclipse.emf.edit.command.CommandParameter', packageName, className)/](null, feature, child);
 			}
 
 		}
@@ -565,10 +564,10 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public [_Collection(genPackage)/] getNewChildDescriptors(Object object, org.eclipse.emf.edit.domain.EditingDomain editingDomain)
+		public [_Collection(genPackage, packageName, className)/] getNewChildDescriptors(Object object, [genModel.getImportedName('org.eclipse.emf.edit.domain.EditingDomain', packageName, className)/] editingDomain)
 		{
-			[_ArrayList(genPackage)/] result = new [_ArrayList(genPackage)/]();
-		   new CreationSwitch(result, editingDomain).doSwitch((org.eclipse.emf.ecore.EObject)object);
+			[_ArrayList(genPackage, packageName, className)/] result = new [_ArrayList(genPackage, packageName, className)/]();
+		   new CreationSwitch(result, editingDomain).doSwitch(([genModel.getImportedName('org.eclipse.emf.ecore.EObject', packageName, className)/])object);
 		   return result;
 		}
 
@@ -577,7 +576,7 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public org.eclipse.emf.common.util.ResourceLocator getResourceLocator()
+		public [genModel.getImportedName('org.eclipse.emf.common.util.ResourceLocator', packageName, className)/] getResourceLocator()
 		{
 			return [genPackage.getImportedEditPluginClassName()/].INSTANCE;
 		}
@@ -591,6 +590,10 @@ public class [genPackage.getItemProviderAdapterFactoryClassName()/] extends [gen
 
 [query public useGenerics(genPackage : GenPackage) : Boolean = genModel.useGenerics()/]
 
-[query public _ArrayList(genPackage : GenPackage) : String = if genPackage.useGenerics() then 'java.util.ArrayList<java.lang.Object>' else 'java.util.ArrayList' endif/]
+[template public _ArrayList (genPackage : GenPackage, packageName : String, className : String)]
+[genPackage.genModel.getImportedName('java.util.ArrayList', packageName, className)/][if genPackage.useGenerics()]<[genPackage.genModel.getImportedName('java.lang.Object', packageName, className)/]>[/if]
+[/template]
 
-[query public _Collection(genPackage : GenPackage) : String = if genPackage.useGenerics() then 'java.util.Collection<java.lang.Object>' else 'java.util.Collection' endif/]
+[template public _Collection (genPackage : GenPackage, packageName : String, className : String)]
+[genPackage.genModel.getImportedName('java.util.Collection', packageName, className)/][if genPackage.useGenerics()]<[genPackage.genModel.getImportedName('java.lang.Object', packageName, className)/]>[/if]
+[/template]

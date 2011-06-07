@@ -39,7 +39,29 @@ public class GenPackageWrapper {
 				.getValue();
 		return map.entrySet();
 	}
+	
+	
+	public List<?> getClassEntryChildCreationData(Object classEntry) {
+		if (classEntry instanceof Map.Entry<?, ?>){
+			return (List<?>)((Map.Entry)classEntry).getValue();
+		}
+		return null;
+	}
+	
 
+	public GenPackage getPackageEntryKey(Object packageEntry) {
+		if (packageEntry instanceof Map.Entry<?, ?>) {
+			return (GenPackage)((Map.Entry)packageEntry).getKey();
+		}
+		return null;
+	}
+
+	public GenClass getClassEntryKey(Object classEntry) {
+		if (classEntry instanceof Map.Entry<?, ?>) {
+			return (GenClass)((Map.Entry)classEntry).getKey();
+		}
+		return null;
+	}
 	/**
 	 * used to wrap icon creation.
 	 * 

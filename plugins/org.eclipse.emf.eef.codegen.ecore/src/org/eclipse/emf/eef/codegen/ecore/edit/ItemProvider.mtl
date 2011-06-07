@@ -1,5 +1,4 @@
-[comment encoding = UTF-8 /]
-[comment
+[comment encoding = UTF-8
 /**
  * <copyright>
  *
@@ -35,13 +34,13 @@
 [includeHeader()/]
 package [packageName/];
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+[genModel.addImport('org.eclipse.emf.common.notify.AdapterFactory', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.common.notify.Notification', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IEditingDomainItemProvider', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IItemLabelProvider', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IItemPropertySource', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.IStructuredItemContentProvider', packageName, className)/]
+[genModel.addImport('org.eclipse.emf.edit.provider.ITreeItemContentProvider', packageName, className)/]
 
 [let content : String = genModel.fileContent(genPackage, genClass, packageName, className)]
 [genModel.genSortedImports(packageName, className)/]
@@ -60,7 +59,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  */
 public class [className/]
 	extends [if (not genClass.getProviderBaseClassName().oclIsUndefined())][genClass.getProviderBaseClassName()/][else][genModel.getImportedName('org.eclipse.emf.edit.provider.ItemProviderAdapter',packageName, className)/][/if]
-	implements [if (genPackage.getProviderSupportedTypes()->size() > 0)][genPackage.getProviderSupportedTypes()->sep(', ')/][/if]
+	implements [for (string : String | genPackage.getProviderSupportedTypes()) separator (', ')][genModel.getImportedName(string, packageName, className)/][/for]
 {
 [if (genModel.hasCopyrightField())]
 	/**
@@ -68,7 +67,7 @@ public class [className/]
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final [genModel.getImportedName('java.lang.String',packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String', packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
 	/**
@@ -91,7 +90,7 @@ public class [className/]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
 [/if]
-	public [genModel._List()/] getPropertyDescriptors(Object object)
+	public [genModel._List(packageName, className)/] getPropertyDescriptors(Object object)
 	{
 		if (itemPropertyDescriptors == null)
 		{
@@ -277,7 +276,7 @@ public class [className/]
   [else]
     [if (labelFeature.isStringType() and not labelFeature.genClass.dynamic and not labelFeature.isSuppressedGetVisibility())]
       [if (labelFeature.propertyMultiLine)]
-		String label = crop(([genClass.getImportedInterfaceName()/][genClass.getInterfaceWildTypeArguments()/])object).[labelFeature.getGetAccessor()/]());
+		String label = crop((([genClass.getImportedInterfaceName()/][genClass.getInterfaceWildTypeArguments()/])object).[labelFeature.getGetAccessor()/]());
       [else]
 		String label = (([genClass.getImportedInterfaceName()/][genClass.getInterfaceWildTypeArguments()/])object).[labelFeature.getGetAccessor()/]();
       [/if]
@@ -492,8 +491,9 @@ public class [className/]
 
 [/template]
 
-[query public _List(genModel : GenModel) : String = if genModel.useGenerics().oclIsUndefined() then 'java.util.List' else 'java.util.List<org.eclipse.emf.edit.provider.IItemPropertyDescriptor>' endif/]
-
+[template public _List (genModel : GenModel, packageName : String, className : String)]
+[genModel.getImportedName('java.util.List', packageName, className)/][if genModel.useGenerics()]<[genModel.getImportedName('org.eclipse.emf.edit.provider.IItemPropertyDescriptor', packageName, className)/]>[/if]
+[/template]
 [template private declareFilterFlag(filterFlag : EString)]
       [if (not filterFlag.oclIsUndefined() and filterFlag.size() > 0)]
 					"[filterFlag/]"

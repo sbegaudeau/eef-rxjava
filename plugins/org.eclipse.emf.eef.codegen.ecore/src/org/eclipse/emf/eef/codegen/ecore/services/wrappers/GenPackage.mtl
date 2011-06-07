@@ -570,13 +570,16 @@
 [query public isLiteralsInterface(genPackage : GenPackage) : Boolean = genPackage.literalsInterface/]
 
 [query public getExtendedChildCreationDataEntrySet(genPackage : GenPackage) : Set(OclAny)
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl)', Sequence{genPackage}) /]
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
 
 [query public getPackageEntryKey(oclAny : OclAny) : GenPackage
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getPackageEntryKey(java.lang.Object)', Sequence{oclAny}) /]
 
 [query public getPackageEntryValueEntrySet(oclAny : OclAny) : Set(OclAny)
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getPackageEntryValueEntrySet(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getClassEntryChildCreationData(oclAny : OclAny) : Set(OclAny)
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getClassEntryChildCreationData(java.lang.Object)', Sequence{oclAny}) /]
 
 [query public getClassEntryKey(oclAny : OclAny) : GenClass
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getClassEntryKey(java.lang.Object)', Sequence{oclAny}) /]
