@@ -122,7 +122,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 [for (pee : PropertiesEditionElement | pec.involvedEditionElementsInView(view).oclAsType(PropertiesEditionElement)->select(views->select(representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty()))]
 import [pee.model.eType.qualifiedName(basePackage)/];
 [/for]
-[for (vr : ViewsRepository | pec.involvedViews().oclAsType(views::View).owningViewsRepository()->asSet())]
+[for (vr : ViewsRepository | pec.involvedViews().owningViewsRepository()->asSet())]
 import [vr.vrQualifiedClass()/];
 [/for]
 import org.eclipse.jface.dialogs.IMessageProvider;
