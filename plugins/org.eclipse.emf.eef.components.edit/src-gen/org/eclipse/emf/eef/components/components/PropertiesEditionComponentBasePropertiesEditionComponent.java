@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.components.components;
 
 // Start of user code for imports
@@ -93,21 +94,26 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			final PropertiesEditionComponent propertiesEditionComponent = (PropertiesEditionComponent)elt;
 			final PropertiesEditionComponentPropertiesEditionPart basePart = (PropertiesEditionComponentPropertiesEditionPart)editingPart;
 			// init values
-			if (propertiesEditionComponent.getName() != null)
+			if (propertiesEditionComponent.getName() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), propertiesEditionComponent.getName()));
 			
-			viewsSettings = new ReferencesTableSettings(propertiesEditionComponent, MappingPackage.eINSTANCE.getAbstractElementBinding_Views());
-			basePart.initViews(viewsSettings);
-			// init part
-			modelSettings = new EObjectFlatComboSettings(propertiesEditionComponent, MappingPackage.eINSTANCE.getEMFElementBinding_Model());
-			basePart.initModel(modelSettings);
-			// set the button mode
-			basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
-			if (propertiesEditionComponent.getHelpID() != null)
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views)) {
+				viewsSettings = new ReferencesTableSettings(propertiesEditionComponent, MappingPackage.eINSTANCE.getAbstractElementBinding_Views());
+				basePart.initViews(viewsSettings);
+			}
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model)) {
+				// init part
+				modelSettings = new EObjectFlatComboSettings(propertiesEditionComponent, MappingPackage.eINSTANCE.getEMFElementBinding_Model());
+				basePart.initModel(modelSettings);
+				// set the button mode
+				basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
+			}
+			if (propertiesEditionComponent.getHelpID() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID))
 				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), propertiesEditionComponent.getHelpID()));
 			
-			basePart.setExplicit(propertiesEditionComponent.isExplicit());
-			
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit)) {
+				basePart.setExplicit(propertiesEditionComponent.isExplicit());
+			}
 			// init filters
 			
 			basePart.addFilterToViews(new ViewerFilter() {
@@ -173,7 +179,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			propertiesEditionComponent.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 		if (ComponentsViewsRepository.PropertiesEditionComponent.Binding.views == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof View) {
 					viewsSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -182,9 +188,9 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesEditionComponent.Binding.model == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				modelSettings.setToReference((EClassifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -210,25 +216,25 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			PropertiesEditionComponentPropertiesEditionPart basePart = (PropertiesEditionComponentPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null){
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature()))
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Views().equals(msg.getFeature())  && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views))
 				basePart.updateViews();
-			if (MappingPackage.eINSTANCE.getEMFElementBinding_Model().equals(msg.getFeature()) && basePart != null)
+			if (MappingPackage.eINSTANCE.getEMFElementBinding_Model().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model))
 				basePart.setModel((EObject)msg.getNewValue());
-			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null){
+			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID)) {
 				if (msg.getNewValue() != null) {
 					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					basePart.setHelpID("");
 				}
 			}
-			if (ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().equals(msg.getFeature()) && basePart != null)
+			if (ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit))
 				basePart.setExplicit((Boolean)msg.getNewValue());
 			
 			

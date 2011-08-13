@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.components.components;
 
 // Start of user code for imports
@@ -78,11 +79,13 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 			final PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)elt;
 			final PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
 			// init values
-			// init part
-			modelSettings = new EObjectFlatComboSettings(propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model());
-			basePart.initModel(modelSettings);
-			// set the button mode
-			basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionContext.Binding.model)) {
+				// init part
+				modelSettings = new EObjectFlatComboSettings(propertiesEditionContext, ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model());
+				basePart.initModel(modelSettings);
+				// set the button mode
+				basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
+			}
 			// init filters
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -119,9 +122,9 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)semanticObject;
 		if (ComponentsViewsRepository.PropertiesEditionContext.Binding.model == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				modelSettings.setToReference((GenPackage)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				GenPackage eObject = GenModelFactory.eINSTANCE.createGenPackage();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -143,7 +146,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
-			if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null)
+			if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionContext.Binding.model))
 				basePart.setModel((EObject)msg.getNewValue());
 			
 		}

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
@@ -30,6 +31,7 @@ import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -114,7 +116,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence propertiesEditionComponentStep = new CompositionSequence();
+		CompositionSequence propertiesEditionComponentStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = propertiesEditionComponentStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.class);
 		propertiesStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name);
 		propertiesStep.addStep(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID);
