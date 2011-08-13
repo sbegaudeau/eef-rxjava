@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ *  Copyright (c) 2008 - 2010 Obeo.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *  
+ *  Contributors:
+ *      Obeo - initial API and implementation
  *
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -41,6 +43,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
 	
 	/**
 	 * Default constructor
@@ -67,7 +70,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 			final JavaExpressionFilter javaExpressionFilter = (JavaExpressionFilter)elt;
 			final JavaExpressionFilterPropertiesEditionPart basePart = (JavaExpressionFilterPropertiesEditionPart)editingPart;
 			// init values
-			if (javaExpressionFilter.getJavaBody() != null)
+			if (javaExpressionFilter.getJavaBody() != null && isAccessible(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody))
 				basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), javaExpressionFilter.getJavaBody()));
 			// init filters
 			
@@ -89,6 +92,17 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody) {
+			return FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -106,7 +120,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {	
 			JavaExpressionFilterPropertiesEditionPart basePart = (JavaExpressionFilterPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().equals(msg.getFeature()) && basePart != null){
+			if (FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody)){
 				if (msg.getNewValue() != null) {
 					basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
