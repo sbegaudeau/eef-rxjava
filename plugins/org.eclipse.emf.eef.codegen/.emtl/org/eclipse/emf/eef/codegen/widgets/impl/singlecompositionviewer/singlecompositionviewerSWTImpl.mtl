@@ -1,0 +1,102 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module singlecompositionviewerSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetSWTImpl/]
+
+[import common /]
+[import naming /]
+[import viewCommon /]
+[comment I don't see a better way to get specific swt services for the moment /]
+[import widgetSWTImpl /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'SingleCompositionViewer')]
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.SingleCompositionViewer;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.ui.forms.widgets.ScrolledForm;
+[for (pee : PropertiesEditionElement | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name->includes('ReferencesTable')).involvedPropertiesEditionElement())]
+import [pee.model.eType.qualifiedName(basePackage)/];
+[/for]
+[/template]
+
+[template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'SingleCompositionViewer')]
+	protected SingleCompositionViewer<? extends EObject> [editor.name.toJavaIdentifier()/];
+[/template]
+
+[template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'SingleCompositionViewer')]
+create[editor.name.toJavaClassifier()/]SingleCompositionViewer(parent);
+[/template]
+
+[template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'SingleCompositionViewer')]
+	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
+	protected Composite create[editor.name.toJavaClassifier()/]SingleCompositionViewer(Composite parent) {
+		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
+		this.[editor.name.toJavaIdentifier()/] = new SingleCompositionViewer<EObject>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], parent, SWT.NONE, null, [editor.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		this.[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		[if (editor.readOnly)]
+			[editor.name.toJavaIdentifier()/].setEnabled(false);
+		[else]
+			this.[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
+
+				/**
+				 * {@inheritDoc}
+				 * 
+				 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+				 */
+				public void selectionChanged(SelectionChangedEvent event) {
+					if (propertiesEditionComponent != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.viewPackageGetter()/]()));
+						[editor.name.toJavaIdentifier()/].update([editor.viewPackageGetter()/]());
+						ScrolledComposite scrolledComposite = (ScrolledComposite)view.getParent().getParent();
+						Composite c = (Composite) view.getParent();
+						Rectangle clientArea = scrolledComposite.getClientArea();
+
+						Point newSize = scrolledComposite.computeSize(FormUtil.getWidthHint(
+								clientArea.width, c), FormUtil.getHeightHint(clientArea.height,
+								c));
+						scrolledComposite.setMinSize(newSize);
+					}
+				}
+			});
+
+			this.[editor.name.toJavaIdentifier()/].addCheckBoxSelectionListener(new SelectionListener() {
+
+				public void widgetSelected(SelectionEvent e) {
+					if(![editor.name.toJavaIdentifier()/].getCheckBoxSelection()) {
+						if (propertiesEditionComponent != null) {
+							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, null));
+							[editor.name.toJavaIdentifier()/].update(null);
+						}
+					}
+				}
+
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+			});
+		[/if]
+		return parent;
+	}
+[/template]
+
