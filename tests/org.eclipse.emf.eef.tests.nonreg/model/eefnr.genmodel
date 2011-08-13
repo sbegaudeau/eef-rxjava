@@ -186,6 +186,14 @@
       <genClasses ecoreClass="eefnr.ecore#//navigation/Element">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/Element/visible"/>
       </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/AttributeNavigationSample">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/AttributeNavigationSample/singleValuedAttributeDelegate"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/AttributeNavigationSample/multiValuedAttributeDelegate"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/AttributeDelegate">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/AttributeDelegate/delegate1"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/AttributeDelegate/delegate2"/>
+      </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Filters" basePackage="org.eclipse.emf.eef.eefnr" disposableProviderFactory="true"
         ecorePackage="eefnr.ecore#//filters">
@@ -200,6 +208,10 @@
       </genClasses>
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample1"/>
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample2"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="CustomNaming" basePackage="org.eclipse.emf.eef.eefnr"
+        disposableProviderFactory="true" ecorePackage="eefnr.ecore#//naming">
+      <genClasses ecoreClass="eefnr.ecore#//naming/Event"/>
     </nestedGenPackages>
   </genPackages>
   <genPackages prefix="Eefnrext" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
