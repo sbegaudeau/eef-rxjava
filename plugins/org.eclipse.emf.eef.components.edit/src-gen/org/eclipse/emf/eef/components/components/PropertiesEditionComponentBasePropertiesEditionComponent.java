@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -68,6 +69,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 	 * Settings for model EObjectFlatComboViewer
 	 */
 	private	EObjectFlatComboSettings modelSettings;
+	
 	
 	/**
 	 * Default constructor
@@ -170,6 +172,29 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionComponent.Properties.name) {
+			return MappingPackage.eINSTANCE.getAbstractElementBinding_Name();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionComponent.Binding.views) {
+			return MappingPackage.eINSTANCE.getAbstractElementBinding_Views();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionComponent.Binding.model) {
+			return MappingPackage.eINSTANCE.getEMFElementBinding_Model();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID) {
+			return ComponentsPackage.eINSTANCE.getEEFElement_HelpID();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit) {
+			return ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -184,7 +209,9 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 					viewsSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					viewsSettings.removeFromReference((EObject) event.getNewValue());
+				viewsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				viewsSettings.move(event.getNewIndex(), (View) event.getNewValue());
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesEditionComponent.Binding.model == event.getAffectedEditor()) {

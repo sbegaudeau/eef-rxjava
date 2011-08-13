@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
@@ -53,6 +54,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * Settings for model EObjectFlatComboViewer
 	 */
 	private	EObjectFlatComboSettings modelSettings;
+	
 	
 	/**
 	 * Default constructor
@@ -113,6 +115,17 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionContext.Binding.model) {
+			return ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
 	/**
 	 * {@inheritDoc}

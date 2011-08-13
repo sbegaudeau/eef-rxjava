@@ -72,6 +72,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	 */
 	private	EObjectFlatComboSettings modelSettings;
 	
+	
 	/**
 	 * Default constructor
 	 * 
@@ -185,6 +186,26 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionElement.Properties.name) {
+			return MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionElement.Binding.views) {
+			return MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionElement.Binding.model) {
+			return MappingPackage.eINSTANCE.getEMFPropertyBinding_Model();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID) {
+			return ComponentsPackage.eINSTANCE.getEEFElement_HelpID();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -199,7 +220,9 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 					viewsSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					viewsSettings.removeFromReference((EObject) event.getNewValue());
+				viewsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				viewsSettings.move(event.getNewIndex(), (ElementEditor) event.getNewValue());
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesEditionElement.Binding.model == event.getAffectedEditor()) {

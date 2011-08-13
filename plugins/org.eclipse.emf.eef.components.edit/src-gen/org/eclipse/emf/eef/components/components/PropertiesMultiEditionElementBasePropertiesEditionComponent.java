@@ -64,6 +64,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 */
 	private	ReferencesTableSettings modelSettings;
 	
+	
 	/**
 	 * Default constructor
 	 * 
@@ -160,6 +161,26 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name) {
+			return MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views) {
+			return MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model) {
+			return MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model();
+		}
+		if (editorKey == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID) {
+			return ComponentsPackage.eINSTANCE.getEEFElement_HelpID();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -174,7 +195,9 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 					viewsSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					viewsSettings.removeFromReference((EObject) event.getNewValue());
+				viewsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				viewsSettings.move(event.getNewIndex(), (ElementEditor) event.getNewValue());
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model == event.getAffectedEditor()) {
@@ -183,7 +206,9 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 					modelSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					modelSettings.removeFromReference((EObject) event.getNewValue());
+				modelSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				modelSettings.move(event.getNewIndex(), (EStructuralFeature) event.getNewValue());
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID == event.getAffectedEditor()) {
