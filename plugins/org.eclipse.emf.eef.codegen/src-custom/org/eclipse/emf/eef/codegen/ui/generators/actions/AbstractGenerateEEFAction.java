@@ -155,7 +155,6 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		this.selectedFiles.clear();
-		eefGenModels.clear();
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
 			for (Object selectedElement : sSelection.toList()) {
