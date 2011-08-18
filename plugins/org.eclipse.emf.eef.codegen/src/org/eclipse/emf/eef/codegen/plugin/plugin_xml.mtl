@@ -44,7 +44,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="[editionContext.contributorID(basePackage).trim()/]">
+            contributorId="[editionContext.contributorID(basePackage).trim()/]"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -85,7 +86,7 @@
 [for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.explicit)]
 [for (view : View | pec.involvedViews()->asOrderedSet())]
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="[view.pepFormQualifiedClass()/]"
                id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
                tab="[view.viewKey(pec).toASCII()/]">
              <input

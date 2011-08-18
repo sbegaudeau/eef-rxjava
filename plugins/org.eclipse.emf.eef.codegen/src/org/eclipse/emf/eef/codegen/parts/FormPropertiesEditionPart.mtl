@@ -71,7 +71,7 @@ import [viewRepository.qualifiedMessagesProvider()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import [view.partQualifiedSuperclass()/];
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 [if (view.eAllContents(ElementEditor).oclAsType(ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 [/if]
@@ -151,7 +151,7 @@ package [view.partsFormPackage()/];
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [view.pepFormClass()/] extends [view.partSuperclass()/] implements IFormPropertiesEditionPart, [view.pepInterface()/] {
+public class [view.pepFormClass()/] extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, [view.pepInterface()/] {
 
 [for (element : ViewElement | view.eAllContents()) ? (element.oclIsKindOf(ElementEditor))][let editor : ElementEditor = element.oclAsType(ElementEditor)]
 	[editor.widgetDeclaration()/]
@@ -160,6 +160,11 @@ public class [view.pepFormClass()/] extends [view.partSuperclass()/] implements 
 [view.widgetDeclarationForViewReference()/]
 [comment managing SubViews/]
 [view.widgetDeclarationForSubViews()/]
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public [view.pepFormClass()/]() { super(); }
 
 	/**
 	 * Default constructor
