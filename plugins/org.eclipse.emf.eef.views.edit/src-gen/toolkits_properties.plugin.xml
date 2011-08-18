@@ -27,7 +27,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.toolkits.properties">
+            contributorId="org.eclipse.emf.eef.toolkits.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -55,7 +56,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.toolkits.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.toolkits.parts.forms.ToolkitPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.toolkits.section.Toolkit"
                tab="Base">
              <input
@@ -63,7 +64,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.toolkits.section.Widget"
                tab="Base">
              <input
