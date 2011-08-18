@@ -21,7 +21,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.EEFGen.properties">
+            contributorId="org.eclipse.emf.eef.EEFGen.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -49,7 +50,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.EEFGen.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.EEFGen.parts.forms.GenEditionContextPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext"
                tab="Base">
              <input
@@ -57,7 +58,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelReferencePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference"
                tab="Base">
              <input
@@ -65,7 +66,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel"
                tab="Base">
              <input
@@ -73,7 +74,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.EEFGen.parts.forms.GenViewsRepositoryPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository"
                tab="Base">
              <input
