@@ -88,7 +88,7 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == EditorViewsRepository.StandardFormPage.Naming.name) {
 			return ViewsPackage.eINSTANCE.getViewElement_Name();
 		}

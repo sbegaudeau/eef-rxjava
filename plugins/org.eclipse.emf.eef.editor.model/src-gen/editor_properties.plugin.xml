@@ -27,7 +27,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.properties">
+            contributorId="org.eclipse.emf.eef.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -103,7 +104,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.StandardFormPagePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.StandardFormPage"
                tab="Base">
              <input
@@ -111,7 +112,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.StandardFormPage"
                tab="Documentation">
              <input
@@ -119,7 +120,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.EEFMasterPagePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.EEFMasterPage"
                tab="Base">
              <input
@@ -127,7 +128,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.EEFMasterPage"
                tab="Documentation">
              <input
@@ -135,7 +136,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.TreeMasterPagePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.TreeMasterPage"
                tab="Base">
              <input
@@ -143,7 +144,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.TreeMasterPage"
                tab="Documentation">
              <input
@@ -151,7 +152,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.PartFilterPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.PartFilter"
                tab="Base">
              <input
@@ -159,7 +160,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.PartFilter"
                tab="Documentation">
              <input
@@ -167,7 +168,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.EEFEditorContributionsPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorContributions"
                tab="Base">
              <input
@@ -175,7 +176,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorContributions"
                tab="Documentation">
              <input
@@ -183,7 +184,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.EEFEditorPagesPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorPages"
                tab="Base">
              <input
@@ -191,7 +192,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorPages"
                tab="Documentation">
              <input
@@ -199,7 +200,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.StaticEEFEditorContributionPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.StaticEEFEditorContribution"
                tab="Base">
              <input
@@ -207,7 +208,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.StaticEEFEditorContribution"
                tab="Documentation">
              <input
@@ -215,7 +216,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.DynamicEEFEditorContributionPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.DynamicEEFEditorContribution"
                tab="Base">
              <input
@@ -223,7 +224,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.extended.editor.section.DynamicEEFEditorContribution"
                tab="Documentation">
              <input
