@@ -31,7 +31,6 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
@@ -284,11 +283,10 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	}
 	
 	/**
-	 * @param editorKey key of the editor we searching associated feature.
-	 * @return the associated feature.
-	 * @since 0.9
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#associatedFeature(Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		return null;
 	}
 	
