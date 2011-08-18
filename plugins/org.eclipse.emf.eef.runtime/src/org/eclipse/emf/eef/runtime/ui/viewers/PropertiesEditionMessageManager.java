@@ -28,10 +28,17 @@ public abstract class PropertiesEditionMessageManager {
 	public void processMessage(IPropertiesEditionEvent event) {
 		if (event instanceof PropertiesValidationEditionEvent) {
 			final Diagnostic diag = ((PropertiesValidationEditionEvent)event).getDiagnostic();
-			if (diag != null && diag.getSeverity() != Diagnostic.OK) {
+			if (diag != null) {
 				Display.getDefault().asyncExec(new Runnable() {
 					public void run() {
-						updateStatus(computeMessage(diag));
+						String message = computeMessage(diag);
+						if (diag.getSeverity() == Diagnostic.ERROR) {
+							updateError(message);
+						} else if (diag.getSeverity() == Diagnostic.WARNING) {
+							updateWarning(message);							
+						} else {
+							updateStatus(message);
+						}
 					}
 				});
 			} else {
@@ -42,17 +49,29 @@ public abstract class PropertiesEditionMessageManager {
 				});
 			}
 		}
-	}
+	}	
 
 	protected abstract void updateStatus(final String message);
+	
+	protected void updateError(final String message) {
+		updateStatus(message);
+	}
+
+	protected void updateWarning(final String message) {
+		updateStatus(message);
+	}
 
 	private String computeMessage(Diagnostic diag) {
-		for (Diagnostic child : diag.getChildren()) {
-			if (child.getSeverity() != Diagnostic.OK) {
-				if (child.getChildren().isEmpty()) {
-					return child.getMessage();
+		if (diag.getSeverity() == Diagnostic.OK) {
+			return "";
+		} else {
+			for (Diagnostic child : diag.getChildren()) {
+				if (child.getSeverity() != Diagnostic.OK) {
+					if (child.getChildren().isEmpty()) {
+						return child.getMessage();
+					}
+					return computeMessage(child);
 				}
-				return computeMessage(child);
 			}
 		}
 		return diag.getMessage();

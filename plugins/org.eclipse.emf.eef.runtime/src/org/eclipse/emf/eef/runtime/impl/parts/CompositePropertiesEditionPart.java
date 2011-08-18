@@ -75,6 +75,12 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	protected boolean visibility = true;
 
 	/**
+	 * For {@link AbstractPropertySection} use only. Do not use with
+	 * PropertiesEditingViewer.
+	 */
+	protected CompositePropertiesEditionPart() { super(); }
+
+	/**
 	 * Parameterized constructeur.
 	 * 
 	 * @param editionComponent
@@ -157,8 +163,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	/**
 	 * Clear all the graphical elements of the view
 	 */
-	private void clear() {
-//		for (int i = 0; i < view.getChildren().length; i++) {
+	protected void clear() {
 		while (view.getChildren().length > 0) {
 			Control next = view.getChildren()[0];
 			next.dispose();
