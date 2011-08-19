@@ -457,13 +457,22 @@ public interface ViewsPackage extends EPackage {
 	int ELEMENT_EDITOR__READ_ONLY = VIEW_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Name As Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_EDITOR__NAME_AS_LABEL = VIEW_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Element Editor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_EDITOR_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 2;
+	int ELEMENT_EDITOR_FEATURE_COUNT = VIEW_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.CategoryImpl <em>Category</em>}' class.
@@ -494,22 +503,13 @@ public interface ViewsPackage extends EPackage {
 	int CATEGORY__VIEWS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Repository</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__REPOSITORY = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int CATEGORY__REPOSITORY = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
@@ -518,7 +518,16 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__CATEGORIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int CATEGORY__CATEGORIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Category</em>' class.
@@ -592,6 +601,15 @@ public interface ViewsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_ELEMENT_EDITOR__READ_ONLY = ELEMENT_EDITOR__READ_ONLY;
+
+	/**
+	 * The feature id for the '<em><b>Name As Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ELEMENT_EDITOR__NAME_AS_LABEL = ELEMENT_EDITOR__NAME_AS_LABEL;
 
 	/**
 	 * The number of structural features of the '<em>Custom Element Editor</em>' class.
@@ -922,6 +940,17 @@ public interface ViewsPackage extends EPackage {
 	EAttribute getElementEditor_ReadOnly();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.views.ElementEditor#isNameAsLabel <em>Name As Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name As Label</em>'.
+	 * @see org.eclipse.emf.eef.views.ElementEditor#isNameAsLabel()
+	 * @see #getElementEditor()
+	 * @generated
+	 */
+	EAttribute getElementEditor_NameAsLabel();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.Category <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1237,6 +1266,14 @@ public interface ViewsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE.getElementEditor_ReadOnly();
+
+		/**
+		 * The meta object literal for the '<em><b>Name As Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_EDITOR__NAME_AS_LABEL = eINSTANCE.getElementEditor_NameAsLabel();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.CategoryImpl <em>Category</em>}' class.

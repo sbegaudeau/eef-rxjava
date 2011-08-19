@@ -284,6 +284,15 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getElementEditor_NameAsLabel() {
+		return (EAttribute) elementEditorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCategory() {
 		return categoryEClass;
 	}
@@ -303,7 +312,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EAttribute getCategory_Name() {
-		return (EAttribute) categoryEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) categoryEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -312,7 +321,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EReference getCategory_Repository() {
-		return (EReference) categoryEClass.getEStructuralFeatures().get(2);
+		return (EReference) categoryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -321,7 +330,7 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 	 * @generated
 	 */
 	public EReference getCategory_Categories() {
-		return (EReference) categoryEClass.getEStructuralFeatures().get(3);
+		return (EReference) categoryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -492,12 +501,13 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 
 		elementEditorEClass = createEClass(ELEMENT_EDITOR);
 		createEAttribute(elementEditorEClass, ELEMENT_EDITOR__READ_ONLY);
+		createEAttribute(elementEditorEClass, ELEMENT_EDITOR__NAME_AS_LABEL);
 
 		categoryEClass = createEClass(CATEGORY);
 		createEReference(categoryEClass, CATEGORY__VIEWS);
-		createEAttribute(categoryEClass, CATEGORY__NAME);
 		createEReference(categoryEClass, CATEGORY__REPOSITORY);
 		createEReference(categoryEClass, CATEGORY__CATEGORIES);
+		createEAttribute(categoryEClass, CATEGORY__NAME);
 
 		containerEClass = createEClass(CONTAINER);
 		createEReference(containerEClass, CONTAINER__ELEMENTS);
@@ -585,15 +595,17 @@ public class ViewsPackageImpl extends EPackageImpl implements ViewsPackage {
 
 		initEClass(elementEditorEClass, ElementEditor.class, "ElementEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getElementEditor_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", null, 1, 1, ElementEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getElementEditor_NameAsLabel(), ecorePackage.getEBoolean(), "nameAsLabel", null, 0, 1, ElementEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCategory_Views(), this.getView(), this.getView_Category(), "views", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name", null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCategory_Repository(), this.getViewsRepository(), this.getViewsRepository_Categories(), "repository", null, 0, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCategory_Categories(), this.getCategory(), null, "categories", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name", null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(containerEClass, org.eclipse.emf.eef.views.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getContainer_Elements(), this.getViewElement(), this.getViewElement_Container(), "elements", null, 0, -1, org.eclipse.emf.eef.views.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getContainer_Elements(), this.getViewElement(), this.getViewElement_Container(),
+				"elements", null, 0, -1, org.eclipse.emf.eef.views.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(viewElementEClass, ViewElement.class, "ViewElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getViewElement_Representation(), theToolkitsPackage.getWidget(), null, "representation", null, 0, 1, ViewElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$

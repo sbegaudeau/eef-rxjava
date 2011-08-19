@@ -43,6 +43,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-Zgd9Ed6YkIySVKIecQ" name="readOnly" views="_C2Y-nwd9Ed6YkIySVKIecQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ElementEditor/readOnly"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Xn_wEMpCEeC96sWmxMtyBA" name="nameAsLabel" views="_UgHZIMpCEeC96sWmxMtyBA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ElementEditor/nameAsLabel"/>
+        </properties>
         <referencedBinding xmi:id="_z0zMIAtmEd6B37SLkBAPJA" binding="_U6-YQAtmEd6B37SLkBAPJA"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ElementEditor"/>
       </bindings>
@@ -144,6 +147,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-nwd9Ed6YkIySVKIecQ" name="readOnly">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UgHZIMpCEeC96sWmxMtyBA" name="nameAsLabel">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>

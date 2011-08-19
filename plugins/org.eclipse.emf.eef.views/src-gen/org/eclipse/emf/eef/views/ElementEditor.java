@@ -19,6 +19,7 @@ package org.eclipse.emf.eef.views;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.views.ElementEditor#isReadOnly <em>Read Only</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.views.ElementEditor#isNameAsLabel <em>Name As Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,5 +53,31 @@ public interface ElementEditor extends ViewElement, IdentifiedElement {
 	 * @generated
 	 */
 	void setReadOnly(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Name As Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name As Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name As Label</em>' attribute.
+	 * @see #setNameAsLabel(boolean)
+	 * @see org.eclipse.emf.eef.views.ViewsPackage#getElementEditor_NameAsLabel()
+	 * @model
+	 * @generated
+	 */
+	boolean isNameAsLabel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.views.ElementEditor#isNameAsLabel <em>Name As Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name As Label</em>' attribute.
+	 * @see #isNameAsLabel()
+	 * @generated
+	 */
+	void setNameAsLabel(boolean value);
 
 } // ElementEditor

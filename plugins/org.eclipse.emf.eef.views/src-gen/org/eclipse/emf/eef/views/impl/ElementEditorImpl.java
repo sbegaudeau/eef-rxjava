@@ -28,6 +28,7 @@ import org.eclispe.emf.eef.views.helpers.NamingHelper;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl#getQualifiedIdentifier <em>Qualified Identifier</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl#isReadOnly <em>Read Only</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl#isNameAsLabel <em>Name As Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +64,26 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	 * @ordered
 	 */
 	protected boolean readOnly = READ_ONLY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isNameAsLabel() <em>Name As Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNameAsLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean NAME_AS_LABEL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNameAsLabel() <em>Name As Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNameAsLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean nameAsLabel = NAME_AS_LABEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,6 +152,27 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isNameAsLabel() {
+		return nameAsLabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNameAsLabel(boolean newNameAsLabel) {
+		boolean oldNameAsLabel = nameAsLabel;
+		nameAsLabel = newNameAsLabel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL, oldNameAsLabel, nameAsLabel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -138,6 +180,8 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 			return getQualifiedIdentifier();
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			return isReadOnly();
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			return isNameAsLabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -153,6 +197,9 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			setReadOnly((Boolean) newValue);
 			return;
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			setNameAsLabel((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -167,6 +214,9 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		switch (featureID) {
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			setReadOnly(READ_ONLY_EDEFAULT);
+			return;
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			setNameAsLabel(NAME_AS_LABEL_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -184,6 +234,8 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null : !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
 			return readOnly != READ_ONLY_EDEFAULT;
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			return nameAsLabel != NAME_AS_LABEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -237,6 +289,8 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (readOnly: "); //$NON-NLS-1$
 		result.append(readOnly);
+		result.append(", nameAsLabel: "); //$NON-NLS-1$
+		result.append(nameAsLabel);
 		result.append(')');
 		return result.toString();
 	}

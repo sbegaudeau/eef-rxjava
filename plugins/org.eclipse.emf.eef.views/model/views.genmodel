@@ -30,15 +30,16 @@
     <genClasses ecoreClass="views.ecore#//ElementEditor">
       <genFeatures createChild="false" propertyDescription="Defines that this editor is in read only mode"
           ecoreFeature="ecore:EAttribute views.ecore#//ElementEditor/readOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute views.ecore#//ElementEditor/nameAsLabel"/>
     </genClasses>
     <genClasses ecoreClass="views.ecore#//Category">
       <genFeatures property="None" children="true" createChild="true" propertyDescription="The views of the category"
           ecoreFeature="ecore:EReference views.ecore#//Category/views"/>
-      <genFeatures createChild="false" propertyDescription="The category name" ecoreFeature="ecore:EAttribute views.ecore#//Category/name"/>
       <genFeatures property="None" notify="false" createChild="false" propertyDescription="The owning repository"
           ecoreFeature="ecore:EReference views.ecore#//Category/repository"/>
       <genFeatures property="None" children="true" createChild="true" propertyDescription="The sub-categories"
           ecoreFeature="ecore:EReference views.ecore#//Category/categories"/>
+      <genFeatures createChild="false" propertyDescription="The category name" ecoreFeature="ecore:EAttribute views.ecore#//Category/name"/>
     </genClasses>
     <genClasses ecoreClass="views.ecore#//Container">
       <genFeatures property="None" children="true" createChild="true" propertyDescription="The owned elements"

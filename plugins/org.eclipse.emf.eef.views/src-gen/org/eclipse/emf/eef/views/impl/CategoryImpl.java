@@ -35,9 +35,9 @@ import org.eclipse.emf.eef.views.ViewsRepository;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.views.impl.CategoryImpl#getViews <em>Views</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.views.impl.CategoryImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.CategoryImpl#getRepository <em>Repository</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.impl.CategoryImpl#getCategories <em>Categories</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.views.impl.CategoryImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,6 +53,16 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @ordered
 	 */
 	protected EList<View> views;
+
+	/**
+	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Category> categories;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -73,16 +83,6 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCategories()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Category> categories;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,12 +251,12 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 		switch (featureID) {
 		case ViewsPackage.CATEGORY__VIEWS:
 			return getViews();
-		case ViewsPackage.CATEGORY__NAME:
-			return getName();
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			return getRepository();
 		case ViewsPackage.CATEGORY__CATEGORIES:
 			return getCategories();
+		case ViewsPackage.CATEGORY__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -274,15 +274,15 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 			getViews().clear();
 			getViews().addAll((Collection<? extends View>) newValue);
 			return;
-		case ViewsPackage.CATEGORY__NAME:
-			setName((String) newValue);
-			return;
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			setRepository((ViewsRepository) newValue);
 			return;
 		case ViewsPackage.CATEGORY__CATEGORIES:
 			getCategories().clear();
 			getCategories().addAll((Collection<? extends Category>) newValue);
+			return;
+		case ViewsPackage.CATEGORY__NAME:
+			setName((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -299,14 +299,14 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 		case ViewsPackage.CATEGORY__VIEWS:
 			getViews().clear();
 			return;
-		case ViewsPackage.CATEGORY__NAME:
-			setName(NAME_EDEFAULT);
-			return;
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			setRepository((ViewsRepository) null);
 			return;
 		case ViewsPackage.CATEGORY__CATEGORIES:
 			getCategories().clear();
+			return;
+		case ViewsPackage.CATEGORY__NAME:
+			setName(NAME_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -322,12 +322,12 @@ public class CategoryImpl extends DocumentedElementImpl implements Category {
 		switch (featureID) {
 		case ViewsPackage.CATEGORY__VIEWS:
 			return views != null && !views.isEmpty();
-		case ViewsPackage.CATEGORY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ViewsPackage.CATEGORY__REPOSITORY:
 			return getRepository() != null;
 		case ViewsPackage.CATEGORY__CATEGORIES:
 			return categories != null && !categories.isEmpty();
+		case ViewsPackage.CATEGORY__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

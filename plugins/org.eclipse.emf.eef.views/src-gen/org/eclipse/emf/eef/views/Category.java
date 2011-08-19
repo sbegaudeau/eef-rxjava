@@ -21,9 +21,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.views.Category#getViews <em>Views</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.views.Category#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.Category#getRepository <em>Repository</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.Category#getCategories <em>Categories</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.views.Category#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
