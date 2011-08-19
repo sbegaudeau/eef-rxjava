@@ -23,8 +23,8 @@ import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -45,6 +45,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 
 // End of user code
 
@@ -52,12 +53,17 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class SubtypePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, SubtypePropertiesEditionPart {
+public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, SubtypePropertiesEditionPart {
 
 	protected Button specialisedElement;
 	private OwnerPropertiesEditionPart ownerPropertiesEditionPart;
 
 
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public SubtypePropertiesEditionPartForm() { super(); }
 
 	/**
 	 * Default constructor

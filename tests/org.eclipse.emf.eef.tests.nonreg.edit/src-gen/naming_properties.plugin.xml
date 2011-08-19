@@ -51,7 +51,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.naming.properties">
+            contributorId="org.eclipse.emf.eef.naming.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -79,7 +80,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.naming.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.EventPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.naming.section.Event"
                tab="Base">
              <input

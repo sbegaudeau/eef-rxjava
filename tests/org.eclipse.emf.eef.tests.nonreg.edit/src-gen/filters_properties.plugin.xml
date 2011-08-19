@@ -51,7 +51,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.filters.properties">
+            contributorId="org.eclipse.emf.eef.filters.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -79,7 +80,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.filters.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceOwnerSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.ConcreteReferenceOwnerSample"
                tab="Base">
              <input
@@ -87,7 +88,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceTargetSample1PropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.ConcreteReferenceTargetSample1"
                tab="Base">
              <input
@@ -95,7 +96,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceTargetSample2PropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.ConcreteReferenceTargetSample2"
                tab="Base">
              <input

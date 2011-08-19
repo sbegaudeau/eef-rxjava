@@ -75,7 +75,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.eefnr.properties">
+            contributorId="org.eclipse.emf.eef.eefnr.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -115,7 +116,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.eefnr.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.RootPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.Root"
                tab="Base">
              <input
@@ -123,7 +124,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TotalSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TotalSample"
                tab="Base">
              <input
@@ -131,7 +132,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TextSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TextSample"
                tab="Base">
              <input
@@ -139,7 +140,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.CheckboxSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.CheckboxSample"
                tab="Base">
              <input
@@ -147,7 +148,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TextareaSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TextareaSample"
                tab="Base">
              <input
@@ -155,7 +156,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.RadioSample"
                tab="Base">
              <input
@@ -163,7 +164,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.EObjectFlatComboViewerSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.EObjectFlatComboViewerSample"
                tab="Base">
              <input
@@ -171,7 +172,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.ReferencesTableSample"
                tab="Base">
              <input
@@ -179,7 +180,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.EMFComboViewerSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.EMFComboViewerSample"
                tab="Base">
              <input
@@ -187,7 +188,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.MultiValuedEditorSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.MultiValuedEditorSample"
                tab="Base">
              <input
@@ -195,7 +196,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionEditorSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TableCompositionEditorSample"
                tab="Base">
              <input
@@ -203,7 +204,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedReferencesTableSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedReferencesTableSample"
                tab="Base">
              <input
@@ -211,7 +212,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedEObjectFlatComboViewerSample"
                tab="Base">
              <input
@@ -219,7 +220,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedTableCompositionEditorSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedTableCompositionEditorSample"
                tab="Base">
              <input
@@ -227,7 +228,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.FlatReferenceTableSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.FlatReferencesTableSample"
                tab="Base">
              <input
@@ -235,7 +236,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.SamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.Sample"
                tab="Base">
              <input
@@ -243,7 +244,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TextSampleFirstTabPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
                tab="TextSampleFirstTab">
              <input
@@ -251,7 +252,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TextSampleSecondTabPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
                tab="TextSampleSecondTab">
              <input
@@ -259,7 +260,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionExtensionEditorSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.TableCompositionExtensionEditorSample"
                tab="Base">
              <input
@@ -267,7 +268,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.ImageViewerSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.ImageViewerSample"
                tab="Base">
              <input
@@ -275,7 +276,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.SelectionDialogSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.SelectionDialogSample"
                tab="Base">
              <input
@@ -283,7 +284,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.parts.forms.SingleCompositionViewerSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.SingleCompositionViewerSample"
                tab="Base">
              <input

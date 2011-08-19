@@ -51,7 +51,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.navigation.properties">
+            contributorId="org.eclipse.emf.eef.navigation.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -109,7 +110,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.navigation.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedFlatReferencesTableSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.DeferedFlatReferenceTableEditorSample"
                tab="DeferedFlatReferencesTableSample">
              <input
@@ -117,7 +118,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedReferencesTableSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.DeferedReferenceTableEditorSample"
                tab="DeferedReferencesTableSample">
              <input
@@ -125,7 +126,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.Owner"
                tab="Base">
              <input
@@ -133,7 +134,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.Subtype"
                tab="Base">
              <input
@@ -141,7 +142,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.Subtype"
                tab="Owner">
              <input
@@ -149,7 +150,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.AnotherSubtypePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
                tab="Base">
              <input
@@ -157,7 +158,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
                tab="Subtype">
              <input
@@ -165,7 +166,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.NamedElement"
                tab="Base">
              <input
@@ -173,7 +174,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.ElementPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.Element"
                tab="Base">
              <input
@@ -181,7 +182,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.Element"
                tab="NamedElement">
              <input
@@ -189,7 +190,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.AttributeNavigationSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.navigation.section.AttributeNavigationSample"
                tab="Base">
              <input

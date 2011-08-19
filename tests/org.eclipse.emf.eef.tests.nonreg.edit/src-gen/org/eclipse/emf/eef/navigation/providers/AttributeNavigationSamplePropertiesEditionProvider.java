@@ -12,8 +12,8 @@ package org.eclipse.emf.eef.navigation.providers;
 
 import java.util.List;
 
+import org.eclipse.emf.eef.eefnr.navigation.AttributeNavigationSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
-import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository.AttributeNavigationSample;
 import org.eclipse.emf.eef.navigation.components.AttributeNavigationSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;

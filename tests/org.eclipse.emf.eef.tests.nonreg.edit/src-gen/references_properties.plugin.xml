@@ -51,7 +51,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.references.properties">
+            contributorId="org.eclipse.emf.eef.references.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -91,7 +92,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.references.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.references.parts.forms.ReferenceEnabledSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
                tab="Base">
              <input
@@ -99,7 +100,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
                tab="AbstractSample">
              <input
@@ -107,7 +108,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.eefnr.section.AbstractSample"
                tab="Base">
              <input
@@ -115,7 +116,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractEnabledSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.references.section.AbstractEnabledSample"
                tab="Base">
              <input
@@ -123,7 +124,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
                id="org.eclipse.emf.eef.references.section.AbstractEnabledSample"
                tab="AbstractSample">
              <input
