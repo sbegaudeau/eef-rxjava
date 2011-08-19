@@ -21,7 +21,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -46,6 +46,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 
 
 // End of user code
@@ -54,13 +55,18 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class PresencePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
+public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
 		protected ReferencesTable assists;
 		protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
 		protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
 
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public PresencePropertiesEditionPartForm() { super(); }
 
 	/**
 	 * Default constructor

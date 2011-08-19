@@ -20,7 +20,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -40,6 +40,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 
 
 // End of user code
@@ -48,7 +49,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class TalksAndTopicsPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TalksAndTopicsPropertiesEditionPart {
+public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, TalksAndTopicsPropertiesEditionPart {
 
 	protected ReferencesTable talks;
 	protected List<ViewerFilter> talksBusinessFilters = new ArrayList<ViewerFilter>();
@@ -58,6 +59,11 @@ public class TalksAndTopicsPropertiesEditionPartForm extends CompositeProperties
 	protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 
 
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public TalksAndTopicsPropertiesEditionPartForm() { super(); }
 
 	/**
 	 * Default constructor

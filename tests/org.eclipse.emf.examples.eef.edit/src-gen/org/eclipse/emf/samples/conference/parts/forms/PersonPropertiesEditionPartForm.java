@@ -20,7 +20,7 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -51,6 +51,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 
 
 // End of user code
@@ -59,7 +60,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
  * 
  */
-public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PersonPropertiesEditionPart {
+public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PersonPropertiesEditionPart {
 
 	protected Text firstname;
 	protected Text lastname;
@@ -69,6 +70,11 @@ public class PersonPropertiesEditionPartForm extends CompositePropertiesEditionP
 	protected Button isRegistered;
 
 
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public PersonPropertiesEditionPartForm() { super(); }
 
 	/**
 	 * Default constructor

@@ -21,7 +21,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.samples.conference.properties">
+            contributorId="org.eclipse.emf.samples.conference.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -73,7 +74,7 @@
       <propertySections
             contributorId="org.eclipse.emf.samples.conference.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.ConferencePropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Base">
              <input
@@ -81,7 +82,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.LocalisationPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Localisation">
              <input
@@ -89,7 +90,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.ParticipantsPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Participants">
              <input
@@ -97,7 +98,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.TalksAndTopicsPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Talks and Topics">
              <input
@@ -105,7 +106,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.PersonPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Person"
                tab="Base">
              <input
@@ -113,7 +114,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.PresencePropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Person"
                tab="Presence">
              <input
@@ -121,7 +122,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.TalkPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Talk"
                tab="Base">
              <input
@@ -129,7 +130,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.TopicPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Topic"
                tab="Base">
              <input
@@ -137,7 +138,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.SitePropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Site"
                tab="Base">
              <input
@@ -145,7 +146,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.samples.conference.parts.forms.RoomPropertiesEditionPartForm"
                id="org.eclipse.emf.samples.conference.section.Room"
                tab="Base">
              <input
