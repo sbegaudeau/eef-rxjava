@@ -146,7 +146,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 				referencedFeatureSettings.setToReference((EReference)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReference eObject = EcoreFactory.eINSTANCE.createEReference();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
