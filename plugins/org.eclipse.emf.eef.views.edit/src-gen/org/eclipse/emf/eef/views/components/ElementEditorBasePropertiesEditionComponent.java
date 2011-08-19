@@ -98,6 +98,9 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 			if (isAccessible(ViewsViewsRepository.ElementEditor.Properties.readOnly)) {
 				basePart.setReadOnly(elementEditor.isReadOnly());
 			}
+			if (isAccessible(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel)) {
+				basePart.setNameAsLabel(elementEditor.isNameAsLabel());
+			}
 			// init filters
 			basePart.addFilterToRepresentation(new ViewerFilter() {
 			
@@ -117,6 +120,7 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 			
 			
 			
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -124,6 +128,7 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -143,6 +148,9 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 		}
 		if (editorKey == ViewsViewsRepository.ElementEditor.Properties.readOnly) {
 			return ViewsPackage.eINSTANCE.getElementEditor_ReadOnly();
+		}
+		if (editorKey == ViewsViewsRepository.ElementEditor.Properties.nameAsLabel) {
+			return ViewsPackage.eINSTANCE.getElementEditor_NameAsLabel();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -176,6 +184,9 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 		if (ViewsViewsRepository.ElementEditor.Properties.readOnly == event.getAffectedEditor()) {
 			elementEditor.setReadOnly((Boolean)event.getNewValue());
 		}
+		if (ViewsViewsRepository.ElementEditor.Properties.nameAsLabel == event.getAffectedEditor()) {
+			elementEditor.setNameAsLabel((Boolean)event.getNewValue());
+		}
 	}
 
 	/**
@@ -196,6 +207,9 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 			}
 			if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ElementEditor.Properties.readOnly))
 				basePart.setReadOnly((Boolean)msg.getNewValue());
+			
+			if (ViewsPackage.eINSTANCE.getElementEditor_NameAsLabel().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel))
+				basePart.setNameAsLabel((Boolean)msg.getNewValue());
 			
 			
 		}
@@ -251,6 +265,13 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().getEAttributeType(), newValue);
+				}
+				if (ViewsViewsRepository.ElementEditor.Properties.nameAsLabel == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getElementEditor_NameAsLabel().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getElementEditor_NameAsLabel().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

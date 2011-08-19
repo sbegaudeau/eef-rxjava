@@ -65,6 +65,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 	protected Text name;
 	protected EObjectFlatComboViewer representation;
 	protected Button readOnly;
+	protected Button nameAsLabel;
 
 
 
@@ -113,6 +114,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		propertiesStep.addStep(ViewsViewsRepository.ElementEditor.Properties.name);
 		propertiesStep.addStep(ViewsViewsRepository.ElementEditor.Properties.representation);
 		propertiesStep.addStep(ViewsViewsRepository.ElementEditor.Properties.readOnly);
+		propertiesStep.addStep(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel);
 		
 		
 		composer = new PartComposer(elementEditorStep) {
@@ -130,6 +132,9 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 				}
 				if (key == ViewsViewsRepository.ElementEditor.Properties.readOnly) {
 					return createReadOnlyCheckbox(widgetFactory, parent);
+				}
+				if (key == ViewsViewsRepository.ElementEditor.Properties.nameAsLabel) {
+					return createNameAsLabelCheckbox(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -246,6 +251,32 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(readOnly, ViewsViewsRepository.ElementEditor.Properties.readOnly);
 		EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.Properties.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
+	
+	protected Composite createNameAsLabelCheckbox(FormToolkit widgetFactory, Composite parent) {
+		nameAsLabel = widgetFactory.createButton(parent, ViewsMessages.ElementEditorPropertiesEditionPart_NameAsLabelLabel, SWT.CHECK);
+		nameAsLabel.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.ElementEditor.Properties.nameAsLabel, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(nameAsLabel.getSelection())));
+			}
+
+		});
+		GridData nameAsLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		nameAsLabelData.horizontalSpan = 2;
+		nameAsLabel.setLayoutData(nameAsLabelData);
+		EditingUtils.setID(nameAsLabel, ViewsViewsRepository.ElementEditor.Properties.nameAsLabel);
+		EditingUtils.setEEFtype(nameAsLabel, "eef::Checkbox"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -381,6 +412,31 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 			readOnly.setSelection(newValue.booleanValue());
 		} else {
 			readOnly.setSelection(false);
+		}
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#getNameAsLabel()
+	 * 
+	 */
+	public Boolean getNameAsLabel() {
+		return Boolean.valueOf(nameAsLabel.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ElementEditorPropertiesEditionPart#setNameAsLabel(Boolean newValue)
+	 * 
+	 */
+	public void setNameAsLabel(Boolean newValue) {
+		if (newValue != null) {
+			nameAsLabel.setSelection(newValue.booleanValue());
+		} else {
+			nameAsLabel.setSelection(false);
 		}
 	}
 

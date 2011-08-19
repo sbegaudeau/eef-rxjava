@@ -92,6 +92,9 @@ public class ViewsViewsRepository {
 			
 			public static String readOnly = "views::ElementEditor::Properties::readOnly";
 			
+			
+			public static String nameAsLabel = "views::ElementEditor::Properties::nameAsLabel";
+			
 	
 		}
 	

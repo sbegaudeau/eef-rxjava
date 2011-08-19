@@ -102,6 +102,20 @@ public interface ElementEditorPropertiesEditionPart {
 	public void setReadOnly(Boolean newValue);
 
 
+	/**
+	 * @return the nameAsLabel
+	 * 
+	 */
+	public Boolean getNameAsLabel();
+
+	/**
+	 * Defines a new nameAsLabel
+	 * @param newValue the new nameAsLabel to set
+	 * 
+	 */
+	public void setNameAsLabel(Boolean newValue);
+
+
 
 
 

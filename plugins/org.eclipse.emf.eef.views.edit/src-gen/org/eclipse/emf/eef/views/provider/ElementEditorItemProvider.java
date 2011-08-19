@@ -56,6 +56,7 @@ public class ElementEditorItemProvider extends ViewElementItemProvider implement
 			super.getPropertyDescriptors(object);
 
 			addReadOnlyPropertyDescriptor(object);
+			addNameAsLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -70,6 +71,18 @@ public class ElementEditorItemProvider extends ViewElementItemProvider implement
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementEditor_readOnly_feature"), //$NON-NLS-1$
 				getString("_UI_ElementEditor_readOnly_description"), //$NON-NLS-1$
 				ViewsPackage.Literals.ELEMENT_EDITOR__READ_ONLY, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name As Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNameAsLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementEditor_nameAsLabel_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ElementEditor_nameAsLabel_feature", "_UI_ElementEditor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				ViewsPackage.Literals.ELEMENT_EDITOR__NAME_AS_LABEL, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -110,6 +123,7 @@ public class ElementEditorItemProvider extends ViewElementItemProvider implement
 		switch (notification.getFeatureID(ElementEditor.class)) {
 		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
 		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
