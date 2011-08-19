@@ -160,7 +160,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ElementEditor.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.ElementEditor.Properties.name, ViewsMessages.ElementEditorPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -204,7 +204,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.ElementEditor.Properties.representation, ViewsMessages.ElementEditorPropertiesEditionPart_RepresentationLabel);
 		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.ElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND));
 		widgetFactory.adapt(representation);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -230,7 +230,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
-		readOnly = widgetFactory.createButton(parent, ViewsMessages.ElementEditorPropertiesEditionPart_ReadOnlyLabel, SWT.CHECK);
+		readOnly = widgetFactory.createButton(parent, getDescription(ViewsViewsRepository.ElementEditor.Properties.readOnly, ViewsMessages.ElementEditorPropertiesEditionPart_ReadOnlyLabel), SWT.CHECK);
 		readOnly.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -256,7 +256,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createNameAsLabelCheckbox(FormToolkit widgetFactory, Composite parent) {
-		nameAsLabel = widgetFactory.createButton(parent, ViewsMessages.ElementEditorPropertiesEditionPart_NameAsLabelLabel, SWT.CHECK);
+		nameAsLabel = widgetFactory.createButton(parent, getDescription(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel, ViewsMessages.ElementEditorPropertiesEditionPart_NameAsLabelLabel), SWT.CHECK);
 		nameAsLabel.addSelectionListener(new SelectionAdapter() {
 
 			/**

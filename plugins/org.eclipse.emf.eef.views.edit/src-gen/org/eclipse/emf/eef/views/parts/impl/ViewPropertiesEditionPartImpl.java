@@ -143,7 +143,7 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.Properties.name, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.View.Properties.name, ViewsMessages.ViewPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -192,7 +192,7 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.Properties.representation, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.View.Properties.representation, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel);
 		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.View.Properties.representation, ViewsViewsRepository.SWT_KIND));
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -213,7 +213,7 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	
 	protected Composite createExplicitCheckbox(Composite parent) {
 		explicit = new Button(parent, SWT.CHECK);
-		explicit.setText(ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel);
+		explicit.setText(getDescription(ViewsViewsRepository.View.Properties.explicit, ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel));
 		explicit.addSelectionListener(new SelectionAdapter() {
 
 			/**

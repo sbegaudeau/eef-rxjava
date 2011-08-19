@@ -155,7 +155,7 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.View.Properties.name, ViewsMessages.ViewPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -199,7 +199,7 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 * 
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.View.Properties.representation, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.View.Properties.representation, ViewsMessages.ViewPropertiesEditionPart_RepresentationLabel);
 		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.View.Properties.representation, ViewsViewsRepository.FORM_KIND));
 		widgetFactory.adapt(representation);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -225,7 +225,7 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createExplicitCheckbox(FormToolkit widgetFactory, Composite parent) {
-		explicit = widgetFactory.createButton(parent, ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel, SWT.CHECK);
+		explicit = widgetFactory.createButton(parent, getDescription(ViewsViewsRepository.View.Properties.explicit, ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel), SWT.CHECK);
 		explicit.addSelectionListener(new SelectionAdapter() {
 
 			/**

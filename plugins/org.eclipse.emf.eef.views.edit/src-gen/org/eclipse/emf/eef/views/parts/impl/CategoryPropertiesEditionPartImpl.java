@@ -121,7 +121,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.CategoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Category.Properties.name, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.Category.Properties.name, ViewsMessages.CategoryPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

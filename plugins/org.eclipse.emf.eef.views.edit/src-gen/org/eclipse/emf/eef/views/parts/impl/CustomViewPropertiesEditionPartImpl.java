@@ -121,7 +121,7 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.CustomViewPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomView.Properties.name, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.CustomView.Properties.name, ViewsMessages.CustomViewPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

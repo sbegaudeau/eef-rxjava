@@ -133,7 +133,7 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CategoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Category.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.Category.Properties.name, ViewsMessages.CategoryPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

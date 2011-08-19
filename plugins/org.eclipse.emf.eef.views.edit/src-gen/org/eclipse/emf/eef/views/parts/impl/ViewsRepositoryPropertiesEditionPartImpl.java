@@ -126,7 +126,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.Properties.name, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.name, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -172,7 +172,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 
 	
 	protected Composite createRepositoryKindText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel);
 		repositoryKind = new Text(parent, SWT.BORDER);
 		GridData repositoryKindData = new GridData(GridData.FILL_HORIZONTAL);
 		repositoryKind.setLayoutData(repositoryKindData);

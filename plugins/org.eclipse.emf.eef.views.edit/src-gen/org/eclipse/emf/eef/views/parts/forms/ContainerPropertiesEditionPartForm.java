@@ -147,7 +147,7 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ContainerPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Container.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.Container.Properties.name, ViewsMessages.ContainerPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -191,7 +191,7 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 	 * 
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ContainerPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.Container.Properties.representation, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.Container.Properties.representation, ViewsMessages.ContainerPropertiesEditionPart_RepresentationLabel);
 		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.Container.Properties.representation, ViewsViewsRepository.FORM_KIND));
 		widgetFactory.adapt(representation);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

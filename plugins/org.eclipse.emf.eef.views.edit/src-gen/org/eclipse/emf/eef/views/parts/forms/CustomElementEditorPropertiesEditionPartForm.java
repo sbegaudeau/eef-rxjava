@@ -155,7 +155,7 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -199,7 +199,7 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 	 * 
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel);
 		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND));
 		widgetFactory.adapt(representation);
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -225,7 +225,7 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 
 	
 	protected Composite createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
-		readOnly = widgetFactory.createButton(parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel, SWT.CHECK);
+		readOnly = widgetFactory.createButton(parent, getDescription(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel), SWT.CHECK);
 		readOnly.addSelectionListener(new SelectionAdapter() {
 
 			/**

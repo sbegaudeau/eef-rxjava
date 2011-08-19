@@ -135,7 +135,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewReferencePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.name, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewReference.Properties.name, ViewsMessages.ViewReferencePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -184,7 +184,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 	 * 
 	 */
 	protected Composite createReferencedViewFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel);
 		referencedView = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.SWT_KIND));
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 

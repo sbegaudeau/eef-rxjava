@@ -121,7 +121,7 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ToolkitsMessages.ToolkitPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ToolkitsViewsRepository.Toolkit.Properties.name, ToolkitsViewsRepository.SWT_KIND));
+		createDescription(parent, ToolkitsViewsRepository.Toolkit.Properties.name, ToolkitsMessages.ToolkitPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

@@ -147,7 +147,7 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewReferencePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewReference.Properties.name, ViewsMessages.ViewReferencePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -191,7 +191,7 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 	 * 
 	 */
 	protected Composite createReferencedViewFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsMessages.ViewReferencePropertiesEditionPart_ReferencedViewLabel);
 		referencedView = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewReference.Properties.referencedView, ViewsViewsRepository.FORM_KIND));
 		widgetFactory.adapt(referencedView);
 		referencedView.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

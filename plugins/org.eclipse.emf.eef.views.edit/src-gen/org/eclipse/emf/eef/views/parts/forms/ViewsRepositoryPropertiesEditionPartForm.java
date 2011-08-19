@@ -138,7 +138,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.Properties.name, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.name, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -178,7 +178,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 
 	
 	protected Composite createRepositoryKindText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsViewsRepository.FORM_KIND));
+		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel);
 		repositoryKind = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		repositoryKind.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

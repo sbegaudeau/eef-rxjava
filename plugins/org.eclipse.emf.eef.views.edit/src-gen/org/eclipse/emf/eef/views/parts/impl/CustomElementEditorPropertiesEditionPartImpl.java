@@ -143,7 +143,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsMessages.CustomElementEditorPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -192,7 +192,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 	 * 
 	 */
 	protected Composite createRepresentationFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel, propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.SWT_KIND));
+		createDescription(parent, ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel);
 		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.SWT_KIND));
 		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -213,7 +213,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 	
 	protected Composite createReadOnlyCheckbox(Composite parent) {
 		readOnly = new Button(parent, SWT.CHECK);
-		readOnly.setText(ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel);
+		readOnly.setText(getDescription(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel));
 		readOnly.addSelectionListener(new SelectionAdapter() {
 
 			/**
