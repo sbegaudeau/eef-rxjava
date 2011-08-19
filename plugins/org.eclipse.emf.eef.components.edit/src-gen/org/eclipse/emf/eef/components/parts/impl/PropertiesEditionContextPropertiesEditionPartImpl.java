@@ -130,7 +130,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsMessages.PropertiesEditionContextPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.SWT_KIND));
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 

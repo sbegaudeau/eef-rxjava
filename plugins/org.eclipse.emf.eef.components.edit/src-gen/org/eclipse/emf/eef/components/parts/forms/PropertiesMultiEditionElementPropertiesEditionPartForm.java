@@ -28,7 +28,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -67,6 +67,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 
 
 
@@ -76,7 +77,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class PropertiesMultiEditionElementPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PropertiesMultiEditionElementPropertiesEditionPart {
+public class PropertiesMultiEditionElementPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PropertiesMultiEditionElementPropertiesEditionPart {
 
 	protected Text name;
 	protected Text helpID;
@@ -90,6 +91,11 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public PropertiesMultiEditionElementPropertiesEditionPartForm() { super(); }
 
 	/**
 	 * Default constructor
@@ -182,7 +188,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name, ComponentsViewsRepository.FORM_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -222,7 +228,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 
 	
 	protected Composite createHelpIDText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID, ComponentsViewsRepository.FORM_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel);
 		helpID = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		helpID.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -281,7 +287,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * 
 	 */
 	protected Composite createModelReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label modelLabel = FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model, ComponentsViewsRepository.FORM_KIND));
+		Label modelLabel = createDescription(parent, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel);
 		GridData modelLabelData = new GridData();
 		modelLabelData.horizontalSpan = 3;
 		modelLabel.setLayoutData(modelLabelData);
@@ -436,7 +442,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Comp
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
+		this.views = new ReferencesTable(getDescription(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }

@@ -175,7 +175,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.Properties.name, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionElement.Properties.name, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -221,7 +221,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 
 	
 	protected Composite createHelpIDText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_HelpIDLabel);
 		helpID = new Text(parent, SWT.BORDER);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
@@ -285,7 +285,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.Binding.model, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionElement.Binding.model, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.Binding.model, ComponentsViewsRepository.SWT_KIND));
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -308,7 +308,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(Composite parent) {
-		Label viewsLabel = SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ViewsLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionElement.Binding.views, ComponentsViewsRepository.SWT_KIND));
+		Label viewsLabel = createDescription(parent, ComponentsViewsRepository.PropertiesEditionElement.Binding.views, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_ViewsLabel);
 		GridData viewsLabelData = new GridData();
 		viewsLabelData.horizontalSpan = 3;
 		viewsLabel.setLayoutData(viewsLabelData);

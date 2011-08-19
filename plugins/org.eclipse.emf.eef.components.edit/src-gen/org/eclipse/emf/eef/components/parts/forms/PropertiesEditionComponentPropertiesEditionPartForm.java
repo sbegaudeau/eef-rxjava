@@ -27,7 +27,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -65,6 +65,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 
 
 
@@ -75,7 +76,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class PropertiesEditionComponentPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PropertiesEditionComponentPropertiesEditionPart {
+public class PropertiesEditionComponentPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PropertiesEditionComponentPropertiesEditionPart {
 
 	protected Text name;
 	protected Text helpID;
@@ -86,6 +87,11 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
+
+	/**
+	 * For {@link ISection} use only.
+	 */
+	public PropertiesEditionComponentPropertiesEditionPartForm() { super(); }
 
 	/**
 	 * Default constructor
@@ -182,7 +188,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, ComponentsViewsRepository.FORM_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -222,7 +228,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 
 	
 	protected Composite createHelpIDText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, ComponentsViewsRepository.FORM_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel);
 		helpID = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		helpID.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -262,7 +268,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 
 	
 	protected Composite createExplicitCheckbox(FormToolkit widgetFactory, Composite parent) {
-		explicit = widgetFactory.createButton(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel, SWT.CHECK);
+		explicit = widgetFactory.createButton(parent, getDescription(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel), SWT.CHECK);
 		explicit.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -309,7 +315,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsViewsRepository.FORM_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsViewsRepository.FORM_KIND));
 		widgetFactory.adapt(model);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -337,7 +343,7 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Composi
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
+		this.views = new ReferencesTable(getDescription(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }

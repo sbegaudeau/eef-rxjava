@@ -175,7 +175,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -221,7 +221,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 	
 	protected Composite createHelpIDText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_HelpIDLabel);
 		helpID = new Text(parent, SWT.BORDER);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
@@ -285,7 +285,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 * 
 	 */
 	protected Composite createModelReferencesTable(Composite parent) {
-		Label modelLabel = SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model, ComponentsViewsRepository.SWT_KIND));
+		Label modelLabel = createDescription(parent, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ModelLabel);
 		GridData modelLabelData = new GridData();
 		modelLabelData.horizontalSpan = 3;
 		modelLabel.setLayoutData(modelLabelData);
@@ -442,7 +442,8 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable(ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
+		String label = getDescription(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views, ComponentsMessages.PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel);		 
+		this.views = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }

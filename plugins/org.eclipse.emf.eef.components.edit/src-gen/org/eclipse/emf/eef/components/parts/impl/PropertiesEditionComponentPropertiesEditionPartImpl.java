@@ -175,7 +175,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionComponent.Properties.name, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -221,7 +221,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 	
 	protected Composite createHelpIDText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_HelpIDLabel);
 		helpID = new Text(parent, SWT.BORDER);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
@@ -268,7 +268,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	
 	protected Composite createExplicitCheckbox(Composite parent) {
 		explicit = new Button(parent, SWT.CHECK);
-		explicit.setText(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel);
+		explicit.setText(getDescription(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ExplicitLabel));
 		explicit.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -312,7 +312,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsViewsRepository.SWT_KIND));
+		createDescription(parent, ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model, ComponentsViewsRepository.SWT_KIND));
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -334,7 +334,8 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable(ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
+		String label = getDescription(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views, ComponentsMessages.PropertiesEditionComponentPropertiesEditionPart_ViewsLabel);		 
+		this.views = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
