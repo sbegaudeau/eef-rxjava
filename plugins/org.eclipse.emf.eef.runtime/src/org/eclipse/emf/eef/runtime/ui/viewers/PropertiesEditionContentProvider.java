@@ -22,11 +22,10 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -67,6 +66,14 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		this.editingDomain = editingDomain;
 		this.propertiesEditionListeners = new ArrayList<IPropertiesEditionListener>();
 	}
+	
+	/**
+	 * @return the {@link IPropertiesEditionComponent}
+	 * @since 1.1
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent() {
+		return propertiesEditionComponent;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -93,7 +100,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 			propertiesEditionComponent = null;
 		}
 		EObject eObject = null;
-		PropertiesEditingContext context = null;
+		ExtendedPropertiesEditingContext context = null;
 		if (newInput instanceof EObject) {
 			eObject = (EObject)newInput;
 			if (mode == IPropertiesEditionComponent.LIVE_MODE) {
@@ -102,16 +109,12 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 				context = new EObjectPropertiesEditionContext(null, null, eObject, adapterFactory);
 			}
 		} else if (newInput instanceof EObjectPropertiesEditionContext) {
-			context = (PropertiesEditingContext)newInput;
+			context = (ExtendedPropertiesEditingContext)newInput;
 			eObject = context.getEObject();
 		}
 		if (eObject != null) {
-			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
-			if (propertiesEditionProvider != null) {
-				this.propertiesEditionComponent = propertiesEditionProvider.getPropertiesEditingComponent(context, mode);
-				if (mode == IPropertiesEditionComponent.LIVE_MODE) {
-					propertiesEditionComponent.setLiveEditingDomain(editingDomain);
-				}
+			propertiesEditionComponent = context.createPropertiesEditingComponent(mode);
+			if (propertiesEditionComponent != null) {
 				updateListeners();
 			}
 		}

@@ -33,7 +33,7 @@ import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.part.impl.util.ValidationMessageInjector;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -91,6 +91,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	 */
 	protected SectionPropertiesEditingPart() {
 		super();
+		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 	}	
 
 	public SectionPropertiesEditingPart(IPropertiesEditionComponent editionComponent) {
@@ -192,31 +193,30 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	}
 
 	private void refreshComponent() {
-		PropertiesEditingProvider provider = getProvider(eObject);
-		if (provider != null) {
-			propertiesEditionComponent = provider.getPropertiesEditingComponent(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject), IPropertiesEditionComponent.LIVE_MODE, getDescriptor());
-			if (propertiesEditionComponent != null) {
-				this.adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
-				propertiesEditionComponent.setPropertiesEditionPart(propertiesEditionComponent.translatePart(getDescriptor()), 0, this);
-				propertiesEditionComponent.setLiveEditingDomain(editingDomain);
-				if (editingComposite != null) {
-					editingComposite.dispose();
-				}
-				editingComposite = this.createFigure(container, tabbedPropertySheetPage.getWidgetFactory());
-				if (editingComposite != null) {
-					editingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
-					container.layout();
-				}
-				if (messageManager != null) {
-					messageManager.processMessage(new PropertiesValidationEditionEvent(null, Diagnostic.OK_INSTANCE));
-					propertiesEditionComponent.addListener(new IPropertiesEditionListener() {
+		DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
+		propertiesEditionComponent = propertiesEditingContext.createPropertiesEditingComponent(IPropertiesEditionComponent.LIVE_MODE, getDescriptor());
+		if (propertiesEditionComponent != null) {
+			this.adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
+			propertiesEditingContext.setHelper(new BindingViewHelper(propertiesEditingContext, tabbedPropertySheetPage.getWidgetFactory()));
+			propertiesEditionComponent.setPropertiesEditionPart(propertiesEditionComponent.translatePart(getDescriptor()), 0, this);
+			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
+			if (editingComposite != null) {
+				editingComposite.dispose();
+			}
+			editingComposite = this.createFigure(container, tabbedPropertySheetPage.getWidgetFactory());
+			if (editingComposite != null) {
+				editingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
+				container.layout();
+			}
+			if (messageManager != null) {
+				messageManager.processMessage(new PropertiesValidationEditionEvent(null, Diagnostic.OK_INSTANCE));
+				propertiesEditionComponent.addListener(new IPropertiesEditionListener() {
 
-						public void firePropertiesChanged(IPropertiesEditionEvent event) {
-							messageManager.processMessage(event);
+					public void firePropertiesChanged(IPropertiesEditionEvent event) {
+						messageManager.processMessage(event);
 
-						}
-					});
-				}
+					}
+				});
 			}
 		}
 	}
@@ -227,14 +227,6 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	protected void initSemanticContents() {
 		propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(getDescriptor()), 1, eObject);
 	}
-
-	protected PropertiesEditingProvider getProvider(EObject eObject) {
-		if (this.adapterFactory == null) {
-			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		}
-		return (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
-	}
-
 
 	/**
 	 * {@inheritDoc}

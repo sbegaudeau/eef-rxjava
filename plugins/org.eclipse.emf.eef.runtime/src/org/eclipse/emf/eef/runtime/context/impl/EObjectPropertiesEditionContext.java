@@ -15,18 +15,27 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.parts.ViewHelper;
+import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class EObjectPropertiesEditionContext implements PropertiesEditingContext {
+public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditingContext {
 
 	/**
 	 * the source EditionComponent
 	 */
-	protected IPropertiesEditionComponent propertiesEditionComponent;
+	protected IPropertiesEditionComponent parentPropertiesEditionComponent;
 
+	/**
+	 * Helper for created graphical elements of the view
+	 */
+	private ViewHelper helper;
+	
 	/**
 	 * the EObject to edit
 	 */
@@ -48,6 +57,11 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 	protected PropertiesEditingContext parentContext;
 
 	/**
+	 * The {@link IPropertiesEditionComponent} of the context
+	 */
+	private IPropertiesEditionComponent propertiesEditingComponent;
+
+	/**
 	 * @param parentContext
 	 *            the parent context
 	 * @param propertiesEditionComponent
@@ -61,7 +75,7 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 			IPropertiesEditionComponent propertiesEditionComponent, EObject eObject,
 			AdapterFactory adapterFactory) {
 		this.parentContext = parentContext;
-		this.propertiesEditionComponent = propertiesEditionComponent;
+		this.parentPropertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.adapterFactory = adapterFactory;
 		ResourceSet resourceSet = getResourceSet();
@@ -85,10 +99,11 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 	}
 
 	/**
-	 * @return the propertiesEditionComponent
+	 * @return the parent PropertiesEditionComponent
+	 * @deprecated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditionComponent() {
-		return propertiesEditionComponent;
+		return parentPropertiesEditionComponent;
 	}
 
 	/**
@@ -103,6 +118,56 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 	 */
 	public void seteObject(EObject eObject) {
 		this.eObject = eObject;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String)
+	 */
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode) {
+		if (propertiesEditingComponent == null) {
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			if (propertiesEditionProvider != null) {
+				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(this, mode);
+			}
+		}
+		return propertiesEditingComponent;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String, java.lang.String)
+	 */
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part) {
+		if (propertiesEditingComponent == null) {
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			if (propertiesEditionProvider != null) {
+				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(this, mode, part);
+			}
+		}
+		return propertiesEditingComponent;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String, java.lang.String, java.lang.Class)
+	 */
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part, Class<?> refinement) {
+		if (propertiesEditingComponent == null) {
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			if (propertiesEditionProvider != null) {
+				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(this, mode, part, refinement);
+			}
+		}
+		return propertiesEditingComponent;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#getPropertiesEditingComponent()
+	 */
+	public IPropertiesEditionComponent getPropertiesEditingComponent() {
+		return propertiesEditingComponent;
 	}
 
 	/**
@@ -131,4 +196,23 @@ public class EObjectPropertiesEditionContext implements PropertiesEditingContext
 			changeRecorder.dispose();
 	}
 
+	
+	/**
+	 * @return the {@link ViewHelper} of the context.
+	 */
+	public ViewHelper getHelper() {
+		if (helper == null) {
+			helper = new BindingViewHelper(this);
+		}
+		return helper;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#setHelper(org.eclipse.emf.eef.runtime.ui.parts.ViewHelper)
+	 */
+	public void setHelper(ViewHelper helper) {
+		this.helper = helper;
+	}
+	
 }

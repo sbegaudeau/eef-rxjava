@@ -162,24 +162,19 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	}
 
 	private void refreshComponent(String descriptor) {
-		PropertiesEditingProvider provider = getProvider(eObject);
-		if (provider != null) {
-			propertiesEditionComponent = provider.getPropertiesEditingComponent(
-					new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject),
-					IPropertiesEditionComponent.LIVE_MODE);
+			DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
+			propertiesEditionComponent = propertiesEditingContext.createPropertiesEditingComponent(IPropertiesEditionComponent.LIVE_MODE);
 			if (propertiesEditionComponent != null) {
 				PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 				propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 				propertiesEditionComponent.addListener(this);
-				IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent
-						.getPropertiesEditionPart(1, descriptor);
+				IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent.getPropertiesEditionPart(1, descriptor);
 				if (propertiesEditionPart instanceof IFormPropertiesEditionPart) {
 					for (int i = 0; i < container.getChildren().length; i++) {
 						Composite child = (Composite)container.getChildren()[i];
 						child.dispose();
 					}
-					Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart)
-							.createFigure(container, getWidgetFactory());
+					Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart).createFigure(container, getWidgetFactory());
 					if (editComposite != null) {
 						editComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 						container.layout();
@@ -187,14 +182,13 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 					}
 				}
 			}
-		}
 	}
 
+	/**
+	 * @deprecated
+	 */
 	protected PropertiesEditingProvider getProvider(EObject eObject) {
-		if (this.adapterFactory == null) {
-			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		}
-		return (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+		return null;
 	}
 
 	/**

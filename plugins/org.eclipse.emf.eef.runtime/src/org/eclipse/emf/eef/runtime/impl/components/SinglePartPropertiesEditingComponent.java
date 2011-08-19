@@ -27,8 +27,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  */
-public abstract class SinglePartPropertiesEditingComponent extends
-		StandardPropertiesEditionComponent {
+public abstract class SinglePartPropertiesEditingComponent extends StandardPropertiesEditionComponent {
 
 	/**
 	 * EObject to edit
@@ -53,9 +52,7 @@ public abstract class SinglePartPropertiesEditingComponent extends
 	/**
 	 * Default constructor
 	 */
-	public SinglePartPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, EObject semanticObject,
-			String editing_mode) {
+	public SinglePartPropertiesEditingComponent(PropertiesEditingContext editingContext, EObject semanticObject, String editing_mode) {
 		this.semanticObject = semanticObject;
 		this.editingContext = editingContext;
 		if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {

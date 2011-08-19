@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * use {@link ExtendedPropertiesEditingContext} instead of this interface.
  */
 public interface PropertiesEditingContext {
 

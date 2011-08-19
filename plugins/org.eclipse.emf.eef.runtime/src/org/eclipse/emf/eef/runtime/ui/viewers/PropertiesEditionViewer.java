@@ -24,8 +24,10 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
 import org.eclipse.jface.viewers.ISelection;
@@ -454,11 +456,14 @@ public class PropertiesEditionViewer extends StructuredViewer {
 	 * @param propertiesEditionProvider
 	 * @param partsList
 	 */
-	protected void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider,
-			String[] partsList) {
+	protected void initTabbedControl(PropertiesEditionContentProvider propertiesEditionProvider, String[] partsList) {
 		resetTab();
 		List<String> selectedParts = new ArrayList<String>();
 		if (kind == 1) {
+			if (propertiesEditionProvider.getPropertiesEditingComponent().getEditingContext() instanceof ExtendedPropertiesEditingContext) {
+				ExtendedPropertiesEditingContext editingContext = (ExtendedPropertiesEditingContext) propertiesEditionProvider.getPropertiesEditingComponent().getEditingContext();
+				editingContext.setHelper(new BindingViewHelper(editingContext, toolkit));
+			}
 			toolkit.adapt(folder, true, true);
 			toolkit.getColors().initializeSectionToolBarColors();
 			folder.setSelectionBackground(
@@ -470,8 +475,7 @@ public class PropertiesEditionViewer extends StructuredViewer {
 		}
 		for (int i = 0; i < partsList.length; i++) {
 			String nextComponentKey = partsList[i];
-			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind,
-					nextComponentKey);
+			IPropertiesEditionPart part = propertiesEditionProvider.getPropertiesEditionPart(kind, nextComponentKey);
 			if (selectPart(nextComponentKey, part)) {
 				selectedParts.add(nextComponentKey);
 				addPartTab(propertiesEditionProvider, part, nextComponentKey);

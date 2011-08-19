@@ -16,11 +16,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.ui.forms.IMessageManager;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 
 /**
  * A standard implementation of the {@link IPropertiesEditionPart} by a SWT {@link Composite}.
@@ -43,11 +46,6 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Helper to use to create the part.
 	 */
 	protected PartComposer composer;
-
-	/**
-	 * The message manager.
-	 */
-	protected IMessageManager messageManager;
 
 	/**
 	 * The adapter factory.
@@ -117,7 +115,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	public PartComposer getComposer() {
 		return composer;
 	}
-
+	
 	/**
 	 * @param event
 	 */
@@ -184,6 +182,34 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 */
 	public void setVisible(boolean visibility) {
 		this.visibility = visibility;
+	}
+
+	/**
+	 * @param parent label container
+	 * @param editor key of the editor
+	 * @param alternate text to display if no information can be found
+	 * @return created label.
+	 */
+	protected String getDescription(Object editor, String alternate) {
+		if (propertiesEditionComponent.getEditingContext() instanceof ExtendedPropertiesEditingContext) {
+			return ((ExtendedPropertiesEditingContext)propertiesEditionComponent.getEditingContext()).getHelper().getDescription(editor, alternate);
+		} else {
+			return alternate;
+		}
+	}
+	
+	/**
+	 * @param parent label container
+	 * @param editor key of the editor
+	 * @param alternate text to display if no information can be found
+	 * @return created label.
+	 */
+	protected Label createDescription(Composite parent, Object editor, String alternate) {
+		if (propertiesEditionComponent.getEditingContext() instanceof ExtendedPropertiesEditingContext) {
+			return ((ExtendedPropertiesEditingContext)propertiesEditionComponent.getEditingContext()).getHelper().createLabel(parent, editor, alternate);
+		} else {
+			return SWTUtils.createPartLabel(parent, alternate, propertiesEditionComponent.isRequired(editor, 0));
+		}
 	}
 	
 	

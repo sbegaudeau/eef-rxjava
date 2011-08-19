@@ -83,4 +83,40 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 		return super.getResourceSet();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext#createPropertiesEditingComponent(java.lang.String)
+	 */
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode) {
+		IPropertiesEditionComponent propertiesEditingComponent = super.createPropertiesEditingComponent(mode);
+		if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+			propertiesEditingComponent.setLiveEditingDomain(editingDomain);
+		}
+		return propertiesEditingComponent;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext#createPropertiesEditingComponent(java.lang.String, java.lang.String)
+	 */
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part) {
+		IPropertiesEditionComponent propertiesEditingComponent = super.createPropertiesEditingComponent(mode, part);
+		if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+			propertiesEditingComponent.setLiveEditingDomain(editingDomain);
+		}
+		return propertiesEditingComponent;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext#createPropertiesEditingComponent(java.lang.String, java.lang.String, java.lang.Class)
+	 */
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part, Class<?> refinement) {
+		IPropertiesEditionComponent propertiesEditingComponent = super.createPropertiesEditingComponent(mode, part, refinement);
+		if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+			propertiesEditingComponent.setLiveEditingDomain(editingDomain);
+		}
+		return propertiesEditingComponent;
+	}
+	
 }
