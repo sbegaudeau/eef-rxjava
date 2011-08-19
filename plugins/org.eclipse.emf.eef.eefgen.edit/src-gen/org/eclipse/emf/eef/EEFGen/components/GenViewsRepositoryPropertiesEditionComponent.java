@@ -198,7 +198,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 				viewsRepositorySettings.setToReference((ViewsRepository)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				ViewsRepository eObject = ViewsFactory.eINSTANCE.createViewsRepository();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);

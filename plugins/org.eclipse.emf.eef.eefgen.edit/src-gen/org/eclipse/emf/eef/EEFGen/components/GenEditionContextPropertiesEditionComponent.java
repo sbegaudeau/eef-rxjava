@@ -211,7 +211,7 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 				propertiesEditionContextSettings.setToReference((PropertiesEditionContext)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				PropertiesEditionContext eObject = ComponentsFactory.eINSTANCE.createPropertiesEditionContext();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
