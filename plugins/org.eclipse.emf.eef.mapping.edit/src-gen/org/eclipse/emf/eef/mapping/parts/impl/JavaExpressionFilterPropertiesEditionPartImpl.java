@@ -129,7 +129,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 
 	
 	protected Composite createJavaExpressionBodyTextarea(Composite parent) {
-		Label javaExpressionBodyLabel = SWTUtils.createPartLabel(parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingViewsRepository.SWT_KIND));
+		Label javaExpressionBodyLabel = createDescription(parent, MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel);
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyLabelData.horizontalSpan = 3;
 		javaExpressionBodyLabel.setLayoutData(javaExpressionBodyLabelData);

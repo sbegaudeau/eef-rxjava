@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
@@ -177,7 +176,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Properties.name, MappingViewsRepository.FORM_KIND));
+		createDescription(parent, MappingViewsRepository.StandardPropertyBinding.Properties.name, MappingMessages.StandardPropertyBindingPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -238,7 +237,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingViewsRepository.FORM_KIND));
+		createDescription(parent, MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingViewsRepository.FORM_KIND));
 		widgetFactory.adapt(model);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -266,7 +265,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
+		this.views = new ReferencesTable(getDescription(MappingViewsRepository.StandardPropertyBinding.Binding.views, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -332,7 +331,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

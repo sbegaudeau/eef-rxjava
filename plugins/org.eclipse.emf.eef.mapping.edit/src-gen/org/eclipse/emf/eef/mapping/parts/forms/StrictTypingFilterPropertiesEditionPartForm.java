@@ -150,7 +150,7 @@ public class StrictTypingFilterPropertiesEditionPartForm extends SectionProperti
 	 * 
 	 */
 	protected Composite createRestrictionFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.StrictTypingFilterPropertiesEditionPart_RestrictionLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StrictTypingFilter.Type.restriction, MappingViewsRepository.FORM_KIND));
+		createDescription(parent, MappingViewsRepository.StrictTypingFilter.Type.restriction, MappingMessages.StrictTypingFilterPropertiesEditionPart_RestrictionLabel);
 		restriction = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.StrictTypingFilter.Type.restriction, MappingViewsRepository.FORM_KIND));
 		widgetFactory.adapt(restriction);
 		restriction.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

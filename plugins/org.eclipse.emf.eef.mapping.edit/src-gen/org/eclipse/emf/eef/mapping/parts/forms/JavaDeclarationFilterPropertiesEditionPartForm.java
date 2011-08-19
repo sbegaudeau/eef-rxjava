@@ -145,7 +145,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 
 	
 	protected Composite createMethodNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName, MappingViewsRepository.FORM_KIND));
+		createDescription(parent, MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName, MappingMessages.JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel);
 		methodName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		methodName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

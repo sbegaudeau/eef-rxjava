@@ -144,7 +144,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 
 	
 	protected Composite createJavaExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label javaExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingViewsRepository.FORM_KIND));
+		Label javaExpressionBodyLabel = createDescription(parent, MappingViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, MappingMessages.JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel);
 		GridData javaExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		javaExpressionBodyLabelData.horizontalSpan = 3;
 		javaExpressionBodyLabel.setLayoutData(javaExpressionBodyLabelData);

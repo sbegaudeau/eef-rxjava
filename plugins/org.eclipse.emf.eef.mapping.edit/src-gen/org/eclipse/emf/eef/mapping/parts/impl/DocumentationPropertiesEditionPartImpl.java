@@ -120,7 +120,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 	
 	protected Composite createDocumentationTextarea(Composite parent) {
-		Label documentationLabel = SWTUtils.createPartLabel(parent, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Documentation.Documentation_.documentation__, MappingViewsRepository.SWT_KIND));
+		Label documentationLabel = createDescription(parent, MappingViewsRepository.Documentation.Documentation_.documentation__, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);

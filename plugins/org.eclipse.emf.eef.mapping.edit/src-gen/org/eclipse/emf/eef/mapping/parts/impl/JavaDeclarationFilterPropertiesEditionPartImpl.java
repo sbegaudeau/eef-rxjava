@@ -130,7 +130,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 
 	
 	protected Composite createMethodNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName, MappingMessages.JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel);
 		methodName = new Text(parent, SWT.BORDER);
 		GridData methodNameData = new GridData(GridData.FILL_HORIZONTAL);
 		methodName.setLayoutData(methodNameData);

@@ -144,7 +144,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 	
 	protected Composite createIndexText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_IndexLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.index, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.SimpleModelNavigation.Properties.index, MappingMessages.SimpleModelNavigationPropertiesEditionPart_IndexLabel);
 		index = new Text(parent, SWT.BORDER);
 		GridData indexData = new GridData(GridData.FILL_HORIZONTAL);
 		index.setLayoutData(indexData);
@@ -193,7 +193,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * 
 	 */
 	protected Composite createFeatureFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel);
 		feature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.feature, MappingViewsRepository.SWT_KIND));
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -216,7 +216,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	 * 
 	 */
 	protected Composite createDiscriminatorTypeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingMessages.SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel);
 		discriminatorType = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.SimpleModelNavigation.Properties.discriminatorType, MappingViewsRepository.SWT_KIND));
 		discriminatorType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 

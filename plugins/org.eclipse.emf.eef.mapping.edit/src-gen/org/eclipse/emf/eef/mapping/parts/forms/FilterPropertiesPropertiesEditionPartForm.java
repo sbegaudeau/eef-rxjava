@@ -142,7 +142,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingViewsRepository.FORM_KIND));
+		createDescription(parent, MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -182,7 +182,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createMandatoryCheckbox(FormToolkit widgetFactory, Composite parent) {
-		mandatory = widgetFactory.createButton(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel, SWT.CHECK);
+		mandatory = widgetFactory.createButton(parent, getDescription(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel), SWT.CHECK);
 		mandatory.addSelectionListener(new SelectionAdapter() {
 
 			/**

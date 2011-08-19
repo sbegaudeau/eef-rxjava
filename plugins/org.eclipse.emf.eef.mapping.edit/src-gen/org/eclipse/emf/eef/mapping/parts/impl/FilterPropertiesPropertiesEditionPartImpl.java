@@ -129,7 +129,7 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -176,7 +176,7 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 	
 	protected Composite createMandatoryCheckbox(Composite parent) {
 		mandatory = new Button(parent, SWT.CHECK);
-		mandatory.setText(MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel);
+		mandatory.setText(getDescription(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel));
 		mandatory.addSelectionListener(new SelectionAdapter() {
 
 			/**

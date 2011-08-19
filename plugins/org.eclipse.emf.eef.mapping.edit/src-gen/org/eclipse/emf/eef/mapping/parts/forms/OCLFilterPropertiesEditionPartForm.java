@@ -144,7 +144,7 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 
 	
 	protected Composite createOCLExpressionBodyTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label oCLExpressionBodyLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, MappingViewsRepository.FORM_KIND));
+		Label oCLExpressionBodyLabel = createDescription(parent, MappingViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, MappingMessages.OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel);
 		GridData oCLExpressionBodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		oCLExpressionBodyLabelData.horizontalSpan = 3;
 		oCLExpressionBodyLabel.setLayoutData(oCLExpressionBodyLabelData);

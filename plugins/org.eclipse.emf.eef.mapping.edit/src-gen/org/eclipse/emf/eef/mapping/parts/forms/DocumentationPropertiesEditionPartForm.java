@@ -133,7 +133,7 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.Documentation.Documentation_.documentation__, MappingViewsRepository.FORM_KIND));
+		Label documentationLabel = createDescription(parent, MappingViewsRepository.Documentation.Documentation_.documentation__, MappingMessages.DocumentationPropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);

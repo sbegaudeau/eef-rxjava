@@ -24,7 +24,6 @@ import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -159,7 +158,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name, MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -222,7 +221,8 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 * 
 	 */
 	protected Composite createModelAdvancedReferencesTable(Composite parent) {
-		this.model = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel, new ReferencesTableListener() {
+		String label = getDescription(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model, MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ModelLabel);		 
+		this.model = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addModel(); }
 			public void handleEdit(EObject element) { editModel(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveModel(element, oldIndex, newIndex); }
@@ -288,7 +288,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 * 
 	 */
 	protected void editModel(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -303,7 +303,8 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable(MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
+		String label = getDescription(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views, MappingMessages.EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel);		 
+		this.views = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -369,7 +370,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -164,7 +163,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Properties.name, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.StandardPropertyBinding.Properties.name, MappingMessages.StandardPropertyBindingPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -228,7 +227,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.StandardPropertyBinding.Binding.model, MappingViewsRepository.SWT_KIND));
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -250,7 +249,8 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable(MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
+		String label = getDescription(MappingViewsRepository.StandardPropertyBinding.Binding.views, MappingMessages.StandardPropertyBindingPropertiesEditionPart_ViewsLabel);		 
+		this.views = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -316,7 +316,7 @@ public class StandardPropertyBindingPropertiesEditionPartImpl extends CompositeP
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

@@ -140,7 +140,7 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 	 * 
 	 */
 	protected Composite createBindingFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND));
+		createDescription(parent, MappingViewsRepository.ElementBindingReference.Reference.binding, MappingMessages.ElementBindingReferencePropertiesEditionPart_BindingLabel);
 		binding = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND));
 		widgetFactory.adapt(binding);
 		binding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

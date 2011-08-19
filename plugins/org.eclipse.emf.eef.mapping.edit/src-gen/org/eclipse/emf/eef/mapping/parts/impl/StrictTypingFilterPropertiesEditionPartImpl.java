@@ -137,7 +137,7 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 	 * 
 	 */
 	protected Composite createRestrictionFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, MappingMessages.StrictTypingFilterPropertiesEditionPart_RestrictionLabel, propertiesEditionComponent.isRequired(MappingViewsRepository.StrictTypingFilter.Type.restriction, MappingViewsRepository.SWT_KIND));
+		createDescription(parent, MappingViewsRepository.StrictTypingFilter.Type.restriction, MappingMessages.StrictTypingFilterPropertiesEditionPart_RestrictionLabel);
 		restriction = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(MappingViewsRepository.StrictTypingFilter.Type.restriction, MappingViewsRepository.SWT_KIND));
 		restriction.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
