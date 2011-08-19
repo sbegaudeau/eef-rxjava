@@ -139,7 +139,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 	 * 
 	 */
 	protected Composite createReferencedEEFGenModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenMessages.EEFGenModelReferencePropertiesEditionPart_ReferencedEEFGenModelLabel);
 		referencedEEFGenModel = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.FORM_KIND));
 		widgetFactory.adapt(referencedEEFGenModel);
 		referencedEEFGenModel.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

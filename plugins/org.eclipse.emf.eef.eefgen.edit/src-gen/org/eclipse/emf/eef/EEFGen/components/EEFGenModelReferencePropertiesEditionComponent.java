@@ -139,7 +139,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 				referenceSettings.setToReference((EEFGenModel)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EEFGenModel eObject = EEFGenFactory.eINSTANCE.createEEFGenModel();
-				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);

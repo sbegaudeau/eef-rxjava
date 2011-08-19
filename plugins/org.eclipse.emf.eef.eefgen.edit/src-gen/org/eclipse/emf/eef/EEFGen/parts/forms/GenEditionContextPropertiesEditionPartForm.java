@@ -200,7 +200,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 	 * 
 	 */
 	protected Composite createPropertiesEditionContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel);
 		propertiesEditionContext = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND));
 		widgetFactory.adapt(propertiesEditionContext);
 		propertiesEditionContext.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -243,7 +243,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createBasePackageText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel);
 		basePackage = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		basePackage.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -283,7 +283,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createDescriptorsContributorIDText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel);
 		descriptorsContributorID = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		descriptorsContributorID.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -340,7 +340,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createGenericPropertiesViewsDescriptorsCheckbox(FormToolkit widgetFactory, Composite parent) {
-		genericPropertiesViewsDescriptors = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel, SWT.CHECK);
+		genericPropertiesViewsDescriptors = widgetFactory.createButton(parent, getDescription(EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors, EEFGenMessages.GenEditionContextPropertiesEditionPart_GenericPropertiesViewsDescriptorsLabel), SWT.CHECK);
 		genericPropertiesViewsDescriptors.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -366,7 +366,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createGMFSpecificPropertiesViewsCheckbox(FormToolkit widgetFactory, Composite parent) {
-		gMFSpecificPropertiesViews = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel, SWT.CHECK);
+		gMFSpecificPropertiesViews = widgetFactory.createButton(parent, getDescription(EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews, EEFGenMessages.GenEditionContextPropertiesEditionPart_GMFSpecificPropertiesViewsLabel), SWT.CHECK);
 		gMFSpecificPropertiesViews.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -392,7 +392,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createJUnitTestCasesCheckbox(FormToolkit widgetFactory, Composite parent) {
-		jUnitTestCases = widgetFactory.createButton(parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel, SWT.CHECK);
+		jUnitTestCases = widgetFactory.createButton(parent, getDescription(EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases, EEFGenMessages.GenEditionContextPropertiesEditionPart_JUnitTestCasesLabel), SWT.CHECK);
 		jUnitTestCases.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -435,7 +435,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createLeafComponentsSuperClassText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_LeafComponentsSuperClassLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass, EEFGenMessages.GenEditionContextPropertiesEditionPart_LeafComponentsSuperClassLabel);
 		leafComponentsSuperClass = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		leafComponentsSuperClass.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -475,7 +475,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 	
 	protected Composite createPropertiesEditingProvidersSuperClassText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditingProvidersSuperClassLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditingProvidersSuperClassLabel);
 		propertiesEditingProvidersSuperClass = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		propertiesEditingProvidersSuperClass.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

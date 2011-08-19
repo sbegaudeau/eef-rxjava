@@ -184,7 +184,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	 * 
 	 */
 	protected Composite createViewsRepositoryFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ViewsRepositoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_ViewsRepositoryLabel);
 		viewsRepository = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository, EEFGenViewsRepository.SWT_KIND));
 		viewsRepository.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -219,7 +219,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 	
 	protected Composite createBasePackageText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel);
 		basePackage = new Text(parent, SWT.BORDER);
 		GridData basePackageData = new GridData(GridData.FILL_HORIZONTAL);
 		basePackage.setLayoutData(basePackageData);
@@ -265,7 +265,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 	
 	protected Composite createHelpStrategyEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_HelpStrategyLabel);
 		helpStrategy = new EMFComboViewer(parent);
 		helpStrategy.setContentProvider(new ArrayContentProvider());
 		helpStrategy.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -308,7 +308,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createSWTViewsCheckbox(Composite parent) {
 		sWTViews = new Button(parent, SWT.CHECK);
-		sWTViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_SWTViewsLabel);
+		sWTViews.setText(getDescription(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_SWTViewsLabel));
 		sWTViews.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -335,7 +335,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createFormsViewsCheckbox(Composite parent) {
 		formsViews = new Button(parent, SWT.CHECK);
-		formsViews.setText(EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel);
+		formsViews.setText(getDescription(EEFGenViewsRepository.GenViewsRepository.Activation.formsViews, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormsViewsLabel));
 		formsViews.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -376,7 +376,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 
 	
 	protected Composite createPartsSuperClassText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel);
 		partsSuperClass = new Text(parent, SWT.BORDER);
 		GridData partsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		partsSuperClass.setLayoutData(partsSuperClassData);

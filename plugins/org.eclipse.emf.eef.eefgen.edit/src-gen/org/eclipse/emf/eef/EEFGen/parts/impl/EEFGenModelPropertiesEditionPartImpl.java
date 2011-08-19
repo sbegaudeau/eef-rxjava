@@ -150,7 +150,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	
 	protected Composite createGenerationDirectoryText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel);
 		generationDirectory = new Text(parent, SWT.BORDER);
 		GridData generationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
 		generationDirectory.setLayoutData(generationDirectoryData);
@@ -196,7 +196,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	
 	protected Composite createTestsGenerationDirectoryText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel);
 		testsGenerationDirectory = new Text(parent, SWT.BORDER);
 		GridData testsGenerationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
 		testsGenerationDirectory.setLayoutData(testsGenerationDirectoryData);
@@ -243,7 +243,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createUseJMergeToManageUserCodeCheckbox(Composite parent) {
 		useJMergeToManageUserCode = new Button(parent, SWT.CHECK);
-		useJMergeToManageUserCode.setText(EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel);
+		useJMergeToManageUserCode.setText(getDescription(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode, EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel));
 		useJMergeToManageUserCode.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -284,7 +284,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	
 	protected Composite createAuthorText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenViewsRepository.SWT_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel);
 		author = new Text(parent, SWT.BORDER);
 		GridData authorData = new GridData(GridData.FILL_HORIZONTAL);
 		author.setLayoutData(authorData);
@@ -330,7 +330,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	
 	protected Composite createLicenseTextarea(Composite parent) {
-		Label licenseLabel = SWTUtils.createPartLabel(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Legal.license, EEFGenViewsRepository.SWT_KIND));
+		Label licenseLabel = createDescription(parent, EEFGenViewsRepository.EEFGenModel.Legal.license, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel);
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);

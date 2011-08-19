@@ -162,7 +162,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel);
 		generationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		generationDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -202,7 +202,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createTestsGenerationDirectoryText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel);
 		testsGenerationDirectory = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		testsGenerationDirectory.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -242,7 +242,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createUseJMergeToManageUserCodeCheckbox(FormToolkit widgetFactory, Composite parent) {
-		useJMergeToManageUserCode = widgetFactory.createButton(parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel, SWT.CHECK);
+		useJMergeToManageUserCode = widgetFactory.createButton(parent, getDescription(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode, EEFGenMessages.EEFGenModelPropertiesEditionPart_UseJMergeToManageUserCodeLabel), SWT.CHECK);
 		useJMergeToManageUserCode.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -285,7 +285,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createAuthorText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenViewsRepository.FORM_KIND));
+		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel);
 		author = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		author.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -325,7 +325,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createLicenseTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label licenseLabel = FormUtils.createPartLabel(widgetFactory, parent, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel, propertiesEditionComponent.isRequired(EEFGenViewsRepository.EEFGenModel.Legal.license, EEFGenViewsRepository.FORM_KIND));
+		Label licenseLabel = createDescription(parent, EEFGenViewsRepository.EEFGenModel.Legal.license, EEFGenMessages.EEFGenModelPropertiesEditionPart_LicenseLabel);
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);
