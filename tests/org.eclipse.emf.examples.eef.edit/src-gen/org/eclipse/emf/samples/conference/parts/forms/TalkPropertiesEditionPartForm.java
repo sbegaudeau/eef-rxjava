@@ -173,7 +173,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createTitle_Text(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.title_, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.title_, ConferenceMessages.TalkPropertiesEditionPart_Title_Label);
 		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		title_.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -217,7 +217,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 * 
 	 */
 	protected Composite createTopicFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_TopicLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.topic, ConferenceMessages.TalkPropertiesEditionPart_TopicLabel);
 		topic = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.FORM_KIND));
 		widgetFactory.adapt(topic);
 		topic.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -243,7 +243,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.type, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.type, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel);
 		type = new EMFComboViewer(parent);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -274,7 +274,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 * 
 	 */
 	protected Composite createPresenterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_PresenterLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.presenter, ConferenceMessages.TalkPropertiesEditionPart_PresenterLabel);
 		presenter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.FORM_KIND));
 		widgetFactory.adapt(presenter);
 		presenter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -304,7 +304,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 * 
 	 */
 	protected Composite createCreatorFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_CreatorLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.creator, ConferenceMessages.TalkPropertiesEditionPart_CreatorLabel);
 		creator = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.FORM_KIND));
 		widgetFactory.adapt(creator);
 		creator.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -330,7 +330,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.documentation, ConferenceViewsRepository.FORM_KIND));
+		Label documentationLabel = createDescription(parent, ConferenceViewsRepository.Talk.Properties.documentation, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);

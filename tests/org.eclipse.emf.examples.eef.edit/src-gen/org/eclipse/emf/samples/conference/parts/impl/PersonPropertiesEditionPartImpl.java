@@ -163,7 +163,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	
 	protected Composite createFirstnameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.firstname, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.firstname, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel);
 		firstname = new Text(parent, SWT.BORDER);
 		GridData firstnameData = new GridData(GridData.FILL_HORIZONTAL);
 		firstname.setLayoutData(firstnameData);
@@ -209,7 +209,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	
 	protected Composite createLastnameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.lastname, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.lastname, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel);
 		lastname = new Text(parent, SWT.BORDER);
 		GridData lastnameData = new GridData(GridData.FILL_HORIZONTAL);
 		lastname.setLayoutData(lastnameData);
@@ -255,7 +255,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	
 	protected Composite createAgeText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.age, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.age, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel);
 		age = new Text(parent, SWT.BORDER);
 		GridData ageData = new GridData(GridData.FILL_HORIZONTAL);
 		age.setLayoutData(ageData);
@@ -301,7 +301,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 	
 	protected Composite createGenderEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.gender, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.gender, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel);
 		gender = new EMFComboViewer(parent);
 		gender.setContentProvider(new ArrayContentProvider());
 		gender.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -344,7 +344,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createEclipseCommiterCheckbox(Composite parent) {
 		eclipseCommiter = new Button(parent, SWT.CHECK);
-		eclipseCommiter.setText(ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel);
+		eclipseCommiter.setText(getDescription(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel));
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -371,7 +371,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createIsRegisteredCheckbox(Composite parent) {
 		isRegistered = new Button(parent, SWT.CHECK);
-		isRegistered.setText(ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel);
+		isRegistered.setText(getDescription(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel));
 		isRegistered.addSelectionListener(new SelectionAdapter() {
 
 			/**

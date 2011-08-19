@@ -115,7 +115,7 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	protected Composite createTalksAdvancedTableComposition(Composite parent) {
-		this.talks = new ReferencesTable(ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TalksLabel, new ReferencesTableListener() {
+		this.talks = new ReferencesTable(getDescription(ConferenceViewsRepository.TalksAndTopics.talks, ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TalksLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalksAndTopicsPropertiesEditionPartImpl.this, ConferenceViewsRepository.TalksAndTopics.talks, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				talks.refresh();
@@ -163,7 +163,7 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	protected Composite createTopicsAdvancedTableComposition(Composite parent) {
-		this.topics = new ReferencesTable(ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TopicsLabel, new ReferencesTableListener() {
+		this.topics = new ReferencesTable(getDescription(ConferenceViewsRepository.TalksAndTopics.topics, ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TopicsLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalksAndTopicsPropertiesEditionPartImpl.this, ConferenceViewsRepository.TalksAndTopics.topics, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				topics.refresh();

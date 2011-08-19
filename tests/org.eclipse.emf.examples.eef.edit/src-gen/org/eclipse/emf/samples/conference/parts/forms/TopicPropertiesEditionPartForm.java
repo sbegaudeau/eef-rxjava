@@ -154,7 +154,7 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.Properties.description, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Topic.Properties.description, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -202,7 +202,7 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		references.setLayoutData(referencesData);
 		EditingUtils.setID(references, ConferenceViewsRepository.Topic.Properties.references);
 		EditingUtils.setEEFtype(references, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editReferences = widgetFactory.createButton(parent, ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel, SWT.NONE);
+		editReferences = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Topic.Properties.references, ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel), SWT.NONE);
 		GridData editReferencesData = new GridData();
 		editReferences.setLayoutData(editReferencesData);
 		editReferences.addSelectionListener(new SelectionAdapter() {
@@ -237,7 +237,7 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 	
 	protected Composite createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.Properties.documentation, ConferenceViewsRepository.FORM_KIND));
+		Label documentationLabel = createDescription(parent, ConferenceViewsRepository.Topic.Properties.documentation, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);

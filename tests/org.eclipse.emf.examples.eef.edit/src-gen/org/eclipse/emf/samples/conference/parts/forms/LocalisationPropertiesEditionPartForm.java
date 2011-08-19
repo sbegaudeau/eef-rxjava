@@ -127,7 +127,7 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 	}
 	
 	protected Composite createPlaceText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Localisation.place, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Localisation.place, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel);
 		place = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		place.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -170,7 +170,7 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	protected Composite createSitesTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.sites = new ReferencesTable(ConferenceMessages.LocalisationPropertiesEditionPart_SitesLabel, new ReferencesTableListener() {
+		this.sites = new ReferencesTable(getDescription(ConferenceViewsRepository.Localisation.sites, ConferenceMessages.LocalisationPropertiesEditionPart_SitesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartForm.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				sites.refresh();

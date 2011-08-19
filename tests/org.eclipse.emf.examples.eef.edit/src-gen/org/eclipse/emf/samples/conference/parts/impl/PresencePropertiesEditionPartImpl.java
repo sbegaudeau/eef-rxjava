@@ -134,7 +134,8 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 */
 	protected Composite createAssistsAdvancedReferencesTable(Composite parent) {
-		this.assists = new ReferencesTable(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener() {
+		String label = getDescription(ConferenceViewsRepository.Presence.Talks.assists, ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel);		 
+		this.assists = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addAssists(); }
 			public void handleEdit(EObject element) { editAssists(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAssists(element, oldIndex, newIndex); }

@@ -145,7 +145,7 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * 
 	 */
 	protected Composite createAssistsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.assists = new ReferencesTable(ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel, new ReferencesTableListener	() {
+		this.assists = new ReferencesTable(getDescription(ConferenceViewsRepository.Presence.Talks.assists, ConferenceMessages.PresencePropertiesEditionPart_AssistsLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addAssists(); }
 			public void handleEdit(EObject element) { editAssists(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAssists(element, oldIndex, newIndex); }

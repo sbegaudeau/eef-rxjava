@@ -117,7 +117,7 @@ public class ParticipantsPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * 
 	 */
 	protected Composite createParticipantsTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.participants = new ReferencesTable(ConferenceMessages.ParticipantsPropertiesEditionPart_ParticipantsLabel, new ReferencesTableListener() {
+		this.participants = new ReferencesTable(getDescription(ConferenceViewsRepository.Participants.participants_, ConferenceMessages.ParticipantsPropertiesEditionPart_ParticipantsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParticipantsPropertiesEditionPartForm.this, ConferenceViewsRepository.Participants.participants_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				participants.refresh();

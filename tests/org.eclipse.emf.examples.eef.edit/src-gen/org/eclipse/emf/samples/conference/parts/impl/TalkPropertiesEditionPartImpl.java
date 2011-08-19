@@ -161,7 +161,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	
 	protected Composite createTitle_Text(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.title_, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.title_, ConferenceMessages.TalkPropertiesEditionPart_Title_Label);
 		title_ = new Text(parent, SWT.BORDER);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);
@@ -210,7 +210,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 */
 	protected Composite createTopicFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_TopicLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.topic, ConferenceMessages.TalkPropertiesEditionPart_TopicLabel);
 		topic = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.SWT_KIND));
 		topic.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -230,7 +230,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	
 	protected Composite createTypeEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.type, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.type, ConferenceMessages.TalkPropertiesEditionPart_TypeLabel);
 		type = new EMFComboViewer(parent);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -260,7 +260,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 */
 	protected Composite createPresenterFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_PresenterLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.presenter, ConferenceMessages.TalkPropertiesEditionPart_PresenterLabel);
 		presenter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.SWT_KIND));
 		presenter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -283,7 +283,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * 
 	 */
 	protected Composite createCreatorFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_CreatorLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Talk.Properties.creator, ConferenceMessages.TalkPropertiesEditionPart_CreatorLabel);
 		creator = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.SWT_KIND));
 		creator.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -303,7 +303,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	
 	protected Composite createDocumentationTextarea(Composite parent) {
-		Label documentationLabel = SWTUtils.createPartLabel(parent, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.documentation, ConferenceViewsRepository.SWT_KIND));
+		Label documentationLabel = createDescription(parent, ConferenceViewsRepository.Talk.Properties.documentation, ConferenceMessages.TalkPropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);

@@ -125,7 +125,7 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.RoomPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Room.Properties.name, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Room.Properties.name, ConferenceMessages.RoomPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -171,7 +171,7 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	
 	protected Composite createCapacityText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.RoomPropertiesEditionPart_CapacityLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Room.Properties.capacity, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Room.Properties.capacity, ConferenceMessages.RoomPropertiesEditionPart_CapacityLabel);
 		capacity = new Text(parent, SWT.BORDER);
 		GridData capacityData = new GridData(GridData.FILL_HORIZONTAL);
 		capacity.setLayoutData(capacityData);

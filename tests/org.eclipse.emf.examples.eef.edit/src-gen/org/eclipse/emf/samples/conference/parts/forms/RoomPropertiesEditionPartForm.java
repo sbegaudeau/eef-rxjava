@@ -137,7 +137,7 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.RoomPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Room.Properties.name, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Room.Properties.name, ConferenceMessages.RoomPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -177,7 +177,7 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createCapacityText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.RoomPropertiesEditionPart_CapacityLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Room.Properties.capacity, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Room.Properties.capacity, ConferenceMessages.RoomPropertiesEditionPart_CapacityLabel);
 		capacity = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		capacity.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

@@ -157,7 +157,7 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.SitePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Site.Properties.name, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Site.Properties.name, ConferenceMessages.SitePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -197,7 +197,7 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 	
 	protected Composite createDocumentationTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label documentationLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Site.Properties.documentation, ConferenceViewsRepository.FORM_KIND));
+		Label documentationLabel = createDescription(parent, ConferenceViewsRepository.Site.Properties.documentation, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
@@ -232,7 +232,7 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 * 
 	 */
 	protected Composite createRoomsTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.rooms = new ReferencesTable(ConferenceMessages.SitePropertiesEditionPart_RoomsLabel, new ReferencesTableListener() {
+		this.rooms = new ReferencesTable(getDescription(ConferenceViewsRepository.Site.Properties.rooms, ConferenceMessages.SitePropertiesEditionPart_RoomsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartForm.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				rooms.refresh();

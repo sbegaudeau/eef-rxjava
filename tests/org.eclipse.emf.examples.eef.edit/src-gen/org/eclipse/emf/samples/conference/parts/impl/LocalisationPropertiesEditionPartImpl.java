@@ -117,7 +117,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 	
 	protected Composite createPlaceText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Localisation.place, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Localisation.place, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel);
 		place = new Text(parent, SWT.BORDER);
 		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
 		place.setLayoutData(placeData);
@@ -166,7 +166,7 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	protected Composite createSitesAdvancedTableComposition(Composite parent) {
-		this.sites = new ReferencesTable(ConferenceMessages.LocalisationPropertiesEditionPart_SitesLabel, new ReferencesTableListener() {
+		this.sites = new ReferencesTable(getDescription(ConferenceViewsRepository.Localisation.sites, ConferenceMessages.LocalisationPropertiesEditionPart_SitesLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LocalisationPropertiesEditionPartImpl.this, ConferenceViewsRepository.Localisation.sites, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				sites.refresh();

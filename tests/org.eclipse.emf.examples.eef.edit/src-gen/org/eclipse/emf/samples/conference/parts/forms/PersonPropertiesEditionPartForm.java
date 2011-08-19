@@ -175,7 +175,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 	
 	protected Composite createFirstnameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.firstname, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.firstname, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel);
 		firstname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		firstname.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -215,7 +215,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 	
 	protected Composite createLastnameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.lastname, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.lastname, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel);
 		lastname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		lastname.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -255,7 +255,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 	
 	protected Composite createAgeText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.age, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.age, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel);
 		age = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		age.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -295,7 +295,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 	
 	protected Composite createGenderEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Person.Identity.gender, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Person.Identity.gender, ConferenceMessages.PersonPropertiesEditionPart_GenderLabel);
 		gender = new EMFComboViewer(parent);
 		gender.setContentProvider(new ArrayContentProvider());
 		gender.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
@@ -339,7 +339,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 	
 	protected Composite createEclipseCommiterCheckbox(FormToolkit widgetFactory, Composite parent) {
-		eclipseCommiter = widgetFactory.createButton(parent, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel, SWT.CHECK);
+		eclipseCommiter = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel), SWT.CHECK);
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -365,7 +365,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 	
 	protected Composite createIsRegisteredCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isRegistered = widgetFactory.createButton(parent, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel, SWT.CHECK);
+		isRegistered = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel), SWT.CHECK);
 		isRegistered.addSelectionListener(new SelectionAdapter() {
 
 			/**

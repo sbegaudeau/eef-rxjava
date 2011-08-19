@@ -142,7 +142,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	
 	protected Composite createDescriptionText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.Properties.description, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Topic.Properties.description, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel);
 		description = new Text(parent, SWT.BORDER);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		description.setLayoutData(descriptionData);
@@ -194,7 +194,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		EditingUtils.setID(references, ConferenceViewsRepository.Topic.Properties.references);
 		EditingUtils.setEEFtype(references, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editReferences = new Button(parent, SWT.NONE);
-		editReferences.setText(ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel);
+		editReferences.setText(getDescription(ConferenceViewsRepository.Topic.Properties.references, ConferenceMessages.TopicPropertiesEditionPart_ReferencesLabel));
 		GridData editReferencesData = new GridData();
 		editReferences.setLayoutData(editReferencesData);
 		editReferences.addSelectionListener(new SelectionAdapter() {
@@ -228,7 +228,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	
 	protected Composite createDocumentationTextarea(Composite parent) {
-		Label documentationLabel = SWTUtils.createPartLabel(parent, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Topic.Properties.documentation, ConferenceViewsRepository.SWT_KIND));
+		Label documentationLabel = createDescription(parent, ConferenceViewsRepository.Topic.Properties.documentation, ConferenceMessages.TopicPropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);

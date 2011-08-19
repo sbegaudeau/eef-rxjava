@@ -145,7 +145,7 @@ protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.SitePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Site.Properties.name, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Site.Properties.name, ConferenceMessages.SitePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -191,7 +191,7 @@ protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 
 	
 	protected Composite createDocumentationTextarea(Composite parent) {
-		Label documentationLabel = SWTUtils.createPartLabel(parent, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Site.Properties.documentation, ConferenceViewsRepository.SWT_KIND));
+		Label documentationLabel = createDescription(parent, ConferenceViewsRepository.Site.Properties.documentation, ConferenceMessages.SitePropertiesEditionPart_DocumentationLabel);
 		GridData documentationLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
@@ -226,7 +226,7 @@ protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 	 * 
 	 */
 	protected Composite createRoomsAdvancedTableComposition(Composite parent) {
-		this.rooms = new ReferencesTable(ConferenceMessages.SitePropertiesEditionPart_RoomsLabel, new ReferencesTableListener() {
+		this.rooms = new ReferencesTable(getDescription(ConferenceViewsRepository.Site.Properties.rooms, ConferenceMessages.SitePropertiesEditionPart_RoomsLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SitePropertiesEditionPartImpl.this, ConferenceViewsRepository.Site.Properties.rooms, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				rooms.refresh();

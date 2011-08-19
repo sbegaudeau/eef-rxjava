@@ -138,7 +138,7 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.ConferencePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Properties.name, ConferenceViewsRepository.FORM_KIND));
+		createDescription(parent, ConferenceViewsRepository.Conference_.Properties.name, ConferenceMessages.ConferencePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -178,7 +178,7 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 
 	
 	protected Composite createOverviewTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label overviewLabel = FormUtils.createPartLabel(widgetFactory, parent, ConferenceMessages.ConferencePropertiesEditionPart_OverviewLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.FORM_KIND));
+		Label overviewLabel = createDescription(parent, ConferenceViewsRepository.Conference_.Properties.overview, ConferenceMessages.ConferencePropertiesEditionPart_OverviewLabel);
 		GridData overviewLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		overviewLabelData.horizontalSpan = 3;
 		overviewLabel.setLayoutData(overviewLabelData);

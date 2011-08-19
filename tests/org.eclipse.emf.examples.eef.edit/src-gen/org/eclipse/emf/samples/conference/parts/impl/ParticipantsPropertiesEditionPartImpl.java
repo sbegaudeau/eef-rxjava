@@ -108,7 +108,7 @@ protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>()
 	 * 
 	 */
 	protected Composite createParticipantsAdvancedTableComposition(Composite parent) {
-		this.participants = new ReferencesTable(ConferenceMessages.ParticipantsPropertiesEditionPart_ParticipantsLabel, new ReferencesTableListener() {
+		this.participants = new ReferencesTable(getDescription(ConferenceViewsRepository.Participants.participants_, ConferenceMessages.ParticipantsPropertiesEditionPart_ParticipantsLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParticipantsPropertiesEditionPartImpl.this, ConferenceViewsRepository.Participants.participants_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				participants.refresh();

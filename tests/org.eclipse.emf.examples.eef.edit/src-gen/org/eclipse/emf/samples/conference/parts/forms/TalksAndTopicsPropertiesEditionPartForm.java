@@ -124,7 +124,7 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	protected Composite createTalksTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.talks = new ReferencesTable(ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TalksLabel, new ReferencesTableListener() {
+		this.talks = new ReferencesTable(getDescription(ConferenceViewsRepository.TalksAndTopics.talks, ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TalksLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalksAndTopicsPropertiesEditionPartForm.this, ConferenceViewsRepository.TalksAndTopics.talks, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				talks.refresh();
@@ -172,7 +172,7 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 	 * 
 	 */
 	protected Composite createTopicsTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.topics = new ReferencesTable(ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TopicsLabel, new ReferencesTableListener() {
+		this.topics = new ReferencesTable(getDescription(ConferenceViewsRepository.TalksAndTopics.topics, ConferenceMessages.TalksAndTopicsPropertiesEditionPart_TopicsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TalksAndTopicsPropertiesEditionPartForm.this, ConferenceViewsRepository.TalksAndTopics.topics, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				topics.refresh();

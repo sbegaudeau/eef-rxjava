@@ -126,7 +126,7 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ConferenceMessages.ConferencePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Properties.name, ConferenceViewsRepository.SWT_KIND));
+		createDescription(parent, ConferenceViewsRepository.Conference_.Properties.name, ConferenceMessages.ConferencePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -172,7 +172,7 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	
 	protected Composite createOverviewTextarea(Composite parent) {
-		Label overviewLabel = SWTUtils.createPartLabel(parent, ConferenceMessages.ConferencePropertiesEditionPart_OverviewLabel, propertiesEditionComponent.isRequired(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.SWT_KIND));
+		Label overviewLabel = createDescription(parent, ConferenceViewsRepository.Conference_.Properties.overview, ConferenceMessages.ConferencePropertiesEditionPart_OverviewLabel);
 		GridData overviewLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		overviewLabelData.horizontalSpan = 3;
 		overviewLabel.setLayoutData(overviewLabelData);
