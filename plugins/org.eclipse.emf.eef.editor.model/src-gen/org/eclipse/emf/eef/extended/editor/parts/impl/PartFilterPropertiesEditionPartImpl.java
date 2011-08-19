@@ -152,7 +152,7 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.PartFilterPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.PartFilter.Naming.name, EditorMessages.PartFilterPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -216,7 +216,7 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * 
 	 */
 	protected Composite createContextualComponentFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.PartFilterPropertiesEditionPart_ContextualComponentLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.contextualComponent, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.PartFilter.Filter.contextualComponent, EditorMessages.PartFilterPropertiesEditionPart_ContextualComponentLabel);
 		contextualComponent = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.contextualComponent, EditorViewsRepository.SWT_KIND));
 		contextualComponent.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -239,7 +239,7 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 	 * 
 	 */
 	protected Composite createFilteredPartFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.PartFilterPropertiesEditionPart_FilteredPartLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.filteredPart, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.PartFilter.Filter.filteredPart, EditorMessages.PartFilterPropertiesEditionPart_FilteredPartLabel);
 		filteredPart = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.filteredPart, EditorViewsRepository.SWT_KIND));
 		filteredPart.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -275,7 +275,7 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 	
 	protected Composite createMandatoryCheckbox(Composite parent) {
 		mandatory = new Button(parent, SWT.CHECK);
-		mandatory.setText(EditorMessages.PartFilterPropertiesEditionPart_MandatoryLabel);
+		mandatory.setText(getDescription(EditorViewsRepository.PartFilter.Settings.mandatory, EditorMessages.PartFilterPropertiesEditionPart_MandatoryLabel));
 		mandatory.addSelectionListener(new SelectionAdapter() {
 
 			/**

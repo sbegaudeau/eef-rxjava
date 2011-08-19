@@ -113,7 +113,7 @@ public class EEFEditorContributionsPropertiesEditionPartImpl extends CompositePr
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.EEFEditorContributionsPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.EEFEditorContributions.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.EEFEditorContributions.Naming.name, EditorMessages.EEFEditorContributionsPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

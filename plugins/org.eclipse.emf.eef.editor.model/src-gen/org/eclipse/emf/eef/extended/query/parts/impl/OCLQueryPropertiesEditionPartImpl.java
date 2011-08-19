@@ -130,7 +130,7 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 */
 	protected Composite createContextFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, QueryMessages.OCLQueryPropertiesEditionPart_ContextLabel, propertiesEditionComponent.isRequired(QueryViewsRepository.OCLQuery.Properties.context, QueryViewsRepository.SWT_KIND));
+		createDescription(parent, QueryViewsRepository.OCLQuery.Properties.context, QueryMessages.OCLQueryPropertiesEditionPart_ContextLabel);
 		context = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(QueryViewsRepository.OCLQuery.Properties.context, QueryViewsRepository.SWT_KIND));
 		context.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -150,7 +150,7 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	
 	protected Composite createQueryText(Composite parent) {
-		SWTUtils.createPartLabel(parent, QueryMessages.OCLQueryPropertiesEditionPart_QueryLabel, propertiesEditionComponent.isRequired(QueryViewsRepository.OCLQuery.Properties.query_, QueryViewsRepository.SWT_KIND));
+		createDescription(parent, QueryViewsRepository.OCLQuery.Properties.query_, QueryMessages.OCLQueryPropertiesEditionPart_QueryLabel);
 		query = new Text(parent, SWT.BORDER);
 		GridData queryData = new GridData(GridData.FILL_HORIZONTAL);
 		query.setLayoutData(queryData);

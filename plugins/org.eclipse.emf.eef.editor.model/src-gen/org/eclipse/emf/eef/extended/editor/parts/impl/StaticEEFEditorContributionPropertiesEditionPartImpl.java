@@ -15,7 +15,6 @@ import org.eclipse.emf.eef.extended.editor.providers.EditorMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -144,7 +143,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.StaticEEFEditorContribution.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.StaticEEFEditorContribution.Naming.name, EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -207,7 +206,8 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable(EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
+		String label = getDescription(EditorViewsRepository.StaticEEFEditorContribution.Binding.views, EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_ViewsLabel);		 
+		this.views = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -273,7 +273,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

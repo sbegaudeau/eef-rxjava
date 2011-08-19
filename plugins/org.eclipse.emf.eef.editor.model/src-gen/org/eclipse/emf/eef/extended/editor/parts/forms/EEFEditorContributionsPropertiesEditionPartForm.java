@@ -125,7 +125,7 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.EEFEditorContributionsPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.EEFEditorContributions.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.EEFEditorContributions.Naming.name, EditorMessages.EEFEditorContributionsPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

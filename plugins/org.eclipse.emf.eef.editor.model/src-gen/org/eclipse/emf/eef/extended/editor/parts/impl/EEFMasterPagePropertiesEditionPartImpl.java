@@ -136,7 +136,7 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.EEFMasterPagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.EEFMasterPage.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.EEFMasterPage.Naming.name, EditorMessages.EEFMasterPagePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -182,7 +182,7 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 
 	
 	protected Composite createTitle_Text(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.EEFMasterPagePropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(EditorViewsRepository.EEFMasterPage.Naming.title_, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.EEFMasterPage.Naming.title_, EditorMessages.EEFMasterPagePropertiesEditionPart_Title_Label);
 		title_ = new Text(parent, SWT.BORDER);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);
@@ -244,7 +244,7 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createOrientableCheckbox(Composite parent) {
 		orientable = new Button(parent, SWT.CHECK);
-		orientable.setText(EditorMessages.EEFMasterPagePropertiesEditionPart_OrientableLabel);
+		orientable.setText(getDescription(EditorViewsRepository.EEFMasterPage.Settings.orientable, EditorMessages.EEFMasterPagePropertiesEditionPart_OrientableLabel));
 		orientable.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -271,7 +271,7 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 	
 	protected Composite createShowValidatePageCheckbox(Composite parent) {
 		showValidatePage = new Button(parent, SWT.CHECK);
-		showValidatePage.setText(EditorMessages.EEFMasterPagePropertiesEditionPart_ShowValidatePageLabel);
+		showValidatePage.setText(getDescription(EditorViewsRepository.EEFMasterPage.Settings.showValidatePage, EditorMessages.EEFMasterPagePropertiesEditionPart_ShowValidatePageLabel));
 		showValidatePage.addSelectionListener(new SelectionAdapter() {
 
 			/**

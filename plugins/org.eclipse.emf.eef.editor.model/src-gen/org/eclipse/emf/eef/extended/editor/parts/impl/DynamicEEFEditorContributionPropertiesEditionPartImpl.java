@@ -16,7 +16,6 @@ import org.eclipse.emf.eef.extended.editor.providers.EditorMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -156,7 +155,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.DynamicEEFEditorContribution.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.DynamicEEFEditorContribution.Naming.name, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -220,7 +219,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.DynamicEEFEditorContribution.Binding.model, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.DynamicEEFEditorContribution.Binding.model, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EditorViewsRepository.DynamicEEFEditorContribution.Binding.model, EditorViewsRepository.SWT_KIND));
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -242,7 +241,8 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	protected Composite createViewsAdvancedReferencesTable(Composite parent) {
-		this.views = new ReferencesTable(EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ViewsLabel, new ReferencesTableListener() {
+		String label = getDescription(EditorViewsRepository.DynamicEEFEditorContribution.Binding.views, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ViewsLabel);		 
+		this.views = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -308,7 +308,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

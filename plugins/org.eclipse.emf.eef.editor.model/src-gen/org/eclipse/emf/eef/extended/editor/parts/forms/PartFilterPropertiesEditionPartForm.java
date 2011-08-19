@@ -164,7 +164,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.PartFilterPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.PartFilter.Naming.name, EditorMessages.PartFilterPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -225,7 +225,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * 
 	 */
 	protected Composite createContextualComponentFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.PartFilterPropertiesEditionPart_ContextualComponentLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.contextualComponent, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.PartFilter.Filter.contextualComponent, EditorMessages.PartFilterPropertiesEditionPart_ContextualComponentLabel);
 		contextualComponent = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.contextualComponent, EditorViewsRepository.FORM_KIND));
 		widgetFactory.adapt(contextualComponent);
 		contextualComponent.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -255,7 +255,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * 
 	 */
 	protected Composite createFilteredPartFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.PartFilterPropertiesEditionPart_FilteredPartLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.filteredPart, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.PartFilter.Filter.filteredPart, EditorMessages.PartFilterPropertiesEditionPart_FilteredPartLabel);
 		filteredPart = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EditorViewsRepository.PartFilter.Filter.filteredPart, EditorViewsRepository.FORM_KIND));
 		widgetFactory.adapt(filteredPart);
 		filteredPart.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -298,7 +298,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 
 	
 	protected Composite createMandatoryCheckbox(FormToolkit widgetFactory, Composite parent) {
-		mandatory = widgetFactory.createButton(parent, EditorMessages.PartFilterPropertiesEditionPart_MandatoryLabel, SWT.CHECK);
+		mandatory = widgetFactory.createButton(parent, getDescription(EditorViewsRepository.PartFilter.Settings.mandatory, EditorMessages.PartFilterPropertiesEditionPart_MandatoryLabel), SWT.CHECK);
 		mandatory.addSelectionListener(new SelectionAdapter() {
 
 			/**

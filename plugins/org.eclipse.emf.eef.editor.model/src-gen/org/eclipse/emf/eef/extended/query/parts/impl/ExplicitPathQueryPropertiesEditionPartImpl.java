@@ -119,7 +119,7 @@ public class ExplicitPathQueryPropertiesEditionPartImpl extends CompositePropert
 	 * 
 	 */
 	protected Composite createQueryFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, QueryMessages.ExplicitPathQueryPropertiesEditionPart_QueryLabel, propertiesEditionComponent.isRequired(QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryViewsRepository.SWT_KIND));
+		createDescription(parent, QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryMessages.ExplicitPathQueryPropertiesEditionPart_QueryLabel);
 		query = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryViewsRepository.SWT_KIND));
 		query.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 

@@ -131,7 +131,7 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 	 * 
 	 */
 	protected Composite createQueryFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, QueryMessages.ExplicitPathQueryPropertiesEditionPart_QueryLabel, propertiesEditionComponent.isRequired(QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryViewsRepository.FORM_KIND));
+		createDescription(parent, QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryMessages.ExplicitPathQueryPropertiesEditionPart_QueryLabel);
 		query = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryViewsRepository.FORM_KIND));
 		widgetFactory.adapt(query);
 		query.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

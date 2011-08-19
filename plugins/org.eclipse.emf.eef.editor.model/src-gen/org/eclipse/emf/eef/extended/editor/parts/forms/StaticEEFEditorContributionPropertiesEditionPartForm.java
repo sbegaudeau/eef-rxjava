@@ -15,7 +15,6 @@ import org.eclipse.emf.eef.extended.editor.providers.EditorMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
@@ -156,7 +155,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.StaticEEFEditorContribution.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.StaticEEFEditorContribution.Naming.name, EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -215,7 +214,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
+		this.views = new ReferencesTable(getDescription(EditorViewsRepository.StaticEEFEditorContribution.Binding.views, EditorMessages.StaticEEFEditorContributionPropertiesEditionPart_ViewsLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -281,7 +280,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

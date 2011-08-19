@@ -144,7 +144,7 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.TreeMasterPagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.TreeMasterPage.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.TreeMasterPage.Naming.name, EditorMessages.TreeMasterPagePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -184,7 +184,7 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 
 	
 	protected Composite createTitle_Text(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.TreeMasterPagePropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(EditorViewsRepository.TreeMasterPage.Naming.title_, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.TreeMasterPage.Naming.title_, EditorMessages.TreeMasterPagePropertiesEditionPart_Title_Label);
 		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		title_.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -241,7 +241,7 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 
 	
 	protected Composite createToolbarVisibleCheckbox(FormToolkit widgetFactory, Composite parent) {
-		toolbarVisible = widgetFactory.createButton(parent, EditorMessages.TreeMasterPagePropertiesEditionPart_ToolbarVisibleLabel, SWT.CHECK);
+		toolbarVisible = widgetFactory.createButton(parent, getDescription(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible, EditorMessages.TreeMasterPagePropertiesEditionPart_ToolbarVisibleLabel), SWT.CHECK);
 		toolbarVisible.addSelectionListener(new SelectionAdapter() {
 
 			/**

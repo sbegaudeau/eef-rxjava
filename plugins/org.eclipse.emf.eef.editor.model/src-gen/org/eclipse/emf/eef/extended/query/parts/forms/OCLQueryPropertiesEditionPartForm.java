@@ -143,7 +143,7 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * 
 	 */
 	protected Composite createContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, QueryMessages.OCLQueryPropertiesEditionPart_ContextLabel, propertiesEditionComponent.isRequired(QueryViewsRepository.OCLQuery.Properties.context, QueryViewsRepository.FORM_KIND));
+		createDescription(parent, QueryViewsRepository.OCLQuery.Properties.context, QueryMessages.OCLQueryPropertiesEditionPart_ContextLabel);
 		context = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(QueryViewsRepository.OCLQuery.Properties.context, QueryViewsRepository.FORM_KIND));
 		widgetFactory.adapt(context);
 		context.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -169,7 +169,7 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 
 	
 	protected Composite createQueryText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, QueryMessages.OCLQueryPropertiesEditionPart_QueryLabel, propertiesEditionComponent.isRequired(QueryViewsRepository.OCLQuery.Properties.query_, QueryViewsRepository.FORM_KIND));
+		createDescription(parent, QueryViewsRepository.OCLQuery.Properties.query_, QueryMessages.OCLQueryPropertiesEditionPart_QueryLabel);
 		query = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		query.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

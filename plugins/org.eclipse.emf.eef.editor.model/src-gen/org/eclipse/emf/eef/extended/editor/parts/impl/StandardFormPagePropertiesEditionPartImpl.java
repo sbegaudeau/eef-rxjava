@@ -118,7 +118,7 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.StandardFormPagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.StandardFormPage.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.StandardFormPage.Naming.name, EditorMessages.StandardFormPagePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -164,7 +164,7 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 
 	
 	protected Composite createTitle_Text(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.StandardFormPagePropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(EditorViewsRepository.StandardFormPage.Naming.title_, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.StandardFormPage.Naming.title_, EditorMessages.StandardFormPagePropertiesEditionPart_Title_Label);
 		title_ = new Text(parent, SWT.BORDER);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);

@@ -132,7 +132,7 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.TreeMasterPagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.TreeMasterPage.Naming.name, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.TreeMasterPage.Naming.name, EditorMessages.TreeMasterPagePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -178,7 +178,7 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTitle_Text(Composite parent) {
-		SWTUtils.createPartLabel(parent, EditorMessages.TreeMasterPagePropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(EditorViewsRepository.TreeMasterPage.Naming.title_, EditorViewsRepository.SWT_KIND));
+		createDescription(parent, EditorViewsRepository.TreeMasterPage.Naming.title_, EditorMessages.TreeMasterPagePropertiesEditionPart_Title_Label);
 		title_ = new Text(parent, SWT.BORDER);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);
@@ -240,7 +240,7 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createToolbarVisibleCheckbox(Composite parent) {
 		toolbarVisible = new Button(parent, SWT.CHECK);
-		toolbarVisible.setText(EditorMessages.TreeMasterPagePropertiesEditionPart_ToolbarVisibleLabel);
+		toolbarVisible.setText(getDescription(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible, EditorMessages.TreeMasterPagePropertiesEditionPart_ToolbarVisibleLabel));
 		toolbarVisible.addSelectionListener(new SelectionAdapter() {
 
 			/**

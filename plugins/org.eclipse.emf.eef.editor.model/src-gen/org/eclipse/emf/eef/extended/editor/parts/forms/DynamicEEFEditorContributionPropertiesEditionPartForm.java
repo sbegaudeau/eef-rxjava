@@ -16,7 +16,6 @@ import org.eclipse.emf.eef.extended.editor.providers.EditorMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
@@ -168,7 +167,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.DynamicEEFEditorContribution.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.DynamicEEFEditorContribution.Naming.name, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -229,7 +228,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected Composite createModelFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ModelLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.DynamicEEFEditorContribution.Binding.model, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.DynamicEEFEditorContribution.Binding.model, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ModelLabel);
 		model = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EditorViewsRepository.DynamicEEFEditorContribution.Binding.model, EditorViewsRepository.FORM_KIND));
 		widgetFactory.adapt(model);
 		model.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -257,7 +256,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected Composite createViewsReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.views = new ReferencesTable(EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ViewsLabel, new ReferencesTableListener	() {
+		this.views = new ReferencesTable(getDescription(EditorViewsRepository.DynamicEEFEditorContribution.Binding.views, EditorMessages.DynamicEEFEditorContributionPropertiesEditionPart_ViewsLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addViews(); }
 			public void handleEdit(EObject element) { editViews(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveViews(element, oldIndex, newIndex); }
@@ -323,7 +322,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected void editViews(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

@@ -148,7 +148,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.EEFMasterPagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.EEFMasterPage.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.EEFMasterPage.Naming.name, EditorMessages.EEFMasterPagePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -188,7 +188,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createTitle_Text(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.EEFMasterPagePropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(EditorViewsRepository.EEFMasterPage.Naming.title_, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.EEFMasterPage.Naming.title_, EditorMessages.EEFMasterPagePropertiesEditionPart_Title_Label);
 		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		title_.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -245,7 +245,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createOrientableCheckbox(FormToolkit widgetFactory, Composite parent) {
-		orientable = widgetFactory.createButton(parent, EditorMessages.EEFMasterPagePropertiesEditionPart_OrientableLabel, SWT.CHECK);
+		orientable = widgetFactory.createButton(parent, getDescription(EditorViewsRepository.EEFMasterPage.Settings.orientable, EditorMessages.EEFMasterPagePropertiesEditionPart_OrientableLabel), SWT.CHECK);
 		orientable.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -271,7 +271,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 
 	
 	protected Composite createShowValidatePageCheckbox(FormToolkit widgetFactory, Composite parent) {
-		showValidatePage = widgetFactory.createButton(parent, EditorMessages.EEFMasterPagePropertiesEditionPart_ShowValidatePageLabel, SWT.CHECK);
+		showValidatePage = widgetFactory.createButton(parent, getDescription(EditorViewsRepository.EEFMasterPage.Settings.showValidatePage, EditorMessages.EEFMasterPagePropertiesEditionPart_ShowValidatePageLabel), SWT.CHECK);
 		showValidatePage.addSelectionListener(new SelectionAdapter() {
 
 			/**

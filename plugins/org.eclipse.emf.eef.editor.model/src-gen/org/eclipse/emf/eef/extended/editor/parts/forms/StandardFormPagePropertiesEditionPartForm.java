@@ -130,7 +130,7 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.StandardFormPagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(EditorViewsRepository.StandardFormPage.Naming.name, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.StandardFormPage.Naming.name, EditorMessages.StandardFormPagePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -170,7 +170,7 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createTitle_Text(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, EditorMessages.StandardFormPagePropertiesEditionPart_Title_Label, propertiesEditionComponent.isRequired(EditorViewsRepository.StandardFormPage.Naming.title_, EditorViewsRepository.FORM_KIND));
+		createDescription(parent, EditorViewsRepository.StandardFormPage.Naming.title_, EditorMessages.StandardFormPagePropertiesEditionPart_Title_Label);
 		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		title_.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
