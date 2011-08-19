@@ -56,7 +56,11 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {
+		[if (editor.nameAsLabel)]		
 		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		[else]
+		Label [editor.name.toJavaIdentifier()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData();
 		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
 		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
@@ -278,7 +282,7 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener	() {
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable(getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]), new ReferencesTableListener	() {
 			public void handleAdd() { add[editor.name.toJavaClassifier()/](); }
 			public void handleEdit(EObject element) { edit[editor.name.toJavaClassifier()/](element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }

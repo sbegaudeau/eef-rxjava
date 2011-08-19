@@ -51,7 +51,7 @@ create[editor.name.toJavaClassifier()/]SingleCompositionViewer(parent);
 	protected Composite create[editor.name.toJavaClassifier()/]SingleCompositionViewer(Composite parent) {
 		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
-		this.[editor.name.toJavaIdentifier()/] = new SingleCompositionViewer<EObject>([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], parent, SWT.NONE, null, [editor.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		this.[editor.name.toJavaIdentifier()/] = new SingleCompositionViewer<EObject>(getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]), parent, SWT.NONE, null, [editor.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		this.[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		this.[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		[if (editor.readOnly)]

@@ -76,7 +76,7 @@ create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, parent);
 		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
 		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
-		edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], SWT.NONE);
+		edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]), SWT.NONE);
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
 		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {

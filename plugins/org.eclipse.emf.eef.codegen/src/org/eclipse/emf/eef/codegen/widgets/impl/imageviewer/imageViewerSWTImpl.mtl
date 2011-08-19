@@ -35,7 +35,11 @@ import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ImageViewer(Composite parent) {
+		[if (editor.nameAsLabel)]		
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		[else]
+		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		[/if]
 		[editor.name.toJavaIdentifier()/] = new EEFImageViewer(parent, SWT.BORDER);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);

@@ -57,7 +57,11 @@ create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ReferencesTable(Composite parent) {
+		[if (editor.nameAsLabel)]		
 		Label [editor.name.toJavaIdentifier()/]Label = SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		[else]
+		Label [editor.name.toJavaIdentifier()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		[/if]
 		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData();
 		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
 		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
@@ -278,7 +282,12 @@ create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(Composite parent) {
-		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], new ReferencesTableListener() {
+		[if (editor.nameAsLabel)]
+		String label = [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]
+		[else]
+		String label = getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);		 
+		[/if]
+		this.[editor.name.toJavaIdentifier()/] = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { add[editor.name.toJavaClassifier()/](); }
 			public void handleEdit(EObject element) { edit[editor.name.toJavaClassifier()/](element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { move[editor.name.toJavaClassifier()/](element, oldIndex, newIndex); }

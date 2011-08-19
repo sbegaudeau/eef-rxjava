@@ -30,7 +30,7 @@ create[editor.name.toJavaClassifier()/]Checkbox(parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
 		[editor.name.toJavaIdentifier()/] = new Button(parent, SWT.CHECK);
-		[editor.name.toJavaIdentifier()/].setText([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		[editor.name.toJavaIdentifier()/].setText(getDescription([editor.editorID() /], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]));
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
 		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);

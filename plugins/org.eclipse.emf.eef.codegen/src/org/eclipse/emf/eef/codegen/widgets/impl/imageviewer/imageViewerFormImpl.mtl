@@ -35,7 +35,11 @@ create[editor.name.toJavaClassifier()/]ImageViewer(widgetFactory, parent);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ImageViewer(FormToolkit widgetFactory, Composite parent) {
+		[if (editor.nameAsLabel)]		
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		[else]
+		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		[/if]
 		[editor.name.toJavaIdentifier()/] = new EEFImageViewer(parent, SWT.BORDER);
 		[if (editor.readOnly)]
 		[editor.name.toJavaIdentifier()/].setEnabled(false);
