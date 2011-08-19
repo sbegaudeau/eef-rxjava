@@ -170,7 +170,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 				eobjectflatcomboviewerRequiredProperySettings.setToReference((TotalSample)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -186,7 +186,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 				eobjectflatcomboviewerOptionalProperySettings.setToReference((TotalSample)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
-				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);

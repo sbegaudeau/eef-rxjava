@@ -126,7 +126,7 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 	 * 
 	 */
 	protected Composite createImageviewerRequiredPropertyImageViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel);
 		imageviewerRequiredProperty = new EEFImageViewer(parent, SWT.BORDER);
 		GridData imageviewerRequiredPropertyData = new GridData();
 		// Start of user code for imageviewerRequiredProperty layout data customization
@@ -152,7 +152,7 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 	 * 
 	 */
 	protected Composite createImageviewerOptionalPropertyImageViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel);
 		imageviewerOptionalProperty = new EEFImageViewer(parent, SWT.BORDER);
 		GridData imageviewerOptionalPropertyData = new GridData();
 		// Start of user code for imageviewerOptionalProperty layout data customization

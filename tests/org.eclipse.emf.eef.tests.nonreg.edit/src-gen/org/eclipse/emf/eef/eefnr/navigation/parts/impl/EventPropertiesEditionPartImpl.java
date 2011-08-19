@@ -120,7 +120,7 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NamingMessages.EventPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NamingViewsRepository.Event.Properties.name, NamingViewsRepository.SWT_KIND));
+		createDescription(parent, NamingViewsRepository.Event.Properties.name, NamingMessages.EventPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

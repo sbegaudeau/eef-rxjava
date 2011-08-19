@@ -152,7 +152,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -192,7 +192,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 
 	
 	protected Composite createDelegate1ForSingleValuedText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel);
 		delegate1ForSingleValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		delegate1ForSingleValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -232,7 +232,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 
 	
 	protected Composite createDelegate2ForSingleValuedText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel);
 		delegate2ForSingleValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		delegate2ForSingleValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -272,7 +272,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 
 	
 	protected Composite createDelegate1ForMultiValuedText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel);
 		delegate1ForMultiValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		delegate1ForMultiValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -312,7 +312,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 
 	
 	protected Composite createDelegate2ForMultiValuedText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel);
 		delegate2ForMultiValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		delegate2ForMultiValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

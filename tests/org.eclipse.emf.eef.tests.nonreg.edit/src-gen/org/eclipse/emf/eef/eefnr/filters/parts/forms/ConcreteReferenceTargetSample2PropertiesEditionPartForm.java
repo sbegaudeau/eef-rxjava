@@ -132,7 +132,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, FiltersMessages.ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersViewsRepository.FORM_KIND));
+		createDescription(parent, FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersMessages.ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

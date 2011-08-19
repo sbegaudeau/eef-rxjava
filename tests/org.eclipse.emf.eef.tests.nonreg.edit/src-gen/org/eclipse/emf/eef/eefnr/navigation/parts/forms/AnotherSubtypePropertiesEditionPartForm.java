@@ -154,7 +154,7 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 
 	
 	protected Composite createAnotherSpecialisationElementCheckbox(FormToolkit widgetFactory, Composite parent) {
-		anotherSpecialisationElement = widgetFactory.createButton(parent, NavigationMessages.AnotherSubtypePropertiesEditionPart_AnotherSpecialisationElementLabel, SWT.CHECK);
+		anotherSpecialisationElement = widgetFactory.createButton(parent, getDescription(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, NavigationMessages.AnotherSubtypePropertiesEditionPart_AnotherSpecialisationElementLabel), SWT.CHECK);
 		anotherSpecialisationElement.addSelectionListener(new SelectionAdapter() {
 
 			/**

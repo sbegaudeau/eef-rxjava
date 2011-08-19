@@ -121,7 +121,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND));
+		createDescription(parent, ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

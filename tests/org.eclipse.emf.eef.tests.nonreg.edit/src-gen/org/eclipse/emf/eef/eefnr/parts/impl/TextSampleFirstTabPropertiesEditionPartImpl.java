@@ -126,7 +126,7 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 
 	
 	protected Composite createTextRequiredPropertyInFirstTabText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel);
 		textRequiredPropertyInFirstTab = new Text(parent, SWT.BORDER);
 		GridData textRequiredPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredPropertyInFirstTab.setLayoutData(textRequiredPropertyInFirstTabData);
@@ -172,7 +172,7 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 
 	
 	protected Composite createTextOptionalPropertyInFirstTabText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel);
 		textOptionalPropertyInFirstTab = new Text(parent, SWT.BORDER);
 		GridData textOptionalPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalPropertyInFirstTab.setLayoutData(textOptionalPropertyInFirstTabData);

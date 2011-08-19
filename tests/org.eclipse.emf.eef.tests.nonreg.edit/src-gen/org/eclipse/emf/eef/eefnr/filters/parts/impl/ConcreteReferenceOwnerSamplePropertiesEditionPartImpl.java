@@ -23,7 +23,6 @@ import org.eclipse.emf.eef.eefnr.filters.providers.FiltersMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -153,7 +152,7 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.SWT_KIND));
+		createDescription(parent, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -201,7 +200,8 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 	 * 
 	 */
 	protected Composite createAbstractTargetAdvancedReferencesTable(Composite parent) {
-		this.abstractTarget = new ReferencesTable(FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_AbstractTargetLabel, new ReferencesTableListener() {
+		String label = getDescription(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_AbstractTargetLabel);		 
+		this.abstractTarget = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addAbstractTarget(); }
 			public void handleEdit(EObject element) { editAbstractTarget(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAbstractTarget(element, oldIndex, newIndex); }
@@ -267,7 +267,7 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 	 * 
 	 */
 	protected void editAbstractTarget(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -283,7 +283,7 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 	 * 
 	 */
 	protected Composite createStrictTypingAdvancedTableComposition(Composite parent) {
-		this.strictTyping = new ReferencesTable(FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel, new ReferencesTableListener() {
+		this.strictTyping = new ReferencesTable(getDescription(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartImpl.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				strictTyping.refresh();

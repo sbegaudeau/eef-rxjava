@@ -125,7 +125,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTextareaRequiredPropertyTextarea(Composite parent) {
-		Label textareaRequiredPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		Label textareaRequiredPropertyLabel = createDescription(parent, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel);
 		GridData textareaRequiredPropertyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredPropertyLabelData.horizontalSpan = 3;
 		textareaRequiredPropertyLabel.setLayoutData(textareaRequiredPropertyLabelData);
@@ -157,7 +157,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTextareaOptionalPropertyTextarea(Composite parent) {
-		Label textareaOptionalPropertyLabel = SWTUtils.createPartLabel(parent, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		Label textareaOptionalPropertyLabel = createDescription(parent, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel);
 		GridData textareaOptionalPropertyLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalPropertyLabelData.horizontalSpan = 3;
 		textareaOptionalPropertyLabel.setLayoutData(textareaOptionalPropertyLabelData);

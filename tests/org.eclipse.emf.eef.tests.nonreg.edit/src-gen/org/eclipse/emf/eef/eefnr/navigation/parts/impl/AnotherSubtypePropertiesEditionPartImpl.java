@@ -144,7 +144,7 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createAnotherSpecialisationElementCheckbox(Composite parent) {
 		anotherSpecialisationElement = new Button(parent, SWT.CHECK);
-		anotherSpecialisationElement.setText(NavigationMessages.AnotherSubtypePropertiesEditionPart_AnotherSpecialisationElementLabel);
+		anotherSpecialisationElement.setText(getDescription(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, NavigationMessages.AnotherSubtypePropertiesEditionPart_AnotherSpecialisationElementLabel));
 		anotherSpecialisationElement.addSelectionListener(new SelectionAdapter() {
 
 			/**

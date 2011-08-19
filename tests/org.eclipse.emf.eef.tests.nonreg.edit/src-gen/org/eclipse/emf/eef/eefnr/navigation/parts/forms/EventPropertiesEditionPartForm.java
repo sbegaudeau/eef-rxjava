@@ -132,7 +132,7 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NamingMessages.EventPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NamingViewsRepository.Event.Properties.name, NamingViewsRepository.FORM_KIND));
+		createDescription(parent, NamingViewsRepository.Event.Properties.name, NamingMessages.EventPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);

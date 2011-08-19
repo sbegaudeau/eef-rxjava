@@ -121,7 +121,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.NamedElementPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.NamedElement.Properties.name, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.NamedElement.Properties.name, NavigationMessages.NamedElementPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

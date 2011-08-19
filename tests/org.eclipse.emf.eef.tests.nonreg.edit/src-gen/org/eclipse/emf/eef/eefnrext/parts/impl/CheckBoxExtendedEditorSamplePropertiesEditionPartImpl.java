@@ -130,7 +130,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 	
 	protected Composite createCheckboxEditorSampleCheckbox(Composite parent) {
 		checkboxEditorSample = new Button(parent, SWT.CHECK);
-		checkboxEditorSample.setText(EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel);
+		checkboxEditorSample.setText(getDescription(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel));
 		checkboxEditorSample.addSelectionListener(new SelectionAdapter() {
 
 			/**

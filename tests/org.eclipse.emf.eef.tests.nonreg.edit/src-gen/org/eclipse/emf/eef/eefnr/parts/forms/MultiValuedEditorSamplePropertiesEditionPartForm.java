@@ -153,7 +153,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
 		EditingUtils.setID(multivaluededitorRequiredProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
 		EditingUtils.setEEFtype(multivaluededitorRequiredProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editMultivaluededitorRequiredProperty = widgetFactory.createButton(parent, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel, SWT.NONE);
+		editMultivaluededitorRequiredProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel), SWT.NONE);
 		GridData editMultivaluededitorRequiredPropertyData = new GridData();
 		editMultivaluededitorRequiredProperty.setLayoutData(editMultivaluededitorRequiredPropertyData);
 		editMultivaluededitorRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -196,7 +196,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
 		EditingUtils.setID(multivaluededitorOptionalProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
 		EditingUtils.setEEFtype(multivaluededitorOptionalProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editMultivaluededitorOptionalProperty = widgetFactory.createButton(parent, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel, SWT.NONE);
+		editMultivaluededitorOptionalProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel), SWT.NONE);
 		GridData editMultivaluededitorOptionalPropertyData = new GridData();
 		editMultivaluededitorOptionalProperty.setLayoutData(editMultivaluededitorOptionalPropertyData);
 		editMultivaluededitorOptionalProperty.addSelectionListener(new SelectionAdapter() {

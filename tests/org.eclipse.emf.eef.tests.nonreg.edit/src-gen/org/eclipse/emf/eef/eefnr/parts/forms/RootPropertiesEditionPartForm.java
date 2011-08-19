@@ -141,7 +141,7 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 * 
 	 */
 	protected Composite createSamplesTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.samples = new ReferencesTable(EefnrMessages.RootPropertiesEditionPart_SamplesLabel, new ReferencesTableListener() {
+		this.samples = new ReferencesTable(getDescription(EefnrViewsRepository.Root.Properties.samples, EefnrMessages.RootPropertiesEditionPart_SamplesLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RootPropertiesEditionPartForm.this, EefnrViewsRepository.Root.Properties.samples, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				samples.refresh();

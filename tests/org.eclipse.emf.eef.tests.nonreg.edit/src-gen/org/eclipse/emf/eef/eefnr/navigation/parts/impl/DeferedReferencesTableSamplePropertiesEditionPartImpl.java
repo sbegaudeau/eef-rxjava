@@ -151,7 +151,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -200,7 +200,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	 * 
 	 */
 	protected Composite createReferencesTableSampleEditorReferencesTable(Composite parent) {
-		Label referencesTableSampleEditorLabel = SWTUtils.createPartLabel(parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationViewsRepository.SWT_KIND));
+		Label referencesTableSampleEditorLabel = createDescription(parent, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel);
 		GridData referencesTableSampleEditorLabelData = new GridData();
 		referencesTableSampleEditorLabelData.horizontalSpan = 3;
 		referencesTableSampleEditorLabel.setLayoutData(referencesTableSampleEditorLabelData);

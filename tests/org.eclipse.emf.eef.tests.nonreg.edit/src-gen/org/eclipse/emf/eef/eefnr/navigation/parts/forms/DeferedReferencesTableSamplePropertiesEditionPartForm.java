@@ -162,7 +162,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -204,7 +204,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected Composite createReferencesTableSampleEditorReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label referencesTableSampleEditorLabel = FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationViewsRepository.FORM_KIND));
+		Label referencesTableSampleEditorLabel = createDescription(parent, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_ReferencesTableSampleEditorLabel);
 		GridData referencesTableSampleEditorLabelData = new GridData();
 		referencesTableSampleEditorLabelData.horizontalSpan = 3;
 		referencesTableSampleEditorLabel.setLayoutData(referencesTableSampleEditorLabelData);

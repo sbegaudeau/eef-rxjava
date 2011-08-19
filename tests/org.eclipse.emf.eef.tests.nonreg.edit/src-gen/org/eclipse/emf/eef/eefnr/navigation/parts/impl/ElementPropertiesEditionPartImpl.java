@@ -129,7 +129,7 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 	
 	protected Composite createIsVisibleCheckbox(Composite parent) {
 		isVisible = new Button(parent, SWT.CHECK);
-		isVisible.setText(NavigationMessages.ElementPropertiesEditionPart_IsVisibleLabel);
+		isVisible.setText(getDescription(NavigationViewsRepository.Element.Properties.isVisible, NavigationMessages.ElementPropertiesEditionPart_IsVisibleLabel));
 		isVisible.addSelectionListener(new SelectionAdapter() {
 
 			/**

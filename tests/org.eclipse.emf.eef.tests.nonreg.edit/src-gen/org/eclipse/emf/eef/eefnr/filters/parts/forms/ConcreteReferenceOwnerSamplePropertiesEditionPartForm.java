@@ -23,7 +23,6 @@ import org.eclipse.emf.eef.eefnr.filters.providers.FiltersMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
@@ -165,7 +164,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.FORM_KIND));
+		createDescription(parent, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -207,7 +206,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected Composite createAbstractTargetReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.abstractTarget = new ReferencesTable(FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_AbstractTargetLabel, new ReferencesTableListener	() {
+		this.abstractTarget = new ReferencesTable(getDescription(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_AbstractTargetLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addAbstractTarget(); }
 			public void handleEdit(EObject element) { editAbstractTarget(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAbstractTarget(element, oldIndex, newIndex); }
@@ -273,7 +272,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected void editAbstractTarget(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -289,7 +288,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	 * 
 	 */
 	protected Composite createStrictTypingTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.strictTyping = new ReferencesTable(FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel, new ReferencesTableListener() {
+		this.strictTyping = new ReferencesTable(getDescription(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				strictTyping.refresh();

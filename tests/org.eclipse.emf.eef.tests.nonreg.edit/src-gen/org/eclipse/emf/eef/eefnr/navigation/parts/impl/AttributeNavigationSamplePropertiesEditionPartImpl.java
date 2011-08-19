@@ -140,7 +140,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -186,7 +186,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 
 	
 	protected Composite createDelegate1ForSingleValuedText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel);
 		delegate1ForSingleValued = new Text(parent, SWT.BORDER);
 		GridData delegate1ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForSingleValued.setLayoutData(delegate1ForSingleValuedData);
@@ -232,7 +232,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 
 	
 	protected Composite createDelegate2ForSingleValuedText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel);
 		delegate2ForSingleValued = new Text(parent, SWT.BORDER);
 		GridData delegate2ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForSingleValued.setLayoutData(delegate2ForSingleValuedData);
@@ -278,7 +278,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 
 	
 	protected Composite createDelegate1ForMultiValuedText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel);
 		delegate1ForMultiValued = new Text(parent, SWT.BORDER);
 		GridData delegate1ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForMultiValued.setLayoutData(delegate1ForMultiValuedData);
@@ -324,7 +324,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 
 	
 	protected Composite createDelegate2ForMultiValuedText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel);
 		delegate2ForMultiValued = new Text(parent, SWT.BORDER);
 		GridData delegate2ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForMultiValued.setLayoutData(delegate2ForMultiValuedData);

@@ -130,7 +130,7 @@ protected SelectionDialog selectionDialogOptionalProperty;
 
 	
 	protected Composite createSelectionDialogRequiredPropertySelectionDialog(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel);
 		selectionDialogRequiredProperty = new SelectionDialog(parent, SWT.NONE);
 
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
@@ -188,7 +188,7 @@ protected SelectionDialog selectionDialogOptionalProperty;
 
 	
 	protected Composite createSelectionDialogOptionalPropertySelectionDialog(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel);
 		selectionDialogOptionalProperty = new SelectionDialog(parent, SWT.NONE);
 
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);

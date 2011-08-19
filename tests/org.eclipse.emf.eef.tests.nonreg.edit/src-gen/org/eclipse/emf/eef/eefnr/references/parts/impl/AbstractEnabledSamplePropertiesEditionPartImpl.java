@@ -129,7 +129,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	
 	protected Composite createEnabledCheckbox(Composite parent) {
 		enabled = new Button(parent, SWT.CHECK);
-		enabled.setText(ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel);
+		enabled.setText(getDescription(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel));
 		enabled.addSelectionListener(new SelectionAdapter() {
 
 			/**

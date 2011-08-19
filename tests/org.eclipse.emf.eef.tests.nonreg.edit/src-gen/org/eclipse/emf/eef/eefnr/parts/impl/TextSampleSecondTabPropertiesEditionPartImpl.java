@@ -126,7 +126,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 
 	
 	protected Composite createTextRequiredPropertyInSecondTabText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel);
 		textRequiredPropertyInSecondTab = new Text(parent, SWT.BORDER);
 		GridData textRequiredPropertyInSecondTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredPropertyInSecondTab.setLayoutData(textRequiredPropertyInSecondTabData);
@@ -172,7 +172,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 
 	
 	protected Composite createTextOptionalPropertyInSecondTabText(Composite parent) {
-		SWTUtils.createPartLabel(parent, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel, propertiesEditionComponent.isRequired(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, EefnrViewsRepository.SWT_KIND));
+		createDescription(parent, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel);
 		textOptionalPropertyInSecondTab = new Text(parent, SWT.BORDER);
 		GridData textOptionalPropertyInSecondTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalPropertyInSecondTab.setLayoutData(textOptionalPropertyInSecondTabData);

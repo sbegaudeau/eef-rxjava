@@ -120,7 +120,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, FiltersMessages.ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersViewsRepository.SWT_KIND));
+		createDescription(parent, FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersMessages.ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);

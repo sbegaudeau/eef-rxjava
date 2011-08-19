@@ -140,7 +140,7 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
 	
 	protected Composite createIsVisibleCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isVisible = widgetFactory.createButton(parent, NavigationMessages.ElementPropertiesEditionPart_IsVisibleLabel, SWT.CHECK);
+		isVisible = widgetFactory.createButton(parent, getDescription(NavigationViewsRepository.Element.Properties.isVisible, NavigationMessages.ElementPropertiesEditionPart_IsVisibleLabel), SWT.CHECK);
 		isVisible.addSelectionListener(new SelectionAdapter() {
 
 			/**

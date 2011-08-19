@@ -141,7 +141,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 
 	
 	protected Composite createCheckboxEditorSampleCheckbox(FormToolkit widgetFactory, Composite parent) {
-		checkboxEditorSample = widgetFactory.createButton(parent, EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel, SWT.CHECK);
+		checkboxEditorSample = widgetFactory.createButton(parent, getDescription(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel), SWT.CHECK);
 		checkboxEditorSample.addSelectionListener(new SelectionAdapter() {
 
 			/**

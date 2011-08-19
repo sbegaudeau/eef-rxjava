@@ -135,7 +135,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 
 	
 	protected Composite createCheckboxRequiredPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
-		checkboxRequiredProperty = widgetFactory.createButton(parent, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel, SWT.CHECK);
+		checkboxRequiredProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel), SWT.CHECK);
 		checkboxRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -161,7 +161,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 
 	
 	protected Composite createCheckboxOptionalPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
-		checkboxOptionalProperty = widgetFactory.createButton(parent, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel, SWT.CHECK);
+		checkboxOptionalProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel), SWT.CHECK);
 		checkboxOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**

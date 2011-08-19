@@ -140,7 +140,7 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 
 	
 	protected Composite createEnabledCheckbox(FormToolkit widgetFactory, Composite parent) {
-		enabled = widgetFactory.createButton(parent, ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel, SWT.CHECK);
+		enabled = widgetFactory.createButton(parent, getDescription(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel), SWT.CHECK);
 		enabled.addSelectionListener(new SelectionAdapter() {
 
 			/**

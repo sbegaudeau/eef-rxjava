@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
@@ -156,7 +155,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	 * 
 	 */
 	protected Composite createReferenceReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.reference = new ReferencesTable(ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel, new ReferencesTableListener	() {
+		this.reference = new ReferencesTable(getDescription(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference, ReferencesMessages.ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addReference(); }
 			public void handleEdit(EObject element) { editReference(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveReference(element, oldIndex, newIndex); }
@@ -222,7 +221,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	 * 
 	 */
 	protected void editReference(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);

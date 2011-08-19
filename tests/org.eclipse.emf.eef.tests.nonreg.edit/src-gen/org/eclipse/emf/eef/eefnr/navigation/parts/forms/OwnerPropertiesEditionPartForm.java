@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
@@ -266,7 +265,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.name, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.name, NavigationMessages.OwnerPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -478,7 +477,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createMultipleSampleForAdvancedTableCompositionTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.multipleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {
+		this.multipleSampleForAdvancedTableComposition = new ReferencesTable(getDescription(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				multipleSampleForAdvancedTableComposition.refresh();
@@ -525,7 +524,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createMultipleSampleForReferencesTableReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label multipleSampleForReferencesTableLabel = FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable, NavigationViewsRepository.FORM_KIND));
+		Label multipleSampleForReferencesTableLabel = createDescription(parent, NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForReferencesTableLabel);
 		GridData multipleSampleForReferencesTableLabelData = new GridData();
 		multipleSampleForReferencesTableLabelData.horizontalSpan = 3;
 		multipleSampleForReferencesTableLabel.setLayoutData(multipleSampleForReferencesTableLabelData);
@@ -682,7 +681,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createMultipleSampleForAdvancedReferencesTableReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.multipleSampleForAdvancedReferencesTable = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedReferencesTableLabel, new ReferencesTableListener	() {
+		this.multipleSampleForAdvancedReferencesTable = new ReferencesTable(getDescription(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedReferencesTableLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addMultipleSampleForAdvancedReferencesTable(); }
 			public void handleEdit(EObject element) { editMultipleSampleForAdvancedReferencesTable(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveMultipleSampleForAdvancedReferencesTable(element, oldIndex, newIndex); }
@@ -748,7 +747,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected void editMultipleSampleForAdvancedReferencesTable(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -764,7 +763,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createMultipleSampleForFlatReferencesTableFlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForFlatReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForFlatReferencesTableLabel);
 		multipleSampleForFlatReferencesTable = new FlatReferencesTable(parent);
 		multipleSampleForFlatReferencesTable.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -958,7 +957,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleSampleForAdvancedTableCompositionTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.singleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {
+		this.singleSampleForAdvancedTableComposition = new ReferencesTable(getDescription(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				singleSampleForAdvancedTableComposition.refresh();
@@ -1005,7 +1004,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleSampleForReferencesTableReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label singleSampleForReferencesTableLabel = FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable, NavigationViewsRepository.FORM_KIND));
+		Label singleSampleForReferencesTableLabel = createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForReferencesTableLabel);
 		GridData singleSampleForReferencesTableLabelData = new GridData();
 		singleSampleForReferencesTableLabelData.horizontalSpan = 3;
 		singleSampleForReferencesTableLabel.setLayoutData(singleSampleForReferencesTableLabelData);
@@ -1162,7 +1161,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleSampleForAdvancedReferencesTableReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		Label singleSampleForAdvancedReferencesTableLabel = FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable, NavigationViewsRepository.FORM_KIND));
+		Label singleSampleForAdvancedReferencesTableLabel = createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedReferencesTableLabel);
 		GridData singleSampleForAdvancedReferencesTableLabelData = new GridData();
 		singleSampleForAdvancedReferencesTableLabelData.horizontalSpan = 3;
 		singleSampleForAdvancedReferencesTableLabel.setLayoutData(singleSampleForAdvancedReferencesTableLabelData);
@@ -1320,7 +1319,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleSampleForFlatReferencesTableFlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForFlatReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForFlatReferencesTableLabel);
 		singleSampleForFlatReferencesTable = new FlatReferencesTable(parent);
 		singleSampleForFlatReferencesTable.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -1346,7 +1345,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleContainmentForEObjectFlatComboViewerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForEObjectFlatComboViewerLabel);
 		singleContainmentForEObjectFlatComboViewer = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
 		widgetFactory.adapt(singleContainmentForEObjectFlatComboViewer);
 		singleContainmentForEObjectFlatComboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -1376,7 +1375,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleReferencesForEObjectFlatComboViewerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForEObjectFlatComboViewerLabel);
 		singleReferencesForEObjectFlatComboViewer = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
 		widgetFactory.adapt(singleReferencesForEObjectFlatComboViewer);
 		singleReferencesForEObjectFlatComboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -1406,7 +1405,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleContainmentForAdvancedEObjectFlatComboViewerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel);
 		// create callback listener
 		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
 			public void handleSet(EObject element){
@@ -1437,7 +1436,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 * 
 	 */
 	protected Composite createSingleReferencesForAdvancedEObjectFlatComboViewerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel);
 		// create callback listener
 		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
 			public void handleSet(EObject element){

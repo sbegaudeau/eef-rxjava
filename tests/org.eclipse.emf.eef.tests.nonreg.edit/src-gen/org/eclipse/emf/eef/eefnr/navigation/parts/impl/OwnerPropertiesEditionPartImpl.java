@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -256,7 +255,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.name, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.name, NavigationMessages.OwnerPropertiesEditionPart_NameLabel);
 		name = new Text(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -476,7 +475,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createMultipleSampleForAdvancedTableCompositionAdvancedTableComposition(Composite parent) {
-		this.multipleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {
+		this.multipleSampleForAdvancedTableComposition = new ReferencesTable(getDescription(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedTableCompositionLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				multipleSampleForAdvancedTableComposition.refresh();
@@ -524,7 +523,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createMultipleSampleForReferencesTableReferencesTable(Composite parent) {
-		Label multipleSampleForReferencesTableLabel = SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable, NavigationViewsRepository.SWT_KIND));
+		Label multipleSampleForReferencesTableLabel = createDescription(parent, NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForReferencesTableLabel);
 		GridData multipleSampleForReferencesTableLabelData = new GridData();
 		multipleSampleForReferencesTableLabelData.horizontalSpan = 3;
 		multipleSampleForReferencesTableLabel.setLayoutData(multipleSampleForReferencesTableLabelData);
@@ -681,7 +680,8 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createMultipleSampleForAdvancedReferencesTableAdvancedReferencesTable(Composite parent) {
-		this.multipleSampleForAdvancedReferencesTable = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedReferencesTableLabel, new ReferencesTableListener() {
+		String label = getDescription(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForAdvancedReferencesTableLabel);		 
+		this.multipleSampleForAdvancedReferencesTable = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addMultipleSampleForAdvancedReferencesTable(); }
 			public void handleEdit(EObject element) { editMultipleSampleForAdvancedReferencesTable(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveMultipleSampleForAdvancedReferencesTable(element, oldIndex, newIndex); }
@@ -747,7 +747,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected void editMultipleSampleForAdvancedReferencesTable(EObject element) {
-		PropertiesEditingContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
 		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
 		if (provider != null) {
 			PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -763,7 +763,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createMultipleSampleForFlatReferencesTableFlatReferencesTable(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForFlatReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForFlatReferencesTableLabel);
 		multipleSampleForFlatReferencesTable = new FlatReferencesTable(parent);
 		multipleSampleForFlatReferencesTable.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -959,7 +959,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleSampleForAdvancedTableCompositionAdvancedTableComposition(Composite parent) {
-		this.singleSampleForAdvancedTableComposition = new ReferencesTable(NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel, new ReferencesTableListener() {
+		this.singleSampleForAdvancedTableComposition = new ReferencesTable(getDescription(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedTableCompositionLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				singleSampleForAdvancedTableComposition.refresh();
@@ -1007,7 +1007,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleSampleForReferencesTableReferencesTable(Composite parent) {
-		Label singleSampleForReferencesTableLabel = SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable, NavigationViewsRepository.SWT_KIND));
+		Label singleSampleForReferencesTableLabel = createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForReferencesTableLabel);
 		GridData singleSampleForReferencesTableLabelData = new GridData();
 		singleSampleForReferencesTableLabelData.horizontalSpan = 3;
 		singleSampleForReferencesTableLabel.setLayoutData(singleSampleForReferencesTableLabelData);
@@ -1165,7 +1165,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleSampleForAdvancedReferencesTableReferencesTable(Composite parent) {
-		Label singleSampleForAdvancedReferencesTableLabel = SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable, NavigationViewsRepository.SWT_KIND));
+		Label singleSampleForAdvancedReferencesTableLabel = createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForAdvancedReferencesTableLabel);
 		GridData singleSampleForAdvancedReferencesTableLabelData = new GridData();
 		singleSampleForAdvancedReferencesTableLabelData.horizontalSpan = 3;
 		singleSampleForAdvancedReferencesTableLabel.setLayoutData(singleSampleForAdvancedReferencesTableLabelData);
@@ -1323,7 +1323,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleSampleForFlatReferencesTableFlatReferencesTable(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForFlatReferencesTableLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForFlatReferencesTableLabel);
 		singleSampleForFlatReferencesTable = new FlatReferencesTable(parent);
 		singleSampleForFlatReferencesTable.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -1348,7 +1348,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleContainmentForEObjectFlatComboViewerFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForEObjectFlatComboViewerLabel);
 		singleContainmentForEObjectFlatComboViewer = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND));
 		singleContainmentForEObjectFlatComboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -1371,7 +1371,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleReferencesForEObjectFlatComboViewerFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForEObjectFlatComboViewerLabel);
 		singleReferencesForEObjectFlatComboViewer = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND));
 		singleReferencesForEObjectFlatComboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -1394,7 +1394,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleContainmentForAdvancedEObjectFlatComboViewerAdvancedFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel);
 		// create callback listener
 		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
 			public void handleSet(EObject element){
@@ -1408,7 +1408,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 			}
 		};
 		//create widget
-		singleContainmentForAdvancedEObjectFlatComboViewer = new AdvancedEObjectFlatComboViewer(NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel, resourceSet, singleContainmentForAdvancedEObjectFlatComboViewerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+		singleContainmentForAdvancedEObjectFlatComboViewer = new AdvancedEObjectFlatComboViewer(getDescription(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel), resourceSet, singleContainmentForAdvancedEObjectFlatComboViewerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		singleContainmentForAdvancedEObjectFlatComboViewer.createControls(parent);
 		GridData singleContainmentForAdvancedEObjectFlatComboViewerData = new GridData(GridData.FILL_HORIZONTAL);
 		singleContainmentForAdvancedEObjectFlatComboViewer.setLayoutData(singleContainmentForAdvancedEObjectFlatComboViewerData);
@@ -1422,7 +1422,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 * 
 	 */
 	protected Composite createSingleReferencesForAdvancedEObjectFlatComboViewerAdvancedFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel, propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND));
+		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel);
 		// create callback listener
 		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
 			public void handleSet(EObject element){
@@ -1436,7 +1436,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 			}
 		};
 		//create widget
-		singleReferencesForAdvancedEObjectFlatComboViewer = new AdvancedEObjectFlatComboViewer(NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel, resourceSet, singleReferencesForAdvancedEObjectFlatComboViewerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+		singleReferencesForAdvancedEObjectFlatComboViewer = new AdvancedEObjectFlatComboViewer(getDescription(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel), resourceSet, singleReferencesForAdvancedEObjectFlatComboViewerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		singleReferencesForAdvancedEObjectFlatComboViewer.createControls(parent);
 		GridData singleReferencesForAdvancedEObjectFlatComboViewerData = new GridData(GridData.FILL_HORIZONTAL);
 		singleReferencesForAdvancedEObjectFlatComboViewer.setLayoutData(singleReferencesForAdvancedEObjectFlatComboViewerData);
