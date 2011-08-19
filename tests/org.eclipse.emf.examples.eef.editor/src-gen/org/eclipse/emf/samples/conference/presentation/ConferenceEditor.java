@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceEditor.java,v 1.5 2011/04/28 06:30:33 glefur Exp $
+ * $Id: ConferenceEditor.java,v 1.6 2011/08/19 13:26:16 glefur Exp $
  */
 package org.eclipse.emf.samples.conference.presentation;
 
@@ -684,7 +684,7 @@ public class ConferenceEditor
 									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 								  }
 								  if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-									  propertySheetPage.refresh();
+//									  propertySheetPage.refresh();
 								  }
 							  }
 						  });
