@@ -192,7 +192,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 				filteredPartSettings.setToReference((View)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				View eObject = ViewsFactory.eINSTANCE.createView();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -208,7 +208,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 				contextualComponentSettings.setToReference((PropertiesEditionComponent)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				PropertiesEditionComponent eObject = ComponentsFactory.eINSTANCE.createPropertiesEditionComponent();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
