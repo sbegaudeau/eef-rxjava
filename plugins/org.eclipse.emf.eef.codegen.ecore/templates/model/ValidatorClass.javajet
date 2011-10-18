@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.emf.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.emf.codegen.util.CodeGenUtil" class="ValidatorClass" version="$Id: ValidatorClass.javajet,v 1.3 2011/04/20 13:47:37 sbouchet Exp $" %>
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.emf.codegen.util.CodeGenUtil" class="ValidatorClass" version="$Id: ValidatorClass.javajet,v 1.4 2011/10/18 14:41:49 sbouchet Exp $" %>
 <%
 /**
  * <copyright>
@@ -552,6 +552,8 @@ public class <%=genPackage.getValidatorClassName()%> extends <%=genModel.getImpo
 		return true;
   <%}%>
 <%}%>
+<%} else { GenOperation genOperation = ((GenClass)genClassifier).getInvariantOperation(constraint); if (genOperation != null) {%>
+		return <%=genClassifier.getSafeUncapName()%>.<%=constraint%>(<%=diagnostics%>, <%=context%>);
 <%} else if (constraintDelegate != null) {%>
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
@@ -584,8 +586,6 @@ public class <%=genPackage.getValidatorClassName()%> extends <%=genModel.getImpo
 			return false;
 		}
 		return <%=delegate%>validate<%=constraintDelegate.getName()%>_<%=constraint%>(<%=cast%><%=genClassifier.getSafeUncapName()%>, <%=diagnostics%>, <%=context%>);
-<%} else { GenOperation genOperation = ((GenClass)genClassifier).getInvariantOperation(constraint); if (genOperation != null) {%>
-		return <%=genClassifier.getSafeUncapName()%>.<%=constraint%>(<%=diagnostics%>, <%=context%>);
 <%} else {%>
   <%if (genClassifier.hasConstraintExpression(constraint)) {%>
 		return
