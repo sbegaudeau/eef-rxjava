@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseActionsSwitch.java,v 1.1 2011/04/06 13:07:28 nlepine Exp $
+ * $Id: EclipseActionsSwitch.java,v 1.2 2011/10/18 14:17:59 sbouchet Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.util;
 
@@ -17,7 +17,6 @@ import org.eclipse.emf.eef.modelingBot.DocumentedElement;
 
 import org.eclipse.emf.eef.modelingBot.EclipseActions.*;
 import org.eclipse.emf.eef.modelingBot.Processing;
-import org.eclipse.emf.eef.modelingBot.Sequence;
 
 /**
  * <!-- begin-user-doc -->
