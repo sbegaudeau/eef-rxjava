@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2011 Obeo. All rights reserved. This program and the accompanying 
+	materials are made available under the terms of the Eclipse Public License 
+	v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html 
+	Contributors: Obeo - initial creator -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
+	<parent>
+		<groupId>org.eclipse</groupId>
+		<artifactId>eclipse-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>org.eclipse.emf</groupId>
+	<artifactId>org.eclipse.emf.eef.releng.parent</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>EEF Parent</name>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+       All rights reserved.
+
+       This program and the accompanying materials are made
+       available under the terms of the Eclipse Public License v1.0
+       which accompanies this distribution, and is available at
+       http://www.eclipse.org/legal/epl-v10.htm
+      </comments>
+		</license>
+	</licenses>
+
+	<properties>
+		<tycho-version>0.12.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<platform-version-name>juno</platform-version-name>
+		<platform-version>[3.8,4.0)</platform-version>
+		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
+		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
+	</properties>
+
+	<modules>
+		<module>../org.eclipse.emf.eef.runtime</module>
+		<module>../org.eclipse.emf.eef.runtime.extended</module>
+		<module>../org.eclipse.emf.eef.runtime.tests</module>
+
+		<module>../org.eclipse.emf.eef.doc</module>
+
+		<module>../org.eclipse.emf.eef.components</module>
+		<module>../org.eclipse.emf.eef.components.edit</module>
+		<module>../org.eclipse.emf.eef.components.editor</module>
+		<module>../org.eclipse.emf.eef.eefgen</module>
+		<module>../org.eclipse.emf.eef.eefgen.edit</module>
+		<module>../org.eclipse.emf.eef.eefgen.editor</module>
+		<module>../org.eclipse.emf.eef.mapping</module>
+		<module>../org.eclipse.emf.eef.mapping.edit</module>
+		<module>../org.eclipse.emf.eef.views</module>
+		<module>../org.eclipse.emf.eef.views.edit</module>
+		<module>../org.eclipse.emf.eef.views.editor</module>
+		<module>../org.eclipse.emf.eef.editor.model</module>
+
+		<module>../org.eclipse.emf.eef.codegen</module>
+		<module>../org.eclipse.emf.eef.codegen.ecore</module>
+		<module>../org.eclipse.emf.eef.codegen.extended</module>
+		<module>../org.eclipse.emf.eef.codegen.tests</module>
+
+<!-- 		<module>../org.eclipse.emf.example.eef</module>
+		<module>../org.eclipse.emf.example.eef.edit</module>
+		<module>../org.eclipse.emf.example.eef.editor</module>
+		<module>../org.eclipse.emf.example.eef.tests.junit</module>
+		<module>../org.eclipse.emf.eef.tests.nonreg</module>
+		<module>../org.eclipse.emf.eef.tests.nonreg.edit</module>
+		<module>../org.eclipse.emf.eef.tests.nonreg.editor</module>
+		<module>../org.eclipse.emf.eef.tests.nonreg.junit</module>
+ -->
+		<module>../org.eclipse.emf.eef.runtime-feature</module>
+		<module>../org.eclipse.emf.eef.extended-feature</module>
+		<module>../org.eclipse.emf.eef.edt-feature</module>
+		<module>../org.eclipse.emf.eef.codegen.ecore-feature</module>
+		<module>../org.eclipse.emf.eef.indigo-feature</module>
+		<module>../org.eclipse.emf.eef.sdk-feature</module>
+
+		<module>../org.eclipse.emf.eef.update</module>
+
+	</modules>
+
+	<repositories>
+		<repository>
+			<id>releasetrain</id>
+			<layout>p2</layout>
+			<url>${eclipse-site}</url>
+		</repository>
+		<repository>
+			<id>swtbot</id>
+			<layout>p2</layout>
+			<url>${swtbot-site}</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- enable source bundle generation -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-source-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>plugin-source</id>
+							<goals>
+								<goal>plugin-source</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.4.1</version>
+					<configuration>
+						<encoding>ISO-8859-1</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<findbugsXmlOutput>true</findbugsXmlOutput>
+						<failOnError>false</failOnError>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<sourceEncoding>utf-8</sourceEncoding>
+						<minimumTokens>100</minimumTokens>
+						<targetJdk>1.5</targetJdk>
+						<format>xml</format>
+						<failOnViolation>false</failOnViolation>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>cpd-check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>platform-helios</id>
+			<activation>
+				<property>
+					<name>platform-version-name</name>
+					<value>helios</value>
+				</property>
+			</activation>
+			<properties>
+				<eclipse-site>http://download.eclipse.org/releases/helios</eclipse-site>
+				<platform-version>[3.6,3.7)</platform-version>
+				<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-indigo</id>
+			<activation>
+				<property>
+					<name>platform-version-name</name>
+					<value>indigo</value>
+				</property>
+			</activation>
+			<properties>
+				<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
+				<platform-version>[3.7,3.8)</platform-version>
+				<swtbot-site>http://download.eclipse.org/technology/swtbot/indigo/dev-build/update-site</swtbot-site>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-juno</id>
+			<activation>
+				<property>
+					<name>platform-version-name</name>
+					<value>juno</value>
+				</property>
+			</activation>
+			<properties>
+				<eclipse-site>http://download.eclipse.org/releases/juno</eclipse-site>
+				<platform-version>[3.8,4.0)</platform-version>
+				<swtbot-site>http://download.eclipse.org/technology/swtbot/indigo/dev-build/update-site</swtbot-site>
+			</properties>
+		</profile>
+		<profile>
+			<id>checkstyle</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<version>2.6</version>
+						<executions>
+							<execution>
+								<id>check my sources</id>
+								<goals>
+									<goal>checkstyle</goal>
+								</goals>
+								<phase>verify</phase>
+								<configuration>
+									<failOnErrors>false</failOnErrors>
+									<consoleOutput>true</consoleOutput>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>coverage</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>org.eclemma.runtime.equinox</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>static-checks</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>findbugs-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-pmd-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
