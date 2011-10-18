@@ -16,9 +16,11 @@
     <!-- ================================================================= -->
     <target name="post.compile.@dot">
         <acceleoCompiler 
-            sourceFolder="${target.folder}" 
+            sourceFolder="${target.folder}"
+            outputFolder="${target.folder}"
             dependencies="${target.folder}/../../org.eclipse.emf.eef.codegen;"
-            binaryResource="true">
+            binaryResource="false"
+            trimPosition="false">
         </acceleoCompiler>
     </target>    
 </project>
