@@ -371,7 +371,6 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 		table.setLayoutData(data);
 		table.addMouseListener(new MouseListener() {
 
-			@SuppressWarnings("unchecked")
 			public void mouseDoubleClick(MouseEvent e) {
 				if (table.getSelection() != null && table.getSelectionCount() != 0
 						&& table.getSelection()[0].getData() instanceof EObject) {
@@ -591,7 +590,6 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 		/**
 		 * {@inheritDoc}
 		 */
-		@SuppressWarnings("unchecked")
 		public void mouseUp(MouseEvent e) {
 			// Keep selection
 			TableItem[] tableItems = table.getSelection();
@@ -628,7 +626,6 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 		/**
 		 * {@inheritDoc}
 		 */
-		@SuppressWarnings("unchecked")
 		public void mouseUp(MouseEvent e) {
 			// Keep selection
 			TableItem[] tableItems = table.getSelection();
@@ -672,7 +669,6 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 		/**
 		 * {@inheritDoc}
 		 */
-		@SuppressWarnings("unchecked")
 		public void mouseUp(MouseEvent e) {
 			TableItem[] tableItems = table.getSelection();
 			for (int i = (tableItems.length - 1); i >= 0; i--) {
@@ -692,8 +688,9 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	 */
 	private class EditItemListener implements Listener {
 
-		/** @{inheritDoc */
-		@SuppressWarnings("unchecked")
+		/**
+		 * @{inheritDoc}
+		 */
 		public void handleEvent(Event event) {
 			if (table.getSelection().length > 0) {
 				TableItem item = table.getSelection()[0];

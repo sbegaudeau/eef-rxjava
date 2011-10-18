@@ -288,7 +288,6 @@ public class AdvancedEObjectFlatComboViewer implements
 		return field;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void setSelection(ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection structuredSelection = (StructuredSelection) selection;
@@ -325,7 +324,6 @@ public class AdvancedEObjectFlatComboViewer implements
 			TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(
 					input, filters, brFilters, dialogTitle, adapterFactory,
 					getMainResource()) {
-				@SuppressWarnings("unchecked")
 				@Override
 				public void process(IStructuredSelection selection) {
 					if (selection != null && !selection.isEmpty()) {
