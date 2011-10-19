@@ -42,10 +42,6 @@
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform-version-name>juno</platform-version-name>
-		<platform-version>[3.8,4.0)</platform-version>
-		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
-		<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
 	</properties>
 
 	<modules>
@@ -92,19 +88,6 @@
 		<module>../org.eclipse.emf.eef.update</module>
 
 	</modules>
-
-	<repositories>
-		<repository>
-			<id>releasetrain</id>
-			<layout>p2</layout>
-			<url>${eclipse-site}</url>
-		</repository>
-		<repository>
-			<id>swtbot</id>
-			<layout>p2</layout>
-			<url>${swtbot-site}</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -235,47 +218,56 @@
 	</build>
 
 	<profiles>
-		<profile>
-			<id>platform-helios</id>
+	<profile>
+			<id>build-at-eclipse</id>
 			<activation>
-				<property>
-					<name>platform-version-name</name>
-					<value>helios</value>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<eclipse-site>http://download.eclipse.org/releases/helios</eclipse-site>
-				<platform-version>[3.6,3.7)</platform-version>
-				<swtbot-site>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</swtbot-site>
+				<platform-version>[3.0,4.0)</platform-version>
 			</properties>
-		</profile>
-		<profile>
-			<id>platform-indigo</id>
-			<activation>
-				<property>
-					<name>platform-version-name</name>
-					<value>indigo</value>
-				</property>
-			</activation>
-			<properties>
-				<eclipse-site>http://download.eclipse.org/releases/indigo</eclipse-site>
-				<platform-version>[3.7,3.8)</platform-version>
-				<swtbot-site>http://download.eclipse.org/technology/swtbot/indigo/dev-build/update-site</swtbot-site>
-			</properties>
-		</profile>
-		<profile>
-			<id>platform-juno</id>
-			<activation>
-				<property>
-					<name>platform-version-name</name>
-					<value>juno</value>
-				</property>
-			</activation>
-			<properties>
-				<eclipse-site>http://download.eclipse.org/releases/juno</eclipse-site>
-				<platform-version>[3.8,4.0)</platform-version>
-				<swtbot-site>http://download.eclipse.org/technology/swtbot/indigo/dev-build/update-site</swtbot-site>
-			</properties>
+			<repositories>
+				<repository>
+					<id>releasetrain</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/eclipse/updates/3.8milestones</url>
+				</repository>
+				<repository>
+					<id>swtbot</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</url>
+				</repository>
+				<repository>
+					<id>emf</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/emf/emf/updates/2.8milestones</url>
+				</repository>
+				<repository>
+					<id>emf-transaction</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/emf/updates/milestones</url>
+				</repository>
+				<repository>
+					<id>ocl</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.0</url>
+				</repository>
+				<repository>
+					<id>acceleo</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.2</url>
+				</repository>
+				<repository>
+					<id>orbit</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository</url>
+				</repository>
+				<repository>
+					<id>epf</id>
+					<layout>p2</layout>
+					<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
+				</repository>
+			</repositories>
 		</profile>
 		<profile>
 			<id>checkstyle</id>
