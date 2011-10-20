@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -187,7 +188,10 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	 * @deprecated
 	 */
 	protected PropertiesEditingProvider getProvider(EObject eObject) {
-		return null;
+		if (this.adapterFactory == null) {
+			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		}
+		return (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
 	}
 
 	/**
