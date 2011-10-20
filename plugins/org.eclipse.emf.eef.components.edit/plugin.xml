@@ -85,7 +85,8 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.properties">
+            contributorId="org.eclipse.emf.eef.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -121,7 +122,7 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionContextPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Base">
              <input
@@ -129,7 +130,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Documentation">
              <input
@@ -137,7 +138,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionComponentPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Base">
              <input
@@ -145,7 +146,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Documentation">
              <input
@@ -153,7 +154,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionElementPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Base">
              <input
@@ -161,7 +162,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Documentation">
              <input
@@ -169,7 +170,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.components.parts.forms.PropertiesMultiEditionElementPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Base">
              <input
@@ -177,7 +178,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Documentation">
              <input
