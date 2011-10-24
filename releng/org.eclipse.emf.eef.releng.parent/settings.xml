@@ -123,6 +123,7 @@
 			<id>localBuild</id>
 			<properties>
 				<platform-version>[3.0,4.0)</platform-version>
+				<modulepath>..</modulepath>
 			</properties>
 			<repositories>
 				<repository>

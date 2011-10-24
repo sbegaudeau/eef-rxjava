@@ -42,32 +42,33 @@
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<modulepath>../..</modulepath>
 	</properties>
 
 	<modules>
-		<module>../org.eclipse.emf.eef.runtime</module>
-		<module>../org.eclipse.emf.eef.runtime.extended</module>
-		<module>../org.eclipse.emf.eef.runtime.tests</module>
+		<module>${modulepath}/org.eclipse.emf.eef.runtime</module>
+		<module>${modulepath}/org.eclipse.emf.eef.runtime.extended</module>
+		<module>${modulepath}/org.eclipse.emf.eef.runtime.tests</module>
 
-		<module>../org.eclipse.emf.eef.doc</module>
+		<module>${modulepath}/org.eclipse.emf.eef.doc</module>
 
-		<module>../org.eclipse.emf.eef.components</module>
-		<module>../org.eclipse.emf.eef.components.edit</module>
-		<module>../org.eclipse.emf.eef.components.editor</module>
-		<module>../org.eclipse.emf.eef.eefgen</module>
-		<module>../org.eclipse.emf.eef.eefgen.edit</module>
-		<module>../org.eclipse.emf.eef.eefgen.editor</module>
-		<module>../org.eclipse.emf.eef.mapping</module>
-		<module>../org.eclipse.emf.eef.mapping.edit</module>
-		<module>../org.eclipse.emf.eef.views</module>
-		<module>../org.eclipse.emf.eef.views.edit</module>
-		<module>../org.eclipse.emf.eef.views.editor</module>
-		<module>../org.eclipse.emf.eef.editor.model</module>
+		<module>${modulepath}/org.eclipse.emf.eef.components</module>
+		<module>${modulepath}/org.eclipse.emf.eef.components.edit</module>
+		<module>${modulepath}/org.eclipse.emf.eef.components.editor</module>
+		<module>${modulepath}/org.eclipse.emf.eef.eefgen</module>
+		<module>${modulepath}/org.eclipse.emf.eef.eefgen.edit</module>
+		<module>${modulepath}/org.eclipse.emf.eef.eefgen.editor</module>
+		<module>${modulepath}/org.eclipse.emf.eef.mapping</module>
+		<module>${modulepath}/org.eclipse.emf.eef.mapping.edit</module>
+		<module>${modulepath}/org.eclipse.emf.eef.views</module>
+		<module>${modulepath}/org.eclipse.emf.eef.views.edit</module>
+		<module>${modulepath}/org.eclipse.emf.eef.views.editor</module>
+		<module>${modulepath}/org.eclipse.emf.eef.editor.model</module>
 
-		<module>../org.eclipse.emf.eef.codegen</module>
-		<module>../org.eclipse.emf.eef.codegen.ecore</module>
-		<module>../org.eclipse.emf.eef.codegen.extended</module>
-		<module>../org.eclipse.emf.eef.codegen.tests</module>
+		<module>${modulepath}/org.eclipse.emf.eef.codegen</module>
+		<module>${modulepath}/org.eclipse.emf.eef.codegen.ecore</module>
+		<module>${modulepath}/org.eclipse.emf.eef.codegen.extended</module>
+		<module>${modulepath}/org.eclipse.emf.eef.codegen.tests</module>
 
 <!-- 		<module>../org.eclipse.emf.example.eef</module>
 		<module>../org.eclipse.emf.example.eef.edit</module>
@@ -78,14 +79,14 @@
 		<module>../org.eclipse.emf.eef.tests.nonreg.editor</module>
 		<module>../org.eclipse.emf.eef.tests.nonreg.junit</module>
  -->
-		<module>../org.eclipse.emf.eef.runtime-feature</module>
-		<module>../org.eclipse.emf.eef.extended-feature</module>
-		<module>../org.eclipse.emf.eef.edt-feature</module>
-		<module>../org.eclipse.emf.eef.codegen.ecore-feature</module>
-		<module>../org.eclipse.emf.eef.indigo-feature</module>
-		<module>../org.eclipse.emf.eef.sdk-feature</module>
+		<module>${modulepath}/org.eclipse.emf.eef.runtime-feature</module>
+		<module>${modulepath}/org.eclipse.emf.eef.extended-feature</module>
+		<module>${modulepath}/org.eclipse.emf.eef.edt-feature</module>
+		<module>${modulepath}/org.eclipse.emf.eef.codegen.ecore-feature</module>
+		<module>${modulepath}/org.eclipse.emf.eef.indigo-feature</module>
+		<module>${modulepath}/org.eclipse.emf.eef.sdk-feature</module>
 
-		<module>../org.eclipse.emf.eef.update</module>
+		<module>${modulepath}/org.eclipse.emf.eef.update</module>
 
 	</modules>
 
@@ -170,7 +171,7 @@
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.4.1</version>
 					<configuration>
-						<encoding>ISO-8859-1</encoding>
+						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -199,7 +200,7 @@
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>2.5</version>
 					<configuration>
-						<sourceEncoding>utf-8</sourceEncoding>
+						<sourceEncoding>UTF-8</sourceEncoding>
 						<minimumTokens>100</minimumTokens>
 						<targetJdk>1.5</targetJdk>
 						<format>xml</format>
@@ -218,57 +219,6 @@
 	</build>
 
 	<profiles>
-	<profile>
-			<id>build-at-eclipse</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<platform-version>[3.0,4.0)</platform-version>
-			</properties>
-			<repositories>
-				<repository>
-					<id>releasetrain</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/eclipse/updates/3.8milestones</url>
-				</repository>
-				<repository>
-					<id>swtbot</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</url>
-				</repository>
-				<repository>
-					<id>emf</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/emf/emf/updates/2.8milestones</url>
-				</repository>
-				<repository>
-					<id>emf-transaction</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/emf/updates/milestones</url>
-				</repository>
-				<repository>
-					<id>ocl</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.0</url>
-				</repository>
-				<repository>
-					<id>acceleo</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.2</url>
-				</repository>
-				<repository>
-					<id>orbit</id>
-					<layout>p2</layout>
-					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20110523182458/repository</url>
-				</repository>
-				<repository>
-					<id>epf</id>
-					<layout>p2</layout>
-					<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
-				</repository>
-			</repositories>
-		</profile>
 		<profile>
 			<id>checkstyle</id>
 			<activation>
@@ -307,6 +257,7 @@
 				<module>org.eclemma.runtime.equinox</module>
 			</modules>
 		</profile>
+
 		<profile>
 			<id>static-checks</id>
 			<build>
