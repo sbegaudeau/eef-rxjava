@@ -42,33 +42,36 @@
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<modulepath>../..</modulepath>
+		<pluginspath>../../plugins</pluginspath>
+		<featurespath>../../features</featurespath>
+		<relengpath>../../releng</relengpath>
+		<docpath>../../releng</docpath>
 	</properties>
 
 	<modules>
-		<module>${modulepath}/org.eclipse.emf.eef.runtime</module>
-		<module>${modulepath}/org.eclipse.emf.eef.runtime.extended</module>
-		<module>${modulepath}/org.eclipse.emf.eef.runtime.tests</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.runtime</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.runtime.extended</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.runtime.tests</module>
 
-		<module>${modulepath}/org.eclipse.emf.eef.doc</module>
+		<module>${docpath}/org.eclipse.emf.eef.doc</module>
 
-		<module>${modulepath}/org.eclipse.emf.eef.components</module>
-		<module>${modulepath}/org.eclipse.emf.eef.components.edit</module>
-		<module>${modulepath}/org.eclipse.emf.eef.components.editor</module>
-		<module>${modulepath}/org.eclipse.emf.eef.eefgen</module>
-		<module>${modulepath}/org.eclipse.emf.eef.eefgen.edit</module>
-		<module>${modulepath}/org.eclipse.emf.eef.eefgen.editor</module>
-		<module>${modulepath}/org.eclipse.emf.eef.mapping</module>
-		<module>${modulepath}/org.eclipse.emf.eef.mapping.edit</module>
-		<module>${modulepath}/org.eclipse.emf.eef.views</module>
-		<module>${modulepath}/org.eclipse.emf.eef.views.edit</module>
-		<module>${modulepath}/org.eclipse.emf.eef.views.editor</module>
-		<module>${modulepath}/org.eclipse.emf.eef.editor.model</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.components</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.components.edit</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.components.editor</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.eefgen</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.eefgen.edit</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.eefgen.editor</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.mapping</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.mapping.edit</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.views</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.views.edit</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.views.editor</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.editor.model</module>
 
-		<module>${modulepath}/org.eclipse.emf.eef.codegen</module>
-		<module>${modulepath}/org.eclipse.emf.eef.codegen.ecore</module>
-		<module>${modulepath}/org.eclipse.emf.eef.codegen.extended</module>
-		<module>${modulepath}/org.eclipse.emf.eef.codegen.tests</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.codegen</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.codegen.ecore</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.codegen.extended</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.codegen.tests</module>
 
 <!-- 		<module>../org.eclipse.emf.example.eef</module>
 		<module>../org.eclipse.emf.example.eef.edit</module>
