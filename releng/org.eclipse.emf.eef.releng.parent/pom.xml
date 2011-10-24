@@ -45,7 +45,7 @@
 		<pluginspath>../../plugins</pluginspath>
 		<featurespath>../../features</featurespath>
 		<relengpath>../../releng</relengpath>
-		<docpath>../../releng</docpath>
+		<docpath>../../doc</docpath>
 	</properties>
 
 	<modules>
@@ -82,14 +82,14 @@
 		<module>../org.eclipse.emf.eef.tests.nonreg.editor</module>
 		<module>../org.eclipse.emf.eef.tests.nonreg.junit</module>
  -->
-		<module>${modulepath}/org.eclipse.emf.eef.runtime-feature</module>
-		<module>${modulepath}/org.eclipse.emf.eef.extended-feature</module>
-		<module>${modulepath}/org.eclipse.emf.eef.edt-feature</module>
-		<module>${modulepath}/org.eclipse.emf.eef.codegen.ecore-feature</module>
-		<module>${modulepath}/org.eclipse.emf.eef.indigo-feature</module>
-		<module>${modulepath}/org.eclipse.emf.eef.sdk-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.runtime-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.extended-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.edt-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.codegen.ecore-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.indigo-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.sdk-feature</module>
 
-		<module>${modulepath}/org.eclipse.emf.eef.update</module>
+		<module>${relengpath}/org.eclipse.emf.eef.update</module>
 
 	</modules>
 
