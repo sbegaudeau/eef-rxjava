@@ -162,6 +162,8 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	}
 
 	private void refreshComponent(String descriptor) {
+		PropertiesEditingProvider provider = getProvider(eObject);
+		if (provider != null) {
 			DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
 			propertiesEditionComponent = propertiesEditingContext.createPropertiesEditingComponent(IPropertiesEditionComponent.LIVE_MODE);
 			if (propertiesEditionComponent != null) {
@@ -182,6 +184,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 					}
 				}
 			}
+		}
 	}
 
 	/**
