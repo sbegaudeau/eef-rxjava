@@ -167,6 +167,58 @@
 				</repository>
 			</repositories>
 		</profile>
+		<profile>
+			<id>sign</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.dash.maven</groupId>
+						<artifactId>eclipse-signing-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pack</id>
+								<configuration>
+									<inputFile>${project.build.directory}/org.eclipse.emf.eef.update.zip</inputFile>
+								</configuration>
+								<phase>package</phase>
+								<goals>
+									<goal>pack</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>sign</id>
+								<configuration>
+									<inputFile>${project.build.directory}/org.eclipse.emf.eef.update.zip</inputFile>
+									<!-- https://hudson.eclipse.org/hudson/me/my-views/view/Obeo/job/emf-eef-master/ws/org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/ -->
+									<signerInputDirectory>/home/data/httpd/download-staging.priv/modeling/emft/eef/</signerInputDirectory>
+								</configuration>
+								<phase>package</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>repack</id>
+								<configuration>
+									<inputFile>${project.build.directory}/signed/site_assembly.zip</inputFile>
+								</configuration>
+								<phase>package</phase>
+								<goals>
+									<goal>pack</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>fixCheckSums</id>
+								<phase>package</phase>
+								<goals>
+									<goal>fixCheckSums</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<activeProfiles>
