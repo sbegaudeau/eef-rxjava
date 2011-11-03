@@ -77,7 +77,7 @@
 			</repositories>
 		</profile>
 		<profile>
-			<id>e4</id>
+			<id>juno4.2</id>
 			<properties>
 				<platform-version>[4.0,5.0)</platform-version>
 			</properties>
@@ -120,13 +120,9 @@
 			</repositories>
 		</profile>
 		<profile>
-			<id>localBuild</id>
+			<id>juno3.8</id>
 			<properties>
 				<platform-version>[3.0,4.0)</platform-version>
-				<pluginspath>..</pluginspath>
-				<featurespath>..</featurespath>
-				<relengpath>..</relengpath>
-				<docpath>..</docpath>
 			</properties>
 			<repositories>
 				<repository>
