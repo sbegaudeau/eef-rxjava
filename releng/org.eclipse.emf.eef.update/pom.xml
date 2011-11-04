@@ -69,9 +69,10 @@
 						<version>1.0.5</version>
 						<executions>
 							<execution>
+								<!-- Pack the p2 repository. -->
 								<id>pack</id>
 								<configuration>
-									<inputFile>${project.build.directory}/org.eclipse.emf.eef.update.zip</inputFile>
+									<inputFile>${project.build.directory}/${artifactId}.zip</inputFile>
 								</configuration>
 								<phase>package</phase>
 								<goals>
@@ -79,9 +80,10 @@
 								</goals>
 							</execution>
 							<execution>
+								<!-- Sign the p2 repository -->
 								<id>sign</id>
 								<configuration>
-									<inputFile>${project.build.directory}/org.eclipse.emf.eef.update.zip</inputFile>
+									<inputFile>${project.build.directory}/${artifactId}.zip</inputFile>
 									<signerInputDirectory>/home/data/httpd/download-staging.priv/modeling/emft/eef/</signerInputDirectory>
 								</configuration>
 								<phase>package</phase>
@@ -90,6 +92,7 @@
 								</goals>
 							</execution>
 							<execution>
+								<!-- Repack the p2 repository -->
 								<id>repack</id>
 								<configuration>
 									<inputFile>${project.build.directory}/signed/site_assembly.zip</inputFile>
@@ -100,6 +103,7 @@
 								</goals>
 							</execution>
 							<execution>
+								<!-- Signing and packing alters checksums so fix them -->
 								<id>fixCheckSums</id>
 								<phase>package</phase>
 								<goals>
@@ -121,8 +125,8 @@
 									<tasks>
 										<move file="${project.build.directory}/repository" tofile="${project.build.directory}/repository-not-signed"/>
 										<move file="${project.build.directory}/checksumFix" tofile="${project.build.directory}/repository"/>
-										<move file="${project.build.directory}/org.eclipse.emf.eef.update.zip" tofile="${project.build.directory}/org.eclipse.emf.eef.update-not-signed.zip"/>
-										<move file="${project.build.directory}/signed/site_assembly.zip" tofile="${project.build.directory}/org.eclipse.emf.eef.update.zip"/>
+										<move file="${project.build.directory}/${artifactId}.zip" tofile="${project.build.directory}/${artifactId}-not-signed.zip"/>
+										<zip destfile="${project.build.directory}/${artifactId}.zip" basedir="${project.build.directory}/checksumFix"/>
 									</tasks>
 								</configuration>
 							</execution>
