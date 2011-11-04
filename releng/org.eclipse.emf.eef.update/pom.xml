@@ -11,7 +11,8 @@
  -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -81,7 +82,6 @@
 								<id>sign</id>
 								<configuration>
 									<inputFile>${project.build.directory}/org.eclipse.emf.eef.update.zip</inputFile>
-									<!-- https://hudson.eclipse.org/hudson/me/my-views/view/Obeo/job/emf-eef-master/ws/org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/ -->
 									<signerInputDirectory>/home/data/httpd/download-staging.priv/modeling/emft/eef/</signerInputDirectory>
 								</configuration>
 								<phase>package</phase>
@@ -108,8 +108,29 @@
 							</execution>
 						</executions>
 					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>replace-unsigned-repository-by-signed-one</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<move file="${project.build.directory}/repository" tofile="${project.build.directory}/repository-not-signed"/>
+										<move file="${project.build.directory}/checksumFix" tofile="${project.build.directory}/repository"/>
+										<move file="${project.build.directory}/org.eclipse.emf.eef.update.zip" tofile="${project.build.directory}/org.eclipse.emf.eef.update-not-signed.zip"/>
+										<move file="${project.build.directory}/signed/site_assembly.zip" tofile="${project.build.directory}/org.eclipse.emf.eef.update.zip"/>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
+
 			<pluginRepositories>
 				<pluginRepository>
 					<id>maven.eclipse.org</id>
