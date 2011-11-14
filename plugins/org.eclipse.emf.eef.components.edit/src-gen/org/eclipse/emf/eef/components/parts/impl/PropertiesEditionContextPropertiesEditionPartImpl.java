@@ -148,8 +148,6 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -159,7 +157,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**

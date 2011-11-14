@@ -167,8 +167,6 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -177,9 +175,8 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**

@@ -82,9 +82,9 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 	protected Text helpID;
 	protected Button explicit;
 	protected EObjectFlatComboViewer model;
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -147,10 +147,10 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID) {
-					return 		createHelpIDText(widgetFactory, parent);
+					return createHelpIDText(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit) {
 					return createExplicitCheckbox(widgetFactory, parent);
@@ -420,8 +420,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -430,8 +428,8 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

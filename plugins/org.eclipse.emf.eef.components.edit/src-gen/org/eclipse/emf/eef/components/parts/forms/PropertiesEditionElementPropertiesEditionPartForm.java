@@ -82,11 +82,11 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 	protected Text name;
 	protected Text helpID;
 	protected EObjectFlatComboViewer model;
-		protected TableViewer views;
-		protected Button addViews;
-		protected Button removeViews;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer views;
+	protected Button addViews;
+	protected Button removeViews;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -148,10 +148,10 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesEditionElement.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID) {
-					return 		createHelpIDText(widgetFactory, parent);
+					return createHelpIDText(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesEditionElement.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -466,8 +466,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 		views.refresh();
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -476,9 +474,8 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**

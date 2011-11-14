@@ -70,7 +70,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	/**
 	 * Settings for model EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings modelSettings;
+	private EObjectFlatComboSettings modelSettings;
 	
 	
 	/**
@@ -249,7 +249,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		if (editingPart.isVisible()) {
 			PropertiesEditionElementPropertiesEditionPart basePart = (PropertiesEditionElementPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name)) {
 				if (msg.getNewValue() != null) {

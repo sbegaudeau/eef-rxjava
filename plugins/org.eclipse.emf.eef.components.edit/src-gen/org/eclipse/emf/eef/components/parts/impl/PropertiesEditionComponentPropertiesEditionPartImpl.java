@@ -412,8 +412,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -423,7 +421,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**

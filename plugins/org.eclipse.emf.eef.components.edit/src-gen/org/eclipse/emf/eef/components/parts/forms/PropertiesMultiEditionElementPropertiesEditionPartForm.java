@@ -81,14 +81,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 
 	protected Text name;
 	protected Text helpID;
-		protected TableViewer model;
-		protected Button addModel;
-		protected Button removeModel;
-		protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer model;
+	protected Button addModel;
+	protected Button removeModel;
+	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -150,10 +150,10 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID) {
-					return 		createHelpIDText(widgetFactory, parent);
+					return createHelpIDText(widgetFactory, parent);
 				}
 				if (key == ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -519,8 +519,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -529,9 +527,8 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**

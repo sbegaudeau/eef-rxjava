@@ -21,7 +21,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.components.properties"
+            contributorId="org.eclipse.emf.eef.properties"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -37,7 +37,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.eclipse.emf.eef.components.properties">
+            contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
                label="Base"
                category="default"
@@ -72,7 +72,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="org.eclipse.emf.eef.components.properties">
+            contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionContextPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
