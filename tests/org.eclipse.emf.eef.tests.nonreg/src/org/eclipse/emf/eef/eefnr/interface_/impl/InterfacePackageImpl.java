@@ -2,35 +2,39 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferencesPackageImpl.java,v 1.6 2011/11/14 14:00:00 sbouchet Exp $
+ * $Id: InterfacePackageImpl.java,v 1.2 2011/11/14 14:00:00 sbouchet Exp $
  */
-package org.eclipse.emf.eef.eefnr.references.impl;
+package org.eclipse.emf.eef.eefnr.interface_.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.eefnr.filters.impl.FiltersPackageImpl;
+
 import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
 
+import org.eclipse.emf.eef.eefnr.interface_.InterfaceFactory;
 import org.eclipse.emf.eef.eefnr.interface_.InterfacePackage;
-import org.eclipse.emf.eef.eefnr.interface_.impl.InterfacePackageImpl;
+import org.eclipse.emf.eef.eefnr.interface_.SimpleSample;
+
 import org.eclipse.emf.eef.eefnr.naming.CustomNamingPackage;
+
 import org.eclipse.emf.eef.eefnr.naming.impl.CustomNamingPackageImpl;
+
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+
 import org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl;
-import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
-import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
-import org.eclipse.emf.eef.eefnr.references.ReferencesFactory;
+
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 
-import org.eclipse.emf.eef.eefnr.references.Tests;
+import org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl;
+
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 
 import org.eclipse.emf.eef.eefnrext.impl.EefnrextPackageImpl;
@@ -41,27 +45,13 @@ import org.eclipse.emf.eef.eefnrext.impl.EefnrextPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPackage {
+public class InterfacePackageImpl extends EPackageImpl implements InterfacePackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractEnabledSampleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass referenceEnabledSampleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass testsEClass = null;
+	private EClass simpleSampleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -74,12 +64,12 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.eclipse.emf.eef.eefnr.references.ReferencesPackage#eNS_URI
+	 * @see org.eclipse.emf.eef.eefnr.interface_.InterfacePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private ReferencesPackageImpl() {
-		super(eNS_URI, ReferencesFactory.eINSTANCE);
+	private InterfacePackageImpl() {
+		super(eNS_URI, InterfaceFactory.eINSTANCE);
 	}
 
 	/**
@@ -92,7 +82,7 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link ReferencesPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link InterfacePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,47 +91,47 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static ReferencesPackage init() {
-		if (isInited) return (ReferencesPackage)EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI);
+	public static InterfacePackage init() {
+		if (isInited) return (InterfacePackage)EPackage.Registry.INSTANCE.getEPackage(InterfacePackage.eNS_URI);
 
 		// Obtain or create and register package
-		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ReferencesPackageImpl());
+		InterfacePackageImpl theInterfacePackage = (InterfacePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof InterfacePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new InterfacePackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
 		EefnrPackageImpl theEefnrPackage = (EefnrPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) instanceof EefnrPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI) : EefnrPackage.eINSTANCE);
+		ReferencesPackageImpl theReferencesPackage = (ReferencesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) instanceof ReferencesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ReferencesPackage.eNS_URI) : ReferencesPackage.eINSTANCE);
 		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI) : NavigationPackage.eINSTANCE);
 		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
 		CustomNamingPackageImpl theCustomNamingPackage = (CustomNamingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CustomNamingPackage.eNS_URI) instanceof CustomNamingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CustomNamingPackage.eNS_URI) : CustomNamingPackage.eINSTANCE);
-		InterfacePackageImpl theInterfacePackage = (InterfacePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(InterfacePackage.eNS_URI) instanceof InterfacePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(InterfacePackage.eNS_URI) : InterfacePackage.eINSTANCE);
 		EefnrextPackageImpl theEefnrextPackage = (EefnrextPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) instanceof EefnrextPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(EefnrextPackage.eNS_URI) : EefnrextPackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theReferencesPackage.createPackageContents();
+		theInterfacePackage.createPackageContents();
 		theEefnrPackage.createPackageContents();
+		theReferencesPackage.createPackageContents();
 		theNavigationPackage.createPackageContents();
 		theFiltersPackage.createPackageContents();
 		theCustomNamingPackage.createPackageContents();
-		theInterfacePackage.createPackageContents();
 		theEefnrextPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theReferencesPackage.initializePackageContents();
+		theInterfacePackage.initializePackageContents();
 		theEefnrPackage.initializePackageContents();
+		theReferencesPackage.initializePackageContents();
 		theNavigationPackage.initializePackageContents();
 		theFiltersPackage.initializePackageContents();
 		theCustomNamingPackage.initializePackageContents();
-		theInterfacePackage.initializePackageContents();
 		theEefnrextPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theReferencesPackage.freeze();
+		theInterfacePackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ReferencesPackage.eNS_URI, theReferencesPackage);
-		return theReferencesPackage;
+		EPackage.Registry.INSTANCE.put(InterfacePackage.eNS_URI, theInterfacePackage);
+		return theInterfacePackage;
 	}
 
 	/**
@@ -149,8 +139,8 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAbstractEnabledSample() {
-		return abstractEnabledSampleEClass;
+	public EClass getSimpleSample() {
+		return simpleSampleEClass;
 	}
 
 	/**
@@ -158,44 +148,8 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAbstractEnabledSample_Enabled() {
-		return (EAttribute)abstractEnabledSampleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReferenceEnabledSample() {
-		return referenceEnabledSampleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReferenceEnabledSample_Reference() {
-		return (EReference)referenceEnabledSampleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTests() {
-		return testsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ReferencesFactory getReferencesFactory() {
-		return (ReferencesFactory)getEFactoryInstance();
+	public InterfaceFactory getInterfaceFactory() {
+		return (InterfaceFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -217,13 +171,7 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 		isCreated = true;
 
 		// Create classes and their features
-		abstractEnabledSampleEClass = createEClass(ABSTRACT_ENABLED_SAMPLE);
-		createEAttribute(abstractEnabledSampleEClass, ABSTRACT_ENABLED_SAMPLE__ENABLED);
-
-		referenceEnabledSampleEClass = createEClass(REFERENCE_ENABLED_SAMPLE);
-		createEReference(referenceEnabledSampleEClass, REFERENCE_ENABLED_SAMPLE__REFERENCE);
-
-		testsEClass = createEClass(TESTS);
+		simpleSampleEClass = createEClass(SIMPLE_SAMPLE);
 	}
 
 	/**
@@ -249,26 +197,14 @@ public class ReferencesPackageImpl extends EPackageImpl implements ReferencesPac
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		EefnrPackage theEefnrPackage = (EefnrPackage)EPackage.Registry.INSTANCE.getEPackage(EefnrPackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		abstractEnabledSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
-		referenceEnabledSampleEClass.getESuperTypes().add(this.getAbstractEnabledSample());
-		testsEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(abstractEnabledSampleEClass, AbstractEnabledSample.class, "AbstractEnabledSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractEnabledSample_Enabled(), ecorePackage.getEBoolean(), "enabled", null, 0, 1, AbstractEnabledSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(referenceEnabledSampleEClass, ReferenceEnabledSample.class, "ReferenceEnabledSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReferenceEnabledSample_Reference(), theEefnrPackage.getTotalSample(), null, "reference", null, 0, -1, ReferenceEnabledSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(testsEClass, Tests.class, "Tests", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(simpleSampleEClass, SimpleSample.class, "SimpleSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
-} //ReferencesPackageImpl
+} //InterfacePackageImpl
