@@ -69,9 +69,13 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Category_name_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Category_name_feature"), //$NON-NLS-1$
 				getString("_UI_Category_name_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.CATEGORY__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.CATEGORY__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -124,7 +128,7 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Category) object).getName();
+		String label = ((Category)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Category_type") : //$NON-NLS-1$
 				getString("_UI_Category_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -141,13 +145,15 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Category.class)) {
-		case ViewsPackage.CATEGORY__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case ViewsPackage.CATEGORY__VIEWS:
-		case ViewsPackage.CATEGORY__CATEGORIES:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case ViewsPackage.CATEGORY__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
+			case ViewsPackage.CATEGORY__VIEWS:
+			case ViewsPackage.CATEGORY__CATEGORIES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -163,11 +169,14 @@ public class CategoryItemProvider extends DocumentedElementItemProvider implemen
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CATEGORY__VIEWS, ViewsFactory.eINSTANCE.createView()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CATEGORY__VIEWS,
+				ViewsFactory.eINSTANCE.createView()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CATEGORY__VIEWS, ViewsFactory.eINSTANCE.createCustomView()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CATEGORY__VIEWS,
+				ViewsFactory.eINSTANCE.createCustomView()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CATEGORY__CATEGORIES, ViewsFactory.eINSTANCE.createCategory()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.CATEGORY__CATEGORIES,
+				ViewsFactory.eINSTANCE.createCategory()));
 	}
 
 }

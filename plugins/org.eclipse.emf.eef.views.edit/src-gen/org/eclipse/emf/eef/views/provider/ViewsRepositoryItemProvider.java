@@ -70,9 +70,13 @@ public class ViewsRepositoryItemProvider extends DocumentedElementItemProvider i
 	 * @generated
 	 */
 	protected void addRepositoryKindPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewsRepository_RepositoryKind_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ViewsRepository_RepositoryKind_feature"), //$NON-NLS-1$
 				getString("_UI_ViewsRepository_RepositoryKind_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEWS_REPOSITORY__REPOSITORY_KIND, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.VIEWS_REPOSITORY__REPOSITORY_KIND, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -82,9 +86,13 @@ public class ViewsRepositoryItemProvider extends DocumentedElementItemProvider i
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewsRepository_name_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ViewsRepository_name_feature"), //$NON-NLS-1$
 				getString("_UI_ViewsRepository_name_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEWS_REPOSITORY__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.VIEWS_REPOSITORY__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -137,7 +145,7 @@ public class ViewsRepositoryItemProvider extends DocumentedElementItemProvider i
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewsRepository) object).getName();
+		String label = ((ViewsRepository)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewsRepository_type") : //$NON-NLS-1$
 				getString("_UI_ViewsRepository_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -154,15 +162,17 @@ public class ViewsRepositoryItemProvider extends DocumentedElementItemProvider i
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ViewsRepository.class)) {
-		case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
-		case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
-		case ViewsPackage.VIEWS_REPOSITORY__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
-		case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case ViewsPackage.VIEWS_REPOSITORY__QUALIFIED_IDENTIFIER:
+			case ViewsPackage.VIEWS_REPOSITORY__REPOSITORY_KIND:
+			case ViewsPackage.VIEWS_REPOSITORY__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
+			case ViewsPackage.VIEWS_REPOSITORY__VIEWS:
+			case ViewsPackage.VIEWS_REPOSITORY__CATEGORIES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -178,11 +188,14 @@ public class ViewsRepositoryItemProvider extends DocumentedElementItemProvider i
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS, ViewsFactory.eINSTANCE.createView()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS,
+				ViewsFactory.eINSTANCE.createView()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS, ViewsFactory.eINSTANCE.createCustomView()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.VIEWS_REPOSITORY__VIEWS,
+				ViewsFactory.eINSTANCE.createCustomView()));
 
-		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.VIEWS_REPOSITORY__CATEGORIES, ViewsFactory.eINSTANCE.createCategory()));
+		newChildDescriptors.add(createChildParameter(ViewsPackage.Literals.VIEWS_REPOSITORY__CATEGORIES,
+				ViewsFactory.eINSTANCE.createCategory()));
 	}
 
 }

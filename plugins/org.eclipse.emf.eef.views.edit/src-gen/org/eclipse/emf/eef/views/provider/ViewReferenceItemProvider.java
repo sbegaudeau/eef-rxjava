@@ -66,7 +66,9 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 	 * @generated
 	 */
 	protected void addViewPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewReference_view_feature"), //$NON-NLS-1$
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ViewReference_view_feature"), //$NON-NLS-1$
 				getString("_UI_ViewReference_view_description"), //$NON-NLS-1$
 				ViewsPackage.Literals.VIEW_REFERENCE__VIEW, true, false, true, null, null, null));
 	}
@@ -90,7 +92,7 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewReference) object).getName();
+		String label = ((ViewReference)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewReference_type") : //$NON-NLS-1$
 				getString("_UI_ViewReference_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -107,9 +109,10 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ViewReference.class)) {
-		case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

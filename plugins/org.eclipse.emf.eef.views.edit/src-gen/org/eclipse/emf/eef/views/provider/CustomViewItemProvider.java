@@ -74,7 +74,7 @@ public class CustomViewItemProvider extends ViewItemProvider implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CustomView) object).getName();
+		String label = ((CustomView)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_CustomView_type") : //$NON-NLS-1$
 				getString("_UI_CustomView_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
