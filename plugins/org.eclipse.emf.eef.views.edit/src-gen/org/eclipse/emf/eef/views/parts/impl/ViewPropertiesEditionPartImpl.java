@@ -237,8 +237,6 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 

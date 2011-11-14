@@ -107,7 +107,7 @@ public class CustomViewPropertiesEditionPartForm extends SectionPropertiesEditin
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.CustomView.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -170,8 +170,6 @@ public class CustomViewPropertiesEditionPartForm extends SectionPropertiesEditin
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomView.Properties.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
-
-
 
 	/**
 	 * {@inheritDoc}

@@ -109,10 +109,10 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.ViewsRepository.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.ViewsRepository.Properties.repositoryKind) {
-					return 		createRepositoryKindText(widgetFactory, parent);
+					return createRepositoryKindText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -215,8 +215,6 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
-
-
 
 	/**
 	 * {@inheritDoc}

@@ -57,7 +57,7 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 	/**
 	 * Settings for representation EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings representationSettings;
+	private EObjectFlatComboSettings representationSettings;
 	
 	
 	/**
@@ -115,8 +115,8 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for representation
-																																																						
-																																																						// End of user code
+			
+			// End of user code
 			
 			
 			
@@ -194,7 +194,7 @@ public class ElementEditorBasePropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		if (editingPart.isVisible()) {
 			ElementEditorPropertiesEditionPart basePart = (ElementEditorPropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ElementEditor.Properties.representation))
 				basePart.setRepresentation((EObject)msg.getNewValue());

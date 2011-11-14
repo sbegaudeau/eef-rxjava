@@ -165,8 +165,6 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 

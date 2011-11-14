@@ -216,8 +216,6 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 

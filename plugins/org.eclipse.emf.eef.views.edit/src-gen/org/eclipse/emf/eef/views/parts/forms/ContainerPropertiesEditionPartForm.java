@@ -118,7 +118,7 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.Container.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.Container.Properties.representation) {
 					return createRepresentationFlatComboViewer(parent, widgetFactory);
@@ -214,8 +214,6 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.Container.Properties.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
-
-
 
 	/**
 	 * {@inheritDoc}

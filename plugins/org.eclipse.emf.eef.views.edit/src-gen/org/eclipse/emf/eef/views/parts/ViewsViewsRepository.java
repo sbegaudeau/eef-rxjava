@@ -37,6 +37,7 @@ public class ViewsViewsRepository {
 	
 	}
 
+
 	/**
 	 * ViewsRepository view descriptor
 	 * 
@@ -142,9 +143,6 @@ public class ViewsViewsRepository {
 	
 			
 			public static String name = "views::CustomElementEditor::Properties::name";
-			
-			
-			public static String representation = "views::CustomElementEditor::Properties::representation";
 			
 			
 			public static String readOnly = "views::CustomElementEditor::Properties::readOnly";

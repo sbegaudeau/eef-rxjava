@@ -165,8 +165,6 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 

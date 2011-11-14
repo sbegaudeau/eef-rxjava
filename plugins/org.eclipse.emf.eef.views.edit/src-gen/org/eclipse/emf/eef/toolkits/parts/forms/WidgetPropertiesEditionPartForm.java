@@ -107,7 +107,7 @@ public class WidgetPropertiesEditionPartForm extends SectionPropertiesEditingPar
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ToolkitsViewsRepository.Widget.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -170,8 +170,6 @@ public class WidgetPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ToolkitsViewsRepository.Widget.Properties.name, ToolkitsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
-
-
 
 	/**
 	 * {@inheritDoc}

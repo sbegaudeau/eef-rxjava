@@ -145,9 +145,6 @@ public class ViewsMessages extends NLS {
 	public static String CustomElementEditorPropertiesEditionPart_NameLabel;
 
 	
-	public static String CustomElementEditorPropertiesEditionPart_RepresentationLabel;
-
-	
 	public static String CustomElementEditorPropertiesEditionPart_ReadOnlyLabel;
 
 	

@@ -12,10 +12,6 @@
 package org.eclipse.emf.eef.views.parts;
 
 // Start of user code for imports
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-import org.eclipse.jface.viewers.ViewerFilter;
 
 
 
@@ -39,53 +35,6 @@ public interface CustomElementEditorPropertiesEditionPart {
 	 * 
 	 */
 	public void setName(String newValue);
-
-
-	/**
-	 * @return the representation
-	 * 
-	 */
-	public EObject getRepresentation();
-
-	/**
-	 * Init the representation
-	 * @param settings the combo setting
-	 */
-	public void initRepresentation(EObjectFlatComboSettings settings);
-
-	/**
-	 * Defines a new representation
-	 * @param newValue the new representation to set
-	 * 
-	 */
-	public void setRepresentation(EObject newValue);
-
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setRepresentationButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the representation edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToRepresentation(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the representation edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToRepresentation(ViewerFilter filter);
 
 
 	/**
@@ -115,6 +64,6 @@ public interface CustomElementEditorPropertiesEditionPart {
 
 	// Start of user code for additional methods
 
-// End of user code
+	// End of user code
 
 }

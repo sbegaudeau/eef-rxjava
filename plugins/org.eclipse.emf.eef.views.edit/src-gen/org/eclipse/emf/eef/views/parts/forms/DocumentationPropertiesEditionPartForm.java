@@ -162,8 +162,6 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 

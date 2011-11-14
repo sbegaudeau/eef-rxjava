@@ -12,8 +12,6 @@
 package org.eclipse.emf.eef.views.parts.forms;
 
 // Start of user code for imports
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -24,17 +22,10 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 import org.eclipse.emf.eef.views.providers.ViewsMessages;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -63,7 +54,6 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class CustomElementEditorPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, CustomElementEditorPropertiesEditionPart {
 
 	protected Text name;
-	protected EObjectFlatComboViewer representation;
 	protected Button readOnly;
 
 
@@ -111,7 +101,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		CompositionSequence customElementEditorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = customElementEditorStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.class);
 		propertiesStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.name);
-		propertiesStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.representation);
 		propertiesStep.addStep(ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
 		
 		
@@ -123,10 +112,7 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.CustomElementEditor.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
-				}
-				if (key == ViewsViewsRepository.CustomElementEditor.Properties.representation) {
-					return createRepresentationFlatComboViewer(parent, widgetFactory);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ViewsViewsRepository.CustomElementEditor.Properties.readOnly) {
 					return createReadOnlyCheckbox(widgetFactory, parent);
@@ -193,36 +179,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
-	/**
-	 * @param parent the parent composite
-	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
-	 */
-	protected Composite createRepresentationFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsMessages.CustomElementEditorPropertiesEditionPart_RepresentationLabel);
-		representation = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND));
-		widgetFactory.adapt(representation);
-		representation.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData representationData = new GridData(GridData.FILL_HORIZONTAL);
-		representation.setLayoutData(representationData);
-		representation.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CustomElementEditorPropertiesEditionPartForm.this, ViewsViewsRepository.CustomElementEditor.Properties.representation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRepresentation()));
-			}
-
-		});
-		representation.setID(ViewsViewsRepository.CustomElementEditor.Properties.representation);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
-
 	
 	protected Composite createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		readOnly = widgetFactory.createButton(parent, getDescription(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsMessages.CustomElementEditorPropertiesEditionPart_ReadOnlyLabel), SWT.CHECK);
@@ -248,8 +204,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
-
-
 
 	/**
 	 * {@inheritDoc}
@@ -285,77 +239,6 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#getRepresentation()
-	 * 
-	 */
-	public EObject getRepresentation() {
-		if (representation.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) representation.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#initRepresentation(EObjectFlatComboSettings)
-	 */
-	public void initRepresentation(EObjectFlatComboSettings settings) {
-		representation.setInput(settings);
-		if (current != null) {
-			representation.setSelection(new StructuredSelection(settings.getValue()));
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#setRepresentation(EObject newValue)
-	 * 
-	 */
-	public void setRepresentation(EObject newValue) {
-		if (newValue != null) {
-			representation.setSelection(new StructuredSelection(newValue));
-		} else {
-			representation.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#setRepresentationButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setRepresentationButtonMode(ButtonsModeEnum newValue) {
-		representation.setButtonMode(newValue);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#addFilterRepresentation(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToRepresentation(ViewerFilter filter) {
-		representation.addFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart#addBusinessFilterRepresentation(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
-		representation.addBusinessRuleFilter(filter);
 	}
 
 

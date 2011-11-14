@@ -165,8 +165,6 @@ public class WidgetPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 

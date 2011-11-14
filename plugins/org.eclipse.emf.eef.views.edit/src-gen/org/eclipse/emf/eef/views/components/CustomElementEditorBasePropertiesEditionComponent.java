@@ -24,22 +24,12 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
-import org.eclipse.emf.eef.toolkits.Widget;
 import org.eclipse.emf.eef.views.CustomElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.parts.CustomElementEditorPropertiesEditionPart;
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 	
 
 // End of user code
@@ -53,11 +43,6 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	
-	/**
-	 * Settings for representation EObjectFlatComboViewer
-	 */
-	private	EObjectFlatComboSettings representationSettings;
 	
 	
 	/**
@@ -85,13 +70,6 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 			final CustomElementEditor customElementEditor = (CustomElementEditor)elt;
 			final CustomElementEditorPropertiesEditionPart basePart = (CustomElementEditorPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.representation)) {
-				// init part
-				representationSettings = new EObjectFlatComboSettings(customElementEditor, ViewsPackage.eINSTANCE.getViewElement_Representation());
-				basePart.initRepresentation(representationSettings);
-				// set the button mode
-				basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
-			}
 			if (customElementEditor.getName() != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), customElementEditor.getName()));
 			
@@ -99,22 +77,6 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 				basePart.setReadOnly(customElementEditor.isReadOnly());
 			}
 			// init filters
-			basePart.addFilterToRepresentation(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for representation
-																																																						
-																																																						// End of user code
-			
 			
 			
 			// init values for referenced views
@@ -129,15 +91,11 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == ViewsViewsRepository.CustomElementEditor.Properties.representation) {
-			return ViewsPackage.eINSTANCE.getViewElement_Representation();
-		}
 		if (editorKey == ViewsViewsRepository.CustomElementEditor.Properties.name) {
 			return ViewsPackage.eINSTANCE.getViewElement_Name();
 		}
@@ -154,22 +112,6 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CustomElementEditor customElementEditor = (CustomElementEditor)semanticObject;
-		if (ViewsViewsRepository.CustomElementEditor.Properties.representation == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				representationSettings.setToReference((Widget)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Widget eObject = ToolkitsFactory.eINSTANCE.createWidget();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				representationSettings.setToReference(eObject);
-			}
-		}
 		if (ViewsViewsRepository.CustomElementEditor.Properties.name == event.getAffectedEditor()) {
 			customElementEditor.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
@@ -183,10 +125,8 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		if (editingPart.isVisible()) {
 			CustomElementEditorPropertiesEditionPart basePart = (CustomElementEditorPropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.representation))
-				basePart.setRepresentation((EObject)msg.getNewValue());
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
@@ -219,8 +159,6 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 * 
 	 */
 	public String getHelpContent(Object key, int kind) {
-		if (key == ViewsViewsRepository.CustomElementEditor.Properties.representation)
-			return "The representation of this part of view"; //$NON-NLS-1$
 		if (key == ViewsViewsRepository.CustomElementEditor.Properties.name)
 			return "The element name"; //$NON-NLS-1$
 		if (key == ViewsViewsRepository.CustomElementEditor.Properties.readOnly)
