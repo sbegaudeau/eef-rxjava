@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.eef.toolkits.*;
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsFactory;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
@@ -36,7 +35,8 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	 */
 	public static ToolkitsFactory init() {
 		try {
-			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/views/toolkits/1.0.0"); //$NON-NLS-1$ 
+			ToolkitsFactory theToolkitsFactory = (ToolkitsFactory)EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/eef/views/toolkits/1.0.0"); //$NON-NLS-1$ 
 			if (theToolkitsFactory != null) {
 				return theToolkitsFactory;
 			}
@@ -64,12 +64,13 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case ToolkitsPackage.TOOLKIT:
-			return createToolkit();
-		case ToolkitsPackage.WIDGET:
-			return createWidget();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			case ToolkitsPackage.TOOLKIT:
+				return createToolkit();
+			case ToolkitsPackage.WIDGET:
+				return createWidget();
+			default:
+				throw new IllegalArgumentException(
+						"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -99,7 +100,7 @@ public class ToolkitsFactoryImpl extends EFactoryImpl implements ToolkitsFactory
 	 * @generated
 	 */
 	public ToolkitsPackage getToolkitsPackage() {
-		return (ToolkitsPackage) getEPackage();
+		return (ToolkitsPackage)getEPackage();
 	}
 
 	/**

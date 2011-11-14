@@ -96,7 +96,8 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	 */
 	public EList<Widget> getWidgets() {
 		if (widgets == null) {
-			widgets = new EObjectContainmentWithInverseEList<Widget>(Widget.class, this, ToolkitsPackage.TOOLKIT__WIDGETS, ToolkitsPackage.WIDGET__TOOLKIT);
+			widgets = new EObjectContainmentWithInverseEList<Widget>(Widget.class, this,
+					ToolkitsPackage.TOOLKIT__WIDGETS, ToolkitsPackage.WIDGET__TOOLKIT);
 		}
 		return widgets;
 	}
@@ -119,7 +120,8 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.TOOLKIT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolkitsPackage.TOOLKIT__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -131,8 +133,9 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getWidgets()).basicAdd(otherEnd, msgs);
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getWidgets()).basicAdd(otherEnd,
+						msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -145,8 +148,8 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			return ((InternalEList<?>) getWidgets()).basicRemove(otherEnd, msgs);
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -159,10 +162,10 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			return getWidgets();
-		case ToolkitsPackage.TOOLKIT__NAME:
-			return getName();
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				return getWidgets();
+			case ToolkitsPackage.TOOLKIT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -176,13 +179,13 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			getWidgets().clear();
-			getWidgets().addAll((Collection<? extends Widget>) newValue);
-			return;
-		case ToolkitsPackage.TOOLKIT__NAME:
-			setName((String) newValue);
-			return;
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				getWidgets().clear();
+				getWidgets().addAll((Collection<? extends Widget>)newValue);
+				return;
+			case ToolkitsPackage.TOOLKIT__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -195,12 +198,12 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			getWidgets().clear();
-			return;
-		case ToolkitsPackage.TOOLKIT__NAME:
-			setName(NAME_EDEFAULT);
-			return;
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				getWidgets().clear();
+				return;
+			case ToolkitsPackage.TOOLKIT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -213,10 +216,10 @@ public class ToolkitImpl extends EObjectImpl implements Toolkit {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ToolkitsPackage.TOOLKIT__WIDGETS:
-			return widgets != null && !widgets.isEmpty();
-		case ToolkitsPackage.TOOLKIT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ToolkitsPackage.TOOLKIT__WIDGETS:
+				return widgets != null && !widgets.isEmpty();
+			case ToolkitsPackage.TOOLKIT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

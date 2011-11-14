@@ -80,8 +80,8 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-			return getQualifiedIdentifier();
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return getQualifiedIdentifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -94,8 +94,9 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null : !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
 		}
 		return super.eIsSet(featureID);
 	}

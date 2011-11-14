@@ -93,11 +93,12 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	 */
 	public Widget getRepresentation() {
 		if (representation != null && representation.eIsProxy()) {
-			InternalEObject oldRepresentation = (InternalEObject) representation;
-			representation = (Widget) eResolveProxy(oldRepresentation);
+			InternalEObject oldRepresentation = (InternalEObject)representation;
+			representation = (Widget)eResolveProxy(oldRepresentation);
 			if (representation != oldRepresentation) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewsPackage.VIEW_ELEMENT__REPRESENTATION, oldRepresentation, representation));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ViewsPackage.VIEW_ELEMENT__REPRESENTATION, oldRepresentation, representation));
 			}
 		}
 		return representation;
@@ -121,7 +122,8 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 		Widget oldRepresentation = representation;
 		representation = newRepresentation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_ELEMENT__REPRESENTATION, oldRepresentation, representation));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_ELEMENT__REPRESENTATION,
+					oldRepresentation, representation));
 	}
 
 	/**
@@ -132,7 +134,7 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	public Container getContainer() {
 		if (eContainerFeatureID() != ViewsPackage.VIEW_ELEMENT__CONTAINER)
 			return null;
-		return (Container) eContainer();
+		return (Container)eContainer();
 	}
 
 	/**
@@ -141,7 +143,7 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	 * @generated
 	 */
 	public NotificationChain basicSetContainer(Container newContainer, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newContainer, ViewsPackage.VIEW_ELEMENT__CONTAINER, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newContainer, ViewsPackage.VIEW_ELEMENT__CONTAINER, msgs);
 		return msgs;
 	}
 
@@ -151,19 +153,22 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	 * @generated
 	 */
 	public void setContainer(Container newContainer) {
-		if (newContainer != eInternalContainer() || (eContainerFeatureID() != ViewsPackage.VIEW_ELEMENT__CONTAINER && newContainer != null)) {
+		if (newContainer != eInternalContainer()
+				|| (eContainerFeatureID() != ViewsPackage.VIEW_ELEMENT__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
-				msgs = ((InternalEObject) newContainer).eInverseAdd(this, ViewsPackage.CONTAINER__ELEMENTS, Container.class, msgs);
+				msgs = ((InternalEObject)newContainer).eInverseAdd(this, ViewsPackage.CONTAINER__ELEMENTS,
+						Container.class, msgs);
 			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_ELEMENT__CONTAINER, newContainer, newContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_ELEMENT__CONTAINER,
+					newContainer, newContainer));
 	}
 
 	/**
@@ -184,7 +189,8 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_ELEMENT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_ELEMENT__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -195,10 +201,10 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetContainer((Container) otherEnd, msgs);
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetContainer((Container)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -211,8 +217,8 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			return basicSetContainer(null, msgs);
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				return basicSetContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -225,8 +231,9 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			return eInternalContainer().eInverseRemove(this, ViewsPackage.CONTAINER__ELEMENTS, Container.class, msgs);
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				return eInternalContainer().eInverseRemove(this, ViewsPackage.CONTAINER__ELEMENTS,
+						Container.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -239,14 +246,14 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
-			if (resolve)
-				return getRepresentation();
-			return basicGetRepresentation();
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			return getContainer();
-		case ViewsPackage.VIEW_ELEMENT__NAME:
-			return getName();
+			case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				return getContainer();
+			case ViewsPackage.VIEW_ELEMENT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,15 +266,15 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
-			setRepresentation((Widget) newValue);
-			return;
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			setContainer((Container) newValue);
-			return;
-		case ViewsPackage.VIEW_ELEMENT__NAME:
-			setName((String) newValue);
-			return;
+			case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
+				setRepresentation((Widget)newValue);
+				return;
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				setContainer((Container)newValue);
+				return;
+			case ViewsPackage.VIEW_ELEMENT__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -280,15 +287,15 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
-			setRepresentation((Widget) null);
-			return;
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			setContainer((Container) null);
-			return;
-		case ViewsPackage.VIEW_ELEMENT__NAME:
-			setName(NAME_EDEFAULT);
-			return;
+			case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
+				setRepresentation((Widget)null);
+				return;
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				setContainer((Container)null);
+				return;
+			case ViewsPackage.VIEW_ELEMENT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -301,12 +308,12 @@ public abstract class ViewElementImpl extends DocumentedElementImpl implements V
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
-			return representation != null;
-		case ViewsPackage.VIEW_ELEMENT__CONTAINER:
-			return getContainer() != null;
-		case ViewsPackage.VIEW_ELEMENT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ViewsPackage.VIEW_ELEMENT__REPRESENTATION:
+				return representation != null;
+			case ViewsPackage.VIEW_ELEMENT__CONTAINER:
+				return getContainer() != null;
+			case ViewsPackage.VIEW_ELEMENT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

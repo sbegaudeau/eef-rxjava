@@ -10,13 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.toolkits.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.eef.toolkits.*;
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
@@ -78,22 +74,22 @@ public class ToolkitsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case ToolkitsPackage.TOOLKIT: {
-			Toolkit toolkit = (Toolkit) theEObject;
-			T result = caseToolkit(toolkit);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ToolkitsPackage.WIDGET: {
-			Widget widget = (Widget) theEObject;
-			T result = caseWidget(widget);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case ToolkitsPackage.TOOLKIT: {
+				Toolkit toolkit = (Toolkit)theEObject;
+				T result = caseToolkit(toolkit);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ToolkitsPackage.WIDGET: {
+				Widget widget = (Widget)theEObject;
+				T result = caseWidget(widget);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			default:
+				return defaultCase(theEObject);
 		}
 	}
 

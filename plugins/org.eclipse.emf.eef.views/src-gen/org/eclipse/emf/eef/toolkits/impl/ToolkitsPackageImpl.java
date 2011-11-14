@@ -83,15 +83,19 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 */
 	public static ToolkitsPackage init() {
 		if (isInited)
-			return (ToolkitsPackage) EPackage.Registry.INSTANCE.getEPackage(ToolkitsPackage.eNS_URI);
+			return (ToolkitsPackage)EPackage.Registry.INSTANCE.getEPackage(ToolkitsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ToolkitsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ToolkitsPackageImpl());
+		ToolkitsPackageImpl theToolkitsPackage = (ToolkitsPackageImpl)(EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof ToolkitsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+				: new ToolkitsPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewsPackage.eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ViewsPackage.eNS_URI) : ViewsPackage.eINSTANCE);
+		ViewsPackageImpl theViewsPackage = (ViewsPackageImpl)(EPackage.Registry.INSTANCE
+				.getEPackage(ViewsPackage.eNS_URI) instanceof ViewsPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(ViewsPackage.eNS_URI) : ViewsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theToolkitsPackage.createPackageContents();
@@ -124,7 +128,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EReference getToolkit_Widgets() {
-		return (EReference) toolkitEClass.getEStructuralFeatures().get(0);
+		return (EReference)toolkitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -133,7 +137,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getToolkit_Name() {
-		return (EAttribute) toolkitEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)toolkitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -151,7 +155,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getWidget_Name() {
-		return (EAttribute) widgetEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)widgetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -160,7 +164,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getWidget_Icon() {
-		return (EAttribute) widgetEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)widgetEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -169,7 +173,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EAttribute getWidget_Implementation() {
-		return (EAttribute) widgetEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)widgetEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -178,7 +182,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public EReference getWidget_Toolkit() {
-		return (EReference) widgetEClass.getEStructuralFeatures().get(3);
+		return (EReference)widgetEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -187,7 +191,7 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 	 * @generated
 	 */
 	public ToolkitsFactory getToolkitsFactory() {
-		return (ToolkitsFactory) getEFactoryInstance();
+		return (ToolkitsFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -252,15 +256,37 @@ public class ToolkitsPackageImpl extends EPackageImpl implements ToolkitsPackage
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(toolkitEClass, Toolkit.class, "Toolkit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getToolkit_Widgets(), this.getWidget(), this.getWidget_Toolkit(), "widgets", null, 0, -1, Toolkit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getToolkit_Name(), ecorePackage.getEString(), "name", null, 1, 1, Toolkit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(toolkitEClass, Toolkit.class,
+				"Toolkit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+				getToolkit_Widgets(),
+				this.getWidget(),
+				this.getWidget_Toolkit(),
+				"widgets", null, 0, -1, Toolkit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+				getToolkit_Name(),
+				ecorePackage.getEString(),
+				"name", null, 1, 1, Toolkit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(widgetEClass, Widget.class, "Widget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getWidget_Name(), ecorePackage.getEString(), "name", null, 1, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getWidget_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getWidget_Implementation(), ecorePackage.getEString(), "implementation", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getWidget_Toolkit(), this.getToolkit(), this.getToolkit_Widgets(), "toolkit", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(widgetEClass, Widget.class,
+				"Widget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getWidget_Name(),
+				ecorePackage.getEString(),
+				"name", null, 1, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+				getWidget_Icon(),
+				ecorePackage.getEString(),
+				"icon", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+				getWidget_Implementation(),
+				ecorePackage.getEString(),
+				"implementation", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+				getWidget_Toolkit(),
+				this.getToolkit(),
+				this.getToolkit_Widgets(),
+				"toolkit", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } //ToolkitsPackageImpl

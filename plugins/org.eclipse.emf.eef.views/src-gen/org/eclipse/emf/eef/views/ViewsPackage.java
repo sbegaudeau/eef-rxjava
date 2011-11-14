@@ -1441,7 +1441,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER = eINSTANCE.getIdentifiedElement_QualifiedIdentifier();
+		EAttribute IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER = eINSTANCE
+				.getIdentifiedElement_QualifiedIdentifier();
 
 	}
 
