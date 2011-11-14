@@ -67,9 +67,6 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//Container"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_C2Y-cgd9Ed6YkIySVKIecQ" name="CustomElementEditor" views="_C2Y-rQd9Ed6YkIySVKIecQ">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-dAd9Ed6YkIySVKIecQ" name="representation" views="_C2Y-sAd9Ed6YkIySVKIecQ">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ViewElement/representation"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-dgd9Ed6YkIySVKIecQ" name="name" views="_C2Y-sgd9Ed6YkIySVKIecQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ViewElement/name"/>
         </properties>
@@ -178,9 +175,6 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-sgd9Ed6YkIySVKIecQ" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-sAd9Ed6YkIySVKIecQ" name="representation">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-swd9Ed6YkIySVKIecQ" name="readOnly">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
