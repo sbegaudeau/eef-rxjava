@@ -69,11 +69,12 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements Pro
 	 */
 	public GenPackage getModel() {
 		if (model != null && model.eIsProxy()) {
-			InternalEObject oldModel = (InternalEObject) model;
-			model = (GenPackage) eResolveProxy(oldModel);
+			InternalEObject oldModel = (InternalEObject)model;
+			model = (GenPackage)eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL, oldModel, model));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL, oldModel, model));
 			}
 		}
 		return model;
@@ -97,7 +98,8 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements Pro
 		GenPackage oldModel = model;
 		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL, oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL, oldModel, model));
 	}
 
 	/**
@@ -108,10 +110,10 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements Pro
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
-			if (resolve)
-				return getModel();
-			return basicGetModel();
+			case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
+				if (resolve)
+					return getModel();
+				return basicGetModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -124,9 +126,9 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements Pro
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
-			setModel((GenPackage) newValue);
-			return;
+			case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
+				setModel((GenPackage)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -139,9 +141,9 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements Pro
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
-			setModel((GenPackage) null);
-			return;
+			case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
+				setModel((GenPackage)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -154,8 +156,8 @@ public class PropertiesEditionContextImpl extends DatabindingImpl implements Pro
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
-			return model != null;
+			case ComponentsPackage.PROPERTIES_EDITION_CONTEXT__MODEL:
+				return model != null;
 		}
 		return super.eIsSet(featureID);
 	}

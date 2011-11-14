@@ -88,7 +88,8 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 		String oldHelpID = helpID;
 		helpID = newHelpID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.EEF_ELEMENT__HELP_ID, oldHelpID, helpID));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.EEF_ELEMENT__HELP_ID,
+					oldHelpID, helpID));
 	}
 
 	/**
@@ -99,8 +100,8 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-			return getHelpID();
+			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+				return getHelpID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,9 +114,9 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-			setHelpID((String) newValue);
-			return;
+			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+				setHelpID((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -128,9 +129,9 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-			setHelpID(HELP_ID_EDEFAULT);
-			return;
+			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+				setHelpID(HELP_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -143,8 +144,8 @@ public abstract class EEFElementImpl extends EObjectImpl implements EEFElement {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-			return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
+			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+				return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -41,6 +41,7 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	 * @ordered
 	 */
 	protected static final String HELP_ID_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getHelpID() <em>Help ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -88,7 +89,8 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 		String oldHelpID = helpID;
 		helpID = newHelpID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID, oldHelpID, helpID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID, oldHelpID, helpID));
 	}
 
 	/**
@@ -99,8 +101,8 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
-			return getHelpID();
+			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
+				return getHelpID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,9 +115,9 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
-			setHelpID((String) newValue);
-			return;
+			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
+				setHelpID((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -128,9 +130,9 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
-			setHelpID(HELP_ID_EDEFAULT);
-			return;
+			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
+				setHelpID(HELP_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -143,8 +145,8 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
-			return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
+			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
+				return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -158,10 +160,10 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == EEFElement.class) {
 			switch (derivedFeatureID) {
-			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
-				return ComponentsPackage.EEF_ELEMENT__HELP_ID;
-			default:
-				return -1;
+				case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID:
+					return ComponentsPackage.EEF_ELEMENT__HELP_ID;
+				default:
+					return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -176,10 +178,10 @@ public class PropertiesMultiEditionElementImpl extends EMFMultiPropertiesBinding
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == EEFElement.class) {
 			switch (baseFeatureID) {
-			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-				return ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID;
-			default:
-				return -1;
+				case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+					return ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT__HELP_ID;
+				default:
+					return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

@@ -37,7 +37,8 @@ public class ComponentsFactoryImpl extends EFactoryImpl implements ComponentsFac
 	 */
 	public static ComponentsFactory init() {
 		try {
-			ComponentsFactory theComponentsFactory = (ComponentsFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/eef/components/1.0.0");
+			ComponentsFactory theComponentsFactory = (ComponentsFactory)EPackage.Registry.INSTANCE
+					.getEFactory("http://www.eclipse.org/emf/eef/components/1.0.0");
 			if (theComponentsFactory != null) {
 				return theComponentsFactory;
 			}
@@ -65,16 +66,17 @@ public class ComponentsFactoryImpl extends EFactoryImpl implements ComponentsFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case ComponentsPackage.PROPERTIES_EDITION_CONTEXT:
-			return createPropertiesEditionContext();
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT:
-			return createPropertiesEditionComponent();
-		case ComponentsPackage.PROPERTIES_EDITION_ELEMENT:
-			return createPropertiesEditionElement();
-		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT:
-			return createPropertiesMultiEditionElement();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case ComponentsPackage.PROPERTIES_EDITION_CONTEXT:
+				return createPropertiesEditionContext();
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT:
+				return createPropertiesEditionComponent();
+			case ComponentsPackage.PROPERTIES_EDITION_ELEMENT:
+				return createPropertiesEditionElement();
+			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT:
+				return createPropertiesMultiEditionElement();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName()
+						+ "' is not a valid classifier");
 		}
 	}
 
@@ -124,7 +126,7 @@ public class ComponentsFactoryImpl extends EFactoryImpl implements ComponentsFac
 	 * @generated
 	 */
 	public ComponentsPackage getComponentsPackage() {
-		return (ComponentsPackage) getEPackage();
+		return (ComponentsPackage)getEPackage();
 	}
 
 	/**

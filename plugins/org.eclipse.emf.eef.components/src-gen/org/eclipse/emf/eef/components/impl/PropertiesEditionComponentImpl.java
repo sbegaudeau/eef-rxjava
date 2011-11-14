@@ -110,7 +110,8 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 		String oldHelpID = helpID;
 		helpID = newHelpID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID, oldHelpID, helpID));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID, oldHelpID, helpID));
 	}
 
 	/**
@@ -131,7 +132,8 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 		boolean oldExplicit = explicit;
 		explicit = newExplicit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT, oldExplicit, explicit));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT, oldExplicit, explicit));
 	}
 
 	/**
@@ -142,10 +144,10 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-			return getHelpID();
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-			return isExplicit();
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
+				return getHelpID();
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
+				return isExplicit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,12 +160,12 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-			setHelpID((String) newValue);
-			return;
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-			setExplicit((Boolean) newValue);
-			return;
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
+				setHelpID((String)newValue);
+				return;
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
+				setExplicit((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -176,12 +178,12 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-			setHelpID(HELP_ID_EDEFAULT);
-			return;
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-			setExplicit(EXPLICIT_EDEFAULT);
-			return;
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
+				setHelpID(HELP_ID_EDEFAULT);
+				return;
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
+				setExplicit(EXPLICIT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -194,10 +196,10 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-			return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
-			return explicit != EXPLICIT_EDEFAULT;
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
+				return HELP_ID_EDEFAULT == null ? helpID != null : !HELP_ID_EDEFAULT.equals(helpID);
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__EXPLICIT:
+				return explicit != EXPLICIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,10 +213,10 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == EEFElement.class) {
 			switch (derivedFeatureID) {
-			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
-				return ComponentsPackage.EEF_ELEMENT__HELP_ID;
-			default:
-				return -1;
+				case ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID:
+					return ComponentsPackage.EEF_ELEMENT__HELP_ID;
+				default:
+					return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -229,10 +231,10 @@ public class PropertiesEditionComponentImpl extends EMFElementBindingImpl implem
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == EEFElement.class) {
 			switch (baseFeatureID) {
-			case ComponentsPackage.EEF_ELEMENT__HELP_ID:
-				return ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID;
-			default:
-				return -1;
+				case ComponentsPackage.EEF_ELEMENT__HELP_ID:
+					return ComponentsPackage.PROPERTIES_EDITION_COMPONENT__HELP_ID;
+				default:
+					return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

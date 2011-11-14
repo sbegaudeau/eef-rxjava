@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.components.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.EEFElement;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
@@ -41,7 +40,7 @@ import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
  * @see org.eclipse.emf.eef.components.ComponentsPackage
  * @generated
  */
-public class ComponentsSwitch<T> {
+public class ComponentsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -63,14 +62,16 @@ public class ComponentsSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public T doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -80,89 +81,74 @@ public class ComponentsSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		} else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case ComponentsPackage.PROPERTIES_EDITION_CONTEXT: {
-			PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext) theEObject;
-			T result = casePropertiesEditionContext(propertiesEditionContext);
-			if (result == null)
-				result = caseDatabinding(propertiesEditionContext);
-			if (result == null)
-				result = caseDocumentedElement(propertiesEditionContext);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ComponentsPackage.PROPERTIES_EDITION_COMPONENT: {
-			PropertiesEditionComponent propertiesEditionComponent = (PropertiesEditionComponent) theEObject;
-			T result = casePropertiesEditionComponent(propertiesEditionComponent);
-			if (result == null)
-				result = caseEMFElementBinding(propertiesEditionComponent);
-			if (result == null)
-				result = caseEEFElement(propertiesEditionComponent);
-			if (result == null)
-				result = caseAbstractElementBinding(propertiesEditionComponent);
-			if (result == null)
-				result = caseDocumentedElement(propertiesEditionComponent);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ComponentsPackage.PROPERTIES_EDITION_ELEMENT: {
-			PropertiesEditionElement propertiesEditionElement = (PropertiesEditionElement) theEObject;
-			T result = casePropertiesEditionElement(propertiesEditionElement);
-			if (result == null)
-				result = caseEMFPropertyBinding(propertiesEditionElement);
-			if (result == null)
-				result = caseEEFElement(propertiesEditionElement);
-			if (result == null)
-				result = caseAbstractPropertyBinding(propertiesEditionElement);
-			if (result == null)
-				result = caseDocumentedElement(propertiesEditionElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT: {
-			PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement) theEObject;
-			T result = casePropertiesMultiEditionElement(propertiesMultiEditionElement);
-			if (result == null)
-				result = caseEMFMultiPropertiesBinding(propertiesMultiEditionElement);
-			if (result == null)
-				result = caseEEFElement(propertiesMultiEditionElement);
-			if (result == null)
-				result = caseAbstractPropertyBinding(propertiesMultiEditionElement);
-			if (result == null)
-				result = caseDocumentedElement(propertiesMultiEditionElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ComponentsPackage.EEF_ELEMENT: {
-			EEFElement eefElement = (EEFElement) theEObject;
-			T result = caseEEFElement(eefElement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case ComponentsPackage.PROPERTIES_EDITION_CONTEXT: {
+				PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)theEObject;
+				T result = casePropertiesEditionContext(propertiesEditionContext);
+				if (result == null)
+					result = caseDatabinding(propertiesEditionContext);
+				if (result == null)
+					result = caseDocumentedElement(propertiesEditionContext);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentsPackage.PROPERTIES_EDITION_COMPONENT: {
+				PropertiesEditionComponent propertiesEditionComponent = (PropertiesEditionComponent)theEObject;
+				T result = casePropertiesEditionComponent(propertiesEditionComponent);
+				if (result == null)
+					result = caseEMFElementBinding(propertiesEditionComponent);
+				if (result == null)
+					result = caseEEFElement(propertiesEditionComponent);
+				if (result == null)
+					result = caseAbstractElementBinding(propertiesEditionComponent);
+				if (result == null)
+					result = caseDocumentedElement(propertiesEditionComponent);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentsPackage.PROPERTIES_EDITION_ELEMENT: {
+				PropertiesEditionElement propertiesEditionElement = (PropertiesEditionElement)theEObject;
+				T result = casePropertiesEditionElement(propertiesEditionElement);
+				if (result == null)
+					result = caseEMFPropertyBinding(propertiesEditionElement);
+				if (result == null)
+					result = caseEEFElement(propertiesEditionElement);
+				if (result == null)
+					result = caseAbstractPropertyBinding(propertiesEditionElement);
+				if (result == null)
+					result = caseDocumentedElement(propertiesEditionElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentsPackage.PROPERTIES_MULTI_EDITION_ELEMENT: {
+				PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement)theEObject;
+				T result = casePropertiesMultiEditionElement(propertiesMultiEditionElement);
+				if (result == null)
+					result = caseEMFMultiPropertiesBinding(propertiesMultiEditionElement);
+				if (result == null)
+					result = caseEEFElement(propertiesMultiEditionElement);
+				if (result == null)
+					result = caseAbstractPropertyBinding(propertiesMultiEditionElement);
+				if (result == null)
+					result = caseDocumentedElement(propertiesMultiEditionElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentsPackage.EEF_ELEMENT: {
+				EEFElement eefElement = (EEFElement)theEObject;
+				T result = caseEEFElement(eefElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			default:
+				return defaultCase(theEObject);
 		}
 	}
 
@@ -357,6 +343,7 @@ public class ComponentsSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
+	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}

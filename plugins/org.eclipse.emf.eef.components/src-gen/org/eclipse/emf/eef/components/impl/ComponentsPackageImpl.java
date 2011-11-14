@@ -107,10 +107,12 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 	 */
 	public static ComponentsPackage init() {
 		if (isInited)
-			return (ComponentsPackage) EPackage.Registry.INSTANCE.getEPackage(ComponentsPackage.eNS_URI);
+			return (ComponentsPackage)EPackage.Registry.INSTANCE.getEPackage(ComponentsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ComponentsPackageImpl theComponentsPackage = (ComponentsPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ComponentsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ComponentsPackageImpl());
+		ComponentsPackageImpl theComponentsPackage = (ComponentsPackageImpl)(EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof ComponentsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+				: new ComponentsPackageImpl());
 
 		isInited = true;
 
@@ -147,7 +149,7 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 	 * @generated
 	 */
 	public EReference getPropertiesEditionContext_Model() {
-		return (EReference) propertiesEditionContextEClass.getEStructuralFeatures().get(0);
+		return (EReference)propertiesEditionContextEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -165,7 +167,7 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 	 * @generated
 	 */
 	public EAttribute getPropertiesEditionComponent_Explicit() {
-		return (EAttribute) propertiesEditionComponentEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)propertiesEditionComponentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -201,7 +203,7 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 	 * @generated
 	 */
 	public EAttribute getEEFElement_HelpID() {
-		return (EAttribute) eefElementEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)eefElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -210,7 +212,7 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 	 * @generated
 	 */
 	public ComponentsFactory getComponentsFactory() {
-		return (ComponentsFactory) getEFactoryInstance();
+		return (ComponentsFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -272,8 +274,10 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		MappingPackage theMappingPackage = (MappingPackage) EPackage.Registry.INSTANCE.getEPackage(MappingPackage.eNS_URI);
-		GenModelPackage theGenModelPackage = (GenModelPackage) EPackage.Registry.INSTANCE.getEPackage(GenModelPackage.eNS_URI);
+		MappingPackage theMappingPackage = (MappingPackage)EPackage.Registry.INSTANCE
+				.getEPackage(MappingPackage.eNS_URI);
+		GenModelPackage theGenModelPackage = (GenModelPackage)EPackage.Registry.INSTANCE
+				.getEPackage(GenModelPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -285,22 +289,35 @@ public class ComponentsPackageImpl extends EPackageImpl implements ComponentsPac
 		propertiesEditionComponentEClass.getESuperTypes().add(this.getEEFElement());
 		propertiesEditionElementEClass.getESuperTypes().add(theMappingPackage.getEMFPropertyBinding());
 		propertiesEditionElementEClass.getESuperTypes().add(this.getEEFElement());
-		propertiesMultiEditionElementEClass.getESuperTypes().add(theMappingPackage.getEMFMultiPropertiesBinding());
+		propertiesMultiEditionElementEClass.getESuperTypes().add(
+				theMappingPackage.getEMFMultiPropertiesBinding());
 		propertiesMultiEditionElementEClass.getESuperTypes().add(this.getEEFElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(propertiesEditionContextEClass, PropertiesEditionContext.class, "PropertiesEditionContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPropertiesEditionContext_Model(), theGenModelPackage.getGenPackage(), null, "model", null, 1, 1, PropertiesEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(propertiesEditionContextEClass, PropertiesEditionContext.class,
+				"PropertiesEditionContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPropertiesEditionContext_Model(), theGenModelPackage.getGenPackage(), null,
+				"model", null, 1, 1, PropertiesEditionContext.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(propertiesEditionComponentEClass, PropertiesEditionComponent.class, "PropertiesEditionComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPropertiesEditionComponent_Explicit(), ecorePackage.getEBoolean(), "explicit", "true", 0, 1, PropertiesEditionComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(propertiesEditionComponentEClass, PropertiesEditionComponent.class,
+				"PropertiesEditionComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPropertiesEditionComponent_Explicit(), ecorePackage.getEBoolean(), "explicit",
+				"true", 0, 1, PropertiesEditionComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(propertiesEditionElementEClass, PropertiesEditionElement.class, "PropertiesEditionElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(propertiesEditionElementEClass, PropertiesEditionElement.class,
+				"PropertiesEditionElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(propertiesMultiEditionElementEClass, PropertiesMultiEditionElement.class, "PropertiesMultiEditionElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(propertiesMultiEditionElementEClass, PropertiesMultiEditionElement.class,
+				"PropertiesMultiEditionElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(eefElementEClass, EEFElement.class, "EEFElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEEFElement_HelpID(), ecorePackage.getEString(), "helpID", null, 0, 1, EEFElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eefElementEClass, EEFElement.class, "EEFElement", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEEFElement_HelpID(), ecorePackage.getEString(), "helpID", null, 0, 1,
+				EEFElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -605,7 +605,8 @@ public interface ComponentsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTIES_EDITION_COMPONENT__EXPLICIT = eINSTANCE.getPropertiesEditionComponent_Explicit();
+		EAttribute PROPERTIES_EDITION_COMPONENT__EXPLICIT = eINSTANCE
+				.getPropertiesEditionComponent_Explicit();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.components.impl.PropertiesEditionElementImpl <em>Properties Edition Element</em>}' class.
