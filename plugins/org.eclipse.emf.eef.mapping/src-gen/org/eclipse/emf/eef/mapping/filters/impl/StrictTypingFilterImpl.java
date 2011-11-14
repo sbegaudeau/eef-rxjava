@@ -34,8 +34,7 @@ import org.eclipse.emf.eef.mapping.filters.StrictTypingFilter;
  *
  * @generated
  */
-public class StrictTypingFilterImpl extends BusinessFilterImpl implements
-		StrictTypingFilter {
+public class StrictTypingFilterImpl extends BusinessFilterImpl implements StrictTypingFilter {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,13 +71,12 @@ public class StrictTypingFilterImpl extends BusinessFilterImpl implements
 	 */
 	public EClassifier getType() {
 		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject) type;
-			type = (EClassifier) eResolveProxy(oldType);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (EClassifier)eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							FiltersPackage.STRICT_TYPING_FILTER__TYPE, oldType,
-							type));
+							FiltersPackage.STRICT_TYPING_FILTER__TYPE, oldType, type));
 			}
 		}
 		return type;
@@ -102,8 +100,8 @@ public class StrictTypingFilterImpl extends BusinessFilterImpl implements
 		EClassifier oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					FiltersPackage.STRICT_TYPING_FILTER__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, FiltersPackage.STRICT_TYPING_FILTER__TYPE,
+					oldType, type));
 	}
 
 	/**
@@ -114,10 +112,10 @@ public class StrictTypingFilterImpl extends BusinessFilterImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
-			if (resolve)
-				return getType();
-			return basicGetType();
+			case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
+				if (resolve)
+					return getType();
+				return basicGetType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -130,9 +128,9 @@ public class StrictTypingFilterImpl extends BusinessFilterImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
-			setType((EClassifier) newValue);
-			return;
+			case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
+				setType((EClassifier)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -145,9 +143,9 @@ public class StrictTypingFilterImpl extends BusinessFilterImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
-			setType((EClassifier) null);
-			return;
+			case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
+				setType((EClassifier)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -160,8 +158,8 @@ public class StrictTypingFilterImpl extends BusinessFilterImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
-			return type != null;
+			case FiltersPackage.STRICT_TYPING_FILTER__TYPE:
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

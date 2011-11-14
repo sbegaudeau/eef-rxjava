@@ -23,8 +23,7 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
  *
  * @generated
  */
-public class CustomModelNavigationImpl extends ModelNavigationImpl implements
-		CustomModelNavigation {
+public class CustomModelNavigationImpl extends ModelNavigationImpl implements CustomModelNavigation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

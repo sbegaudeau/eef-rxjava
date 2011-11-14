@@ -68,7 +68,7 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -111,8 +111,7 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseOnlyReferenceTypeFilter(
-				OnlyReferenceTypeFilter object) {
+		public Adapter caseOnlyReferenceTypeFilter(OnlyReferenceTypeFilter object) {
 			return createOnlyReferenceTypeFilterAdapter();
 		}
 
@@ -142,7 +141,7 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

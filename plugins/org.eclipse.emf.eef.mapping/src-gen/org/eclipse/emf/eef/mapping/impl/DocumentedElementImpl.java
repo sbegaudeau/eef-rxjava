@@ -30,8 +30,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  *
  * @generated
  */
-public abstract class DocumentedElementImpl extends EObjectImpl implements
-		DocumentedElement {
+public abstract class DocumentedElementImpl extends EObjectImpl implements DocumentedElement {
 	/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -90,8 +89,7 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 		documentation = newDocumentation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION,
-					oldDocumentation, documentation));
+					MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION, oldDocumentation, documentation));
 	}
 
 	/**
@@ -102,8 +100,8 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-			return getDocumentation();
+			case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+				return getDocumentation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,9 +114,9 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-			setDocumentation((String) newValue);
-			return;
+			case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+				setDocumentation((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -131,9 +129,9 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-			setDocumentation(DOCUMENTATION_EDEFAULT);
-			return;
+			case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+				setDocumentation(DOCUMENTATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -146,9 +144,9 @@ public abstract class DocumentedElementImpl extends EObjectImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-			return DOCUMENTATION_EDEFAULT == null ? documentation != null
-					: !DOCUMENTATION_EDEFAULT.equals(documentation);
+			case MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT
+						.equals(documentation);
 		}
 		return super.eIsSet(featureID);
 	}

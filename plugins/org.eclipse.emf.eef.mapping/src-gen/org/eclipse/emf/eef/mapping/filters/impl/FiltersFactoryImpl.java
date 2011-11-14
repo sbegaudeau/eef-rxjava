@@ -38,7 +38,7 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 	 */
 	public static FiltersFactory init() {
 		try {
-			FiltersFactory theFiltersFactory = (FiltersFactory) EPackage.Registry.INSTANCE
+			FiltersFactory theFiltersFactory = (FiltersFactory)EPackage.Registry.INSTANCE
 					.getEFactory("http://www.eclipse.org/emf/eef/mapping/filters/1.0.0");
 			if (theFiltersFactory != null) {
 				return theFiltersFactory;
@@ -67,19 +67,19 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case FiltersPackage.OCL_FILTER:
-			return createOCLFilter();
-		case FiltersPackage.JAVA_DECLARATION_FILTER:
-			return createJavaDeclarationFilter();
-		case FiltersPackage.JAVA_EXPRESSION_FILTER:
-			return createJavaExpressionFilter();
-		case FiltersPackage.ONLY_REFERENCE_TYPE_FILTER:
-			return createOnlyReferenceTypeFilter();
-		case FiltersPackage.STRICT_TYPING_FILTER:
-			return createStrictTypingFilter();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName()
-					+ "' is not a valid classifier");
+			case FiltersPackage.OCL_FILTER:
+				return createOCLFilter();
+			case FiltersPackage.JAVA_DECLARATION_FILTER:
+				return createJavaDeclarationFilter();
+			case FiltersPackage.JAVA_EXPRESSION_FILTER:
+				return createJavaExpressionFilter();
+			case FiltersPackage.ONLY_REFERENCE_TYPE_FILTER:
+				return createOnlyReferenceTypeFilter();
+			case FiltersPackage.STRICT_TYPING_FILTER:
+				return createStrictTypingFilter();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName()
+						+ "' is not a valid classifier");
 		}
 	}
 
@@ -139,7 +139,7 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 	 * @generated
 	 */
 	public FiltersPackage getFiltersPackage() {
-		return (FiltersPackage) getEPackage();
+		return (FiltersPackage)getEPackage();
 	}
 
 	/**

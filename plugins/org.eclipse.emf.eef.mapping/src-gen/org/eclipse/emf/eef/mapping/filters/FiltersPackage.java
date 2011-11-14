@@ -62,8 +62,7 @@ public interface FiltersPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FiltersPackage eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl
-			.init();
+	FiltersPackage eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.filters.impl.BindingFilterImpl <em>Binding Filter</em>}' class.
@@ -681,8 +680,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BINDING_FILTER__MANDATORY = eINSTANCE
-				.getBindingFilter_Mandatory();
+		EAttribute BINDING_FILTER__MANDATORY = eINSTANCE.getBindingFilter_Mandatory();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl <em>OCL Filter</em>}' class.
@@ -728,8 +726,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_DECLARATION_FILTER__METHOD_NAME = eINSTANCE
-				.getJavaDeclarationFilter_MethodName();
+		EAttribute JAVA_DECLARATION_FILTER__METHOD_NAME = eINSTANCE.getJavaDeclarationFilter_MethodName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.JavaExpressionFilterImpl <em>Java Expression Filter</em>}' class.
@@ -747,8 +744,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_EXPRESSION_FILTER__JAVA_BODY = eINSTANCE
-				.getJavaExpressionFilter_JavaBody();
+		EAttribute JAVA_EXPRESSION_FILTER__JAVA_BODY = eINSTANCE.getJavaExpressionFilter_JavaBody();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.BusinessFilterImpl <em>Business Filter</em>}' class.
@@ -768,8 +764,7 @@ public interface FiltersPackage extends EPackage {
 		 * @see org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl#getOnlyReferenceTypeFilter()
 		 * @generated
 		 */
-		EClass ONLY_REFERENCE_TYPE_FILTER = eINSTANCE
-				.getOnlyReferenceTypeFilter();
+		EClass ONLY_REFERENCE_TYPE_FILTER = eINSTANCE.getOnlyReferenceTypeFilter();
 
 		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -777,8 +772,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ONLY_REFERENCE_TYPE_FILTER__REFERENCE = eINSTANCE
-				.getOnlyReferenceTypeFilter_Reference();
+		EReference ONLY_REFERENCE_TYPE_FILTER__REFERENCE = eINSTANCE.getOnlyReferenceTypeFilter_Reference();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.filters.impl.StrictTypingFilterImpl <em>Strict Typing Filter</em>}' class.
@@ -796,8 +790,7 @@ public interface FiltersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STRICT_TYPING_FILTER__TYPE = eINSTANCE
-				.getStrictTypingFilter_Type();
+		EReference STRICT_TYPING_FILTER__TYPE = eINSTANCE.getStrictTypingFilter_Type();
 
 	}
 

@@ -44,8 +44,7 @@ import org.eclipse.emf.eef.views.ElementEditor;
  *
  * @generated
  */
-public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
-		implements AbstractPropertyBinding {
+public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl implements AbstractPropertyBinding {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -124,8 +123,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME, oldName,
-					name));
+					MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME, oldName, name));
 	}
 
 	/**
@@ -135,8 +133,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 */
 	public EList<ElementEditor> getViews() {
 		if (views == null) {
-			views = new EObjectResolvingEList<ElementEditor>(
-					ElementEditor.class, this,
+			views = new EObjectResolvingEList<ElementEditor>(ElementEditor.class, this,
 					MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS);
 		}
 		return views;
@@ -150,7 +147,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	public AbstractElementBinding getElement() {
 		if (eContainerFeatureID() != MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT)
 			return null;
-		return (AbstractElementBinding) eContainer();
+		return (AbstractElementBinding)eContainer();
 	}
 
 	/**
@@ -158,9 +155,8 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetElement(AbstractElementBinding newElement,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newElement,
+	public NotificationChain basicSetElement(AbstractElementBinding newElement, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newElement,
 				MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT, msgs);
 		return msgs;
 	}
@@ -174,22 +170,20 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 		if (newElement != eInternalContainer()
 				|| (eContainerFeatureID() != MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT && newElement != null)) {
 			if (EcoreUtil.isAncestor(this, newElement))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString());
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newElement != null)
-				msgs = ((InternalEObject) newElement).eInverseAdd(this,
-						MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
-						AbstractElementBinding.class, msgs);
+				msgs = ((InternalEObject)newElement).eInverseAdd(this,
+						MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES, AbstractElementBinding.class,
+						msgs);
 			msgs = basicSetElement(newElement, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT,
-					newElement, newElement));
+					MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT, newElement, newElement));
 	}
 
 	/**
@@ -199,8 +193,7 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 */
 	public EList<BindingFilter> getBindingFilters() {
 		if (bindingFilters == null) {
-			bindingFilters = new EObjectContainmentEList<BindingFilter>(
-					BindingFilter.class, this,
+			bindingFilters = new EObjectContainmentEList<BindingFilter>(BindingFilter.class, this,
 					MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS);
 		}
 		return bindingFilters;
@@ -212,13 +205,12 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetElement((AbstractElementBinding) otherEnd, msgs);
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetElement((AbstractElementBinding)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -229,14 +221,12 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			return basicSetElement(null, msgs);
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-			return ((InternalEList<?>) getBindingFilters()).basicRemove(
-					otherEnd, msgs);
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				return basicSetElement(null, msgs);
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				return ((InternalEList<?>)getBindingFilters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -247,13 +237,12 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			return eInternalContainer().eInverseRemove(this,
-					MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
-					AbstractElementBinding.class, msgs);
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				return eInternalContainer().eInverseRemove(this,
+						MappingPackage.ABSTRACT_ELEMENT_BINDING__PROPERTIES, AbstractElementBinding.class,
+						msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -266,14 +255,14 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
-			return getName();
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
-			return getViews();
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			return getElement();
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-			return getBindingFilters();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
+				return getName();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
+				return getViews();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				return getElement();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				return getBindingFilters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -287,21 +276,20 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
-			setName((String) newValue);
-			return;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
-			getViews().clear();
-			getViews().addAll((Collection<? extends ElementEditor>) newValue);
-			return;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			setElement((AbstractElementBinding) newValue);
-			return;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-			getBindingFilters().clear();
-			getBindingFilters().addAll(
-					(Collection<? extends BindingFilter>) newValue);
-			return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
+				setName((String)newValue);
+				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
+				getViews().clear();
+				getViews().addAll((Collection<? extends ElementEditor>)newValue);
+				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				setElement((AbstractElementBinding)newValue);
+				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				getBindingFilters().clear();
+				getBindingFilters().addAll((Collection<? extends BindingFilter>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -314,18 +302,18 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
-			getViews().clear();
-			return;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			setElement((AbstractElementBinding) null);
-			return;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-			getBindingFilters().clear();
-			return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
+				getViews().clear();
+				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				setElement((AbstractElementBinding)null);
+				return;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				getBindingFilters().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,15 +326,14 @@ public abstract class AbstractPropertyBindingImpl extends DocumentedElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
-			return views != null && !views.isEmpty();
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
-			return getElement() != null;
-		case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
-			return bindingFilters != null && !bindingFilters.isEmpty();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__VIEWS:
+				return views != null && !views.isEmpty();
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__ELEMENT:
+				return getElement() != null;
+			case MappingPackage.ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS:
+				return bindingFilters != null && !bindingFilters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -27,8 +27,7 @@ public interface FiltersFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FiltersFactory eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersFactoryImpl
-			.init();
+	FiltersFactory eINSTANCE = org.eclipse.emf.eef.mapping.filters.impl.FiltersFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>OCL Filter</em>'.

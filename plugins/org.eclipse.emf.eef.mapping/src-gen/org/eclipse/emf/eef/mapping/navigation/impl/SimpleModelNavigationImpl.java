@@ -37,8 +37,7 @@ import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
  *
  * @generated
  */
-public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
-		implements SimpleModelNavigation {
+public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl implements SimpleModelNavigation {
 	/**
 	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -105,13 +104,12 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	 */
 	public EReference getFeature() {
 		if (feature != null && feature.eIsProxy()) {
-			InternalEObject oldFeature = (InternalEObject) feature;
-			feature = (EReference) eResolveProxy(oldFeature);
+			InternalEObject oldFeature = (InternalEObject)feature;
+			feature = (EReference)eResolveProxy(oldFeature);
 			if (feature != oldFeature) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE,
-							oldFeature, feature));
+							NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE, oldFeature, feature));
 			}
 		}
 		return feature;
@@ -136,8 +134,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 		feature = newFeature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE,
-					oldFeature, feature));
+					NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE, oldFeature, feature));
 	}
 
 	/**
@@ -159,8 +156,7 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 		index = newIndex;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX, oldIndex,
-					index));
+					NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX, oldIndex, index));
 	}
 
 	/**
@@ -170,13 +166,11 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	 */
 	public EClassifier getDiscriminatorType() {
 		if (discriminatorType != null && discriminatorType.eIsProxy()) {
-			InternalEObject oldDiscriminatorType = (InternalEObject) discriminatorType;
-			discriminatorType = (EClassifier) eResolveProxy(oldDiscriminatorType);
+			InternalEObject oldDiscriminatorType = (InternalEObject)discriminatorType;
+			discriminatorType = (EClassifier)eResolveProxy(oldDiscriminatorType);
 			if (discriminatorType != oldDiscriminatorType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE,
 							oldDiscriminatorType, discriminatorType));
 			}
@@ -202,11 +196,9 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 		EClassifier oldDiscriminatorType = discriminatorType;
 		discriminatorType = newDiscriminatorType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE,
-					oldDiscriminatorType, discriminatorType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE, oldDiscriminatorType,
+					discriminatorType));
 	}
 
 	/**
@@ -217,16 +209,16 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
-			if (resolve)
-				return getFeature();
-			return basicGetFeature();
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
-			return getIndex();
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
-			if (resolve)
-				return getDiscriminatorType();
-			return basicGetDiscriminatorType();
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
+				if (resolve)
+					return getFeature();
+				return basicGetFeature();
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
+				return getIndex();
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
+				if (resolve)
+					return getDiscriminatorType();
+				return basicGetDiscriminatorType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,15 +231,15 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
-			setFeature((EReference) newValue);
-			return;
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
-			setIndex((Integer) newValue);
-			return;
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
-			setDiscriminatorType((EClassifier) newValue);
-			return;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
+				setFeature((EReference)newValue);
+				return;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
+				setIndex((Integer)newValue);
+				return;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
+				setDiscriminatorType((EClassifier)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -260,15 +252,15 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
-			setFeature((EReference) null);
-			return;
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
-			setIndex(INDEX_EDEFAULT);
-			return;
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
-			setDiscriminatorType((EClassifier) null);
-			return;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
+				setFeature((EReference)null);
+				return;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
+				setIndex(INDEX_EDEFAULT);
+				return;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
+				setDiscriminatorType((EClassifier)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -281,12 +273,12 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
-			return feature != null;
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
-			return index != INDEX_EDEFAULT;
-		case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
-			return discriminatorType != null;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__FEATURE:
+				return feature != null;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__INDEX:
+				return index != INDEX_EDEFAULT;
+			case NavigationPackage.SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE:
+				return discriminatorType != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -316,12 +308,11 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	 */
 	public EClass evaluate() {
 		if (getFeature() != null && getFeature().getEType() instanceof EClass) {
-			EClass featureType = (EClass) getFeature().getEType();
+			EClass featureType = (EClass)getFeature().getEType();
 			EClassifier discriminatorType = getDiscriminatorType();
-			if (discriminatorType != null
-					&& discriminatorType instanceof EClass) {
-				if (featureType.isSuperTypeOf((EClass) discriminatorType))
-					return (EClass) discriminatorType;
+			if (discriminatorType != null && discriminatorType instanceof EClass) {
+				if (featureType.isSuperTypeOf((EClass)discriminatorType))
+					return (EClass)discriminatorType;
 			}
 			return featureType;
 		}
@@ -336,19 +327,17 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	 */
 	public EClass owningEClass() {
 		if (eContainer() instanceof EMFPropertyBinding) {
-			EMFPropertyBinding propertyBinding = (EMFPropertyBinding) eContainer();
+			EMFPropertyBinding propertyBinding = (EMFPropertyBinding)eContainer();
 			if (propertyBinding.eContainer() instanceof EMFElementBinding) {
-				EMFElementBinding elementBinding = (EMFElementBinding) propertyBinding
-						.eContainer();
+				EMFElementBinding elementBinding = (EMFElementBinding)propertyBinding.eContainer();
 				if (elementBinding.getModel() instanceof EClass)
-					return (EClass) elementBinding.getModel();
+					return (EClass)elementBinding.getModel();
 			}
 		} else if (eContainer() instanceof ChainedModelNavigation) {
-			ChainedModelNavigation container = (ChainedModelNavigation) eContainer();
+			ChainedModelNavigation container = (ChainedModelNavigation)eContainer();
 			if (NavigationPackage.eINSTANCE.getChainedModelNavigation_Current() == eContainingFeature())
 				return container.owningEClass();
-			else if (NavigationPackage.eINSTANCE
-					.getChainedModelNavigation_Next() == eContainingFeature())
+			else if (NavigationPackage.eINSTANCE.getChainedModelNavigation_Next() == eContainingFeature())
 				return container.currentEClass();
 		}
 		return null;
@@ -362,14 +351,13 @@ public class SimpleModelNavigationImpl extends StructuredModelNavigationImpl
 	 */
 	public EClass targetEClass() {
 		if (getFeature().getEType() instanceof EClass) {
-			EClass featureType = (EClass) getFeature().getEType();
-			if (getDiscriminatorType() != null
-					&& getDiscriminatorType() instanceof EClass) {
-				EClass discriminatorType = (EClass) getDiscriminatorType();
+			EClass featureType = (EClass)getFeature().getEType();
+			if (getDiscriminatorType() != null && getDiscriminatorType() instanceof EClass) {
+				EClass discriminatorType = (EClass)getDiscriminatorType();
 				if (featureType.isSuperTypeOf(discriminatorType))
 					return discriminatorType;
 			}
-			return (EClass) getFeature().getEType();
+			return (EClass)getFeature().getEType();
 		}
 		return null;
 	}

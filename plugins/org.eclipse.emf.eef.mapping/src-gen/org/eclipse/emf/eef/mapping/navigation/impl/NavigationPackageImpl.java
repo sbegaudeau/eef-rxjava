@@ -34,8 +34,7 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NavigationPackageImpl extends EPackageImpl implements
-		NavigationPackage {
+public class NavigationPackageImpl extends EPackageImpl implements NavigationPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,13 +110,12 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 */
 	public static NavigationPackage init() {
 		if (isInited)
-			return (NavigationPackage) EPackage.Registry.INSTANCE
-					.getEPackage(NavigationPackage.eNS_URI);
+			return (NavigationPackage)EPackage.Registry.INSTANCE.getEPackage(NavigationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new NavigationPackageImpl());
+		NavigationPackageImpl theNavigationPackage = (NavigationPackageImpl)(EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+				: new NavigationPackageImpl());
 
 		isInited = true;
 
@@ -125,10 +123,10 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		ViewsPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		MappingPackageImpl theMappingPackage = (MappingPackageImpl) (EPackage.Registry.INSTANCE
+		MappingPackageImpl theMappingPackage = (MappingPackageImpl)(EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI) instanceof MappingPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(MappingPackage.eNS_URI) : MappingPackage.eINSTANCE);
-		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl) (EPackage.Registry.INSTANCE
+		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl)(EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
 
@@ -146,8 +144,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		theNavigationPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(NavigationPackage.eNS_URI,
-				theNavigationPackage);
+		EPackage.Registry.INSTANCE.put(NavigationPackage.eNS_URI, theNavigationPackage);
 		return theNavigationPackage;
 	}
 
@@ -175,8 +172,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSimpleModelNavigation_Feature() {
-		return (EReference) simpleModelNavigationEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference)simpleModelNavigationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -185,8 +181,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getSimpleModelNavigation_Index() {
-		return (EAttribute) simpleModelNavigationEClass
-				.getEStructuralFeatures().get(1);
+		return (EAttribute)simpleModelNavigationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -195,8 +190,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getSimpleModelNavigation_DiscriminatorType() {
-		return (EReference) simpleModelNavigationEClass
-				.getEStructuralFeatures().get(2);
+		return (EReference)simpleModelNavigationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -214,8 +208,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getChainedModelNavigation_Current() {
-		return (EReference) chainedModelNavigationEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference)chainedModelNavigationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -224,8 +217,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getChainedModelNavigation_Next() {
-		return (EReference) chainedModelNavigationEClass
-				.getEStructuralFeatures().get(1);
+		return (EReference)chainedModelNavigationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -252,7 +244,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public NavigationFactory getNavigationFactory() {
-		return (NavigationFactory) getEFactoryInstance();
+		return (NavigationFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -278,18 +270,13 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		modelNavigationEClass = createEClass(MODEL_NAVIGATION);
 
 		simpleModelNavigationEClass = createEClass(SIMPLE_MODEL_NAVIGATION);
-		createEReference(simpleModelNavigationEClass,
-				SIMPLE_MODEL_NAVIGATION__FEATURE);
-		createEAttribute(simpleModelNavigationEClass,
-				SIMPLE_MODEL_NAVIGATION__INDEX);
-		createEReference(simpleModelNavigationEClass,
-				SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE);
+		createEReference(simpleModelNavigationEClass, SIMPLE_MODEL_NAVIGATION__FEATURE);
+		createEAttribute(simpleModelNavigationEClass, SIMPLE_MODEL_NAVIGATION__INDEX);
+		createEReference(simpleModelNavigationEClass, SIMPLE_MODEL_NAVIGATION__DISCRIMINATOR_TYPE);
 
 		chainedModelNavigationEClass = createEClass(CHAINED_MODEL_NAVIGATION);
-		createEReference(chainedModelNavigationEClass,
-				CHAINED_MODEL_NAVIGATION__CURRENT);
-		createEReference(chainedModelNavigationEClass,
-				CHAINED_MODEL_NAVIGATION__NEXT);
+		createEReference(chainedModelNavigationEClass, CHAINED_MODEL_NAVIGATION__CURRENT);
+		createEReference(chainedModelNavigationEClass, CHAINED_MODEL_NAVIGATION__NEXT);
 
 		structuredModelNavigationEClass = createEClass(STRUCTURED_MODEL_NAVIGATION);
 
@@ -325,64 +312,46 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		simpleModelNavigationEClass.getESuperTypes().add(
-				this.getStructuredModelNavigation());
-		chainedModelNavigationEClass.getESuperTypes().add(
-				this.getStructuredModelNavigation());
-		structuredModelNavigationEClass.getESuperTypes().add(
-				this.getModelNavigation());
-		customModelNavigationEClass.getESuperTypes().add(
-				this.getModelNavigation());
+		simpleModelNavigationEClass.getESuperTypes().add(this.getStructuredModelNavigation());
+		chainedModelNavigationEClass.getESuperTypes().add(this.getStructuredModelNavigation());
+		structuredModelNavigationEClass.getESuperTypes().add(this.getModelNavigation());
+		customModelNavigationEClass.getESuperTypes().add(this.getModelNavigation());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(modelNavigationEClass, ModelNavigation.class,
-				"ModelNavigation", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(modelNavigationEClass, ModelNavigation.class, "ModelNavigation", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(simpleModelNavigationEClass, SimpleModelNavigation.class,
-				"SimpleModelNavigation", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSimpleModelNavigation_Feature(),
-				ecorePackage.getEReference(), null, "feature", null, 1, 1,
-				SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleModelNavigation_Index(),
-				ecorePackage.getEInt(), "index", null, 0, 1,
-				SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getSimpleModelNavigation_DiscriminatorType(),
-				ecorePackage.getEClassifier(), null, "discriminatorType", null,
-				0, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(chainedModelNavigationEClass, ChainedModelNavigation.class,
-				"ChainedModelNavigation", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChainedModelNavigation_Current(),
-				this.getStructuredModelNavigation(), null, "current", null, 1,
-				1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChainedModelNavigation_Next(),
-				this.getStructuredModelNavigation(), null, "next", null, 1, 1,
-				ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(structuredModelNavigationEClass,
-				StructuredModelNavigation.class, "StructuredModelNavigation",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(structuredModelNavigationEClass,
-				ecorePackage.getEClass(), "evaluate", 0, 1, IS_UNIQUE,
+		initEClass(simpleModelNavigationEClass, SimpleModelNavigation.class, "SimpleModelNavigation",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSimpleModelNavigation_Feature(), ecorePackage.getEReference(), null, "feature",
+				null, 1, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleModelNavigation_Index(), ecorePackage.getEInt(), "index", null, 0, 1,
+				SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimpleModelNavigation_DiscriminatorType(), ecorePackage.getEClassifier(), null,
+				"discriminatorType", null, 0, 1, SimpleModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(customModelNavigationEClass, CustomModelNavigation.class,
-				"CustomModelNavigation", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(chainedModelNavigationEClass, ChainedModelNavigation.class, "ChainedModelNavigation",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChainedModelNavigation_Current(), this.getStructuredModelNavigation(), null,
+				"current", null, 1, 1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getChainedModelNavigation_Next(), this.getStructuredModelNavigation(), null, "next",
+				null, 1, 1, ChainedModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(structuredModelNavigationEClass, StructuredModelNavigation.class,
+				"StructuredModelNavigation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(structuredModelNavigationEClass, ecorePackage.getEClass(), "evaluate", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEClass(customModelNavigationEClass, CustomModelNavigation.class, "CustomModelNavigation",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //NavigationPackageImpl
