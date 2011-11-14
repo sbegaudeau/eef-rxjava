@@ -2,18 +2,20 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceSwitch.java,v 1.5 2011/11/14 14:09:17 sbouchet Exp $
+ * $Id: ConferenceSwitch.java,v 1.6 2011/11/14 15:03:14 sbouchet Exp $
  */
 package org.eclipse.emf.samples.conference.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.samples.conference.*;
+import org.eclipse.emf.samples.conference.Conference;
+import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.Person;
+import org.eclipse.emf.samples.conference.Room;
+import org.eclipse.emf.samples.conference.Site;
+import org.eclipse.emf.samples.conference.Talk;
+import org.eclipse.emf.samples.conference.Topic;
 
 /**
  * <!-- begin-user-doc -->

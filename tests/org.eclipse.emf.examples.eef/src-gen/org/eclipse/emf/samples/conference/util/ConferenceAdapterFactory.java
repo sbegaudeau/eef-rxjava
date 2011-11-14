@@ -2,18 +2,22 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ConferenceAdapterFactory.java,v 1.4 2011/04/23 20:13:47 glefur Exp $
+ * $Id: ConferenceAdapterFactory.java,v 1.5 2011/11/14 15:03:14 sbouchet Exp $
  */
 package org.eclipse.emf.samples.conference.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.samples.conference.Conference;
+import org.eclipse.emf.samples.conference.ConferencePackage;
+import org.eclipse.emf.samples.conference.Person;
+import org.eclipse.emf.samples.conference.Room;
+import org.eclipse.emf.samples.conference.Site;
+import org.eclipse.emf.samples.conference.Talk;
+import org.eclipse.emf.samples.conference.Topic;
 
-import org.eclipse.emf.samples.conference.*;
 
 /**
  * <!-- begin-user-doc -->
