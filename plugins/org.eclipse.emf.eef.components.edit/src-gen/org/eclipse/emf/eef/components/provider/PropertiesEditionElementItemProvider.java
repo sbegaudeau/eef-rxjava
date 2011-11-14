@@ -68,8 +68,11 @@ public class PropertiesEditionElementItemProvider extends EMFPropertyBindingItem
 	 * @generated
 	 */
 	protected void addHelpIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EEFElement_helpID_feature"), getString("_UI_EEFElement_helpID_description"), ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID,
-				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_EEFElement_helpID_feature"), getString("_UI_EEFElement_helpID_description"),
+				ComponentsPackage.Literals.EEF_ELEMENT__HELP_ID, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -91,8 +94,9 @@ public class PropertiesEditionElementItemProvider extends EMFPropertyBindingItem
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PropertiesEditionElement) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionElement_type") : getString("_UI_PropertiesEditionElement_type") + " " + label;
+		String label = ((PropertiesEditionElement)object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionElement_type")
+				: getString("_UI_PropertiesEditionElement_type") + " " + label;
 	}
 
 	/**
@@ -107,9 +111,10 @@ public class PropertiesEditionElementItemProvider extends EMFPropertyBindingItem
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PropertiesEditionElement.class)) {
-		case ComponentsPackage.PROPERTIES_EDITION_ELEMENT__HELP_ID:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case ComponentsPackage.PROPERTIES_EDITION_ELEMENT__HELP_ID:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

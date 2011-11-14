@@ -69,8 +69,12 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertiesEditionContext_model_feature"), getString("_UI_PropertiesEditionContext_model_description"),
-				ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL, true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_PropertiesEditionContext_model_feature"),
+				getString("_UI_PropertiesEditionContext_model_description"),
+				ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT__MODEL, true, false, true, null, null,
+				null));
 	}
 
 	/**
@@ -92,8 +96,9 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PropertiesEditionContext) object).getDocumentation();
-		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionContext_type") : getString("_UI_PropertiesEditionContext_type") + " " + label;
+		String label = ((PropertiesEditionContext)object).getDocumentation();
+		return label == null || label.length() == 0 ? getString("_UI_PropertiesEditionContext_type")
+				: getString("_UI_PropertiesEditionContext_type") + " " + label;
 	}
 
 	/**
@@ -120,9 +125,11 @@ public class PropertiesEditionContextItemProvider extends DatabindingItemProvide
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		//super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES, MappingFactory.eINSTANCE.createCategory()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES,
+				MappingFactory.eINSTANCE.createCategory()));
 
-		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS, ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
+				ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
 	}
 
 }

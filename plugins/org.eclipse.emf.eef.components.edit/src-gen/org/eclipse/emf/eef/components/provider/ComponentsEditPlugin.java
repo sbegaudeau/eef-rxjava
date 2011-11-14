@@ -50,7 +50,8 @@ public final class ComponentsEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ComponentsEditPlugin() {
-		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, GenModelEditPlugin.INSTANCE, MappingEditPlugin.INSTANCE, ViewsEditPlugin.INSTANCE, });
+		super(new ResourceLocator[] {EcoreEditPlugin.INSTANCE, GenModelEditPlugin.INSTANCE,
+				MappingEditPlugin.INSTANCE, ViewsEditPlugin.INSTANCE,});
 	}
 
 	/**

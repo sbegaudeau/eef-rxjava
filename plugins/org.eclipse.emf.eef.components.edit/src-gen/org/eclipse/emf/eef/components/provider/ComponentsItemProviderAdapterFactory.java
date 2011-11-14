@@ -75,7 +75,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ComponentsEditPlugin.INSTANCE, ComponentsPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			ComponentsEditPlugin.INSTANCE, ComponentsPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -241,7 +242,7 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -375,7 +376,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 */
 			@Override
 			public Object caseDatabinding(Databinding object) {
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS, ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
+						ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
 
 				return null;
 			}
@@ -387,11 +389,17 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 */
 			@Override
 			public Object caseAbstractElementBinding(AbstractElementBinding object) {
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS, ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+				newChildDescriptors.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS,
+						ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
 
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, ComponentsFactory.eINSTANCE.createPropertiesEditionElement()));
+				newChildDescriptors.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+						ComponentsFactory.eINSTANCE.createPropertiesEditionElement()));
 
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES, ComponentsFactory.eINSTANCE.createPropertiesMultiEditionElement()));
+				newChildDescriptors.add(createChildParameter(
+						MappingPackage.Literals.ABSTRACT_ELEMENT_BINDING__PROPERTIES,
+						ComponentsFactory.eINSTANCE.createPropertiesMultiEditionElement()));
 
 				return null;
 			}
@@ -403,7 +411,8 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 			 */
 			@Override
 			public Object caseCategory(Category object) {
-				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS, ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
+				newChildDescriptors.add(createChildParameter(MappingPackage.Literals.CATEGORY__BINDINGS,
+						ComponentsFactory.eINSTANCE.createPropertiesEditionComponent()));
 
 				return null;
 			}
@@ -426,7 +435,7 @@ public class ComponentsItemProviderAdapterFactory extends ComponentsAdapterFacto
 		 */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
 			return result;
 		}
 
