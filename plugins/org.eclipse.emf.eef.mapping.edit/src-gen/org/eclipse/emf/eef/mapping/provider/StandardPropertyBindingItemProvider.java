@@ -31,10 +31,7 @@ import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StandardPropertyBindingItemProvider extends
-		AbstractPropertyBindingItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class StandardPropertyBindingItemProvider extends AbstractPropertyBindingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -68,13 +65,13 @@ public class StandardPropertyBindingItemProvider extends
 	 * @generated
 	 */
 	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_StandardPropertyBinding_model_feature"),
-				getString("_UI_StandardPropertyBinding_model_description"),
-				MappingPackage.Literals.STANDARD_PROPERTY_BINDING__MODEL, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_StandardPropertyBinding_model_feature"),
+						getString("_UI_StandardPropertyBinding_model_description"),
+						MappingPackage.Literals.STANDARD_PROPERTY_BINDING__MODEL, true, false, true, null,
+						null, null));
 	}
 
 	/**
@@ -85,10 +82,7 @@ public class StandardPropertyBindingItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/StandardPropertyBinding"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StandardPropertyBinding"));
 	}
 
 	/**
@@ -99,7 +93,7 @@ public class StandardPropertyBindingItemProvider extends
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StandardPropertyBinding) object).getName();
+		String label = ((StandardPropertyBinding)object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_StandardPropertyBinding_type")
 				: getString("_UI_StandardPropertyBinding_type") + " " + label;
 	}
@@ -125,8 +119,7 @@ public class StandardPropertyBindingItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

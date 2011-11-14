@@ -31,9 +31,7 @@ import org.eclipse.emf.eef.mapping.ModelProperty;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelPropertyItemProvider extends DocumentedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ModelPropertyItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -68,12 +66,10 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider
 	 */
 	protected void addBindingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(), getResourceLocator(),
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_ModelProperty_binding_feature"),
 				getString("_UI_ModelProperty_binding_description"),
-				MappingPackage.Literals.MODEL_PROPERTY__BINDING, true, false,
-				true, null, null, null));
+				MappingPackage.Literals.MODEL_PROPERTY__BINDING, true, false, true, null, null, null));
 	}
 
 	/**
@@ -84,7 +80,7 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelProperty) object).getDocumentation();
+		String label = ((ModelProperty)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ModelProperty_type")
 				: getString("_UI_ModelProperty_type") + " " + label;
 	}
@@ -110,8 +106,7 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

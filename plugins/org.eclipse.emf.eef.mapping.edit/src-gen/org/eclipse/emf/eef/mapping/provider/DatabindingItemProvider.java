@@ -33,9 +33,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DatabindingItemProvider extends DocumentedElementItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DatabindingItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -70,13 +68,11 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(MappingPackage.Literals.DATABINDING__BINDINGS);
-			childrenFeatures
-					.add(MappingPackage.Literals.DATABINDING__CATEGORIES);
+			childrenFeatures.add(MappingPackage.Literals.DATABINDING__CATEGORIES);
 		}
 		return childrenFeatures;
 	}
@@ -102,8 +98,7 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/Databinding"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Databinding"));
 	}
 
 	/**
@@ -114,7 +109,7 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Databinding) object).getDocumentation();
+		String label = ((Databinding)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_Databinding_type")
 				: getString("_UI_Databinding_type") + " " + label;
 	}
@@ -131,11 +126,11 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Databinding.class)) {
-		case MappingPackage.DATABINDING__BINDINGS:
-		case MappingPackage.DATABINDING__CATEGORIES:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
-			return;
+			case MappingPackage.DATABINDING__BINDINGS:
+			case MappingPackage.DATABINDING__CATEGORIES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -148,20 +143,16 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.DATABINDING__BINDINGS,
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
 				MappingFactory.eINSTANCE.createEMFElementBinding()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.DATABINDING__BINDINGS,
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__BINDINGS,
 				MappingFactory.eINSTANCE.createStandardElementBinding()));
 
-		newChildDescriptors.add(createChildParameter(
-				MappingPackage.Literals.DATABINDING__CATEGORIES,
+		newChildDescriptors.add(createChildParameter(MappingPackage.Literals.DATABINDING__CATEGORIES,
 				MappingFactory.eINSTANCE.createCategory()));
 	}
 
