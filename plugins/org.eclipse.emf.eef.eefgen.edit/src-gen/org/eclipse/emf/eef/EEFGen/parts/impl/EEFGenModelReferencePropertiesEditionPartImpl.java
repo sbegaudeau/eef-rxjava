@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart;
@@ -39,6 +38,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 
 // End of user code
 
@@ -145,8 +145,6 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -155,8 +153,8 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -246,7 +244,7 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

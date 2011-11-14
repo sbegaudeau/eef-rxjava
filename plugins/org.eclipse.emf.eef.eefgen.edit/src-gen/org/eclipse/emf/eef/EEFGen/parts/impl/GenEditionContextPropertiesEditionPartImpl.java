@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
@@ -49,6 +48,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 
 // End of user code
 
@@ -515,8 +515,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -525,8 +523,8 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -791,7 +789,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

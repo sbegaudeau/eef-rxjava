@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelReferencePropertiesEditionPart;
@@ -42,6 +41,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+
 
 // End of user code
 
@@ -163,8 +163,6 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -173,8 +171,8 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -249,7 +247,6 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -261,7 +258,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

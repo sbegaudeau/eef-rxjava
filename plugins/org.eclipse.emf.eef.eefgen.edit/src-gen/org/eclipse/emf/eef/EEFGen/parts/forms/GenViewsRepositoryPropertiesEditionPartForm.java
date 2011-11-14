@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -59,6 +58,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+
 
 // End of user code
 
@@ -149,7 +149,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 					return createParametersGroup(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage) {
-					return 		createBasePackageText(widgetFactory, parent);
+					return createBasePackageText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy) {
 					return createHelpStrategyEMFComboViewer(widgetFactory, parent);
@@ -167,7 +167,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 					return createImplementationGroup(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass) {
-					return 		createPartsSuperClassText(widgetFactory, parent);
+					return createPartsSuperClassText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -431,8 +431,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -441,8 +439,8 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -515,7 +513,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 		viewsRepository.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -539,7 +536,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 			basePackage.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -572,7 +568,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 		helpStrategy.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -597,7 +592,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -621,7 +615,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 			formsViews.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -649,7 +642,6 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -661,7 +653,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

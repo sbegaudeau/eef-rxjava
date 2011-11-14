@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.providers.EEFGenMessages;
@@ -121,10 +120,10 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 					return createParametersGroup(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory) {
-					return 		createGenerationDirectoryText(widgetFactory, parent);
+					return createGenerationDirectoryText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory) {
-					return 		createTestsGenerationDirectoryText(widgetFactory, parent);
+					return createTestsGenerationDirectoryText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode) {
 					return createUseJMergeToManageUserCodeCheckbox(widgetFactory, parent);
@@ -133,7 +132,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 					return createLegalGroup(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.EEFGenModel.Legal.author) {
-					return 		createAuthorText(widgetFactory, parent);
+					return createAuthorText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.EEFGenModel.Legal.license) {
 					return createLicenseTextarea(widgetFactory, parent);
@@ -355,8 +354,6 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -393,7 +390,6 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -417,7 +413,6 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 			testsGenerationDirectory.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -443,7 +438,6 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -468,7 +462,6 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -492,7 +485,6 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 			license.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

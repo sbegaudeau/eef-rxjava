@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -42,6 +41,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -57,7 +57,7 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	/**
 	 * Settings for propertiesEditionContext EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings propertiesEditionContextSettings;
+	private EObjectFlatComboSettings propertiesEditionContextSettings;
 	
 	
 	/**
@@ -131,8 +131,7 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for propertiesEditionContext
-																																													
-																																													// End of user code
+			// End of user code
 			
 			
 			
@@ -238,7 +237,7 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		if (editingPart.isVisible()) {
 			GenEditionContextPropertiesEditionPart basePart = (GenEditionContextPropertiesEditionPart)editingPart;
 			if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage)) {
 				if (msg.getNewValue() != null) {

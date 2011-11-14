@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -38,6 +37,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
+
 // End of user code
 
 /**
@@ -53,7 +53,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	/**
 	 * Settings for reference EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings referenceSettings;
+	private EObjectFlatComboSettings referenceSettings;
 	
 	
 	/**
@@ -102,8 +102,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for reference
-																																													
-																																													// End of user code
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -157,7 +156,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		if (editingPart.isVisible()) {
 			EEFGenModelReferencePropertiesEditionPart basePart = (EEFGenModelReferencePropertiesEditionPart)editingPart;
 			if (EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel))
 				basePart.setReferencedEEFGenModel((EObject)msg.getNewValue());

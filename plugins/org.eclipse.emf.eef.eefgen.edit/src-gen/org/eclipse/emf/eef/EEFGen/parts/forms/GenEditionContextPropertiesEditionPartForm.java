@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.EEFGen.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
@@ -53,6 +52,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+
 
 // End of user code
 
@@ -146,10 +146,10 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 					return createParametersGroup(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenEditionContext.Parameters.basePackage) {
-					return 		createBasePackageText(widgetFactory, parent);
+					return createBasePackageText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID) {
-					return 		createDescriptorsContributorIDText(widgetFactory, parent);
+					return createDescriptorsContributorIDText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenEditionContext.Activation.class) {
 					return createActivationGroup(widgetFactory, parent);
@@ -167,10 +167,10 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 					return createImplementationGroup(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass) {
-					return 		createLeafComponentsSuperClassText(widgetFactory, parent);
+					return createLeafComponentsSuperClassText(widgetFactory, parent);
 				}
 				if (key == EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass) {
-					return 		createPropertiesEditingProvidersSuperClassText(widgetFactory, parent);
+					return createPropertiesEditingProvidersSuperClassText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -513,8 +513,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -523,8 +521,8 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -597,7 +595,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		propertiesEditionContext.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -621,7 +618,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 			basePackage.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -647,7 +643,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -671,7 +666,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 			genericPropertiesViewsDescriptors.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -697,7 +691,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -722,7 +715,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -746,7 +738,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 			leafComponentsSuperClass.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -774,7 +765,6 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -786,7 +776,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 
