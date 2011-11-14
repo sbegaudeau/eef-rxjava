@@ -79,8 +79,9 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(ComponentsEditorPlugin.INSTANCE.getString(
-			"_UI_ComponentsEditorFilenameExtensions").split("\\s*,\\s*")));
+	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
+			.asList(ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsEditorFilenameExtensions")
+					.split("\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -88,8 +89,8 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String FORMATTED_FILE_EXTENSIONS = ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsEditorFilenameExtensions")
-			.replaceAll("\\s*,\\s*", ", ");
+	public static final String FORMATTED_FILE_EXTENSIONS = ComponentsEditorPlugin.INSTANCE.getString(
+			"_UI_ComponentsEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -157,8 +158,8 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(ComponentsEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(ComponentsEditorPlugin.INSTANCE
-				.getImage("full/wizban/NewComponents")));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
+				.getImageDescriptor(ComponentsEditorPlugin.INSTANCE.getImage("full/wizban/NewComponents")));
 	}
 
 	/**
@@ -172,7 +173,7 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 			initialObjectNames = new ArrayList<String>();
 			for (EClassifier eClassifier : componentsPackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass) eClassifier;
+					EClass eClass = (EClass)eClassifier;
 					if (!eClass.isAbstract()) {
 						initialObjectNames.add(eClass.getName());
 					}
@@ -190,7 +191,8 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass) componentsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EClass eClass = (EClass)componentsPackage.getEClassifier(initialObjectCreationPage
+				.getInitialObjectName());
 		EObject rootObject = componentsFactory.create(eClass);
 		return rootObject;
 	}
@@ -257,7 +259,7 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
 				getShell().getDisplay().asyncExec(new Runnable() {
 					public void run() {
-						((ISetSelectionTarget) activePart).selectReveal(targetSelection);
+						((ISetSelectionTarget)activePart).selectReveal(targetSelection);
 					}
 				});
 			}
@@ -265,11 +267,12 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString())
-						.getId());
+				page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry()
+						.getDefaultEditor(modelFile.getFullPath().toString()).getId());
 			} catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), ComponentsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception
-						.getMessage());
+				MessageDialog.openError(workbenchWindow.getShell(),
+						ComponentsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"),
+						exception.getMessage());
 				return false;
 			}
 
@@ -308,8 +311,10 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 			if (super.validatePage()) {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(ComponentsEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions"
+							: "_WARN_FilenameExtension";
+					setErrorMessage(ComponentsEditorPlugin.INSTANCE.getString(key,
+							new Object[] {FORMATTED_FILE_EXTENSIONS}));
 					return false;
 				}
 				return true;
@@ -323,7 +328,8 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
+			return ResourcesPlugin.getWorkspace().getRoot()
+					.getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 
@@ -525,7 +531,8 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(ComponentsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer
+				for (StringTokenizer stringTokenizer = new StringTokenizer(
+						ComponentsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer
 						.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
@@ -545,10 +552,12 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 		// Create a page, set the title, and the initial model file name.
 		//
 		newFileCreationPage = new ComponentsModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsModelWizard_label"));
-		newFileCreationPage.setDescription(ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsModelWizard_description"));
-		newFileCreationPage.setFileName(ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsEditorFilenameDefaultBase") + "."
-				+ FILE_EXTENSIONS.get(0));
+		newFileCreationPage.setTitle(ComponentsEditorPlugin.INSTANCE
+				.getString("_UI_ComponentsModelWizard_label"));
+		newFileCreationPage.setDescription(ComponentsEditorPlugin.INSTANCE
+				.getString("_UI_ComponentsModelWizard_description"));
+		newFileCreationPage.setFileName(ComponentsEditorPlugin.INSTANCE
+				.getString("_UI_ComponentsEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -560,7 +569,7 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
-				IResource selectedResource = (IResource) selectedElement;
+				IResource selectedResource = (IResource)selectedElement;
 				if (selectedResource.getType() == IResource.FILE) {
 					selectedResource = selectedResource.getParent();
 				}
@@ -574,10 +583,11 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsEditorFilenameDefaultBase");
+					String defaultModelBaseFilename = ComponentsEditorPlugin.INSTANCE
+							.getString("_UI_ComponentsEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
-					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
+					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
 					}
 					newFileCreationPage.setFileName(modelFilename);
@@ -585,8 +595,10 @@ public class ComponentsModelWizard extends Wizard implements INewWizard {
 			}
 		}
 		initialObjectCreationPage = new ComponentsModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(ComponentsEditorPlugin.INSTANCE.getString("_UI_ComponentsModelWizard_label"));
-		initialObjectCreationPage.setDescription(ComponentsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage.setTitle(ComponentsEditorPlugin.INSTANCE
+				.getString("_UI_ComponentsModelWizard_label"));
+		initialObjectCreationPage.setDescription(ComponentsEditorPlugin.INSTANCE
+				.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}
 
