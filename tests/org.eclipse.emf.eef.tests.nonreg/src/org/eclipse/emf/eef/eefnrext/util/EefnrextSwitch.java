@@ -2,21 +2,20 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrextSwitch.java,v 1.2 2011/08/13 22:21:30 glefur Exp $
+ * $Id: EefnrextSwitch.java,v 1.3 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnrext.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
+import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
+import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
+import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
+import org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample;
 
-import org.eclipse.emf.eef.eefnrext.*;
 
 /**
  * <!-- begin-user-doc -->

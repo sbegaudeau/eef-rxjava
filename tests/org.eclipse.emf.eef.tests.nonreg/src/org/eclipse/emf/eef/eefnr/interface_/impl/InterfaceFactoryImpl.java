@@ -2,19 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfaceFactoryImpl.java,v 1.2 2011/11/14 14:00:00 sbouchet Exp $
+ * $Id: InterfaceFactoryImpl.java,v 1.3 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.interface_.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.eefnr.interface_.InterfaceFactory;
+import org.eclipse.emf.eef.eefnr.interface_.InterfacePackage;
+import org.eclipse.emf.eef.eefnr.interface_.SimpleSample;
 
-import org.eclipse.emf.eef.eefnr.interface_.*;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,19 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrextFactoryImpl.java,v 1.1 2010/04/15 12:48:57 glefur Exp $
+ * $Id: EefnrextFactoryImpl.java,v 1.2 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnrext.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample;
+import org.eclipse.emf.eef.eefnrext.EefnrextFactory;
+import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
+import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
+import org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample;
 
-import org.eclipse.emf.eef.eefnrext.*;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,18 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CustomNamingSwitch.java,v 1.2 2011/08/13 21:33:20 glefur Exp $
+ * $Id: CustomNamingSwitch.java,v 1.3 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.naming.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.eclipse.emf.eef.eefnr.AbstractSample;
+import org.eclipse.emf.eef.eefnr.naming.CustomNamingPackage;
+import org.eclipse.emf.eef.eefnr.naming.Event;
 
-import org.eclipse.emf.eef.eefnr.naming.*;
 
 /**
  * <!-- begin-user-doc -->

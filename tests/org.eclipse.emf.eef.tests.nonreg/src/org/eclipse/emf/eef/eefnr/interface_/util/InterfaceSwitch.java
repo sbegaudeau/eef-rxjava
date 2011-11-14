@@ -2,16 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfaceSwitch.java,v 1.2 2011/11/14 14:00:00 sbouchet Exp $
+ * $Id: InterfaceSwitch.java,v 1.3 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.interface_.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+import org.eclipse.emf.eef.eefnr.interface_.InterfacePackage;
+import org.eclipse.emf.eef.eefnr.interface_.SimpleSample;
 
-import org.eclipse.emf.eef.eefnr.interface_.*;
 
 /**
  * <!-- begin-user-doc -->

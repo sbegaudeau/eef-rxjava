@@ -2,18 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfaceAdapterFactory.java,v 1.2 2011/11/14 14:00:00 sbouchet Exp $
+ * $Id: InterfaceAdapterFactory.java,v 1.3 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.interface_.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.eefnr.interface_.InterfacePackage;
+import org.eclipse.emf.eef.eefnr.interface_.SimpleSample;
 
-import org.eclipse.emf.eef.eefnr.interface_.*;
 
 /**
  * <!-- begin-user-doc -->

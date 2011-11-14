@@ -2,18 +2,38 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EefnrSwitch.java,v 1.8 2011/08/13 22:21:31 glefur Exp $
+ * $Id: EefnrSwitch.java,v 1.9 2011/11/14 15:01:16 sbouchet Exp $
  */
 package org.eclipse.emf.eef.eefnr.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.eef.eefnr.*;
+import org.eclipse.emf.eef.eefnr.AbstractSample;
+import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
+import org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample;
+import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample;
+import org.eclipse.emf.eef.eefnr.CheckboxSample;
+import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
+import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
+import org.eclipse.emf.eef.eefnr.EefnrPackage;
+import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.ImageViewerSample;
+import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
+import org.eclipse.emf.eef.eefnr.NamedElement;
+import org.eclipse.emf.eef.eefnr.RadioSample;
+import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
+import org.eclipse.emf.eef.eefnr.Root;
+import org.eclipse.emf.eef.eefnr.Sample;
+import org.eclipse.emf.eef.eefnr.SelectionDialogSample;
+import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
+import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
+import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
+import org.eclipse.emf.eef.eefnr.TextSample;
+import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
+import org.eclipse.emf.eef.eefnr.TextareaSample;
+import org.eclipse.emf.eef.eefnr.TotalSample;
 
 /**
  * <!-- begin-user-doc -->
