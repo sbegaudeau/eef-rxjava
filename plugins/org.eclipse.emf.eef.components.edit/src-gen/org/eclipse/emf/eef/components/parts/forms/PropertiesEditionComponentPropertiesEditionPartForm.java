@@ -456,7 +456,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -481,7 +480,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -505,7 +503,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 			explicit.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -579,7 +576,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -632,7 +628,6 @@ public class PropertiesEditionComponentPropertiesEditionPartForm extends Section
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

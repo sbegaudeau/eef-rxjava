@@ -502,7 +502,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -526,7 +525,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 			helpID.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -600,7 +598,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -653,7 +650,6 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

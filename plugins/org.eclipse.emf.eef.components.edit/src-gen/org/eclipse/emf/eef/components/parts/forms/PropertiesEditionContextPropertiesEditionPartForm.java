@@ -251,7 +251,6 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *

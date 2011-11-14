@@ -17,7 +17,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -145,7 +144,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof EClassifier);
+				return (element instanceof org.eclipse.emf.ecore.EClassifier);
 				}
 			
 			});
@@ -216,7 +215,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 		}
 		if (ComponentsViewsRepository.PropertiesEditionComponent.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				modelSettings.setToReference((EClassifier)event.getNewValue());
+				modelSettings.setToReference((org.eclipse.emf.ecore.EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
