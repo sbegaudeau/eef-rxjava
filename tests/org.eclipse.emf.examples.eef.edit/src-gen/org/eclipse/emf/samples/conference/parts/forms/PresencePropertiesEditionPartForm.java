@@ -57,9 +57,9 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PresencePropertiesEditionPart {
 
-		protected ReferencesTable assists;
-		protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable assists;
+	protected List<ViewerFilter> assistsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> assistsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -222,8 +222,6 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -232,8 +230,8 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 

@@ -333,8 +333,6 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -343,8 +341,8 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

@@ -109,7 +109,7 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Conference_.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Conference_.Properties.overview) {
 					return createOverviewTextarea(widgetFactory, parent);
@@ -208,8 +208,6 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -218,8 +216,8 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

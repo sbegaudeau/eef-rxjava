@@ -48,9 +48,9 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ParticipantsPropertiesEditionPart {
 
-protected ReferencesTable participants;
-protected List<ViewerFilter> participantsBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable participants;
+	protected List<ViewerFilter> participantsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -151,8 +151,6 @@ protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>()
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -161,8 +159,8 @@ protected List<ViewerFilter> participantsFilters = new ArrayList<ViewerFilter>()
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 

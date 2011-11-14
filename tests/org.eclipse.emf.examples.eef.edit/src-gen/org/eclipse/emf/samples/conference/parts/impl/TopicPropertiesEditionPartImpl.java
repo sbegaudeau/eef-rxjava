@@ -258,8 +258,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -268,8 +266,8 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

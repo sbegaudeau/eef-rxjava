@@ -131,13 +131,13 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 					return createIdentityGroup(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Person.Identity.firstname) {
-					return 		createFirstnameText(widgetFactory, parent);
+					return createFirstnameText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Person.Identity.lastname) {
-					return 		createLastnameText(widgetFactory, parent);
+					return createLastnameText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Person.Identity.age) {
-					return 		createAgeText(widgetFactory, parent);
+					return createAgeText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Person.Identity.gender) {
 					return createGenderEMFComboViewer(widgetFactory, parent);
@@ -389,8 +389,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -399,8 +397,8 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

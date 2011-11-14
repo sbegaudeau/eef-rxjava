@@ -48,12 +48,12 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class TalksAndTopicsPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TalksAndTopicsPropertiesEditionPart {
 
-protected ReferencesTable talks;
-protected List<ViewerFilter> talksBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> talksFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable topics;
-protected List<ViewerFilter> topicsBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable talks;
+	protected List<ViewerFilter> talksBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> talksFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable topics;
+	protected List<ViewerFilter> topicsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -206,8 +206,6 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -216,8 +214,8 @@ protected List<ViewerFilter> topicsFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 

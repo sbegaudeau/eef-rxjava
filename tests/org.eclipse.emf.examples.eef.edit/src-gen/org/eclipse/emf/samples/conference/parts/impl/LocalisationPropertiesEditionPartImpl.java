@@ -56,9 +56,9 @@ import org.eclipse.swt.widgets.Text;
 public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, LocalisationPropertiesEditionPart {
 
 	protected Text place;
-protected ReferencesTable sites;
-protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable sites;
+	protected List<ViewerFilter> sitesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -209,8 +209,6 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -219,8 +217,8 @@ protected List<ViewerFilter> sitesFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

@@ -61,8 +61,8 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 	protected Text description;
 	protected Text references;
-		protected Button editReferences;
-		private EList referencesList;
+	protected Button editReferences;
+	private EList referencesList;
 	protected Text documentation;
 
 
@@ -122,7 +122,7 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Topic.Properties.description) {
-					return 		createDescriptionText(widgetFactory, parent);
+					return createDescriptionText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Topic.Properties.references) {
 					return createReferencesMultiValuedEditor(widgetFactory, parent);
@@ -267,8 +267,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -277,8 +275,8 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

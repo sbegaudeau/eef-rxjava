@@ -395,8 +395,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -405,8 +403,8 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

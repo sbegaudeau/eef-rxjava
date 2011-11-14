@@ -60,9 +60,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 	protected Text name;
 	protected Text documentation;
-protected ReferencesTable rooms;
-protected List<ViewerFilter> roomsBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable rooms;
+	protected List<ViewerFilter> roomsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -269,8 +269,6 @@ protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -279,8 +277,8 @@ protected List<ViewerFilter> roomsFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**

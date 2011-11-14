@@ -115,7 +115,7 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == ConferenceViewsRepository.Localisation.place) {
-					return 		createPlaceText(widgetFactory, parent);
+					return createPlaceText(widgetFactory, parent);
 				}
 				if (key == ConferenceViewsRepository.Localisation.sites) {
 					return createSitesTableComposition(widgetFactory, parent);
@@ -213,8 +213,6 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -223,8 +221,8 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
