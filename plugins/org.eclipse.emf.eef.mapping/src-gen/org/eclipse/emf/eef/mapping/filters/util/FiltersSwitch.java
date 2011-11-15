@@ -13,7 +13,7 @@ package org.eclipse.emf.eef.mapping.filters.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.BusinessFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;

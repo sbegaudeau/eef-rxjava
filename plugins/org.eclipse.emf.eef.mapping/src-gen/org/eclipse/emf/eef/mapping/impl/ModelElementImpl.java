@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ModelElement;
 import org.eclipse.emf.eef.mapping.ModelProperty;
 import org.eclipse.emf.eef.mapping.StandardElementBinding;
+import org.eclipse.emf.eef.views.impl.DocumentedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

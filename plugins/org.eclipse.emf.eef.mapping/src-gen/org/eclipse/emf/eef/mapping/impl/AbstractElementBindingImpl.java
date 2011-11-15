@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.View;
+import org.eclipse.emf.eef.views.impl.DocumentedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

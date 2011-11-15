@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public interface FiltersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_FILTER__DOCUMENTATION = MappingPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int BINDING_FILTER__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -90,7 +90,7 @@ public interface FiltersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_FILTER__NAME = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int BINDING_FILTER__NAME = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
@@ -99,7 +99,7 @@ public interface FiltersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_FILTER__MANDATORY = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int BINDING_FILTER__MANDATORY = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Binding Filter</em>' class.
@@ -108,7 +108,7 @@ public interface FiltersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_FILTER_FEATURE_COUNT = MappingPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int BINDING_FILTER_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.filters.impl.OCLFilterImpl <em>OCL Filter</em>}' class.

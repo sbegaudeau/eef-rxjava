@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,34 +65,6 @@ public interface MappingPackage extends EPackage {
 	MappingPackage eINSTANCE = org.eclipse.emf.eef.mapping.impl.MappingPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl
-	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getDocumentedElement()
-	 * @generated
-	 */
-	int DOCUMENTED_ELEMENT = 11;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENTED_ELEMENT__DOCUMENTATION = 0;
-
-	/**
-	 * The number of structural features of the '<em>Documented Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENTED_ELEMENT_FEATURE_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.DatabindingImpl <em>Databinding</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,7 +81,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABINDING__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int DATABINDING__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -117,7 +90,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABINDING__BINDINGS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int DATABINDING__BINDINGS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
@@ -126,7 +99,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABINDING__CATEGORIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int DATABINDING__CATEGORIES = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Databinding</em>' class.
@@ -135,7 +108,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int DATABINDING_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelElementImpl <em>Model Element</em>}' class.
@@ -154,7 +127,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int MODEL_ELEMENT__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -163,7 +136,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__PROPERTIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int MODEL_ELEMENT__PROPERTIES = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sub Elements</b></em>' containment reference list.
@@ -172,7 +145,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__SUB_ELEMENTS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int MODEL_ELEMENT__SUB_ELEMENTS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' reference.
@@ -181,7 +154,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__BINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int MODEL_ELEMENT__BINDING = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Super Element</b></em>' container reference.
@@ -190,7 +163,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__SUPER_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int MODEL_ELEMENT__SUPER_ELEMENT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
@@ -199,7 +172,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int MODEL_ELEMENT_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractElementBindingImpl <em>Abstract Element Binding</em>}' class.
@@ -218,7 +191,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int ABSTRACT_ELEMENT_BINDING__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Sub Elements</b></em>' containment reference list.
@@ -227,7 +200,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_ELEMENT_BINDING__SUB_ELEMENTS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -236,7 +209,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__PROPERTIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_ELEMENT_BINDING__PROPERTIES = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Databinding</b></em>' container reference.
@@ -245,7 +218,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__DATABINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_ELEMENT_BINDING__DATABINDING = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Super Element</b></em>' container reference.
@@ -254,7 +227,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_ELEMENT_BINDING__SUPER_ELEMENT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -263,7 +236,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int ABSTRACT_ELEMENT_BINDING__NAME = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Referenced Binding</b></em>' containment reference list.
@@ -272,7 +245,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
+	int ABSTRACT_ELEMENT_BINDING__REFERENCED_BINDING = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Views</b></em>' reference list.
@@ -281,7 +254,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__VIEWS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 6;
+	int ABSTRACT_ELEMENT_BINDING__VIEWS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' container reference.
@@ -290,7 +263,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__CATEGORY = DOCUMENTED_ELEMENT_FEATURE_COUNT + 7;
+	int ABSTRACT_ELEMENT_BINDING__CATEGORY = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
@@ -299,7 +272,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
+	int ABSTRACT_ELEMENT_BINDING__BINDING_FILTERS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Element Binding</em>' class.
@@ -308,7 +281,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 9;
+	int ABSTRACT_ELEMENT_BINDING_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ModelPropertyImpl <em>Model Property</em>}' class.
@@ -327,7 +300,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_PROPERTY__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int MODEL_PROPERTY__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' reference.
@@ -336,7 +309,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_PROPERTY__BINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int MODEL_PROPERTY__BINDING = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Model Element</b></em>' container reference.
@@ -345,7 +318,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_PROPERTY__MODEL_ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int MODEL_PROPERTY__MODEL_ELEMENT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Model Property</em>' class.
@@ -354,7 +327,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_PROPERTY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int MODEL_PROPERTY_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.AbstractPropertyBindingImpl <em>Abstract Property Binding</em>}' class.
@@ -373,7 +346,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int ABSTRACT_PROPERTY_BINDING__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -382,7 +355,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_PROPERTY_BINDING__NAME = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Views</b></em>' reference list.
@@ -391,7 +364,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING__VIEWS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_PROPERTY_BINDING__VIEWS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Element</b></em>' container reference.
@@ -400,7 +373,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING__ELEMENT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_PROPERTY_BINDING__ELEMENT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding Filters</b></em>' containment reference list.
@@ -409,7 +382,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_PROPERTY_BINDING__BINDING_FILTERS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Property Binding</em>' class.
@@ -418,7 +391,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.EMFElementBindingImpl <em>EMF Element Binding</em>}' class.
@@ -828,7 +801,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int CATEGORY__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -837,7 +810,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__NAME = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int CATEGORY__NAME = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -846,7 +819,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__BINDINGS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int CATEGORY__BINDINGS = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Databinding</b></em>' container reference.
@@ -855,7 +828,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__DATABINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int CATEGORY__DATABINDING = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
@@ -864,7 +837,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__CATEGORIES = DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int CATEGORY__CATEGORIES = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Category</em>' class.
@@ -873,7 +846,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int CATEGORY_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.ElementBindingReferenceImpl <em>Element Binding Reference</em>}' class.
@@ -892,7 +865,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_BINDING_REFERENCE__DOCUMENTATION = DOCUMENTED_ELEMENT__DOCUMENTATION;
+	int ELEMENT_BINDING_REFERENCE__DOCUMENTATION = ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' reference.
@@ -901,7 +874,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_BINDING_REFERENCE__BINDING = DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+	int ELEMENT_BINDING_REFERENCE__BINDING = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Element Binding Reference</em>' class.
@@ -910,7 +883,7 @@ public interface MappingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_BINDING_REFERENCE_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int ELEMENT_BINDING_REFERENCE_FEATURE_COUNT = ViewsPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.EMFMultiPropertiesBindingImpl <em>EMF Multi Properties Binding</em>}' class.
@@ -920,7 +893,7 @@ public interface MappingPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getEMFMultiPropertiesBinding()
 	 * @generated
 	 */
-	int EMF_MULTI_PROPERTIES_BINDING = 12;
+	int EMF_MULTI_PROPERTIES_BINDING = 11;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1446,27 +1419,6 @@ public interface MappingPackage extends EPackage {
 	EReference getElementBindingReference_Binding();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.DocumentedElement <em>Documented Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Documented Element</em>'.
-	 * @see org.eclipse.emf.eef.mapping.DocumentedElement
-	 * @generated
-	 */
-	EClass getDocumentedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.DocumentedElement#getDocumentation <em>Documentation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Documentation</em>'.
-	 * @see org.eclipse.emf.eef.mapping.DocumentedElement#getDocumentation()
-	 * @see #getDocumentedElement()
-	 * @generated
-	 */
-	EAttribute getDocumentedElement_Documentation();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding <em>EMF Multi Properties Binding</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1881,24 +1833,6 @@ public interface MappingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ELEMENT_BINDING_REFERENCE__BINDING = eINSTANCE.getElementBindingReference_Binding();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl
-		 * @see org.eclipse.emf.eef.mapping.impl.MappingPackageImpl#getDocumentedElement()
-		 * @generated
-		 */
-		EClass DOCUMENTED_ELEMENT = eINSTANCE.getDocumentedElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE.getDocumentedElement_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.EMFMultiPropertiesBindingImpl <em>EMF Multi Properties Binding</em>}' class.

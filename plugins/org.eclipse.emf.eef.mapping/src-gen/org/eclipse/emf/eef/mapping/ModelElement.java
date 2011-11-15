@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.eef.views.DocumentedElement;
 
 /**
  * <!-- begin-user-doc -->

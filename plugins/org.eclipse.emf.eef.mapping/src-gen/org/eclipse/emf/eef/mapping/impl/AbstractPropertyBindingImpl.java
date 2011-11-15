@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.views.ElementEditor;
+import org.eclipse.emf.eef.views.impl.DocumentedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

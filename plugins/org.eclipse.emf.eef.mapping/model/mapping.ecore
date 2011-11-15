@@ -3,13 +3,13 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mapping"
     nsURI="http://www.eclipse.org/emf/eef/mapping/1.0.0" nsPrefix="eef-mapping">
-  <eClassifiers xsi:type="ecore:EClass" name="Databinding" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Databinding" eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="bindings" upperBound="-1"
         eType="#//AbstractElementBinding" containment="true" eOpposite="#//AbstractElementBinding/databinding"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" containment="true" eOpposite="#//Category/databinding"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true" eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//ModelProperty" containment="true" eOpposite="#//ModelProperty/modelElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subElements" upperBound="-1"
@@ -20,7 +20,7 @@
         eOpposite="#//ModelElement/subElements"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractElementBinding" abstract="true"
-      eSuperTypes="#//DocumentedElement">
+      eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subElements" upperBound="-1"
         eType="#//AbstractElementBinding" containment="true" eOpposite="#//AbstractElementBinding/superElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
@@ -39,14 +39,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="bindingFilters" upperBound="-1"
         eType="#//filters/BindingFilter" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelProperty" abstract="true" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ModelProperty" abstract="true" eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="binding" eType="#//StandardPropertyBinding"
         eOpposite="#//StandardPropertyBinding/model"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" eType="#//ModelElement"
         eOpposite="#//ModelElement/properties"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPropertyBinding" abstract="true"
-      eSuperTypes="#//DocumentedElement">
+      eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="views" lowerBound="1" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.eef.views/model/views.ecore#//ElementEditor"/>
@@ -71,7 +71,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="#//ModelProperty"
         eOpposite="#//ModelProperty/binding"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bindings" upperBound="-1"
         eType="#//AbstractElementBinding" containment="true" eOpposite="#//AbstractElementBinding/category"/>
@@ -80,12 +80,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ElementBindingReference" eSuperTypes="#//DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ElementBindingReference" eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="binding" lowerBound="1"
         eType="#//AbstractElementBinding"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DocumentedElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EMFMultiPropertiesBinding" eSuperTypes="#//AbstractPropertyBinding">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" upperBound="-1"
@@ -116,7 +113,7 @@
   </eSubpackages>
   <eSubpackages name="filters" nsURI="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0"
       nsPrefix="eef-mapping-filters">
-    <eClassifiers xsi:type="ecore:EClass" name="BindingFilter" abstract="true" eSuperTypes="#//DocumentedElement">
+    <eClassifiers xsi:type="ecore:EClass" name="BindingFilter" abstract="true" eSuperTypes="../../org.eclipse.emf.eef.views/model/views.ecore#//DocumentedElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
           defaultValueLiteral="true"/>

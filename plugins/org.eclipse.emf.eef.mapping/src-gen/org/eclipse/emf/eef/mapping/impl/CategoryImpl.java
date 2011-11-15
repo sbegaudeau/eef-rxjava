@@ -26,6 +26,7 @@ import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.views.impl.DocumentedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

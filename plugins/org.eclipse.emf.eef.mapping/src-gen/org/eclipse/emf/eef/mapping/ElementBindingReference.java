@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.mapping;
 
+import org.eclipse.emf.eef.views.DocumentedElement;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Element Binding Reference</b></em>'.

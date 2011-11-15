@@ -14,11 +14,11 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
-import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.EMFElementBinding;
 import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
@@ -140,13 +140,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseDocumentedElement(DocumentedElement object) {
-			return createDocumentedElementAdapter();
+		public Adapter caseEMFMultiPropertiesBinding(EMFMultiPropertiesBinding object) {
+			return createEMFMultiPropertiesBindingAdapter();
 		}
 
 		@Override
-		public Adapter caseEMFMultiPropertiesBinding(EMFMultiPropertiesBinding object) {
-			return createEMFMultiPropertiesBindingAdapter();
+		public Adapter caseDocumentedElement(DocumentedElement object) {
+			return createDocumentedElementAdapter();
 		}
 
 		@Override
@@ -323,13 +323,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.mapping.DocumentedElement <em>Documented Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.views.DocumentedElement <em>Documented Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.eef.mapping.DocumentedElement
+	 * @see org.eclipse.emf.eef.views.DocumentedElement
 	 * @generated
 	 */
 	public Adapter createDocumentedElementAdapter() {

@@ -384,15 +384,15 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		MappingPackage theMappingPackage = (MappingPackage)EPackage.Registry.INSTANCE
-				.getEPackage(MappingPackage.eNS_URI);
+		ViewsPackage theViewsPackage = (ViewsPackage)EPackage.Registry.INSTANCE
+				.getEPackage(ViewsPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		bindingFilterEClass.getESuperTypes().add(theMappingPackage.getDocumentedElement());
+		bindingFilterEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
 		oclFilterEClass.getESuperTypes().add(this.getBindingFilter());
 		javaFilterEClass.getESuperTypes().add(this.getBindingFilter());
 		javaDeclarationFilterEClass.getESuperTypes().add(this.getJavaFilter());
