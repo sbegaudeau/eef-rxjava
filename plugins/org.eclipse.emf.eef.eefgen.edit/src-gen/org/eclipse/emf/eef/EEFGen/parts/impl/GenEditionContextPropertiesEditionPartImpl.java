@@ -597,7 +597,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		propertiesEditionContext.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -621,7 +620,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			basePackage.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -647,7 +645,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -671,7 +668,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			genericPropertiesViewsDescriptors.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -697,7 +693,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -721,7 +716,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			jUnitTestCases.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -747,7 +741,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -771,7 +764,6 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 			propertiesEditingProvidersSuperClass.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -396,7 +396,6 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -420,7 +419,6 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 			testsGenerationDirectory.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -446,7 +444,6 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -471,7 +468,6 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -495,7 +491,6 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 			license.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -232,7 +232,6 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *

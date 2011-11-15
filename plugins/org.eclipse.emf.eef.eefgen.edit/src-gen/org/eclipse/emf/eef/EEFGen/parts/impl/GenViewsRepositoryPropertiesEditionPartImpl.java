@@ -502,7 +502,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		viewsRepository.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -526,7 +525,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			basePackage.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -559,7 +557,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		helpStrategy.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -583,7 +580,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			sWTViews.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -609,7 +605,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -633,7 +628,6 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			partsSuperClass.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
