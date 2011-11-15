@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.views.provider.DocumentedElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.mapping.ElementBindingReference} object.
@@ -92,7 +93,7 @@ public class ElementBindingReferenceItemProvider extends DocumentedElementItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ElementBindingReference)object).getDocumentation();
+		String label = crop(((ElementBindingReference)object).getDocumentation());
 		return label == null || label.length() == 0 ? getString("_UI_ElementBindingReference_type")
 				: getString("_UI_ElementBindingReference_type") + " " + label;
 	}

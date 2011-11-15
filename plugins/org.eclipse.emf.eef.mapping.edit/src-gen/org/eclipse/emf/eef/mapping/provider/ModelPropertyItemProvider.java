@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.ModelProperty;
+import org.eclipse.emf.eef.views.provider.DocumentedElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.mapping.ModelProperty} object.
@@ -80,7 +81,7 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider imp
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelProperty)object).getDocumentation();
+		String label = crop(((ModelProperty)object).getDocumentation());
 		return label == null || label.length() == 0 ? getString("_UI_ModelProperty_type")
 				: getString("_UI_ModelProperty_type") + " " + label;
 	}
