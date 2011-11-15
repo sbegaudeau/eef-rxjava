@@ -165,8 +165,6 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -176,7 +174,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -208,7 +206,6 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -220,7 +217,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

@@ -124,7 +124,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.index) {
-					return 		createIndexText(widgetFactory, parent);
+					return createIndexText(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.SimpleModelNavigation.Properties.feature) {
 					return createFeatureFlatComboViewer(parent, widgetFactory);
@@ -254,8 +254,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -265,7 +263,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -291,7 +289,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 			index.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -362,7 +359,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 	public void addBusinessFilterToFeature(ViewerFilter filter) {
 		feature.addBusinessRuleFilter(filter);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -436,7 +432,6 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -448,12 +443,12 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 	}
 
 	// Start of user code additional methods
- 	public void setDiscriminatorInput(SimpleModelNavigation simpleModelNavigation, ResourceSet allResources){
-		discriminatorType.setInput(EEFUtils.choiceOfValues(adapterFactory, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), allResources));
+	public void setDiscriminatorInput(SimpleModelNavigation simpleModelNavigation, ResourceSet allResources){
+		discriminatorType.setInput(EEFUtils.choiceOfValues(adapterFactory, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType()));
 		if (simpleModelNavigation.getDiscriminatorType() != null){
 			discriminatorType.setSelection(new StructuredSelection(simpleModelNavigation.getDiscriminatorType()));
 		}
- 	}
+	}
 	// End of user code
 
 

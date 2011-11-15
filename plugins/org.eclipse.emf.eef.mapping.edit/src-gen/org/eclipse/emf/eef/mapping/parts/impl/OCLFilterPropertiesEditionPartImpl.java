@@ -167,8 +167,6 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -178,7 +176,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -204,7 +202,6 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 			oCLExpressionBody.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 /**
 	 * {@inheritDoc}

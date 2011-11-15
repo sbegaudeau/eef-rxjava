@@ -145,8 +145,6 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -156,7 +154,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -234,7 +232,6 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -246,7 +243,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

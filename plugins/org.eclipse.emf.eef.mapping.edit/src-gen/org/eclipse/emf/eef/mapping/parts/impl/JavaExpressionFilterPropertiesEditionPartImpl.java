@@ -167,8 +167,6 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -178,7 +176,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -204,7 +202,6 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 			javaExpressionBody.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 /**
 	 * {@inheritDoc}

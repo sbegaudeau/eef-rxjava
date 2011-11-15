@@ -116,7 +116,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 					return createFilterExpressionGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.JavaDeclarationFilter.FilterExpression.methodName) {
-					return 		createMethodNameText(widgetFactory, parent);
+					return createMethodNameText(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.JavaDeclarationFilter.filterProperties) {
 					return createFilterProperties(widgetFactory, parent);
@@ -191,8 +191,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -202,7 +200,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -228,7 +226,6 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 			methodName.setText(""); //$NON-NLS-1$
 		}
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 

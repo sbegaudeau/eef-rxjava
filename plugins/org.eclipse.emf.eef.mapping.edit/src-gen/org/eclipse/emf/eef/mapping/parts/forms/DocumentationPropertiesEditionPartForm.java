@@ -163,8 +163,6 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -173,9 +171,8 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**
@@ -204,7 +201,6 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -216,7 +212,7 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

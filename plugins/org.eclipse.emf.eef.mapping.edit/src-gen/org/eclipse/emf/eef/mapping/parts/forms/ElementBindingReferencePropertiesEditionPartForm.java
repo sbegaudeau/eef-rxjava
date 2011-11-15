@@ -164,8 +164,6 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -174,9 +172,8 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**
@@ -251,7 +248,6 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -263,7 +259,7 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

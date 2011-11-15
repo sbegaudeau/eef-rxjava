@@ -234,8 +234,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -245,7 +243,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -271,7 +269,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 			index.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -342,7 +339,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	public void addBusinessFilterToFeature(ViewerFilter filter) {
 		feature.addBusinessRuleFilter(filter);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -419,7 +415,6 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -431,12 +426,12 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	}
 
 	// Start of user code additional methods
- 	public void setDiscriminatorInput(SimpleModelNavigation simpleModelNavigation, ResourceSet allResources){
-		discriminatorType.setInput(EEFUtils.choiceOfValues(adapterFactory, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType(), allResources));
+	public void setDiscriminatorInput(SimpleModelNavigation simpleModelNavigation, ResourceSet allResources){
+		discriminatorType.setInput(EEFUtils.choiceOfValues(adapterFactory, simpleModelNavigation, NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType()));
 		if (simpleModelNavigation.getDiscriminatorType() != null){
 			discriminatorType.setSelection(new StructuredSelection(simpleModelNavigation.getDiscriminatorType()));
 		}
- 	}
+	}
 	// End of user code
 
 

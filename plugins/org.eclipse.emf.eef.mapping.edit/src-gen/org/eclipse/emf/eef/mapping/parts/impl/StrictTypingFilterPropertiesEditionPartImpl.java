@@ -163,8 +163,6 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -174,7 +172,7 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -246,7 +244,6 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 	public void addBusinessFilterToRestriction(ViewerFilter filter) {
 		restriction.addBusinessRuleFilter(filter);
 	}
-
 
 /**
 	 * {@inheritDoc}

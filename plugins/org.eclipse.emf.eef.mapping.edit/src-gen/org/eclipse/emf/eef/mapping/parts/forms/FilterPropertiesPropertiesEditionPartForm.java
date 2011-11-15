@@ -113,7 +113,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 					return createFilterPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.mandatory) {
 					return createMandatoryCheckbox(widgetFactory, parent);
@@ -206,8 +206,6 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -217,7 +215,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -244,7 +242,6 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -268,7 +265,6 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 			mandatory.setSelection(false);
 		}
 	}
-
 
 
 

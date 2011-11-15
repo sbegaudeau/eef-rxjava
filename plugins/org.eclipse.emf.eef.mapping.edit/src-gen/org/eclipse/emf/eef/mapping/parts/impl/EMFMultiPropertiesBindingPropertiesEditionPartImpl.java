@@ -381,8 +381,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -392,7 +390,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -418,7 +416,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -474,7 +471,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	public boolean isContainedInModelTable(EObject element) {
 		return ((ReferencesTableSettings)model.getInput()).contains(element);
 	}
-
 
 
 
@@ -536,7 +532,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -548,7 +543,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

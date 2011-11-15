@@ -76,9 +76,9 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 
 	protected Text name;
 	protected EObjectFlatComboViewer model;
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -140,7 +140,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.EMFPropertyBinding.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.EMFPropertyBinding.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -341,8 +341,6 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -351,9 +349,8 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**
@@ -379,7 +376,6 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -453,7 +449,6 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -509,7 +504,6 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -521,7 +515,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

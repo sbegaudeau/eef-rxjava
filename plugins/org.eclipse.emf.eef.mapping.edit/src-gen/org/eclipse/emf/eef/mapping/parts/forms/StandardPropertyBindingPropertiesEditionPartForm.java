@@ -77,9 +77,9 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 
 	protected Text name;
 	protected EObjectFlatComboViewer model;
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -141,7 +141,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.StandardPropertyBinding.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.StandardPropertyBinding.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -342,8 +342,6 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -352,9 +350,8 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**
@@ -380,7 +377,6 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -454,7 +450,6 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -510,7 +505,6 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -522,7 +516,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

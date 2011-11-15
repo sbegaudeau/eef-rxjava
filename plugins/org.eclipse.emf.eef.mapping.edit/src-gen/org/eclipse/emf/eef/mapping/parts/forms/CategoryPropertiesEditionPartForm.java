@@ -108,7 +108,7 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.Category.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -172,8 +172,6 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -182,9 +180,8 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**
@@ -213,7 +210,6 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -225,7 +221,7 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

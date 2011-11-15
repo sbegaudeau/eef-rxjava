@@ -200,8 +200,6 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -211,7 +209,7 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -238,7 +236,6 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -262,7 +259,6 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 			mandatory.setSelection(false);
 		}
 	}
-
 
 
 

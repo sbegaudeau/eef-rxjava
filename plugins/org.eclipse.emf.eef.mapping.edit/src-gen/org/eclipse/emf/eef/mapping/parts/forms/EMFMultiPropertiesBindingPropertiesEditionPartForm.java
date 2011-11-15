@@ -68,12 +68,12 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, EMFMultiPropertiesBindingPropertiesEditionPart {
 
 	protected Text name;
-		protected ReferencesTable model;
-		protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable model;
+	protected List<ViewerFilter> modelBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> modelFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -135,7 +135,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == MappingViewsRepository.EMFMultiPropertiesBinding.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -387,8 +387,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -397,9 +395,8 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// Nothing to do
-// End of user code
+		// Nothing to do
+		// End of user code
 	}
 
 	/**
@@ -425,7 +422,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -484,7 +480,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -540,7 +535,6 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -552,7 +546,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

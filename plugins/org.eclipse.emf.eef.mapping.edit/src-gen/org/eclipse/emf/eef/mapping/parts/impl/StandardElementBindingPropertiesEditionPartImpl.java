@@ -327,8 +327,6 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -338,7 +336,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -364,7 +362,6 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -438,7 +435,6 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -497,7 +493,6 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -509,7 +504,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

@@ -183,8 +183,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends SectionPro
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -194,7 +192,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends SectionPro
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -266,7 +264,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends SectionPro
 	public void addBusinessFilterToReferencedFeature(ViewerFilter filter) {
 		referencedFeature.addBusinessRuleFilter(filter);
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 

@@ -162,8 +162,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -173,7 +171,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -245,7 +243,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	public void addBusinessFilterToReferencedFeature(ViewerFilter filter) {
 		referencedFeature.addBusinessRuleFilter(filter);
 	}
-
 
 /**
 	 * {@inheritDoc}
