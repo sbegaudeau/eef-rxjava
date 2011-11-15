@@ -556,7 +556,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -580,7 +579,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 			helpID.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -636,7 +634,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	public boolean isContainedInModelTable(EObject element) {
 		return ((ReferencesTableSettings)model.getInput()).contains(element);
 	}
-
 
 
 
@@ -698,7 +695,6 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -710,7 +706,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

@@ -448,7 +448,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -473,7 +472,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -497,7 +495,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 			explicit.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -571,7 +568,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -624,7 +620,6 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

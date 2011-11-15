@@ -235,7 +235,6 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -247,7 +246,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

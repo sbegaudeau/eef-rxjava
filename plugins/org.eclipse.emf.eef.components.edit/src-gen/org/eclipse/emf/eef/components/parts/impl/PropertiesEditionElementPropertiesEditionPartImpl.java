@@ -497,7 +497,6 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -521,7 +520,6 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 			helpID.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -595,7 +593,6 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -654,7 +651,6 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -666,7 +662,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 
