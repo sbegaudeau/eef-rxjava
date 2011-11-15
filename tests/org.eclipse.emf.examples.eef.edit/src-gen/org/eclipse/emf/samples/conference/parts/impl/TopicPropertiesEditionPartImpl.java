@@ -294,7 +294,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -338,7 +337,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -362,7 +360,6 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

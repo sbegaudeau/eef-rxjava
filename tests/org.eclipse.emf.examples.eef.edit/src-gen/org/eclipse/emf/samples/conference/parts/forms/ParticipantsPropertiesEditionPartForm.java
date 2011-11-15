@@ -232,7 +232,6 @@ public class ParticipantsPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *

@@ -251,7 +251,6 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -275,7 +274,6 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			capacity.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

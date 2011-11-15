@@ -311,7 +311,6 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -335,7 +334,6 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -394,7 +392,6 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	public boolean isContainedInRoomsTable(EObject element) {
 		return ((ReferencesTableSettings)rooms.getInput()).contains(element);
 	}
-
 
 
 

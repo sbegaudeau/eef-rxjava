@@ -396,7 +396,6 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -467,7 +466,6 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		topic.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -498,7 +496,6 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	public void setType(Enumerator newValue) {
 		type.modelUpdating(new StructuredSelection(newValue));
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -570,7 +567,6 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		presenter.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -641,7 +637,6 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		creator.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -665,7 +660,6 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -251,7 +251,6 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -307,7 +306,6 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 	public boolean isContainedInSitesTable(EObject element) {
 		return ((ReferencesTableSettings)sites.getInput()).contains(element);
 	}
-
 
 
 

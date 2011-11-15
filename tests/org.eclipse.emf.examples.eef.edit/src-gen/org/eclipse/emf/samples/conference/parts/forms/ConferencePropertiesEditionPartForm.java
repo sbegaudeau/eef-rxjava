@@ -244,7 +244,6 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -268,7 +267,6 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 			overview.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

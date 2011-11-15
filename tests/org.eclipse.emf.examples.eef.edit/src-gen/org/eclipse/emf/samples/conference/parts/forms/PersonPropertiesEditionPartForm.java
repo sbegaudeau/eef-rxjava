@@ -425,7 +425,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -450,7 +449,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -474,7 +472,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 			age.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -507,7 +504,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		gender.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -532,7 +528,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -556,7 +551,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 			isRegistered.setSelection(false);
 		}
 	}
-
 
 
 

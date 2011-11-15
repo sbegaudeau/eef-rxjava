@@ -247,7 +247,6 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -303,7 +302,6 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 	public boolean isContainedInSitesTable(EObject element) {
 		return ((ReferencesTableSettings)sites.getInput()).contains(element);
 	}
-
 
 
 

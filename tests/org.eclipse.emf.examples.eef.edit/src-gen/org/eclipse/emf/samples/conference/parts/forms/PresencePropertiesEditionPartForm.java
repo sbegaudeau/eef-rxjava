@@ -291,7 +291,6 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *

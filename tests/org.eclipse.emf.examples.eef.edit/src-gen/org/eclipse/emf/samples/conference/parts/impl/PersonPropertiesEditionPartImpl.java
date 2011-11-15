@@ -431,7 +431,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -456,7 +455,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -480,7 +478,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			age.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -513,7 +510,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		gender.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -538,7 +534,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -562,7 +557,6 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 			isRegistered.setSelection(false);
 		}
 	}
-
 
 
 

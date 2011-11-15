@@ -303,7 +303,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -347,7 +346,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -371,7 +369,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

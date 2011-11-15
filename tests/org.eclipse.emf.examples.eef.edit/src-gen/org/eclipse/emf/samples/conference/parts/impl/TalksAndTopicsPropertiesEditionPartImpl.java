@@ -278,7 +278,6 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -334,7 +333,6 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 	public boolean isContainedInTopicsTable(EObject element) {
 		return ((ReferencesTableSettings)topics.getInput()).contains(element);
 	}
-
 
 
 

@@ -305,7 +305,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -329,7 +328,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -388,7 +386,6 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	public boolean isContainedInRoomsTable(EObject element) {
 		return ((ReferencesTableSettings)rooms.getInput()).contains(element);
 	}
-
 
 
 

@@ -226,7 +226,6 @@ public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *

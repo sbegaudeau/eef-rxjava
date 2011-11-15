@@ -238,7 +238,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -262,7 +261,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 			overview.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
