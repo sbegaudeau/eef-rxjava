@@ -52,33 +52,33 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 	 * Settings for delegate1ForSingleValued editor
 	 */
 	protected EEFEditorSettingsImpl delegate1ForSingleValuedSettings = (EEFEditorSettingsImpl) EEFEditorSettingsBuilder.create(semanticObject, NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1())
-																														.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_SingleValuedAttributeDelegate())			
-																																	.index(0).build())
-																														.build();
+	.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_SingleValuedAttributeDelegate())
+	.index(0).build())
+	.build();
 	
 	/**
 	 * Settings for delegate2ForSingleValued editor
 	 */
 	protected EEFEditorSettingsImpl delegate2ForSingleValuedSettings = (EEFEditorSettingsImpl) EEFEditorSettingsBuilder.create(semanticObject, NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2())
-																														.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_SingleValuedAttributeDelegate())			
-																																	.index(0).build())
-																														.build();
+	.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_SingleValuedAttributeDelegate())
+	.index(0).build())
+	.build();
 	
 	/**
 	 * Settings for delegate1ForMultiValued editor
 	 */
 	protected EEFEditorSettingsImpl delegate1ForMultiValuedSettings = (EEFEditorSettingsImpl) EEFEditorSettingsBuilder.create(semanticObject, NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1())
-																														.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_MultiValuedAttributeDelegate())			
-																																	.index(0).build())
-																														.build();
+	.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_MultiValuedAttributeDelegate())
+	.index(0).build())
+	.build();
 	
 	/**
 	 * Settings for delegate2ForMultiValued editor
 	 */
 	protected EEFEditorSettingsImpl delegate2ForMultiValuedSettings = (EEFEditorSettingsImpl) EEFEditorSettingsBuilder.create(semanticObject, NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2())
-																														.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_MultiValuedAttributeDelegate())			
-																																	.index(0).build())
-																														.build();
+	.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getAttributeNavigationSample_MultiValuedAttributeDelegate())
+	.index(0).build())
+	.build();
 	
 	/**
 	 * Default constructor
@@ -203,7 +203,7 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		if (editingPart.isVisible()) {
 			AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name)) {
 				if (msg.getNewValue() != null) {

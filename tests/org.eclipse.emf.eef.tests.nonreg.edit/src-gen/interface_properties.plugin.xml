@@ -6,8 +6,8 @@
   <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="http://www.eclipse.org/emf/eef/nonreg/naming/1.0.0"
-            class="org.eclipse.emf.eef.naming.providers.NamingEEFAdapterFactory"
+            uri="http://www.eclipse.org/emf/eef/nonreg/interface/1.0.0"
+            class="org.eclipse.emf.eef.interface_.providers.Interface_EEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
    <extension
@@ -57,7 +57,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.naming.properties"
+            contributorId="org.eclipse.emf.eef.interface.properties"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -73,7 +73,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.eclipse.emf.eef.naming.properties">
+            contributorId="org.eclipse.emf.eef.interface.properties">
          <propertyTab
                label="Base"
                category="default"
@@ -84,13 +84,13 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="org.eclipse.emf.eef.naming.properties">
+            contributorId="org.eclipse.emf.eef.interface.properties">
          <propertySection
-               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.EventPropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.naming.section.Event"
+               class="org.eclipse.emf.eef.eefnr.interface_.parts.forms.SimpleSamplePropertiesEditionPartForm"
+               id="org.eclipse.emf.eef.interface.section.SimpleSample"
                tab="Base">
              <input
-                    type="org.eclipse.emf.eef.eefnr.naming.Event">
+                    type="org.eclipse.emf.eef.eefnr.interface.SimpleSample">
              </input>
          </propertySection>
       </propertySections>
