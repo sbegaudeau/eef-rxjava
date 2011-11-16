@@ -62,9 +62,9 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ReferenceEnabledSamplePropertiesEditionPart {
 
-		protected ReferencesTable reference;
-		protected List<ViewerFilter> referenceBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> referenceFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable reference;
+	protected List<ViewerFilter> referenceBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referenceFilters = new ArrayList<ViewerFilter>();
 	private AbstractEnabledSamplePropertiesEditionPart abstractEnabledSamplePropertiesEditionPart;
 
 
@@ -240,8 +240,6 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -250,8 +248,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -308,7 +306,6 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	public boolean isContainedInReferenceTable(EObject element) {
 		return ((ReferencesTableSettings)reference.getInput()).contains(element);
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 
