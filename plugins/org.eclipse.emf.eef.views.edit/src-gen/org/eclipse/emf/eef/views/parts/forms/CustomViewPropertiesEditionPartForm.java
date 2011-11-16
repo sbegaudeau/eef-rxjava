@@ -210,7 +210,6 @@ public class CustomViewPropertiesEditionPartForm extends SectionPropertiesEditin
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -222,7 +221,7 @@ public class CustomViewPropertiesEditionPartForm extends SectionPropertiesEditin
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

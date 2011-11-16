@@ -252,7 +252,6 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -325,7 +324,6 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -337,7 +335,7 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

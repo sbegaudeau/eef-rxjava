@@ -305,7 +305,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -376,7 +375,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		representation.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -400,7 +398,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 			readOnly.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -431,7 +428,6 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -443,7 +439,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

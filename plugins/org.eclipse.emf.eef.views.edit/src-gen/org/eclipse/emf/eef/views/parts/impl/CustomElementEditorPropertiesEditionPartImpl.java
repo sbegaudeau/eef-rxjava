@@ -236,7 +236,6 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -260,7 +259,6 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 			readOnly.setSelection(false);
 		}
 	}
-
 
 
 

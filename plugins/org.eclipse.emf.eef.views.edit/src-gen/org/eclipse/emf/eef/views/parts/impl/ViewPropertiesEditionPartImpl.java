@@ -273,7 +273,6 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -344,7 +343,6 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		representation.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -374,7 +372,6 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -386,7 +383,7 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

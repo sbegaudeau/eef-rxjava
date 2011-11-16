@@ -201,7 +201,6 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -213,7 +212,7 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

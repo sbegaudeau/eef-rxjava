@@ -191,7 +191,6 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -203,7 +202,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

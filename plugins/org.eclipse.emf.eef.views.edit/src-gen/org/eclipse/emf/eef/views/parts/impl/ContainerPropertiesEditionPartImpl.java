@@ -238,7 +238,6 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -314,7 +313,6 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -326,7 +324,7 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

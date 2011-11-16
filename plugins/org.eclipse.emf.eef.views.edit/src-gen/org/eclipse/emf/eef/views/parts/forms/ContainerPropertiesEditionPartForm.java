@@ -252,7 +252,6 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -325,7 +324,6 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -337,7 +335,7 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

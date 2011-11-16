@@ -206,7 +206,6 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -218,7 +217,7 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

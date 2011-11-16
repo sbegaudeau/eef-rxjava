@@ -238,7 +238,6 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -314,7 +313,6 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -326,7 +324,7 @@ public class ViewReferencePropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

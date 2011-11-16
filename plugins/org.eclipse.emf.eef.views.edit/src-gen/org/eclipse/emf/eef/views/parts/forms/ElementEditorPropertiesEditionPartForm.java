@@ -317,7 +317,6 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -388,7 +387,6 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		representation.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -412,7 +410,6 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 			readOnly.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -440,7 +437,6 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -452,7 +448,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

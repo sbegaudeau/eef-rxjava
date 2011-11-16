@@ -286,7 +286,6 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -357,7 +356,6 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		representation.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -384,7 +382,6 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -396,7 +393,7 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

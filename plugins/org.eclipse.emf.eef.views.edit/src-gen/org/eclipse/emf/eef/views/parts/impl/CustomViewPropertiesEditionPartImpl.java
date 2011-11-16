@@ -206,7 +206,6 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -218,7 +217,7 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

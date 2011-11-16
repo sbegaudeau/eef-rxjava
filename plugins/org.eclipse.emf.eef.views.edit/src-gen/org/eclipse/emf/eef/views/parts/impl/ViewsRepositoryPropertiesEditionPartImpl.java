@@ -252,7 +252,6 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -276,7 +275,6 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 			repositoryKind.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

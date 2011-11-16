@@ -210,7 +210,6 @@ public class ToolkitPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -222,7 +221,7 @@ public class ToolkitPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

@@ -206,7 +206,6 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -218,7 +217,7 @@ public class CategoryPropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

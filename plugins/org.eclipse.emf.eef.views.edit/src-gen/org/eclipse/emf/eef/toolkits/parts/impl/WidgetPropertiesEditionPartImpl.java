@@ -206,7 +206,6 @@ public class WidgetPropertiesEditionPartImpl extends CompositePropertiesEditionP
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -218,7 +217,7 @@ public class WidgetPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

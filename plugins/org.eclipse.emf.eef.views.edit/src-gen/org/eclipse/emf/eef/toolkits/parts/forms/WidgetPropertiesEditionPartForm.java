@@ -210,7 +210,6 @@ public class WidgetPropertiesEditionPartForm extends SectionPropertiesEditingPar
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -222,7 +221,7 @@ public class WidgetPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 
