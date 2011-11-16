@@ -208,8 +208,6 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -246,7 +244,6 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -270,7 +267,6 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 			title_.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

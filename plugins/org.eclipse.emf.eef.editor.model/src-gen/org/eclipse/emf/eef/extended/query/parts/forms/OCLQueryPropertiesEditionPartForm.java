@@ -113,7 +113,7 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 					return createContextFlatComboViewer(parent, widgetFactory);
 				}
 				if (key == QueryViewsRepository.OCLQuery.Properties.query_) {
-					return 		createQueryText(widgetFactory, parent);
+					return createQueryText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -207,8 +207,6 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -291,7 +289,6 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		context.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -315,7 +312,6 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 			query.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

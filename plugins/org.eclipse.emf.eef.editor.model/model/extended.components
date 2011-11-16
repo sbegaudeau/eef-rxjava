@@ -10,7 +10,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/EEFPage/title"/>
         </properties>
         <referencedBinding xmi:id="_IRUSUBwtEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views.edit/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/StandardFormPage"/>
       </bindings>
@@ -28,7 +28,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/EEFMasterPage/showValidatePage"/>
         </properties>
         <referencedBinding xmi:id="_IjlHABwtEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views.edit/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/EEFMasterPage"/>
       </bindings>
@@ -43,7 +43,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/TreeMasterPage/toolbarVisible"/>
         </properties>
         <referencedBinding xmi:id="_I1FGsBwtEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views.edit/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/TreeMasterPage"/>
       </bindings>
@@ -61,7 +61,7 @@
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/PartFilter/contextualComponent"/>
         </properties>
         <referencedBinding xmi:id="_egzowBwsEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping.edit/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/PartFilter"/>
       </bindings>
@@ -70,7 +70,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//Category/name"/>
         </properties>
         <referencedBinding xmi:id="_e3itwBwsEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping.edit/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/EEFEditorContributions"/>
       </bindings>
@@ -79,7 +79,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.emf.eef.views/model/views.ecore#//Category/name"/>
         </properties>
         <referencedBinding xmi:id="_KTJAIBwtEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.views.edit/model/views.components#_U6-YQAtmEd6B37SLkBAPJA"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/EEFEditorPages"/>
       </bindings>
@@ -91,7 +91,7 @@
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//AbstractElementBinding/views"/>
         </properties>
         <referencedBinding xmi:id="_fZ1igBwsEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping.edit/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/StaticEEFEditorContribution"/>
       </bindings>
@@ -106,7 +106,7 @@
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.emf.eef.mapping/model/mapping.ecore#//EMFElementBinding/model"/>
         </properties>
         <referencedBinding xmi:id="_fs1-EBwsEeCiYOVwwaob0A">
-          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
+          <binding xsi:type="eef-components:PropertiesEditionComponent" href="platform:/resource/org.eclipse.emf.eef.mapping.edit/model/mapping.components#_s6Yv0AtHEd6GjLeaWWGqlg"/>
         </referencedBinding>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/DynamicEEFEditorContribution"/>
       </bindings>

@@ -319,8 +319,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -356,7 +354,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -430,7 +427,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -483,7 +479,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartImpl extends Compo
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

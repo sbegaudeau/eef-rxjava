@@ -284,8 +284,6 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -321,7 +319,6 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -377,7 +374,6 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

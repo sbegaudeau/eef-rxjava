@@ -101,10 +101,10 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.StandardFormPage.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.StandardFormPage.Naming.title_) {
-					return 		createTitle_Text(widgetFactory, parent);
+					return createTitle_Text(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -208,8 +208,6 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -246,7 +244,6 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -270,7 +267,6 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 			title_.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

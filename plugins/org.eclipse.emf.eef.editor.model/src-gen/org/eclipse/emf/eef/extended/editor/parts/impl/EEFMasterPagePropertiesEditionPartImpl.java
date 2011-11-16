@@ -295,8 +295,6 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -333,7 +331,6 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -357,7 +354,6 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 			title_.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -383,7 +379,6 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -407,7 +402,6 @@ public class EEFMasterPagePropertiesEditionPartImpl extends CompositePropertiesE
 			showValidatePage.setSelection(false);
 		}
 	}
-
 
 
 

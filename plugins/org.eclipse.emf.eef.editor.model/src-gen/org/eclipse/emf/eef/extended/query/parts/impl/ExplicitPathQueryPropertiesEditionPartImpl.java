@@ -137,8 +137,6 @@ public class ExplicitPathQueryPropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -220,7 +218,6 @@ public class ExplicitPathQueryPropertiesEditionPartImpl extends CompositePropert
 	public void addBusinessFilterToQuery(ViewerFilter filter) {
 		query.addBusinessRuleFilter(filter);
 	}
-
 
 
 

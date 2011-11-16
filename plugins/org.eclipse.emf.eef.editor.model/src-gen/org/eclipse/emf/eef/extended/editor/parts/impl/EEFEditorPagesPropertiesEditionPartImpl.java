@@ -157,8 +157,6 @@ public class EEFEditorPagesPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -194,7 +192,6 @@ public class EEFEditorPagesPropertiesEditionPartImpl extends CompositeProperties
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

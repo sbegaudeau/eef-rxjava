@@ -13,9 +13,9 @@
     <viewsRepository href="extended.components#_J295-BwLEeCLxL3W-Q6rLA"/>
   </viewsRepositories>
   <references>
-    <referencedContext href="../../org.eclipse.emf.eef.mapping/model/mapping.eefgen#/"/>
+    <referencedContext href="platform:/plugin/org.eclipse.emf.eef.mapping.edit/model/mapping.eefgen#/"/>
   </references>
   <references>
-    <referencedContext href="../../org.eclipse.emf.eef.views/model/views.eefgen#/"/>
+    <referencedContext href="platform:/plugin/org.eclipse.emf.eef.views.edit/model/views.eefgen#/"/>
   </references>
 </eef-gen:EEFGenModel>

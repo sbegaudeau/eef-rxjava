@@ -299,8 +299,6 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -336,7 +334,6 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -408,7 +405,6 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		contextualComponent.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -479,7 +475,6 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 		filteredPart.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -503,7 +498,6 @@ public class PartFilterPropertiesEditionPartImpl extends CompositePropertiesEdit
 			mandatory.setSelection(false);
 		}
 	}
-
 
 
 

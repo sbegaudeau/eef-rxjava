@@ -110,10 +110,10 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.EEFMasterPage.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.EEFMasterPage.Naming.title_) {
-					return 		createTitle_Text(widgetFactory, parent);
+					return createTitle_Text(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.EEFMasterPage.Settings.class) {
 					return createSettingsGroup(widgetFactory, parent);
@@ -295,8 +295,6 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -333,7 +331,6 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -357,7 +354,6 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 			title_.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -383,7 +379,6 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -407,7 +402,6 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 			showValidatePage.setSelection(false);
 		}
 	}
-
 
 
 

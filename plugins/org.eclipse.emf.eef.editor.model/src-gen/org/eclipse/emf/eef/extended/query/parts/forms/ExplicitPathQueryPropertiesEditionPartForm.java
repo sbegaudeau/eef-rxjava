@@ -155,8 +155,6 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -238,7 +236,6 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 	public void addBusinessFilterToQuery(ViewerFilter filter) {
 		query.addBusinessRuleFilter(filter);
 	}
-
 
 
 

@@ -907,15 +907,6 @@ public interface EditorPackage extends EPackage {
 	int EEF_EDITOR_PAGES__VIEWS = ViewsPackage.CATEGORY__VIEWS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_EDITOR_PAGES__NAME = ViewsPackage.CATEGORY__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Repository</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -932,6 +923,15 @@ public interface EditorPackage extends EPackage {
 	 * @ordered
 	 */
 	int EEF_EDITOR_PAGES__CATEGORIES = ViewsPackage.CATEGORY__CATEGORIES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_EDITOR_PAGES__NAME = ViewsPackage.CATEGORY__NAME;
 
 	/**
 	 * The number of structural features of the '<em>EEF Editor Pages</em>' class.

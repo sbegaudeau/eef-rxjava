@@ -109,10 +109,10 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.TreeMasterPage.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.TreeMasterPage.Naming.title_) {
-					return 		createTitle_Text(widgetFactory, parent);
+					return createTitle_Text(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.TreeMasterPage.Settings.class) {
 					return createSettingsGroup(widgetFactory, parent);
@@ -265,8 +265,6 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -303,7 +301,6 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -328,7 +325,6 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -352,7 +348,6 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 			toolbarVisible.setSelection(false);
 		}
 	}
-
 
 
 

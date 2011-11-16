@@ -123,7 +123,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.PartFilter.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.PartFilter.Filter.class) {
 					return createFilterGroup(widgetFactory, parent);
@@ -322,8 +322,6 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -359,7 +357,6 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -431,7 +428,6 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 		contextualComponent.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -502,7 +498,6 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 		filteredPart.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -526,7 +521,6 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 			mandatory.setSelection(false);
 		}
 	}
-
 
 
 

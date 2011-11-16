@@ -59,9 +59,9 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class StaticEEFEditorContributionPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, StaticEEFEditorContributionPropertiesEditionPart {
 
 	protected Text name;
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -123,7 +123,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.StaticEEFEditorContribution.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.StaticEEFEditorContribution.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -291,8 +291,6 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -328,7 +326,6 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -384,7 +381,6 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

@@ -68,9 +68,9 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 
 	protected Text name;
 	protected EObjectFlatComboViewer model;
-		protected ReferencesTable views;
-		protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable views;
+	protected List<ViewerFilter> viewsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> viewsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -132,7 +132,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.DynamicEEFEditorContribution.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.DynamicEEFEditorContribution.Binding.class) {
 					return createBindingGroup(widgetFactory, parent);
@@ -333,8 +333,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -370,7 +368,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -444,7 +441,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -497,7 +493,6 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
-
 
 
 

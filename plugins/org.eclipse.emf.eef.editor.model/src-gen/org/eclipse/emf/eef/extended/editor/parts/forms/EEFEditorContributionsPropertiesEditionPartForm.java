@@ -99,7 +99,7 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 					return createNamingGroup(widgetFactory, parent);
 				}
 				if (key == EditorViewsRepository.EEFEditorContributions.Naming.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -163,8 +163,6 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -200,7 +198,6 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -194,8 +194,6 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -278,7 +276,6 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		context.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -302,7 +299,6 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 			query.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

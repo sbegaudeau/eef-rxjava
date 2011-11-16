@@ -264,8 +264,6 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -302,7 +300,6 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -327,7 +324,6 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -351,7 +347,6 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 			toolbarVisible.setSelection(false);
 		}
 	}
-
 
 
 
