@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -46,6 +45,7 @@ import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 
 // End of user code
 
@@ -127,8 +127,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Singl
 			});
 			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
 			// Start of user code for additional businessfilters for views
-																																																																																																						
-																																																																																																						// End of user code
+			// End of user code
 			
 			basePart.addFilterToModel(new ViewerFilter() {
 			
@@ -143,8 +142,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for model
-																																																																																																						
-																																																																																																						// End of user code
+			// End of user code
 			
 			// init values for referenced views
 			
