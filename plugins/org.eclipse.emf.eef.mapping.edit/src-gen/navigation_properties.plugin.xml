@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+ <plugin>
+
+  <!-- EEF extensions -->
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0"
+            class="org.eclipse.emf.eef.navigation.providers.NavigationEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.mapping.providers.MappingPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.mapping.filters.providers.FiltersPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.mapping.navigation.providers.NavigationPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+
+   <!-- Tabbed properties views extension -->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eef.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eef.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.properties">
+         <propertySection
+               class="org.eclipse.emf.eef.mapping.navigation.parts.forms.ModelNavigationPropertiesEditionPartForm"
+               id="org.eclipse.emf.eef.navigation.section.ModelNavigation"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.mapping.navigation.ModelNavigation">
+             </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.mapping.navigation.parts.forms.SimpleModelNavigationPropertiesEditionPartForm"
+               id="org.eclipse.emf.eef.navigation.section.SimpleModelNavigation"
+               tab="Base">
+             <input
+                    type="org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation">
+             </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+ </plugin>

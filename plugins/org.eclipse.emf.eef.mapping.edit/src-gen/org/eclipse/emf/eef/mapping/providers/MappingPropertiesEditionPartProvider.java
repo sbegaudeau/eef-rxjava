@@ -12,23 +12,23 @@
 package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.parts.forms.CategoryPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.EMFElementBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.EMFMultiPropertiesBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.EMFPropertyBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.ElementBindingReferencePropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.StandardPropertyBindingPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.impl.CategoryPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.EMFElementBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.EMFMultiPropertiesBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.EMFPropertyBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.ElementBindingReferencePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.StandardPropertyBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.mapping.parts.forms.EMFElementBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.EMFElementBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.EMFPropertyBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.EMFPropertyBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.StandardPropertyBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.StandardPropertyBindingPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.CategoryPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.CategoryPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.ElementBindingReferencePropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.ElementBindingReferencePropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.parts.forms.EMFMultiPropertiesBindingPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.parts.impl.EMFMultiPropertiesBindingPropertiesEditionPartImpl;
 
 
 
