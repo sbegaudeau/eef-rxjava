@@ -164,8 +164,6 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -174,8 +172,8 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -201,7 +199,6 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

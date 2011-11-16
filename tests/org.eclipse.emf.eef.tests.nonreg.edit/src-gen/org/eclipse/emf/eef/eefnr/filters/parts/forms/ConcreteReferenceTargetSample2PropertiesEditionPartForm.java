@@ -106,7 +106,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -170,8 +170,6 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -180,8 +178,8 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -207,7 +205,6 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

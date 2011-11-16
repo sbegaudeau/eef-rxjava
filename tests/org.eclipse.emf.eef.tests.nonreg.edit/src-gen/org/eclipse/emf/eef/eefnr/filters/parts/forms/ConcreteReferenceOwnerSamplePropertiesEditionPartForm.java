@@ -68,9 +68,9 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ConcreteReferenceOwnerSamplePropertiesEditionPart {
 
 	protected Text name;
-		protected ReferencesTable abstractTarget;
-		protected List<ViewerFilter> abstractTargetBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> abstractTargetFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable abstractTarget;
+	protected List<ViewerFilter> abstractTargetBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> abstractTargetFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable strictTyping;
 	protected List<ViewerFilter> strictTypingBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>();
@@ -132,7 +132,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget) {
 					return createAbstractTargetReferencesTable(widgetFactory, parent);
@@ -331,8 +331,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -341,8 +339,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -368,7 +366,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -427,7 +424,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -483,7 +479,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	public boolean isContainedInStrictTypingTable(EObject element) {
 		return ((ReferencesTableSettings)strictTyping.getInput()).contains(element);
 	}
-
 
 
 

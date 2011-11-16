@@ -67,9 +67,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 	protected ReferencesTable abstractTarget;
 	protected List<ViewerFilter> abstractTargetBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> abstractTargetFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable strictTyping;
-protected List<ViewerFilter> strictTypingBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable strictTyping;
+	protected List<ViewerFilter> strictTypingBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -326,8 +326,6 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -336,8 +334,8 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -363,7 +361,6 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -422,7 +419,6 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -478,7 +474,6 @@ protected List<ViewerFilter> strictTypingFilters = new ArrayList<ViewerFilter>()
 	public boolean isContainedInStrictTypingTable(EObject element) {
 		return ((ReferencesTableSettings)strictTyping.getInput()).contains(element);
 	}
-
 
 
 
