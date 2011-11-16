@@ -108,10 +108,10 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 					return createExtendedGroup(widgetFactory, parent);
 				}
 				if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo) {
-					return 		createDemoText(widgetFactory, parent);
+					return createDemoText(widgetFactory, parent);
 				}
 				if (key == EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size) {
-					return 		createSizeText(widgetFactory, parent);
+					return createSizeText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -215,8 +215,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -225,8 +223,8 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -253,7 +251,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -277,7 +274,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 			size.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

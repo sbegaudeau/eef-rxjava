@@ -37,7 +37,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 
-
 // End of user code
 
 /**
@@ -216,8 +215,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -226,8 +223,8 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -254,7 +251,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -278,7 +274,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 			size.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

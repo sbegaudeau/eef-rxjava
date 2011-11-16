@@ -54,7 +54,7 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, FlatReferenceExtendedEditorSamplePropertiesEditionPart {
 
-		protected FlatReferencesTable flatReferenceEditorSample;
+	protected FlatReferencesTable flatReferenceEditorSample;
 	private CheckBoxExtendedEditorSamplePropertiesEditionPart checkBoxExtendedEditorSamplePropertiesEditionPart;
 
 
@@ -174,8 +174,6 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -184,8 +182,8 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -240,7 +238,6 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	public boolean isContainedInFlatReferenceEditorSampleTable(EObject element) {
 		return ((ReferencesTableSettings)flatReferenceEditorSample.getInput()).contains(element);
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 

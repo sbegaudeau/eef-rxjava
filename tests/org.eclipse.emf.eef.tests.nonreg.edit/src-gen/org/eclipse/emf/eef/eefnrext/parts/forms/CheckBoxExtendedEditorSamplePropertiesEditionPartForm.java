@@ -173,8 +173,6 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -183,8 +181,8 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -210,7 +208,6 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 			checkboxEditorSample.setSelection(false);
 		}
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 
