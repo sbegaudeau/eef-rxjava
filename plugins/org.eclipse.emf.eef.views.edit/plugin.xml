@@ -180,7 +180,7 @@
          <propertySection
                class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.views.section.DocumentedElement"
-               tab="Base">
+               tab="Documentation">
              <input
                     type="org.eclipse.emf.eef.views.DocumentedElement">
              </input>
