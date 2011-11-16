@@ -49,9 +49,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
-public abstract class SectionPropertiesEditingPart extends CompositePropertiesEditionPart  implements IFormPropertiesEditionPart, ISection {
+public abstract class SectionPropertiesEditingPart extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ISection {
 
 	/**
 	 * The tabbed property sheet page
@@ -92,7 +91,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	protected SectionPropertiesEditingPart() {
 		super();
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-	}	
+	}
 
 	public SectionPropertiesEditingPart(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -101,7 +100,9 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite, org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
+	 * 
+	 * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
+	 *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
 	 */
 	public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
 		this.tabbedPropertySheetPage = tabbedPropertySheetPage;
@@ -111,7 +112,9 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.ui.views.properties.tabbed.ISection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	 * 
+	 * @see org.eclipse.ui.views.properties.tabbed.ISection#setInput(org.eclipse.ui.IWorkbenchPart,
+	 *      org.eclipse.jface.viewers.ISelection)
 	 */
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		initializeEditingDomain(part);
@@ -159,6 +162,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#refresh()
 	 */
 	public void refresh() {
@@ -183,7 +187,8 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 		} else if (object instanceof IAdaptable) {
 			IAdaptable adaptable = (IAdaptable)object;
 			if (adaptable.getAdapter(SemanticAdapter.class) != null) {
-				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable.getAdapter(SemanticAdapter.class);
+				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
+						.getAdapter(SemanticAdapter.class);
 				return semanticAdapter.getEObject();
 			} else if (adaptable.getAdapter(EObject.class) != null) {
 				return (EObject)adaptable.getAdapter(EObject.class);
@@ -193,12 +198,16 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	}
 
 	private void refreshComponent() {
-		DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
-		propertiesEditionComponent = propertiesEditingContext.createPropertiesEditingComponent(IPropertiesEditionComponent.LIVE_MODE, getDescriptor());
+		DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(null,
+				null, editingDomain, adapterFactory, eObject);
+		propertiesEditionComponent = propertiesEditingContext.createPropertiesEditingComponent(
+				IPropertiesEditionComponent.LIVE_MODE, getDescriptor());
 		if (propertiesEditionComponent != null) {
 			this.adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
-			propertiesEditingContext.setHelper(new BindingViewHelper(propertiesEditingContext, tabbedPropertySheetPage.getWidgetFactory()));
-			propertiesEditionComponent.setPropertiesEditionPart(propertiesEditionComponent.translatePart(getDescriptor()), 0, this);
+			propertiesEditingContext.setHelper(new BindingViewHelper(propertiesEditingContext,
+					tabbedPropertySheetPage.getWidgetFactory()));
+			propertiesEditionComponent.setPropertiesEditionPart(
+					propertiesEditionComponent.translatePart(getDescriptor()), 0, this);
 			propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 			if (editingComposite != null) {
 				editingComposite.dispose();
@@ -209,7 +218,8 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 				container.layout();
 			}
 			if (messageManager != null) {
-				messageManager.processMessage(new PropertiesValidationEditionEvent(null, Diagnostic.OK_INSTANCE));
+				messageManager.processMessage(new PropertiesValidationEditionEvent(null,
+						Diagnostic.OK_INSTANCE));
 				propertiesEditionComponent.addListener(new IPropertiesEditionListener() {
 
 					public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -225,19 +235,22 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	 * @param descriptor
 	 */
 	protected void initSemanticContents() {
-		propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(getDescriptor()), 1, eObject);
+		propertiesEditionComponent.initPart(propertiesEditionComponent.translatePart(getDescriptor()), 1,
+				eObject);
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#aboutToBeShown()
 	 */
 	public void aboutToBeShown() {
-		/* empty default implementation */		
+		/* empty default implementation */
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#aboutToBeHidden()
 	 */
 	public void aboutToBeHidden() {
@@ -249,6 +262,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#dispose()
 	 */
 	public void dispose() {
@@ -265,9 +279,9 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#getMinimumHeight()
 	 */
 	public int getMinimumHeight() {
@@ -276,12 +290,12 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.views.properties.tabbed.ISection#shouldUseExtraSpace()
 	 */
 	public boolean shouldUseExtraSpace() {
 		return false;
 	}
-
 
 	/**
 	 * Magic method For eclipse 3.2 & 3.3 & 3.4 & 3.5
@@ -289,7 +303,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	 * @return
 	 */
 	protected String getDescriptor() {
-		Map<?,?> descriptor = getPageDescriptor(tabbedPropertySheetPage);
+		Map<?, ?> descriptor = getPageDescriptor(tabbedPropertySheetPage);
 		for (Iterator<?> iterator = descriptor.keySet().iterator(); iterator.hasNext();) {
 			Object key = iterator.next();
 			Object tab = descriptor.get(key);
@@ -319,7 +333,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 			descriptorToTabField = cls.getDeclaredField("descriptorToTab"); //$NON-NLS-1$
 			oldAccessible = descriptorToTabField.isAccessible();
 			descriptorToTabField.setAccessible(true);
-			return (Map<?,?>)descriptorToTabField.get(propertySheetPage);
+			return (Map<?, ?>)descriptorToTabField.get(propertySheetPage);
 
 		} catch (SecurityException e) {
 
@@ -379,7 +393,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 		} catch (Exception e) {
 			EEFRuntimePlugin.getDefault().logError(
 					EEFRuntimeUIMessages.PropertiesEditionSection_error_occured_on + method.getName()
-					+ EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
+							+ EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
 		}
 		return null;
 	}
