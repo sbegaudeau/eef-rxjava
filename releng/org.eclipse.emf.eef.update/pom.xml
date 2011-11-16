@@ -135,7 +135,7 @@
 										<move file="${project.build.directory}/checksumFix" tofile="${project.build.directory}/repository"/>
 										<move file="${project.build.directory}/${project.artifactId}.zip" tofile="${project.build.directory}/${project.artifactId}-not-signed.zip"/>
 										<zip destfile="${project.build.directory}/${project.artifactId}.zip" basedir="${project.build.directory}/repository"/>
-										<echo message="testing... ${env.BUILD_TYPE}.${DSTAMP}/${TSTAMP}"/>
+										<echo message="testing... ${env.BUILD_TYPE}.${DSTAMP}/${TSTAMP}.${BUILD_ALIAS}"/>
 									</tasks>
 								</configuration>
 							</execution>
