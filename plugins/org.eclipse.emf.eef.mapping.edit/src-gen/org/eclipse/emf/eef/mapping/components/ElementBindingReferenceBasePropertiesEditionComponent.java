@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -37,6 +36,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 
 // End of user code
 
@@ -102,8 +102,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for binding
-																																																																																																						
-																																																																																																						// End of user code
+			// End of user code
 			
 			// init values for referenced views
 			
