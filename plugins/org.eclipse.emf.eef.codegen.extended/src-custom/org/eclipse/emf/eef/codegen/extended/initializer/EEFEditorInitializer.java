@@ -43,9 +43,9 @@ import org.eclipse.emf.eef.codegen.ui.generators.callback.imports.JDTImportsOrga
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -198,9 +198,9 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 			OverrideEMFEditorCode generateEEFEditorCode = new OverrideEMFEditorCode(GENERATE_EEF_EDITOR_CODE, generateEEFEditorModels.getEEFGenModel());
 			workflow.addStep(GENERATE_EEF_EDITOR_CODE, generateEEFEditorCode);
 			if (workflow.prepare()) {
-				IRunnableWithProgress runnable = new IRunnableWithProgress() {
+				WorkspaceModifyOperation runnable = new WorkspaceModifyOperation() {
 
-					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					public void execute(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 						workflow.execute(monitor);
 					}
 				};

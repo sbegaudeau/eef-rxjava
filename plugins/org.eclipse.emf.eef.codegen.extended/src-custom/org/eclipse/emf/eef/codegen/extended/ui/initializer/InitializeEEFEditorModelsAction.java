@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.initializer.AbstractPropertiesInitializer;
 import org.eclipse.emf.eef.codegen.extended.initializer.EEFEditorModelInitializer;
-import org.eclipse.emf.eef.codegen.ui.initializer.ui.InitializeEEFModelsDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;

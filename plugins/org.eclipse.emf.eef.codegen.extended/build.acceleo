@@ -18,9 +18,9 @@
         <acceleoCompiler 
             sourceFolder="${target.folder}"
             outputFolder="${target.folder}"
-            dependencies="${target.folder}/../../org.eclipse.emf.eef.codegen;"
+            dependencies="${target.folder}/../../org.eclipse.emf.eef.codegen;${target.folder}/../../org.eclipse.emf.eef.runtime;"
             binaryResource="false"
-            trimPosition="false">
+            packagesToRegister="">
         </acceleoCompiler>
     </target>    
 </project>
