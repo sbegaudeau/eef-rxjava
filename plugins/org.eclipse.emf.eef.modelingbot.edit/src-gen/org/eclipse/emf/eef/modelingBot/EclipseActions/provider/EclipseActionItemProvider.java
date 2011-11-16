@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EclipseActionItemProvider.java,v 1.2 2011/04/13 13:50:06 nlepine Exp $
+ * $Id: EclipseActionItemProvider.java,v 1.3 2011/11/16 13:49:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EclipseActions.provider;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseAction;
 
-import org.eclipse.emf.eef.modelingBot.ModelingBotPackage;
 import org.eclipse.emf.eef.modelingBot.provider.ActionItemProvider;
 import org.eclipse.emf.eef.modelingBot.provider.MbotEditPlugin;
 

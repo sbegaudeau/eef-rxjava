@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddItemProvider.java,v 1.4 2011/04/13 13:50:07 nlepine Exp $
+ * $Id: AddItemProvider.java,v 1.5 2011/11/16 13:49:39 sbouchet Exp $
  */
 package org.eclipse.emf.eef.modelingBot.EEFActions.provider;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
-import org.eclipse.emf.eef.modelingBot.ModelingBotPackage;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.modelingBot.EEFActions.Add} object.
