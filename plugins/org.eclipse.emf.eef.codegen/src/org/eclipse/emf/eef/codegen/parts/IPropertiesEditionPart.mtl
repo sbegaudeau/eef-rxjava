@@ -12,10 +12,10 @@
  /]
 [module IPropertiesEditionPart('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/views/toolkits/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [template private defaultImports (view : View) ]
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.Map;
 [/template]
 
 [template public IPropertiesEditionPart(viewRepository : ViewsRepository)]
-[for (view : View | viewRepository.eAllContents(View).oclAsType(View))]
+[for (view : View | viewRepository.eAllContents(View))]
 [file (fullFilePath(view), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [view.partsPackage()/];
@@ -49,7 +49,7 @@ package [view.partsPackage()/];
  */
 public interface [view.pepInterface()/] {
 
-[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor).oclAsType(ElementEditor)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view))]
+[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view))]
 [elementEditor.genDeclaration()/]
 
 [/for]
@@ -84,7 +84,7 @@ public interface [view.pepInterface()/] {
 }
 [/file]
 [/for]
-[for (view : View | viewRepository.eAllContents(CustomView).oclAsType(CustomView))]
+[for (view : View | viewRepository.eAllContents(CustomView))]
 	[file (fullFilePath(view), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [view.partsPackage()/];

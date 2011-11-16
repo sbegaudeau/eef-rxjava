@@ -12,8 +12,8 @@
  /]
 [module plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
 	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
@@ -23,14 +23,12 @@
  <plugin>
 
   <!-- EEF extensions -->
-  [for (ePackage : EPackage | editionContext.model.ecorePackage.eAllContents(EPackage)->including(editionContext.model.ecorePackage))]
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="[ePackage.nsURI/]"
-            class="[editionContext.providersPackage()/].[ePackage.pecPackageProviderClass()/]"
+            uri="[editionContext.model.ecorePackage.nsURI/]"
+            class="[editionContext.providersPackage()/].[editionContext.model.ecorePackage.pecPackageProviderClass()/]"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
-  [/for]
 [for (genViewRepository : GenViewsRepository | editionContext.associatedGenModel().viewsRepositories)]
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
@@ -66,7 +64,7 @@
                category="default"
                id="Base">
          </propertyTab>
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent))]
+[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent))]
 [for (view : View | pec.involvedViews()->asOrderedSet())][if (view.viewKey(pec) <> 'Base')]
 [editionContext.propertyTab(basePackage, view, pec)/]
 [/if][/for]
@@ -83,14 +81,14 @@
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
             contributorId="[editionContext.contributorID(basePackage).trim()/]">
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.explicit)]
+[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent)) ? (pec.explicit)]
 [for (view : View | pec.involvedViews()->asOrderedSet())]
          <propertySection
                class="[view.pepFormQualifiedClass()/]"
                id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
                tab="[view.viewKey(pec).toASCII()/]">
              <input
-                    type="[pec.model.qualifiedName(basePackage)/]">
+                    type="[pec.model.qualifiedName()/]">
              </input>
          </propertySection>
 [/for]
@@ -117,4 +115,4 @@ org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
 [/template]
 
 [query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
-	pec.involvedViews()->at(pec.involvedViews()->indexOf(view)).oclAsType(View)/]
+	pec.involvedViews()->at(pec.involvedViews()->indexOf(view))/]

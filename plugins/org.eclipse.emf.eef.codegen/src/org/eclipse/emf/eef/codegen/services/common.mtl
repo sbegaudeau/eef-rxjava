@@ -15,15 +15,15 @@
 [comment --------------- Common queries --------------- /]
 
 [comment Check if at least one views of the propertyBinding is contained by the given view /]
-[query public involvedViews(pec : PropertiesEditionComponent) : Sequence(View) = 
-	pec.views->asSequence()->union(pec.referencedBinding.binding.views->select(ancestors(View)->excludesAll(pec.views->asSequence())))/]
+[query public involvedViews(pec : PropertiesEditionComponent) : OrderedSet(View) = 
+	pec.views->asSequence()->union(pec.referencedBinding.binding.views->select(ancestors(View)->excludesAll(pec.views->asSequence())))->asOrderedSet()/]
 
-[query public involvedEditionElements(pec : PropertiesEditionComponent) : Sequence(T) = 
-	pec.properties->asSequence()->union(pec.referencedBinding.binding.properties)/]
+[query public involvedEditionElements(pec : PropertiesEditionComponent) : OrderedSet(PropertiesEditionElement) = 
+	pec.properties->asSequence()->union(pec.referencedBinding.binding.properties)->asOrderedSet()/]
 
 [query public editionContext(pec : PropertiesEditionComponent) : PropertiesEditionContext = 
 	if (pec.ancestors()->select(oclIsTypeOf(PropertiesEditionContext))->notEmpty()) then 
-	pec.ancestors()->select(oclIsTypeOf(PropertiesEditionContext))->first().oclAsType(PropertiesEditionContext)
+	pec.ancestors()->select(oclIsTypeOf(PropertiesEditionContext))->first()
 	else null
 	endif/]
 
@@ -39,28 +39,28 @@
 	else element.container.owningViewString()
 	endif/]
 
-[query public hasOwningViewsRepository(view : View) : Boolean = view.ancestors()->select(oclIsTypeOf(ViewsRepository))->notEmpty()/]
+[query public hasOwningViewsRepository(view : View) : Boolean = view.ancestors(ViewsRepository)->notEmpty()/]
 
 [query public owningViewsRepository(view : View) : ViewsRepository = 
 	if (view.hasOwningViewsRepository()) then 
-	view.ancestors()->select(oclIsTypeOf(ViewsRepository))->first().oclAsType(ViewsRepository)
+	view.ancestors(ViewsRepository)->first()
 	else null
 	endif/]
 
 [query public owningViewsRepository(element : ViewElement) : ViewsRepository = 
 	element.owningView().owningViewsRepository()/]
 
-[query public referencedViews(view : View) : Sequence(T) = 
-	view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsTypeOf(views::View)).oclAsType(views::View)/]
+[query public referencedViews(view : View) : Sequence(View) = 
+	view.eAllContents(ViewReference).view->select(oclIsTypeOf(View))/]
 
 [query public ownedBy(element : ViewElement, view : View) : Boolean = 
 	element.owningView() = view/]
 
-[query public involvedEditionElementsInView(pec : PropertiesEditionComponent, v : View) : Sequence(T) = 
-	pec.involvedEditionElements().oclAsType(PropertiesEditionElement)->select(views->first().ownedBy(v))/]
+[query public involvedEditionElementsInView(pec : PropertiesEditionComponent, v : View) : OrderedSet(PropertiesEditionElement) = 
+	pec.involvedEditionElements()->select(views->first().ownedBy(v))/]
 
 [query public propertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	pec.properties->select(views->includes(element))->first()/]
+	pec.properties->select(views->includes(element))->first().oclAsType(PropertiesEditionElement)/]
 
 [query public relatedComponent(view : View, pec : PropertiesEditionComponent) : PropertiesEditionComponent =
 	if (pec.views->includes(view))
@@ -72,7 +72,7 @@
 	pepCompletePackage.concat('.parts.').concat(pepInterface)/]
 
 [query public associatedGenFeature(pee : PropertiesEditionElement) : GenFeature =
-	pee.model.eInverse()->select(oclIsKindOf(GenFeature))->first().oclAsType(GenFeature)/]
+	pee.model.eInverse()->filter(GenFeature)->first()/]
 
 [query public associatedGenPackage(p : EPackage) : GenPackage = 
 	p.eInverse(GenPackage)->first()/]
@@ -81,7 +81,7 @@
 	pec.model.ePackage.associatedGenPackage()/]
 
 [query public associatedGenContext(peco : PropertiesEditionContext) : GenEditionContext = 
-	peco.eInverse()->select(oclIsKindOf(GenEditionContext))->first().oclAsType(GenEditionContext)/]
+	peco.eInverse()->filter(GenEditionContext)->first()/]
 
 [query public associatedGenContext(peco : PropertiesEditionComponent) : GenEditionContext = 
 	peco.editionContext().associatedGenContext() /]
@@ -102,8 +102,8 @@
 	view.owningViewsRepository().associatedGenRepository()/]
 
 [query public associatedGenRepository(viewsRepository : ViewsRepository) : GenViewsRepository = 
-	if (viewsRepository.eInverse()->select(oclIsKindOf(GenViewsRepository))->notEmpty())
-	then viewsRepository.eInverse()->select(oclIsKindOf(GenViewsRepository))->first().oclAsType(GenViewsRepository)
+	if (viewsRepository.eInverse()->filter(GenViewsRepository)->notEmpty())
+	then viewsRepository.eInverse()->filter(GenViewsRepository)->first()
 	else null
 	endif/]
 
@@ -115,7 +115,7 @@
 
 [query public associatedPEC(eclass : EClass, peContext : PropertiesEditionContext) : PropertiesEditionComponent = if eclass.eInverse(PropertiesEditionComponent)->isEmpty() then null else eclass.eInverse(PropertiesEditionComponent)->first() endif/]
 
-[query public significantClass(ePackage : EPackage) : Set(EClass) = ePackage.eClassifiers->select(oclIsKindOf(EClass)).oclAsType(EClass).classAndHierarchy()->asOrderedSet() /]
+[query public significantClass(ePackage : EPackage) : Set(EClass) = ePackage.eClassifiers->filter(EClass).classAndHierarchy()->asOrderedSet() /]
 
 [query private classAndHierarchy(eclass : EClass) : Set(EClass) = eclass.eSuperTypes.classAndHierarchy()->including(eclass)->asOrderedSet() /]
 
@@ -140,25 +140,25 @@
 
 [comment A view is Dynamic if it have subViews ... /]
 [query public isDynamicView(view : View) : Boolean = 
-	view.elements->select(oclIsKindOf(views::View))->notEmpty()/]
+	view.elements->filter(View)->notEmpty()/]
 
-[query public dynamicViews(pec : PropertiesEditionComponent, topLevelView : View) : Sequence(T) = 
-	pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent) and oclAsType(PropertiesEditionComponent).mustBeGenerated()).views->select(ancestors()->includes(topLevelView))/]
+[query public dynamicViews(pec : PropertiesEditionComponent, topLevelView : View) : Sequence(View) = 
+	pec.referencedBinding.binding->filter(PropertiesEditionComponent)->select(mustBeGenerated()).views->select(ancestors()->includes(topLevelView))/]
 
 [comment TODOGLF: List of parts that a component have to manage/]
-[query public partToManage(pec : PropertiesEditionComponent) : Sequence(View) = pec.involvedViews()/]
+[query public partToManage(pec : PropertiesEditionComponent) : OrderedSet(View) = pec.involvedViews()/]
 
 [query public mustBeGenerated(view : View, pec : PropertiesEditionComponent) : Boolean =
 	view.oclAsType(EObject).eResource() = pec.oclAsType(EObject).eResource()/]
 
 [query public needBeGenerated(ref : ViewReference) : Boolean = 
-	if (ref.view.oclIsTypeOf(views::View))
-	then not ref.view.oclAsType(views::View).involvedPropertiesEditionComponent().oclIsUndefined()
+	if (ref.view.oclIsTypeOf(View))
+	then not ref.view.oclAsType(View).involvedPropertiesEditionComponent().oclIsUndefined()
 	else false
 	endif/]
 
 [query public isA1stLevelReferencedView(toCheck : View, pec : PropertiesEditionComponent) : Boolean = 
-	pec.views.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view->select(oclIsKindOf(views::View)).oclAsType(views::View)->includes(toCheck)/]
+	pec.views.eAllContents(ViewReference).view->filter(View)->includes(toCheck)/]
 
 [comment ----- StructuralFeatures classification ----- /]
 [query public isReferenceMany(feature : EStructuralFeature) : Boolean = 
@@ -195,13 +195,16 @@
 
 [comment ---- Views related queries ----- /]
 [query public representationName(editionElement : PropertiesEditionElement, nameToCheck : String) : Boolean = 
-	editionElement.views->first().representation.name = nameToCheck/]
+	editionElement.views->first().representationName(nameToCheck)/]
 
 [query public representationName(view : ViewElement, nameToCheck : String) : Boolean = 
-	view.representation.name = nameToCheck/]
+	if view.representation.name.oclIsUndefined()
+	then false
+	else view.representation.name = nameToCheck
+	endif/]
 
 [comment ----- Editor ID queries ---------/]
-[query public editorIDSequence(editorElement : IdentifiedElement) : Sequence(T) = 
+[query public editorIDSequence(editorElement : IdentifiedElement) : Sequence(String) = 
 	editorElement.qualifiedIdentifier.tokenize('::')/]
 
 [query public identifiedElementKey(editorElement : IdentifiedElement) : String = 
@@ -213,7 +216,6 @@
 
 [query public canGeneratemodelNavigation(pee : PropertiesEditionElement) : Boolean = 
 	pee.hasModelNavigation() and pee.model.oclIsTypeOf(ecore::EAttribute) /]
-
 
 [comment --------------- Common templates --------------- /]
 [template public ecorePackageSignature(e : EStructuralFeature)]
@@ -341,10 +343,15 @@ Object
 [/if]
 [/template]
 
-[template public toPath(s : String)][s.substituteAll('.', '/')/][/template]
+[query public toPath(s : String) : String = s.substituteAll('.', '/')/]
 
-[comment][esc/][if (esc = 'class' or esc = 'package' or esc = 'default' or esc = 'case' or esc = 'if' or esc = 'else' or esc = 'while' or esc = 'for' or esc = 'do' or esc = 'until' or esc = 'transient' or esc = 'interface')]_[/if][/let][/comment]
-[template public toASCII(s : String)]
+[query public toASCII(s : String) : String 
+	= invoke('org.eclipse.emf.eef.codegen.services.StringUtilService', 'toASCII(java.lang.String)', Sequence{s}) /]
+
+[query public toUnicode(s : String) : String
+	= invoke('org.eclipse.emf.eef.codegen.services.StringUtilService', 'toUnicode(java.lang.String)', Sequence{s}) /]
+
+[comment][template public toASCII(s : String)]
 [s.substituteAll('à', 'a')
 	.substituteAll('é', 'e')
 	.substituteAll('è', 'e')
@@ -358,9 +365,10 @@ Object
 	.substituteAll('ü', 'u')
 	.substituteAll('û', 'u')
 	.substituteAll('-', '')/]
-[/template]
+[/template][/comment]
 
-[comment template used for the properties files to handle accents /]
+[comment] template used for the properties files to handle accents
+DEPRECATED. using now a java service to do so.
 [template public toUnicode(s : String)]
 [s.substituteAll('à', '\\u00E0').substituteAll('À', '\\u00C0')
 	.substituteAll('á', '\\u00E1').substituteAll('Á', '\\u00C1')
@@ -387,7 +395,7 @@ Object
 	.substituteAll('«', '\\u00AB').substituteAll('»', '\\u00BB')
 	.substituteAll('$', '\\u0024').substituteAll('€', '\\u20AC')
 	.substituteAll('\'', '\\u0027')/]
-[/template]
+[/template][/comment]
 
 [comment Sequence{1..s.size()}->
   iterate(i; result : String = "" |
@@ -409,32 +417,27 @@ Object
 	or s.firstChar() = '6' 
 	or s.firstChar() = '7' 
 	or s.firstChar() = '8' 
-	or s.firstChar() = '9'/][/comment]
+	or s.firstChar() = '9'/]
 
 [template public firstChar(s : String)]
 [if (s.oclIsUndefined())][''/][elseif (s = '')][''/][else][s.substring(1,1)/][/if]
 [/template]
+[/comment]
 
 [template public toJavaIdentifierDelegate(s : String)]
 [if (s.startsWithADigit())]_[/if][for (str : String | s.toASCII().tokenize(' '))][str.toUpperFirst()/][/for]
 [/template]
 
 [comment === escape some special keywords (java and EEF) /]
-[template public toJavaIdentifier(s : String)]
-[s.toJavaIdentifierDelegate().toLowerFirst().replaceAll('(?i)^((title)|(parent)|(abstract)|(continue)|(for)|(new)|(switch)|(assert)|(default)|(goto)|(package)|(synchronized)|(boolean)|(do)|(if)|(private)|(this)|(break)|(double)|(implements)|(protected)|(throw)|(byte)|(else)|(import)|(public)|(throws)|(case)|(enum)|(instanceof)|(return)|(transient)|(catch)|(extends)|(int)|(short)|(try)|(char)|(final)|(interface)|(static)|(void)|(class)|(finally)|(long)|(strictfp)|(volatile)|(const)|(float)|(native)|(super)|(while))$','$1_')/]
-[/template]
+[query public toJavaIdentifier(s : String) : String = s.toJavaIdentifierDelegate().toLowerFirst().replaceKeywords()/]
 
-[template public toJavaClassifier(s : String)]
-[s.toJavaIdentifier().toUpperFirst()/]
-[/template]
+[query public replaceKeywords(s : String) : String = s.replaceAll('(?i)^((title)|(parent)|(abstract)|(continue)|(for)|(new)|(switch)|(assert)|(default)|(goto)|(package)|(synchronized)|(boolean)|(do)|(if)|(private)|(this)|(break)|(double)|(implements)|(protected)|(throw)|(byte)|(else)|(import)|(public)|(throws)|(case)|(enum)|(instanceof)|(return)|(transient)|(catch)|(extends)|(int)|(short)|(try)|(char)|(final)|(interface)|(static)|(void)|(class)|(finally)|(long)|(strictfp)|(volatile)|(const)|(float)|(native)|(super)|(while))$','$1_')/]
 
-[template public toJavaMetamodelIdentifier(s : String)]
-[s.replaceAll('^(Class)$','$1_')/]
-[/template]
+[query public toJavaClassifier(s : String) : String = s.toJavaIdentifierDelegate().replaceKeywords().toUpperFirst()/]
 
-[template public toJavaConstant(s: String)]
-[s.toJavaIdentifier().toUpper()/]
-[/template]
+[query public toJavaMetamodelIdentifier(s : String) : String = s.replaceAll('^(Class)$','$1_')/]
+
+[query public toJavaConstant(s: String) : String = s.toJavaIdentifierDelegate().replaceKeywords().toUpper()/]
 
 [comment ==== For multiples model features getters (thanks to UML !) ==== /]
 [template public toMany(s: String)]
@@ -446,30 +449,19 @@ Object
 is
 [/template]
 
-[template public completePackage(eClassifier : EClassifier)]
-[ePackage.completePackage()/]
-[/template]
+[query public completePackage(eClassifier : EClassifier) : String = ePackage.completePackage()/]
 
 [template public completePackage(ePackage : EPackage)]
 [if ((not ePackage.associatedGenPackage().basePackage.oclIsUndefined()) and (ePackage.associatedGenPackage().basePackage.size() > 0))][ePackage.associatedGenPackage().basePackage/].[/if][ePackage.name/]
 [/template]
 
-[template public eefPackage(eClassifier : EClassifier, basePackage : String)]
-[eClassifier.ePackage.eefPackage(basePackage)/]
-[/template]
+[query public eefPackage(eClassifier : EClassifier, basePackage : String) : String = eClassifier.ePackage.eefPackage(basePackage)/]
 
 [template public eefPackage(ePackage : EPackage, basePackage : String)]
 [if ((not ePackage.associatedGenPackage().basePackage.oclIsUndefined()) and (ePackage.associatedGenPackage().basePackage.size() > 0))][basePackage/].[/if][ePackage.name/]
 [/template]
 
-[template public qualifiedName(eClassifier : EClassifier)]
-[eClassifier.completePackage()/].[eClassifier.name/]
-[/template]
-
-[comment @deprecated/]
-[template public qualifiedName(eClassifier : EClassifier, basePackage : String)]
-[eClassifier.completePackage()/].[eClassifier.name/]
-[/template]
+[query public qualifiedName(eClassifier : EClassifier) : String =  eClassifier.completePackage().concat('.').concat(eClassifier.name)/]
 
 [query public metamodelPrefix(ePackage : EPackage) : String =
 	if ePackage.nsURI= 'http://www.eclipse.org/emf/2002/Ecore'
@@ -491,16 +483,6 @@ is
 [template public metamodelPackage(eClassifier : EClassifier)]
 [eClassifier.ePackage.metamodelPackage()/]
 [/template]
-
-[comment @deprecated /]
-[comment][template public qualifiedMetamodelPackage(ePackage : EPackage, basePackage : String)]
-[ePackage.completePackage()/].[ePackage.metamodelPackage()/]
-[/template][/comment]
-
-[comment @deprecated /]
-[comment][template public qualifiedMetamodelPackage(eClassifier : EClassifier, basePackage : String)]
-[eClassifier.ePackage.qualifiedMetamodelPackage(basePackage)/]
-[/template][/comment]
 
 [template public qualifiedMetamodelPackage(ePackage : EPackage)]
 [ePackage.completePackage()/].[ePackage.metamodelPackage()/]
@@ -553,7 +535,7 @@ is
 	 element.eInverse()->select(oclIsTypeOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->first()/]
 
 [query public involvedPropertiesEditionElement(view : ViewElement, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	 pec.involvedEditionElements().oclAsType(PropertiesEditionElement)->select(views.oclAsType(ViewElement)->includes(view))->first()/]
+	 pec.involvedEditionElements()->select(views.oclAsType(ViewElement)->includes(view))->first()/]
 
 [query public involvedPropertiesEditionComponent(view : View) : PropertiesEditionComponent = 
 	if (view.eInverse()->select(oclIsTypeOf(PropertiesEditionComponent))->notEmpty())

@@ -12,18 +12,16 @@
  /]
 [module hboxSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'HorizontalBox')]
 import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'HorizontalBox')]
-create[container.name.toJavaClassifier()/]HBox(parent);
+return create[container.name.toJavaClassifier()/]HBox(parent);
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'HorizontalBox')]
@@ -47,4 +45,3 @@ create[container.name.toJavaClassifier()/]HBox(parent);
 		return parent;
 	}
 [/template]
-

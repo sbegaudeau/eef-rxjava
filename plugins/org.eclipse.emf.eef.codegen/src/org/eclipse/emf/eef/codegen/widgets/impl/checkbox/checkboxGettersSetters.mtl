@@ -12,22 +12,22 @@
  /]
 [module checkboxGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters /]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('Checkbox'))]
 [elementEditor.getterSignature()/] {
-		return Boolean.valueOf([elementEditor.name.toJavaIdentifier()/].getSelection());
+		return Boolean.valueOf([elementEditor.elementEditorName()/].getSelection());
 	}
 [/template]
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('Checkbox'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(newValue.booleanValue());
+			[elementEditor.elementEditorName()/].setSelection(newValue.booleanValue());
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(false);
+			[elementEditor.elementEditorName()/].setSelection(false);
 		}
 	}
 [/template]

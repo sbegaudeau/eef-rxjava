@@ -12,8 +12,8 @@
  /]
 [module PackagePropertiesEditionProvider('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, ePackage : EPackage)]
 	[file (peContext.fullFilePath(ePackage), false)]
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-import [if ((not peContext.associatedEMFGenModel(ePackage).basePackage.oclIsUndefined()) and (peContext.associatedEMFGenModel(ePackage).basePackage.size() > 0))][peContext.associatedEMFGenModel(ePackage).basePackage/].[/if][ePackage.name/].util.[ePackage.name.toJavaClassifier()/];
+import [if ((not peContext.associatedEMFGenModel(ePackage).basePackage.oclIsUndefined()) and (peContext.associatedEMFGenModel(ePackage).basePackage.size() > 0))][peContext.associatedEMFGenModel(ePackage).basePackage/].[/if][ePackage.name.toJavaIdentifier()/].util.[peContext.associatedEMFGenModel(ePackage).prefix/]AdapterFactory;
 [peContext.additionalImports()/]
 
 /**

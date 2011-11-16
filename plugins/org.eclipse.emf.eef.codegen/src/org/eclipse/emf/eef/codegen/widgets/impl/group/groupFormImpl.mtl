@@ -12,32 +12,29 @@
  /]
 [module groupFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetFormImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific form services for the moment /]
-[import widgetFormImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
-[template public implementation(editor : Container) overrides implementation ? (editor.representation.name = 'Group')]
-create[editor.name.toJavaClassifier()/]Group(widgetFactory, parent);
+[template public implementation(container : Container) overrides implementation ? (container.representation.name = 'Group')]
+return create[container.name.toJavaClassifier()/]Group(widgetFactory, parent);
 [/template]
 
-[template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Group')]
+[template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'Group')]
 	/**
-	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 * [container.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected Composite create[editor.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite parent) {
-		Section [editor.name.toJavaIdentifier()/]Section = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		[editor.name.toJavaIdentifier()/]Section.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);
-		GridData [editor.name.toJavaIdentifier()/]SectionData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]SectionData.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier()/]Section.setLayoutData([editor.name.toJavaIdentifier()/]SectionData);
-		Composite [editor.name.toJavaIdentifier()/]Group = widgetFactory.createComposite([editor.name.toJavaIdentifier()/]Section);
-		GridLayout [editor.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
-		[editor.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
-		[editor.name.toJavaIdentifier()/]Group.setLayout([editor.name.toJavaIdentifier()/]GroupLayout);
-		[editor.name.toJavaIdentifier()/]Section.setClient([editor.name.toJavaIdentifier()/]Group);
-		return [editor.name.toJavaIdentifier()/]Group;
+	protected Composite create[container.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite parent) {
+		Section [container.name.toJavaIdentifier()/]Section = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+		[container.name.toJavaIdentifier()/]Section.setText([container.owningViewsRepository().messagesProvider()/].[container.groupKey(container.owningView())/]);
+		GridData [container.name.toJavaIdentifier()/]SectionData = new GridData(GridData.FILL_HORIZONTAL);
+		[container.name.toJavaIdentifier()/]SectionData.horizontalSpan = 3;
+		[container.name.toJavaIdentifier()/]Section.setLayoutData([container.name.toJavaIdentifier()/]SectionData);
+		Composite [container.name.toJavaIdentifier()/]Group = widgetFactory.createComposite([container.name.toJavaIdentifier()/]Section);
+		GridLayout [container.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
+		[container.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
+		[container.name.toJavaIdentifier()/]Group.setLayout([container.name.toJavaIdentifier()/]GroupLayout);
+		[container.name.toJavaIdentifier()/]Section.setClient([container.name.toJavaIdentifier()/]Group);
+		return [container.name.toJavaIdentifier()/]Group;
 	}
 [/template]
-

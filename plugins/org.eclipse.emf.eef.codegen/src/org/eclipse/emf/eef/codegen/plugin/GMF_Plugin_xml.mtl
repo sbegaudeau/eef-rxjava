@@ -12,8 +12,8 @@
  /]
 [module GMF_Plugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public GMF_Plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
 	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
@@ -57,7 +57,7 @@
 				category="extended"
 				id="Stereotypes">
 			</propertyTab>
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent))]
+[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.explicit)]
 [for (view : View | pec.involvedViews()->asOrderedSet())][if (view.viewKey(pec) <> 'Base' and view.viewKey(pec) <> 'Propriétés' and view.viewKey(pec) <> 'Stéréotypes')]
 [editionContext.propertyTab(basePackage, view, pec)/]
@@ -72,7 +72,7 @@
 [else]
 		<propertySections contributorId="org.eclipse.gmf.runtime.diagram.ui.properties">
 [/if]
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.mustBeGenerated())]
+[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent)) ? (pec.mustBeGenerated())]
 [for (view : View | pec.views->asOrderedSet()) ? (view.explicit)]
 			<propertySection
 				class="[pec.qualifiedPropertySection(view)/]"
@@ -81,7 +81,7 @@
 [if (pec.involvedViews()->indexOf(view) = 1)]
 				tab="Base">
 [else]
-				tab="[pec.model.qualifiedName(pec.model.ePackage.associatedGenPackage().basePackage)/].[view.viewKey(pec).toASCII().replaceAll(' ', '_')/]">
+				tab="[pec.model.qualifiedName()/].[view.viewKey(pec).toASCII().replaceAll(' ', '_')/]">
 [/if]
 			</propertySection>
 [/for]
@@ -109,5 +109,5 @@ org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
 [/template]
 
 [query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
-	pec.involvedViews()->at(pec.involvedViews()->indexOf(view) - 1).oclAsType(View)/]
+	pec.involvedViews()->at(pec.involvedViews()->indexOf(view) - 1)/]
 

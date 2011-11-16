@@ -12,7 +12,7 @@
  /]
 [module naming('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/2002/GenModel')/]
 
-[import common /]
+[import org::eclipse::emf::eef::codegen::services::common /]
 
 [comment --------------------------------------------------------------------------
   Master packages management
@@ -22,7 +22,7 @@
 [/template]
 
 [template public contextCompletePackage(peContext : PropertiesEditionContext)]
-[if ((not peContext.associatedGenContext().basePackage.oclIsUndefined()) and (peContext.associatedGenContext().basePackage.size() > 0))][peContext.associatedGenContext().basePackage/].[/if][peContext.model.ecorePackage.name/]
+[if ((not peContext.associatedGenContext().basePackage.oclIsUndefined()) and (peContext.associatedGenContext().basePackage.size() > 0))][peContext.associatedGenContext().basePackage/].[/if][peContext.model.ecorePackage.name.replaceKeywords()/]
 [/template]
 
 [template public vrPackage(repository : ViewsRepository) post (trim())]
@@ -253,9 +253,9 @@ CompositePropertiesEditionPart
 [comment --------------------------------------------------------------------------
   Misc
  ---------------------------------------------------------------------------------- /]
-[template public viewClassifier(view : View)]
-[view.name.toJavaClassifier()/]
-[/template]
+[query public viewClassifier(view : View) : String = view.name.toJavaClassifier()/]
+
+[query public elementEditorName(editor : ElementEditor) : String = editor.name.toJavaIdentifier().disambiguation('view') /]
 
 [template public editionElementPackage(pee : PropertiesEditionElement)]
 [if (pee.model.eType.ePackage.name = 'ecore')]EcorePackage[else][pee.model.eType.ePackage.eInverse().oclAsType(EObject)->select(eClass().name = 'GenPackage')->asSequence()->first().oclAsType(GenPackage).prefix/]Package[/if]
@@ -271,7 +271,7 @@ CompositePropertiesEditionPart
 [/template]
 
 [template public viewKey(view : View, pec : PropertiesEditionComponent)]
-[if (view.name = pec.name or view.eInverse()->first().oclIsTypeOf(views::ViewReference))]Base[else][view.name/][/if]
+[if (view.name = pec.name or view.eInverse()->first().oclIsTypeOf(ViewReference))]Base[else][view.name/][/if]
 [/template]
 
 [template public viewIdentifier(view : View, pec : PropertiesEditionComponent)]

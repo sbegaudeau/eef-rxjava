@@ -12,20 +12,19 @@
  /]
 [module radioGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters /]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.getterSignature()/] {
-		if ([elementEditor.name.toJavaIdentifier()/]RadioViewer.getSelection() instanceof StructuredSelection) {
-			StructuredSelection sSelection = (StructuredSelection) [elementEditor.name.toJavaIdentifier()/]RadioViewer.getSelection();
+		if ([elementEditor.elementEditorName()/]RadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) [elementEditor.elementEditorName()/]RadioViewer.getSelection();
 			return sSelection.getFirstElement();
 		}
 		return null;
 	}
 [/template]
-
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('Radio'))]
 [elementEditor.initSignatureDocumentation()/]
@@ -49,7 +48,7 @@
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.setterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(new StructuredSelection(newValue));
+		[elementEditor.elementEditorName()/]RadioViewer.setSelection(new StructuredSelection(newValue));
 	}
 [/template]
 
@@ -83,8 +82,8 @@
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setInput(eenum.getELiterals());
-		[elementEditor.name.toJavaIdentifier()/]RadioViewer.setSelection(new StructuredSelection(current));
+		[elementEditor.elementEditorName()/]RadioViewer.setInput(eenum.getELiterals());
+		[elementEditor.elementEditorName()/]RadioViewer.setSelection(new StructuredSelection(current));
 	}
 [/template]
 

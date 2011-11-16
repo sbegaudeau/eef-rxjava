@@ -31,7 +31,6 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
@@ -40,6 +39,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchSite;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -89,9 +89,9 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 			if (selectedFiles != null) {
 				eefGenModels = initEEFGenModel();
 
-				IRunnableWithProgress runnable = new IRunnableWithProgress() {
+				WorkspaceModifyOperation runnable = new WorkspaceModifyOperation() {
 
-					public void run(IProgressMonitor monitor) throws InvocationTargetException,
+					public void execute(IProgressMonitor monitor) throws InvocationTargetException,
 							InterruptedException {
 						try {
 							if (eefGenModels != null && !monitor.isCanceled()) {
@@ -141,7 +141,7 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 		} catch (InvocationTargetException e) {
 			EEFCodegenPlugin.getDefault().logError(e);
 		} catch (InterruptedException e) {
-			// silently catch interrupted exceptions
+			// silently catch interrupted exceptions, ie CANCEL operations.
 		} catch (IOException e) {
 			EEFCodegenPlugin.getDefault().logError(e);
 		} finally {
@@ -154,7 +154,8 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
-		this.selectedFiles.clear();
+		selectedFiles.clear();
+		eefGenModels.clear();
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
 			for (Object selectedElement : sSelection.toList()) {

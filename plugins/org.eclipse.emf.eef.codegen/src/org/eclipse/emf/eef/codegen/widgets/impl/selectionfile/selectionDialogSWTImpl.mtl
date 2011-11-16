@@ -12,11 +12,9 @@
  /]
 [module selectionDialogSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'SelectionDialog')]
 import org.eclipse.swt.events.FocusAdapter;
@@ -25,34 +23,34 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('SelectionDialog'))]
-protected SelectionDialog [editor.name.toJavaIdentifier()/];
+	protected SelectionDialog [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('SelectionDialog'))]
-create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
+return create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representationName('SelectionDialog'))]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]SelectionDialog(Composite parent) {
-		[if (editor.nameAsLabel)]		
+		[if (editor.nameAsLabel)]
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		[editor.name.toJavaIdentifier()/] = new SelectionDialog(parent, SWT.NONE);
+		[editor.elementEditorName()/] = new SelectionDialog(parent, SWT.NONE);
 
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/].setLayoutData(generatorData);
+		[editor.elementEditorName()/].setLayoutData(generatorData);
 
-		[editor.name.toJavaIdentifier()/].addSelectionListener(new SelectionAdapter() {
+		[editor.elementEditorName()/].addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-					[editor.name.toJavaIdentifier()/]SelectionDialog();
+					[editor.elementEditorName()/]SelectionDialog();
 			}
 		});
 
-		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
+		[editor.elementEditorName()/].addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
@@ -61,10 +59,10 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.elementEditorName()/].getText()));
 			}
 		});
-		[editor.name.toJavaIdentifier()/].addKeyListener(new KeyAdapter() {
+		[editor.elementEditorName()/].addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
@@ -74,7 +72,7 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.elementEditorName()/].getText()));
 				}
 			}
 		});
@@ -82,14 +80,14 @@ create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 		return parent;
 	}
 	
-	protected void [editor.name.toJavaIdentifier()/]SelectionDialog() {
+	protected void [editor.elementEditorName()/]SelectionDialog() {
 	//[protected ('browse button selection dialog')]
 		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
 			Shell theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 			IFile['['/][']'/] file = WorkspaceResourceDialog.openFileSelection(theShell, "File Selection", "", false, null, null);
 			if(file.length == 1) {
-				[editor.name.toJavaIdentifier()/].setText(file['['/]0[']'/].getProject().getName() + "/" + file['['/]0[']'/].getProjectRelativePath().toString());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
+				[editor.elementEditorName()/].setText(file['['/]0[']'/].getProject().getName() + "/" + file['['/]0[']'/].getProjectRelativePath().toString());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.elementEditorName()/].getText()));
 			}
 		}
 	//[/protected]

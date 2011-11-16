@@ -12,42 +12,40 @@
  /]
 [module textareaSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Textarea')]
-	protected Text [editor.name.toJavaIdentifier()/];
+	protected Text [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Textarea')]
-create[editor.name.toJavaClassifier()/]Textarea(parent);
+return create[editor.name.toJavaClassifier()/]Textarea(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Textarea')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Textarea(Composite parent) {
-		[if (editor.nameAsLabel)]		
-		Label [editor.name.toJavaIdentifier()/]Label = SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		[if (editor.nameAsLabel)]
+		Label [editor.elementEditorName()/]Label = SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
-		Label [editor.name.toJavaIdentifier()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
-		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		GridData [editor.elementEditorName()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/]LabelData.horizontalSpan = 3;
+		[editor.elementEditorName()/]Label.setLayoutData([editor.elementEditorName()/]LabelData);
+		[editor.elementEditorName()/] = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier()/]Data.heightHint = 80;
-		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		[editor.name.toJavaIdentifier()/].addFocusListener(new FocusAdapter() {
+		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/]Data.horizontalSpan = 2;
+		[editor.elementEditorName()/]Data.heightHint = 80;
+		[editor.elementEditorName()/]Data.widthHint = 200;
+		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
+		[editor.elementEditorName()/].addFocusListener(new FocusAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -57,12 +55,12 @@ create[editor.name.toJavaClassifier()/]Textarea(parent);
 			 */
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.elementEditorName()/].getText()));
 			}
 
 		});
-		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
-		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
+		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}

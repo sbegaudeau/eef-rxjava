@@ -12,11 +12,11 @@
  /]
 [module PropertiesEditionPart('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import naming /]
-[import common /]
-[import viewCommon /]
-[import widgetGettersSetters /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetSWTImpl /]
 
 [comment Defines the default imports for a Form Part.
 	@param pec the PropertiesEditionComponent associated to the view
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->notEmpty())]
+[if (view.eAllContents(ElementEditor)->notEmpty())]
 import org.eclipse.osgi.util.NLS;
 [/if]
 import org.eclipse.swt.SWT;
@@ -50,42 +50,42 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 
-[for (ePackage : EPackage | pec.involvedEditionElements().oclAsType(PropertiesEditionElement).model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(EClass).ePackage))]
+[for (ePackage : EPackage | pec.involvedEditionElements().model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(EClass).ePackage))]
 import [ePackage.qualifiedMetamodelPackage()/];
 [/for]
-[for (viewRepository : ViewsRepository | pec.involvedViews().oclAsType(views::View).owningViewsRepository()->asSet())]
+[for (viewRepository : ViewsRepository | pec.involvedViews().owningViewsRepository()->asSet())]
 import [viewRepository.qualifiedMessagesProvider()/];
 [/for]
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
+[if (view.eAllContents(ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 [/if]
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import [view.pepQualifiedInterface()/];
-[for (widget : Widget | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet()) ? (not widget.oclIsUndefined())]
+[for (widget : Widget | view.eAllContents(ElementEditor).representation->asSet()) ? (not widget.oclIsUndefined())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
-[for (widget : Widget | view.eAllContents(views::Container).oclAsType(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
+[for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
-[for (viewsRepository : ViewsRepository | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference).view.oclAsType(views::View).owningViewsRepository()->append(view.owningViewsRepository()))]
+[for (viewsRepository : ViewsRepository | view.eAllContents(ViewReference).view.oclAsType(View).owningViewsRepository()->append(view.owningViewsRepository()))]
 import [viewsRepository.vrQualifiedClass()/];
 [/for]
-[if (view.eAllContents(views::ViewReference)->notEmpty() or view.eAllContents(views::View)->notEmpty())]
+[if (view.eAllContents(ViewReference)->notEmpty() or view.eAllContents(View)->notEmpty())]
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-[for (viewRef : ViewReference | view.eAllContents(views::ViewReference).oclAsType(views::ViewReference)) ]
-import [viewRef.view.oclAsType(views::View).pepQualifiedInterface()/];
-	[for (widget : Widget | viewRef.view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor).representation->asSet())]
+[for (viewRef : ViewReference | view.eAllContents(ViewReference)) ]
+import [viewRef.view.oclAsType(View).pepQualifiedInterface()/];
+	[for (widget : Widget | viewRef.view.eAllContents(ElementEditor).representation->asSet())]
 [widget.manageImports(pec, view, basePackage)/]
 	[/for]
 [/for]
-[for (subView : View | view.elements->select(oclIsKindOf(views::View))) ]
+[for (subView : View | view.elements->filter(View)) ]
 import [subView.pepQualifiedInterface()/];
 [/for]
 [/if]
@@ -110,13 +110,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import [pec.model.qualifiedName(basePackage)/];
+import [pec.model.qualifiedName()/];
 import [view.pepQualifiedInterface()/];
 [/template]
 
 [template public PropertiesEditionPart(peContext : PropertiesEditionContext, basePackage : String)]
 [for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
-[for (view : View | inputPEC.involvedViews()) ? (view.oclIsTypeOf(views::View))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
+[for (view : View | inputPEC.involvedViews()) ? (view.oclIsTypeOf(View))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
 	then inputPEC
 	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(PropertiesEditionComponent)
 	endif]
@@ -140,9 +140,9 @@ package [view.partsImplPackage()/];
  */
 public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
 
-[for (element : ViewElement | view.eAllContents()) ? (element.oclIsKindOf(ElementEditor))][let editor : ElementEditor = element.oclAsType(ElementEditor)]
+[for (editor : ElementEditor | view.eAllContents(ElementEditor))]
 [editor.widgetDeclaration()/]
-[/let][/for]
+[/for]
 [comment managing ViewReferences/]
 [view.widgetDeclarationForViewReference()/]
 [comment managing ViewReferences/]
@@ -186,10 +186,16 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsKindOf(views::CustomElementEditor) and owningView() = view))]
+				[for (aView : ViewElement | view.eAllContents(ViewElement)->select(owningView() = view))]
+					[if (oclIsKindOf(CustomElementEditor))]
+				// [protected ('for '.concat(aView.name).concat(' addToPart creation'))]
+				
+				// [/protected]
+					[else]
 				if (key == [aView.editorID()/][if (aView.oclIsKindOf(Container))].class[/if]) {
-					return [aView.implementation()/]
+					[aView.implementation()/]
 				}
+					[/if]
 				[/for]
 				return parent;
 			}
@@ -207,14 +213,11 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 	[/if][/comment]
 	}
 
-[for (aView : ViewElement | view.eAllContents(views::ViewElement).oclAsType(views::ViewElement)->select(not oclIsTypeOf(views::CustomElementEditor) and owningView() = view)) ]
+[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\n')]
 [aView.additionalImplementation(pec, inputPEC)/]
-
 [/for]
-
-[for (subView : View | view.elements->select(oclIsKindOf(views::View))) ]
+[for (subView : View | view.elements->filter(View)) separator ('\n')]]
 [subView.additionalImplementation(pec, inputPEC)/]
-
 [/for]
 
 	/**
@@ -230,12 +233,11 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 		// [/protected]
 	[/if]
 	}
-[for (elementEditor : ElementEditor | view.eAllContents(views::ElementEditor).oclAsType(views::ElementEditor)->select(not oclIsTypeOf(views::CustomElementEditor) and owningView() = view))]
 
+[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\n')]
 [elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
 
 [elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
-
 [/for]
 
 [comment managing viewReference/]
@@ -245,7 +247,7 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 [view.elementEditorGetterSettersForSubViews(pec, basePackage)/]
 
 [if (not peContext.associatedGenModel().useJMergeForUserCode)]
-[for (viewElement : ViewElement | view.eAllContents(views::CustomElementEditor).oclAsType(views::CustomElementEditor)->select(owningView() = view))]
+[for (viewElement : ViewElement | view.eAllContents(CustomElementEditor)->select(owningView() = view))]
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters implementation'))]
 	
 	// [/protected]
@@ -269,7 +271,7 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 [/file]
 [/if]
 [/let][/for]
-[for (view : View | inputPEC.involvedViews()) ? (inputPEC.explicit and view.oclIsTypeOf(views::CustomView))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
+[for (view : View | inputPEC.involvedViews()) ? (inputPEC.explicit and view.oclIsTypeOf(CustomView))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
 	then inputPEC
 	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(PropertiesEditionComponent)
 	endif]

@@ -12,22 +12,20 @@
  /]
 [module imageViewerSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'ImageViewer')]
 import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('ImageViewer'))]
-	protected EEFImageViewer [editor.name.toJavaIdentifier()/];
+	protected EEFImageViewer [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('ImageViewer'))]
-		create[editor.name.toJavaClassifier()/]ImageViewer(parent);
+return create[editor.name.toJavaClassifier()/]ImageViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representationName('ImageViewer'))]
@@ -35,37 +33,37 @@ import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ImageViewer(Composite parent) {
-		[if (editor.nameAsLabel)]		
+		[if (editor.nameAsLabel)]
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		[editor.name.toJavaIdentifier()/] = new EEFImageViewer(parent, SWT.BORDER);
+		[editor.elementEditorName()/] = new EEFImageViewer(parent, SWT.BORDER);
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData();
+		GridData [editor.elementEditorName()/]Data = new GridData();
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
 		[defaultLayoutData()/]
 		// [/protected]
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
+		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
+		[editor.elementEditorName()/].addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.viewCompletePackageGetter()/]));
 			}
 		});
-		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
+		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 [/template]
 
 [template private defaultLayoutData (editor : ElementEditor) ]
-		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.horizontalAlignment = SWT.CENTER;
-		[editor.name.toJavaIdentifier()/]Data.verticalAlignment = SWT.CENTER;
+		[editor.elementEditorName()/]Data.widthHint = 200;
+		[editor.elementEditorName()/]Data.heightHint = 200;
+		[editor.elementEditorName()/]Data.horizontalAlignment = SWT.CENTER;
+		[editor.elementEditorName()/]Data.verticalAlignment = SWT.CENTER;
 
 [/template]

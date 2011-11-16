@@ -12,9 +12,9 @@
  /]
 [module eobjectflatcomboviewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters/]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
@@ -47,8 +47,8 @@
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.getterSignature()/] {
-		if ([elementEditor.name.toJavaIdentifier()/].getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
+		if ([elementEditor.elementEditorName()/].getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) [elementEditor.elementEditorName()/].getSelection()).getFirstElement();
 			if (firstElement instanceof EObject)
 				return (EObject) firstElement;
 		}
@@ -58,7 +58,7 @@
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.getterSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].getSelection();
+		return [elementEditor.elementEditorName()/].getSelection();
 	}
 [/template]
 
@@ -110,9 +110,9 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(newValue));
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 [/template]
@@ -120,9 +120,9 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(newValue));
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
 	}
 [/template]
@@ -145,25 +145,25 @@
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
+		[elementEditor.elementEditorName()/].setInput(settings);
 		if (current != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(settings.getValue()));
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 [/template]
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
+		[elementEditor.elementEditorName()/].setInput(settings);
 		if (current != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(settings.getValue()));
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(settings.getValue()));
 		}
 	}
 [/template]
 
 [template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.addBusinessFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].addBusinessRuleFilter(filter);
+		[elementEditor.elementEditorName()/].addBusinessRuleFilter(filter);
 	}
 [/template]
 

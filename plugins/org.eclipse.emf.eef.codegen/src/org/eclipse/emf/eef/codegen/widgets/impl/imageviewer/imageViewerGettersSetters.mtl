@@ -12,14 +12,14 @@
  /]
 [module imageViewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters/]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [comment ================== Getter generation ================== /]
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('ImageViewer'))]
 [elementEditor.getterSignature()/] {
-		ISelection selection = [elementEditor.name.toJavaIdentifier()/].getSelection();
+		ISelection selection = [elementEditor.elementEditorName()/].getSelection();
 		if (selection instanceof StructuredSelection && ((StructuredSelection)selection).getFirstElement() instanceof String) {
 			return (String)((StructuredSelection)selection).getFirstElement();
 		}
@@ -59,9 +59,9 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('ImageViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(newValue));
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
 [/template]
@@ -77,9 +77,9 @@
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('ImageViewer'))]
 [elementEditor.initSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].initViewer(key, newValue);
+			[elementEditor.elementEditorName()/].initViewer(key, newValue);
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].initViewer(key, ""); //$NON-NLS-1$
+			[elementEditor.elementEditorName()/].initViewer(key, ""); //$NON-NLS-1$
 		}
 	}
 [/template]

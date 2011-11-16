@@ -38,7 +38,7 @@ public class EEFLauncher {
 				List<Object> arguments = new ArrayList<Object>();
 				arguments.add(args[2]);
 				
-				monitor.subTask("Loading templates...");
+				monitor.subTask("Loading...");
 				org.eclipse.emf.eef.codegen.launcher.EEFLauncher launcher = new org.eclipse.emf.eef.codegen.launcher.EEFLauncher(modelURI, folder, arguments);
 				monitor.worked(1);
 				monitor.subTask("Generating using "

@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module widgetGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0')/]
+[module widgetGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import common/]
 [import naming/]
@@ -307,7 +307,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public setterButtonModeSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.setterButtonModeSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setButtonMode(newValue);
+		[elementEditor.elementEditorName()/].setButtonMode(newValue);
 	}
 [/template]
 
@@ -322,7 +322,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public updateSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.updateSignature()/] {
-	[elementEditor.name.toJavaIdentifier()/].refresh();
+	[elementEditor.elementEditorName()/].refresh();
 }
 [/template]
 
@@ -338,7 +338,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 
 [template public addFilterSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.addFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].addFilter(filter);
+		[elementEditor.elementEditorName()/].addFilter(filter);
 	}
 [/template]
 

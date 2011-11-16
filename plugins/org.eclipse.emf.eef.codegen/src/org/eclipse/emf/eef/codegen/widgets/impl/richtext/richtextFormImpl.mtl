@@ -12,11 +12,9 @@
  /]
 [module richtextFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetFormImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific form services for the moment /]
-[import widgetFormImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'RichText')]
 import org.eclipse.epf.richtext.IRichText;
@@ -50,50 +48,50 @@ import org.eclipse.epf.richtext.actions.UnderlineAction;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'RichText')]
-protected RichText [editor.name.toJavaIdentifier()/];
+	protected RichText [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'RichText')]
-create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
+return create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'RichText')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]RichText(FormToolkit widgetFactory, Composite parent) {
-		[if (editor.nameAsLabel)]		
-		Label [editor.name.toJavaIdentifier()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		[if (editor.nameAsLabel)]
+		Label [editor.elementEditorName()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		Label [editor.name.toJavaIdentifier()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]LabelData.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier()/]Label.setLayoutData([editor.name.toJavaIdentifier()/]LabelData);
+		GridData [editor.elementEditorName()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/]LabelData.horizontalSpan = 2;
+		[editor.elementEditorName()/]Label.setLayoutData([editor.elementEditorName()/]LabelData);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 		Composite toolbarContainer = widgetFactory.createComposite(parent);
 		toolbarContainer.setLayout(new GridLayout(2, false));
 		GridData toolbarData = new GridData(GridData.FILL_HORIZONTAL);
 		toolbarData.horizontalSpan = 3;
 		toolbarContainer.setLayoutData(toolbarData);
-		RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, [editor.name.toJavaIdentifier()/]);
-		[editor.name.toJavaIdentifier()/] = new RichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		[editor.name.toJavaIdentifier()/].setEditable(true);
+		RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, [editor.elementEditorName()/]);
+		[editor.elementEditorName()/] = new RichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		[editor.elementEditorName()/].setEditable(true);
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier()/]Data.heightHint = 200;
-		[editor.name.toJavaIdentifier()/]Data.widthHint = 200;
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
+		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/]Data.horizontalSpan = 3;
+		[editor.elementEditorName()/]Data.heightHint = 200;
+		[editor.elementEditorName()/]Data.widthHint = 200;
+		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 
-		[editor.name.toJavaIdentifier()/].addModifyListener(new ModifyListener() {
+		[editor.elementEditorName()/].addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
-				propertiesEditionComponent.delayedFirePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editorID(editor)/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.name.toJavaIdentifier()/].getText()));
+				propertiesEditionComponent.delayedFirePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editorID(editor)/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, [editor.elementEditorName()/].getText()));
 			}
 		});
 
-		fillToolBar(toolBar, [editor.name.toJavaIdentifier()/]);
+		fillToolBar(toolBar, [editor.elementEditorName()/]);
 		return parent;
 	}
 
@@ -153,4 +151,3 @@ create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 		toolBar.addAction(new AddTableAction(richText));
 
 [/template]
-

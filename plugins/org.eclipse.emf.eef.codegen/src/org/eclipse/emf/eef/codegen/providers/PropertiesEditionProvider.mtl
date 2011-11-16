@@ -12,8 +12,8 @@
  /]
 [module PropertiesEditionProvider('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public PropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
@@ -25,7 +25,7 @@ package [pec.providersPackage()/];
 import java.util.List;
 
 import [pec.model.completePackage()/].[pec.model.metamodelPackage()/];
-import [pec.model.qualifiedName(basePackage)/];
+import [pec.model.qualifiedName()/];
 import [pec.pecRootProviderQualifiedClass()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -37,7 +37,7 @@ import [pec.model.completePackage()/].components.[pec.pecClass()/];
 [for (view : View | pec.views)]
 import [pec.model.completePackage()/].components.[pec.subPECClass(view)/];
 [/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent)))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
 	[for (view : View | subPec.views) ? (view.explicit)]
 import [subPec.model.ePackage.completePackage()/].components.[subPec.subPECClass(view)/];
 	[/for]
@@ -126,8 +126,8 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 			if ([pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part))
 				return new [pec.subPECClass(view)/](editingContext, editingContext.getEObject(), mode);
 [/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
+	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
 			if ([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part))
 				return new [subPec.pecClass()/](editingContext, editingContext.getEObject(), mode);
 	[/for]
@@ -148,8 +148,8 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 				&& refinement == [pec.subPECClass(view)/].class)
 				return new [pec.subPECClass(view)/](editingContext, editingContext.getEObject(), mode);
 [/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent)))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
+	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
 			if ([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part)
 				&& refinement == [subPec.pecClass()/].class)
 				return new [subPec.pecClass()/](editingContext, editingContext.getEObject(), mode);
@@ -175,14 +175,14 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 [/template]
 
 [template public providePart(pec : PropertiesEditionComponent)]
-[let view : View = pec.views->select(v:views::View | v.explicit)->first()]
+[let view : View = pec.views->select(explicit)->first()]
 [if (not view.oclIsUndefined())][for (v : View | pec.views) separator (' || ') ? (v.explicit)]
 [pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part)[/for][/if]
-[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))->first().oclAsType(PropertiesEditionComponent)]
-[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:views::View | v.explicit and v.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))->first()]
+[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->filter(PropertiesEditionComponent)->first()]
+[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:View | v.explicit and v.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))->first()]
 [if (not view2.oclIsUndefined())][if (not view.oclIsUndefined())] || [/if]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))) separator (' || ')]
-[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) separator (' || ')]
+[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
 [subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part)[/for][/for]
 [/if][/let][/if]
 [/let]
@@ -197,14 +197,14 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 [/template]
 
 [template public provideClass(pec : PropertiesEditionComponent)]
-[let view : View = pec.views->select(v:views::View | v.explicit)->first()]
+[let view : View = pec.views->select(explicit)->first()]
 [if (not view.oclIsUndefined())][for (v : View | pec.views) separator (' || ') ? (v.explicit)]
 refinement == [pec.subPECClass(v)/].class[/for][/if]
-[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))->first().oclAsType(PropertiesEditionComponent)]
-[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:views::View | v.explicit and v.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))->first()]
+[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->filter(PropertiesEditionComponent)->first()]
+[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:View | v.explicit and v.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))->first()]
 [if (not view2.oclIsUndefined())][if (not view.oclIsUndefined())] || [/if]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))) separator (' || ')]
-[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) separator (' || ')]
+[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
 refinement == [subPec.pecClass()/].class[/for][/for]
 [/if][/let][/if]
 [/let]
@@ -220,14 +220,14 @@ refinement == [subPec.pecClass()/].class[/for][/for]
 [/template]
 
 [template public providePartAndClass(pec : PropertiesEditionComponent)]
-[let view : View = pec.views->select(v:views::View | v.explicit)->first()]
+[let view : View = pec.views->select(explicit)->first()]
 [if (not view.oclIsUndefined())][for (v : View | pec.views) separator (' || ') ? (v.explicit)]
 ([pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part) && refinement == [pec.subPECClass(v)/].class)[/for][/if]
-[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))->first().oclAsType(PropertiesEditionComponent)]
-[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:views::View | v.explicit and v.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))->first()]
+[if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->filter(PropertiesEditionComponent)->first()]
+[if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:View | v.explicit and v.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))->first()]
 [if (not view2.oclIsUndefined())][if (not view.oclIsUndefined())] || [/if]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))) separator (' || ')]
-[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->select(oclIsKindOf(views::View)).oclAsType(views::View)->excludesAll(pec.views->asSequence()))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) separator (' || ')]
+[for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
 ([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part) && refinement == [subPec.pecClass()/].class)[/for][/for]
 [/if][/let][/if]
 [/let]

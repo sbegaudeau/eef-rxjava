@@ -12,11 +12,9 @@
  /]
 [module eobjectflatcomboviewerFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetFormImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific form services for the moment /]
-[import widgetFormImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [comment ===== Case Widget = EObjectFlatComboViewer ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'EObjectFlatComboViewer')]
@@ -31,11 +29,11 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'EObjectFlatComboViewer')]
-protected EObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
+	protected EObjectFlatComboViewer [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
-create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
+return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
@@ -45,21 +43,21 @@ create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		[if (editor.nameAsLabel)]		
+		[if (editor.nameAsLabel)]
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		[editor.name.toJavaIdentifier()/] = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
-		widgetFactory.adapt([editor.name.toJavaIdentifier()/]);
-		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		[editor.elementEditorName()/] = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		widgetFactory.adapt([editor.elementEditorName()/]);
+		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
+		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
+		[editor.elementEditorName()/].addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
@@ -72,7 +70,7 @@ create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 			}
 
 		});
-		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
+		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
@@ -98,12 +96,12 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-protected AdvancedEObjectFlatComboViewer [editor.name.toJavaIdentifier()/];
-	protected ViewerFilter [editor.name.toJavaIdentifier()/]Filter;
+	protected AdvancedEObjectFlatComboViewer [editor.elementEditorName()/];
+	protected ViewerFilter [editor.elementEditorName()/]Filter;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
+return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
@@ -113,7 +111,7 @@ create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		[if (editor.nameAsLabel)]		
+		[if (editor.nameAsLabel)]
 		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
@@ -132,18 +130,17 @@ create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFactory);
 
 		};
 		//create widget
-		[editor.name.toJavaIdentifier()/] = new AdvancedEObjectFlatComboViewer([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], resourceSet, [editor.name.toJavaIdentifier()/]Filter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
-		[editor.name.toJavaIdentifier()/].createControls(parent, widgetFactory);
+		[editor.elementEditorName()/] = new AdvancedEObjectFlatComboViewer([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], resourceSet, [editor.elementEditorName()/]Filter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+		[editor.elementEditorName()/].createControls(parent, widgetFactory);
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		[editor.name.toJavaIdentifier()/].setID([editor.editorID()/]);
+		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
+		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 [/template]
-

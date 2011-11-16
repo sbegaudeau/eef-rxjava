@@ -79,17 +79,18 @@ public class GenerateAll {
 	 */
 	public void doGenerate(IProgressMonitor monitor) throws IOException {
 		if (!targetFolder.exists()) {
-			monitor.subTask("Creating target folder");
+			monitor.beginTask("Creating target folder", 1);
 			targetFolder.mkdirs();
 			monitor.worked(1);
 		}
 
 		List<Object> arguments = new ArrayList<Object>();
-		monitor.subTask("Loading templates...");
+		monitor.beginTask("Loading...", 1);
 		org.eclipse.emf.eef.codegen.launcher.EEFLauncher launcher = new org.eclipse.emf.eef.codegen.launcher.EEFLauncher(
 				eefGenModel, targetFolder, arguments);
 		monitor.worked(1);
-		monitor.subTask("Generating EEF code using " + eefGenModel.eResource().getURI().lastSegment() + "...");
+		monitor.beginTask("Generating EEF code using " + eefGenModel.eResource().getURI().lastSegment()
+				+ "...", 1);
 		launcher.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN)));
 		monitor.worked(1);
 		for (AbstractPropertiesGeneratorLauncher abstractPropertiesGeneratorLauncher : PropertiesGeneratorLaunchersServices

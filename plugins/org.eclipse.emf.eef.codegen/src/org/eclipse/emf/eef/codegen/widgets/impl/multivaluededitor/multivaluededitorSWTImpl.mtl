@@ -12,11 +12,9 @@
  /]
 [module multivaluededitorSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'MultiValuedEditor')]
 import java.util.ArrayList;
@@ -52,27 +50,27 @@ import org.eclipse.swt.widgets.Text;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'MultiValuedEditor')]
-	protected Text [editor.name.toJavaIdentifier()/];
-	protected Button edit[editor.name.toJavaClassifier()/];
-	private EList [editor.name.toJavaIdentifier()/]List;
+	protected Text [editor.elementEditorName()/];
+	protected Button edit[editor.name.toJavaClassifier().disambiguation('view')/];
+	private EList [editor.elementEditorName()/]List;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'MultiValuedEditor')]
-create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
+return create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
 	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
-		[editor.name.toJavaIdentifier()/] = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
+		[editor.elementEditorName()/] = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]Data.horizontalSpan = 2;
-		[editor.name.toJavaIdentifier()/].setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		EditingUtils.setID([editor.name.toJavaIdentifier()/], [editor.editorID()/]);
-		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/], "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
+		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/]Data.horizontalSpan = 2;
+		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
+		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		edit[editor.name.toJavaClassifier()/] = new Button(parent, SWT.NONE);
 		edit[editor.name.toJavaClassifier()/].setText(getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]));
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
@@ -86,17 +84,17 @@ create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						[editor.name.toJavaIdentifier()/].getShell(), "[pec.model.name/]", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						[editor.name.toJavaIdentifier()/]List, [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), null,
+						[editor.elementEditorName()/].getShell(), "[pec.model.name/]", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						[editor.elementEditorName()/]List, [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), null,
 						false, true, 
 						null, null);
 				if (dialog.open() == Window.OK) {
-					[editor.name.toJavaIdentifier()/]List = dialog.getResult();
-					if ([editor.name.toJavaIdentifier()/]List == null) {
-						[editor.name.toJavaIdentifier()/]List = new BasicEList();
+					[editor.elementEditorName()/]List = dialog.getResult();
+					if ([editor.elementEditorName()/]List == null) {
+						[editor.elementEditorName()/]List = new BasicEList();
 					}
-					[editor.name.toJavaIdentifier()/].setText([editor.name.toJavaIdentifier()/]List.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList([editor.name.toJavaIdentifier()/]List)));
+					[editor.elementEditorName()/].setText([editor.elementEditorName()/]List.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList([editor.elementEditorName()/]List)));
 					setHasChanged(true);
 				}
 			}
@@ -106,4 +104,3 @@ create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 		return parent;
 	}
 [/template]
-

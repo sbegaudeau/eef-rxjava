@@ -38,7 +38,7 @@ public class GMF1DescriptorsGeneratorLauncher extends AbstractPropertiesGenerato
 	public void doGenerate(EEFGenModel eefGenModel, File targetFolder, IProgressMonitor monitor) {
 		if (!monitor.isCanceled()) {
 			List<Object> arguments = new ArrayList<Object>();
-			monitor.subTask("Loading templates...");
+			monitor.subTask("Loading ...");
 			try {
 				org.eclipse.emf.eef.codegen.launcher.GMF1DescriptorsGeneratorLauncher launcher = new org.eclipse.emf.eef.codegen.launcher.GMF1DescriptorsGeneratorLauncher(
 						eefGenModel, targetFolder, arguments);

@@ -12,10 +12,9 @@
  /]
 [module flatreferencestableGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters/]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
-
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [template public getterDeclaration(elementEditor : ElementEditor) overrides getterDeclaration ? (elementEditor.representationName('FlatReferencesTable'))]
 [/template]
@@ -109,24 +108,24 @@
 [elementEditor.initSignature()/] {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
+		[elementEditor.elementEditorName()/].setInput(settings);
 	}
 [/template]
 
 [template public addFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.addFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].addFilter(filter);
+		[elementEditor.elementEditorName()/].addFilter(filter);
 	}
 [/template]
 
 [template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.addBusinessFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].addBusinessRuleFilter(filter);
+		[elementEditor.elementEditorName()/].addBusinessRuleFilter(filter);
 	}
 [/template]
 
 [template public isContainedInTableSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('FlatReferencesTable'))]
 [elementEditor.isContainedInTableSignature()/] {
-		return ((ReferencesTableSettings)[elementEditor.name.toJavaIdentifier()/].getInput()).contains(element);
+		return ((ReferencesTableSettings)[elementEditor.elementEditorName()/].getInput()).contains(element);
 	}
 [/template]

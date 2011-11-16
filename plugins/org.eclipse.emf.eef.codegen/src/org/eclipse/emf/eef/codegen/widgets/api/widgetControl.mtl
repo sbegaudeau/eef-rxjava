@@ -15,9 +15,9 @@
  /]
 [module widgetControl('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
 
-[import naming /]
-[import common /]
-[import filters /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::filters /]
 
 [comment ===== Widget generation API ===== /]
 
@@ -51,7 +51,7 @@
 
 [template public liveUpdaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
-[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->select(views->first().ownedBy(v)))]
+[for (editionElement : PropertiesEditionElement | pec.properties->filter(PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 [editionElement.liveUpdater(v, pec)/]
 [/for]
 [comment][if (v.referencedViews()->notEmpty())][v.liveUpdaterForReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))->first().oclAsType(PropertiesEditionComponent))/][/if][/comment]
@@ -61,7 +61,7 @@
 [template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
 		[view.viewIdentifier(pec)/].get[v.name.toJavaClassifier()/]ReferencedView().setContext(elt, allResource);
-[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->select(views->first().ownedBy(v)))]
+[for (editionElement : PropertiesEditionElement | pec.properties->filter(PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 [editionElement.updater(v, pec)/]
 [/for]
 [comment][if (v.referencedViews()->notEmpty())][v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))->first().oclAsType(PropertiesEditionComponent), pec)/][/if][/comment]
@@ -70,7 +70,7 @@
 
 [template public updaterForSubReferencedViews(view : View, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
-[for (editionElement : PropertiesEditionElement | pec.properties->select(oclIsKindOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->select(views->first().ownedBy(v)))]
+[for (editionElement : PropertiesEditionElement | pec.properties->filter(PropertiesEditionElement)->select(views->first().ownedBy(v)))]
 [editionElement.updater(v, inputPEC)/]
 [/for]
 [comment][if (v.referencedViews()->notEmpty())][v.updaterForSubReferencedViews(pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))->first().oclAsType(PropertiesEditionComponent), inputPEC)/][/if][/comment]

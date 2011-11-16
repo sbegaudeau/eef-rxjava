@@ -12,9 +12,9 @@
  /]
 [module singlecompositionviewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters /]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('SingleCompositionViewer'))]
 [elementEditor.initSignatureDocumentation()/]
@@ -43,7 +43,7 @@
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('SingleCompositionViewer'))]
 [elementEditor.getterSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].getElement();
+		return [elementEditor.elementEditorName()/].getElement();
 	}
 [/template]
 
@@ -72,19 +72,19 @@
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('SingleCompositionViewer'))]
 [elementEditor.initSignature()/] {
-		this.[elementEditor.name.toJavaIdentifier()/].setInput(current, feature, resourceSet);
-		this.[elementEditor.name.toJavaIdentifier()/].init(editingDomain);
+		this.[elementEditor.elementEditorName()/].setInput(current, feature, resourceSet);
+		this.[elementEditor.elementEditorName()/].init(editingDomain);
 		if (current != null) {
-			this.[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(current), feature);
+			this.[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(current), feature);
 		}
-		[elementEditor.name.toJavaIdentifier()/].refresh();
+		[elementEditor.elementEditorName()/].refresh();
 
 	}
 [/template]
 
-[template public setterSignatureDocumentation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('SingleCompositionViewer'))]
+[template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('SingleCompositionViewer'))]
 [elementEditor.setterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].update(newValue);
+		[elementEditor.elementEditorName()/].update(newValue);
 	}
 [/template]
 
@@ -95,9 +95,6 @@
 	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EObject current, EReference containingFeature, EReference feature, EditingDomain editingDomain)
 	 */
 [/template]
-
-
-
 
 [template public addControlListenerSignatureDocumentation(elementEditor : ElementEditor)]
 	/**
@@ -112,7 +109,7 @@
 
 [template public addControlListenerSignatureImplementation(elementEditor : ElementEditor)]
 [elementEditor.addControlListenerSignature() /] {
-		[elementEditor.name.toJavaIdentifier()/].addControlListener(listener);
+		[elementEditor.elementEditorName()/].addControlListener(listener);
 	}
 [/template]
 

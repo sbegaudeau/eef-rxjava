@@ -12,8 +12,8 @@
  /]
 [module PackagePropertiesEditionPartProvider('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public PackagePropertiesEditionPartProvider(v : ViewsRepository)]
 	[file (v.fullFilePath(), false)]
@@ -24,7 +24,7 @@ import [v.vrPackage()/]parts.[v.vrClass()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-[for (view : View | v.eAllContents(views::View)) ? (view.elements->size() > 0)]
+[for (view : View | v.eAllContents(View)) ? (view.elements->size() > 0)]
 import [view.pepQualifiedFormClass()/];
 import [view.pepQualifiedClass()/];
 [/for]
@@ -53,7 +53,7 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 	 * [v.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
-		[for (view : View | v.eAllContents(views::View)) ? (view.elements->size() > 0)]
+		[for (view : View | v.eAllContents(View)) ? (view.elements->size() > 0)]
 		if (key == [view.editorID()/].class) {
 			if (kind == [v.vrClass()/].SWT_KIND)
 				return new [view.pepClass()/](component);

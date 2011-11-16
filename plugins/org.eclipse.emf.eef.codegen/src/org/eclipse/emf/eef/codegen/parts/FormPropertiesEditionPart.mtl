@@ -12,11 +12,11 @@
  /]
 [module FormPropertiesEditionPart('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[import widgetGettersSetters /]
-[import widgetFormImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetFormImpl /]
 
 [comment Defines the default imports for a Form Part.
 	@param pec the PropertiesEditionComponent associated to the view
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(ElementEditor).oclAsType(ElementEditor)->notEmpty())]
+[if (view.eAllContents(ElementEditor)->notEmpty())]
 import org.eclipse.osgi.util.NLS;
 [/if]
 import org.eclipse.swt.SWT;
@@ -62,41 +62,41 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.events.IExpansionListener;
 
-[for (ePackage : EPackage | pec.involvedEditionElements().oclAsType(PropertiesEditionElement).model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(EClass).ePackage))]
+[for (ePackage : EPackage | pec.involvedEditionElements().model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(EClass).ePackage))]
 import [ePackage.qualifiedMetamodelPackage()/];
 [/for]
-[for (viewRepository : ViewsRepository | pec.involvedViews().oclAsType(View).owningViewsRepository()->asSet())]
+[for (viewRepository : ViewsRepository | pec.involvedViews().owningViewsRepository()->asSet())]
 import [viewRepository.qualifiedMessagesProvider()/];
 [/for]
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
-[if (view.eAllContents(ElementEditor).oclAsType(ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
+[if (view.eAllContents(ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
 import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
 [/if]
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import [view.pepQualifiedInterface()/];
-[for (widget : Widget | view.eAllContents(ElementEditor).oclAsType(ElementEditor).representation->asSet()) ]
+[for (widget : Widget | view.eAllContents(ElementEditor).representation->asSet()) ]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
-[for (widget : Widget | view.eAllContents(Container).oclAsType(Container).representation->asSet()) ? (not widget.oclIsUndefined())]
+[for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
-[for (viewsRepository : ViewsRepository | view.eAllContents(ViewReference).oclAsType(ViewReference).view.oclAsType(View).owningViewsRepository()->append(view.owningViewsRepository()))]
+[for (viewsRepository : ViewsRepository | view.eAllContents(ViewReference).view.oclAsType(View).owningViewsRepository()->append(view.owningViewsRepository()))]
 import [viewsRepository.vrQualifiedClass()/];
 [/for]
 [if (view.eAllContents(ViewReference)->notEmpty() or view.eAllContents(View)->notEmpty())]
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-[for (viewRef : ViewReference | view.eAllContents(ViewReference).oclAsType(ViewReference)) ]
+[for (viewRef : ViewReference | view.eAllContents(ViewReference)) ]
 import [viewRef.view.oclAsType(View).pepQualifiedInterface()/];
-[for (widget : Widget | viewRef.view.eAllContents(ElementEditor).oclAsType(ElementEditor).representation->asSet())]
+[for (widget : Widget | viewRef.view.eAllContents(ElementEditor).representation->asSet())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
 [/for]
-[for (subView : View | view.elements->select(oclIsKindOf(View))) ]
+[for (subView : View | view.elements->filter(View)) ]
 import [subView.pepQualifiedInterface()/];
 [/for]
 [/if]
@@ -123,8 +123,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
-import [pec.model.qualifiedName(basePackage)/];
-import [pec.model.eefPackage(basePackage)/].parts.[view.pepInterface()/];
+import [pec.model.qualifiedName()/];
+import [view.pepQualifiedInterface()/];
 [/template]
 
 [template public FormPropertiesEdionPart(peContext : PropertiesEditionContext, basePackage : String)]
@@ -153,9 +153,9 @@ package [view.partsFormPackage()/];
  */
 public class [view.pepFormClass()/] extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, [view.pepInterface()/] {
 
-[for (element : ViewElement | view.eAllContents()) ? (element.oclIsKindOf(ElementEditor))][let editor : ElementEditor = element.oclAsType(ElementEditor)]
-	[editor.widgetDeclaration()/]
-[/let][/for]
+[for (editor : ElementEditor | view.eAllContents(ElementEditor))]
+[editor.widgetDeclaration()/]
+[/for]
 [comment managing ViewReferences/]
 [view.widgetDeclarationForViewReference()/]
 [comment managing SubViews/]
@@ -206,10 +206,16 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				[for (aView : ViewElement | view.eAllContents(ViewElement).oclAsType(ViewElement)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view))]
+				[for (aView : ViewElement | view.eAllContents(ViewElement)->select(owningView() = view))]
+					[if (oclIsKindOf(CustomElementEditor))]
+				// [protected ('for '.concat(aView.name).concat(' addToPart creation'))]
+				
+				// [/protected]
+					[else]
 				if (key == [aView.editorID()/][if (aView.oclIsKindOf(Container))].class[/if]) {
-					return [aView.implementation()/]
+					[aView.implementation()/]
 				}
+					[/if]
 				[/for]
 				return parent;
 			}
@@ -226,14 +232,11 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 [/if]
 [/comment]
 	}
-[for (aView : ViewElement | view.eAllContents(ViewElement).oclAsType(ViewElement)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view))]
+[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view)) separator ('\n')]
 [aView.additionalImplementation(pec, inputPEC)/]
-
 [/for]
-
-[for (subView : View | view.elements->select(oclIsKindOf(View)))]
+[for (subView : View | view.elements->filter(View)) separator ('\n')]
 [subView.additionalImplementation(pec, inputPEC)/]
-
 [/for]
 
 	/**
@@ -249,12 +252,11 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 		// [/protected]
 [/if]
 	}
-[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor).oclAsType(ElementEditor)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view))]
 
+[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view)) separator ('\n')]
 [elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
 
 [elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
-
 [/for]
 [comment managing viewReference/]
 [view.elementEditorGetterSettersForViewReference(pec, basePackage)/]
@@ -262,7 +264,7 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 [view.elementEditorGetterSettersForSubViews(pec, basePackage)/]
 
 [if (not peContext.associatedGenModel().useJMergeForUserCode)]
-[for (viewElement : ViewElement | view.eAllContents(CustomElementEditor).oclAsType(CustomElementEditor)->select(owningView() = view))]
+[for (viewElement : ViewElement | view.eAllContents(CustomElementEditor)->select(owningView() = view))]
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters implementation'))]
 	
 	// [/protected]
@@ -290,7 +292,7 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 	endif]
 	[file (fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [view.partsFormPackage()/]
+package [view.partsFormPackage()/];
 
 [if (peContext.associatedGenModel().useJMergeForUserCode)]
 [pec.defaultMinimalImports(view, basePackage)/]

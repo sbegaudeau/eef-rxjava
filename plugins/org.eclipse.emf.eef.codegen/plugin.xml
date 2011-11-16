@@ -89,11 +89,19 @@
    </extension>
 -->
    <extension
+         point="org.eclipse.acceleo.engine.dynamic.modules">
+      <modules
+            path="src/org/eclipse/emf/eef/codegen/widgets/impl/">
+      </modules>
+      <generator
+            generatorID="org.eclipse.emf.eef.codegen">
+      </generator>
+   </extension>
+<!--   <extension
          point="org.eclipse.acceleo.engine.dynamic.templates">
       <templates
             path="src/org/eclipse/emf/eef/codegen/widgets/impl/">
       </templates>
    </extension>
-   
-   <!-- Test -->
+-->
 </plugin>

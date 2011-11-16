@@ -12,30 +12,27 @@
  /]
 [module groupSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
-[template public implementation(editor : Container) overrides implementation ? (editor.representation.name = 'Group')]
-create[editor.name.toJavaClassifier()/]Group(parent);
+[template public implementation(container : Container) overrides implementation ? (container.representation.name = 'Group')]
+return create[container.name.toJavaClassifier()/]Group(parent);
 [/template]
 
-[template public additionalImplementation(editor : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Group')]
+[template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'Group')]
 	/**
-	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
+	 * [container.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected Composite create[editor.name.toJavaClassifier()/]Group(Composite parent) {
-		Group [editor.name.toJavaIdentifier()/]Group = new Group(parent, SWT.NONE);
-		[editor.name.toJavaIdentifier()/]Group.setText([editor.owningViewsRepository().messagesProvider()/].[editor.groupKey(editor.owningView())/]);
-		GridData [editor.name.toJavaIdentifier()/]GroupData = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/]GroupData.horizontalSpan = 3;
-		[editor.name.toJavaIdentifier()/]Group.setLayoutData([editor.name.toJavaIdentifier()/]GroupData);
-		GridLayout [editor.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
-		[editor.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
-		[editor.name.toJavaIdentifier()/]Group.setLayout([editor.name.toJavaIdentifier()/]GroupLayout);
-		return [editor.name.toJavaIdentifier()/]Group;
+	protected Composite create[container.name.toJavaClassifier()/]Group(Composite parent) {
+		Group [container.name.toJavaIdentifier()/]Group = new Group(parent, SWT.NONE);
+		[container.name.toJavaIdentifier()/]Group.setText([container.owningViewsRepository().messagesProvider()/].[container.groupKey(container.owningView())/]);
+		GridData [container.name.toJavaIdentifier()/]GroupData = new GridData(GridData.FILL_HORIZONTAL);
+		[container.name.toJavaIdentifier()/]GroupData.horizontalSpan = 3;
+		[container.name.toJavaIdentifier()/]Group.setLayoutData([container.name.toJavaIdentifier()/]GroupData);
+		GridLayout [container.name.toJavaIdentifier()/]GroupLayout = new GridLayout();
+		[container.name.toJavaIdentifier()/]GroupLayout.numColumns = 3;
+		[container.name.toJavaIdentifier()/]Group.setLayout([container.name.toJavaIdentifier()/]GroupLayout);
+		return [container.name.toJavaIdentifier()/]Group;
 	}
 [/template]
-

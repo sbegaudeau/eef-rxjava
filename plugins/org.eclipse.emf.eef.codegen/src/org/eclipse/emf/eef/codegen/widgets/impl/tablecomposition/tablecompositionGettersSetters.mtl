@@ -12,10 +12,9 @@
  /]
 [module tablecompositionGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters/]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
-
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [comment ====== Widgets View getters for declaration ====== /]
 [template public getterDeclaration(elementEditor : ElementEditor) overrides getterDeclaration ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
@@ -115,29 +114,29 @@
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		[elementEditor.name.toJavaIdentifier()/].setContentProvider(contentProvider);
-		[elementEditor.name.toJavaIdentifier()/].setInput(settings);
+		[elementEditor.elementEditorName()/].setContentProvider(contentProvider);
+		[elementEditor.elementEditorName()/].setInput(settings);
 	}
 [/template]
 
 [template public addFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.addFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]Filters.add(filter);
-		if (this.[elementEditor.name.toJavaIdentifier()/] != null) {
-			this.[elementEditor.name.toJavaIdentifier()/].addFilter(filter);
+		[elementEditor.elementEditorName()/]Filters.add(filter);
+		if (this.[elementEditor.elementEditorName()/] != null) {
+			this.[elementEditor.elementEditorName()/].addFilter(filter);
 		}
 	}
 [/template]
 
 [template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.addBusinessFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/]BusinessFilters.add(filter);
+		[elementEditor.elementEditorName()/]BusinessFilters.add(filter);
 	}
 [/template]
 
 [template public isContainedInTableSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
 [elementEditor.isContainedInTableSignature()/] {
-		return ((ReferencesTableSettings)[elementEditor.name.toJavaIdentifier()/].getInput()).contains(element);
+		return ((ReferencesTableSettings)[elementEditor.elementEditorName()/].getInput()).contains(element);
 	}
 [/template]
 

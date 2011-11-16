@@ -12,8 +12,8 @@
  /]
 [module ContextMessagesPropertiesFR('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public ContextMessagesPropertiesFR(viewsRepository : ViewsRepository)]
 	[file (viewsRepository.fullFilePath(), false)]
@@ -32,7 +32,7 @@
 [view.name.toJavaClassifier()/]_Part_Title=[view.name/]
 [/for]
 [for (editor : ElementEditor | viewsRepository.eAllContents(ElementEditor))]
-[editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if (editor.representation.name <> 'Checkbox' and editor.representation.name <> 'MultiValuedEditor')] : [/if]
+[editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if ( not editor.representationName('Checkbox') and not editor.representationName('MultiValuedEditor'))] : [/if]
 [/for]
 PropertiesEditionPart_PropertiesGroupLabel=Propri\u00E9t\u00E9s
 PropertiesEditionPart_EditTableViewerLabel=Editer

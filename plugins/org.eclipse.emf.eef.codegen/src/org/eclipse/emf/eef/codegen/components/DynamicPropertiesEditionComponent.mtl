@@ -12,10 +12,10 @@
  /]
 [module DynamicPropertiesEditionComponent('http://www.eclipse.org/emf/eef/components/1.0.0','http://www.eclipse.org/emf/eef/views/1.0.0','http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[import typeUtils /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::typeUtils /]
 
 [template public DynamicPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
@@ -28,7 +28,7 @@ package [pec.componentsPackage()/];
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import [pec.model.qualifiedName(basePackage)/];
+import [pec.model.qualifiedName()/];
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
@@ -37,7 +37,7 @@ import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderSe
 
 import [topLevelView.pepQualifiedInterface()/];
 import [topLevelView.owningViewsRepository().vrQualifiedClass()/];
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent)))]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
 [if (pec.model.eefPackage(basePackage) <> subPec.model.eefPackage(basePackage))]
 	[for (subView : View | subPec.views) ? (subView.ancestors()->includes(topLevelView))]
 import [subPec.subPECQualifiedClass(subView)/];
@@ -84,7 +84,7 @@ Implemented later ...
 			private [pec.subPECClass(view)/] [pec.subPECClass(view).toLowerFirst()/];
 [/for]
 [/comment]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
@@ -110,7 +110,7 @@ Implemented later ...
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
 [/for]
 [/comment]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
 			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.subPECClass(view).toLowerFirst()/]);
@@ -169,7 +169,7 @@ Implemented later ...
 	public void initPart(Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == [topLevelView.editorID()/].class) {
 			((IPropertiesEditionPart)[topLevelView.viewIdentifier(pec)/]).setContext(element, allResource);
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent))) ? (subPec.mustBeGenerated())]
+[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
 			[subPec.subPECClass(view).toLowerFirst()/].setPropertiesEditionPart([view.editorID()/].class, kind, [topLevelView.viewIdentifier(pec)/].get[view.name.toJavaClassifier()/]SubView());
 			[subPec.subPECClass(view).toLowerFirst()/].initPart([view.editorID()/].class, kind, element);

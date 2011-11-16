@@ -12,22 +12,22 @@
  /]
 [module richtextGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters /]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('RichText'))]
 [elementEditor.getterSignature()/] {
-		return [elementEditor.name.toJavaIdentifier()/].getText();
+		return [elementEditor.elementEditorName()/].getText();
 	}
 [/template]
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('RichText'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setText(newValue);
+			[elementEditor.elementEditorName()/].setText(newValue);
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].setText(""); //$NON-NLS-1$
+			[elementEditor.elementEditorName()/].setText(""); //$NON-NLS-1$
 		}
 	}
 [/template]

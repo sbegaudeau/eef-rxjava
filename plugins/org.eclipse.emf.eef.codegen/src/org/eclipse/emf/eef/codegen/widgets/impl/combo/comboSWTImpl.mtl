@@ -12,11 +12,9 @@
  /]
 [module comboSWTImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetSWTImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific swt services for the moment /]
-[import widgetSWTImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Combo')]
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
@@ -31,30 +29,30 @@ import org.eclipse.jface.viewers.ViewerFilter;
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Combo')]
-	protected EMFComboViewer [editor.name.toJavaIdentifier()/];
+	protected EMFComboViewer [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Combo')]
-create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
+return create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Combo')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]EMFComboViewer(Composite parent) {
-		[if (editor.nameAsLabel)]		
+		[if (editor.nameAsLabel)]
 		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		[editor.name.toJavaIdentifier()/] = new EMFComboViewer(parent);
+		[editor.elementEditorName()/] = new EMFComboViewer(parent);
 		[if (editor.readOnly)]
-		[editor.name.toJavaIdentifier()/].setEnabled(false);
-		[editor.name.toJavaIdentifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/].setEnabled(false);
+		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
-		GridData [editor.name.toJavaIdentifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
-		[editor.name.toJavaIdentifier()/].getCombo().setLayoutData([editor.name.toJavaIdentifier()/]Data);
-		[editor.name.toJavaIdentifier()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		[editor.name.toJavaIdentifier()/].addSelectionChangedListener(new ISelectionChangedListener() {
+		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
+		[editor.elementEditorName()/].getCombo().setLayoutData([editor.elementEditorName()/]Data);
+		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		[editor.elementEditorName()/].addSelectionChangedListener(new ISelectionChangedListener() {
 
 			/**
 			 * {@inheritDoc}
@@ -67,9 +65,9 @@ create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
 			}
 
 		});
-		[editor.name.toJavaIdentifier()/].setContentProvider(new EMFListContentProvider());
-		EditingUtils.setID([editor.name.toJavaIdentifier()/].getCombo(), [editor.editorID()/]);
-		EditingUtils.setEEFtype([editor.name.toJavaIdentifier()/].getCombo(), "eef::[editor.representation.name/]"); //$NON-NLS-1$
+		[editor.elementEditorName()/].setContentProvider(new EMFListContentProvider());
+		EditingUtils.setID([editor.elementEditorName()/].getCombo(), [editor.editorID()/]);
+		EditingUtils.setEEFtype([editor.elementEditorName()/].getCombo(), "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}

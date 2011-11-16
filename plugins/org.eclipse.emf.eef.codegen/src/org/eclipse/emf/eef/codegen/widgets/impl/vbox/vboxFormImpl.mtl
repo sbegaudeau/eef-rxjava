@@ -12,18 +12,16 @@
  /]
 [module vboxFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetFormImpl/]
 
-[import common /]
-[import naming /]
-[import viewCommon /]
-[comment I don't see a better way to get specific form services for the moment /]
-[import widgetFormImpl /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'VerticalBox')]
 import org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox;
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'VerticalBox')]
-create[container.name.toJavaClassifier()/]VBox(widgetFactory, parent);
+return create[container.name.toJavaClassifier()/]VBox(widgetFactory, parent);
 [/template]
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'VerticalBox')]

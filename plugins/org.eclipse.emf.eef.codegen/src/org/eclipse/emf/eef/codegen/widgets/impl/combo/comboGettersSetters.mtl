@@ -42,8 +42,8 @@
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.getterSignature()/] {
-		if ([elementEditor.name.toJavaIdentifier()/].getSelection() instanceof StructuredSelection) {
-			return ((StructuredSelection) [elementEditor.name.toJavaIdentifier()/].getSelection()).getFirstElement();
+		if ([elementEditor.elementEditorName()/].getSelection() instanceof StructuredSelection) {
+			return ((StructuredSelection) [elementEditor.elementEditorName()/].getSelection()).getFirstElement();
 		}
 		return "";
 	}
@@ -86,9 +86,9 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].modelUpdating(new StructuredSelection(newValue));
 		} else {
-			[elementEditor.name.toJavaIdentifier()/].modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+			[elementEditor.elementEditorName()/].modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
 [/template]
@@ -111,15 +111,15 @@
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].setInput(input);
+		[elementEditor.elementEditorName()/].setInput(input);
 		if (currentValue != null) {
-			[elementEditor.name.toJavaIdentifier()/].setSelection(new StructuredSelection(currentValue));
+			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(currentValue));
 		}
 	}
 [/template]
 
 [template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('Combo'))]
 [elementEditor.addBusinessFilterSignature()/] {
-		[elementEditor.name.toJavaIdentifier()/].addBusinessRuleFilter(filter);
+		[elementEditor.elementEditorName()/].addBusinessRuleFilter(filter);
 	}
 [/template]

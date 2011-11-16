@@ -12,8 +12,8 @@
  /]
 [module ContextMessagesProperties('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
 
-[import common /]
-[import naming /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
 
 [template public ContextMessagesProperties(viewsRepository : ViewsRepository)]
 	[file (viewsRepository.fullFilePath(), false)]
@@ -27,12 +27,12 @@
 [for (group : ViewElement | viewsRepository.eAllContents(views::Container)->select(e | e.oclIsTypeOf(views::Container))) ? (group.representation.name = 'Group')]
 [group.groupKey(group.owningView())/]=[group.name.toUpperFirst().toUnicode()/]
 [/for]
-[for (view : View | viewsRepository.eAllContents(views::View))]
+[for (view : View | viewsRepository.eAllContents(View))]
 [view.name.toJavaClassifier()/]_ReadOnly=This property is read only
 [view.name.toJavaClassifier()/]_Part_Title=[view.name/]
 [/for]
-[for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor))]
-[editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if (editor.representation.name <> 'Checkbox' and editor.representation.name <> 'MultiValuedEditor')] : [/if]
+[for (editor : ElementEditor | viewsRepository.eAllContents(ElementEditor))]
+[editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if ( not editor.representationName('Checkbox') and not editor.representationName('MultiValuedEditor'))] : [/if]
 [/for]
 PropertiesEditionPart_PropertiesGroupLabel=Properties
 PropertiesEditionPart_EditTableViewerLabel=Edit
