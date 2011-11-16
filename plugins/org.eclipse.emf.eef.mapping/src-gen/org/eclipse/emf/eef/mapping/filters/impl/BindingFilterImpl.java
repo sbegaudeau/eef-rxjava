@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
-import org.eclipse.emf.eef.views.impl.DocumentedElementImpl;
+import org.eclipse.emf.eef.mapping.impl.DocumentedElementImpl;
 
 /**
  * <!-- begin-user-doc -->

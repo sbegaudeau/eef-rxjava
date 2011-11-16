@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.mapping.filters;
 
-import org.eclipse.emf.eef.views.DocumentedElement;
+import org.eclipse.emf.eef.mapping.DocumentedElement;
 
 /**
  * <!-- begin-user-doc -->

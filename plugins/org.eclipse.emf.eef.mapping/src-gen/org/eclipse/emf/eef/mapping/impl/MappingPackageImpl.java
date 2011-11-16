@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
+import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.EMFElementBinding;
 import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
@@ -118,6 +119,13 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	 * @generated
 	 */
 	private EClass elementBindingReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass documentedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -586,6 +594,24 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDocumentedElement() {
+		return documentedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDocumentedElement_Documentation() {
+		return (EAttribute)documentedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEMFMultiPropertiesBinding() {
 		return emfMultiPropertiesBindingEClass;
 	}
@@ -690,6 +716,9 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		elementBindingReferenceEClass = createEClass(ELEMENT_BINDING_REFERENCE);
 		createEReference(elementBindingReferenceEClass, ELEMENT_BINDING_REFERENCE__BINDING);
 
+		documentedElementEClass = createEClass(DOCUMENTED_ELEMENT);
+		createEAttribute(documentedElementEClass, DOCUMENTED_ELEMENT__DOCUMENTATION);
+
 		emfMultiPropertiesBindingEClass = createEClass(EMF_MULTI_PROPERTIES_BINDING);
 		createEReference(emfMultiPropertiesBindingEClass, EMF_MULTI_PROPERTIES_BINDING__MODEL);
 		createEReference(emfMultiPropertiesBindingEClass, EMF_MULTI_PROPERTIES_BINDING__NAVIGATION);
@@ -736,17 +765,17 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		databindingEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
-		modelElementEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
-		abstractElementBindingEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
-		modelPropertyEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
-		abstractPropertyBindingEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
+		databindingEClass.getESuperTypes().add(this.getDocumentedElement());
+		modelElementEClass.getESuperTypes().add(this.getDocumentedElement());
+		abstractElementBindingEClass.getESuperTypes().add(this.getDocumentedElement());
+		modelPropertyEClass.getESuperTypes().add(this.getDocumentedElement());
+		abstractPropertyBindingEClass.getESuperTypes().add(this.getDocumentedElement());
 		emfElementBindingEClass.getESuperTypes().add(this.getAbstractElementBinding());
 		emfPropertyBindingEClass.getESuperTypes().add(this.getAbstractPropertyBinding());
 		standardElementBindingEClass.getESuperTypes().add(this.getAbstractElementBinding());
 		standardPropertyBindingEClass.getESuperTypes().add(this.getAbstractPropertyBinding());
-		categoryEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
-		elementBindingReferenceEClass.getESuperTypes().add(theViewsPackage.getDocumentedElement());
+		categoryEClass.getESuperTypes().add(this.getDocumentedElement());
+		elementBindingReferenceEClass.getESuperTypes().add(this.getDocumentedElement());
 		emfMultiPropertiesBindingEClass.getESuperTypes().add(this.getAbstractPropertyBinding());
 
 		// Initialize classes and features; add operations and parameters
@@ -896,6 +925,12 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				"binding", null, 1, 1, ElementBindingReference.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+
+		initEClass(documentedElementEClass, DocumentedElement.class, "DocumentedElement", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDocumentedElement_Documentation(), ecorePackage.getEString(), "documentation",
+				null, 0, 1, DocumentedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(emfMultiPropertiesBindingEClass, EMFMultiPropertiesBinding.class,
 				"EMFMultiPropertiesBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

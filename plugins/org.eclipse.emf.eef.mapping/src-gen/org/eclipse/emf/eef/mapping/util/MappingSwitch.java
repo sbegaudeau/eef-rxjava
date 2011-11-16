@@ -13,11 +13,11 @@ package org.eclipse.emf.eef.mapping.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.AbstractPropertyBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.Databinding;
+import org.eclipse.emf.eef.mapping.DocumentedElement;
 import org.eclipse.emf.eef.mapping.EMFElementBinding;
 import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
@@ -188,6 +188,13 @@ public class MappingSwitch<T> extends Switch<T> {
 				T result = caseElementBindingReference(elementBindingReference);
 				if (result == null)
 					result = caseDocumentedElement(elementBindingReference);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case MappingPackage.DOCUMENTED_ELEMENT: {
+				DocumentedElement documentedElement = (DocumentedElement)theEObject;
+				T result = caseDocumentedElement(documentedElement);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
