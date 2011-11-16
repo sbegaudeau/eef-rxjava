@@ -9,9 +9,11 @@
  *      Obeo - initial API and implementation
  *
  */
-package org.eclipse.emf.eef.mapping.filters.parts;
+package org.eclipse.emf.eef.mapping.parts;
 
 // Start of user code for imports
+import java.util.List;
+import java.util.Map;
 
 
 

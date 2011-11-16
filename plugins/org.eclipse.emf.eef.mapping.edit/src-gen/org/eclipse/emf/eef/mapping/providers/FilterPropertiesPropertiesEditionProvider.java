@@ -13,11 +13,9 @@ package org.eclipse.emf.eef.mapping.providers;
 
 import java.util.List;
 
-import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.StandardPropertyBindingBasePropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.components.StandardPropertyBindingPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.FilterPropertiesPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.filters.BindingFilter;
+import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
@@ -27,12 +25,12 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class StandardPropertyBindingPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class FilterPropertiesPropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
 	/**
 	 * Constructor without provider for super types.
 	 */
-	public StandardPropertyBindingPropertiesEditionProvider() {
+	public FilterPropertiesPropertiesEditionProvider() {
 		super();
 	}
 
@@ -40,7 +38,7 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 * Constructor with providers for super types.
 	 * @param superProviders providers to use for super types.
 	 */
-	public StandardPropertyBindingPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+	public FilterPropertiesPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
 		super(superProviders);
 	}
 
@@ -50,8 +48,8 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof StandardPropertyBinding) 
-					&& (MappingPackage.eINSTANCE.getStandardPropertyBinding() == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof BindingFilter) 
+					&& (FiltersPackage.eINSTANCE.getBindingFilter() == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -60,7 +58,7 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof StandardPropertyBinding) && (StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof BindingFilter) && (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**
@@ -70,7 +68,7 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StandardPropertyBinding) && (refinement == StandardPropertyBindingBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof BindingFilter) && (refinement == FilterPropertiesPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -80,7 +78,7 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StandardPropertyBinding) && ((StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == StandardPropertyBindingBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof BindingFilter) && ((FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -89,8 +87,8 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof StandardPropertyBinding) {
-			return new StandardPropertyBindingPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof BindingFilter) {
+			return new FilterPropertiesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
@@ -101,11 +99,9 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof StandardPropertyBinding) {
-			if (StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new StandardPropertyBindingBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof BindingFilter) {
+			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part))
+				return new FilterPropertiesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -116,13 +112,10 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof StandardPropertyBinding) {
-			if (StandardPropertyBindingBasePropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == StandardPropertyBindingBasePropertiesEditionComponent.class)
-				return new StandardPropertyBindingBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == DocumentedElementPropertiesEditionComponent.class)
-				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof BindingFilter) {
+			if (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part)
+				&& refinement == FilterPropertiesPropertiesEditionComponent.class)
+				return new FilterPropertiesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

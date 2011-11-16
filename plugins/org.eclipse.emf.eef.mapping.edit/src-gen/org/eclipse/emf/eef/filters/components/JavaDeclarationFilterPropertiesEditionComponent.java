@@ -14,15 +14,16 @@ package org.eclipse.emf.eef.filters.components;
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.mapping.components.FilterPropertiesPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;
 import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.mapping.filters.parts.JavaDeclarationFilterPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 
 // End of user code
@@ -119,13 +120,13 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == FiltersViewsRepository.JavaDeclarationFilter.class) {
 			super.initPart(key, kind, element, allResource);
-			filterPropertiesPropertiesEditionComponent.setPropertiesEditionPart(FiltersViewsRepository.FilterProperties.class, kind, basePart.getFilterPropertiesReferencedView());
-			filterPropertiesPropertiesEditionComponent.initPart(FiltersViewsRepository.FilterProperties.class, kind, element, allResource);
+			filterPropertiesPropertiesEditionComponent.setPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, kind, basePart.getFilterPropertiesReferencedView());
+			filterPropertiesPropertiesEditionComponent.initPart(MappingViewsRepository.FilterProperties.class, kind, element, allResource);
 		}
-		if (key == ViewsViewsRepository.Documentation.class) {
+		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == FiltersViewsRepository.FilterProperties.class) {
+		if (key == MappingViewsRepository.FilterProperties.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

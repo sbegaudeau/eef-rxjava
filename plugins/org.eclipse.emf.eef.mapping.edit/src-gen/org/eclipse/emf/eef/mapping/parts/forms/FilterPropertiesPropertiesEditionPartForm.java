@@ -9,12 +9,12 @@
  *      Obeo - initial API and implementation
  *
  */
-package org.eclipse.emf.eef.mapping.filters.parts.forms;
+package org.eclipse.emf.eef.mapping.parts.forms;
 
 // Start of user code for imports
-import org.eclipse.emf.eef.mapping.filters.parts.FilterPropertiesPropertiesEditionPart;
-import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
-import org.eclipse.emf.eef.mapping.filters.providers.FiltersMessages;
+import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.mapping.providers.MappingMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -99,22 +99,22 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence filterPropertiesStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep filterProperties_Step = filterPropertiesStep.addStep(FiltersViewsRepository.FilterProperties.FilterProperties_.class);
-		filterProperties_Step.addStep(FiltersViewsRepository.FilterProperties.FilterProperties_.name);
-		filterProperties_Step.addStep(FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory);
+		CompositionStep filterProperties_Step = filterPropertiesStep.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.class);
+		filterProperties_Step.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.name);
+		filterProperties_Step.addStep(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
 		
 		
 		composer = new PartComposer(filterPropertiesStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == FiltersViewsRepository.FilterProperties.FilterProperties_.class) {
+				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.class) {
 					return createFilterPropertiesGroup(widgetFactory, parent);
 				}
-				if (key == FiltersViewsRepository.FilterProperties.FilterProperties_.name) {
+				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.name) {
 					return createNameText(widgetFactory, parent);
 				}
-				if (key == FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory) {
+				if (key == MappingViewsRepository.FilterProperties.FilterProperties_.mandatory) {
 					return createMandatoryCheckbox(widgetFactory, parent);
 				}
 				return parent;
@@ -127,7 +127,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 	 */
 	protected Composite createFilterPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section filterPropertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		filterPropertiesSection.setText(FiltersMessages.FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel);
+		filterPropertiesSection.setText(MappingMessages.FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel);
 		GridData filterPropertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		filterPropertiesSectionData.horizontalSpan = 3;
 		filterPropertiesSection.setLayoutData(filterPropertiesSectionData);
@@ -141,7 +141,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, FiltersViewsRepository.FilterProperties.FilterProperties_.name, FiltersMessages.FilterPropertiesPropertiesEditionPart_NameLabel);
+		createDescription(parent, MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingMessages.FilterPropertiesPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -156,7 +156,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, FiltersViewsRepository.FilterProperties.FilterProperties_.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, MappingViewsRepository.FilterProperties.FilterProperties_.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -169,19 +169,19 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, FiltersViewsRepository.FilterProperties.FilterProperties_.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, MappingViewsRepository.FilterProperties.FilterProperties_.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(name, FiltersViewsRepository.FilterProperties.FilterProperties_.name);
+		EditingUtils.setID(name, MappingViewsRepository.FilterProperties.FilterProperties_.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.FilterProperties.FilterProperties_.name, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
 	
 	protected Composite createMandatoryCheckbox(FormToolkit widgetFactory, Composite parent) {
-		mandatory = widgetFactory.createButton(parent, getDescription(FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory, FiltersMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel), SWT.CHECK);
+		mandatory = widgetFactory.createButton(parent, getDescription(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, MappingMessages.FilterPropertiesPropertiesEditionPart_MandatoryLabel), SWT.CHECK);
 		mandatory.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -192,16 +192,16 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(mandatory.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FilterPropertiesPropertiesEditionPartForm.this, MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(mandatory.getSelection())));
 			}
 
 		});
 		GridData mandatoryData = new GridData(GridData.FILL_HORIZONTAL);
 		mandatoryData.horizontalSpan = 2;
 		mandatory.setLayoutData(mandatoryData);
-		EditingUtils.setID(mandatory, FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory);
+		EditingUtils.setID(mandatory, MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
 		EditingUtils.setEEFtype(mandatory, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -274,7 +274,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 	 * 
 	 */
 	public String getTitle() {
-		return FiltersMessages.FilterProperties_Part_Title;
+		return MappingMessages.FilterProperties_Part_Title;
 	}
 
 	// Start of user code additional methods

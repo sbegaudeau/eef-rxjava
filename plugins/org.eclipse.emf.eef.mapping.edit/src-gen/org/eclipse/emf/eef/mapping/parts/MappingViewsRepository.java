@@ -182,4 +182,38 @@ public class MappingViewsRepository {
 	
 	}
 
+
+	/**
+	 * Documentation view descriptor
+	 * 
+	 */
+	public static class Documentation {
+		public static class Documentation_ {
+	
+			
+			public static String documentation__ = "mapping::Documentation::Documentation_::documentation__";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * Filter properties view descriptor
+	 * 
+	 */
+	public static class FilterProperties {
+		public static class FilterProperties_ {
+	
+			
+			public static String name = "mapping::Filter properties::Filter Properties_::Name";
+			
+			
+			public static String mandatory = "mapping::Filter properties::Filter Properties_::Mandatory";
+			
+	
+		}
+	
+	}
+
 }

@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  *
  */
-package org.eclipse.emf.eef.filters.components;
+package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
@@ -22,10 +22,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
-import org.eclipse.emf.eef.mapping.filters.OCLFilter;
-import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
-import org.eclipse.emf.eef.mapping.filters.parts.OCLFilterPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.DocumentedElement;
+import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.mapping.parts.DocumentationPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -39,10 +38,10 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
  */
-public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class DocumentedElementPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
-	public static String BASE_PART = "Base"; //$NON-NLS-1$
+	public static String DOCUMENTATION_PART = "Documentation"; //$NON-NLS-1$
 
 	
 	
@@ -50,11 +49,11 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 * Default constructor
 	 * 
 	 */
-	public OCLFilterBasePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject oCLFilter, String editing_mode) {
-		super(editingContext, oCLFilter, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = FiltersViewsRepository.class;
-		partKey = FiltersViewsRepository.OCLFilter.class;
+	public DocumentedElementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject documentedElement, String editing_mode) {
+		super(editingContext, documentedElement, editing_mode);
+		parts = new String[] { DOCUMENTATION_PART };
+		repositoryKey = MappingViewsRepository.class;
+		partKey = MappingViewsRepository.Documentation.class;
 	}
 
 	/**
@@ -68,25 +67,20 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			final OCLFilter oCLFilter = (OCLFilter)elt;
-			final OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
+			final DocumentedElement documentedElement = (DocumentedElement)elt;
+			final DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
 			// init values
-			if (oCLFilter.getOCLBody() != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody))
-				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), oCLFilter.getOCLBody()));
+			if (documentedElement.getDocumentation() != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__))
+				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), documentedElement.getDocumentation()));
 			// init filters
 			
 			// init values for referenced views
-					basePart.getFilterPropertiesReferencedView().setContext(elt, allResource);
 			
 			// init filters for referenced views
-			
-			
 			
 		}
 		setInitializing(false);
 	}
-
-
 
 
 
@@ -96,8 +90,8 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody) {
-			return FiltersPackage.eINSTANCE.getOCLFilter_OCLBody();
+		if (editorKey == MappingViewsRepository.Documentation.Documentation_.documentation__) {
+			return MappingPackage.eINSTANCE.getDocumentedElement_Documentation();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -108,9 +102,9 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		OCLFilter oCLFilter = (OCLFilter)semanticObject;
-		if (FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody == event.getAffectedEditor()) {
-			oCLFilter.setOCLBody((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+		DocumentedElement documentedElement = (DocumentedElement)semanticObject;
+		if (MappingViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
+			documentedElement.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
 	}
 
@@ -120,12 +114,12 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 */
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
-			OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody)){
+			DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
+			if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__)){
 				if (msg.getNewValue() != null) {
-					basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
-					basePart.setOCLExpressionBody("");
+					documentationPart.setDocumentation("");
 				}
 			}
 			
@@ -143,26 +137,12 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody == event.getAffectedEditor()) {
+				if (MappingViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), (String)newValue);
+						newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().getEAttributeType(), newValue);
-				}
-				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
-				}
-				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getDocumentedElement_Documentation().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

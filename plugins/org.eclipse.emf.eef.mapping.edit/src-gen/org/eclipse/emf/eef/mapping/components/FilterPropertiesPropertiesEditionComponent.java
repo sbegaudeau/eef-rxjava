@@ -9,7 +9,7 @@
  *      Obeo - initial API and implementation
  *
  */
-package org.eclipse.emf.eef.filters.components;
+package org.eclipse.emf.eef.mapping.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
-import org.eclipse.emf.eef.mapping.filters.parts.FilterPropertiesPropertiesEditionPart;
-import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
+import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -52,8 +52,8 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	public FilterPropertiesPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject bindingFilter, String editing_mode) {
 		super(editingContext, bindingFilter, editing_mode);
 		parts = new String[] { FILTERPROPERTIES_PART };
-		repositoryKey = FiltersViewsRepository.class;
-		partKey = FiltersViewsRepository.FilterProperties.class;
+		repositoryKey = MappingViewsRepository.class;
+		partKey = MappingViewsRepository.FilterProperties.class;
 	}
 
 	/**
@@ -70,10 +70,10 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 			final BindingFilter bindingFilter = (BindingFilter)elt;
 			final FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
 			// init values
-			if (bindingFilter.getName() != null && isAccessible(FiltersViewsRepository.FilterProperties.FilterProperties_.name))
+			if (bindingFilter.getName() != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name))
 				filterPropertiesPart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), bindingFilter.getName()));
 			
-			if (isAccessible(FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory)) {
+			if (isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory)) {
 				filterPropertiesPart.setMandatory(bindingFilter.isMandatory());
 			}
 			// init filters
@@ -96,10 +96,10 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == FiltersViewsRepository.FilterProperties.FilterProperties_.name) {
+		if (editorKey == MappingViewsRepository.FilterProperties.FilterProperties_.name) {
 			return FiltersPackage.eINSTANCE.getBindingFilter_Name();
 		}
-		if (editorKey == FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory) {
+		if (editorKey == MappingViewsRepository.FilterProperties.FilterProperties_.mandatory) {
 			return FiltersPackage.eINSTANCE.getBindingFilter_Mandatory();
 		}
 		return super.associatedFeature(editorKey);
@@ -112,10 +112,10 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		BindingFilter bindingFilter = (BindingFilter)semanticObject;
-		if (FiltersViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
+		if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
 			bindingFilter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
 		}
-		if (FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
+		if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
 			bindingFilter.setMandatory((Boolean)event.getNewValue());
 		}
 	}
@@ -127,14 +127,14 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(FiltersViewsRepository.FilterProperties.FilterProperties_.name)) {
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name)) {
 				if (msg.getNewValue() != null) {
 					filterPropertiesPart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
 				} else {
 					filterPropertiesPart.setName("");
 				}
 			}
-			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory))
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory))
 				filterPropertiesPart.setMandatory((Boolean)msg.getNewValue());
 			
 			
@@ -152,14 +152,14 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (FiltersViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
+				if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
-				if (FiltersViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
+				if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);

@@ -59,6 +59,18 @@
                label="Documentation"
                category="extended"
                id="Documentation"
+               afterTab="Documentation">
+         </propertyTab>
+         <propertyTab
+               label="Filter properties"
+               category="extended"
+               id="Filter properties"
+               afterTab="Filter properties">
+         </propertyTab>
+         <propertyTab
+               label="Documentation"
+               category="extended"
+               id="Documentation"
                afterTab="Base">
          </propertyTab>
          <propertyTab
@@ -104,6 +116,14 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
+               class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
+               id="org.eclipse.emf.eef.filters.section.BindingFilter"
+               tab="Filter properties">
+             <input
+                    type="org.eclipse.emf.eef.mapping.filters.BindingFilter">
+             </input>
+         </propertySection>
+         <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.EMFElementBindingPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.EMFElementBinding"
                tab="Base">
@@ -112,7 +132,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.EMFElementBinding"
                tab="Documentation">
              <input
@@ -128,7 +148,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.EMFPropertyBinding"
                tab="Documentation">
              <input
@@ -144,7 +164,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.StandardElementBinding"
                tab="Documentation">
              <input
@@ -160,7 +180,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.StandardPropertyBinding"
                tab="Documentation">
              <input
@@ -176,7 +196,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.Category"
                tab="Documentation">
              <input
@@ -192,7 +212,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.ElementBindingReference"
                tab="Documentation">
              <input
@@ -208,7 +228,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.mapping.section.EMFMultiPropertiesBinding"
                tab="Documentation">
              <input

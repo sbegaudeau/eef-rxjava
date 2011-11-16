@@ -37,9 +37,6 @@ public class FiltersMessages extends NLS {
 	public static String StrictTypingFilterPropertiesEditionPart_TypeGroupLabel;
 
 	
-	public static String FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel;
-
-	
 	public static String OnlyReferenceTypeFilter_ReadOnly;
 
 	
@@ -70,12 +67,6 @@ public class FiltersMessages extends NLS {
 	public static String StrictTypingFilter_Part_Title;
 
 	
-	public static String FilterProperties_ReadOnly;
-
-	
-	public static String FilterProperties_Part_Title;
-
-	
 	public static String OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel;
 
 	
@@ -89,12 +80,6 @@ public class FiltersMessages extends NLS {
 
 	
 	public static String StrictTypingFilterPropertiesEditionPart_RestrictionLabel;
-
-	
-	public static String FilterPropertiesPropertiesEditionPart_NameLabel;
-
-	
-	public static String FilterPropertiesPropertiesEditionPart_MandatoryLabel;
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

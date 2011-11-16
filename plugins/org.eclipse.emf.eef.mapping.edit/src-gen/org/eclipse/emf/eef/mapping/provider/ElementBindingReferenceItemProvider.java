@@ -93,7 +93,7 @@ public class ElementBindingReferenceItemProvider extends DocumentedElementItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((ElementBindingReference)object).getDocumentation());
+		String label = ((ElementBindingReference)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ElementBindingReference_type")
 				: getString("_UI_ElementBindingReference_type") + " " + label;
 	}

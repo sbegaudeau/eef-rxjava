@@ -22,7 +22,6 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 
 // End of user code
@@ -111,7 +110,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 		if (key == MappingViewsRepository.EMFMultiPropertiesBinding.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == ViewsViewsRepository.Documentation.class) {
+		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

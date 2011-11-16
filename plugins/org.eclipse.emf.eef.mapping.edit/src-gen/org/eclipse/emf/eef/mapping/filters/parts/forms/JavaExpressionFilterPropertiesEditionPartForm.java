@@ -12,10 +12,11 @@
 package org.eclipse.emf.eef.mapping.filters.parts.forms;
 
 // Start of user code for imports
-import org.eclipse.emf.eef.mapping.filters.parts.FilterPropertiesPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.mapping.filters.parts.JavaExpressionFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.filters.providers.FiltersMessages;
+import org.eclipse.emf.eef.mapping.parts.FilterPropertiesPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -174,8 +175,8 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 	}
 
 	protected Composite createFilterProperties(FormToolkit widgetFactory, Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(FiltersViewsRepository.class);
-		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(FiltersViewsRepository.FilterProperties.class, FiltersViewsRepository.FORM_KIND, propertiesEditionComponent);
+		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider(MappingViewsRepository.class);
+		filterPropertiesPropertiesEditionPart = (FilterPropertiesPropertiesEditionPart)provider.getPropertiesEditionPart(MappingViewsRepository.FilterProperties.class, MappingViewsRepository.FORM_KIND, propertiesEditionComponent);
 		((IFormPropertiesEditionPart)filterPropertiesPropertiesEditionPart).createControls(widgetFactory, container);
 		return container;
 	}

@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.mapping.util.MappingAdapterFactory;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.views.providers.DocumentedElementPropertiesEditionProvider;
 
 
 /**

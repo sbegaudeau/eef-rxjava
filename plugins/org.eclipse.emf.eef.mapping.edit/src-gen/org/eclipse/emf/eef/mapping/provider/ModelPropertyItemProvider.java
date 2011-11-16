@@ -81,7 +81,7 @@ public class ModelPropertyItemProvider extends DocumentedElementItemProvider imp
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((ModelProperty)object).getDocumentation());
+		String label = ((ModelProperty)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ModelProperty_type")
 				: getString("_UI_ModelProperty_type") + " " + label;
 	}

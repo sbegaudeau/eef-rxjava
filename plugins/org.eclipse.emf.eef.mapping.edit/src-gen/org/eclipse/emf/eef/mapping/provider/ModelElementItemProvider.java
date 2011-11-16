@@ -114,7 +114,7 @@ public class ModelElementItemProvider extends DocumentedElementItemProvider impl
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((ModelElement)object).getDocumentation());
+		String label = ((ModelElement)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_ModelElement_type")
 				: getString("_UI_ModelElement_type") + " " + label;
 	}

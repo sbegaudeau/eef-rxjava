@@ -12,13 +12,11 @@
 package org.eclipse.emf.eef.mapping.filters.providers;
 
 import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
-import org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.JavaDeclarationFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.JavaExpressionFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.OCLFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.StrictTypingFilterPropertiesEditionPartForm;
-import org.eclipse.emf.eef.mapping.filters.parts.impl.FilterPropertiesPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.JavaDeclarationFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.JavaExpressionFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.OCLFilterPropertiesEditionPartImpl;
@@ -81,12 +79,6 @@ public class FiltersPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new StrictTypingFilterPropertiesEditionPartImpl(component);
 			if (kind == FiltersViewsRepository.FORM_KIND)
 				return new StrictTypingFilterPropertiesEditionPartForm(component);
-		}
-		if (key == FiltersViewsRepository.FilterProperties.class) {
-			if (kind == FiltersViewsRepository.SWT_KIND)
-				return new FilterPropertiesPropertiesEditionPartImpl(component);
-			if (kind == FiltersViewsRepository.FORM_KIND)
-				return new FilterPropertiesPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

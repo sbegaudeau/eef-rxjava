@@ -110,7 +110,7 @@ public class DatabindingItemProvider extends DocumentedElementItemProvider imple
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((Databinding)object).getDocumentation());
+		String label = ((Databinding)object).getDocumentation();
 		return label == null || label.length() == 0 ? getString("_UI_Databinding_type")
 				: getString("_UI_Databinding_type") + " " + label;
 	}

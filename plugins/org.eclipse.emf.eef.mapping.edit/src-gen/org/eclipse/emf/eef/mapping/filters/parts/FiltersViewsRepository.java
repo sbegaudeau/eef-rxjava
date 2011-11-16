@@ -112,22 +112,4 @@ public class FiltersViewsRepository {
 	
 	}
 
-	/**
-	 * Filter properties view descriptor
-	 * 
-	 */
-	public static class FilterProperties {
-		public static class FilterProperties_ {
-	
-			
-			public static String name = "filters::Filter properties::Filter Properties_::Name";
-			
-			
-			public static String mandatory = "filters::Filter properties::Filter Properties_::Mandatory";
-			
-	
-		}
-	
-	}
-
 }

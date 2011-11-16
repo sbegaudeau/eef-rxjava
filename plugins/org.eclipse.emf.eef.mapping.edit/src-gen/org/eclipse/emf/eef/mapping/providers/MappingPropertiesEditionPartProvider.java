@@ -13,17 +13,21 @@ package org.eclipse.emf.eef.mapping.providers;
 
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.forms.CategoryPropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.EMFElementBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.EMFMultiPropertiesBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.EMFPropertyBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.ElementBindingReferencePropertiesEditionPartForm;
+import org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.StandardElementBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.forms.StandardPropertyBindingPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.parts.impl.CategoryPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.DocumentationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.EMFElementBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.EMFMultiPropertiesBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.EMFPropertyBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.ElementBindingReferencePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.parts.impl.FilterPropertiesPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.StandardElementBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.parts.impl.StandardPropertyBindingPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -95,6 +99,18 @@ public class MappingPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new EMFMultiPropertiesBindingPropertiesEditionPartImpl(component);
 			if (kind == MappingViewsRepository.FORM_KIND)
 				return new EMFMultiPropertiesBindingPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.Documentation.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new DocumentationPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new DocumentationPropertiesEditionPartForm(component);
+		}
+		if (key == MappingViewsRepository.FilterProperties.class) {
+			if (kind == MappingViewsRepository.SWT_KIND)
+				return new FilterPropertiesPropertiesEditionPartImpl(component);
+			if (kind == MappingViewsRepository.FORM_KIND)
+				return new FilterPropertiesPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

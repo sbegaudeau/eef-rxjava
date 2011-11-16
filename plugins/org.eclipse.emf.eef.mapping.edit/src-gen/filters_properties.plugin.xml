@@ -121,12 +121,6 @@
                id="Filter properties"
                afterTab="Filter properties">
          </propertyTab>
-         <propertyTab
-               label="Filter properties"
-               category="extended"
-               id="Filter properties"
-               afterTab="Filter properties">
-         </propertyTab>
       </propertyTabs>
    </extension>
    <extension
@@ -142,7 +136,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter"
                tab="Documentation">
              <input
@@ -150,7 +144,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter"
                tab="Filter properties">
              <input
@@ -166,7 +160,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.OCLFilter"
                tab="Documentation">
              <input
@@ -174,7 +168,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.OCLFilter"
                tab="Filter properties">
              <input
@@ -190,7 +184,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter"
                tab="Documentation">
              <input
@@ -198,7 +192,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter"
                tab="Filter properties">
              <input
@@ -214,7 +208,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter"
                tab="Documentation">
              <input
@@ -222,7 +216,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter"
                tab="Filter properties">
              <input
@@ -238,7 +232,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
                tab="Documentation">
              <input
@@ -246,19 +240,11 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
                tab="Filter properties">
              <input
                     type="org.eclipse.emf.eef.mapping.filters.StrictTypingFilter">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.mapping.filters.parts.forms.FilterPropertiesPropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.filters.section.BindingFilter"
-               tab="Filter properties">
-             <input
-                    type="org.eclipse.emf.eef.mapping.filters.BindingFilter">
              </input>
          </propertySection>
       </propertySections>

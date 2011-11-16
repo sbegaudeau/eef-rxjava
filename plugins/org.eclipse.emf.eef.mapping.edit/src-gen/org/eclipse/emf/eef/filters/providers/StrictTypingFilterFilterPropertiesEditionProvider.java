@@ -13,16 +13,16 @@ package org.eclipse.emf.eef.filters.providers;
 
 import java.util.List;
 
-import org.eclipse.emf.eef.filters.components.FilterPropertiesPropertiesEditionComponent;
 import org.eclipse.emf.eef.filters.components.StrictTypingFilterFilterPropertiesEditionComponent;
 import org.eclipse.emf.eef.filters.components.StrictTypingFilterFilterStrictTypingFilterPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.FilterPropertiesPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.StrictTypingFilter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
