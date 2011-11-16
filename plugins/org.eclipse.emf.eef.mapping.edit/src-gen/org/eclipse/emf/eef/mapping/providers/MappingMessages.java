@@ -22,12 +22,6 @@ public class MappingMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.eef.mapping.providers.mappingMessages"; //$NON-NLS-1$
 
 	
-	public static String DocumentationPropertiesEditionPart_DocumentationGroupLabel;
-
-	
-	public static String FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel;
-
-	
 	public static String EMFElementBindingPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -62,39 +56,6 @@ public class MappingMessages extends NLS {
 
 	
 	public static String EMFMultiPropertiesBindingPropertiesEditionPart_BindingGroupLabel;
-
-	
-	public static String ModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
-
-	
-	public static String SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
-
-	
-	public static String OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureGroupLabel;
-
-	
-	public static String OCLFilterPropertiesEditionPart_FilterExpressionGroupLabel;
-
-	
-	public static String JavaExpressionFilterPropertiesEditionPart_FilterExpressionGroupLabel;
-
-	
-	public static String JavaDeclarationFilterPropertiesEditionPart_FilterExpressionGroupLabel;
-
-	
-	public static String StrictTypingFilterPropertiesEditionPart_TypeGroupLabel;
-
-	
-	public static String Documentation_ReadOnly;
-
-	
-	public static String Documentation_Part_Title;
-
-	
-	public static String FilterProperties_ReadOnly;
-
-	
-	public static String FilterProperties_Part_Title;
 
 	
 	public static String EMFElementBinding_ReadOnly;
@@ -137,57 +98,6 @@ public class MappingMessages extends NLS {
 
 	
 	public static String EMFMultiPropertiesBinding_Part_Title;
-
-	
-	public static String ModelNavigation_ReadOnly;
-
-	
-	public static String ModelNavigation_Part_Title;
-
-	
-	public static String SimpleModelNavigation_ReadOnly;
-
-	
-	public static String SimpleModelNavigation_Part_Title;
-
-	
-	public static String OnlyReferenceTypeFilter_ReadOnly;
-
-	
-	public static String OnlyReferenceTypeFilter_Part_Title;
-
-	
-	public static String OCLFilter_ReadOnly;
-
-	
-	public static String OCLFilter_Part_Title;
-
-	
-	public static String JavaExpressionFilter_ReadOnly;
-
-	
-	public static String JavaExpressionFilter_Part_Title;
-
-	
-	public static String JavaDeclarationFilter_ReadOnly;
-
-	
-	public static String JavaDeclarationFilter_Part_Title;
-
-	
-	public static String StrictTypingFilter_ReadOnly;
-
-	
-	public static String StrictTypingFilter_Part_Title;
-
-	
-	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
-
-	
-	public static String FilterPropertiesPropertiesEditionPart_NameLabel;
-
-	
-	public static String FilterPropertiesPropertiesEditionPart_MandatoryLabel;
 
 	
 	public static String EMFElementBindingPropertiesEditionPart_NameLabel;
@@ -241,30 +151,6 @@ public class MappingMessages extends NLS {
 	public static String EMFMultiPropertiesBindingPropertiesEditionPart_ViewsLabel;
 
 	
-	public static String SimpleModelNavigationPropertiesEditionPart_IndexLabel;
-
-	
-	public static String SimpleModelNavigationPropertiesEditionPart_FeatureLabel;
-
-	
-	public static String SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel;
-
-	
-	public static String OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel;
-
-	
-	public static String OCLFilterPropertiesEditionPart_OCLExpressionBodyLabel;
-
-	
-	public static String JavaExpressionFilterPropertiesEditionPart_JavaExpressionBodyLabel;
-
-	
-	public static String JavaDeclarationFilterPropertiesEditionPart_MethodNameLabel;
-
-	
-	public static String StrictTypingFilterPropertiesEditionPart_RestrictionLabel;
-
-	
 	public static String PropertiesEditionPart_DocumentationLabel;
 
 	
@@ -313,9 +199,8 @@ public class MappingMessages extends NLS {
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
 
 	// Start of user code for additionnal NLS Constants
-
- 	
-// End of user code
+	
+	// End of user code
 
 	static {
 		// initialize resource bundle
