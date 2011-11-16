@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.parts.forms;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -350,7 +349,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends SectionProp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		// Nothing to do
+		
 		// End of user code
 	}
 

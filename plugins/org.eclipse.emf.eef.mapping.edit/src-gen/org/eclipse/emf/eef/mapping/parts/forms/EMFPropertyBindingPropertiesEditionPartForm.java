@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.parts.forms;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,6 +64,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+
 
 // End of user code
 
@@ -349,7 +349,7 @@ public class EMFPropertyBindingPropertiesEditionPartForm extends SectionProperti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		// Nothing to do
+		
 		// End of user code
 	}
 

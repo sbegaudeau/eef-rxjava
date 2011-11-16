@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.eef.mapping.parts.CategoryPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingMessages;
@@ -180,7 +179,7 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		// Nothing to do
+		
 		// End of user code
 	}
 

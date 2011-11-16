@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.parts.forms;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
@@ -172,7 +171,7 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		// Nothing to do
+		
 		// End of user code
 	}
 
