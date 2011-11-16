@@ -82,7 +82,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Documentation">
              <input
@@ -98,7 +98,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Documentation">
              <input
@@ -114,7 +114,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Documentation">
              <input
@@ -130,7 +130,7 @@
              </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Documentation">
              <input
