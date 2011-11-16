@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.parts.impl;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -61,6 +60,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 
 // End of user code
 
@@ -335,7 +335,7 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
+		
 		// End of user code
 	}
 

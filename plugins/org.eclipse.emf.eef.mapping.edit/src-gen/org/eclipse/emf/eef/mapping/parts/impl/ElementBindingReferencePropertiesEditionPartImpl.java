@@ -12,7 +12,6 @@
 package org.eclipse.emf.eef.mapping.parts.impl;
 
 // Start of user code for imports
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.mapping.parts.ElementBindingReferencePropertiesEditionPart;
@@ -39,6 +38,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 
 // End of user code
 
@@ -153,7 +153,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
+		
 		// End of user code
 	}
 
