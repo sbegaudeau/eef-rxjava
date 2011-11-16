@@ -11,11 +11,7 @@
  */
 package org.eclipse.emf.eef.mapping.parts;
 
-// Start of user code for imports
-import java.util.List;
-import java.util.Map;
-
-
+//Start of user code for imports
 
 
 // End of user code
