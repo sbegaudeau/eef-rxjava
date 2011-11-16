@@ -28,6 +28,7 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 
 	/**
 	 * the source EditionComponent
+	 * @since 1.1
 	 */
 	protected IPropertiesEditionComponent parentPropertiesEditionComponent;
 
@@ -35,7 +36,7 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 * Helper for created graphical elements of the view
 	 */
 	private ViewHelper helper;
-	
+
 	/**
 	 * the EObject to edit
 	 */
@@ -122,49 +123,66 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String)
+	 * @since 1.1
 	 */
 	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode) {
 		if (propertiesEditingComponent == null) {
-			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory
+					.adapt(eObject, PropertiesEditingProvider.class);
 			if (propertiesEditionProvider != null) {
-				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(this, mode);
+				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(
+						this, mode);
 			}
 		}
 		return propertiesEditingComponent;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String, java.lang.String)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String,
+	 *      java.lang.String)
+	 * @since 1.1
 	 */
 	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part) {
 		if (propertiesEditingComponent == null) {
-			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory
+					.adapt(eObject, PropertiesEditingProvider.class);
 			if (propertiesEditionProvider != null) {
-				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(this, mode, part);
+				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(
+						this, mode, part);
 			}
 		}
 		return propertiesEditingComponent;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String, java.lang.String, java.lang.Class)
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#createPropertiesEditingComponent(java.lang.String,
+	 *      java.lang.String, java.lang.Class)
+	 * @since 1.1
 	 */
-	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part, Class<?> refinement) {
+	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part,
+			Class<?> refinement) {
 		if (propertiesEditingComponent == null) {
-			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory.adapt(eObject, PropertiesEditingProvider.class);
+			PropertiesEditingProvider propertiesEditionProvider = (PropertiesEditingProvider)adapterFactory
+					.adapt(eObject, PropertiesEditingProvider.class);
 			if (propertiesEditionProvider != null) {
-				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(this, mode, part, refinement);
+				this.propertiesEditingComponent = propertiesEditionProvider.getPropertiesEditingComponent(
+						this, mode, part, refinement);
 			}
 		}
 		return propertiesEditingComponent;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#getPropertiesEditingComponent()
+	 * @since 1.1
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent() {
 		return propertiesEditingComponent;
@@ -196,9 +214,9 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 			changeRecorder.dispose();
 	}
 
-	
 	/**
 	 * @return the {@link ViewHelper} of the context.
+	 * @since 1.1
 	 */
 	public ViewHelper getHelper() {
 		if (helper == null) {
@@ -209,10 +227,12 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#setHelper(org.eclipse.emf.eef.runtime.ui.parts.ViewHelper)
+	 * @since 1.1
 	 */
 	public void setHelper(ViewHelper helper) {
 		this.helper = helper;
 	}
-	
+
 }

@@ -15,6 +15,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.ViewHelper;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @since 1.1
  */
 public interface ExtendedPropertiesEditingContext extends PropertiesEditingContext {
 

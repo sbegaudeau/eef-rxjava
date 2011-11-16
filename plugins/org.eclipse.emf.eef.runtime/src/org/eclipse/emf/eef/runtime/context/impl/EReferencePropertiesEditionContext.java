@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.context.impl;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -31,17 +30,6 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	 * EEF editor settings to use.
 	 */
 	private EEFEditorSettings settings;
-
-	/**
-	 * @param propertiesEditionComponent
-	 * @param eReference
-	 * @param resourceSet
-	 * @deprecated use EReferencePropertiesEditionContext(PropertiesEditingContext, IPropertiesEditionComponent, ReferencesTableSettings settings, AdapterFactory adapterFactory) instead
-	 */
-	public EReferencePropertiesEditionContext(PropertiesEditingContext parentContext, IPropertiesEditionComponent propertiesEditionComponent, EObject eObject, EReference eReference, AdapterFactory adapterFactory) {
-		super(parentContext, propertiesEditionComponent, eObject, adapterFactory);
-		this.eReference = eReference;
-	}
 
 	/**
 	 * @param parentContext

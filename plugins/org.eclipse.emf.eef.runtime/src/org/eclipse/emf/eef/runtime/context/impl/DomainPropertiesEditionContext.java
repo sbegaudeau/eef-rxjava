@@ -47,25 +47,6 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 	}
 
 	/**
-	 * @param editionComponent
-	 *            editingComponent holding the EObject editing
-	 * @param domain
-	 *            domain where to perform commands
-	 * @param adapterFactory
-	 *            adapterFactory to use to get editing providers
-	 * @param eObject
-	 *            eObject to edit
-	 * @param resourceSet
-	 *            specific ResourceSet to use
-	 * @deprecated no specific resourceSet must be used.
-	 */
-	public DomainPropertiesEditionContext(IPropertiesEditionComponent editionComponent, EditingDomain domain,
-			AdapterFactory adapterFactory, EObject eObject, ResourceSet resourceSet) {
-		super(null, editionComponent, eObject, adapterFactory);
-		this.editingDomain = domain;
-	}
-
-	/**
 	 * @return the editingDomain
 	 */
 	public EditingDomain getEditingDomain() {

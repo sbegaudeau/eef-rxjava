@@ -50,29 +50,6 @@ public abstract class BusinessViewerFilter extends ViewerFilter {
 		this.nullable = nullable;
 	}
 
-	/**
-	 * @param eObject
-	 * @param name
-	 * @deprecated
-	 */
-	public BusinessViewerFilter(EObject eObject, String name) {
-		super();
-		this.name = name;
-		this.current = eObject;
-	}
-
-	/**
-	 * @param eObject
-	 * @param name
-	 * @param description
-	 * @deprecated
-	 */
-	public BusinessViewerFilter(EObject eObject, String name, String description) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.current = eObject;
-	}
 
 	/**
 	 * @param eObject

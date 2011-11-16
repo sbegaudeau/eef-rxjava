@@ -45,21 +45,6 @@ public class EEFUtils {
 
 	public static final String JDT_CORE_SYMBOLIC_NAME = "org.eclipse.jdt.core"; //$NON-NLS-1$
 
-	/**
-	 * @deprecated
-	 */
-	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject,
-			EStructuralFeature feature, ResourceSet allResources) {
-		return choiceOfValues(eObject, feature, allResources);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature, ResourceSet allResources) {
-		return choiceOfValues(eObject, feature);
-	}
-
 	public static Object choiceOfValues(EObject eObject, EStructuralFeature feature) {
 		return choiceOfValues(EEFRuntimePlugin.getDefault().getAdapterFactory(), eObject, feature);
 	}
@@ -166,15 +151,6 @@ public class EEFUtils {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * @param eClassifier
-	 * @return
-	 * @deprecated
-	 */
-	public static List<EClass> instanciableTypesInHierarchy(EClassifier eClassifier) {
-		return instanciableTypesInHierarchy(eClassifier, null);
 	}
 
 	/**

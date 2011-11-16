@@ -58,19 +58,6 @@ public class ComposedPropertiesEditionProvider extends PropertiesEditingProvider
 	}
 
 	/**
-	 * @param clazz
-	 * @param editPropertiesProvider
-	 * @deprecated use the PropertiesEditionProvider extension point
-	 */
-	public void replace(Class clazz, PropertiesEditingProvider editPropertiesProvider) {
-		for (int i = 0; i < editPropertiesProviders.size(); i++) {
-			PropertiesEditingProvider provider = editPropertiesProviders.get(i);
-			if (clazz.isInstance(provider))
-				editPropertiesProviders.set(i, editPropertiesProvider);
-		}
-	}
-
-	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
