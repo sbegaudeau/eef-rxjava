@@ -48,6 +48,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 
+
 // End of user code
 
 /**
@@ -57,7 +58,7 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DeferedFlatReferencesTableSamplePropertiesEditionPart {
 
 	protected Text name;
-		protected FlatReferencesTable flatReferencesTableSampleEditor;
+	protected FlatReferencesTable flatReferencesTableSampleEditor;
 
 
 
@@ -115,7 +116,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor) {
 					return createFlatReferencesTableSampleEditorFlatReferencesTable(widgetFactory, parent);
@@ -207,8 +208,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -217,8 +216,8 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -244,7 +243,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -298,7 +296,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	public boolean isContainedInFlatReferencesTableSampleEditorTable(EObject element) {
 		return ((ReferencesTableSettings)flatReferencesTableSampleEditor.getInput()).contains(element);
 	}
-
 
 
 

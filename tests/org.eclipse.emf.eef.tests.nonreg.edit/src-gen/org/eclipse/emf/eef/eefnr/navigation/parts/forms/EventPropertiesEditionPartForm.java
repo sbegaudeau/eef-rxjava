@@ -106,7 +106,7 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == NamingViewsRepository.Event.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -170,8 +170,6 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,7 +205,6 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -71,11 +71,11 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class DeferedReferencesTableSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DeferedReferencesTableSamplePropertiesEditionPart {
 
 	protected Text name;
-		protected TableViewer referencesTableSampleEditor;
-		protected Button addReferencesTableSampleEditor;
-		protected Button removeReferencesTableSampleEditor;
-		protected List<ViewerFilter> referencesTableSampleEditorBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> referencesTableSampleEditorFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer referencesTableSampleEditor;
+	protected Button addReferencesTableSampleEditor;
+	protected Button removeReferencesTableSampleEditor;
+	protected List<ViewerFilter> referencesTableSampleEditorBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencesTableSampleEditorFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -133,7 +133,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor) {
 					return createReferencesTableSampleEditorReferencesTable(widgetFactory, parent);
@@ -254,7 +254,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 							}
 							return ""; //$NON-NLS-1$
 						}
-						
+			
 			
 			// End of user code
 
@@ -357,8 +357,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		referencesTableSampleEditor.refresh();
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -367,8 +365,8 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -394,7 +392,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -450,7 +447,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 	public boolean isContainedInReferencesTableSampleEditorTable(EObject element) {
 		return ((ReferencesTableSettings)referencesTableSampleEditor.getInput()).contains(element);
 	}
-
 
 
 

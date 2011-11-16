@@ -368,8 +368,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -406,7 +404,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -430,7 +427,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 			delegate1ForSingleValued.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -456,7 +452,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -481,7 +476,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -505,7 +499,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

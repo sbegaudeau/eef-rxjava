@@ -114,19 +114,19 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.AttributeNavigationSample.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued) {
-					return 		createDelegate1ForSingleValuedText(widgetFactory, parent);
+					return createDelegate1ForSingleValuedText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued) {
-					return 		createDelegate2ForSingleValuedText(widgetFactory, parent);
+					return createDelegate2ForSingleValuedText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued) {
-					return 		createDelegate1ForMultiValuedText(widgetFactory, parent);
+					return createDelegate1ForMultiValuedText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued) {
-					return 		createDelegate2ForMultiValuedText(widgetFactory, parent);
+					return createDelegate2ForMultiValuedText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -350,8 +350,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -388,7 +386,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -412,7 +409,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			delegate1ForSingleValued.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -438,7 +434,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -463,7 +458,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -487,7 +481,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -178,8 +178,6 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -188,8 +186,8 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -215,7 +213,6 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 			anotherSpecialisationElement.setSelection(false);
 		}
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 

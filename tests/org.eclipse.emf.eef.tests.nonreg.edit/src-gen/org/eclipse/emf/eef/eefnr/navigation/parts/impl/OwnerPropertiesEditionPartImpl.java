@@ -77,7 +77,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
 
-
 // End of user code
 
 /**
@@ -90,9 +89,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	protected TableViewer multipleSampleForTableComposition;
 	protected List<ViewerFilter> multipleSampleForTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> multipleSampleForTableCompositionFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable multipleSampleForAdvancedTableComposition;
-protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable multipleSampleForAdvancedTableComposition;
+	protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionFilters = new ArrayList<ViewerFilter>();
 	protected TableViewer multipleSampleForReferencesTable;
 	protected Button addMultipleSampleForReferencesTable;
 	protected Button removeMultipleSampleForReferencesTable;
@@ -105,9 +104,9 @@ protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionFilters = 
 	protected TableViewer singleSampleForTableComposition;
 	protected List<ViewerFilter> singleSampleForTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> singleSampleForTableCompositionFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable singleSampleForAdvancedTableComposition;
-protected List<ViewerFilter> singleSampleForAdvancedTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable singleSampleForAdvancedTableComposition;
+	protected List<ViewerFilter> singleSampleForAdvancedTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = new ArrayList<ViewerFilter>();
 	protected TableViewer singleSampleForReferencesTable;
 	protected Button addSingleSampleForReferencesTable;
 	protected Button removeSingleSampleForReferencesTable;
@@ -552,7 +551,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		gd.verticalAlignment = GridData.FILL;
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
-		// Start of user code for table multipleSampleForReferencesTable s columns definition		
+		// Start of user code for table multipleSampleForReferencesTable s columns definition
 				TableColumn name = new TableColumn(table, SWT.NONE);
 				name.setWidth(80);
 				name.setText("Label"); //$NON-NLS-1$
@@ -577,7 +576,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 						public Image getColumnImage(Object element, int columnIndex) {
 							return null;
 						}
-						
+			
 			// End of user code
 
 			public void addListener(ILabelProviderListener listener) {
@@ -1036,7 +1035,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		gd.verticalAlignment = GridData.FILL;
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
-		// Start of user code for table singleSampleForReferencesTable s columns definition		
+		// Start of user code for table singleSampleForReferencesTable s columns definition
 				TableColumn name = new TableColumn(table, SWT.NONE);
 				name.setWidth(80);
 				name.setText("Label"); //$NON-NLS-1$
@@ -1061,7 +1060,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 						public Image getColumnImage(Object element, int columnIndex) {
 							return null;
 						}
-						
+			
 			// End of user code
 
 			public void addListener(ILabelProviderListener listener) {
@@ -1194,7 +1193,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		gd.verticalAlignment = GridData.FILL;
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
-		// Start of user code for table singleSampleForAdvancedReferencesTable s columns definition		
+		// Start of user code for table singleSampleForAdvancedReferencesTable s columns definition
 				TableColumn name = new TableColumn(table, SWT.NONE);
 				name.setWidth(80);
 				name.setText("Label"); //$NON-NLS-1$
@@ -1219,7 +1218,7 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 						public Image getColumnImage(Object element, int columnIndex) {
 							return null;
 						}
-						
+			
 			// End of user code
 
 			public void addListener(ILabelProviderListener listener) {
@@ -1445,8 +1444,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1455,8 +1452,8 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -1482,7 +1479,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -1544,7 +1540,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1603,7 +1598,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1656,7 +1650,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	public boolean isContainedInMultipleSampleForReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)multipleSampleForReferencesTable.getInput()).contains(element);
 	}
-
 
 
 
@@ -1715,7 +1708,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1766,7 +1758,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	public boolean isContainedInMultipleSampleForFlatReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)multipleSampleForFlatReferencesTable.getInput()).contains(element);
 	}
-
 
 
 
@@ -1828,7 +1819,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1887,7 +1877,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1940,7 +1929,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	public boolean isContainedInSingleSampleForReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)singleSampleForReferencesTable.getInput()).contains(element);
 	}
-
 
 
 
@@ -1999,7 +1987,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2050,7 +2037,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	public boolean isContainedInSingleSampleForFlatReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)singleSampleForFlatReferencesTable.getInput()).contains(element);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2122,7 +2108,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		singleContainmentForEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2193,7 +2178,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		singleReferencesForEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2259,7 +2243,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 		singleContainmentForAdvancedEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2324,7 +2307,6 @@ protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = ne
 	public void addBusinessFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(ViewerFilter filter) {
 		singleReferencesForAdvancedEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
-
 
 
 

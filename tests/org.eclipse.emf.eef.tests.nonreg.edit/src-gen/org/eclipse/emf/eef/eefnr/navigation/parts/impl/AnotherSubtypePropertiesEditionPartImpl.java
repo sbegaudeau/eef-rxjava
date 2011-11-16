@@ -45,7 +45,6 @@ import org.eclipse.swt.widgets.Group;
 
 
 
-
 // End of user code
 
 /**
@@ -168,8 +167,6 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -178,8 +175,8 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -205,7 +202,6 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 			anotherSpecialisationElement.setSelection(false);
 		}
 	}
-
 
 /**
 	 * {@inheritDoc}

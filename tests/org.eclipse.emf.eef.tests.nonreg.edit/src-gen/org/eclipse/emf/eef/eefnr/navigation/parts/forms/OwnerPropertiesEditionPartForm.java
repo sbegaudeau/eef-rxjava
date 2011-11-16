@@ -80,6 +80,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 
+
 // End of user code
 
 /**
@@ -89,44 +90,44 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, OwnerPropertiesEditionPart {
 
 	protected Text name;
-		protected TableViewer multipleSampleForTableComposition;
-		protected List<ViewerFilter> multipleSampleForTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> multipleSampleForTableCompositionFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer multipleSampleForTableComposition;
+	protected List<ViewerFilter> multipleSampleForTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> multipleSampleForTableCompositionFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable multipleSampleForAdvancedTableComposition;
 	protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> multipleSampleForAdvancedTableCompositionFilters = new ArrayList<ViewerFilter>();
-		protected TableViewer multipleSampleForReferencesTable;
-		protected Button addMultipleSampleForReferencesTable;
-		protected Button removeMultipleSampleForReferencesTable;
-		protected List<ViewerFilter> multipleSampleForReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> multipleSampleForReferencesTableFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable multipleSampleForAdvancedReferencesTable;
-		protected List<ViewerFilter> multipleSampleForAdvancedReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> multipleSampleForAdvancedReferencesTableFilters = new ArrayList<ViewerFilter>();
-		protected FlatReferencesTable multipleSampleForFlatReferencesTable;
-		protected TableViewer singleSampleForTableComposition;
-		protected List<ViewerFilter> singleSampleForTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> singleSampleForTableCompositionFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer multipleSampleForReferencesTable;
+	protected Button addMultipleSampleForReferencesTable;
+	protected Button removeMultipleSampleForReferencesTable;
+	protected List<ViewerFilter> multipleSampleForReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> multipleSampleForReferencesTableFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable multipleSampleForAdvancedReferencesTable;
+	protected List<ViewerFilter> multipleSampleForAdvancedReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> multipleSampleForAdvancedReferencesTableFilters = new ArrayList<ViewerFilter>();
+	protected FlatReferencesTable multipleSampleForFlatReferencesTable;
+	protected TableViewer singleSampleForTableComposition;
+	protected List<ViewerFilter> singleSampleForTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> singleSampleForTableCompositionFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable singleSampleForAdvancedTableComposition;
 	protected List<ViewerFilter> singleSampleForAdvancedTableCompositionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> singleSampleForAdvancedTableCompositionFilters = new ArrayList<ViewerFilter>();
-		protected TableViewer singleSampleForReferencesTable;
-		protected Button addSingleSampleForReferencesTable;
-		protected Button removeSingleSampleForReferencesTable;
-		protected List<ViewerFilter> singleSampleForReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> singleSampleForReferencesTableFilters = new ArrayList<ViewerFilter>();
-		protected TableViewer singleSampleForAdvancedReferencesTable;
-		protected Button addSingleSampleForAdvancedReferencesTable;
-		protected Button removeSingleSampleForAdvancedReferencesTable;
-		protected List<ViewerFilter> singleSampleForAdvancedReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> singleSampleForAdvancedReferencesTableFilters = new ArrayList<ViewerFilter>();
-		protected FlatReferencesTable singleSampleForFlatReferencesTable;
+	protected TableViewer singleSampleForReferencesTable;
+	protected Button addSingleSampleForReferencesTable;
+	protected Button removeSingleSampleForReferencesTable;
+	protected List<ViewerFilter> singleSampleForReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> singleSampleForReferencesTableFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer singleSampleForAdvancedReferencesTable;
+	protected Button addSingleSampleForAdvancedReferencesTable;
+	protected Button removeSingleSampleForAdvancedReferencesTable;
+	protected List<ViewerFilter> singleSampleForAdvancedReferencesTableBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> singleSampleForAdvancedReferencesTableFilters = new ArrayList<ViewerFilter>();
+	protected FlatReferencesTable singleSampleForFlatReferencesTable;
 	protected EObjectFlatComboViewer singleContainmentForEObjectFlatComboViewer;
 	protected EObjectFlatComboViewer singleReferencesForEObjectFlatComboViewer;
 	protected AdvancedEObjectFlatComboViewer singleContainmentForAdvancedEObjectFlatComboViewer;
-		protected ViewerFilter singleContainmentForAdvancedEObjectFlatComboViewerFilter;
+	protected ViewerFilter singleContainmentForAdvancedEObjectFlatComboViewerFilter;
 	protected AdvancedEObjectFlatComboViewer singleReferencesForAdvancedEObjectFlatComboViewer;
-		protected ViewerFilter singleReferencesForAdvancedEObjectFlatComboViewerFilter;
+	protected ViewerFilter singleReferencesForAdvancedEObjectFlatComboViewerFilter;
 
 
 
@@ -197,7 +198,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.Owner.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition) {
 					return createMultipleSampleForTableCompositionTableComposition(widgetFactory, parent);
@@ -574,7 +575,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 							}
 							return ""; //$NON-NLS-1$
 						}
-						
+			
 			
 			// End of user code
 
@@ -1054,7 +1055,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 							}
 							return ""; //$NON-NLS-1$
 						}
-						
+			
 			
 			// End of user code
 
@@ -1211,7 +1212,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 							}
 							return ""; //$NON-NLS-1$
 						}
-						
+			
 			
 			// End of user code
 
@@ -1461,8 +1462,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1471,8 +1470,8 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -1498,7 +1497,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -1560,7 +1558,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1619,7 +1616,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1672,7 +1668,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	public boolean isContainedInMultipleSampleForReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)multipleSampleForReferencesTable.getInput()).contains(element);
 	}
-
 
 
 
@@ -1731,7 +1726,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1782,7 +1776,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	public boolean isContainedInMultipleSampleForFlatReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)multipleSampleForFlatReferencesTable.getInput()).contains(element);
 	}
-
 
 
 
@@ -1844,7 +1837,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1903,7 +1895,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1956,7 +1947,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	public boolean isContainedInSingleSampleForReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)singleSampleForReferencesTable.getInput()).contains(element);
 	}
-
 
 
 
@@ -2015,7 +2005,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2066,7 +2055,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	public boolean isContainedInSingleSampleForFlatReferencesTableTable(EObject element) {
 		return ((ReferencesTableSettings)singleSampleForFlatReferencesTable.getInput()).contains(element);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2138,7 +2126,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleContainmentForEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2209,7 +2196,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleReferencesForEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2275,7 +2261,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleContainmentForAdvancedEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2340,7 +2325,6 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	public void addBusinessFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(ViewerFilter filter) {
 		singleReferencesForAdvancedEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
-
 
 
 

@@ -106,7 +106,7 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.NamedElement.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -170,8 +170,6 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -180,8 +178,8 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -207,7 +205,6 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -164,8 +164,6 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -201,7 +199,6 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

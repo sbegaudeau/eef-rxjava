@@ -47,6 +47,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 
+
 // End of user code
 
 /**
@@ -176,8 +177,6 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -186,8 +185,8 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -213,7 +212,6 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 			specialisedElement.setSelection(false);
 		}
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 

@@ -172,8 +172,6 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -182,8 +180,8 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -209,7 +207,6 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 			isVisible.setSelection(false);
 		}
 	}
-
 /**
 	 * {@inheritDoc}
 	 * 
