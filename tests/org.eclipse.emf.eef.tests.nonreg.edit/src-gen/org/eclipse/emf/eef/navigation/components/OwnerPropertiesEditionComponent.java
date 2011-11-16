@@ -173,7 +173,7 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 				basePart.initMultipleSampleForReferencesTable(multipleSampleForReferencesTableSettings);
 			}
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable)) {
-				multipleSampleForAdvancedReferencesTableSettings = new ReferencesTableSettings(owner, NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleAdvancedReferencesTable());
+				multipleSampleForAdvancedReferencesTableSettings = new ReferencesTableSettings(owner, NavigationPackage.eINSTANCE.getOwner_MultipleReferencers(), NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleAdvancedReferencesTable());
 				basePart.initMultipleSampleForAdvancedReferencesTable(multipleSampleForAdvancedReferencesTableSettings);
 			}
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable)) {
