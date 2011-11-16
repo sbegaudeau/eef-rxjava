@@ -145,7 +145,7 @@ public class [className/]
 				 null));
   [else]
 				 new String[genModel.genSquareBrackets('')/]  {
-    	[genFeature.propertyFilterFlags.declareFilterFlag()->sep(',\n'.concat(genModel.getNonNLS()))/]
+    	[genFeature.propertyFilterFlags.declareFilterFlag()->sep(',' + genModel.getLineDelimiter() + genModel.getNonNLS())/]
 				 }));
   [/if]
 [comment]<%@ end %><%//ItemProvider/addPropertyDescriptor.override.javajetinc%>[/comment]
@@ -371,9 +371,9 @@ public class [className/]
 				 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil')/].createEntry
 					([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataCreateClassifier().oclAsType(GenClass).isMapEntry())]
-					 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/]))));
+					 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/]))));
           [else]
-					 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]())));
+					 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]())));
           [/if]
 [comment]<%@ include file="ItemProvider/newChildDescriptorsReferenceDelegatedFeature.insert.javajetinc" fail="silent"%>
 <%@ end %><%//ItemProvider/newChildDescriptorsReferenceDelegatedFeature.override.javajetinc%>[/comment]
@@ -387,7 +387,7 @@ public class [className/]
 				 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil')/].createEntry
 					([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataDelegatedFeature().isEnumBasedType())]
-					 [getChildCreationDataDelegatedFeature().getTypeGenEnum().getStaticValue(getChildCreationDataDelegatedFeature().getEcoreFeature().defaultValueLiteral)/])));
+					 [getChildCreationDataDelegatedFeature().getTypeGenEnum().getStaticValue(getChildCreationDataDelegatedFeature().ecoreFeature.defaultValueLiteral)/])));
           [elseif (getChildCreationDataDelegatedFeature().isStringBasedType())]
 					 [getChildCreationDataDelegatedFeature().getCreateChildValueLiteral()/])));[genModel.getNonNLS()/]
           [else]
@@ -404,9 +404,9 @@ public class [className/]
 			(createChildParameter
 				([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
         [if (getChildCreationDataCreateClassifier().oclAsType(GenClass).isMapEntry())]
-				 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/])));
+				 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/])));
         [else]
-				 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]()));
+				 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]()));
         [/if]
 [comment]<%@ include file="ItemProvider/newChildDescriptorsReferenceFeature.insert.javajetinc" fail="silent"%>
 <%@ end %><%//ItemProvider/newChildDescriptorsReferenceFeature.override.javajetinc %>[/comment]
@@ -418,7 +418,7 @@ public class [className/]
 			(createChildParameter
 				([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
         [if (getChildCreationDataCreateFeature().isEnumBasedType())]
-				 [getChildCreationDataCreateFeature().getTypeGenEnum().getStaticValue(getChildCreationDataCreateFeature().getEcoreFeature().defaultValueLiteral)/]));
+				 [getChildCreationDataCreateFeature().getTypeGenEnum().getStaticValue(getChildCreationDataCreateFeature().ecoreFeature.defaultValueLiteral)/]));
         [elseif (getChildCreationDataCreateFeature().isStringBasedType())]
 				 [getChildCreationDataCreateFeature().getCreateChildValueLiteral()/]));[genModel.getNonNLS()/]
         [else]
@@ -455,7 +455,7 @@ public class [className/]
 
     [/if]
 		boolean qualify = 
-    [for (createFeature : GenFeature | genClass.getSharedClassCreateChildFeatures()) separator (' ||\n')]
+    [for (createFeature : GenFeature | genClass.getSharedClassCreateChildFeatures()) separator (' ||' + genModel.getLineDelimiter())]
 			childFeature == [createFeature.getQualifiedFeatureAccessor()/][/for];
 
 		if (qualify)
@@ -469,7 +469,7 @@ public class [className/]
 
 [/if]
 [/if]
-[if (genClass.getProviderExtendsGenClass().oclIsUndefined() or genClass.getProviderExtendsGenClass().getGenPackage() <> genPackage and ( not genPackage.isExtensibleProviderFactory() or genClass.getProviderExtendsGenClass().getGenPackage().isExtensibleProviderFactory() <> genPackage.isExtensibleProviderFactory()))]
+[if (genClass.getProviderExtendsGenClass().oclIsUndefined() or genClass.getProviderExtendsGenClass().genPackage <> genPackage and ( not genPackage.extensibleProviderFactory or genClass.getProviderExtendsGenClass().genPackage.extensibleProviderFactory <> genPackage.extensibleProviderFactory))]
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
@@ -481,7 +481,7 @@ public class [className/]
 [/if]
 	public [genModel.getImportedName('org.eclipse.emf.common.util.ResourceLocator')/] getResourceLocator()
 	{
-[if (genPackage.isExtensibleProviderFactory())]
+[if (genPackage.extensibleProviderFactory)]
 		return (([genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender')/])adapterFactory).getResourceLocator();
 [else]
 		return [genPackage.getImportedEditPluginClassName()/].INSTANCE;
@@ -494,7 +494,7 @@ public class [className/]
 
 [/template]
 
-[template public _List (genModel : GenModel)]
+[template protected _List (genModel : GenModel)]
 [genModel.getImportedName('java.util.List')/][if genModel.useGenerics()]<[genModel.getImportedName('org.eclipse.emf.edit.provider.IItemPropertyDescriptor')/]>[/if]
 [/template]
 

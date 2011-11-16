@@ -13,4 +13,3 @@
 [query public toPath(s : String): String = s.substituteAll('.', '/')/]
 
 [query public isBlank(string : String) : Boolean = string.oclIsUndefined() or string->size() = 0/]
-	

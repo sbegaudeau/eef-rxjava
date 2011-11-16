@@ -6,7 +6,7 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenFeature /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
 
-[template public genDeclaredFields(genFeature : GenFeature, genClass : GenClass, genModel : GenModel, isGWT : Boolean, isJDK50 : Boolean, packageName : String, className : String)]
+[template public genDeclaredFields(genFeature : GenFeature, genClass : GenClass, genModel : GenModel, isGWT : Boolean, isJDK50 : Boolean)]
     [if (genFeature.hasSettingDelegate())]
 	/**
 	 * The cached setting delegate for the '{@link #[genFeature.getGetAccessor()/]() <em>[genFeature.getFormattedName()/]</em>}' [genFeature.getFeatureKind()/].
@@ -37,7 +37,7 @@
 	protected [genFeature.getImportedInternalType(genClass)/] [genFeature.getSafeName()/];
 
       [/if]
-      [if (genModel.isArrayAccessors() and genFeature.isListType() and not genFeature.isFeatureMapType() and not genFeature.isMapType())]
+      [if (genModel.arrayAccessors and genFeature.isListType() and not genFeature.isFeatureMapType() and not genFeature.isMapType())]
         [let rawListItemType : String = genFeature.getRawListItemType()]
           [let index : Integer = rawListItemType.index('[')]
             [let head : String = if (index <> -1) then rawListItemType.substring(1, index) else rawListItemType endif]
@@ -61,7 +61,7 @@
         [/let]
       [/if]
     [else]
-      [if (genFeature.hasEDefault() and (not genFeature.isVolatile() or not genModel.isReflectiveDelegation() and (not genFeature.hasDelegateFeature() or not genFeature.isUnsettable())))]
+      [if (genFeature.hasEDefault() and (not genFeature.isVolatile() or not genModel.reflectiveDelegation and (not genFeature.hasDelegateFeature() or not genFeature.isUnsettable())))]
         [let staticDefaultValue : String = genFeature.getStaticDefaultValue()]
 	/**
 	 * The default value of the '{@link #[genFeature.getGetAccessor()/]() <em>[genFeature.getFormattedName()/]</em>}' [genFeature.getFeatureKind()/].
@@ -74,7 +74,7 @@
         [if (genModel.useGenerics() and genFeature.isListDataType() and genFeature.isSetDefaultValue()) ]
 	@SuppressWarnings("unchecked")
         [/if]
-	protected static final [genFeature.getImportedType(genClass)/] [genFeature.getEDefault()/][if (staticDefaultValue = '') ]; // TODO The default value literal "[genFeature.getEcoreFeature().defaultValueLiteral/]" is not valid.[else] = [staticDefaultValue/];[genModel.getNonNLS(staticDefaultValue)/][/if]
+	protected static final [genFeature.getImportedType(genClass)/] [genFeature.getEDefault()/][if (staticDefaultValue = '') ]; // TODO The default value literal "[genFeature.ecoreFeature.defaultValueLiteral/]" is not valid.[else] = [staticDefaultValue/];[genModel.getNonNLS(staticDefaultValue)/][/if]
 
         [/let]
       [/if]
@@ -193,5 +193,4 @@
 
       [/if]
     [/if]
-[comment]<%@ include file="Class/declaredFieldGenFeature.insert.javajetinc" fail="silent" %>[/comment]
 [/template]

@@ -8,12 +8,15 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenClass /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenClassifier /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnum /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnumLiteral /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenDataType /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenFeature /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenOperation /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenParameter /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenTypeParameter /]
 [import org::eclipse::emf::eef::codegen::ecore::model::genpackage::EGenericType /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::EAnnotation /]
+[import org::eclipse::emf::eef::codegen::ecore::services::StringUtil /]
 
 [template public packageClass(genPackage : GenPackage, isInterface : Boolean, isImplementation : Boolean)]
 [comment]
@@ -35,45 +38,58 @@
 [let genModel : GenModel = genPackage.genModel]
 [let packageName : String = genPackage.packageClassPackageName(isInterface)]
 [let className : String = genPackage.packageClassName(isImplementation)]
-[genModel.initializeImportManager(packageName, className)/]
+
+[genModel.initializeImportManager(genPackage, packageName, className)/]
+
 [if (isImplementation)]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container', packageName, className)/]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container.Dynamic', packageName, className)/]
-[genModel.addImport('org.eclipse.emf.ecore.EClass', packageName, className)/]
-[genModel.addImport('org.eclipse.emf.ecore.EObject', packageName, className)/]
-[if (not genPackage.hasJavaLangConflict() and not genPackage.hasInterfaceImplConflict() and genPackage.getClassPackageName() <> genPackage.getInterfacePackageName())][genModel.addImport(genPackage.getInterfacePackageName() + '.*', packageName, className)/][/if]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.EPackage.Registry')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.EPackage.Descriptor')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.EPackageImpl.EBasicWhiteList')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.EPackageImpl.EBasicWhiteList')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container.Dynamic')/]
+[if (genPackage.isLiteralsInterface())]
+	[genModel.addPseudoImport(genPackage.getQualifiedPackageInterfaceName() + '.Literals')/]
 [/if]
+[for (genClassifier : GenClassifier | genPackage.getOrderedGenClassifiers())]
+	[genModel.addPseudoImport(genPackage.getQualifiedPackageInterfaceName() + '.' + genPackage.getClassifierID(genClassifier))/]
+[/for]
+[/if]
+
+
+
 [file (packageClassPath(genPackage, isInterface, isImplementation), false, 'UTF-8')]
 [genModel.includeHeader()/]
 package [packageName/];
-[let content : String = genPackage.packageClassFileContent(isInterface, isImplementation, genModel, packageName, className)]
-[genModel.genSortedImports(packageName, className)/]
+[let content : String = genPackage.packageClassFileContent(isInterface, isImplementation, genModel, className)]
+[genModel.genSortedImports()/]
 
-[content/]
+[content.trim()/]
 [/let]
 [/file]
+
+
+
 [/let][comment className /]
 [/let][comment packageName /]
 [/let][comment genModel /]
 [/template]
 
-[template protected packageClassFileContent(genPackage : GenPackage, isInterface : Boolean, isImplementation : Boolean, genModel : GenModel, packageName : String, className : String)]
+[template protected packageClassFileContent(genPackage : GenPackage, isInterface : Boolean, isImplementation : Boolean, genModel : GenModel, className : String)]
 [let publicStaticFinalFlag : String = if (isImplementation) then 'public static final ' else '' endif]
 [if (isImplementation)]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.EPackage.Registry', packageName, className)/]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.EPackage.Descriptor', packageName, className)/]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.EPackageImpl.EBasicWhiteList', packageName, className)/]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container', packageName, className)/]
-[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container.Dynamic', packageName, className)/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.EPackage.Registry')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.EPackage.Descriptor')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.EPackageImpl.EBasicWhiteList')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container')/]
+[genModel.addPseudoImport('org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container.Dynamic')/]
   [if (genPackage.isLiteralsInterface())]
-[genModel.addPseudoImport(genPackage.getQualifiedPackageInterfaceName() + '.Literals', packageName, className)/]
+[genModel.addPseudoImport(genPackage.getQualifiedPackageInterfaceName() + '.Literals')/]
   [/if]
   [for (genClassifier : GenClassifier | genPackage.getOrderedGenClassifiers())]
-    [genModel.addPseudoImport(genPackage.getQualifiedPackageInterfaceName() + '.' + genPackage.getClassifierID(genClassifier), packageName, className)/]
+    [genModel.addPseudoImport(genPackage.getQualifiedPackageInterfaceName() + '.' + genPackage.getClassifierID(genClassifier))/]
   [/for]
 [/if]
 [if (isInterface)]
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -81,7 +97,7 @@ package [packageName/];
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
-  [if (genModel.isOperationReflection())]
+  [if (genModel.operationReflection)]
  *   <li>each operation of each class,</li>
   [/if]
  *   <li>each enum,</li>
@@ -94,19 +110,18 @@ package [packageName/];
  * <!-- end-model-doc -->
   [/if]
  * @see [genPackage.getQualifiedFactoryInterfaceName()/]
-  [if (not genModel.isSuppressEMFModelTags())]
-    [let modelInfoLines : Sequence(String) = genPackage.getModelInfo().tokenize('\n\r')]
+  [if (not genModel.suppressEMFModelTags)]
+    [let modelInfoLines : Sequence(String) = genPackage.getModelInfo().tokenize(genModel.getLineDelimiter() + '\r')]
       [if (modelInfoLines->isEmpty())]
  * @model
       [else]
- * @model [modelInfoLines->sep('\n *        ')/]
+ * @model [modelInfoLines->sep(genModel.getLineDelimiter() + ' *        ')/]
       [/if]
     [/let]
   [/if]
  * @generated
  */
 [else][comment isInterface /]
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -115,9 +130,9 @@ package [packageName/];
  */
 [/if][comment isInterface /]
 [if (isImplementation)]
-public class [className/] extends [genModel.getImportedName('org.eclipse.emf.ecore.impl.EPackageImpl', packageName, className)/][if (not isInterface)] implements [genPackage.getImportedPackageInterfaceName()/][/if] {
+public class [className/] extends [genModel.getImportedName('org.eclipse.emf.ecore.impl.EPackageImpl')/][if (not isInterface)] implements [genPackage.getImportedPackageInterfaceName()/][/if] {
 [else]
-public interface [className/] extends [genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/] {
+public interface [className/] extends [genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/] {
 [/if]
 [if (genModel.hasCopyrightField())]
 	/**
@@ -125,7 +140,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String', packageName, className)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String')/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
 [if (isInterface)]
@@ -135,7 +150,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String', packageName, className)/] eNAME = "[genPackage.getPackageName()/]";[genModel.getNonNLS()/]
+	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String')/] eNAME = "[genPackage.getPackageName()/]";[genModel.getNonNLS()/]
 
 	/**
 	 * The package namespace URI.
@@ -143,7 +158,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String', packageName, className)/] eNS_URI = "[genPackage.getNSURI()/]";[genModel.getNonNLS()/]
+	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String')/] eNS_URI = "[genPackage.getNSURI()/]";[genModel.getNonNLS()/]
 
 	/**
 	 * The package namespace name.
@@ -151,7 +166,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String', packageName, className)/] eNS_PREFIX = "[genPackage.getNSName()/]";[genModel.getNonNLS()/]
+	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String')/] eNS_PREFIX = "[genPackage.getNSName()/]";[genModel.getNonNLS()/]
   [if (genPackage.isContentType())]
 
 	/**
@@ -160,7 +175,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String', packageName, className)/] eCONTENT_TYPE = "[genPackage.getContentTypeIdentifier()/]";[genModel.getNonNLS()/]
+	[publicStaticFinalFlag/][genModel.getImportedName('java.lang.String')/] eCONTENT_TYPE = "[genPackage.contentTypeIdentifier/]";[genModel.getNonNLS()/]
   [/if]
 
 	/**
@@ -231,7 +246,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 */
 	[publicStaticFinalFlag/]int [genClass.getFeatureCountID()/] = [genClass.getFeatureCountValue()/];
 
-        [if (genModel.isOperationReflection())]
+        [if (genModel.operationReflection)]
           [for (genOperation : GenOperation | genClass.getAllGenOperations(false))]
             [if (genClass.getOverrideGenOperation(genOperation) = null)]
 	/**
@@ -269,7 +284,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	protected String packageFilename = "[genPackage.getSerializedPackageFilename()/]";[genModel.getNonNLS()/]
 
   [/if]
-  [for (genClassifier : GenClassifier | genPackage.getGenClassifiers())]
+  [for (genClassifier : GenClassifier | genPackage.genClassifiers)]
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,8 +308,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * @see #init()
 	 * @generated
 	 */
-	private [genPackage.getPackageClassName()/]()
-	{
+	private [genPackage.getPackageClassName()/]() {
 		super(eNS_URI, [genPackage.getQualifiedEFactoryInstanceAccessor()/]);
 	}
 
@@ -319,16 +333,15 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
   [/if]
 	 * @generated
 	 */
-	public static [genPackage.getImportedPackageInterfaceName()/] init()
-	{
-		if (isInited) return ([genPackage.getImportedPackageInterfaceName()/])[genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.getEPackage([genPackage.getImportedPackageInterfaceName()/].eNS_URI);
+	public static [genPackage.getImportedPackageInterfaceName()/] init() {
+		if (isInited) return ([genPackage.getImportedPackageInterfaceName()/])[genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.getEPackage([genPackage.getImportedPackageInterfaceName()/].eNS_URI);
 
   [if (genModel.runtimePlatform = GenRuntimePlatform::GWT)]
 		initializeRegistryHelpers();
 
   [/if]
 		// Obtain or create and register package
-		[genPackage.getPackageClassName()/] the[genPackage.getBasicPackageName()/] = ([genPackage.getPackageClassName()/])([genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.get(eNS_URI) instanceof [genPackage.getPackageClassName()/] ? [genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.get(eNS_URI) : new [genPackage.getPackageClassName()/]());
+		[genPackage.getPackageClassName()/] the[genPackage.getBasicPackageName()/] = ([genPackage.getPackageClassName()/])([genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.get(eNS_URI) instanceof [genPackage.getPackageClassName()/] ? [genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.get(eNS_URI) : new [genPackage.getPackageClassName()/]());
 
 		isInited = true;
 
@@ -342,7 +355,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
   [if (genPackage.getPackageInterDependencies()->notEmpty())]
 		// Obtain or create and register interdependencies
     [for (interdep : GenPackage | genPackage.getPackageInterDependencies())]
-		[interdep.getImportedPackageClassName()/] [genPackage.getPackageInstanceVariable(interdep)/] = ([interdep.getImportedPackageClassName()/])([genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.getEPackage([interdep.getImportedPackageInterfaceName()/].eNS_URI) instanceof [interdep.getImportedPackageClassName()/] ? [genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.getEPackage([interdep.getImportedPackageInterfaceName()/].eNS_URI) : [interdep.getImportedPackageInterfaceName()/].eINSTANCE);
+		[interdep.getImportedPackageClassName()/] [genPackage.getPackageInstanceVariable(interdep)/] = ([interdep.getImportedPackageClassName()/])([genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.getEPackage([interdep.getImportedPackageInterfaceName()/].eNS_URI) instanceof [interdep.getImportedPackageClassName()/] ? [genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.getEPackage([interdep.getImportedPackageInterfaceName()/].eNS_URI) : [interdep.getImportedPackageInterfaceName()/].eINSTANCE);
     [/for]
 
   [/if]
@@ -388,11 +401,11 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
   [/if]
   [if (genPackage.hasConstraints())]
 		// Register package validator
-		[genModel.getImportedName('org.eclipse.emf.ecore.EValidator', packageName, className)/].Registry.INSTANCE.put
+		[genModel.getImportedName('org.eclipse.emf.ecore.EValidator')/].Registry.INSTANCE.put
 			(the[genPackage.getBasicPackageName()/], 
-			 new [genModel.getImportedName('org.eclipse.emf.ecore.EValidator', packageName, className)/].Descriptor()
+			 new [genModel.getImportedName('org.eclipse.emf.ecore.EValidator')/].Descriptor()
 			 {
-				 public [genModel.getImportedName('org.eclipse.emf.ecore.EValidator', packageName, className)/] getEValidator()
+				 public [genModel.getImportedName('org.eclipse.emf.ecore.EValidator')/] getEValidator()
 				 {
 					 return [genPackage.getImportedValidatorClassName()/].INSTANCE;
 				 }
@@ -406,7 +419,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
   [/if]
   
 		// Update the registry and return the package
-		[genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.put([genPackage.getImportedPackageInterfaceName()/].eNS_URI, the[genPackage.getBasicPackageName()/]);
+		[genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.put([genPackage.getImportedPackageInterfaceName()/].eNS_URI, the[genPackage.getBasicPackageName()/]);
 		return the[genPackage.getBasicPackageName()/];
 	}
   [if (genModel.runtimePlatform = GenRuntimePlatform::GWT)]
@@ -416,15 +429,14 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static void initializeRegistryHelpers()
-	{
-    [for (genClassifier : GenClassifier | genPackage.getGenClassifiers())]
+	public static void initializeRegistryHelpers() {
+    [for (genClassifier : GenClassifier | genPackage.genClassifiers)]
       [if (genClassifier.oclIsKindOf(GenClass))]
         [let genClass : GenClass = genClassifier.oclAsType(GenClass)]
-          [if (not genClass.isDynamic())]
-		[genModel.getImportedName('org.eclipse.emf.common.util.Reflect', packageName, className)/].register
+          [if (not genClass.dynamic)]
+		[genModel.getImportedName('org.eclipse.emf.common.util.Reflect')/].register
 			([if (genClass.isMapEntry())][genClass.getImportedClassName()/][else][genClass.getRawImportedInterfaceName()/][/if].class, 
-			 new [genModel.getImportedName('org.eclipse.emf.common.util.Reflect', packageName, className)/].Helper() 
+			 new [genModel.getImportedName('org.eclipse.emf.common.util.Reflect')/].Helper() 
 			 {
 				 public boolean isInstance(Object instance)
 				 {
@@ -441,17 +453,14 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
       [else][if (genClassifier.oclIsKindOf(GenDataType))]
         [let genDataType : GenDataType = genClassifier.oclAsType(GenDataType)]
           [if (not genDataType.isPrimitiveType() and not genDataType.isObjectType())]
-		[genModel.getImportedName('org.eclipse.emf.common.util.Reflect', packageName, className)/].register
+		[genModel.getImportedName('org.eclipse.emf.common.util.Reflect')/].register
 			([genDataType.getRawImportedInstanceClassName()/].class, 
-			 new [genModel.getImportedName('org.eclipse.emf.common.util.Reflect', packageName, className)/].Helper() 
-			 {
-				 public boolean isInstance(Object instance)
-				 {
+			 new [genModel.getImportedName('org.eclipse.emf.common.util.Reflect')/].Helper() {
+				 public boolean isInstance(Object instance) {
 					 return instance instanceof [genDataType.getImportedWildcardInstanceClassName()/];
 				 }
 
-				 public Object newArrayInstance(int size)
-				 {
+				 public Object newArrayInstance(int size) {
             [if (genDataType.isArrayType())]
               [let componentType :String = genDataType.getRawImportedInstanceClassName().replaceAll('(?:\\[\\])+$', '')]
                 [let indices : String = genDataType.getRawImportedInstanceClassName().replaceAll('.*(?:\\[\\])+$', '$1')]
@@ -474,12 +483,11 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class WhiteList implements [genModel.getImportedName('com.google.gwt.user.client.rpc.IsSerializable', packageName, className)/], EBasicWhiteList
-	{
-    [for (genClassifier : GenClassifier | genPackage.getGenClassifiers())]
+	public static class WhiteList implements [genModel.getImportedName('com.google.gwt.user.client.rpc.IsSerializable')/], EBasicWhiteList {
+    [for (genClassifier : GenClassifier | genPackage.genClassifiers)]
       [if (genClassifier.oclIsKindOf(GenClass))]
         [let genClass : GenClass = genClassifier.oclAsType(GenClass)]
-          [if (not genClass.isDynamic())]
+          [if (not genClass.dynamic)]
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -510,7 +518,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 [if (isInterface)][comment TODO REMOVE THIS BOGUS EMPTY LINE /]
 
 [/if]
-[for (genClassifier : GenClassifier | genPackage.getGenClassifiers())]
+[for (genClassifier : GenClassifier | genPackage.genClassifiers)]
   [if (isInterface)]
 	/**
     [if (genClassifier.oclIsKindOf(GenClass))]
@@ -520,12 +528,12 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>[genClass.getFormattedName()/]</em>'.
 	 * @see [genClass.getQualifiedInterfaceName()/]
-        [if (not genModel.isSuppressEMFModelTags() and (genClass.isExternalInterface() or genClass.isDynamic()))]
-          [let modelInfoLines : Sequence(String) = genClass.getModelInfo().tokenize('\n\r')]
+        [if (not genModel.suppressEMFModelTags and (genClass.isExternalInterface() or genClass.dynamic))]
+          [let modelInfoLines : Sequence(String) = genClass.getModelInfo().tokenize(genModel.getLineDelimiter() + '\r')]
             [if (modelInfoLines->isEmpty())]
 	 * @model
             [else]
-	 * @model [modelInfoLines->sep('\n\t *        ')/]
+	 * @model [modelInfoLines->sep(genModel.getLineDelimiter() + '\t *        ')/]
             [/if]
           [/let]
         [/if]
@@ -551,12 +559,12 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
         [if (not genDataType.isPrimitiveType() and not genDataType.isArrayType())]
 	 * @see [genDataType.getRawInstanceClassName()/]
         [/if]
-        [if (not genModel.isSuppressEMFModelTags())]
-          [let modelInfoLines : Sequence(String) = genDataType.getModelInfo().tokenize('\n\r')]
+        [if (not genModel.suppressEMFModelTags)]
+          [let modelInfoLines : Sequence(String) = genDataType.getModelInfo().tokenize(genModel.getLineDelimiter() + '\r')]
             [if (modelInfoLines->isEmpty())]
 	 * @model
             [else]
-	 * @model [modelInfoLines->sep('\n\t *        ')/]
+	 * @model [modelInfoLines->sep(genModel.getLineDelimiter() + '\t *        ')/]
             [/if]
           [/let]
         [/if]
@@ -572,12 +580,10 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 */
   [/if]
   [if (isImplementation)]
-	public [genClassifier.getImportedMetaType()/] get[genClassifier.getClassifierAccessorName()/]()
-	{
+	public [genClassifier.getImportedMetaType()/] get[genClassifier.getClassifierAccessorName()/]() {
     [if (genPackage.isLoadedInitialization())]
-		if ([genClassifier.getClassifierInstanceName()/] == null)
-		{
-			[genClassifier.getClassifierInstanceName()/] = ([genClassifier.getImportedMetaType()/])[genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.getEPackage([genPackage.getImportedPackageInterfaceName()/].eNS_URI).getEClassifiers().get([genPackage.getLocalClassifierIndex(genClassifier)/]);
+		if ([genClassifier.getClassifierInstanceName()/] == null) {
+			[genClassifier.getClassifierInstanceName()/] = ([genClassifier.getImportedMetaType()/])[genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.getEPackage([genPackage.getImportedPackageInterfaceName()/].eNS_URI).getEClassifiers().get([genPackage.getLocalClassifierIndex(genClassifier)/]);
 		}
     [/if]
 		return [genClassifier.getClassifierInstanceName()/];
@@ -589,7 +595,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
   [/if]
   [if (genClassifier.oclIsKindOf(GenClass))]
     [let genClass : GenClass = genClassifier.oclAsType(GenClass)]
-      [for (genFeature : GenFeature | genClass.getGenFeatures())]
+      [for (genFeature : GenFeature | genClass.genFeatures)]
         [if (isInterface)]
 	/**
 	 * Returns the meta object for the [genFeature.getFeatureKind()/] '{@link [genClass.getQualifiedInterfaceName()/][if (not genClass.isMapEntry() and not genFeature.isSuppressedGetVisibility())]#[genFeature.getGetAccessor()/][/if] <em>[genFeature.getFormattedName()/]</em>}'.
@@ -608,8 +614,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 */
         [/if]
         [if (isImplementation)]
-	public [genFeature.getImportedMetaType()/] get[genFeature.getFeatureAccessorName()/]()
-	{
+	public [genFeature.getImportedMetaType()/] get[genFeature.getFeatureAccessorName()/]() {
           [if (not genPackage.isLoadedInitialization())]
 		return ([genFeature.getImportedMetaType()/])[genClass.getClassifierInstanceName()/].getEStructuralFeatures().get([genClass.getLocalFeatureIndex(genFeature)/]);
           [else]
@@ -621,8 +626,8 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
         [/if]
 
       [/for]
-      [if (genModel.isOperationReflection())]
-        [for (genOperation : GenOperation | genClass.getGenOperations())]
+      [if (genModel.operationReflection)]
+        [for (genOperation : GenOperation | genClass.genOperations)]
           [if (isInterface)]
 	/**
 	 * Returns the meta object for the '{@link [genClass.getQualifiedInterfaceName()/]#[genOperation.getName()/]([genOperation.getParameterTypes(', ')/]) <em>[genOperation.getFormattedName()/]</em>}' operation.
@@ -640,8 +645,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 */
           [/if]
           [if (isImplementation)]
-	public [genOperation.getImportedMetaType()/] get[genOperation.getOperationAccessorName()/]()
-	{
+	public [genOperation.getImportedMetaType()/] get[genOperation.getOperationAccessorName()/]() {
             [if (not genPackage.isLoadedInitialization())]
 		return [genClass.getClassifierInstanceName()/].getEOperations().get([genClass.getLocalOperationIndex(genOperation)/]);
             [else]
@@ -673,8 +677,7 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 */
 [/if]
 [if (isImplementation)]
-	public [genPackage.getImportedFactoryInterfaceName()/] get[genPackage.getFactoryName()/]()
-	{
+	public [genPackage.getImportedFactoryInterfaceName()/] get[genPackage.getFactoryName()/]() {
 		return ([genPackage.getImportedFactoryInterfaceName()/])getEFactoryInstance();
 	}
 [else]
@@ -697,25 +700,25 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createPackageContents()
-	{
+	public void createPackageContents() {
 		if (isCreated) return;
 		isCreated = true;
+
     [if (genPackage.genClasses->notEmpty())]
 		// Create classes and their features
-      [for (genClass : GenClass | genPackage.genClasses) separator ('\n')]
+      [for (genClass : GenClass | genPackage.genClasses) separator (genModel.getLineDelimiter())]
 		[genClass.getClassifierInstanceName()/] = create[genClass.getMetaType()/]([genClass.getClassifierID()/]);
         [for (genFeature : GenFeature | genClass.genFeatures)]
 		create[genFeature.getMetaType()/]([genClass.getClassifierInstanceName()/], [genClass.getFeatureID(genFeature)/]);
         [/for]
-        [if (genModel.isOperationReflection())]
+        [if (genModel.operationReflection)]
           [for (genOperation : GenOperation | genClass.genOperations)]
 		createEOperation([genClass.getClassifierInstanceName()/], [genClass.getOperationID(genOperation, false)/]);
           [/for]
         [/if]
       [/for]
     [/if]
-    [if (genPackage.getGenEnums()->notEmpty())]
+    [if (genPackage.genEnums->notEmpty())]
 
 		// Create enums
       [for (genEnum : GenEnum | genPackage.genEnums)]
@@ -738,9 +741,6 @@ public interface [className/] extends [genModel.getImportedName('org.eclipse.emf
 	 */
 	private boolean isInitialized = false;
 
-<%
-int maxGenericTypeAssignment = 0;
-%>
 	/**
 	 * Complete the initialization of the package and its meta-model.  This
 	 * method is guarded to have no affect on any invocation but its first.
@@ -748,8 +748,7 @@ int maxGenericTypeAssignment = 0;
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void initializePackageContents()
-	{
+	public void initializePackageContents() {
 		if (isInitialized) return;
 		isInitialized = true;
 
@@ -761,7 +760,7 @@ int maxGenericTypeAssignment = 0;
 
 		// Obtain other dependent packages
       [for (dep : GenPackage | genPackage.getPackageInitializationDependencies())]
-		[dep.getImportedPackageInterfaceName()/] [genPackage.getPackageInstanceVariable(dep)/] = ([dep.getImportedPackageInterfaceName()/])[genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/].Registry.INSTANCE.getEPackage([dep.getImportedPackageInterfaceName()/].eNS_URI);
+		[dep.getImportedPackageInterfaceName()/] [genPackage.getPackageInstanceVariable(dep)/] = ([dep.getImportedPackageInterfaceName()/])[genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/].Registry.INSTANCE.getEPackage([dep.getImportedPackageInterfaceName()/].eNS_URI);
       [/for]
     [/if]
     [if (genPackage.getSubGenPackages()->notEmpty())]
@@ -772,30 +771,31 @@ int maxGenericTypeAssignment = 0;
       [/for]
     [/if]
     [if (genPackage.genClasses->notEmpty())]
-     { boolean firstOperationAssignment = true; int maxTypeParameterAssignment = 0;%>
+     [comment { boolean firstOperationAssignment = true; int maxTypeParameterAssignment = 0;/]
       [if (genModel.useGenerics())]
 
 		// Create type parameters
-        [for (genClassifier : GenClassifier | genPackage.getGenClassifiers())]
-          [for (genTypeParameter : GenTypeParameter | genClassifier.getGenTypeParameters())]
+        [for (genClassifier : GenClassifier | genPackage.genClassifiers)]
+          [for (genTypeParameter : GenTypeParameter | genClassifier.genTypeParameters)]
             [if (genTypeParameter.ecoreTypeParameter.eBounds->notEmpty() or genTypeParameter.isUsed())]
-		[genModel.getImportedName('org.eclipse.emf.ecore.ETypeParameter', packageName, className)/] [genClassifier.getClassifierInstanceName()/]_[genTypeParameter.getName()/] = addETypeParameter([genClassifier.getClassifierInstanceName()/], "[genTypeParameter.getName()/]");[genModel.getNonNLS()/]
+		[genModel.getImportedName('org.eclipse.emf.ecore.ETypeParameter')/] [genClassifier.getClassifierInstanceName()/]_[genTypeParameter.getName()/] = addETypeParameter([genClassifier.getClassifierInstanceName()/], "[genTypeParameter.getName()/]");[genModel.getNonNLS()/]
             [else]
 		addETypeParameter([genClassifier.getClassifierInstanceName()/], "[genTypeParameter.getName()/]");[genModel.getNonNLS()/]
             [/if]
           [/for]
         [/for]
       [/if]
+
       [if (genModel.useGenerics())]
 
-		// Set bounds for type parameters
-        [for (genClassifier : GenClassifier |genPackage.getGenClassifiers())]
-          [for (genTypeParameter : GenTypeParameter | genClassifier.getGenTypeParameters())]
+		// Set bounds for type parameters[genPackage.resetMaxGenericTypeAssignment()/][genPackage.resetGenOperationPrefix()/]
+        [for (genClassifier : GenClassifier |genPackage.genClassifiers)]
+          [for (genTypeParameter : GenTypeParameter | genClassifier.genTypeParameters)]
             [for (bound : EGenericType | genTypeParameter.ecoreTypeParameter.eBounds)]
-		[bound.prefix(genModel, packageName, className)/]g1 = createEGenericType([bound.type(genModel, genPackage)/]);
+		[genPackage.prefix(0)/]g1 = createEGenericType([bound.type(genModel, genPackage)/]);
               [for (eGenericType : EGenericType | bound.eAllContents(EGenericType))]
-              [comment]<%for (InformationIterator i=new InformationIterator(bound); i.hasNext(); ) { Information info = i.next(); String prefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>[/comment]
-		[eGenericType.prefix(genModel, packageName, className)/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+              [comment]<%for (InformationIterator i=new InformationIterator(bound); i.hasNext(); ) { Information info = i.next(); String prefix = ""; if (maxGenericTypeAssignment <= eGenericType.depth()) { ++maxGenericTypeAssignment; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>[/comment]
+		[genPackage.prefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
 		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
               [/for]
 		[genClassifier.getClassifierInstanceName()/]_[genTypeParameter.getName()/].getEBounds().add(g1);
@@ -808,31 +808,32 @@ int maxGenericTypeAssignment = 0;
       [for (genClass : GenClass | genPackage.genClasses)]
         [if (not genClass.hasGenericSuperTypes())]
           [for (baseGenClass : GenClass | genClass.getBaseGenClasses())]
-		[genClass.getClassifierInstanceName()/].getESuperTypes().add([genPackage.getPackageInstanceVariable(baseGenClass.getGenPackage())/].get[baseGenClass.getClassifierAccessorName()/]());
+		[genClass.getClassifierInstanceName()/].getESuperTypes().add([genPackage.getPackageInstanceVariable(baseGenClass.genPackage)/].get[baseGenClass.getClassifierAccessorName()/]());
           [/for]
         [else]
           [for (superType : EGenericType | genClass.ecoreClass.eGenericSuperTypes)]
-		[superType.prefix(genModel, packageName, className)/]g1 = createEGenericType([superType.type(genModel, genPackage)/]);
+		[genPackage.prefix(0)/]g1 = createEGenericType([superType.type(genModel, genPackage)/]);
             [for (eGenericType : EGenericType | superType.eAllContents(EGenericType))]
-            [comment]<%for (InformationIterator i=new InformationIterator(superType); i.hasNext(); ) { Information info = i.next(); String prefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>[/comment]
-		[eGenericType.prefix(genModel, packageName, className)/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+            [comment]<%for (InformationIterator i=new InformationIterator(superType); i.hasNext(); ) { Information info = i.next(); String prefix = ""; if (maxGenericTypeAssignment <= eGenericType.depth()) { ++maxGenericTypeAssignment; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>[/comment]
+		[genPackage.prefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
 		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
             [/for]
 		[genClass.getClassifierInstanceName()/].getEGenericSuperTypes().add(g1);
           [/for]
         [/if]
       [/for]
-		// Initialize classes[if (genModel.isOperationReflection())], features, and operations; add parameters[else] and features; add operations and parameters[/if]
-      [for (genClass : GenClass | genPackage.genClasses) separator('\n')]
+
+		// Initialize classes[if (genModel.operationReflection)], features, and operations; add parameters[else] and features; add operations and parameters[/if]
+      [for (genClass : GenClass | genPackage.genClasses) separator(genModel.getLineDelimiter())]
       [let hasInstanceTypeName : Boolean = genModel.useGenerics() and genClass.ecoreClass.instanceTypeName <> null and genClass.ecoreClass.instanceTypeName.contains('<')]
-		initEClass([genClass.getClassifierInstanceName()/], [if (genClass.isDynamic())]null[else][genClass.getRawImportedInterfaceName()/].class[/if], "[genClass.getName()/]", [genClass.getAbstractFlag()/], [genClass.getInterfaceFlag()/], [genClass.getGeneratedInstanceClassFlag()/][if (hasInstanceTypeName)], "[genClass.ecoreClass.instanceTypeName/]"[/if]);[genModel.getNonNLS()/][if (hasInstanceTypeName)][genModel.getNonNLS(2)/][/if]
+		initEClass([genClass.getClassifierInstanceName()/], [if (genClass.dynamic)]null[else][genClass.getRawImportedInterfaceName()/].class[/if], "[genClass.getName()/]", [genClass.getAbstractFlag()/], [genClass.getInterfaceFlag()/], [genClass.getGeneratedInstanceClassFlag()/][if (hasInstanceTypeName)], "[genClass.ecoreClass.instanceTypeName/]"[/if]);[genModel.getNonNLS()/][if (hasInstanceTypeName)][genModel.getNonNLS(2)/][/if]
         [for (genFeature : GenFeature |genClass.genFeatures)]
           [if (genFeature.hasGenericType())]
             [let genericType : EGenericType = genFeature.ecoreFeature.eGenericType] 
-		[genericType.prefix(genModel, packageName, className)/]g1 = createEGenericType([genericType.type(genModel, genPackage)/]);
+		[genPackage.prefix(0)/]g1 = createEGenericType([genericType.type(genModel, genPackage)/]);
             [for (eGenericType : EGenericType | genericType.eAllContents(EGenericType))]
-            <%for (InformationIterator i=new InformationIterator(genFeature.getEcoreFeature().getEGenericType()); i.hasNext(); ) { Information info = i.next(); String prefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>
-		[eGenericType.prefix(genModel, packageName, className)/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+            [comment]<%for (InformationIterator i=new InformationIterator(genFeature.getEcoreFeature().getEGenericType()); i.hasNext(); ) { Information info = i.next(); String prefix = ""; if (maxGenericTypeAssignment <= eGenericType.depth()) { ++maxGenericTypeAssignment; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>[/comment]
+		[genPackage.prefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
 		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
             [/for]
             [/let]
@@ -848,89 +849,117 @@ int maxGenericTypeAssignment = 0;
 		initEAttribute(get[genFeature.getFeatureAccessorName()/](), [if (genFeature.hasGenericType())]g1[else][genPackage.getPackageInstanceVariable(genFeature.getTypeGenPackage())/].get[genFeature.getTypeClassifierAccessorName()/]()[/if], "[genFeature.getName()/]", [genFeature.getDefaultValue()/], [genFeature.getLowerBound()/], [genFeature.getUpperBound()/], [genFeature.getContainerClass()/], [genFeature.getTransientFlag()/], [genFeature.getVolatileFlag()/], [genFeature.getChangeableFlag()/], [genFeature.getUnsettableFlag()/], [genFeature.getIDFlag()/], [genFeature.getUniqueFlag()/], [genFeature.getDerivedFlag()/], [genFeature.getOrderedFlag()/]);[genModel.getNonNLS()/][genModel.getNonNLS(genFeature.getDefaultValue(), 2)/]
           [/if]
         [/for]
+        [for (genOperation : GenOperation | genClass.genOperations)]
 
-        [for (genOperation : GenOperation |genClass.getGenOperations())]
-          TODO TODO TODO TODO {String prefix = ""; if (genOperation.hasGenericType() || genOperation.getGenParameters()->notEmpty() || genOperation.getGenExceptions()->notEmpty() || genOperation.getGenTypeParameters()->notEmpty()) { if (firstOperationAssignment) { firstOperationAssignment = false; prefix = genModel.getImportedName("org.eclipse.emf.ecore.EOperation") + " op = "; } else { prefix = "op = "; }} %>
-[comment]
           [if (genModel.useGenerics())]
-		[prefix/][if (genModel.isOperationReflection())]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], [if (genOperation.isVoid() || genOperation.hasGenericType())]null[else][genPackage.getPackageInstanceVariable(genOperation.getTypeGenPackage())/].get[genOperation.getTypeClassifierAccessorName()/]()[/if], "[genOperation.getName()/]", [genOperation.getLowerBound()/], [genOperation.getUpperBound()/], [genOperation.getUniqueFlag()/], [genOperation.getOrderedFlag()/]);[genModel.getNonNLS()/]
-          <%} else if (!genOperation.isVoid())]
-            [if (not genOperation.getEcoreOperation().isOrdered() or not genOperation.getEcoreOperation().isUnique())]
-              TODO TODO TODO TODO { needsAddEOperation = true;%>
-		[prefix/][if (genModel.isOperationReflection())]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], [genPackage.getPackageInstanceVariable(genOperation.getTypeGenPackage())/].get[genOperation.getTypeClassifierAccessorName()/](), "[genOperation.getName()/]", [genOperation.getLowerBound()/], [genOperation.getUpperBound()/], [genOperation.getUniqueFlag()/], [genOperation.getOrderedFlag()/]);[genModel.getNonNLS()/]
+		[genOperation.prefix()/][if (genModel.operationReflection)]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], [if (genOperation.isVoid() or genOperation.hasGenericType())]null[else][genPackage.getPackageInstanceVariable(genOperation.getTypeGenPackage())/].get[genOperation.getTypeClassifierAccessorName()/]()[/if], "[genOperation.getName()/]", [genOperation.getLowerBound()/], [genOperation.getUpperBound()/], [genOperation.getUniqueFlag()/], [genOperation.getOrderedFlag()/]);[genModel.getNonNLS()/]
+          [else][if (not genOperation.isVoid())]
+            [if (not genOperation.ecoreOperation.ordered or not genOperation.ecoreOperation.unique)]
+		[genPackage.requireAddEOperation()/][genOperation.prefix()/][if (genModel.operationReflection)]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], [genPackage.getPackageInstanceVariable(genOperation.getTypeGenPackage())/].get[genOperation.getTypeClassifierAccessorName()/](), "[genOperation.getName()/]", [genOperation.getLowerBound()/], [genOperation.getUpperBound()/], [genOperation.getUniqueFlag()/], [genOperation.getOrderedFlag()/]);[genModel.getNonNLS()/]
             [else]
-		[prefix/][if (genModel.isOperationReflection())]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], [genPackage.getPackageInstanceVariable(genOperation.getTypeGenPackage())/].get[genOperation.getTypeClassifierAccessorName()/](), "[genOperation.getName()/]", [genOperation.getLowerBound()/], [genOperation.getUpperBound()/]);[genModel.getNonNLS()/]
+		[genOperation.prefix()/][if (genModel.operationReflection)]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], [genPackage.getPackageInstanceVariable(genOperation.getTypeGenPackage())/].get[genOperation.getTypeClassifierAccessorName()/](), "[genOperation.getName()/]", [genOperation.getLowerBound()/], [genOperation.getUpperBound()/]);[genModel.getNonNLS()/]
             [/if]
           [else]
-		[prefix/][if (genModel.isOperationReflection())]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], null, "[genOperation.getName()/]");[genModel.getNonNLS()/]
-          [/if]
+		[genOperation.prefix()/][if (genModel.operationReflection)]initEOperation(get[genOperation.getOperationAccessorName()/]()[else]addEOperation([genClass.getClassifierInstanceName()/][/if], null, "[genOperation.getName()/]");[genModel.getNonNLS()/]
+          [/if][/if]
           [if (genModel.useGenerics())]
-            <%for (ListIterator<GenTypeParameter> t=genOperation.getGenTypeParameters().listIterator(); t.hasNext(); ) { GenTypeParameter genTypeParameter = t.next(); String typeParameterVariable = ""; if (genTypeParameter.getEcoreTypeParameter().getEBounds()->notEmpty() || genTypeParameter.isUsed()) { if (maxTypeParameterAssignment <= t.previousIndex()) { ++maxTypeParameterAssignment; typeParameterVariable = genModel.getImportedName("org.eclipse.emf.ecore.ETypeParameter") + " t" + t.nextIndex() + " = "; } else { typeParameterVariable = "t" + t.nextIndex() + " = "; }} %>
+            [for (genTypeParameter : GenTypeParameter | genOperation.genTypeParameters)][comment @TODO remove let typeParameterVariable /]
+              [let typeParameterVariable : String =
+                if (genTypeParameter.ecoreTypeParameter.eBounds->notEmpty() or genTypeParameter.isUsed()) then
+                  if (i = 1) then
+                    genModel.getImportedName('org.eclipse.emf.ecore.ETypeParameter') + ' t' + i + ' = '
+                  else
+                    't' + i + ' = '
+                  endif
+                else
+                  ''
+                endif
+              ]
+            [comment for (ListIterator<GenTypeParameter> t=genOperation.getGenTypeParameters().listIterator(); t.hasNext(); ) {
+	GenTypeParameter genTypeParameter = t.next();
+	String typeParameterVariable = "";
+	if (genTypeParameter.getEcoreTypeParameter().getEBounds()->notEmpty() || genTypeParameter.isUsed()) {
+		if (maxTypeParameterAssignment <= t.previousIndex()) {
+			++maxTypeParameterAssignment;
+			typeParameterVariable = genModel.getImportedName("org.eclipse.emf.ecore.ETypeParameter") + " t" + t.nextIndex() + " = ";
+		} else {
+			typeParameterVariable = "t" + t.nextIndex() + " = ";
+		}
+	} /]
 		[typeParameterVariable/]addETypeParameter(op, "[genTypeParameter.getName()/]");[genModel.getNonNLS()/]
-              [for (typeParameter : EGenericType |genTypeParameter.getEcoreTypeParameter().getEBounds())]
-                <%for (InformationIterator i=new InformationIterator(typeParameter); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>
-		[typePrefix/]g[info.depth + 1/] = createEGenericType([info.type/]);
-                  [if (info.depth > 0)]
-		g[info.depth/].[info.accessor/](g[info.depth + 1/]);
+              [for (typeParameter : EGenericType | genTypeParameter.ecoreTypeParameter.eBounds)]
+[comment <%for (InformationIterator i=new InformationIterator(typeParameter); i.hasNext(); ) {
+  Information info = i.next(); String typePrefix = "";
+  if (maxGenericTypeAssignment <= eGenericType.depth()) {
+    ++maxGenericTypeAssignment;
+    typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " ";
+  }%>/]
+                [for (eGenericType : EGenericType | Sequence{typeParameter}->union(typeParameter.eAllContents(EGenericType)))]
+		[genPackage.typePrefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+                  [if (eGenericType.depth() > 0)]
+		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
                   [/if]
-                <%}%>
-		t[t.nextIndex()/].getEBounds().add(g1);
+                [/for]
+		t[i + 1/].getEBounds().add(g1);
               [/for]
-            <%}%>
+              [/let]
+            [/for]
           [/if]
-          [for (genParameter : GenParameter |genOperation.getGenParameters())]
+          [for (genParameter : GenParameter | genOperation.genParameters)]
             [if (genParameter.hasGenericType())]
-              <%for (InformationIterator i=new InformationIterator(genParameter.getEcoreParameter().getEGenericType()); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>
-		[typePrefix/]g[info.depth + 1/] = createEGenericType([info.type/]);
-                [if (info.depth > 0)]
-		g[info.depth/].[info.accessor/](g[info.depth + 1/]);
+              [for (eGenericType : EGenericType | genParameter.ecoreParameter.eAllContents(EGenericType))]
+              [comment <%for (InformationIterator i=new InformationIterator(genParameter.getEcoreParameter().getEGenericType()); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= eGenericType.depth()) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>/]
+		[genPackage.typePrefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+                [if (eGenericType.depth() > 0)]
+		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
                 [/if]
-              <%}%>
+              [/for]
             [/if]
             [if (genModel.useGenerics())]
 		addEParameter(op, [if (genParameter.hasGenericType())]g1[else][genPackage.getPackageInstanceVariable(genParameter.getTypeGenPackage())/].get[genParameter.getTypeClassifierAccessorName()/]()[/if], "[genParameter.getName()/]", [genParameter.getLowerBound()/], [genParameter.getUpperBound()/], [genParameter.getUniqueFlag()/], [genParameter.getOrderedFlag()/]);[genModel.getNonNLS()/]
-            [else][if (not genParameter.getEcoreParameter().isOrdered() or not genParameter.getEcoreParameter().isUnique())]
-               TODO TODO TODO TODO { needsAddEParameter = true;%>
-		addEParameter(op, [if (genParameter.hasGenericType())]g1[else][genPackage.getPackageInstanceVariable(genParameter.getTypeGenPackage())/].get[genParameter.getTypeClassifierAccessorName()/]()[/if], "[genParameter.getName()/]", [genParameter.getLowerBound()/], [genParameter.getUpperBound()/], [genParameter.getUniqueFlag()/], [genParameter.getOrderedFlag()/]);[genModel.getNonNLS()/]
+            [else][if (not genParameter.ecoreParameter.ordered or not genParameter.ecoreParameter.unique)]
+		[genPackage.requireAddEParameter()/]addEParameter(op, [if (genParameter.hasGenericType())]g1[else][genPackage.getPackageInstanceVariable(genParameter.getTypeGenPackage())/].get[genParameter.getTypeClassifierAccessorName()/]()[/if], "[genParameter.getName()/]", [genParameter.getLowerBound()/], [genParameter.getUpperBound()/], [genParameter.getUniqueFlag()/], [genParameter.getOrderedFlag()/]);[genModel.getNonNLS()/]
             [else]
 		addEParameter(op, [if (genParameter.hasGenericType())]g1[else][genPackage.getPackageInstanceVariable(genParameter.getTypeGenPackage())/].get[genParameter.getTypeClassifierAccessorName()/]()[/if], "[genParameter.getName()/]", [genParameter.getLowerBound()/], [genParameter.getUpperBound()/]);[genModel.getNonNLS()/]
             [/if][/if]
           [/for]
           [if (genOperation.hasGenericExceptions())]
-              [for (genericExceptions : EGenericType |genOperation.getEcoreOperation().getEGenericExceptions())]
-                <%for (InformationIterator i=new InformationIterator(genericExceptions); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>
-		[typePrefix/]g[info.depth + 1/] = createEGenericType([info.type/]);
-                  [if (info.depth > 0)]
-		g[info.depth/].[info.accessor/](g[info.depth + 1/]);
+              [for (genericExceptions : EGenericType | genOperation.ecoreOperation.eGenericExceptions)]
+                [for (eGenericType : EGenericType | genericExceptions.eAllContents(EGenericType)->flatten())]
+                [comment <%for (InformationIterator i=new InformationIterator(genericExceptions); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= eGenericType.depth()) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>/]
+		[genPackage.typePrefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+                  [if (eGenericType.depth() > 0)]
+		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
                   [/if]
-		addEException(op, g[info.depth + 1/]);
-                <%}%>
+		addEException(op, g[eGenericType.depth() + 1/]);
+                [/for]
               [/for]
           [else]
-            [for (genException : GenClassifier |genOperation.getGenExceptions())]
-		addEException(op, [genPackage.getPackageInstanceVariable(genException.getGenPackage())/].get[genException.getClassifierAccessorName()/]());
+            [for (genException : GenClassifier | genOperation.getGenExceptions())]
+		addEException(op, [genPackage.getPackageInstanceVariable(genException.genPackage)/].get[genException.getClassifierAccessorName()/]());
             [/for]
           [/if]
           [if (not genOperation.isVoid() and genOperation.hasGenericType())]
-            <%for (InformationIterator i=new InformationIterator(genOperation.getEcoreOperation().getEGenericType()); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= info.depth) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>
-		[typePrefix/]g[info.depth + 1/] = createEGenericType([info.type/]);
-              [if (info.depth > 0)]
-		g[info.depth/].[info.accessor/](g[info.depth + 1/]);
+            [for (eGenericType : EGenericType | Sequence{genOperation.ecoreOperation.eGenericType}->union(genOperation.ecoreOperation.eGenericType.eAllContents(EGenericType)))]
+            [comment]<%for (InformationIterator i=new InformationIterator(genOperation.getEcoreOperation().getEGenericType()); i.hasNext(); ) { Information info = i.next(); String typePrefix = ""; if (maxGenericTypeAssignment <= eGenericType.depth()) { ++maxGenericTypeAssignment; typePrefix = genModel.getImportedName("org.eclipse.emf.ecore.EGenericType") + " "; }%>[/comment]
+		[genPackage.typePrefix(eGenericType.depth())/]g[eGenericType.depth() + 1/] = createEGenericType([eGenericType.type(genModel, genPackage)/]);
+              [if (eGenericType.depth() > 0)]
+		g[eGenericType.depth()/].[eGenericType.accessor()/](g[eGenericType.depth() + 1/]);
               [/if]
-            <%}%>
+            [/for]
 		initEOperation(op, g1);
           [/if]
-        [/for]
+        [/for][comment genOperation/]
       [/let]
       [/for]
     [/if]
-    [if (genPackage.getGenEnums()->notEmpty())]
+    [if (genPackage.genEnums->notEmpty())]
 
 		// Initialize enums and add enum literals
-      [for (genEnum : GenEnum | genPackage.genEnums) separator('\n')]
-		initEEnum([genEnum.getClassifierInstanceName()/], [genEnum.getImportedName()/].class, "[genEnum.getName()/]");[genModel.getNonNLS()/]
-        [for (genEnumLiteral : GenEnumLiteral |genEnum.getGenEnumLiterals())]
-		addEEnumLiteral([genEnum.getClassifierInstanceName()/], [if (genEnum.getImportedName() = genEnum.getClassifierID())][genEnum.getQualifiedName()/][else][genEnum.getImportedName()/][/if].[genEnumLiteral.getEnumLiteralInstanceConstantName()/]);
+      [for (genEnum : GenEnum | genPackage.genEnums) separator(genModel.getLineDelimiter())]
+		initEEnum([genEnum.getClassifierInstanceName()/], [genModel.getImportedName(genEnum.getQualifiedName())/].class, "[genEnum.getName()/]");[genModel.getNonNLS()/]
+        [for (genEnumLiteral : GenEnumLiteral |genEnum.genEnumLiterals)]
+		addEEnumLiteral([genEnum.getClassifierInstanceName()/], [if (genModel.getImportedName(genEnum.getQualifiedName()) = genEnum.getClassifierID())][genEnum.getQualifiedName()/][else][genModel.getImportedName(genEnum.getQualifiedName())/][/if].[genEnumLiteral.getEnumLiteralInstanceConstantName()/]);
         [/for]
       [/for]
     [/if]
@@ -938,8 +967,9 @@ int maxGenericTypeAssignment = 0;
 
 		// Initialize data types
       [for (genDataType : GenDataType | genPackage.genDataTypes)]
-        TODO TODO TODO TODO {boolean hasInstanceTypeName = genModel.useGenerics() && genDataType.getEcoreDataType().getInstanceTypeName() != null && genDataType.getEcoreDataType().getInstanceTypeName().contains("<");%>
-		initEDataType([genDataType.getClassifierInstanceName()/], [genDataType.getRawImportedInstanceClassName()/].class, "[genDataType.getName()/]", [genDataType.getSerializableFlag()/], [genDataType.getGeneratedInstanceClassFlag()/][if (hasInstanceTypeName)], "[genDataType.getEcoreDataType().getInstanceTypeName()/]"[/if]);[genModel.getNonNLS()/][if (hasInstanceTypeName)][genModel.getNonNLS(2)/][/if]
+        [let hasInstanceTypeName : Boolean = genModel.useGenerics() and genDataType.ecoreDataType.instanceTypeName <> null and genDataType.ecoreDataType.instanceTypeName.contains('<')]
+        initEDataType([genDataType.getClassifierInstanceName()/], [genDataType.getRawImportedInstanceClassName()/].class, "[genDataType.getName()/]", [genDataType.getSerializableFlag()/], [genDataType.getGeneratedInstanceClassFlag()/][if (hasInstanceTypeName)], "[genDataType.ecoreDataType.instanceTypeName/]"[/if]);[genModel.getNonNLS()/][if (hasInstanceTypeName)][genModel.getNonNLS(2)/][/if]
+        [/let]
       [/for]
     [/if]
     [if (genPackage.getSuperGenPackage() = null)]
@@ -957,64 +987,61 @@ int maxGenericTypeAssignment = 0;
     [/if]
 	}
 
-    [for (annotationSource : String |genPackage.getAnnotationSources())]
+    [for (annotationSource : String | genPackage.getAnnotationSources())]
 	/**
 	 * Initializes the annotations for <b>[annotationSource/]</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void create[genPackage.getAnnotationSourceIdentifier(annotationSource)/]Annotations()
-	{
+	protected void create[genPackage.getAnnotationSourceIdentifier(annotationSource)/]Annotations() {
 		String source = [if (annotationSource = null)]null;[else]"[annotationSource/]";[genModel.getNonNLS()/][/if]
-      [for (eAnnotation : EAnnotation |genPackage.getAllAnnotations())]
-      [let annotationReferenceDataList : Sequence = genPackage.getReferenceData(eAnnotation)]
-        [if (annotationSource = null][eAnnotation.getSource() = null/][else][annotationSource = eAnnotation.getSource()/][/if]
+      [for (eAnnotation : EAnnotation | genPackage.getAllAnnotations())]
+        [let annotationReferenceDataList : Sequence(Sequence(OclAny)) = eAnnotation.getReferenceData(genPackage)]
+        [comment] @TODO How? use collect(some transformation) on annotationSource creation
+[if (annotationSource = null)][eAnnotation.source = null/][else][annotationSource = eAnnotation.source/][/if][/comment]
 		addAnnotation
 		  ([genPackage.getAnnotatedModelElementAccessor(eAnnotation)/], 
 		   source, 
 		   new String['[]'/] 
 		   {
-          <%for (Iterator<Map.Entry<String, String>> k = eAnnotation.getDetails().iterator(); k.hasNext();) { Map.Entry<String, String> detail = k.next(); String key = Literals.toStringLiteral(detail.getKey(), genModel); String value = Literals.toStringLiteral(detail.getValue(), genModel);%>
-			 [key/], [value/][k.hasNext() ? "," : ""/][genModel.getNonNLS(key + value)/]
-          <%}%>
-		   }[if (annotationReferenceDataList->isEmpty())]);[else],[/if]
-          [if (annotationReferenceDataList->notEmpty())]
-		   new [genModel.getImportedName('org.eclipse.emf.common.util.URI', packageName, className)/]['[]'/] 
+			 [eAnnotation.writeKeyValuePairs(genModel)/]
+		   }[if (eAnnotation.hasReferenceData(genPackage))]);[else],[/if]
+          [if (not eAnnotation.hasReferenceData(genPackage))]
+		   new [genModel.getImportedName('org.eclipse.emf.common.util.URI')/]['[]'/] 
 		   {
-            <%for (Iterator<GenPackage.AnnotationReferenceData> k = annotationReferenceDataList.iterator(); k.hasNext();) { GenPackage.AnnotationReferenceData annotationReferenceData = k.next();%>
-			 [genModel.getImportedName('org.eclipse.emf.common.util.URI', packageName, className)/].createURI([if (annotationReferenceData.containingGenPackage <> genPackage)][annotationReferenceData.containingGenPackage.getImportedPackageInterfaceName()/].[/if]eNS_URI).appendFragment("[annotationReferenceData.uriFragment/]")[if (k.hasNext())],[/if][genModel.getNonNLS()/]
-            <%}%>
+            [for (annotationReferenceData : Sequence(OclAny) | annotationReferenceDataList) separator (',' + genModel.getNonNLS())]
+			 [genModel.getImportedName('org.eclipse.emf.common.util.URI')/].createURI([if (annotationReferenceData->at(1) <> genPackage)][annotationReferenceData->at(1).oclAsType(GenPackage).getImportedPackageInterfaceName()/].[/if]eNS_URI).appendFragment("[annotationReferenceData->at(2)/]")[/for][genModel.getNonNLS()/]
 		   });
           [/if]
-        [/if]
-        [for (nestedEAnnotation : EAnnotation |genPackage.getAllNestedAnnotations(eAnnotation))]
-          TODO TODO TODO TODO {String nestedAnnotationSource = nestedEAnnotation.getSource(); int depth = 1; for (EObject eContainer = nestedEAnnotation.eContainer(); eContainer != eAnnotation; eContainer = eContainer.eContainer()) { ++depth; } List<GenPackage.AnnotationReferenceData> nestedAnnotationReferenceDataList = genPackage.getReferenceData(nestedEAnnotation);%>
+        [for (nestedEAnnotation : EAnnotation | genPackage.getAllNestedAnnotations(eAnnotation))]
+          [let nestedAnnotationSource : String = nestedEAnnotation.source]
+            [let depth : Integer = nestedEAnnotation.depth()]
+              [let nestedAnnotationReferenceDataList : Sequence(Sequence(OclAny)) = nestedEAnnotation.getReferenceData(genPackage)]
 		addAnnotation
 		  ([genPackage.getAnnotatedModelElementAccessor(eAnnotation)/], 
 		   [depth/],
 		   [if (nestedAnnotationSource = null)]null,[else]"[nestedAnnotationSource/]",[genModel.getNonNLS()/][/if]
 		   new String['[]'/] 
 		   {
-          <%for (Iterator<Map.Entry<String, String>> l = nestedEAnnotation.getDetails().iterator(); l.hasNext();) { Map.Entry<String, String> detail = l.next(); String key = Literals.toStringLiteral(detail.getKey(), genModel); String value = Literals.toStringLiteral(detail.getValue(), genModel);%>
-			 [key/], [value/][l.hasNext() ? "," : ""/][genModel.getNonNLS(key + value)/]
-          <%}%>
-		   }[if (nestedAnnotationReferenceDataList.isEmpty())]);[else],[/if]
-          [if (nestedAnnotationReferenceDataList->notEmpty())]
-		   new [genModel.getImportedName('org.eclipse.emf.common.util.URI', packageName, className)/]['[]'/] 
+			 [nestedEAnnotation.writeKeyValuePairs(genModel)/]
+		   }[if (nestedEAnnotation.hasReferenceData(genPackage))]);[else],[/if]
+          [if (not nestedEAnnotation.hasReferenceData(genPackage))]
+		   new [genModel.getImportedName('org.eclipse.emf.common.util.URI')/]['[]'/] 
 		   {
-            <%for (Iterator<GenPackage.AnnotationReferenceData> l = nestedAnnotationReferenceDataList.iterator(); l.hasNext();) { GenPackage.AnnotationReferenceData annotationReferenceData = l.next();%>
-			 [genModel.getImportedName('org.eclipse.emf.common.util.URI', packageName, className)/].createURI([if (annotationReferenceData.containingGenPackage <> genPackage)][annotationReferenceData.containingGenPackage.getImportedPackageInterfaceName()/].[/if]eNS_URI).appendFragment("[annotationReferenceData.uriFragment/]")[if (l.hasNext())],[/if][genModel.getNonNLS()/]
-            <%}%>
+            [for (annotationReferenceData : Sequence(OclAny) | nestedAnnotationReferenceDataList) separator (',' + genModel.getNonNLS())]
+			 [genModel.getImportedName('org.eclipse.emf.common.util.URI')/].createURI([if (annotationReferenceData->at(1) <> genPackage)][annotationReferenceData->at(1).oclAsType(GenPackage).getImportedPackageInterfaceName()/].[/if]eNS_URI).appendFragment("[annotationReferenceData->at(2)/]")[/for][genModel.getNonNLS()/]
 		   });
           [/if]
+              [/let]
+            [/let]
+          [/let]
         [/for]
-      [/let]
+        [/let]
       [/for]
 	}
 
     [/for]
-[/comment]
   [else]
     [if (genPackage.isLoadingInitialization())]
 	/**
@@ -1030,27 +1057,23 @@ int maxGenericTypeAssignment = 0;
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void loadPackage()
-	{
+	public void loadPackage() {
 		if (isLoaded) return;
 		isLoaded = true;
 
-		[genModel.getImportedName('java.net.URL', packageName, className)/] url = getClass().getResource(packageFilename);
-		if (url == null)
-		{
+		[genModel.getImportedName('java.net.URL')/] url = getClass().getResource(packageFilename);
+		if (url == null) {
 			throw new RuntimeException("Missing serialized package: " + packageFilename);[genModel.getNonNLS()/]
 		}
-		[genModel.getImportedName('org.eclipse.emf.common.util.URI', packageName, className)/] uri = [genModel.getImportedName('org.eclipse.emf.common.util.URI', packageName, className)/].createURI(url.toString());
-		[genModel.getImportedName('org.eclipse.emf.ecore.resource.Resource', packageName, className)/] resource = new [genModel.getImportedName('org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl', packageName, className)/]().createResource(uri);
-		try
-		{
+		[genModel.getImportedName('org.eclipse.emf.common.util.URI')/] uri = [genModel.getImportedName('org.eclipse.emf.common.util.URI')/].createURI(url.toString());
+		[genModel.getImportedName('org.eclipse.emf.ecore.resource.Resource')/] resource = new [genModel.getImportedName('org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl')/]().createResource(uri);
+		try {
 			resource.load(null);
 		}
-		catch ([genModel.getImportedName('java.io.IOException', packageName, className)/] exception)
-		{
-			throw new [genModel.getImportedName('org.eclipse.emf.common.util.WrappedException', packageName, className)/](exception);
+		catch ([genModel.getImportedName('java.io.IOException')/] exception) {
+			throw new [genModel.getImportedName('org.eclipse.emf.common.util.WrappedException')/](exception);
 		}
-		initializeFromLoadedEPackage(this, ([genModel.getImportedName('org.eclipse.emf.ecore.EPackage', packageName, className)/])resource.getContents().get(0));
+		initializeFromLoadedEPackage(this, ([genModel.getImportedName('org.eclipse.emf.ecore.EPackage')/])resource.getContents().get(0));
 		createResource(eNS_URI);
 	}
 
@@ -1069,8 +1092,7 @@ int maxGenericTypeAssignment = 0;
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void fixPackageContents()
-	{
+	public void fixPackageContents() {
 		if (isFixed) return;
 		isFixed = true;
 		fixEClassifiers();
@@ -1085,20 +1107,16 @@ int maxGenericTypeAssignment = 0;
     [if (genModel.useClassOverrideAnnotation())]
 	@Override
     [/if]
-	protected void fixInstanceClass([genModel.getImportedName('org.eclipse.emf.ecore.EClassifier', packageName, className)/] eClassifier)
-	{
-		if (eClassifier.getInstanceClassName() == null)
-		{
-    <%ArrayList<GenClass> dynamicGenClasses = new ArrayList<GenClass>(); for (GenClass genClass : genPackage.genClasses) { if (genClass.isDynamic()) { dynamicGenClasses.add(genClass); } }%>
-    [let dynamicGenClasses : OrderedSet(GenClass) = genPackage.genClasses->select(c : GenClass | c.isDynamic())]
+	protected void fixInstanceClass([genModel.getImportedName('org.eclipse.emf.ecore.EClassifier')/] eClassifier) {
+		if (eClassifier.getInstanceClassName() == null) {
+    [let dynamicGenClasses : OrderedSet(GenClass) = genPackage.genClasses->select(c : GenClass | c.dynamic)]
       [if (dynamicGenClasses->isEmpty())]
 			eClassifier.setInstanceClassName("[genPackage.getInterfacePackageName()/]." + eClassifier.getName());[genModel.getNonNLS()/]
 			setGeneratedClassName(eClassifier);
       [else]
-			switch (eClassifier.getClassifierID())
-			{
+			switch (eClassifier.getClassifierID()) {
         [for (genClass : GenClass | dynamicGenClasses)]
-          [if (genClass.isDynamic())]
+          [if (genClass.dynamic)]
 				case [genPackage.getClassifierID(genClass)/]:
           [/if]
         [/for]
@@ -1118,30 +1136,28 @@ int maxGenericTypeAssignment = 0;
 	}
 
   [/if]
-  [if (needsAddEOperation)]
+  [if (needsAddEOperation())]
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [genModel.getImportedName('org.eclipse.emf.ecore.EOperation', packageName, className)/] addEOperation([genModel.getImportedName('org.eclipse.emf.ecore.EClass', packageName, className)/] owner, [genModel.getImportedName('org.eclipse.emf.ecore.EClassifier', packageName, className)/] type, String name, int lowerBound, int upperBound, boolean isUnique, boolean isOrdered)
-	{
-		[genModel.getImportedName('org.eclipse.emf.ecore.EOperation', packageName, className)/] o = addEOperation(owner, type, name, lowerBound, upperBound);
+	protected [genModel.getImportedName('org.eclipse.emf.ecore.EOperation')/] addEOperation([genModel.getImportedName('org.eclipse.emf.ecore.EClass')/] owner, [genModel.getImportedName('org.eclipse.emf.ecore.EClassifier')/] type, String name, int lowerBound, int upperBound, boolean isUnique, boolean isOrdered) {
+		[genModel.getImportedName('org.eclipse.emf.ecore.EOperation')/] o = addEOperation(owner, type, name, lowerBound, upperBound);
 		o.setUnique(isUnique);
 		o.setOrdered(isOrdered);
 		return o;
 	}
 	
   [/if][comment needsAddEOperation /]
-  [if (needsAddEParameter)]
+  [if (needsAddEParameter())]
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected [genModel.getImportedName('org.eclipse.emf.ecore.EParameter', packageName, className)/] addEParameter([genModel.getImportedName('org.eclipse.emf.ecore.EOperation', packageName, className)/] owner, [genModel.getImportedName('org.eclipse.emf.ecore.EClassifier', packageName, className)/] type, String name, int lowerBound, int upperBound, boolean isUnique, boolean isOrdered)
-	{
-		[genModel.getImportedName('org.eclipse.emf.ecore.EParameter', packageName, className)/] p = ecoreFactory.createEParameter();
+	protected [genModel.getImportedName('org.eclipse.emf.ecore.EParameter')/] addEParameter([genModel.getImportedName('org.eclipse.emf.ecore.EOperation')/] owner, [genModel.getImportedName('org.eclipse.emf.ecore.EClassifier')/] type, String name, int lowerBound, int upperBound, boolean isUnique, boolean isOrdered) {
+		[genModel.getImportedName('org.eclipse.emf.ecore.EParameter')/] p = ecoreFactory.createEParameter();
 		p.setEType(type);
 		p.setName(name);
 		p.setLowerBound(lowerBound);
@@ -1161,7 +1177,7 @@ int maxGenericTypeAssignment = 0;
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
-  [if (genModel.isOperationReflection())]
+  [if (genModel.operationReflection)]
 	 *   <li>each operation of each class,</li>
   [/if]
 	 *   <li>each enum,</li>
@@ -1170,9 +1186,8 @@ int maxGenericTypeAssignment = 0;
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	[if (isImplementation)]public [/if]interface Literals
-	{
-  [for (genClassifier : GenClassifier | genPackage.getGenClassifiers())]
+	[if (isImplementation)]public [/if]interface Literals {
+  [for (genClassifier : GenClassifier | genPackage.genClassifiers)]
 		/**
     [if (genClassifier.oclIsKindOf(GenClass))]
       [let genClass : GenClass = genClassifier.oclAsType(GenClass)]
@@ -1222,7 +1237,7 @@ int maxGenericTypeAssignment = 0;
 		[publicStaticFinalFlag/][genFeature.getImportedMetaType()/] [genClass.getFeatureID(genFeature)/] = eINSTANCE.get[genFeature.getFeatureAccessorName()/]();
 
         [/for]
-        [if (genModel.isOperationReflection())]
+        [if (genModel.operationReflection)]
           [for (genOperation : GenOperation | genClass.genOperations)]
 		/**
 		 * The meta object literal for the '<em><b>[genOperation.getFormattedName()/]</b></em>' operation.
@@ -1244,11 +1259,11 @@ int maxGenericTypeAssignment = 0;
 [/let][comment publicStaticFinalFlag /]
 [/template]
 
-[query public packageClassPackageName(genPackage : GenPackage, isImplementation : Boolean) : String =
-	if (isImplementation and not genPackage.genModel.isSuppressInterfaces()) then
-		genPackage.getClassPackageName()
-	else
+[query public packageClassPackageName(genPackage : GenPackage, isInterface : Boolean) : String =
+	if (isInterface and not genPackage.genModel.suppressInterfaces) then
 		genPackage.getReflectionPackageName()
+	else
+		genPackage.getClassPackageName()
 	endif
 /]
 
@@ -1261,5 +1276,4 @@ int maxGenericTypeAssignment = 0;
 /]
 
 [query public packageClassPath(genPackage : GenPackage, isInterface : Boolean, isImplementation : Boolean) : String
-	= 'src/'.concat(genPackage.packageClassPackageName(isInterface).concat('.').concat(genPackage.packageClassName(isImplementation))).toPath().concat('.java')
-/]
+	= genPackage.genModel.modelPath(genPackage.packageClassPackageName(isInterface), genPackage.packageClassName(isImplementation)) /]

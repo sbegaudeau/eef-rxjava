@@ -29,13 +29,12 @@
 
 [template public Plugin(genModel : GenModel) { packageName : String = genModel.getEditPluginPackageName() ; className : String = genModel.getEditPluginClassName() }]
 [initializeImportManager(packageName, className)/]
+[genModel.addImport('org.eclipse.emf.common.EMFPlugin')/]
+[genModel.addImport('org.eclipse.emf.common.util.ResourceLocator')/]
+
 [file (genModel.editPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
 package [packageName/];
-
-import org.eclipse.emf.common.EMFPlugin;
-import org.eclipse.emf.common.util.ResourceLocator;
-
 [let content : String = pluginFileContent(packageName, className)]
 [genModel.genSortedImports()/]
 
@@ -46,7 +45,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 [template public pluginFileContent(genModel : GenModel, packageName : String, className : String)]
 /**
- * This is the central singleton for the [genModel.getModelName()/] edit plugin.
+ * This is the central singleton for the [genModel.modelName/] edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -70,7 +69,7 @@ public final class [className/] extends EMFPlugin
 	 */
 	public static final [className/] INSTANCE = new [className/]();
 
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+[if (genModel.runtimePlatform <> GenRuntimePlatform::GWT)]
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
@@ -91,7 +90,7 @@ public final class [className/] extends EMFPlugin
 		super
 		  (new ResourceLocator [genModel.genSquareBrackets('')/] 
 		   {
-[for (pluginClassName : String | genModel.getEditResourceDelegateImportedPluginClassNames())]
+[for (pluginClassName : String | genModel.getEditResourceDelegateImportedPluginClassNames(packageName, className))]
 		     [pluginClassName/].INSTANCE,
 [/for]
 		   });
@@ -109,14 +108,14 @@ public final class [className/] extends EMFPlugin
 [/if]
 	public ResourceLocator getPluginResourceLocator()
 	{
-[if (genModel.getRuntimePlatform() = GenRuntimePlatform::GWT)]
+[if (genModel.runtimePlatform = GenRuntimePlatform::GWT)]
 		return null;
 [else]
 		return plugin;
 [/if]
 	}
 
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+[if (genModel.runtimePlatform <> GenRuntimePlatform::GWT)]
 	/**
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc -->

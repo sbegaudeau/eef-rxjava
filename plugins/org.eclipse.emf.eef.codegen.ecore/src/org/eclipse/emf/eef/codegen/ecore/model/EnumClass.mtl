@@ -7,6 +7,7 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenPackage /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnum /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenEnumLiteral /]
+[import org::eclipse::emf::eef::codegen::ecore::services::StringUtil /]
 
 [template public enumClass(genEnum : GenEnum)]
 [comment
@@ -25,30 +26,35 @@
  * </copyright>
  */
 /]
-[let genPackage : GenPackage = genEnum.getGenPackage()]
-[let genModel : GenModel = genPackage.getGenModel()]
+[let genPackage : GenPackage = genEnum.genPackage]
+[let genModel : GenModel = genPackage.genModel]
 [let packageName : String = genPackage.getInterfacePackageName()]
 [let enumName : String = genEnum.getName()]
-[genModel.initializeImportManager(packageName, enumName)/]
-[genModel.addImport('java.util.Arrays', packageName, enumName)/]
-[genModel.addImport('java.util.List', packageName, enumName)/]
-[genModel.addImport('java.util.Collections', packageName, enumName)/]
+
+[genModel.initializeImportManager(genPackage, packageName, enumName)/]
+[genModel.addImport('java.util.Arrays')/]
+[genModel.addImport('java.util.List')/]
+[genModel.addImport('java.util.Collections')/]
+
+
+
 [file (genEnum.enumFilePath(), false, 'UTF-8')]
 [genModel.includeHeader()/]
 package [packageName/];
-[let content : String = genEnum.enumFileContent(genModel, genPackage, packageName, enumName)]
-[genModel.genSortedImports(packageName, enumName)/]
-
-[content/]
-[/let]
+[let content : String = genEnum.enumFileContent(genModel, genPackage)]
+[genModel.genSortedImports()/]
+[content/][/let]
 [/file]
+
+
+
 [/let][comment enumName /]
 [/let][comment packageName /]
 [/let][comment genModel /]
 [/let][comment genPackage /]
 [/template]
 
-[template protected enumFileContent(genEnum : GenEnum, genModel : GenModel, genPackage : GenPackage, packageName : String, enumName : String) ]
+[template protected enumFileContent(genEnum : GenEnum, genModel : GenModel, genPackage : GenPackage) ]
 [let isEnum : Boolean = genModel.useGenerics()]
 /**
  * <!-- begin-user-doc -->
@@ -61,24 +67,24 @@ package [packageName/];
  * <!-- end-model-doc -->
 [/if]
  * @see [genPackage.getQualifiedPackageInterfaceName()/]#get[genEnum.getName()/]()
-  [if (not genModel.isSuppressEMFModelTags())]
-    [let modelInfoLines : Sequence(String) = genEnum.getModelInfo().tokenize('\n\r')]
+  [if (not genModel.suppressEMFModelTags)]
+    [let modelInfoLines : Sequence(String) = genEnum.getModelInfo().tokenize(genModel.getLineDelimiter() + '\r')]
       [if (modelInfoLines->isEmpty())]
  * @model
       [else]
- * @model [modelInfoLines->sep('\n *        ')/]
+ * @model [modelInfoLines->sep(genModel.getLineDelimiter() + ' *        ')/]
       [/if]
     [/let]
   [/if]
  * @generated
  */
-public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implements[else]extends[/if] [if (genModel.isSuppressEMFMetaData() and not genModel.isSuppressInterfaces())]Internal[genEnum.getName()/][else][genModel.getImportedName(if (isEnum) then 'org.eclipse.emf.common.util.Enumerator' else 'org.eclipse.emf.common.util.AbstractEnumerator' endif, packageName, enumName)/][/if] {
+public [if (isEnum)]enum[else]final class[/if] [genEnum.getName()/] [if (isEnum)]implements[else]extends[/if] [if (genModel.suppressEMFMetaData and not genModel.suppressInterfaces)]Internal[genEnum.getName()/][else][genModel.getImportedName(if (isEnum) then 'org.eclipse.emf.common.util.Enumerator' else 'org.eclipse.emf.common.util.AbstractEnumerator' endif)/][/if] {
 [if (isEnum)]
   [if (genEnum.genEnumLiterals->isEmpty())]
 	;
 
   [else]
-[genEnum.genEnumLiterals.genEnumLiteralTemplate(genModel)->sep(',' + genModel.getNonNLS() + genModel.getNonNLS(2) + '\n\n')/];[genModel.getNonNLS()/][genModel.getNonNLS(2)/]
+[genEnum.genEnumLiterals.genEnumLiteralTemplate(genModel)->sep(',' + genModel.getNonNLS() + genModel.getNonNLS(2) + genModel.getLineDelimiter() + genModel.getLineDelimiter())/];[genModel.getNonNLS()/][genModel.getNonNLS(2)/]
 
   [/if]
 [/if]
@@ -88,7 +94,7 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final [genModel.getImportedName('java.lang.String', packageName, enumName)/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
+	public static final [genModel.getImportedName('java.lang.String')/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
 [for (genEnumLiteral : GenEnumLiteral | genEnum.genEnumLiterals)]
@@ -108,12 +114,12 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-model-doc -->
 [/if]
 	 * @see #[genEnumLiteral.getEnumLiteralInstanceConstantName()/]
-    [if (not genModel.isSuppressEMFModelTags())]
-      [let modelInfoLines : Sequence(String) = genEnumLiteral.getModelInfo().tokenize('\n\r')]
+    [if (not genModel.suppressEMFModelTags)]
+      [let modelInfoLines : Sequence(String) = genEnumLiteral.getModelInfo().tokenize(genModel.getLineDelimiter() + '\r')]
         [if (modelInfoLines->isEmpty())]
 	 * @model
         [else]
-	 * @model [modelInfoLines->sep('\n\t *        ')/]
+	 * @model [modelInfoLines->sep(genModel.getLineDelimiter() + '\t *        ')/]
         [/if]
       [/let]
     [/if]
@@ -164,7 +170,7 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static [genEnum.getName()/] get([genModel.getImportedName('java.lang.String', packageName, enumName)/] literal) {
+	public static [genEnum.getName()/] get([genModel.getImportedName('java.lang.String')/] literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			[genEnum.getName()/] result = VALUES_ARRAY['[i]'/];
 			if (result.toString().equals(literal)) {
@@ -180,7 +186,7 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static [genEnum.getName()/] getByName([genModel.getImportedName('java.lang.String', packageName, enumName)/] name) {
+	public static [genEnum.getName()/] getByName([genModel.getImportedName('java.lang.String')/] name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			[genEnum.getName()/] result = VALUES_ARRAY['[i]'/];
 			if (result.getName().equals(name)) {
@@ -218,14 +224,14 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private final [genModel.getImportedName('java.lang.String', packageName, enumName)/] name;
+	private final [genModel.getImportedName('java.lang.String')/] name;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private final [genModel.getImportedName('java.lang.String', packageName, enumName)/] literal;
+	private final [genModel.getImportedName('java.lang.String')/] literal;
 
 [/if]
 	/**
@@ -234,7 +240,7 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private [genEnum.getName()/](int value, [genModel.getImportedName('java.lang.String', packageName, enumName)/] name, [genModel.getImportedName('java.lang.String', packageName, enumName)/] literal) {
+	private [genEnum.getName()/](int value, [genModel.getImportedName('java.lang.String')/] name, [genModel.getImportedName('java.lang.String')/] literal) {
 [if (isEnum)]
 		this.value = value;
 		this.name = name;
@@ -259,7 +265,7 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public [genModel.getImportedName('java.lang.String', packageName, enumName)/] getName() {
+	public [genModel.getImportedName('java.lang.String')/] getName() {
 	  return name;
 	}
 
@@ -268,7 +274,7 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public [genModel.getImportedName('java.lang.String', packageName, enumName)/] getLiteral() {
+	public [genModel.getImportedName('java.lang.String')/] getLiteral() {
 	  return literal;
 	}
 
@@ -281,13 +287,13 @@ public [if (isEnum)]enum[else]final class[/if] [enumName/] [if (isEnum)]implemen
   [if (genModel.useClassOverrideAnnotation())]
 	@Override
   [/if]
-	public [genModel.getImportedName('java.lang.String', packageName, enumName)/] toString() {
+	public [genModel.getImportedName('java.lang.String')/] toString() {
 		return literal;
 	}
 	
 [/if]
 } //[genEnum.getName()/]
-[if (genModel.isSuppressEMFMetaData() and not genModel.isSuppressInterfaces() )]
+[if (genModel.suppressEMFMetaData and not genModel.suppressInterfaces )]
 
   [if (isEnum)]
 /**
@@ -313,7 +319,7 @@ class Internal[genEnum.getName()/] extends org.eclipse.emf.common.util.AbstractE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Internal[genEnum.getName()/](int value, [genModel.getImportedName('java.lang.String', packageName, enumName)/] name, [genModel.getImportedName('java.lang.String', packageName, enumName)/] literal) {
+	protected Internal[genEnum.getName()/](int value, [genModel.getImportedName('java.lang.String')/] name, [genModel.getImportedName('java.lang.String')/] literal) {
 		super(value, name, literal);
 	}
 }
@@ -334,4 +340,4 @@ class Internal[genEnum.getName()/] extends org.eclipse.emf.common.util.AbstractE
 	[genEnumLiteral.getEnumLiteralInstanceConstantName()/]([genEnumLiteral.getValue()/], "[genEnumLiteral.getName()/]", [genModel.toStringLiteral(genEnumLiteral.getLiteral())/])[/template]
 
 [query public enumFilePath(genEnum : GenEnum) : String
-	= 'src/' + genEnum.getQualifiedName().toPath() + '.java' /]
+	= genEnum.getGenModel().extractSourceDirectory(genEnum.getGenModel().modelDirectory) + '/' + genEnum.getQualifiedName().toPath() + '.java' /]

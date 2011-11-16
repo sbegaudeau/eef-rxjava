@@ -44,9 +44,6 @@
 [query public getAnnotationSources(genPackage : GenPackage) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getAnnotationSources()', Sequence{genPackage}) /]
 
-[query public getBasePackage(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getBasePackage()', Sequence{genPackage}) /]
-
 [query public getBasicPackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getBasicPackageName()', Sequence{genPackage}) /]
 
@@ -55,9 +52,6 @@
 
 [query public getClassPackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getClassPackageName()', Sequence{genPackage}) /]
-
-[query public getClassPackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getClassPackageSuffix()', Sequence{genPackage}) /]
 
 [query public getClassUniqueName(genPackage : GenPackage, genClass : GenClass) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getClassUniqueName(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genPackage, genClass}) /]
@@ -68,14 +62,8 @@
 [query public getClassifierValue(genPackage : GenPackage, genClassifier : GenClassifier) : Integer
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getClassifierValue(org.eclipse.emf.codegen.ecore.genmodel.GenClassifier)', Sequence{genPackage, genClassifier}) /]
 
-[query public getContentTypeIdentifier(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getContentTypeIdentifier()', Sequence{genPackage}) /]
-
 [query public getDocumentRoot(genPackage : GenPackage) : GenClass
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getDocumentRoot()', Sequence{genPackage}) /]
-
-[query public getEcorePackage(genPackage : GenPackage) : EPackage
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getEcorePackage()', Sequence{genPackage}) /]
 
 [query public getEditPluginClassName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getEditPluginClassName()', Sequence{genPackage}) /]
@@ -106,24 +94,6 @@
 
 [query public getFileExtension(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getFileExtension()', Sequence{genPackage}) /]
-
-[query public getFileExtensions(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getFileExtensions()', Sequence{genPackage}) /]
-
-[query public getGenClasses(genPackage : GenPackage) : Sequence(GenClass)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenClasses()', Sequence{genPackage}) /]
-
-[query public getGenClassifiers(genPackage : GenPackage) : Sequence(GenClassifier)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenClassifiers()', Sequence{genPackage}) /]
-
-[query public getGenDataTypes(genPackage : GenPackage) : Sequence(GenDataType)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenDataTypes()', Sequence{genPackage}) /]
-
-[query public getGenEnums(genPackage : GenPackage) : Sequence(GenEnum)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenEnums()', Sequence{genPackage}) /]
-
-[query public getGenModel(genPackage : GenPackage) : GenModel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenModel()', Sequence{genPackage}) /]
 
 [query public getImportedActionBarContributorClassName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getImportedActionBarContributorClassName()', Sequence{genPackage}) /]
@@ -182,9 +152,6 @@
 [query public getInterfacePackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getInterfacePackageName()', Sequence{genPackage}) /]
 
-[query public getInterfacePackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getInterfacePackageSuffix()', Sequence{genPackage}) /]
-
 [query public getItemProviderAdapterFactoryClassName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getItemProviderAdapterFactoryClassName()', Sequence{genPackage}) /]
 
@@ -193,9 +160,6 @@
 
 [query public getLocalClassifierIndex(genPackage : GenPackage, genClassifier : GenClassifier) : Integer
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getLocalClassifierIndex(org.eclipse.emf.codegen.ecore.genmodel.GenClassifier)', Sequence{genPackage, genClassifier}) /]
-
-[query public getMetaDataPackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getMetaDataPackageSuffix()', Sequence{genPackage}) /]
 
 [query public getModelIconFileName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getModelIconFileName()', Sequence{genPackage}) /]
@@ -214,9 +178,6 @@
 
 [query public getNSURI(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getNSURI()', Sequence{genPackage}) /]
-
-[query public getNestedGenPackages(genPackage : GenPackage) : Sequence(GenPackage)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getNestedGenPackages()', Sequence{genPackage}) /]
 
 [query public getOrderedGenClasses(genPackage : GenPackage) : Sequence(GenClass)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getOrderedGenClasses()', Sequence{genPackage}) /]
@@ -251,20 +212,11 @@
 [query public getPackageSimpleDependencies(genPackage : GenPackage) : Sequence(GenPackage)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getPackageSimpleDependencies()', Sequence{genPackage}) /]
 
-[query public getPrefix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getPrefix()', Sequence{genPackage}) /]
-
 [query public getPresentationPackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getPresentationPackageName()', Sequence{genPackage}) /]
 
-[query public getPresentationPackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getPresentationPackageSuffix()', Sequence{genPackage}) /]
-
 [query public getProviderPackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getProviderPackageName()', Sequence{genPackage}) /]
-
-[query public getProviderPackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getProviderPackageSuffix()', Sequence{genPackage}) /]
 
 [query public getProviderSupportedTypes(genPackage : GenPackage) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getProviderSupportedTypes()', Sequence{genPackage}) /]
@@ -386,9 +338,6 @@
 [query public getTestsPackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getTestsPackageName()', Sequence{genPackage}) /]
 
-[query public getTestsPackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getTestsPackageSuffix()', Sequence{genPackage}) /]
-
 [query public getUncapAdapterFactoryClassName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getUncapAdapterFactoryClassName()', Sequence{genPackage}) /]
 
@@ -409,9 +358,6 @@
 
 [query public getUtilitiesPackageName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getUtilitiesPackageName()', Sequence{genPackage}) /]
-
-[query public getUtilityPackageSuffix(genPackage : GenPackage) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getUtilityPackageSuffix()', Sequence{genPackage}) /]
 
 [query public getValidatorClassName(genPackage : GenPackage) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getValidatorClassName()', Sequence{genPackage}) /]
@@ -461,47 +407,17 @@
 [query public hasXMLMap(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'hasXMLMap()', Sequence{genPackage}) /]
 
-[query public isAdapterFactory(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isAdapterFactory()', Sequence{genPackage}) /]
-
-[query public isChildCreationExtenders(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isChildCreationExtenders()', Sequence{genPackage}) /]
-
 [query public isContentType(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isContentType()', Sequence{genPackage}) /]
 
-[query public isDataTypeConverters(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isDataTypeConverters()', Sequence{genPackage}) /]
-
-[query public isDisposableProviderFactory(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isDisposableProviderFactory()', Sequence{genPackage}) /]
-
 [query public isEcorePackage(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isEcorePackage()', Sequence{genPackage}) /]
-
-[query public isExtensibleProviderFactory(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isExtensibleProviderFactory()', Sequence{genPackage}) /]
-
-[query public isGenerateExampleClass(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isGenerateExampleClass()', Sequence{genPackage}) /]
-
-[query public isGenerateModelWizard(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isGenerateModelWizard()', Sequence{genPackage}) /]
-
-[comment][query public isLiteralsInterface(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isLiteralsInterface()', Sequence{genPackage}) /][/comment]
-
-[query public isLoadInitialization(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isLoadInitialization()', Sequence{genPackage}) /]
 
 [query public isLoadedInitialization(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isLoadedInitialization()', Sequence{genPackage}) /]
 
 [query public isLoadingInitialization(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isLoadingInitialization()', Sequence{genPackage}) /]
-
-[query public isMultipleEditorPages(genPackage : GenPackage) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isMultipleEditorPages()', Sequence{genPackage}) /]
 
 [query public isMultipleFileExtensions(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'isMultipleFileExtensions()', Sequence{genPackage}) /]
@@ -545,9 +461,6 @@
 [query public getGenAnnotation(genPackage : GenPackage, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenAnnotation(java.lang.String)', Sequence{genPackage, source}) /]
 
-[query public getGenAnnotations(genPackage : GenPackage) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'getGenAnnotations()', Sequence{genPackage}) /]
-
 [query public hasCopyright(genPackage : GenPackage) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'hasCopyright()', Sequence{genPackage}) /]
 
@@ -566,8 +479,23 @@
 [query public uncapPrefixedName(genPackage : GenPackage, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'uncapPrefixedName(java.lang.String)', Sequence{genPackage, input}) /]
 
+
+
+
+
+
+
+
 [comment special handling for avoiding NPE due to importManager /]
 [query public isLiteralsInterface(genPackage : GenPackage) : Boolean = genPackage.literalsInterface/]
+
+
+
+
+
+
+
+
 
 [query public getExtendedChildCreationDataEntrySet(genPackage : GenPackage) : Set(OclAny)
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'getExtendedChildCreationDataEntrySet(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
@@ -601,3 +529,47 @@
 
 [query public generateModelWizardIcon(genPackage : GenPackage) : OclVoid
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'generateModelWizardIcon(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]
+
+[comment
+	Flags this genPackage as needing an addEOperation method
+ /]
+[query public requireAddEOperation(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'requireAddEOperation(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage})/]
+
+[comment
+	Flags this genPackage as needing an addEParameter method
+ /]
+[query public requireAddEParameter(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'requireAddEParameter(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage})/]
+
+[query public needsAddEOperation(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'needsAddEOperation(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage})/]
+
+[query public needsAddEParameter(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'needsAddEParameter(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage})/]
+
+[query public prepareCache(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'prepareCache()', Sequence{genPackage})/]
+
+[query public clearCache(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenPackage', 'clearCache()', Sequence{genPackage})/]
+
+[query public isXMLTypePackage(genPackage : GenPackage) : Boolean
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'isXMLTypePackage(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage})/]
+
+[comment We use a template in order to prevent acceleo cache from calling the java method each time /]
+[template public prefix(genPackage : GenPackage, depth : Integer)]
+[invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'prefix(org.eclipse.emf.codegen.ecore.genmodel.GenPackage, int)', Sequence{genPackage, depth})/][/template]
+
+[comment We use a template in order to prevent acceleo cache from calling the java method each time /]
+[template public typePrefix(genPackage : GenPackage, depth : Integer)]
+[invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'typePrefix(org.eclipse.emf.codegen.ecore.genmodel.GenPackage, int)', Sequence{genPackage, depth})/][/template]
+
+[query public resetMaxGenericTypeAssignment(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'resetMaxGenericTypeAssignment()', Sequence{}) /]
+
+[query public resetGenOperationPrefix(genPackage : GenPackage) : OclVoid
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenOperationWrapper', 'resetGenOperationPrefix()', Sequence{genPackage}) /]
+
+[query public computeSwitchGenericTypeName(genPackage : GenPackage) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'computeSwitchGenericTypeName(org.eclipse.emf.codegen.ecore.genmodel.GenPackage)', Sequence{genPackage}) /]

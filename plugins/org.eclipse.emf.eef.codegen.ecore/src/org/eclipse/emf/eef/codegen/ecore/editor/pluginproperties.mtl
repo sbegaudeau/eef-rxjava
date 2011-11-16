@@ -30,12 +30,12 @@
 [template public pluginproperties(genModel : GenModel)]
 [file (pluginpropertiesPath(), false, 'UTF-8')]
 [includeHeaderProperties()/]
-pluginName = [genModel.getModelName()/] Editor
+pluginName = [genModel.modelName/] Editor
 providerName = www.example.org
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+[if (genModel.runtimePlatform <> GenRuntimePlatform::GWT)]
 
 [for (genPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())]
-_UI_[genPackage.getEditorClassName()/]_menu = &[genPackage.getPrefix()/] Editor
+_UI_[genPackage.getEditorClassName()/]_menu = &[genPackage.prefix/] Editor
 [/for]
 
 [if (genModel.creationCommands)]
@@ -56,6 +56,7 @@ _UI_TreeWithColumnsPage_label = Tree with Columns
 _UI_ObjectColumn_label = Object
 _UI_SelfColumn_label = Self
 [/if]
+
 _UI_NoObjectSelected = Selected Nothing
 _UI_SingleObjectSelected = Selected Object: {0}
 _UI_MultiObjectSelected = Selected {0} Objects
@@ -68,14 +69,14 @@ _UI_CreateModelError_message = Problems encountered in file "{0}"
 
 [for (genPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())]
   [if (genPackage.generateModelWizard)]
-_UI_[genPackage.getModelWizardClassName()/]_label = [genPackage.getPrefix()/] Model
-_UI_[genPackage.getModelWizardClassName()/]_description = Create a new [genPackage.getPrefix()/] model
+_UI_[genPackage.getModelWizardClassName()/]_label = [genPackage.prefix/] Model
+_UI_[genPackage.getModelWizardClassName()/]_description = Create a new [genPackage.prefix/] model
 
   [/if]
-_UI_[genPackage.getEditorClassName()/]_label = [genPackage.getPrefix()/] Model Editor
+_UI_[genPackage.getEditorClassName()/]_label = [genPackage.prefix/] Model Editor
 
 _UI_[genPackage.getEditorClassName()/]FilenameDefaultBase = My
-_UI_[genPackage.getEditorClassName()/]FilenameExtensions = [if (genPackage.isMultipleFileExtensions())][genPackage.getFileExtensions()/][else][genPackage.getFileExtension()/][/if]
+_UI_[genPackage.getEditorClassName()/]FilenameExtensions = [if (genPackage.isMultipleFileExtensions())][genPackage.fileExtensions/][else][genPackage.getFileExtension()/][/if]
 
 [/for]
 _UI_Wizard_label = New
@@ -86,7 +87,7 @@ _WARN_FilenameExtensions = The file name must have one of the following extensio
 _UI_ModelObject = &Model Object
 _UI_XMLEncoding = &XML Encoding
 _UI_XMLEncodingChoices = [genModel.getXMLEncodingChoices()/]
-[if (genModel.isRichClientPlatform())]
+[if (genModel.richClientPlatform)]
 _UI_Wizard_initial_object_description = Specify a file name and select a model object to create
 [else]
 _UI_Wizard_initial_object_description = Select a model object to create
@@ -95,9 +96,9 @@ _UI_Wizard_initial_object_description = Select a model object to create
 _UI_FileConflict_label = File Conflict
 _WARN_FileConflict = There are unsaved changes that conflict with changes made outside the editor.  Do you wish to discard this editor's changes?
 
-[if (genModel.isRichClientPlatform())]
-_UI_[genModel.getEditorAdvisorClassName()/]_ActionSet_label = [genModel.getModelName()/] Action Set
-_UI_Perspective_label = [genModel.getModelName()/]
+[if (genModel.richClientPlatform)]
+_UI_[genModel.getEditorAdvisorClassName()/]_ActionSet_label = [genModel.modelName/] Action Set
+_UI_Perspective_label = [genModel.modelName/]
 
 _UI_Browse_label = &Browse...
 _UI_File_label = &File
@@ -106,7 +107,7 @@ _WARN_FileConflict = The file "{0}" already exists.  Do you want to replace the 
 _UI_Error_title = Error
 _WARN_No_Editor = There is no editor registered for the file "{0}".
 
-_UI_Application_title = [genModel.getModelName()/] Application
+_UI_Application_title = [genModel.modelName/] Application
 _UI_Menu_File_label = &File
 _UI_Menu_New_label = &New
 _UI_Menu_Open_label = &Open...
@@ -116,12 +117,12 @@ _UI_Menu_OpenURI_description = Opens a model object loading it from a URI
 _UI_Menu_Edit_label = &Edit
 _UI_Menu_Window_label = &Window
 _UI_Menu_Help_label = &Help
-_UI_Menu_About_label = [genModel.getModelName()/] &About...
-_UI_About_title = [genModel.getModelName()/] Application
-_UI_About_text = [genModel.getModelName()/] Application about box goes here.
+_UI_Menu_About_label = [genModel.modelName/] &About...
+_UI_About_title = [genModel.modelName/] Application
+_UI_About_text = [genModel.modelName/] Application about box goes here.
 
 [for (genPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())][if (genPackage.generateModelWizard)]
-_UI_[genPackage.getModelWizardClassName()/]_ActionSet_label = [genPackage.getPrefix()/] Model Action Set
+_UI_[genPackage.getModelWizardClassName()/]_ActionSet_label = [genPackage.prefix/] Model Action Set
 [/if][/for]
 
 [/if]

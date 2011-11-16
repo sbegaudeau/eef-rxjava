@@ -11,33 +11,39 @@
 [import org::eclipse::emf::eef::codegen::ecore::editor::pluginxml /]
 [import org::eclipse::emf::eef::codegen::ecore::editor::editorIcons /]
 [import org::eclipse::emf::eef::codegen::ecore::services::fileUtil /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
+[import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenPackage /]
 
-[template public GenAllGenClass(model : GenModel)]
-	[comment @main /]
-	[comment editor generation/]
-	[if (not model.fileExistsEditor(model.buildpropertiesPath()))]
-		[model.buildproperties()/]
-	[/if]
-
-	[if (not model.fileExistsEditor(model.manifestmfPath()))]
-		[model.manifestmf()/]
-	[/if]
-
-	[model.Plugin()/]
-
-	[if (not model.fileExistsEditor(model.pluginpropertiesPath()))]
-		[model.pluginproperties()/]
-	[/if]
-
-	[if (not model.fileExistsEditor(model.pluginxmlPath()))]
-		[model.pluginxml()/]
-	[/if]
-
-	[for (p : GenPackage | model.eAllContents(GenPackage))]
-		[p.ActionBarContributor()/]
+[template public GenAllGenClass(model : GenModel) ? (model.canGenerateEditor())]
+[comment @main /]
+[comment editor generation/]
+[for (p : GenPackage | model.eAllContents(GenPackage))]
+	[if (p.canGenerateEditor() and p.hasConcreteClasses())]
 		[p.Editor()/]
 		[p.ModelWizard()/]
+		[p.ActionBarContributor()/]
 		[p.ModelIcon()/]
 		[p.ModelWizardIcon()/]
-	[/for]
+	[/if]
+[/for]
+
+[model.Plugin()/]
+
+[if (model.bundleManifest and not model.fileExistsEditor(model.manifestmfPath()))]
+	[model.manifestmf()/]
+[/if]
+
+[if (not model.fileExistsEditor(model.pluginxmlPath()))]
+	[model.pluginxml()/]
+[/if]
+
+[if (not model.fileExistsEditor(model.pluginpropertiesPath()))]
+	[model.pluginproperties()/]
+[/if]
+
+[if (not model.fileExistsEditor(model.buildpropertiesPath()))]
+	[model.buildproperties()/]
+[/if]
+
+[comment @TODO EditorAdvisor ??? if model.isRichClientPlatform()/]
 [/template]

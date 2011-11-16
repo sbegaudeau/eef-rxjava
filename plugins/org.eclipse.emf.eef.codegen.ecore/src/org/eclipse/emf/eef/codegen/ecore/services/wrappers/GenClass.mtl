@@ -126,9 +126,6 @@
 [query public getEVirtualValuesField(genClass : GenClass) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getEVirtualValuesField()', Sequence{genClass}) /]
 
-[query public getEcoreClass(genClass : GenClass) : EClass
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getEcoreClass()', Sequence{genClass}) /]
-
 [query public getExtendedGenClasses(genClass : GenClass) : Sequence(GenClass)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getExtendedGenClasses()', Sequence{genClass}) /]
 
@@ -173,12 +170,6 @@
 
 [query public getFlagsField(genClass : GenClass, genFeature : GenFeature) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getFlagsField(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genClass, genFeature}) /]
-
-[query public getGenFeatures(genClass : GenClass) : Sequence(GenFeature)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenFeatures()', Sequence{genClass}) /]
-
-[query public getGenOperations(genClass : GenClass) : Sequence(GenOperation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenOperations()', Sequence{genClass}) /]
 
 [query public getGetAccessorOperation(genClass : GenClass, genFeature : GenFeature) : GenOperation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGetAccessorOperation(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genClass, genFeature}) /]
@@ -245,9 +236,6 @@
 
 [query public getLabelAndContentNotifyFeatures(genClass : GenClass) : Sequence(GenFeature)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getLabelAndContentNotifyFeatures()', Sequence{genClass}) /]
-
-[query public getLabelFeature(genClass : GenClass) : GenFeature
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getLabelFeature()', Sequence{genClass}) /]
 
 [query public getLabelFeatureCandidates(genClass : GenClass) : Sequence(GenFeature)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getLabelFeatureCandidates()', Sequence{genClass}) /]
@@ -318,9 +306,6 @@
 [query public getPropertyFeatures(genClass : GenClass) : Sequence(GenFeature)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getPropertyFeatures()', Sequence{genClass}) /]
 
-[query public getProvider(genClass : GenClass) : GenProviderKind
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getProvider()', Sequence{genClass}) /]
-
 [query public getProviderBaseClassName(genClass : GenClass) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getProviderBaseClassName()', Sequence{genClass}) /]
 
@@ -340,7 +325,7 @@
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getQualifiedFeatureCountID()', Sequence{genClass}) /]
 
 [query public getQualifiedFeatureID(genClass : GenClass, genFeature : GenFeature) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getQualifiedFeatureID(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genClass, genFeature}) /]
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getQualifiedFeatureID(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genClass, genFeature})/]
 
 [query public getQualifiedInterfaceName(genClass : GenClass) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getQualifiedInterfaceName()', Sequence{genClass}) /]
@@ -423,9 +408,6 @@
 [query public isDocumentRoot(genClass : GenClass) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'isDocumentRoot()', Sequence{genClass}) /]
 
-[query public isDynamic(genClass : GenClass) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'isDynamic()', Sequence{genClass}) /]
-
 [query public isEObject(genClass : GenClass) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'isEObject()', Sequence{genClass}) /]
 
@@ -446,9 +428,6 @@
 
 [query public isFlag(genClass : GenClass, genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'isFlag(org.eclipse.emf.codegen.ecore.genmodel.GenFeature)', Sequence{genClass, genFeature}) /]
-
-[query public isImage(genClass : GenClass) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'isImage()', Sequence{genClass}) /]
 
 [query public isInterface(genClass : GenClass) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'isInterface()', Sequence{genClass}) /]
@@ -507,11 +486,8 @@
 [query public getGenConstraints(genClass : GenClass) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenConstraints()', Sequence{genClass}) /]
 
-[query public getGenPackage(genClass : GenClass) : GenPackage
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenPackage()', Sequence{genClass}) /]
-
-[query public getGenTypeParameters(genClass : GenClass) : Sequence(GenTypeParameter)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenTypeParameters()', Sequence{genClass}) /]
+[query public getGenModel(genClass : GenClass) : GenModel
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenModel()', Sequence{genClass}) /]
 
 [query public getGeneratedInstanceClassFlag(genClass : GenClass) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGeneratedInstanceClassFlag()', Sequence{genClass}) /]
@@ -594,12 +570,6 @@
 [query public getGenAnnotation(genClass : GenClass, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenAnnotation(java.lang.String)', Sequence{genClass, source}) /]
 
-[query public getGenAnnotations(genClass : GenClass) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenAnnotations()', Sequence{genClass}) /]
-
-[query public getGenModel(genClass : GenClass) : GenModel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'getGenModel()', Sequence{genClass}) /]
-
 [query public hasCopyright(genClass : GenClass) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'hasCopyright()', Sequence{genClass}) /]
 
@@ -618,24 +588,13 @@
 [query public uncapPrefixedName(genClass : GenClass, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'uncapPrefixedName(java.lang.String)', Sequence{genClass, input}) /]
 
-[comment special handling for avoiding NPE due to importManager and other stuff/]
-[query public getInternalQualifiedInterfaceName(genClass : GenClass) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
+[query public addClassPseudoImports(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClass', 'addClassPsuedoImports()', Sequence{genClass}) /]
 
-[query public getInternalQualifiedInterfaceName(genClass : GenClass, boolean : Boolean) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.GenClass, java.lang.Boolean)', Sequence{genClass, boolean}) /]
 
-[query public getChildCreationData(genClass : GenClass) : Sequence(OclAny)
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getChildCreationData(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
 
-[query public getChildCreationDataCreateFeature(oclAny : OclAny ) : GenFeature
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateFeature(java.lang.Object)', Sequence{oclAny}) /]
 
-[query public getChildCreationDataDelegatedFeature(oclAny : OclAny ) : GenFeature
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getDelegatedFeature(java.lang.Object)', Sequence{oclAny}) /]
 
-[query public getChildCreationDataCreateClassifier(oclAny : OclAny ) : GenClassifier
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateClassifier(java.lang.Object)', Sequence{oclAny}) /]
 
 [query public overridesExtendedGenOperations(genClass : GenClass, extendedGenClass : GenClass) : Boolean
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'overridesExtendedGenOperations(org.eclipse.emf.codegen.ecore.genmodel.GenClass, org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass, extendedGenClass}) /]
@@ -665,21 +624,30 @@
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'implementsAnyEIsSetGenFeatures(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
 
 [comment 
-	Creates a new importManager and sets it on the current GenModel, to manage the imports
-	of the class currently being generated.
-	@param isInterface indicates whether we are generating an interface or an implementation.
-	@param isImplementation indicates whether we are generating an interface or an implementation.
-/]
-[query public initializeImportManager(genClass : GenClass, isInterface : Boolean, isImplementation : Boolean) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'initializeImportManager(org.eclipse.emf.codegen.ecore.genmodel.GenClass, boolean, boolean)', Sequence{genClass, isInterface, isImplementation}) /]
-
-[comment 
 	This query is used to reproduce getOffsetCorrectionField(null), used in EMF,
 	but which cannot be translated "as is" with Acceleo
 	because of a bug in OCL when handling 'null' in sequences.
 /]
 [query public getDefaultOffsetCorrectionField(genClass : GenClass) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getDefaultOffsetCorrectionField(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
+
+[query public getInternalQualifiedInterfaceName(genClass : GenClass) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
+
+[query public getInternalQualifiedInterfaceName(genClass : GenClass, boolean : Boolean) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getInternalQualifiedInterfaceName(org.eclipse.emf.codegen.ecore.genmodel.GenClass, java.lang.Boolean)', Sequence{genClass, boolean}) /]
+
+[query public getChildCreationData(genClass : GenClass) : Sequence(OclAny)
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getChildCreationData(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
+
+[query public getChildCreationDataCreateFeature(oclAny : OclAny ) : GenFeature
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateFeature(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getChildCreationDataDelegatedFeature(oclAny : OclAny ) : GenFeature
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getDelegatedFeature(java.lang.Object)', Sequence{oclAny}) /]
+
+[query public getChildCreationDataCreateClassifier(oclAny : OclAny ) : GenClassifier
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getCreateClassifier(java.lang.Object)', Sequence{oclAny}) /]
 
 [query public getEVirtualIndexBitFields(genClass : GenClass) : Sequence(String)
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'getEVirtualIndexBitFields(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
@@ -700,9 +668,6 @@
 /]
 [query public genSortedImports(genClass : GenClass, isInterface : Boolean, isImplementation : Boolean) : String
 	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenModelWrapper', 'genSortedImports(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
-
-[query public addClassPseudoImports(genClass : GenClass) : String
-	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassWrapper', 'addClassPseudoImports(org.eclipse.emf.codegen.ecore.genmodel.GenClass)', Sequence{genClass}) /]
 
 [comment For Icons generation /]
 [query public generateItemIcon(genClass: GenClass) : OclVoid

@@ -26,198 +26,199 @@
 
 [template public Editor(genPackage : GenPackage) {genModel : GenModel = genPackage.genModel ; packageName : String = genPackage.getPresentationPackageName() ; className : String = genPackage.getEditorClassName()}]
 [genModel.initializeImportManager(packageName, className)/]
+
 [file (genModel.editorPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
 package [packageName/];
 
-import java.io.IOException;
-import java.io.InputStream;
+[genModel.addImportHere('java.io.IOException')/]
+[genModel.addImportHere('java.io.InputStream')/]
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EventObject;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-[if (not genModel.isRichClientPlatform())]
+[genModel.addImportHere('java.util.ArrayList')/]
+[genModel.addImportHere('java.util.Collection')/]
+[genModel.addImportHere('java.util.Collections')/]
+[genModel.addImportHere('java.util.EventObject')/]
+[genModel.addImportHere('java.util.HashMap')/]
+[genModel.addImportHere('java.util.Iterator')/]
+[genModel.addImportHere('java.util.LinkedHashMap')/]
+[genModel.addImportHere('java.util.List')/]
+[genModel.addImportHere('java.util.Map')/]
+[if (not genModel.richClientPlatform)]
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceChangeEvent;
-import org.eclipse.core.resources.IResourceChangeListener;
-import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.resources.IResourceDeltaVisitor;
-import org.eclipse.core.resources.ResourcesPlugin;
+[genModel.addImportHere('org.eclipse.core.resources.IFile')/]
+[genModel.addImportHere('org.eclipse.core.resources.IMarker')/]
+[genModel.addImportHere('org.eclipse.core.resources.IResource')/]
+[genModel.addImportHere('org.eclipse.core.resources.IResourceChangeEvent')/]
+[genModel.addImportHere('org.eclipse.core.resources.IResourceChangeListener')/]
+[genModel.addImportHere('org.eclipse.core.resources.IResourceDelta')/]
+[genModel.addImportHere('org.eclipse.core.resources.IResourceDeltaVisitor')/]
+[genModel.addImportHere('org.eclipse.core.resources.ResourcesPlugin')/]
 [/if]
 
-[if (not genModel.isRichClientPlatform())]
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
+[if (not genModel.richClientPlatform)]
+[genModel.addImportHere('org.eclipse.core.runtime.CoreException')/]
+[genModel.addImportHere('org.eclipse.core.runtime.IPath')/]
 [/if]
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
+[genModel.addImportHere('org.eclipse.core.runtime.IProgressMonitor')/]
+[genModel.addImportHere('org.eclipse.core.runtime.NullProgressMonitor')/]
 
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
+[genModel.addImportHere('org.eclipse.jface.action.IMenuListener')/]
+[genModel.addImportHere('org.eclipse.jface.action.IMenuManager')/]
+[genModel.addImportHere('org.eclipse.jface.action.IStatusLineManager')/]
+[genModel.addImportHere('org.eclipse.jface.action.IToolBarManager')/]
+[genModel.addImportHere('org.eclipse.jface.action.MenuManager')/]
+[genModel.addImportHere('org.eclipse.jface.action.Separator')/]
 
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+[genModel.addImportHere('org.eclipse.jface.dialogs.MessageDialog')/]
+[genModel.addImportHere('org.eclipse.jface.dialogs.ProgressMonitorDialog')/]
 
 [if (genPackage.multipleEditorPages)]
-import org.eclipse.jface.viewers.ColumnWeightData;
+[genModel.addImportHere('org.eclipse.jface.viewers.ColumnWeightData')/]
 [/if]
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.ISelectionProvider;
-import org.eclipse.jface.viewers.IStructuredSelection;
+[genModel.addImportHere('org.eclipse.jface.viewers.ISelection')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.ISelectionChangedListener')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.ISelectionProvider')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.IStructuredSelection')/]
 [if (genPackage.multipleEditorPages)]
-import org.eclipse.jface.viewers.ListViewer;
+[genModel.addImportHere('org.eclipse.jface.viewers.ListViewer')/]
 [/if]
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredViewer;
+[genModel.addImportHere('org.eclipse.jface.viewers.SelectionChangedEvent')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.StructuredSelection')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.StructuredViewer')/]
 [if (genPackage.multipleEditorPages)]
-import org.eclipse.jface.viewers.TableLayout;
-import org.eclipse.jface.viewers.TableViewer;
+[genModel.addImportHere('org.eclipse.jface.viewers.TableLayout')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.TableViewer')/]
 [/if]
-import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.Viewer;
+[genModel.addImportHere('org.eclipse.jface.viewers.TreeViewer')/]
+[genModel.addImportHere('org.eclipse.jface.viewers.Viewer')/]
 
-import org.eclipse.swt.SWT;
+[genModel.addImportHere('org.eclipse.swt.SWT')/]
 
-import org.eclipse.swt.custom.CTabFolder;
+[genModel.addImportHere('org.eclipse.swt.custom.CTabFolder')/]
 
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.Transfer;
+[genModel.addImportHere('org.eclipse.swt.dnd.DND')/]
+[genModel.addImportHere('org.eclipse.swt.dnd.Transfer')/]
 
-import org.eclipse.swt.events.ControlAdapter;
-import org.eclipse.swt.events.ControlEvent;
+[genModel.addImportHere('org.eclipse.swt.events.ControlAdapter')/]
+[genModel.addImportHere('org.eclipse.swt.events.ControlEvent')/]
 
-import org.eclipse.swt.graphics.Point;
+[genModel.addImportHere('org.eclipse.swt.graphics.Point')/]
 [if (genPackage.multipleEditorPages)]
 
-import org.eclipse.swt.layout.FillLayout;
+[genModel.addImportHere('org.eclipse.swt.layout.FillLayout')/]
 [/if]
 
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Menu;
+[genModel.addImportHere('org.eclipse.swt.widgets.Composite')/]
+[genModel.addImportHere('org.eclipse.swt.widgets.Menu')/]
 [if (genPackage.multipleEditorPages)]
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
+[genModel.addImportHere('org.eclipse.swt.widgets.Table')/]
+[genModel.addImportHere('org.eclipse.swt.widgets.TableColumn')/]
 [/if]
-import org.eclipse.swt.widgets.Tree;
+[genModel.addImportHere('org.eclipse.swt.widgets.Tree')/]
 [if (genPackage.multipleEditorPages)]
-import org.eclipse.swt.widgets.TreeColumn;
+[genModel.addImportHere('org.eclipse.swt.widgets.TreeColumn')/]
 [/if]
 
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorSite;
-[if (not genModel.isRichClientPlatform() and genModel.getComplianceLevel() = GenJDKLevel::JDK14)]
-import org.eclipse.ui.IFileEditorInput;
+[genModel.addImportHere('org.eclipse.ui.IActionBars')/]
+[genModel.addImportHere('org.eclipse.ui.IEditorInput')/]
+[genModel.addImportHere('org.eclipse.ui.IEditorPart')/]
+[genModel.addImportHere('org.eclipse.ui.IEditorSite')/]
+[if (not genModel.richClientPlatform and genModel.complianceLevel = GenJDKLevel::JDK14)]
+[genModel.addImportHere('org.eclipse.ui.IFileEditorInput')/]
 [/if]
-import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PartInitException;
-[if (not genModel.isRichClientPlatform())]
+[genModel.addImportHere('org.eclipse.ui.IPartListener')/]
+[genModel.addImportHere('org.eclipse.ui.IWorkbenchPart')/]
+[genModel.addImportHere('org.eclipse.ui.PartInitException')/]
+[if (not genModel.richClientPlatform)]
 
-import org.eclipse.ui.dialogs.SaveAsDialog;
+[genModel.addImportHere('org.eclipse.ui.dialogs.SaveAsDialog')/]
 
-import org.eclipse.ui.ide.IGotoMarker;
+[genModel.addImportHere('org.eclipse.ui.ide.IGotoMarker')/]
 [/if]
 
-[if (not genModel.isRichClientPlatform())]
-import org.eclipse.ui.part.FileEditorInput;
+[if (not genModel.richClientPlatform)]
+[genModel.addImportHere('org.eclipse.ui.part.FileEditorInput')/]
 [/if]
-import org.eclipse.ui.part.MultiPageEditorPart;
+[genModel.addImportHere('org.eclipse.ui.part.MultiPageEditorPart')/]
 
-import org.eclipse.ui.views.contentoutline.ContentOutline;
-import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
-import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+[genModel.addImportHere('org.eclipse.ui.views.contentoutline.ContentOutline')/]
+[genModel.addImportHere('org.eclipse.ui.views.contentoutline.ContentOutlinePage')/]
+[genModel.addImportHere('org.eclipse.ui.views.contentoutline.IContentOutlinePage')/]
 
-import org.eclipse.ui.views.properties.IPropertySheetPage;
-import org.eclipse.ui.views.properties.PropertySheet;
-import org.eclipse.ui.views.properties.PropertySheetPage;
+[genModel.addImportHere('org.eclipse.ui.views.properties.IPropertySheetPage')/]
+[genModel.addImportHere('org.eclipse.ui.views.properties.PropertySheet')/]
+[genModel.addImportHere('org.eclipse.ui.views.properties.PropertySheetPage')/]
 
-import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
+[genModel.addImportHere('org.eclipse.emf.common.command.BasicCommandStack')/]
+[genModel.addImportHere('org.eclipse.emf.common.command.Command')/]
+[genModel.addImportHere('org.eclipse.emf.common.command.CommandStack')/]
+[genModel.addImportHere('org.eclipse.emf.common.command.CommandStackListener')/]
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.notify.Notification;
+[genModel.addImportHere('org.eclipse.emf.common.notify.AdapterFactory')/]
+[genModel.addImportHere('org.eclipse.emf.common.notify.Notification')/]
 
-[if (not genModel.isRichClientPlatform())]
-import org.eclipse.emf.common.ui.MarkerHelper;
+[if (not genModel.richClientPlatform)]
+[genModel.addImportHere('org.eclipse.emf.common.ui.MarkerHelper')/]
 [/if]
 [if (genPackage.multipleEditorPages)]
-import org.eclipse.emf.common.ui.ViewerPane;
+[genModel.addImportHere('org.eclipse.emf.common.ui.ViewerPane')/]
 [/if]
 
-import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
+[genModel.addImportHere('org.eclipse.emf.common.ui.editor.ProblemEditorPart')/]
 
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+[genModel.addImportHere('org.eclipse.emf.common.ui.viewer.IViewerProvider')/]
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
+[genModel.addImportHere('org.eclipse.emf.common.util.BasicDiagnostic')/]
+[genModel.addImportHere('org.eclipse.emf.common.util.Diagnostic')/]
+[genModel.addImportHere('org.eclipse.emf.common.util.URI')/]
 
-[if (not genModel.isRichClientPlatform())]
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EValidator;
+[if (not genModel.richClientPlatform)]
+[genModel.addImportHere('org.eclipse.emf.ecore.EObject')/]
+[genModel.addImportHere('org.eclipse.emf.ecore.EValidator')/]
 [/if]
 
-import org.eclipse.emf.ecore.resource.Resource;
-[if (not genModel.isRichClientPlatform())]
-import org.eclipse.emf.ecore.resource.ResourceSet;
+[genModel.addImportHere('org.eclipse.emf.ecore.resource.Resource')/]
+[if (not genModel.richClientPlatform)]
+[genModel.addImportHere('org.eclipse.emf.ecore.resource.ResourceSet')/]
 [/if]
 
-import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+[genModel.addImportHere('org.eclipse.emf.ecore.util.EContentAdapter')/]
+[genModel.addImportHere('org.eclipse.emf.ecore.util.EcoreUtil')/]
 
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+[genModel.addImportHere('org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain')/]
+[genModel.addImportHere('org.eclipse.emf.edit.domain.EditingDomain')/]
+[genModel.addImportHere('org.eclipse.emf.edit.domain.IEditingDomainProvider')/]
 
-import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+[genModel.addImportHere('org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator')/]
+[genModel.addImportHere('org.eclipse.emf.edit.provider.ComposedAdapterFactory')/]
+[genModel.addImportHere('org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory')/]
 
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+[genModel.addImportHere('org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory')/]
 
-import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+[genModel.addImportHere('org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor')/]
 
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
+[genModel.addImportHere('org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor')/]
 
-import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
-import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
-import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
+[genModel.addImportHere('org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter')/]
+[genModel.addImportHere('org.eclipse.emf.edit.ui.dnd.LocalTransfer')/]
+[genModel.addImportHere('org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter')/]
 
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-[if (genModel.getRuntimeVersion() <> GenRuntimeVersion::EMF22)]
-import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
+[genModel.addImportHere('org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider')/]
+[genModel.addImportHere('org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider')/]
+[if (genModel.runtimeVersion <> GenRuntimeVersion::EMF22)]
+[genModel.addImportHere('org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider')/]
 [/if]
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 
-import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
+[genModel.addImportHere('org.eclipse.emf.edit.ui.util.EditUIMarkerHelper')/]
 [/if]
-[if (genModel.getComplianceLevel() <> GenJDKLevel::JDK14)]
-import org.eclipse.emf.edit.ui.util.EditUIUtil;
+[if (genModel.complianceLevel <> GenJDKLevel::JDK14)]
+[genModel.addImportHere('org.eclipse.emf.edit.ui.util.EditUIUtil')/]
 [/if]
 
-import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+[genModel.addImportHere('org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage')/]
 
-import [genPackage.getQualifiedItemProviderAdapterFactoryClassName()/];
+[genModel.addImportHere(genPackage.getQualifiedItemProviderAdapterFactoryClassName())/]
 
 [let content : String = genModel.fileContent(genPackage, genModel, packageName, className)]
 [genModel.genSortedImports()/]
@@ -229,14 +230,14 @@ import [genPackage.getQualifiedItemProviderAdapterFactoryClassName()/];
 
 [template public fileContent(genPackage : GenPackage, genModel : GenModel, packageName : String, className : String)]
 /**
- * This is an example of a [genPackage.getPrefix()/] model editor.
+ * This is an example of a [genPackage.prefix/] model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
 public class [className/]
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider[if (not genModel.isRichClientPlatform())], IGotoMarker[/if]
+	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider[if (not genModel.richClientPlatform)], IGotoMarker[/if]
 {
 [if (genModel.hasCopyrightField())]
 	/**
@@ -247,7 +248,7 @@ public class [className/]
 	public static final [genModel.getImportedName('java.lang.String')/] copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
-[if (genModel.isRichClientPlatform())]
+[if (genModel.richClientPlatform)]
 	/**
 	 * The filters for file extensions supported by the editor.
 	 * <!-- begin-user-doc -->
@@ -422,7 +423,7 @@ public class [className/]
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
 
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 	/**
 	 * The MarkerHelper is responsible for creating workspace resource markers presented
 	 * in Eclipse's Problems View.
@@ -594,7 +595,7 @@ public class [className/]
 				basicUnsetTarget(target);
 			}
 		};
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 
 	/**
 	 * This listens for workspace changes.
@@ -779,7 +780,7 @@ public class [className/]
 				}
 			}
 
-[if (not (genModel.getRuntimeVersion() = GenRuntimeVersion::EMF22 or genModel.getRuntimeVersion() = GenRuntimeVersion::EMF23))]
+[if (not (genModel.runtimeVersion = GenRuntimeVersion::EMF22 or genModel.runtimeVersion = GenRuntimeVersion::EMF23))]
 			if (AdapterFactoryEditingDomain.isStale(editorSelection))
 			{
 				setSelection(StructuredSelection.EMPTY);
@@ -804,7 +805,7 @@ public class [className/]
 			BasicDiagnostic diagnostic =
 				new BasicDiagnostic
 					(Diagnostic.OK,
-					 "[genPackage.genModel.getEditorPluginID()/]",[genModel.getNonNLS()/]
+					 "[genPackage.genModel.editorPluginID/]",[genModel.getNonNLS()/]
 					 0,
 					 null,
 					 new Object [genModel.genSquareBrackets('')/] { editingDomain.getResourceSet() });
@@ -836,7 +837,7 @@ public class [className/]
 			{
 				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
 				problemEditorPart.setDiagnostic(diagnostic);
-[if ( not genModel.isRichClientPlatform())]
+[if ( not genModel.richClientPlatform)]
 				problemEditorPart.setMarkerHelper(markerHelper);
 [/if]
 				try
@@ -851,7 +852,7 @@ public class [className/]
 					[genPackage.getImportedEditorPluginClassName()/].INSTANCE.log(exception);
 				}
 			}
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 
 			if (markerHelper.hasMarkers(editingDomain.getResourceSet()))
 			{
@@ -915,12 +916,12 @@ public class [className/]
 [comment]<%@ include file="Editor/addItemProviderFactories.override.javajetinc" fail="alternative"%>
 <%@ start%>[/comment]
 [for (aGenPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())]
-  [if (not aGenPackage.getGenClasses()->isEmpty() and aGenPackage.genModel.hasEditSupport())]
+  [if (not aGenPackage.genClasses->isEmpty() and aGenPackage.genModel.hasEditSupport())]
 		adapterFactory.addAdapterFactory(new [aGenPackage.getImportedItemProviderAdapterFactoryClassName()/]());
   [/if]
 [/for]
 [for (aGenPackage : GenPackage | genModel.getAllUsedGenPackagesWithClassifiers())]
-  [if (not aGenPackage.getGenClasses()->isEmpty() and aGenPackage.genModel.hasEditSupport())]
+  [if (not aGenPackage.genClasses->isEmpty() and aGenPackage.genModel.hasEditSupport())]
 		adapterFactory.addAdapterFactory(new [aGenPackage.getImportedItemProviderAdapterFactoryClassName()/]());
   [/if]
 [/for]
@@ -1195,7 +1196,7 @@ public class [className/]
 		contextMenu.addMenuListener(this);
 		Menu menu= contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-[if (genModel.getRuntimeVersion() <> GenRuntimeVersion::EMF22)]
+[if (genModel.runtimeVersion <> GenRuntimeVersion::EMF22)]
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 [else]
 		getSite().registerContextMenu(contextMenu, viewer);
@@ -1215,9 +1216,9 @@ public class [className/]
 	 */
 	public void createModel()
 	{
-[if (genModel.getRuntimeVersion() <> GenRuntimeVersion::EMF22)]
+[if (genModel.runtimeVersion <> GenRuntimeVersion::EMF22)]
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
-[elseif (genModel.isRichClientPlatform())]
+[elseif (genModel.richClientPlatform)]
 		URI resourceURI = URI.createURI(getEditorInput().getName());
 [else]
 		// Assumes that the input is a file object.
@@ -1261,7 +1262,7 @@ public class [className/]
 			BasicDiagnostic basicDiagnostic =
 				new BasicDiagnostic
 					(Diagnostic.ERROR,
-					 "[genPackage.genModel.getEditorPluginID()/]",[genModel.getNonNLS()/]
+					 "[genPackage.genModel.editorPluginID/]",[genModel.getNonNLS()/]
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),[genModel.getNonNLS()/]
 					 new Object [genModel.genSquareBrackets('')/] { exception == null ? (Object)resource : exception });
@@ -1273,7 +1274,7 @@ public class [className/]
 			return
 				new BasicDiagnostic
 					(Diagnostic.ERROR,
-					 "[genPackage.genModel.getEditorPluginID()/]",[genModel.getNonNLS()/]
+					 "[genPackage.genModel.editorPluginID/]",[genModel.getNonNLS()/]
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),[genModel.getNonNLS()/]
 					 new Object[genModel.genSquareBrackets('')/] { exception });
@@ -1672,7 +1673,7 @@ public class [className/]
 	 * @generated
 	 */
 [if (genModel.useGenerics())]
-	@SuppressWarnings("[if (genModel.getRuntimeVersion() <> GenRuntimeVersion::EMF27)]unchecked[else]rawtypes[/if]")
+	@SuppressWarnings("[if (genModel.runtimeVersion <> GenRuntimeVersion::EMF27)]unchecked[else]rawtypes[/if]")
 [/if]
 [if (genModel.useClassOverrideAnnotation())]
 	@Override
@@ -1687,7 +1688,7 @@ public class [className/]
 		{
 			return getPropertySheetPage();
 		}
-[if ( not genModel.isRichClientPlatform())]
+[if ( not genModel.richClientPlatform)]
 		else if (key.equals(IGotoMarker.class))
 		{
 			return this;
@@ -1906,18 +1907,18 @@ public class [className/]
 		// Save only resources that have actually changed.
 		//
 		final [genModel._MapOfObjectToObject()/] saveOptions = new [genModel._HashMapOfObjectToObject()/]();
-[if (genModel.getRuntimeVersion() <> GenRuntimeVersion::EMF22)]
+[if (genModel.runtimeVersion <> GenRuntimeVersion::EMF22)]
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 [/if]
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
-		[genModel.importedOperationClassName(packageName, className)/] operation =
-			new [genModel.importedOperationClassName(packageName, className)/]()
+		[genModel.importedOperationClassName()/] operation =
+			new [genModel.importedOperationClassName()/]()
 			{
 				// This is the method that gets invoked when the operation runs.
 				//
-[if (not genModel.isRichClientPlatform() and genModel.useClassOverrideAnnotation())]
+[if (not genModel.richClientPlatform and genModel.useClassOverrideAnnotation())]
 				@Override
 [/if]
 				public void [genModel.operationMethodName()/](IProgressMonitor monitor)
@@ -1938,7 +1939,7 @@ public class [className/]
 						{
 							try
 							{
-[if (genModel.getRuntimeVersion() = GenRuntimeVersion::EMF22 or genModel.getRuntimeVersion() = GenRuntimeVersion::EMF23)]
+[if (genModel.runtimeVersion = GenRuntimeVersion::EMF22 or genModel.runtimeVersion = GenRuntimeVersion::EMF23)]
 								resource.save(saveOptions);
 								savedResources.add(resource);
 [else]
@@ -2033,8 +2034,8 @@ public class [className/]
 [/if]
 	public void doSaveAs()
 	{
-[if (genModel.isRichClientPlatform())]
-  [if (genModel.isRichAjaxPlatform())]
+[if (genModel.richClientPlatform)]
+  [if (genModel.richAjaxPlatform)]
 		new [genModel.getImportedName('org.eclipse.emf.common.ui.dialogs.ResourceDialog')/](getSite().getShell(), null, SWT.NONE)
 			{
 [if (genModel.useClassOverrideAnnotation())]
@@ -2100,10 +2101,10 @@ public class [className/]
 		IProgressMonitor progressMonitor =
 			getActionBars().getStatusLineManager() != null ?
 				getActionBars().getStatusLineManager().getProgressMonitor() :
-				new [genModel.getImportedName('org.eclipse.core.runtime.NullProgressMonitor')/]();
+				new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2151,7 +2152,7 @@ public class [className/]
 		setPartName(editorInput.getName());
 		site.setSelectionProvider(this);
 		site.getPage().addPartListener(partListener);
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
 [/if]
 	}
@@ -2355,7 +2356,7 @@ public class [className/]
 	{
 		updateProblemIndication = false;
 
-[if (not genModel.isRichClientPlatform())]
+[if (not genModel.richClientPlatform)]
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 
 [/if]
@@ -2394,10 +2395,10 @@ public class [className/]
 }
 [/template]
 
-[query public operationMethodName(genModel : GenModel) : String = if genModel.isRichClientPlatform() then'run' else 'execute' endif/]
+[query public operationMethodName(genModel : GenModel) : String = if genModel.richClientPlatform then'run' else 'execute' endif/]
 
-[template public importedOperationClassName (genModel : GenModel, packageName : String, className : String)]
-[if genModel.isRichClientPlatform()][genModel.getImportedName('org.eclipse.jface.operation.IRunnableWithProgress')/][else][genModel.getImportedName('org.eclipse.ui.actions.WorkspaceModifyOperation')/][/if]
+[template public importedOperationClassName (genModel : GenModel)]
+[if genModel.richClientPlatform][genModel.getImportedName('org.eclipse.jface.operation.IRunnableWithProgress')/][else][genModel.getImportedName('org.eclipse.ui.actions.WorkspaceModifyOperation')/][/if]
 [/template]
 
 [query public _ArrayListOfObject(genModel : GenModel) : String = if genModel.useGenerics() then 'ArrayList<Object>' else 'ArrayList' endif/]

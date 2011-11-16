@@ -7,26 +7,14 @@
 [query public getCapName(genOperation : GenOperation) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getCapName()', Sequence{genOperation}) /]
 
-[query public getEcoreOperation(genOperation : GenOperation) : EOperation
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getEcoreOperation()', Sequence{genOperation}) /]
-
 [query public getFormattedName(genOperation : GenOperation) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getFormattedName()', Sequence{genOperation}) /]
-
-[query public getGenClass(genOperation : GenOperation) : GenClass
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenClass()', Sequence{genOperation}) /]
 
 [query public getGenExceptions(genOperation : GenOperation) : Sequence(GenClassifier)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenExceptions()', Sequence{genOperation}) /]
 
 [query public getGenPackage(genOperation : GenOperation) : GenPackage
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenPackage()', Sequence{genOperation}) /]
-
-[query public getGenParameters(genOperation : GenOperation) : Sequence(GenParameter)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenParameters()', Sequence{genOperation}) /]
-
-[query public getGenTypeParameters(genOperation : GenOperation) : Sequence(GenTypeParameter)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenTypeParameters()', Sequence{genOperation}) /]
 
 [query public getImportedMetaType(genOperation : GenOperation) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getImportedMetaType()', Sequence{genOperation}) /]
@@ -361,12 +349,6 @@
 [query public getGenAnnotation(genOperation : GenOperation, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenAnnotation(java.lang.String)', Sequence{genOperation, source}) /]
 
-[query public getGenAnnotations(genOperation : GenOperation) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenAnnotations()', Sequence{genOperation}) /]
-
-[query public getGenModel(genOperation : GenOperation) : GenModel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'getGenModel()', Sequence{genOperation}) /]
-
 [query public hasCopyright(genOperation : GenOperation) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'hasCopyright()', Sequence{genOperation}) /]
 
@@ -384,3 +366,8 @@
 
 [query public uncapPrefixedName(genOperation : GenOperation, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenOperation', 'uncapPrefixedName(java.lang.String)', Sequence{genOperation, input}) /]
+
+[comment We use a template in order to prevent acceleo cache from calling the java method each time /]
+[template public prefix(genOperation : GenOperation)]
+[if (genOperation.hasGenericType() or genOperation.genParameters->notEmpty() or genOperation.getGenExceptions()->notEmpty() or genOperation.genTypeParameters->notEmpty())]
+[invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenPackageWrapper', 'prefix(org.eclipse.emf.codegen.ecore.genmodel.GenOperation)', Sequence{genOperation})/][/if][/template]

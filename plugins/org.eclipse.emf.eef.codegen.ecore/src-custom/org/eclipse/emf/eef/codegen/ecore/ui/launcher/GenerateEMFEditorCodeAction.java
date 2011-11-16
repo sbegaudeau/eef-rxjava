@@ -58,7 +58,7 @@ public class GenerateEMFEditorCodeAction extends GenerateEMFCodeAction {
 					referencedProjects.add(modelProject);
 					referencedProjects.add(editProject);
 					if (!workspace.getRoot().exists(editorProject.getFullPath())) {
-						Generator.createEMFProject(new Path(emfGenModel.getEditorDirectory()), editorProject
+						editorProject = Generator.createEMFProject(new Path(emfGenModel.getEditorDirectory()), editorProject
 								.getLocation(), referencedProjects, new SubProgressMonitor(monitor,
 								IProgressMonitor.UNKNOWN), Generator.EMF_EDITOR_PROJECT_STYLE
 								| Generator.EMF_PLUGIN_PROJECT_STYLE);
@@ -82,17 +82,47 @@ public class GenerateEMFEditorCodeAction extends GenerateEMFCodeAction {
 					return Status.OK_STATUS;
 				}
 			});
-			String s2prime = "Formatting generated files";
-			flow.addStep(s2prime, new Step(s2prime) {
 
-				@Override
-				public IStatus execute(IProgressMonitor monitor) {
-					EEFGeneratorAdapter eefGen = new EEFGeneratorAdapter();
-					eefGen.generate(emfGenModel, GenBaseGeneratorAdapter.EDITOR_PROJECT_TYPE,
-							BasicMonitor.toMonitor(new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN)));
-					return Status.OK_STATUS;
-				}
-			});
+			if (emfGenModel.isCodeFormatting()) {
+				// TODO Ne rafraichir avant le formatage que si le folder demand� n'est pas accessible
+				// FIXME IMPORTANT !!! Virer le double refresh, fait � l'arrache par LDE qui sait pas comment faire autrement
+				// TODO D�terminer pourquoi il reste des diff�rences de formatage avec EMF
+				// TODO D�terminer pourquoi quand on fait clic-droit -> Source -> format sur le code g�n�r�, le code est modifi�
+				// (cas o� le projet vient d'�tre cr�� par exemple)
+				String s1b = "Refreshing workspace " + emfGenModel.eResource().getURI().toString();
+				flow.addStep(s1b, new Step("REFRESH") {
+	
+					@Override
+					public IStatus execute(IProgressMonitor monitor) {
+						// refresh editor project
+						IProject modelProject = extractProject(emfGenModel.getEditorProjectDirectory());
+						if (modelProject == null) {
+							return Status.OK_STATUS;
+						}
+						try {
+							if (!modelProject.isOpen()) {
+								modelProject.open(monitor);
+							}
+							modelProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+						} catch (CoreException e) {
+							return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e.getMessage(), e);
+						}
+						return Status.OK_STATUS;
+					}
+				});
+	
+				String s2prime = "Formatting generated files";
+				flow.addStep(s2prime, new Step(s2prime) {
+	
+					@Override
+					public IStatus execute(IProgressMonitor monitor) {
+						EEFGeneratorAdapter eefGen = new EEFGeneratorAdapter();
+						eefGen.generate(emfGenModel, GenBaseGeneratorAdapter.EDITOR_PROJECT_TYPE,
+								BasicMonitor.toMonitor(new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN)));
+						return Status.OK_STATUS;
+					}
+				});
+			}
 
 			String s3 = "Refresh workspace " + emfGenModel.eResource().getURI().toString();
 			flow.addStep(s3, new Step("REFRESH") {

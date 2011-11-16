@@ -28,20 +28,18 @@
 [genModel.initializeImportManager(packageName, className)/]
 [file (genModel.editorPath(packageName, className), false, 'UTF-8')]
 [includeHeader()/]
-
 package [packageName/];
 
-[let content : String = genModel.fileContent(genPackage, className)]
+[let content : String = genModel.fileContent(genPackage, packageName, className)]
 [genModel.genSortedImports()/]
 
-[content/]
-[/let]
+[content/][/let]
 [/file]
 [/template]
 
-[template public fileContent(genModel : GenModel, genPackage : GenPackage, className : String)]
+[template public fileContent(genModel : GenModel, genPackage : GenPackage, packageName : String, className : String)]
 /**
- * This is the action bar contributor for the [genPackage.getPrefix()/] model editor.
+ * This is the action bar contributor for the [genPackage.prefix/] model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -59,9 +57,9 @@ public class [className/]
 	public static final String copyright = [genModel.getCopyrightFieldLiteral()/];[genModel.getNonNLS()/]
 
 [/if]
-[if (genModel.isRichClientPlatform() and genPackage.generateModelWizard)]
+[if (genModel.richClientPlatform and genPackage.generateModelWizard)]
 	/**
-	 * Action to create objects from the [genPackage.getPrefix()/] model.
+	 * Action to create objects from the [genPackage.prefix/] model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -240,8 +238,8 @@ public class [className/]
 [/if]
 	public void contributeToToolBar([genModel.getImportedName('org.eclipse.jface.action.IToolBarManager')/] toolBarManager)
 	{
-		toolBarManager.add(new [genModel.getImportedName('org.eclipse.jface.action.Separator')/]("[genModel.toLowerCase(genPackage.getPrefix(), genModel.getLocale())/]-settings"));[genModel.getNonNLS()/]
-		toolBarManager.add(new [genModel.getImportedName('org.eclipse.jface.action.Separator')/]("[genModel.toLowerCase(genPackage.getPrefix(), genModel.getLocale())/]-additions"));[genModel.getNonNLS()/]
+		toolBarManager.add(new [genModel.getImportedName('org.eclipse.jface.action.Separator')/]("[genModel.toLowerCase(genPackage.prefix, genModel.getLocale())/]-settings"));[genModel.getNonNLS()/]
+		toolBarManager.add(new [genModel.getImportedName('org.eclipse.jface.action.Separator')/]("[genModel.toLowerCase(genPackage.prefix, genModel.getLocale())/]-additions"));[genModel.getNonNLS()/]
 	}
 
 	/**
@@ -577,7 +575,7 @@ public class [className/]
 	{
 		if (submenuActions != null)
 		{
-    [if (genModel.getComplianceLevel() = GenJDKLevel::JDK14)]
+    [if (genModel.complianceLevel = GenJDKLevel::JDK14)]
 			for ([genModel.getImportedName('java.util.Iterator')/] entries = submenuActions.entrySet().iterator(); entries.hasNext();)
 			{
 				[genModel._MapEntryOfStringToCollectionOfIAction()/] entry = ([genModel._MapEntryOfStringToCollectionOfIAction()/])entries.next();
@@ -698,35 +696,35 @@ public class [className/]
 }
 [/template]
 
-[template public _CollectionOfAnything (genModel : GenModel)]
+[template protected _CollectionOfAnything (genModel : GenModel)]
 [if genModel.useGenerics()]Collection<?>[else]Collection[/if]
 [/template]
 
-[template public _CollectionOfIAction (genModel : GenModel)]
+[template protected _CollectionOfIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.Collection')/]<[genModel.getImportedName('org.eclipse.jface.action.IAction')/]>[else][genModel.getImportedName('java.util.Collection')/][/if]
 [/template]
 
-[template public _ArrayListOfIAction (genModel : GenModel)]
+[template protected _ArrayListOfIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.ArrayList')/]<[genModel.getImportedName('org.eclipse.jface.action.IAction')/]>[else][genModel.getImportedName('java.util.ArrayList')/][/if]
 [/template]
 
-[template public _CollectionOfExtendsIAction (genModel : GenModel)]
+[template protected _CollectionOfExtendsIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.Collection')/]<? extends [genModel.getImportedName('org.eclipse.jface.action.IAction')/]>[else][genModel.getImportedName('java.util.Collection')/][/if]
 [/template]
 
-[template public _IteratorOfIAction (genModel : GenModel)]
+[template protected _IteratorOfIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.Iterator')/]<[genModel.getImportedName('org.eclipse.jface.action.IAction')/]>[else][genModel.getImportedName('java.util.Iterator')/][/if]
 [/template]
 
-[template public _MapOfStringToCollectionOfIAction (genModel : GenModel)]
+[template protected _MapOfStringToCollectionOfIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.Map')/]<String, [genModel._CollectionOfIAction()/]>[else][genModel.getImportedName('java.util.Map')/][/if]
 [/template]
 
-[template public _MapEntryOfStringToCollectionOfIAction (genModel : GenModel)]
+[template protected _MapEntryOfStringToCollectionOfIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.Map')/].Entry<String, [genModel._CollectionOfIAction()/]>[else][genModel.getImportedName('java.util.Map')/].Entry[/if]
 [/template]
 
-[template public _LinkedHashMapOfStringToCollectionOfIAction (genModel : GenModel)]
+[template protected _LinkedHashMapOfStringToCollectionOfIAction (genModel : GenModel)]
 [if genModel.useGenerics()][genModel.getImportedName('java.util.LinkedHashMap')/]<String, [genModel._CollectionOfIAction()/]>[else][genModel.getImportedName('java.util.LinkedHashMap')/][/if]
 [/template]
 

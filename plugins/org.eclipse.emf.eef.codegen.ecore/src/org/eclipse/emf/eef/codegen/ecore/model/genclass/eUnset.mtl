@@ -5,8 +5,7 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenFeature /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
 
-[template public eUnset(genClass : GenClass, genModel : GenModel, negativeOffsetCorrection : String, packageName : String, className : String)]
-[comment]<%@ start %>[/comment]
+[template public eUnset(genClass : GenClass, genModel : GenModel, negativeOffsetCorrection : String)]
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35,12 +34,11 @@
 				return;
   [/for]
 		}
-  [if (genModel.isMinimalReflectiveMethods()) ]
+  [if (genModel.minimalReflectiveMethods) ]
 		super.eUnset(featureID);
   [else]
 		eDynamicUnset(featureID);
   [/if]
 	}
 
-[comment]<%@ end %><%//Class/eUnset.override.javajetinc%>[/comment]	
 [/template]

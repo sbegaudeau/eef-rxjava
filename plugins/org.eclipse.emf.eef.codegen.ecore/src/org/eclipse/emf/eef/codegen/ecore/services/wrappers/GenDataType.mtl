@@ -4,9 +4,6 @@
 [query public getBaseType(genDataType : GenDataType) : GenDataType
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getBaseType()', Sequence{genDataType}) /]
 
-[query public getEcoreDataType(genDataType : GenDataType) : EDataType
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getEcoreDataType()', Sequence{genDataType}) /]
-
 [query public getEnumerationLiterals(genDataType : GenDataType) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getEnumerationLiterals()', Sequence{genDataType}) /]
 
@@ -133,12 +130,6 @@
 [query public getGenConstraints(genDataType : GenDataType) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGenConstraints()', Sequence{genDataType}) /]
 
-[query public getGenPackage(genDataType : GenDataType) : GenPackage
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGenPackage()', Sequence{genDataType}) /]
-
-[query public getGenTypeParameters(genDataType : GenDataType) : Sequence(GenTypeParameter)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGenTypeParameters()', Sequence{genDataType}) /]
-
 [query public getGeneratedInstanceClassFlag(genDataType : GenDataType) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGeneratedInstanceClassFlag()', Sequence{genDataType}) /]
 
@@ -159,6 +150,9 @@
 
 [query public getName(genDataType : GenDataType) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getName()', Sequence{genDataType}) /]
+
+[query public getPatterns(genDataType : GenDataType) : Sequence(Sequence(String))
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getPatterns()', Sequence{genDataType}) /]
 
 [query public getQualifiedClassifierAccessor(genDataType : GenDataType) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getQualifiedClassifierAccessor()', Sequence{genDataType}) /]
@@ -217,12 +211,6 @@
 [query public getGenAnnotation(genDataType : GenDataType, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGenAnnotation(java.lang.String)', Sequence{genDataType, source}) /]
 
-[query public getGenAnnotations(genDataType : GenDataType) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGenAnnotations()', Sequence{genDataType}) /]
-
-[query public getGenModel(genDataType : GenDataType) : GenModel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'getGenModel()', Sequence{genDataType}) /]
-
 [query public hasCopyright(genDataType : GenDataType) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'hasCopyright()', Sequence{genDataType}) /]
 
@@ -240,3 +228,9 @@
 
 [query public uncapPrefixedName(genDataType : GenDataType, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenDataType', 'uncapPrefixedName(java.lang.String)', Sequence{genDataType, input}) /]
+
+[query public getStaticPositiveValue(genDataType : GenDataType) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers', 'getStaticPositiveValue(org.eclipse.emf.codegen.ecore.genmodel.GenDataType)', Sequence{genDataType}) /]
+
+[query public getStaticNegativeValue(genDataType : GenDataType) : String
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers', 'getStaticNegativeValue(org.eclipse.emf.codegen.ecore.genmodel.GenDataType)', Sequence{genDataType}) /]

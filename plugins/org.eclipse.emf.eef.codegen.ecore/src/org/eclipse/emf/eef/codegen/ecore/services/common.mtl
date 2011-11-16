@@ -4,8 +4,11 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::StringUtil /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenModel /]
 
-[query public editPath(genModel : GenModel, packageName : String, className : String) : String = (extractSourceDirectory(genModel.getEditDirectory()).concat('.').concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
+[query public editPath(genModel : GenModel, packageName : String, className : String) : String
+	= (extractSourceDirectory(genModel.editDirectory) + '.' + packageName + '.' + className).toPath() + '.java' /]
 
-[query public editorPath(genModel : GenModel, packageName : String, className : String) : String = (extractSourceDirectory(genModel.getEditorDirectory()).concat('.').concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
+[query public editorPath(genModel : GenModel, packageName : String, className : String) : String
+	= (extractSourceDirectory(genModel.editorDirectory) + '.' + packageName + '.' + className).toPath() + '.java' /]
 
-[query public modelPath(genModel : GenModel, packageName : String, className : String) : String = (extractSourceDirectory(genModel.getModelDirectory()).concat('.').concat(packageName).concat('.').concat(className)).toPath().concat('.java') /]
+[query public modelPath(genModel : GenModel, packageName : String, className : String) : String
+	= (extractSourceDirectory(genModel.modelDirectory) + '.' + packageName + '.' + className).toPath() + '.java' /]

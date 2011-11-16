@@ -26,13 +26,13 @@
 [file (buildpropertiesPath(), false, 'UTF-8')]
 [includeHeaderProperties()/]
 bin.includes = [pluginClassesLocation()/],\
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+[if (genModel.runtimePlatform <> GenRuntimePlatform::GWT)]
                icons/,\
 [/if]
 [if (genModel.bundleManifest)]
                META-INF/,\
 [/if]
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+[if (genModel.runtimePlatform <> GenRuntimePlatform::GWT)]
                plugin.xml,\
 [/if]
                plugin.properties
@@ -46,4 +46,5 @@ output.[pluginClassesLocation()/] = bin/
 
 [query public buildpropertiesPath(genModel : GenModel) : String = 'build.properties' /]
 
-[query public pluginClassesLocation(genModel : GenModel) : String = if genModel.runtimeJar then genModel.getEditPluginID().concat('.jar') else '.' endif/]
+[query public pluginClassesLocation(genModel : GenModel) : String
+	= if genModel.runtimeJar then genModel.editPluginID + '.jar' else '.' endif/]

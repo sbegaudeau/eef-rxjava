@@ -34,7 +34,7 @@
 [else]
 <plugin
       name="%pluginName"
-      id="[genModel.getEditorPluginID()/]"
+      id="[genModel.editorPluginID/]"
       version="1.0.0"
       provider-name="%providerName"
       class="[genModel.getQualifiedEditorPluginClassName()/]$Implementation">
@@ -46,8 +46,8 @@
    </requires>
 
    <runtime>
-  [if (genModel.isRuntimeJar())]
-      <library name="[genModel.getEditorPluginID()/].jar">
+  [if (genModel.runtimeJar)]
+      <library name="[genModel.editorPluginID/].jar">
   [else]
       <library name=".">
   [/if]
@@ -64,11 +64,11 @@
             uri="[genPackage.getNSURI()/]"
             class="[genPackage.getQualifiedItemProviderAdapterFactoryClassName()/]"
             supportedTypes=
-[for (supported : String | genPackage.getProviderSupportedTypes()) before ('              "') separator ('\n               ') after ('"/>') ][supported/][/for]
+[for (supported : String | genPackage.getProviderSupportedTypes()) before ('              "') separator (genModel.getLineDelimiter() + '               ') after ('"/>') ][supported/][/for]
    </extension>
     [comment]<%if (genPackage.isChildCreationExtenders()) { Map<GenPackage, Map<GenClass, List<GenClass.ChildCreationData>>> extendedChildCreationData = genPackage.getExtendedChildCreationData();%>
       <%if (!extendedChildCreationData.isEmpty()) {%>[/comment]
-[if (genPackage.isChildCreationExtenders())]
+[if (genPackage.childCreationExtenders)]
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
         [for (genPackage.getExtendedChildCreationDataEntrySet())]
         [let key : GenPackage = getPackageEntryKey()]
@@ -99,7 +99,7 @@
 
    <extension point="org.eclipse.emf.ecore.content_parser">
       <parser
-            contentTypeIdentifier="[genPackage.getContentTypeIdentifier()/]"
+            contentTypeIdentifier="[genPackage.contentTypeIdentifier/]"
             class="[genPackage.getQualifiedEffectiveResourceFactoryClassName()/]"/>
    </extension>
 
@@ -107,7 +107,7 @@
       <content-type
             base-type="[if genPackage.isXMIResource()]org.eclipse.emf.ecore.xmi[else]org.eclipse.core.runtime.xml[/if]"
             file-extensions="[genPackage.fileExtensions/]"
-            id="[genPackage.getContentTypeIdentifier()/]"
+            id="[genPackage.contentTypeIdentifier/]"
             name="%_UI_[genPackage.prefix/]_content_type"
             priority="normal">
          <describer class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
@@ -130,7 +130,7 @@
     [/if]
   [/for]
 [/if]
-[if (genModel.isRichClientPlatform())]
+[if (genModel.richClientPlatform)]
 
    <extension
          point="org.eclipse.core.runtime.applications"
@@ -154,7 +154,7 @@
             description="%_UI_Menu_OpenURI_description"
             categoryId="org.eclipse.ui.category.file"
             id="[genModel.getQualifiedEditorAdvisorClassName()/]OpenURICommand"/>
-  [if (not genModel.isRichAjaxPlatform())]
+  [if (not genModel.richAjaxPlatform)]
       <command
             name="%_UI_Menu_Open_label"
             description="%_UI_Menu_Open_description"
@@ -163,7 +163,7 @@
   [/if]
    </extension>
 
-[if (not genModel.isRichAjaxPlatform())]
+[if (not genModel.richAjaxPlatform)]
    <extension point="org.eclipse.ui.bindings">
       <key
             commandId="[genModel.getQualifiedEditorAdvisorClassName()/]OpenURICommand"
@@ -192,7 +192,7 @@
                class="[genModel.getQualifiedEditorAdvisorClassName()/]$OpenURIAction"
                menubarPath="file/additions"
                id="[genModel.getQualifiedEditorAdvisorClassName()/]OpenURIAction"/>
-  [if (not genModel.isRichAjaxPlatform())]
+  [if (not genModel.richAjaxPlatform)]
          <action
                label="%_UI_Menu_Open_label"
                definitionId="[genModel.getQualifiedEditorAdvisorClassName()/]OpenCommand"
@@ -205,8 +205,8 @@
 [/if]
 [for (genPackage : GenPackage | genModel.getAllGenPackagesWithClassifiers())]
   [if (genPackage.hasConcreteClasses())]
-    [if (genPackage.isGenerateModelWizard())]
-      [if (genModel.isRichClientPlatform())]
+    [if (genPackage.generateModelWizard)]
+      [if (genModel.richClientPlatform)]
 
    <extension point="org.eclipse.ui.actionSets">
       <actionSet
@@ -231,7 +231,7 @@
             name="%_UI_[genPackage.getModelWizardClassName()/]_label"
             class="[genPackage.getQualifiedModelWizardClassName()/]"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/[genPackage.getPrefix()/]ModelFile.gif">
+            icon="icons/full/obj16/[genPackage.prefix/]ModelFile.gif">
          <description>%_UI_[genPackage.getModelWizardClassName()/]_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
@@ -243,7 +243,7 @@
       <editor
             id="[genPackage.getQualifiedEditorClassName()/]ID"
             name="%_UI_[genPackage.getEditorClassName()/]_label"
-            icon="icons/full/obj16/[genPackage.getPrefix()/]ModelFile.gif"
+            icon="icons/full/obj16/[genPackage.prefix/]ModelFile.gif"
     [if (not genPackage.isContentType())]
             extensions="[genPackage.getFileExtension()/]"
     [/if]

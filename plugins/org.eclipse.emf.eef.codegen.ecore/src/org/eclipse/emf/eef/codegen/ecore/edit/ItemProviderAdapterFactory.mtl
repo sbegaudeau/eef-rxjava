@@ -69,7 +69,7 @@ package [packageName/];
  * <!-- end-user-doc -->
  * @generated
  */
-public class [className/] extends [genPackage.getImportedAdapterFactoryClassName()/] implements ComposeableAdapterFactory, IChangeNotifier[if (genPackage.isDisposableProviderFactory())], [genModel.getImportedName('org.eclipse.emf.edit.provider.IDisposable')/][/if][if (genPackage.isExtensibleProviderFactory())], [genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender')/][/if]
+public class [className/] extends [genPackage.getImportedAdapterFactoryClassName()/] implements ComposeableAdapterFactory, IChangeNotifier[if (genPackage.disposableProviderFactory)], [genModel.getImportedName('org.eclipse.emf.edit.provider.IDisposable')/][/if][if (genPackage.extensibleProviderFactory)], [genModel.getImportedName('org.eclipse.emf.edit.provider.IChildCreationExtender')/][/if]
 {
 [if (genModel.hasCopyrightField())]
 	/**
@@ -96,7 +96,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-[if (genPackage.isDisposableProviderFactory() and genPackage.hasStatefulProvider())]
+[if (genPackage.disposableProviderFactory and genPackage.hasStatefulProvider())]
 	/**
 	 * This keeps track of all the item providers created, so that they can be {@link #dispose disposed}.
 	 * <!-- begin-user-doc -->
@@ -106,7 +106,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 	protected [genModel.getImportedName('org.eclipse.emf.edit.provider.Disposable')/] disposable = new Disposable();
 
 [/if]
-[if (genPackage.isExtensibleProviderFactory())]
+[if (genPackage.extensibleProviderFactory)]
 	/**
 	 * This helps manage the child creation extenders.
 	 * <!-- begin-user-doc -->
@@ -171,7 +171,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 	}
 
 [/for]
-[for (genClass : GenClass | genPackage.getGenClasses())]
+[for (genClass : GenClass | genPackage.genClasses)]
 [if (not genClass.isAbstract() and (genClass.provider <> GenProviderKind::None))]
 [if (genClass.isProviderSingleton())]
 	/**
@@ -306,7 +306,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 		return null;
 	}
 
-[if (genPackage.isDisposableProviderFactory() and genPackage.hasStatefulProvider())]
+[if (genPackage.disposableProviderFactory and genPackage.hasStatefulProvider())]
 	/**
 	 * Associates an adapter with a notifier via the base implementation, then records it to ensure it will be disposed.
 	 * <!-- begin-user-doc -->
@@ -326,7 +326,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 	}
 
 [/if]
-[if (genPackage.isExtensibleProviderFactory())]
+[if (genPackage.extensibleProviderFactory)]
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -396,7 +396,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 		}
 	}
 
-[if (genPackage.isDisposableProviderFactory())]
+[if (genPackage.disposableProviderFactory)]
 	/**
 	 * This disposes all of the item providers created by this factory. 
 	 * <!-- begin-user-doc -->
@@ -408,7 +408,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 [if (genPackage.hasStatefulProvider())]
 		disposable.dispose();
 [else]
-[for (genClass : GenClass | genPackage.getGenClasses())]
+[for (genClass : GenClass | genPackage.genClasses)]
 [if (not genClass.isAbstract() and genClass.isProviderSingleton())]
 		if ([genClass.getUncapName()/]ItemProvider != null) [genClass.getUncapName()/]ItemProvider.dispose();
 [/if]
@@ -417,7 +417,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 	}
 
 [/if]
-[if (genPackage.isChildCreationExtenders())]
+[if (genPackage.childCreationExtenders)]
 [comment <%for (Map.Entry<GenPackage, Map<GenClass, List<GenClass.ChildCreationData>>> packageEntry : genPackage.getExtendedChildCreationData().entrySet()) {%> /]
   [for (genPackage.getExtendedChildCreationDataEntrySet())]
 [comment packageEntry.getKey() = GenPackage/] 
@@ -490,9 +490,9 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 						 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil')/].createEntry
 							([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataCreateClassifier().oclAsType(GenClass).isMapEntry())]
-							 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/]))));
+							 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/]))));
           [else]
-							 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]())));
+							 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]())));
           [/if]
 [comment]<%@ include file="ItemProvider/newChildDescriptorsReferenceDelegatedFeature.insert.javajetinc" fail="silent"%>
 <%@ end %><%//ItemProvider/newChildDescriptorsReferenceDelegatedFeature.override.javajetinc%>[/comment]
@@ -505,7 +505,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 						 [genModel.getImportedName('org.eclipse.emf.ecore.util.FeatureMapUtil')/].createEntry
 							([getChildCreationDataDelegatedFeature().getQualifiedFeatureAccessor()/],
           [if (getChildCreationDataDelegatedFeature().isEnumBasedType())]
-							 [getChildCreationDataDelegatedFeature().getTypeGenEnum().getStaticValue(getChildCreationDataDelegatedFeature().getEcoreFeature().defaultValueLiteral)/])));
+							 [getChildCreationDataDelegatedFeature().getTypeGenEnum().getStaticValue(getChildCreationDataDelegatedFeature().ecoreFeature.defaultValueLiteral)/])));
           [elseif (getChildCreationDataDelegatedFeature().isStringBasedType())]
 							 [getChildCreationDataDelegatedFeature().getCreateChildValueLiteral()/])));[genModel.getNonNLS()/]
           [else]
@@ -521,9 +521,9 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 					(createChildParameter
 						([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
         [if (getChildCreationDataCreateClassifier().oclAsType(GenClass).isMapEntry())]
-						 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/])));
+						 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedEFactoryInstanceAccessor()/].create([getChildCreationDataCreateClassifier().oclAsType(GenClass).getQualifiedClassifierAccessor()/])));
         [else]
-						 [getChildCreationDataCreateClassifier().oclAsType(GenClass).getGenPackage().getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]()));
+						 [getChildCreationDataCreateClassifier().oclAsType(GenClass).genPackage.getQualifiedFactoryInstanceAccessor()/].create[getChildCreationDataCreateClassifier().oclAsType(GenClass).getName()/]()));
         [/if]
 [comment]<%@ include file="ItemProvider/newChildDescriptorsReferenceFeature.insert.javajetinc" fail="silent"%>
 <%@ end %><%//ItemProvider/newChildDescriptorsReferenceFeature.override.javajetinc %>[/comment]
@@ -534,7 +534,7 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 					(createChildParameter
 						([getChildCreationDataCreateFeature().getQualifiedFeatureAccessor()/],
         [if (getChildCreationDataCreateFeature().isEnumBasedType())]
-						 [getChildCreationDataCreateFeature().getTypeGenEnum().getStaticValue(getChildCreationDataCreateFeature().getEcoreFeature().defaultValueLiteral)/]));
+						 [getChildCreationDataCreateFeature().getTypeGenEnum().getStaticValue(getChildCreationDataCreateFeature().ecoreFeature.defaultValueLiteral)/]));
         [elseif (getChildCreationDataCreateFeature().isStringBasedType())]
 						 [getChildCreationDataCreateFeature().getCreateChildValueLiteral()/]));[genModel.getNonNLS()/]
         [else]
@@ -593,10 +593,10 @@ public class [className/] extends [genPackage.getImportedAdapterFactoryClassName
 
 [query public useGenerics(genPackage : GenPackage) : Boolean = genModel.useGenerics()/]
 
-[template public _ArrayList (genPackage : GenPackage)]
+[template protected _ArrayList (genPackage : GenPackage)]
 [genPackage.genModel.getImportedName('java.util.ArrayList')/][if genPackage.useGenerics()]<[genPackage.genModel.getImportedName('java.lang.Object')/]>[/if]
 [/template]
 
-[template public _Collection (genPackage : GenPackage)]
+[template protected _Collection (genPackage : GenPackage)]
 [genPackage.genModel.getImportedName('java.util.Collection')/][if genPackage.useGenerics()]<[genPackage.genModel.getImportedName('java.lang.Object')/]>[/if]
 [/template]

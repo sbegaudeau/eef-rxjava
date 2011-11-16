@@ -4,9 +4,6 @@
 [query public getCapName(genEnumLiteral : GenEnumLiteral) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getCapName()', Sequence{genEnumLiteral}) /]
 
-[query public getEcoreEnumLiteral(genEnumLiteral : GenEnumLiteral) : EEnumLiteral
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getEcoreEnumLiteral()', Sequence{genEnumLiteral}) /]
-
 [query public getEnumLiteralAccessorName(genEnumLiteral : GenEnumLiteral) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getEnumLiteralAccessorName()', Sequence{genEnumLiteral}) /]
 
@@ -21,9 +18,6 @@
 
 [query public getFormattedName(genEnumLiteral : GenEnumLiteral) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getFormattedName()', Sequence{genEnumLiteral}) /]
-
-[query public getGenEnum(genEnumLiteral : GenEnumLiteral) : GenEnum
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getGenEnum()', Sequence{genEnumLiteral}) /]
 
 [query public getGenPackage(genEnumLiteral : GenEnumLiteral) : GenPackage
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getGenPackage()', Sequence{genEnumLiteral}) /]
@@ -75,12 +69,6 @@
 
 [query public getGenAnnotation(genEnumLiteral : GenEnumLiteral, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getGenAnnotation(java.lang.String)', Sequence{genEnumLiteral, source}) /]
-
-[query public getGenAnnotations(genEnumLiteral : GenEnumLiteral) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getGenAnnotations()', Sequence{genEnumLiteral}) /]
-
-[query public getGenModel(genEnumLiteral : GenEnumLiteral) : GenModel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'getGenModel()', Sequence{genEnumLiteral}) /]
 
 [query public hasCopyright(genEnumLiteral : GenEnumLiteral) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral', 'hasCopyright()', Sequence{genEnumLiteral}) /]

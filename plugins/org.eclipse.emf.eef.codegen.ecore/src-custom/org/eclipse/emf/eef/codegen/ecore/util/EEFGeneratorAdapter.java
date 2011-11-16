@@ -49,27 +49,41 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 	 *      java.lang.Object, org.eclipse.emf.common.util.Monitor)
 	 */
 	@Override
-	protected Diagnostic doGenerate(Object object, Object projectType, Monitor monitor) throws Exception {
-		GenModel genmodel = (GenModel)object;
+	protected Diagnostic doGenerate(Object object, Object projectType,
+			Monitor monitor) throws Exception {
+		GenModel genmodel = (GenModel) object;
 		IFolder folder = null;
-		final Object codeFormatter = createCodeFormatter(null,
-				URI.createPlatformResourceURI(genmodel.getEditDirectory(), true));
-		final IProgressMonitor progressMonitor = BasicMonitor.toIProgressMonitor(monitor);
-		if (projectType == GenBaseGeneratorAdapter.EDIT_PROJECT_TYPE) {
-			for (GenPackage genPack : genmodel.getGenPackages()) {
-				IPath path = buildProviderPath(genmodel, genPack);
-				folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(path);
-				if (folder != null && folder.isAccessible()) {
-					folder.accept(new ResourceVisitorFormatter(codeFormatter, progressMonitor));
-				}
+		final IProgressMonitor progressMonitor = BasicMonitor
+				.toIProgressMonitor(monitor);
+		if (projectType == GenBaseGeneratorAdapter.MODEL_PROJECT_TYPE) {
+			final Object codeFormatter = createCodeFormatter(null,
+					URI.createPlatformResourceURI(genmodel.getModelDirectory(),
+							true));
+			folder = ResourcesPlugin.getWorkspace().getRoot()
+					.getFolder(new Path(genmodel.getModelDirectory())); // path);
+			if (folder != null && folder.isAccessible()) {
+				folder.accept(new ResourceVisitorFormatter(codeFormatter,
+						progressMonitor));
+			}
+		} else if (projectType == GenBaseGeneratorAdapter.EDIT_PROJECT_TYPE) {
+			final Object codeFormatter = createCodeFormatter(null,
+					URI.createPlatformResourceURI(genmodel.getEditDirectory(),
+							true));
+			folder = ResourcesPlugin.getWorkspace().getRoot()
+					.getFolder(new Path(genmodel.getEditDirectory()));
+			if (folder != null && folder.isAccessible()) {
+				folder.accept(new ResourceVisitorFormatter(codeFormatter,
+						progressMonitor));
 			}
 		} else if (projectType == GenBaseGeneratorAdapter.EDITOR_PROJECT_TYPE) {
-			for (GenPackage genPack : genmodel.getGenPackages()) {
-				IPath path = buildPresentationPath(genmodel, genPack);
-				folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(path);
-				if (folder != null && folder.isAccessible()) {
-					folder.accept(new ResourceVisitorFormatter(codeFormatter, progressMonitor));
-				}
+			final Object codeFormatter = createCodeFormatter(null,
+					URI.createPlatformResourceURI(
+							genmodel.getEditorDirectory(), true));
+			folder = ResourcesPlugin.getWorkspace().getRoot()
+					.getFolder(new Path(genmodel.getEditorDirectory()));
+			if (folder != null && folder.isAccessible()) {
+				folder.accept(new ResourceVisitorFormatter(codeFormatter,
+						progressMonitor));
 			}
 		}
 		return Diagnostic.OK_INSTANCE;
@@ -80,10 +94,24 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 	 * @param genPack
 	 * @return
 	 */
+	protected IPath buildModelPath(GenModel genmodel, GenPackage genPack) {
+		String pathStr = genmodel.getModelDirectory() + "/"
+				+ genPack.getQualifiedPackageName().replaceAll("\\.", "/");
+		IPath path = new Path(pathStr);
+		return path;
+	}
+
+	/**
+	 * @param genmodel
+	 * @param genPack
+	 * @return
+	 */
 	protected IPath buildProviderPath(GenModel genmodel, GenPackage genPack) {
 		String pathStr = genmodel.getEditDirectory();
-		if (genPack.getProviderPackageName() != null && !genPack.getProviderPackageName().equals("")) {
-			pathStr += "/" + genPack.getProviderPackageName().replaceAll("\\.", "/");
+		if (genPack.getProviderPackageName() != null
+				&& !genPack.getProviderPackageName().equals("")) {
+			pathStr += "/"
+					+ genPack.getProviderPackageName().replaceAll("\\.", "/");
 		}
 		IPath path = new Path(pathStr);
 		return path;
@@ -96,8 +124,11 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 	 */
 	protected IPath buildPresentationPath(GenModel genmodel, GenPackage genPack) {
 		String pathStr = genmodel.getEditorDirectory();
-		if (genPack.getPresentationPackageName() != null && !genPack.getPresentationPackageName().equals("")) {
-			pathStr += "/" + genPack.getPresentationPackageName().replaceAll("\\.", "/");
+		if (genPack.getPresentationPackageName() != null
+				&& !genPack.getPresentationPackageName().equals("")) {
+			pathStr += "/"
+					+ genPack.getPresentationPackageName().replaceAll("\\.",
+							"/");
 		}
 		IPath path = new Path(pathStr);
 		return path;
@@ -113,15 +144,18 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 
 		private final IProgressMonitor progressMonitor;
 
-		private ResourceVisitorFormatter(Object codeFormatter, IProgressMonitor progressMonitor) {
+		private ResourceVisitorFormatter(Object codeFormatter,
+				IProgressMonitor progressMonitor) {
 			this.codeFormatter = codeFormatter;
 			this.progressMonitor = progressMonitor;
 		}
 
 		public boolean visit(IResource resource) throws CoreException {
 			try {
-				if (resource instanceof IFile && ((IFile)resource).getFileExtension().equals(JAVA_EXT_FILE)) {
-					formatFile((IFile)resource, codeFormatter, progressMonitor);
+				if (resource instanceof IFile
+						&& ((IFile) resource).getFileExtension().equals(
+								JAVA_EXT_FILE)) {
+					formatFile((IFile) resource, codeFormatter, progressMonitor);
 				}
 				return true;
 			} catch (Exception e) {
@@ -135,12 +169,15 @@ public class EEFGeneratorAdapter extends AbstractGeneratorAdapter {
 		 * @param progressMonitor
 		 * @throws Exception
 		 */
-		private void formatFile(IFile file, Object codeFormatter, IProgressMonitor progressMonitor)
-				throws Exception {
-			URI createPlatformResourceURI = URI.createURI(file.getFullPath().toString(), true);
-			final String contentsStr = getContents(createPlatformResourceURI, null);
+		private void formatFile(IFile file, Object codeFormatter,
+				IProgressMonitor progressMonitor) throws Exception {
+			URI createPlatformResourceURI = URI.createURI(file.getFullPath()
+					.toString(), true);
+			final String contentsStr = getContents(createPlatformResourceURI,
+					null);
 			String formatedContentsStr = formatCode(contentsStr, codeFormatter);
-			ByteArrayInputStream formatedContents = new ByteArrayInputStream(formatedContentsStr.getBytes());
+			ByteArrayInputStream formatedContents = new ByteArrayInputStream(
+					formatedContentsStr.getBytes());
 			file.setContents(formatedContents, true, true, progressMonitor);
 			formatedContents.close();
 		}

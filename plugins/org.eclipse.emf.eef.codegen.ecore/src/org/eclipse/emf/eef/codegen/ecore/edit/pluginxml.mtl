@@ -34,7 +34,7 @@
 [else]
 <plugin
       name="%pluginName"
-      id="[genModel.getEditPluginID()/]"
+      id="[genModel.editPluginID/]"
       version="1.0.0"
       provider-name="%providerName"
       class="[genModel.getQualifiedEditPluginClassName()/]$Implementation">
@@ -47,7 +47,7 @@
 
    <runtime>
   [if (genModel.runtimeJar)]
-      <library name="[genModel.getEditPluginID()/].jar">
+      <library name="[genModel.editPluginID/].jar">
   [else]
       <library name=".">
   [/if]
@@ -63,11 +63,11 @@
             uri="[genPackage.getNSURI()/]"
             class="[genPackage.getQualifiedItemProviderAdapterFactoryClassName()/]"
             supportedTypes=
-[for (supported : String | genPackage.getProviderSupportedTypes()) before ('              "') separator ('\n               ') after ('"/>') ][supported/][/for]
+[for (supported : String | genPackage.getProviderSupportedTypes()) before ('              "') separator (genModel.getLineDelimiter() + '               ') after ('"/>') ][supported/][/for]
    </extension>
     [comment]<%if (genPackage.isChildCreationExtenders()) { Map<GenPackage, Map<GenClass, List<GenClass.ChildCreationData>>> extendedChildCreationData = genPackage.getExtendedChildCreationData();%>
       <%if (!extendedChildCreationData.isEmpty()) {%>[/comment]
-[if (genPackage.isChildCreationExtenders())]
+[if (genPackage.childCreationExtenders)]
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
         [for (genPackage.getExtendedChildCreationDataEntrySet())]
         [let key : GenPackage = getPackageEntryKey()]
@@ -97,7 +97,7 @@
 
    <extension point="org.eclipse.emf.ecore.content_parser">
       <parser
-            contentTypeIdentifier="[genPackage.getContentTypeIdentifier()/]"
+            contentTypeIdentifier="[genPackage.contentTypeIdentifier/]"
             class="[genPackage.getQualifiedEffectiveResourceFactoryClassName()/]"/>
    </extension>
 
@@ -105,7 +105,7 @@
       <content-type
             base-type="[if genPackage.isXMIResource()]org.eclipse.emf.ecore.xmi[else]org.eclipse.core.runtime.xml[/if]"
             file-extensions="[genPackage.fileExtensions/]"
-            id="[genPackage.getContentTypeIdentifier()/]"
+            id="[genPackage.contentTypeIdentifier/]"
             name="%_UI_[genPackage.prefix/]_content_type"
             priority="normal">
          <describer class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">

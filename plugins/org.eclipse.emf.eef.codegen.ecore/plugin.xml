@@ -12,13 +12,23 @@
                label="EEF"
                path="edit">
              <groupMarker
+                   name="model-generation">
+             </groupMarker>
+             <groupMarker
                    name="edit-generation">
              </groupMarker>
              <groupMarker
                    name="editor-generation">
              </groupMarker>
          </menu>
-          <action
+         <action
+               class="org.eclipse.emf.eef.codegen.ecore.ui.launcher.GenerateEMFModelCodeAction"
+               enablesFor="*"
+               id="org.eclipse.emf.eef.codegen.ecore.ui.generateemfmodeleditcode"
+               label="Generate Model Code"
+               menubarPath="org.eclipse.emf.eef.ui.menu/model-generation">
+         </action>
+         <action
                class="org.eclipse.emf.eef.codegen.ecore.ui.launcher.GenerateEMFEditCodeAction"
                enablesFor="*"
                id="org.eclipse.emf.eef.codegen.ecore.ui.generateemfeditcode"

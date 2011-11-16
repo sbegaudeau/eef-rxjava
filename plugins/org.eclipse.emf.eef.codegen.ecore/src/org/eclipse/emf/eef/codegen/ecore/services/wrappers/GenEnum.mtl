@@ -1,9 +1,6 @@
 [comment encoding = UTF-8 /]
 [module GenEnum('http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[query public getEcoreEnum(genEnum : GenEnum) : EEnum
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getEcoreEnum()', Sequence{genEnum}) /]
-
 [query public getEnumLiteralID(genEnum : GenEnum, genEnumLiteral : GenEnumLiteral) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getEnumLiteralID(org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral)', Sequence{genEnum, genEnumLiteral}) /]
 
@@ -12,9 +9,6 @@
 
 [query public getGenEnumLiteral(genEnum : GenEnum, literal : String) : GenEnumLiteral
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenEnumLiteral(java.lang.String)', Sequence{genEnum, literal}) /]
-
-[query public getGenEnumLiterals(genEnum : GenEnum) : Sequence(GenEnumLiteral)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenEnumLiterals()', Sequence{genEnum}) /]
 
 [query public getImportedName(genEnum : GenEnum) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getImportedName()', Sequence{genEnum}) /]
@@ -25,9 +19,6 @@
 [query public getUniqueValuedGenEnumLiterals(genEnum : GenEnum) : Sequence(GenEnumLiteral)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getUniqueValuedGenEnumLiterals()', Sequence{genEnum}) /]
 
-[query public isTypeSafeEnumCompatible(genEnum : GenEnum) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'isTypeSafeEnumCompatible()', Sequence{genEnum}) /]
-
 [query public reconcile(genEnum : GenEnum, oldGenEnumVersion : GenEnum) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'reconcile(org.eclipse.emf.codegen.ecore.genmodel.GenEnum)', Sequence{genEnum, oldGenEnumVersion}) /]
 
@@ -36,9 +27,6 @@
 /]
 [query public getBaseType(genEnum : GenEnum) : GenDataType
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getBaseType()', Sequence{genEnum}) /]
-
-[query public getEcoreDataType(genEnum : GenEnum) : EDataType
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getEcoreDataType()', Sequence{genEnum}) /]
 
 [query public getEnumerationLiterals(genEnum : GenEnum) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getEnumerationLiterals()', Sequence{genEnum}) /]
@@ -166,12 +154,6 @@
 [query public getGenConstraints(genEnum : GenEnum) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenConstraints()', Sequence{genEnum}) /]
 
-[query public getGenPackage(genEnum : GenEnum) : GenPackage
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenPackage()', Sequence{genEnum}) /]
-
-[query public getGenTypeParameters(genEnum : GenEnum) : Sequence(GenTypeParameter)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenTypeParameters()', Sequence{genEnum}) /]
-
 [query public getGeneratedInstanceClassFlag(genEnum : GenEnum) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGeneratedInstanceClassFlag()', Sequence{genEnum}) /]
 
@@ -249,9 +231,6 @@
 
 [query public getGenAnnotation(genEnum : GenEnum, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenAnnotation(java.lang.String)', Sequence{genEnum, source}) /]
-
-[query public getGenAnnotations(genEnum : GenEnum) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenAnnotations()', Sequence{genEnum}) /]
 
 [query public getGenModel(genEnum : GenEnum) : GenModel
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenEnum', 'getGenModel()', Sequence{genEnum}) /]

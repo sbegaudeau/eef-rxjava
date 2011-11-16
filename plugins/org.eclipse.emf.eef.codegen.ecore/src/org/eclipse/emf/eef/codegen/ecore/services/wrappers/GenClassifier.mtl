@@ -31,12 +31,6 @@
 [query public getGenConstraints(genClassifier : GenClassifier) : Sequence(String)
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGenConstraints()', Sequence{genClassifier}) /]
 
-[query public getGenPackage(genClassifier : GenClassifier) : GenPackage
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGenPackage()', Sequence{genClassifier}) /]
-
-[query public getGenTypeParameters(genClassifier : GenClassifier) : Sequence(GenTypeParameter)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGenTypeParameters()', Sequence{genClassifier}) /]
-
 [query public getGeneratedInstanceClassFlag(genClassifier : GenClassifier) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGeneratedInstanceClassFlag()', Sequence{genClassifier}) /]
 
@@ -118,12 +112,6 @@
 [query public getGenAnnotation(genClassifier : GenClassifier, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGenAnnotation(java.lang.String)', Sequence{genClassifier, source}) /]
 
-[query public getGenAnnotations(genClassifier : GenClassifier) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGenAnnotations()', Sequence{genClassifier}) /]
-
-[query public getGenModel(genClassifier : GenClassifier) : GenModel
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getGenModel()', Sequence{genClassifier}) /]
-
 [query public hasCopyright(genClassifier : GenClassifier) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'hasCopyright()', Sequence{genClassifier}) /]
 
@@ -141,3 +129,7 @@
 
 [query public uncapPrefixedName(genClassifier : GenClassifier, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'uncapPrefixedName(java.lang.String)', Sequence{genClassifier, input}) /]
+
+
+[query public getIndexOfFirstConstraintDifferentFromNoCircular(genClassifier : GenClassifier) : Integer
+	= invoke('org.eclipse.emf.eef.codegen.ecore.services.wrappers.GenClassifierWrapper', 'getIndexOfFirstConstraintDifferentFromNoCircular(org.eclipse.emf.codegen.ecore.genmodel.GenClassifier)', Sequence{genClassifier}) /]

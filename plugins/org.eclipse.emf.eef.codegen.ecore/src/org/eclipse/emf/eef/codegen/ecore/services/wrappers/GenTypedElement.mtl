@@ -229,9 +229,6 @@
 [query public getGenAnnotation(genTypedElement : GenTypedElement, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement', 'getGenAnnotation(java.lang.String)', Sequence{genTypedElement, source}) /]
 
-[query public getGenAnnotations(genTypedElement : GenTypedElement) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement', 'getGenAnnotations()', Sequence{genTypedElement}) /]
-
 [query public getGenModel(genTypedElement : GenTypedElement) : GenModel
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement', 'getGenModel()', Sequence{genTypedElement}) /]
 

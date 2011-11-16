@@ -23,7 +23,12 @@
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getCreateChildValueLiteral()', Sequence{genFeature}) /]
 
 [query public getDefaultValue(genFeature : GenFeature) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getDefaultValue()', Sequence{genFeature}) /]
+	= let result : String = invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getDefaultValue()', Sequence{genFeature}).oclAsType(String) in
+		if (result.oclIsInvalid() or result.oclIsUndefined()) then
+			'null'
+		else
+			result
+		endif/]
 
 [query public getDelegateFeature(genFeature : GenFeature) : GenFeature
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getDelegateFeature()', Sequence{genFeature}) /]
@@ -40,9 +45,6 @@
 [query public getEDefault(genFeature : GenFeature) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getEDefault()', Sequence{genFeature}) /]
 
-[query public getEcoreFeature(genFeature : GenFeature) : EStructuralFeature
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getEcoreFeature()', Sequence{genFeature}) /]
-
 [query public getFeatureAccessorName(genFeature : GenFeature) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getFeatureAccessorName()', Sequence{genFeature}) /]
 
@@ -51,9 +53,6 @@
 
 [query public getFormattedName(genFeature : GenFeature) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getFormattedName()', Sequence{genFeature}) /]
-
-[query public getGenClass(genFeature : GenFeature) : GenClass
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getGenClass()', Sequence{genFeature}) /]
 
 [query public getGenPackage(genFeature : GenFeature) : GenPackage
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getGenPackage()', Sequence{genFeature}) /]
@@ -84,18 +83,6 @@
 
 [query public getName(genFeature : GenFeature) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getName()', Sequence{genFeature}) /]
-
-[query public getProperty(genFeature : GenFeature) : GenPropertyKind
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getProperty()', Sequence{genFeature}) /]
-
-[query public getPropertyCategory(genFeature : GenFeature) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getPropertyCategory()', Sequence{genFeature}) /]
-
-[query public getPropertyDescription(genFeature : GenFeature) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getPropertyDescription()', Sequence{genFeature}) /]
-
-[query public getPropertyFilterFlags(genFeature : GenFeature) : Sequence(String)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getPropertyFilterFlags()', Sequence{genFeature}) /]
 
 [query public getPropertyImageName(genFeature : GenFeature) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getPropertyImageName()', Sequence{genFeature}) /]
@@ -163,17 +150,11 @@
 [query public isChangeable(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isChangeable()', Sequence{genFeature}) /]
 
-[query public isChildren(genFeature : GenFeature) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isChildren()', Sequence{genFeature}) /]
-
 [query public isContainer(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isContainer()', Sequence{genFeature}) /]
 
 [query public isContains(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isContains()', Sequence{genFeature}) /]
-
-[query public isCreateChild(genFeature : GenFeature) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isCreateChild()', Sequence{genFeature}) /]
 
 [query public isDerived(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isDerived()', Sequence{genFeature}) /]
@@ -202,17 +183,8 @@
 [query public isIsSet(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isIsSet()', Sequence{genFeature}) /]
 
-[query public isNotify(genFeature : GenFeature) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isNotify()', Sequence{genFeature}) /]
-
 [query public isProperty(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isProperty()', Sequence{genFeature}) /]
-
-[query public isPropertyMultiLine(genFeature : GenFeature) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isPropertyMultiLine()', Sequence{genFeature}) /]
-
-[query public isPropertySortChoices(genFeature : GenFeature) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isPropertySortChoices()', Sequence{genFeature}) /]
 
 [query public isReferenceType(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'isReferenceType()', Sequence{genFeature}) /]
@@ -487,14 +459,8 @@
 [query public getGenAnnotation(genFeature : GenFeature, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getGenAnnotation(java.lang.String)', Sequence{genFeature, source}) /]
 
-[query public getGenAnnotations(genFeature : GenFeature) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getGenAnnotations()', Sequence{genFeature}) /]
-
 [query public getGenModel(genFeature : GenFeature) : GenModel
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getGenModel()', Sequence{genFeature}) /]
-
-[query public hasCopyright(genFeature : GenFeature) : Boolean
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'hasCopyright()', Sequence{genFeature}) /]
 
 [query public hasDocumentation(genFeature : GenFeature) : Boolean
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'hasDocumentation()', Sequence{genFeature}) /]
@@ -511,5 +477,11 @@
 [query public uncapPrefixedName(genFeature : GenFeature, input : String) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'uncapPrefixedName(java.lang.String)', Sequence{genFeature, input}) /]
 
-[query public getQualifiedFeatureAccessor(genFeature : GenFeature) : String
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getQualifiedFeatureAccessor()', Sequence{genFeature}) /]
+
+
+
+
+
+[comment special handling for avoiding NPE due to importManager /]
+[query public getQualifiedFeatureAccessor(genFeature : GenFeature) : String =
+	invoke('org.eclipse.emf.codegen.ecore.genmodel.GenFeature', 'getQualifiedFeatureAccessor()', Sequence{genFeature})/]

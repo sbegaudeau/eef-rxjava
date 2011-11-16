@@ -7,10 +7,10 @@
 
 [template public reflectiveDelegationAlternative(genClass : GenClass, isImplementation : Boolean, genModel : GenModel)]
 [if (isImplementation
-	and (genModel.getFeatureDelegation() = GenDelegationKind::Reflective
+	and (genModel.featureDelegation = GenDelegationKind::Reflective
 		or genModel.isDynamicDelegation())
 	and (genClass.getClassExtendsGenClass() = null
-		or (genClass.getClassExtendsGenClass().getGenModel().getFeatureDelegation() <> GenDelegationKind::Reflective
+		or (genClass.getClassExtendsGenClass().getGenModel().featureDelegation <> GenDelegationKind::Reflective
 			and not genClass.getClassExtendsGenClass().getGenModel().isDynamicDelegation()))) ]
 	/**
 	 * <!-- begin-user-doc -->

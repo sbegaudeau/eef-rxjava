@@ -25,26 +25,26 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: [genModel.getEditPluginID()/];singleton:=true
+Bundle-SymbolicName: [genModel.editPluginID/];singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: [if (genModel.runtimeJar)][genModel.getEditPluginID()/].jar[else].[/if]
-[if (genModel.getRuntimePlatform() <> GenRuntimePlatform::GWT)]
+Bundle-ClassPath: [if (genModel.runtimeJar)][genModel.editPluginID/].jar[else].[/if]
+[if (genModel.runtimePlatform <> GenRuntimePlatform::GWT)]
 Bundle-Activator: [genModel.getQualifiedEditPluginClassName()/]$Implementation
 [/if]
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-[if (genModel.getComplianceLevel() = GenJDKLevel::JDK50)]
+[if (genModel.complianceLevel = GenJDKLevel::JDK50)]
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-[elseif (genModel.getComplianceLevel() = GenJDKLevel::JDK60)]
+[elseif (genModel.complianceLevel = GenJDKLevel::JDK60)]
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 [/if]
-[for (pack : String | genModel.getEditQualifiedPackageNames()) before ('Export-Package:') separator (',\n')]
+[for (pack : String | genModel.getEditQualifiedPackageNames()) before ('Export-Package:') separator (',' + genModel.getLineDelimiter())]
  [pack/][/for]
 
-[for (pluginID : String | genModel.getEditRequiredPlugins()) before ('Require-Bundle:') separator (',\n')]
+[for (pluginID : String | genModel.getEditRequiredPlugins()) before ('Require-Bundle:') separator (',' + genModel.getLineDelimiter())]
  [pluginID/][if (not pluginID.startsWith('org.eclipse.core.runtime'))];visibility:=reexport[/if][/for]
 
-[if (genModel.getRuntimeVersion() = GenRuntimeVersion::EMF22 or genModel.getRuntimeVersion() = GenRuntimeVersion::EMF23)]
+[if (genModel.runtimeVersion = GenRuntimeVersion::EMF22 or genModel.runtimeVersion = GenRuntimeVersion::EMF23)]
 Eclipse-LazyStart: true
 [/if]
 Bundle-ActivationPolicy: lazy

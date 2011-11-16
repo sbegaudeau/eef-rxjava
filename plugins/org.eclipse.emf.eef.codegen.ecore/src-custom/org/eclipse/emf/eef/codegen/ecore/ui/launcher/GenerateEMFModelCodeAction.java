@@ -17,12 +17,11 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.codegen.ecore.Generator;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.generator.GenBaseGeneratorAdapter;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
-import org.eclipse.emf.eef.codegen.ecore.main.GenEdit;
+import org.eclipse.emf.eef.codegen.ecore.main.GenModel;
 import org.eclipse.emf.eef.codegen.ecore.util.EEFGeneratorAdapter;
 import org.eclipse.emf.eef.codegen.flow.Step;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
@@ -30,7 +29,7 @@ import org.eclipse.emf.eef.codegen.flow.Workflow;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-public class GenerateEMFEditCodeAction extends GenerateEMFCodeAction {
+public class GenerateEMFModelCodeAction extends GenerateEMFCodeAction {
 
 	/**
 	 * {@inheritDoc}
@@ -38,43 +37,37 @@ public class GenerateEMFEditCodeAction extends GenerateEMFCodeAction {
 	 * @see org.eclipse.emf.eef.codegen.ecore.ui.launcher.GenerateEMFCodeAction#initEMFGenFlow()
 	 */
 	protected Workflow initEMFGenFlow() {
-		final Workflow flow = new Workflow("Generate EMF edit code ", shell);
-		for (final GenModel emfGenModel : emfGenModels) {
-			String s1 = "Generate EMF Edit code for " + emfGenModel.eResource().getURI().lastSegment();
-			// use this once we can add acceleo inside emf generator
-			// Step emfEditCode = new GenerateEMFEditCode(s,
-			// emfGenModel);
-			// flow.addStep(s, emfEditCode);
-			flow.addStep(s1, new Step("EMF EDIT") {
+		final Workflow flow = new Workflow("Generate EMF model code ", shell);
+		for (final org.eclipse.emf.codegen.ecore.genmodel.GenModel emfGenModel : emfGenModels) {
+			String s2 = "Generate EMF Model code for " + emfGenModel.eResource().getURI().toString();
+			flow.addStep(s2, new Step("EMF MODEL") {
 
 				@Override
 				public IStatus execute(IProgressMonitor monitor) {
-					// create the edit project
-					IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
-					if (editProject == null) {
+					// create the model project
+					IProject modelProject = extractProject(emfGenModel.getModelProjectDirectory());
+					if (modelProject == null) {
 						return Status.OK_STATUS;
 					}
-					IProject modelProject = workspace.getRoot().getProject(
-							emfGenModel.getModelProjectDirectory());
 					List<IProject> referencedProjects = new UniqueEList<IProject>();
-					referencedProjects.add(modelProject);
-					if (!workspace.getRoot().exists(editProject.getFullPath())) {
-						editProject = Generator.createEMFProject(new Path(emfGenModel.getEditDirectory()), null,
-								referencedProjects,
-								new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN),
-								Generator.EMF_EDIT_PROJECT_STYLE | Generator.EMF_PLUGIN_PROJECT_STYLE);
-					} else if (!editProject.isAccessible()) {
+					if (!workspace.getRoot().exists(modelProject.getFullPath())) {
+						// TODO Manage the case when the model project has been deleted from the workspace but is still present on disk ?
+						modelProject = Generator.createEMFProject(new Path(emfGenModel.getModelDirectory()), modelProject
+								.getLocation(), referencedProjects, new SubProgressMonitor(monitor,
+								IProgressMonitor.UNKNOWN), Generator.EMF_MODEL_PROJECT_STYLE
+								| Generator.EMF_PLUGIN_PROJECT_STYLE);
+					} else if (!modelProject.isAccessible()) {
 						try {
-							editProject.open(monitor);
+							modelProject.open(monitor);
 						} catch (CoreException e) {
 							return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e.getMessage(), e);
 						}
 					}
 					// generate using acceleo
 					List<String> args = new ArrayList<String>();
-					File editDirectory = editProject.getLocation().toFile();
+					File modelDirectory = modelProject.getLocation().toFile();
 					try {
-						GenEdit generator = new GenEdit(emfGenModel, editDirectory, args);
+						GenModel generator = new GenModel(emfGenModel, modelDirectory, args);
 						generator.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(monitor,
 								IProgressMonitor.UNKNOWN)));
 					} catch (IOException e) {
@@ -95,8 +88,8 @@ public class GenerateEMFEditCodeAction extends GenerateEMFCodeAction {
 	
 					@Override
 					public IStatus execute(IProgressMonitor monitor) {
-						// refresh edit project
-						IProject modelProject = extractProject(emfGenModel.getEditProjectDirectory());
+						// refresh model project
+						IProject modelProject = extractProject(emfGenModel.getModelProjectDirectory());
 						if (modelProject == null) {
 							return Status.OK_STATUS;
 						}
@@ -111,35 +104,35 @@ public class GenerateEMFEditCodeAction extends GenerateEMFCodeAction {
 						return Status.OK_STATUS;
 					}
 				});
-				
+	
 				String s2prime = "Formatting generated files";
 				flow.addStep(s2prime, new Step(s2prime) {
 	
 					@Override
 					public IStatus execute(IProgressMonitor monitor) {
 						EEFGeneratorAdapter eefGen = new EEFGeneratorAdapter();
-						eefGen.generate(emfGenModel, GenBaseGeneratorAdapter.EDIT_PROJECT_TYPE,
+						eefGen.generate(emfGenModel, GenBaseGeneratorAdapter.MODEL_PROJECT_TYPE,
 								BasicMonitor.toMonitor(new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN)));
 						return Status.OK_STATUS;
 					}
 				});
 			}
 
-			String s3 = "Refresh workspace " + emfGenModel.eResource().getURI().toString();
+			String s3 = "Refreshing workspace " + emfGenModel.eResource().getURI().toString();
 			flow.addStep(s3, new Step("REFRESH") {
 
 				@Override
 				public IStatus execute(IProgressMonitor monitor) {
-					// refresh edit
-					IProject editProject = extractProject(emfGenModel.getEditProjectDirectory());
-					if (editProject == null) {
+					// refresh model project
+					IProject modelProject = extractProject(emfGenModel.getModelProjectDirectory());
+					if (modelProject == null) {
 						return Status.OK_STATUS;
 					}
 					try {
-						if (!editProject.isOpen()) {
-							editProject.open(monitor);
+						if (!modelProject.isOpen()) {
+							modelProject.open(monitor);
 						}
-						editProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+						modelProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 					} catch (CoreException e) {
 						return new Status(IStatus.ERROR, EMFCodegenPlugin.PLUGIN_ID, e.getMessage(), e);
 					}

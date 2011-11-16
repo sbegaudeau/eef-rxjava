@@ -1,12 +1,6 @@
 [comment encoding = UTF-8 /]
 [module GenParameter('http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[query public getEcoreParameter(genParameter : GenParameter) : EParameter
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenParameter', 'getEcoreParameter()', Sequence{genParameter}) /]
-
-[query public getGenOperation(genParameter : GenParameter) : GenOperation
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenParameter', 'getGenOperation()', Sequence{genParameter}) /]
-
 [query public getGenPackage(genParameter : GenParameter) : GenPackage
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenParameter', 'getGenPackage()', Sequence{genParameter}) /]
 
@@ -249,9 +243,6 @@
 
 [query public getGenAnnotation(genParameter : GenParameter, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenParameter', 'getGenAnnotation(java.lang.String)', Sequence{genParameter, source}) /]
-
-[query public getGenAnnotations(genParameter : GenParameter) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenParameter', 'getGenAnnotations()', Sequence{genParameter}) /]
 
 [query public getGenModel(genParameter : GenParameter) : GenModel
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenParameter', 'getGenModel()', Sequence{genParameter}) /]

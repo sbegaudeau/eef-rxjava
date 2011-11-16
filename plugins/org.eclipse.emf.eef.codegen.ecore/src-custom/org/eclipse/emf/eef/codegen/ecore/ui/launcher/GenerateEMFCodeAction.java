@@ -25,13 +25,13 @@ import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -63,9 +63,9 @@ public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 			if (emfGenModels != null) {
 				final Workflow flow = initEMFGenFlow();
 				flow.prepare();
-				IRunnableWithProgress runnable = new IRunnableWithProgress() {
+				WorkspaceModifyOperation runnable = new WorkspaceModifyOperation() {
 
-					public void run(IProgressMonitor monitor) throws InvocationTargetException,
+					public void execute(IProgressMonitor monitor) throws InvocationTargetException,
 							InterruptedException {
 						flow.execute(monitor);
 						monitor.done();

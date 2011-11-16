@@ -11,8 +11,7 @@
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenOperation /]
 [import org::eclipse::emf::eef::codegen::ecore::services::wrappers::GenParameter /]
 
-[template public eIsSet(genClass : GenClass, genModel : GenModel, positiveOffsetCorrection : String, negativeOffsetCorrection : String, packageName : String, className : String)]
-[comment]<%@ start %>[/comment]
+[template public eIsSet(genClass : GenClass, genModel : GenModel, positiveOffsetCorrection : String, negativeOffsetCorrection : String)]
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,12 +110,11 @@
   [/let]
 [/for]
 		}
-[if (genModel.isMinimalReflectiveMethods()) ]
+[if (genModel.minimalReflectiveMethods) ]
 		return super.eIsSet(featureID);
 [else]
 		return eDynamicIsSet(featureID);
 [/if]
 	}
 
-[comment]<%@ end %><%//Class/eIsSet.override.javajetinc%>[/comment]
 [/template]

@@ -31,9 +31,6 @@
 [query public getGenAnnotation(genBase : GenBase, source : String) : GenAnnotation
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenBase', 'getGenAnnotation(java.lang.String)', Sequence{genBase, source}) /]
 
-[query public getGenAnnotations(genBase : GenBase) : Sequence(GenAnnotation)
-	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenBase', 'getGenAnnotations()', Sequence{genBase}) /]
-
 [query public getGenModel(genBase : GenBase) : GenModel
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenBase', 'getGenModel()', Sequence{genBase}) /]
 

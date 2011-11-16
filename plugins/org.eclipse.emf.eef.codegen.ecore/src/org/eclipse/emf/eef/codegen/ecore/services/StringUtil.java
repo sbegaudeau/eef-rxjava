@@ -21,7 +21,7 @@ public class StringUtil {
 
 	public String toLowerCase(String string, Object locale) {
 		if (locale instanceof Locale) {
-			return string.toLowerCase((Locale)locale);
+			return string.toLowerCase((Locale) locale);
 		}
 		return string;
 	}
