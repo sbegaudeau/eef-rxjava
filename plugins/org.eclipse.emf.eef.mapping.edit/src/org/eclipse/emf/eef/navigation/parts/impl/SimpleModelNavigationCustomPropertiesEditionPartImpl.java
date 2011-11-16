@@ -13,9 +13,9 @@ package org.eclipse.emf.eef.navigation.parts.impl;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
-import org.eclipse.emf.eef.mapping.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
-import org.eclipse.emf.eef.mapping.providers.MappingMessages;
+import org.eclipse.emf.eef.mapping.navigation.parts.NavigationViewsRepository;
+import org.eclipse.emf.eef.mapping.navigation.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.mapping.navigation.providers.NavigationMessages;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
@@ -42,7 +42,7 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 	protected Composite createFeatureFlatComboViewer(Composite parent) {
 
 		SWTUtils.createPartLabel(parent,
-				MappingMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
+				NavigationMessages.SimpleModelNavigationPropertiesEditionPart_FeatureLabel, true);
 		feature = new EObjectFlatComboViewer(parent, false);
 		feature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		feature.addFilter(new ViewerFilter() {
@@ -63,7 +63,7 @@ public class SimpleModelNavigationCustomPropertiesEditionPartImpl extends Simple
 			public void selectionChanged(SelectionChangedEvent event) {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 						SimpleModelNavigationCustomPropertiesEditionPartImpl.this,
-						MappingViewsRepository.SimpleModelNavigation.Properties.feature, PropertiesEditionEvent.COMMIT,
+						NavigationViewsRepository.SimpleModelNavigation.Properties.feature, PropertiesEditionEvent.COMMIT,
 						PropertiesEditionEvent.SET, null, getFeature()));
 				// TODO : firePropertyChanged has to call setFeature !
 				// if (event.getSelection() instanceof StructuredSelection) {

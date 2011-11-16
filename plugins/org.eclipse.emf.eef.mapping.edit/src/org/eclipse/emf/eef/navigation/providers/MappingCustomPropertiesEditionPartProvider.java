@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.navigation.providers;
 
+import org.eclipse.emf.eef.mapping.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.mapping.providers.MappingPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.navigation.parts.forms.SimpleModelNavigationCustomPropertiesEditionPartForm;
@@ -25,7 +26,7 @@ public class MappingCustomPropertiesEditionPartProvider extends MappingPropertie
 	@Override
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind,
 			IPropertiesEditionComponent component) {
-		if (key == MappingViewsRepository.SimpleModelNavigation.class) {
+		if (key == NavigationViewsRepository.SimpleModelNavigation.class) {
 			if (kind == MappingViewsRepository.SWT_KIND)
 				return new SimpleModelNavigationCustomPropertiesEditionPartImpl(component);
 			if (kind == MappingViewsRepository.FORM_KIND)
