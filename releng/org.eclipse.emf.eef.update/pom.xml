@@ -63,8 +63,7 @@
 			<id>sign</id>
 			<activation>
 				<property>
-					<name>${env.BUILD_TYPE}</name>
-					<value>N</value>
+					<name>BUILD_ALIAS</name>
 				</property>
 			</activation>
 			<build>
