@@ -176,8 +176,6 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -186,8 +184,8 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -224,7 +222,6 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -258,7 +255,6 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 	}
-
 
 
 

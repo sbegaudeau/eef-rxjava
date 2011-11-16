@@ -198,8 +198,6 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -208,8 +206,8 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -236,7 +234,6 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -260,7 +257,6 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

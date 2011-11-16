@@ -256,8 +256,6 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 	//End of user code
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -266,8 +264,8 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -294,7 +292,6 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -318,7 +315,6 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

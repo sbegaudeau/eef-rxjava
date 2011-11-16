@@ -50,8 +50,8 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, FlatReferenceTableSamplePropertiesEditionPart {
 
-		protected FlatReferencesTable flatreferencetableRequiredProperty;
-		protected FlatReferencesTable flatreferencetableOptionalProperty;
+	protected FlatReferencesTable flatreferencetableRequiredProperty;
+	protected FlatReferencesTable flatreferencetableOptionalProperty;
 
 
 
@@ -186,8 +186,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -196,8 +194,8 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -255,7 +253,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -306,7 +303,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)flatreferencetableOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

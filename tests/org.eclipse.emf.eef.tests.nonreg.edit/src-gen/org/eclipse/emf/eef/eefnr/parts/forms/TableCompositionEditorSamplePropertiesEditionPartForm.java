@@ -64,12 +64,12 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class TableCompositionEditorSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, TableCompositionEditorSamplePropertiesEditionPart {
 
-		protected TableViewer tablecompositionRequiredProperty;
-		protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected TableViewer tablecompositionOptionalProperty;
-		protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer tablecompositionRequiredProperty;
+	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer tablecompositionOptionalProperty;
+	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -492,8 +492,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Secti
 		return tablecompositionOptionalPropertyPanel;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -502,8 +500,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Secti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -566,7 +564,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Secti
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -622,7 +619,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Secti
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)tablecompositionOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

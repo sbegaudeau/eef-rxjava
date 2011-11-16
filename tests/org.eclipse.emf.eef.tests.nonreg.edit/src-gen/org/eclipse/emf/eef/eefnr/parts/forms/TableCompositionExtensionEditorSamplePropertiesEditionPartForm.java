@@ -126,7 +126,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty) {
 					return createTablecompositionRequiredPropertyTableComposition(widgetFactory, parent);
@@ -292,8 +292,6 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -302,8 +300,8 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -329,7 +327,6 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -391,7 +388,6 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -447,7 +443,6 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)tablecompositionOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

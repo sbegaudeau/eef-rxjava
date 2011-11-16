@@ -50,9 +50,9 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 
 	protected AdvancedEObjectFlatComboViewer advancedeobjectflatcomboviewerRequiredProperty;
-		protected ViewerFilter advancedeobjectflatcomboviewerRequiredPropertyFilter;
+	protected ViewerFilter advancedeobjectflatcomboviewerRequiredPropertyFilter;
 	protected AdvancedEObjectFlatComboViewer advancedeobjectflatcomboviewerOptionalProperty;
-		protected ViewerFilter advancedeobjectflatcomboviewerOptionalPropertyFilter;
+	protected ViewerFilter advancedeobjectflatcomboviewerOptionalPropertyFilter;
 
 
 
@@ -199,8 +199,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 	}
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -209,8 +207,8 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -278,7 +276,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 		advancedeobjectflatcomboviewerRequiredProperty.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -343,7 +340,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
 	}
-
 
 
 

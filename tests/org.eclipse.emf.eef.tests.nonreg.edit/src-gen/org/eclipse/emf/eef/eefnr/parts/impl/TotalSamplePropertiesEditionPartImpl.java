@@ -81,7 +81,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
 
-
 // End of user code
 
 /**
@@ -128,13 +127,17 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer advancedeobjectflatcomboviewerRequiredPropery;
 	protected EObjectFlatComboViewer advancedeobjectflatcomboviewerOptionalPropery;
-protected ReferencesTable advancedtablecompositionRequiredProperty;
-protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable advancedtablecompositionOptionalProperty;
-protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedtablecompositionRequiredProperty;
+	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedtablecompositionOptionalProperty;
+	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected Text name;
+	// Start of user code for CustomElementEditor widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -198,6 +201,7 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.name);
+		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.customElementEditor);
 		
 		
 		composer = new PartComposer(totalSampleStep) {
@@ -282,6 +286,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 				if (key == EefnrViewsRepository.TotalSample.Properties.name) {
 					return createNameText(parent);
 				}
+				// Start of user code for CustomElementEditor addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -1633,8 +1640,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1643,8 +1648,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -1671,7 +1676,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1695,7 +1699,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1721,7 +1724,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1745,7 +1747,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			checkboxOptionalProperty.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1771,7 +1772,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1795,7 +1795,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1828,7 +1827,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		radioRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1859,7 +1857,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public void setRadioOptionalProperty(Enumerator newValue) {
 		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1930,7 +1927,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public void addBusinessFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerRequiredProperty.addBusinessRuleFilter(filter);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2004,7 +2000,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2057,7 +2052,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)referencestableRequiredProperty.getInput()).contains(element);
 	}
-
 
 
 
@@ -2114,7 +2108,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		return ((ReferencesTableSettings)referencestableOptionalProperty.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2146,7 +2139,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2177,7 +2169,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2222,7 +2213,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2265,7 +2255,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -2327,7 +2316,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2386,7 +2374,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2442,7 +2429,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2495,7 +2481,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedreferencestableOptionalProperty.getInput()).contains(element);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2566,7 +2551,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2640,7 +2624,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2696,7 +2679,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedtablecompositionRequiredProperty.getInput()).contains(element);
 	}
-
 
 
 
@@ -2756,7 +2738,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		return ((ReferencesTableSettings)advancedtablecompositionOptionalProperty.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2785,6 +2766,9 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
+	// Start of user code for CustomElementEditor specific getters and setters implementation
+	
+	// End of user code
 
 
 	/**

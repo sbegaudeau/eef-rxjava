@@ -197,8 +197,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,8 +205,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -281,7 +279,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 		eobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -351,7 +348,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalPropery(ViewerFilter filter) {
 		eobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
 	}
-
 
 
 

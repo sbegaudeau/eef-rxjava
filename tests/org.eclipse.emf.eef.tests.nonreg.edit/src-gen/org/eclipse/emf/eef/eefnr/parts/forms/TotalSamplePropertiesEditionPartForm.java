@@ -103,32 +103,32 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected EMFComboViewer radioOptionalProperty;
 	protected EObjectFlatComboViewer eobjectflatcomboviewerRequiredProperty;
 	protected EObjectFlatComboViewer eobjectflatcomboviewerOptionalProperty;
-		protected ReferencesTable referencestableRequiredProperty;
-		protected List<ViewerFilter> referencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> referencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable referencestableOptionalProperty;
-		protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable referencestableRequiredProperty;
+	protected List<ViewerFilter> referencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable referencestableOptionalProperty;
+	protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer emfcomboviewerRequiredProperty;
 	protected EMFComboViewer emfcomboviewerOptionalProperty;
 	protected Text multivaluededitorRequiredProperty;
-		protected Button editMultivaluededitorRequiredProperty;
-		private EList multivaluededitorRequiredPropertyList;
+	protected Button editMultivaluededitorRequiredProperty;
+	private EList multivaluededitorRequiredPropertyList;
 	protected Text multivaluededitorOptionalProperty;
-		protected Button editMultivaluededitorOptionalProperty;
-		private EList multivaluededitorOptionalPropertyList;
-		protected TableViewer tablecompositionRequiredProperty;
-		protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected TableViewer tablecompositionOptionalProperty;
-		protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable advancedreferencestableRequiredProperty;
-		protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable advancedreferencestableOptionalProperty;
-		protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Button editMultivaluededitorOptionalProperty;
+	private EList multivaluededitorOptionalPropertyList;
+	protected TableViewer tablecompositionRequiredProperty;
+	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer tablecompositionOptionalProperty;
+	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedreferencestableRequiredProperty;
+	protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedreferencestableOptionalProperty;
+	protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer advancedeobjectflatcomboviewerRequiredPropery;
 	protected EObjectFlatComboViewer advancedeobjectflatcomboviewerOptionalPropery;
 	protected ReferencesTable advancedtablecompositionRequiredProperty;
@@ -138,6 +138,10 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 	protected Text name;
+	// Start of user code for CustomElementEditor widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -208,6 +212,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.name);
+		propertiesStep.addStep(EefnrViewsRepository.TotalSample.Properties.customElementEditor);
 		
 		
 		composer = new PartComposer(totalSampleStep) {
@@ -218,10 +223,10 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.textRequiredProperty) {
-					return 		createTextRequiredPropertyText(widgetFactory, parent);
+					return createTextRequiredPropertyText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.textOptionalProperty) {
-					return 		createTextOptionalPropertyText(widgetFactory, parent);
+					return createTextOptionalPropertyText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty) {
 					return createCheckboxRequiredPropertyCheckbox(widgetFactory, parent);
@@ -230,10 +235,10 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 					return createCheckboxOptionalPropertyCheckbox(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty) {
-					return 		createTextareaRequiredPropertyText(widgetFactory, parent);
+					return createTextareaRequiredPropertyText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty) {
-					return 		createTextareaOptionalPropertyText(widgetFactory, parent);
+					return createTextareaOptionalPropertyText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty) {
 					return createRadioRequiredPropertyEMFComboViewer(widgetFactory, parent);
@@ -290,8 +295,11 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 					return createAdvancedtablecompositionOptionalPropertyTableComposition(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
+				// Start of user code for CustomElementEditor addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -1638,8 +1646,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1648,8 +1654,8 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -1676,7 +1682,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1700,7 +1705,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1726,7 +1730,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1750,7 +1753,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			checkboxOptionalProperty.setSelection(false);
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1776,7 +1778,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1800,7 +1801,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1833,7 +1833,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		radioRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -1864,7 +1863,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void setRadioOptionalProperty(Enumerator newValue) {
 		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -1935,7 +1933,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void addBusinessFilterToEobjectflatcomboviewerRequiredProperty(ViewerFilter filter) {
 		eobjectflatcomboviewerRequiredProperty.addBusinessRuleFilter(filter);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2009,7 +2006,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2062,7 +2058,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public boolean isContainedInReferencestableRequiredPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)referencestableRequiredProperty.getInput()).contains(element);
 	}
-
 
 
 
@@ -2119,7 +2114,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return ((ReferencesTableSettings)referencestableOptionalProperty.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2151,7 +2145,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2182,7 +2175,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2227,7 +2219,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2270,7 +2261,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -2332,7 +2322,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2391,7 +2380,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2447,7 +2435,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2500,7 +2487,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedreferencestableOptionalProperty.getInput()).contains(element);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2571,7 +2557,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerRequiredPropery(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -2645,7 +2630,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2701,7 +2685,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public boolean isContainedInAdvancedtablecompositionRequiredPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedtablecompositionRequiredProperty.getInput()).contains(element);
 	}
-
 
 
 
@@ -2761,7 +2744,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return ((ReferencesTableSettings)advancedtablecompositionOptionalProperty.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2788,7 +2770,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
-
+	// Start of user code for CustomElementEditor specific getters and setters implementation
+	
+	// End of user code
 	/**
 	 * {@inheritDoc}
 	 *

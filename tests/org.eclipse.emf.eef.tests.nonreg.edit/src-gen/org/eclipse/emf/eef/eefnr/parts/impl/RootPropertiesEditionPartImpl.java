@@ -41,7 +41,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 
-
 // End of user code
 
 /**
@@ -50,9 +49,9 @@ import org.eclipse.swt.widgets.Group;
  */
 public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, RootPropertiesEditionPart {
 
-protected ReferencesTable samples;
-protected List<ViewerFilter> samplesBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable samples;
+	protected List<ViewerFilter> samplesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -174,8 +173,6 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -184,8 +181,8 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -245,7 +242,6 @@ protected List<ViewerFilter> samplesFilters = new ArrayList<ViewerFilter>();
 	public boolean isContainedInSamplesTable(EObject element) {
 		return ((ReferencesTableSettings)samples.getInput()).contains(element);
 	}
-
 
 
 

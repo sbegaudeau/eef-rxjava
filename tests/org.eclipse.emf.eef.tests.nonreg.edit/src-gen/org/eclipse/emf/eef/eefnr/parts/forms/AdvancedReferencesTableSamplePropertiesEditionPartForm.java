@@ -58,12 +58,12 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, AdvancedReferencesTableSamplePropertiesEditionPart {
 
-		protected ReferencesTable advancedreferencestableRequiredProperty;
-		protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable advancedreferencestableOptionalProperty;
-		protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedreferencestableRequiredProperty;
+	protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedreferencestableOptionalProperty;
+	protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -310,8 +310,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		}
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -320,8 +318,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -381,7 +379,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -434,7 +431,6 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedreferencestableOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

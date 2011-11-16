@@ -333,8 +333,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -343,8 +341,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -391,7 +389,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 		singlecompositionviewerSingleRequiredProperty.addControlListener(listener);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -435,7 +432,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	public void addSinglecompositionviewerSingleOptionalPropertyControlListener(ControlListener listener) {
 		singlecompositionviewerSingleOptionalProperty.addControlListener(listener);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -481,7 +477,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 		singlecompositionviewerMultiRequiredProperty.addControlListener(listener);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -525,7 +520,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	public void addSinglecompositionviewerMultiOptionalPropertyControlListener(ControlListener listener) {
 		singlecompositionviewerMultiOptionalProperty.addControlListener(listener);
 	}
-
 
 
 

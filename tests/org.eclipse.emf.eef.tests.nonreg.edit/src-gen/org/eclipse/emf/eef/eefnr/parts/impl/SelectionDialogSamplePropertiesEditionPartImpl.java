@@ -50,8 +50,8 @@ import org.eclipse.ui.PlatformUI;
  */
 public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SelectionDialogSamplePropertiesEditionPart {
 
-protected SelectionDialog selectionDialogRequiredProperty;
-protected SelectionDialog selectionDialogOptionalProperty;
+	protected SelectionDialog selectionDialogRequiredProperty;
+	protected SelectionDialog selectionDialogOptionalProperty;
 
 
 
@@ -244,8 +244,6 @@ protected SelectionDialog selectionDialogOptionalProperty;
 	//End of user code
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -254,8 +252,8 @@ protected SelectionDialog selectionDialogOptionalProperty;
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -282,7 +280,6 @@ protected SelectionDialog selectionDialogOptionalProperty;
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -306,7 +303,6 @@ protected SelectionDialog selectionDialogOptionalProperty;
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

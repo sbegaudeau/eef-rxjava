@@ -54,11 +54,11 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, MultiValuedEditorSamplePropertiesEditionPart {
 
 	protected Text multivaluededitorRequiredProperty;
-		protected Button editMultivaluededitorRequiredProperty;
-		private EList multivaluededitorRequiredPropertyList;
+	protected Button editMultivaluededitorRequiredProperty;
+	private EList multivaluededitorRequiredPropertyList;
 	protected Text multivaluededitorOptionalProperty;
-		protected Button editMultivaluededitorOptionalProperty;
-		private EList multivaluededitorOptionalPropertyList;
+	protected Button editMultivaluededitorOptionalProperty;
+	private EList multivaluededitorOptionalPropertyList;
 
 
 
@@ -229,8 +229,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -239,8 +237,8 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -286,7 +284,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -329,7 +326,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

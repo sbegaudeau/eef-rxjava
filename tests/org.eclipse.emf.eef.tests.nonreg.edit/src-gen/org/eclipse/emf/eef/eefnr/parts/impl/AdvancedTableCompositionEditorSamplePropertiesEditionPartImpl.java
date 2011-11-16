@@ -42,7 +42,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 
-
 // End of user code
 
 /**
@@ -51,12 +50,12 @@ import org.eclipse.swt.widgets.Group;
  */
 public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, AdvancedTableCompositionEditorSamplePropertiesEditionPart {
 
-protected ReferencesTable advancedtablecompositionRequiredProperty;
-protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable advancedtablecompositionOptionalProperty;
-protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedtablecompositionRequiredProperty;
+	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedtablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedtablecompositionOptionalProperty;
+	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -229,8 +228,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -239,8 +236,8 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -303,7 +300,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -359,7 +355,6 @@ protected List<ViewerFilter> advancedtablecompositionOptionalPropertyFilters = n
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedtablecompositionOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

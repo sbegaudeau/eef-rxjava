@@ -64,16 +64,16 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ReferencesTableSamplePropertiesEditionPart {
 
-		protected TableViewer referencestableRequiredProperty;
-		protected Button addReferencestableRequiredProperty;
-		protected Button removeReferencestableRequiredProperty;
-		protected List<ViewerFilter> referencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> referencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-		protected TableViewer referencestableOptionalProperty;
-		protected Button addReferencestableOptionalProperty;
-		protected Button removeReferencestableOptionalProperty;
-		protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer referencestableRequiredProperty;
+	protected Button addReferencestableRequiredProperty;
+	protected Button removeReferencestableRequiredProperty;
+	protected List<ViewerFilter> referencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer referencestableOptionalProperty;
+	protected Button addReferencestableOptionalProperty;
+	protected Button removeReferencestableOptionalProperty;
+	protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -212,7 +212,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 							}
 							return ""; //$NON-NLS-1$
 						}
-						
+			
 			
 			// End of user code
 
@@ -369,7 +369,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 							}
 							return ""; //$NON-NLS-1$
 						}
-						
+			
 			
 			// End of user code
 
@@ -472,8 +472,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		referencestableOptionalProperty.refresh();
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -482,8 +480,8 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -543,7 +541,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -596,7 +593,6 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)referencestableOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

@@ -184,8 +184,6 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -194,8 +192,8 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -255,7 +253,6 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	public boolean isContainedInSamplesTable(EObject element) {
 		return ((ReferencesTableSettings)samples.getInput()).contains(element);
 	}
-
 
 
 

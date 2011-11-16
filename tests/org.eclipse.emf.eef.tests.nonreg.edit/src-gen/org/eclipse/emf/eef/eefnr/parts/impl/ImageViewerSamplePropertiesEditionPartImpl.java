@@ -96,10 +96,10 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 					return createPropertiesGroup(parent);
 				}
 				if (key == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty) {
-					return 		createImageviewerRequiredPropertyImageViewer(parent);
+					return createImageviewerRequiredPropertyImageViewer(parent);
 				}
 				if (key == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty) {
-					return 		createImageviewerOptionalPropertyImageViewer(parent);
+					return createImageviewerOptionalPropertyImageViewer(parent);
 				}
 				return parent;
 			}
@@ -174,8 +174,6 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -184,8 +182,8 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -229,7 +227,6 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -270,7 +267,6 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 			imageviewerOptionalProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
-
 
 
 

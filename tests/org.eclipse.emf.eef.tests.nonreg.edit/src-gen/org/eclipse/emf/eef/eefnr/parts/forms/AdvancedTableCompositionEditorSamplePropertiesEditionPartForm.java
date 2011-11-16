@@ -239,8 +239,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -249,8 +247,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 
@@ -313,7 +311,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -369,7 +366,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedtablecompositionOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

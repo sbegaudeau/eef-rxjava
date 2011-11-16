@@ -185,8 +185,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -195,8 +193,8 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -223,7 +221,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -247,7 +244,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 			checkboxOptionalProperty.setSelection(false);
 		}
 	}
-
 
 
 

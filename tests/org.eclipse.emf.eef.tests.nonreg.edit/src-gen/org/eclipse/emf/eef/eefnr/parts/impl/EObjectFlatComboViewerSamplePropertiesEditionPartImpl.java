@@ -40,7 +40,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
 
-
 // End of user code
 
 /**
@@ -173,8 +172,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -183,8 +180,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -257,7 +254,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerRequiredPropery.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -327,7 +323,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalPropery(ViewerFilter filter) {
 		eobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
 	}
-
 
 
 

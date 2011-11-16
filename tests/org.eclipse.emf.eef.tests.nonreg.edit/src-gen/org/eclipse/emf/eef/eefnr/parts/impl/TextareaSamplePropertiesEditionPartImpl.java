@@ -36,7 +36,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 
-
 // End of user code
 
 /**
@@ -187,8 +186,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -197,8 +194,8 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -225,7 +222,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -249,7 +245,6 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

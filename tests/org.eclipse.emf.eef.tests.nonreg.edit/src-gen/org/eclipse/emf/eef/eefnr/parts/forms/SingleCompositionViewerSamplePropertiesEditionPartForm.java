@@ -53,10 +53,10 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class SingleCompositionViewerSamplePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, SingleCompositionViewerSamplePropertiesEditionPart {
 
-		protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleRequiredProperty;
-		protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleOptionalProperty;
-		protected SingleCompositionViewer<? extends EObject> singlecompositionviewerMultiRequiredProperty;
-		protected SingleCompositionViewer<? extends EObject> singlecompositionviewerMultiOptionalProperty;
+	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleRequiredProperty;
+	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleOptionalProperty;
+	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerMultiRequiredProperty;
+	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerMultiOptionalProperty;
 
 
 
@@ -301,8 +301,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -311,8 +309,8 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -359,7 +357,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 		singlecompositionviewerSingleRequiredProperty.addControlListener(listener);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -403,7 +400,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	public void addSinglecompositionviewerSingleOptionalPropertyControlListener(ControlListener listener) {
 		singlecompositionviewerSingleOptionalProperty.addControlListener(listener);
 	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -449,7 +445,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 		singlecompositionviewerMultiRequiredProperty.addControlListener(listener);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -493,7 +488,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	public void addSinglecompositionviewerMultiOptionalPropertyControlListener(ControlListener listener) {
 		singlecompositionviewerMultiOptionalProperty.addControlListener(listener);
 	}
-
 
 
 

@@ -186,8 +186,6 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -196,8 +194,8 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -241,7 +239,6 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -282,7 +279,6 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 			imageviewerOptionalProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
-
 
 
 

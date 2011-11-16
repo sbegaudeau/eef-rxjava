@@ -108,10 +108,10 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab) {
-					return 		createTextRequiredPropertyInSecondTabText(widgetFactory, parent);
+					return createTextRequiredPropertyInSecondTabText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab) {
-					return 		createTextOptionalPropertyInSecondTabText(widgetFactory, parent);
+					return createTextOptionalPropertyInSecondTabText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -215,8 +215,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -225,8 +223,8 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -253,7 +251,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		}
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -277,7 +274,6 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 			textOptionalPropertyInSecondTab.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 

@@ -49,7 +49,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 
-
 // End of user code
 
 /**
@@ -59,12 +58,12 @@ import org.eclipse.swt.widgets.Text;
 public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TableCompositionExtensionEditorSamplePropertiesEditionPart {
 
 	protected Text name;
-protected ReferencesTable tablecompositionRequiredProperty;
-protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
-protected ReferencesTable tablecompositionOptionalProperty;
-protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
-protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable tablecompositionRequiredProperty;
+	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable tablecompositionOptionalProperty;
+	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -287,8 +286,6 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -297,8 +294,8 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -324,7 +321,6 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
-
 
 
 
@@ -386,7 +382,6 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -442,7 +437,6 @@ protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new Array
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)tablecompositionOptionalProperty.getInput()).contains(element);
 	}
-
 
 
 

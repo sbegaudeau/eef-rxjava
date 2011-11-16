@@ -192,8 +192,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -202,8 +200,8 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
-// End of user code
+		
+		// End of user code
 	}
 
 	/**
@@ -237,7 +235,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -268,7 +265,6 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
-
 
 
 
