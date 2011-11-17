@@ -58,13 +58,13 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.toolkits.parts.forms.ToolkitPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.toolkits.providers.ToolkitPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.toolkits.providers.ToolkitPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.toolkits.section.Toolkit"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.toolkits.providers.WidgetPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.toolkits.providers.WidgetPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.toolkits.section.Widget"
                tab="Base">
          </propertySection>
