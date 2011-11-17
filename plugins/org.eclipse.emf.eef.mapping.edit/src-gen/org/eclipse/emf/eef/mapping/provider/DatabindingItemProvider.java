@@ -26,7 +26,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.mapping.Databinding;
 import org.eclipse.emf.eef.mapping.MappingFactory;
 import org.eclipse.emf.eef.mapping.MappingPackage;
-import org.eclipse.emf.eef.views.provider.DocumentedElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.mapping.Databinding} object.

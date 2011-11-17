@@ -29,7 +29,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -51,10 +51,11 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -62,20 +63,10 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
-               class="org.eclipse.emf.eef.mapping.navigation.parts.forms.ModelNavigationPropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.navigation.section.ModelNavigation"
-               tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.mapping.navigation.ModelNavigation">
-             </input>
-         </propertySection>
-         <propertySection
                class="org.eclipse.emf.eef.mapping.navigation.parts.forms.SimpleModelNavigationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.SimpleModelNavigation"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

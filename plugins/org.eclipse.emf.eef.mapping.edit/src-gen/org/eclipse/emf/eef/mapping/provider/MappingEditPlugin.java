@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.runtime.impl.validation.EEFValidator;
-import org.eclipse.emf.eef.views.provider.ViewsEditPlugin;
 
 /**
  * This is the central singleton for the Mapping edit plugin.
@@ -47,7 +46,7 @@ public final class MappingEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public MappingEditPlugin() {
-		super(new ResourceLocator[] {ViewsEditPlugin.INSTANCE,});
+		super(new ResourceLocator[] {MappingEditPlugin.INSTANCE,});
 	}
 
 	/**
