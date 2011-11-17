@@ -62,7 +62,7 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (refinement == PropertiesEditionElementBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (refinement == PropertiesEditionElementBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PropertiesEditionElement) && ((PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == PropertiesEditionElementBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof PropertiesEditionElement) && ((PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == PropertiesEditionElementBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**

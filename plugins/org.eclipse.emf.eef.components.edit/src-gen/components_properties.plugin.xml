@@ -59,49 +59,49 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionContextPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionComponentPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionElementPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesMultiEditionElementPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Documentation">
          </propertySection>
