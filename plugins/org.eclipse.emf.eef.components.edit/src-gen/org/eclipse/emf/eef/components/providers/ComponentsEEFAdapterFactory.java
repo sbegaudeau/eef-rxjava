@@ -16,11 +16,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.eef.components.util.ComponentsAdapterFactory;
+import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
 import org.eclipse.emf.eef.mapping.providers.EMFElementBindingPropertiesEditionProvider;
 import org.eclipse.emf.eef.mapping.providers.EMFMultiPropertiesBindingPropertiesEditionProvider;
 import org.eclipse.emf.eef.mapping.providers.EMFPropertyBindingPropertiesEditionProvider;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.views.providers.DocumentedElementPropertiesEditionProvider;
 
 
 /**

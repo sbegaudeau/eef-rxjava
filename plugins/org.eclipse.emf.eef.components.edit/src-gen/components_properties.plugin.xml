@@ -17,7 +17,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -39,34 +39,18 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="Documentation"
                label="Documentation"
                category="extended"
-               id="Documentation"
                afterTab="Base">
          </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -75,67 +59,51 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionContextPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionContext">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionContext"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionContext">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionComponentPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionComponent">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionComponent"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionComponent">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesEditionElementPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionElement">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesEditionElement"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesEditionElement">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.components.parts.forms.PropertiesMultiEditionElementPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesMultiEditionElement">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.components.section.PropertiesMultiEditionElement"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.components.PropertiesMultiEditionElement">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

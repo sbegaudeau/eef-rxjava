@@ -13,15 +13,17 @@ package org.eclipse.emf.eef.components.providers;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.components.components.PropertiesEditionElementBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesEditionElementPropertiesEditionComponent;
+import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
+import org.eclipse.jface.viewers.IFilter;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
@@ -60,7 +62,7 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (refinement == PropertiesEditionElementBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof PropertiesEditionElement) && (refinement == PropertiesEditionElementBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -80,7 +82,7 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PropertiesEditionElement) && ((PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == PropertiesEditionElementBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof PropertiesEditionElement) && ((PropertiesEditionElementBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == PropertiesEditionElementBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -125,6 +127,22 @@ public class PropertiesEditionElementPropertiesEditionProvider extends Propertie
 				return new DocumentedElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+	}
+
+	/**
+	 * Provides the filter used by the plugin.xml to assign part forms.
+	 */
+	public static class EditionFilter implements IFilter {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+		 */
+		public boolean select(Object toTest) {
+			return toTest instanceof EObject && ComponentsPackage.eINSTANCE.getPropertiesEditionElement() == ((EObject)toTest).eClass();
+		}
+		
 	}
 
 }

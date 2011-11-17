@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
+import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 // End of user code
 
@@ -111,7 +111,7 @@ public class PropertiesEditionContextPropertiesEditionComponent extends Composed
 		if (key == ComponentsViewsRepository.PropertiesEditionContext.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == ViewsViewsRepository.Documentation.class) {
+		if (key == MappingViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}
