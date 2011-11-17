@@ -52,25 +52,25 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.GenEditionContextPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.EEFGen.providers.GenEditionContextPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.EEFGen.providers.GenEditionContextPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelReferencePropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.EEFGen.providers.EEFGenModelReferencePropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.EEFGen.providers.EEFGenModelReferencePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.EEFGen.providers.EEFGenModelPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.EEFGen.providers.EEFGenModelPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.GenViewsRepositoryPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.EEFGen.providers.GenViewsRepositoryPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.EEFGen.providers.GenViewsRepositoryPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository"
                tab="Base">
          </propertySection>
