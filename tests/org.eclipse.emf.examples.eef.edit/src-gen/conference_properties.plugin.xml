@@ -17,7 +17,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -39,34 +39,39 @@
       <propertyTabs
             contributorId="org.eclipse.emf.samples.conference.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="Localisation"
                label="Localisation"
                category="extended"
-               id="Localisation"
                afterTab="Base">
          </propertyTab>
+
          <propertyTab
+               id="Participants"
                label="Participants"
                category="extended"
-               id="Participants"
-               afterTab="Participants">
+               afterTab="Localisation">
          </propertyTab>
+
          <propertyTab
+               id="Talks and Topics"
                label="Talks and Topics"
                category="extended"
-               id="Talks and Topics"
-               afterTab="Talks and Topics">
+               afterTab="Participants">
          </propertyTab>
+
          <propertyTab
+               id="Presence"
                label="Presence"
                category="extended"
-               id="Presence"
                afterTab="Base">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -75,83 +80,63 @@
             contributorId="org.eclipse.emf.samples.conference.properties">
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.ConferencePropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.samples.conference.Conference">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.LocalisationPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Localisation">
-             <input
-                    type="org.eclipse.emf.samples.conference.Conference">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.ParticipantsPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Participants">
-             <input
-                    type="org.eclipse.emf.samples.conference.Conference">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.TalksAndTopicsPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Conference"
                tab="Talks and Topics">
-             <input
-                    type="org.eclipse.emf.samples.conference.Conference">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.PersonPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.PersonPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Person"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.samples.conference.Person">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.PresencePropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.PersonPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Person"
                tab="Presence">
-             <input
-                    type="org.eclipse.emf.samples.conference.Person">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.TalkPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.TalkPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Talk"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.samples.conference.Talk">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.TopicPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.TopicPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Topic"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.samples.conference.Topic">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.SitePropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.SitePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Site"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.samples.conference.Site">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.RoomPropertiesEditionPartForm"
+               filter="org.eclipse.emf.samples.conference.providers.RoomPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.samples.conference.section.Room"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.samples.conference.Room">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

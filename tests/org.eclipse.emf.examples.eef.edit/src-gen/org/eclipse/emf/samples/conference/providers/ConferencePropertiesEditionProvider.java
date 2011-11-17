@@ -12,6 +12,7 @@ package org.eclipse.emf.samples.conference.providers;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
@@ -23,6 +24,7 @@ import org.eclipse.emf.samples.conference.components.ConferenceLocalisationPrope
 import org.eclipse.emf.samples.conference.components.ConferenceParticipantsPropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.ConferencePropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.ConferenceTalksAndTopicsPropertiesEditionComponent;
+import org.eclipse.jface.viewers.IFilter;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -136,6 +138,22 @@ public class ConferencePropertiesEditionProvider extends PropertiesEditingProvid
 				return new ConferenceTalksAndTopicsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+	}
+
+	/**
+	 * Provides the filter used by the plugin.xml to assign part forms.
+	 */
+	public static class EditionFilter implements IFilter {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+		 */
+		public boolean select(Object toTest) {
+			return toTest instanceof EObject && ConferencePackage.eINSTANCE.getConference() == ((EObject)toTest).eClass();
+		}
+		
 	}
 
 }
