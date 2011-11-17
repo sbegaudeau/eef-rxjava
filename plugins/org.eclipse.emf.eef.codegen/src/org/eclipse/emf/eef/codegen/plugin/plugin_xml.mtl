@@ -14,6 +14,7 @@
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::pluginservice /]
 
 [template public plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
 	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
@@ -38,7 +39,7 @@
    </extension>
 [/for]
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -59,15 +60,8 @@
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
             contributorId="[editionContext.contributorID(basePackage).trim()/]">
-         <propertyTab
-               label="Base"
-               category="default"
-               id="Base">
-         </propertyTab>
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent))]
-[for (view : View | pec.involvedViews()->asOrderedSet())][if (view.viewKey(pec) <> 'Base')]
-[editionContext.propertyTab(basePackage, view, pec)/]
-[/if][/for]
+[for (entry : Sequence(OclAny) | editionContext.getPluginTabs())]
+[editionContext.propertyTab(basePackage, entry -> at(1).oclAsType(View), entry -> at(2).oclAsType(PropertiesEditionComponent))/]
 [/for]
       </propertyTabs>
    </extension>
@@ -81,15 +75,13 @@
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
             contributorId="[editionContext.contributorID(basePackage).trim()/]">
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent)) ? (pec.explicit)]
-[for (view : View | pec.involvedViews()->asOrderedSet())]
+[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.explicit and pec.model.oclIsTypeOf(EClass) and not pec.model.oclAsType(EClass).abstract)]
+[for (view : View | pec.involvedViews())]
          <propertySection
                class="[view.pepFormQualifiedClass()/]"
+               filter="[pec.pecProviderQualifiedClass()/]$EditionFilter"
                id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
-               tab="[view.viewKey(pec).toASCII()/]">
-             <input
-                    type="[pec.model.qualifiedName()/]">
-             </input>
+               tab="[view.genTabId(pec)/]">
          </propertySection>
 [/for]
 [/for]
@@ -99,20 +91,24 @@
 
 [template public propertyTab(editionContext : PropertiesEditionContext, basePackage : String, view : View, pec : PropertiesEditionComponent)]
          <propertyTab
+               id="[view.genTabId(pec)/]"
                label="[view.viewKey(pec)/]"
+[if (pec.involvedViews()->indexOf(view) > 1)]
                category="extended"
-               id="[view.viewKey(pec).toASCII()/]"
-[if (pec.involvedViews()->indexOf(view) = 2)]
-               afterTab="Base">
-[else]
-               afterTab="[pec.previousView(view).name.toASCII()/]">
-[/if]
+               afterTab="[pec.previousView(view).genTabId(pec)/]">
          </propertyTab>
+[else]
+               category="default">
+         </propertyTab>
+[/if]
 [/template]
 
 [template public labelProvider(editionContext : PropertiesEditionContext)]
 org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
 [/template]
 
+[query public genTabId (view : View, pec : PropertiesEditionComponent) : String = 
+view.viewKey(pec).toASCII()/]
+
 [query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
-	pec.involvedViews()->at(pec.involvedViews()->indexOf(view))/]
+	pec.involvedViews()->at(pec.involvedViews()->asOrderedSet()->indexOf(view) -1 ).oclAsType(View)/]

@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module PropertiesEditionProvider('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
+[module PropertiesEditionProvider('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
@@ -29,7 +29,7 @@ import [pec.model.qualifiedName()/];
 import [pec.pecRootProviderQualifiedClass()/];
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.jface.viewers.IFilter;
 
 [if (pec.needComposedEditionComponent())]
 import [pec.model.completePackage()/].components.[pec.pecClass()/];
@@ -157,6 +157,22 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 [/for]
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+	}
+
+	/**
+	 * Provides the filter used by the plugin.xml to assign part forms.
+	 */
+	public static class EditionFilter implements IFilter {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+		 */
+		public boolean select(Object toTest) {
+			return toTest instanceof EObject && [pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == ((EObject)toTest).eClass();
+		}
+		
 	}
 
 }

@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.codegen.services;
 
 import java.text.Normalizer;
-import java.util.regex.Pattern;
 
 /**
  * This class is used to manipulate strings.
