@@ -17,7 +17,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -39,10 +39,11 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -51,35 +52,27 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.GenEditionContextPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.EEFGen.providers.GenEditionContextPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.GenEditionContext"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.EEFGen.GenEditionContext">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelReferencePropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.EEFGen.providers.EEFGenModelReferencePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.EEFGenModelReference"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.EEFGen.EEFGenModelReference">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.EEFGen.providers.EEFGenModelPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.EEFGenModel"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.EEFGen.EEFGenModel">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.EEFGen.parts.forms.GenViewsRepositoryPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.EEFGen.providers.GenViewsRepositoryPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.EEFGen.section.GenViewsRepository"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.EEFGen.GenViewsRepository">
-             </input>
          </propertySection>
       </propertySections>
    </extension>
