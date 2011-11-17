@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.views.View;
 
 /**
  * @author <a href="mailto:william.piers@obeo.fr">William Piers</a>
+ * @since 1.1
  */
 public class PluginService {
 
