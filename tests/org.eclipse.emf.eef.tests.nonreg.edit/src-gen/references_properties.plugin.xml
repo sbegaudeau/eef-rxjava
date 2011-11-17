@@ -53,7 +53,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -75,22 +75,18 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.references.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="AbstractSample"
                label="AbstractSample"
                category="extended"
-               id="AbstractSample"
                afterTab="Base">
          </propertyTab>
-         <propertyTab
-               label="AbstractSample"
-               category="extended"
-               id="AbstractSample"
-               afterTab="Base">
-         </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -99,43 +95,15 @@
             contributorId="org.eclipse.emf.eef.references.properties">
          <propertySection
                class="org.eclipse.emf.eef.eefnr.references.parts.forms.ReferenceEnabledSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.references.providers.ReferenceEnabledSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.references.providers.ReferenceEnabledSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.references.section.ReferenceEnabledSample"
                tab="AbstractSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.eefnr.section.AbstractSample"
-               tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.AbstractSample">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractEnabledSamplePropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.references.section.AbstractEnabledSample"
-               tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.references.section.AbstractEnabledSample"
-               tab="AbstractSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

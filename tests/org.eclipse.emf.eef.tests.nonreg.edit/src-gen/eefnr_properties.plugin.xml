@@ -53,7 +53,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -75,22 +75,24 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.eefnr.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
          <propertyTab
-               label="TextSampleFirstTab"
-               category="extended"
                id="TextSampleFirstTab"
-               afterTab="TextSampleFirstTab">
+               label="TextSampleFirstTab"
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="TextSampleSecondTab"
                label="TextSampleSecondTab"
                category="extended"
-               id="TextSampleSecondTab"
-               afterTab="Base">
+               afterTab="TextSampleFirstTab">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -99,179 +101,135 @@
             contributorId="org.eclipse.emf.eef.eefnr.properties">
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.RootPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.RootPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.Root"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.Root">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TotalSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TotalSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TotalSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TotalSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TextSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TextSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TextSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TextSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.CheckboxSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.CheckboxSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.CheckboxSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.CheckboxSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TextareaSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TextareaSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TextareaSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TextareaSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.RadioSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.RadioSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.RadioSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.EObjectFlatComboViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.EObjectFlatComboViewerSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.EObjectFlatComboViewerSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.ReferencesTableSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.ReferencesTableSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.ReferencesTableSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.EMFComboViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.EMFComboViewerSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.EMFComboViewerSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.EMFComboViewerSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.MultiValuedEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.MultiValuedEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.MultiValuedEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.MultiValuedEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TableCompositionEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TableCompositionEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TableCompositionEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedReferencesTableSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.AdvancedReferencesTableSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedReferencesTableSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.AdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedEObjectFlatComboViewerSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedTableCompositionEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.AdvancedTableCompositionEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedTableCompositionEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.FlatReferenceTableSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.FlatReferenceTableSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.FlatReferencesTableSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.FlatReferencesTableSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.SamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.SamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.Sample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.Sample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TextSampleFirstTabPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TextSampleWithTwoTabsPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
                tab="TextSampleFirstTab">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TextSampleSecondTabPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TextSampleWithTwoTabsPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TextSampleWithTwoTabs"
                tab="TextSampleSecondTab">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.TableCompositionExtensionEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.TableCompositionExtensionEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.TableCompositionExtensionEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.ImageViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.ImageViewerSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.ImageViewerSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.ImageViewerSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.SelectionDialogSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.SelectionDialogSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.SelectionDialogSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.SelectionDialogSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.SingleCompositionViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.SingleCompositionViewerSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.SingleCompositionViewerSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

@@ -53,7 +53,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -75,28 +75,32 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.eefnrext.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="AbstractSample"
                label="AbstractSample"
                category="extended"
-               id="AbstractSample"
                afterTab="Base">
          </propertyTab>
+
          <propertyTab
+               id="SecondFlatReferenceExtendedEditorSample"
                label="SecondFlatReferenceExtendedEditorSample"
                category="extended"
-               id="SecondFlatReferenceExtendedEditorSample"
                afterTab="Base">
          </propertyTab>
+
          <propertyTab
+               id="CheckBoxExtendedEditorSample"
                label="CheckBoxExtendedEditorSample"
                category="extended"
-               id="CheckBoxExtendedEditorSample"
-               afterTab="CheckBoxExtendedEditorSample">
+               afterTab="SecondFlatReferenceExtendedEditorSample">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -105,51 +109,39 @@
             contributorId="org.eclipse.emf.eef.eefnrext.properties">
          <propertySection
                class="org.eclipse.emf.eef.eefnrext.parts.forms.TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnrext.providers.TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnrext.section.TableCompositionTargetExtensionEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnrext.parts.forms.CheckBoxExtendedEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnrext.providers.CheckBoxExtendedEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnrext.section.CheckBoxExtendedEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnrext.providers.CheckBoxExtendedEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnrext.section.CheckBoxExtendedEditorSample"
                tab="AbstractSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnrext.CheckBoxExtendedEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnrext.parts.forms.FlatReferenceExtendedEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnrext.providers.FlatReferenceExtendedEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnrext.section.FlatReferenceExtendedEditorSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnrext.parts.forms.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnrext.providers.FlatReferenceExtendedEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnrext.section.FlatReferenceExtendedEditorSample"
                tab="SecondFlatReferenceExtendedEditorSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnrext.parts.forms.CheckBoxExtendedEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnrext.providers.FlatReferenceExtendedEditorSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnrext.section.FlatReferenceExtendedEditorSample"
                tab="CheckBoxExtendedEditorSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

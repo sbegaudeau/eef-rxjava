@@ -53,7 +53,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -75,40 +75,44 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.navigation.properties">
          <propertyTab
-               label="Base"
-               category="default"
-               id="Base">
-         </propertyTab>
-         <propertyTab
-               label="DeferedFlatReferencesTableSample"
-               category="extended"
                id="DeferedFlatReferencesTableSample"
-               afterTab="DeferedFlatReferencesTableSample">
+               label="DeferedFlatReferencesTableSample"
+               category="default">
          </propertyTab>
+
          <propertyTab
-               label="DeferedReferencesTableSample"
-               category="extended"
                id="DeferedReferencesTableSample"
-               afterTab="DeferedReferencesTableSample">
+               label="DeferedReferencesTableSample"
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="Base"
+               label="Base"
+               category="default">
+         </propertyTab>
+
+         <propertyTab
+               id="Owner"
                label="Owner"
                category="extended"
-               id="Owner"
                afterTab="Base">
          </propertyTab>
+
          <propertyTab
+               id="Subtype"
                label="Subtype"
                category="extended"
-               id="Subtype"
                afterTab="Base">
          </propertyTab>
+
          <propertyTab
+               id="NamedElement"
                label="NamedElement"
                category="extended"
-               id="NamedElement"
                afterTab="Base">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -117,91 +121,63 @@
             contributorId="org.eclipse.emf.eef.navigation.properties">
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedFlatReferencesTableSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.DeferedFlatReferenceTableEditorSample"
                tab="DeferedFlatReferencesTableSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedReferencesTableSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.DeferedReferencesTableSampleEditorPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.DeferedReferenceTableEditorSample"
                tab="DeferedReferencesTableSample">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.OwnerPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.Owner"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.Owner">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.SubtypePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.Subtype"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.SubtypePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.Subtype"
                tab="Owner">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.Subtype">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.AnotherSubtypePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.AnotherSubtypePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.AnotherSubType">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.AnotherSubtypePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.AnotherSubType"
                tab="Subtype">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.AnotherSubType">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm"
-               id="org.eclipse.emf.eef.eefnr.section.NamedElement"
-               tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.NamedElement">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.ElementPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.ElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.Element"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.Element">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.ElementPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.Element"
                tab="NamedElement">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.Element">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.AttributeNavigationSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.AttributeNavigationSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.AttributeNavigationSample"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.eefnr.navigation.AttributeNavigationSample">
-             </input>
          </propertySection>
       </propertySections>
    </extension>
