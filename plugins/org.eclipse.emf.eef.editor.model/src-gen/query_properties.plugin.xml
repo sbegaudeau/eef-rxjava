@@ -23,7 +23,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -45,10 +45,11 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -57,19 +58,15 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.extended.query.parts.forms.OCLQueryPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.query.providers.OCLQueryPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.query.section.OCLQuery"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.query.OCLQuery">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.extended.query.parts.forms.ExplicitPathQueryPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.query.providers.ExplicitPathQueryPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.query.section.ExplicitPathQuery"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.query.ExplicitPathQuery">
-             </input>
          </propertySection>
       </propertySections>
    </extension>

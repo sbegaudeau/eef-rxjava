@@ -63,24 +63,12 @@
             class="org.eclipse.emf.eef.extended.query.QueryPackage"
             genModel="model/extended.genmodel"/>
    </extension>
-  <!-- EEF extensions -->
+ <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.eclipse.org/emf/eef/extended/editor/1.0.0"
             class="org.eclipse.emf.eef.extended.editor.providers.EditorEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
-   </extension>
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <factory
-            uri="http://www.eclipse.org/emf/eef/extended/query/1.0.0"
-            class="org.eclipse.emf.eef.extended.query.providers.QueryEEFAdapterFactory"
-            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
-   </extension>
-   <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
-      <PropertiesEditionPartProvider
-            providerClass="org.eclipse.emf.eef.extended.editor.providers.EditorPropertiesEditionPartProvider">
-      </PropertiesEditionPartProvider>
    </extension>
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
@@ -88,12 +76,19 @@
             providerClass="org.eclipse.emf.eef.extended.query.providers.QueryPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.extended.editor.providers.EditorPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.properties">
+            contributorId="org.eclipse.emf.eef.properties"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
          </propertyCategory>
@@ -110,58 +105,18 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
          <propertyTab
+               id="Documentation"
                label="Documentation"
                category="extended"
-               id="Documentation"
                afterTab="Base">
          </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
-         <propertyTab
-               label="Documentation"
-               category="extended"
-               id="Documentation"
-               afterTab="Base">
-         </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -169,149 +124,143 @@
       <propertySections
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.StandardFormPagePropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.StandardFormPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.StandardFormPage"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.StandardFormPage">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.StandardFormPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.StandardFormPage"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.StandardFormPage">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.EEFMasterPagePropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFMasterPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFMasterPage"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.EEFMasterPage">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFMasterPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFMasterPage"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.EEFMasterPage">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.TreeMasterPagePropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.TreeMasterPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.TreeMasterPage"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.TreeMasterPage">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.TreeMasterPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.TreeMasterPage"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.TreeMasterPage">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.PartFilterPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.PartFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.PartFilter"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.PartFilter">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.PartFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.PartFilter"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.PartFilter">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.EEFEditorContributionsPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFEditorContributionsPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorContributions"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.EEFEditorContributions">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFEditorContributionsPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorContributions"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.EEFEditorContributions">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.EEFEditorPagesPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFEditorPagesPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorPages"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.EEFEditorPages">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFEditorPagesPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorPages"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.EEFEditorPages">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.StaticEEFEditorContributionPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.StaticEEFEditorContributionPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.StaticEEFEditorContribution"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.StaticEEFEditorContributionPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.StaticEEFEditorContribution"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.extended.editor.parts.forms.DynamicEEFEditorContributionPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.DynamicEEFEditorContributionPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.DynamicEEFEditorContribution"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution">
-             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
+               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.editor.providers.DynamicEEFEditorContributionPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.DynamicEEFEditorContribution"
                tab="Documentation">
-             <input
-                    type="org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.extended.query.section.OCLQuery"
-               tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.query.OCLQuery">
-             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection"
-               id="org.eclipse.emf.eef.extended.query.section.ExplicitPathQuery"
-               tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.extended.query.ExplicitPathQuery">
-             </input>
          </propertySection>
       </propertySections>
    </extension>
-</plugin>
+
+  <!-- EEF extensions -->
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/emf/eef/extended/query/1.0.0"
+            class="org.eclipse.emf.eef.extended.query.providers.QueryEEFAdapterFactory"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.extended.query.providers.QueryPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="org.eclipse.emf.eef.extended.editor.providers.EditorPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+
+  <!-- Tabbed properties views extension -->
+ 
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eef.properties">
+         <propertySection
+               class="org.eclipse.emf.eef.extended.query.parts.forms.OCLQueryPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.query.providers.OCLQueryPropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.extended.query.section.OCLQuery"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.extended.query.parts.forms.ExplicitPathQueryPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.extended.query.providers.ExplicitPathQueryPropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.extended.query.section.ExplicitPathQuery"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+ </plugin>
+ 
