@@ -58,13 +58,13 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.extended.query.parts.forms.OCLQueryPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.extended.query.providers.OCLQueryPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.extended.query.providers.OCLQueryPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.query.section.OCLQuery"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.extended.query.parts.forms.ExplicitPathQueryPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.extended.query.providers.ExplicitPathQueryPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.extended.query.providers.ExplicitPathQueryPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.query.section.ExplicitPathQuery"
                tab="Base">
          </propertySection>

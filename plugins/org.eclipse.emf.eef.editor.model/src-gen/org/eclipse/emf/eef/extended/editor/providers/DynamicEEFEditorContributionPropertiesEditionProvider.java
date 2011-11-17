@@ -54,7 +54,7 @@ public class DynamicEEFEditorContributionPropertiesEditionProvider extends Prope
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof DynamicEEFEditorContribution) && (DynamicEEFEditorContributionBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof DynamicEEFEditorContribution) && (DynamicEEFEditorContributionBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class DynamicEEFEditorContributionPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DynamicEEFEditorContribution) && (refinement == DynamicEEFEditorContributionBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof DynamicEEFEditorContribution) && (refinement == DynamicEEFEditorContributionBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class DynamicEEFEditorContributionPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DynamicEEFEditorContribution) && ((DynamicEEFEditorContributionBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == DynamicEEFEditorContributionBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof DynamicEEFEditorContribution) && ((DynamicEEFEditorContributionBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == DynamicEEFEditorContributionBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**
