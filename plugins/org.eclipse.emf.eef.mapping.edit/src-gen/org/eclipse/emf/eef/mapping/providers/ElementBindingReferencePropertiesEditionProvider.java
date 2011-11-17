@@ -62,7 +62,7 @@ public class ElementBindingReferencePropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ElementBindingReference) && (ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof ElementBindingReference) && (ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class ElementBindingReferencePropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ElementBindingReference) && (refinement == ElementBindingReferenceBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof ElementBindingReference) && (refinement == ElementBindingReferenceBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ElementBindingReferencePropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ElementBindingReference) && ((ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ElementBindingReferenceBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof ElementBindingReference) && ((ElementBindingReferenceBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ElementBindingReferenceBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**

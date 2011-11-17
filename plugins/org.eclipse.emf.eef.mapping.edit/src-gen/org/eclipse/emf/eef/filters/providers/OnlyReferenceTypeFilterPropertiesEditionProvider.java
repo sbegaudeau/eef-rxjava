@@ -63,7 +63,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider extends Properties
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && (OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && (refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && (refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && ((OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof OnlyReferenceTypeFilter) && ((OnlyReferenceTypeFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == OnlyReferenceTypeFilterBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
 
 	/**

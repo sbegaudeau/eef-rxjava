@@ -63,7 +63,7 @@ public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEdi
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof JavaExpressionFilter) && (JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+		return (editingContext.getEObject() instanceof JavaExpressionFilter) && (JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEdi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof JavaExpressionFilter) && (refinement == JavaExpressionFilterBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof JavaExpressionFilter) && (refinement == JavaExpressionFilterBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class JavaExpressionFilterPropertiesEditionProvider extends PropertiesEdi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof JavaExpressionFilter) && ((JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == JavaExpressionFilterBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof JavaExpressionFilter) && ((JavaExpressionFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == JavaExpressionFilterBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
 
 	/**

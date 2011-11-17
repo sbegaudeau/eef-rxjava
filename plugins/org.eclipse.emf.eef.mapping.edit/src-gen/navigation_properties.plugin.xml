@@ -64,7 +64,7 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.mapping.navigation.parts.forms.SimpleModelNavigationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.SimpleModelNavigation"
                tab="Base">
          </propertySection>

@@ -84,91 +84,91 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.mapping.filters.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.OnlyReferenceTypeFilter"
                tab="Filter properties">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.filters.parts.forms.OCLFilterPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.OCLFilter"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.OCLFilter"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.OCLFilter"
                tab="Filter properties">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.filters.parts.forms.JavaExpressionFilterPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.JavaExpressionFilter"
                tab="Filter properties">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.filters.parts.forms.JavaDeclarationFilterPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter"
                tab="Base">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.JavaDeclarationFilter"
                tab="Filter properties">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.filters.parts.forms.StrictTypingFilterPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
                tab="StrictTypingFilter">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
                tab="Documentation">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.mapping.parts.forms.FilterPropertiesPropertiesEditionPartForm"
-			   filter="org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider$EditionFilter"
+               filter="org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.filters.section.StrictTypingFilter"
                tab="Filter properties">
          </propertySection>

@@ -62,7 +62,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) && (EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) && (EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) && (refinement == EMFMultiPropertiesBindingBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) && (refinement == EMFMultiPropertiesBindingBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) && ((EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == EMFMultiPropertiesBindingBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) && ((EMFMultiPropertiesBindingBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == EMFMultiPropertiesBindingBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class));
 	}
 
 	/**

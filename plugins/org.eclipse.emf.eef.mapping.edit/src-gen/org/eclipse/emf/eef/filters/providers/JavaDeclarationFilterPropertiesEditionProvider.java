@@ -63,7 +63,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider extends PropertiesEd
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof JavaDeclarationFilter) && (JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || 		DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
+		return (editingContext.getEObject() instanceof JavaDeclarationFilter) && (JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(part) || DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part));
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider extends PropertiesEd
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof JavaDeclarationFilter) && (refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class || 		refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof JavaDeclarationFilter) && (refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class || refinement == DocumentedElementPropertiesEditionComponent.class || refinement == FilterPropertiesPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider extends PropertiesEd
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof JavaDeclarationFilter) && ((JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class) || 		(DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof JavaDeclarationFilter) && ((JavaDeclarationFilterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == JavaDeclarationFilterBasePropertiesEditionComponent.class) || (DocumentedElementPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DocumentedElementPropertiesEditionComponent.class) || (FilterPropertiesPropertiesEditionComponent.FILTERPROPERTIES_PART.equals(part) && refinement == FilterPropertiesPropertiesEditionComponent.class));
 	}
 
 	/**

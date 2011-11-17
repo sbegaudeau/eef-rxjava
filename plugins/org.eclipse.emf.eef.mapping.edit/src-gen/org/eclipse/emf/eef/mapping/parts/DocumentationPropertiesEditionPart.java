@@ -11,7 +11,7 @@
  */
 package org.eclipse.emf.eef.mapping.parts;
 
-//Start of user code for imports
+// Start of user code for imports
 
 
 // End of user code
