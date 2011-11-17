@@ -23,7 +23,7 @@
       </PropertiesEditionPartProvider>
    </extension>
 
-   <!-- Tabbed properties views extension -->
+  <!-- Tabbed properties views extension -->
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
@@ -45,10 +45,11 @@
       <propertyTabs
             contributorId="org.eclipse.emf.eef.properties">
          <propertyTab
+               id="Base"
                label="Base"
-               category="default"
-               id="Base">
+               category="default">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -57,19 +58,15 @@
             contributorId="org.eclipse.emf.eef.properties">
          <propertySection
                class="org.eclipse.emf.eef.toolkits.parts.forms.ToolkitPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.toolkits.providers.ToolkitPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.toolkits.section.Toolkit"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.toolkits.Toolkit">
-             </input>
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.toolkits.parts.forms.WidgetPropertiesEditionPartForm"
+			   filter="org.eclipse.emf.eef.toolkits.providers.WidgetPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.toolkits.section.Widget"
                tab="Base">
-             <input
-                    type="org.eclipse.emf.eef.toolkits.Widget">
-             </input>
          </propertySection>
       </propertySections>
    </extension>
