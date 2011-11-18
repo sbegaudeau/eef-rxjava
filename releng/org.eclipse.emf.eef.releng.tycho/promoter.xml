@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Promoter" default="main">
 	<property name="downloads.area" value="/home/data/httpd/download.eclipse.org/modeling/emft/eef" />
-	<property name="build.root" value="/shared/jobs/emf-eef-1.0/lastSuccessful" />
+	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful" />
 	<property name="version" value="1.1.0" />
 	<property name="packages.base" value="org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
 
