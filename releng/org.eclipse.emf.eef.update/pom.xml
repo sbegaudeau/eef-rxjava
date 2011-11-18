@@ -55,6 +55,28 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>replace-unsigned-repository-by-signed-one</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<!-- create a properties file for promotion process -->
+								<tstamp/>
+								<echo file="${project.build.directory}/promote.properties"
+									message="#EEF promotion process.
+build.alias=${BUILD_ALIAS}
+build.qualifier=${env.BUILD_TYPE}${DSTAMP}${TSTAMP}"/>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -63,7 +85,8 @@
 			<id>sign</id>
 			<activation>
 				<property>
-					<name>BUILD_ALIAS</name>
+					<name>BUILD_SIGN</name>
+					<value>true</value>
 				</property>
 			</activation>
 			<build>
@@ -129,16 +152,10 @@
 								<configuration>
 									<tasks>
 										<!-- prepare zip repo and repo for archiving -->
-										<tstamp/>
 										<move file="${project.build.directory}/repository" tofile="${project.build.directory}/repository-not-signed"/>
 										<move file="${project.build.directory}/checksumFix" tofile="${project.build.directory}/repository"/>
 										<move file="${project.build.directory}/${project.artifactId}.zip" tofile="${project.build.directory}/${project.artifactId}-not-signed.zip"/>
 										<zip destfile="${project.build.directory}/${project.artifactId}.zip" basedir="${project.build.directory}/repository"/>
-										<!-- create a properties file for promotion process -->
-										<echo file="${project.build.directory}/promote.properties" message="#EEF promotion process.
-build.alias=${BUILD_ALIAS}
-build.qualifier=${env.BUILD_TYPE}${DSTAMP}${TSTAMP}"
-/>
 									</tasks>
 								</configuration>
 							</execution>
