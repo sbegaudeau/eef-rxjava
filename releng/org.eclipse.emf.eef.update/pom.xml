@@ -69,8 +69,8 @@
 								<!-- create a properties file for promotion process -->
 								<tstamp/>
 								<echo file="${project.build.directory}/promote.properties"
-									message="#EEF promotion process.
-build.alias=${BUILD_ALIAS}
+									message="#EEF promotion process.${line.separator}
+build.alias=${BUILD_ALIAS}${line.separator}
 build.qualifier=${env.BUILD_TYPE}${DSTAMP}${TSTAMP}"/>
 							</tasks>
 						</configuration>
