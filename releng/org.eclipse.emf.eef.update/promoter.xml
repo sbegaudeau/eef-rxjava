@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Promoter" default="main">
+	<property name="downloads.area" value="/home/data/httpd/download.eclipse.org/modeling/emft/eef" />
+	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful" />
+	<property name="version" value="1.1.0" />
+	<property name="packages.base" value="org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
+
+	<property name="promoter.properties.file.name" value="promote.properties" />
+	<property name="property.file.location" location="${build.root}/archive/${promoter.properties.file.name}" />
+
+	<target name="-load.properties">
+		<property file="${property.file.location}" />
+	</target>
+
+	<target name="-check.property.file.location">
+		<fail message="property.file.location property must be defined" unless="property.file.location" />
+	</target>
+
+	<target name="main" depends="-check.property.file.location,-load.properties">
+		<fail message="build.qualifier property must be defined">
+			<condition>
+				<not>
+					<and>
+						<isset property="build.qualifier" />
+						<length string="${build.qualifier}" trim="true" when="greater" length="0" />
+					</and>
+				</not>
+			</condition>
+		</fail>
+		<fail message="build.root property must be defined" unless="build.root" />
+		<fail message="packages.base property must be defined" unless="packages.base" />
+		<fail message="downloads.area property must be defined" unless="downloads.area" />
+
+		<!-- defaults -->
+
+		<property name="packages.directory" location="${build.root}/archive/${packages.base}" />
+
+		<property name="build.drop.directory" location="${downloads.area}/downloads/drops/${version}/${build.qualifier}" />
+
+		<delete dir="${build.drop.directory}" />
+		<mkdir dir="${build.drop.directory}" />
+
+		<!-- copy zip packages -->
+		<copy todir="${build.drop.directory}">
+			<fileset dir="${packages.directory}">
+				<filename name="*.zip" />
+			</fileset>
+		</copy>
+		<!-- genereate md5 checksums -->
+		<checksum algorithm="MD5" fileext=".md5" format="MD5SUM">
+			<fileset dir="${build.drop.directory}" />
+		</checksum>
+		<!-- copy buildlog 
+		<copy tofile="${build.drop.directory}/buildlog.txt" file="${saved.build.root}/log" />
+		-->
+		
+		<fileset id="drop.resources" dir="${build.drop.directory}">
+			<or>
+				<type type="dir" />
+				<type type="file" />
+			</or>
+		</fileset>
+
+		<!-- chgrp -->
+		<antcall target="-change.group.owner" inheritall="true">
+			<reference refid="drop.resources" torefid="change.group.owner.resources" />
+		</antcall>
+
+		<!-- strip the micro version and anything following it -->
+		<buckminster.substitute value="${version}" pattern="^(\d+\.\d+)\.\d+.*$" replacement="$$1" property="base.version" />
+
+		<!-- setup composite.repository.base appropriate to the build type -->
+		<condition property="composite.repository.base" value="interim/${base.version}">
+			<matches pattern="^I" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.repository.base" value="milestones/${base.version}">
+			<matches pattern="^[MS]" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.repository.base" value="releases/${base.version}">
+			<matches pattern="^R" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.repository.base" value="nightly/${base.version}">
+			<matches pattern="^N" string="${build.qualifier}" />
+		</condition>
+		<antcall target="-publish.build.repository" inheritall="true" />
+	</target>
+
+	<target name="-publish.build.repository" if="composite.repository.base">
+		<property name="composite.repository.directory" location="${downloads.area}/updates/${composite.repository.base}" />
+		<property name="composite.repository.url" value="file:/${composite.repository.directory}" />
+		<property name="build.repository.directory" location="${composite.repository.directory}/${build.qualifier}" />
+
+		<delete dir="${build.repository.directory}" />
+		<mkdir dir="${build.repository.directory}" />
+
+		<unzip dest="${build.repository.directory}">
+			<fileset dir="${packages.directory}">
+				<filename name="*.zip" />
+			</fileset>
+		</unzip>
+
+		<!-- Adding download stats to the repository -->
+		<unzip dest="${build.repository.directory}">
+			<fileset file="${build.repository.directory}/artifacts.jar" />
+		</unzip>
+
+		<move file="${build.repository.directory}/artifacts.xml" tofile="${build.repository.directory}/artifacts.original.xml" />
+
+		<xslt style="addDownloadStats.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml" />
+
+		<zip destfile="${build.repository.directory}/artifacts.jar" basedir="${build.repository.directory}" includes="artifacts.xml" />
+
+		<delete file="${build.repository.directory}/artifacts.xml" />
+		<delete file="${build.repository.directory}/artifacts.original.xml" />
+		<!-- END download stats -->
+
+		<p2.composite.repository destination="${composite.repository.url}" description="EEF Update Site">
+			<add>
+				<repository location="${build.qualifier}" />
+			</add>
+		</p2.composite.repository>
+
+		<fileset id="repository.resources" dir="${composite.repository.directory}">
+			<or>
+				<filename name="compositeContent.*" />
+				<filename name="compositeArtifacts.*" />
+				<filename name="${build.qualifier}/**" />
+			</or>
+		</fileset>
+
+		<antcall target="-change.group.owner" inheritall="true">
+			<reference refid="repository.resources" torefid="change.group.owner.resources" />
+		</antcall>
+	</target>
+
+	<target name="-change.group.owner" if="group.owner">
+		<chgrp group="${group.owner}" type="both" verbose="true">
+			<fileset refid="change.group.owner.resources" />
+		</chgrp>
+	</target>
+</project>

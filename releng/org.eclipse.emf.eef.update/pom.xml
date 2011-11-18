@@ -59,7 +59,7 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>replace-unsigned-repository-by-signed-one</id>
+						<id>prepare_promotion</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>run</goal>
@@ -68,10 +68,13 @@
 							<tasks>
 								<!-- create a properties file for promotion process -->
 								<tstamp/>
-								<echo file="${project.build.directory}/promote.properties"
+								<echo file="${project.build.directory}/promotion/promote.properties"
 									message="#EEF promotion process.${line.separator}
 build.alias=${BUILD_ALIAS}${line.separator}
 build.qualifier=${env.BUILD_TYPE}${DSTAMP}${TSTAMP}"/>
+								<!-- copy necessary scripts to archive location -->
+								<copy file="addDownloadStats.xsl" todir="${project.build.directory}/promotion"/>
+								<copy file="promoter.xml" todir="${project.build.directory}/promotion" />
 							</tasks>
 						</configuration>
 					</execution>
