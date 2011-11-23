@@ -6,7 +6,12 @@
 
 	<property name="promoter.properties.file.name" value="promote.properties" />
 	<property name="property.file.location" value="${build.root}/archive/${packages.base}/promotion/${promoter.properties.file.name}" />
-	<property name="group.owner" value="modeling.emf.eef"/>
+	<property name="group.owner" value="modeling.emf.eef" />
+
+	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
+	<property name="thirdPartyDownloadLicenseAcceptance" value="Y" />
+
+	<import file="helper.xml" />
 
 	<target name="-load.properties">
 		<property file="${property.file.location}" />
@@ -16,7 +21,7 @@
 		<fail message="property.file.location property must be defined" unless="property.file.location" />
 	</target>
 
-	<target name="main" depends="-check.property.file.location,-load.properties">
+	<target name="main" depends="init,-check.property.file.location,-load.properties">
 		<fail message="build.qualifier property must be defined">
 			<condition>
 				<not>
@@ -75,6 +80,9 @@
 		<chgrp group="${group.owner}" type="both" verbose="true">
 			<fileset refid="drop.resources" />
 		</chgrp>
+
+		<!-- determine the base version -->
+		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\0" casesensitive="false" />
 
 		<!-- setup composite.repository.base appropriate to the build type -->
 		<condition property="composite.repository.base" value="interim/${base.version}">
