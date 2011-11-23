@@ -6,7 +6,7 @@
 	<property name="packages.base" value="org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
 
 	<property name="promoter.properties.file.name" value="promote.properties" />
-	<property name="property.file.location" location="${build.root}/archive/${promoter.properties.file.name}" />
+	<property name="property.file.location" location="${build.root}/archive/${packages.base}/promotion/${promoter.properties.file.name}" />
 
 	<target name="-load.properties">
 		<property file="${property.file.location}" />
