@@ -10,8 +10,67 @@
 
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
 	<property name="thirdPartyDownloadLicenseAcceptance" value="Y" />
+	
+	<!--
+	most of the code comes from Athena CBI.
+	see http://wiki.eclipse.org/Common_Build_Infrastructure
+	-->
+	<target name="check.ant-contrib" if="antContribJarUnavailable">
+		<condition property="thirdPartyDownloadLicenseAcceptanceOK">
+			<and>
+				<isset property="thirdPartyDownloadLicenseAcceptance" />
+				<or>
+					<equals arg1="${thirdPartyDownloadLicenseAcceptance}" arg2="Y" />
+					<equals arg1="${thirdPartyDownloadLicenseAcceptance}" arg2="I accept" />
+					<equals arg1="${thirdPartyDownloadLicenseAcceptance}" arg2="&quot;I accept&quot;" />
+				</or>
+			</and>
+		</condition>
+		<antcall target="get.ant-contrib" />
+		<available file="${thirdPartyJarsDir}/ant-contrib.jar" property="antContribJarAvailable" />
+		<fail unless="antContribJarAvailable">Error! 
 
-	<import file="./helper.xml" />
+Ant-Contrib is required. Download it from http://sourceforge.net/projects/ant-contrib/files/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.zip/download,
+then place it in the following location. You can also redefine the path in the promote.properties file:
+
+$${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contrib.jar
+	or
+
+	Or, to download this automatically, see $${relengCommonBuilderDir}/build.properties#thirdPartyDownloadLicenseAcceptance.
+</fail>
+	</target>
+
+	<target name="get.ant-contrib" if="thirdPartyDownloadLicenseAcceptanceOK">
+		<get src="http://sourceforge.net/projects/ant-contrib/files/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.zip/download" dest="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip" usetimestamp="true" />
+		<mkdir dir="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_" />
+		<unzip src="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip" dest="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_" overwrite="true" />
+		<mkdir dir="${thirdPartyJarsDir}" />
+		<copy file="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_/ant-contrib/lib/ant-contrib.jar" tofile="${thirdPartyJarsDir}/ant-contrib.jar" failonerror="true" />
+		<delete dir="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_" includeemptydirs="true" quiet="true" />
+		<delete file="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip" quiet="true" />
+	</target>
+
+	<target name="init">
+
+		<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
+
+		<condition property="antContribJarUnavailable">
+			<not>
+				<available file="${thirdPartyJarsDir}/ant-contrib.jar" type="file" />
+			</not>
+		</condition>
+		<antcall target="check.ant-contrib" />
+		<!-- This will fail if ant-contrib.jar cannot be found. You can install Ant-Contrib via RPM, or download it here:
+				http://sourceforge.net/projects/ant-contrib/files/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.zip/download
+		-->
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement path="${classpath}" />
+				<pathelement location="${thirdPartyJarsDir}/ant-contrib.jar" />
+			</classpath>
+		</taskdef>
+	</target>
+
 
 	<target name="-load.properties">
 		<property file="${property.file.location}" />
