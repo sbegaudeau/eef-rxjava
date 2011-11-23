@@ -45,7 +45,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<mkdir dir="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_" />
 		<unzip src="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip" dest="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_" overwrite="true" />
 		<mkdir dir="${thirdPartyJarsDir}" />
-		<copy file="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_/ant-contrib/lib/ant-contrib.jar" tofile="${thirdPartyJarsDir}/ant-contrib.jar" failonerror="true" />
+		<copy file="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_/ant-contrib/ant-contrib-1.0b3.jar" tofile="${thirdPartyJarsDir}/ant-contrib.jar" failonerror="true" />
 		<delete dir="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip_" includeemptydirs="true" quiet="true" />
 		<delete file="${java.io.tmpdir}/ant-contrib-1.0b3-bin.zip" quiet="true" />
 	</target>
