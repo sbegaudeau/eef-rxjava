@@ -11,7 +11,7 @@
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
 	<property name="thirdPartyDownloadLicenseAcceptance" value="Y" />
 
-	<import file="helper.xml" />
+	<import file="./helper.xml" />
 
 	<target name="-load.properties">
 		<property file="${property.file.location}" />
