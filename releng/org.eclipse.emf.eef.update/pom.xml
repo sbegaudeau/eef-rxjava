@@ -67,6 +67,7 @@
 						<configuration>
 							<tasks>
 								<!-- create a properties file for promotion process -->
+								<mkdir dir="${project.build.directory}/promotion"/>
 								<tstamp/>
 								<echo file="${project.build.directory}/promotion/promote.properties"
 									message="#EEF promotion process.${line.separator}
