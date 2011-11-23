@@ -2,7 +2,6 @@
 <project name="Promoter" default="main">
 	<property name="downloads.area" value="/home/data/httpd/download.eclipse.org/modeling/emft/eef" />
 	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful" />
-	<property name="version" value="1.1.0" />
 	<property name="packages.base" value="org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
 
 	<property name="promoter.properties.file.name" value="promote.properties" />
@@ -24,6 +23,16 @@
 					<and>
 						<isset property="build.qualifier" />
 						<length string="${build.qualifier}" trim="true" when="greater" length="0" />
+					</and>
+				</not>
+			</condition>
+		</fail>
+		<fail message="version property must be defined">
+			<condition>
+				<not>
+					<and>
+						<isset property="version" />
+						<length string="${version}" trim="true" when="greater" length="0" />
 					</and>
 				</not>
 			</condition>
@@ -66,9 +75,6 @@
 		<chgrp group="${group.owner}" type="both" verbose="true">
 			<fileset refid="drop.resources" />
 		</chgrp>
-
-		<!-- strip the micro version and anything following it -->
-		<buckminster.substitute value="${version}" pattern="^(\d+\.\d+)\.\d+.*$" replacement="$$1" property="base.version" />
 
 		<!-- setup composite.repository.base appropriate to the build type -->
 		<condition property="composite.repository.base" value="interim/${base.version}">
