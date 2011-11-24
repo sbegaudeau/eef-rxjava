@@ -134,12 +134,11 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			</or>
 		</fileset>
 
-		<!-- chgrp does not work because ant-optional is not installed 
+		<!-- chgrp -->
 		<chgrp group="${group.owner}" type="both" verbose="true">
 			<fileset refid="drop.resources" />
 		</chgrp>
-		-->
-		
+
 		<!-- determine the base version -->
 		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\0" casesensitive="false" />
 
@@ -188,12 +187,16 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<delete file="${build.repository.directory}/artifacts.original.xml" />
 		<!-- END download stats -->
 
+		<!-- Add to composite repo -->
 		<p2.composite.repository destination="${composite.repository.url}" description="EEF Update Site">
 			<add>
 				<repository location="${build.qualifier}" />
 			</add>
 		</p2.composite.repository>
-
+		<ant antfile="/shared/modeling/tools/promotion/manage-composite.xml" target="add" dir="${composite.repository.directory}">
+			<property name="child.repository" value="${build.qualifier}"/>
+			<property name="composite.name" value="EEF ${base.version} "/>
+		</ant>
 		<fileset id="repository.resources" dir="${composite.repository.directory}">
 			<or>
 				<filename name="compositeContent.*" />
@@ -202,11 +205,10 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			</or>
 		</fileset>
 
-		<!-- chgrp does not work because ant-optional is not installed 
+		<!-- chgrp -->
 		<chgrp group="${group.owner}" type="both" verbose="true">
 			<fileset refid="repository.resources" />
 		</chgrp>
-		-->
 	</target>
 
 </project>
