@@ -10,7 +10,7 @@
 
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
 	<property name="thirdPartyDownloadLicenseAcceptance" value="Y" />
-	
+
 	<!--
 	most of the code comes from Athena CBI.
 	see http://wiki.eclipse.org/Common_Build_Infrastructure
@@ -65,7 +65,6 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		-->
 		<taskdef resource="net/sf/antcontrib/antlib.xml">
 			<classpath>
-				<pathelement path="${classpath}" />
 				<pathelement location="${thirdPartyJarsDir}/ant-contrib.jar" />
 			</classpath>
 		</taskdef>
@@ -135,11 +134,12 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			</or>
 		</fileset>
 
-		<!-- chgrp -->
+		<!-- chgrp does not work because ant-optional is not installed 
 		<chgrp group="${group.owner}" type="both" verbose="true">
 			<fileset refid="drop.resources" />
 		</chgrp>
-
+		-->
+		
 		<!-- determine the base version -->
 		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\0" casesensitive="false" />
 
@@ -202,9 +202,11 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			</or>
 		</fileset>
 
+		<!-- chgrp does not work because ant-optional is not installed 
 		<chgrp group="${group.owner}" type="both" verbose="true">
 			<fileset refid="repository.resources" />
 		</chgrp>
+		-->
 	</target>
 
 </project>
