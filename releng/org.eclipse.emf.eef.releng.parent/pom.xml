@@ -68,6 +68,7 @@
 		<module>${pluginspath}/org.eclipse.emf.eef.views.edit</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.views.editor</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.editor.model</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.extended.widgets.richtext</module>
 
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen.ecore</module>
@@ -85,6 +86,7 @@
  -->
 		<module>${featurespath}/org.eclipse.emf.eef.runtime-feature</module>
 		<module>${featurespath}/org.eclipse.emf.eef.extended-feature</module>
+		<module>${featurespath}/org.eclipse.emf.eef.richtext-feature</module>
 		<module>${featurespath}/org.eclipse.emf.eef.edt-feature</module>
 		<module>${featurespath}/org.eclipse.emf.eef.codegen.ecore-feature</module>
 		<module>${featurespath}/org.eclipse.emf.eef.indigo-feature</module>
