@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.11 2011/11/24 11:01:29 sbouchet Exp $
+ $Id: promoter.xml,v 1.12 2011/11/24 13:21:43 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -165,7 +165,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</chgrp>
 
 		<!-- determine the base version -->
-		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\0" casesensitive="false" />
+		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\1" casesensitive="false" />
 
 		<!-- setup composite.repository.base appropriate to the build type -->
 		<condition property="composite.repository.base" value="interim/${base.version}">
