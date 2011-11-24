@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.12 2011/11/24 13:21:43 sbouchet Exp $
+ $Id: promoter.xml,v 1.13 2011/11/24 13:43:34 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -167,7 +167,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<!-- determine the base version -->
 		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\1" casesensitive="false" />
 
-		<!-- setup composite.repository.base appropriate to the build type -->
+		<!-- setup composite.repository.base and composite.type according to the build type -->
 		<condition property="composite.repository.base" value="interim/${base.version}">
 			<matches pattern="^I" string="${build.qualifier}" />
 		</condition>
@@ -178,6 +178,18 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			<matches pattern="^R" string="${build.qualifier}" />
 		</condition>
 		<condition property="composite.repository.base" value="nightly/${base.version}">
+			<matches pattern="^N" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.type" value="Interim">
+			<matches pattern="^I" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.type" value="Milestones">
+			<matches pattern="^[MS]" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.type" value="Releases">
+			<matches pattern="^R" string="${build.qualifier}" />
+		</condition>
+		<condition property="composite.type" value="Nightly">
 			<matches pattern="^N" string="${build.qualifier}" />
 		</condition>
 		<antcall target="-publish.build.repository" inheritall="true" />
@@ -213,14 +225,9 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<!-- END download stats -->
 
 		<!-- Add to composite repo -->
-		<p2.composite.repository destination="${composite.repository.url}" description="EEF Update Site">
-			<add>
-				<repository location="${build.qualifier}" />
-			</add>
-		</p2.composite.repository>
 		<ant antfile="/shared/modeling/tools/promotion/manage-composite.xml" target="add" dir="${composite.repository.directory}">
 			<property name="child.repository" value="${build.qualifier}"/>
-			<property name="composite.name" value="EEF ${base.version} "/>
+			<property name="composite.name" value="EEF ${base.version} ${composite.type} Update Site"/>
 		</ant>
 		<fileset id="repository.resources" dir="${composite.repository.directory}">
 			<or>
