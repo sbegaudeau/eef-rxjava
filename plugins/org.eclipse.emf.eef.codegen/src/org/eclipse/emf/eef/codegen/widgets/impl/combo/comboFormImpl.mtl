@@ -15,22 +15,26 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [comment ===== Case Widget = Combo ===== /]
+
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Combo')]
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
+[pec.addImports(Sequence{
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.jface.viewers.ISelectionChangedListener',
+	'org.eclipse.jface.viewers.SelectionChangedEvent',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Combo')]
-	protected EMFComboViewer [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Combo')]
@@ -41,9 +45,9 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		[if (editor.nameAsLabel)]
-		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new EMFComboViewer(parent);
 		[if (editor.readOnly)]

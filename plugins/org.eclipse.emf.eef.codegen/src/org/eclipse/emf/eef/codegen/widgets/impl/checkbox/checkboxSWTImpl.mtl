@@ -15,9 +15,24 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
+
+[comment ===== Case Widget = Checkbox ===== /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Checkbox')]
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.swt.events.SelectionAdapter',
+	'org.eclipse.swt.events.SelectionEvent',
+	'org.eclipse.swt.layout.GridData'})/]
+[/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Checkbox')]
-	protected Button [editor.elementEditorName()/];
+	protected [include('org.eclipse.swt.widgets.Button')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Checkbox')]
@@ -28,7 +43,7 @@ return create[editor.name.toJavaClassifier()/]Checkbox(parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
 		[editor.elementEditorName()/] = new Button(parent, SWT.CHECK);
-		[editor.elementEditorName()/].setText(getDescription([editor.editorID() /], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]));
+		[editor.elementEditorName()/].setText(getDescription([editor.editorID() /], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]));
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/].setEnabled(false);
 		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);

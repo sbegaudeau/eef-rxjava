@@ -15,6 +15,7 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case DEFAULT = NEED TO BE THE LAST CHOICE ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) /]
@@ -33,7 +34,7 @@
 
 [comment ===== ViewReference support ===== /]
 [template public widgetDeclaration(reference : ViewReference)]
-	private [reference.view.oclAsType(View).pepInterface()/] [reference.view.oclAsType(View).pepInterface().toLowerFirst()/];
+	private [include(reference.view.oclAsType(View).pepQualifiedInterface())/] [reference.view.oclAsType(View).pepInterface().toLowerFirst()/];
 [/template] 
 
 [template public implementation(reference : ViewReference)]
@@ -42,7 +43,7 @@ return create[reference.view.name.toJavaClassifier()/](parent);
 
 [template public additionalImplementation(reference : ViewReference, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)][let referencedView : View = reference.view.oclAsType(View)]
 	protected Composite create[referencedView.name.toJavaClassifier()/](Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([referencedView.owningViewsRepository().vrClass()/].class);
+		[include('org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider')/] provider = [include('org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService')/].getInstance().getProvider([include(referencedView.owningViewsRepository().vrQualifiedClass())/].class);
 		[referencedView.pepInterface().toLowerFirst()/] = ([referencedView.pepInterface()/])provider.getPropertiesEditionPart([referencedView.editorID()/].class, [referencedView.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)[referencedView.pepInterface().toLowerFirst()/]).createControls(container);
 		return container;
@@ -58,7 +59,7 @@ return create[reference.view.name.toJavaClassifier()/](parent);
 
 [comment ===== SubView support ===== /]
 [template public widgetDeclaration(subView : View)]
-	private [subView.pepInterface()/] [subView.pepInterface().toLowerFirst()/];
+	private [include(subView.pepQualifiedInterface())/] [subView.pepInterface().toLowerFirst()/];
 [/template]
 
 [template public implementation(view : View)]
@@ -68,7 +69,7 @@ return create[reference.view.name.toJavaClassifier()/](parent);
 
 [template public additionalImplementation(view : View, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent)]
 	protected Composite create[view.name.toJavaClassifier()/]SubView(Composite container) {
-		IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([view.owningViewsRepository().vrClass()/].class);
+		[include('org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider')/] provider = [include('org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService')/].getInstance().getProvider([include(view.owningViewsRepository().vrQualifiedClass())/].class);
 		[view.pepInterface().toLowerFirst()/] = ([view.pepInterface()/])provider.getPropertiesEditionPart([view.editorID()/].class, [view.owningViewsRepository().vrClass()/].SWT_KIND, propertiesEditionComponent);
 		((ISWTPropertiesEditionPart)[view.pepInterface().toLowerFirst()/]).createControls(container);
 		return container;

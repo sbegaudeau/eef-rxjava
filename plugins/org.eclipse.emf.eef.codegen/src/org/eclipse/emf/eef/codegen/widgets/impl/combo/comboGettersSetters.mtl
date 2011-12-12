@@ -12,9 +12,10 @@
  /]
 [module comboGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters /]
 
-[import common/]
-[import naming/]
-[import widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::common/]
+[import org::eclipse::emf::eef::codegen::services::naming/]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('Combo'))]
 [elementEditor.initSignatureDocumentation()/]
@@ -42,7 +43,7 @@
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('Combo'))]
 [elementEditor.getterSignature()/] {
-		if ([elementEditor.elementEditorName()/].getSelection() instanceof StructuredSelection) {
+		if ([elementEditor.elementEditorName()/].getSelection() instanceof [include('org.eclipse.jface.viewers.StructuredSelection')/]) {
 			return ((StructuredSelection) [elementEditor.elementEditorName()/].getSelection()).getFirstElement();
 		}
 		return "";
@@ -97,7 +98,7 @@
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#[elementEditor.viewPackageSetter()/]ButtonMode(ButtonsModeEnum newValue)
+	 * @see [fullInterfacePath/]#[elementEditor.viewPackageSetter()/]ButtonMode([include('org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum')/] newValue)
 	 */
 [/template]
 
@@ -113,7 +114,7 @@
 [elementEditor.initSignature()/] {
 		[elementEditor.elementEditorName()/].setInput(input);
 		if (currentValue != null) {
-			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(currentValue));
+			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](currentValue));
 		}
 	}
 [/template]

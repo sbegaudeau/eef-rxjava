@@ -15,15 +15,29 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'SelectionDialog')]
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.events.KeyAdapter',
+	'org.eclipse.swt.events.KeyEvent',
+	'org.eclipse.core.resources.IFile',
+	'org.eclipse.ui.PlatformUI',
+	'org.eclipse.swt.events.FocusAdapter',
+	'org.eclipse.swt.events.FocusEvent',
+	'org.eclipse.swt.events.SelectionAdapter',
+	'org.eclipse.swt.events.SelectionEvent',
+	'org.eclipse.swt.layout.GridData',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.widgets.Shell',
+	'org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('SelectionDialog'))]
-	protected SelectionDialog [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('SelectionDialog'))]
@@ -34,9 +48,9 @@ return create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]SelectionDialog(Composite parent) {
 		[if (editor.nameAsLabel)]
-		SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		SWTUtils.createPartLabel(parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
-		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new SelectionDialog(parent, SWT.NONE);
 

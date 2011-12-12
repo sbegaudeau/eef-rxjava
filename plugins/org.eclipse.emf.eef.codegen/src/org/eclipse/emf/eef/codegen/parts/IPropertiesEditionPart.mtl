@@ -16,33 +16,41 @@
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
-
-[template private defaultImports (view : View) ]
-import java.util.List;
-import java.util.Map;
-
-[view.genImports()/]
-[for (viewReference : ViewReference | view.eAllContents(ViewReference))]
-[viewReference.view.genImports()/]
-[/for]
-[view.additionalImports()/]
-[/template]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public IPropertiesEditionPart(viewRepository : ViewsRepository)]
 [for (view : View | viewRepository.eAllContents(View))]
-[file (fullFilePath(view), false)]
+[view.ViewPropertiesEditionPart(viewRepository)/]
+[/for]
+[for (view : View | viewRepository.eAllContents(CustomView))]
+[view.CustomViewPropertiesEditionPart(viewRepository)/]
+[/for]
+[/template]
+
+[template private ViewPropertiesEditionPart(view : View, viewRepository : ViewsRepository) ]
+[initializeImportManager(view.partsPackage(), view.pepInterface())/]
+[file (view.fullFilePath(), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [view.partsPackage()/];
 
+[let content : String = view.fileContent(viewRepository)]
 [if (viewRepository.associatedGenModel().useJMergeForUserCode)]
-[view.defaultImports()/]
+[viewRepository.genSortedImports()/]
+[additionalImports(view, viewRepository)/]
 [else]
 // [protected ('for imports')]
-[view.defaultImports()/]
+[viewRepository.genSortedImports()/]
+[additionalImports(view, viewRepository)/]
 
 // [/protected]
 [/if]
 
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template public fileContent(view : View, viewRepository : ViewsRepository)]
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
  * [viewRepository.associatedGenModel().generationMark()/]
@@ -82,19 +90,32 @@ public interface [view.pepInterface()/] {
 	[/if]
 
 }
-[/file]
-[/for]
-[for (view : View | viewRepository.eAllContents(CustomView))]
-	[file (fullFilePath(view), false)]
+[/template]
+
+[template private CustomViewPropertiesEditionPart(view : View, viewRepository : ViewsRepository) ]
+[initializeImportManager(view.partsPackage(), view.pepInterface())/]
+[file (view.fullFilePath(), false)]
 [viewRepository.associatedGenModel().licenceText().trim()/]
 package [view.partsPackage()/];
 
-[if (not viewRepository.associatedGenModel().useJMergeForUserCode)]
+[let content : String = view.fileContentCustomView(viewRepository)]
+[if (viewRepository.associatedGenModel().useJMergeForUserCode)]
+[viewRepository.genSortedImports()/]
+[additionalImports(view, viewRepository)/]
+[else]
 // [protected ('for imports')]
+[viewRepository.genSortedImports()/]
+[additionalImports(view, viewRepository)/]
 
 // [/protected]
 [/if]
 
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template public fileContentCustomView(view : View, viewRepository : ViewsRepository)]
 /**
  * [viewRepository.associatedGenModel().authorText().trim()/]
  * [viewRepository.associatedGenModel().generationMark()/]
@@ -116,8 +137,6 @@ public interface [view.pepInterface()/] {
 	[/if]
 
 }
-[/file]
-[/for]
 [/template]
 
 [template public fullFilePath(view : View)]
@@ -125,5 +144,4 @@ public interface [view.pepInterface()/] {
 [/template]
 
 [comment overrides this template if additional imports are needed/]
-[template public additionalImports(v : View)]
-[/template]
+[template public additionalImports (view : View, viewRepository : ViewsRepository)/]

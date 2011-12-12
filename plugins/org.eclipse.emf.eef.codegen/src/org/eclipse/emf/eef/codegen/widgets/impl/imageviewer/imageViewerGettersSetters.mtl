@@ -15,12 +15,13 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ================== Getter generation ================== /]
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('ImageViewer'))]
 [elementEditor.getterSignature()/] {
-		ISelection selection = [elementEditor.elementEditorName()/].getSelection();
-		if (selection instanceof StructuredSelection && ((StructuredSelection)selection).getFirstElement() instanceof String) {
+		[include('org.eclipse.jface.viewers.ISelection')/] selection = [elementEditor.elementEditorName()/].getSelection();
+		if (selection instanceof [include('org.eclipse.jface.viewers.StructuredSelection')/] && ((StructuredSelection)selection).getFirstElement() instanceof String) {
 			return (String)((StructuredSelection)selection).getFirstElement();
 		}
 		return null;
@@ -59,7 +60,7 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('ImageViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](newValue));
 		} else {
 			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}

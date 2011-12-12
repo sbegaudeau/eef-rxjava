@@ -12,6 +12,8 @@
  /]
 [module common('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
+[import org::eclipse::emf::eef::codegen::services::imports /]
+
 [comment --------------- Common queries --------------- /]
 
 [comment Check if at least one views of the propertyBinding is contained by the given view /]
@@ -72,7 +74,7 @@
 	pepCompletePackage.concat('.parts.').concat(pepInterface)/]
 
 [query public associatedGenFeature(pee : PropertiesEditionElement) : GenFeature =
-	pee.model.eInverse()->filter(GenFeature)->first()/]
+	pee.model.eInverse(GenFeature)->first()/]
 
 [query public associatedGenPackage(p : EPackage) : GenPackage = 
 	p.eInverse(GenPackage)->first()/]
@@ -81,10 +83,10 @@
 	pec.model.ePackage.associatedGenPackage()/]
 
 [query public associatedGenContext(peco : PropertiesEditionContext) : GenEditionContext = 
-	peco.eInverse()->filter(GenEditionContext)->first()/]
+	peco.eInverse(GenEditionContext)->first()/]
 
-[query public associatedGenContext(peco : PropertiesEditionComponent) : GenEditionContext = 
-	peco.editionContext().associatedGenContext() /]
+[query public associatedGenContext(pec : PropertiesEditionComponent) : GenEditionContext = 
+	pec.editionContext().associatedGenContext() /]
 
 [query public associatedGenModel(pec : PropertiesEditionContext) : EEFGenModel = 
 	pec.associatedGenContext().eefGenModel/]
@@ -102,10 +104,7 @@
 	view.owningViewsRepository().associatedGenRepository()/]
 
 [query public associatedGenRepository(viewsRepository : ViewsRepository) : GenViewsRepository = 
-	if (viewsRepository.eInverse()->filter(GenViewsRepository)->notEmpty())
-	then viewsRepository.eInverse()->filter(GenViewsRepository)->first()
-	else null
-	endif/]
+	viewsRepository.eInverse(GenViewsRepository) -> first()/]
 
 [query public associatedGenModel(viewsRepository : ViewsRepository) : EEFGenModel = 
 	if not viewsRepository.associatedGenRepository().oclIsUndefined()
@@ -124,7 +123,7 @@
 	- its 'explicit' property is set to true 
 	- A ElementBindingReference reference it and it contains at least 1 PEE/]
 [query public mustBeGenerated(pec : PropertiesEditionComponent) : Boolean = 
-	(pec.explicit and (pec.eAllContents(PropertiesEditionElement)->notEmpty() or pec.referencedBinding->notEmpty())) or pec.eInverse()->select(oclIsTypeOf(ElementBindingReference))->notEmpty()/]
+	(pec.explicit and (pec.eAllContents(PropertiesEditionElement)->notEmpty() or pec.referencedBinding->notEmpty())) or pec.eInverse(ElementBindingReference)->notEmpty()/]
 
 [comment Defines if a ComposedPropertiesEditionComponent must be generated. A ComposedPropertiesEditionComponent must be generated if :
 	- its 'explicit' property is set to true and it has more than 1 view to manage 
@@ -323,13 +322,13 @@ set[view.viewPackageSignature()/]
 [if (view.representationName('Text') or view.representationName('Textarea') or view.representationName('RichText') or view.representationName('ImageViewer') or view.representationName('SelectionDialog'))]
 String
 [elseif (view.representationName('EMFComboViewer'))]
-Enumerator
+[include('org.eclipse.emf.common.util.Enumerator')/]
 [elseif (view.representationName('MultiValuedEditor'))]
-EList
+[include('org.eclipse.emf.common.util.EList')/]
 [elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer'))]
-EObject
+[include('org.eclipse.emf.ecore.EObject')/]
 [elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('FlatReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
-List
+[include('java.util.List')/]
 [elseif (view.representationName('Checkbox'))]
 Boolean
 [elseif (view.representationName('Radio'))]
@@ -497,15 +496,15 @@ is
 [/template]
 
 [template public metamodelGetter(s : SimpleModelNavigation)]
-[s.feature.eContainingClass.metamodelPackage()/].eINSTANCE.[s.ecoreCompletePackageGetter()/]
+[include(s.feature.eContainingClass.qualifiedMetamodelPackage())/].eINSTANCE.[s.ecoreCompletePackageGetter()/]
 [/template]
 
 [template public metamodelGetter(p : PropertiesEditionElement)]
-[p.model.eContainingClass.metamodelPackage()/].eINSTANCE.[p.ecoreCompletePackageGetter()/]
+[include(p.model.eContainingClass.qualifiedMetamodelPackage())/].eINSTANCE.[p.ecoreCompletePackageGetter()/]
 [/template]
 
 [template public metamodelGetter(c : EClassifier)]
-[c.metamodelPackage()/].eINSTANCE.get[c.name/]()
+[include(c.qualifiedMetamodelPackage())/].eINSTANCE.get[c.name/]()
 [/template]
 
 [comment queries for model navigation /]
@@ -528,17 +527,11 @@ is
 [query public involvedPropertiesEditionElement(peElement : PropertiesEditionElement, f : EStructuralFeature) : PropertiesEditionElement =
 	 peElement.element.category.eContainer(PropertiesEditionContext).categories.bindings->select(oclIsTypeOf(PropertiesEditionComponent)).oclAsType(PropertiesEditionComponent).properties->select(oclIsTypeOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->select(pee : PropertiesEditionElement | pee.model=f)->first()/]
 
-[query public involvedPropertiesEditionElement(element : ElementEditor, pec : PropertiesEditionComponent) : PropertiesEditionElement =
-	 element.eInverse()->select(oclIsTypeOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->first()/]
-
 [query public involvedPropertiesEditionElement(element : ElementEditor) : PropertiesEditionElement =
-	 element.eInverse()->select(oclIsTypeOf(PropertiesEditionElement)).oclAsType(PropertiesEditionElement)->first()/]
+	 element.eInverse(PropertiesEditionElement)->first()/]
 
 [query public involvedPropertiesEditionElement(view : ViewElement, pec : PropertiesEditionComponent) : PropertiesEditionElement =
 	 pec.involvedEditionElements()->select(views.oclAsType(ViewElement)->includes(view))->first()/]
 
 [query public involvedPropertiesEditionComponent(view : View) : PropertiesEditionComponent = 
-	if (view.eInverse()->select(oclIsTypeOf(PropertiesEditionComponent))->notEmpty())
-	then view.eInverse()->select(oclIsTypeOf(PropertiesEditionComponent))->first()
-	else null
-	endif/]
+	view.eInverse(PropertiesEditionComponent)->first()/]

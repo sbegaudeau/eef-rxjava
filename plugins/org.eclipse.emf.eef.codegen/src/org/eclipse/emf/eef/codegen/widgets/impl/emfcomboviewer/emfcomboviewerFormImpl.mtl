@@ -15,23 +15,25 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'EMFComboViewer')]
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.common.util.Enumerator',
+	'org.eclipse.emf.ecore.util.EcoreAdapterFactory',
+	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.jface.viewers.ArrayContentProvider',
+	'org.eclipse.jface.viewers.ISelectionChangedListener',
+	'org.eclipse.jface.viewers.SelectionChangedEvent',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'EMFComboViewer')]
-	protected EMFComboViewer [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EMFComboViewer')]
@@ -42,9 +44,9 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]EMFComboViewer(FormToolkit widgetFactory, Composite parent) {
 		[if (editor.nameAsLabel)]
-		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new EMFComboViewer(parent);
 		[editor.elementEditorName()/].setContentProvider(new ArrayContentProvider());

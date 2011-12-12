@@ -16,6 +16,7 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
 [import org::eclipse::emf::eef::codegen::services::filters /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [comment ===== Case : model = Reference(*) - view = FlatReferencesTable===== /]
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
@@ -23,13 +24,13 @@
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+private	[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
-if (event.getKind() == PropertiesEditionEvent.SET)
-	[editionElement.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
+if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET)
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include('java.util.List')/]<EObject>) event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
@@ -45,21 +46,21 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 	 */
-	public boolean select(Viewer viewer, Object parentElement, Object element) {
+	public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 		if (element instanceof EObject)
 			return (![view.viewIdentifier(pec)/].isContainedIn[editionElement.views->first().viewPackageSignature()/]Table((EObject)element));
 		return [if (not editionElement.model.required)]element instanceof String && element.equals("")[else]false[/if];
 	}
 
 });
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectStrictFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter')/]([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 [filter.filterBody(editionElement,view,pec)/]
 [/for]
@@ -74,13 +75,13 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+private	[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-if (event.getKind() == PropertiesEditionEvent.SET)
-	[editionElement.name.toJavaIdentifier()/]Settings.setToReference((List<EObject>) event.getNewValue());
+if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET)
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include('java.util.List')/]<EObject>) event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
@@ -96,23 +97,23 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 	 */
-	public boolean select(Viewer viewer, Object parentElement, Object element) {
+	public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 		if (element instanceof EObject)
 			return (![view.viewIdentifier(pec)/].isContainedIn[editionElement.views->first().viewPackageSignature()/]Table((EObject)element));
 		return [if (not editionElement.model.required)]element instanceof String && element.equals("")[else]false[/if];
 	}
 
 });
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectStrictFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter')/]([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/]()));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
-[filter.filterBody(editionElement,view,pec)/]
+[filterBody(filter, editionElement, view, pec) /]
 [/for]
 [if (not editionElement.element.eContainer(PropertiesEditionContext).associatedGenModel().useJMergeForUserCode)]
 [additionalBusinessFilterProtectedArea(editionElement)/]

@@ -15,21 +15,24 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [comment ===== Case Widget = EObjectFlatComboViewer ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'EObjectFlatComboViewer')]
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.jface.viewers.ISelectionChangedListener',
+	'org.eclipse.jface.viewers.SelectionChangedEvent',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'EObjectFlatComboViewer')]
-	protected EObjectFlatComboViewer [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'EObjectFlatComboViewer')]
@@ -44,7 +47,7 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		[if (editor.nameAsLabel)]
-		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
@@ -78,26 +81,18 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 
 [comment ===== Case Widget = AdvancedEObjectFlatComboViewer ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'AdvancedEObjectFlatComboViewer')]
-import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPolicyProvider;
-import org.eclipse.emf.eef.runtime.api.policies.IPropertiesEditionPolicy;
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-	protected AdvancedEObjectFlatComboViewer [editor.elementEditorName()/];
-	protected ViewerFilter [editor.elementEditorName()/]Filter;
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer')/] [editor.elementEditorName()/];
+	protected [include('org.eclipse.jface.viewers.ViewerFilter')/] [editor.elementEditorName()/]Filter;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
@@ -112,9 +107,9 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		[if (editor.nameAsLabel)]
-		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		// create callback listener
 		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){

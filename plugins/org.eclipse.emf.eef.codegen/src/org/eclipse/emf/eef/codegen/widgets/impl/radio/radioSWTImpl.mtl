@@ -15,16 +15,22 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Radio')]
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.emf.ecore.EEnumLiteral',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.jface.viewers.ISelectionChangedListener',
+	'org.eclipse.jface.viewers.SelectionChangedEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Radio')]
-	protected RadioViewer [editor.elementEditorName()/]RadioViewer;
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer')/] [editor.elementEditorName()/]RadioViewer;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Radio')]
@@ -39,7 +45,7 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 		[editor.elementEditorName()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/]RadioViewer.setEnabled(false);
-		[editor.elementEditorName()/]RadioViewer.setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+		[editor.elementEditorName()/]RadioViewer.setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
 		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;

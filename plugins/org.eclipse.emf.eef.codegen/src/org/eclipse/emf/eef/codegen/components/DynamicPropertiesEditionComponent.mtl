@@ -16,36 +16,32 @@
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public DynamicPropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 	[for (topLevelView : View | pec.views) ? (topLevelView.explicit)]
 [if (pec.mustDynamicPecBeGenerated(topLevelView))]
+[peContext.initializeImportManager(basePackage, pec.subPECClass(topLevelView))/]
 [file (pec.fullFilePath(topLevelView), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.componentsPackage()/];
+package [pec.componentsPackage()/];[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService',
+	'org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider'})/]
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import [pec.model.qualifiedName()/];
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.impl.parts.NullCompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+[let content : String = peContext.fileContent(pec, topLevelView, basePackage)]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, topLevelView, basePackage)/]
 
-import [topLevelView.pepQualifiedInterface()/];
-import [topLevelView.owningViewsRepository().vrQualifiedClass()/];
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
-[if (pec.model.eefPackage(basePackage) <> subPec.model.eefPackage(basePackage))]
-	[for (subView : View | subPec.views) ? (subView.ancestors()->includes(topLevelView))]
-import [subPec.subPECQualifiedClass(subView)/];
+[content/]
+[/let]
+[/file]
+		[/if]
 	[/for]
-[/if]
 [/for]
-[additionalImports()/]
+[/template]
 
+[template private fileContent(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, topLevelView : View, basePackage : String)]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
@@ -90,7 +86,7 @@ Implemented later ...
 	 * The [subPec.subPECClass(view)/] sub component
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
+	protected [include(subPec.subPECQualifiedClass(view))/] [subPec.subPECClass(view).toLowerFirst()/];
 
 	[/for]
 [/for]
@@ -128,7 +124,7 @@ Implemented later ...
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
 		if ([topLevelView.viewPartConstant(pec)/].equals(key) && [pec.model.name.toJavaIdentifier()/] == null) {
-			IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([topLevelView.owningViewsRepository().vrClass()/].class);
+			IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([include(topLevelView.owningViewsRepository().vrQualifiedClass())/].class);
 			if (provider != null) {
 				[topLevelView.viewIdentifier(pec)/] = ([topLevelView.pepInterface()/])provider.getPropertiesEditionPart([topLevelView.editorID()/].class, kind, this);
 			}
@@ -178,10 +174,6 @@ Implemented later ...
 		}
 	}
 }
-[/file]
-		[/if]
-	[/for]
-[/for]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent, view : View)]
@@ -189,5 +181,4 @@ Implemented later ...
 [/template]
 
 [comment overrides this template if additional imports are needed/]
-[template public additionalImports(v : View)]
-[/template]
+[template public additionalImports (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, topLevelView : View, basePackage : String)/]

@@ -17,102 +17,7 @@
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetSWTImpl /]
-
-[comment Defines the default imports for a Form Part.
-	@param pec the PropertiesEditionComponent associated to the view
-	@param view the View generating the Form
-	@param basePackage the generation package prefix 
-	/]
-[template private defaultImports (pec : PropertiesEditionComponent, view : View, basePackage : String) ]
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(ElementEditor)->notEmpty())]
-import org.eclipse.osgi.util.NLS;
-[/if]
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-
-[for (ePackage : EPackage | pec.involvedEditionElements().model.eContainingClass.ePackage->asSet()->including(pec.model.oclAsType(EClass).ePackage))]
-import [ePackage.qualifiedMetamodelPackage()/];
-[/for]
-[for (viewRepository : ViewsRepository | pec.involvedViews().owningViewsRepository()->asSet())]
-import [viewRepository.qualifiedMessagesProvider()/];
-[/for]
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-[if (view.eAllContents(ElementEditor)->select(representation.name = 'ReferencesTable' or representation.name = 'AdvancedReferencesTable' or representation.name = 'TableComposition' or representation.name = 'AdvancedTableComposition')->notEmpty())]
-import org.eclipse.emf.eef.runtime.impl.policies.EObjectPropertiesEditionContext;
-[/if]
-
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import [view.pepQualifiedInterface()/];
-[for (widget : Widget | view.eAllContents(ElementEditor).representation->asSet()) ? (not widget.oclIsUndefined())]
-[widget.manageImports(pec, view, basePackage)/]
-[/for]
-[for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
-[widget.manageImports(pec, view, basePackage)/]
-[/for]
-[for (viewsRepository : ViewsRepository | view.eAllContents(ViewReference).view.oclAsType(View).owningViewsRepository()->append(view.owningViewsRepository()))]
-import [viewsRepository.vrQualifiedClass()/];
-[/for]
-[if (view.eAllContents(ViewReference)->notEmpty() or view.eAllContents(View)->notEmpty())]
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
-[for (viewRef : ViewReference | view.eAllContents(ViewReference)) ]
-import [viewRef.view.oclAsType(View).pepQualifiedInterface()/];
-	[for (widget : Widget | viewRef.view.eAllContents(ElementEditor).representation->asSet())]
-[widget.manageImports(pec, view, basePackage)/]
-	[/for]
-[/for]
-[for (subView : View | view.elements->filter(View)) ]
-import [subView.pepQualifiedInterface()/];
-[/for]
-[/if]
-[view.additionalImports()/]
-[/template]
-
-[comment Defines the default imports for a custom Form Part.
-	@param pec the PropertiesEditionComponent associated to the view
-	@param view the View generating the Form
-	@param basePackage the generation package prefix 
-	/]
-[template private defaultMinimalImports(pec : PropertiesEditionComponent, view : View, basePackage : String) ]
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-import [view.partQualifiedSuperclass()/];
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
-
-import [pec.model.qualifiedName()/];
-import [view.pepQualifiedInterface()/];
-[/template]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public PropertiesEditionPart(peContext : PropertiesEditionContext, basePackage : String)]
 [for (inputPEC : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
@@ -121,24 +26,69 @@ import [view.pepQualifiedInterface()/];
 	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(PropertiesEditionComponent)
 	endif]
 [if (view.mustBeGenerated(inputPEC))]
-	[file (fullFilePath(view), false)]
-[peContext.associatedGenModel().licenceText().trim()/]
-package [view.partsImplPackage()/];
+[peContext.ViewPropertiesEditionPart(pec, view, basePackage, inputPEC)/]
+[/if]
+[/let][/for]
+[for (view : View | inputPEC.involvedViews()) ? (inputPEC.explicit and view.oclIsTypeOf(CustomView))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
+	then inputPEC
+	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(PropertiesEditionComponent)
+	endif]
+[peContext.CustomViewPropertiesEditionPart(pec, view, basePackage, inputPEC)/]
+[/let][/for]
+[/for]
+[/template]
 
+[template private ViewPropertiesEditionPart(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View, basePackage : String, inputPEC : PropertiesEditionComponent) ]
+[peContext.initializeImportManager(basePackage, view.pepClass())/]
+
+[comment]Widget Imports[/comment]
+[for (widget : Widget | view.eAllContents(ElementEditor).representation-> select(not oclIsUndefined()) ->asSet())]
+[widget.manageImports(pec, view, basePackage)/]
+[/for]
+[for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
+[widget.manageImports(pec, view, basePackage)/]
+[/for]
+[for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
+[widget.manageImports(pec, view, basePackage)/]
+[/for]
+[comment][for (widget : Widget | view.eAllContents(ViewReference).view.eAllContents(ElementEditor).representation->asSet())]
+[widget.manageImports(pec, view, basePackage)/]
+[/for][/comment]
+
+[file (view.fullFilePath(), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [view.partsImplPackage()/];[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.ui.parts.PartComposer',
+	'org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent',
+	'org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.layout.GridLayout',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart'})/]
+
+[let content : String = peContext.fileContent(pec, view, basePackage, inputPEC)]
 [if (peContext.associatedGenModel().useJMergeForUserCode)]
-[pec.defaultImports(view, basePackage)/]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, view, basePackage)/]
 [else]
 // [protected ('for imports')]
-[pec.defaultImports(view, basePackage)/]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, view, basePackage)/]
 
 // [/protected]
 [/if]
 
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template private fileContent(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View, basePackage : String, inputPEC : PropertiesEditionComponent) ]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
+public class [view.pepClass()/] extends [include(view.partQualifiedSuperclass())/] implements ISWTPropertiesEditionPart, [include(view.pepQualifiedInterface())/] {
 
 [for (editor : ElementEditor | view.eAllContents(ElementEditor))]
 [editor.widgetDeclaration()/]
@@ -213,10 +163,10 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 	[/if][/comment]
 	}
 
-[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\n')]
+[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\r\n')]
 [aView.additionalImplementation(pec, inputPEC)/]
 [/for]
-[for (subView : View | view.elements->filter(View)) separator ('\n')]]
+[for (subView : View | view.elements->filter(View)) separator ('\r\n')]]
 [subView.additionalImplementation(pec, inputPEC)/]
 [/for]
 
@@ -234,7 +184,7 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 	[/if]
 	}
 
-[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\n')]
+[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\r\n')]
 [elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
 
 [elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
@@ -268,29 +218,42 @@ public class [view.pepClass()/] extends [view.partSuperclass()/] implements ISWT
 [view.additionalMethods()/]
 
 }
-[/file]
-[/if]
-[/let][/for]
-[for (view : View | inputPEC.involvedViews()) ? (inputPEC.explicit and view.oclIsTypeOf(CustomView))][let pec : PropertiesEditionComponent = if (inputPEC.views->includes(view))
-	then inputPEC
-	else inputPEC.referencedBinding.binding->select(views->includes(view))->first().oclAsType(PropertiesEditionComponent)
-	endif]
-	[file (fullFilePath(view), false)]
-[peContext.associatedGenModel().licenceText().trim()/]
-package [view.partsImplPackage()/];
+[/template]
 
+[template private CustomViewPropertiesEditionPart(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View, basePackage : String, inputPEC : PropertiesEditionComponent) ]
+[peContext.initializeImportManager(basePackage, view.pepClass())/]
+[file (view.fullFilePath(), false)]
+[peContext.associatedGenModel().licenceText().trim()/]
+package [view.partsImplPackage()/];[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart',
+	'org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent',
+	'org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.layout.GridLayout',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent'})/]
+
+[let content : String = peContext.fileContentCompositePart(pec, view)]
 [if (peContext.associatedGenModel().useJMergeForUserCode)]
-[pec.defaultMinimalImports(view, basePackage)/]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, view, basePackage)/]
 [else]
 // [protected ('for imports')]
-[pec.defaultMinimalImports(view, basePackage)/]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, view, basePackage)/]
 
 // [/protected]
 [/if]
+[content/]
+[/let]
+[/file]
+[/template]
+
+[template private fileContentCompositePart(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View)	]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  */
-public class [view.pepClass()/] extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, [view.pepInterface()/] {
+public class [view.pepClass()/] extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, [include(view.pepQualifiedInterface())/] {
 
 	[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 	// [protected ('widgets declaration')]
@@ -374,9 +337,6 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 [view.additionalMethods()/]
 
 }
-[/file]
-[/let][/for]
-[/for]
 [/template]
 
 [template public additionalMethods(view : View)]
@@ -392,5 +352,4 @@ public class [view.pepClass()/] extends CompositePropertiesEditionPart implement
 [/template]
 
 [comment overrides this template if additional imports are needed/]
-[template public additionalImports(v : View)]
-[/template]
+[template public additionalImports (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View, basePackage : String)/]

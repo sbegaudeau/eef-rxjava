@@ -15,6 +15,7 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ====== Widgets View getters for declaration ====== /]
 [template public getterDeclaration(elementEditor : ElementEditor) overrides getterDeclaration ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
@@ -44,7 +45,7 @@
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('TableComposition') or elementEditor.representationName('AdvancedTableComposition'))]
-	public void init[elementEditor.viewPackageSignature()/](ReferencesTableSettings settings)
+	public void init[elementEditor.viewPackageSignature()/]([include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] settings)
 [/template]
 
 
@@ -113,7 +114,7 @@
 [elementEditor.initSignature()/] {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider')/] contentProvider = new [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider')/]();
 		[elementEditor.elementEditorName()/].setContentProvider(contentProvider);
 		[elementEditor.elementEditorName()/].setInput(settings);
 	}

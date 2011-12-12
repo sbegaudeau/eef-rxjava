@@ -15,22 +15,24 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [comment ===== Case Widget = ReferencesTable ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'FlatReferencesTable')]
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.jface.viewers.ISelectionChangedListener',
+	'org.eclipse.jface.viewers.SelectionChangedEvent',
+	'org.eclipse.jface.viewers.StructuredSelection',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'FlatReferencesTable')]
-	protected FlatReferencesTable [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'FlatReferencesTable')]
@@ -44,9 +46,9 @@ return create[editor.name.toJavaClassifier()/]FlatReferencesTable(widgetFactory,
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]FlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
 		[if (editor.nameAsLabel)]
-		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new FlatReferencesTable(parent);
 		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));

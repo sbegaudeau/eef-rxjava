@@ -16,6 +16,7 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
 [import org::eclipse::emf::eef::codegen::services::filters /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case : model = Containment(*) - view = TableComposition or AdvancedTableComposition===== /]
 [query public validCaseForSimpleReference(editionElement : PropertiesEditionElement) : Boolean = 
@@ -28,46 +29,46 @@
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+protected [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForSimpleReference())]
-if (event.getKind() == PropertiesEditionEvent.ADD) {
+if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].ADD) {
 	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
 		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
 			[if (editionElement.strictFilterType().oclIsUndefined())]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
 			[/if]
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy policy = provider.getPolicy(context);
-		if (policy instanceof CreateEditingPolicy) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
 			policy.execute();
 		}
 	}
 		[else]
 			[if (editionElement.strictFilterType().oclIsUndefined())]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
 			[/if]
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy policy = provider.getPolicy(context);
-		if (policy instanceof CreateEditingPolicy) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
 			policy.execute();
 		}
 	}
 		[/if]
 	[/if]
 } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] editionPolicy = provider.getPolicy(context);
 		if (editionPolicy != null) {
 			editionPolicy.execute();
 		}
@@ -75,7 +76,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD) {
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.model.eType.name/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.editionElementQualifiedClass())/]) event.getNewValue());
 }
 [/template]
 
@@ -94,15 +95,15 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForSimpleReference())]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][editionElement.model.eType.name/][else][editionElement.strictFilterType().name/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][include(editionElement.editionElementQualifiedClass())/][else][include(editionElement.strictFilterType().qualifiedName())/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 
 });
@@ -126,46 +127,46 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+protected [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForMultipleModelReference())]
-if (event.getKind() == PropertiesEditionEvent.ADD) {
+if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].ADD) {
 	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
 		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
 			[if (editionElement.strictFilterType().oclIsUndefined())]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
 			[/if]
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy policy = provider.getPolicy(context);
-		if (policy instanceof CreateEditingPolicy) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
 			policy.execute();
 		}
 	}
 		[else]
 			[if (editionElement.strictFilterType().oclIsUndefined())]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
 			[/if]
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy policy = provider.getPolicy(context);
-		if (policy instanceof CreateEditingPolicy) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
 			policy.execute();
 		}
 	}
 		[/if]
 	[/if]
 } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] editionPolicy = provider.getPolicy(context);
 		if (editionPolicy != null) {
 			editionPolicy.execute();
 		}
@@ -173,7 +174,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD) {
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.model.eType.name/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.editionElementQualifiedClass())/]) event.getNewValue());
 }
 [/template]
 
@@ -190,20 +191,20 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForMultipleModelReference())]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 			[if (editionElement.model.lowerBound = 0)]if (element instanceof String)
 				return element.equals(""); //$NON-NLS-1$ 
 			[/if]
-			if (element instanceof [editionElement.model.eType.name/])
+			if (element instanceof [include(editionElement.editionElementQualifiedClass())/])
 				return true;
-			return element instanceof Resource;
+			return element instanceof [include('org.eclipse.emf.ecore.resource.Resource')/];
 		}
 
 });
@@ -226,46 +227,46 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-protected ReferencesTableSettings [editionElement.name.toJavaIdentifier()/]Settings;
+protected [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForSingleModelReference())]
-if (event.getKind() == PropertiesEditionEvent.ADD) {
+if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].ADD) {
 	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
 		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
 			[if (editionElement.strictFilterType().oclIsUndefined())]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
 			[/if]
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy policy = provider.getPolicy(context);
-		if (policy instanceof CreateEditingPolicy) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
 			policy.execute();
 		}
 	}
 		[else]
 			[if (editionElement.strictFilterType().oclIsUndefined())]
-	EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
 			[/if]
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy policy = provider.getPolicy(context);
-		if (policy instanceof CreateEditingPolicy) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
 			policy.execute();
 		}
 	}
 		[/if]
 	[/if]
 } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 	if (provider != null) {
-		PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] editionPolicy = provider.getPolicy(context);
 		if (editionPolicy != null) {
 			editionPolicy.execute();
 		}
@@ -273,7 +274,7 @@ if (event.getKind() == PropertiesEditionEvent.ADD) {
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.model.eType.name/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.editionElementQualifiedClass())/]) event.getNewValue());
 }
 [/template]
 
@@ -290,15 +291,15 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForSingleModelReference())]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 		/**
 		 * {@inheritDoc}
 		 *
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][editionElement.model.eType.name/][else][editionElement.strictFilterType().name/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][include(editionElement.editionElementQualifiedClass())/][else][include(editionElement.strictFilterType().qualifiedName())/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 
 });

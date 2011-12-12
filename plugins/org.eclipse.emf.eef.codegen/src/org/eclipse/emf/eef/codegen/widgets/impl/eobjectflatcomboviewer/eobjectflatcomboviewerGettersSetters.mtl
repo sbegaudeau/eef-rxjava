@@ -15,7 +15,7 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
-
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.initSignatureDocumentation()/]
@@ -42,12 +42,12 @@
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('EObjectFlatComboViewer') or elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
-	public void init[elementEditor.viewPackageSignature()/](EObjectFlatComboSettings settings)
+	public void init[elementEditor.viewPackageSignature()/]([include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings')/] settings)
 [/template]
 
 [template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.getterSignature()/] {
-		if ([elementEditor.elementEditorName()/].getSelection() instanceof StructuredSelection) {
+		if ([elementEditor.elementEditorName()/].getSelection() instanceof [include('org.eclipse.jface.viewers.StructuredSelection')/]) {
 			Object firstElement = ((StructuredSelection) [elementEditor.elementEditorName()/].getSelection()).getFirstElement();
 			if (firstElement instanceof EObject)
 				return (EObject) firstElement;
@@ -110,7 +110,7 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('EObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](newValue));
 		} else {
 			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
@@ -120,7 +120,7 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('AdvancedEObjectFlatComboViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
-			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(newValue));
+			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](newValue));
 		} else {
 			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
@@ -147,7 +147,7 @@
 [elementEditor.initSignature()/] {
 		[elementEditor.elementEditorName()/].setInput(settings);
 		if (current != null) {
-			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(settings.getValue()));
+			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](settings.getValue()));
 		}
 	}
 [/template]
@@ -156,7 +156,7 @@
 [elementEditor.initSignature()/] {
 		[elementEditor.elementEditorName()/].setInput(settings);
 		if (current != null) {
-			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection(settings.getValue()));
+			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](settings.getValue()));
 		}
 	}
 [/template]

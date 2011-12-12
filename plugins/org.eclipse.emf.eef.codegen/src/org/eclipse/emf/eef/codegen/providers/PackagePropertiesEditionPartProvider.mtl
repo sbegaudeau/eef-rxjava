@@ -14,24 +14,26 @@
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public PackagePropertiesEditionPartProvider(v : ViewsRepository)]
-	[file (v.fullFilePath(), false)]
+[v.initializeImportManager(v.vrPackage() + 'providers', v.pepProvider())/]
+[file (v.fullFilePath(), false)]
 [v.associatedGenModel().licenceText().trim()/]
-package [v.vrPackage()/]providers;
+package [v.vrPackage()/]providers;[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent',
+	'org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart',
+	'org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider'})/]
 
-import [v.vrPackage()/]parts.[v.vrClass()/];
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-[for (view : View | v.eAllContents(View)) ? (view.elements->size() > 0)]
-import [view.pepQualifiedFormClass()/];
-import [view.pepQualifiedClass()/];
-[/for]
-
+[let content : String = v.fileContent()]
+[v.genSortedImports()/]
 [v.additionalImports()/]
+[content/]
+[/let]
+[/file]
+[/template]
 
-
+[template public fileContent(v : ViewsRepository)]
 /**
  * [v.associatedGenModel().authorText().trim()/]
  * [v.associatedGenModel().generationMark()/]
@@ -44,7 +46,7 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 	 * [v.associatedGenModel().generationMark()/]
 	 */
 	public boolean provides(Object key) {
-		return key == [v.vrClass()/].class;
+		return key == [include(v.vrQualifiedClass())/].class;
 	}
 
 	/** 
@@ -56,21 +58,20 @@ public class [v.pepProvider()/] implements IPropertiesEditionPartProvider {
 		[for (view : View | v.eAllContents(View)) ? (view.elements->size() > 0)]
 		if (key == [view.editorID()/].class) {
 			if (kind == [v.vrClass()/].SWT_KIND)
-				return new [view.pepClass()/](component);
+				return new [include(view.pepQualifiedClass())/](component);
 			if (kind == [v.vrClass()/].FORM_KIND)
-				return new [view.pepFormClass()/](component);
+				return new [include(view.pepFormQualifiedClass())/](component);
 		}
 		[/for]
 		return null;
 	}
 
 }
-[/file]
-[/template]
-
-[template public additionalImports (v : ViewsRepository) ]
 [/template]
 
 [template public fullFilePath(repository : ViewsRepository)]
 [repository.pepQualifiedProvider().toPath()/].java
 [/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports (repository : ViewsRepository)/]

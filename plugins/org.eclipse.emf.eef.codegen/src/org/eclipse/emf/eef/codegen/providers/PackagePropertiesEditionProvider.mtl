@@ -14,24 +14,37 @@
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public PackagePropertiesEditionProvider(peContext : PropertiesEditionContext, ePackage : EPackage)]
+[peContext.initializeImportManager(ePackage.completePackage(), ePackage.pecPackageProviderClass())/]
 	[file (peContext.fullFilePath(ePackage), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
 package [peContext.providersPackage()/];
 
-import java.util.ArrayList;
-import java.util.List;
+[let content : String = peContext.fileContent(peContext, ePackage)]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(ePackage)/]
+[content/]
+[/let]
+[/file]
+[/template]
 
-import org.eclipse.emf.common.notify.Adapter;
-import [if ((not peContext.associatedEMFGenModel(ePackage).basePackage.oclIsUndefined()) and (peContext.associatedEMFGenModel(ePackage).basePackage.size() > 0))][peContext.associatedEMFGenModel(ePackage).basePackage/].[/if][ePackage.name.toJavaIdentifier()/].util.[peContext.associatedEMFGenModel(ePackage).prefix/]AdapterFactory;
-[peContext.additionalImports()/]
+[template public includeAdapterFactoryImport(peContext : PropertiesEditionContext, ePackage : EPackage) post(trim())]
+[let base : String = 
+	if (not peContext.associatedEMFGenModel(ePackage).basePackage.oclIsUndefined()) and (peContext.associatedEMFGenModel(ePackage).basePackage.size() > 0)
+	then peContext.associatedEMFGenModel(ePackage).basePackage + '.'
+	else '' endif]
+[include(base + ePackage.name.replaceKeywords() + '.util.' + peContext.associatedEMFGenModel(ePackage).prefix + 'AdapterFactory')/]
+[/let]
+[/template]
 
+[template private fileContent(peContext : PropertiesEditionContext, ePackage : EPackage) ]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [ePackage.pecPackageProviderClass()/] extends [peContext.associatedEMFGenModel(ePackage).prefix/]AdapterFactory {
+public class [ePackage.pecPackageProviderClass()/] extends [includeAdapterFactoryImport(ePackage)/] {
 
 [for (eclass : EClass | ePackage.significantClass())]
 	[let pec : PropertiesEditionComponent = eclass.associatedPEC(peContext)]
@@ -41,15 +54,15 @@ public class [ePackage.pecPackageProviderClass()/] extends [peContext.associated
 	 * @see [peContext.associatedEMFGenModel(ePackage).basePackage/].[ePackage.name/].util.[peContext.associatedEMFGenModel(ePackage).prefix/]AdapterFactory#create[eclass.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter()
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public Adapter create[eclass.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter() {
+	public [include('org.eclipse.emf.common.notify.Adapter')/] create[eclass.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter() {
 		[if (pec.referencedBinding->size() > 0)]
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>([pec.referencedBinding->size()/]);
+		[include('java.util.List')/]<[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/]> providers = new [include('java.util.ArrayList')/]<PropertiesEditingProvider>([pec.referencedBinding->size()/]);
 		[for (binding : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(PropertiesEditionComponent))]
 		providers.add((PropertiesEditingProvider)create[binding.model.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter());
 		[/for]
-		return new [pec.pecProviderClass()/](providers);
+		return new [include(pec.pecProviderQualifiedClass())/](providers);
 		[else]
-		return new [pec.pecProviderClass()/]();
+		return new [include(pec.pecProviderQualifiedClass())/]();
 		[/if]
 	}
 		[/if]
@@ -57,13 +70,15 @@ public class [ePackage.pecPackageProviderClass()/] extends [peContext.associated
 [/for]
 
 }
-[/file]
 [/template]
 
-[template public additionalImports (peContext : PropertiesEditionContext) ]
+[template private genAdapterFactoryName(peContext : PropertiesEditionContext, ePackage : EPackage)]
+[if ((not peContext.associatedEMFGenModel(ePackage).basePackage.oclIsUndefined()) and (peContext.associatedEMFGenModel(ePackage).basePackage.size() > 0))][peContext.associatedEMFGenModel(ePackage).basePackage/].[/if][ePackage.name.toJavaIdentifier()/].util.[peContext.associatedEMFGenModel(ePackage).prefix/]AdapterFactory
 [/template]
 
-[template public fullFilePath(pec : PropertiesEditionContext, ePackage : EPackage)]
-[pec.pecPackageProviderQualifiedClass(ePackage).toPath()/].java
+[template public fullFilePath(peContext : PropertiesEditionContext, ePackage : EPackage)]
+[peContext.pecPackageProviderQualifiedClass(ePackage).toPath()/].java
 [/template]
 
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports (peContext : PropertiesEditionContext, ePackage : EPackage)/]

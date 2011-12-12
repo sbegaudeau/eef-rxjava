@@ -15,6 +15,16 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Group')]
+[pec.addImports(Sequence{
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.ui.forms.widgets.Section',
+	'org.eclipse.swt.layout.GridLayout',
+	'org.eclipse.swt.layout.GridData'})/]
+[/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'Group')]
 return create[container.name.toJavaClassifier()/]Group(widgetFactory, parent);
@@ -26,7 +36,7 @@ return create[container.name.toJavaClassifier()/]Group(widgetFactory, parent);
 	 */
 	protected Composite create[container.name.toJavaClassifier()/]Group(FormToolkit widgetFactory, final Composite parent) {
 		Section [container.name.toJavaIdentifier()/]Section = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		[container.name.toJavaIdentifier()/]Section.setText([container.owningViewsRepository().messagesProvider()/].[container.groupKey(container.owningView())/]);
+		[container.name.toJavaIdentifier()/]Section.setText([include(container.owningViewsRepository().qualifiedMessagesProvider())/].[container.groupKey(container.owningView())/]);
 		GridData [container.name.toJavaIdentifier()/]SectionData = new GridData(GridData.FILL_HORIZONTAL);
 		[container.name.toJavaIdentifier()/]SectionData.horizontalSpan = 3;
 		[container.name.toJavaIdentifier()/]Section.setLayoutData([container.name.toJavaIdentifier()/]SectionData);

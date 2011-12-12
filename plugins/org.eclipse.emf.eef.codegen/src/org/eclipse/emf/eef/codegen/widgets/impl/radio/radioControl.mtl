@@ -15,10 +15,11 @@
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case : model = Attribute(1) - view = Radio ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio') and not editionElement.canGeneratemodelNavigation())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])event.getNewValue());
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.editionElementQualifiedClass())/])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio') and editionElement.canGeneratemodelNavigation())]
@@ -32,7 +33,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('Radio') and not editionElement.canGeneratemodelNavigation())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](([include('org.eclipse.emf.ecore.EEnum')/]) [editionElement.metamodelGetter()/].getEType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 }
 [/template]
 
@@ -52,12 +53,12 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [comment ===== Case : model = Attribute(1) - view = Radio - ModelNavigation ===== /]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Radio') and editionElement.canGeneratemodelNavigation())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])event.getNewValue());
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.editionElementQualifiedClass())/])event.getNewValue());
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.representationName('Radio') and editionElement.canGeneratemodelNavigation())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]((EEnum) [editionElement.metamodelGetter()/].getEType(), [editionElement.name.toJavaIdentifier()/]Settings.getValue());
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](([include('org.eclipse.emf.ecore.EEnum')/]) [editionElement.metamodelGetter()/].getEType(), [editionElement.name.toJavaIdentifier()/]Settings.getValue());
 }
 [/template]
 

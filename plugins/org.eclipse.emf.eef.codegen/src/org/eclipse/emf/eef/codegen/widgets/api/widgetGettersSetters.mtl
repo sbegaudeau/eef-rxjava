@@ -10,10 +10,11 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module widgetGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
+[module widgetGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[import common/]
-[import naming/]
+[import org::eclipse::emf::eef::codegen::services::common/]
+[import org::eclipse::emf::eef::codegen::services::naming/]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment TODO: A TRAITER /]
 [template public initSignature(elementEditor : ElementEditor) /]
@@ -43,11 +44,11 @@
 
 [comment ====== Signatures ====== /]
 [template public getterForSubViewSignature(view : View)]
-	public IPropertiesEditionPart get[view.name.toJavaClassifier()/]SubView()
+	public [include('org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart')/] get[view.name.toJavaClassifier()/]SubView()
 [/template]
 
 [template public getterForReferencedViewSignature(view : View)]
-public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
+public [include('org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart')/] get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public getterSignature(elementEditor : ElementEditor)]
@@ -141,7 +142,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public setterButtonModeSignature(elementEditor : ElementEditor)]
-	public void [elementEditor.viewPackageSetter()/]ButtonMode(ButtonsModeEnum newValue)
+	public void [elementEditor.viewPackageSetter()/]ButtonMode([include('org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum')/] newValue)
 [/template]
 
 [template public updateSignature(elementEditor : ElementEditor)]
@@ -184,7 +185,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public addFilterSignature(elementEditor : ElementEditor)]
-	public void addFilterTo[elementEditor.viewPackageSignature()/](ViewerFilter filter)
+	public void addFilterTo[elementEditor.viewPackageSignature()/]([include('org.eclipse.jface.viewers.ViewerFilter')/] filter)
 [/template]
 
 [template public addBusinessFilterSignatureDocumentation(elementEditor : ElementEditor)]
@@ -199,7 +200,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public addBusinessFilterSignature(elementEditor : ElementEditor)]
-	public void addBusinessFilterTo[elementEditor.viewPackageSignature()/](ViewerFilter filter)
+	public void addBusinessFilterTo[elementEditor.viewPackageSignature()/]([include('org.eclipse.jface.viewers.ViewerFilter')/] filter)
 [/template]
 
 [template public isContainedInTableSignatureDocumentation(elementEditor : ElementEditor)]
@@ -210,7 +211,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [/template]
 
 [template public isContainedInTableSignature(elementEditor : ElementEditor)]
-	public boolean isContainedIn[elementEditor.viewPackageSignature()/]Table(EObject element)
+	public boolean isContainedIn[elementEditor.viewPackageSignature()/]Table([include('org.eclipse.emf.ecore.EObject')/] element)
 [/template]
 
 [comment ====== Widgets getter implementation ====== /]
@@ -223,7 +224,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public getterForSubViewImplementationDelegate(view : View, fullInterfacePath : String)]
 [view.getterForSubViewSignatureDocumentationImplementation(fullInterfacePath)/]
 		[view.getterForSubViewSignature()/] {
-			return (IPropertiesEditionPart) [view.pepInterface().toLowerFirst()/];
+			return ([include('org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart')/]) [view.pepInterface().toLowerFirst()/];
 		}
 [/template]
 
@@ -231,7 +232,7 @@ public IPropertiesEditionPart get[view.name.toJavaClassifier()/]ReferencedView()
 [template public getterForReferencedViewImplementation(view : View, fullInterfacePath : String)]
 [view.getterForReferencedViewSignatureDocumentationImplementation(fullInterfacePath)/]
 		[view.getterForReferencedViewSignature()/] {
-			return (IPropertiesEditionPart) [view.pepInterface().toLowerFirst()/];
+			return ([include('org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart')/]) [view.pepInterface().toLowerFirst()/];
 		}
 [/template]
 

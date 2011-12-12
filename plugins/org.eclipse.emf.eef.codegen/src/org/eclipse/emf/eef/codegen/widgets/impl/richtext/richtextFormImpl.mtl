@@ -15,40 +15,47 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'RichText')]
-import org.eclipse.epf.richtext.IRichText;
-import org.eclipse.epf.richtext.IRichTextToolBar;
-import org.eclipse.epf.richtext.RichText;
-import org.eclipse.epf.richtext.RichTextToolBar;
-import org.eclipse.epf.richtext.actions.AddImageAction;
-import org.eclipse.epf.richtext.actions.AddLinkAction;
-import org.eclipse.epf.richtext.actions.AddOrderedListAction;
-import org.eclipse.epf.richtext.actions.AddTableAction;
-import org.eclipse.epf.richtext.actions.AddUnorderedListAction;
-import org.eclipse.epf.richtext.actions.BoldAction;
-import org.eclipse.epf.richtext.actions.ClearContentAction;
-import org.eclipse.epf.richtext.actions.CopyAction;
-import org.eclipse.epf.richtext.actions.CutAction;
-import org.eclipse.epf.richtext.actions.FindReplaceAction;
-import org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontNameAction;
-import org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontSizeAction;
-import org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontStyleAction;
-import org.eclipse.epf.richtext.actions.IndentAction;
-import org.eclipse.epf.richtext.actions.ItalicAction;
-import org.eclipse.epf.richtext.actions.JustifyCenterAction;
-import org.eclipse.epf.richtext.actions.JustifyLeftAction;
-import org.eclipse.epf.richtext.actions.JustifyRightAction;
-import org.eclipse.epf.richtext.actions.OutdentAction;
-import org.eclipse.epf.richtext.actions.PasteAction;
-import org.eclipse.epf.richtext.actions.SubscriptAction;
-import org.eclipse.epf.richtext.actions.SuperscriptAction;
-import org.eclipse.epf.richtext.actions.TidyActionGroup;
-import org.eclipse.epf.richtext.actions.UnderlineAction;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.widgets.Label',
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontNameAction',
+	'org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontSizeAction',
+	'org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontStyleAction',
+	'org.eclipse.epf.richtext.actions.IndentAction',
+	'org.eclipse.epf.richtext.actions.ItalicAction',
+	'org.eclipse.epf.richtext.actions.JustifyCenterAction',
+	'org.eclipse.epf.richtext.actions.JustifyLeftAction',
+	'org.eclipse.epf.richtext.actions.JustifyRightAction',
+	'org.eclipse.epf.richtext.actions.OutdentAction',
+	'org.eclipse.epf.richtext.actions.PasteAction',
+	'org.eclipse.epf.richtext.actions.SubscriptAction',
+	'org.eclipse.epf.richtext.actions.SuperscriptAction',
+	'org.eclipse.epf.richtext.actions.TidyActionGroup',
+	'org.eclipse.epf.richtext.actions.UnderlineAction',
+	'org.eclipse.epf.richtext.IRichText',
+	'org.eclipse.epf.richtext.IRichTextToolBar',
+	'org.eclipse.epf.richtext.RichTextToolBar',
+	'org.eclipse.epf.richtext.actions.AddImageAction',
+	'org.eclipse.epf.richtext.actions.AddLinkAction',
+	'org.eclipse.epf.richtext.actions.AddOrderedListAction',
+	'org.eclipse.epf.richtext.actions.AddTableAction',
+	'org.eclipse.epf.richtext.actions.AddUnorderedListAction',
+	'org.eclipse.epf.richtext.actions.BoldAction',
+	'org.eclipse.epf.richtext.actions.ClearContentAction',
+	'org.eclipse.epf.richtext.actions.CopyAction',
+	'org.eclipse.epf.richtext.actions.CutAction',
+	'org.eclipse.epf.richtext.actions.FindReplaceAction',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'RichText')]
-	protected RichText [editor.elementEditorName()/];
+	protected [include('org.eclipse.epf.richtext.RichText')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'RichText')]
@@ -59,9 +66,9 @@ return create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]RichText(FormToolkit widgetFactory, Composite parent) {
 		[if (editor.nameAsLabel)]
-		Label [editor.elementEditorName()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		Label [editor.elementEditorName()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		GridData [editor.elementEditorName()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]LabelData.horizontalSpan = 2;

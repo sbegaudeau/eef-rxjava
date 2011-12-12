@@ -10,24 +10,26 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module filters('http://www.eclipse.org/emf/eef/mapping/filters/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0')/]
+[module filters('http://www.eclipse.org/emf/eef/mapping/filters/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public filterBody(bindingFilter : BindingFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 // FIXME default case for filter body generation.
 [/template]
 
 [template public filterBody(filter : JavaDeclarationFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 				/**
 				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
+				public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 					return [filter.methodName/](viewer, parentElement, element);
 				}
 
@@ -35,14 +37,14 @@
 [/template]
 
 [template public filterBody(filter : JavaExpressionFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 				/**
 				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
+				public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 					[if (filter.javaBody->size()> 0)][filter.javaBody/][else]return false;[/if]
 				}
 
@@ -50,21 +52,21 @@
 [/template]
 
 [template public filterBody(filter : OnlyReferenceTypeFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
-			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 				/**
 				 * {@inheritDoc}
 				 * 
 				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					Object result = EEFUtils.choiceOfValues([pec.subPECClass(view)/].this.semanticObject, [filter.reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.reference.ecorePackageSignature()/]());
-					if (result instanceof Collection) {
+				public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+					Object result = [include('org.eclipse.emf.eef.runtime.impl.utils.EEFUtils')/].choiceOfValues([pec.subPECClass(view)/].this.semanticObject, [filter.reference.eContainingClass.metamodelPackage()/].eINSTANCE.get[filter.reference.ecorePackageSignature()/]());
+					if (result instanceof [include('java.util.Collection')/]) {
 						return ((Collection)result).contains(element);
 					} else if (result instanceof ResourceSet && element instanceof EObject) {
 						return ((EObject)element).eResource() != null && ((EObject)element).eResource().getResourceSet() != null && ((EObject)element).eResource().getResourceSet().equals(result);
 					}
-					return element instanceof Resource;
+					return element instanceof [include('org.eclipse.emf.ecore.resource.Resource')/];
 				}
 			});
 [/template]
@@ -74,7 +76,7 @@
 [/template]
 
 [template public javaDeclarationFilter(pee : PropertiesEditionElement)]
-[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->filter(JavaDeclarationFilter)) separator ('\n')]
+[for (bindingFilter : JavaDeclarationFilter | pee.bindingFilters->filter(JavaDeclarationFilter)) separator ('\r\n')]
 	/**
 	 * [bindingFilter.documentation/]
 	 */

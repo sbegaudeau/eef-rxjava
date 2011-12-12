@@ -15,6 +15,16 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Group')]
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.widgets.Group',
+	'org.eclipse.swt.layout.GridLayout',
+	'org.eclipse.swt.layout.GridData'})/]
+[/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'Group')]
 return create[container.name.toJavaClassifier()/]Group(parent);
@@ -26,7 +36,7 @@ return create[container.name.toJavaClassifier()/]Group(parent);
 	 */
 	protected Composite create[container.name.toJavaClassifier()/]Group(Composite parent) {
 		Group [container.name.toJavaIdentifier()/]Group = new Group(parent, SWT.NONE);
-		[container.name.toJavaIdentifier()/]Group.setText([container.owningViewsRepository().messagesProvider()/].[container.groupKey(container.owningView())/]);
+		[container.name.toJavaIdentifier()/]Group.setText([include(container.owningViewsRepository().qualifiedMessagesProvider())/].[container.groupKey(container.owningView())/]);
 		GridData [container.name.toJavaIdentifier()/]GroupData = new GridData(GridData.FILL_HORIZONTAL);
 		[container.name.toJavaIdentifier()/]GroupData.horizontalSpan = 3;
 		[container.name.toJavaIdentifier()/]Group.setLayoutData([container.name.toJavaIdentifier()/]GroupData);

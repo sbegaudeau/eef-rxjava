@@ -14,75 +14,60 @@
 
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::common /]
-
-[template private defaultImports(pec : PropertiesEditionComponent, basePackage : String)]
-import org.eclipse.emf.ecore.EObject;
-import [pec.model.qualifiedName()/];
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
-[if (pec.model.eefPackage(basePackage) <> subPec.model.eefPackage(basePackage))]
-	[for (view : View | subPec.views) ? (view.explicit)]
-import [subPec.subPECQualifiedClass(view)/];
-	[/for]
-[/if]
-[/for]
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-[for (view : View | pec.views) ? (view.explicit)]
-import [view.pepQualifiedInterface()/];
-[/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
-	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
-		[if (view.isA1stLevelReferencedView(pec))]
-import [subPec.pecQualifiedClass()/];
-		[else]
-import [subPec.subPECQualifiedClass(view)/];
-		[/if]
-	[/for]
-[/for]
-[for (vr : ViewsRepository | pec.views->asSequence()->union(pec.referencedBinding.binding->select(oclIsTypeOf(PropertiesEditionComponent)).views).owningViewsRepository()->asSet())]
-import [vr.vrQualifiedClass()/];
-[/for]
-[additionalImports()/]
-[/template]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public PropertiesEditionComponent(peContext : PropertiesEditionContext, basePackage : String)]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.needComposedEditionComponent())]
+[peContext.initializeImportManager(basePackage, pec.pecClass())/]
 [file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.componentsPackage()/];
+package [pec.componentsPackage()/];[addImports(Sequence{
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent',
+	'org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider',
+	'org.eclipse.emf.eef.runtime.context.PropertiesEditingContext',
+	'org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart',
+	'org.eclipse.emf.ecore.resource.ResourceSet'})/]
 
+[let content : String = peContext.fileContent(pec, basePackage)]
 [if (peContext.associatedGenModel().useJMergeForUserCode)]
-[pec.defaultImports(basePackage)/]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, basePackage)/]
 [else]
 // [protected ('for imports')]
-[pec.defaultImports(basePackage)/]
 
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, basePackage)/]
 // [/protected]
 [/if]
 
+[content/]
+[/let]
+[/file]
+[/if]
+[/for]
+[/template]
+
+[template private fileContent(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, basePackage : String) ]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
 public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
-[for (view : View | pec.views) separator ('\n') ? (view.explicit)]
+[for (view : View | pec.views) separator ('\r\n') ? (view.explicit)]
 	/**
 	 * The [view.viewKey(pec)/] part
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	private [view.pepInterface()/] [view.viewIdentifier(pec)/];
+	private [include(view.pepQualifiedInterface())/] [view.viewIdentifier(pec)/];
 
 	/**
 	 * The [pec.subPECClass(view)/] sub component
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	protected [pec.subPECClass(view)/] [pec.subPECClass(view).toLowerFirst()/];
+	protected [include(pec.subPECQualifiedClass(view))/] [pec.subPECClass(view).toLowerFirst()/];
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
 [for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
@@ -91,14 +76,14 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * The [subPec.pecClass()/] sub component
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	protected [subPec.pecClass()/] [subPec.pecClass().toLowerFirst()/];
+	protected [include(subPec.pecQualifiedClass())/] [subPec.pecClass().toLowerFirst()/];
 
 		[else]
 	/**
 	 * The [subPec.subPECClass(view)/] sub component
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	protected [subPec.subPECClass(view)/] [subPec.subPECClass(view).toLowerFirst()/];
+	protected [include(subPec.subPECQualifiedClass(view))/] [subPec.subPECClass(view).toLowerFirst()/];
 
 		[/if]
 [/for]
@@ -111,7 +96,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 */
 	public [pec.pecClass()/](PropertiesEditingContext editingContext, EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
 		super(editingContext, editing_mode);
-		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
+		if ([pec.model.name.toJavaIdentifier()/] instanceof [include(pec.model.qualifiedName())/]) {
 			PropertiesEditingProvider provider = null;
 [for (view : View | pec.views) ? (view.explicit)]
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt([pec.model.name.toJavaIdentifier()/], PropertiesEditingProvider.class);
@@ -199,9 +184,6 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [/for]
 	}
 }
-[/file]
-[/if]
-[/for]
 [/template]
 
 [template public fullFilePath(pec : PropertiesEditionComponent)]
@@ -209,5 +191,4 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 [/template]
 
 [comment overrides this template if additional imports are needed/]
-[template public additionalImports(pec : PropertiesEditionComponent)]
-[/template]
+[template public additionalImports (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, basePackage : String)/]

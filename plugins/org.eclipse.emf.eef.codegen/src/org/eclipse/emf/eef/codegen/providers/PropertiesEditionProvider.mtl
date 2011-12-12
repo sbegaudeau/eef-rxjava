@@ -14,40 +14,38 @@
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public PropertiesEditionProvider(peContext : PropertiesEditionContext, basePackage : String)]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.mustBeGenerated())]
+	[peContext.initializeImportManager(basePackage, pec.pecProviderClass())/]
 	[file (pec.fullFilePath(), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
-package [pec.providersPackage()/];
+package [pec.providersPackage()/];[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent',
+	'org.eclipse.emf.eef.runtime.context.PropertiesEditingContext',
+	'org.eclipse.jface.viewers.IFilter',
+	'java.util.List',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider'})/]
 
-import java.util.List;
-
-import [pec.model.completePackage()/].[pec.model.metamodelPackage()/];
-import [pec.model.qualifiedName()/];
-import [pec.pecRootProviderQualifiedClass()/];
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.jface.viewers.IFilter;
-
-[if (pec.needComposedEditionComponent())]
-import [pec.model.completePackage()/].components.[pec.pecClass()/];
+[let content : String = peContext.fileContent(peContext, pec)]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec)/]
+[content/]
+[/let]
+	[/file]
 [/if]
-[for (view : View | pec.views)]
-import [pec.model.completePackage()/].components.[pec.subPECClass(view)/];
 [/for]
-[for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
-	[for (view : View | subPec.views) ? (view.explicit)]
-import [subPec.model.ePackage.completePackage()/].components.[subPec.subPECClass(view)/];
-	[/for]
-[/for]
-[peContext.additionalImports()/]
+[/template]
+
+[template private fileContent(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent) ]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
+public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQualifiedClass())/] {
 
 	/**
 	 * Constructor without provider for super types.
@@ -70,8 +68,8 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof [pec.model.name/]) 
-					&& ([pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof [include(pec.model.qualifiedName())/]) 
+					&& ([include(pec.model.qualifiedMetamodelPackage())/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -110,7 +108,7 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
 		if (editingContext.getEObject() instanceof [pec.model.name/]) {
-			return new [pec.pecClass()/](editingContext, editingContext.getEObject(), mode);
+			return new [include(pec.pecQualifiedClass())/](editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
@@ -144,13 +142,13 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof [pec.model.name/]) {
 [for (view : View | pec.views) ? (view.explicit)]
-			if ([pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part)
+			if ([include(pec.subPECQualifiedClass(view))/].[view.viewPartConstant(pec)/].equals(part)
 				&& refinement == [pec.subPECClass(view)/].class)
 				return new [pec.subPECClass(view)/](editingContext, editingContext.getEObject(), mode);
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
-			if ([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part)
+			if ([include(subPec.subPECQualifiedClass(view))/].[view.viewPartConstant(subPec)/].equals(part)
 				&& refinement == [subPec.pecClass()/].class)
 				return new [subPec.pecClass()/](editingContext, editingContext.getEObject(), mode);
 	[/for]
@@ -176,17 +174,11 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 	}
 
 }
-[/file]
-[/if]
-[/for]
-[/template]
-
-[template public additionalImports (peContext : PropertiesEditionContext) ]
 [/template]
 
 [template public provideForPart(pec : PropertiesEditionComponent)]
 [if (pec.providePart().size() > 0)]
-&& ([pec.providePart().replaceAll('\n', '').replaceAll('\n\r','')/])
+&& ([pec.providePart().replaceAll('\n\r','').replaceAll('\r\n','').replaceAll('\n', '')/])
 [/if]
 [/template]
 
@@ -208,7 +200,7 @@ public class [pec.pecProviderClass()/] extends [pec.pecRootProviderClass()/] {
 
 [template public provideForClass(pec : PropertiesEditionComponent)]
 [if (pec.provideClass().size() > 0)]
-&& ([pec.provideClass().replaceAll('\n', '').replaceAll('\n\r','')/])
+&& ([pec.provideClass().replaceAll('\n\r','').replaceAll('\r\n','').replaceAll('\n', '')/])
 [/if]
 [/template]
 
@@ -231,20 +223,20 @@ refinement == [subPec.pecClass()/].class[/for][/for]
 
 [template public provideForPartAndClass(pec : PropertiesEditionComponent)]
 [if (pec.providePartAndClass().size() > 0)]
-&& ([pec.providePartAndClass().replaceAll('\n', '').replaceAll('\n\r','')/])
+&& ([pec.providePartAndClass().replaceAll('\n\r','').replaceAll('\r\n','').replaceAll('\n', '')/])
 [/if]
 [/template]
 
 [template public providePartAndClass(pec : PropertiesEditionComponent)]
 [let view : View = pec.views->select(explicit)->first()]
 [if (not view.oclIsUndefined())][for (v : View | pec.views) separator (' || ') ? (v.explicit)]
-([pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part) && refinement == [pec.subPECClass(v)/].class)[/for][/if]
+([pec.subPECClass(v)/].[v.viewPartConstant(pec)/].equals(part) && refinement == [include(pec.subPECQualifiedClass(v))/].class)[/for][/if]
 [if (pec.referencedBinding->size()>0)][let subPec : PropertiesEditionComponent = pec.referencedBinding.binding->filter(PropertiesEditionComponent)->first()]
 [if (not subPec.oclIsUndefined())][let view2 : View = subPec.views->select(v:View | v.explicit and v.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))->first()]
 [if (not view2.oclIsUndefined())][if (not view.oclIsUndefined())] || [/if]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) separator (' || ')]
 [for (view : View | subPec.views) separator (' || ') ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
-([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part) && refinement == [subPec.pecClass()/].class)[/for][/for]
+([subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/].equals(part) && refinement == [include(subPec.pecQualifiedClass())/].class)[/for][/for]
 [/if][/let][/if]
 [/let]
 [/if]
@@ -254,4 +246,7 @@ refinement == [subPec.pecClass()/].class[/for][/for]
 [template public fullFilePath(pec : PropertiesEditionComponent)]
 [pec.pecProviderQualifiedClass().toPath()/].java
 [/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent)/]
 

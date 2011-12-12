@@ -15,10 +15,25 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case Widget = Checkbox ===== /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Checkbox')]
+[pec.addImports(Sequence{
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.swt.events.SelectionAdapter',
+	'org.eclipse.swt.events.SelectionEvent',
+	'org.eclipse.swt.layout.GridData'})/]
+[/template]
+
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Checkbox')]
-	protected Button [editor.elementEditorName()/];
+	protected [include('org.eclipse.swt.widgets.Button')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Checkbox')]
@@ -28,7 +43,7 @@ return create[editor.name.toJavaClassifier()/]Checkbox(widgetFactory, parent);
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'Checkbox')]
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
-		[editor.elementEditorName()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]), SWT.CHECK);
+		[editor.elementEditorName()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]), SWT.CHECK);
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/].setEnabled(false);
 		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);

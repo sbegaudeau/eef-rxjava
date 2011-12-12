@@ -15,12 +15,13 @@
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case : model = Attribute(1) - view = RichText ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('RichText') and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.isPrimitiveType())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/]((EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])[include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].createFromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('RichText'))]
@@ -48,8 +49,8 @@ if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFi
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('RichText') and editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.isPrimitiveType())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/]((EEFConverterUtil.create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])EEFConverterUtil.createFromString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])[include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].createFromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('RichText') and editionElement.canGeneratemodelNavigation())]

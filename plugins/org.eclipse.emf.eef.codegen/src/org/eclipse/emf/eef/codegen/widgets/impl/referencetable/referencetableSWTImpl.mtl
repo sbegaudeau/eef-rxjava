@@ -15,33 +15,37 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [comment ===== Case Widget = ReferencesTable ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'ReferencesTable')]
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+[pec.addImports(Sequence{
+	'java.util.Iterator',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.common.notify.AdapterFactory',
+	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog',
+	'org.eclipse.jface.viewers.ILabelProviderListener',
+	'org.eclipse.jface.viewers.ITableLabelProvider',
+	'org.eclipse.jface.viewers.TableViewer',
+	'org.eclipse.jface.viewers.IStructuredSelection',
+	'org.eclipse.swt.graphics.Image',
+	'org.eclipse.swt.widgets.Label',
+	'org.eclipse.swt.widgets.TableColumn',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.events.SelectionEvent',
+	'org.eclipse.swt.events.SelectionAdapter',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'ReferencesTable')]
-	protected TableViewer [editor.elementEditorName()/];
-	protected Button add[editor.name.toJavaClassifier()/];
+	protected [include('org.eclipse.jface.viewers.TableViewer')/] [editor.elementEditorName()/];
+	protected [include('org.eclipse.swt.widgets.Button')/] add[editor.name.toJavaClassifier()/];
 	protected Button remove[editor.name.toJavaClassifier()/];
-	protected List<ViewerFilter> [editor.elementEditorName()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected [include('java.util.List')/]<[include('org.eclipse.jface.viewers.ViewerFilter')/]> [editor.elementEditorName()/]BusinessFilters = new [include('java.util.ArrayList')/]<ViewerFilter>();
 	protected List<ViewerFilter> [editor.elementEditorName()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
@@ -56,9 +60,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]ReferencesTable(Composite parent) {
 		[if (editor.nameAsLabel)]
-		Label [editor.elementEditorName()/]Label = SWTUtils.createPartLabel(parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
+		Label [editor.elementEditorName()/]Label = [include('org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils')/].createPartLabel(parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
-		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		GridData [editor.elementEditorName()/]LabelData = new GridData();
 		[editor.elementEditorName()/]LabelData.horizontalSpan = 3;
@@ -243,31 +247,25 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 
 [comment ===== Case Widget = AdvancedReferencesTable ===== /]
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'AdvancedReferencesTable')]
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.jface.viewers.StructuredSelection;
-import java.util.Iterator;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
-import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'java.util.Iterator',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.jface.viewers.IStructuredSelection',
+	'org.eclipse.swt.layout.GridData',
+	'org.eclipse.swt.events.SelectionEvent',
+	'org.eclipse.swt.events.SelectionAdapter',
+	'org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext',
+	'org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider',
+	'org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy',
+	'org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog',
+	'org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedReferencesTable')]
-	protected ReferencesTable [editor.elementEditorName()/];
-	protected List<ViewerFilter> [editor.elementEditorName()/]BusinessFilters = new ArrayList<ViewerFilter>();
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable')/] [editor.elementEditorName()/];
+	protected [include('java.util.List')/]<[include('org.eclipse.jface.viewers.ViewerFilter')/]> [editor.elementEditorName()/]BusinessFilters = new [include('java.util.ArrayList')/]<ViewerFilter>();
 	protected List<ViewerFilter> [editor.elementEditorName()/]Filters = new ArrayList<ViewerFilter>();
 [/template]
 
@@ -281,9 +279,9 @@ return create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(Composite parent) {
 		[if (editor.nameAsLabel)]
-		String label = [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]
+		String label = [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]
 		[else]
-		String label = getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);		 
+		String label = getDescription([editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);		 
 		[/if]
 		this.[editor.elementEditorName()/] = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { add[editor.name.toJavaClassifier()/](); }

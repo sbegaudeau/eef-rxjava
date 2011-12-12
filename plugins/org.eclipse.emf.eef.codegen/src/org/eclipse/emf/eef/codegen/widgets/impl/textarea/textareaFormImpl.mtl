@@ -15,9 +15,24 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Textarea')]
+[pec.addImports(Sequence{
+	'org.eclipse.swt.events.FocusAdapter',
+	'org.eclipse.swt.events.FocusEvent',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.swt.widgets.Label',
+	'org.eclipse.swt.layout.GridData'})/]
+[/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'Textarea')]
-	protected Text [editor.elementEditorName()/];
+	protected [include('org.eclipse.swt.widgets.Text')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'Textarea')]
@@ -28,9 +43,9 @@ return create[editor.name.toJavaClassifier()/]Textarea(widgetFactory, parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Textarea(FormToolkit widgetFactory, Composite parent) {
 		[if (editor.nameAsLabel)]
-		Label [editor.elementEditorName()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		Label [editor.elementEditorName()/]Label = FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		Label [editor.elementEditorName()/]Label = createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		GridData [editor.elementEditorName()/]LabelData = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]LabelData.horizontalSpan = 3;

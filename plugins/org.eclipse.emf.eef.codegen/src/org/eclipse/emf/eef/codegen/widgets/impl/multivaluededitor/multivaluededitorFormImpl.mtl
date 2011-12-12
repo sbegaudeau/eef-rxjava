@@ -15,44 +15,28 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'MultiValuedEditor')]
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.window.Window;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
+[pec.addImports(Sequence{
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.common.util.BasicEList',
+	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog',
+	'org.eclipse.jface.window.Window',
+	'org.eclipse.swt.events.SelectionAdapter',
+	'org.eclipse.swt.events.SelectionEvent',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.layout.GridData'})/]
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'MultiValuedEditor')]
-	protected Text [editor.elementEditorName()/];
-	protected Button edit[editor.name.toJavaClassifier().disambiguation('view')/];
-	private EList [editor.elementEditorName()/]List;
+	protected [include('org.eclipse.swt.widgets.Text')/] [editor.elementEditorName()/];
+	protected [include('org.eclipse.swt.widgets.Button')/] edit[editor.name.toJavaClassifier().disambiguation('view')/];
+	private [include('org.eclipse.emf.common.util.EList')/] [editor.elementEditorName()/]List;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'MultiValuedEditor')]
@@ -74,7 +58,7 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, p
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
-		edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]), SWT.NONE);
+		edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]), SWT.NONE);
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
 		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {

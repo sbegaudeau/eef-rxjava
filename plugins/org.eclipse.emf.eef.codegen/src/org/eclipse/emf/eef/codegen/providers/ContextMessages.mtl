@@ -30,12 +30,12 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 	[viewsRepository.associatedGenModel().generationComment()/]
 	private static final String BUNDLE_NAME = "[viewsRepository.messagesProviderPackage()/].[viewsRepository.messagesProperties()/]"; //$NON-NLS-1$
 
-[for (group : ViewElement | viewsRepository.eAllContents(views::Container)->select(e | e.oclIsTypeOf(views::Container))) separator ('\n') ? (group.representationName('Group'))]
+[for (group : ViewElement | viewsRepository.eAllContents(views::Container)->select(e | e.oclIsTypeOf(views::Container))) separator ('\r\n') ? (group.representationName('Group'))]
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [group.groupKey(group.owningView())/];
 [/for]
 
-[for (view : View | viewsRepository.eAllContents(View)) separator ('\n') ]
+[for (view : View | viewsRepository.eAllContents(View)) separator ('\r\n') ]
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [view.name.toJavaClassifier()/]_ReadOnly;
 
@@ -43,7 +43,7 @@ public class [viewsRepository.messagesProvider()/] extends NLS {
 	public static String [view.name.toJavaClassifier()/]_Part_Title;
 [/for]
 
-[for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor)) separator ('\n') ]
+[for (editor : ElementEditor | viewsRepository.eAllContents(views::ElementEditor)) separator ('\r\n') ]
 	[viewsRepository.associatedGenModel().generationComment()/]
 	public static String [editor.editorKey(editor.owningView())/];
 [/for]

@@ -15,9 +15,25 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
+
+[template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'Text')]
+[pec.addImports(Sequence{
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.events.FocusAdapter',
+	'org.eclipse.swt.events.FocusEvent',
+	'org.eclipse.swt.events.KeyAdapter',
+	'org.eclipse.swt.events.KeyEvent',
+	'org.eclipse.swt.layout.GridData'})/]
+[/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representationName('Text'))]
-	protected Text [editor.elementEditorName()/];
+	protected [include('org.eclipse.swt.widgets.Text')/] [editor.elementEditorName()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representationName('Text'))]
@@ -28,9 +44,9 @@ return create[editor.name.toJavaClassifier()/]Text(widgetFactory, parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Text(FormToolkit widgetFactory, Composite parent) {
 		[if (editor.nameAsLabel)]
-		FormUtils.createPartLabel(widgetFactory, parent, [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
+		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
-		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
+		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		[if (editor.readOnly)]

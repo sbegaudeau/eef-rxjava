@@ -15,9 +15,15 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'HorizontalBox')]
-import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
+[pec.addImports(Sequence{
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox',
+	'org.eclipse.swt.layout.GridData',
+	'org.eclipse.swt.layout.GridLayout'})/]
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'HorizontalBox')]

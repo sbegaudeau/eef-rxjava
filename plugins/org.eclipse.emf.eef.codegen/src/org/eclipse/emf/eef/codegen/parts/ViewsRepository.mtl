@@ -42,10 +42,10 @@ public class [viewRepository.vrClass()/] {
  Template used to call recursively on the viewRepository to get views
  /]
 [template public viewDescriptors(viewRepository : ViewsRepository)]
-[for (view : View | viewRepository.views) separator ('\n')]
+[for (view : View | viewRepository.views) separator ('\r\n')]
 [view.viewDescriptor()/]
 [/for]
-[for (category : Category | viewRepository.eAllContents(views::Category)) separator ('\n')]
+[for (category : Category | viewRepository.eAllContents(views::Category)) separator ('\r\n')]
 [for (view : View |category.views )]
 [view.viewDescriptor()/]
 [/for]

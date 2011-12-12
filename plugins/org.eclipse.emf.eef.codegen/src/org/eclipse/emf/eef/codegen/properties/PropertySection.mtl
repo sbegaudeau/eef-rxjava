@@ -15,38 +15,48 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public PropertySection(peContext : PropertiesEditionContext, basePackage : String)]
 [for (pec : PropertiesEditionComponent | peContext.eAllContents(PropertiesEditionComponent))]
 [if (pec.explicit and pec.involvedViews()->size() > 0)]
 	[for (view : View | pec.views) ? (view.explicit)]
+[peContext.initializeImportManager(basePackage, pec.propertySection(view))/]
 [file (pec.fullFilePath(view), false)]
 [peContext.associatedGenModel().licenceText().trim()/]
 package [pec.editionContext().propertiesPackage()/];
+[addImports(Sequence{
+	'org.eclipse.core.runtime.IAdaptable',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.edit.domain.EditingDomain',
+	'org.eclipse.emf.edit.domain.IEditingDomainProvider',
+	'org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter',
+	'org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent',
+	'org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart',
+	'org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart',
+	'org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider',
+	'org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService',
+	'org.eclipse.jface.viewers.IFilter',
+	'org.eclipse.jface.viewers.ISelection',
+	'org.eclipse.jface.viewers.IStructuredSelection',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.ui.IWorkbenchPart',
+	'org.eclipse.ui.views.properties.tabbed.AbstractPropertySection',
+	'org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage'})/]
 
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
-import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionProvider;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentService;
-import org.eclipse.jface.viewers.IFilter;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+[let content : String = peContext.fileContent(peContext, pec, view, basePackage)]
+[peContext.genSortedImports()/]
+[peContext.additionalImports(pec, view)/]
 
-import [pec.model.ePackage.qualifiedMetamodelPackage()/];
-import [pec.model.eefPackage(basePackage)/].components.[pec.subPECClass(view)/];
+[content/]
+[/let]
+[/file]
+	[/for]
+[/if]
+[/for]
+[/template]
 
-[additionalImports()/]
-
+[template private fileContent(peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View, basePackage : String) ]
 /**
  * [peContext.associatedGenModel().authorText().trim()/]
  */
@@ -155,13 +165,9 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 
 [pec.resolveSemanticObject()/]
 
-[additionalMethods()/]
+[view.additionalMethods()/]
 
 }
-[/file]
-	[/for]
-[/if]
-[/for]
 [/template]
 
 [template public resolveSemanticObject(pec : PropertiesEditionComponent)]
@@ -186,10 +192,9 @@ public class [pec.propertySection(view)/] extends AbstractPropertySection implem
 [pec.qualifiedPropertySection(view).toPath()/].java
 [/template]
 
-[comment overrides this template if additional imports are needed/]
-[template public additionalImports(v : View)]
-[/template]
-
 [comment overrides this template if additional methods are needed/]
 [template public additionalMethods(v : View)]
 [/template]
+
+[comment overrides this template if additional imports are needed/]
+[template public additionalImports (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent, view : View)/]

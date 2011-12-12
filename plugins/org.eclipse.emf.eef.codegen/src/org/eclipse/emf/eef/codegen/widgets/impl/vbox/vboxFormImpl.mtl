@@ -10,14 +10,21 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module vboxFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends widgetFormImpl/]
+[module vboxFormImpl('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends widgetFormImpl/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::viewCommon /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
 
 [template public manageImports(widget : Widget, pec : PropertiesEditionComponent, view : View, basePackage : String) overrides manageImports ? (widget.name = 'VerticalBox')]
-import org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox;
+[pec.addImports(Sequence{
+	'org.eclipse.ui.forms.widgets.FormToolkit',
+	'org.eclipse.swt.widgets.Composite',
+	'org.eclipse.swt.SWT',
+	'org.eclipse.swt.layout.GridData',
+	'org.eclipse.swt.layout.GridLayout',
+	'org.eclipse.emf.eef.runtime.ui.widgets.VerticalBox'})/]
 [/template]
 
 [template public implementation(container : Container) overrides implementation ? (container.representation.name = 'VerticalBox')]

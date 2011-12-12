@@ -16,10 +16,11 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
 [import org::eclipse::emf::eef::codegen::services::filters /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case : model = Reference - view = Combo ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.name/])event.getNewValue());
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.editionElementQualifiedClass())/])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
@@ -34,7 +35,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
-[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new ViewerFilter() {
+[view.viewIdentifier(pec)/].addFilterTo[editionElement.name.toUpperFirst()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 
 	/**
 	 * {@inheritDoc}
@@ -42,8 +43,8 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 	 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 	 * [view.owningViewsRepository().associatedGenModel().generationComment()/]
 	 */
-	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+	public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+		return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.editionElementQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 	}
 
 });
@@ -57,7 +58,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [comment ===== Case : model = Reference - view = Combo ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Combo'))]
-[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])event.getNewValue());
+[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClass/])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Combo'))]
