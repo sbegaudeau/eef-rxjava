@@ -9,4 +9,7 @@
   <references>
     <referencedContext href="platform:/resource/org.eclipse.emf.eef.eefgen.edit/model/EEFGen.eefgen#/"/>
   </references>
+  <references>
+    <referencedContext href="platform:/resource/org.eclipse.emf.eef.mapping.edit/model/mapping.eefgen#/"/>
+  </references>
 </eef-gen:EEFGenModel>
