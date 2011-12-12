@@ -42,4 +42,10 @@
   <viewsRepositories basePackage="org.eclipse.emf.eef.eefnr.interface_">
     <viewsRepository href="eefnr.components#_I3xPav8KEeCz1IgC8TOZNg"/>
   </viewsRepositories>
+  <references>
+    <referencedContext href="platform:/resource/org.eclipse.emf.eef.views.edit/model/views.eefgen#/"/>
+  </references>
+  <references>
+    <referencedContext href="platform:/resource/org.eclipse.emf.eef.components.edit/model/components.eefgen#/"/>
+  </references>
 </eef-gen:EEFGenModel>
