@@ -71,6 +71,7 @@
 		<module>${pluginspath}/org.eclipse.emf.eef.extended.widgets.richtext</module>
 
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen</module>
+		<module>${pluginspath}/org.eclipse.emf.eef.codegen.launcher</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen.ecore</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen.extended</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.tests.codegen</module>
