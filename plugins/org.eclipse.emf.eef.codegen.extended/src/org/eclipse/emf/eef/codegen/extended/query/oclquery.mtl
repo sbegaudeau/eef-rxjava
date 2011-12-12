@@ -1,14 +1,16 @@
 [comment encoding = UTF-8 /]
-[module oclquery('http://www.eclipse.org/emf/eef/extended/query/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module oclquery('http://www.eclipse.org/emf/eef/extended/query/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/eef/components/1.0.0')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public content(eefUnderstandableQuery : EEFUnderstandableQuery)]
 [/template]
 
-[template public queryImports(queryType : EClass) ? (queryType.name = 'OCLQuery')]
-import org.eclipse.emf.eef.runtime.query.QueryResult;
-import org.eclipse.emf.eef.runtime.query.ocl.OCLQuery;
+[template public queryImports(peContext : PropertiesEditionContext, queryType : EClass) ? (queryType.name = 'OCLQuery')]
+[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.query.QueryResult',
+	'org.eclipse.emf.eef.runtime.query.ocl.OCLQuery'})/]
 [/template]
 
 [template public content(oclQuery : OCLQuery)]

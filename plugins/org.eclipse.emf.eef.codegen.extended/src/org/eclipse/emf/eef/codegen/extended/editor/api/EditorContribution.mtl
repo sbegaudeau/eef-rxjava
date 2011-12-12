@@ -4,6 +4,7 @@
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::extended::query::oclquery /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment =================== API ===================== /]
 
@@ -46,18 +47,20 @@ if (getEditingDomain().getResourceSet() != null && getEditingDomain().getResourc
 [/template]
 
 [comment =================== Filters implementations ===================== /]
-[template public filterImports(filterType : EClass) ? (filterType.name = 'PartFilter')]
-import org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter;
+[template public filterImports(peContext : PropertiesEditionContext, filterType : EClass) ? (filterType.name = 'PartFilter')]
+[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.ui.viewers.filters.PropertiesEditionPartFilter'})/]
 [/template]
 
 [template public filterDeclaration(filter : PartFilter)]
 filters.add(new PropertiesEditionPartFilter("[filter.filteredPart.viewKey(filter.contextualComponent)/]"));
 [/template]
 
-[template public filterImports(filterType : EClass) ? (filterType.name = 'OCLFilter')]
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.emf.eef.runtime.query.QueryWrapper;
+[template public filterImports(peContext : PropertiesEditionContext, filterType : EClass) ? (filterType.name = 'OCLFilter')]
+[addImports(Sequence{
+	'org.eclipse.emf.ecore.EcorePackage',
+	'org.eclipse.jface.viewers.Viewer',
+	'org.eclipse.emf.eef.runtime.query.QueryWrapper'})/]
 [/template]
 
 [template public filterDeclaration(filter : OCLFilter)]
@@ -78,11 +81,12 @@ filters.add(new ViewerFilter() {
 [/template]
 
 [comment =================== Editor page implementations ===================== /]
-[template public pageImports(pageType : EClass) ? (pageType.name = 'TreeMasterPage')]
-import org.eclipse.emf.eef.runtime.ui.editors.pages.tree.EEFTreeMDFormPage;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.swt.widgets.Composite;
+[template public pageImports(peContext : PropertiesEditionContext, pageType : EClass) ? (pageType.name = 'TreeMasterPage')]
+[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.ui.editors.pages.tree.EEFTreeMDFormPage',
+	'org.eclipse.jface.viewers.ISelectionChangedListener',
+	'org.eclipse.jface.viewers.SelectionChangedEvent',
+	'org.eclipse.swt.widgets.Composite'})/]
 [/template]
 
 [template public editorPage(page : TreeMasterPage, editorName : String)]
@@ -111,8 +115,9 @@ page.setAdapterFactory(adapterFactory);
 page.setEditingDomain(editingDomain);
 [/template]
 
-[template public pageImports(pageType : EClass) ? (pageType.name = 'StandardFormPage')]
-import org.eclipse.emf.eef.runtime.ui.editors.pages.EEFStandardFormPage;
+[template public pageImports(peContext : PropertiesEditionContext, pageType : EClass) ? (pageType.name = 'StandardFormPage')]
+[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.ui.editors.pages.EEFStandardFormPage'})/]
 [/template]
 
 [template public editorPage(page : StandardFormPage, editorName : String)]
@@ -124,8 +129,9 @@ page.setAdapterFactory(adapterFactory);
 page.setEditingDomain(editingDomain);
 [/template]
 
-[template public pageImports(pageType : EClass) ? (pageType.name = 'EEFMasterPage')]
-import org.eclipse.emf.eef.runtime.ui.editors.pages.eefviewer.EEFPropertiesViewerMDFormPage;
+[template public pageImports(peContext : PropertiesEditionContext, pageType : EClass) ? (pageType.name = 'EEFMasterPage')]
+[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.ui.editors.pages.eefviewer.EEFPropertiesViewerMDFormPage'})/]
 [/template]
 
 [template public editorPage(page : EEFMasterPage, editorName : String)]

@@ -6,37 +6,45 @@
 [import org::eclipse::emf::eef::codegen::extended::query::oclquery /]
 [import org::eclipse::emf::eef::codegen::extended::services::editor-common /]
 [import org::eclipse::emf::eef::codegen::extended::editor::api::EditorContribution /]
+[import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public generateEditor(peContext : PropertiesEditionContext)]
+[peContext.initializeImportManager(peContext.model.presentationPackage(), model.editorClassName())/]
+
+[for (pageType : EClass | peContext.categories.bindings.views.eClass()->asOrderedSet())]
+[peContext.pageImports(pageType)/]
+[/for]
+
+[for (filterType : EClass | peContext.categories.bindings.bindingFilters.eClass()->asOrderedSet())]
+[peContext.filterImports(filterType)/]
+[/for]
+
+[for (queryType : EClass | peContext.eAllContents(EEFUnderstandableQuery).eClass()->asOrderedSet())]
+[peContext.queryImports(queryType)/]
+[/for]
+
 	[file (peContext.fullFilePath(), false, 'UTF-8')]
 /**
  * <copyright>
  * </copyright>
  *
  */
-package [peContext.model.presentationPackage()/];
+package [peContext.model.presentationPackage()/];[addImports(Sequence{
+	'org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime',
+	'org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor',
+	'org.eclipse.ui.PartInitException',
+	'org.eclipse.emf.ecore.EObject',
+	'org.eclipse.emf.ecore.resource.Resource'
+	})/]
 
-[if (peContext.categories.bindings.bindingFilters->size() > 0)]
-import java.util.ArrayList;
-import java.util.List;
-import org.eclipse.jface.viewers.ViewerFilter;
-[/if]
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import [model.ecorePackage.qualifiedMetamodelPackage()/];
-import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
-import org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor;
-[for (pageType : EClass | peContext.categories.bindings.views.eClass()->asOrderedSet())]
-[pageType.pageImports()/]
-[/for]
-[for (filterType : EClass | peContext.categories.bindings.bindingFilters.eClass()->asOrderedSet())]
-[filterType.filterImports()/]
-[/for]
-[for (queryType : EClass | peContext.eAllContents(EEFUnderstandableQuery).eClass()->asOrderedSet())]
-[queryType.queryImports()/]
-[/for]
-import org.eclipse.ui.PartInitException;
+[let content : String = peContext.fileContent()]
+[peContext.genSortedImports()/]
+[content/]
+[/let]
+[/file]
+[/template]
 
+[template public fileContent(peContext : PropertiesEditionContext)]
 /**
  * This is an example of a [model.ecorePackage.name/] model editor.
  * 
@@ -53,7 +61,7 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 			{
 				[contribution.input.editorInput()/]
 					[if (contribution.bindingFilters->size() > 0)]
-				List<ViewerFilter> filters = new ArrayList<ViewerFilter>([contribution.bindingFilters->size()/]);
+				[include('java.util.List')/]<[include('org.eclipse.jface.viewers.ViewerFilter')/]> filters = new [include('java.util.ArrayList')/]<ViewerFilter>([contribution.bindingFilters->size()/]);
 				[for (contribution.bindingFilters)]
 				[filterDeclaration()/]
 				[/for]
@@ -80,7 +88,6 @@ public class [model.editorClassName()/] extends InteractiveEEFEditor {
 	[additionalMethods()/]
 
 }
-	[/file]
 	
 [/template]
 
