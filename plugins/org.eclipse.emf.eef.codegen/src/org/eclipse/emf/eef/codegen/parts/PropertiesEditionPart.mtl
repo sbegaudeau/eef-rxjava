@@ -212,7 +212,7 @@ public class [view.pepClass()/] extends [include(view.partQualifiedSuperclass())
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
-		return [view.owningViewsRepository().messagesProvider()/].[view.name.toJavaClassifier()/]_Part_Title;
+		return [include(view.owningViewsRepository().qualifiedMessagesProvider())/].[view.name.toJavaClassifier()/]_Part_Title;
 	}
 
 [view.additionalMethods()/]

@@ -217,7 +217,7 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public String getTitle() {
-		return [view.owningViewsRepository().messagesProvider()/].[view.name.toJavaClassifier()/]_Part_Title;
+		return [include(view.owningViewsRepository().qualifiedMessagesProvider())/].[view.name.toJavaClassifier()/]_Part_Title;
 	}
 
 [view.additionalMethods()/]
