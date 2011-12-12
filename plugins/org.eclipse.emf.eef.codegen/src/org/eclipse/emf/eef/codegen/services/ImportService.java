@@ -26,6 +26,7 @@ public class ImportService {
 
 	/**
 	 * Initializing EMF importManager.
+	 * @since 1.1
 	 */
 	public void initializeImportManager(EObject caller, String packageName, String className) {
 		ImportManager importManager = new ImportManager(packageName, className);
@@ -41,6 +42,7 @@ public class ImportService {
 
 	/**
 	 * Generate sorted imports.
+	 * @since 1.1
 	 */
 	public String genSortedImports(EObject caller) {
 		return getGenModel(caller).getImportManager().computeSortedImports();
