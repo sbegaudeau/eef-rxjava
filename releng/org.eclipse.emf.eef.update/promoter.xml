@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.14 2011/12/13 16:33:29 sbouchet Exp $
+ $Id: promoter.xml,v 1.15 2011/12/13 17:15:07 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -91,14 +91,6 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			</classpath>
 		</taskdef>
 	</target>
-	<target name="get.lastSuccessfulBuild">
-		<!-- added since juno 3.8M4, that breaks the automatic sharing of jobs workspace. -->
-		<get src="https://hudson.eclipse.org/hudson/job/emf-eef-master/lastSuccessfulBuild/artifact/*zip*/archive.zip" dest="${java.io.tmpdir}/emf-eef-master-archive.zip" usetimestamp="true" />
-		<delete dir="${build.root}" includeemptydirs="true" quiet="true" />
-		<mkdir dir="${build.root}" />
-		<unzip src="${java.io.tmpdir}/emf-eef-master-archive.zip" dest="${build.root}" overwrite="true" />
-		<delete file="${java.io.tmpdir}/emf-eef-master-archive.zip" quiet="true" />
-	</target>
 
 	<target name="load.properties">
 		<property file="${property.file.location}" />
@@ -108,7 +100,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<fail message="property.file.location property must be defined" unless="property.file.location" />
 	</target>
 
-	<target name="main" depends="init,get.lastSuccessfulBuild,check.property.file.location,load.properties">
+	<target name="main" depends="init,check.property.file.location,load.properties">
 		<fail message="build.qualifier property must be defined">
 			<condition>
 				<not>
