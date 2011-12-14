@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.15 2011/12/13 17:15:07 sbouchet Exp $
+ $Id: promoter.xml,v 1.16 2011/12/14 09:47:07 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -100,6 +100,28 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<fail message="property.file.location property must be defined" unless="property.file.location" />
 	</target>
 
+
+	<target name="init.properties">
+		<if>
+			<isset property="build.alias"/>
+			<then>
+				<property name="final.version.qualifier" value="${version}${build.alias}" />
+			</then>
+
+			<elseif>
+				<matches pattern="^R" string="${build.qualifier}" />
+				<then>
+					<property name="final.version.qualifier" value="${version}" />
+				</then>
+			</elseif>
+
+			<else>
+				<property name="final.version.qualifier" value="${version}${build.qualifier}" />
+			</else>
+		</if>
+		
+	</target>
+
 	<target name="main" depends="init,check.property.file.location,load.properties">
 		<fail message="build.qualifier property must be defined">
 			<condition>
@@ -126,7 +148,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<fail message="downloads.area property must be defined" unless="downloads.area" />
 
 		<!-- defaults -->
-
+		<antcall target="init.properties" />
 		<property name="packages.directory" location="${build.root}/archive/${packages.base}" />
 
 		<property name="build.drop.directory" location="${downloads.area}/downloads/drops/${version}/${build.qualifier}" />
@@ -141,8 +163,9 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			</fileset>
 		</copy>
 
-		<!-- rename zip package -->
-		<rename dest="${build.drop.directory}/emf-eef-Update-${version}.zip" src="${build.drop.directory}/org.eclipse.emf.eef.update.zip" />
+		<!-- rename UpdateSite zip package -->
+		<move tofile="${build.drop.directory}/emf-eef-Update-${final.version.qualifier}.zip" file="${build.drop.directory}/org.eclipse.emf.eef.update.zip" />
+
 		<!-- genereate md5 checksums -->
 		<checksum algorithm="MD5" fileext=".md5" format="MD5SUM">
 			<fileset dir="${build.drop.directory}" />
@@ -228,6 +251,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			<property name="child.repository" value="${build.qualifier}" />
 			<property name="composite.name" value="EEF ${base.version} ${composite.type} Update Site" />
 		</ant>
+
 		<fileset id="repository.resources" dir="${composite.repository.directory}">
 			<or>
 				<filename name="compositeContent.*" />
