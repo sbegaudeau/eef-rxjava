@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.19 2011/12/14 10:55:33 sbouchet Exp $
+ $Id: promoter.xml,v 1.20 2011/12/14 11:24:26 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -102,12 +102,10 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 	<target name="init.properties">
 		<if>
-			<not>
-				<and>
-					<isset property="build.alias" />
-					<length string="${build.alias}" trim="true" when="greater" length="0" />
-				</and>
-			</not>
+			<and>
+				<isset property="build.alias" />
+				<length string="${build.alias}" trim="true" when="greater" length="0" />
+			</and>
 			<then>
 				<property name="final.version.qualifier" value="${version}${build.alias}" />
 			</then>
