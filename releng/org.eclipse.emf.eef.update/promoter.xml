@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.20 2011/12/14 11:24:26 sbouchet Exp $
+ $Id: promoter.xml,v 1.21 2011/12/14 13:46:13 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -101,27 +101,6 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 
 	<target name="init.properties">
-		<if>
-			<and>
-				<isset property="build.alias" />
-				<length string="${build.alias}" trim="true" when="greater" length="0" />
-			</and>
-			<then>
-				<property name="final.version.qualifier" value="${version}${build.alias}" />
-			</then>
-
-			<elseif>
-				<matches pattern="^R" string="${build.qualifier}" />
-				<then>
-					<property name="final.version.qualifier" value="${version}" />
-				</then>
-			</elseif>
-
-			<else>
-				<property name="final.version.qualifier" value="${version}${build.qualifier}" />
-			</else>
-		</if>
-		<echo message="${final.version.qualifier}" />
 		<fail message="build.qualifier property must be defined">
 			<condition>
 				<not>
@@ -142,6 +121,18 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				</not>
 			</condition>
 		</fail>
+		<if>
+			<and>
+				<isset property="build.alias" />
+				<length string="${build.alias}" trim="true" when="greater" length="0" />
+			</and>
+			<then>
+				<property name="final.version.qualifier" value="${build.alias}" />
+			</then>
+			<else>
+				<property name="final.version.qualifier" value="${version}${build.qualifier}" />
+			</else>
+		</if>
 		<fail message="build.root property must be defined" unless="build.root" />
 		<fail message="downloads.area property must be defined" unless="downloads.area" />
 	</target>
@@ -245,6 +236,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 		<!-- Add to composite repo -->
 		<ant antfile="/shared/modeling/tools/promotion/manage-composite.xml" target="add" dir="${composite.repository.directory}">
+			<property name="user.dir" value="${composite.repository.directory}" />
 			<property name="child.repository" value="${build.qualifier}" />
 			<property name="composite.name" value="EEF ${base.version} ${composite.type} Update Site" />
 		</ant>
