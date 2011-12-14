@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.18 2011/12/14 10:35:31 sbouchet Exp $
+ $Id: promoter.xml,v 1.19 2011/12/14 10:55:33 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -102,7 +102,12 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 	<target name="init.properties">
 		<if>
-			<isset property="build.alias"/>
+			<not>
+				<and>
+					<isset property="build.alias" />
+					<length string="${build.alias}" trim="true" when="greater" length="0" />
+				</and>
+			</not>
 			<then>
 				<property name="final.version.qualifier" value="${version}${build.alias}" />
 			</then>
@@ -118,10 +123,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				<property name="final.version.qualifier" value="${version}${build.qualifier}" />
 			</else>
 		</if>
-		<echo message="${final.version.qualifier}"/>
-	</target>
-
-	<target name="main" depends="init,check.property.file.location,load.properties">
+		<echo message="${final.version.qualifier}" />
 		<fail message="build.qualifier property must be defined">
 			<condition>
 				<not>
@@ -144,9 +146,9 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</fail>
 		<fail message="build.root property must be defined" unless="build.root" />
 		<fail message="downloads.area property must be defined" unless="downloads.area" />
+	</target>
 
-		<!-- defaults -->
-		<antcall target="init.properties" />
+	<target name="main" depends="init,check.property.file.location,load.properties,init.properties">
 
 		<property name="build.drop.directory" location="${downloads.area}/downloads/drops/${version}/${build.qualifier}" />
 
