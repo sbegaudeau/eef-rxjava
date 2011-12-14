@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.21 2011/12/14 13:46:13 sbouchet Exp $
+ $Id: promoter.xml,v 1.22 2011/12/14 14:02:51 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -130,7 +130,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				<property name="final.version.qualifier" value="${build.alias}" />
 			</then>
 			<else>
-				<property name="final.version.qualifier" value="${version}${build.qualifier}" />
+				<property name="final.version.qualifier" value="${build.qualifier}" />
 			</else>
 		</if>
 		<fail message="build.root property must be defined" unless="build.root" />
