@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.17 2011/12/14 09:58:26 sbouchet Exp $
+ $Id: promoter.xml,v 1.18 2011/12/14 10:35:31 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -118,7 +118,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				<property name="final.version.qualifier" value="${version}${build.qualifier}" />
 			</else>
 		</if>
-		
+		<echo message="${final.version.qualifier}"/>
 	</target>
 
 	<target name="main" depends="init,check.property.file.location,load.properties">
