@@ -20,7 +20,7 @@
 
 [comment ===== Case : model = Reference - view = Combo ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
+[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
@@ -30,7 +30,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](allResource, [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 }
 [/template]
 
@@ -58,7 +58,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [comment ===== Case : model = Reference - view = Combo ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Combo'))]
-[pec.model.name.toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClass/])event.getNewValue());
+[pec.pecModelClass().toJavaIdentifier()/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClass/])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Combo'))]
@@ -75,7 +75,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 	[defaultInitialization()/]
 	// [/protected]
 	[/if]
-	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](input[editionElement.name.toJavaClassifier()/], [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](input[editionElement.name.toJavaClassifier()/], [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 }
 [/template]
 

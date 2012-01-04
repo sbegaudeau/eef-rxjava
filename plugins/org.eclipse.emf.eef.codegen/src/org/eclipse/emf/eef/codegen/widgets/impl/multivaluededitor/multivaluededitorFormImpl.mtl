@@ -71,7 +71,7 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, p
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						[editor.elementEditorName()/].getShell(), "[pec.model.name/]", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						[editor.elementEditorName()/].getShell(), "[pec.pecModelClass()/]", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
 						[editor.elementEditorName()/]List, [editor.involvedPropertiesEditionElement().metamodelGetter()/].getEType(), null,
 						false, true, 
 						null, null);

@@ -20,7 +20,7 @@
 
 [comment ===== Case : model = Reference(1) - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [query public validCaseForSingleReference(editionElement : PropertiesEditionElement) : Boolean = 
-	not editionElement.hasModelNavigation()
+	(not editionElement.hasModelNavigation())
 	and editionElement.model.isReferenceSingle() 
 	and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer'))/]
 
@@ -35,7 +35,7 @@ private [include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFl
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForSingleReference())]
 if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
-	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.ADD) {
 	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
 		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
@@ -71,7 +71,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForSingleReference()) ]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	// init part
-	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 	// set the button mode
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode([include('org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum')/].BROWSE);
@@ -87,7 +87,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
  * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
  */
 public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
-	return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+	return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.peeModelQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 	}
 
 });
@@ -119,7 +119,7 @@ private [include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFl
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForContainmentNavigation())] 
 if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
-	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.ADD) {
 	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
 		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
@@ -155,7 +155,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForContainmentNavigation())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	// init part
-	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 	// set the button mode
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode([include('org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum')/].BROWSE);
@@ -171,7 +171,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 	 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 	 */
 	public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
-		return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.peeModelQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 	}
 
 });
@@ -203,7 +203,7 @@ private [include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFl
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForContainment())]
 if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
-	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.ADD) {
 	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
 		[if (not editionElement.model.eType.oclAsType(EClass).abstract)]
@@ -240,7 +240,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForContainment() and not editionElement.hasModelNavigation())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	// init part
-	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 	// set the button mode
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode([include('org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum')/].CREATE);

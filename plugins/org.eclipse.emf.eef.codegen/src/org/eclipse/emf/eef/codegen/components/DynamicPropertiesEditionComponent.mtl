@@ -56,7 +56,7 @@ public class [pec.subPECClass(topLevelView)/] extends ComposedPropertiesEditionC
 	 * The EObject to edit
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	private [pec.model.name/] [pec.model.name.toJavaIdentifier()/];
+	private [pec.pecModelClass()/] [pec.pecModelClass().toJavaIdentifier()/];
 
 	/**
 	 * The [topLevelView.viewKey(pec)/] part
@@ -93,22 +93,22 @@ Implemented later ...
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param [pec.model.name.toJavaIdentifier()/] the EObject to edit
+	 * @param [pec.pecModelClass().toJavaIdentifier()/] the EObject to edit
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public [pec.subPECClass(topLevelView)/](EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
+	public [pec.subPECClass(topLevelView)/](EObject [pec.pecModelClass().toJavaIdentifier()/], String editing_mode) {
 		super(editing_mode);
-		if ([pec.model.name.toJavaIdentifier()/] instanceof [pec.model.name/]) {
+		if ([pec.pecModelClass().toJavaIdentifier()/] instanceof [pec.pecModelClass()/]) {
 [comment]
 Implemented later ...
 [for (view : View | pec.views) ? (pec.mustBeGenerated())]
-			[pec.subPECClass(view).toLowerFirst()/] = new [pec.subPECClass(view)/]([pec.model.name.toJavaIdentifier().trim()/], editing_mode); 
+			[pec.subPECClass(view).toLowerFirst()/] = new [pec.subPECClass(view)/]([pec.pecModelClass().toJavaIdentifier().trim()/], editing_mode); 
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
 [/for]
 [/comment]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent)) ? (subPec.mustBeGenerated())]
 	[for (view : View | subPec.views) ? (view.ancestors()->includes(topLevelView))]
-			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.model.name.toJavaIdentifier()/], editing_mode);
+			[subPec.subPECClass(view).toLowerFirst()/] = new [subPec.subPECClass(view)/]([pec.pecModelClass().toJavaIdentifier()/], editing_mode);
 			addSubComponent([subPec.subPECClass(view).toLowerFirst()/]);
 	[/for]
 [/for]
@@ -123,7 +123,7 @@ Implemented later ...
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if ([topLevelView.viewPartConstant(pec)/].equals(key) && [pec.model.name.toJavaIdentifier()/] == null) {
+		if ([topLevelView.viewPartConstant(pec)/].equals(key) && [pec.pecModelClass().toJavaIdentifier()/] == null) {
 			IPropertiesEditionPartProvider provider = PropertiesEditionPartProviderService.getInstance().getProvider([include(topLevelView.owningViewsRepository().vrQualifiedClass())/].class);
 			if (provider != null) {
 				[topLevelView.viewIdentifier(pec)/] = ([topLevelView.pepInterface()/])provider.getPropertiesEditionPart([topLevelView.editorID()/].class, kind, this);

@@ -59,7 +59,7 @@ public class [ePackage.pecPackageProviderClass()/] extends [includeAdapterFactor
 		[if (pec.referencedBinding->size() > 0)]
 		[include('java.util.List')/]<[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/]> providers = new [include('java.util.ArrayList')/]<PropertiesEditingProvider>([pec.referencedBinding->size()/]);
 		[for (binding : PropertiesEditionComponent | pec.referencedBinding.binding.oclAsType(PropertiesEditionComponent))]
-		providers.add((PropertiesEditingProvider)create[binding.model.name.toJavaIdentifierDelegate().toUpperFirst()/]Adapter());
+		providers.add((PropertiesEditingProvider)create[binding.pecModelClass().toJavaIdentifierDelegate().toUpperFirst()/]Adapter());
 		[/for]
 		return new [include(pec.pecProviderQualifiedClass())/](providers);
 		[else]

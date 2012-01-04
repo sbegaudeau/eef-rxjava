@@ -41,9 +41,17 @@
 
 [query public metamodelPrefix(ePackage : EPackage) : String = ePackage.getGenPackage().prefix/]
 
+[query public name(eClassifier : EClassifier) : String = let qualifiedName : String = eClassifier.qualifiedName() in 
+qualifiedName.substring(qualifiedName.lastIndex('.') + 1)/]
+
 [query public qualifiedName(eClassifier : EClassifier) : String =  
 if eClassifier.oclIsTypeOf(EClass) 
-	then eClassifier.oclAsType(EClass).getGenClass().getQualifiedInterfaceName()
+	then 
+		let genClass : GenClass = eClassifier.oclAsType(EClass).getGenClass() in
+		if eClassifier.instanceTypeName.oclIsUndefined()
+			then genClass.getQualifiedInterfaceName()
+			else genClass.getQualifiedClassName()
+		endif
 	else eClassifier.ePackage.completePackage() + '.' + eClassifier.name
 endif/]
 

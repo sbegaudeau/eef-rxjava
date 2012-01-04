@@ -78,7 +78,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof [pec.model.name/]) [pec.provideForPart().trim()/];
+		return (editingContext.getEObject() instanceof [pec.pecModelClass()/]) [pec.provideForPart().trim()/];
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof [pec.model.name/]) [pec.provideForClass().trim()/];
+		return (editingContext.getEObject() instanceof [pec.pecModelClass()/]) [pec.provideForClass().trim()/];
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof [pec.model.name/]) [pec.provideForPartAndClass().trim()/];
+		return (editingContext.getEObject() instanceof [pec.pecModelClass()/]) [pec.provideForPartAndClass().trim()/];
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof [pec.model.name/]) {
+		if (editingContext.getEObject() instanceof [pec.pecModelClass()/]) {
 			return new [include(pec.pecQualifiedClass())/](editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
@@ -119,7 +119,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof [pec.model.name/]) {
+		if (editingContext.getEObject() instanceof [pec.pecModelClass()/]) {
 [for (view : View | pec.views) ? (view.explicit)]
 			if ([pec.subPECClass(view)/].[view.viewPartConstant(pec)/].equals(part))
 				return new [pec.subPECClass(view)/](editingContext, editingContext.getEObject(), mode);
@@ -140,7 +140,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof [pec.model.name/]) {
+		if (editingContext.getEObject() instanceof [pec.pecModelClass()/]) {
 [for (view : View | pec.views) ? (view.explicit)]
 			if ([include(pec.subPECQualifiedClass(view))/].[view.viewPartConstant(pec)/].equals(part)
 				&& refinement == [pec.subPECClass(view)/].class)

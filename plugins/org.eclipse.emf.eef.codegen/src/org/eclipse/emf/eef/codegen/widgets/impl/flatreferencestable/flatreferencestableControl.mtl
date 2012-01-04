@@ -40,7 +40,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('FlatReferencesTable'))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 }
 [/template]
@@ -91,7 +91,7 @@ if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStruc
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.hasModelNavigation() and editionElement.representationName('FlatReferencesTable'))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 }
 [/template]

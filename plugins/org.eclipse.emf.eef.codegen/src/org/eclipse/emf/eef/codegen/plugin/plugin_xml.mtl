@@ -80,7 +80,7 @@
          <propertySection
                class="[view.pepFormQualifiedClass()/]"
                filter="[pec.pecProviderQualifiedClass()/]$EditionFilter"
-               id="[pec.model.eefPackage(basePackage)/].section.[pec.model.name/]"
+               id="[pec.model.eefPackage(basePackage)/].section.[pec.pecModelClass()/]"
                tab="[view.genTabId(pec)/]">
          </propertySection>
 [/for]

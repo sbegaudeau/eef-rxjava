@@ -18,7 +18,7 @@
 [import org::eclipse::emf::eef::codegen::services::imports /]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('SelectionDialog') and not editionElement.model.derived and not editionElement.canGeneratemodelNavigation())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/]((String)event.getNewValue());
+[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/]((String)event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('SelectionDialog'))]
@@ -34,11 +34,11 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('SelectionDialog') and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.isPrimitiveType())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].convertToString([editionElement.metamodelGetter()/].getEAttributeType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].convertToString([editionElement.metamodelGetter()/].getEAttributeType(), [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 }
 [else]
-	if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/])) {
-		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].convertToString([editionElement.metamodelGetter()/].getEAttributeType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+	if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/])) {
+		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].convertToString([editionElement.metamodelGetter()/].getEAttributeType(), [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 	}
 [/if]
 [/template]
@@ -50,7 +50,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('SelectionDialog') and editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.isPrimitiveType())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].convertToString([editionElement.metamodelGetter()/].getEAttributeType(), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].convertToString([editionElement.metamodelGetter()/].getEAttributeType(), [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 }
 [else]
 	if ([editionElement.name.toJavaIdentifier()/]Settings.getValue() != null && isAccessible([editionElement.views->first().editorID()/])) {

@@ -98,11 +98,11 @@
 			<propertyTab
 				label="[view.viewKey(pec).trim()/]"
 				category="extended"
-				id="[pec.model.ePackage.associatedGenPackage().basePackage/].[pec.model.ePackage.name/].[pec.model.name/].[view.viewKey(pec).toASCII().replaceAll(' ', '_')/]"
+				id="[pec.model.ePackage.associatedGenPackage().basePackage/].[pec.model.ePackage.name/].[pec.pecModelClass()/].[view.viewKey(pec).toASCII().replaceAll(' ', '_')/]"
 [if (pec.involvedViews()->indexOf(view) = 2)]
 				afterTab="Base">
 [else]
-				afterTab="[pec.model.ePackage.associatedGenPackage().basePackage/].[pec.model.ePackage.name/].[pec.model.name/].[pec.previousView(view).name.toASCII().replaceAll(' ', '_')/]">
+				afterTab="[pec.model.ePackage.associatedGenPackage().basePackage/].[pec.model.ePackage.name/].[pec.pecModelClass()/].[pec.previousView(view).name.toASCII().replaceAll(' ', '_')/]">
 [/if]
 			</propertyTab>
 [/template]

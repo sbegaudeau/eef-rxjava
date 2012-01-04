@@ -91,21 +91,21 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	/**
 	 * Parameterized constructor
 	 * 
-	 * @param [pec.model.name.toJavaIdentifier()/] the EObject to edit
+	 * @param [pec.pecModelClass().toJavaIdentifier()/] the EObject to edit
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
-	public [pec.pecClass()/](PropertiesEditingContext editingContext, EObject [pec.model.name.toJavaIdentifier()/], String editing_mode) {
+	public [pec.pecClass()/](PropertiesEditingContext editingContext, EObject [pec.pecModelClass().toJavaIdentifier()/], String editing_mode) {
 		super(editingContext, editing_mode);
-		if ([pec.model.name.toJavaIdentifier()/] instanceof [include(pec.pecModelQualifiedClass())/]) {
+		if ([pec.pecModelClass().toJavaIdentifier()/] instanceof [include(pec.pecModelQualifiedClass())/]) {
 			PropertiesEditingProvider provider = null;
 [for (view : View | pec.views) ? (view.explicit)]
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt([pec.model.name.toJavaIdentifier()/], PropertiesEditingProvider.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt([pec.pecModelClass().toJavaIdentifier()/], PropertiesEditingProvider.class);
 			[pec.subPECClass(view).toLowerFirst()/] = ([pec.subPECClass(view)/])provider.getPropertiesEditingComponent(editingContext, editing_mode, [pec.subPECClass(view)/].[view.viewPartConstant(pec)/], [pec.subPECClass(view)/].class);
 			addSubComponent([pec.subPECClass(view).toLowerFirst()/]);
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
 	[for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt([pec.model.name.toJavaIdentifier()/], PropertiesEditingProvider.class);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt([pec.pecModelClass().toJavaIdentifier()/], PropertiesEditingProvider.class);
 		[if (view.isA1stLevelReferencedView(pec))]
 			[subPec.pecClass().toLowerFirst()/] = ([subPec.pecClass()/])provider.getPropertiesEditingComponent(editingContext, editing_mode, [subPec.subPECClass(view)/].[view.viewPartConstant(subPec)/], [subPec.pecClass()/].class);
 			addSubComponent([subPec.pecClass().toLowerFirst()/]);

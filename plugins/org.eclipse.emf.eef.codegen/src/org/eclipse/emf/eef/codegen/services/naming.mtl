@@ -267,6 +267,14 @@ CompositePropertiesEditionPart
 [pec.model.qualifiedName()/]
 [/template]
 
+[template public peeModelClass(pee : PropertiesEditionElement)]
+[pee.model.eType.name()/]
+[/template]
+
+[template public pecModelClass(pec : PropertiesEditionComponent)]
+[pec.model.name()/]
+[/template]
+
 [template public viewPartConstant(view : View, pec : PropertiesEditionComponent)]
 [view.viewKey(pec).toJavaConstant()/]_PART
 [/template]

@@ -20,9 +20,9 @@
 
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
 [query public validCaseForSimpleReference(editionElement : PropertiesEditionElement) : Boolean = 
-	not editionElement.hasModelNavigation()
+	(not editionElement.hasModelNavigation())
 	and editionElement.model.isReferenceMany() 
-	and editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable') /]
+	and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')) /]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSimpleReference())]
 
@@ -41,7 +41,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.model.eType.name/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.peeModelClass()/]) event.getNewValue());
 }
 [/template]
 
@@ -52,7 +52,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature())  && isAccessibl
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForSimpleReference())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 }
 [/template]
@@ -128,7 +128,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.model.eType.name/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.peeModelClass()/]) event.getNewValue());
 }
 [/template]
 
@@ -139,7 +139,7 @@ if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStruc
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForMultipleModelReference())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 }
 [/template]
@@ -191,7 +191,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 		[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.model.eType.name/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([editionElement.peeModelClass()/]) event.getNewValue());
 }
 [/template]
 
@@ -203,7 +203,7 @@ if ([editionElement.name.toJavaIdentifier()/]Settings.isAffectingFeature((EStruc
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForSingleModelReference())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.model.name.toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).metamodelGetter()/], [editionElement.metamodelGetter()/]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 }
 [/template]
