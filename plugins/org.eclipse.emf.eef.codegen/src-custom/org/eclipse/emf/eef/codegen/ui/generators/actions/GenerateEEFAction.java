@@ -43,8 +43,8 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 	 */
 	protected List<EEFGenModel> initEEFGenModel() throws IOException {
 		if (!selectedFiles.isEmpty()) {
-			ResourceSet resourceSet = new ResourceSetImpl();
 			for (IFile selectedFile : selectedFiles) {
+				ResourceSet resourceSet = new ResourceSetImpl();
 				URI modelURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
 				String fileExtension = modelURI.fileExtension();
 				if (fileExtension == null || fileExtension.length() == 0) {
