@@ -1,4 +1,4 @@
-[comment 
+[comment encoding = UTF-8
  *******************************************************************************
  * Copyright (c) 2008-2009 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -14,6 +14,7 @@
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::imports /]
+[import org::eclipse::emf::eef::codegen::services::emfCodeGen /]
 
 [comment --------------------------------------------------------------------------
   Master packages management
@@ -258,29 +259,12 @@ CompositePropertiesEditionPart
 
 [query public elementEditorName(editor : ElementEditor) : String = editor.name.toJavaIdentifier().disambiguation('view') /]
 
-[template public editionElementPackage(pee : PropertiesEditionElement)]
-[if (pee.model.eType.ePackage.name = 'ecore')]EcorePackage[else][pee.model.eType.ePackage.eInverse(GenPackage)->asSequence()->first().prefix/]Package[/if]
+[template public peeModelQualifiedClass(pee : PropertiesEditionElement)]
+[pee.model.eType.qualifiedName()/]
 [/template]
 
-[template public editionElementCompletePackage(pee : PropertiesEditionElement)]
-[if (pee.model.eType.ePackage.name = 'ecore')]org.eclipse.emf.ecore[else][pee.model.eType.ePackage.eInverse(GenPackage)->asSequence()->first().ecorePackage.completePackage()/][/if]
-[/template]
-
-[template public editionElementPackageQualifiedClass(pee : PropertiesEditionElement)]
-[editionElementCompletePackage()/].[editionElementPackage()/]
-[/template]
-
-[template public editionElementQualifiedClass(pee : PropertiesEditionElement)]
-[editionElementCompletePackage()/].[pee.model.eType.name/]
-[/template]
-
-[comment FIXME: once template call on a model navigation bug fix /]
-[template public metamodelFactory(pee : PropertiesEditionElement)]
-[pee.model.eType.ePackage.metamodelFactory()/]
-[/template]
-
-[template public metamodelQualifiedFactory(pee : PropertiesEditionElement)]
-[pee.editionElementCompletePackage()/].[pee.metamodelFactory()/]
+[template public pecModelQualifiedClass(pec : PropertiesEditionComponent)]
+[pec.model.qualifiedName()/]
 [/template]
 
 [template public viewPartConstant(view : View, pec : PropertiesEditionComponent)]

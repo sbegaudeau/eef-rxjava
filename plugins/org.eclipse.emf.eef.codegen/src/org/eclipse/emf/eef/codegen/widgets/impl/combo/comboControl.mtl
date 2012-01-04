@@ -1,4 +1,4 @@
-[comment 
+[comment encoding = UTF-8
  *******************************************************************************
  * Copyright (c) 2008-2009 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -20,7 +20,7 @@
 
 [comment ===== Case : model = Reference - view = Combo ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.editionElementQualifiedClass())/])event.getNewValue());
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isReferenceSingle() and editionElement.representationName('Combo'))]
@@ -44,7 +44,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 	 * [view.owningViewsRepository().associatedGenModel().generationComment()/]
 	 */
 	public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
-		return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.editionElementQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.peeModelQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 	}
 
 });

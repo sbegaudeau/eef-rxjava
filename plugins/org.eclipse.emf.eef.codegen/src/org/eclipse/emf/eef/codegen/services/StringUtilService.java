@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.services;
 
-import java.text.Normalizer;
-
 /**
  * This class is used to manipulate strings.
  * 
@@ -44,8 +42,8 @@ public class StringUtilService {
 		return buf.toString();
 	}
 
-	public String toASCII(String input) {
-		return Normalizer.normalize(input, Normalizer.Form.NFD).replaceAll(
-				"\\p{InCombiningDiacriticalMarks}+", "");
-	}
+//	public String toASCII(String input) {
+//		return Normalizer.normalize(input, Normalizer.Form.NFD).replaceAll(
+//				"\\p{InCombiningDiacriticalMarks}+", "");
+//	}
 }

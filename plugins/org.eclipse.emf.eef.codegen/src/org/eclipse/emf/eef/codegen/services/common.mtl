@@ -13,6 +13,7 @@
 [module common('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0')/]
 
 [import org::eclipse::emf::eef::codegen::services::imports /]
+[import org::eclipse::emf::eef::codegen::services::emfCodeGen /]
 
 [comment --------------- Common queries --------------- /]
 
@@ -217,21 +218,6 @@
 	pee.hasModelNavigation() and pee.model.oclIsTypeOf(ecore::EAttribute) /]
 
 [comment --------------- Common templates --------------- /]
-[template public ecorePackageSignature(e : EStructuralFeature)]
-[e.eContainingClass.name.toUpperFirst()/]_[e.name.toUpperFirst()/]
-[/template]
-
-[template public ecoreCompletePackageGetter(editor : PropertiesEditionElement)]
-get[editor.model.ecorePackageSignature()/]()
-[/template]
-
-[template public ecoreCompletePackageGetter(s : SimpleModelNavigation)]
-get[s.feature.ecorePackageSignature()/]()
-[/template]
-
-[template public ecoreCompletePackageSetter(editor : PropertiesEditionElement)]
-set[editor.model.ecorePackageSignature()/]()
-[/template]
 
 [query public ecoreGenModelAnnotation(modelElement : EModelElement) : OrderedSet(EAnnotation) = 
 	modelElement.eAnnotations->select(annot : EAnnotation | annot.source = 'http://www.eclipse.org/emf/2002/GenModel')/]
@@ -344,13 +330,13 @@ Object
 
 [query public toPath(s : String) : String = s.substituteAll('.', '/')/]
 
-[query public toASCII(s : String) : String 
-	= invoke('org.eclipse.emf.eef.codegen.services.StringUtilService', 'toASCII(java.lang.String)', Sequence{s}) /]
+[comment][query public toASCII(s : String) : String 
+	= invoke('org.eclipse.emf.eef.codegen.services.StringUtilService', 'toASCII(java.lang.String)', Sequence{s}) /][/comment]
 
 [query public toUnicode(s : String) : String
 	= invoke('org.eclipse.emf.eef.codegen.services.StringUtilService', 'toUnicode(java.lang.String)', Sequence{s}) /]
 
-[comment][template public toASCII(s : String)]
+[template public toASCII(s : String)]
 [s.substituteAll('à', 'a')
 	.substituteAll('é', 'e')
 	.substituteAll('è', 'e')
@@ -364,7 +350,7 @@ Object
 	.substituteAll('ü', 'u')
 	.substituteAll('û', 'u')
 	.substituteAll('-', '')/]
-[/template][/comment]
+[/template]
 
 [comment] template used for the properties files to handle accents
 DEPRECATED. using now a java service to do so.
@@ -448,63 +434,10 @@ DEPRECATED. using now a java service to do so.
 is
 [/template]
 
-[query public completePackage(eClassifier : EClassifier) : String = ePackage.completePackage()/]
-
-[template public completePackage(ePackage : EPackage)]
-[if ((not ePackage.associatedGenPackage().basePackage.oclIsUndefined()) and (ePackage.associatedGenPackage().basePackage.size() > 0))][ePackage.associatedGenPackage().basePackage/].[/if][ePackage.name/]
-[/template]
-
 [query public eefPackage(eClassifier : EClassifier, basePackage : String) : String = eClassifier.ePackage.eefPackage(basePackage)/]
 
 [template public eefPackage(ePackage : EPackage, basePackage : String)]
 [if ((not ePackage.associatedGenPackage().basePackage.oclIsUndefined()) and (ePackage.associatedGenPackage().basePackage.size() > 0))][basePackage/].[/if][ePackage.name/]
-[/template]
-
-[query public qualifiedName(eClassifier : EClassifier) : String =  eClassifier.completePackage().concat('.').concat(eClassifier.name)/]
-
-[query public metamodelPrefix(ePackage : EPackage) : String =
-	if ePackage.nsURI= 'http://www.eclipse.org/emf/2002/Ecore'
-	then 'Ecore'
-	else if ePackage.nsURI = 'http://www.eclipse.org/emf/2003/XMLType'
-			then 'XMLType'
-			else ePackage.eInverse(GenPackage)->first().prefix
-			endif
-	endif/]
-
-[template public metamodelPackage(ePackage : EPackage)]
-[ePackage.metamodelPrefix()/]Package
-[/template]
-
-[template public metamodelFactory(ePackage : EPackage)]
-[ePackage.metamodelPrefix()/]Factory
-[/template]
-
-[template public metamodelPackage(eClassifier : EClassifier)]
-[eClassifier.ePackage.metamodelPackage()/]
-[/template]
-
-[template public qualifiedMetamodelPackage(ePackage : EPackage)]
-[ePackage.completePackage()/].[ePackage.metamodelPackage()/]
-[/template]
-
-[template public qualifiedMetamodelPackage(eClassifier : EClassifier)]
-[eClassifier.ePackage.qualifiedMetamodelPackage()/]
-[/template]
-
-[template public qualifiedMetamodelFactory(ePackage : EPackage)]
-[ePackage.completePackage()/].[ePackage.metamodelFactory()/]
-[/template]
-
-[template public metamodelGetter(s : SimpleModelNavigation)]
-[include(s.feature.eContainingClass.qualifiedMetamodelPackage())/].eINSTANCE.[s.ecoreCompletePackageGetter()/]
-[/template]
-
-[template public metamodelGetter(p : PropertiesEditionElement)]
-[include(p.model.eContainingClass.qualifiedMetamodelPackage())/].eINSTANCE.[p.ecoreCompletePackageGetter()/]
-[/template]
-
-[template public metamodelGetter(c : EClassifier)]
-[include(c.qualifiedMetamodelPackage())/].eINSTANCE.get[c.name/]()
 [/template]
 
 [comment queries for model navigation /]
@@ -535,3 +468,29 @@ is
 
 [query public involvedPropertiesEditionComponent(view : View) : PropertiesEditionComponent = 
 	view.eInverse(PropertiesEditionComponent)->first()/]
+
+[comment ==== Metamodel getters, with imports management ==== /]
+[comment
+NOTE: Imports are managed here because addImport must be called from a model element from the currently generated model.
+/]
+
+[template public metamodelGetter(p : PropertiesEditionComponent)]
+[p.model.metamodelGetter()/][p.addImport(p.model.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
+[template public metamodelGetter(p : PropertiesEditionElement)]
+[p.model.metamodelGetter()/][p.addImport(p.model.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
+[template public metamodelTypeGetter(p : PropertiesEditionElement)]
+[p.model.eType.metamodelGetter()/][p.addImport(p.model.eType.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
+[template public metamodelGetter(s : SimpleModelNavigation)]
+[s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
+[template public factoryCreator(p : PropertiesEditionElement)]
+[p.model.eType.factoryCreator()/][p.addImport(p.model.eType.getQualifiedFactoryInterfaceName())/]
+[/template]
+

@@ -30,7 +30,8 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.pde.core;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.pde.ui;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.acceleo.parser;bundle-version="3.1.0";resolution:=optional,
- org.eclipse.emf.eef.codegen.launcher;visibility:=reexport
+ org.eclipse.emf.eef.codegen.launcher;visibility:=reexport,
+ org.eclipse.emf.eef.codegen.ecore;bundle-version="1.1.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.eef.codegen,

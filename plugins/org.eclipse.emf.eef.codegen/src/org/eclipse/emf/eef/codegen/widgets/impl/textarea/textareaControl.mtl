@@ -1,4 +1,4 @@
-[comment 
+[comment encoding = UTF-8
  *******************************************************************************
  * Copyright (c) 2008-2010 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -20,14 +20,14 @@
 [comment ===== Case : model = Attribute(1) - view = Textarea ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.isPrimitiveType())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])[include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].createFromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.metamodelTypeGetter()/], (String)event.getNewValue())));[else]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([editionElement.model.eType.instanceClassName/])[include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].createFromString([editionElement.metamodelTypeGetter()/], (String)event.getNewValue()));[/if]
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null && isAccessible([editionElement.views->first().editorID()/])){
 	if (msg.getNewValue() != null) {
-		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), msg.getNewValue()));
+		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.metamodelTypeGetter()/], msg.getNewValue()));
 	} else {
 		[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]("");
 	}
@@ -37,7 +37,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.canGeneratemodelNavigation())]
 if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
-	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.metamodelTypeGetter()/], [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [/template]
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea'))]
@@ -48,12 +48,12 @@ if ([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFi
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.isPrimitiveType())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue())));[else]
-[editionElement.name.toJavaIdentifier()/]Settings.setValue(([editionElement.model.eType.instanceClassName/])[include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].createFromString([include(editionElement.editionElementPackageQualifiedClass())/].eINSTANCE.get[editionElement.model.eType.name/](), (String)event.getNewValue()));[/if]
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].create[editionElement.model.eType.instanceClassName.toUpperFirst()/]FromString([editionElement.metamodelTypeGetter()/], (String)event.getNewValue())));[else]
+[editionElement.name.toJavaIdentifier()/]Settings.setValue(([editionElement.model.eType.instanceClassName/])[include('org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil')/].createFromString([editionElement.metamodelTypeGetter()/], (String)event.getNewValue()));[/if]
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and editionElement.canGeneratemodelNavigation())]
 if ([editionElement.name.toJavaIdentifier()/]Settings.getValue() != null && isAccessible([editionElement.views->first().editorID()/]))
-	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.model.eType.metamodelPackage()/].eINSTANCE.get[editionElement.model.eType.name/](), [editionElement.name.toJavaIdentifier()/]Settings.getValue()));
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.metamodelTypeGetter()/], [editionElement.name.toJavaIdentifier()/]Settings.getValue()));
 [/template]
 

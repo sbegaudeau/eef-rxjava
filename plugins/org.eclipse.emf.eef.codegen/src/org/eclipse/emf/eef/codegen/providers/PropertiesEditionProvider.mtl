@@ -1,4 +1,4 @@
-[comment 
+[comment encoding = UTF-8
  *******************************************************************************
  * Copyright (c) 2008-2009 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -68,8 +68,8 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof [include(pec.model.qualifiedName())/]) 
-					&& ([include(pec.model.qualifiedMetamodelPackage())/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof [include(pec.pecModelQualifiedClass())/]) 
+					&& ([pec.metamodelGetter()/] == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && [pec.model.metamodelPackage()/].eINSTANCE.get[pec.model.name.toJavaMetamodelIdentifier()/]() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && [pec.metamodelGetter()/] == ((EObject)toTest).eClass();
 		}
 		
 	}

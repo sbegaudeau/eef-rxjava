@@ -1,4 +1,4 @@
-[comment 
+[comment encoding = UTF-8
  *******************************************************************************
  * Copyright (c) 2008-2009 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -17,6 +17,7 @@
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
 [import org::eclipse::emf::eef::codegen::services::filters /]
 [import org::eclipse::emf::eef::codegen::services::imports /]
+[import org::eclipse::emf::eef::codegen::services::emfCodeGen /]
 
 [comment ===== Case : model = Containment(*) - view = TableComposition or AdvancedTableComposition===== /]
 [query public validCaseForSimpleReference(editionElement : PropertiesEditionElement) : Boolean = 
@@ -40,7 +41,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[if (editionElement.strictFilterType().oclIsUndefined())]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.metamodelStrictFilterGetter()/], editingContext.getAdapterFactory());
 			[/if]
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
@@ -53,7 +54,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[if (editionElement.strictFilterType().oclIsUndefined())]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.metamodelStrictFilterGetter()/], editingContext.getAdapterFactory());
 			[/if]
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
@@ -76,7 +77,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.editionElementQualifiedClass())/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.peeModelQualifiedClass())/]) event.getNewValue());
 }
 [/template]
 
@@ -103,7 +104,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
 		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][include(editionElement.editionElementQualifiedClass())/][else][include(editionElement.strictFilterType().qualifiedName())/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][include(editionElement.peeModelQualifiedClass())/][else][include(editionElement.strictFilterType().qualifiedName())/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 
 });
@@ -138,7 +139,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[if (editionElement.strictFilterType().oclIsUndefined())]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.metamodelStrictFilterGetter()/], editingContext.getAdapterFactory());
 			[/if]
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
@@ -151,7 +152,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[if (editionElement.strictFilterType().oclIsUndefined())]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.metamodelStrictFilterGetter()/], editingContext.getAdapterFactory());
 			[/if]
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
@@ -174,7 +175,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.editionElementQualifiedClass())/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.peeModelQualifiedClass())/]) event.getNewValue());
 }
 [/template]
 
@@ -202,7 +203,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 			[if (editionElement.model.lowerBound = 0)]if (element instanceof String)
 				return element.equals(""); //$NON-NLS-1$ 
 			[/if]
-			if (element instanceof [include(editionElement.editionElementQualifiedClass())/])
+			if (element instanceof [include(editionElement.peeModelQualifiedClass())/])
 				return true;
 			return element instanceof [include('org.eclipse.emf.ecore.resource.Resource')/];
 		}
@@ -238,7 +239,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[if (editionElement.strictFilterType().oclIsUndefined())]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.metamodelStrictFilterGetter()/], editingContext.getAdapterFactory());
 			[/if]
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
@@ -251,7 +252,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[if (editionElement.strictFilterType().oclIsUndefined())]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 			[else]
-	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.strictFilterType().metamodelGetter()/], editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new [include('org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext')/](editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, [editionElement.metamodelStrictFilterGetter()/], editingContext.getAdapterFactory());
 			[/if]
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 	if (provider != null) {
@@ -274,7 +275,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.editionElementQualifiedClass())/]) event.getNewValue());
+	[editionElement.name.toJavaIdentifier()/]Settings.move(event.getNewIndex(), ([include(editionElement.peeModelQualifiedClass())/]) event.getNewValue());
 }
 [/template]
 
@@ -299,7 +300,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
 		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][include(editionElement.editionElementQualifiedClass())/][else][include(editionElement.strictFilterType().qualifiedName())/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if (editionElement.strictFilterType().oclIsUndefined())][include(editionElement.peeModelQualifiedClass())/][else][include(editionElement.strictFilterType().qualifiedName())/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 
 });
@@ -316,3 +317,8 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 	then editingElement.bindingFilters->filter(StrictTypingFilter)->first().type
 	else null
 	endif /]
+
+[template public metamodelStrictFilterGetter(editionElement : PropertiesEditionElement)]
+[editionElement.strictFilterType().metamodelGetter()/][addImport(editionElement.strictFilterType().ePackage.qualifiedMetamodelPackage())/]
+[/template]
+

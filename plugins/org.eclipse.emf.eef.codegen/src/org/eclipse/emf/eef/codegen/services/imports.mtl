@@ -48,6 +48,21 @@
 [/template]
 
 [**
+ * Adds an import.
+ * 
+ * WARNING: Using a template is mandatory to avoid queries cache side effects
+ * 
+ * @param caller any EObject from the components model 
+ * @param qualifiedNames the imports qualified names
+ */]
+[template public addImport(caller : EObject, qualifiedName : String) post (trim())]
+[invoke(
+	'org.eclipse.emf.eef.codegen.services.ImportService', 
+	'addImport(org.eclipse.emf.ecore.EObject, java.lang.String)', 
+	Sequence{caller, qualifiedName}) /]
+[/template]
+
+[**
  * Includes an import, i.e. add it to the import manager and returns the class name.
  * 
  * WARNING: Using a template is mandatory to avoid queries cache side effects

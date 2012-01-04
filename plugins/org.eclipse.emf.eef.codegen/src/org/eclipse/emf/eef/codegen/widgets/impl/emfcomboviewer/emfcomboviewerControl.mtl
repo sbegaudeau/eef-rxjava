@@ -1,4 +1,4 @@
-[comment 
+[comment encoding = UTF-8
  *******************************************************************************
  * Copyright (c) 2008-2009 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -19,13 +19,13 @@
 
 [comment ===== Case : model = Attribute(1) - view = EMFComboViewer ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and not editionElement.canGeneratemodelNavigation())]
-[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElementQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
+[pec.model.name.toJavaIdentifier().disambiguation('event')/].set[editionElement.model.name.toUpperFirst()/](([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
 [/template]
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
 [if (editionElement.model.oclAsType(EAttribute).isEnum())]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible([editionElement.views->first().editorID()/]))
-	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.editionElementQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])msg.getNewValue());
+	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElement.peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])msg.getNewValue());
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer
 [/if]
@@ -44,7 +44,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [comment ===== Case : model = Attribute(1) - view = EMFComboViewer - ModelNavigation ===== /]
 
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and editionElement.canGeneratemodelNavigation())]
-[editionElement.name.toJavaIdentifier()/]Settings.setValue(([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(editionElementQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
+[editionElement.name.toJavaIdentifier()/]Settings.setValue(([if editionElement.model.eType.instanceTypeName.oclIsUndefined()][include(peeModelQualifiedClass())/][else][editionElement.model.eType.instanceTypeName/][/if])event.getNewValue());
 [/template]
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and editionElement.canGeneratemodelNavigation())]
