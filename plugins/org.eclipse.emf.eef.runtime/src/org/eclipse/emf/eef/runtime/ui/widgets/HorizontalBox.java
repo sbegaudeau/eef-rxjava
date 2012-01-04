@@ -29,8 +29,9 @@ public class HorizontalBox extends Composite {
 	public HorizontalBox(Composite parent) {
 		super(parent, SWT.NONE);
 		layout = new GridLayout();
-		layout.marginHeight = 2;
-		layout.marginWidth = 2;
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
+		layout.horizontalSpacing = 0;
 		layout.numColumns = 10;
 		layout.makeColumnsEqualWidth = false;
 		this.setLayout(layout);
