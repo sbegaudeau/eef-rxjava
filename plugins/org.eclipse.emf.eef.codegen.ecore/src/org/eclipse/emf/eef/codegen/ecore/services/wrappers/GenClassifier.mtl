@@ -43,6 +43,9 @@
 [query public getImportedMetaType(genClassifier : GenClassifier) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getImportedMetaType()', Sequence{genClassifier}) /]
 
+[query public getQualifiedInterfaceName(genClassifier : GenClassifier) : String
+	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getQualifiedInterfaceName()', Sequence{genClassifier}) /]
+
 [query public getImportedParameterizedInstanceClassName(genClassifier : GenClassifier) : String
 	= invoke('org.eclipse.emf.codegen.ecore.genmodel.GenClassifier', 'getImportedParameterizedInstanceClassName()', Sequence{genClassifier}) /]
 
