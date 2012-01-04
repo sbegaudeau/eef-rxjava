@@ -132,6 +132,16 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.addListener(listener);
 	}
+	
+	
+	/**
+	 * @param listener listener to remove
+	 */
+	public void removePropertiesListener(IPropertiesEditionListener listener) {
+		propertiesEditionListeners.add(listener);
+		if (propertiesEditionComponent != null)
+			propertiesEditionComponent.removeListener(listener);		
+	}
 
 	/**
 	 * Validate the model and return the resulting Diagnostic

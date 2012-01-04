@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
@@ -350,4 +352,19 @@ public class EEFUtils {
 		}
 	}
 
+	/**
+	 * Search an {@link EditingDomain} in the given {@link PropertiesEditingContext} hierarchy.
+	 * @param editingContext to process
+	 * @return an {@link EditingDomain} if there is a {@link DomainPropertiesEditionContext} in the given hierarchy
+	 */
+	public static EditingDomain getEditingDomain(PropertiesEditingContext editingContext) {
+		if (editingContext instanceof DomainPropertiesEditionContext) {
+			return ((DomainPropertiesEditionContext) editingContext).getEditingDomain();
+		} else if (editingContext.getParentContext() != null) {
+			return getEditingDomain(editingContext.getParentContext());
+		} else {
+			return null;
+		}
+	}
+	
 }

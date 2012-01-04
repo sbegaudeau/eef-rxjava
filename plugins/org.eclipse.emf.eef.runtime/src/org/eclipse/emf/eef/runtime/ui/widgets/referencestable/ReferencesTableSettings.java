@@ -81,6 +81,23 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	public boolean isAffectingFeature(EStructuralFeature feature) {
 		return Arrays.asList(features).contains(feature);
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < features.length; i++) {
+			EReference ref = features[i];
+			builder.append(ref.getName());
+			if (i < (features.length - 1)) {
+				builder.append(" > ");
+			}
+		}
+		return builder.toString();
+	}
 
 	/************************************************************************************************
 	 * * getElements() * *
