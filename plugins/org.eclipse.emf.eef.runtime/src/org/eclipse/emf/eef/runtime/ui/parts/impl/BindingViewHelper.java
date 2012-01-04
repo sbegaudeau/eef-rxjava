@@ -12,6 +12,7 @@
 package org.eclipse.emf.eef.runtime.ui.parts.impl;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
@@ -96,7 +97,10 @@ public class BindingViewHelper implements ViewHelper {
 		if (associatedFeature != null) {
 			IItemPropertySource labelProvider = (IItemPropertySource) context.getAdapterFactory().adapt(context.getEObject(), org.eclipse.emf.edit.provider.IItemPropertySource.class);
 			if (labelProvider != null) {
-				text = labelProvider.getPropertyDescriptor(context.getEObject(), associatedFeature).getDisplayName(editor);
+				IItemPropertyDescriptor propertyDescriptor = labelProvider.getPropertyDescriptor(context.getEObject(), associatedFeature);
+				if (propertyDescriptor != null) {
+					text = propertyDescriptor.getDisplayName(editor);
+				}
 			}
 		}
 		return text;
