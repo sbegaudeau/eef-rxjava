@@ -74,7 +74,7 @@
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen.launcher</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen.ecore</module>
 		<module>${pluginspath}/org.eclipse.emf.eef.codegen.extended</module>
-		<module>${pluginspath}/org.eclipse.emf.eef.tests.codegen</module>
+		<!-- <module>${pluginspath}/org.eclipse.emf.eef.tests.codegen</module> -->
 
 <!-- 		<module>../org.eclipse.emf.example.eef</module>
 		<module>../org.eclipse.emf.example.eef.edit</module>
