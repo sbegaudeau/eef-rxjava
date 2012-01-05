@@ -292,6 +292,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -443,6 +444,9 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)tablecompositionOptionalProperty.getInput()).contains(element);
 	}
+
+
+
 
 
 

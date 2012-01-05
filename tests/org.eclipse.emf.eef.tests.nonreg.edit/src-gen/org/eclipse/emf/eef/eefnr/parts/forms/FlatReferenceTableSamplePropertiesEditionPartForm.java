@@ -186,6 +186,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -303,6 +304,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)flatreferencetableOptionalProperty.getInput()).contains(element);
 	}
+
+
+
 
 
 

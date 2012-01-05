@@ -215,6 +215,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

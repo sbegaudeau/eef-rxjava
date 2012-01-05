@@ -301,6 +301,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

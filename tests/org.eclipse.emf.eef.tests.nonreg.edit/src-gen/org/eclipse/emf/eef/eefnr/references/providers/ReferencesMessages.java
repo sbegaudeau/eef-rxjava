@@ -29,6 +29,7 @@ public class ReferencesMessages extends NLS {
 	
 	public static String AbstractSamplePropertiesEditionPart_NamePropertiesGroupLabel;
 
+
 	
 	public static String ReferenceEnabledSample_ReadOnly;
 
@@ -47,6 +48,7 @@ public class ReferencesMessages extends NLS {
 	
 	public static String AbstractSample_Part_Title;
 
+
 	
 	public static String ReferenceEnabledSamplePropertiesEditionPart_ReferenceLabel;
 
@@ -55,6 +57,7 @@ public class ReferencesMessages extends NLS {
 
 	
 	public static String AbstractSamplePropertiesEditionPart_NameLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

@@ -215,6 +215,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -274,6 +275,9 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 			size.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

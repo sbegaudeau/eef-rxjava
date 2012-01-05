@@ -352,6 +352,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		referencesTableSampleEditor.refresh();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

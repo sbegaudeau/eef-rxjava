@@ -1640,6 +1640,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2766,10 +2767,10 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 
 
+
 	// Start of user code for CustomElementEditor specific getters and setters implementation
 	
 	// End of user code
-
 
 	/**
 	 * {@inheritDoc}

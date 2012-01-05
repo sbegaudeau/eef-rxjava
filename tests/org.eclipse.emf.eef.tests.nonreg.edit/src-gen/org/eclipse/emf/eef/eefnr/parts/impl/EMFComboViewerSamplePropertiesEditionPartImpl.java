@@ -181,6 +181,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

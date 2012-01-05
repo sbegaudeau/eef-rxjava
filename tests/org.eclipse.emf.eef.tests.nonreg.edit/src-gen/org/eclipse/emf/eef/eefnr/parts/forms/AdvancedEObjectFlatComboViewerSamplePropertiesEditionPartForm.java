@@ -199,6 +199,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -340,6 +341,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 	public void addBusinessFilterToAdvancedeobjectflatcomboviewerOptionalProperty(ViewerFilter filter) {
 		advancedeobjectflatcomboviewerOptionalProperty.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

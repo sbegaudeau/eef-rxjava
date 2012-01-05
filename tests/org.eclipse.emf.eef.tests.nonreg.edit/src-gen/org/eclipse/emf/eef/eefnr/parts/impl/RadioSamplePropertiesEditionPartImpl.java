@@ -166,6 +166,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

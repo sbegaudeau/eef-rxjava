@@ -173,6 +173,7 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

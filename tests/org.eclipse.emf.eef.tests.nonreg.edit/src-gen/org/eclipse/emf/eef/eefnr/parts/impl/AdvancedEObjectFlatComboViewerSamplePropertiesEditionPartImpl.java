@@ -182,6 +182,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -105,7 +105,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 				}
 			
 			});
-			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
 			// End of user code
 			
@@ -123,7 +123,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 				}
 			
 			});
-			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
 			// End of user code
 			

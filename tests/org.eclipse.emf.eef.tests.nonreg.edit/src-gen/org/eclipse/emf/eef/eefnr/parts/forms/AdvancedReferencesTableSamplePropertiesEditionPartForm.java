@@ -310,6 +310,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -431,6 +432,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedreferencestableOptionalProperty.getInput()).contains(element);
 	}
+
+
+
 
 
 

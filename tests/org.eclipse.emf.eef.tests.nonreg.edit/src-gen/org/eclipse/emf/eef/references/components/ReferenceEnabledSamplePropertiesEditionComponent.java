@@ -41,6 +41,7 @@ public class ReferenceEnabledSamplePropertiesEditionComponent extends ComposedPr
 	 * 
 	 */
 	protected ReferenceEnabledSampleBasePropertiesEditionComponent referenceEnabledSampleBasePropertiesEditionComponent;
+
 	/**
 	 * The AbstractSamplePropertiesEditionComponent sub component
 	 * 

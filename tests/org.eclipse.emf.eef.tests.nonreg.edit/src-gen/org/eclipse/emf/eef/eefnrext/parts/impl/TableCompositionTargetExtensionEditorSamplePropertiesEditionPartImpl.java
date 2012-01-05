@@ -164,6 +164,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImp
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

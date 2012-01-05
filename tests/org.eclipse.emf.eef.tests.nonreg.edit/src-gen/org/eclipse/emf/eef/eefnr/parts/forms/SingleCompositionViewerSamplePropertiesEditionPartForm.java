@@ -301,6 +301,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -488,6 +489,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	public void addSinglecompositionviewerMultiOptionalPropertyControlListener(ControlListener listener) {
 		singlecompositionviewerMultiOptionalProperty.addControlListener(listener);
 	}
+
+
+
 
 
 

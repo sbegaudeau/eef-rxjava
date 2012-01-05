@@ -11,18 +11,20 @@
 package org.eclipse.emf.eef.eefnr.filters.providers;
 
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceOwnerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceTargetSample1PropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.filters.parts.forms.ConcreteReferenceTargetSample2PropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.eefnr.filters.parts.impl.ConcreteReferenceOwnerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.filters.parts.impl.ConcreteReferenceTargetSample1PropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.filters.parts.impl.ConcreteReferenceTargetSample2PropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

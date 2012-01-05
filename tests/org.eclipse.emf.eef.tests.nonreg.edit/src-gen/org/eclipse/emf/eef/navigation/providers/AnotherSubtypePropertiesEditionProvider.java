@@ -13,16 +13,23 @@ package org.eclipse.emf.eef.navigation.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+
 import org.eclipse.emf.eef.navigation.components.AnotherSubtypeBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.AnotherSubtypePropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.SubtypeBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.SubtypePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class AnotherSubtypePropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof AnotherSubType) 
-					&& (NavigationPackage.eINSTANCE.getAnotherSubType() == editingContext.getEObject().eClass());
+					&& (NavigationPackage.Literals.ANOTHER_SUB_TYPE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class AnotherSubtypePropertiesEditionProvider extends PropertiesEditingPr
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && NavigationPackage.eINSTANCE.getAnotherSubType() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && NavigationPackage.Literals.ANOTHER_SUB_TYPE == ((EObject)toTest).eClass();
 		}
 		
 	}

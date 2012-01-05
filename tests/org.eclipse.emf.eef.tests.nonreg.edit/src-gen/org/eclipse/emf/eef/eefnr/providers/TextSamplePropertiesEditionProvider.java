@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.eefnr.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextSample;
+
 import org.eclipse.emf.eef.eefnr.components.TextSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class TextSamplePropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof TextSample) 
-					&& (EefnrPackage.eINSTANCE.getTextSample() == editingContext.getEObject().eClass());
+					&& (EefnrPackage.Literals.TEXT_SAMPLE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class TextSamplePropertiesEditionProvider extends PropertiesEditingProvid
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EefnrPackage.eINSTANCE.getTextSample() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EefnrPackage.Literals.TEXT_SAMPLE == ((EObject)toTest).eClass();
 		}
 		
 	}

@@ -172,6 +172,7 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,6 +208,8 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 			isVisible.setSelection(false);
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -235,6 +238,7 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	public void setName(String newValue) {
 		namedElementPropertiesEditionPart.setName(newValue);
 	}
+
 
 
 

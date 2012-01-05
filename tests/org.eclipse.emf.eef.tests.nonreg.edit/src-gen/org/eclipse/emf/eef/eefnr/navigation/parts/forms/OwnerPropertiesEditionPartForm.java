@@ -1462,6 +1462,7 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2325,6 +2326,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	public void addBusinessFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(ViewerFilter filter) {
 		singleReferencesForAdvancedEObjectFlatComboViewer.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

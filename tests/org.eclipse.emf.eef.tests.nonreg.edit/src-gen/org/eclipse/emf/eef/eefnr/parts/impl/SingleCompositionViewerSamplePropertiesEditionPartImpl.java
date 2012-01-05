@@ -333,6 +333,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -164,6 +164,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

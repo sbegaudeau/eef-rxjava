@@ -70,9 +70,9 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 			final TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (textareaSample.getTextareaRequiredProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty))
-				basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textareaSample.getTextareaRequiredProperty()));
+				basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaRequiredProperty()));
 			if (textareaSample.getTextareaOptionalProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty))
-				basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), textareaSample.getTextareaOptionalProperty()));
+				basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaOptionalProperty()));
 			// init filters
 			
 			
@@ -110,10 +110,10 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TextareaSample textareaSample = (TextareaSample)semanticObject;
 		if (EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty == event.getAffectedEditor()) {
-			textareaSample.setTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			textareaSample.setTextareaRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty == event.getAffectedEditor()) {
-			textareaSample.setTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			textareaSample.setTextareaOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -126,14 +126,14 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 			TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty)){
 				if (msg.getNewValue() != null) {
-					basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextareaRequiredProperty("");
 				}
 			}
 			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty)){
 				if (msg.getNewValue() != null) {
-					basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextareaOptionalProperty("");
 				}

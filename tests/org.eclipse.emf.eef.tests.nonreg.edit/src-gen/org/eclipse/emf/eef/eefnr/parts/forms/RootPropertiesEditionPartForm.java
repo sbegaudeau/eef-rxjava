@@ -184,6 +184,7 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -253,6 +254,9 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	public boolean isContainedInSamplesTable(EObject element) {
 		return ((ReferencesTableSettings)samples.getInput()).contains(element);
 	}
+
+
+
 
 
 

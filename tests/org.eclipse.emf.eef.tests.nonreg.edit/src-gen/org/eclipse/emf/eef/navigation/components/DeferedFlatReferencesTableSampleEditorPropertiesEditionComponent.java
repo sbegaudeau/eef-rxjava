@@ -83,7 +83,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			final DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (deferedFlatReferenceTableEditorSample.getName() != null && isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name))
-				deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedFlatReferenceTableEditorSample.getName()));
+				deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, deferedFlatReferenceTableEditorSample.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor)) {
 				flatReferencesTableSampleEditorSettings = new ReferencesTableSettings(deferedFlatReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedFlatReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
@@ -105,7 +105,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 				}
 			
 			});
-			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
 			// End of user code
 			
@@ -151,7 +151,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)semanticObject;
 		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name == event.getAffectedEditor()) {
-			deferedFlatReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			deferedFlatReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET)
@@ -168,7 +168,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedFlatReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					deferedFlatReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					deferedFlatReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					deferedFlatReferencesTableSamplePart.setName("");
 				}

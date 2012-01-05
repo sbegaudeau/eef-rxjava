@@ -472,6 +472,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		referencestableOptionalProperty.refresh();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -593,6 +594,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)referencestableOptionalProperty.getInput()).contains(element);
 	}
+
+
+
 
 
 

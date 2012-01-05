@@ -163,6 +163,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -228,6 +229,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		return ((ReferencesTableSettings)flatReferenceEditorSample.getInput()).contains(element);
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -276,7 +278,6 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 	public void setName(String newValue) {
 		checkBoxExtendedEditorSamplePropertiesEditionPart.setName(newValue);
 	}
-
 
 
 

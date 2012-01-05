@@ -70,10 +70,10 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 			final SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (flatReferenceExtendedEditorSample.getDemo() != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
-				secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), flatReferenceExtendedEditorSample.getDemo()));
+				secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, flatReferenceExtendedEditorSample.getDemo()));
 			
 			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {
-				secondFlatReferenceExtendedEditorSamplePart.setSize(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), flatReferenceExtendedEditorSample.getSize()));
+				secondFlatReferenceExtendedEditorSamplePart.setSize(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, flatReferenceExtendedEditorSample.getSize()));
 			}
 			
 			// init filters
@@ -113,10 +113,10 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)semanticObject;
 		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo == event.getAffectedEditor()) {
-			flatReferenceExtendedEditorSample.setDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			flatReferenceExtendedEditorSample.setDemo((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size == event.getAffectedEditor()) {
-			flatReferenceExtendedEditorSample.setSize((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			flatReferenceExtendedEditorSample.setSize((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
 	}
 
@@ -129,14 +129,14 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 			SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo)) {
 				if (msg.getNewValue() != null) {
-					secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					secondFlatReferenceExtendedEditorSamplePart.setDemo("");
 				}
 			}
 			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {
 				if (msg.getNewValue() != null) {
-					secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					secondFlatReferenceExtendedEditorSamplePart.setSize("");
 				}

@@ -244,6 +244,7 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	//End of user code
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

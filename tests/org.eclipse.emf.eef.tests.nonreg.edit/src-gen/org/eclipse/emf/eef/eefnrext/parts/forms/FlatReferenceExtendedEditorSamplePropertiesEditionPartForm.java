@@ -174,6 +174,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -238,6 +239,8 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	public boolean isContainedInFlatReferenceEditorSampleTable(EObject element) {
 		return ((ReferencesTableSettings)flatReferenceEditorSample.getInput()).contains(element);
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -286,6 +289,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 	public void setName(String newValue) {
 		checkBoxExtendedEditorSamplePropertiesEditionPart.setName(newValue);
 	}
+
 
 
 

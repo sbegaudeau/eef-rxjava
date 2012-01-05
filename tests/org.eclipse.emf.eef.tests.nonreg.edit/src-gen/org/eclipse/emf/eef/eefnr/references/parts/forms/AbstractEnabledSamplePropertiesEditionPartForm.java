@@ -172,6 +172,7 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,6 +208,8 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 			enabled.setSelection(false);
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -235,6 +238,7 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 	public void setName(String newValue) {
 		abstractSamplePropertiesEditionPart.setName(newValue);
 	}
+
 
 
 

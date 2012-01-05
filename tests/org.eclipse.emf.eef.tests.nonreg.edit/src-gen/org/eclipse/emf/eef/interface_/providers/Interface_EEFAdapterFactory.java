@@ -12,7 +12,6 @@ package org.eclipse.emf.eef.interface_.providers;
 
 import org.eclipse.emf.eef.eefnr.interface_.util.InterfaceAdapterFactory;
 
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 

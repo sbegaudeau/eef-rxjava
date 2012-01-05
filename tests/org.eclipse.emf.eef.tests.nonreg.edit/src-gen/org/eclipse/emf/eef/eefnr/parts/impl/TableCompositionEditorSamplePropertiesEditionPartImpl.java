@@ -484,6 +484,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		return tablecompositionOptionalPropertyPanel;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

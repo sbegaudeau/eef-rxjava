@@ -462,6 +462,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		referencestableOptionalProperty.refresh();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

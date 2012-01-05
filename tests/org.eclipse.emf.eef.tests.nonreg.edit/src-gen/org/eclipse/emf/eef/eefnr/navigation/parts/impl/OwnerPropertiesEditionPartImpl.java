@@ -1444,6 +1444,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

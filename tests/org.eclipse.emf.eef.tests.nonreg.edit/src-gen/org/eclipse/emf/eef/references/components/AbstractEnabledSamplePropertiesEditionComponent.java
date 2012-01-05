@@ -41,6 +41,7 @@ public class AbstractEnabledSamplePropertiesEditionComponent extends ComposedPro
 	 * 
 	 */
 	protected AbstractEnabledSampleBasePropertiesEditionComponent abstractEnabledSampleBasePropertiesEditionComponent;
+
 	/**
 	 * The AbstractSamplePropertiesEditionComponent sub component
 	 * 

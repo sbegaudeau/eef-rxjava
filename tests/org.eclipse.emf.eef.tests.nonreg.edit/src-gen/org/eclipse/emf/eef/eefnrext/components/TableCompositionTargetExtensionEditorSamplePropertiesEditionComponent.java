@@ -70,7 +70,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 			final TableCompositionTargetExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionTargetExtensionEditorSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (tableCompositionTargetExtensionEditorSample.getName() != null && isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), tableCompositionTargetExtensionEditorSample.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, tableCompositionTargetExtensionEditorSample.getName()));
 			
 			// init filters
 			
@@ -104,7 +104,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TableCompositionTargetExtensionEditorSample tableCompositionTargetExtensionEditorSample = (TableCompositionTargetExtensionEditorSample)semanticObject;
 		if (EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name == event.getAffectedEditor()) {
-			tableCompositionTargetExtensionEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			tableCompositionTargetExtensionEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -117,7 +117,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 			TableCompositionTargetExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionTargetExtensionEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

@@ -208,6 +208,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -296,6 +297,9 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	public boolean isContainedInFlatReferencesTableSampleEditorTable(EObject element) {
 		return ((ReferencesTableSettings)flatReferencesTableSampleEditor.getInput()).contains(element);
 	}
+
+
+
 
 
 

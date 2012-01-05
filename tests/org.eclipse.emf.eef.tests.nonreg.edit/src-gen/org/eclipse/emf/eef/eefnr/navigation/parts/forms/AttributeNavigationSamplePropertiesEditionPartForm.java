@@ -350,6 +350,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -481,6 +482,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

@@ -70,7 +70,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionComponent extends Si
 			final ConcreteReferenceTargetSample1PropertiesEditionPart basePart = (ConcreteReferenceTargetSample1PropertiesEditionPart)editingPart;
 			// init values
 			if (concreteReferenceTargetSample1.getName() != null && isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), concreteReferenceTargetSample1.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, concreteReferenceTargetSample1.getName()));
 			
 			// init filters
 			
@@ -104,7 +104,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionComponent extends Si
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ConcreteReferenceTargetSample1 concreteReferenceTargetSample1 = (ConcreteReferenceTargetSample1)semanticObject;
 		if (FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name == event.getAffectedEditor()) {
-			concreteReferenceTargetSample1.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			concreteReferenceTargetSample1.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -117,7 +117,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionComponent extends Si
 			ConcreteReferenceTargetSample1PropertiesEditionPart basePart = (ConcreteReferenceTargetSample1PropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

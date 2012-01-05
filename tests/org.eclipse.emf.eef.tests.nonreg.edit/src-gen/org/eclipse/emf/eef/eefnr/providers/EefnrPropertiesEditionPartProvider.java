@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.eefnr.providers;
 
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.parts.forms.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.AdvancedReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.AdvancedTableCompositionEditorSamplePropertiesEditionPartForm;
@@ -33,6 +34,7 @@ import org.eclipse.emf.eef.eefnr.parts.forms.TextSamplePropertiesEditionPartForm
 import org.eclipse.emf.eef.eefnr.parts.forms.TextSampleSecondTabPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TextareaSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.TotalSamplePropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.eefnr.parts.impl.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.AdvancedReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl;
@@ -55,12 +57,12 @@ import org.eclipse.emf.eef.eefnr.parts.impl.TextSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextSampleSecondTabPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TextareaSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.TotalSamplePropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

@@ -174,6 +174,7 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

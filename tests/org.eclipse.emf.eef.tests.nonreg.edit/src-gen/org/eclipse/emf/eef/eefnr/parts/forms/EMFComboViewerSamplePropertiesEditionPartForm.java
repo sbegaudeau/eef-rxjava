@@ -192,6 +192,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -265,6 +266,9 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
 	}
+
+
+
 
 
 

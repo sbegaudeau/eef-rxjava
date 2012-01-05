@@ -175,6 +175,7 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -164,6 +164,7 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

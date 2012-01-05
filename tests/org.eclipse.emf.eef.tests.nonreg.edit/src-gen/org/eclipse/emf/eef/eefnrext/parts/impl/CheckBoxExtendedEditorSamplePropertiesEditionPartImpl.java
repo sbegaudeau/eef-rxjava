@@ -161,6 +161,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -197,6 +198,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 		}
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -225,7 +227,6 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 	public void setName(String newValue) {
 		abstractSamplePropertiesEditionPart.setName(newValue);
 	}
-
 
 
 

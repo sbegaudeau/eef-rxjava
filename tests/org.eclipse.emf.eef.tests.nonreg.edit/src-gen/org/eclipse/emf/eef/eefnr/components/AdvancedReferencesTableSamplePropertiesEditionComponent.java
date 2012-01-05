@@ -105,7 +105,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 				}
 			
 			});
-			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
 			// End of user code
 			
@@ -123,7 +123,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 				}
 			
 			});
-			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
 			// End of user code
 			

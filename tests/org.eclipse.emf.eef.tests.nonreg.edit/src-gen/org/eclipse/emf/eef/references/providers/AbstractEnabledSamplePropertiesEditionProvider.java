@@ -13,15 +13,22 @@ package org.eclipse.emf.eef.references.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.references.AbstractEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
+
 import org.eclipse.emf.eef.references.components.AbstractEnabledSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.references.components.AbstractEnabledSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -52,7 +59,7 @@ public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEd
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof AbstractEnabledSample) 
-					&& (ReferencesPackage.eINSTANCE.getAbstractEnabledSample() == editingContext.getEObject().eClass());
+					&& (ReferencesPackage.Literals.ABSTRACT_ENABLED_SAMPLE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -139,7 +146,7 @@ public class AbstractEnabledSamplePropertiesEditionProvider extends PropertiesEd
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ReferencesPackage.eINSTANCE.getAbstractEnabledSample() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ReferencesPackage.Literals.ABSTRACT_ENABLED_SAMPLE == ((EObject)toTest).eClass();
 		}
 		
 	}

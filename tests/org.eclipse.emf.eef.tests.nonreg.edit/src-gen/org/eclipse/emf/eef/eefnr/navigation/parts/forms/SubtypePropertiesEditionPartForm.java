@@ -177,6 +177,7 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -212,6 +213,8 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 			specialisedElement.setSelection(false);
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -983,6 +986,7 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	public void addBusinessFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(ViewerFilter filter) {
 		ownerPropertiesEditionPart.addBusinessFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(filter);
 	}
+
 
 
 

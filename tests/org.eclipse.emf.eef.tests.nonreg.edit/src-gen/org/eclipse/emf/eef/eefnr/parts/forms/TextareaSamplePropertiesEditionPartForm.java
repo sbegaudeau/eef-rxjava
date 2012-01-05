@@ -198,6 +198,7 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -257,6 +258,9 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

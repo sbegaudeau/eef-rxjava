@@ -70,7 +70,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			final EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
 			// init values
 			if (event.getName() != null && isAccessible(NamingViewsRepository.Event.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), event.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, event.getName()));
 			
 			// init filters
 			
@@ -104,7 +104,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Event event_ = (Event)semanticObject;
 		if (NamingViewsRepository.Event.Properties.name == event.getAffectedEditor()) {
-			event_.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			event_.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -117,7 +117,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(NamingViewsRepository.Event.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

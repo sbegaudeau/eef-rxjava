@@ -170,6 +170,7 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -205,6 +206,9 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

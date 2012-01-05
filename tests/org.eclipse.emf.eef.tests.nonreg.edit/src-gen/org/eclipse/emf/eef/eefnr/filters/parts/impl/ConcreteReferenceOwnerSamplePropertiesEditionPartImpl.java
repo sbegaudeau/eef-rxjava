@@ -326,6 +326,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

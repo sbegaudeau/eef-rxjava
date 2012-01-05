@@ -160,6 +160,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -196,6 +197,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		}
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -224,7 +226,6 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 	public void setName(String newValue) {
 		abstractSamplePropertiesEditionPart.setName(newValue);
 	}
-
 
 
 

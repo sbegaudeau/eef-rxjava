@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.navigation.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+
 import org.eclipse.emf.eef.navigation.components.DeferedReferencesTableSampleEditorPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof DeferedReferenceTableEditorSample) 
-					&& (NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample() == editingContext.getEObject().eClass());
+					&& (NavigationPackage.Literals.DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionProvider extends
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && NavigationPackage.Literals.DEFERED_REFERENCE_TABLE_EDITOR_SAMPLE == ((EObject)toTest).eClass();
 		}
 		
 	}

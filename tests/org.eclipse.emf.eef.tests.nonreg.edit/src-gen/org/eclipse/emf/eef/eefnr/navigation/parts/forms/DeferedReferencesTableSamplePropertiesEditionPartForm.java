@@ -357,6 +357,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		referencesTableSampleEditor.refresh();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -447,6 +448,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 	public boolean isContainedInReferencesTableSampleEditorTable(EObject element) {
 		return ((ReferencesTableSettings)referencesTableSampleEditor.getInput()).contains(element);
 	}
+
+
+
 
 
 

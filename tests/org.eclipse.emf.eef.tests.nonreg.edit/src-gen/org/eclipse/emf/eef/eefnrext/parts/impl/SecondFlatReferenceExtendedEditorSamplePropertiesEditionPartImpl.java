@@ -215,6 +215,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

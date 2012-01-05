@@ -215,6 +215,7 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -274,6 +275,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

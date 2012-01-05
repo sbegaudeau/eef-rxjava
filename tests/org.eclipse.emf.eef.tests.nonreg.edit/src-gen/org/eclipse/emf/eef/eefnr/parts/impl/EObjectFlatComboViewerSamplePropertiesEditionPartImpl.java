@@ -172,6 +172,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

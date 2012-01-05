@@ -186,6 +186,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

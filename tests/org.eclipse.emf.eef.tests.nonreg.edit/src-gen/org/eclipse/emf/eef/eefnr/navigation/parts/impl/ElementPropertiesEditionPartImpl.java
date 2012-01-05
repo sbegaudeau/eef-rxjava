@@ -160,6 +160,7 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -196,6 +197,7 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		}
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -224,7 +226,6 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 	public void setName(String newValue) {
 		namedElementPropertiesEditionPart.setName(newValue);
 	}
-
 
 
 

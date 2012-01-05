@@ -175,6 +175,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

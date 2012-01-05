@@ -43,6 +43,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionComponent extends Comp
 	 * 
 	 */
 	protected CheckBoxExtendedEditorSampleBasePropertiesEditionComponent checkBoxExtendedEditorSampleBasePropertiesEditionComponent;
+
 	/**
 	 * The AbstractSamplePropertiesEditionComponent sub component
 	 * 

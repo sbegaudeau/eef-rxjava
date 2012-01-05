@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.filters.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.filters.components.ConcreteReferenceOwnerSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionProvider extends Prope
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof ConcreteReferenceOwnerSample) 
-					&& (FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample() == editingContext.getEObject().eClass());
+					&& (FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionProvider extends Prope
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE == ((EObject)toTest).eClass();
 		}
 		
 	}

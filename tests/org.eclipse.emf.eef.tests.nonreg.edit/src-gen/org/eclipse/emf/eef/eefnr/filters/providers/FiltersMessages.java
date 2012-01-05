@@ -29,6 +29,7 @@ public class FiltersMessages extends NLS {
 	
 	public static String ConcreteReferenceTargetSample2PropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String ConcreteReferenceOwnerSample_ReadOnly;
 
@@ -47,6 +48,7 @@ public class FiltersMessages extends NLS {
 	
 	public static String ConcreteReferenceTargetSample2_Part_Title;
 
+
 	
 	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel;
 
@@ -61,6 +63,7 @@ public class FiltersMessages extends NLS {
 
 	
 	public static String ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

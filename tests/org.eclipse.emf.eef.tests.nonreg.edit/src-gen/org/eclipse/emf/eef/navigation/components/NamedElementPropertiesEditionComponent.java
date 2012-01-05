@@ -70,7 +70,7 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 			final NamedElementPropertiesEditionPart basePart = (NamedElementPropertiesEditionPart)editingPart;
 			// init values
 			if (namedElement.getName() != null && isAccessible(NavigationViewsRepository.NamedElement.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), namedElement.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, namedElement.getName()));
 			
 			// init filters
 			
@@ -104,7 +104,7 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		NamedElement namedElement = (NamedElement)semanticObject;
 		if (NavigationViewsRepository.NamedElement.Properties.name == event.getAffectedEditor()) {
-			namedElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			namedElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -117,7 +117,7 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 			NamedElementPropertiesEditionPart basePart = (NamedElementPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.NamedElement.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

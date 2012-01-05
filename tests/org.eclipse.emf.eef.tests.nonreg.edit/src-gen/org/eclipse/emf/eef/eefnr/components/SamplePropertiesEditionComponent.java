@@ -70,10 +70,10 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 			final SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			// init values
 			if (sample.getTextRequiredProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
-				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextRequiredProperty()));
+				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextRequiredProperty()));
 			
 			if (sample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
-				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), sample.getTextOptionalProperty()));
+				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextOptionalProperty()));
 			
 			// init filters
 			
@@ -112,10 +112,10 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Sample sample = (Sample)semanticObject;
 		if (EefnrViewsRepository.Sample.Properties.textRequiredProperty == event.getAffectedEditor()) {
-			sample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			sample.setTextRequiredProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EefnrViewsRepository.Sample.Properties.textOptionalProperty == event.getAffectedEditor()) {
-			sample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			sample.setTextOptionalProperty((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -128,14 +128,14 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 			SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextRequiredProperty("");
 				}
 			}
 			if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextOptionalProperty("");
 				}

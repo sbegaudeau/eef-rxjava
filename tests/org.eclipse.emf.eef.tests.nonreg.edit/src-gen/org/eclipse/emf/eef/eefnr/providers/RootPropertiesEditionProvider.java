@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.eefnr.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Root;
+
 import org.eclipse.emf.eef.eefnr.components.RootPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class RootPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Root) 
-					&& (EefnrPackage.eINSTANCE.getRoot() == editingContext.getEObject().eClass());
+					&& (EefnrPackage.Literals.ROOT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class RootPropertiesEditionProvider extends PropertiesEditingProviderImpl
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EefnrPackage.eINSTANCE.getRoot() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EefnrPackage.Literals.ROOT == ((EObject)toTest).eClass();
 		}
 		
 	}

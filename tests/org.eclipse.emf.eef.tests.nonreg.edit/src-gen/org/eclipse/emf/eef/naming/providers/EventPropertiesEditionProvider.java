@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.naming.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.naming.CustomNamingPackage;
 import org.eclipse.emf.eef.eefnr.naming.Event;
+
 import org.eclipse.emf.eef.naming.components.EventPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class EventPropertiesEditionProvider extends PropertiesEditingProviderImp
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Event) 
-					&& (CustomNamingPackage.eINSTANCE.getEvent() == editingContext.getEObject().eClass());
+					&& (CustomNamingPackage.Literals.EVENT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class EventPropertiesEditionProvider extends PropertiesEditingProviderImp
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && CustomNamingPackage.eINSTANCE.getEvent() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && CustomNamingPackage.Literals.EVENT == ((EObject)toTest).eClass();
 		}
 		
 	}

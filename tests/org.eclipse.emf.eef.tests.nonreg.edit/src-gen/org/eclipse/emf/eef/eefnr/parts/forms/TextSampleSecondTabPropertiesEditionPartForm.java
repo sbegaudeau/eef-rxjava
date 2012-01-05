@@ -215,6 +215,7 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -274,6 +275,9 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 			textOptionalPropertyInSecondTab.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

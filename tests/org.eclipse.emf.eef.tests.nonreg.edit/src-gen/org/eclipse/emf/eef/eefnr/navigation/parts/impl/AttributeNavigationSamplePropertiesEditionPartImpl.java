@@ -368,6 +368,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -164,6 +164,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

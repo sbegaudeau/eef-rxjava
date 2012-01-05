@@ -104,7 +104,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				}
 			
 			});
-			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for referencestableRequiredProperty
 			// End of user code
 			
@@ -122,7 +122,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				}
 			
 			});
-			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for referencestableOptionalProperty
 			// End of user code
 			

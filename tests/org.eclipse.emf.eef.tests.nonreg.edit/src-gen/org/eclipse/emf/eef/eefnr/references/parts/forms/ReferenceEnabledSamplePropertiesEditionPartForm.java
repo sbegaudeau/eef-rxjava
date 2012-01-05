@@ -240,6 +240,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -306,6 +307,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	public boolean isContainedInReferenceTable(EObject element) {
 		return ((ReferencesTableSettings)reference.getInput()).contains(element);
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -354,6 +357,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 	public void setName(String newValue) {
 		abstractEnabledSamplePropertiesEditionPart.setName(newValue);
 	}
+
 
 
 

@@ -202,6 +202,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

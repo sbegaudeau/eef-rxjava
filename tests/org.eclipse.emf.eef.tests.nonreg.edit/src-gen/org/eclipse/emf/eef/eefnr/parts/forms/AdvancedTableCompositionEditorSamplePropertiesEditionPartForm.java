@@ -239,6 +239,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -366,6 +367,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 	public boolean isContainedInAdvancedtablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedtablecompositionOptionalProperty.getInput()).contains(element);
 	}
+
+
+
 
 
 

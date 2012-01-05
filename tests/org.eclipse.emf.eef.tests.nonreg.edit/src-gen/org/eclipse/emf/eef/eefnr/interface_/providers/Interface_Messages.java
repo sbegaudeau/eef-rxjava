@@ -28,6 +28,7 @@ public class Interface_Messages extends NLS {
 	public static String SimpleSample_Part_Title;
 
 
+
 	
 	public static String PropertiesEditionPart_DocumentationLabel;
 

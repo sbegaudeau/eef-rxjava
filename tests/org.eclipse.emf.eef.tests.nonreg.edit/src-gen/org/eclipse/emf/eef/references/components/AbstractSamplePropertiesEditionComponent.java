@@ -70,7 +70,7 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 			final AbstractSamplePropertiesEditionPart basePart = (AbstractSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (abstractSample.getName() != null && isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), abstractSample.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, abstractSample.getName()));
 			
 			// init filters
 			
@@ -104,7 +104,7 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AbstractSample abstractSample = (AbstractSample)semanticObject;
 		if (ReferencesViewsRepository.AbstractSample.NameProperties.name == event.getAffectedEditor()) {
-			abstractSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			abstractSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -117,7 +117,7 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 			AbstractSamplePropertiesEditionPart basePart = (AbstractSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

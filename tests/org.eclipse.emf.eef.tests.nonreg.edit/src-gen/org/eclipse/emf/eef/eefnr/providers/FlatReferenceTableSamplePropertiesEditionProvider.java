@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.eefnr.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+
 import org.eclipse.emf.eef.eefnr.components.FlatReferenceTableSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class FlatReferenceTableSamplePropertiesEditionProvider extends Propertie
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof FlatReferencesTableSample) 
-					&& (EefnrPackage.eINSTANCE.getFlatReferencesTableSample() == editingContext.getEObject().eClass());
+					&& (EefnrPackage.Literals.FLAT_REFERENCES_TABLE_SAMPLE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class FlatReferenceTableSamplePropertiesEditionProvider extends Propertie
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EefnrPackage.eINSTANCE.getFlatReferencesTableSample() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EefnrPackage.Literals.FLAT_REFERENCES_TABLE_SAMPLE == ((EObject)toTest).eClass();
 		}
 		
 	}

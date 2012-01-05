@@ -54,6 +54,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionComponent extends
 	 * 
 	 */
 	protected FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent flatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent;
+
 	/**
 	 * The CheckBoxExtendedEditorSamplePropertiesEditionComponent sub component
 	 * 

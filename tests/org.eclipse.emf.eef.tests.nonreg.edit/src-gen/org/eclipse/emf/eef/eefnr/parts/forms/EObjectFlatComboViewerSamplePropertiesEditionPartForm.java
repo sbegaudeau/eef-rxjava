@@ -197,6 +197,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -348,6 +349,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalPropery(ViewerFilter filter) {
 		eobjectflatcomboviewerOptionalPropery.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

@@ -186,6 +186,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -279,6 +280,9 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 			imageviewerOptionalProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

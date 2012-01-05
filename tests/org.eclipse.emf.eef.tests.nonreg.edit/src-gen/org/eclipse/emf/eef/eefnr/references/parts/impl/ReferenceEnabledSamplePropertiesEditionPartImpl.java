@@ -230,6 +230,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -297,6 +298,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		return ((ReferencesTableSettings)reference.getInput()).contains(element);
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -345,7 +347,6 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 	public void setName(String newValue) {
 		abstractEnabledSamplePropertiesEditionPart.setName(newValue);
 	}
-
 
 
 

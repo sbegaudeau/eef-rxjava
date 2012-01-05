@@ -256,6 +256,7 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 	//End of user code
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -315,6 +316,9 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

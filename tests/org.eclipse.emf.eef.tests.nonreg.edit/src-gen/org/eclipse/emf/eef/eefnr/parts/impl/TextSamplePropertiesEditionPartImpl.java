@@ -215,6 +215,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

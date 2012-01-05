@@ -106,20 +106,20 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			final AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (attributeNavigationSample.getName() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), attributeNavigationSample.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, attributeNavigationSample.getName()));
 			
 			if (delegate1ForSingleValuedSettings.getValue() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued))
-				basePart.setDelegate1ForSingleValued(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), delegate1ForSingleValuedSettings.getValue()));
+				basePart.setDelegate1ForSingleValued(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, delegate1ForSingleValuedSettings.getValue()));
 			
 			if (isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued)) {
-				basePart.setDelegate2ForSingleValued(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), delegate2ForSingleValuedSettings.getValue()));
+				basePart.setDelegate2ForSingleValued(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, delegate2ForSingleValuedSettings.getValue()));
 			}
 			
 			if (delegate1ForMultiValuedSettings.getValue() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued))
-				basePart.setDelegate1ForMultiValued(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), delegate1ForMultiValuedSettings.getValue()));
+				basePart.setDelegate1ForMultiValued(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, delegate1ForMultiValuedSettings.getValue()));
 			
 			if (isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued)) {
-				basePart.setDelegate2ForMultiValued(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), delegate2ForMultiValuedSettings.getValue()));
+				basePart.setDelegate2ForMultiValued(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, delegate2ForMultiValuedSettings.getValue()));
 			}
 			
 			// init filters
@@ -182,19 +182,19 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AttributeNavigationSample attributeNavigationSample = (AttributeNavigationSample)semanticObject;
 		if (NavigationViewsRepository.AttributeNavigationSample.Properties.name == event.getAffectedEditor()) {
-			attributeNavigationSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			attributeNavigationSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued == event.getAffectedEditor()) {
-			delegate1ForSingleValuedSettings.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			delegate1ForSingleValuedSettings.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued == event.getAffectedEditor()) {
-			delegate2ForSingleValuedSettings.setValue((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			delegate2ForSingleValuedSettings.setValue((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
 		if (NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued == event.getAffectedEditor()) {
-			delegate1ForMultiValuedSettings.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			delegate1ForMultiValuedSettings.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued == event.getAffectedEditor()) {
-			delegate2ForMultiValuedSettings.setValue((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			delegate2ForMultiValuedSettings.setValue((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
 	}
 
@@ -207,35 +207,35 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued)) {
 				if (msg.getNewValue() != null) {
-					basePart.setDelegate1ForSingleValued(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDelegate1ForSingleValued(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDelegate1ForSingleValued("");
 				}
 			}
 			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued)) {
 				if (msg.getNewValue() != null) {
-					basePart.setDelegate2ForSingleValued(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					basePart.setDelegate2ForSingleValued(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setDelegate2ForSingleValued("");
 				}
 			}
 			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued)) {
 				if (msg.getNewValue() != null) {
-					basePart.setDelegate1ForMultiValued(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDelegate1ForMultiValued(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDelegate1ForMultiValued("");
 				}
 			}
 			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued)) {
 				if (msg.getNewValue() != null) {
-					basePart.setDelegate2ForMultiValued(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					basePart.setDelegate2ForMultiValued(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setDelegate2ForMultiValued("");
 				}

@@ -158,7 +158,7 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			
 			});
-			basePart.addFilterToMultipleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
+			basePart.addFilterToMultipleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
 			// Start of user code for additional businessfilters for multipleSampleForFlatReferencesTables
 			// End of user code
 			
@@ -214,7 +214,7 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			
 			});
-			basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
+			basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
 			// Start of user code for additional businessfilters for singleSampleForReferencesTable
 			// End of user code
 			
@@ -232,7 +232,7 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			
 			});
-			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
+			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
 			// Start of user code for additional businessfilters for singleSampleForAdvancedReferencesTable
 			// End of user code
 			
@@ -250,7 +250,7 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 				}
 			
 			});
-			basePart.addFilterToSingleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.eINSTANCE.getOwner()));
+			basePart.addFilterToSingleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
 			// Start of user code for additional businessfilters for singleSampleForFlatReferencesTable
 			// End of user code
 			
@@ -271,7 +271,7 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 			// End of user code
 			
 			
-			basePart.addFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(new EObjectFilter(NavigationPackage.eINSTANCE.getOwner()));
+			basePart.addFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(new EObjectFilter(NavigationPackage.Literals.OWNER));
 			
 		}
 		setInitializing(false);

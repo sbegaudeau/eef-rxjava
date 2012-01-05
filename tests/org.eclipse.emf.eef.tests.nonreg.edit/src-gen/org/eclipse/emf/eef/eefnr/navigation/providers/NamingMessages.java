@@ -23,14 +23,17 @@ public class NamingMessages extends NLS {
 	
 	public static String EventPropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String Event_ReadOnly;
 
 	
 	public static String Event_Part_Title;
 
+
 	
 	public static String EventPropertiesEditionPart_NameLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

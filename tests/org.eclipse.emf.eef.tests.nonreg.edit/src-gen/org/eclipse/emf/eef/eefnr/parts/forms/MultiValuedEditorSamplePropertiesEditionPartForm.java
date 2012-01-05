@@ -229,6 +229,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -326,6 +327,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

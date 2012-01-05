@@ -32,6 +32,7 @@ public class EefnrextMessages extends NLS {
 	
 	public static String CheckBoxExtendedEditorSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String TableCompositionTargetExtensionEditorSample_ReadOnly;
 
@@ -56,6 +57,7 @@ public class EefnrextMessages extends NLS {
 	
 	public static String CheckBoxExtendedEditorSample_Part_Title;
 
+
 	
 	public static String TableCompositionTargetExtensionEditorSamplePropertiesEditionPart_NameLabel;
 
@@ -70,6 +72,7 @@ public class EefnrextMessages extends NLS {
 
 	
 	public static String CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

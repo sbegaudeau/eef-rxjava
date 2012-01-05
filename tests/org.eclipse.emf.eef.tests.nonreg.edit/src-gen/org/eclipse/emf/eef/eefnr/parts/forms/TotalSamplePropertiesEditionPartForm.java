@@ -1646,6 +1646,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -2770,9 +2771,13 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
+
+
+
 	// Start of user code for CustomElementEditor specific getters and setters implementation
 	
 	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *

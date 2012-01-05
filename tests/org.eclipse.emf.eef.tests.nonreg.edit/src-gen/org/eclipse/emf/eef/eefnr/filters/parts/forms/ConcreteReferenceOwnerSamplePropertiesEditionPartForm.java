@@ -331,6 +331,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -479,6 +480,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	public boolean isContainedInStrictTypingTable(EObject element) {
 		return ((ReferencesTableSettings)strictTyping.getInput()).contains(element);
 	}
+
+
+
 
 
 

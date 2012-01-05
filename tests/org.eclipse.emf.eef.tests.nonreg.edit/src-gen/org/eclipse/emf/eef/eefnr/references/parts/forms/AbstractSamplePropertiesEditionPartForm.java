@@ -170,6 +170,7 @@ public class AbstractSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -205,6 +206,9 @@ public class AbstractSamplePropertiesEditionPartForm extends SectionPropertiesEd
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

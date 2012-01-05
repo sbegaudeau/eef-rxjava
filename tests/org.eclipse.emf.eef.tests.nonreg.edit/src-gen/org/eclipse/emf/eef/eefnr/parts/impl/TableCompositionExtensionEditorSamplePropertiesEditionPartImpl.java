@@ -286,6 +286,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

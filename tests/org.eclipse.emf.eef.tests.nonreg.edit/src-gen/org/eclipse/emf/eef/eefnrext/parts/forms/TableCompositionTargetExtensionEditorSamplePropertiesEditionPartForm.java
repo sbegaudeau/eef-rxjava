@@ -170,6 +170,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -205,6 +206,9 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

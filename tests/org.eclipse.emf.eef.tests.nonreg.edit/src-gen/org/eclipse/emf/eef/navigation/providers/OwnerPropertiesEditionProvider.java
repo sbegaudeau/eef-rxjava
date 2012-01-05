@@ -13,13 +13,20 @@ package org.eclipse.emf.eef.navigation.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.Owner;
+
 import org.eclipse.emf.eef.navigation.components.OwnerPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class OwnerPropertiesEditionProvider extends PropertiesEditingProviderImp
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Owner) 
-					&& (NavigationPackage.eINSTANCE.getOwner() == editingContext.getEObject().eClass());
+					&& (NavigationPackage.Literals.OWNER == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class OwnerPropertiesEditionProvider extends PropertiesEditingProviderImp
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && NavigationPackage.eINSTANCE.getOwner() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && NavigationPackage.Literals.OWNER == ((EObject)toTest).eClass();
 		}
 		
 	}

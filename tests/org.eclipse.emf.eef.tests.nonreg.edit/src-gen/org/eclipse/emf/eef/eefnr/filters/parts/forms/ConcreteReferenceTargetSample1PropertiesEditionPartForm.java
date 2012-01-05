@@ -170,6 +170,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartForm extends Sec
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -205,6 +206,9 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartForm extends Sec
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

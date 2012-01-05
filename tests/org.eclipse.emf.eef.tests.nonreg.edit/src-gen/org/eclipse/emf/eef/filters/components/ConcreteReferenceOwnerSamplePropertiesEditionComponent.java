@@ -98,7 +98,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 			final ConcreteReferenceOwnerSamplePropertiesEditionPart basePart = (ConcreteReferenceOwnerSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (concreteReferenceOwnerSample.getName() != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), concreteReferenceOwnerSample.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, concreteReferenceOwnerSample.getName()));
 			
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget)) {
 				abstractTargetSettings = new ReferencesTableSettings(concreteReferenceOwnerSample, FiltersPackage.eINSTANCE.getAbstractReferenceOwnerSample_AbstractTarget());
@@ -124,7 +124,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				}
 			
 			});
-			basePart.addFilterToAbstractTarget(new EObjectFilter(FiltersPackage.eINSTANCE.getAbstractReferenceTargetSample()));
+			basePart.addFilterToAbstractTarget(new EObjectFilter(FiltersPackage.Literals.ABSTRACT_REFERENCE_TARGET_SAMPLE));
 						basePart.addFilterToAbstractTarget(new ViewerFilter() {
 			
 							/**
@@ -199,7 +199,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ConcreteReferenceOwnerSample concreteReferenceOwnerSample = (ConcreteReferenceOwnerSample)semanticObject;
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name == event.getAffectedEditor()) {
-			concreteReferenceOwnerSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			concreteReferenceOwnerSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -214,7 +214,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		}
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, strictTypingSettings, FiltersPackage.eINSTANCE.getConcreteReferenceTargetSample2(), editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, strictTypingSettings, FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE2, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -248,7 +248,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 			ConcreteReferenceOwnerSamplePropertiesEditionPart basePart = (ConcreteReferenceOwnerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

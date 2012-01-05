@@ -492,6 +492,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Secti
 		return tablecompositionOptionalPropertyPanel;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -619,6 +620,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartForm extends Secti
 	public boolean isContainedInTablecompositionOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)tablecompositionOptionalProperty.getInput()).contains(element);
 	}
+
+
+
 
 
 

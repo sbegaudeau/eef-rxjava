@@ -41,6 +41,7 @@ public class ElementPropertiesEditionComponent extends ComposedPropertiesEdition
 	 * 
 	 */
 	protected ElementBasePropertiesEditionComponent elementBasePropertiesEditionComponent;
+
 	/**
 	 * The NamedElementPropertiesEditionComponent sub component
 	 * 

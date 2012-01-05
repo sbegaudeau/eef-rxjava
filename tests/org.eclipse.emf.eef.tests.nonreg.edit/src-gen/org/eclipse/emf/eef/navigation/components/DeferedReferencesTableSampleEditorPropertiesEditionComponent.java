@@ -81,7 +81,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			final DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (deferedReferenceTableEditorSample.getName() != null && isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name))
-				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), deferedReferenceTableEditorSample.getName()));
+				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, deferedReferenceTableEditorSample.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor)) {
 				flatReferencesTableSampleEditorSettings = new ReferencesTableSettings(deferedReferenceTableEditorSample, NavigationPackage.eINSTANCE.getDeferedReferenceTableEditorSample_References(), NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
@@ -146,7 +146,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)semanticObject;
 		if (NavigationViewsRepository.DeferedReferencesTableSample.Properties.name == event.getAffectedEditor()) {
-			deferedReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			deferedReferenceTableEditorSample.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -170,7 +170,7 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					deferedReferencesTableSamplePart.setName("");
 				}

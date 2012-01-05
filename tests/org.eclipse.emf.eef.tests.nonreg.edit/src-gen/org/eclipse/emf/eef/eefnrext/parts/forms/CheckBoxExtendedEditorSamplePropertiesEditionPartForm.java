@@ -173,6 +173,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -208,6 +209,8 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 			checkboxEditorSample.setSelection(false);
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -236,6 +239,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 	public void setName(String newValue) {
 		abstractSamplePropertiesEditionPart.setName(newValue);
 	}
+
 
 
 

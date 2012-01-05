@@ -176,6 +176,7 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -255,6 +256,9 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 	}
+
+
+
 
 
 

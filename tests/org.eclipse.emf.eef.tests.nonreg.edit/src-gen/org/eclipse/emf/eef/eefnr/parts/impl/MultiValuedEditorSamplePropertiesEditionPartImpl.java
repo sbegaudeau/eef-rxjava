@@ -211,6 +211,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

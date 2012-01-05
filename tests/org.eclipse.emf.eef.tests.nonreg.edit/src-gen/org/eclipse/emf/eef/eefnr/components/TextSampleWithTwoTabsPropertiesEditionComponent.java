@@ -54,6 +54,7 @@ public class TextSampleWithTwoTabsPropertiesEditionComponent extends ComposedPro
 	 * 
 	 */
 	protected TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent textSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 

@@ -44,6 +44,7 @@ public class NavigationMessages extends NLS {
 	
 	public static String AttributeNavigationSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String DeferedFlatReferencesTableSample_ReadOnly;
 
@@ -91,6 +92,7 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String AttributeNavigationSample_Part_Title;
+
 
 	
 	public static String DeferedFlatReferencesTableSamplePropertiesEditionPart_NameLabel;
@@ -175,6 +177,7 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

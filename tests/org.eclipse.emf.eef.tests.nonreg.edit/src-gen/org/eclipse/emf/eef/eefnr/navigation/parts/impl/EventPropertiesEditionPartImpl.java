@@ -164,6 +164,7 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

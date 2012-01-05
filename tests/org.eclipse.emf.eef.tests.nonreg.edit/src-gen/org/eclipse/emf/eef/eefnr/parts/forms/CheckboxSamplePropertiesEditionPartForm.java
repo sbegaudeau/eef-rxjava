@@ -185,6 +185,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -244,6 +245,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 			checkboxOptionalProperty.setSelection(false);
 		}
 	}
+
+
+
 
 
 

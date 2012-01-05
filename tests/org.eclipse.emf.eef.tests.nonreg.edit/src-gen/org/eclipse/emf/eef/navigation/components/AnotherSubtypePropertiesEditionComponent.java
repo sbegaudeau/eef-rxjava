@@ -41,6 +41,7 @@ public class AnotherSubtypePropertiesEditionComponent extends ComposedProperties
 	 * 
 	 */
 	protected AnotherSubtypeBasePropertiesEditionComponent anotherSubtypeBasePropertiesEditionComponent;
+
 	/**
 	 * The SubtypePropertiesEditionComponent sub component
 	 * 

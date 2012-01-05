@@ -97,7 +97,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 				}
 			
 			});
-			basePart.addFilterToReference(new EObjectFilter(EefnrPackage.eINSTANCE.getTotalSample()));
+			basePart.addFilterToReference(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 			// Start of user code for additional businessfilters for reference
 			// End of user code
 			
