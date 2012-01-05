@@ -45,6 +45,7 @@ public class JavaDeclarationFilterPropertiesEditionComponent extends ComposedPro
 	 * 
 	 */
 	protected JavaDeclarationFilterBasePropertiesEditionComponent javaDeclarationFilterBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

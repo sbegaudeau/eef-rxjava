@@ -169,6 +169,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -204,6 +205,7 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 			javaExpressionBody.setText(""); //$NON-NLS-1$
 		}
 	}
+
 
 /**
 	 * {@inheritDoc}
@@ -253,7 +255,6 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
 
 
 

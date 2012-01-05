@@ -45,6 +45,7 @@ public class OCLFilterPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * 
 	 */
 	protected OCLFilterBasePropertiesEditionComponent oCLFilterBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

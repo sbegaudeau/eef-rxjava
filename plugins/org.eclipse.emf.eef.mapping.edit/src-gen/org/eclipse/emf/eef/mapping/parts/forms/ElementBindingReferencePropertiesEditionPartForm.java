@@ -163,6 +163,7 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -244,6 +245,9 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 	public void addBusinessFilterToBinding(ViewerFilter filter) {
 		binding.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

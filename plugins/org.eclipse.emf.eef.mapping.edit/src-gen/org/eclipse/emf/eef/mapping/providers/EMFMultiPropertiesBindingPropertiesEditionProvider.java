@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.mapping.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.EMFMultiPropertiesBindingBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.EMFMultiPropertiesBindingPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof EMFMultiPropertiesBinding) 
-					&& (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding() == editingContext.getEObject().eClass());
+					&& (MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && MappingPackage.Literals.EMF_MULTI_PROPERTIES_BINDING == ((EObject)toTest).eClass();
 		}
 		
 	}

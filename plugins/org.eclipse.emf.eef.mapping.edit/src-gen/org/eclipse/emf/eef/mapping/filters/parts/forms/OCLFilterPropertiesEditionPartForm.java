@@ -182,6 +182,7 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -217,6 +218,8 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 			oCLExpressionBody.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -265,6 +268,7 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
+
 
 
 

@@ -45,6 +45,7 @@ public class JavaExpressionFilterPropertiesEditionComponent extends ComposedProp
 	 * 
 	 */
 	protected JavaExpressionFilterBasePropertiesEditionComponent javaExpressionFilterBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

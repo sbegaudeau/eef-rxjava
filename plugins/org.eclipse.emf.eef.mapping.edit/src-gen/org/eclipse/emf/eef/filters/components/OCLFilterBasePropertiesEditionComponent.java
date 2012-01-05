@@ -72,7 +72,7 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 			final OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
 			// init values
 			if (oCLFilter.getOCLBody() != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody))
-				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), oCLFilter.getOCLBody()));
+				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, oCLFilter.getOCLBody()));
 			// init filters
 			
 			// init values for referenced views
@@ -110,7 +110,7 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		OCLFilter oCLFilter = (OCLFilter)semanticObject;
 		if (FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody == event.getAffectedEditor()) {
-			oCLFilter.setOCLBody((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			oCLFilter.setOCLBody((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -123,7 +123,7 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 			OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody)){
 				if (msg.getNewValue() != null) {
-					basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOCLExpressionBody("");
 				}

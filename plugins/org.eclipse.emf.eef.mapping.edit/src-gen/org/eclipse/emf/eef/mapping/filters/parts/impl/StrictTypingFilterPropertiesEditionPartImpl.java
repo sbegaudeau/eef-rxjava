@@ -164,6 +164,7 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -246,6 +247,7 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 		restriction.addBusinessRuleFilter(filter);
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -294,7 +296,6 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
 
 
 

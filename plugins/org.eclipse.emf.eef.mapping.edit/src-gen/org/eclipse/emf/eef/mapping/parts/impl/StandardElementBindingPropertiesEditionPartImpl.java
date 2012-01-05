@@ -327,6 +327,7 @@ public class StandardElementBindingPropertiesEditionPartImpl extends CompositePr
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

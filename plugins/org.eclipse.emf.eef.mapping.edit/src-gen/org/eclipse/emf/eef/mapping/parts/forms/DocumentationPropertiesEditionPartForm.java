@@ -162,6 +162,7 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -197,6 +198,9 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

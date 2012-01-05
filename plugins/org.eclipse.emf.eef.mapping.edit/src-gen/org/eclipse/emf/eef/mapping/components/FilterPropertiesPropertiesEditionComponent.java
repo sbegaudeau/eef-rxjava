@@ -71,7 +71,7 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 			final FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
 			// init values
 			if (bindingFilter.getName() != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name))
-				filterPropertiesPart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), bindingFilter.getName()));
+				filterPropertiesPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, bindingFilter.getName()));
 			
 			if (isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory)) {
 				filterPropertiesPart.setMandatory(bindingFilter.isMandatory());
@@ -113,7 +113,7 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		BindingFilter bindingFilter = (BindingFilter)semanticObject;
 		if (MappingViewsRepository.FilterProperties.FilterProperties_.name == event.getAffectedEditor()) {
-			bindingFilter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			bindingFilter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (MappingViewsRepository.FilterProperties.FilterProperties_.mandatory == event.getAffectedEditor()) {
 			bindingFilter.setMandatory((Boolean)event.getNewValue());
@@ -129,7 +129,7 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 			FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name)) {
 				if (msg.getNewValue() != null) {
-					filterPropertiesPart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					filterPropertiesPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					filterPropertiesPart.setName("");
 				}

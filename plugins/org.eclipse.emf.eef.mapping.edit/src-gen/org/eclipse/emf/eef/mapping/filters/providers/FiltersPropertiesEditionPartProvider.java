@@ -12,22 +12,24 @@
 package org.eclipse.emf.eef.mapping.filters.providers;
 
 import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
+
 import org.eclipse.emf.eef.mapping.filters.parts.forms.JavaDeclarationFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.JavaExpressionFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.OCLFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.OnlyReferenceTypeFilterPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.filters.parts.forms.StrictTypingFilterPropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.mapping.filters.parts.impl.JavaDeclarationFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.JavaExpressionFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.OCLFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.OnlyReferenceTypeFilterPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.filters.parts.impl.StrictTypingFilterPropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

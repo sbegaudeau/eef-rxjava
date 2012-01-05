@@ -116,6 +116,7 @@ public class ModelNavigationPropertiesEditionPartForm extends SectionPropertiesE
 		return propertiesGroup;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -127,6 +128,8 @@ public class ModelNavigationPropertiesEditionPartForm extends SectionPropertiesE
 		
 		// End of user code
 	}
+
+
 
 
 

@@ -387,6 +387,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -532,6 +533,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
+
+
+
 
 
 

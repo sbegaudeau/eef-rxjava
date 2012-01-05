@@ -14,16 +14,24 @@ package org.eclipse.emf.eef.filters.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.filters.components.JavaDeclarationFilterBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.filters.components.JavaDeclarationFilterPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.FilterPropertiesPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.JavaDeclarationFilter;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -54,7 +62,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider extends PropertiesEd
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof JavaDeclarationFilter) 
-					&& (FiltersPackage.eINSTANCE.getJavaDeclarationFilter() == editingContext.getEObject().eClass());
+					&& (FiltersPackage.Literals.JAVA_DECLARATION_FILTER == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -146,7 +154,7 @@ public class JavaDeclarationFilterPropertiesEditionProvider extends PropertiesEd
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && FiltersPackage.eINSTANCE.getJavaDeclarationFilter() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && FiltersPackage.Literals.JAVA_DECLARATION_FILTER == ((EObject)toTest).eClass();
 		}
 		
 	}

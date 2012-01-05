@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -95,7 +96,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			final EMFElementBindingPropertiesEditionPart basePart = (EMFElementBindingPropertiesEditionPart)editingPart;
 			// init values
 			if (eMFElementBinding.getName() != null && isAccessible(MappingViewsRepository.EMFElementBinding.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eMFElementBinding.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eMFElementBinding.getName()));
 			
 			if (isAccessible(MappingViewsRepository.EMFElementBinding.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(eMFElementBinding, MappingPackage.eINSTANCE.getAbstractElementBinding_Views());
@@ -124,7 +125,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
 			// Start of user code for additional businessfilters for views
 			// End of user code
 			
@@ -136,7 +137,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof org.eclipse.emf.ecore.EClassifier);
+				return (element instanceof EClassifier);
 				}
 			
 			});
@@ -181,7 +182,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFElementBinding eMFElementBinding = (EMFElementBinding)semanticObject;
 		if (MappingViewsRepository.EMFElementBinding.Properties.name == event.getAffectedEditor()) {
-			eMFElementBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eMFElementBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (MappingViewsRepository.EMFElementBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -196,7 +197,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 		}
 		if (MappingViewsRepository.EMFElementBinding.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				modelSettings.setToReference((org.eclipse.emf.ecore.EClassifier)event.getNewValue());
+				modelSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -219,7 +220,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			EMFElementBindingPropertiesEditionPart basePart = (EMFElementBindingPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.EMFElementBinding.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

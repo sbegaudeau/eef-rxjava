@@ -72,7 +72,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 			final JavaExpressionFilterPropertiesEditionPart basePart = (JavaExpressionFilterPropertiesEditionPart)editingPart;
 			// init values
 			if (javaExpressionFilter.getJavaBody() != null && isAccessible(FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody))
-				basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), javaExpressionFilter.getJavaBody()));
+				basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, javaExpressionFilter.getJavaBody()));
 			// init filters
 			
 			// init values for referenced views
@@ -110,7 +110,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		JavaExpressionFilter javaExpressionFilter = (JavaExpressionFilter)semanticObject;
 		if (FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody == event.getAffectedEditor()) {
-			javaExpressionFilter.setJavaBody((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			javaExpressionFilter.setJavaBody((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -123,7 +123,7 @@ public class JavaExpressionFilterBasePropertiesEditionComponent extends SinglePa
 			JavaExpressionFilterPropertiesEditionPart basePart = (JavaExpressionFilterPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getJavaExpressionFilter_JavaBody().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody)){
 				if (msg.getNewValue() != null) {
-					basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setJavaExpressionBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setJavaExpressionBody("");
 				}

@@ -12,8 +12,10 @@
 package org.eclipse.emf.eef.navigation.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
+
 import org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory;
 
+import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

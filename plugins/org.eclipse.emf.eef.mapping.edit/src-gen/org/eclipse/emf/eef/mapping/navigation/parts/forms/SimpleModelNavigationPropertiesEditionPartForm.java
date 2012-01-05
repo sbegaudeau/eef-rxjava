@@ -254,6 +254,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -429,6 +430,9 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 	public void addBusinessFilterToDiscriminatorType(ViewerFilter filter) {
 		discriminatorType.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

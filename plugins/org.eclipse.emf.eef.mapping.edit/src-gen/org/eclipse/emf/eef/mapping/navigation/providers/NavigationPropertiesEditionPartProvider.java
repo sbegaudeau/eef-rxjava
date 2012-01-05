@@ -12,16 +12,18 @@
 package org.eclipse.emf.eef.mapping.navigation.providers;
 
 import org.eclipse.emf.eef.mapping.navigation.parts.NavigationViewsRepository;
+
 import org.eclipse.emf.eef.mapping.navigation.parts.forms.ModelNavigationPropertiesEditionPartForm;
 import org.eclipse.emf.eef.mapping.navigation.parts.forms.SimpleModelNavigationPropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.mapping.navigation.parts.impl.ModelNavigationPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.mapping.navigation.parts.impl.SimpleModelNavigationPropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

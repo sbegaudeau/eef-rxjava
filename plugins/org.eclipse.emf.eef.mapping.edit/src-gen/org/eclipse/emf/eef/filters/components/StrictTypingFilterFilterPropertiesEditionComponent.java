@@ -45,6 +45,7 @@ public class StrictTypingFilterFilterPropertiesEditionComponent extends Composed
 	 * 
 	 */
 	protected StrictTypingFilterFilterStrictTypingFilterPropertiesEditionComponent strictTypingFilterFilterStrictTypingFilterPropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

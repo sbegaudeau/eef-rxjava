@@ -100,7 +100,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof org.eclipse.emf.ecore.EReference); //$NON-NLS-1$ 
+				return (element instanceof String && element.equals("")) || (element instanceof EReference); //$NON-NLS-1$ 
 				}
 			
 			});
@@ -143,7 +143,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 		OnlyReferenceTypeFilter onlyReferenceTypeFilter = (OnlyReferenceTypeFilter)semanticObject;
 		if (FiltersViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				referencedFeatureSettings.setToReference((org.eclipse.emf.ecore.EReference)event.getNewValue());
+				referencedFeatureSettings.setToReference((EReference)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReference eObject = EcoreFactory.eINSTANCE.createEReference();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());

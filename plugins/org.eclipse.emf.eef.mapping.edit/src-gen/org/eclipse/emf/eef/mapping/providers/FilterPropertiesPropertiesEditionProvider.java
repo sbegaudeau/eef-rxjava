@@ -14,13 +14,20 @@ package org.eclipse.emf.eef.mapping.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.mapping.components.FilterPropertiesPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -51,7 +58,7 @@ public class FilterPropertiesPropertiesEditionProvider extends PropertiesEditing
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof BindingFilter) 
-					&& (FiltersPackage.eINSTANCE.getBindingFilter() == editingContext.getEObject().eClass());
+					&& (FiltersPackage.Literals.BINDING_FILTER == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -133,7 +140,7 @@ public class FilterPropertiesPropertiesEditionProvider extends PropertiesEditing
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && FiltersPackage.eINSTANCE.getBindingFilter() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && FiltersPackage.Literals.BINDING_FILTER == ((EObject)toTest).eClass();
 		}
 		
 	}

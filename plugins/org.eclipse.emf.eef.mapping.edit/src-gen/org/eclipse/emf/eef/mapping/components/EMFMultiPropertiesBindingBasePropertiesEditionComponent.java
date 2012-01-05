@@ -89,7 +89,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			final EMFMultiPropertiesBindingPropertiesEditionPart basePart = (EMFMultiPropertiesBindingPropertiesEditionPart)editingPart;
 			// init values
 			if (eMFMultiPropertiesBinding.getName() != null && isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eMFMultiPropertiesBinding.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eMFMultiPropertiesBinding.getName()));
 			
 			if (isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(eMFMultiPropertiesBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
@@ -115,7 +115,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 			// Start of user code for additional businessfilters for views
 			// End of user code
 			
@@ -133,7 +133,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 				}
 			
 			});
-			basePart.addFilterToModel(new EObjectFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
+			basePart.addFilterToModel(new EObjectFilter(EcorePackage.Literals.ESTRUCTURAL_FEATURE));
 			// Start of user code for additional businessfilters for model
 			// End of user code
 			
@@ -175,7 +175,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFMultiPropertiesBinding eMFMultiPropertiesBinding = (EMFMultiPropertiesBinding)semanticObject;
 		if (MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name == event.getAffectedEditor()) {
-			eMFMultiPropertiesBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eMFMultiPropertiesBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -210,7 +210,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			EMFMultiPropertiesBindingPropertiesEditionPart basePart = (EMFMultiPropertiesBindingPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

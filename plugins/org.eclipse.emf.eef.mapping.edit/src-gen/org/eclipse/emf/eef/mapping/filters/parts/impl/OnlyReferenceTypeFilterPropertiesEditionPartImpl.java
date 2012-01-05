@@ -164,6 +164,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -246,6 +247,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 		referencedFeature.addBusinessRuleFilter(filter);
 	}
 
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -294,7 +296,6 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartImpl extends CompositeP
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
 
 
 

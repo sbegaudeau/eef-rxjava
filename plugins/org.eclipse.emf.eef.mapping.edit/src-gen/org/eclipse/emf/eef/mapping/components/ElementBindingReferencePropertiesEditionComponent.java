@@ -42,6 +42,7 @@ public class ElementBindingReferencePropertiesEditionComponent extends ComposedP
 	 * 
 	 */
 	protected ElementBindingReferenceBasePropertiesEditionComponent elementBindingReferenceBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

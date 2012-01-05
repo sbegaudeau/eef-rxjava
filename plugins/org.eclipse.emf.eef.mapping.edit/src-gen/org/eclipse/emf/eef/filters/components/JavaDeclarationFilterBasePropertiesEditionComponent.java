@@ -72,7 +72,7 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 			final JavaDeclarationFilterPropertiesEditionPart basePart = (JavaDeclarationFilterPropertiesEditionPart)editingPart;
 			// init values
 			if (javaDeclarationFilter.getMethodName() != null && isAccessible(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName))
-				basePart.setMethodName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), javaDeclarationFilter.getMethodName()));
+				basePart.setMethodName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationFilter.getMethodName()));
 			
 			// init filters
 			
@@ -111,7 +111,7 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		JavaDeclarationFilter javaDeclarationFilter = (JavaDeclarationFilter)semanticObject;
 		if (FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName == event.getAffectedEditor()) {
-			javaDeclarationFilter.setMethodName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			javaDeclarationFilter.setMethodName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -124,7 +124,7 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 			JavaDeclarationFilterPropertiesEditionPart basePart = (JavaDeclarationFilterPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName)) {
 				if (msg.getNewValue() != null) {
-					basePart.setMethodName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setMethodName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setMethodName("");
 				}

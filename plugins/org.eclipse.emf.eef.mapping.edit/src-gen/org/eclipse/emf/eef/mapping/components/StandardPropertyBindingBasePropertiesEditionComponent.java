@@ -96,7 +96,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Singl
 			final StandardPropertyBindingPropertiesEditionPart basePart = (StandardPropertyBindingPropertiesEditionPart)editingPart;
 			// init values
 			if (standardPropertyBinding.getName() != null && isAccessible(MappingViewsRepository.StandardPropertyBinding.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), standardPropertyBinding.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, standardPropertyBinding.getName()));
 			
 			if (isAccessible(MappingViewsRepository.StandardPropertyBinding.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(standardPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
@@ -125,7 +125,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Singl
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 			// Start of user code for additional businessfilters for views
 			// End of user code
 			
@@ -182,7 +182,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Singl
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		StandardPropertyBinding standardPropertyBinding = (StandardPropertyBinding)semanticObject;
 		if (MappingViewsRepository.StandardPropertyBinding.Properties.name == event.getAffectedEditor()) {
-			standardPropertyBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			standardPropertyBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (MappingViewsRepository.StandardPropertyBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -220,7 +220,7 @@ public class StandardPropertyBindingBasePropertiesEditionComponent extends Singl
 			StandardPropertyBindingPropertiesEditionPart basePart = (StandardPropertyBindingPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.StandardPropertyBinding.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

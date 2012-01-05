@@ -169,6 +169,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -204,6 +205,7 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 			oCLExpressionBody.setText(""); //$NON-NLS-1$
 		}
 	}
+
 
 /**
 	 * {@inheritDoc}
@@ -253,7 +255,6 @@ public class OCLFilterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
 
 
 

@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.mapping.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.components.CategoryBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.CategoryPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class CategoryPropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Category) 
-					&& (MappingPackage.eINSTANCE.getCategory() == editingContext.getEObject().eClass());
+					&& (MappingPackage.Literals.CATEGORY == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class CategoryPropertiesEditionProvider extends PropertiesEditingProvider
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && MappingPackage.eINSTANCE.getCategory() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && MappingPackage.Literals.CATEGORY == ((EObject)toTest).eClass();
 		}
 		
 	}

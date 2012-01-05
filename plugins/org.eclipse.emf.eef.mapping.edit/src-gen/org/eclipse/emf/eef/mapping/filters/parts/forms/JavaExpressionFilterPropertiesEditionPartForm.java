@@ -182,6 +182,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -217,6 +218,8 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 			javaExpressionBody.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -265,6 +268,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
+
 
 
 

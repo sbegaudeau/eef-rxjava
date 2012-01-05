@@ -381,6 +381,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.mapping.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.StandardPropertyBinding;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.StandardPropertyBindingBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.StandardPropertyBindingPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof StandardPropertyBinding) 
-					&& (MappingPackage.eINSTANCE.getStandardPropertyBinding() == editingContext.getEObject().eClass());
+					&& (MappingPackage.Literals.STANDARD_PROPERTY_BINDING == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class StandardPropertyBindingPropertiesEditionProvider extends Properties
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && MappingPackage.eINSTANCE.getStandardPropertyBinding() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && MappingPackage.Literals.STANDARD_PROPERTY_BINDING == ((EObject)toTest).eClass();
 		}
 		
 	}

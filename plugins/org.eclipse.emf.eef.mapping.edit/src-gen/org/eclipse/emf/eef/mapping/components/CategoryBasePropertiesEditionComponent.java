@@ -71,7 +71,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 			final CategoryPropertiesEditionPart basePart = (CategoryPropertiesEditionPart)editingPart;
 			// init values
 			if (category.getName() != null && isAccessible(MappingViewsRepository.Category.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), category.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, category.getName()));
 			
 			// init filters
 			
@@ -105,7 +105,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Category category = (Category)semanticObject;
 		if (MappingViewsRepository.Category.Properties.name == event.getAffectedEditor()) {
-			category.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			category.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -118,7 +118,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 			CategoryPropertiesEditionPart basePart = (CategoryPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.Category.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

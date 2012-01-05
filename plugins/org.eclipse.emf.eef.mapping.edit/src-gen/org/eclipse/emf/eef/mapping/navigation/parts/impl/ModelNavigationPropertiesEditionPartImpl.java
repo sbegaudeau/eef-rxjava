@@ -105,6 +105,7 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 		return propertiesGroup;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -116,7 +117,6 @@ public class ModelNavigationPropertiesEditionPartImpl extends CompositePropertie
 		
 		// End of user code
 	}
-
 
 
 

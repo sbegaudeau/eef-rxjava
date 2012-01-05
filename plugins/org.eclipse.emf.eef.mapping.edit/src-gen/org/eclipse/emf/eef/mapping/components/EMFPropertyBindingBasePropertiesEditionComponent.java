@@ -95,7 +95,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			final EMFPropertyBindingPropertiesEditionPart basePart = (EMFPropertyBindingPropertiesEditionPart)editingPart;
 			// init values
 			if (eMFPropertyBinding.getName() != null && isAccessible(MappingViewsRepository.EMFPropertyBinding.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eMFPropertyBinding.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eMFPropertyBinding.getName()));
 			
 			if (isAccessible(MappingViewsRepository.EMFPropertyBinding.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(eMFPropertyBinding, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
@@ -124,7 +124,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 			// Start of user code for additional businessfilters for views
 			// End of user code
 			
@@ -136,7 +136,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof org.eclipse.emf.ecore.EStructuralFeature);
+				return (element instanceof EStructuralFeature);
 				}
 			
 			});
@@ -181,7 +181,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EMFPropertyBinding eMFPropertyBinding = (EMFPropertyBinding)semanticObject;
 		if (MappingViewsRepository.EMFPropertyBinding.Properties.name == event.getAffectedEditor()) {
-			eMFPropertyBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eMFPropertyBinding.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (MappingViewsRepository.EMFPropertyBinding.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -196,7 +196,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 		}
 		if (MappingViewsRepository.EMFPropertyBinding.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				modelSettings.setToReference((org.eclipse.emf.ecore.EStructuralFeature)event.getNewValue());
+				modelSettings.setToReference((EStructuralFeature)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -219,7 +219,7 @@ public class EMFPropertyBindingBasePropertiesEditionComponent extends SinglePart
 			EMFPropertyBindingPropertiesEditionPart basePart = (EMFPropertyBindingPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.EMFPropertyBinding.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

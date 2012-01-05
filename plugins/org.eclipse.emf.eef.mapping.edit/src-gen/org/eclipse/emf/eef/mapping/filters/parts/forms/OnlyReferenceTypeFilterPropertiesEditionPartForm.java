@@ -183,6 +183,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends SectionPro
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -264,6 +265,8 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends SectionPro
 	public void addBusinessFilterToReferencedFeature(ViewerFilter filter) {
 		referencedFeature.addBusinessRuleFilter(filter);
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -312,6 +315,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionPartForm extends SectionPro
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
+
 
 
 

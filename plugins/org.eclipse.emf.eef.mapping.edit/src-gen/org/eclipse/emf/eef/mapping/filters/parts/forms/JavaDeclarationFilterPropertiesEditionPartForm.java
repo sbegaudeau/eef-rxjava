@@ -191,6 +191,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -226,6 +227,8 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 			methodName.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -274,6 +277,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
+
 
 
 

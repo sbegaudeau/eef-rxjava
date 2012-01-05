@@ -234,6 +234,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

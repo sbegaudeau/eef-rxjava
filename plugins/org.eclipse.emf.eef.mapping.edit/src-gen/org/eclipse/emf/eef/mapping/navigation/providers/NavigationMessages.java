@@ -27,6 +27,7 @@ public class NavigationMessages extends NLS {
 	
 	public static String SimpleModelNavigationPropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String ModelNavigation_ReadOnly;
 
@@ -39,6 +40,7 @@ public class NavigationMessages extends NLS {
 	
 	public static String SimpleModelNavigation_Part_Title;
 
+
 	
 	public static String SimpleModelNavigationPropertiesEditionPart_IndexLabel;
 
@@ -47,6 +49,7 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

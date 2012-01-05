@@ -63,6 +63,7 @@ public class MappingMessages extends NLS {
 	
 	public static String FilterPropertiesPropertiesEditionPart_FilterPropertiesGroupLabel;
 
+
 	
 	public static String EMFElementBinding_ReadOnly;
 
@@ -116,6 +117,7 @@ public class MappingMessages extends NLS {
 
 	
 	public static String FilterProperties_Part_Title;
+
 
 	
 	public static String EMFElementBindingPropertiesEditionPart_NameLabel;
@@ -176,6 +178,7 @@ public class MappingMessages extends NLS {
 
 	
 	public static String FilterPropertiesPropertiesEditionPart_MandatoryLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

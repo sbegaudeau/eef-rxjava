@@ -145,6 +145,7 @@ public class ElementBindingReferencePropertiesEditionPartImpl extends CompositeP
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

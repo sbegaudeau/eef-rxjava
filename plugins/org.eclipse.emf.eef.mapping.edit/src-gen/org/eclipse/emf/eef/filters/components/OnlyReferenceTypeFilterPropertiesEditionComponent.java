@@ -45,6 +45,7 @@ public class OnlyReferenceTypeFilterPropertiesEditionComponent extends ComposedP
 	 * 
 	 */
 	protected OnlyReferenceTypeFilterBasePropertiesEditionComponent onlyReferenceTypeFilterBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

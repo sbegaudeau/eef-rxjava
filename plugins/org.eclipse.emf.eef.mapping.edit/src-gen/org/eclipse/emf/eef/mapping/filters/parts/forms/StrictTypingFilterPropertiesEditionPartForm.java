@@ -183,6 +183,7 @@ public class StrictTypingFilterPropertiesEditionPartForm extends SectionProperti
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -264,6 +265,8 @@ public class StrictTypingFilterPropertiesEditionPartForm extends SectionProperti
 	public void addBusinessFilterToRestriction(ViewerFilter filter) {
 		restriction.addBusinessRuleFilter(filter);
 	}
+
+
 /**
 	 * {@inheritDoc}
 	 * 
@@ -312,6 +315,7 @@ public class StrictTypingFilterPropertiesEditionPartForm extends SectionProperti
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
+
 
 
 

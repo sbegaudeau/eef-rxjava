@@ -184,6 +184,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	}
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -219,6 +220,7 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 			methodName.setText(""); //$NON-NLS-1$
 		}
 	}
+
 
 /**
 	 * {@inheritDoc}
@@ -268,7 +270,6 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 	public void setMandatory(Boolean newValue) {
 		filterPropertiesPropertiesEditionPart.setMandatory(newValue);
 	}
-
 
 
 

@@ -36,6 +36,7 @@ public class FiltersMessages extends NLS {
 	
 	public static String StrictTypingFilterPropertiesEditionPart_TypeGroupLabel;
 
+
 	
 	public static String OnlyReferenceTypeFilter_ReadOnly;
 
@@ -66,6 +67,7 @@ public class FiltersMessages extends NLS {
 	
 	public static String StrictTypingFilter_Part_Title;
 
+
 	
 	public static String OnlyReferenceTypeFilterPropertiesEditionPart_ReferencedFeatureLabel;
 
@@ -80,6 +82,7 @@ public class FiltersMessages extends NLS {
 
 	
 	public static String StrictTypingFilterPropertiesEditionPart_RestrictionLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

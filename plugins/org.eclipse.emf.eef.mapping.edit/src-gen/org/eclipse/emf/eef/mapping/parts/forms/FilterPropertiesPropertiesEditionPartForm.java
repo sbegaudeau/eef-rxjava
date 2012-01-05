@@ -205,6 +205,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -264,6 +265,9 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 			mandatory.setSelection(false);
 		}
 	}
+
+
+
 
 
 

@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -93,7 +94,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			final SimpleModelNavigationPropertiesEditionPart basePart = (SimpleModelNavigationPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(NavigationViewsRepository.SimpleModelNavigation.Properties.index)) {
-				basePart.setIndex(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), simpleModelNavigation.getIndex()));
+				basePart.setIndex(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, simpleModelNavigation.getIndex()));
 			}
 			
 			if (isAccessible(NavigationViewsRepository.SimpleModelNavigation.Properties.feature)) {
@@ -120,7 +121,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof org.eclipse.emf.ecore.EReference);
+				return (element instanceof EReference);
 				}
 			
 			});
@@ -135,7 +136,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof org.eclipse.emf.ecore.EClassifier); //$NON-NLS-1$ 
+				return (element instanceof String && element.equals("")) || (element instanceof EClassifier); //$NON-NLS-1$ 
 				}
 			
 			});
@@ -180,11 +181,11 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		SimpleModelNavigation simpleModelNavigation = (SimpleModelNavigation)semanticObject;
 		if (NavigationViewsRepository.SimpleModelNavigation.Properties.index == event.getAffectedEditor()) {
-			simpleModelNavigation.setIndex((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			simpleModelNavigation.setIndex((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
 		if (NavigationViewsRepository.SimpleModelNavigation.Properties.feature == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				featureSettings.setToReference((org.eclipse.emf.ecore.EReference)event.getNewValue());
+				featureSettings.setToReference((EReference)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReference eObject = EcoreFactory.eINSTANCE.createEReference();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
@@ -200,7 +201,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 		}
 		if (NavigationViewsRepository.SimpleModelNavigation.Properties.discriminatorType == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				discriminatorTypeSettings.setToReference((org.eclipse.emf.ecore.EClassifier)event.getNewValue());
+				discriminatorTypeSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, discriminatorTypeSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -223,7 +224,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 			SimpleModelNavigationPropertiesEditionPart basePart = (SimpleModelNavigationPropertiesEditionPart)editingPart;
 			if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.SimpleModelNavigation.Properties.index)) {
 				if (msg.getNewValue() != null) {
-					basePart.setIndex(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					basePart.setIndex(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setIndex("");
 				}

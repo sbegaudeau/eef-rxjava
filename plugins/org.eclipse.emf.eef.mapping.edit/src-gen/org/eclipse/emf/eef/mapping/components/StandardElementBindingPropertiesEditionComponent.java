@@ -42,6 +42,7 @@ public class StandardElementBindingPropertiesEditionComponent extends ComposedPr
 	 * 
 	 */
 	protected StandardElementBindingBasePropertiesEditionComponent standardElementBindingBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

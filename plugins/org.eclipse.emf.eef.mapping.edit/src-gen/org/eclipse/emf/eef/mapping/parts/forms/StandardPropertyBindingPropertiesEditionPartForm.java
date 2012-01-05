@@ -341,6 +341,7 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -501,6 +502,9 @@ public class StandardPropertyBindingPropertiesEditionPartForm extends SectionPro
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
+
+
+
 
 
 

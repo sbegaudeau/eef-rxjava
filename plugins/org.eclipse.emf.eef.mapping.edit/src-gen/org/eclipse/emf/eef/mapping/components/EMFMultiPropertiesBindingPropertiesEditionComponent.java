@@ -42,6 +42,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionComponent extends Compose
 	 * 
 	 */
 	protected EMFMultiPropertiesBindingBasePropertiesEditionComponent eMFMultiPropertiesBindingBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

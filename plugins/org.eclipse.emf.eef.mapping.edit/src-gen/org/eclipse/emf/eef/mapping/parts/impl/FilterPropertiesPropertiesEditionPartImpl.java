@@ -200,6 +200,7 @@ public class FilterPropertiesPropertiesEditionPartImpl extends CompositeProperti
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

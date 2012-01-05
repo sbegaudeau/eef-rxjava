@@ -42,6 +42,7 @@ public class EMFElementBindingPropertiesEditionComponent extends ComposedPropert
 	 * 
 	 */
 	protected EMFElementBindingBasePropertiesEditionComponent eMFElementBindingBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

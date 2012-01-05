@@ -71,7 +71,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 			final DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
 			// init values
 			if (documentedElement.getDocumentation() != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__))
-				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), documentedElement.getDocumentation()));
+				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, documentedElement.getDocumentation()));
 			// init filters
 			
 			// init values for referenced views
@@ -104,7 +104,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DocumentedElement documentedElement = (DocumentedElement)semanticObject;
 		if (MappingViewsRepository.Documentation.Documentation_.documentation__ == event.getAffectedEditor()) {
-			documentedElement.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			documentedElement.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -117,7 +117,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 			DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__)){
 				if (msg.getNewValue() != null) {
-					documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					documentationPart.setDocumentation("");
 				}

@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.mapping.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.mapping.ElementBindingReference;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.ElementBindingReferenceBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.mapping.components.ElementBindingReferencePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class ElementBindingReferencePropertiesEditionProvider extends Properties
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof ElementBindingReference) 
-					&& (MappingPackage.eINSTANCE.getElementBindingReference() == editingContext.getEObject().eClass());
+					&& (MappingPackage.Literals.ELEMENT_BINDING_REFERENCE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class ElementBindingReferencePropertiesEditionProvider extends Properties
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && MappingPackage.eINSTANCE.getElementBindingReference() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && MappingPackage.Literals.ELEMENT_BINDING_REFERENCE == ((EObject)toTest).eClass();
 		}
 		
 	}
