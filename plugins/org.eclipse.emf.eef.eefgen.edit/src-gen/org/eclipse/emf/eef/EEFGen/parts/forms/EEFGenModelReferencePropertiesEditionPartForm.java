@@ -163,6 +163,7 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -244,6 +245,9 @@ public class EEFGenModelReferencePropertiesEditionPartForm extends SectionProper
 	public void addBusinessFilterToReferencedEEFGenModel(ViewerFilter filter) {
 		referencedEEFGenModel.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

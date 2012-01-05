@@ -12,20 +12,22 @@
 package org.eclipse.emf.eef.EEFGen.providers;
 
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
+
 import org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelPropertiesEditionPartForm;
 import org.eclipse.emf.eef.EEFGen.parts.forms.EEFGenModelReferencePropertiesEditionPartForm;
 import org.eclipse.emf.eef.EEFGen.parts.forms.GenEditionContextPropertiesEditionPartForm;
 import org.eclipse.emf.eef.EEFGen.parts.forms.GenViewsRepositoryPropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.EEFGen.parts.impl.EEFGenModelPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.EEFGen.parts.impl.EEFGenModelReferencePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.EEFGen.parts.impl.GenEditionContextPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.EEFGen.parts.impl.GenViewsRepositoryPropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

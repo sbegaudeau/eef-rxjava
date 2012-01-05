@@ -354,6 +354,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -363,7 +364,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -488,6 +489,9 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 
 
 
+
+
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -499,7 +503,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

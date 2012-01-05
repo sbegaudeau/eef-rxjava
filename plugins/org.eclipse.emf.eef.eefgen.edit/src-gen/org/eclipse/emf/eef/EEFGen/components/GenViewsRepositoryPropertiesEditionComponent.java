@@ -88,7 +88,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			final GenViewsRepositoryPropertiesEditionPart basePart = (GenViewsRepositoryPropertiesEditionPart)editingPart;
 			// init values
 			if (genViewsRepository.getBasePackage() != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage))
-				basePart.setBasePackage(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genViewsRepository.getBasePackage()));
+				basePart.setBasePackage(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genViewsRepository.getBasePackage()));
 			
 			if (isAccessible(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews)) {
 				basePart.setSWTViews(genViewsRepository.isSwtViews());
@@ -107,7 +107,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 				basePart.setViewsRepositoryButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			if (genViewsRepository.getPartsSuperClass() != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass))
-				basePart.setPartsSuperClass(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genViewsRepository.getPartsSuperClass()));
+				basePart.setPartsSuperClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genViewsRepository.getPartsSuperClass()));
 			
 			// init filters
 			
@@ -180,7 +180,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		GenViewsRepository genViewsRepository = (GenViewsRepository)semanticObject;
 		if (EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage == event.getAffectedEditor()) {
-			genViewsRepository.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			genViewsRepository.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews == event.getAffectedEditor()) {
 			genViewsRepository.setSwtViews((Boolean)event.getNewValue());
@@ -208,7 +208,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass == event.getAffectedEditor()) {
-			genViewsRepository.setPartsSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			genViewsRepository.setPartsSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -221,7 +221,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			GenViewsRepositoryPropertiesEditionPart basePart = (GenViewsRepositoryPropertiesEditionPart)editingPart;
 			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage)) {
 				if (msg.getNewValue() != null) {
-					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setBasePackage("");
 				}
@@ -239,7 +239,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 				basePart.setViewsRepository((EObject)msg.getNewValue());
 			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass)) {
 				if (msg.getNewValue() != null) {
-					basePart.setPartsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setPartsSuperClass(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setPartsSuperClass("");
 				}

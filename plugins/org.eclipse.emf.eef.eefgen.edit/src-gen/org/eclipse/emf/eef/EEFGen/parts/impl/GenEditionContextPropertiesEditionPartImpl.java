@@ -515,6 +515,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

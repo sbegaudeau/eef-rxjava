@@ -360,6 +360,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

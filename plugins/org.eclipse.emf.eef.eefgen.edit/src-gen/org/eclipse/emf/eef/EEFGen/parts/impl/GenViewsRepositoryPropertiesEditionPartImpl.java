@@ -420,6 +420,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

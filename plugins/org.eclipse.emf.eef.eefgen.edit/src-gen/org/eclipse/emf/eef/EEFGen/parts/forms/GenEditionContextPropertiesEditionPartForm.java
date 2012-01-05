@@ -513,6 +513,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -762,6 +763,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 			propertiesEditingProvidersSuperClass.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

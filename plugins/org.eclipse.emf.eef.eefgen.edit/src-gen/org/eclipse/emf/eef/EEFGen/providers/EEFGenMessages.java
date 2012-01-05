@@ -54,6 +54,7 @@ public class EEFGenMessages extends NLS {
 	
 	public static String GenViewsRepositoryPropertiesEditionPart_ImplementationGroupLabel;
 
+
 	
 	public static String GenEditionContext_ReadOnly;
 
@@ -77,6 +78,7 @@ public class EEFGenMessages extends NLS {
 
 	
 	public static String GenViewsRepository_Part_Title;
+
 
 	
 	public static String GenEditionContextPropertiesEditionPart_PropertiesEditionContextLabel;
@@ -137,6 +139,7 @@ public class EEFGenMessages extends NLS {
 
 	
 	public static String GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

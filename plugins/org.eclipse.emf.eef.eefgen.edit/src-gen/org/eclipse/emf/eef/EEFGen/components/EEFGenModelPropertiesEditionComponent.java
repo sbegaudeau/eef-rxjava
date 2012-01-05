@@ -71,15 +71,15 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 			final EEFGenModelPropertiesEditionPart basePart = (EEFGenModelPropertiesEditionPart)editingPart;
 			// init values
 			if (eEFGenModel.getGenDirectory() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory))
-				basePart.setGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getGenDirectory()));
+				basePart.setGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getGenDirectory()));
 			
 			if (eEFGenModel.getAuthor() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.author))
-				basePart.setAuthor(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getAuthor()));
+				basePart.setAuthor(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getAuthor()));
 			
 			if (eEFGenModel.getLicense() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.license))
-				basePart.setLicense(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getLicense()));
+				basePart.setLicense(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getLicense()));
 			if (eEFGenModel.getTestsGenDirectory() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory))
-				basePart.setTestsGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFGenModel.getTestsGenDirectory()));
+				basePart.setTestsGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getTestsGenDirectory()));
 			
 			if (isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode)) {
 				basePart.setUseJMergeToManageUserCode(eEFGenModel.isUseJMergeForUserCode());
@@ -136,16 +136,16 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EEFGenModel eEFGenModel = (EEFGenModel)semanticObject;
 		if (EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory == event.getAffectedEditor()) {
-			eEFGenModel.setGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFGenModel.setGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.EEFGenModel.Legal.author == event.getAffectedEditor()) {
-			eEFGenModel.setAuthor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFGenModel.setAuthor((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.EEFGenModel.Legal.license == event.getAffectedEditor()) {
-			eEFGenModel.setLicense((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFGenModel.setLicense((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory == event.getAffectedEditor()) {
-			eEFGenModel.setTestsGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFGenModel.setTestsGenDirectory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode == event.getAffectedEditor()) {
 			eEFGenModel.setUseJMergeForUserCode((Boolean)event.getNewValue());
@@ -161,28 +161,28 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 			EEFGenModelPropertiesEditionPart basePart = (EEFGenModelPropertiesEditionPart)editingPart;
 			if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory)) {
 				if (msg.getNewValue() != null) {
-					basePart.setGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setGenerationDirectory(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setGenerationDirectory("");
 				}
 			}
 			if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.author)) {
 				if (msg.getNewValue() != null) {
-					basePart.setAuthor(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setAuthor(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setAuthor("");
 				}
 			}
 			if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.license)){
 				if (msg.getNewValue() != null) {
-					basePart.setLicense(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setLicense(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setLicense("");
 				}
 			}
 			if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTestsGenerationDirectory(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTestsGenerationDirectory(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTestsGenerationDirectory("");
 				}

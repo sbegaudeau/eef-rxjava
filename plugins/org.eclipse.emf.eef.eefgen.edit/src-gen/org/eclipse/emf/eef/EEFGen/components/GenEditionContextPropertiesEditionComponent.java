@@ -86,10 +86,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			final GenEditionContextPropertiesEditionPart basePart = (GenEditionContextPropertiesEditionPart)editingPart;
 			// init values
 			if (genEditionContext.getBasePackage() != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage))
-				basePart.setBasePackage(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genEditionContext.getBasePackage()));
+				basePart.setBasePackage(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genEditionContext.getBasePackage()));
 			
 			if (genEditionContext.getDescriptorsContributorID() != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID))
-				basePart.setDescriptorsContributorID(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genEditionContext.getDescriptorsContributorID()));
+				basePart.setDescriptorsContributorID(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genEditionContext.getDescriptorsContributorID()));
 			
 			if (isAccessible(EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors)) {
 				basePart.setGenericPropertiesViewsDescriptors(genEditionContext.isDescriptorsGenericPropertiesViews());
@@ -108,10 +108,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 				basePart.setJUnitTestCases(genEditionContext.isGenerateJunitTestCases());
 			}
 			if (genEditionContext.getLeafComponentsSuperClass() != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass))
-				basePart.setLeafComponentsSuperClass(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genEditionContext.getLeafComponentsSuperClass()));
+				basePart.setLeafComponentsSuperClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genEditionContext.getLeafComponentsSuperClass()));
 			
 			if (genEditionContext.getPropertiesEditingProvidersSuperClass() != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass))
-				basePart.setPropertiesEditingProvidersSuperClass(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), genEditionContext.getPropertiesEditingProvidersSuperClass()));
+				basePart.setPropertiesEditingProvidersSuperClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genEditionContext.getPropertiesEditingProvidersSuperClass()));
 			
 			// init filters
 			
@@ -194,10 +194,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		GenEditionContext genEditionContext = (GenEditionContext)semanticObject;
 		if (EEFGenViewsRepository.GenEditionContext.Parameters.basePackage == event.getAffectedEditor()) {
-			genEditionContext.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			genEditionContext.setBasePackage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID == event.getAffectedEditor()) {
-			genEditionContext.setDescriptorsContributorID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			genEditionContext.setDescriptorsContributorID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
 			genEditionContext.setDescriptorsGenericPropertiesViews((Boolean)event.getNewValue());
@@ -225,10 +225,10 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			genEditionContext.setGenerateJunitTestCases((Boolean)event.getNewValue());
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass == event.getAffectedEditor()) {
-			genEditionContext.setLeafComponentsSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			genEditionContext.setLeafComponentsSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass == event.getAffectedEditor()) {
-			genEditionContext.setPropertiesEditingProvidersSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			genEditionContext.setPropertiesEditingProvidersSuperClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -241,14 +241,14 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			GenEditionContextPropertiesEditionPart basePart = (GenEditionContextPropertiesEditionPart)editingPart;
 			if (EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage)) {
 				if (msg.getNewValue() != null) {
-					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setBasePackage("");
 				}
 			}
 			if (EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID)) {
 				if (msg.getNewValue() != null) {
-					basePart.setDescriptorsContributorID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDescriptorsContributorID(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDescriptorsContributorID("");
 				}
@@ -266,14 +266,14 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			if (EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass)) {
 				if (msg.getNewValue() != null) {
-					basePart.setLeafComponentsSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setLeafComponentsSuperClass(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setLeafComponentsSuperClass("");
 				}
 			}
 			if (EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass)) {
 				if (msg.getNewValue() != null) {
-					basePart.setPropertiesEditingProvidersSuperClass(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setPropertiesEditingProvidersSuperClass(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setPropertiesEditingProvidersSuperClass("");
 				}

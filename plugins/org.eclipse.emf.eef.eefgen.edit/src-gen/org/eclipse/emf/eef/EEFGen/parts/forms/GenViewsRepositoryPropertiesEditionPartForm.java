@@ -431,6 +431,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -639,6 +640,9 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 			partsSuperClass.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

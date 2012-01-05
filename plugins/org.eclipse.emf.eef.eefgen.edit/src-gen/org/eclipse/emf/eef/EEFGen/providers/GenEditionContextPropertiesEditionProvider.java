@@ -14,13 +14,20 @@ package org.eclipse.emf.eef.EEFGen.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+
 import org.eclipse.emf.eef.EEFGen.components.GenEditionContextPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -51,7 +58,7 @@ public class GenEditionContextPropertiesEditionProvider extends PropertiesEditin
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof GenEditionContext) 
-					&& (EEFGenPackage.eINSTANCE.getGenEditionContext() == editingContext.getEObject().eClass());
+					&& (EEFGenPackage.Literals.GEN_EDITION_CONTEXT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -133,7 +140,7 @@ public class GenEditionContextPropertiesEditionProvider extends PropertiesEditin
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EEFGenPackage.eINSTANCE.getGenEditionContext() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EEFGenPackage.Literals.GEN_EDITION_CONTEXT == ((EObject)toTest).eClass();
 		}
 		
 	}
