@@ -71,7 +71,7 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 			final CustomElementEditorPropertiesEditionPart basePart = (CustomElementEditorPropertiesEditionPart)editingPart;
 			// init values
 			if (customElementEditor.getName() != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), customElementEditor.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, customElementEditor.getName()));
 			
 			if (isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.readOnly)) {
 				basePart.setReadOnly(customElementEditor.isReadOnly());
@@ -113,7 +113,7 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CustomElementEditor customElementEditor = (CustomElementEditor)semanticObject;
 		if (ViewsViewsRepository.CustomElementEditor.Properties.name == event.getAffectedEditor()) {
-			customElementEditor.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			customElementEditor.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ViewsViewsRepository.CustomElementEditor.Properties.readOnly == event.getAffectedEditor()) {
 			customElementEditor.setReadOnly((Boolean)event.getNewValue());
@@ -129,7 +129,7 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 			CustomElementEditorPropertiesEditionPart basePart = (CustomElementEditorPropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

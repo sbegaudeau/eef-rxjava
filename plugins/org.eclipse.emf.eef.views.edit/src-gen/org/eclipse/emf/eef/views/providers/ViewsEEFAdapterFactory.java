@@ -15,9 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
 
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
+import org.eclipse.emf.eef.views.providers.CategoryPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.ContainerPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.CustomElementEditorPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.CustomViewPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.DocumentedElementPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.ElementEditorPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.ViewPropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.ViewReferencePropertiesEditionProvider;
+import org.eclipse.emf.eef.views.providers.ViewsRepositoryPropertiesEditionProvider;
+
+import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>

@@ -48,6 +48,7 @@ public class ViewsMessages extends NLS {
 	
 	public static String ViewReferencePropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String Documentation_ReadOnly;
 
@@ -102,6 +103,7 @@ public class ViewsMessages extends NLS {
 	
 	public static String ViewReference_Part_Title;
 
+
 	
 	public static String DocumentationPropertiesEditionPart_DocumentationLabel;
 
@@ -155,6 +157,7 @@ public class ViewsMessages extends NLS {
 
 	
 	public static String ViewReferencePropertiesEditionPart_ReferencedViewLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

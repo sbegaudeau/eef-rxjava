@@ -93,7 +93,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 				basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			if (container.getName() != null && isAccessible(ViewsViewsRepository.Container.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), container.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, container.getName()));
 			
 			// init filters
 			basePart.addFilterToRepresentation(new ViewerFilter() {
@@ -163,7 +163,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (ViewsViewsRepository.Container.Properties.name == event.getAffectedEditor()) {
-			container.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			container.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -178,7 +178,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 				basePart.setRepresentation((EObject)msg.getNewValue());
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.Container.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

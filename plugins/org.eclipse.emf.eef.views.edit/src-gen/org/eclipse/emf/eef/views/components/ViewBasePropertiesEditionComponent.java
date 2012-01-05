@@ -93,7 +93,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 				basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			if (view.getName() != null && isAccessible(ViewsViewsRepository.View.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), view.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, view.getName()));
 			
 			if (isAccessible(ViewsViewsRepository.View.Properties.explicit)) {
 				basePart.setExplicit(view.isExplicit());
@@ -171,7 +171,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 			}
 		}
 		if (ViewsViewsRepository.View.Properties.name == event.getAffectedEditor()) {
-			view.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			view.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ViewsViewsRepository.View.Properties.explicit == event.getAffectedEditor()) {
 			view.setExplicit((Boolean)event.getNewValue());
@@ -189,7 +189,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 				basePart.setRepresentation((EObject)msg.getNewValue());
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

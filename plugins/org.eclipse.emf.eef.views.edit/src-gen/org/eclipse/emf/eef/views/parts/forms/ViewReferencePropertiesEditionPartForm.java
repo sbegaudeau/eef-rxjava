@@ -215,6 +215,7 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -321,6 +322,9 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 	public void addBusinessFilterToReferencedView(ViewerFilter filter) {
 		referencedView.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

@@ -200,6 +200,7 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

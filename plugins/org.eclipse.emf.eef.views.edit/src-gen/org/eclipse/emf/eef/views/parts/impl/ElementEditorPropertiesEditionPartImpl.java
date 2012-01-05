@@ -269,6 +269,7 @@ public class ElementEditorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -171,6 +171,7 @@ public class CustomViewPropertiesEditionPartForm extends SectionPropertiesEditin
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,6 +208,9 @@ public class CustomViewPropertiesEditionPartForm extends SectionPropertiesEditin
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

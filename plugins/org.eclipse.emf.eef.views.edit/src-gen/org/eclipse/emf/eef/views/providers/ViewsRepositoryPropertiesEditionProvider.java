@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.views.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.views.ViewsPackage;
 import org.eclipse.emf.eef.views.ViewsRepository;
+
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ViewsRepositoryBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ViewsRepositoryPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class ViewsRepositoryPropertiesEditionProvider extends PropertiesEditingP
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof ViewsRepository) 
-					&& (ViewsPackage.eINSTANCE.getViewsRepository() == editingContext.getEObject().eClass());
+					&& (ViewsPackage.Literals.VIEWS_REPOSITORY == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class ViewsRepositoryPropertiesEditionProvider extends PropertiesEditingP
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ViewsPackage.eINSTANCE.getViewsRepository() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ViewsPackage.Literals.VIEWS_REPOSITORY == ((EObject)toTest).eClass();
 		}
 		
 	}

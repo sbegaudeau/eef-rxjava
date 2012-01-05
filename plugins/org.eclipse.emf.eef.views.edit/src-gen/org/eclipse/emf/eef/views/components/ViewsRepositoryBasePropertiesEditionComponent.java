@@ -75,7 +75,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 			// init values
 			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 			if (viewsRepository.getName() != null && isAccessible(ViewsViewsRepository.ViewsRepository.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), viewsRepository.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewsRepository.getName()));
 			
 			// init filters
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
@@ -117,7 +117,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : RepositoryKind, ViewsRepository, ViewsRepository.
 		}
 		if (ViewsViewsRepository.ViewsRepository.Properties.name == event.getAffectedEditor()) {
-			viewsRepository.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			viewsRepository.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -131,7 +131,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
 			if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ViewsRepository.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

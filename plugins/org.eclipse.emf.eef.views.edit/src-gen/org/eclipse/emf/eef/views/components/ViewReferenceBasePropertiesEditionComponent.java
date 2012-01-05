@@ -86,7 +86,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			final ViewReferencePropertiesEditionPart basePart = (ViewReferencePropertiesEditionPart)editingPart;
 			// init values
 			if (viewReference.getName() != null && isAccessible(ViewsViewsRepository.ViewReference.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), viewReference.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewReference.getName()));
 			
 			if (isAccessible(ViewsViewsRepository.ViewReference.Properties.referencedView)) {
 				// init part
@@ -147,7 +147,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ViewReference viewReference = (ViewReference)semanticObject;
 		if (ViewsViewsRepository.ViewReference.Properties.name == event.getAffectedEditor()) {
-			viewReference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			viewReference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ViewsViewsRepository.ViewReference.Properties.referencedView == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -174,7 +174,7 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 			ViewReferencePropertiesEditionPart basePart = (ViewReferencePropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ViewReference.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

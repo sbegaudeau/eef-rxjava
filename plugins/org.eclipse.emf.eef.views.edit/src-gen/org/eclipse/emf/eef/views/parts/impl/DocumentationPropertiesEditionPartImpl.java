@@ -150,6 +150,7 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

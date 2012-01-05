@@ -71,7 +71,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 			final WidgetPropertiesEditionPart basePart = (WidgetPropertiesEditionPart)editingPart;
 			// init values
 			if (widget.getName() != null && isAccessible(ToolkitsViewsRepository.Widget.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), widget.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, widget.getName()));
 			
 			// init filters
 			
@@ -105,7 +105,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Widget widget = (Widget)semanticObject;
 		if (ToolkitsViewsRepository.Widget.Properties.name == event.getAffectedEditor()) {
-			widget.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			widget.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -118,7 +118,7 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 			WidgetPropertiesEditionPart basePart = (WidgetPropertiesEditionPart)editingPart;
 			if (ToolkitsPackage.eINSTANCE.getWidget_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ToolkitsViewsRepository.Widget.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

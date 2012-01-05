@@ -171,6 +171,7 @@ public class ToolkitPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,6 +208,9 @@ public class ToolkitPropertiesEditionPartForm extends SectionPropertiesEditingPa
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

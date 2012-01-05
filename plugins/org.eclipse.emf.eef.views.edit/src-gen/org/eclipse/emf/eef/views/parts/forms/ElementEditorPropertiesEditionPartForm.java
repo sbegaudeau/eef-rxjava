@@ -280,6 +280,7 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -434,6 +435,9 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 			nameAsLabel.setSelection(false);
 		}
 	}
+
+
+
 
 
 

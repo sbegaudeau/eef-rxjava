@@ -171,6 +171,7 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,6 +208,9 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

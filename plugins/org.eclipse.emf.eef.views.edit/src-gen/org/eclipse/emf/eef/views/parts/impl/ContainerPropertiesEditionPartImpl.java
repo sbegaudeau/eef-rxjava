@@ -202,6 +202,7 @@ public class ContainerPropertiesEditionPartImpl extends CompositePropertiesEditi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

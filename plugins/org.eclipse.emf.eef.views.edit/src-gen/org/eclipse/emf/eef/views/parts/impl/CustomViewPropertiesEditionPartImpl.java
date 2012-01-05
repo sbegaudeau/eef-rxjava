@@ -165,6 +165,7 @@ public class CustomViewPropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

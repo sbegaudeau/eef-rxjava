@@ -216,6 +216,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -276,6 +277,9 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 			repositoryKind.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

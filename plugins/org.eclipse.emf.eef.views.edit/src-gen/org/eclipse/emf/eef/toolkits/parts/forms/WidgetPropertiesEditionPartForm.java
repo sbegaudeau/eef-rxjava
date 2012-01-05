@@ -171,6 +171,7 @@ public class WidgetPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -207,6 +208,9 @@ public class WidgetPropertiesEditionPartForm extends SectionPropertiesEditingPar
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

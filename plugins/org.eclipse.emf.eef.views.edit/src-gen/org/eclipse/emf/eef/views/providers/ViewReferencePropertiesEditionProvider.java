@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.views.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;
+
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ViewReferenceBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ViewReferencePropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class ViewReferencePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof ViewReference) 
-					&& (ViewsPackage.eINSTANCE.getViewReference() == editingContext.getEObject().eClass());
+					&& (ViewsPackage.Literals.VIEW_REFERENCE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class ViewReferencePropertiesEditionProvider extends PropertiesEditingPro
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ViewsPackage.eINSTANCE.getViewReference() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ViewsPackage.Literals.VIEW_REFERENCE == ((EObject)toTest).eClass();
 		}
 		
 	}

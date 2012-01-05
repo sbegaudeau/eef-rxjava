@@ -14,13 +14,20 @@ package org.eclipse.emf.eef.toolkits.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
+
 import org.eclipse.emf.eef.toolkits.components.ToolkitPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -51,7 +58,7 @@ public class ToolkitPropertiesEditionProvider extends PropertiesEditingProviderI
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Toolkit) 
-					&& (ToolkitsPackage.eINSTANCE.getToolkit() == editingContext.getEObject().eClass());
+					&& (ToolkitsPackage.Literals.TOOLKIT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -133,7 +140,7 @@ public class ToolkitPropertiesEditionProvider extends PropertiesEditingProviderI
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ToolkitsPackage.eINSTANCE.getToolkit() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ToolkitsPackage.Literals.TOOLKIT == ((EObject)toTest).eClass();
 		}
 		
 	}

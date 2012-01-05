@@ -249,6 +249,7 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -379,6 +380,9 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			explicit.setSelection(false);
 		}
 	}
+
+
+
 
 
 

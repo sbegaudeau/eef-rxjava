@@ -205,6 +205,7 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -264,6 +265,9 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 			readOnly.setSelection(false);
 		}
 	}
+
+
+
 
 
 

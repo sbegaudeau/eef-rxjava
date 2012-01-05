@@ -14,15 +14,22 @@ package org.eclipse.emf.eef.views.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.ViewsPackage;
+
 import org.eclipse.emf.eef.views.components.ContainerBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ContainerPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +60,7 @@ public class ContainerPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Container) 
-					&& (ViewsPackage.eINSTANCE.getContainer() == editingContext.getEObject().eClass());
+					&& (ViewsPackage.Literals.CONTAINER == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +147,7 @@ public class ContainerPropertiesEditionProvider extends PropertiesEditingProvide
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ViewsPackage.eINSTANCE.getContainer() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ViewsPackage.Literals.CONTAINER == ((EObject)toTest).eClass();
 		}
 		
 	}

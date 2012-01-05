@@ -42,6 +42,7 @@ public class CustomElementEditorPropertiesEditionComponent extends ComposedPrope
 	 * 
 	 */
 	protected CustomElementEditorBasePropertiesEditionComponent customElementEditorBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

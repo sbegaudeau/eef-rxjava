@@ -71,7 +71,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 			final CustomViewPropertiesEditionPart basePart = (CustomViewPropertiesEditionPart)editingPart;
 			// init values
 			if (customView.getName() != null && isAccessible(ViewsViewsRepository.CustomView.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), customView.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, customView.getName()));
 			
 			// init filters
 			
@@ -105,7 +105,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CustomView customView = (CustomView)semanticObject;
 		if (ViewsViewsRepository.CustomView.Properties.name == event.getAffectedEditor()) {
-			customView.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			customView.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -118,7 +118,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 			CustomViewPropertiesEditionPart basePart = (CustomViewPropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomView.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

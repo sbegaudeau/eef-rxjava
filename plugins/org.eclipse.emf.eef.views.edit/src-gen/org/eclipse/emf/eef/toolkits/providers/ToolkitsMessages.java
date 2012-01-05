@@ -27,6 +27,7 @@ public class ToolkitsMessages extends NLS {
 	
 	public static String WidgetPropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String Toolkit_ReadOnly;
 
@@ -39,11 +40,13 @@ public class ToolkitsMessages extends NLS {
 	
 	public static String Widget_Part_Title;
 
+
 	
 	public static String ToolkitPropertiesEditionPart_NameLabel;
 
 	
 	public static String WidgetPropertiesEditionPart_NameLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

@@ -71,7 +71,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 			final ToolkitPropertiesEditionPart basePart = (ToolkitPropertiesEditionPart)editingPart;
 			// init values
 			if (toolkit.getName() != null && isAccessible(ToolkitsViewsRepository.Toolkit.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), toolkit.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, toolkit.getName()));
 			
 			// init filters
 			
@@ -105,7 +105,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Toolkit toolkit = (Toolkit)semanticObject;
 		if (ToolkitsViewsRepository.Toolkit.Properties.name == event.getAffectedEditor()) {
-			toolkit.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			toolkit.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -118,7 +118,7 @@ public class ToolkitPropertiesEditionComponent extends SinglePartPropertiesEditi
 			ToolkitPropertiesEditionPart basePart = (ToolkitPropertiesEditionPart)editingPart;
 			if (ToolkitsPackage.eINSTANCE.getToolkit_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ToolkitsViewsRepository.Toolkit.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

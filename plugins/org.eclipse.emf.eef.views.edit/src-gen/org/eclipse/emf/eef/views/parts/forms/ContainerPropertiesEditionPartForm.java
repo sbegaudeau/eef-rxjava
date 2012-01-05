@@ -215,6 +215,7 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -321,6 +322,9 @@ public class ContainerPropertiesEditionPartForm extends SectionPropertiesEditing
 	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
 		representation.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

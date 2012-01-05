@@ -42,6 +42,7 @@ public class ViewsRepositoryPropertiesEditionComponent extends ComposedPropertie
 	 * 
 	 */
 	protected ViewsRepositoryBasePropertiesEditionComponent viewsRepositoryBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 
