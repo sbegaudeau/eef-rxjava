@@ -63,7 +63,7 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 			final EEFEditorContributionsPropertiesEditionPart basePart = (EEFEditorContributionsPropertiesEditionPart)editingPart;
 			// init values
 			if (eEFEditorContributions.getName() != null && isAccessible(EditorViewsRepository.EEFEditorContributions.Naming.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFEditorContributions.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFEditorContributions.getName()));
 			
 			// init filters
 			
@@ -97,7 +97,7 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EEFEditorContributions eEFEditorContributions = (EEFEditorContributions)semanticObject;
 		if (EditorViewsRepository.EEFEditorContributions.Naming.name == event.getAffectedEditor()) {
-			eEFEditorContributions.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFEditorContributions.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -110,7 +110,7 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 			EEFEditorContributionsPropertiesEditionPart basePart = (EEFEditorContributionsPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFEditorContributions.Naming.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

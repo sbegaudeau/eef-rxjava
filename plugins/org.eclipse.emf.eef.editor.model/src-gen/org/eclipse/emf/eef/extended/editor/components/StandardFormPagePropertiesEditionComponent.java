@@ -36,6 +36,7 @@ public class StandardFormPagePropertiesEditionComponent extends ComposedProperti
 	 * 
 	 */
 	protected StandardFormPageBasePropertiesEditionComponent standardFormPageBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

@@ -36,6 +36,7 @@ public class EEFMasterPagePropertiesEditionComponent extends ComposedPropertiesE
 	 * 
 	 */
 	protected EEFMasterPageBasePropertiesEditionComponent eEFMasterPageBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

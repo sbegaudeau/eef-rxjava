@@ -36,6 +36,7 @@ public class DynamicEEFEditorContributionPropertiesEditionComponent extends Comp
 	 * 
 	 */
 	protected DynamicEEFEditorContributionBasePropertiesEditionComponent dynamicEEFEditorContributionBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

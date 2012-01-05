@@ -163,6 +163,7 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -172,7 +173,7 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -198,6 +199,9 @@ public class EEFEditorContributionsPropertiesEditionPartForm extends SectionProp
 			name.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

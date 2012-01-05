@@ -333,6 +333,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -493,6 +494,9 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
+
+
+
 
 
 

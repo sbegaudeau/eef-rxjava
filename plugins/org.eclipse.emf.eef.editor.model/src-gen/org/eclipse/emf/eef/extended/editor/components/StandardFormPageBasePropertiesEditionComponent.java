@@ -64,10 +64,10 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 			final StandardFormPagePropertiesEditionPart basePart = (StandardFormPagePropertiesEditionPart)editingPart;
 			// init values
 			if (standardFormPage.getName() != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), standardFormPage.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, standardFormPage.getName()));
 			
 			if (standardFormPage.getTitle() != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.title_))
-				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), standardFormPage.getTitle()));
+				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, standardFormPage.getTitle()));
 			
 			// init filters
 			
@@ -106,10 +106,10 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		StandardFormPage standardFormPage = (StandardFormPage)semanticObject;
 		if (EditorViewsRepository.StandardFormPage.Naming.name == event.getAffectedEditor()) {
-			standardFormPage.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			standardFormPage.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.StandardFormPage.Naming.title_ == event.getAffectedEditor()) {
-			standardFormPage.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			standardFormPage.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -122,14 +122,14 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 			StandardFormPagePropertiesEditionPart basePart = (StandardFormPagePropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.title_)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}

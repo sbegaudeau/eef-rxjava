@@ -295,6 +295,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -304,7 +305,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -402,6 +403,9 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 			showValidatePage.setSelection(false);
 		}
 	}
+
+
+
 
 
 

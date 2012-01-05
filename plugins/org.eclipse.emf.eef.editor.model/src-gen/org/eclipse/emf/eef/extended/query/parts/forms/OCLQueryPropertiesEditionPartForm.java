@@ -207,6 +207,7 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -216,7 +217,7 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -312,6 +313,9 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 			query.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

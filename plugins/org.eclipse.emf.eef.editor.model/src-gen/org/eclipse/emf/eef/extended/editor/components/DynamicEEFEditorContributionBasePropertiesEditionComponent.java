@@ -8,6 +8,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -87,7 +88,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 			final DynamicEEFEditorContributionPropertiesEditionPart basePart = (DynamicEEFEditorContributionPropertiesEditionPart)editingPart;
 			// init values
 			if (dynamicEEFEditorContribution.getName() != null && isAccessible(EditorViewsRepository.DynamicEEFEditorContribution.Naming.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), dynamicEEFEditorContribution.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dynamicEEFEditorContribution.getName()));
 			
 			if (isAccessible(EditorViewsRepository.DynamicEEFEditorContribution.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(dynamicEEFEditorContribution, MappingPackage.eINSTANCE.getAbstractElementBinding_Views());
@@ -116,7 +117,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getView()));
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
 			// Start of user code for additional businessfilters for views
 			
 			// End of user code
@@ -129,7 +130,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof org.eclipse.emf.ecore.EClassifier);
+				return (element instanceof EClassifier);
 				}
 			
 			});
@@ -175,7 +176,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DynamicEEFEditorContribution dynamicEEFEditorContribution = (DynamicEEFEditorContribution)semanticObject;
 		if (EditorViewsRepository.DynamicEEFEditorContribution.Naming.name == event.getAffectedEditor()) {
-			dynamicEEFEditorContribution.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			dynamicEEFEditorContribution.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.DynamicEEFEditorContribution.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -190,7 +191,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 		}
 		if (EditorViewsRepository.DynamicEEFEditorContribution.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				modelSettings.setToReference((org.eclipse.emf.ecore.EClassifier)event.getNewValue());
+				modelSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -213,7 +214,7 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 			DynamicEEFEditorContributionPropertiesEditionPart basePart = (DynamicEEFEditorContributionPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.DynamicEEFEditorContribution.Naming.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

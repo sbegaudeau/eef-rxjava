@@ -36,6 +36,7 @@ public class TreeMasterPagePropertiesEditionComponent extends ComposedProperties
 	 * 
 	 */
 	protected TreeMasterPageBasePropertiesEditionComponent treeMasterPageBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

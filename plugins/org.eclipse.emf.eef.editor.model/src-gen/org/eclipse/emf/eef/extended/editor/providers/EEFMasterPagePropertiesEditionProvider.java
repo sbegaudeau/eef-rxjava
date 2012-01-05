@@ -6,15 +6,23 @@ package org.eclipse.emf.eef.extended.editor.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.extended.editor.EEFMasterPage;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
+
 import org.eclipse.emf.eef.extended.editor.components.EEFMasterPageBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.extended.editor.components.EEFMasterPagePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -45,7 +53,7 @@ public class EEFMasterPagePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof EEFMasterPage) 
-					&& (EditorPackage.eINSTANCE.getEEFMasterPage() == editingContext.getEObject().eClass());
+					&& (EditorPackage.Literals.EEF_MASTER_PAGE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +140,7 @@ public class EEFMasterPagePropertiesEditionProvider extends PropertiesEditingPro
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EditorPackage.eINSTANCE.getEEFMasterPage() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EditorPackage.Literals.EEF_MASTER_PAGE == ((EObject)toTest).eClass();
 		}
 		
 	}

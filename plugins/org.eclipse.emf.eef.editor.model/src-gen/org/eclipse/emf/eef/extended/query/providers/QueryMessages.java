@@ -19,6 +19,7 @@ public class QueryMessages extends NLS {
 	
 	public static String ExplicitPathQueryPropertiesEditionPart_PropertiesGroupLabel;
 
+
 	
 	public static String OCLQuery_ReadOnly;
 
@@ -31,6 +32,7 @@ public class QueryMessages extends NLS {
 	
 	public static String ExplicitPathQuery_Part_Title;
 
+
 	
 	public static String OCLQueryPropertiesEditionPart_ContextLabel;
 
@@ -39,6 +41,7 @@ public class QueryMessages extends NLS {
 
 	
 	public static String ExplicitPathQueryPropertiesEditionPart_QueryLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

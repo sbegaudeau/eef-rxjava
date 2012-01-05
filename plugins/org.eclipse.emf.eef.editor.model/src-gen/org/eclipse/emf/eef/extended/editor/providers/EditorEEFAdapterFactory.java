@@ -7,9 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.eef.extended.editor.util.EditorAdapterFactory;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
+import org.eclipse.emf.eef.extended.editor.providers.DynamicEEFEditorContributionPropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.EEFEditorContributionsPropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.EEFEditorPagesPropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.EEFMasterPagePropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.PartFilterPropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.StandardFormPagePropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.StaticEEFEditorContributionPropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.editor.providers.TreeMasterPagePropertiesEditionProvider;
+
+import org.eclipse.emf.eef.extended.editor.util.EditorAdapterFactory;
+
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 /**
  * 

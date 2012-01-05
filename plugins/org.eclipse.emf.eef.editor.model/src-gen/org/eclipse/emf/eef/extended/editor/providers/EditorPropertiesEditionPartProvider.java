@@ -4,6 +4,7 @@
 package org.eclipse.emf.eef.extended.editor.providers;
 
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
+
 import org.eclipse.emf.eef.extended.editor.parts.forms.DynamicEEFEditorContributionPropertiesEditionPartForm;
 import org.eclipse.emf.eef.extended.editor.parts.forms.EEFEditorContributionsPropertiesEditionPartForm;
 import org.eclipse.emf.eef.extended.editor.parts.forms.EEFEditorPagesPropertiesEditionPartForm;
@@ -12,6 +13,7 @@ import org.eclipse.emf.eef.extended.editor.parts.forms.PartFilterPropertiesEditi
 import org.eclipse.emf.eef.extended.editor.parts.forms.StandardFormPagePropertiesEditionPartForm;
 import org.eclipse.emf.eef.extended.editor.parts.forms.StaticEEFEditorContributionPropertiesEditionPartForm;
 import org.eclipse.emf.eef.extended.editor.parts.forms.TreeMasterPagePropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.extended.editor.parts.impl.DynamicEEFEditorContributionPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.extended.editor.parts.impl.EEFEditorContributionsPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.extended.editor.parts.impl.EEFEditorPagesPropertiesEditionPartImpl;
@@ -20,12 +22,12 @@ import org.eclipse.emf.eef.extended.editor.parts.impl.PartFilterPropertiesEditio
 import org.eclipse.emf.eef.extended.editor.parts.impl.StandardFormPagePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.extended.editor.parts.impl.StaticEEFEditorContributionPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.extended.editor.parts.impl.TreeMasterPagePropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * 

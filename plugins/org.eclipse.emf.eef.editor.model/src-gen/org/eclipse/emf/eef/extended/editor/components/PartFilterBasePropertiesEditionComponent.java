@@ -86,7 +86,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 			final PartFilterPropertiesEditionPart basePart = (PartFilterPropertiesEditionPart)editingPart;
 			// init values
 			if (partFilter.getName() != null && isAccessible(EditorViewsRepository.PartFilter.Naming.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), partFilter.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, partFilter.getName()));
 			
 			if (isAccessible(EditorViewsRepository.PartFilter.Settings.mandatory)) {
 				basePart.setMandatory(partFilter.isMandatory());
@@ -182,7 +182,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PartFilter partFilter = (PartFilter)semanticObject;
 		if (EditorViewsRepository.PartFilter.Naming.name == event.getAffectedEditor()) {
-			partFilter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			partFilter.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.PartFilter.Settings.mandatory == event.getAffectedEditor()) {
 			partFilter.setMandatory((Boolean)event.getNewValue());
@@ -230,7 +230,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 			PartFilterPropertiesEditionPart basePart = (PartFilterPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.PartFilter.Naming.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}

@@ -6,15 +6,23 @@ package org.eclipse.emf.eef.extended.editor.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.StandardFormPage;
+
 import org.eclipse.emf.eef.extended.editor.components.StandardFormPageBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.extended.editor.components.StandardFormPagePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -45,7 +53,7 @@ public class StandardFormPagePropertiesEditionProvider extends PropertiesEditing
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof StandardFormPage) 
-					&& (EditorPackage.eINSTANCE.getStandardFormPage() == editingContext.getEObject().eClass());
+					&& (EditorPackage.Literals.STANDARD_FORM_PAGE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +140,7 @@ public class StandardFormPagePropertiesEditionProvider extends PropertiesEditing
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EditorPackage.eINSTANCE.getStandardFormPage() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EditorPackage.Literals.STANDARD_FORM_PAGE == ((EObject)toTest).eClass();
 		}
 		
 	}

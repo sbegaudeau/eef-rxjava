@@ -36,6 +36,7 @@ public class EEFEditorContributionsPropertiesEditionComponent extends ComposedPr
 	 * 
 	 */
 	protected EEFEditorContributionsBasePropertiesEditionComponent eEFEditorContributionsBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

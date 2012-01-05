@@ -36,6 +36,7 @@ public class StaticEEFEditorContributionPropertiesEditionComponent extends Compo
 	 * 
 	 */
 	protected StaticEEFEditorContributionBasePropertiesEditionComponent staticEEFEditorContributionBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

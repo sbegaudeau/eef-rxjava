@@ -36,6 +36,7 @@ public class PartFilterPropertiesEditionComponent extends ComposedPropertiesEdit
 	 * 
 	 */
 	protected PartFilterBasePropertiesEditionComponent partFilterBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

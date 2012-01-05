@@ -291,6 +291,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -300,7 +301,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -381,6 +382,9 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
+
+
+
 
 
 

@@ -8,6 +8,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -77,7 +78,7 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 			final OCLQueryPropertiesEditionPart basePart = (OCLQueryPropertiesEditionPart)editingPart;
 			// init values
 			if (oCLQuery.getQuery() != null && isAccessible(QueryViewsRepository.OCLQuery.Properties.query_))
-				basePart.setQuery(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), oCLQuery.getQuery()));
+				basePart.setQuery(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, oCLQuery.getQuery()));
 			
 			if (isAccessible(QueryViewsRepository.OCLQuery.Properties.context)) {
 				// init part
@@ -96,13 +97,13 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof org.eclipse.emf.ecore.EClassifier);
+				return (element instanceof EClassifier);
 				}
 			
 			});
 			// Start of user code for additional businessfilters for context
-																								
-																								// End of user code
+			
+			// End of user code
 			
 			// init values for referenced views
 			
@@ -138,11 +139,11 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		OCLQuery oCLQuery = (OCLQuery)semanticObject;
 		if (QueryViewsRepository.OCLQuery.Properties.query_ == event.getAffectedEditor()) {
-			oCLQuery.setQuery((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			oCLQuery.setQuery((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (QueryViewsRepository.OCLQuery.Properties.context == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				contextSettings.setToReference((org.eclipse.emf.ecore.EClassifier)event.getNewValue());
+				contextSettings.setToReference((EClassifier)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, contextSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -165,7 +166,7 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 			OCLQueryPropertiesEditionPart basePart = (OCLQueryPropertiesEditionPart)editingPart;
 			if (QueryPackage.eINSTANCE.getOCLQuery_Query().equals(msg.getFeature()) && basePart != null && isAccessible(QueryViewsRepository.OCLQuery.Properties.query_)) {
 				if (msg.getNewValue() != null) {
-					basePart.setQuery(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setQuery(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setQuery("");
 				}

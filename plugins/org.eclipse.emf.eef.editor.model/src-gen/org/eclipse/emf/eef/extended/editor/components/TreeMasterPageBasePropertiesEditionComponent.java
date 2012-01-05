@@ -64,10 +64,10 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 			final TreeMasterPagePropertiesEditionPart basePart = (TreeMasterPagePropertiesEditionPart)editingPart;
 			// init values
 			if (treeMasterPage.getName() != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), treeMasterPage.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, treeMasterPage.getName()));
 			
 			if (treeMasterPage.getTitle() != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.title_))
-				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), treeMasterPage.getTitle()));
+				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, treeMasterPage.getTitle()));
 			
 			if (isAccessible(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible)) {
 				basePart.setToolbarVisible(treeMasterPage.isToolbarVisible());
@@ -114,10 +114,10 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TreeMasterPage treeMasterPage = (TreeMasterPage)semanticObject;
 		if (EditorViewsRepository.TreeMasterPage.Naming.name == event.getAffectedEditor()) {
-			treeMasterPage.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			treeMasterPage.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.TreeMasterPage.Naming.title_ == event.getAffectedEditor()) {
-			treeMasterPage.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			treeMasterPage.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible == event.getAffectedEditor()) {
 			treeMasterPage.setToolbarVisible((Boolean)event.getNewValue());
@@ -133,14 +133,14 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 			TreeMasterPagePropertiesEditionPart basePart = (TreeMasterPagePropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.title_)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}

@@ -6,15 +6,23 @@ package org.eclipse.emf.eef.extended.editor.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.StaticEEFEditorContribution;
+
 import org.eclipse.emf.eef.extended.editor.components.StaticEEFEditorContributionBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.extended.editor.components.StaticEEFEditorContributionPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -45,7 +53,7 @@ public class StaticEEFEditorContributionPropertiesEditionProvider extends Proper
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof StaticEEFEditorContribution) 
-					&& (EditorPackage.eINSTANCE.getStaticEEFEditorContribution() == editingContext.getEObject().eClass());
+					&& (EditorPackage.Literals.STATIC_EEF_EDITOR_CONTRIBUTION == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +140,7 @@ public class StaticEEFEditorContributionPropertiesEditionProvider extends Proper
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EditorPackage.eINSTANCE.getStaticEEFEditorContribution() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EditorPackage.Literals.STATIC_EEF_EDITOR_CONTRIBUTION == ((EObject)toTest).eClass();
 		}
 		
 	}

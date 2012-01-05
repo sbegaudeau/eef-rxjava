@@ -322,6 +322,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -331,7 +332,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -521,6 +522,9 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 			mandatory.setSelection(false);
 		}
 	}
+
+
+
 
 
 

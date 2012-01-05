@@ -4,16 +4,18 @@
 package org.eclipse.emf.eef.extended.query.providers;
 
 import org.eclipse.emf.eef.extended.query.parts.QueryViewsRepository;
+
 import org.eclipse.emf.eef.extended.query.parts.forms.ExplicitPathQueryPropertiesEditionPartForm;
 import org.eclipse.emf.eef.extended.query.parts.forms.OCLQueryPropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.extended.query.parts.impl.ExplicitPathQueryPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.extended.query.parts.impl.OCLQueryPropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
-
-
 
 /**
  * 

@@ -155,6 +155,7 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -164,7 +165,7 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
 
-// End of user code
+		// End of user code
 	}
 
 	/**
@@ -236,6 +237,9 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 	public void addBusinessFilterToQuery(ViewerFilter filter) {
 		query.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

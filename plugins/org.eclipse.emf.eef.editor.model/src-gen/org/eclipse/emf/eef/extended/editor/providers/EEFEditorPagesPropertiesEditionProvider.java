@@ -6,15 +6,23 @@ package org.eclipse.emf.eef.extended.editor.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.extended.editor.EEFEditorPages;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
+
 import org.eclipse.emf.eef.extended.editor.components.EEFEditorPagesBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.extended.editor.components.EEFEditorPagesPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -45,7 +53,7 @@ public class EEFEditorPagesPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof EEFEditorPages) 
-					&& (EditorPackage.eINSTANCE.getEEFEditorPages() == editingContext.getEObject().eClass());
+					&& (EditorPackage.Literals.EEF_EDITOR_PAGES == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +140,7 @@ public class EEFEditorPagesPropertiesEditionProvider extends PropertiesEditingPr
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EditorPackage.eINSTANCE.getEEFEditorPages() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && EditorPackage.Literals.EEF_EDITOR_PAGES == ((EObject)toTest).eClass();
 		}
 		
 	}

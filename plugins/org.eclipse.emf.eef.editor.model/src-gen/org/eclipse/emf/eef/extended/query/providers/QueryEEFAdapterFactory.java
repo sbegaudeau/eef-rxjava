@@ -4,8 +4,11 @@
 package org.eclipse.emf.eef.extended.query.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.eef.extended.query.util.QueryAdapterFactory;
 
+import org.eclipse.emf.eef.extended.query.providers.ExplicitPathQueryPropertiesEditionProvider;
+import org.eclipse.emf.eef.extended.query.providers.OCLQueryPropertiesEditionProvider;
+
+import org.eclipse.emf.eef.extended.query.util.QueryAdapterFactory;
 
 /**
  * 

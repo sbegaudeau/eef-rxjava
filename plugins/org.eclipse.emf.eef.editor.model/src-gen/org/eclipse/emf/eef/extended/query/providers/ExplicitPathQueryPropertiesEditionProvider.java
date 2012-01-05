@@ -6,13 +6,20 @@ package org.eclipse.emf.eef.extended.query.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.extended.query.ExplicitPathQuery;
 import org.eclipse.emf.eef.extended.query.QueryPackage;
+
 import org.eclipse.emf.eef.extended.query.components.ExplicitPathQueryPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -43,7 +50,7 @@ public class ExplicitPathQueryPropertiesEditionProvider extends PropertiesEditin
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof ExplicitPathQuery) 
-					&& (QueryPackage.eINSTANCE.getExplicitPathQuery() == editingContext.getEObject().eClass());
+					&& (QueryPackage.Literals.EXPLICIT_PATH_QUERY == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -125,7 +132,7 @@ public class ExplicitPathQueryPropertiesEditionProvider extends PropertiesEditin
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && QueryPackage.eINSTANCE.getExplicitPathQuery() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && QueryPackage.Literals.EXPLICIT_PATH_QUERY == ((EObject)toTest).eClass();
 		}
 		
 	}

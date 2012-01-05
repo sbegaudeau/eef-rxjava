@@ -55,6 +55,7 @@ public class EditorMessages extends NLS {
 	
 	public static String DynamicEEFEditorContributionPropertiesEditionPart_BindingGroupLabel;
 
+
 	
 	public static String StandardFormPage_ReadOnly;
 
@@ -102,6 +103,7 @@ public class EditorMessages extends NLS {
 
 	
 	public static String DynamicEEFEditorContribution_Part_Title;
+
 
 	
 	public static String StandardFormPagePropertiesEditionPart_NameLabel;
@@ -162,6 +164,7 @@ public class EditorMessages extends NLS {
 
 	
 	public static String DynamicEEFEditorContributionPropertiesEditionPart_ViewsLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

@@ -64,10 +64,10 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 			final EEFMasterPagePropertiesEditionPart basePart = (EEFMasterPagePropertiesEditionPart)editingPart;
 			// init values
 			if (eEFMasterPage.getName() != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFMasterPage.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFMasterPage.getName()));
 			
 			if (eEFMasterPage.getTitle() != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.title_))
-				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), eEFMasterPage.getTitle()));
+				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFMasterPage.getTitle()));
 			
 			if (isAccessible(EditorViewsRepository.EEFMasterPage.Settings.orientable)) {
 				basePart.setOrientable(eEFMasterPage.isOrientable());
@@ -122,10 +122,10 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EEFMasterPage eEFMasterPage = (EEFMasterPage)semanticObject;
 		if (EditorViewsRepository.EEFMasterPage.Naming.name == event.getAffectedEditor()) {
-			eEFMasterPage.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFMasterPage.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.EEFMasterPage.Naming.title_ == event.getAffectedEditor()) {
-			eEFMasterPage.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			eEFMasterPage.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EditorViewsRepository.EEFMasterPage.Settings.orientable == event.getAffectedEditor()) {
 			eEFMasterPage.setOrientable((Boolean)event.getNewValue());
@@ -144,14 +144,14 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 			EEFMasterPagePropertiesEditionPart basePart = (EEFMasterPagePropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.title_)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}
