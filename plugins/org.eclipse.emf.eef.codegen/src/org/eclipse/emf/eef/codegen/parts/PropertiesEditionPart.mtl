@@ -42,7 +42,7 @@
 [peContext.initializeImportManager(basePackage, view.pepClass())/]
 
 [comment]Widget Imports[/comment]
-[for (widget : Widget | view.eAllContents(ElementEditor).representation-> select(not oclIsUndefined()) ->asSet())]
+[for (widget : Widget | view.eAllContents(ElementEditor).representation->select(not oclIsUndefined())->asSet())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
 [for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
@@ -74,7 +74,6 @@ package [view.partsImplPackage()/];[addImports(Sequence{
 // [protected ('for imports')]
 [peContext.genSortedImports()/]
 [peContext.additionalImports(pec, view, basePackage)/]
-
 // [/protected]
 [/if]
 
@@ -95,7 +94,7 @@ public class [view.pepClass()/] extends [include(view.partQualifiedSuperclass())
 [/for]
 [comment managing ViewReferences/]
 [view.widgetDeclarationForViewReference()/]
-[comment managing ViewReferences/]
+[comment managing SubViews/]
 [view.widgetDeclarationForSubViews()/]
 
 	/**
@@ -163,11 +162,13 @@ public class [view.pepClass()/] extends [include(view.partQualifiedSuperclass())
 	[/if][/comment]
 	}
 
-[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\r\n')]
+[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view))]
 [aView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
-[for (subView : View | view.elements->filter(View)) separator ('\r\n')]]
+[for (subView : View | view.elements->filter(View))]
 [subView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
 
 	/**
@@ -177,17 +178,18 @@ public class [view.pepClass()/] extends [include(view.partQualifiedSuperclass())
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	[if (not peContext.associatedGenModel().useJMergeForUserCode)]
+[if (not peContext.associatedGenModel().useJMergeForUserCode)]
 		// [protected ('for tab synchronization')]
 		
 		// [/protected]
-	[/if]
+[/if]
 	}
 
-[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view)) separator ('\r\n')]
+[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view))]
 [elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
 
 [elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
+
 [/for]
 
 [comment managing viewReference/]
@@ -204,7 +206,6 @@ public class [view.pepClass()/] extends [include(view.partQualifiedSuperclass())
 
 [/for]
 [/if]
-
 	/**
 	 * {@inheritDoc}
 	 *

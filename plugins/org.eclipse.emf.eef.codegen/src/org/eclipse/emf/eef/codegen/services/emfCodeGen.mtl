@@ -44,15 +44,12 @@
 [query public name(eClassifier : EClassifier) : String = let qualifiedName : String = eClassifier.qualifiedName() in 
 qualifiedName.substring(qualifiedName.lastIndex('.') + 1)/]
 
-[query public qualifiedName(eClassifier : EClassifier) : String =  
+ [query public qualifiedName(eClassifier : EClassifier) : String =  
 if eClassifier.oclIsTypeOf(EClass) 
-	then 
-		let genClass : GenClass = eClassifier.oclAsType(EClass).getGenClass() in
-		if eClassifier.instanceTypeName.oclIsUndefined()
-			then genClass.getQualifiedInterfaceName()
-			else genClass.getQualifiedClassName()
-		endif
-	else eClassifier.ePackage.completePackage() + '.' + eClassifier.name
+ then 
+  let genClass : GenClass = eClassifier.oclAsType(EClass).getGenClass() in
+   genClass.getQualifiedInterfaceName()
+ else eClassifier.ePackage.completePackage() + '.' + eClassifier.name
 endif/]
 
 [comment --------------------------------------------------------------------------

@@ -56,7 +56,7 @@ package [pec.componentsPackage()/];[addImports(Sequence{
  */
 public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 
-[for (view : View | pec.views) separator ('\r\n') ? (view.explicit)]
+[for (view : View | pec.views) ? (view.explicit)]
 	/**
 	 * The [view.viewKey(pec)/] part
 	 * [peContext.associatedGenModel().generationMark()/]
@@ -68,6 +68,7 @@ public class [pec.pecClass()/] extends ComposedPropertiesEditionComponent {
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	protected [include(pec.subPECQualifiedClass(view))/] [pec.subPECClass(view).toLowerFirst()/];
+
 [/for]
 [for (subPec : PropertiesEditionComponent | pec.referencedBinding.binding->filter(PropertiesEditionComponent))]
 [for (view : View | subPec.views) ? (view.explicit and view.ancestors()->filter(View)->excludesAll(pec.views->asSequence()))]

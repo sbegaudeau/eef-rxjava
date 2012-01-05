@@ -42,7 +42,7 @@
 [peContext.initializeImportManager(basePackage, view.pepFormClass())/]
 
 [comment]Widget Imports[/comment]
-[for (widget : Widget | view.eAllContents(ElementEditor).representation-> select(not oclIsUndefined())->asSet())]
+[for (widget : Widget | view.eAllContents(ElementEditor).representation->select(not oclIsUndefined())->asSet())]
 [widget.manageImports(pec, view, basePackage)/]
 [/for]
 [for (widget : Widget | view.eAllContents(views::Container).representation->asSet()) ? (not widget.oclIsUndefined())]
@@ -75,7 +75,6 @@ package [view.partsFormPackage()/];[addImports(Sequence{
 [peContext.additionalImports(pec, view, basePackage)/]
 [else]
 // [protected ('for imports')]
-
 [peContext.genSortedImports()/]
 [peContext.additionalImports(pec, view, basePackage)/]
 // [/protected]
@@ -172,11 +171,13 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 [/if]
 [/comment]
 	}
-[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view)) separator ('\r\n')]
+[for (aView : ViewElement | view.eAllContents(ViewElement)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view))]
 [aView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
-[for (subView : View | view.elements->filter(View)) separator ('\r\n')]
+[for (subView : View | view.elements->filter(View))]
 [subView.additionalImplementation(pec, inputPEC)/]
+
 [/for]
 
 	/**
@@ -193,13 +194,16 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 [/if]
 	}
 
-[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsKindOf(CustomElementEditor) and owningView() = view)) separator ('\r\n')]
-[elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
+[for (elementEditor : ElementEditor | view.eAllContents(ElementEditor)->select(not oclIsTypeOf(CustomElementEditor) and owningView() = view))]
+[elementEditor.getterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
 
-[elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage),view.pepInterface()))/]
+[elementEditor.setterImplementation(fullPartInterfacePath(pec.model.eefPackage(basePackage), view.pepInterface()))/]
+
 [/for]
+
 [comment managing viewReference/]
 [view.elementEditorGetterSettersForViewReference(pec, basePackage)/]
+
 [comment managing subView/]
 [view.elementEditorGetterSettersForSubViews(pec, basePackage)/]
 
@@ -208,6 +212,7 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 	// [protected ('for '.concat(viewElement.name).concat(' specific getters and setters implementation'))]
 	
 	// [/protected]
+
 [/for]
 [/if]
 	/**
