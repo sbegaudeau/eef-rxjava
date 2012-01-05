@@ -45,7 +45,7 @@
 								<argument>${basedir}/src/</argument>
 								<argument>${basedir}/target/classes</argument>
 								<argument>true</argument>
-								<argument>${basedir}/../org.eclipse.emf.eef.codegen/target/classes</argument>
+								<argument>${basedir}/../org.eclipse.emf.eef.codegen.ecore/target/classes</argument>
 							</arguments>
 						</configuration>
 					</execution>
