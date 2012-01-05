@@ -360,6 +360,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -660,6 +661,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			documentation.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

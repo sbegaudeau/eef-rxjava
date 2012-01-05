@@ -85,10 +85,10 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
 			// init values
 			if (site.getName() != null && isAccessible(ConferenceViewsRepository.Site.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, site.getName()));
 			
 			if (site.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation))
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), site.getDocumentation()));
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, site.getDocumentation()));
 			if (isAccessible(ConferenceViewsRepository.Site.Properties.rooms)) {
 				roomsSettings = new ReferencesTableSettings(site, ConferencePackage.eINSTANCE.getSite_Rooms());
 				basePart.initRooms(roomsSettings);
@@ -149,10 +149,10 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Site site = (Site)semanticObject;
 		if (ConferenceViewsRepository.Site.Properties.name == event.getAffectedEditor()) {
-			site.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			site.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Site.Properties.documentation == event.getAffectedEditor()) {
-			site.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			site.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Site.Properties.rooms == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -190,14 +190,14 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 			SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
 				if (msg.getNewValue() != null) {
-					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDocumentation("");
 				}

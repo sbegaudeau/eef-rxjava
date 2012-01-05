@@ -13,15 +13,22 @@ package org.eclipse.emf.samples.conference.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
+
 import org.eclipse.emf.samples.conference.components.PersonBasePropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.PersonPresencePropertiesEditionComponent;
 import org.eclipse.emf.samples.conference.components.PersonPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -52,7 +59,7 @@ public class PersonPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Person) 
-					&& (ConferencePackage.eINSTANCE.getPerson() == editingContext.getEObject().eClass());
+					&& (ConferencePackage.Literals.PERSON == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -139,7 +146,7 @@ public class PersonPropertiesEditionProvider extends PropertiesEditingProviderIm
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ConferencePackage.eINSTANCE.getPerson() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ConferencePackage.Literals.PERSON == ((EObject)toTest).eClass();
 		}
 		
 	}

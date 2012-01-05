@@ -54,6 +54,7 @@ public class PersonPropertiesEditionComponent extends ComposedPropertiesEditionC
 	 * 
 	 */
 	protected PersonPresencePropertiesEditionComponent personPresencePropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 

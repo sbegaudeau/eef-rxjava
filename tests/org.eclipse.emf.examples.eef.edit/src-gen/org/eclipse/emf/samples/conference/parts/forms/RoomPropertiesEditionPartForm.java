@@ -215,6 +215,7 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -274,6 +275,9 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			capacity.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

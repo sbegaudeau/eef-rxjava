@@ -74,13 +74,13 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			final TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
 			// init values
 			if (topic.getDescription() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description))
-				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDescription()));
+				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, topic.getDescription()));
 			
 			if (topic.getReferences() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references))
 				basePart.setReferences(topic.getReferences());
 			
 			if (topic.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation))
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), topic.getDocumentation()));
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, topic.getDocumentation()));
 			// init filters
 			
 			
@@ -123,7 +123,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Topic topic = (Topic)semanticObject;
 		if (ConferenceViewsRepository.Topic.Properties.description == event.getAffectedEditor()) {
-			topic.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			topic.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Topic.Properties.references == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -132,7 +132,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 		}
 		if (ConferenceViewsRepository.Topic.Properties.documentation == event.getAffectedEditor()) {
-			topic.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			topic.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -145,7 +145,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description)) {
 				if (msg.getNewValue() != null) {
-					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDescription("");
 				}
@@ -156,7 +156,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
 				if (msg.getNewValue() != null) {
-					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDocumentation("");
 				}

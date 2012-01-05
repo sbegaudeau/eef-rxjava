@@ -333,6 +333,7 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

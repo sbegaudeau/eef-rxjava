@@ -13,13 +13,20 @@ package org.eclipse.emf.samples.conference.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Topic;
+
 import org.eclipse.emf.samples.conference.components.TopicPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -50,7 +57,7 @@ public class TopicPropertiesEditionProvider extends PropertiesEditingProviderImp
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof Topic) 
-					&& (ConferencePackage.eINSTANCE.getTopic() == editingContext.getEObject().eClass());
+					&& (ConferencePackage.Literals.TOPIC == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -132,7 +139,7 @@ public class TopicPropertiesEditionProvider extends PropertiesEditingProviderImp
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ConferencePackage.eINSTANCE.getTopic() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ConferencePackage.Literals.TOPIC == ((EObject)toTest).eClass();
 		}
 		
 	}

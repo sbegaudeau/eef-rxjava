@@ -258,6 +258,7 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

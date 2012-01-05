@@ -215,6 +215,7 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

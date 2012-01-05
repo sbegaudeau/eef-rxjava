@@ -209,6 +209,7 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

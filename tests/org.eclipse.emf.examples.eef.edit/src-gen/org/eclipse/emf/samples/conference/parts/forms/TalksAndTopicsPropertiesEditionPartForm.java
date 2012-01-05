@@ -215,6 +215,7 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -342,6 +343,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 	public boolean isContainedInTopicsTable(EObject element) {
 		return ((ReferencesTableSettings)topics.getInput()).contains(element);
 	}
+
+
+
 
 
 

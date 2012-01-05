@@ -151,6 +151,7 @@ public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

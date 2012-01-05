@@ -70,10 +70,10 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 			final ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
 			// init values
 			if (conference.getName() != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, conference.getName()));
 			
 			if (conference.getOverview() != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.overview))
-				basePart.setOverview(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getOverview()));
+				basePart.setOverview(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, conference.getOverview()));
 			// init filters
 			
 			
@@ -111,10 +111,10 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Conference conference = (Conference)semanticObject;
 		if (ConferenceViewsRepository.Conference_.Properties.name == event.getAffectedEditor()) {
-			conference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			conference.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Conference_.Properties.overview == event.getAffectedEditor()) {
-			conference.setOverview((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			conference.setOverview((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -127,14 +127,14 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 			ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getConference_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (ConferencePackage.eINSTANCE.getConference_Overview().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.overview)){
 				if (msg.getNewValue() != null) {
-					basePart.setOverview(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setOverview(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOverview("");
 				}

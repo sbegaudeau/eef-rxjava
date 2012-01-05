@@ -202,6 +202,7 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

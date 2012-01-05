@@ -222,6 +222,7 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -288,6 +289,9 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 	public boolean isContainedInAssistsTable(EObject element) {
 		return ((ReferencesTableSettings)assists.getInput()).contains(element);
 	}
+
+
+
 
 
 

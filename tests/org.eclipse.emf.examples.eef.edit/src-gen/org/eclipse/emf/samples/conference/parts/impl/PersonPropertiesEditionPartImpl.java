@@ -395,6 +395,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

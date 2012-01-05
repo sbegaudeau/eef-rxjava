@@ -389,6 +389,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -551,6 +552,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 			isRegistered.setSelection(false);
 		}
 	}
+
+
+
 
 
 

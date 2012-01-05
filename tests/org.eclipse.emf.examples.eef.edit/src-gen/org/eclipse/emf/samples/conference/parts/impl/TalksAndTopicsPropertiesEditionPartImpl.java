@@ -206,6 +206,7 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

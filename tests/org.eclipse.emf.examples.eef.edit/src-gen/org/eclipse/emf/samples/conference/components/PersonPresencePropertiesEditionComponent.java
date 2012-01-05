@@ -96,7 +96,7 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 				}
 			
 			});
-			presencePart.addFilterToAssists(new EObjectFilter(ConferencePackage.eINSTANCE.getTalk()));
+			presencePart.addFilterToAssists(new EObjectFilter(ConferencePackage.Literals.TALK));
 			// Start of user code for additional businessfilters for assists
 			// End of user code
 			

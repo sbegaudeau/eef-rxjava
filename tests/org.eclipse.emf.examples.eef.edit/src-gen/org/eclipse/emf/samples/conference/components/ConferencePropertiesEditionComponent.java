@@ -80,6 +80,7 @@ public class ConferencePropertiesEditionComponent extends ComposedPropertiesEdit
 	 * 
 	 */
 	protected ConferenceTalksAndTopicsPropertiesEditionComponent conferenceTalksAndTopicsPropertiesEditionComponent;
+
 	/**
 	 * Parameterized constructor
 	 * 

@@ -212,6 +212,7 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

@@ -160,6 +160,7 @@ public class ParticipantsPropertiesEditionPartForm extends SectionPropertiesEdit
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -229,6 +230,9 @@ public class ParticipantsPropertiesEditionPartForm extends SectionPropertiesEdit
 	public boolean isContainedInParticipantsTable(EObject element) {
 		return ((ReferencesTableSettings)participants.getInput()).contains(element);
 	}
+
+
+
 
 
 

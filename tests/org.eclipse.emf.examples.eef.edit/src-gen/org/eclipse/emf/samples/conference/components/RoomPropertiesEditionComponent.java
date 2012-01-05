@@ -70,10 +70,10 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
 			// init values
 			if (room.getName() != null && isAccessible(ConferenceViewsRepository.Room.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), room.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, room.getName()));
 			
 			if (isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
-				basePart.setCapacity(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), room.getCapacity()));
+				basePart.setCapacity(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, room.getCapacity()));
 			}
 			
 			// init filters
@@ -113,10 +113,10 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Room room = (Room)semanticObject;
 		if (ConferenceViewsRepository.Room.Properties.name == event.getAffectedEditor()) {
-			room.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			room.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Room.Properties.capacity == event.getAffectedEditor()) {
-			room.setCapacity((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			room.setCapacity((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
 	}
 
@@ -129,14 +129,14 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getRoom_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
 			if (ConferencePackage.eINSTANCE.getRoom_Capacity().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
 				if (msg.getNewValue() != null) {
-					basePart.setCapacity(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					basePart.setCapacity(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setCapacity("");
 				}

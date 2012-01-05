@@ -269,6 +269,7 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

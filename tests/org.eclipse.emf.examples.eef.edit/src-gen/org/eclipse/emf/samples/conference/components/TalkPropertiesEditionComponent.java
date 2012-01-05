@@ -98,7 +98,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			final TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
 			// init values
 			if (talk.getTitle() != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_))
-				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), talk.getTitle()));
+				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, talk.getTitle()));
 			
 			if (isAccessible(ConferenceViewsRepository.Talk.Properties.topic)) {
 				// init part
@@ -125,7 +125,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				basePart.setCreatorButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			if (talk.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation))
-				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), talk.getDocumentation()));
+				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, talk.getDocumentation()));
 			// init filters
 			
 			basePart.addFilterToTopic(new ViewerFilter() {
@@ -225,7 +225,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Talk talk = (Talk)semanticObject;
 		if (ConferenceViewsRepository.Talk.Properties.title_ == event.getAffectedEditor()) {
-			talk.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			talk.setTitle((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Talk.Properties.topic == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -279,7 +279,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (ConferenceViewsRepository.Talk.Properties.documentation == event.getAffectedEditor()) {
-			talk.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			talk.setDocumentation((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -292,7 +292,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_)) {
 				if (msg.getNewValue() != null) {
-					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}
@@ -308,7 +308,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				basePart.setCreator((EObject)msg.getNewValue());
 			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation)){
 				if (msg.getNewValue() != null) {
-					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDocumentation("");
 				}

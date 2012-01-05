@@ -208,6 +208,7 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -267,6 +268,9 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 			overview.setText(""); //$NON-NLS-1$
 		}
 	}
+
+
+
 
 
 

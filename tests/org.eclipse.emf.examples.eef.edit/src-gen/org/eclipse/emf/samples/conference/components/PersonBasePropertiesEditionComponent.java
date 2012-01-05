@@ -72,13 +72,13 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 			final PersonPropertiesEditionPart basePart = (PersonPropertiesEditionPart)editingPart;
 			// init values
 			if (person.getFirstname() != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname))
-				basePart.setFirstname(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), person.getFirstname()));
+				basePart.setFirstname(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, person.getFirstname()));
 			
 			if (person.getLastname() != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname))
-				basePart.setLastname(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), person.getLastname()));
+				basePart.setLastname(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, person.getLastname()));
 			
 			if (isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
-				basePart.setAge(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), person.getAge()));
+				basePart.setAge(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, person.getAge()));
 			}
 			
 			if (isAccessible(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter)) {
@@ -147,13 +147,13 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Person person = (Person)semanticObject;
 		if (ConferenceViewsRepository.Person.Identity.firstname == event.getAffectedEditor()) {
-			person.setFirstname((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			person.setFirstname((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Person.Identity.lastname == event.getAffectedEditor()) {
-			person.setLastname((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			person.setLastname((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Person.Identity.age == event.getAffectedEditor()) {
-			person.setAge((EEFConverterUtil.createIntFromString(EcorePackage.eINSTANCE.getEInt(), (String)event.getNewValue())));
+			person.setAge((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
 		if (ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter == event.getAffectedEditor()) {
 			person.setEclipseCommiter((Boolean)event.getNewValue());
@@ -175,21 +175,21 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 			PersonPropertiesEditionPart basePart = (PersonPropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname)) {
 				if (msg.getNewValue() != null) {
-					basePart.setFirstname(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setFirstname(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setFirstname("");
 				}
 			}
 			if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname)) {
 				if (msg.getNewValue() != null) {
-					basePart.setLastname(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setLastname(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setLastname("");
 				}
 			}
 			if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
 				if (msg.getNewValue() != null) {
-					basePart.setAge(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEInt(), msg.getNewValue()));
+					basePart.setAge(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setAge("");
 				}

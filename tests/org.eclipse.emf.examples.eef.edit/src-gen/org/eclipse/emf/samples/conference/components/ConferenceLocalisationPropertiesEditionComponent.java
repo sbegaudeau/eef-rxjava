@@ -85,7 +85,7 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 			final LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
 			// init values
 			if (conference.getPlace() != null && isAccessible(ConferenceViewsRepository.Localisation.place))
-				localisationPart.setPlace(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), conference.getPlace()));
+				localisationPart.setPlace(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, conference.getPlace()));
 			
 			if (isAccessible(ConferenceViewsRepository.Localisation.sites)) {
 				sitesSettings = new ReferencesTableSettings(conference, ConferencePackage.eINSTANCE.getConference_Sites());
@@ -142,7 +142,7 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Conference conference = (Conference)semanticObject;
 		if (ConferenceViewsRepository.Localisation.place == event.getAffectedEditor()) {
-			conference.setPlace((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			conference.setPlace((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ConferenceViewsRepository.Localisation.sites == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -180,7 +180,7 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 			LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && localisationPart != null && isAccessible(ConferenceViewsRepository.Localisation.place)) {
 				if (msg.getNewValue() != null) {
-					localisationPart.setPlace(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					localisationPart.setPlace(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					localisationPart.setPlace("");
 				}

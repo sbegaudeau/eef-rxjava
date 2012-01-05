@@ -11,9 +11,13 @@
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+
 import org.eclipse.emf.samples.conference.parts.forms.ConferencePropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.LocalisationPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.ParticipantsPropertiesEditionPartForm;
@@ -24,6 +28,7 @@ import org.eclipse.emf.samples.conference.parts.forms.SitePropertiesEditionPartF
 import org.eclipse.emf.samples.conference.parts.forms.TalkPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TalksAndTopicsPropertiesEditionPartForm;
 import org.eclipse.emf.samples.conference.parts.forms.TopicPropertiesEditionPartForm;
+
 import org.eclipse.emf.samples.conference.parts.impl.ConferencePropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.LocalisationPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.ParticipantsPropertiesEditionPartImpl;
@@ -34,9 +39,6 @@ import org.eclipse.emf.samples.conference.parts.impl.SitePropertiesEditionPartIm
 import org.eclipse.emf.samples.conference.parts.impl.TalkPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.TalksAndTopicsPropertiesEditionPartImpl;
 import org.eclipse.emf.samples.conference.parts.impl.TopicPropertiesEditionPartImpl;
-
-
-
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
