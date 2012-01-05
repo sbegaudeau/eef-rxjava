@@ -99,7 +99,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			final PropertiesEditionElementPropertiesEditionPart basePart = (PropertiesEditionElementPropertiesEditionPart)editingPart;
 			// init values
 			if (propertiesEditionElement.getName() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), propertiesEditionElement.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesEditionElement.getName()));
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(propertiesEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
@@ -113,7 +113,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 				basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			if (propertiesEditionElement.getHelpID() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID))
-				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), propertiesEditionElement.getHelpID()));
+				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesEditionElement.getHelpID()));
 			
 			// init filters
 			
@@ -131,7 +131,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectStrictFilter(ViewsPackage.eINSTANCE.getElementEditor()));
+			basePart.addFilterToViews(new EObjectStrictFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 						basePart.addFilterToViews(new ViewerFilter() {
 			
 							/**
@@ -161,7 +161,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof org.eclipse.emf.ecore.EStructuralFeature);
+				return (element instanceof EStructuralFeature);
 				}
 			
 			});
@@ -212,7 +212,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesEditionElement propertiesEditionElement = (PropertiesEditionElement)semanticObject;
 		if (ComponentsViewsRepository.PropertiesEditionElement.Properties.name == event.getAffectedEditor()) {
-			propertiesEditionElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			propertiesEditionElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ComponentsViewsRepository.PropertiesEditionElement.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -227,7 +227,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 		}
 		if (ComponentsViewsRepository.PropertiesEditionElement.Binding.model == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
-				modelSettings.setToReference((org.eclipse.emf.ecore.EStructuralFeature)event.getNewValue());
+				modelSettings.setToReference((EStructuralFeature)event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, modelSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -240,7 +240,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID == event.getAffectedEditor()) {
-			propertiesEditionElement.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			propertiesEditionElement.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -253,7 +253,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			PropertiesEditionElementPropertiesEditionPart basePart = (PropertiesEditionElementPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
@@ -264,7 +264,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 				basePart.setModel((EObject)msg.getNewValue());
 			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID)) {
 				if (msg.getNewValue() != null) {
-					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setHelpID("");
 				}

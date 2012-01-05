@@ -412,6 +412,7 @@ public class PropertiesEditionComponentPropertiesEditionPartImpl extends Composi
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

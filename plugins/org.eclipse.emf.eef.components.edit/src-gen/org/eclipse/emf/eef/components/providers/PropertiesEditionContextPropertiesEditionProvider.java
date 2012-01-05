@@ -14,15 +14,23 @@ package org.eclipse.emf.eef.components.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
+
 import org.eclipse.emf.eef.components.components.PropertiesEditionContextBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesEditionContextPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +61,7 @@ public class PropertiesEditionContextPropertiesEditionProvider extends Propertie
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof PropertiesEditionContext) 
-					&& (ComponentsPackage.eINSTANCE.getPropertiesEditionContext() == editingContext.getEObject().eClass());
+					&& (ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +148,7 @@ public class PropertiesEditionContextPropertiesEditionProvider extends Propertie
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ComponentsPackage.eINSTANCE.getPropertiesEditionContext() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ComponentsPackage.Literals.PROPERTIES_EDITION_CONTEXT == ((EObject)toTest).eClass();
 		}
 		
 	}

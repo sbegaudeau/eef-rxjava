@@ -167,6 +167,7 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -248,6 +249,9 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 	public void addBusinessFilterToModel(ViewerFilter filter) {
 		model.addBusinessRuleFilter(filter);
 	}
+
+
+
 
 
 

@@ -520,6 +520,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

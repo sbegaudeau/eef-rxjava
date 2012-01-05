@@ -44,6 +44,7 @@ public class PropertiesEditionContextPropertiesEditionComponent extends Composed
 	 * 
 	 */
 	protected PropertiesEditionContextBasePropertiesEditionComponent propertiesEditionContextBasePropertiesEditionComponent;
+
 	/**
 	 * The DocumentedElementPropertiesEditionComponent sub component
 	 * 

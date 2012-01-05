@@ -466,6 +466,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 		views.refresh();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -650,6 +651,9 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
+
+
+
 
 
 

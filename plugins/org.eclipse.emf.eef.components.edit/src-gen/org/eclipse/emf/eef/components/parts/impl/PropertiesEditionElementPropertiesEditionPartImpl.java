@@ -461,6 +461,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 		views.refresh();
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

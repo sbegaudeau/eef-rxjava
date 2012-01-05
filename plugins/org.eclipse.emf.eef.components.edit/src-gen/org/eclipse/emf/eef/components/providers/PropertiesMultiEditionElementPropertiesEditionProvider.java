@@ -14,15 +14,23 @@ package org.eclipse.emf.eef.components.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
+
 import org.eclipse.emf.eef.components.components.PropertiesMultiEditionElementBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.components.components.PropertiesMultiEditionElementPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -53,7 +61,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider extends Prop
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
 		return (editingContext.getEObject() instanceof PropertiesMultiEditionElement) 
-					&& (ComponentsPackage.eINSTANCE.getPropertiesMultiEditionElement() == editingContext.getEObject().eClass());
+					&& (ComponentsPackage.Literals.PROPERTIES_MULTI_EDITION_ELEMENT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -140,7 +148,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider extends Prop
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && ComponentsPackage.eINSTANCE.getPropertiesMultiEditionElement() == ((EObject)toTest).eClass();
+			return toTest instanceof EObject && ComponentsPackage.Literals.PROPERTIES_MULTI_EDITION_ELEMENT == ((EObject)toTest).eClass();
 		}
 		
 	}

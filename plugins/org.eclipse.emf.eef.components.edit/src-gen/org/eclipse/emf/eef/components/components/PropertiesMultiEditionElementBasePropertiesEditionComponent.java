@@ -91,7 +91,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			final PropertiesMultiEditionElementPropertiesEditionPart basePart = (PropertiesMultiEditionElementPropertiesEditionPart)editingPart;
 			// init values
 			if (propertiesMultiEditionElement.getName() != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), propertiesMultiEditionElement.getName()));
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesMultiEditionElement.getName()));
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views)) {
 				viewsSettings = new ReferencesTableSettings(propertiesMultiEditionElement, MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views());
@@ -102,7 +102,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				basePart.initModel(modelSettings);
 			}
 			if (propertiesMultiEditionElement.getHelpID() != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID))
-				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.eINSTANCE.getEString(), propertiesMultiEditionElement.getHelpID()));
+				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesMultiEditionElement.getHelpID()));
 			
 			// init filters
 			
@@ -120,7 +120,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				}
 			
 			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.eINSTANCE.getElementEditor()));
+			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 			// Start of user code for additional businessfilters for views
 			
 			// End of user code
@@ -139,7 +139,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				}
 			
 			});
-			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.eINSTANCE.getEStructuralFeature()));
+			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.Literals.ESTRUCTURAL_FEATURE));
 			// Start of user code for additional businessfilters for model
 			
 			// End of user code
@@ -187,7 +187,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement)semanticObject;
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name == event.getAffectedEditor()) {
-			propertiesMultiEditionElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			propertiesMultiEditionElement.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -212,7 +212,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			}
 		}
 		if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID == event.getAffectedEditor()) {
-			propertiesMultiEditionElement.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.eINSTANCE.getEString(), (String)event.getNewValue()));
+			propertiesMultiEditionElement.setHelpID((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -225,7 +225,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			PropertiesMultiEditionElementPropertiesEditionPart basePart = (PropertiesMultiEditionElementPropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
@@ -236,7 +236,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				basePart.updateModel();
 			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID)) {
 				if (msg.getNewValue() != null) {
-					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.eINSTANCE.getEString(), msg.getNewValue()));
+					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setHelpID("");
 				}

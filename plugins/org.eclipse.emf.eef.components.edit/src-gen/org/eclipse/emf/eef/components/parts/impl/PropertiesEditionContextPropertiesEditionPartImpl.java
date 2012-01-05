@@ -148,6 +148,7 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		return parent;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 

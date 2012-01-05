@@ -519,6 +519,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		}
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -688,6 +689,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 	public boolean isContainedInViewsTable(EObject element) {
 		return ((ReferencesTableSettings)views.getInput()).contains(element);
 	}
+
+
+
 
 
 

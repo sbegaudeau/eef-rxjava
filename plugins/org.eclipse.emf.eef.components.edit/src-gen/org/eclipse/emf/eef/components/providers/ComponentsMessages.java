@@ -42,6 +42,7 @@ public class ComponentsMessages extends NLS {
 	
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_BindingGroupLabel;
 
+
 	
 	public static String PropertiesEditionContext_ReadOnly;
 
@@ -65,6 +66,7 @@ public class ComponentsMessages extends NLS {
 
 	
 	public static String PropertiesMultiEditionElement_Part_Title;
+
 
 	
 	public static String PropertiesEditionContextPropertiesEditionPart_ModelLabel;
@@ -107,6 +109,7 @@ public class ComponentsMessages extends NLS {
 
 	
 	public static String PropertiesMultiEditionElementPropertiesEditionPart_ViewsLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;
@@ -157,9 +160,8 @@ public class ComponentsMessages extends NLS {
 	public static String PropertiesEditionPart_RemoveListViewerLabel;
 
 	// Start of user code for additionnal NLS Constants
-
- 	
-// End of user code
+	
+	// End of user code
 
 	static {
 		// initialize resource bundle
