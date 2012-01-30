@@ -652,7 +652,12 @@ public class InteractiveEEFEditor extends FormEditor
 	 * @param commandStack
 	 */
 	protected void initializeWorkspaceEditingDomain(BasicCommandStack commandStack) {
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);
+		ResourceSet resourceSet = initializeResourceSet();
+		if (resourceSet != null) {
+			editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);
+		} else {
+			editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);			
+		}
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
 		Resource resource = null;
@@ -673,6 +678,14 @@ public class InteractiveEEFEditor extends FormEditor
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
 	}
 
+	/**
+	 * @return the {@link ResourceSet} to use in the {@link EditingDomain}. 
+	 * If <code>null</code> then use the standard ResourceSet.
+	 */
+	protected ResourceSet initializeResourceSet() {
+		return null;
+	}
+	
 	/**
 	 * Returns a diagnostic describing the errors and warnings listed in the resource
 	 * and the specified exception (if any).
