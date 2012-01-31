@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.22 2011/12/14 14:02:51 sbouchet Exp $
+ $Id: promoter.xml,v 1.23 2012/01/31 13:56:15 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -23,7 +23,7 @@
 	-->
 
 	<property name="downloads.area" value="/home/data/httpd/download.eclipse.org/modeling/emft/eef" />
-	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful" />
+	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful/archive/org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
 
 	<property name="promoter.properties.file.name" value="promote.properties" />
 	<property name="property.file.location" value="${build.root}/promotion/${promoter.properties.file.name}" />
@@ -31,6 +31,7 @@
 
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
 	<property name="thirdPartyDownloadLicenseAcceptance" value="Y" />
+	<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
 
 	<!--
 	most of the code comes from Athena CBI.
@@ -72,9 +73,6 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 	</target>
 
 	<target name="init">
-
-		<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
-
 		<condition property="antContribJarUnavailable">
 			<not>
 				<available file="${thirdPartyJarsDir}/ant-contrib.jar" type="file" />
@@ -98,7 +96,6 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 	<target name="check.property.file.location">
 		<fail message="property.file.location property must be defined" unless="property.file.location" />
 	</target>
-
 
 	<target name="init.properties">
 		<fail message="build.qualifier property must be defined">
