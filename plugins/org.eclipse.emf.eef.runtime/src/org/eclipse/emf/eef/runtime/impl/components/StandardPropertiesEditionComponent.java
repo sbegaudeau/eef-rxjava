@@ -182,15 +182,17 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 					updateSemanticModel(event);
 				} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
-					liveEditingDomain.getCommandStack().execute(new StandardEditingCommand(new EObjectPropertiesEditionContext(editingContext, this, editingContext.getEObject(), editingContext.getAdapterFactory())) {
+					liveEditingDomain.getCommandStack().execute(
+							new StandardEditingCommand(new EObjectPropertiesEditionContext(editingContext,
+									this, editingContext.getEObject(), editingContext.getAdapterFactory())) {
 
-						public void execute() {
-							updateSemanticModel(event);
-							description = context.getChangeRecorder().endRecording();
-							context.getChangeRecorder().dispose();
-						}						
-						
-					});
+								public void execute() {
+									updateSemanticModel(event);
+									description = context.getChangeRecorder().endRecording();
+									context.getChangeRecorder().dispose();
+								}
+
+							});
 				}
 				Diagnostic validate = validate();
 				propagateEvent(new PropertiesValidationEditionEvent(event, validate));
@@ -274,22 +276,24 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	}
 
 	/**
-	 * @param event event to process
+	 * @param event
+	 *            event to process
 	 * @return <code>true</code> if the event should really launch a command.
 	 * @since 0.9
 	 */
 	protected boolean shouldProcess(IPropertiesEditionEvent event) {
 		return true;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#associatedFeature(Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		return null;
 	}
-	
+
 	/**
 	 * Update the model in response to a view event
 	 * 

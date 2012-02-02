@@ -19,17 +19,20 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 
 /**
- * Utility class in order to inject a validation label in a
- * {@link TabbedPropertySheetPage}.
+ * Utility class in order to inject a validation label in a {@link TabbedPropertySheetPage}.
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public class ValidationMessageInjector {
 
 	private static final String VALIDATION_MESSAGE_KEY = "org.eclipse.emf.eef.runtime.part.impl.util.ValidationMessageInjector";
+
 	private TabbedPropertySheetPage page;
+
 	private TabbedPropertyComposite propertyComposite;
+
 	private TabbedPropertyTitle propertyTitle;
+
 	private CLabel propertyTitleLabel;
 
 	/**
@@ -47,13 +50,16 @@ public class ValidationMessageInjector {
 				CLabel messageControl = getMessage();
 				messageControl.setText("Errors");
 				messageControl.setForeground(propertyComposite.getDisplay().getSystemColor(SWT.COLOR_RED));
-				messageControl.setImage(EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "ValidationErrors.gif"));
+				messageControl.setImage(EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16
+						+ "ValidationErrors.gif"));
 				messageControl.setToolTipText(message);
 			} else if (severity == IStatus.WARNING) {
 				CLabel messageControl = getMessage();
 				messageControl.setText("Warnings");
-				messageControl.setForeground(propertyComposite.getDisplay().getSystemColor(SWT.COLOR_DARK_YELLOW));
-				messageControl.setImage(EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "ValidationWarnings.gif"));			
+				messageControl.setForeground(propertyComposite.getDisplay().getSystemColor(
+						SWT.COLOR_DARK_YELLOW));
+				messageControl.setImage(EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16
+						+ "ValidationWarnings.gif"));
 				messageControl.setToolTipText(message);
 			} else {
 				dispose();
@@ -66,16 +72,16 @@ public class ValidationMessageInjector {
 			CLabel message = getMessage();
 			if (message != null && !message.isDisposed()) {
 				FormData data = (FormData)message.getLayoutData();
-				data.left = new FormAttachment(0,0);
-				data.right = new FormAttachment(0,0);
-				data.top = new FormAttachment(0,0);
-				data.bottom = new FormAttachment(0,0);
+				data.left = new FormAttachment(0, 0);
+				data.right = new FormAttachment(0, 0);
+				data.top = new FormAttachment(0, 0);
+				data.bottom = new FormAttachment(0, 0);
 				message.setVisible(false);
 				propertyTitle.layout();
 				message.dispose();
 			}
 			if (propertyTitleLabel.getLayoutData() instanceof FormData) {
-				FormData data = (FormData) propertyTitleLabel.getLayoutData();
+				FormData data = (FormData)propertyTitleLabel.getLayoutData();
 				data.right = new FormAttachment(100, 0);
 			}
 			propertyTitle.layout();
@@ -90,10 +96,9 @@ public class ValidationMessageInjector {
 		return propertyComposite != null && !propertyComposite.isDisposed() && propertyTitleLabel != null;
 	}
 
-
 	private void initialize() {
 		if (page.getControl() instanceof TabbedPropertyComposite) {
-			propertyComposite = (TabbedPropertyComposite) page.getControl();
+			propertyComposite = (TabbedPropertyComposite)page.getControl();
 			propertyTitle = searchTitle(propertyComposite);
 			if (propertyTitle != null) {
 				propertyTitleLabel = searchLabel(propertyTitle);
@@ -101,10 +106,11 @@ public class ValidationMessageInjector {
 		}
 
 	}
-	
+
 	private CLabel getMessage() {
-		if (propertyComposite.getData(VALIDATION_MESSAGE_KEY) != null && !(((CLabel)propertyComposite.getData(VALIDATION_MESSAGE_KEY)).isDisposed())) {
-			return (CLabel) propertyComposite.getData(VALIDATION_MESSAGE_KEY);
+		if (propertyComposite.getData(VALIDATION_MESSAGE_KEY) != null
+				&& !(((CLabel)propertyComposite.getData(VALIDATION_MESSAGE_KEY)).isDisposed())) {
+			return (CLabel)propertyComposite.getData(VALIDATION_MESSAGE_KEY);
 		} else {
 			CLabel message = instanciateMessageAt(propertyTitle, propertyTitleLabel);
 			relayoutTitleLabel(propertyTitleLabel);
@@ -116,20 +122,20 @@ public class ValidationMessageInjector {
 	}
 
 	private TabbedPropertyTitle searchTitle(Composite composite) {
-		return (TabbedPropertyTitle) searchComposite(composite, TabbedPropertyTitle.class);
+		return (TabbedPropertyTitle)searchComposite(composite, TabbedPropertyTitle.class);
 	}
 
 	private CLabel searchLabel(TabbedPropertyTitle title) {
-		return (CLabel) searchComposite(title, CLabel.class);
+		return (CLabel)searchComposite(title, CLabel.class);
 	}
 
 	private Composite searchComposite(Composite composite, Class<? extends Composite> clazz) {
 		for (int i = 0; i < composite.getChildren().length; i++) {
 			Control control = composite.getChildren()[i];
 			if (clazz.isInstance(control)) {
-				return (Composite) control;
+				return (Composite)control;
 			} else if (control instanceof Composite) {
-				Composite searchedComposite = searchComposite((Composite) control, clazz);
+				Composite searchedComposite = searchComposite((Composite)control, clazz);
 				if (searchedComposite != null) {
 					return searchedComposite;
 				}
@@ -141,12 +147,8 @@ public class ValidationMessageInjector {
 	private CLabel instanciateMessageAt(final TabbedPropertyTitle title, final CLabel titleLabel) {
 		TabbedPropertySheetWidgetFactory factory = page.getWidgetFactory();
 		CLabel result = factory.createCLabel(title, "default");
-		result.setBackground(
-				new Color[] { 
-						factory.getColors().getColor(IFormColors.H_GRADIENT_END), 
-						factory.getColors().getColor(IFormColors.H_GRADIENT_START) }, 
-				new int[] { 100 }, 
-				true);
+		result.setBackground(new Color[] {factory.getColors().getColor(IFormColors.H_GRADIENT_END),
+				factory.getColors().getColor(IFormColors.H_GRADIENT_START)}, new int[] {100}, true);
 		FormData errordata = new FormData();
 		errordata.left = new FormAttachment(90, 5);
 		errordata.top = new FormAttachment(0, 0);
@@ -158,12 +160,11 @@ public class ValidationMessageInjector {
 
 	private boolean relayoutTitleLabel(CLabel label) {
 		if (label.getLayoutData() instanceof FormData) {
-			FormData data = (FormData) label.getLayoutData();
+			FormData data = (FormData)label.getLayoutData();
 			data.right = new FormAttachment(90, -5);
 			return true;
 		}
 		return false;
 	}
-
 
 }

@@ -112,9 +112,13 @@ public class PropertiesEditionWizard extends Wizard {
 			@Override
 			protected void updateStatus(String message) {
 				if (mainPage != null) {
-					mainPage.setMessage(null);
-					mainPage.setErrorMessage(message);
-					// mainPage.setPageComplete(message == null);
+					if (message == null || "".equals(message)) {
+						mainPage.setErrorMessage(null);
+						mainPage.setPageComplete(true);
+					} else {
+						mainPage.setErrorMessage(message);
+						mainPage.setPageComplete(false);
+					}
 				}
 			}
 		};
@@ -221,10 +225,12 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayout(layout);
 			List<EClass> instanciableTypesInHierarchy;
 			if (editingContext instanceof DomainPropertiesEditionContext) {
-				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference, ((DomainPropertiesEditionContext)editingContext).getEditingDomain());
+				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference,
+						((DomainPropertiesEditionContext)editingContext).getEditingDomain());
 				editingContext = null;
 			} else {
-				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),editingContext.getResourceSet());
+				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),
+						editingContext.getResourceSet());
 			}
 			for (final EClass eClass : instanciableTypesInHierarchy) {
 				Button button = new Button(control, SWT.RADIO);
@@ -232,15 +238,18 @@ public class PropertiesEditionWizard extends Wizard {
 				button.addSelectionListener(new SelectionAdapter() {
 
 					public void widgetSelected(SelectionEvent e) {
-						if (editingContext instanceof EReferencePropertiesEditionContext && ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
-							EEFEditorSettings settings = ((EReferencePropertiesEditionContext)editingContext).getSettings();
+						if (editingContext instanceof EReferencePropertiesEditionContext
+								&& ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
+							EEFEditorSettings settings = ((EReferencePropertiesEditionContext)editingContext)
+									.getSettings();
 							if (settings instanceof ReferencesTableSettings) {
-								((ReferencesTableSettings) ((EReferencePropertiesEditionContext)editingContext).getSettings()).removeFromReference(eObject);
+								((ReferencesTableSettings)((EReferencePropertiesEditionContext)editingContext)
+										.getSettings()).removeFromReference(eObject);
 							}
 							eObject = EcoreUtil.create(eClass);
 							EEFUtils.putToReference(settings, eObject);
 						} else {
-							eObject = EcoreUtil.create(eClass);							
+							eObject = EcoreUtil.create(eClass);
 						}
 						mainPage.setInput(eObject);
 					}
@@ -250,9 +259,11 @@ public class PropertiesEditionWizard extends Wizard {
 			if (buttons.size() > 0) {
 				buttons.get(0).setSelection(true);
 				eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
-				if (editingContext instanceof EReferencePropertiesEditionContext && ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
-					EEFUtils.putToReference(((EReferencePropertiesEditionContext)editingContext).getSettings(), eObject);
-				}			
+				if (editingContext instanceof EReferencePropertiesEditionContext
+						&& ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
+					EEFUtils.putToReference(
+							((EReferencePropertiesEditionContext)editingContext).getSettings(), eObject);
+				}
 			} else {
 				Label errorLabel = new Label(control, SWT.NONE);
 				errorLabel.setText("Error non instanciable type found");
@@ -282,7 +293,8 @@ public class PropertiesEditionWizard extends Wizard {
 				layout.marginHeight = -5;
 				layout.marginWidth = -5;
 				parentComposite.setLayout(layout);
-				ScrolledComposite scrolledContainer = new ScrolledComposite(parentComposite, SWT.H_SCROLL | SWT.V_SCROLL);
+				ScrolledComposite scrolledContainer = new ScrolledComposite(parentComposite, SWT.H_SCROLL
+						| SWT.V_SCROLL);
 				scrolledContainer.setExpandHorizontal(true);
 				scrolledContainer.setExpandVertical(true);
 				Composite container = new Composite(scrolledContainer, SWT.FLAT);
@@ -295,7 +307,8 @@ public class PropertiesEditionWizard extends Wizard {
 					resourceSet = eObject.eResource().getResourceSet();
 				viewer = new PropertiesEditionViewer(container, resourceSet, 0);
 				viewer.setDynamicTabHeader(true);
-				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.BATCH_MODE));
+				viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
+						IPropertiesEditionComponent.BATCH_MODE));
 				scrolledContainer.setContent(container);
 				setControl(parentComposite);
 			} catch (InstantiationException e) {
@@ -306,7 +319,8 @@ public class PropertiesEditionWizard extends Wizard {
 
 		public void setInput(EObject eObject) {
 			this.setTitle(eObject.eClass().getName());
-			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description + eObject.eClass().getName());
+			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description
+					+ eObject.eClass().getName());
 			editingContext.seteObject(eObject);
 			viewer.setInput(editingContext);
 			viewer.addPropertiesListener(this);

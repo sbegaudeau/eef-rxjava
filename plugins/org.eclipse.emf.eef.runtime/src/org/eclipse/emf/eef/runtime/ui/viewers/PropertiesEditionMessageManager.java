@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,10 +21,6 @@ import org.eclipse.swt.widgets.Display;
  */
 public abstract class PropertiesEditionMessageManager {
 
-	private Diagnostic oldFailedDiagnostic = null;
-
-	private Object oldFailedEvent = null;
-
 	public void processMessage(IPropertiesEditionEvent event) {
 		if (event instanceof PropertiesValidationEditionEvent) {
 			final Diagnostic diag = ((PropertiesValidationEditionEvent)event).getDiagnostic();
@@ -35,7 +31,7 @@ public abstract class PropertiesEditionMessageManager {
 						if (diag.getSeverity() == Diagnostic.ERROR) {
 							updateError(message);
 						} else if (diag.getSeverity() == Diagnostic.WARNING) {
-							updateWarning(message);							
+							updateWarning(message);
 						} else {
 							updateStatus(message);
 						}
@@ -49,10 +45,10 @@ public abstract class PropertiesEditionMessageManager {
 				});
 			}
 		}
-	}	
+	}
 
 	protected abstract void updateStatus(final String message);
-	
+
 	protected void updateError(final String message) {
 		updateStatus(message);
 	}
