@@ -59,21 +59,21 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('ReferencesTable'))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 			if (element instanceof EObject)
 				return (![view.viewIdentifier(pec)/].isContainedIn[editionElement.views->first().viewPackageSignature()/]Table((EObject)element));
 			return [if (not editionElement.model.required)]element instanceof String && element.equals("")[else]false[/if];
 		}
 	
 	});
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectStrictFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new (new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter')/]([editionElement.metamodelTypeGetter()/]));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 	[filter.filterBody(editionElement,view,pec)/]
 [/for]
@@ -85,21 +85,21 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? ((not editionElement.hasModelNavigation()) and editionElement.model.isReferenceMany() and editionElement.representationName('AdvancedReferencesTable'))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 			if (element instanceof EObject)
 				return (![view.viewIdentifier(pec)/].isContainedIn[editionElement.views->first().viewPackageSignature()/]Table((EObject)element));
-			return element instanceof Resource;
+			return element instanceof [include('org.eclipse.emf.ecore.resource.Resource')/];
 		}
 	
 	});
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter')/]([editionElement.metamodelTypeGetter()/]));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 	[filter.filterBody(editionElement,view,pec)/]
 [/for]
@@ -157,14 +157,14 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
 			if (element instanceof EObject)
 				return (![view.viewIdentifier(pec)/].isContainedIn[editionElement.views->first().viewPackageSignature()/]Table((EObject)element));
 			return [if (not editionElement.model.required)]element instanceof String && element.equals("")[else]false[/if];
 		}
 	
 	});
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectStrictFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter')/]([editionElement.metamodelTypeGetter()/]));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 	[filter.filterBody(editionElement,view,pec)/]
 [/for]
@@ -216,15 +216,15 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForSingleModelReference())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [editionElement.model.eType.name/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+			public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+				return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.peeModelQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 	
 	});

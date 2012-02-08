@@ -80,15 +80,15 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (not editionElement.hasModelNavigation() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer')))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if editionElement.model.eType.instanceTypeName.oclIsUndefined()][editionElement.model.eType.name/][else][editionElement.model.eType.instanceTypeName/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.peeModelQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 		
 	});
@@ -166,15 +166,15 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer')))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
 		/**
 		 * {@inheritDoc}
 		 * 
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 		 */
-		public boolean select(Viewer viewer, Object parentElement, Object element) {
-			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [if editionElement.model.eType.instanceTypeName.oclIsUndefined()][editionElement.model.eType.name/][else][editionElement.model.eType.instanceTypeName/][/if]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
+		public boolean select([include('org.eclipse.jface.viewers.Viewer')/] viewer, Object parentElement, Object element) {
+			return [if (editionElement.model.lowerBound = 0)](element instanceof String && element.equals("")) || [/if](element instanceof [include(editionElement.peeModelQualifiedClass())/]);[if (editionElement.model.lowerBound = 0)] //$NON-NLS-1$ [/if]
 		}
 	
 	});
@@ -189,7 +189,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new EObjectFilter([editionElement.editionElementPackage()/].eINSTANCE.get[editionElement.model.eType.name/]()));
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter')/]([editionElement.metamodelTypeGetter()/]));
 }
 [/template]
 
