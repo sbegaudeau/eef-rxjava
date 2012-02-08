@@ -33,9 +33,10 @@ package [pec.componentsPackage()/];[addImports(Sequence{
 	'org.eclipse.emf.common.util.BasicDiagnostic',
 	'org.eclipse.emf.common.util.Diagnostic',
 	'org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent',
+	'org.eclipse.emf.eef.runtime.context.PropertiesEditingContext',
+	'org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil',
 	'org.eclipse.emf.ecore.resource.ResourceSet',
 	'org.eclipse.emf.ecore.EObject',
-	'org.eclipse.emf.eef.runtime.context.PropertiesEditingContext',
 	'org.eclipse.emf.ecore.EStructuralFeature'})/]
 
 [let content : String = peContext.fileContent(pec, view, basePackage)]
@@ -256,7 +257,7 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 					Object newValue = event.getNewValue();
 					[if (editionElement.model.eType.instanceClassName <> 'String')]
 					if (newValue instanceof String) {
-						newValue = [include('org.eclipse.emf.ecore.util.EcoreUtil')/].createFromString([editionElement.metamodelGetter()/].getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), (String)newValue);
 					}
 					[/if]
 					ret = [include('org.eclipse.emf.ecore.util.Diagnostician')/].INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
@@ -276,7 +277,7 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 				[else]
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = [include('org.eclipse.emf.ecore.util.EcoreUtil')/].createFromString([editionElement.metamodelGetter()/].getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString([editionElement.metamodelGetter()/].getEAttributeType(), (String)newValue);
 					}
 					ret = [include('org.eclipse.emf.ecore.util.Diagnostician')/].INSTANCE.validate([editionElement.metamodelGetter()/].getEAttributeType(), newValue);
 				[/if]

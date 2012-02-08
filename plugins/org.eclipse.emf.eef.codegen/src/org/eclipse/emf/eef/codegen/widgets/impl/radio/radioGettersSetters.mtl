@@ -36,13 +36,13 @@
 [/template]
 
 [template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('Radio'))]
-	public void init[elementEditor.viewPackageSignature()/]([include('org.eclipse.emf.ecore.EEnum')/] eenum, [include('org.eclipse.emf.common.util.Enumerator')/] current)
+	public void init[elementEditor.viewPackageSignature()/](Object input, [include('org.eclipse.emf.common.util.Enumerator')/] current)
 [/template]
 
 [template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('Radio'))]
 	/**
 	 * Init the [elementEditor.name/]
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
 [/template]
@@ -77,13 +77,13 @@
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](EEnum eenum, Enumerator current)
+	 * @see [fullInterfacePath/]#init[elementEditor.viewPackageSignature()/](Object input, Enumerator current)
 	 */
 [/template]
 
 [template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('Radio'))]
 [elementEditor.initSignature()/] {
-		[elementEditor.elementEditorName()/]RadioViewer.setInput(eenum.getELiterals());
+		[elementEditor.elementEditorName()/]RadioViewer.setInput(input);
 		[elementEditor.elementEditorName()/]RadioViewer.setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](current));
 	}
 [/template]

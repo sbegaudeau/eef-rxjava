@@ -21,8 +21,8 @@
 [pec.addImports(Sequence{
 	'org.eclipse.swt.widgets.Composite',
 	'org.eclipse.emf.common.util.Enumerator',
-	'org.eclipse.emf.ecore.util.EcoreAdapterFactory',
 	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
+	'org.eclipse.emf.eef.runtime.EEFRuntimePlugin',
 	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
 	'org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils',
 	'org.eclipse.jface.viewers.ArrayContentProvider',
@@ -49,7 +49,7 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
 		[/if]
 		[editor.elementEditorName()/] = new EMFComboViewer(parent);
 		[editor.elementEditorName()/].setContentProvider(new ArrayContentProvider());
-		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/].setEnabled(false);
 		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);

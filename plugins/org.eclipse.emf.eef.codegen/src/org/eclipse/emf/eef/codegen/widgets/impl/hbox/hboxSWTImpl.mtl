@@ -48,6 +48,6 @@ return create[container.name.toJavaClassifier()/]HBox(parent);
 		constraint.horizontalAlignment = GridData.BEGINNING;
 		[container.name.toJavaIdentifier()/]HBox.setLayoutData(constraint);
 		[/if]
-		return parent;
+		return [container.name.toJavaIdentifier()/]HBox;
 	}
 [/template]

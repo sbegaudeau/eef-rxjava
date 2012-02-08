@@ -26,6 +26,7 @@
 	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
 	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
 	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
+	'org.eclipse.emf.eef.runtime.EEFRuntimePlugin',
 	'org.eclipse.jface.viewers.ArrayContentProvider',
 	'org.eclipse.jface.viewers.ISelectionChangedListener',
 	'org.eclipse.jface.viewers.SelectionChangedEvent',
@@ -50,7 +51,7 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 		[/if]
 		[editor.elementEditorName()/] = new EMFComboViewer(parent);
 		[editor.elementEditorName()/].setContentProvider(new ArrayContentProvider());
-		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/].setEnabled(false);
 		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
