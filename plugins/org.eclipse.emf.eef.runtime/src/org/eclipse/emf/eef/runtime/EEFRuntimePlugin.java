@@ -85,9 +85,7 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 			 *      org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 			 */
 			@Override
-			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics,
-					Map<Object, Object> context) {
-				// Do nothing
+			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 				return true;
 			}
 
