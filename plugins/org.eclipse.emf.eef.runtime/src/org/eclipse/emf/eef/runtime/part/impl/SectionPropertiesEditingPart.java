@@ -178,7 +178,6 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	}
 
 	/**
-	/**
 	 * This method analyze an input to exact the EObject to edit.
 	 * First we try to adapt this object in {@link SemanticAdapter}. If this can't be done, 
 	 * we check if this object is an {@link EObject}. Finally, if this object isn't an
