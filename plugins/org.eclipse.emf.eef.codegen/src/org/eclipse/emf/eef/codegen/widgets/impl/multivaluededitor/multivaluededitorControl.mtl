@@ -18,8 +18,7 @@
 [import org::eclipse::emf::eef::codegen::services::imports /]
 
 [comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
-[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
-if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.canGeneratemodelNavigation())]if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
 	[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].get[editionElement.model.name.toMany().toUpperFirst()/]().clear();
 	[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].get[editionElement.model.name.toMany().toUpperFirst()/]().addAll(((List) event.getNewValue()));
 }
@@ -28,14 +27,14 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.oclAsType(EAttribute).many)]
 if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null && isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/]((([pec.pecModelClass().toJavaClassifier()/])semanticObject).get[editionElement.views->first().name.toMany().toJavaClassifier()/]());
+	[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/]((EList)msg.getNewValue());
 }
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
 [/if]
 [/template]
 
-[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.many)]
 if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]());
@@ -47,4 +46,15 @@ if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUp
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [comment no filters for multiValuedEditor /]
+[/template]
+
+[comment ===== Case : model = Attribute(*) - view = MultiValuedEditor - ModelNavigation ===== /]
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and editionElement.canGeneratemodelNavigation())]
+[editionElement.name.toJavaIdentifier()/]Settings.setValue((List)event.getNewValue());
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and editionElement.canGeneratemodelNavigation())]
+if ([editionElement.name.toJavaIdentifier()/]Settings.getSignificantObject() != null && isAccessible([editionElement.views->first().editorID()/])) {
+	[view.viewIdentifier(pec)/].set[editionElement.views->first().viewPackageSignature()/]((EList)[editionElement.name.toJavaIdentifier()/]Settings.getValue());
+}
 [/template]
