@@ -103,6 +103,9 @@
       <templates
             path="src/org/eclipse/emf/eef/codegen/widgets/impl/">
       </templates>
+      <generator
+            generatorID="org.eclipse.emf.eef.codegen">
+      </generator>
    </extension>
 
 </plugin>
