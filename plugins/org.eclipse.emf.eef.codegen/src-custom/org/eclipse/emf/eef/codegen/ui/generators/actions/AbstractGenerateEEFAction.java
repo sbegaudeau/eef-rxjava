@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.codegen.ui.generators.actions;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,27 +21,25 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.ui.generators.common.GenerateAll;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
 public abstract class AbstractGenerateEEFAction extends Action implements IObjectActionDelegate {
-
-	private Shell shell;
 
 	protected List<IFile> selectedFiles;
 
@@ -58,9 +55,9 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+	 * @deprecated see bug #370409
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		shell = targetPart.getSite().getShell();
 	}
 
 	/**
@@ -78,59 +75,54 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
 	public void run() {
-		try {
-			if (selectedFiles != null) {
+		if (selectedFiles != null) {
+			try {
 				eefGenModels = initEEFGenModel();
+			} catch (IOException e) {
+				EEFCodegenPlugin.getDefault().logError(e);
+			}
 
-				WorkspaceModifyOperation runnable = new WorkspaceModifyOperation() {
-
-					public void execute(IProgressMonitor monitor) throws InvocationTargetException,
-							InterruptedException {
-						try {
-							if (eefGenModels != null && !monitor.isCanceled()) {
-								for (final EEFGenModel eefGenModel : eefGenModels) {
-									final IContainer target = getGenContainer(eefGenModel);
-									if (target != null) {
-										int count = 2;
-										if (eefGenModel.getEditionContexts() != null)
-											count += eefGenModel.getEditionContexts().size() * 11;
-										if (eefGenModel.getViewsRepositories() != null)
-											count += eefGenModel.getViewsRepositories().size() * 5;
-										monitor.beginTask("Generating EEF Architecture", count);
-										final GenerateAll generator = new GenerateAll(target, eefGenModel);
-										generator.doGenerate(monitor);
-										for (Iterator<IContainer> iterator = generator.getGenerationTargets()
-												.iterator(); iterator.hasNext();) {
-											IContainer nextContainer = iterator.next();
-											nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-										}
-										monitor.worked(1);
+			Job job = new Job("EEF architecture generation") {
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					try {
+						if (eefGenModels != null && !monitor.isCanceled()) {
+							for (final EEFGenModel eefGenModel : eefGenModels) {
+								final IContainer target = getGenContainer(eefGenModel);
+								if (target != null) {
+									int count = 2;
+									if (eefGenModel.getEditionContexts() != null)
+										count += eefGenModel.getEditionContexts().size() * 11;
+									if (eefGenModel.getViewsRepositories() != null)
+										count += eefGenModel.getViewsRepositories().size() * 5;
+									monitor.beginTask("Generating EEF Architecture", count);
+									final GenerateAll generator = new GenerateAll(target, eefGenModel);
+									generator.doGenerate(monitor);
+									for (Iterator<IContainer> iterator = generator.getGenerationTargets()
+											.iterator(); iterator.hasNext();) {
+										IContainer nextContainer = iterator.next();
+										nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 									}
+									monitor.worked(1);
 								}
 							}
-						} catch (IOException e) {
-							EEFCodegenPlugin.getDefault().logError(e);
-						} catch (CoreException e) {
-							EEFCodegenPlugin.getDefault().logError(e);
-						} finally {
-							monitor.done();
-							selectedFiles.clear();
-							eefGenModels.clear();
 						}
+					} catch (IOException e) {
+						EEFCodegenPlugin.getDefault().logError(e);
+						return Status.CANCEL_STATUS;
+					} catch (CoreException e) {
+						EEFCodegenPlugin.getDefault().logError(e);
+						return Status.CANCEL_STATUS;
+					} finally {
+						monitor.done();
+						selectedFiles.clear();
+						eefGenModels.clear();
 					}
-
-				};
-				new ProgressMonitorDialog(shell).run(true, true, runnable);
-			}
-		} catch (InvocationTargetException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} catch (InterruptedException e) {
-			// silently catch interrupted exceptions, ie CANCEL operations.
-		} catch (IOException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} finally {
-			selectedFiles.clear();
-			eefGenModels.clear();
+					return Status.OK_STATUS;
+				}
+			};
+			job.setUser(true);
+			job.schedule();
 		}
 	}
 
