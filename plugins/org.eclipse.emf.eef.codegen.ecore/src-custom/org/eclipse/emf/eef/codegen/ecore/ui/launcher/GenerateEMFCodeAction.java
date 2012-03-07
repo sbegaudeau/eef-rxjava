@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.codegen.ecore.ui.launcher;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,19 +18,19 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -59,25 +58,20 @@ public abstract class GenerateEMFCodeAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		try {
-			if (emfGenModels != null) {
-				final Workflow flow = initEMFGenFlow();
-				flow.prepare();
-				WorkspaceModifyOperation runnable = new WorkspaceModifyOperation() {
+		if (emfGenModels != null) {
+			final Workflow flow = initEMFGenFlow();
+			flow.prepare();
+			Job job = new Job("EEF architecture generation") {
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					flow.execute(monitor);
+					monitor.done();
+					return Status.OK_STATUS;
+				}
 
-					public void execute(IProgressMonitor monitor) throws InvocationTargetException,
-							InterruptedException {
-						flow.execute(monitor);
-						monitor.done();
-					}
-
-				};
-				new ProgressMonitorDialog(shell).run(true, true, runnable);
-			}
-		} catch (InvocationTargetException e) {
-			EMFCodegenPlugin.getDefault().logError(e);
-		} catch (InterruptedException e) {
-			EMFCodegenPlugin.getDefault().logWarning(e);
+			};
+			job.setUser(true);
+			job.schedule();
 		}
 	}
 
