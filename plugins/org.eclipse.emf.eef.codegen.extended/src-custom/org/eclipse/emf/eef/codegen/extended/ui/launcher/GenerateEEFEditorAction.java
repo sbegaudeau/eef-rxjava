@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.codegen.extended.ui.launcher;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -20,6 +19,9 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -32,20 +34,21 @@ import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.extended.flow.OverrideEMFEditorCode;
 import org.eclipse.emf.eef.codegen.flow.Workflow;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 public class GenerateEEFEditorAction implements IObjectActionDelegate {
 
 	private static final String GENERATE_EEF_EDITOR = "Generate EEF Editor for ";
+
 	private Shell shell;
+
 	protected Set<IFile> selectedFiles;
+
 	protected List<EEFGenModel> eefGenModels;
 
 	/**
@@ -64,40 +67,38 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 	}
 
 	/**
-	 * @see IActionDelegate#run(IAction)
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
 	public void run(IAction action) {
 		try {
-			if (selectedFiles != null) {
-				eefGenModels = initEEFGenModel();
-
-				if (eefGenModels != null) {
-					final Workflow flow = new Workflow("Generate EEF Editors", shell);
-					for (final EEFGenModel eefGenModel : eefGenModels) {
-						String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
-						OverrideEMFEditorCode eefEditorCode = new OverrideEMFEditorCode(key, eefGenModel);
-						flow.addStep(key, eefEditorCode);
-					}
-					flow.prepare();
-					WorkspaceModifyOperation runnable = new WorkspaceModifyOperation() {
-
-						public void execute(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-							flow.execute(monitor);
-							monitor.done();
-							selectedFiles.clear();
-							eefGenModels.clear();
-						}
-
-					};
-					new ProgressMonitorDialog(shell).run(true, true, runnable);
-				}
-			}
-		} catch (InvocationTargetException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		} catch (InterruptedException e) {
-			EEFCodegenPlugin.getDefault().logWarning(e);
+			eefGenModels = initEEFGenModel();
 		} catch (IOException e) {
 			EEFCodegenPlugin.getDefault().logError(e);
+		}
+
+		if (eefGenModels != null) {
+			final Workflow flow = new Workflow("Generate EEF Editors", shell);
+			for (final EEFGenModel eefGenModel : eefGenModels) {
+				String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
+				OverrideEMFEditorCode eefEditorCode = new OverrideEMFEditorCode(key, eefGenModel);
+				flow.addStep(key, eefEditorCode);
+			}
+			flow.prepare();
+			Job job = new Job("EEF editors generation") {
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					flow.execute(monitor);
+					monitor.done();
+					selectedFiles.clear();
+					eefGenModels.clear();
+					return Status.OK_STATUS;
+				}
+
+			};
+			job.setUser(true);
+			job.schedule();
 		}
 	}
 
@@ -111,7 +112,7 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 			for (Object selectedElement : sSelection.toList()) {
 				if (selectedElement instanceof IFile) {
 					this.selectedFiles.add((IFile)selectedElement);
-				} 
+				}
 			}
 
 		}
@@ -135,11 +136,11 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 				final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
 				final Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
 				if (resourceFactory != null) {
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
-							resourceFactory);
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+							.put(fileExtension, resourceFactory);
 				} else {
-					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(fileExtension,
-							new XMIResourceFactoryImpl());
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+							.put(fileExtension, new XMIResourceFactoryImpl());
 				}
 				Resource res = resourceSet.createResource(modelURI);
 				res.load(Collections.EMPTY_MAP);
