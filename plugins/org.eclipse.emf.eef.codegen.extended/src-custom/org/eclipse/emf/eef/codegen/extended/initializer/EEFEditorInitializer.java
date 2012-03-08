@@ -136,7 +136,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 					return !genmodelExists;
 				}
 
-/**
+				/**
 				 * {@inheritDoc]
 				 * @see org.eclipse.emf.eef.codegen.flow.impl.InitializeGenModel#configureGenModel(org.eclipse.emf.codegen.ecore.genmodel.GenModel)
 				 */
