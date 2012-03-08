@@ -21,7 +21,7 @@
 [comment ===== Case : model = Reference(*) - view = ReferencesTable or AdvancedReferencesTable===== /]
 [query public validCaseForSimpleReference(editionElement : PropertiesEditionElement) : Boolean = 
 	(not editionElement.hasModelNavigation())
-	and editionElement.model.isReferenceMany() 
+	and editionElement.model.isReferenceMany()
 	and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable')) /]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSimpleReference())]
@@ -29,7 +29,7 @@
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
+private [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
@@ -73,7 +73,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 		}
 	
 	});
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new (new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter')/]([editionElement.metamodelTypeGetter()/]));
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter')/]([editionElement.metamodelTypeGetter()/]));
 [for (filter : BindingFilter | editionElement.bindingFilters)]
 	[filter.filterBody(editionElement,view,pec)/]
 [/for]
@@ -112,7 +112,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [comment ===== Case : model = Reference(*) in Simple Navigation - view = ReferencesTable or AdvancedReferencesTable===== /]
 [query public validCaseForMultipleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation() 
-	and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceMany() 
+	and (editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceMany())) 
 	and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable'))/]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForMultipleModelReference())]
@@ -120,7 +120,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
+private [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 
@@ -177,7 +177,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [comment ===== Case : model = Reference(1) - view = ReferencesTable or AdvancedReferencesTable===== /]
 [query public validCaseForSingleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation() 
-	and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentMany() and editionElement.model.isReferenceSingle() 
+	and (editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentMany() and editionElement.model.isReferenceSingle())) 
 	and (editionElement.representationName('ReferencesTable') or editionElement.representationName('AdvancedReferencesTable'))/]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSingleModelReference())]
@@ -185,7 +185,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 /**
  * Settings for [editionElement.name/] ReferencesTable
  */
-private	[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
+private [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
 
 [/template]
 

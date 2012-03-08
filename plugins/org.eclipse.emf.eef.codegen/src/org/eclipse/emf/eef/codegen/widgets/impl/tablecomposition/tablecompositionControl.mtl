@@ -120,7 +120,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [comment ===== Case : model = Containment(*) in Simple Navigation - view = TableComposition or AdvancedTableComposition===== /]
 [query public validCaseForMultipleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation() 
-	and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isContainmentMany() 
+	and (editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isContainmentMany())) 
 	and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition'))/]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForMultipleModelReference())]
@@ -222,7 +222,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [comment ===== Case : model = Containment(1) - view = TableComposition or AdvancedTableComposition===== /]
 [query public validCaseForSingleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation() 
-	and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentMany() and editionElement.model.isContainmentSingle() 
+	and (editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentMany() and editionElement.model.isContainmentSingle())) 
 	and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition'))/]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSingleModelReference())]

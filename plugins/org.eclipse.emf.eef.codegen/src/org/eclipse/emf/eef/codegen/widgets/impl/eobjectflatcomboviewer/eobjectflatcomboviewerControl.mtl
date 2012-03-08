@@ -107,7 +107,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [comment ===== Case : model = Simple Navigation A (0-1) -> B (0-1) -> C - view = EObjectFlatComboViewer or AdvancedEObjectFlatComboViewer ===== /]
 [query public validCaseForContainmentNavigation(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation()
-	and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle()
+	and (editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle()))
 	and (editionElement.representationName('EObjectFlatComboViewer') or editionElement.representationName('AdvancedEObjectFlatComboViewer')) /]
 
 [template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForContainmentNavigation())]
@@ -164,7 +164,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 }
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('EObjectFlatComboViewer'))))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
@@ -187,7 +187,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 }
 [/template]
 
-[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('AdvancedEObjectFlatComboViewer')))]
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.hasModelNavigation() and editionElement.navigation.oclIsKindOf(navigation::SimpleModelNavigation) and (editionElement.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and editionElement.model.isReferenceSingle() and (editionElement.representationName('AdvancedEObjectFlatComboViewer'))))]
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter')/]([editionElement.metamodelTypeGetter()/]));
 }
