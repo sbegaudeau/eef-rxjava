@@ -96,8 +96,8 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 			// init filters
 			
 			
-			basePart.addFilterToRooms(new ViewerFilter() {
-			
+			if (isAccessible(ConferenceViewsRepository.Site.Properties.rooms)) {
+				basePart.addFilterToRooms(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -107,10 +107,11 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 						return (element instanceof String && element.equals("")) || (element instanceof Room); //$NON-NLS-1$ 
 					}
 			
-			});
-			// Start of user code for additional businessfilters for rooms
-			// End of user code
-			
+				});
+				// Start of user code for additional businessfilters for rooms
+				
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -246,14 +247,14 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 				if (ConferenceViewsRepository.Site.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getSite_Name().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Site.Properties.documentation == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getSite_Documentation().getEAttributeType(), newValue);
 				}

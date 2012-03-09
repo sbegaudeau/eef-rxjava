@@ -169,14 +169,14 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				if (ConferenceViewsRepository.Room.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getRoom_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getRoom_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getRoom_Name().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Room.Properties.capacity == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getRoom_Capacity().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getRoom_Capacity().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getRoom_Capacity().getEAttributeType(), newValue);
 				}

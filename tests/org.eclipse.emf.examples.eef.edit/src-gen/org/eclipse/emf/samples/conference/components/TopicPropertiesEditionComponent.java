@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -151,7 +152,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 				}
 			}
 			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
-				basePart.setReferences(((Topic)semanticObject).getReferences());
+				basePart.setReferences((EList)msg.getNewValue());
 			}
 			
 			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
@@ -205,7 +206,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 				if (ConferenceViewsRepository.Topic.Properties.description == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Description().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Description().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_Description().getEAttributeType(), newValue);
 				}
@@ -219,7 +220,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 				if (ConferenceViewsRepository.Topic.Properties.documentation == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getTopic_Documentation().getEAttributeType(), newValue);
 				}

@@ -15,7 +15,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -26,6 +25,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.GENDER;
 import org.eclipse.emf.samples.conference.Person;
@@ -85,7 +85,7 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 				basePart.setEclipseCommiter(person.isEclipseCommiter());
 			}
 			if (isAccessible(ConferenceViewsRepository.Person.Identity.gender)) {
-				basePart.initGender((EEnum) ConferencePackage.eINSTANCE.getPerson_Gender().getEType(), person.getGender());
+				basePart.initGender(EEFUtils.choiceOfValues(person, ConferencePackage.eINSTANCE.getPerson_Gender()), person.getGender());
 			}
 			if (isAccessible(ConferenceViewsRepository.Person.EclipseStatus.isRegistered)) {
 				basePart.setIsRegistered(person.isIsRegistered());
@@ -255,42 +255,42 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 				if (ConferenceViewsRepository.Person.Identity.firstname == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_Firstname().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Person.Identity.lastname == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_Lastname().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Person.Identity.age == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Age().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Age().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_Age().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Person.Identity.gender == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_Gender().getEAttributeType(), newValue);
 				}
 				if (ConferenceViewsRepository.Person.EclipseStatus.isRegistered == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ConferencePackage.eINSTANCE.getPerson_IsRegistered().getEAttributeType(), newValue);
 				}
