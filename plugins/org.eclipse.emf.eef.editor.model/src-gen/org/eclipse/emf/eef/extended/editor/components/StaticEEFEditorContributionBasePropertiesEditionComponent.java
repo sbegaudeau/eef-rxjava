@@ -47,7 +47,7 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 	/**
 	 * Settings for views ReferencesTable
 	 */
-	private	ReferencesTableSettings viewsSettings;
+	private ReferencesTableSettings viewsSettings;
 	
 	
 	/**
@@ -84,24 +84,25 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 			}
 			// init filters
 			
-			basePart.addFilterToViews(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInViewsTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
-			// Start of user code for additional businessfilters for views
+			if (isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Binding.views)) {
+				basePart.addFilterToViews(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInViewsTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
+				// Start of user code for additional businessfilters for views
 			// End of user code
-			
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -209,7 +210,7 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 				if (EditorViewsRepository.StaticEEFEditorContribution.Naming.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractElementBinding_Name().getEAttributeType(), newValue);
 				}

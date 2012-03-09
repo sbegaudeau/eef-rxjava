@@ -108,38 +108,40 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 			// init filters
 			
 			
-			basePart.addFilterToFilteredPart(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof View);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for filteredPart
-			
-			// End of user code
-			
-			basePart.addFilterToContextualComponent(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof PropertiesEditionComponent); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for contextualComponent
+			if (isAccessible(EditorViewsRepository.PartFilter.Filter.filteredPart)) {
+				basePart.addFilterToFilteredPart(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof View);
+					}
+					
+				});
+				// Start of user code for additional businessfilters for filteredPart
 			
 			// End of user code
+			}
+			if (isAccessible(EditorViewsRepository.PartFilter.Filter.contextualComponent)) {
+				basePart.addFilterToContextualComponent(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof PropertiesEditionComponent); //$NON-NLS-1$ 
+					}
+					
+				});
+				// Start of user code for additional businessfilters for contextualComponent
 			
+			// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -270,14 +272,14 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 				if (EditorViewsRepository.PartFilter.Naming.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Name().getEAttributeType(), newValue);
 				}
 				if (EditorViewsRepository.PartFilter.Settings.mandatory == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().getEAttributeType(), newValue);
 				}
