@@ -57,12 +57,12 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	/**
 	 * Settings for views ReferencesTable
 	 */
-	private	ReferencesTableSettings viewsSettings;
+	private ReferencesTableSettings viewsSettings;
 	
 	/**
 	 * Settings for model ReferencesTable
 	 */
-	private	ReferencesTableSettings modelSettings;
+	private ReferencesTableSettings modelSettings;
 	
 	
 	/**
@@ -106,44 +106,46 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			
 			// init filters
 			
-			basePart.addFilterToViews(new ViewerFilter() {
+			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views)) {
+				basePart.addFilterToViews(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInViewsTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
+				// Start of user code for additional businessfilters for views
+				
+				// End of user code
+			}
+			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model)) {
+				basePart.addFilterToModel(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInModelTable((EObject)element));
+						return false;
+					}
+				
+				});
+				basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.Literals.ESTRUCTURAL_FEATURE));
+				// Start of user code for additional businessfilters for model
 			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInViewsTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
-			// Start of user code for additional businessfilters for views
-			
-			// End of user code
-			
-			basePart.addFilterToModel(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInModelTable((EObject)element));
-					return false;
-				}
-			
-			});
-			basePart.addFilterToModel(new EObjectStrictFilter(EcorePackage.Literals.ESTRUCTURAL_FEATURE));
-			// Start of user code for additional businessfilters for model
-			
-			// End of user code
-			
+				// End of user code
+			}
 			
 			// init values for referenced views
 			
@@ -287,14 +289,14 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().getEAttributeType(), newValue);
 				}
 				if (ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ComponentsPackage.eINSTANCE.getEEFElement_HelpID().getEAttributeType(), newValue);
 				}
