@@ -118,21 +118,23 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			
 			
 			
-			basePart.addFilterToPropertiesEditionContext(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof PropertiesEditionContext);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for propertiesEditionContext
-			// End of user code
-			
+			if (isAccessible(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext)) {
+				basePart.addFilterToPropertiesEditionContext(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof PropertiesEditionContext);
+					}
+					
+				});
+				// Start of user code for additional businessfilters for propertiesEditionContext
+				
+				// End of user code
+			}
 			
 			
 			
@@ -324,49 +326,49 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 				if (EEFGenViewsRepository.GenEditionContext.Parameters.basePackage == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass().getEAttributeType(), newValue);
 				}
 				if (EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass().getEAttributeType(), newValue);
 				}
