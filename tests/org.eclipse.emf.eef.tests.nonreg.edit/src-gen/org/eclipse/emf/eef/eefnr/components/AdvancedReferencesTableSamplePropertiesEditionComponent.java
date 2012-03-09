@@ -49,12 +49,12 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	/**
 	 * Settings for advancedreferencestableRequiredProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings advancedreferencestableRequiredPropertySettings;
+	private ReferencesTableSettings advancedreferencestableRequiredPropertySettings;
 	
 	/**
 	 * Settings for advancedreferencestableOptionalProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings advancedreferencestableOptionalPropertySettings;
+	private ReferencesTableSettings advancedreferencestableOptionalPropertySettings;
 	
 	
 	/**
@@ -91,42 +91,46 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 				basePart.initAdvancedreferencestableOptionalProperty(advancedreferencestableOptionalPropertySettings);
 			}
 			// init filters
-			basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInAdvancedreferencestableRequiredPropertyTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
-			// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
-			// End of user code
-			
-			basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInAdvancedreferencestableOptionalPropertyTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
-			// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
-			// End of user code
-			
+			if (isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty)) {
+				basePart.addFilterToAdvancedreferencestableRequiredProperty(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInAdvancedreferencestableRequiredPropertyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
+				
+				// End of user code
+			}
+			if (isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty)) {
+				basePart.addFilterToAdvancedreferencestableOptionalProperty(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInAdvancedreferencestableOptionalPropertyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
+				
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views

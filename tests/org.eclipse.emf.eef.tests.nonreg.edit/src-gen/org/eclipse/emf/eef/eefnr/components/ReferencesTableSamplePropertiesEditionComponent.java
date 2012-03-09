@@ -48,12 +48,12 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	/**
 	 * Settings for referencestableRequiredProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings referencestableRequiredPropertySettings;
+	private ReferencesTableSettings referencestableRequiredPropertySettings;
 	
 	/**
 	 * Settings for referencestableOptionalProperty ReferencesTable
 	 */
-	private	ReferencesTableSettings referencestableOptionalPropertySettings;
+	private ReferencesTableSettings referencestableOptionalPropertySettings;
 	
 	
 	/**
@@ -90,42 +90,46 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
 			}
 			// init filters
-			basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInReferencestableRequiredPropertyTable((EObject)element));
-					return false;
-				}
-			
-			});
-			basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
-			// Start of user code for additional businessfilters for referencestableRequiredProperty
-			// End of user code
-			
-			basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInReferencestableOptionalPropertyTable((EObject)element));
-					return element instanceof String && element.equals("");
-				}
-			
-			});
-			basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
-			// Start of user code for additional businessfilters for referencestableOptionalProperty
-			// End of user code
-			
+			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty)) {
+				basePart.addFilterToReferencestableRequiredProperty(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInReferencestableRequiredPropertyTable((EObject)element));
+						return false;
+					}
+				
+				});
+				basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for referencestableRequiredProperty
+				
+				// End of user code
+			}
+			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty)) {
+				basePart.addFilterToReferencestableOptionalProperty(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInReferencestableOptionalPropertyTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for referencestableOptionalProperty
+				
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
