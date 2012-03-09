@@ -99,22 +99,23 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 				basePart.setExplicit(view.isExplicit());
 			}
 			// init filters
-			basePart.addFilterToRepresentation(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for representation
-																																																						
-																																																						// End of user code
-			
+			if (isAccessible(ViewsViewsRepository.View.Properties.representation)) {
+				basePart.addFilterToRepresentation(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Widget); //$NON-NLS-1$ 
+					}
+					
+				});
+				// Start of user code for additional businessfilters for representation
+				
+				// End of user code
+			}
 			
 			
 			// init values for referenced views
@@ -241,14 +242,14 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 				if (ViewsViewsRepository.View.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}
 				if (ViewsViewsRepository.View.Properties.explicit == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), newValue);
 				}
