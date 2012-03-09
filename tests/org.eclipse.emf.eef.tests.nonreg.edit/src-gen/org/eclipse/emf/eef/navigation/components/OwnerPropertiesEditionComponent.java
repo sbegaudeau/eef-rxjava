@@ -74,12 +74,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	/**
 	 * Settings for multipleSampleForReferencesTable ReferencesTable
 	 */
-	private	ReferencesTableSettings multipleSampleForReferencesTableSettings;
+	private ReferencesTableSettings multipleSampleForReferencesTableSettings;
 	
 	/**
 	 * Settings for multipleSampleForAdvancedReferencesTable ReferencesTable
 	 */
-	private	ReferencesTableSettings multipleSampleForAdvancedReferencesTableSettings;
+	private ReferencesTableSettings multipleSampleForAdvancedReferencesTableSettings;
 	
 	/**
 	 * Settings for multipleSampleForFlatReferencesTables ReferencesTable
@@ -99,12 +99,12 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	/**
 	 * Settings for singleSampleForReferencesTable ReferencesTable
 	 */
-	private	ReferencesTableSettings singleSampleForReferencesTableSettings;
+	private ReferencesTableSettings singleSampleForReferencesTableSettings;
 	
 	/**
 	 * Settings for singleSampleForAdvancedReferencesTable ReferencesTable
 	 */
-	private	ReferencesTableSettings singleSampleForAdvancedReferencesTableSettings;
+	private ReferencesTableSettings singleSampleForAdvancedReferencesTableSettings;
 	
 	/**
 	 * Settings for singleSampleForFlatReferencesTable ReferencesTable
@@ -218,7 +218,8 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 			// init filters
 			
-			basePart.addFilterToMultipleSampleForTableComposition(new ViewerFilter() {
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition)) {
+				basePart.addFilterToMultipleSampleForTableComposition(new ViewerFilter() {
 			
 					/**
 					 * {@inheritDoc}
@@ -229,11 +230,13 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
 					}
 			
-			});
-			// Start of user code for additional businessfilters for multipleSampleForTableComposition
-			// End of user code
-			
-			basePart.addFilterToMultipleSampleForAdvancedTableComposition(new ViewerFilter() {
+				});
+				// Start of user code for additional businessfilters for multipleSampleForTableComposition
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition)) {
+				basePart.addFilterToMultipleSampleForAdvancedTableComposition(new ViewerFilter() {
 			
 					/**
 					 * {@inheritDoc}
@@ -244,59 +247,67 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
 					}
 			
-			});
-			// Start of user code for additional businessfilters for multipleSampleForAdvancedTableComposition
-			// End of user code
-			
-			basePart.addFilterToMultipleSampleForReferencesTable(new ViewerFilter() {
-			
+				});
+				// Start of user code for additional businessfilters for multipleSampleForAdvancedTableComposition
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable)) {
+				basePart.addFilterToMultipleSampleForReferencesTable(new ViewerFilter() {
+				
+						/**
+						 * {@inheritDoc}
+						 * 
+						 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+						 */
+						public boolean select(Viewer viewer, Object parentElement, Object element) {
+							return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
+					}
+				
+				});
+				// Start of user code for additional businessfilters for multipleSampleForReferencesTable
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable)) {
+				basePart.addFilterToMultipleSampleForAdvancedReferencesTable(new ViewerFilter() {
+				
+						/**
+						 * {@inheritDoc}
+						 * 
+						 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+						 */
+						public boolean select(Viewer viewer, Object parentElement, Object element) {
+							return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
+					}
+				
+				});
+				// Start of user code for additional businessfilters for multipleSampleForAdvancedReferencesTable
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable)) {
+				basePart.addFilterToMultipleSampleForFlatReferencesTable(new ViewerFilter() {
+				
 					/**
 					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for multipleSampleForReferencesTable
-			// End of user code
-			
-			basePart.addFilterToMultipleSampleForAdvancedReferencesTable(new ViewerFilter() {
-			
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for multipleSampleForAdvancedReferencesTable
-			// End of user code
-			
-			basePart.addFilterToMultipleSampleForFlatReferencesTable(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInMultipleSampleForFlatReferencesTableTable((EObject)element));
-					return element instanceof String && element.equals("");
-				}
-			
-			});
-			basePart.addFilterToMultipleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
-			// Start of user code for additional businessfilters for multipleSampleForFlatReferencesTables
-			// End of user code
-			
-			basePart.addFilterToSingleSampleForTableComposition(new ViewerFilter() {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInMultipleSampleForFlatReferencesTableTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToMultipleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
+				// Start of user code for additional businessfilters for multipleSampleForFlatReferencesTables
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition)) {
+				basePart.addFilterToSingleSampleForTableComposition(new ViewerFilter() {
 			
 					/**
 					 * {@inheritDoc}
@@ -311,11 +322,13 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						return element instanceof Resource;
 					}
 			
-			});
-			// Start of user code for additional businessfilters for singleSampleForTableComposition
-			// End of user code
-			
-			basePart.addFilterToSingleSampleForAdvancedTableComposition(new ViewerFilter() {
+				});
+				// Start of user code for additional businessfilters for singleSampleForTableComposition
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition)) {
+				basePart.addFilterToSingleSampleForAdvancedTableComposition(new ViewerFilter() {
 			
 					/**
 					 * {@inheritDoc}
@@ -330,82 +343,93 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 						return element instanceof Resource;
 					}
 			
-			});
-			// Start of user code for additional businessfilters for singleSampleForAdvancedTableComposition
-			// End of user code
+				});
+				// Start of user code for additional businessfilters for singleSampleForAdvancedTableComposition
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable)) {
+				basePart.addFilterToSingleSampleForReferencesTable(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInSingleSampleForReferencesTableTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
+				// Start of user code for additional businessfilters for singleSampleForReferencesTable
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable)) {
+				basePart.addFilterToSingleSampleForAdvancedReferencesTable(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInSingleSampleForAdvancedReferencesTableTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
+				// Start of user code for additional businessfilters for singleSampleForAdvancedReferencesTable
+				
+				// End of user code
+			}
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable)) {
+				basePart.addFilterToSingleSampleForFlatReferencesTable(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInSingleSampleForFlatReferencesTableTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToSingleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
+				// Start of user code for additional businessfilters for singleSampleForFlatReferencesTable
+				
+				// End of user code
+			}
 			
-			basePart.addFilterToSingleSampleForReferencesTable(new ViewerFilter() {
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer)) {
+				basePart.addFilterToSingleReferencesForEObjectFlatComboViewer(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
+					}
+				
+				});
+				// Start of user code for additional businessfilters for singleReferenceForEObjectFlatComboViewer
+				
+				// End of user code
+			}
 			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInSingleSampleForReferencesTableTable((EObject)element));
-					return element instanceof String && element.equals("");
-				}
-			
-			});
-			basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
-			// Start of user code for additional businessfilters for singleSampleForReferencesTable
-			// End of user code
-			
-			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInSingleSampleForAdvancedReferencesTableTable((EObject)element));
-					return element instanceof String && element.equals("");
-				}
-			
-			});
-			basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
-			// Start of user code for additional businessfilters for singleSampleForAdvancedReferencesTable
-			// End of user code
-			
-			basePart.addFilterToSingleSampleForFlatReferencesTable(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInSingleSampleForFlatReferencesTableTable((EObject)element));
-					return element instanceof String && element.equals("");
-				}
-			
-			});
-			basePart.addFilterToSingleSampleForFlatReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
-			// Start of user code for additional businessfilters for singleSampleForFlatReferencesTable
-			// End of user code
-			
-			
-			basePart.addFilterToSingleReferencesForEObjectFlatComboViewer(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					return (element instanceof String && element.equals("")) || (element instanceof Owner); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for singleReferenceForEObjectFlatComboViewer
-			// End of user code
-			
-			
-			basePart.addFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(new EObjectFilter(NavigationPackage.Literals.OWNER));
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer)) {
+				basePart.addFilterToSingleReferencesForAdvancedEObjectFlatComboViewer(new EObjectFilter(NavigationPackage.Literals.OWNER));
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -782,7 +806,7 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 				if (NavigationViewsRepository.Owner.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}

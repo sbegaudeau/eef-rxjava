@@ -91,24 +91,26 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 			}
 			// init filters
 			
-			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!deferedFlatReferencesTableSamplePart.isContainedInFlatReferencesTableSampleEditorTable((EObject)element));
-					return false;
-				}
-			
-			});
-			deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
-			// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-			// End of user code
-			
+			if (isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor)) {
+				deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!deferedFlatReferencesTableSamplePart.isContainedInFlatReferencesTableSampleEditorTable((EObject)element));
+						return false;
+					}
+				
+				});
+				deferedFlatReferencesTableSamplePart.addFilterToFlatReferencesTableSampleEditor(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
+				
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -203,7 +205,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 				if (NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
