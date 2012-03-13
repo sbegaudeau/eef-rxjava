@@ -63,8 +63,9 @@ public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvi
 	 */
 	public Object[] getElements(Object object) {
 		if (object instanceof EEFEditorSettings) {
-			EList<Resource> resources = new BasicEList<Resource>(((EEFEditorSettings)object).getSource().eResource().getResourceSet().getResources());
-            resources.retainAll(this.choiceOfValues);
+			EList<Resource> resources = new BasicEList<Resource>(((EEFEditorSettings)object).getSource()
+					.eResource().getResourceSet().getResources());
+			resources.retainAll(this.choiceOfValues);
 			return resources.toArray();
 		}
 		return super.getElements(object);
@@ -113,7 +114,10 @@ public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvi
 		if (choiceOfValues2 instanceof Collection<?>) {
 			for (Object next : ((Collection<?>)choiceOfValues2)) {
 				while (next != null) {
-					if (next instanceof EObject) {
+					if (next instanceof Resource) {
+						choiceOfValues.add(next);
+						next = null;
+					} else if (next instanceof EObject) {
 						choiceOfValues.add(next);
 						EObject eContainer = ((EObject)next).eContainer();
 						if (eContainer == null) {
@@ -121,9 +125,6 @@ public class AdvancedEEFEditorContentProvider extends AdapterFactoryContentProvi
 						} else {
 							next = eContainer;
 						}
-					} else if (next instanceof Resource) {
-						choiceOfValues.add(next);
-						next = null;
 					} else if ("".equals(next)) {
 						choiceOfValues.add(next);
 						next = null;
