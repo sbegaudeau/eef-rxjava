@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.23 2012/01/31 13:56:15 sbouchet Exp $
+ $Id: promoter.xml,v 1.24 2012/03/14 13:50:39 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -56,7 +56,6 @@ Ant-Contrib is required. Download it from http://sourceforge.net/projects/ant-co
 then place it in the following location. You can also redefine the path in the promote.properties file:
 
 $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contrib.jar
-	or
 
 	Or, to download this automatically, see $${relengCommonBuilderDir}/build.properties#thirdPartyDownloadLicenseAcceptance.
 </fail>
@@ -136,6 +135,14 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 	<target name="main" depends="init,check.property.file.location,load.properties,init.properties">
 
+		<!-- Publish into drops ( Zips ) -->
+		<antcall target="-publish.build.drops" inheritall="true" />
+
+		<!-- Publish p2 repository -->
+		<antcall target="-publish.build.repository" inheritall="true" />
+	</target>
+
+	<target name="-publish.build.drops">
 		<property name="build.drop.directory" location="${downloads.area}/downloads/drops/${version}/${build.qualifier}" />
 
 		<delete dir="${build.drop.directory}" />
@@ -156,8 +163,8 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			<fileset dir="${build.drop.directory}" />
 		</checksum>
 		<!-- copy buildlog 
-		<copy tofile="${build.drop.directory}/buildlog.txt" file="${saved.build.root}/log" />
-		-->
+				<copy tofile="${build.drop.directory}/buildlog.txt" file="${saved.build.root}/log" />
+				-->
 
 		<fileset id="drop.resources" dir="${build.drop.directory}">
 			<or>
@@ -171,6 +178,9 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			<fileset refid="drop.resources" />
 		</chgrp>
 
+	</target>
+
+	<target name="-publish.build.repository">
 		<!-- determine the base version -->
 		<propertyregex property="base.version" input="${version}" regexp="^(\d+\.\d+)\.\d+.*$" select="\1" casesensitive="false" />
 
@@ -199,10 +209,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<condition property="composite.type" value="Nightly">
 			<matches pattern="^N" string="${build.qualifier}" />
 		</condition>
-		<antcall target="-publish.build.repository" inheritall="true" />
-	</target>
-
-	<target name="-publish.build.repository" if="composite.repository.base">
+		
 		<property name="composite.repository.directory" location="${downloads.area}/updates/${composite.repository.base}" />
 		<property name="composite.repository.url" value="file:/${composite.repository.directory}" />
 		<property name="build.repository.directory" location="${composite.repository.directory}/${build.qualifier}" />
@@ -210,20 +217,26 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<delete dir="${build.repository.directory}" />
 		<mkdir dir="${build.repository.directory}" />
 
+		<!-- unzip update site to final location -->
 		<unzip dest="${build.repository.directory}">
 			<fileset dir="${build.root}">
 				<filename name="*.zip" />
 			</fileset>
 		</unzip>
 
-		<!-- Adding download stats to the repository -->
+		<!-- adding p2.index -->
+		<echo file="${build.repository.directory}/p2.index" message="version = 1
+metadata.repository.factory.order = content.xml,\!
+artifact.repository.factory.order = artifacts.xml,\!" />
+
+		<!-- Adding p2.mirrorsURL and p2.statsURI to the repository -->
 		<unzip dest="${build.repository.directory}">
 			<fileset file="${build.repository.directory}/artifacts.jar" />
 		</unzip>
 
 		<move file="${build.repository.directory}/artifacts.xml" tofile="${build.repository.directory}/artifacts.original.xml" />
 
-		<xslt style="addDownloadStats.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml" />
+		<xslt style="p2.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml" />
 
 		<zip destfile="${build.repository.directory}/artifacts.jar" basedir="${build.repository.directory}" includes="artifacts.xml" />
 
@@ -237,6 +250,18 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			<property name="child.repository" value="${build.qualifier}" />
 			<property name="composite.name" value="EEF ${base.version} ${composite.type} Update Site" />
 		</ant>
+
+		<!-- Add p2.index on top of composite repo is needed -->
+		<if>
+			<not>
+				<available file="${composite.repository.directory}/p2.index" type="file" />
+			</not>
+			<then>
+				<echo file="${composite.repository.directory}/p2.index" message="version=1
+metadata.repository.factory.order=compositeContent.jar,!
+artifact.repository.factory.order=compositeArtifacts.jar,!" />
+			</then>
+		</if>
 
 		<fileset id="repository.resources" dir="${composite.repository.directory}">
 			<or>

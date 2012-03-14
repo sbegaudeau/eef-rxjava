@@ -13,25 +13,25 @@
 	<description>
 		To install these features, point Eclipse at this site.
 	</description>
-	<feature id="org.eclipse.emf.eef.sdk" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.sdk-feature" version="0.0.0">
 		<category name="eef.sdk" />
 	</feature>
-	<feature id="org.eclipse.emf.eef.edt" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.edt-feature" version="0.0.0">
 		<category name="eef.features" />
 	</feature>
-	<feature id="org.eclipse.emf.eef.runtime" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.runtime-feature" version="0.0.0">
 		<category name="eef.features" />
 	</feature>
-	<feature id="org.eclipse.emf.eef.codegen.ecore" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.codegen.ecore-feature" version="0.0.0">
 		<category name="eef.extension" />
 	</feature>
-	<feature id="org.eclipse.emf.eef.extended" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.extended-feature" version="0.0.0">
 		<category name="eef.extension" />
 	</feature>
-	<feature id="org.eclipse.emf.eef.richtext.feature" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.richtext-feature" version="0.0.0">
 		<category name="eef.extension" />
 	</feature>
-	<feature id="org.eclipse.emf.eef.indigo" version="0.0.0">
+	<feature id="org.eclipse.emf.eef.indigo-feature" version="0.0.0">
 		<category name="eef.sdk" />
 	</feature>
 	<category-def name="eef.sdk" label="EEF SDK">
