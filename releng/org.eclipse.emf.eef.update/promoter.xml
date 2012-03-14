@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.24 2012/03/14 13:50:39 sbouchet Exp $
+ $Id: promoter.xml,v 1.25 2012/03/14 14:56:49 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -58,7 +58,7 @@ then place it in the following location. You can also redefine the path in the p
 $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contrib.jar
 
 	Or, to download this automatically, see $${relengCommonBuilderDir}/build.properties#thirdPartyDownloadLicenseAcceptance.
-</fail>
+		</fail>
 	</target>
 
 	<target name="get.ant-contrib" if="thirdPartyDownloadLicenseAcceptanceOK">
@@ -225,8 +225,8 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</unzip>
 
 		<!-- adding p2.index -->
-		<echo file="${build.repository.directory}/p2.index" message="version = 1
-metadata.repository.factory.order = content.xml,\!
+		<echo file="${build.repository.directory}/p2.index" message="version = 1${line.separator}
+metadata.repository.factory.order = content.xml,\!${line.separator}
 artifact.repository.factory.order = artifacts.xml,\!" />
 
 		<!-- Adding p2.mirrorsURL and p2.statsURI to the repository -->
@@ -240,8 +240,10 @@ artifact.repository.factory.order = artifacts.xml,\!" />
 
 		<zip destfile="${build.repository.directory}/artifacts.jar" basedir="${build.repository.directory}" includes="artifacts.xml" />
 
+		<!--
 		<delete file="${build.repository.directory}/artifacts.xml" />
 		<delete file="${build.repository.directory}/artifacts.original.xml" />
+		-->
 		<!-- END download stats -->
 
 		<!-- Add to composite repo -->
@@ -257,8 +259,8 @@ artifact.repository.factory.order = artifacts.xml,\!" />
 				<available file="${composite.repository.directory}/p2.index" type="file" />
 			</not>
 			<then>
-				<echo file="${composite.repository.directory}/p2.index" message="version=1
-metadata.repository.factory.order=compositeContent.jar,!
+				<echo file="${composite.repository.directory}/p2.index" message="version=1${line.separator}
+metadata.repository.factory.order=compositeContent.jar,!${line.separator}
 artifact.repository.factory.order=compositeArtifacts.jar,!" />
 			</then>
 		</if>
