@@ -12,12 +12,12 @@
 		<maven>3.0</maven>
 	</prerequisites>
 
-<!--	<parent>
+	<parent>
 		<groupId>org.eclipse</groupId>
 		<artifactId>eclipse-parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
--->
+
 	<groupId>org.eclipse.emf</groupId>
 	<artifactId>org.eclipse.emf.eef.releng.parent</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
@@ -354,4 +354,10 @@
 		</pluginManagement>
 	</build>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven.eclipse.org</id>
+			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
