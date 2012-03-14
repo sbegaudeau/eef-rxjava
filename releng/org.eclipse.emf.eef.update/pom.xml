@@ -165,12 +165,6 @@
 				</plugins>
 			</build>
 
-			<pluginRepositories>
-				<pluginRepository>
-					<id>maven.eclipse.org</id>
-					<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
-				</pluginRepository>
-			</pluginRepositories>
 		</profile>
 	</profiles>
 </project>
