@@ -10,7 +10,7 @@
         Obeo - initial API and implementation
  -->
 <feature
-      id="org.eclipse.emf.eef.indigo"
+      id="org.eclipse.emf.eef.indigo-feature"
       label="%featureName"
       version="1.1.0.qualifier"
       provider-name="%providerName"
@@ -38,11 +38,11 @@ http://www.eclipse.org/legal/epl-v10.html
    </url>
 
    <includes
-         id="org.eclipse.emf.eef.runtime"
+         id="org.eclipse.emf.eef.runtime-feature"
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.eef.edt"
+         id="org.eclipse.emf.eef.edt-feature"
          version="0.0.0"/>
 
    <plugin
