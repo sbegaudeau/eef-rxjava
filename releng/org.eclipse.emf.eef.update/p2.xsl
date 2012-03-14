@@ -7,6 +7,7 @@
 
 	<!-- add p2.mirrorsURL and p2.statsURI properties -->
 	<xsl:template match="repository/properties">
+		<properties size='{@size+2}'>
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates/>
@@ -17,10 +18,11 @@
 			<xsl:text>&#10;</xsl:text>
 			<xsl:element name="property">
 				<xsl:attribute name="name">p2.statsURI</xsl:attribute>
-				<xsl:attribute name="value"><xsl:value-of select="$statsURI"/></xsl:attribute>
+				<xsl:attribute name="value">http://download.eclipse.org/stats</xsl:attribute>
 			</xsl:element>
 			<xsl:text>&#10;</xsl:text>
 		</xsl:copy>
+		</properties>
 	</xsl:template>
 
 	<!-- add p2.mirrorsURL property -->
@@ -29,7 +31,7 @@
 		<xsl:variable name="artifactId">
 			<xsl:value-of select="parent::artifact/@id"/>
 		</xsl:variable>
-
+		<properties size='{@size+1}'>
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates/>
@@ -39,6 +41,7 @@
 			</xsl:element>
 			<xsl:text>&#10;</xsl:text>
 		</xsl:copy>
+		</properties>
 	</xsl:template>
 
 	<!-- copy everything else -->

@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.25 2012/03/14 14:56:49 sbouchet Exp $
+ $Id: promoter.xml,v 1.26 2012/03/14 15:20:05 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -225,9 +225,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</unzip>
 
 		<!-- adding p2.index -->
-		<echo file="${build.repository.directory}/p2.index" message="version = 1${line.separator}
-metadata.repository.factory.order = content.xml,\!${line.separator}
-artifact.repository.factory.order = artifacts.xml,\!" />
+		<echo file="${build.repository.directory}/p2.index" message="version = 1${line.separator}metadata.repository.factory.order = content.xml,\!${line.separator}artifact.repository.factory.order = artifacts.xml,\!" />
 
 		<!-- Adding p2.mirrorsURL and p2.statsURI to the repository -->
 		<unzip dest="${build.repository.directory}">
@@ -259,9 +257,7 @@ artifact.repository.factory.order = artifacts.xml,\!" />
 				<available file="${composite.repository.directory}/p2.index" type="file" />
 			</not>
 			<then>
-				<echo file="${composite.repository.directory}/p2.index" message="version=1${line.separator}
-metadata.repository.factory.order=compositeContent.jar,!${line.separator}
-artifact.repository.factory.order=compositeArtifacts.jar,!" />
+				<echo file="${composite.repository.directory}/p2.index" message="version=1${line.separator}metadata.repository.factory.order=compositeContent.jar,!${line.separator}artifact.repository.factory.order=compositeArtifacts.jar,!" />
 			</then>
 		</if>
 
