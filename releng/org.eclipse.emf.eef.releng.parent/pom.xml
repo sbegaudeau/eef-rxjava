@@ -354,10 +354,10 @@
 		</pluginManagement>
 	</build>
 
-	<pluginRepositories>
-		<pluginRepository>
+	<repositories>
+		<repository>
 			<id>maven.eclipse.org</id>
 			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
+		</repository>
+	</repositories>
 </project>
