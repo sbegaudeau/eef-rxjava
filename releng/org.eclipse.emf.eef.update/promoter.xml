@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.28 2012/03/15 09:39:46 sbouchet Exp $
+ $Id: promoter.xml,v 1.29 2012/03/15 10:05:48 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -272,6 +272,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 			<or>
 				<filename name="compositeContent.*" />
 				<filename name="compositeArtifacts.*" />
+				<filename name="p2.index" />
 				<filename name="${build.qualifier}/**" />
 			</or>
 		</fileset>
