@@ -72,7 +72,7 @@
 									message="#EEF promotion process.${line.separator}build.alias=${BUILD_ALIAS}${line.separator}build.qualifier=${env.BUILD_TYPE}${buildQualifier}${line.separator}version=${unqualifiedVersion}"/>
 								<!-- copy necessary scripts to archive location -->
 								<copy file="p2.xsl" todir="${project.build.directory}/promotion"/>
-								<copy file="promoter.xml" todir="${project.build.directory}/promotion" />
+								<copy file="promoter.xml" todir="${project.build.directory}/promotion"/>
 							</tasks>
 						</configuration>
 					</execution>
@@ -164,7 +164,12 @@
 					</plugin>
 				</plugins>
 			</build>
-
+			<pluginRepositories>
+				<pluginRepository>
+					<id>maven.eclipse.org</id>
+					<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+				</pluginRepository>
+			</pluginRepositories>
 		</profile>
 	</profiles>
 </project>
