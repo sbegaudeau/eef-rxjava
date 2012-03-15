@@ -9,11 +9,11 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.26 2012/03/14 15:20:05 sbouchet Exp $
+ $Id: promoter.xml,v 1.27 2012/03/15 09:20:58 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
-	This promotion script helps to automatically promote the last sucessful build of tycho based EEF build to correct location.
+	This promotion script helps to automatically promote the last sucessful build of tycho based build to correct location.
 	
 	Be sure to use at least ant 1.8.2 to launch this script.
 	
@@ -22,16 +22,23 @@
 	$> export ANT_HOME=/shared/common/apache-ant-1.8.2/ 
 	-->
 
-	<property name="downloads.area" value="/home/data/httpd/download.eclipse.org/modeling/emft/eef" />
+	
+	<property name="downloads.project.root" value="modeling/emft/eef" />
 	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful/archive/org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
+	<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
+	<property name="project.name" value="EEF"/>
+	<property name="final.updatesite.name" value="emf-eef-Update"/>
+	<property name="build.root.updatesite.name" value="org.eclipse.emf.eef.update.zip"/>
 
-	<property name="promoter.properties.file.name" value="promote.properties" />
-	<property name="property.file.location" value="${build.root}/promotion/${promoter.properties.file.name}" />
 	<property name="group.owner" value="modeling.emf.eef" />
 
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
 	<property name="thirdPartyDownloadLicenseAcceptance" value="Y" />
-	<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
+
+	<property name="downloads.root" value="/home/data/httpd/download.eclipse.org/" />
+	<property name="downloads.area" value="${downloads.root}/${downloads.project.root}" />
+	<property name="promoter.properties.file.name" value="promote.properties" />
+	<property name="property.file.location" value="${build.root}/promotion/${promoter.properties.file.name}" />
 
 	<!--
 	most of the code comes from Athena CBI.
@@ -156,15 +163,12 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</copy>
 
 		<!-- rename UpdateSite zip package -->
-		<move tofile="${build.drop.directory}/emf-eef-Update-${final.version.qualifier}.zip" file="${build.drop.directory}/org.eclipse.emf.eef.update.zip" />
+		<move tofile="${build.drop.directory}/${final.updatesite.name}-${final.version.qualifier}.zip" file="${build.drop.directory}/${build.root.updatesite.name}" />
 
 		<!-- genereate md5 checksums -->
 		<checksum algorithm="MD5" fileext=".md5" format="MD5SUM">
 			<fileset dir="${build.drop.directory}" />
 		</checksum>
-		<!-- copy buildlog 
-				<copy tofile="${build.drop.directory}/buildlog.txt" file="${saved.build.root}/log" />
-				-->
 
 		<fileset id="drop.resources" dir="${build.drop.directory}">
 			<or>
@@ -209,10 +213,11 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<condition property="composite.type" value="Nightly">
 			<matches pattern="^N" string="${build.qualifier}" />
 		</condition>
-		
+
 		<property name="composite.repository.directory" location="${downloads.area}/updates/${composite.repository.base}" />
 		<property name="composite.repository.url" value="file:/${composite.repository.directory}" />
 		<property name="build.repository.directory" location="${composite.repository.directory}/${build.qualifier}" />
+		<property name="repository.path" location="${downloads.project.root}/updates/${composite.repository.base}/${build.qualifier}" />
 
 		<delete dir="${build.repository.directory}" />
 		<mkdir dir="${build.repository.directory}" />
@@ -234,7 +239,9 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 		<move file="${build.repository.directory}/artifacts.xml" tofile="${build.repository.directory}/artifacts.original.xml" />
 
-		<xslt style="p2.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml" />
+		<xslt style="p2.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml">
+			<param name="p2.mirrorsURL" expression="http://www.eclipse.org/downloads/download.php?file=${repository.path}&amp;format=xml" />
+		</xslt>
 
 		<zip destfile="${build.repository.directory}/artifacts.jar" basedir="${build.repository.directory}" includes="artifacts.xml" />
 
@@ -248,7 +255,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<ant antfile="/shared/modeling/tools/promotion/manage-composite.xml" target="add" dir="${composite.repository.directory}">
 			<property name="user.dir" value="${composite.repository.directory}" />
 			<property name="child.repository" value="${build.qualifier}" />
-			<property name="composite.name" value="EEF ${base.version} ${composite.type} Update Site" />
+			<property name="composite.name" value="${project.name} ${base.version} ${composite.type} Update Site" />
 		</ant>
 
 		<!-- Add p2.index on top of composite repo is needed -->
