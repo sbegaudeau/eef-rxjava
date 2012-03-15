@@ -85,6 +85,11 @@
 					<layout>p2</layout>
 					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120119162704/repository/</url>
 				</repository>
+				<repository>
+					<id>epf</id>
+					<layout>p2</layout>
+					<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
+				</repository>
 			</repositories>
 		</profile>
 		<profile>
