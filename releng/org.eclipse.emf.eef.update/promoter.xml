@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.29 2012/03/15 10:05:48 sbouchet Exp $
+ $Id: promoter.xml,v 1.30 2012/03/15 10:29:47 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -142,10 +142,10 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 
 	<target name="main" depends="init,check.property.file.location,load.properties,init.properties">
 
-		<!-- Publish into drops ( Zips ) -->
+		<!-- publish into drops ( Zips ) -->
 		<antcall target="-publish.build.drops" inheritall="true" />
 
-		<!-- Publish p2 repository -->
+		<!-- publish p2 repository -->
 		<antcall target="-publish.build.repository" inheritall="true" />
 	</target>
 
@@ -217,7 +217,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<property name="composite.repository.directory" location="${downloads.area}/updates/${composite.repository.base}" />
 		<property name="composite.repository.url" value="file:/${composite.repository.directory}" />
 		<property name="build.repository.directory" location="${composite.repository.directory}/${build.qualifier}" />
-		<property name="repository.path" location="${downloads.project.root}/updates/${composite.repository.base}/${build.qualifier}" />
+		<property name="mirror.repository.path" location="${downloads.project.root}/updates/${composite.repository.base}/${build.qualifier}" />
 
 		<delete dir="${build.repository.directory}" />
 		<mkdir dir="${build.repository.directory}" />
@@ -232,33 +232,32 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<!-- adding p2.index -->
 		<echo file="${build.repository.directory}/p2.index" message="version = 1${line.separator}metadata.repository.factory.order = content.xml,\!${line.separator}artifact.repository.factory.order = artifacts.xml,\!" />
 
-		<!-- Adding p2.mirrorsURL and p2.statsURI to the repository -->
+		<!-- adding p2.mirrorsURL and p2.statsURI to the repository -->
 		<unzip dest="${build.repository.directory}">
 			<fileset file="${build.repository.directory}/artifacts.jar" />
 		</unzip>
 
 		<move file="${build.repository.directory}/artifacts.xml" tofile="${build.repository.directory}/artifacts.original.xml" />
+		
+		<echo>http://www.eclipse.org/downloads/download.php?file=${mirror.repository.path}&amp;format=xml</echo>
 
 		<xslt style="p2.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml">
-			<param name="mirrorsURL" expression="http://www.eclipse.org/downloads/download.php?file=${repository.path}&amp;format=xml" />
+			<param name="mirrorsURL" expression="http://www.eclipse.org/downloads/download.php?file=${mirror.repository.path}&amp;format=xml" />
 		</xslt>
 
 		<zip destfile="${build.repository.directory}/artifacts.jar" basedir="${build.repository.directory}" includes="artifacts.xml" />
 
-		<!--
 		<delete file="${build.repository.directory}/artifacts.xml" />
 		<delete file="${build.repository.directory}/artifacts.original.xml" />
-		-->
-		<!-- END download stats -->
 
-		<!-- Add to composite repo -->
+		<!-- add to composite repo -->
 		<ant antfile="/shared/modeling/tools/promotion/manage-composite.xml" target="add" dir="${composite.repository.directory}">
 			<property name="user.dir" value="${composite.repository.directory}" />
 			<property name="child.repository" value="${build.qualifier}" />
 			<property name="composite.name" value="${project.name} ${base.version} ${composite.type} Update Site" />
 		</ant>
 
-		<!-- Add p2.index on top of composite repo is needed -->
+		<!-- add p2.index on top of composite repo is needed -->
 		<if>
 			<not>
 				<available file="${composite.repository.directory}/p2.index" type="file" />
