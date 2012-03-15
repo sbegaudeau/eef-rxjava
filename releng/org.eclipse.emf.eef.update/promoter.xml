@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.30 2012/03/15 10:29:47 sbouchet Exp $
+ $Id: promoter.xml,v 1.31 2012/03/15 13:27:49 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -217,7 +217,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<property name="composite.repository.directory" location="${downloads.area}/updates/${composite.repository.base}" />
 		<property name="composite.repository.url" value="file:/${composite.repository.directory}" />
 		<property name="build.repository.directory" location="${composite.repository.directory}/${build.qualifier}" />
-		<property name="mirror.repository.path" location="${downloads.project.root}/updates/${composite.repository.base}/${build.qualifier}" />
+		<property name="mirror.repository.path" value="${downloads.project.root}/updates/${composite.repository.base}/${build.qualifier}" />
 
 		<delete dir="${build.repository.directory}" />
 		<mkdir dir="${build.repository.directory}" />
@@ -238,8 +238,6 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</unzip>
 
 		<move file="${build.repository.directory}/artifacts.xml" tofile="${build.repository.directory}/artifacts.original.xml" />
-		
-		<echo>http://www.eclipse.org/downloads/download.php?file=${mirror.repository.path}&amp;format=xml</echo>
 
 		<xslt style="p2.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml">
 			<param name="mirrorsURL" expression="http://www.eclipse.org/downloads/download.php?file=${mirror.repository.path}&amp;format=xml" />
