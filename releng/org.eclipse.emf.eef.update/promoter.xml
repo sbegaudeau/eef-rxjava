@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.31 2012/03/15 13:27:49 sbouchet Exp $
+ $Id: promoter.xml,v 1.32 2012/03/15 13:45:49 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -238,6 +238,8 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		</unzip>
 
 		<move file="${build.repository.directory}/artifacts.xml" tofile="${build.repository.directory}/artifacts.original.xml" />
+		
+		<echo>http://www.eclipse.org/downloads/download.php?file=${mirror.repository.path}&amp;format=xml</echo>
 
 		<xslt style="p2.xsl" in="${build.repository.directory}/artifacts.original.xml" out="${build.repository.directory}/artifacts.xml">
 			<param name="mirrorsURL" expression="http://www.eclipse.org/downloads/download.php?file=${mirror.repository.path}&amp;format=xml" />
