@@ -21,9 +21,11 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.generator.GenClassGeneratorAdapter;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.codegen.util.GIFEmitter;
+import org.eclipse.emf.codegen.util.ImportManager;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
 
@@ -32,24 +34,20 @@ import org.eclipse.emf.eef.codegen.ecore.EMFCodegenPlugin;
  */
 public class GenClassWrapper {
 
-	public String getInternalQualifiedInterfaceName(GenClass genClass,
-			Boolean includeTemplateArguments) {
+	public String getInternalQualifiedInterfaceName(GenClass genClass, Boolean includeTemplateArguments) {
 		if (genClass.isDynamic()) {
 			GenClass baseGenClass = genClass.getBaseGenClass();
 			return baseGenClass == null ? "org.eclipse.emf.ecore.EObject"
-					: getInternalQualifiedInterfaceName((GenClass) baseGenClass);
+					: getInternalQualifiedInterfaceName((GenClass)baseGenClass);
 		}
 
 		return genClass.getEcoreClass().getInstanceClassName() != null ? includeTemplateArguments ? genClass
-				.getEcoreClass().getInstanceTypeName() : genClass
-				.getEcoreClass().getInstanceClassName()
-				: genClass.getGenPackage().getInterfacePackageName() + "."
-						+ genClass.getInterfaceName();
+				.getEcoreClass().getInstanceTypeName() : genClass.getEcoreClass().getInstanceClassName()
+				: genClass.getGenPackage().getInterfacePackageName() + "." + genClass.getInterfaceName();
 	}
 
 	public String getInternalQualifiedInterfaceName(GenClass genClass) {
-		return getInternalQualifiedInterfaceName(
-				genClass,
+		return getInternalQualifiedInterfaceName(genClass,
 				getEffectiveComplianceLevel(genClass).getValue() >= GenJDKLevel.JDK50);
 	}
 
@@ -62,15 +60,15 @@ public class GenClassWrapper {
 	}
 
 	public GenFeature getCreateFeature(Object childCreationData) {
-		return ((ChildCreationData) childCreationData).createFeature;
+		return ((ChildCreationData)childCreationData).createFeature;
 	}
 
 	public GenFeature getDelegatedFeature(Object childCreationData) {
-		return ((ChildCreationData) childCreationData).delegatedFeature;
+		return ((ChildCreationData)childCreationData).delegatedFeature;
 	}
 
 	public GenClassifier getCreateClassifier(Object childCreationData) {
-		return ((ChildCreationData) childCreationData).createClassifier;
+		return ((ChildCreationData)childCreationData).createClassifier;
 	}
 
 	public String getDefaultOffsetCorrectionField(GenClass genClass) {
@@ -93,10 +91,8 @@ public class GenClassWrapper {
 		return genClass.implementsAny(genClass.getEInverseRemoveGenFeatures());
 	}
 
-	public boolean implementsAnyEBasicRemoveFromContainerGenFeatures(
-			GenClass genClass) {
-		return genClass.implementsAny(genClass
-				.getEBasicRemoveFromContainerGenFeatures());
+	public boolean implementsAnyEBasicRemoveFromContainerGenFeatures(GenClass genClass) {
+		return genClass.implementsAny(genClass.getEBasicRemoveFromContainerGenFeatures());
 	}
 
 	public boolean implementsAnyEGetGenFeatures(GenClass genClass) {
@@ -116,43 +112,36 @@ public class GenClassWrapper {
 	}
 
 	/**
-	 * 
 	 * @param genClass
 	 * @param extendedGenClass
 	 * @return
 	 */
-	public boolean overridesExtendedGenOperations(GenClass genClass,
-			GenClass extendedGenClass) {
-		return !genClass.getOverrideGenOperations(
-				extendedGenClass.getImplementedGenOperations(),
+	public boolean overridesExtendedGenOperations(GenClass genClass, GenClass extendedGenClass) {
+		return !genClass.getOverrideGenOperations(extendedGenClass.getImplementedGenOperations(),
 				genClass.getImplementedGenOperations()).isEmpty();
 	}
 
 	/**
-	 * 
 	 * @param genClass
 	 * @param extendedGenClass
 	 * @return
 	 */
 	public boolean overridesGenOperations(GenClass genClass) {
-		return !genClass.getOverrideGenOperations(
-				genClass.getExtendedGenOperations(),
+		return !genClass.getOverrideGenOperations(genClass.getExtendedGenOperations(),
 				genClass.getImplementedGenOperations()).isEmpty();
 	}
 
 	/**
 	 * Remplace l'invocation de
-	 * <code>CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())</code>
-	 * .
+	 * <code>CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())</code> .
 	 * 
 	 * @param genClass
 	 * @param genOperation
 	 * @return
 	 */
-	public String getUniqueNameUppercase(GenClass genClass,
-			GenOperation genOperation) {
-		return CodeGenUtil.upperName(genClass.getUniqueName(genOperation),
-				genClass.getGenModel().getLocale());
+	public String getUniqueNameUppercase(GenClass genClass, GenOperation genOperation) {
+		return CodeGenUtil
+				.upperName(genClass.getUniqueName(genOperation), genClass.getGenModel().getLocale());
 	}
 
 	/**
@@ -190,5 +179,34 @@ public class GenClassWrapper {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Wraps method addClassPseudoImports from EMF.
+	 * 
+	 * @param genClass
+	 * @return the pseudo import
+	 */
+	public String addClassPseudoImports(GenClass genClass) {
+		genClass.addClassPsuedoImports();
+		return "";
+	}
+
+	/**
+	 * Initialize the importManager used by EMF.
+	 * 
+	 * @param genClass
+	 * @param extendedGenClass
+	 * @return
+	 */
+	public String initializeImportManager(GenClass genClass, boolean isInterface, boolean isImplementation) {
+		GenModel genModel = genClass.getGenModel();
+		GenPackage genPackage = genClass.getGenPackage();
+		String packageName = isInterface ? genPackage.getInterfacePackageName() : genPackage
+				.getClassPackageName();
+		String className = isImplementation ? genClass.getClassName() : genClass.getInterfaceName();
+		ImportManager importManager = new ImportManager(packageName, className);
+		genModel.setImportManager(importManager);
+		return "";
 	}
 }
