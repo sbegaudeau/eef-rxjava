@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentedElementItemProvider.java,v 1.15 2011/11/16 11:02:00 sbouchet Exp $
+ * $Id: DocumentedElementItemProvider.java,v 1.16 2012/03/16 16:07:34 sbouchet Exp $
  */
 package org.eclipse.emf.eef.mapping.provider;
 
@@ -67,13 +67,22 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	protected void addDocumentationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_DocumentedElement_documentation_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_DocumentedElement_documentation_feature", "_UI_DocumentedElement_type"),
+				getString("_UI_DocumentedElement_documentation_description"),
 				MappingPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This returns DocumentedElement.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DocumentedElement"));
 	}
 
 	/**
