@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.codegen.EEFCodegenPlugin;
 import org.eclipse.emf.eef.codegen.core.launcher.AbstractPropertiesGeneratorLauncher;
 import org.eclipse.emf.eef.codegen.core.services.PropertiesGeneratorLaunchersServices;
 
@@ -58,7 +59,11 @@ public class GenerateAll {
 	 *             Thrown when the output cannot be saved.
 	 */
 	public GenerateAll(IContainer targetFolder, EEFGenModel eefGenModel) {
-		this.targetFolder = targetFolder.getLocation().toFile();
+		if (targetFolder.getLocation() != null) {
+			EEFCodegenPlugin.getDefault().logWarning(
+					new IllegalArgumentException("TargetFolder must specify a correct location"));
+			this.targetFolder = targetFolder.getLocation().toFile();
+		}
 		this.eefGenModel = eefGenModel;
 		this.generationTargets = new HashSet<IContainer>();
 		this.generationTargets.add(targetFolder);
@@ -78,19 +83,21 @@ public class GenerateAll {
 	 *             Thrown when the output cannot be saved.
 	 */
 	public void doGenerate(IProgressMonitor monitor) throws IOException {
+		if (targetFolder == null) {
+			return;
+		}
 		if (!targetFolder.exists()) {
-			monitor.beginTask("Creating target folder", 1);
+			monitor.subTask("Creating target folder");
 			targetFolder.mkdirs();
 			monitor.worked(1);
 		}
 
 		List<Object> arguments = new ArrayList<Object>();
-		monitor.beginTask("Loading...", 1);
+		monitor.subTask("Loading...");
 		org.eclipse.emf.eef.codegen.launcher.EEFLauncher launcher = new org.eclipse.emf.eef.codegen.launcher.EEFLauncher(
 				eefGenModel, targetFolder, arguments);
 		monitor.worked(1);
-		monitor.beginTask("Generating EEF code using " + eefGenModel.eResource().getURI().lastSegment()
-				+ "...", 1);
+		monitor.subTask("Generating EEF code using " + eefGenModel.eResource().getURI().lastSegment() + "...");
 		launcher.doGenerate(BasicMonitor.toMonitor(new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN)));
 		monitor.worked(1);
 		for (AbstractPropertiesGeneratorLauncher abstractPropertiesGeneratorLauncher : PropertiesGeneratorLaunchersServices

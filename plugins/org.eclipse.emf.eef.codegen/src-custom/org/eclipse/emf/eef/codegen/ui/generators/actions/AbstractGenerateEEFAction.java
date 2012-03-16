@@ -46,6 +46,12 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	protected List<EEFGenModel> eefGenModels;
 
 	/**
+	 * the job used for the generation.
+	 * @since 1.1
+	 */
+	protected Job generationJob;
+
+	/**
 	 * 
 	 */
 	public AbstractGenerateEEFAction() {
@@ -75,6 +81,13 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
 	public void run() {
+		// avoid concurrent modification
+		if (generationJob.getState() == Job.RUNNING || generationJob.getState() == Job.WAITING)
+			try {
+				generationJob.join();
+			} catch (InterruptedException e) {
+
+			}
 		if (selectedFiles != null) {
 			try {
 				eefGenModels = initEEFGenModel();
@@ -82,20 +95,23 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 				EEFCodegenPlugin.getDefault().logError(e);
 			}
 
-			Job job = new Job("EEF architecture generation") {
+			generationJob = new Job("EEF architecture generation") {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					try {
 						if (eefGenModels != null && !monitor.isCanceled()) {
+							monitor.beginTask("Generating EEF Architecture", IProgressMonitor.UNKNOWN);
 							for (final EEFGenModel eefGenModel : eefGenModels) {
 								final IContainer target = getGenContainer(eefGenModel);
 								if (target != null) {
+									monitor.subTask("Generating "
+											+ eefGenModel.eResource().getURI().lastSegment()
+											+ " Architecture");
 									int count = 2;
 									if (eefGenModel.getEditionContexts() != null)
 										count += eefGenModel.getEditionContexts().size() * 11;
 									if (eefGenModel.getViewsRepositories() != null)
 										count += eefGenModel.getViewsRepositories().size() * 5;
-									monitor.beginTask("Generating EEF Architecture", count);
 									final GenerateAll generator = new GenerateAll(target, eefGenModel);
 									generator.doGenerate(monitor);
 									for (Iterator<IContainer> iterator = generator.getGenerationTargets()
@@ -103,7 +119,11 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 										IContainer nextContainer = iterator.next();
 										nextContainer.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 									}
-									monitor.worked(1);
+									monitor.worked(count);
+								}
+								// check monitor state
+								if (monitor.isCanceled()) {
+									break;
 								}
 							}
 						}
@@ -121,8 +141,8 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 					return Status.OK_STATUS;
 				}
 			};
-			job.setUser(true);
-			job.schedule();
+			generationJob.setUser(true);
+			generationJob.schedule();
 		}
 	}
 
