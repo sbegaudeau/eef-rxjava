@@ -26,6 +26,7 @@ public class ImportService {
 
 	/**
 	 * Initializing EMF importManager.
+	 * 
 	 * @since 1.1
 	 */
 	public void initializeImportManager(EObject caller, String packageName, String className) {
@@ -42,6 +43,7 @@ public class ImportService {
 
 	/**
 	 * Generate sorted imports.
+	 * 
 	 * @since 1.1
 	 */
 	public String genSortedImports(EObject caller) {
@@ -64,5 +66,15 @@ public class ImportService {
 			}
 		}
 		throw new RuntimeException("Unable to retrieve gen model from " + eo);
+	}
+
+	/**
+	 * @deprecated. EEF is using EMF importmanager directy.
+	 * @param cur
+	 *            the current Eobject
+	 * @return the importmarker string
+	 */
+	public String getImports(EObject cur) {
+		return "";
 	}
 }

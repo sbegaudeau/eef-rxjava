@@ -22,20 +22,19 @@ import org.eclipse.ui.IWorkbenchSite;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
+ * @deprecated will be removed in next major release. EEF does not organize imports anymore after generation
  */
 public class JDTImportsOrganisationCallback implements EEFGenerationCallback {
 
 	private IWorkbenchSite site;
 
 	/**
-	 * @param site the current workbench site
+	 * @param site
+	 *            the current workbench site
 	 */
 	public JDTImportsOrganisationCallback(IWorkbenchSite site) {
 		this.site = site;
 	}
-
-
 
 	/**
 	 * {@inheritDoc]
@@ -50,8 +49,7 @@ public class JDTImportsOrganisationCallback implements EEFGenerationCallback {
 				}
 			});
 		}
-		
+
 	}
 
-	
 }
