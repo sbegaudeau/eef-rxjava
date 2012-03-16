@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.33 2012/03/15 14:46:13 sbouchet Exp $
+ $Id: promoter.xml,v 1.34 2012/03/16 15:26:43 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -22,14 +22,12 @@
 	$> export ANT_HOME=/shared/common/apache-ant-1.8.2/ 
 	-->
 
-	
 	<property name="downloads.project.root" value="modeling/emft/eef" />
 	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful/archive/org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
 	<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
-	<property name="project.name" value="EEF"/>
-	<property name="final.updatesite.name" value="emf-eef-Update"/>
-	<property name="build.root.updatesite.name" value="org.eclipse.emf.eef.update.zip"/>
-
+	<property name="project.name" value="EEF" />
+	<property name="final.updatesite.name" value="emf-eef-Update" />
+	<property name="build.root.updatesite.name" value="org.eclipse.emf.eef.update.zip" />
 	<property name="group.owner" value="modeling.emf.eef" />
 
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
@@ -37,8 +35,7 @@
 
 	<property name="downloads.root" value="/home/data/httpd/download.eclipse.org/" />
 	<property name="downloads.area" value="${downloads.root}/${downloads.project.root}" />
-	<property name="promoter.properties.file.name" value="promote.properties" />
-	<property name="property.file.location" value="${build.root}/promotion/${promoter.properties.file.name}" />
+	<property name="property.file.location" location="${build.root}/promotion/promote.properties" />
 
 	<!--
 	most of the code comes from Athena CBI.
@@ -93,14 +90,12 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				<pathelement location="${thirdPartyJarsDir}/ant-contrib.jar" />
 			</classpath>
 		</taskdef>
+		<available file="${property.file.location}" property="propertyFileAvailable" />
+		<fail message="property.file.location property must be defined" unless="propertyFileAvailable" />
 	</target>
 
 	<target name="load.properties">
 		<property file="${property.file.location}" />
-	</target>
-
-	<target name="check.property.file.location">
-		<fail message="property.file.location property must be defined" unless="property.file.location" />
 	</target>
 
 	<target name="init.properties">
@@ -114,6 +109,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				</not>
 			</condition>
 		</fail>
+		<propertyregex override="true" property="build.qualifier" input="${build.qualifier}" regexp="v" replace="" casesensitive="false" />
 		<fail message="version property must be defined">
 			<condition>
 				<not>
@@ -140,7 +136,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 		<fail message="downloads.area property must be defined" unless="downloads.area" />
 	</target>
 
-	<target name="main" depends="init,check.property.file.location,load.properties,init.properties">
+	<target name="main" depends="init,load.properties,init.properties">
 
 		<!-- publish into drops ( Zips ) -->
 		<antcall target="-publish.build.drops" inheritall="true" />
