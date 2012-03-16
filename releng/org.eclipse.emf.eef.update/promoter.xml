@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.34 2012/03/16 15:26:43 sbouchet Exp $
+ $Id: promoter.xml,v 1.35 2012/03/16 17:14:14 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -257,7 +257,7 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 				<available file="${composite.repository.directory}/p2.index" type="file" />
 			</not>
 			<then>
-				<echo file="${composite.repository.directory}/p2.index" message="version=1${line.separator}metadata.repository.factory.order=compositeContent.jar,!${line.separator}artifact.repository.factory.order=compositeArtifacts.jar,!" />
+				<echo file="${composite.repository.directory}/p2.index" message="version = 1${line.separator}metadata.repository.factory.order = compositeContent.xml,\!${line.separator}artifact.repository.factory.order = compositeArtifacts.xml,\!" />
 			</then>
 		</if>
 
