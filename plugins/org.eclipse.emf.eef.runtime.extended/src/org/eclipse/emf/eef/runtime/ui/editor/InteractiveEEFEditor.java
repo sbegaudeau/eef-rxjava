@@ -1,15 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.editor;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +24,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
@@ -46,6 +46,8 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -106,22 +108,18 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
+import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-
-
 /**
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
  * 
  */
-public class InteractiveEEFEditor extends FormEditor
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
-	
+public class InteractiveEEFEditor extends FormEditor implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
+
 	public static final String EDITOR_ID = "org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditorID";
-	
+
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 */
@@ -148,13 +146,14 @@ public class InteractiveEEFEditor extends FormEditor
 	protected TreeViewer contentOutlineViewer;
 
 	/**
-	 * This is the viewer that shadows the selection in the content outline.
-	 * The parent relation must be correctly defined for this to work.
+	 * This is the viewer that shadows the selection in the content outline. The parent relation must be
+	 * correctly defined for this to work.
 	 */
 	protected TreeViewer selectionViewer;
 
 	/**
-	 * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content outline viewer.
+	 * This keeps track of the active content viewer, which may be either one of the viewers in the pages or
+	 * the content outline viewer.
 	 */
 	protected Viewer currentViewer;
 
@@ -164,7 +163,8 @@ public class InteractiveEEFEditor extends FormEditor
 	protected ISelectionChangedListener selectionChangedListener;
 
 	/**
-	 * This keeps track of all the {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are listening to this editor.
+	 * This keeps track of all the {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
+	 * listening to this editor.
 	 */
 	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
@@ -176,33 +176,35 @@ public class InteractiveEEFEditor extends FormEditor
 	/**
 	 * This listens for when the outline becomes active
 	 */
-	protected IPartListener partListener =
-		new IPartListener() {
-			public void partActivated(IWorkbenchPart p) {
-				if (p instanceof ContentOutline) {
-					if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
-						getActionBarContributor().setActiveEditor(InteractiveEEFEditor.this);
+	protected IPartListener partListener = new IPartListener() {
+		public void partActivated(IWorkbenchPart p) {
+			if (p instanceof ContentOutline) {
+				if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
+					getActionBarContributor().setActiveEditor(InteractiveEEFEditor.this);
 
-						setCurrentViewer(contentOutlineViewer);
-					}
+					setCurrentViewer(contentOutlineViewer);
 				}
-				else if (p == InteractiveEEFEditor.this) {
-					handleActivate();
-				}
+			} else if (p == InteractiveEEFEditor.this) {
+				handleActivate();
 			}
-			public void partBroughtToTop(IWorkbenchPart p) {
-				// Ignore.
-			}
-			public void partClosed(IWorkbenchPart p) {
-				// Ignore.
-			}
-			public void partDeactivated(IWorkbenchPart p) {
-				// Ignore.
-			}
-			public void partOpened(IWorkbenchPart p) {
-				// Ignore.
-			}
-		};
+		}
+
+		public void partBroughtToTop(IWorkbenchPart p) {
+			// Ignore.
+		}
+
+		public void partClosed(IWorkbenchPart p) {
+			// Ignore.
+		}
+
+		public void partDeactivated(IWorkbenchPart p) {
+			// Ignore.
+		}
+
+		public void partOpened(IWorkbenchPart p) {
+			// Ignore.
+		}
+	};
 
 	/**
 	 * Resources that have been removed since last activation.
@@ -232,167 +234,158 @@ public class InteractiveEEFEditor extends FormEditor
 	/**
 	 * Adapter used to update the problem indication when resources are demanded loaded.
 	 */
-	protected EContentAdapter problemIndicationAdapter = 
-		new EContentAdapter() {
-			@Override
-			public void notifyChanged(Notification notification) {
-				if (notification.getNotifier() instanceof Resource) {
-					switch (notification.getFeatureID(Resource.class)) {
-						case Resource.RESOURCE__IS_LOADED:
-						case Resource.RESOURCE__ERRORS:
-						case Resource.RESOURCE__WARNINGS: {
-							Resource resource = (Resource)notification.getNotifier();
-							Diagnostic diagnostic = analyzeResourceProblems(resource, null);
-							if (diagnostic.getSeverity() != Diagnostic.OK) {
-								resourceToDiagnosticMap.put(resource, diagnostic);
-							}
-							else {
-								resourceToDiagnosticMap.remove(resource);
-							}
-
-							if (updateProblemIndication) {
-								getSite().getShell().getDisplay().asyncExec
-									(new Runnable() {
-										 public void run() {
-											 updateProblemIndication();
-										 }
-									 });
-							}
-							break;
+	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+		@Override
+		public void notifyChanged(Notification notification) {
+			if (notification.getNotifier() instanceof Resource) {
+				switch (notification.getFeatureID(Resource.class)) {
+					case Resource.RESOURCE__IS_LOADED:
+					case Resource.RESOURCE__ERRORS:
+					case Resource.RESOURCE__WARNINGS: {
+						Resource resource = (Resource)notification.getNotifier();
+						Diagnostic diagnostic = analyzeResourceProblems(resource, null);
+						if (diagnostic.getSeverity() != Diagnostic.OK) {
+							resourceToDiagnosticMap.put(resource, diagnostic);
+						} else {
+							resourceToDiagnosticMap.remove(resource);
 						}
+
+						if (updateProblemIndication) {
+							getSite().getShell().getDisplay().asyncExec(new Runnable() {
+								public void run() {
+									updateProblemIndication();
+								}
+							});
+						}
+						break;
 					}
 				}
-				else {
-					super.notifyChanged(notification);
-				}
+			} else {
+				super.notifyChanged(notification);
 			}
+		}
 
-			@Override
-			protected void setTarget(Resource target) {
-				basicSetTarget(target);
-			}
+		@Override
+		protected void setTarget(Resource target) {
+			basicSetTarget(target);
+		}
 
-			@Override
-			protected void unsetTarget(Resource target) {
-				basicUnsetTarget(target);
-			}
-		};
-		
-		private IResourceChangeListener resourceChangeListener = null;
+		@Override
+		protected void unsetTarget(Resource target) {
+			basicUnsetTarget(target);
+		}
+	};
 
-		/**
-		 * This listens for workspace changes.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		private IResourceChangeListener initResourceChangeListener() {
-			IResourceChangeListener resourceChangeListner = 
-			new IResourceChangeListener() {
-				public void resourceChanged(IResourceChangeEvent event) {
-					IResourceDelta delta = event.getDelta();
-					try {
-						class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-							protected ResourceSet resourceSet = editingDomain.getResourceSet();
-							protected Collection<Resource> changedResources = new ArrayList<Resource>();
-							protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	private IResourceChangeListener resourceChangeListener = null;
 
-							public boolean visit(IResourceDelta delta) {
-								if (delta.getResource().getType() == IResource.FILE) {
-									if (delta.getKind() == IResourceDelta.REMOVED ||
-									    delta.getKind() == IResourceDelta.CHANGED && delta.getFlags() != IResourceDelta.MARKERS) {
-										Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
-										if (resource != null) {
-											if (delta.getKind() == IResourceDelta.REMOVED) {
-												removedResources.add(resource);
-											}
-											else if (!savedResources.remove(resource)) {
-												changedResources.add(resource);
-											}
+	/**
+	 * This listens for workspace changes.
+	 */
+	private IResourceChangeListener initResourceChangeListener() {
+		IResourceChangeListener resourceChangeListner = new IResourceChangeListener() {
+			public void resourceChanged(IResourceChangeEvent event) {
+				IResourceDelta delta = event.getDelta();
+				try {
+					class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+						protected ResourceSet resourceSet = editingDomain.getResourceSet();
+
+						protected Collection<Resource> changedResources = new ArrayList<Resource>();
+
+						protected Collection<Resource> removedResources = new ArrayList<Resource>();
+
+						public boolean visit(IResourceDelta delta) {
+							if (delta.getResource().getType() == IResource.FILE) {
+								if (delta.getKind() == IResourceDelta.REMOVED
+										|| delta.getKind() == IResourceDelta.CHANGED
+										&& delta.getFlags() != IResourceDelta.MARKERS) {
+									Resource resource = resourceSet.getResource(URI
+											.createPlatformResourceURI(delta.getFullPath().toString(), true),
+											false);
+									if (resource != null) {
+										if (delta.getKind() == IResourceDelta.REMOVED) {
+											removedResources.add(resource);
+										} else if (!savedResources.remove(resource)) {
+											changedResources.add(resource);
 										}
 									}
 								}
-
-								return true;
 							}
 
-							public Collection<Resource> getChangedResources() {
-								return changedResources;
-							}
-
-							public Collection<Resource> getRemovedResources() {
-								return removedResources;
-							}
+							return true;
 						}
 
-						final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
-						delta.accept(visitor);
-
-						if (!visitor.getRemovedResources().isEmpty()) {
-							getSite().getShell().getDisplay().asyncExec
-								(new Runnable() {
-									 public void run() {
-										 removedResources.addAll(visitor.getRemovedResources());
-										 if (!isDirty()) {
-											 getSite().getPage().closeEditor(InteractiveEEFEditor.this, false);
-										 }
-									 }
-								 });
+						public Collection<Resource> getChangedResources() {
+							return changedResources;
 						}
 
-						if (!visitor.getChangedResources().isEmpty()) {
-							getSite().getShell().getDisplay().asyncExec
-								(new Runnable() {
-									 public void run() {
-										 changedResources.addAll(visitor.getChangedResources());
-										 if (getSite().getPage().getActiveEditor() == InteractiveEEFEditor.this) {
-											 handleActivate();
-										 }
-									 }
-								 });
+						public Collection<Resource> getRemovedResources() {
+							return removedResources;
 						}
 					}
-					catch (CoreException exception) {
-						EEFExtendedRuntime.INSTANCE.log(exception);
+
+					final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+					delta.accept(visitor);
+
+					if (!visitor.getRemovedResources().isEmpty()) {
+						getSite().getShell().getDisplay().asyncExec(new Runnable() {
+							public void run() {
+								removedResources.addAll(visitor.getRemovedResources());
+								if (!isDirty()) {
+									getSite().getPage().closeEditor(InteractiveEEFEditor.this, false);
+								}
+							}
+						});
 					}
+
+					if (!visitor.getChangedResources().isEmpty()) {
+						getSite().getShell().getDisplay().asyncExec(new Runnable() {
+							public void run() {
+								changedResources.addAll(visitor.getChangedResources());
+								if (getSite().getPage().getActiveEditor() == InteractiveEEFEditor.this) {
+									handleActivate();
+								}
+							}
+						});
+					}
+				} catch (CoreException exception) {
+					EEFExtendedRuntime.INSTANCE.log(exception);
 				}
-			};
-			return resourceChangeListner;
-		}
-
+			}
+		};
+		return resourceChangeListner;
+	}
 
 	protected MessageProcessor messageProcessor;
 
 	/**
-	 * Determines if the current edited resource is saving. 
+	 * Determines if the current edited resource is saving.
 	 */
 	private boolean isSaving = false;
-	
+
 	/**
 	 * Handles activation of the editor or it's associated views.
 	 */
 	protected void handleActivate() {
 		// Recompute the read only state.
 		//
-		if (editingDomain instanceof AdapterFactoryEditingDomain && ((AdapterFactoryEditingDomain)editingDomain).getResourceToReadOnlyMap() != null) {
+		if (editingDomain instanceof AdapterFactoryEditingDomain
+				&& ((AdapterFactoryEditingDomain)editingDomain).getResourceToReadOnlyMap() != null) {
 			((AdapterFactoryEditingDomain)editingDomain).getResourceToReadOnlyMap().clear();
 
-		  // Refresh any actions that may become enabled or disabled.
-		  //
-		  setSelection(getSelection());
+			// Refresh any actions that may become enabled or disabled.
+			//
+			setSelection(getSelection());
 		}
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
 				getSite().getPage().closeEditor(InteractiveEEFEditor.this, false);
-			}
-			else {
+			} else {
 				removedResources.clear();
 				changedResources.clear();
 				savedResources.clear();
 			}
-		}
-		else if (!changedResources.isEmpty()) {
+		} else if (!changedResources.isEmpty()) {
 			changedResources.removeAll(savedResources);
 			handleChangedResources();
 			changedResources.clear();
@@ -416,10 +409,10 @@ public class InteractiveEEFEditor extends FormEditor
 					resource.unload();
 					try {
 						resource.load(Collections.EMPTY_MAP);
-					}
-					catch (IOException exception) {
+					} catch (IOException exception) {
 						if (!resourceToDiagnosticMap.containsKey(resource)) {
-							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+							resourceToDiagnosticMap.put(resource,
+									analyzeResourceProblems(resource, exception));
 						}
 					}
 				}
@@ -433,19 +426,14 @@ public class InteractiveEEFEditor extends FormEditor
 			updateProblemIndication();
 		}
 	}
-  
+
 	/**
 	 * Updates the problems indication with the information described in the specified diagnostic.
 	 */
 	protected void updateProblemIndication() {
 		if (updateProblemIndication) {
-			BasicDiagnostic diagnostic =
-				new BasicDiagnostic
-					(Diagnostic.OK,
-					 EEFExtendedRuntime.PLUGIN_ID,
-					 0,
-					 null,
-					 new Object [] { editingDomain.getResourceSet() });
+			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, EEFExtendedRuntime.PLUGIN_ID, 0,
+					null, new Object[] {editingDomain.getResourceSet()});
 			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
 					diagnostic.add(childDiagnostic);
@@ -458,8 +446,7 @@ public class InteractiveEEFEditor extends FormEditor
 				if (diagnostic.getSeverity() != Diagnostic.OK) {
 					setActivePage(lastEditorPage);
 				}
-			}
-			else if (diagnostic.getSeverity() != Diagnostic.OK) {
+			} else if (diagnostic.getSeverity() != Diagnostic.OK) {
 				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
 				problemEditorPart.setDiagnostic(diagnostic);
 				try {
@@ -467,8 +454,7 @@ public class InteractiveEEFEditor extends FormEditor
 					setPageText(lastEditorPage, problemEditorPart.getPartName());
 					setActivePage(lastEditorPage);
 					showTabs();
-				}
-				catch (PartInitException exception) {
+				} catch (PartInitException exception) {
 					EEFExtendedRuntime.INSTANCE.log(exception);
 				}
 			}
@@ -479,11 +465,9 @@ public class InteractiveEEFEditor extends FormEditor
 	 * Shows a dialog that asks if conflicting changes should be discarded.
 	 */
 	protected boolean handleDirtyConflict() {
-		return
-			MessageDialog.openQuestion
-				(getSite().getShell(),
-				 getString("UI_InteractiveEEFEditor_FileConflict_label"),
-				 getString("WARN_InteractiveEEFEditor_FileConflict"));
+		return MessageDialog.openQuestion(getSite().getShell(),
+				getString("UI_InteractiveEEFEditor_FileConflict_label"),
+				getString("WARN_InteractiveEEFEditor_FileConflict"));
 	}
 
 	/**
@@ -503,45 +487,25 @@ public class InteractiveEEFEditor extends FormEditor
 		//
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		((ComposedAdapterFactory)adapterFactory).addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		((ComposedAdapterFactory)adapterFactory).addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+		((ComposedAdapterFactory)adapterFactory)
+				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		resourceChangeListener = initResourceChangeListener();
-		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener,
+				IResourceChangeEvent.POST_CHANGE);
 	}
 
 	/**
-	 * This sets the selection into whichever viewer is active.
-	 */
-	public void setSelectionToViewer(Collection<?> collection) {
-		final Collection<?> theSelection = collection;
-		// Make sure it's okay.
-		//
-		if (theSelection != null && !theSelection.isEmpty()) {
-			Runnable runnable =
-				new Runnable() {
-					public void run() {
-						// Try to select the items in the current content viewer of the editor.
-						//
-						if (currentViewer != null) {
-							currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
-						}
-					}
-				};
-			getSite().getShell().getDisplay().asyncExec(runnable);
-		}
-	}
-
-	/**
-	 * This returns the editing domain as required by the {@link IEditingDomainProvider} interface.
-	 * This is important for implementing the static methods of {@link AdapterFactoryEditingDomain}
-	 * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
+	 * This returns the editing domain as required by the {@link IEditingDomainProvider} interface. This is
+	 * important for implementing the static methods of {@link AdapterFactoryEditingDomain} and for supporting
+	 * {@link org.eclipse.emf.edit.ui.action.CommandAction}.
 	 */
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
-	
+
 	/**
-	 * This makes sure that one content viewer, either for the current page or the outline view, if it has focus,
-	 * is the current one.
+	 * This makes sure that one content viewer, either for the current page or the outline view, if it has
+	 * focus, is the current one.
 	 */
 	public void setCurrentViewer(Viewer viewer) {
 		// If it is changing...
@@ -550,14 +514,13 @@ public class InteractiveEEFEditor extends FormEditor
 			if (selectionChangedListener == null) {
 				// Create the listener on demand.
 				//
-				selectionChangedListener =
-					new ISelectionChangedListener() {
-						// This just notifies those things that are affected by the section.
-						//
-						public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
-							setSelection(selectionChangedEvent.getSelection());
-						}
-					};
+				selectionChangedListener = new ISelectionChangedListener() {
+					// This just notifies those things that are affected by the section.
+					//
+					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
+						setSelection(selectionChangedEvent.getSelection());
+					}
+				};
 			}
 
 			// Stop listening to the old one.
@@ -590,25 +553,28 @@ public class InteractiveEEFEditor extends FormEditor
 	}
 
 	/**
-	 * This creates a context menu for the viewer and adds a listener as well registering the menu for extension.
+	 * This creates a context menu for the viewer and adds a listener as well registering the menu for
+	 * extension.
 	 */
 	protected void createContextMenuFor(StructuredViewer viewer) {
 		MenuManager contextMenu = new MenuManager("#PopUp");
 		contextMenu.add(new Separator("additions"));
 		contextMenu.setRemoveAllWhenShown(true);
 		contextMenu.addMenuListener(this);
-		Menu menu= contextMenu.createContextMenu(viewer.getControl());
+		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
+		Transfer[] transfers = new Transfer[] {LocalTransfer.getInstance()};
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
-		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
+		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain,
+				viewer));
 	}
 
 	/**
-	 * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
+	 * This is the method called to load a resource into the editing domain's resource set based on the
+	 * editor's input.
 	 */
 	public void createModel() {
 		initializeWorkspaceEditingDomain(initializeCommandStack());
@@ -622,26 +588,25 @@ public class InteractiveEEFEditor extends FormEditor
 		// Create the command stack that will notify this editor as commands are executed.
 		//
 		BasicCommandStack commandStack = new BasicCommandStack();
-		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
+		// Add a listener to set the most recent command's affected objects to be the selection of the viewer
+		// with focus.
 		//
-		commandStack.addCommandStackListener
-			(new CommandStackListener() {
-				 public void commandStackChanged(final EventObject event) {
-					 getContainer().getDisplay().asyncExec
-						 (new Runnable() {
-							  public void run() {
-								  firePropertyChange(IEditorPart.PROP_DIRTY);
+		commandStack.addCommandStackListener(new CommandStackListener() {
+			public void commandStackChanged(final EventObject event) {
+				getContainer().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						firePropertyChange(IEditorPart.PROP_DIRTY);
 
-								  // Try to select the affected objects.
-								  //
-								  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
-								  if (mostRecentCommand != null) {
-									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-								  }
-							  }
-						  });
-				 }
-			 });
+						// Try to select the affected objects.
+						//
+						Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
+						if (mostRecentCommand != null) {
+							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+						}
+					}
+				});
+			}
+		});
 
 		// Create the editing domain with a special command stack.
 		//
@@ -656,7 +621,7 @@ public class InteractiveEEFEditor extends FormEditor
 		if (resourceSet != null) {
 			editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);
 		} else {
-			editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);			
+			editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);
 		}
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
@@ -665,53 +630,43 @@ public class InteractiveEEFEditor extends FormEditor
 			// Load the resource through the editing domain.
 			//
 			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			exception = e;
 			resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		}
 
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
-			resourceToDiagnosticMap.put(resource,  analyzeResourceProblems(resource, exception));
+			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
 	}
 
 	/**
-	 * @return the {@link ResourceSet} to use in the {@link EditingDomain}. 
-	 * If <code>null</code> then use the standard ResourceSet.
+	 * @return the {@link ResourceSet} to use in the {@link EditingDomain}. If <code>null</code> then use the
+	 *         standard ResourceSet.
 	 */
 	protected ResourceSet initializeResourceSet() {
 		return null;
 	}
-	
+
 	/**
-	 * Returns a diagnostic describing the errors and warnings listed in the resource
-	 * and the specified exception (if any).
+	 * Returns a diagnostic describing the errors and warnings listed in the resource and the specified
+	 * exception (if any).
 	 */
 	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
 		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-			BasicDiagnostic basicDiagnostic =
-				new BasicDiagnostic
-					(Diagnostic.ERROR,
-					 EEFExtendedRuntime.PLUGIN_ID,
-					 0,
-					 getString("UI_InteractiveEEFEditor_CreateModelError_message", resource.getURI()),
-					 new Object [] { exception == null ? (Object)resource : exception });
+			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR,
+					EEFExtendedRuntime.PLUGIN_ID, 0, getString(
+							"UI_InteractiveEEFEditor_CreateModelError_message", resource.getURI()),
+					new Object[] {exception == null ? (Object)resource : exception});
 			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
 			return basicDiagnostic;
-		}
-		else if (exception != null) {
-			return
-				new BasicDiagnostic
-					(Diagnostic.ERROR,
-							EEFExtendedRuntime.PLUGIN_ID,
-					 0,
-					 getString("UI_InteractiveEEFEditor_CreateModelError_message", resource.getURI()),
-					 new Object[] { exception });
-		}
-		else {
+		} else if (exception != null) {
+			return new BasicDiagnostic(Diagnostic.ERROR, EEFExtendedRuntime.PLUGIN_ID, 0, getString(
+					"UI_InteractiveEEFEditor_CreateModelError_message", resource.getURI()),
+					new Object[] {exception});
+		} else {
 			return Diagnostic.OK_INSTANCE;
 		}
 	}
@@ -727,29 +682,27 @@ public class InteractiveEEFEditor extends FormEditor
 
 		contributePages();
 
-		
 		// Ensures that this editor will only display the page's tab
 		// area if there are more than one page
 		//
-		getContainer().addControlListener
-			(new ControlAdapter() {
-				boolean guard = false;
-				public void controlResized(ControlEvent event) {
-					if (!guard) {
-						guard = true;
-						hideTabs();
-						guard = false;
-					}
-				}
-			 });
+		getContainer().addControlListener(new ControlAdapter() {
+			boolean guard = false;
 
-		getSite().getShell().getDisplay().asyncExec
-			(new Runnable() {
-				 public void run() {
-					 updateProblemIndication();
-				 }
-			 });
-		
+			public void controlResized(ControlEvent event) {
+				if (!guard) {
+					guard = true;
+					hideTabs();
+					guard = false;
+				}
+			}
+		});
+
+		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				updateProblemIndication();
+			}
+		});
+
 	}
 
 	protected void contributePages() {
@@ -759,7 +712,7 @@ public class InteractiveEEFEditor extends FormEditor
 			EEFExtendedRuntime.getPlugin().log(e);
 		}
 	}
-	
+
 	/**
 	 * @throws PartInitException
 	 */
@@ -776,9 +729,9 @@ public class InteractiveEEFEditor extends FormEditor
 						setSelection(selectionChangedEvent.getSelection());
 					}
 				}
-			
+
 				);
-				
+
 			}
 		};
 		mainPage.setAdapterFactory(adapterFactory);
@@ -786,22 +739,20 @@ public class InteractiveEEFEditor extends FormEditor
 		mainPage.setInput(editingDomain.getResourceSet());
 		addPage(mainPage);
 	}
-	
 
 	public List<FormPage> getPages() {
 		List<FormPage> result = new ArrayList<FormPage>();
 		for (Object page : pages) {
 			if (page instanceof FormPage) {
-				FormPage formPage = (FormPage) page;
+				FormPage formPage = (FormPage)page;
 				result.add(formPage);
 			}
 		}
 		return result;
 	}
-	
+
 	/**
-	 * If there is just one page in the multi-page editor part,
-	 * this hides the single tab at the bottom.
+	 * If there is just one page in the multi-page editor part, this hides the single tab at the bottom.
 	 */
 	protected void hideTabs() {
 		if (getPageCount() <= 1) {
@@ -815,8 +766,7 @@ public class InteractiveEEFEditor extends FormEditor
 	}
 
 	/**
-	 * If there is more than one page in the multi-page editor part,
-	 * this shows the tabs at the bottom.
+	 * If there is more than one page in the multi-page editor part, this shows the tabs at the bottom.
 	 */
 	protected void showTabs() {
 		if (getPageCount() > 1) {
@@ -839,7 +789,7 @@ public class InteractiveEEFEditor extends FormEditor
 		if (contentOutlinePage != null) {
 			handleContentOutlineSelection(contentOutlinePage.getSelection());
 		}
-			
+
 	}
 
 	/**
@@ -850,8 +800,7 @@ public class InteractiveEEFEditor extends FormEditor
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView() ? getContentOutlinePage() : null;
-		}
-		else {
+		} else {
 			return super.getAdapter(key);
 		}
 	}
@@ -872,7 +821,8 @@ public class InteractiveEEFEditor extends FormEditor
 
 					// Set up the tree viewer.
 					//
-					contentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+					contentOutlineViewer
+							.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 					contentOutlineViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 					contentOutlineViewer.setInput(editingDomain.getResourceSet());
 
@@ -881,14 +831,16 @@ public class InteractiveEEFEditor extends FormEditor
 					createContextMenuFor(contentOutlineViewer);
 
 					if (!editingDomain.getResourceSet().getResources().isEmpty()) {
-					  // Select the root object in the view.
-					  //
-					  contentOutlineViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
+						// Select the root object in the view.
+						//
+						contentOutlineViewer.setSelection(new StructuredSelection(editingDomain
+								.getResourceSet().getResources().get(0)), true);
 					}
 				}
 
 				@Override
-				public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
+				public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager,
+						IStatusLineManager statusLineManager) {
 					super.makeContributions(menuManager, toolBarManager, statusLineManager);
 					contentOutlineStatusLineManager = statusLineManager;
 				}
@@ -904,14 +856,13 @@ public class InteractiveEEFEditor extends FormEditor
 
 			// Listen to selection so that we can handle it is a special way.
 			//
-			contentOutlinePage.addSelectionChangedListener
-				(new ISelectionChangedListener() {
-					 // This ensures that we handle selections correctly.
-					 //
-					 public void selectionChanged(SelectionChangedEvent event) {
-						 handleContentOutlineSelection(event.getSelection());
-					 }
-				 });
+			contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
+				// This ensures that we handle selections correctly.
+				//
+				public void selectionChanged(SelectionChangedEvent event) {
+					handleContentOutlineSelection(event.getSelection());
+				}
+			});
 		}
 
 		return contentOutlinePage;
@@ -957,35 +908,37 @@ public class InteractiveEEFEditor extends FormEditor
 		// Save only resources that have actually changed.
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
+				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
-		// Do the work within an operation because this is a long running activity that modifies the workbench.
+		// Do the work within an operation because this is a long running activity that modifies the
+		// workbench.
 		//
-		IRunnableWithProgress operation =
-			new IRunnableWithProgress() {
-				// This is the method that gets invoked when the operation runs.
+		IRunnableWithProgress operation = new IRunnableWithProgress() {
+			// This is the method that gets invoked when the operation runs.
+			//
+			public void run(IProgressMonitor monitor) {
+				// Save the resources to the file system.
 				//
-				public void run(IProgressMonitor monitor) {
-					// Save the resources to the file system.
-					//
-					boolean first = true;
-					for (Resource resource : editingDomain.getResourceSet().getResources()) {
-						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
-							try {
-								long timeStamp = resource.getTimeStamp();
-								resource.save(saveOptions);
-								if (resource.getTimeStamp() != timeStamp) {
-									savedResources.add(resource);
-								}
+				boolean first = true;
+				for (Resource resource : editingDomain.getResourceSet().getResources()) {
+					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+							&& !editingDomain.isReadOnly(resource)) {
+						try {
+							long timeStamp = resource.getTimeStamp();
+							resource.save(saveOptions);
+							if (resource.getTimeStamp() != timeStamp) {
+								savedResources.add(resource);
 							}
-							catch (Exception exception) {
-								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-							}
-							first = false;
+						} catch (Exception exception) {
+							resourceToDiagnosticMap.put(resource,
+									analyzeResourceProblems(resource, exception));
 						}
+						first = false;
 					}
 				}
-			};
+			}
+		};
 
 		updateProblemIndication = false;
 		try {
@@ -999,8 +952,7 @@ public class InteractiveEEFEditor extends FormEditor
 			//
 			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
 			firePropertyChange(IEditorPart.PROP_DIRTY);
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
 			EEFExtendedRuntime.INSTANCE.log(exception);
@@ -1010,19 +962,19 @@ public class InteractiveEEFEditor extends FormEditor
 	}
 
 	/**
-	 * This returns whether something has been persisted to the URI of the specified resource.
-	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * This returns whether something has been persisted to the URI of the specified resource. The
+	 * implementation uses the URI converter from the editor's resource set to try to open an input stream.
 	 */
 	protected boolean isPersisted(Resource resource) {
 		boolean result = false;
 		try {
-			InputStream stream = editingDomain.getResourceSet().getURIConverter().createInputStream(resource.getURI());
+			InputStream stream = editingDomain.getResourceSet().getURIConverter()
+					.createInputStream(resource.getURI());
 			if (stream != null) {
 				result = true;
 				stream.close();
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			// Ignore
 		}
 		return result;
@@ -1051,25 +1003,28 @@ public class InteractiveEEFEditor extends FormEditor
 	/**
 	 */
 	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters) {
-		return openFilePathDialog(shell, style, fileExtensionFilters, (style & SWT.OPEN) != 0, (style & SWT.OPEN) != 0, (style & SWT.SAVE) != 0);
+		return openFilePathDialog(shell, style, fileExtensionFilters, (style & SWT.OPEN) != 0,
+				(style & SWT.OPEN) != 0, (style & SWT.SAVE) != 0);
 	}
 
 	/**
 	 */
-	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters, boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension) {
+	public static String[] openFilePathDialog(Shell shell, int style, String[] fileExtensionFilters,
+			boolean includeGroupFilter, boolean includeAllFilter, boolean addExtension) {
 		FileDialog fileDialog = new FileDialog(shell, style);
-		
-		// If requested, augment the file extension filters by adding a group of all the other filters (*.ext1;*.ext2;...)
+
+		// If requested, augment the file extension filters by adding a group of all the other filters
+		// (*.ext1;*.ext2;...)
 		// at the beginning and/or an all files wildcard (*.*) at the end.
 		//
 		includeGroupFilter &= fileExtensionFilters.length > 1;
 		int offset = includeGroupFilter ? 1 : 0;
-		
+
 		if (includeGroupFilter || includeAllFilter) {
 			int size = fileExtensionFilters.length + offset + (includeAllFilter ? 1 : 0);
 			String[] allFilters = new String[size];
 			StringBuilder group = includeGroupFilter ? new StringBuilder() : null;
-			
+
 			for (int i = 0; i < fileExtensionFilters.length; i++) {
 				if (includeGroupFilter) {
 					if (i != 0) {
@@ -1079,26 +1034,25 @@ public class InteractiveEEFEditor extends FormEditor
 				}
 				allFilters[i + offset] = fileExtensionFilters[i];
 			}
-			
+
 			if (includeGroupFilter) {
 				allFilters[0] = group.toString();
 			}
 			if (includeAllFilter) {
 				allFilters[allFilters.length - 1] = "*.*";
 			}
-			
+
 			fileDialog.setFilterExtensions(allFilters);
-		}
-		else {
+		} else {
 			fileDialog.setFilterExtensions(fileExtensionFilters);
 		}
 		fileDialog.open();
-		
+
 		String[] filenames = fileDialog.getFileNames();
 		String[] result = new String[filenames.length];
 		String path = fileDialog.getFilterPath() + File.separator;
 		String extension = null;
-		
+
 		// If extension adding requested, get the dotted extension corresponding to the selected filter.
 		//
 		if (addExtension) {
@@ -1112,7 +1066,7 @@ public class InteractiveEEFEditor extends FormEditor
 				}
 			}
 		}
-		
+
 		// Build the result by adding the selected path and, if needed, auto-appending the extension.
 		//
 		for (int i = 0; i < filenames.length; i++) {
@@ -1135,10 +1089,8 @@ public class InteractiveEEFEditor extends FormEditor
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		IActionBars actionBars = getActionBars();
-		IProgressMonitor progressMonitor =
-			actionBars != null && actionBars.getStatusLineManager() != null ?
-				actionBars.getStatusLineManager().getProgressMonitor() :
-				new NullProgressMonitor();
+		IProgressMonitor progressMonitor = actionBars != null && actionBars.getStatusLineManager() != null ? actionBars
+				.getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
 
@@ -1176,15 +1128,16 @@ public class InteractiveEEFEditor extends FormEditor
 	}
 
 	/**
-	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to return this editor's overall selection.
+	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to return this editor's overall
+	 * selection.
 	 */
 	public ISelection getSelection() {
 		return editorSelection;
 	}
 
 	/**
-	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to set this editor's overall selection.
-	 * Calling this result will notify the listeners.
+	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to set this editor's overall
+	 * selection. Calling this result will notify the listeners.
 	 */
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
@@ -1200,29 +1153,34 @@ public class InteractiveEEFEditor extends FormEditor
 	public void setStatusLineManager(ISelection selection) {
 		IActionBars actionBars = getActionBars();
 		if (actionBars != null) {
-			IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ?
-					contentOutlineStatusLineManager : actionBars.getStatusLineManager();
+			IStatusLineManager statusLineManager = currentViewer != null
+					&& currentViewer == contentOutlineViewer ? contentOutlineStatusLineManager : actionBars
+					.getStatusLineManager();
 
 			if (statusLineManager != null) {
 				if (selection instanceof IStructuredSelection) {
 					Collection<?> collection = ((IStructuredSelection)selection).toList();
 					switch (collection.size()) {
-					case 0: {
-						statusLineManager.setMessage(getString("UI_InteractiveEEFEditor_NoObjectSelected"));
-						break;
+						case 0: {
+							statusLineManager
+									.setMessage(getString("UI_InteractiveEEFEditor_NoObjectSelected"));
+							break;
+						}
+						case 1: {
+							String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection
+									.iterator().next());
+							statusLineManager.setMessage(getString(
+									"UI_InteractiveEEFEditor_SingleObjectSelected", text));
+							break;
+						}
+						default: {
+							statusLineManager.setMessage(getString(
+									"UI_InteractiveEEFEditor_MultiObjectSelected",
+									Integer.toString(collection.size())));
+							break;
+						}
 					}
-					case 1: {
-						String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
-						statusLineManager.setMessage(getString("UI_InteractiveEEFEditor_SingleObjectSelected", text));
-						break;
-					}
-					default: {
-						statusLineManager.setMessage(getString("UI_InteractiveEEFEditor_MultiObjectSelected", Integer.toString(collection.size())));
-						break;
-					}
-					}
-				}
-				else {
+				} else {
 					statusLineManager.setMessage("");
 				}
 			}
@@ -1240,11 +1198,12 @@ public class InteractiveEEFEditor extends FormEditor
 	 * This looks up a string in plugin.properties, making a substitution.
 	 */
 	private static String getString(String key, Object s1) {
-		return EEFExtendedRuntime.INSTANCE.getString(key, new Object [] { s1 });
+		return EEFExtendedRuntime.INSTANCE.getString(key, new Object[] {s1});
 	}
 
 	/**
-	 * This implements {@link org.eclipse.jface.action.IMenuListener} to help fill the context menus with contributions from the Edit menu.
+	 * This implements {@link org.eclipse.jface.action.IMenuListener} to help fill the context menus with
+	 * contributions from the Edit menu.
 	 */
 	public void menuAboutToShow(IMenuManager menuManager) {
 		((IMenuListener)getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
@@ -1302,5 +1261,59 @@ public class InteractiveEEFEditor extends FormEditor
 	 */
 	protected boolean showOutlineView() {
 		return false;
+	}
+
+	public void gotoMarker(IMarker marker) {
+		try {
+			if (marker.getType().equals(EValidator.MARKER)) {
+				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
+				if (uriAttribute != null) {
+					URI uri = URI.createURI(uriAttribute);
+					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
+					if (eObject != null) {
+						setSelectionToViewer(Collections
+								.singleton(((AdapterFactoryEditingDomain)editingDomain).getWrapper(eObject)));
+					}
+				}
+			}
+		} catch (CoreException exception) {
+			EEFExtendedRuntime.INSTANCE.log(exception);
+		}
+	}
+
+	/**
+	 * This sets the selection into whichever viewer is active.
+	 */
+	public void setSelectionToViewer(Collection<?> collection) {
+		final Collection<?> theSelection = collection;
+		// Make sure it's okay.
+		//
+		if (theSelection != null && !theSelection.isEmpty()) {
+			Runnable runnable = new Runnable() {
+				public void run() {
+					// Try to select the items in the model content viewer of the editor.
+					//
+					Viewer modelViewer = getModelViewer();
+					if (modelViewer != null) {
+						modelViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
+					}
+				}
+			};
+			getSite().getShell().getDisplay().asyncExec(runnable);
+		}
+	}
+
+	/**
+	 * Returns the viewer showing model contents
+	 * 
+	 * @return
+	 */
+	protected Viewer getModelViewer() {
+		if (getPages() != null && getPages().size() > 0) {
+			if (getPages().get(0) instanceof EEFTreeMDFormPage) {
+				return ((EEFTreeMDFormPage)getPages().get(0)).getModelViewer();
+			}
+		}
+		return null;
 	}
 }
