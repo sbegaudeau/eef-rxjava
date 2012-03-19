@@ -16,7 +16,7 @@ Export-Package: org.eclipse.emf.eef.toolkits.parts,
  org.eclipse.emf.eef.views.provider,
  org.eclipse.emf.eef.views.providers,
  org.eclipse.emf.eef.views.resources
-Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)",
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0",
  org.eclipse.emf.edit;bundle-version="2.4.0";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="2.4.0";visibility:=reexport,
  org.eclipse.emf.ecore.edit;bundle-version="2.4.0";visibility:=reexport,
