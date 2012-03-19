@@ -47,7 +47,7 @@ return create[editor.name.toJavaClassifier()/]Text(parent);
 		[else]
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
-		[editor.elementEditorName()/] = new Text(parent, SWT.BORDER);
+		[editor.elementEditorName()/] = [include('org.eclipse.emf.eef.runtime.impl.utils.SWTUtil')/].createScrollableText(parent, SWT.BORDER);
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/].setEnabled(false);
 		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
