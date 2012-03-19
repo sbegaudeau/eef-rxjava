@@ -39,8 +39,7 @@ public class EObjectFilter extends ViewerFilter {
 
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
-		// this is a resource display it only if it contains a given <EClass>
-		// type
+		// this is a resource display it only if it contains a given <EClass> type
 		if (element instanceof Resource) {
 			TreeIterator<EObject> iter = (((Resource)element)).getAllContents();
 			while (iter.hasNext()) {
