@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2009 - 2010 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -126,7 +127,7 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createTextRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel);
-		textRequiredProperty = new Text(parent, SWT.BORDER);
+		textRequiredProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
 		textRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -172,7 +173,7 @@ public class SamplePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createTextOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel);
-		textOptionalProperty = new Text(parent, SWT.BORDER);
+		textOptionalProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
 		textOptionalProperty.addFocusListener(new FocusAdapter() {

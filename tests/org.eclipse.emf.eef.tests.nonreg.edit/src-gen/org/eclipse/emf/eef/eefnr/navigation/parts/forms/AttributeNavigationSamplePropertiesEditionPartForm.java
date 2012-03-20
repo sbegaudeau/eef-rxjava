@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2009 - 2010 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -166,8 +166,33 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AttributeNavigationSamplePropertiesEditionPartForm.this, NavigationViewsRepository.AttributeNavigationSample.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							AttributeNavigationSamplePropertiesEditionPartForm.this,
+							NavigationViewsRepository.AttributeNavigationSample.Properties.name,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									NavigationViewsRepository.AttributeNavigationSample.Properties.name,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
@@ -206,8 +231,33 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AttributeNavigationSamplePropertiesEditionPartForm.this, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate1ForSingleValued.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							AttributeNavigationSamplePropertiesEditionPartForm.this,
+							NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate1ForSingleValued.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		delegate1ForSingleValued.addKeyListener(new KeyAdapter() {
@@ -246,8 +296,33 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AttributeNavigationSamplePropertiesEditionPartForm.this, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate2ForSingleValued.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							AttributeNavigationSamplePropertiesEditionPartForm.this,
+							NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate2ForSingleValued.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		delegate2ForSingleValued.addKeyListener(new KeyAdapter() {
@@ -286,8 +361,33 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AttributeNavigationSamplePropertiesEditionPartForm.this, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate1ForMultiValued.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							AttributeNavigationSamplePropertiesEditionPartForm.this,
+							NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate1ForMultiValued.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		delegate1ForMultiValued.addKeyListener(new KeyAdapter() {
@@ -326,8 +426,33 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AttributeNavigationSamplePropertiesEditionPartForm.this, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate2ForMultiValued.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							AttributeNavigationSamplePropertiesEditionPartForm.this,
+							NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, delegate2ForMultiValued.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									AttributeNavigationSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		delegate2ForMultiValued.addKeyListener(new KeyAdapter() {

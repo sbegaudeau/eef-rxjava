@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2009 - 2010 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -19,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -141,7 +142,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel);
-		name = new Text(parent, SWT.BORDER);
+		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -187,7 +188,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	
 	protected Composite createDelegate1ForSingleValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel);
-		delegate1ForSingleValued = new Text(parent, SWT.BORDER);
+		delegate1ForSingleValued = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData delegate1ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForSingleValued.setLayoutData(delegate1ForSingleValuedData);
 		delegate1ForSingleValued.addFocusListener(new FocusAdapter() {
@@ -233,7 +234,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	
 	protected Composite createDelegate2ForSingleValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel);
-		delegate2ForSingleValued = new Text(parent, SWT.BORDER);
+		delegate2ForSingleValued = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData delegate2ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForSingleValued.setLayoutData(delegate2ForSingleValuedData);
 		delegate2ForSingleValued.addFocusListener(new FocusAdapter() {
@@ -279,7 +280,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	
 	protected Composite createDelegate1ForMultiValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel);
-		delegate1ForMultiValued = new Text(parent, SWT.BORDER);
+		delegate1ForMultiValued = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData delegate1ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForMultiValued.setLayoutData(delegate1ForMultiValuedData);
 		delegate1ForMultiValued.addFocusListener(new FocusAdapter() {
@@ -325,7 +326,7 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	
 	protected Composite createDelegate2ForMultiValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel);
-		delegate2ForMultiValued = new Text(parent, SWT.BORDER);
+		delegate2ForMultiValued = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData delegate2ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForMultiValued.setLayoutData(delegate2ForMultiValuedData);
 		delegate2ForMultiValued.addFocusListener(new FocusAdapter() {

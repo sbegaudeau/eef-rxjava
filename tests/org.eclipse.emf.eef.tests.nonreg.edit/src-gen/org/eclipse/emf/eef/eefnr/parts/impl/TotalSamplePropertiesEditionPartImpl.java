@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2009 - 2010 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -32,6 +32,7 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
@@ -311,7 +312,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createTextRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel);
-		textRequiredProperty = new Text(parent, SWT.BORDER);
+		textRequiredProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
 		textRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -357,7 +358,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createTextOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel);
-		textOptionalProperty = new Text(parent, SWT.BORDER);
+		textOptionalProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
 		textOptionalProperty.addFocusListener(new FocusAdapter() {
@@ -457,7 +458,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createTextareaRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel);
-		textareaRequiredProperty = new Text(parent, SWT.BORDER);
+		textareaRequiredProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredProperty.setLayoutData(textareaRequiredPropertyData);
 		textareaRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -503,7 +504,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createTextareaOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel);
-		textareaOptionalProperty = new Text(parent, SWT.BORDER);
+		textareaOptionalProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalProperty.setLayoutData(textareaOptionalPropertyData);
 		textareaOptionalProperty.addFocusListener(new FocusAdapter() {
@@ -865,7 +866,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	protected Composite createMultivaluededitorRequiredPropertyMultiValuedEditor(Composite parent) {
-		multivaluededitorRequiredProperty = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
+		multivaluededitorRequiredProperty = SWTUtil.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
@@ -905,7 +906,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	}
 
 	protected Composite createMultivaluededitorOptionalPropertyMultiValuedEditor(Composite parent) {
-		multivaluededitorOptionalProperty = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
+		multivaluededitorOptionalProperty = SWTUtil.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
@@ -1595,7 +1596,7 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.name, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel);
-		name = new Text(parent, SWT.BORDER);
+		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
