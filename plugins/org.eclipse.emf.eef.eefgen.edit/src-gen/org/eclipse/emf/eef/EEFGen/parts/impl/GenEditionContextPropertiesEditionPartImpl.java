@@ -1,14 +1,13 @@
-/**
- *  Copyright (c) 2008 - 2010 Obeo.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      Obeo - initial API and implementation
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
 // Start of user code for imports
@@ -22,6 +21,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -223,7 +223,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createBasePackageText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel);
-		basePackage = new Text(parent, SWT.BORDER);
+		basePackage = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData basePackageData = new GridData(GridData.FILL_HORIZONTAL);
 		basePackage.setLayoutData(basePackageData);
 		basePackage.addFocusListener(new FocusAdapter() {
@@ -269,7 +269,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createDescriptorsContributorIDText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel);
-		descriptorsContributorID = new Text(parent, SWT.BORDER);
+		descriptorsContributorID = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData descriptorsContributorIDData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptorsContributorID.setLayoutData(descriptorsContributorIDData);
 		descriptorsContributorID.addFocusListener(new FocusAdapter() {
@@ -426,7 +426,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createLeafComponentsSuperClassText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass, EEFGenMessages.GenEditionContextPropertiesEditionPart_LeafComponentsSuperClassLabel);
-		leafComponentsSuperClass = new Text(parent, SWT.BORDER);
+		leafComponentsSuperClass = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData leafComponentsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		leafComponentsSuperClass.setLayoutData(leafComponentsSuperClassData);
 		leafComponentsSuperClass.addFocusListener(new FocusAdapter() {
@@ -472,7 +472,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createPropertiesEditingProvidersSuperClassText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditingProvidersSuperClassLabel);
-		propertiesEditingProvidersSuperClass = new Text(parent, SWT.BORDER);
+		propertiesEditingProvidersSuperClass = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData propertiesEditingProvidersSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesEditingProvidersSuperClass.setLayoutData(propertiesEditingProvidersSuperClassData);
 		propertiesEditingProvidersSuperClass.addFocusListener(new FocusAdapter() {

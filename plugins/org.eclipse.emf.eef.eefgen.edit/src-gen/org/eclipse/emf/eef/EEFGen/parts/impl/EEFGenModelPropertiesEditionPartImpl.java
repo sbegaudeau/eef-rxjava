@@ -1,14 +1,13 @@
-/**
- *  Copyright (c) 2008 - 2010 Obeo.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      Obeo - initial API and implementation
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
 // Start of user code for imports
@@ -20,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -151,7 +151,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createGenerationDirectoryText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel);
-		generationDirectory = new Text(parent, SWT.BORDER);
+		generationDirectory = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData generationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
 		generationDirectory.setLayoutData(generationDirectoryData);
 		generationDirectory.addFocusListener(new FocusAdapter() {
@@ -197,7 +197,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createTestsGenerationDirectoryText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel);
-		testsGenerationDirectory = new Text(parent, SWT.BORDER);
+		testsGenerationDirectory = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData testsGenerationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
 		testsGenerationDirectory.setLayoutData(testsGenerationDirectoryData);
 		testsGenerationDirectory.addFocusListener(new FocusAdapter() {
@@ -285,7 +285,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createAuthorText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel);
-		author = new Text(parent, SWT.BORDER);
+		author = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData authorData = new GridData(GridData.FILL_HORIZONTAL);
 		author.setLayoutData(authorData);
 		author.addFocusListener(new FocusAdapter() {
@@ -334,7 +334,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);
-		license = new Text(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		license = SWTUtil.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData licenseData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseData.horizontalSpan = 2;
 		licenseData.heightHint = 80;

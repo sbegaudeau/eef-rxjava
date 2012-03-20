@@ -1,14 +1,13 @@
-/**
- *  Copyright (c) 2008 - 2010 Obeo.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      Obeo - initial API and implementation
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.EEFGen.parts.impl;
 
 // Start of user code for imports
@@ -24,6 +23,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -218,7 +218,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createBasePackageText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel);
-		basePackage = new Text(parent, SWT.BORDER);
+		basePackage = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData basePackageData = new GridData(GridData.FILL_HORIZONTAL);
 		basePackage.setLayoutData(basePackageData);
 		basePackage.addFocusListener(new FocusAdapter() {
@@ -375,7 +375,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createPartsSuperClassText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel);
-		partsSuperClass = new Text(parent, SWT.BORDER);
+		partsSuperClass = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData partsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		partsSuperClass.setLayoutData(partsSuperClassData);
 		partsSuperClass.addFocusListener(new FocusAdapter() {
