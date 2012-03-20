@@ -1,14 +1,13 @@
-/**
- *  Copyright (c) 2008 - 2010 Obeo.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      Obeo - initial API and implementation
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.views.parts.impl;
 
 // Start of user code for imports
@@ -18,6 +17,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -127,7 +127,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.name, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel);
-		name = new Text(parent, SWT.BORDER);
+		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -173,7 +173,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createRepositoryKindText(Composite parent) {
 		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel);
-		repositoryKind = new Text(parent, SWT.BORDER);
+		repositoryKind = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData repositoryKindData = new GridData(GridData.FILL_HORIZONTAL);
 		repositoryKind.setLayoutData(repositoryKindData);
 		repositoryKind.addFocusListener(new FocusAdapter() {
