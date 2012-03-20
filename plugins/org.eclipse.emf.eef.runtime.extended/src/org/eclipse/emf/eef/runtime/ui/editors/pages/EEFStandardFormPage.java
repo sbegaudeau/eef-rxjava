@@ -14,13 +14,18 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionViewer;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -33,7 +38,7 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-std-form-page";  //$NON-NLS-1$
+	public static final String PAGE_ID = "EEF-std-form-page"; //$NON-NLS-1$
 
 	/**
 	 * The form toolkit to use
@@ -42,31 +47,36 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * The folder for the tab
-	 */	
+	 */
 	protected PropertiesEditionViewer viewer;
 
 	/**
-	 * @param editor editor including this page
-	 * @param name page name
-	 * @param editingDomain the editingDomain to use to edit the model
-	 * @param adapterFactory the adapterFactory to use
+	 * @param editor
+	 *            editor including this page
+	 * @param name
+	 *            page name
+	 * @param editingDomain
+	 *            the editingDomain to use to edit the model
+	 * @param adapterFactory
+	 *            the adapterFactory to use
 	 * @deprecated
 	 */
-	public EEFStandardFormPage(FormEditor editor, String name, EditingDomain editingDomain, AdapterFactory adapterFactory) {
+	public EEFStandardFormPage(FormEditor editor, String name, EditingDomain editingDomain,
+			AdapterFactory adapterFactory) {
 		this(editor, name);
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
-	
+
 	/**
-	 * @param editor editor including this page
-	 * @param name page name
+	 * @param editor
+	 *            editor including this page
+	 * @param name
+	 *            page name
 	 */
 	public EEFStandardFormPage(FormEditor editor, String name) {
 		super(editor, PAGE_ID, name);
 	}
-
-
 
 	/**
 	 * {@inheritDoc}
@@ -83,22 +93,26 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 		viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(getManagedForm().getToolkit());
-		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
+				IPropertiesEditionComponent.LIVE_MODE, editingDomain));
 		refresh();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.AbstractEEFEditorPage#refreshFormContents()
 	 */
 	protected void refreshFormContents() {
 		if (viewer != null && input instanceof EObject) {
-			viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, (EObject) input));
+			viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
+					(EObject)input));
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getModelViewer()
 	 */
 	public StructuredViewer getModelViewer() {
@@ -107,11 +121,36 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getPropertiesViewer()
 	 */
 	public PropertiesEditionViewer getPropertiesViewer() {
 		return viewer;
 	}
-	
-	
+
+	/**
+	 * @see org.eclipse.ui.forms.editor.FormPage#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
+	@Override
+	public void createPartControl(Composite parent) {
+		super.createPartControl(parent);
+		getPropertiesViewer().addPropertiesListener(new IPropertiesEditionListener() {
+
+			public void firePropertiesChanged(IPropertiesEditionEvent event) {
+				if (event.getState() == PropertiesEditionEvent.FOCUS_CHANGED
+						&& event.getKind() == PropertiesEditionEvent.FOCUS_GAINED) {
+					// de-activate global actions
+					if (getEditor() instanceof InteractiveEEFEditor) {
+						((InteractiveEEFEditor)getEditor()).deactivateCCPActions();
+					}
+				} else if (event.getState() == PropertiesEditionEvent.FOCUS_CHANGED
+						&& event.getKind() == PropertiesEditionEvent.FOCUS_LOST) {
+					// re-activate global actions
+					if (getEditor() instanceof InteractiveEEFEditor) {
+						((InteractiveEEFEditor)getEditor()).activateCCPActions();
+					}
+				}
+			}
+		});
+	}
 }

@@ -24,18 +24,22 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public abstract class AbstractEEFMasterPart extends SectionPart {
 
 	protected StructuredViewer modelViewer;
+
 	private AdapterFactory adapterFactory;
+
 	private AbstractEEFMasterDetailsBlock block;
-	
+
 	/**
-	 * @param toolkit the toolkit to use to create part widgets
-	 * @param container the composite where to create the part
-	 * @param block the AbstractEEFMasterDetailsBlock
+	 * @param toolkit
+	 *            the toolkit to use to create part widgets
+	 * @param container
+	 *            the composite where to create the part
+	 * @param block
+	 *            the AbstractEEFMasterDetailsBlock
 	 */
 	public AbstractEEFMasterPart(FormToolkit toolkit, Composite container, AbstractEEFMasterDetailsBlock block) {
 		super(container, toolkit, ExpandableComposite.TITLE_BAR);
@@ -44,14 +48,16 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 		createSectionClient(sectionContainer, toolkit);
 		getSection().setText(EEFRuntimeUIMessages.AbstractEEFMasterPart_part_title);
 		getSection().setClient(sectionContainer);
-		
-		
+
 	}
-	
+
 	/**
 	 * Create the content of the master part
-	 * @param sectionContainer the parent
-	 * @param toolkit the toolkit to use
+	 * 
+	 * @param sectionContainer
+	 *            the parent
+	 * @param toolkit
+	 *            the toolkit to use
 	 */
 	protected void createSectionClient(Composite sectionContainer, FormToolkit toolkit) {
 		sectionContainer.setLayout(new GridLayout());
@@ -62,11 +68,15 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 
 	/**
 	 * Create the content of the master part
-	 * @param sectionContainer the parent
-	 * @param toolkit the toolkit to use
+	 * 
+	 * @param sectionContainer
+	 *            the parent
+	 * @param toolkit
+	 *            the toolkit to use
 	 */
-	protected abstract StructuredViewer createSectionClientContents(Composite sectionContainer, FormToolkit toolkit);
-	
+	protected abstract StructuredViewer createSectionClientContents(Composite sectionContainer,
+			FormToolkit toolkit);
+
 	/**
 	 * @return the adapterFactory
 	 */
@@ -77,14 +87,16 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	}
 
 	/**
-	 * @param adapterFactory the adapterFactory to set
+	 * @param adapterFactory
+	 *            the adapterFactory to set
 	 */
 	public void setAdapterFactory(AdapterFactory adapterFactory) {
 		this.adapterFactory = adapterFactory;
 	}
 
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		getSection().setText(title);
@@ -92,30 +104,34 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.widgets.masterdetails.IEEFMasterPart#getModelViewer()
 	 */
 	public StructuredViewer getModelViewer() {
 		return modelViewer;
 	}
-	
+
 	/**
-	 * @param input the input of the model viewer
+	 * @param input
+	 *            the input of the model viewer
 	 */
 	public void setInput(Object input) {
 		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_input_model_definition;
 		modelViewer.setInput(input);
 	}
-	
+
 	/**
-	 * @param listener add a listener to the mode viewer
+	 * @param listener
+	 *            add a listener to the mode viewer
 	 */
 	public void addSelectionChangeListener(ISelectionChangedListener listener) {
 		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_selection_listener_adding;
 		modelViewer.addSelectionChangedListener(listener);
 	}
-	
+
 	/**
-	 * @param listener remove a listener to the mode viewer
+	 * @param listener
+	 *            remove a listener to the mode viewer
 	 */
 	public void removeSelectionChangeListener(ISelectionChangedListener listener) {
 		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_selection_listener_adding;
@@ -123,25 +139,27 @@ public abstract class AbstractEEFMasterPart extends SectionPart {
 	}
 
 	/**
-	 * @param filter add a filter to the model viewer
+	 * @param filter
+	 *            add a filter to the model viewer
 	 */
 	public void addFilter(ViewerFilter filter) {
 		assert modelViewer != null : EEFRuntimeUIMessages.AbstractEEFMasterPart_viewer_not_defined_on_filter_adding;
 		modelViewer.addFilter(filter);
 	}
-	
+
 	/**
 	 * @return the AbstractEEFMasterDetailsBlock
 	 */
 	public AbstractEEFMasterDetailsBlock getBlock() {
 		return block;
 	}
-	
+
 	/**
-	 * @param block the AbstractEEFMasterDetailsBlock
+	 * @param block
+	 *            the AbstractEEFMasterDetailsBlock
 	 */
 	public void setBlock(AbstractEEFMasterDetailsBlock block) {
 		this.block = block;
 	}
-		
+
 }

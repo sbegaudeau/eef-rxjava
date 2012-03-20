@@ -27,7 +27,6 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 
 public abstract class AbstractEEFEditorPage extends FormPage implements EEFEditorPage {
@@ -72,9 +71,12 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 	protected List<Action> actions;
 
 	/**
-	 * @param editor containing editor
-	 * @param id page id
-	 * @param name page name
+	 * @param editor
+	 *            containing editor
+	 * @param id
+	 *            page id
+	 * @param name
+	 *            page name
 	 */
 	public AbstractEEFEditorPage(FormEditor editor, String id, String name) {
 		super(editor, id, name);
@@ -90,13 +92,12 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 	}
 
 	/**
-	 * @param editingDomain the editingDomain to set
+	 * @param editingDomain
+	 *            the editingDomain to set
 	 */
 	public void setEditingDomain(EditingDomain editingDomain) {
 		this.editingDomain = editingDomain;
 	}
-
-
 
 	/**
 	 * @return the adapterFactory
@@ -105,16 +106,13 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 		return adapterFactory;
 	}
 
-
-
 	/**
-	 * @param adapterFactory the adapterFactory to set
+	 * @param adapterFactory
+	 *            the adapterFactory to set
 	 */
 	public void setAdapterFactory(AdapterFactory adapterFactory) {
 		this.adapterFactory = adapterFactory;
 	}
-
-
 
 	/**
 	 * Defines the title of the page
@@ -132,8 +130,9 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 
 	/**
 	 * Sets the image to be rendered to the left of the title.
-	 * @param image 
-	 * the title image
+	 * 
+	 * @param image
+	 *            the title image
 	 */
 	public void setImage(Image image) {
 		if (image != null) {
@@ -152,7 +151,8 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 	}
 
 	/**
-	 * @param input the input of the page
+	 * @param input
+	 *            the input of the page
 	 */
 	public void setInput(Object newEObject) {
 		if (newEObject != input) {
@@ -196,9 +196,8 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 			Object titleProvider = null;
 			if (input instanceof ResourceSet) {
 				titleProvider = ((ResourceSet)input).getResources().get(0);
-			}
-			else  {
-				titleProvider =  input;
+			} else {
+				titleProvider = input;
 			}
 			if (adapterFactory != null) {
 				form.setText(new AdapterFactoryLabelProvider(adapterFactory).getText(titleProvider));
@@ -216,9 +215,8 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 			Object imageProvider = null;
 			if (input instanceof ResourceSet) {
 				imageProvider = ((ResourceSet)input).getResources().get(0);
-			}
-			else  {
-				imageProvider =  input;
+			} else {
+				imageProvider = input;
 			}
 			if (adapterFactory != null) {
 				form.setImage(new AdapterFactoryLabelProvider(adapterFactory).getImage(imageProvider));
@@ -233,7 +231,9 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 
 	/**
 	 * Add the given filter to the page viewer
-	 * @param filter the page viewer filter
+	 * 
+	 * @param filter
+	 *            the page viewer filter
 	 */
 	public void addFilter(ViewerFilter filter) {
 		filters.add(filter);
@@ -244,7 +244,9 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 
 	/**
 	 * Add the given action to the form page
-	 * @param filter the action to add
+	 * 
+	 * @param filter
+	 *            the action to add
 	 */
 	public void addAction(Action action) {
 		actions.add(action);
@@ -263,4 +265,7 @@ public abstract class AbstractEEFEditorPage extends FormPage implements EEFEdito
 			}
 		}
 	}
+
+	
+
 }

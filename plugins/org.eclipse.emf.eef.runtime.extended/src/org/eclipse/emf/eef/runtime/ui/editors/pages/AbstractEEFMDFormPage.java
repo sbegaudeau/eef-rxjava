@@ -34,22 +34,21 @@ import org.eclipse.ui.forms.editor.FormEditor;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * The page ID
 	 */
-	public static final String PAGE_ID = "EEF-md-form-page";  //$NON-NLS-1$
-	
+	public static final String PAGE_ID = "EEF-md-form-page"; //$NON-NLS-1$
+
 	/**
 	 * The form editor in which this page will be included
 	 */
 	private FormEditor editor;
-	
+
 	/**
-	 * The master/details block for model edition 
+	 * The master/details block for model edition
 	 */
 	protected AbstractEEFMasterDetailsBlock block;
 
@@ -59,17 +58,19 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 	private IManagedForm managedForm;
 
 	private EditingDomainViewerDropAdapter dropAdapter;
-	
+
 	/**
-	 * @param editor the form editor in which this page will be included
+	 * @param editor
+	 *            the form editor in which this page will be included
 	 */
 	public AbstractEEFMDFormPage(FormEditor editor, String pageTitle) {
-		super(editor, PAGE_ID, pageTitle); 
+		super(editor, PAGE_ID, pageTitle);
 		this.editor = editor;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.forms.editor.FormPage#createFormContent(org.eclipse.ui.forms.IManagedForm)
 	 */
 	protected void createFormContent(IManagedForm managedForm) {
@@ -85,7 +86,7 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 			public void selectionChanged(SelectionChangedEvent event) {
 				getManagedForm().fireSelectionChanged(block.getMasterPart(), event.getSelection());
 			}
-			
+
 		});
 		createContextMenuFor(block.getMasterPart().getModelViewer());
 		refresh();
@@ -97,17 +98,15 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 	protected abstract AbstractEEFMasterDetailsBlock createMasterDetailsBlock();
 
 	/**
-	 * This creates a context menu for the viewer and adds a listener as well registering the menu for extension.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * This creates a context menu for the viewer and adds a listener as well registering the menu for
+	 * extension.
 	 */
 	protected void createContextMenuFor(StructuredViewer viewer) {
 		MenuManager contextMenu = new MenuManager("#PopUp"); //$NON-NLS-1$
 		contextMenu.add(new Separator("additions")); //$NON-NLS-1$
 		contextMenu.setRemoveAllWhenShown(true);
-		contextMenu.addMenuListener((IMenuListener) editor);
-		Menu menu= contextMenu.createContextMenu(viewer.getControl());
+		contextMenu.addMenuListener((IMenuListener)editor);
+		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
@@ -118,12 +117,12 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 
 	private void initDragnDrop(StructuredViewer viewer) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
+		Transfer[] transfers = new Transfer[] {LocalTransfer.getInstance()};
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		dropAdapter = new EditingDomainViewerDropAdapter(editingDomain, viewer);
 		viewer.addDropSupport(dndOperations, transfers, dropAdapter);
 	}
-	
+
 	/**
 	 * @return the form
 	 */
@@ -133,6 +132,7 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getModelViewer()
 	 */
 	public StructuredViewer getModelViewer() {
@@ -142,9 +142,10 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.EEFEditorPage#getPropertiesViewer()
 	 */
 	public PropertiesEditionViewer getPropertiesViewer() {
@@ -158,6 +159,7 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.ui.editors.pages.AbstractEEFEditorPage#refreshFormContents()
 	 */
 	protected void refreshFormContents() {
@@ -165,8 +167,7 @@ public abstract class AbstractEEFMDFormPage extends AbstractEEFEditorPage {
 		block.setEditingDomain(editingDomain);
 		block.setInput(input);
 	}
-	
-	
+
 	public void setEditingDomain(EditingDomain editingDomain) {
 		super.setEditingDomain(editingDomain);
 		if (dropAdapter == null && getModelViewer() != null) {
