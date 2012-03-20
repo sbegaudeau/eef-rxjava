@@ -33,9 +33,7 @@ import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
 import org.eclipse.emf.eef.mapping.AbstractElementBinding;
 import org.eclipse.emf.eef.mapping.Category;
 import org.eclipse.emf.eef.mapping.EMFElementBinding;
-
 import org.eclipse.emf.eef.mapping.filters.BindingFilter;
-
 import org.eclipse.emf.eef.views.Container;
 import org.eclipse.emf.eef.views.DocumentedElement;
 import org.eclipse.emf.eef.views.IdentifiedElement;

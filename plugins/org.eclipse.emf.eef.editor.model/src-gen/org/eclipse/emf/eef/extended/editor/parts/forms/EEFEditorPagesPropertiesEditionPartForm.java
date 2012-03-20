@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.editor.parts.forms;
 
 // Start of user code for imports
@@ -36,7 +43,7 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 // End of user code
 
 /**
- * 
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen LeFur</a>
  * 
  */
 public class EEFEditorPagesPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, EEFEditorPagesPropertiesEditionPart {
@@ -139,8 +146,33 @@ public class EEFEditorPagesPropertiesEditionPartForm extends SectionPropertiesEd
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFEditorPagesPropertiesEditionPartForm.this, EditorViewsRepository.EEFEditorPages.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							EEFEditorPagesPropertiesEditionPartForm.this,
+							EditorViewsRepository.EEFEditorPages.Properties.name,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									EEFEditorPagesPropertiesEditionPartForm.this,
+									EditorViewsRepository.EEFEditorPages.Properties.name,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									EEFEditorPagesPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {

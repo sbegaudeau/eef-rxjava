@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.extended.query.EEFUnderstandableQuery;
 import org.eclipse.emf.eef.extended.query.ExplicitPathQuery;

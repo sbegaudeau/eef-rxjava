@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.editor.parts.impl;
 
 // Start of user code for imports
@@ -12,6 +19,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -36,7 +44,7 @@ import org.eclipse.swt.widgets.Text;
 // End of user code
 
 /**
- * 
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen LeFur</a>
  * 
  */
 public class TreeMasterPagePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TreeMasterPagePropertiesEditionPart {
@@ -133,7 +141,7 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EditorViewsRepository.TreeMasterPage.Naming.name, EditorMessages.TreeMasterPagePropertiesEditionPart_NameLabel);
-		name = new Text(parent, SWT.BORDER);
+		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -179,7 +187,7 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createTitle_Text(Composite parent) {
 		createDescription(parent, EditorViewsRepository.TreeMasterPage.Naming.title_, EditorMessages.TreeMasterPagePropertiesEditionPart_Title_Label);
-		title_ = new Text(parent, SWT.BORDER);
+		title_ = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);
 		title_.addFocusListener(new FocusAdapter() {

@@ -1,6 +1,13 @@
-/**
- * Generated with Acceleo
- */
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.eef.extended.query.parts.forms;
 
 // Start of user code for imports
@@ -46,7 +53,7 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 // End of user code
 
 /**
- * 
+ * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen LeFur</a>
  * 
  */
 public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, OCLQueryPropertiesEditionPart {
@@ -183,8 +190,33 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OCLQueryPropertiesEditionPartForm.this, QueryViewsRepository.OCLQuery.Properties.query_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, query.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							OCLQueryPropertiesEditionPartForm.this,
+							QueryViewsRepository.OCLQuery.Properties.query_,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, query.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									OCLQueryPropertiesEditionPartForm.this,
+									QueryViewsRepository.OCLQuery.Properties.query_,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									OCLQueryPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		query.addKeyListener(new KeyAdapter() {
