@@ -70,6 +70,7 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
 import org.eclipse.emf.eef.runtime.ui.editor.messages.MessageProcessor;
 import org.eclipse.emf.eef.runtime.ui.editors.pages.tree.EEFTreeMDFormPage;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -106,6 +107,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.ide.IGotoMarker;
@@ -361,6 +363,10 @@ public class InteractiveEEFEditor extends FormEditor implements IEditingDomainPr
 	 * Determines if the current edited resource is saving.
 	 */
 	private boolean isSaving = false;
+
+	private IAction cutAction;
+	private IAction copyAction;
+	private IAction pasteAction;
 
 	/**
 	 * Handles activation of the editor or it's associated views.
@@ -728,9 +734,7 @@ public class InteractiveEEFEditor extends FormEditor implements IEditingDomainPr
 					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
 						setSelection(selectionChangedEvent.getSelection());
 					}
-				}
-
-				);
+				});
 
 			}
 		};
@@ -1219,6 +1223,12 @@ public class InteractiveEEFEditor extends FormEditor implements IEditingDomainPr
 	 */
 	public IActionBars getActionBars() {
 		if (getActionBarContributor() != null) {
+			if (cutAction == null)
+				cutAction = getActionBarContributor().getActionBars().getGlobalActionHandler(ActionFactory.CUT.getId());
+			if (copyAction == null)
+				copyAction = getActionBarContributor().getActionBars().getGlobalActionHandler(ActionFactory.COPY.getId());
+			if (pasteAction == null)
+				pasteAction = getActionBarContributor().getActionBars().getGlobalActionHandler(ActionFactory.PASTE.getId());
 			return getActionBarContributor().getActionBars();
 		} else {
 			return null;
@@ -1308,12 +1318,36 @@ public class InteractiveEEFEditor extends FormEditor implements IEditingDomainPr
 	 * 
 	 * @return
 	 */
-	protected Viewer getModelViewer() {
+	protected StructuredViewer getModelViewer() {
 		if (getPages() != null && getPages().size() > 0) {
 			if (getPages().get(0) instanceof EEFTreeMDFormPage) {
 				return ((EEFTreeMDFormPage)getPages().get(0)).getModelViewer();
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * used to activate global cut/copy/paste actions.
+	 * 
+	 * @since 1.1
+	 */
+	public void activateCCPActions() {
+		getActionBars().setGlobalActionHandler(ActionFactory.CUT.getId(), cutAction);
+		getActionBars().setGlobalActionHandler(ActionFactory.COPY.getId(), copyAction);
+		getActionBars().setGlobalActionHandler(ActionFactory.PASTE.getId(), pasteAction);
+		getActionBars().updateActionBars();
+	}
+
+	/**
+	 * used to de-activate global cut/copy/paste actions.
+	 * 
+	 * @since 1.1
+	 */
+	public void deactivateCCPActions() {
+		getActionBars().setGlobalActionHandler(ActionFactory.CUT.getId(), null);
+		getActionBars().setGlobalActionHandler(ActionFactory.COPY.getId(), null);
+		getActionBars().setGlobalActionHandler(ActionFactory.PASTE.getId(), null);
+		getActionBars().updateActionBars();
 	}
 }
