@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -175,7 +176,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ComponentsViewsRepository.PropertiesEditionElement.Properties.name, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_NameLabel);
-		name = new Text(parent, SWT.BORDER);
+		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -221,7 +222,7 @@ public class PropertiesEditionElementPropertiesEditionPartImpl extends Composite
 	
 	protected Composite createHelpIDText(Composite parent) {
 		createDescription(parent, ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID, ComponentsMessages.PropertiesEditionElementPropertiesEditionPart_HelpIDLabel);
-		helpID = new Text(parent, SWT.BORDER);
+		helpID = SWTUtil.createScrollableText(parent, SWT.BORDER);
 		GridData helpIDData = new GridData(GridData.FILL_HORIZONTAL);
 		helpID.setLayoutData(helpIDData);
 		helpID.addFocusListener(new FocusAdapter() {
