@@ -60,9 +60,10 @@ public class GenerateAll {
 	 */
 	public GenerateAll(IContainer targetFolder, EEFGenModel eefGenModel) {
 		if (targetFolder.getLocation() != null) {
+			this.targetFolder = targetFolder.getLocation().toFile();
+		} else {
 			EEFCodegenPlugin.getDefault().logWarning(
 					new IllegalArgumentException("TargetFolder must specify a correct location"));
-			this.targetFolder = targetFolder.getLocation().toFile();
 		}
 		this.eefGenModel = eefGenModel;
 		this.generationTargets = new HashSet<IContainer>();
