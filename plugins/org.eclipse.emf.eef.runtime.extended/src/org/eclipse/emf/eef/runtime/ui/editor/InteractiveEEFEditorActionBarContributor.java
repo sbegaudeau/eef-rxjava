@@ -42,7 +42,6 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.actions.ActionFactory;
 
 /**
  */
@@ -364,27 +363,4 @@ public class InteractiveEEFEditorActionBarContributor extends EditingDomainActio
 		return true;
 	}
 
-	/**
-	 * used to activate global cut/copy/paste actions.
-	 * 
-	 * @since 1.1
-	 */
-	public void activateCCPActions() {
-		getActionBars().setGlobalActionHandler(ActionFactory.CUT.getId(), cutAction);
-		getActionBars().setGlobalActionHandler(ActionFactory.COPY.getId(), copyAction);
-		getActionBars().setGlobalActionHandler(ActionFactory.PASTE.getId(), pasteAction);
-		getActionBars().updateActionBars();
-	}
-
-	/**
-	 * used to de-activate global cut/copy/paste actions.
-	 * 
-	 * @since 1.1
-	 */
-	public void deactivateCCPActions() {
-		getActionBars().setGlobalActionHandler(ActionFactory.CUT.getId(), null);
-		getActionBars().setGlobalActionHandler(ActionFactory.COPY.getId(), null);
-		getActionBars().setGlobalActionHandler(ActionFactory.PASTE.getId(), null);
-		getActionBars().updateActionBars();
-	}
 }
