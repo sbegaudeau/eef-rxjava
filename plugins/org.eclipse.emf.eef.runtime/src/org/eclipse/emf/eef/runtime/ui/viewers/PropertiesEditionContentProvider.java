@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,8 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	/**
 	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode) throws InstantiationException {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode)
+			throws InstantiationException {
 		if (mode == IPropertiesEditionComponent.LIVE_MODE)
 			throw new InstantiationException(
 					EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
@@ -60,13 +61,14 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	/**
 	 * @param adapterFactory
 	 */
-	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode, EditingDomain editingDomain) {
+	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode,
+			EditingDomain editingDomain) {
 		this.adapterFactory = adapterFactory;
 		this.mode = mode;
 		this.editingDomain = editingDomain;
 		this.propertiesEditionListeners = new ArrayList<IPropertiesEditionListener>();
 	}
-	
+
 	/**
 	 * @return the {@link IPropertiesEditionComponent}
 	 * @since 1.1
@@ -104,7 +106,8 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		if (newInput instanceof EObject) {
 			eObject = (EObject)newInput;
 			if (mode == IPropertiesEditionComponent.LIVE_MODE) {
-				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
+				context = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
+						eObject);
 			} else if (mode == IPropertiesEditionComponent.BATCH_MODE) {
 				context = new EObjectPropertiesEditionContext(null, null, eObject, adapterFactory);
 			}
@@ -118,7 +121,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 				updateListeners();
 			}
 		}
-		
+
 		// FIXME: find a better way to manage the context
 		PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 	}
@@ -132,15 +135,15 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 		if (propertiesEditionComponent != null)
 			propertiesEditionComponent.addListener(listener);
 	}
-	
-	
+
 	/**
-	 * @param listener listener to remove
+	 * @param listener
+	 *            listener to remove
 	 */
 	public void removePropertiesListener(IPropertiesEditionListener listener) {
 		propertiesEditionListeners.add(listener);
 		if (propertiesEditionComponent != null)
-			propertiesEditionComponent.removeListener(listener);		
+			propertiesEditionComponent.removeListener(listener);
 	}
 
 	/**

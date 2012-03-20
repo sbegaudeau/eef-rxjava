@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,17 +66,18 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Defines if part has changed
 	 */
 	protected boolean partHasChanged = false;
-	
+
 	/**
 	 * Defines the part visibility.
 	 */
 	protected boolean visibility = true;
 
 	/**
-	 * For {@link AbstractPropertySection} use only. Do not use with
-	 * PropertiesEditingViewer.
+	 * For {@link AbstractPropertySection} use only. Do not use with PropertiesEditingViewer.
 	 */
-	protected CompositePropertiesEditionPart() { super(); }
+	protected CompositePropertiesEditionPart() {
+		super();
+	}
 
 	/**
 	 * Parameterized constructeur.
@@ -115,7 +116,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	public PartComposer getComposer() {
 		return composer;
 	}
-	
+
 	/**
 	 * @param event
 	 */
@@ -170,6 +171,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#isVisible()
 	 */
 	public boolean isVisible() {
@@ -178,6 +180,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#setVisible(boolean)
 	 */
 	public void setVisible(boolean visibility) {
@@ -185,33 +188,40 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	}
 
 	/**
-	 * @param parent label container
-	 * @param editor key of the editor
-	 * @param alternate text to display if no information can be found
+	 * @param parent
+	 *            label container
+	 * @param editor
+	 *            key of the editor
+	 * @param alternate
+	 *            text to display if no information can be found
 	 * @return created label.
 	 */
 	protected String getDescription(Object editor, String alternate) {
 		if (propertiesEditionComponent.getEditingContext() instanceof ExtendedPropertiesEditingContext) {
-			return ((ExtendedPropertiesEditingContext)propertiesEditionComponent.getEditingContext()).getHelper().getDescription(editor, alternate);
+			return ((ExtendedPropertiesEditingContext)propertiesEditionComponent.getEditingContext())
+					.getHelper().getDescription(editor, alternate);
 		} else {
 			return alternate;
 		}
 	}
-	
+
 	/**
-	 * @param parent label container
-	 * @param editor key of the editor
-	 * @param alternate text to display if no information can be found
+	 * @param parent
+	 *            label container
+	 * @param editor
+	 *            key of the editor
+	 * @param alternate
+	 *            text to display if no information can be found
 	 * @return created label.
 	 */
 	protected Label createDescription(Composite parent, Object editor, String alternate) {
 		if (propertiesEditionComponent.getEditingContext() instanceof ExtendedPropertiesEditingContext) {
-			return ((ExtendedPropertiesEditingContext)propertiesEditionComponent.getEditingContext()).getHelper().createLabel(parent, editor, alternate);
+			return ((ExtendedPropertiesEditingContext)propertiesEditionComponent.getEditingContext())
+					.getHelper().createLabel(parent, editor, alternate);
 		} else {
-			return SWTUtils.createPartLabel(parent, alternate, propertiesEditionComponent.isRequired(editor, 0));
+			return SWTUtils.createPartLabel(parent, alternate,
+					propertiesEditionComponent.isRequired(editor, 0));
 		}
 	}
-	
-	
 
 }
