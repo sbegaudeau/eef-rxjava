@@ -17,7 +17,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -127,7 +126,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.name, ViewsMessages.ViewsRepositoryPropertiesEditionPart_NameLabel);
-		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -173,7 +172,7 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 	
 	protected Composite createRepositoryKindText(Composite parent) {
 		createDescription(parent, ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsMessages.ViewsRepositoryPropertiesEditionPart_RepositoryKindLabel);
-		repositoryKind = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		repositoryKind = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData repositoryKindData = new GridData(GridData.FILL_HORIZONTAL);
 		repositoryKind.setLayoutData(repositoryKindData);
 		repositoryKind.addFocusListener(new FocusAdapter() {
