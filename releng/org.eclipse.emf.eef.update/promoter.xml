@@ -9,7 +9,7 @@
   Contributors:
       Obeo - initial API and implementation
 
- $Id: promoter.xml,v 1.35 2012/03/16 17:14:14 sbouchet Exp $
+ $Id: promoter.xml,v 1.36 2012/03/21 08:40:06 sbouchet Exp $
 -->
 <project name="Promoter" default="main">
 	<!--
@@ -36,6 +36,7 @@
 	<property name="downloads.root" value="/home/data/httpd/download.eclipse.org/" />
 	<property name="downloads.area" value="${downloads.root}/${downloads.project.root}" />
 	<property name="property.file.location" location="${build.root}/promotion/promote.properties" />
+	<antversion property="antversion" />
 
 	<!--
 	most of the code comes from Athena CBI.
@@ -61,7 +62,7 @@ then place it in the following location. You can also redefine the path in the p
 
 $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contrib.jar
 
-	Or, to download this automatically, see $${relengCommonBuilderDir}/build.properties#thirdPartyDownloadLicenseAcceptance.
+Or, to download this automatically, see promoter.xml#thirdPartyDownloadLicenseAcceptance property.
 		</fail>
 	</target>
 
@@ -76,6 +77,13 @@ $${thirdPartyJarsDir}/ant-contrib.jar          = ${thirdPartyJarsDir}/ant-contri
 	</target>
 
 	<target name="init">
+		<fail message="Please use at least ant 1.8.0. Modify your ANT_HOME path to point to a correct location">
+			<condition>
+				<not>
+					<contains string="${antversion}" substring="1.8" />
+				</not>
+			</condition>
+		</fail>
 		<condition property="antContribJarUnavailable">
 			<not>
 				<available file="${thirdPartyJarsDir}/ant-contrib.jar" type="file" />
