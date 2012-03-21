@@ -25,7 +25,6 @@ import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -145,7 +144,7 @@ public class SimpleModelNavigationPropertiesEditionPartImpl extends CompositePro
 	
 	protected Composite createIndexText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SimpleModelNavigation.Properties.index, NavigationMessages.SimpleModelNavigationPropertiesEditionPart_IndexLabel);
-		index = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		index = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData indexData = new GridData(GridData.FILL_HORIZONTAL);
 		index.setLayoutData(indexData);
 		index.addFocusListener(new FocusAdapter() {
