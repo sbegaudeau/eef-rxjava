@@ -21,7 +21,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -159,7 +158,7 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 	
 	protected Composite createQueryText(Composite parent) {
 		createDescription(parent, QueryViewsRepository.OCLQuery.Properties.query_, QueryMessages.OCLQueryPropertiesEditionPart_QueryLabel);
-		query = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		query = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData queryData = new GridData(GridData.FILL_HORIZONTAL);
 		query.setLayoutData(queryData);
 		query.addFocusListener(new FocusAdapter() {
