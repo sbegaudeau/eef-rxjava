@@ -23,6 +23,7 @@
 	'org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider',
 	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
 	'org.eclipse.emf.eef.runtime.ui.utils.EditingUtils',
+	'org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils',
 	'org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog',
 	'org.eclipse.jface.window.Window',
 	'org.eclipse.swt.events.SelectionAdapter',
@@ -44,7 +45,7 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
 	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
-		[editor.elementEditorName()/] = [include('org.eclipse.emf.eef.runtime.impl.utils.SWTUtil')/].createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		[editor.elementEditorName()/] = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		[if (editor.readOnly)]
 		[editor.elementEditorName()/].setEnabled(false);
 		[editor.elementEditorName()/].setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
