@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -151,7 +150,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createGenerationDirectoryText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_GenerationDirectoryLabel);
-		generationDirectory = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		generationDirectory = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData generationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
 		generationDirectory.setLayoutData(generationDirectoryData);
 		generationDirectory.addFocusListener(new FocusAdapter() {
@@ -197,7 +196,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createTestsGenerationDirectoryText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory, EEFGenMessages.EEFGenModelPropertiesEditionPart_TestsGenerationDirectoryLabel);
-		testsGenerationDirectory = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		testsGenerationDirectory = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData testsGenerationDirectoryData = new GridData(GridData.FILL_HORIZONTAL);
 		testsGenerationDirectory.setLayoutData(testsGenerationDirectoryData);
 		testsGenerationDirectory.addFocusListener(new FocusAdapter() {
@@ -285,7 +284,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 	
 	protected Composite createAuthorText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.EEFGenModel.Legal.author, EEFGenMessages.EEFGenModelPropertiesEditionPart_AuthorLabel);
-		author = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		author = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData authorData = new GridData(GridData.FILL_HORIZONTAL);
 		author.setLayoutData(authorData);
 		author.addFocusListener(new FocusAdapter() {
@@ -334,7 +333,7 @@ public class EEFGenModelPropertiesEditionPartImpl extends CompositePropertiesEdi
 		GridData licenseLabelData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseLabelData.horizontalSpan = 3;
 		licenseLabel.setLayoutData(licenseLabelData);
-		license = SWTUtil.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		license = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData licenseData = new GridData(GridData.FILL_HORIZONTAL);
 		licenseData.horizontalSpan = 2;
 		licenseData.heightHint = 80;

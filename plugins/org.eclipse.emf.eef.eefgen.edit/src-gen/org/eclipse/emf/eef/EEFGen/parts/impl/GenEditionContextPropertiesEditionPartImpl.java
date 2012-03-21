@@ -21,7 +21,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -223,7 +222,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createBasePackageText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenMessages.GenEditionContextPropertiesEditionPart_BasePackageLabel);
-		basePackage = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		basePackage = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData basePackageData = new GridData(GridData.FILL_HORIZONTAL);
 		basePackage.setLayoutData(basePackageData);
 		basePackage.addFocusListener(new FocusAdapter() {
@@ -269,7 +268,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createDescriptorsContributorIDText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenMessages.GenEditionContextPropertiesEditionPart_DescriptorsContributorIDLabel);
-		descriptorsContributorID = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		descriptorsContributorID = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData descriptorsContributorIDData = new GridData(GridData.FILL_HORIZONTAL);
 		descriptorsContributorID.setLayoutData(descriptorsContributorIDData);
 		descriptorsContributorID.addFocusListener(new FocusAdapter() {
@@ -426,7 +425,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createLeafComponentsSuperClassText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass, EEFGenMessages.GenEditionContextPropertiesEditionPart_LeafComponentsSuperClassLabel);
-		leafComponentsSuperClass = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		leafComponentsSuperClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData leafComponentsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		leafComponentsSuperClass.setLayoutData(leafComponentsSuperClassData);
 		leafComponentsSuperClass.addFocusListener(new FocusAdapter() {
@@ -472,7 +471,7 @@ public class GenEditionContextPropertiesEditionPartImpl extends CompositePropert
 	
 	protected Composite createPropertiesEditingProvidersSuperClassText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass, EEFGenMessages.GenEditionContextPropertiesEditionPart_PropertiesEditingProvidersSuperClassLabel);
-		propertiesEditingProvidersSuperClass = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		propertiesEditingProvidersSuperClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData propertiesEditingProvidersSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesEditingProvidersSuperClass.setLayoutData(propertiesEditingProvidersSuperClassData);
 		propertiesEditingProvidersSuperClass.addFocusListener(new FocusAdapter() {

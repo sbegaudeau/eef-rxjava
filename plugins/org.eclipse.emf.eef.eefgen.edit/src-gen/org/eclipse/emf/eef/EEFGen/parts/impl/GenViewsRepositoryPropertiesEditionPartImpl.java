@@ -23,7 +23,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -218,7 +217,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createBasePackageText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_BasePackageLabel);
-		basePackage = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		basePackage = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData basePackageData = new GridData(GridData.FILL_HORIZONTAL);
 		basePackage.setLayoutData(basePackageData);
 		basePackage.addFocusListener(new FocusAdapter() {
@@ -375,7 +374,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createPartsSuperClassText(Composite parent) {
 		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel);
-		partsSuperClass = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		partsSuperClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData partsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
 		partsSuperClass.setLayoutData(partsSuperClassData);
 		partsSuperClass.addFocusListener(new FocusAdapter() {
