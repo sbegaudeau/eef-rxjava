@@ -23,13 +23,13 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -133,7 +133,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 	}
 
 	protected Composite createMultivaluededitorRequiredPropertyMultiValuedEditor(Composite parent) {
-		multivaluededitorRequiredProperty = SWTUtil.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		multivaluededitorRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
@@ -173,7 +173,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 	}
 
 	protected Composite createMultivaluededitorOptionalPropertyMultiValuedEditor(Composite parent) {
-		multivaluededitorOptionalProperty = SWTUtil.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		multivaluededitorOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);

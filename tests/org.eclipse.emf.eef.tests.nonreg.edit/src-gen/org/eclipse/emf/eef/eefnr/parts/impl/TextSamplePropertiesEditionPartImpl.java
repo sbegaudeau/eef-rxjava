@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -127,7 +126,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 	
 	protected Composite createTextRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel);
-		textRequiredProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		textRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
 		textRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -173,7 +172,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 	
 	protected Composite createTextOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel);
-		textOptionalProperty = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		textOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
 		textOptionalProperty.addFocusListener(new FocusAdapter() {

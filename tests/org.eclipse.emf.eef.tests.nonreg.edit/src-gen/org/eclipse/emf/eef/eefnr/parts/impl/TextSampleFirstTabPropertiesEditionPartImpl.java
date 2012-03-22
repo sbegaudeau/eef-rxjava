@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -127,7 +126,7 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createTextRequiredPropertyInFirstTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel);
-		textRequiredPropertyInFirstTab = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		textRequiredPropertyInFirstTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData textRequiredPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredPropertyInFirstTab.setLayoutData(textRequiredPropertyInFirstTabData);
 		textRequiredPropertyInFirstTab.addFocusListener(new FocusAdapter() {
@@ -173,7 +172,7 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 	
 	protected Composite createTextOptionalPropertyInFirstTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel);
-		textOptionalPropertyInFirstTab = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		textOptionalPropertyInFirstTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData textOptionalPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalPropertyInFirstTab.setLayoutData(textOptionalPropertyInFirstTabData);
 		textOptionalPropertyInFirstTab.addFocusListener(new FocusAdapter() {

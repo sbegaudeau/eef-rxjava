@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -127,7 +126,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	
 	protected Composite createTextRequiredPropertyInSecondTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel);
-		textRequiredPropertyInSecondTab = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		textRequiredPropertyInSecondTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData textRequiredPropertyInSecondTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredPropertyInSecondTab.setLayoutData(textRequiredPropertyInSecondTabData);
 		textRequiredPropertyInSecondTab.addFocusListener(new FocusAdapter() {
@@ -173,7 +172,7 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	
 	protected Composite createTextOptionalPropertyInSecondTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel);
-		textOptionalPropertyInSecondTab = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		textOptionalPropertyInSecondTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData textOptionalPropertyInSecondTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalPropertyInSecondTab.setLayoutData(textOptionalPropertyInSecondTabData);
 		textOptionalPropertyInSecondTab.addFocusListener(new FocusAdapter() {
