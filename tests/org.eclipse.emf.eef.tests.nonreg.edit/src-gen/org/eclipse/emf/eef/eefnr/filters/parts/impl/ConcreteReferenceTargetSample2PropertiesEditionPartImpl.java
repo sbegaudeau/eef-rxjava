@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -122,7 +121,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 	
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersMessages.ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel);
-		name = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
