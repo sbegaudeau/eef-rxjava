@@ -417,10 +417,34 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 			 * 
 			 */
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EEFGenModelPropertiesEditionPartForm.this, EEFGenViewsRepository.EEFGenModel.Legal.license, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							EEFGenModelPropertiesEditionPartForm.this,
+							EEFGenViewsRepository.EEFGenModel.Legal.license,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, license.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									EEFGenModelPropertiesEditionPartForm.this,
+									EEFGenViewsRepository.EEFGenModel.Legal.license,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
 			}
 
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									EEFGenModelPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
 		});
 		EditingUtils.setID(license, EEFGenViewsRepository.EEFGenModel.Legal.license);
 		EditingUtils.setEEFtype(license, "eef::Textarea"); //$NON-NLS-1$
