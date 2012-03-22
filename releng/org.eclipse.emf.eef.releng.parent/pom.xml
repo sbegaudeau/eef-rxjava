@@ -40,15 +40,13 @@
 
 	<properties>
 		<tycho-version>0.14.1</tycho-version>
+		<tycho-extras-version>0.14.0</tycho-extras-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<profiles>
 		<profile>
 			<id>juno4.2</id>
-			<properties>
-				<platform-version>[4.0,5.0)</platform-version>
-			</properties>
 			<repositories>
 				<repository>
 					<id>releasetrain</id>
@@ -83,7 +81,7 @@
 				<repository>
 					<id>orbit</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120119162704/repository/</url>
+					<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120308061416/repository/</url>
 				</repository>
 				<repository>
 					<id>epf</id>
@@ -94,9 +92,6 @@
 		</profile>
 		<profile>
 			<id>juno3.8</id>
-			<properties>
-				<platform-version>[3.0,4.0)</platform-version>
-			</properties>
 			<repositories>
 				<repository>
 					<id>releasetrain</id>
@@ -131,7 +126,7 @@
 				<repository>
 					<id>orbit</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120119162704/repository/</url>
+					<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120308061416/repository</url>
 				</repository>
 				<repository>
 					<id>epf</id>
@@ -232,8 +227,8 @@
 		<module>../../features/org.eclipse.emf.eef.richtext-feature</module>
 		<module>../../features/org.eclipse.emf.eef.edt-feature</module>
 		<module>../../features/org.eclipse.emf.eef.codegen.ecore-feature</module>
-		<module>../../features/org.eclipse.emf.eef.indigo-feature</module>
 		<module>../../features/org.eclipse.emf.eef.sdk-feature</module>
+		<!-- deprecated <module>../../features/org.eclipse.emf.eef.indigo-feature</module> -->
 
 		<module>../org.eclipse.emf.eef.update</module>
 
@@ -282,6 +277,20 @@
 					</environments>
 				</configuration>
 			</plugin>
+			<!-- enable source bundle generation -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -292,20 +301,6 @@
 					<configuration>
 						<encoding>UTF-8</encoding>
 					</configuration>
-				</plugin>
-				<!-- enable source bundle generation -->
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-source-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
-						<execution>
-							<id>plugin-source</id>
-							<goals>
-								<goal>plugin-source</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
