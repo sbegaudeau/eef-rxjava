@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -163,7 +162,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createFirstnameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.firstname, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel);
-		firstname = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		firstname = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData firstnameData = new GridData(GridData.FILL_HORIZONTAL);
 		firstname.setLayoutData(firstnameData);
 		firstname.addFocusListener(new FocusAdapter() {
@@ -209,7 +208,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createLastnameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.lastname, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel);
-		lastname = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		lastname = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData lastnameData = new GridData(GridData.FILL_HORIZONTAL);
 		lastname.setLayoutData(lastnameData);
 		lastname.addFocusListener(new FocusAdapter() {
@@ -255,7 +254,7 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	
 	protected Composite createAgeText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.age, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel);
-		age = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		age = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData ageData = new GridData(GridData.FILL_HORIZONTAL);
 		age.setLayoutData(ageData);
 		age.addFocusListener(new FocusAdapter() {

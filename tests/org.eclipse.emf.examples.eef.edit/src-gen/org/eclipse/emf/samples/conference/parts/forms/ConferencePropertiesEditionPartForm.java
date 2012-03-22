@@ -222,10 +222,34 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 			 * 
 			 */
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConferencePropertiesEditionPartForm.this, ConferenceViewsRepository.Conference_.Properties.overview, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, overview.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							ConferencePropertiesEditionPartForm.this,
+							ConferenceViewsRepository.Conference_.Properties.overview,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, overview.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ConferencePropertiesEditionPartForm.this,
+									ConferenceViewsRepository.Conference_.Properties.overview,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
 			}
 
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ConferencePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
 		});
 		EditingUtils.setID(overview, ConferenceViewsRepository.Conference_.Properties.overview);
 		EditingUtils.setEEFtype(overview, "eef::Textarea"); //$NON-NLS-1$

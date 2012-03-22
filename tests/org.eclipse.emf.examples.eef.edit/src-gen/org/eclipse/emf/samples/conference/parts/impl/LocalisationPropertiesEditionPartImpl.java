@@ -21,7 +21,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -119,7 +118,7 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 	
 	protected Composite createPlaceText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Localisation.place, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel);
-		place = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		place = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
 		place.setLayoutData(placeData);
 		place.addFocusListener(new FocusAdapter() {
