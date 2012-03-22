@@ -11,15 +11,10 @@
 package org.eclipse.emf.eef.eefnr.navigation.providers;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.NamingViewsRepository;
-
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.EventPropertiesEditionPartForm;
-
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.EventPropertiesEditionPartImpl;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**
