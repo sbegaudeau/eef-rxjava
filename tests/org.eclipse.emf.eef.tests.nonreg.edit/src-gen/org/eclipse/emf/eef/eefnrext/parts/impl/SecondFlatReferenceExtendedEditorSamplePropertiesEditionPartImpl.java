@@ -19,7 +19,6 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.impl.utils.SWTUtil;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -127,7 +126,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	
 	protected Composite createDemoText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel);
-		demo = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		demo = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData demoData = new GridData(GridData.FILL_HORIZONTAL);
 		demo.setLayoutData(demoData);
 		demo.addFocusListener(new FocusAdapter() {
@@ -173,7 +172,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	
 	protected Composite createSizeText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel);
-		size = SWTUtil.createScrollableText(parent, SWT.BORDER);
+		size = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData sizeData = new GridData(GridData.FILL_HORIZONTAL);
 		size.setLayoutData(sizeData);
 		size.addFocusListener(new FocusAdapter() {
