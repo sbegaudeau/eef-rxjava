@@ -162,10 +162,34 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 			 * 
 			 */
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JavaExpressionFilterPropertiesEditionPartForm.this, FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							JavaExpressionFilterPropertiesEditionPartForm.this,
+							FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaExpressionBody.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									JavaExpressionFilterPropertiesEditionPartForm.this,
+									FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, null));
+				}
 			}
 
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									JavaExpressionFilterPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
 		});
 		EditingUtils.setID(javaExpressionBody, FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
 		EditingUtils.setEEFtype(javaExpressionBody, "eef::Textarea"); //$NON-NLS-1$
