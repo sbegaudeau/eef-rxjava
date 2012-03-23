@@ -75,8 +75,8 @@
 	pepCompletePackage.concat('.parts.').concat(pepInterface)/]
 
 [query public associatedGenFeature(pee : PropertiesEditionElement) : GenFeature = 
-	(let genFeatures : OrderedSet(OclAny) = pee.model.eInverse()->select(oclIsKindOf(GenFeature)) in
-	if (not genFeatures->isEmpty()) then genFeatures->first().oclAsType(GenFeature) else null endif)/]
+	let genFeatures : OrderedSet(GenFeature) = pee.model.eInverse(GenFeature) in
+	if genFeatures->isEmpty() then null else genFeatures->first() endif/]
 
 [query public associatedGenPackage(p : EPackage) : GenPackage = 
 	p.eInverse(GenPackage)->first()/]
@@ -269,7 +269,7 @@
 
 [template public propertiesLicenceText(eefGenModel : EEFGenModel)]
 [if (not eefGenModel.license.oclIsUndefined())]
-[eefGenModel.license.replaceAll('/\\*\\*', '#').replaceAll(' \\*/', '#').replaceAll(' \\*', '#')/]
+[eefGenModel.license.replaceAll('/\\*\\*', '##').replaceAll('\\*/', '#').replaceAll(' \\*', '#').replaceAll('\\*', '#')/]
 [else]
 #
 # Generated with Acceleo
