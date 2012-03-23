@@ -11,6 +11,14 @@
 package org.eclipse.emf.samples.conference.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
+
+import org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionProvider;
+import org.eclipse.emf.samples.conference.providers.PersonPropertiesEditionProvider;
+import org.eclipse.emf.samples.conference.providers.RoomPropertiesEditionProvider;
+import org.eclipse.emf.samples.conference.providers.SitePropertiesEditionProvider;
+import org.eclipse.emf.samples.conference.providers.TalkPropertiesEditionProvider;
+import org.eclipse.emf.samples.conference.providers.TopicPropertiesEditionProvider;
+
 import org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory;
 
 /**

@@ -13,13 +13,20 @@ package org.eclipse.emf.samples.conference.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Room;
+
 import org.eclipse.emf.samples.conference.components.RoomPropertiesEditionComponent;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**
