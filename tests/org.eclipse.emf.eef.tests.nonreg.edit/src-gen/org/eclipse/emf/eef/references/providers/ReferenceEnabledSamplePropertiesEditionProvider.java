@@ -13,15 +13,22 @@ package org.eclipse.emf.eef.references.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.references.ReferenceEnabledSample;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
+
 import org.eclipse.emf.eef.references.components.AbstractSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.references.components.ReferenceEnabledSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.references.components.ReferenceEnabledSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
 import org.eclipse.jface.viewers.IFilter;
 
 /**

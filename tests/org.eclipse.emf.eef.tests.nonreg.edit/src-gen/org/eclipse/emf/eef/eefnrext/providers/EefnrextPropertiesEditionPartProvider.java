@@ -11,16 +11,21 @@
 package org.eclipse.emf.eef.eefnrext.providers;
 
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
+
 import org.eclipse.emf.eef.eefnrext.parts.forms.CheckBoxExtendedEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnrext.parts.forms.FlatReferenceExtendedEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnrext.parts.forms.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnrext.parts.forms.TableCompositionTargetExtensionEditorSamplePropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.eefnrext.parts.impl.CheckBoxExtendedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnrext.parts.impl.FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnrext.parts.impl.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnrext.parts.impl.TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**
