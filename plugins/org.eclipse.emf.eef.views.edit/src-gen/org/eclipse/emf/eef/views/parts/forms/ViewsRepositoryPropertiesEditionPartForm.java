@@ -161,7 +161,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 									ViewsRepositoryPropertiesEditionPartForm.this,
 									ViewsViewsRepository.ViewsRepository.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -226,7 +226,7 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 									ViewsRepositoryPropertiesEditionPartForm.this,
 									ViewsViewsRepository.ViewsRepository.Properties.repositoryKind,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, repositoryKind.getText()));
 				}
 			}
 

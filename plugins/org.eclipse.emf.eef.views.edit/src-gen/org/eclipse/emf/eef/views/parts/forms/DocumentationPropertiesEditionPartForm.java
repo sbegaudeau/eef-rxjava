@@ -160,7 +160,7 @@ public class DocumentationPropertiesEditionPartForm extends SectionPropertiesEdi
 									DocumentationPropertiesEditionPartForm.this,
 									ViewsViewsRepository.Documentation.Documentation_.documentation__,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, documentation.getText()));
 				}
 			}
 

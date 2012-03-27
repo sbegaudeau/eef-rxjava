@@ -170,7 +170,7 @@ public class ViewReferencePropertiesEditionPartForm extends SectionPropertiesEdi
 									ViewReferencePropertiesEditionPartForm.this,
 									ViewsViewsRepository.ViewReference.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
