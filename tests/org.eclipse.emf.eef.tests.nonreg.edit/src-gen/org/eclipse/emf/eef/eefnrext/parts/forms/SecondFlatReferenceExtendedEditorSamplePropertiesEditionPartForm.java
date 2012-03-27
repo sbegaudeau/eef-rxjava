@@ -161,7 +161,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 									SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm.this,
 									EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, demo.getText()));
 				}
 			}
 
@@ -226,7 +226,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 									SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm.this,
 									EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, size.getText()));
 				}
 			}
 

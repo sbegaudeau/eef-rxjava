@@ -161,7 +161,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 									TextSampleFirstTabPropertiesEditionPartForm.this,
 									EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textRequiredPropertyInFirstTab.getText()));
 				}
 			}
 
@@ -226,7 +226,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 									TextSampleFirstTabPropertiesEditionPartForm.this,
 									EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textOptionalPropertyInFirstTab.getText()));
 				}
 			}
 

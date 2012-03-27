@@ -346,7 +346,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 									TotalSamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.TotalSample.Properties.textRequiredProperty,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textRequiredProperty.getText()));
 				}
 			}
 
@@ -411,7 +411,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 									TotalSamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.TotalSample.Properties.textOptionalProperty,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textOptionalProperty.getText()));
 				}
 			}
 
@@ -528,7 +528,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 									TotalSamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textareaRequiredProperty.getText()));
 				}
 			}
 
@@ -593,7 +593,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 									TotalSamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textareaOptionalProperty.getText()));
 				}
 			}
 
@@ -1730,7 +1730,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 									TotalSamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.TotalSample.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

@@ -161,7 +161,7 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 									SamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.Sample.Properties.textRequiredProperty,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textRequiredProperty.getText()));
 				}
 			}
 
@@ -226,7 +226,7 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 									SamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.Sample.Properties.textOptionalProperty,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, textOptionalProperty.getText()));
 				}
 			}
 

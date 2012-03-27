@@ -169,7 +169,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 									DeferedFlatReferencesTableSamplePropertiesEditionPartForm.this,
 									NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

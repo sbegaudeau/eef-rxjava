@@ -156,7 +156,7 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 									EventPropertiesEditionPartForm.this,
 									NamingViewsRepository.Event.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

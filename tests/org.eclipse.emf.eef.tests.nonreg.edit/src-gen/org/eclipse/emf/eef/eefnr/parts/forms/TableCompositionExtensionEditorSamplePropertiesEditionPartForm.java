@@ -182,7 +182,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 									TableCompositionExtensionEditorSamplePropertiesEditionPartForm.this,
 									EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

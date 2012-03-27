@@ -188,7 +188,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 									ConcreteReferenceOwnerSamplePropertiesEditionPartForm.this,
 									FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

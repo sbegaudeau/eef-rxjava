@@ -156,7 +156,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 									ConcreteReferenceTargetSample2PropertiesEditionPartForm.this,
 									FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

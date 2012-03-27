@@ -176,7 +176,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 									AttributeNavigationSamplePropertiesEditionPartForm.this,
 									NavigationViewsRepository.AttributeNavigationSample.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -241,7 +241,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 									AttributeNavigationSamplePropertiesEditionPartForm.this,
 									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, delegate1ForSingleValued.getText()));
 				}
 			}
 
@@ -306,7 +306,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 									AttributeNavigationSamplePropertiesEditionPartForm.this,
 									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, delegate2ForSingleValued.getText()));
 				}
 			}
 
@@ -371,7 +371,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 									AttributeNavigationSamplePropertiesEditionPartForm.this,
 									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, delegate1ForMultiValued.getText()));
 				}
 			}
 
@@ -436,7 +436,7 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 									AttributeNavigationSamplePropertiesEditionPartForm.this,
 									NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, delegate2ForMultiValued.getText()));
 				}
 			}
 
