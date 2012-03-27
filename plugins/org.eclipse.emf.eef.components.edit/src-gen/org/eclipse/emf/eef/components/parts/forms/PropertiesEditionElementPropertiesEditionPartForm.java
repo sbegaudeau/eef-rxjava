@@ -209,7 +209,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 									PropertiesEditionElementPropertiesEditionPartForm.this,
 									ComponentsViewsRepository.PropertiesEditionElement.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -274,7 +274,7 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 									PropertiesEditionElementPropertiesEditionPartForm.this,
 									ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, helpID.getText()));
 				}
 			}
 
