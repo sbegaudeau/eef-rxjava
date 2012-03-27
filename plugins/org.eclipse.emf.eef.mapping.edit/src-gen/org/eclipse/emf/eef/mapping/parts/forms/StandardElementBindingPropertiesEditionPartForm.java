@@ -198,7 +198,7 @@ public class StandardElementBindingPropertiesEditionPartForm extends SectionProp
 									StandardElementBindingPropertiesEditionPartForm.this,
 									MappingViewsRepository.StandardElementBinding.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

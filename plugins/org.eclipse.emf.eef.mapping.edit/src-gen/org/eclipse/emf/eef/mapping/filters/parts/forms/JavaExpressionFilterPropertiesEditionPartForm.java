@@ -172,7 +172,7 @@ public class JavaExpressionFilterPropertiesEditionPartForm extends SectionProper
 									JavaExpressionFilterPropertiesEditionPartForm.this,
 									FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, javaExpressionBody.getText()));
 				}
 			}
 

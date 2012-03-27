@@ -168,7 +168,7 @@ public class JavaDeclarationFilterPropertiesEditionPartForm extends SectionPrope
 									JavaDeclarationFilterPropertiesEditionPartForm.this,
 									FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, methodName.getText()));
 				}
 			}
 

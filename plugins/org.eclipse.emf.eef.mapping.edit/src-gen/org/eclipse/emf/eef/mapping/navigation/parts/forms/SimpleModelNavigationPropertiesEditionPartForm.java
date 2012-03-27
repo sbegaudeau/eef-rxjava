@@ -179,7 +179,7 @@ public class SimpleModelNavigationPropertiesEditionPartForm extends SectionPrope
 									SimpleModelNavigationPropertiesEditionPartForm.this,
 									NavigationViewsRepository.SimpleModelNavigation.Properties.index,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, index.getText()));
 				}
 			}
 

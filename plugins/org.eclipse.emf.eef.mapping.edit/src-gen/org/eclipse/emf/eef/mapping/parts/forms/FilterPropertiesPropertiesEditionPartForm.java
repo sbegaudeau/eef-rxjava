@@ -164,7 +164,7 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 									FilterPropertiesPropertiesEditionPartForm.this,
 									MappingViewsRepository.FilterProperties.FilterProperties_.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

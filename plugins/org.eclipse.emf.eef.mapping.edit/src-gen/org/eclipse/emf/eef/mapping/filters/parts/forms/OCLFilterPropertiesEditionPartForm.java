@@ -172,7 +172,7 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 									OCLFilterPropertiesEditionPartForm.this,
 									FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, oCLExpressionBody.getText()));
 				}
 			}
 

@@ -156,7 +156,7 @@ public class CategoryPropertiesEditionPartForm extends SectionPropertiesEditingP
 									CategoryPropertiesEditionPartForm.this,
 									MappingViewsRepository.Category.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

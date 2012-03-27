@@ -193,7 +193,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartForm extends SectionP
 									EMFMultiPropertiesBindingPropertiesEditionPartForm.this,
 									MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

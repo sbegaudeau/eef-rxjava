@@ -198,7 +198,7 @@ public class EMFElementBindingPropertiesEditionPartForm extends SectionPropertie
 									EMFElementBindingPropertiesEditionPartForm.this,
 									MappingViewsRepository.EMFElementBinding.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
