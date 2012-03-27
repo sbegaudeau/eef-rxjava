@@ -198,7 +198,7 @@ public class DynamicEEFEditorContributionPropertiesEditionPartForm extends Secti
 									DynamicEEFEditorContributionPropertiesEditionPartForm.this,
 									EditorViewsRepository.DynamicEEFEditorContribution.Naming.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

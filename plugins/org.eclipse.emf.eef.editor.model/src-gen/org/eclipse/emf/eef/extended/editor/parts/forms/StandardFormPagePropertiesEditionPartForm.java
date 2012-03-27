@@ -161,7 +161,7 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 									StandardFormPagePropertiesEditionPartForm.this,
 									EditorViewsRepository.StandardFormPage.Naming.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -226,7 +226,7 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 									StandardFormPagePropertiesEditionPartForm.this,
 									EditorViewsRepository.StandardFormPage.Naming.title_,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, title_.getText()));
 				}
 			}
 

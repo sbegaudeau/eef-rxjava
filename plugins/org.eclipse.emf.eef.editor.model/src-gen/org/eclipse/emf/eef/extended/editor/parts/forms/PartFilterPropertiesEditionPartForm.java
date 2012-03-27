@@ -195,7 +195,7 @@ public class PartFilterPropertiesEditionPartForm extends SectionPropertiesEditin
 									PartFilterPropertiesEditionPartForm.this,
 									EditorViewsRepository.PartFilter.Naming.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

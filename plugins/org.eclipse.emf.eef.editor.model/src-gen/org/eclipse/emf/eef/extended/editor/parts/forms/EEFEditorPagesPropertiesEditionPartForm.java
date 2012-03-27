@@ -156,7 +156,7 @@ public class EEFEditorPagesPropertiesEditionPartForm extends SectionPropertiesEd
 									EEFEditorPagesPropertiesEditionPartForm.this,
 									EditorViewsRepository.EEFEditorPages.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 

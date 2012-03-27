@@ -200,7 +200,7 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 									OCLQueryPropertiesEditionPartForm.this,
 									QueryViewsRepository.OCLQuery.Properties.query_,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, query.getText()));
 				}
 			}
 

@@ -175,7 +175,7 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 									TreeMasterPagePropertiesEditionPartForm.this,
 									EditorViewsRepository.TreeMasterPage.Naming.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -240,7 +240,7 @@ public class TreeMasterPagePropertiesEditionPartForm extends SectionPropertiesEd
 									TreeMasterPagePropertiesEditionPartForm.this,
 									EditorViewsRepository.TreeMasterPage.Naming.title_,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, title_.getText()));
 				}
 			}
 

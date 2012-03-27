@@ -179,7 +179,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 									EEFMasterPagePropertiesEditionPartForm.this,
 									EditorViewsRepository.EEFMasterPage.Naming.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -244,7 +244,7 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 									EEFMasterPagePropertiesEditionPartForm.this,
 									EditorViewsRepository.EEFMasterPage.Naming.title_,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, title_.getText()));
 				}
 			}
 

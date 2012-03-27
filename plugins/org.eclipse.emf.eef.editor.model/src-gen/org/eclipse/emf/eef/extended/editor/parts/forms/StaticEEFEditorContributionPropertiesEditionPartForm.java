@@ -186,7 +186,7 @@ public class StaticEEFEditorContributionPropertiesEditionPartForm extends Sectio
 									StaticEEFEditorContributionPropertiesEditionPartForm.this,
 									EditorViewsRepository.StaticEEFEditorContribution.Naming.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
