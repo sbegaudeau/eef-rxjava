@@ -184,7 +184,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 									EEFGenModelPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, generationDirectory.getText()));
 				}
 			}
 
@@ -249,7 +249,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 									EEFGenModelPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, testsGenerationDirectory.getText()));
 				}
 			}
 
@@ -357,7 +357,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 									EEFGenModelPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.EEFGenModel.Legal.author,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, author.getText()));
 				}
 			}
 
@@ -427,7 +427,7 @@ public class EEFGenModelPropertiesEditionPartForm extends SectionPropertiesEditi
 									EEFGenModelPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.EEFGenModel.Legal.license,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, license.getText()));
 				}
 			}
 

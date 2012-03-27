@@ -261,7 +261,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 									GenViewsRepositoryPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, basePackage.getText()));
 				}
 			}
 
@@ -439,7 +439,7 @@ public class GenViewsRepositoryPropertiesEditionPartForm extends SectionProperti
 									GenViewsRepositoryPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, partsSuperClass.getText()));
 				}
 			}
 

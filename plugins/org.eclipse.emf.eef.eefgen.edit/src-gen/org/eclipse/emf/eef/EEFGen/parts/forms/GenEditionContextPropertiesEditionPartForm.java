@@ -266,7 +266,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 									GenEditionContextPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.GenEditionContext.Parameters.basePackage,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, basePackage.getText()));
 				}
 			}
 
@@ -331,7 +331,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 									GenEditionContextPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, descriptorsContributorID.getText()));
 				}
 			}
 
@@ -508,7 +508,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 									GenEditionContextPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, leafComponentsSuperClass.getText()));
 				}
 			}
 
@@ -573,7 +573,7 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 									GenEditionContextPropertiesEditionPartForm.this,
 									EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, propertiesEditingProvidersSuperClass.getText()));
 				}
 			}
 
