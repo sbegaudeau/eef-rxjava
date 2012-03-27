@@ -178,7 +178,7 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 									TopicPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Topic.Properties.description,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, description.getText()));
 				}
 			}
 
@@ -291,7 +291,7 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 									TopicPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Topic.Properties.documentation,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, documentation.getText()));
 				}
 			}
 

@@ -151,7 +151,7 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 									LocalisationPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Localisation.place,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, place.getText()));
 				}
 			}
 

@@ -195,7 +195,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 									TalkPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Talk.Properties.title_,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, title_.getText()));
 				}
 			}
 
@@ -382,7 +382,7 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 									TalkPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Talk.Properties.documentation,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, documentation.getText()));
 				}
 			}
 

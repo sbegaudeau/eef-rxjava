@@ -162,7 +162,7 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 									ConferencePropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Conference_.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -232,7 +232,7 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 									ConferencePropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Conference_.Properties.overview,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, overview.getText()));
 				}
 			}
 

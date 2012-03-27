@@ -197,7 +197,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 									PersonPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Person.Identity.firstname,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, firstname.getText()));
 				}
 			}
 
@@ -262,7 +262,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 									PersonPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Person.Identity.lastname,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, lastname.getText()));
 				}
 			}
 
@@ -327,7 +327,7 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 									PersonPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Person.Identity.age,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, age.getText()));
 				}
 			}
 

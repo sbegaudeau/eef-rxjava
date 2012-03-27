@@ -161,7 +161,7 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 									RoomPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Room.Properties.name,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, name.getText()));
 				}
 			}
 
@@ -226,7 +226,7 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 									RoomPropertiesEditionPartForm.this,
 									ConferenceViewsRepository.Room.Properties.capacity,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, null));
+									null, capacity.getText()));
 				}
 			}
 
