@@ -57,7 +57,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.emf.eef.interface.properties"
+            contributorId="org.eclipse.emf.eef.eefnr.properties"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -73,7 +73,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.eclipse.emf.eef.interface.properties">
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
          <propertyTab
                id="Base"
                label="Base"
@@ -85,7 +85,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="org.eclipse.emf.eef.interface.properties">
+            contributorId="org.eclipse.emf.eef.eefnr.properties">
          <propertySection
                class="org.eclipse.emf.eef.eefnr.interface_.parts.forms.SimpleSamplePropertiesEditionPartForm"
                filter="org.eclipse.emf.eef.interface_.providers.SimpleSamplePropertiesEditionProvider$EditionFilter"
