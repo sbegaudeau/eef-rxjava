@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module selectionDialogControl('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0') extends widgetControl/]
+[module selectionDialogControl('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/1.0.0') extends org::eclipse::emf::eef::codegen::widgets::api::widgetControl/]
 
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::services::common /]

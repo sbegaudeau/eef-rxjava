@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module eobjectflatcomboviewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends widgetGettersSetters/]
+[module eobjectflatcomboviewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
