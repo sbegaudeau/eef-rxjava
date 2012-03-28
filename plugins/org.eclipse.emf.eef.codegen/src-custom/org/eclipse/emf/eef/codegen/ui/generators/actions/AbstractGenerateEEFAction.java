@@ -43,20 +43,17 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 
 	protected List<IFile> selectedFiles;
 
+	/**
+	 * the list of eefgenmodels
+	 * @deprecated since a job is used to generates files
+	 */
 	protected List<EEFGenModel> eefGenModels;
 
 	/**
-	 * the job used for the generation.
-	 * @since 1.1
-	 */
-	protected Job generationJob;
-
-	/**
-	 * 
+	 * Constructor.
 	 */
 	public AbstractGenerateEEFAction() {
 		selectedFiles = new ArrayList<IFile>();
-		eefGenModels = new ArrayList<EEFGenModel>();
 	}
 
 	/**
@@ -81,27 +78,16 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
 	public void run() {
-		// avoid concurrent modification
-		if (generationJob != null && (generationJob.getState() == Job.RUNNING || generationJob.getState() == Job.WAITING))
-			try {
-				generationJob.join();
-			} catch (InterruptedException e) {
-
-			}
 		if (selectedFiles != null) {
-			try {
-				eefGenModels = initEEFGenModel();
-			} catch (IOException e) {
-				EEFCodegenPlugin.getDefault().logError(e);
-			}
 
-			generationJob = new Job("EEF architecture generation") {
+			Job generationJob = new Job("EEF architecture generation") {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					try {
-						if (eefGenModels != null && !monitor.isCanceled()) {
+						List<EEFGenModel> eefgenmodels = initEEFGenModel();
+						if (eefgenmodels != null && !monitor.isCanceled()) {
 							monitor.beginTask("Generating EEF Architecture", IProgressMonitor.UNKNOWN);
-							for (final EEFGenModel eefGenModel : eefGenModels) {
+							for (final EEFGenModel eefGenModel : eefgenmodels) {
 								final IContainer target = getGenContainer(eefGenModel);
 								if (target != null) {
 									monitor.subTask("Generating "
@@ -136,12 +122,13 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 					} finally {
 						monitor.done();
 						selectedFiles.clear();
-						eefGenModels.clear();
 					}
 					return Status.OK_STATUS;
 				}
 			};
 			generationJob.setUser(true);
+			// lock the workspace to avoid concurrent modification
+			generationJob.setRule(ResourcesPlugin.getWorkspace().getRoot());
 			generationJob.schedule();
 		}
 	}
@@ -151,7 +138,6 @@ public abstract class AbstractGenerateEEFAction extends Action implements IObjec
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		selectedFiles.clear();
-		eefGenModels.clear();
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
 			for (Object selectedElement : sSelection.toList()) {

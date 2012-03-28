@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.codegen.ui.generators.actions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#initEEFGenModel()
 	 */
 	protected List<EEFGenModel> initEEFGenModel() throws IOException {
+		List<EEFGenModel> eefgenmodels = new ArrayList<EEFGenModel>(selectedFiles.size());
 		if (!selectedFiles.isEmpty()) {
 			for (IFile selectedFile : selectedFiles) {
 				ResourceSet resourceSet = new ResourceSetImpl();
@@ -65,12 +67,12 @@ public class GenerateEEFAction extends AbstractGenerateEEFAction {
 				if (res.getContents().size() > 0) {
 					EObject object = res.getContents().get(0);
 					if (object instanceof EEFGenModel) {
-						eefGenModels.add((EEFGenModel)object);
+						eefgenmodels.add((EEFGenModel)object);
 					}
 				}
 			}
 		}
-		return eefGenModels;
+		return eefgenmodels;
 	}
 
 }
