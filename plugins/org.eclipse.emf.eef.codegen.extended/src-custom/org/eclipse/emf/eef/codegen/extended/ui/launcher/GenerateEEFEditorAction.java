@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -41,29 +42,39 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+/**
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ */
 public class GenerateEEFEditorAction implements IObjectActionDelegate {
 
 	private static final String GENERATE_EEF_EDITOR = "Generate EEF Editor for ";
 
+	/**
+	 * @deprecated see bug #370409
+	 */
 	private Shell shell;
 
 	protected Set<IFile> selectedFiles;
 
+	/**
+	 * the list of eefgenmodels
+	 * 
+	 * @deprecated since a job is used to generates files
+	 */
 	protected List<EEFGenModel> eefGenModels;
 
 	/**
-	 * Constructor for Action1.
+	 * Constructor.
 	 */
 	public GenerateEEFEditorAction() {
 		selectedFiles = new LinkedHashSet<IFile>();
-		eefGenModels = new ArrayList<EEFGenModel>();
 	}
 
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+	 * @deprecated see bug #370409
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		shell = targetPart.getSite().getShell();
 	}
 
 	/**
@@ -72,33 +83,35 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
 	public void run(IAction action) {
-		try {
-			eefGenModels = initEEFGenModel();
-		} catch (IOException e) {
-			EEFCodegenPlugin.getDefault().logError(e);
-		}
+		if (selectedFiles != null) {
+			try {
+				List<EEFGenModel> eefgenmodels = initEEFGenModel();
 
-		if (eefGenModels != null) {
-			final Workflow flow = new Workflow("Generate EEF Editors", shell);
-			for (final EEFGenModel eefGenModel : eefGenModels) {
-				String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
-				OverrideEMFEditorCode eefEditorCode = new OverrideEMFEditorCode(key, eefGenModel);
-				flow.addStep(key, eefEditorCode);
-			}
-			flow.prepare();
-			Job job = new Job("EEF editors generation") {
-				@Override
-				protected IStatus run(IProgressMonitor monitor) {
-					flow.execute(monitor);
-					monitor.done();
-					selectedFiles.clear();
-					eefGenModels.clear();
-					return Status.OK_STATUS;
+				final Workflow flow = new Workflow("Generate EEF Editors", shell);
+				for (final EEFGenModel eefGenModel : eefgenmodels) {
+					String key = GENERATE_EEF_EDITOR + eefGenModel.eResource().getURI().toString();
+					OverrideEMFEditorCode eefEditorCode = new OverrideEMFEditorCode(key, eefGenModel);
+					flow.addStep(key, eefEditorCode);
 				}
+				flow.prepare();
+				Job job = new Job("EEF editors generation") {
 
-			};
-			job.setUser(true);
-			job.schedule();
+					@Override
+					protected IStatus run(IProgressMonitor monitor) {
+						flow.execute(monitor);
+						monitor.done();
+						selectedFiles.clear();
+						return Status.OK_STATUS;
+					}
+
+				};
+				job.setUser(true);
+				// lock the workspace to avoid concurrent modification
+				job.setRule(ResourcesPlugin.getWorkspace().getRoot());
+				job.schedule();
+			} catch (IOException e) {
+				EEFCodegenPlugin.getDefault().logError(e);
+			}
 		}
 	}
 
@@ -106,9 +119,9 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
+		selectedFiles.clear();
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection sSelection = (StructuredSelection)selection;
-			this.selectedFiles.clear();
 			for (Object selectedElement : sSelection.toList()) {
 				if (selectedElement instanceof IFile) {
 					this.selectedFiles.add((IFile)selectedElement);
@@ -124,7 +137,7 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 	 * @see org.eclipse.emf.eef.codegen.ui.generators.actions.AbstractGenerateEEFAction#inutEEFGenModel()
 	 */
 	protected List<EEFGenModel> initEEFGenModel() throws IOException {
-		eefGenModels.clear();
+		List<EEFGenModel> eefgenmodels = new ArrayList<EEFGenModel>(selectedFiles.size());
 		if (!selectedFiles.isEmpty()) {
 			ResourceSet resourceSet = new ResourceSetImpl();
 			for (IFile selectedFile : selectedFiles) {
@@ -148,12 +161,12 @@ public class GenerateEEFEditorAction implements IObjectActionDelegate {
 				if (res.getContents().size() > 0) {
 					EObject object = res.getContents().get(0);
 					if (object instanceof EEFGenModel) {
-						eefGenModels.add((EEFGenModel)object);
+						eefgenmodels.add((EEFGenModel)object);
 					}
 				}
 			}
 		}
-		return eefGenModels;
+		return eefgenmodels;
 	}
 
 }
