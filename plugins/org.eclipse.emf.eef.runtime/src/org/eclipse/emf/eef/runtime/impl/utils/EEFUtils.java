@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -33,6 +34,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
@@ -65,7 +67,8 @@ public class EEFUtils {
 	public static Object choiceOfValues(AdapterFactory adapterFactory, EObject eObject,
 			EStructuralFeature feature) {
 		Object choiceOfValues = null;
-		IItemPropertySource ps = (IItemPropertySource)adapterFactory.adapt(eObject, IItemPropertySource.class);
+		IItemPropertySource ps = (IItemPropertySource)adapterFactory
+				.adapt(eObject, IItemPropertySource.class);
 		if (ps != null) {
 			IItemPropertyDescriptor propertyDescriptor = ps.getPropertyDescriptor(eObject, feature);
 			if (propertyDescriptor != null)
@@ -99,7 +102,8 @@ public class EEFUtils {
 	 * @return list of possible values
 	 */
 	public static String getLabel(AdapterFactory adapterFactory, EObject eObject) {
-		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(eObject, IItemLabelProvider.class);
+		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(eObject,
+				IItemLabelProvider.class);
 		if (labelProvider != null) {
 			return labelProvider.getText(eObject);
 		}
@@ -339,32 +343,67 @@ public class EEFUtils {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @param settings
 	 * @param eObject
 	 */
 	public static void putToReference(EEFEditorSettings settings, EObject eObject) {
-		if (settings instanceof ReferencesTableSettings) {			
-			((ReferencesTableSettings) settings).addToReference(eObject);
+		if (settings instanceof ReferencesTableSettings) {
+			((ReferencesTableSettings)settings).addToReference(eObject);
 		} else if (settings instanceof EObjectFlatComboSettings) {
-			((EObjectFlatComboSettings) settings).setToReference(eObject);
+			((EObjectFlatComboSettings)settings).setToReference(eObject);
 		}
 	}
 
 	/**
 	 * Search an {@link EditingDomain} in the given {@link PropertiesEditingContext} hierarchy.
-	 * @param editingContext to process
-	 * @return an {@link EditingDomain} if there is a {@link DomainPropertiesEditionContext} in the given hierarchy
+	 * 
+	 * @param editingContext
+	 *            to process
+	 * @return an {@link EditingDomain} if there is a {@link DomainPropertiesEditionContext} in the given
+	 *         hierarchy
 	 */
 	public static EditingDomain getEditingDomain(PropertiesEditingContext editingContext) {
 		if (editingContext instanceof DomainPropertiesEditionContext) {
-			return ((DomainPropertiesEditionContext) editingContext).getEditingDomain();
+			return ((DomainPropertiesEditionContext)editingContext).getEditingDomain();
 		} else if (editingContext.getParentContext() != null) {
 			return getEditingDomain(editingContext.getParentContext());
 		} else {
 			return null;
 		}
 	}
-	
+
+	/**
+	 * This method analyze an input to exact the EObject to edit. First we try to adapt this object in
+	 * {@link SemanticAdapter}. If this can't be done, we check if this object is an {@link EObject}. Finally,
+	 * if this object isn't an {@link EObject}, we try to adapt it in EObject.
+	 * 
+	 * @param object
+	 *            element to test
+	 * @return the EObject to edit with EEF.
+	 */
+	public static EObject resolveSemanticObject(Object object) {
+		IAdaptable adaptable = null;
+		if (object instanceof IAdaptable) {
+			adaptable = (IAdaptable)object;
+		}
+		if (adaptable != null) {
+			if (adaptable.getAdapter(SemanticAdapter.class) != null) {
+				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
+						.getAdapter(SemanticAdapter.class);
+				return semanticAdapter.getEObject();
+			}
+		}
+		if (object instanceof EObject) {
+			return (EObject)object;
+		}
+		if (adaptable != null) {
+			if (adaptable.getAdapter(EObject.class) != null) {
+				return (EObject)adaptable.getAdapter(EObject.class);
+			}
+		}
+		return null;
+	}
+
 }
