@@ -128,7 +128,7 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 			@Override
 			protected void updateStatus(String message) {
 				if (!scrolledForm.isDisposed()) {
-					if (message != null)
+					if (message != null && !"".equals(message))
 						scrolledForm.setMessage(message, IMessageProvider.ERROR);
 					else
 						scrolledForm.setMessage(""); //$NON-NLS-1$
@@ -164,19 +164,23 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	private void refreshComponent(String descriptor) {
 		PropertiesEditingProvider provider = getProvider(eObject);
 		if (provider != null) {
-			DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject);
-			propertiesEditionComponent = propertiesEditingContext.createPropertiesEditingComponent(IPropertiesEditionComponent.LIVE_MODE);
+			DomainPropertiesEditionContext propertiesEditingContext = new DomainPropertiesEditionContext(
+					null, null, editingDomain, adapterFactory, eObject);
+			propertiesEditionComponent = propertiesEditingContext
+					.createPropertiesEditingComponent(IPropertiesEditionComponent.LIVE_MODE);
 			if (propertiesEditionComponent != null) {
 				PropertiesContextService.getInstance().push(eObject, propertiesEditionComponent);
 				propertiesEditionComponent.setLiveEditingDomain(editingDomain);
 				propertiesEditionComponent.addListener(this);
-				IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent.getPropertiesEditionPart(1, descriptor);
+				IPropertiesEditionPart propertiesEditionPart = propertiesEditionComponent
+						.getPropertiesEditionPart(1, descriptor);
 				if (propertiesEditionPart instanceof IFormPropertiesEditionPart) {
 					for (int i = 0; i < container.getChildren().length; i++) {
 						Composite child = (Composite)container.getChildren()[i];
 						child.dispose();
 					}
-					Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart).createFigure(container, getWidgetFactory());
+					Composite editComposite = ((IFormPropertiesEditionPart)propertiesEditionPart)
+							.createFigure(container, getWidgetFactory());
 					if (editComposite != null) {
 						editComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 						container.layout();
@@ -292,11 +296,12 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 	}
 
 	/**
-	 * This method analyze an input to exact the EObject to edit.
-	 * First we try to adapt this object in {@link SemanticAdapter}. If this can't be done, 
-	 * we check if this object is an {@link EObject}. Finally, if this object isn't an
-	 * {@link EObject}, we try to adapt it in EObject.
-	 * @param object element to test
+	 * This method analyze an input to exact the EObject to edit. First we try to adapt this object in
+	 * {@link SemanticAdapter}. If this can't be done, we check if this object is an {@link EObject}. Finally,
+	 * if this object isn't an {@link EObject}, we try to adapt it in EObject.
+	 * 
+	 * @param object
+	 *            element to test
 	 * @return the EObject to edit with EEF.
 	 */
 	protected EObject resolveSemanticObject(Object object) {
@@ -309,11 +314,11 @@ public class PropertiesEditionSection extends AbstractPropertySection implements
 				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
 						.getAdapter(SemanticAdapter.class);
 				return semanticAdapter.getEObject();
-			} 
+			}
 		}
 		if (object instanceof EObject) {
 			return (EObject)object;
-		} 
+		}
 		if (adaptable != null) {
 			if (adaptable.getAdapter(EObject.class) != null) {
 				return (EObject)adaptable.getAdapter(EObject.class);
