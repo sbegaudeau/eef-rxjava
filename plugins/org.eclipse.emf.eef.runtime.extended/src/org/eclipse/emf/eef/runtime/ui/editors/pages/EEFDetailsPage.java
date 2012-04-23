@@ -78,7 +78,7 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 
 			@Override
 			protected void updateStatus(String message) {
-				if (message != null)
+				if (message != null && !"".equals(message))
 					getManagedForm().getForm().setMessage(message, IMessageProvider.ERROR);
 				else
 					getManagedForm().getForm().setMessage(null, IMessageProvider.NONE);
