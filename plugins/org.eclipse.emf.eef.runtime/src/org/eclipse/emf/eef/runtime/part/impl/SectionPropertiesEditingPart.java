@@ -16,14 +16,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -32,6 +30,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.part.impl.util.ValidationMessageInjector;
 import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
@@ -178,34 +177,10 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	}
 
 	/**
-	 * This method analyze an input to exact the EObject to edit.
-	 * First we try to adapt this object in {@link SemanticAdapter}. If this can't be done, 
-	 * we check if this object is an {@link EObject}. Finally, if this object isn't an
-	 * {@link EObject}, we try to adapt it in EObject.
-	 * @param object element to test
-	 * @return the EObject to edit with EEF.
+	 * @see EEFUtils#resolveSemanticObject(Object)
 	 */
 	protected EObject resolveSemanticObject(Object object) {
-		IAdaptable adaptable = null;
-		if (object instanceof IAdaptable) {
-			adaptable = (IAdaptable)object;
-		}
-		if (adaptable != null) {
-			if (adaptable.getAdapter(SemanticAdapter.class) != null) {
-				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
-						.getAdapter(SemanticAdapter.class);
-				return semanticAdapter.getEObject();
-			} 
-		}
-		if (object instanceof EObject) {
-			return (EObject)object;
-		} 
-		if (adaptable != null) {
-			if (adaptable.getAdapter(EObject.class) != null) {
-				return (EObject)adaptable.getAdapter(EObject.class);
-			}
-		}
-		return null;
+		return EEFUtils.resolveSemanticObject(object);
 	}
 
 	private void refreshComponent() {
@@ -404,7 +379,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 		} catch (Exception e) {
 			EEFRuntimePlugin.getDefault().logError(
 					EEFRuntimeUIMessages.PropertiesEditionSection_error_occured_on + method.getName()
-					+ EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
+							+ EEFRuntimeUIMessages.PropertiesEditionSection_call, e);
 		}
 		return null;
 	}
