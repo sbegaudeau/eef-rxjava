@@ -42,32 +42,40 @@ import org.eclipse.ui.forms.widgets.Section;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 	protected FormToolkit toolkit;
+
 	protected AbstractEEFMasterPart masterPart;
+
 	protected EditingDomain editingDomain;
+
 	private AdapterFactory adapterFactory;
+
 	protected ValidateAction validateAction;
+
 	private EEFDetailsPage lastDetailsPage;
-	
+
 	private boolean orientable = true;
+
 	private boolean showValidateAction = true;
-	
+
 	/**
-	 * Default constructor. 
-	 * The block is orientable.
+	 * Default constructor. The block is orientable.
 	 */
 	public AbstractEEFMasterDetailsBlock() {
 		super();
 	}
 
 	/**
-	 * Constructor defining if the orientation of the block can be changed and if the validate action is visible.
-	 * @param isOrientable the block is orientable or not.
-	 * @param showValidationAction defining the visibility of the action.
+	 * Constructor defining if the orientation of the block can be changed and if the validate action is
+	 * visible.
+	 * 
+	 * @param isOrientable
+	 *            the block is orientable or not.
+	 * @param showValidationAction
+	 *            defining the visibility of the action.
 	 */
 	public AbstractEEFMasterDetailsBlock(boolean isOrientable, boolean showValidationAction) {
 		this();
@@ -77,7 +85,9 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.ui.forms.MasterDetailsBlock#createMasterPart(org.eclipse.ui.forms.IManagedForm, org.eclipse.swt.widgets.Composite)
+	 * 
+	 * @see org.eclipse.ui.forms.MasterDetailsBlock#createMasterPart(org.eclipse.ui.forms.IManagedForm,
+	 *      org.eclipse.swt.widgets.Composite)
 	 */
 	protected final void createMasterPart(IManagedForm managedForm, Composite parent) {
 		this.toolkit = managedForm.getToolkit();
@@ -89,14 +99,15 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 		Section section = masterPart.getSection();
 		section.setLayout(EEFFormLayoutFactory.createClearGridLayout(false, 1));
 		section.setLayoutData(new GridData(GridData.FILL_BOTH));
-		masterPart.getModelViewer().addDoubleClickListener((new OpenWizardOnDoubleClick(editingDomain, getAdapterFactory())));
+		masterPart.getModelViewer().addDoubleClickListener(
+				(new OpenWizardOnDoubleClick(editingDomain, getAdapterFactory())));
 		if (showValidateAction) {
 			masterPart.addSelectionChangeListener(new ISelectionChangedListener() {
 
 				public void selectionChanged(SelectionChangedEvent event) {
 					ISelection selection = event.getSelection();
 					if (selection instanceof IStructuredSelection)
-						validateAction.updateSelection((IStructuredSelection) selection);
+						validateAction.updateSelection((IStructuredSelection)selection);
 				}
 
 			});
@@ -105,25 +116,30 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 	/**
 	 * Create contents of the Master part
-	 * @param masterContainer the container of this contents
-	 * @return an EEFMasterPart defining the contents of the MasterPart 
+	 * 
+	 * @param masterContainer
+	 *            the container of this contents
+	 * @return an EEFMasterPart defining the contents of the MasterPart
 	 */
 	protected abstract AbstractEEFMasterPart createEEFMasterPart(Composite masterContainer);
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.forms.MasterDetailsBlock#createToolBarActions(org.eclipse.ui.forms.IManagedForm)
 	 */
 	protected void createToolBarActions(IManagedForm managedForm) {
 		final ScrolledForm form = managedForm.getForm();
 		if (showValidateAction) {
 			validateAction = new ValidateAction();
-			validateAction.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_validate_action_tooltip);
-			validateAction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "validate.gif")); //$NON-NLS-1$
+			validateAction
+					.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_validate_action_tooltip);
+			validateAction.setImageDescriptor(EEFRuntimePlugin
+					.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "validate.gif")); //$NON-NLS-1$
 			form.getToolBarManager().add(validateAction);
 		}
 		if (orientable) {
-			Action haction = new Action("hor", IAction.AS_RADIO_BUTTON) {  //$NON-NLS-1$
+			Action haction = new Action("hor", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
 				public void run() {
 					sashForm.setOrientation(SWT.HORIZONTAL);
 					form.reflow(true);
@@ -131,11 +147,13 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 			};
 			haction.setChecked(true);
 			haction.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_horizontal_layout);
-			haction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_horizontal.gif")); //$NON-NLS-1$
-			haction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_horizontal.gif")); //$NON-NLS-1$
+			haction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16
+					+ "th_horizontal.gif")); //$NON-NLS-1$
+			haction.setDisabledImageDescriptor(EEFRuntimePlugin
+					.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_horizontal.gif")); //$NON-NLS-1$
 			form.getToolBarManager().add(haction);
 
-			Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) {  //$NON-NLS-1$
+			Action vaction = new Action("ver", IAction.AS_RADIO_BUTTON) { //$NON-NLS-1$
 				public void run() {
 					sashForm.setOrientation(SWT.VERTICAL);
 					form.reflow(true);
@@ -143,8 +161,10 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 			};
 			vaction.setChecked(false);
 			vaction.setToolTipText(EEFRuntimeUIMessages.AbstractEEFMasterDetailsBlock_vertical_layout);
-			vaction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "th_vertical.gif")); //$NON-NLS-1$
-			vaction.setDisabledImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_vertical.gif")); //$NON-NLS-1$
+			vaction.setImageDescriptor(EEFRuntimePlugin.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16
+					+ "th_vertical.gif")); //$NON-NLS-1$
+			vaction.setDisabledImageDescriptor(EEFRuntimePlugin
+					.getImageDescriptor(EEFRuntimePlugin.ICONS_16x16 + "disabled/th_vertical.gif")); //$NON-NLS-1$
 			form.getToolBarManager().add(vaction);
 		}
 		if (additionalPageActions() != null) {
@@ -156,6 +176,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.ui.forms.MasterDetailsBlock#registerPages(org.eclipse.ui.forms.DetailsPart)
 	 */
 	protected void registerPages(DetailsPart detailsPart) {
@@ -183,7 +204,7 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	public AbstractEEFMasterPart getMasterPart() {
 		return masterPart;
 	}
-		
+
 	/**
 	 * @return the lastDetailsPage
 	 */
@@ -193,12 +214,14 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 
 	/**
 	 * Defines the orientation of the block.
-	 * @param orientation the orientation to set
+	 * 
+	 * @param orientation
+	 *            the orientation to set
 	 */
 	public void setOrientation(int orientation) {
 		sashForm.setOrientation(orientation);
 	}
-		
+
 	/**
 	 * @return the adapterFactory
 	 */
@@ -207,7 +230,8 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	}
 
 	/**
-	 * @param adapterFactory the adapterFactory to set
+	 * @param adapterFactory
+	 *            the adapterFactory to set
 	 */
 	public void setAdapterFactory(AdapterFactory adapterFactory) {
 		this.adapterFactory = adapterFactory;
@@ -222,26 +246,29 @@ public abstract class AbstractEEFMasterDetailsBlock extends MasterDetailsBlock {
 	}
 
 	/**
-	 * @param editingDomain the editingDomain to set
+	 * @param editingDomain
+	 *            the editingDomain to set
 	 */
 	public void setEditingDomain(EditingDomain editingDomain) {
 		this.editingDomain = editingDomain;
 	}
 
 	/**
-	 * @param input the input of the model viewer
+	 * @param input
+	 *            the input of the model viewer
 	 */
 	public void setInput(Object input) {
 		masterPart.setInput(input);
 	}
 
 	/**
-	 * @param filter add a filter to the model viewer
+	 * @param filter
+	 *            add a filter to the model viewer
 	 */
 	public void addFilter(ViewerFilter filter) {
 		masterPart.addFilter(filter);
 	}
-	
+
 	/**
 	 * @return the list of actions to add to the form toolbar
 	 */

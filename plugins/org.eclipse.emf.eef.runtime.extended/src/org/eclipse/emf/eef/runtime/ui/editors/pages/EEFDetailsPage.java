@@ -18,6 +18,8 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.ui.editor.InteractiveEEFEditor;
 import org.eclipse.emf.eef.runtime.ui.layout.EEFFormLayoutFactory;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -37,26 +39,29 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IPropertiesEditionListener {
-	
+
 	private FormToolkit toolkit;
+
 	private EditingDomain editingDomain;
+
 	protected EObject eObject;
+
 	protected IPropertiesEditionComponent propertiesEditionComponent;
-	
+
 	/**
-     * Manager for error message
-     */
+	 * Manager for error message
+	 */
 	private PropertiesEditionMessageManager messageManager;
 
 	protected PropertiesEditionViewer viewer;
+
 	private AdapterFactory adapterFactory;
 
 	public EEFDetailsPage(FormToolkit toolkit, EditingDomain editingDomain, AdapterFactory adapterFactory) {
 		super();
-		this.toolkit = toolkit; 
+		this.toolkit = toolkit;
 		this.editingDomain = editingDomain;
 		this.adapterFactory = adapterFactory;
 	}
@@ -82,7 +87,9 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 		this.viewer = new PropertiesEditionViewer(container, null, SWT.NONE, 1);
 		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(getManagedForm().getToolkit());
-		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory, IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.setContentProvider(new PropertiesEditionContentProvider(adapterFactory,
+				IPropertiesEditionComponent.LIVE_MODE, editingDomain));
+		viewer.addPropertiesListener(this);
 	}
 
 	public void selectionChanged(IFormPart part, ISelection selection) {
@@ -95,20 +102,22 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 			if (eObject != null) {
 				if (viewer.getToolkit() == null)
 					viewer.setToolkit(toolkit);
-				viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory, eObject));
+				viewer.setInput(new DomainPropertiesEditionContext(null, null, editingDomain, adapterFactory,
+						eObject));
 				viewer.addPropertiesListener(this);
 			}
 		}
 	}
 
 	private EObject getEObjectFromSelection(ISelection selection) {
-		if (selection instanceof StructuredSelection && (((StructuredSelection)selection).getFirstElement() instanceof EObject))
-			return (EObject) ((StructuredSelection)selection).getFirstElement();
+		if (selection instanceof StructuredSelection
+				&& (((StructuredSelection)selection).getFirstElement() instanceof EObject))
+			return (EObject)((StructuredSelection)selection).getFirstElement();
 		if (selection instanceof EObject)
-			return (EObject) selection;
+			return (EObject)selection;
 		if (selection instanceof IAdaptable && ((IAdaptable)selection).getAdapter(EObject.class) != null)
-			return (EObject) ((IAdaptable)selection).getAdapter(EObject.class);
-			
+			return (EObject)((IAdaptable)selection).getAdapter(EObject.class);
+
 		return null;
 	}
 
@@ -121,6 +130,19 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		handleChange(event);
+		if (event.getState() == PropertiesEditionEvent.FOCUS_CHANGED
+				&& event.getKind() == PropertiesEditionEvent.FOCUS_GAINED) {
+			// de-activate global actions
+			if (getEditor() instanceof InteractiveEEFEditor) {
+				((InteractiveEEFEditor)getEditor()).deactivateCCPActions();
+			}
+		} else if (event.getState() == PropertiesEditionEvent.FOCUS_CHANGED
+				&& event.getKind() == PropertiesEditionEvent.FOCUS_LOST) {
+			// re-activate global actions
+			if (getEditor() instanceof InteractiveEEFEditor) {
+				((InteractiveEEFEditor)getEditor()).activateCCPActions();
+			}
+		}
 	}
 
 	private void handleChange(IPropertiesEditionEvent event) {
@@ -128,6 +150,17 @@ public class EEFDetailsPage extends AbstractFormPart implements IDetailsPage, IP
 		if (viewer.isInitializing())
 			return;
 		messageManager.processMessage(event);
+	}
+
+	/**
+	 * Retrieve the Editor from the form.
+	 * 
+	 * @return The eef editor used to display this page.
+	 */
+	private Object getEditor() {
+		if (getManagedForm().getContainer() instanceof AbstractEEFMDFormPage)
+			return ((AbstractEEFMDFormPage)getManagedForm().getContainer()).getEditor();
+		return null;
 	}
 
 }
