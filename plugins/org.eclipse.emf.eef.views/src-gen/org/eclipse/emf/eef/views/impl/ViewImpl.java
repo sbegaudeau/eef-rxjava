@@ -85,7 +85,11 @@ public class ViewImpl extends ContainerImpl implements View {
 	 * @generated NOT
 	 */
 	public String getQualifiedIdentifier() {
-		StringBuilder result = new StringBuilder(name);
+		StringBuilder result;
+		if (name != null)
+			result = new StringBuilder(name);
+		else
+			result = new StringBuilder();
 		result.append(NamingHelper.nameDiscriminator(this));
 		EObject container = this.eContainer();
 		while (container != null) {
