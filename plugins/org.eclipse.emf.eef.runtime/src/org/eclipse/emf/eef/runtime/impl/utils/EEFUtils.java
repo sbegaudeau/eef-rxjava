@@ -80,11 +80,12 @@ public class EEFUtils {
 		if (choiceOfValues == null)
 			choiceOfValues = "";
 		else if (choiceOfValues instanceof List) {
-			List list = (List)choiceOfValues;
+			List<Object> list = (List<Object>)choiceOfValues;
 			for (int i = 0; i < list.size(); i++) {
 				Object next = list.get(i);
-				if (next == null)
+				if (next == null) {
 					list.set(i, "");
+				}
 			}
 		}
 		return choiceOfValues;
@@ -257,7 +258,7 @@ public class EEFUtils {
 
 	private static List<EPackage> allPackageOfResource(Resource resource) {
 		List<EPackage> result = new ArrayList<EPackage>();
-		for (Iterator iterator = resource.getAllContents(); iterator.hasNext();) {
+		for (Iterator<?> iterator = resource.getAllContents(); iterator.hasNext();) {
 			EObject type = (EObject)iterator.next();
 			if (type instanceof EPackage)
 				result.add((EPackage)type);
@@ -389,9 +390,17 @@ public class EEFUtils {
 			adaptable = (IAdaptable)object;
 		}
 		if (adaptable != null) {
-			if (adaptable.getAdapter(SemanticAdapter.class) != null) {
-				SemanticAdapter semanticAdapter = (SemanticAdapter)adaptable
-						.getAdapter(SemanticAdapter.class);
+			Object getAdapter = adaptable.getAdapter(SemanticAdapter.class);
+			SemanticAdapter semanticAdapter = null;
+			if (getAdapter != null) {
+				semanticAdapter = (SemanticAdapter)getAdapter;
+			} else {
+				Object loadAdapter = Platform.getAdapterManager().loadAdapter(adaptable, SemanticAdapter.class.getName());
+				if (loadAdapter != null) {
+					semanticAdapter = (SemanticAdapter) loadAdapter;
+				}
+			}
+			if (semanticAdapter != null) {
 				return semanticAdapter.getEObject();
 			}
 		}
