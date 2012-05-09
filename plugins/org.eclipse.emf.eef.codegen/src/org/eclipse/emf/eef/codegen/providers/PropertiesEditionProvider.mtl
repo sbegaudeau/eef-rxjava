@@ -168,7 +168,8 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && [pec.metamodelGetter()/] == ((EObject)toTest).eClass();
+			EObject eObj = [include('org.eclipse.emf.eef.runtime.impl.utils.EEFUtils')/].resolveSemanticObject(toTest);
+			return eObj != null && [pec.metamodelGetter()/] == eObj.eClass();
 		}
 		
 	}
