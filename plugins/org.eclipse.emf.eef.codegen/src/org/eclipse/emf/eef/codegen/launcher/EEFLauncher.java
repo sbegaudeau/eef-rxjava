@@ -116,22 +116,6 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
         initialize(model, targetFolder, arguments);
     }
     
-    @Override
-    protected URI createTemplateURI(String entry) {
-    	if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-    		Bundle bundle = Platform.getBundle("org.eclipse.emf.eef.codegen");
-    		Enumeration<URL> e = bundle.findEntries("/", "*.emtl", true);
-    		while (e.hasMoreElements()) {
-    			URL anUrl = e.nextElement();
-    			if (anUrl.toString().endsWith("org/eclipse/emf/eef/codegen/launcher/EEFLauncher.emtl")) {
-    				return URI.createURI("platform:/plugin/org.eclipse.emf.eef.codegen" + anUrl.getPath());
-    			}
-    		}
-    	}
-    	
-    	return super.createTemplateURI(entry);
-    }
-    
     /**
      * This can be used to launch the generation from a standalone application.
      * 
