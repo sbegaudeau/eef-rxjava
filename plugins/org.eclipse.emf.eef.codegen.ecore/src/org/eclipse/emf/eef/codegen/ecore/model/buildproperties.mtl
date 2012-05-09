@@ -9,7 +9,6 @@
 
 [template public buildProperties(genModel : GenModel)]
 [let pluginClassesLocation : String = if genModel.runtimeJar then genModel.modelPluginID + '.jar' else '.' endif]
-[let sourceFolders : Sequence(String) = genModel.getModelSourceFolders()]
 [file (genModel.buildPropertiesFilePath(), false, 'UTF-8')]
 [genModel.includeHeaderProperties()/]
 bin.includes = [pluginClassesLocation/],\
@@ -25,10 +24,12 @@ bin.includes = [pluginClassesLocation/],\
 [/if]
                plugin.properties
 jars.compile.order = [pluginClassesLocation/]
-source.[pluginClassesLocation/] = [sourceFolders->sep(',\\' + genModel.getLineDelimiter())/]
+source.[pluginClassesLocation/] = [for (sourceFolder : String | genModel.getModelSourceFolders()) separator (',\\           ')]
+[sourceFolder/]
+[/for]
+[comment][sourceFolders->sep(',\\'.concat(genModel.getLineDelimiter())/][/comment]
 output.[pluginClassesLocation/] = bin/
 [/file]
-[/let]
 [/let]
 [/template]
 
