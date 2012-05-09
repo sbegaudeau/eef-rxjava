@@ -33,7 +33,7 @@ return create[container.name.toJavaClassifier()/]HBox(widgetFactory, parent);
 
 [template public additionalImplementation(container : Container, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (container.representation.name = 'HorizontalBox')]
 	/**
-	 * [container.owningViewsRepository().associatedGenModel().generationMark()/]
+	 * [container.owningViewsRepository().associatedGenModel().oclAsType(EEFGenmodel).generationMark()/]
 	 */
 	protected Composite create[container.name.toJavaClassifier()/]HBox(FormToolkit widgetFactory, Composite parent) {
 		Composite container = widgetFactory.createComposite(parent, SWT.NONE);
