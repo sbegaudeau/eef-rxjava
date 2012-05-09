@@ -17,7 +17,6 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
  */
 public abstract class PropertiesEditionMessageManager {
 
