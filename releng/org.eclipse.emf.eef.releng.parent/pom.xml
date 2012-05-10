@@ -116,7 +116,7 @@
 				<repository>
 					<id>ocl</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.0/core/S201203191528</url>
+					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.0</url>
 				</repository>
 				<repository>
 					<id>acceleo</id>
