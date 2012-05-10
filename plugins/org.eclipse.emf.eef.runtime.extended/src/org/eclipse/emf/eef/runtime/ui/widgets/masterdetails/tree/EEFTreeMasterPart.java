@@ -274,12 +274,12 @@ public class EEFTreeMasterPart extends AbstractEEFMasterPart {
 							Command command = AddCommand.create(editingDomain, modelRoot, null, value);
 							editingDomain.getCommandStack().execute(command);
 						}
-						try {
-							modelRoot.eResource().save(Collections.EMPTY_MAP);
-
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
+//						try {
+//							modelRoot.eResource().save(Collections.EMPTY_MAP);
+//
+//						} catch (IOException e1) {
+//							e1.printStackTrace();
+//						}
 					}
 				});
 			}
