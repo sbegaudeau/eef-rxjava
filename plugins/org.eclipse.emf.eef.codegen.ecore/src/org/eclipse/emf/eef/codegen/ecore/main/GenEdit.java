@@ -12,18 +12,23 @@ package org.eclipse.emf.eef.codegen.ecore.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import org.eclipse.acceleo.common.preference.AcceleoPreferences;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.osgi.framework.Bundle;
 
 /**
  * Entry point of the 'GenAll' generation module.
@@ -107,6 +112,25 @@ public class GenEdit extends AbstractAcceleoGenerator {
 	 */
 	public GenEdit(EObject model, File targetFolder, List<? extends Object> arguments) throws IOException {
         initialize(model, targetFolder, arguments);
+    }
+
+	/**
+     * FIX the build for Acceleo 3.1.3
+     * @see org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator#createTemplateURI(java.lang.String)
+     */
+    @Override
+    protected URI createTemplateURI(String entry) {
+    	if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+    		Bundle bundle = Platform.getBundle("org.eclipse.emf.eef.codegen.ecore");
+    		Enumeration<URL> e = bundle.findEntries("/", "*.emtl", true);
+    		while (e.hasMoreElements()) {
+    			URL anUrl = e.nextElement();
+    			if (anUrl.toString().endsWith("org/eclipse/emf/eef/codegen/ecore/main/GenEdit.emtl")) {
+    				return URI.createURI("org.eclipse.emf.eef.codegen.ecore" + anUrl.getPath());
+    			}
+    		}
+    	}
+    	return super.createTemplateURI(entry);
     }
 
 	/**
