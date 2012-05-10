@@ -20,7 +20,7 @@
 [comment ===== Case : model = Attribute(*) - view = MultiValuedEditor ===== /]
 [template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.canGeneratemodelNavigation())]if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
 	[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].get[editionElement.model.name.toMany().toUpperFirst()/]().clear();
-	[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].get[editionElement.model.name.toMany().toUpperFirst()/]().addAll((([include('org.eclipse.emf.common.util.EList')/]<Object>) event.getNewValue()));
+	[pec.pecModelClass().toJavaIdentifier().disambiguation('event')/].get[editionElement.model.name.toMany().toUpperFirst()/]().addAll((([include('org.eclipse.emf.common.util.EList')/]) event.getNewValue()));
 }
 [/template]
 
