@@ -101,24 +101,24 @@ public class GenModel extends AbstractAcceleoGenerator {
         initialize(modelURI, targetFolder, arguments);
     }
 
-	/**
-     * FIX the build for Acceleo 3.1.3
-     * @see org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator#createTemplateURI(java.lang.String)
-     */
-    @Override
-    protected URI createTemplateURI(String entry) {
-    	if (EMFPlugin.IS_ECLIPSE_RUNNING) {
-    		Bundle bundle = Platform.getBundle("org.eclipse.emf.eef.codegen.ecore");
-    		Enumeration<URL> e = bundle.findEntries("/", "*.emtl", true);
-    		while (e.hasMoreElements()) {
-    			URL anUrl = e.nextElement();
-    			if (anUrl.toString().endsWith("org/eclipse/emf/eef/codegen/ecore/main/GenModel.emtl")) {
-    				return URI.createURI("org.eclipse.emf.eef.codegen.ecore" + anUrl.getPath());
-    			}
-    		}
-    	}
-    	return super.createTemplateURI(entry);
-    }
+//	/**
+//     * FIX the build for Acceleo 3.1.3
+//     * @see org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator#createTemplateURI(java.lang.String)
+//     */
+//    @Override
+//    protected URI createTemplateURI(String entry) {
+//    	if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+//    		Bundle bundle = Platform.getBundle("org.eclipse.emf.eef.codegen.ecore");
+//    		Enumeration<URL> e = bundle.findEntries("/", "*.emtl", true);
+//    		while (e.hasMoreElements()) {
+//    			URL anUrl = e.nextElement();
+//    			if (anUrl.toString().endsWith("org/eclipse/emf/eef/codegen/ecore/main/GenModel.emtl")) {
+//    				return URI.createURI("org.eclipse.emf.eef.codegen.ecore" + anUrl.getPath());
+//    			}
+//    		}
+//    	}
+//    	return super.createTemplateURI(entry);
+//    }
 
 	/**
 	 * This allows clients to instantiates a generator with all required
