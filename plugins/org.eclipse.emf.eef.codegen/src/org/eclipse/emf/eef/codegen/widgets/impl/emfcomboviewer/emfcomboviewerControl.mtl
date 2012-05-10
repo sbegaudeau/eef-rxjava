@@ -33,7 +33,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer') and not editionElement.canGeneratemodelNavigation())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](EEFUtils.choiceOfValues([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([include('org.eclipse.emf.eef.runtime.impl.utils.EEFUtils')/].choiceOfValues([pec.model.name.toJavaIdentifier()/], [editionElement.metamodelGetter()/]), [pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 }
 [/template]
 
