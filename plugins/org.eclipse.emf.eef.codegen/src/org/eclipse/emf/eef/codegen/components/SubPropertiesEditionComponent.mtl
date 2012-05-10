@@ -36,6 +36,7 @@ package [pec.componentsPackage()/];[addImports(Sequence{
 	'org.eclipse.emf.eef.runtime.context.PropertiesEditingContext',
 	'org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil',
 	'org.eclipse.emf.ecore.resource.ResourceSet',
+	'org.eclipse.emf.ecore.util.EcoreUtil',
 	'org.eclipse.emf.ecore.EObject',
 	'org.eclipse.emf.ecore.EStructuralFeature'})/]
 

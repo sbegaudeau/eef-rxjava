@@ -116,7 +116,8 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
         initialize(model, targetFolder, arguments);
     }
     
-    /* (non-Javadoc)
+    /**
+     * FIX the build for Acceleo 3.1.3
      * @see org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator#createTemplateURI(java.lang.String)
      */
     @Override
@@ -131,7 +132,6 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
     			}
     		}
     	}
-    	
     	return super.createTemplateURI(entry);
     }
 

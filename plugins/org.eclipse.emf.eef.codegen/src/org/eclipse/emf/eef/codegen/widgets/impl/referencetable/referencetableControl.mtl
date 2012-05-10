@@ -150,7 +150,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 
 [template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForMultipleModelReference())]
 if (isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new ViewerFilter() {
+	[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 	
 		/**
 		 * {@inheritDoc}
