@@ -4,207 +4,207 @@
     <categories xmi:id="_cnphAUfAEd-tFfX7rU4KvA" name="worldcupforecast">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphBkfAEd-tFfX7rU4KvA" name="Forecast" views="_cnphLEfAEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphB0fAEd-tFfX7rU4KvA" name="scoreTeam1" views="_cnphLkfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam1"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphCEfAEd-tFfX7rU4KvA" name="scoreTeam2" views="_cnphL0fAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam2"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam2"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MvK78FNyEd-6__ioy6_jLg" name="match" views="_cnphMEfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Forecast/match"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Forecast/match"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphCkfAEd-tFfX7rU4KvA" name="winner" views="_cnphMUfAEd-tFfX7rU4KvA">
           <bindingFilters xsi:type="eef-mapping-filters:OnlyReferenceTypeFilter" xmi:id="_zsdu0UxSEd-jJsXe8SIlsg" name="">
-            <reference href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Forecast/winner"/>
+            <reference href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Forecast/winner"/>
           </bindingFilters>
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Forecast/winner"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Forecast/winner"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZJWakEkzEd-xetg5FVpzKw" name="score" views="_TtDxAEkzEd-xetg5FVpzKw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Forecast/score"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Forecast/score"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Forecast"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Forecast"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphEkfAEd-tFfX7rU4KvA" name="Team" views="_cnqIFUfAEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphE0fAEd-tFfX7rU4KvA" name="name" views="_cnqIF0fAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team/name"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team/name"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_oiIGoFHfEd-Gbb0rEPRzSQ" name="Pics" views="_cVvpUVHfEd-Gbb0rEPRzSQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team/pics"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team/pics"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IlTvUFONEd-ecbx_ibmNFw" name="points" views="_I4dKQFOMEd-ecbx_ibmNFw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team/points"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team/points"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MExf0FONEd-ecbx_ibmNFw" name="goalsFor" views="_N-sEQFOMEd-ecbx_ibmNFw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team/goalsFor"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team/goalsFor"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Po5G0FONEd-ecbx_ibmNFw" name="goalsAgainst" views="_SOhhwFOMEd-ecbx_ibmNFw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team/goalsAgainst"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team/goalsAgainst"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_SmjKwFONEd-ecbx_ibmNFw" name="goalDifference" views="_X1LoQFOMEd-ecbx_ibmNFw">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team/goalDifference"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team/goalDifference"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Team"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Team"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphFEfAEd-tFfX7rU4KvA" name="WorldCupGroup" views="_cnqIGEfAEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphFUfAEd-tFfX7rU4KvA" name="teams" views="_cnqIGkfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupGroup/teams"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupGroup/teams"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphFkfAEd-tFfX7rU4KvA" name="name" views="_cnqIG0fAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupGroup/name"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupGroup/name"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupGroup"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupGroup"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphF0fAEd-tFfX7rU4KvA" name="Player" views="_JXEDUEfPEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6b3d0EhnEd-3w4T0xVjKag" name="Name" views="_Tt57UEfPEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Player/name"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Player/name"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CUUn0EhoEd-3w4T0xVjKag" name="Score" views="_1Jm6AUhnEd-3w4T0xVjKag">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Player/score"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Player/score"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Player"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Player"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphGkfAEd-tFfX7rU4KvA" name="FinalScore" views="_cnqIIEfAEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphG0fAEd-tFfX7rU4KvA" name="scoreTeam1" views="_cnqIIkfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam1"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphHEfAEd-tFfX7rU4KvA" name="scoreTeam2" views="_cnqII0fAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam2"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Score/scoreTeam2"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphHUfAEd-tFfX7rU4KvA" name="penaltyScoreTeam1" views="_cnqIJEfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//FinalScore/penaltyScoreTeam1"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//FinalScore/penaltyScoreTeam1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphHkfAEd-tFfX7rU4KvA" name="penaltyScoreTeam2" views="_cnqIJUfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//FinalScore/penaltyScoreTeam2"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//FinalScore/penaltyScoreTeam2"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//FinalScore"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//FinalScore"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphH0fAEd-tFfX7rU4KvA" name="MatchDay" views="_cnqIJkfAEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphIEfAEd-tFfX7rU4KvA" name="date" views="_cnqIKEfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Day/date"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Day/date"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_GAuG8FNyEd-6__ioy6_jLg" name="matches" views="_cnqIKUfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//MatchDay/matches"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//MatchDay/matches"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//MatchDay"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//MatchDay"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cnphIkfAEd-tFfX7rU4KvA" name="ForecastDay" views="_cnqIKkfAEd-tFfX7rU4KvA">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphI0fAEd-tFfX7rU4KvA" name="date" views="_cnqILEfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Day/date"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Day/date"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cnphJEfAEd-tFfX7rU4KvA" name="forecasts" views="_cnqILUfAEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//ForecastDay/forecasts"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//ForecastDay/forecasts"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//ForecastDay"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//ForecastDay"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_zlW5QEfIEd-tFfX7rU4KvA" name="WorldCupForecast" views="_Q7vPUEfHEd-tFfX7rU4KvA _zg8IwEfHEd-tFfX7rU4KvA _87SjUEfHEd-tFfX7rU4KvA _8KESkU0pEd-2fNN9Y4kMnQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XEPzwEfJEd-tFfX7rU4KvA" name="players" views="_24WJcEfHEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/players"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/players"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_bILjQEfJEd-tFfX7rU4KvA" name="groups" views="_Y5aeQUfMEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/groups"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/groups"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_WyRgQE0qEd-2fNN9Y4kMnQ" name="playersRating" views="_LvBOME0qEd-2fNN9Y4kMnQ">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/players"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/players"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_SsCjAFNyEd-6__ioy6_jLg" name="matchDays" views="__7Y3QEfHEd-tFfX7rU4KvA">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/matchDays"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast/matchDays"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//WorldCupForecast"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rESIMFLNEd-aevHmThQ5Yg" name="GroupStageMatch" views="_nJjYAFLNEd-aevHmThQ5Yg">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rE1IQVNxEd-6__ioy6_jLg" name="hours" views="_nJjYAlLNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_wSHFcFNxEd-6__ioy6_jLg" name="minutes" views="_nJjYA1LNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yrszAFNxEd-6__ioy6_jLg" name="coefficient" views="_nJjYBFLNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2MOTcFNxEd-6__ioy6_jLg" documentation="" name="team1" views="_iIM50FLUEd-aevHmThQ5Yg" helpID="">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//GroupStageMatch/manualTeam1"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//GroupStageMatch/manualTeam1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9nr_cFNxEd-6__ioy6_jLg" documentation="" name="team2" views="_vS29QFLUEd-aevHmThQ5Yg" helpID="">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//GroupStageMatch/manualTeam2"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//GroupStageMatch/manualTeam2"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//GroupStageMatch"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//GroupStageMatch"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_JbERcFNzEd-6__ioy6_jLg" name="OtherKnockoutStageMatch" views="_nJjYBVLNEd-aevHmThQ5Yg">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZHK98FNzEd-6__ioy6_jLg" name="hours" views="_nJjYB1LNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fA0R4FNzEd-6__ioy6_jLg" name="minutes" views="_nJjYCFLNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jv86gFNzEd-6__ioy6_jLg" name="coefficient" views="_nJjYCVLNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_mvEXAFNzEd-6__ioy6_jLg" name="team1winnerofmatch" views="_nJjYClLNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch/team1WinnerOfMatch"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch/team1WinnerOfMatch"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tCqcAFNzEd-6__ioy6_jLg" name="team2winnerofmatch" views="_nJjYC1LNEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch/team2WinnerOfMatch"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch/team2WinnerOfMatch"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ygTwcFNzEd-6__ioy6_jLg" name="team1" views="_ylqx0FLUEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/team1"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/team1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_oQfRAFN0Ed-6__ioy6_jLg" name="team2" views="_3O6N0FLUEd-aevHmThQ5Yg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/team2"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/team2"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_euySYFRSEd-un6uGW4jjJg" name="type" views="_Dh1OUFRREd-un6uGW4jjJg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch/type"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch/type"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//OtherKnockoutStageMatch"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_sr6TcFN0Ed-6__ioy6_jLg" name="RoundOfSixteenMatch" views="_4ZNS8FNyEd-6__ioy6_jLg">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_0JIS8FN0Ed-6__ioy6_jLg" name="hours" views="_AuqiAVNzEd-6__ioy6_jLg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2ZLC8FN0Ed-6__ioy6_jLg" name="minutes" views="_AuqiAlNzEd-6__ioy6_jLg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4rXIAFN0Ed-6__ioy6_jLg" name="coefficient" views="_AuqiA1NzEd-6__ioy6_jLg" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8MfscFN0Ed-6__ioy6_jLg" name="team1WinnerOfGroup" views="_AuqiBFNzEd-6__ioy6_jLg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//RoundOfSixteenMatch/team1WinnerOfGroup"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//RoundOfSixteenMatch/team1WinnerOfGroup"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__2RPgFN0Ed-6__ioy6_jLg" name="team2RunnerUpOfGroup" views="_AuqiBVNzEd-6__ioy6_jLg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//RoundOfSixteenMatch/team2RunnerUpOfGroup"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//RoundOfSixteenMatch/team2RunnerUpOfGroup"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_K0ZJ8FN1Ed-6__ioy6_jLg" name="team1" views="_AuqiBlNzEd-6__ioy6_jLg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/team1"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/team1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NgIXcFN1Ed-6__ioy6_jLg" name="team2" views="_AuqiB1NzEd-6__ioy6_jLg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/team2"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/team2"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//RoundOfSixteenMatch"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//RoundOfSixteenMatch"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_t4Ti8G7wEd-1kq8H3By3nQ" documentation="" name="thirdPlaceMatch" views="_u4bYoW7vEd-1kq8H3By3nQ" helpID="">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xoAu4G7wEd-1kq8H3By3nQ" documentation="" name="hours" views="_u4bYo27vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/hours"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2hHy4G7wEd-1kq8H3By3nQ" documentation="" name="minutes" views="_u4bYpG7vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/minutes"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4y7dcG7wEd-1kq8H3By3nQ" documentation="" name="coefficient" views="_u4bYpW7vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/coefficient"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_74YLcG7wEd-1kq8H3By3nQ" documentation="" name="team1LooserOfMatch" views="_u4bYpm7vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//ThirdPlaceMatch/team1LooserOfMatch"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//ThirdPlaceMatch/team1LooserOfMatch"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9zDIYG7wEd-1kq8H3By3nQ" documentation="" name="team2LooserOfMatch" views="_u4bYp27vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//ThirdPlaceMatch/team2LooserOfMatch"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//ThirdPlaceMatch/team2LooserOfMatch"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__3z1cG7wEd-1kq8H3By3nQ" documentation="" name="team1" views="_u4bYqG7vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/team1"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/team1"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CGWJkG7xEd-1kq8H3By3nQ" documentation="" name="team2" views="_u4bYqW7vEd-1kq8H3By3nQ" helpID="">
-          <model xsi:type="ecore:EReference" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//Match/team2"/>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//Match/team2"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.ecore#//ThirdPlaceMatch"/>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.ecore#//ThirdPlaceMatch"/>
       </bindings>
     </categories>
-    <model href="platform:/resource/fr.obeo.dsl.worldcupforecast/model/worldcupforecast.genmodel#//worldcupforecast"/>
+    <model href="platform:/resource/org.eclipse.worldcupforecast/model/worldcupforecast.genmodel#//worldcupforecast"/>
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_cnphJUfAEd-tFfX7rU4KvA" documentation="Views repository for worldcupforecast GenPackage" name="worldcupforecast">
     <RepositoryKind>SWT</RepositoryKind>
