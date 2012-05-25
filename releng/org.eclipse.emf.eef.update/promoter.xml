@@ -23,7 +23,7 @@
 	-->
 
 	<property name="downloads.project.root" value="modeling/emft/eef" />
-	<property name="build.root" value="/shared/jobs/emf-eef-master/lastSuccessful/archive/org.eclipse.emf/org.eclipse.emf.eef/releng/org.eclipse.emf.eef.update/target/" />
+	<property name="build.root" value="/shared/jobs/emf-eef-1.1/lastSuccessful/archive/releng/org.eclipse.emf.eef.update/target/" />
 	<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
 	<property name="project.name" value="EEF" />
 	<property name="final.updatesite.name" value="emf-eef-Update" />
