@@ -1,2 +1,3 @@
 target
 LocalBuild?tycho?+?Sonar.launch
+/settings.xml
