@@ -1,3 +1,4 @@
+output.log
 target
 LocalBuild?tycho?+?Sonar.launch
 /settings.xml
