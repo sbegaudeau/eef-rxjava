@@ -130,7 +130,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.StandardFormPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.StandardFormPage"
                tab="Documentation">
@@ -142,7 +142,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFMasterPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFMasterPage"
                tab="Documentation">
@@ -154,7 +154,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.TreeMasterPagePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.TreeMasterPage"
                tab="Documentation">
@@ -166,7 +166,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.PartFilterPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.PartFilter"
                tab="Documentation">
@@ -178,7 +178,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFEditorContributionsPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorContributions"
                tab="Documentation">
@@ -190,7 +190,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.EEFEditorPagesPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.EEFEditorPages"
                tab="Documentation">
@@ -202,7 +202,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.StaticEEFEditorContributionPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.StaticEEFEditorContribution"
                tab="Documentation">
@@ -214,7 +214,7 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="org.eclipse.emf.eef.views.parts.forms.DocumentationPropertiesEditionPartForm"
+               class="org.eclipse.emf.eef.mapping.parts.forms.DocumentationPropertiesEditionPartForm"
 			   filter="org.eclipse.emf.eef.extended.editor.providers.DynamicEEFEditorContributionPropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.extended.editor.section.DynamicEEFEditorContribution"
                tab="Documentation">
