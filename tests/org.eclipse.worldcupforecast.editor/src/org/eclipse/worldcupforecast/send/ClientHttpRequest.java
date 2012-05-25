@@ -1,12 +1,13 @@
-/**
- * <p>Title: MyJavaTools: Client HTTP Request class</p>
- * <p>Description: this class helps to send POST HTTP requests with various form data,
- * including files. Cookies can be added to be included in the request.</p>
+/*******************************************************************************
+ * Copyright (c) 2008, 2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- * <p>Copyright: This is public domain;
- * The right of people to use, distribute, copy or improve the contents of the
- * following may not be restricted.</p>
- */
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.worldcupforecast.send;
 
 import java.net.URLConnection;
