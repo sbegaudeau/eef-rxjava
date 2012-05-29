@@ -19,7 +19,7 @@ import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewElement;
 import org.eclipse.emf.eef.views.ViewReference;
 import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclispe.emf.eef.views.helpers.NamingHelper;
+import org.eclipse.emf.eef.views.helpers.NamingHelper;
 
 /**
  * <!-- begin-user-doc -->

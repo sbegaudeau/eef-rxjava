@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.IdentifiedElement;
 import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclispe.emf.eef.views.helpers.NamingHelper;
+import org.eclipse.emf.eef.views.helpers.NamingHelper;
 
 /**
  * <!-- begin-user-doc -->

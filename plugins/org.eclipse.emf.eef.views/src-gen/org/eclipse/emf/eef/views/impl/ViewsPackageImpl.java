@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.views.impl;
 
+
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
