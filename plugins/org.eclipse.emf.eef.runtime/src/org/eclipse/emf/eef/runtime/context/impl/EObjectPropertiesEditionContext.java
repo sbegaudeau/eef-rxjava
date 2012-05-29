@@ -100,14 +100,6 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	}
 
 	/**
-	 * @return the parent PropertiesEditionComponent
-	 * @deprecated
-	 */
-	public IPropertiesEditionComponent getPropertiesEditionComponent() {
-		return parentPropertiesEditionComponent;
-	}
-
-	/**
 	 * @return the eObject
 	 */
 	public EObject getEObject() {

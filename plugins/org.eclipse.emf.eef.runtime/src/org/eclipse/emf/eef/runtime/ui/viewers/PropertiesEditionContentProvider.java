@@ -50,7 +50,7 @@ public class PropertiesEditionContentProvider implements IStructuredContentProvi
 	 */
 	public PropertiesEditionContentProvider(AdapterFactory adapterFactory, String mode)
 			throws InstantiationException {
-		if (mode == IPropertiesEditionComponent.LIVE_MODE)
+		if (IPropertiesEditionComponent.LIVE_MODE.equals(mode))
 			throw new InstantiationException(
 					EEFRuntimeUIMessages.PropertiesEditionContentProvider_editingDomain_not_defined);
 		this.adapterFactory = adapterFactory;

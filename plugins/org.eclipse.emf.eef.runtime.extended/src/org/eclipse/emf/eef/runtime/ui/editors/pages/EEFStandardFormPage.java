@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.editors.pages;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
@@ -49,24 +47,6 @@ public class EEFStandardFormPage extends AbstractEEFEditorPage {
 	 * The folder for the tab
 	 */
 	protected PropertiesEditionViewer viewer;
-
-	/**
-	 * @param editor
-	 *            editor including this page
-	 * @param name
-	 *            page name
-	 * @param editingDomain
-	 *            the editingDomain to use to edit the model
-	 * @param adapterFactory
-	 *            the adapterFactory to use
-	 * @deprecated
-	 */
-	public EEFStandardFormPage(FormEditor editor, String name, EditingDomain editingDomain,
-			AdapterFactory adapterFactory) {
-		this(editor, name);
-		this.editingDomain = editingDomain;
-		this.adapterFactory = adapterFactory;
-	}
 
 	/**
 	 * @param editor

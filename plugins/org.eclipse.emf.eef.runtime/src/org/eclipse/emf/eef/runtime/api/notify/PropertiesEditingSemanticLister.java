@@ -64,7 +64,7 @@ public abstract class PropertiesEditingSemanticLister extends EContentAdapter {
 				}
 			};
 			if (null == Display.getCurrent()) {
-				PlatformUI.getWorkbench().getDisplay().asyncExec(updateRunnable);
+				PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
 			} else {
 				updateRunnable.run();
 			}

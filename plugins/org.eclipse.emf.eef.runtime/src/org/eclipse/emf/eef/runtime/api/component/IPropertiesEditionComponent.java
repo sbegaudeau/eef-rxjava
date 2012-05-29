@@ -24,20 +24,20 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
  * A stateful element to edit an EObject divided in one or more parts.
  * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël Barbero</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
  */
 public interface IPropertiesEditionComponent extends IPropertiesEditionListener {
 
-	public static final String BATCH_MODE = "Batch"; //$NON-NLS-1$
+	String BATCH_MODE = "Batch"; //$NON-NLS-1$
 
-	public static final String LIVE_MODE = "Live"; //$NON-NLS-1$
+	String LIVE_MODE = "Live"; //$NON-NLS-1$
 
 	/**
 	 * Returns the Edition Parts list.
 	 * 
 	 * @return a String array with all parts keys
 	 */
-	public abstract String[] partsList();
+	String[] partsList();
 
 	/**
 	 * Return the Edition Part in the given context.
@@ -48,12 +48,12 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the Part key
 	 * @return the Part created in the parent
 	 */
-	public abstract IPropertiesEditionPart getPropertiesEditionPart(int kind, String key);
+	IPropertiesEditionPart getPropertiesEditionPart(int kind, String key);
 
 	/**
-	 * @return the current editingContext
+	 * @return the current editingContext.
 	 */
-	public abstract PropertiesEditingContext getEditingContext();
+	PropertiesEditingContext getEditingContext();
 
 	/**
 	 * @param key
@@ -65,7 +65,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param allResource
 	 *            the resource where the part has to process
 	 */
-	public abstract void initPart(Object key, int kind, EObject element, ResourceSet allResource);
+	void initPart(Object key, int kind, EObject element, ResourceSet allResource);
 
 	/**
 	 * @param key
@@ -75,21 +75,21 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param element
 	 *            the element which initialize the part
 	 */
-	public abstract void initPart(Object key, int kind, EObject element);
+	void initPart(Object key, int kind, EObject element);
 
 	/**
 	 * Return the diagnostic object linked to the current state validation.
 	 * 
 	 * @return a list of errors message
 	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event);
+	Diagnostic validateValue(IPropertiesEditionEvent event);
 
 	/**
 	 * Return the diagnostic object linked to the edited element.
 	 * 
 	 * @return a list of errors message
 	 */
-	public Diagnostic validate();
+	Diagnostic validate();
 
 	/**
 	 * Specifies that a feature value has changed and will be fired later.
@@ -101,12 +101,12 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	/**
 	 * Activates this controller. Do nothing it it is already activated.
 	 */
-	public void activate();
+	void activate();
 
 	/**
 	 * Deactivates this controller. Do nothing if it is not activated.
 	 */
-	public void deactivate();
+	void deactivate();
 
 	/**
 	 * Listening management - Adding a new listener.
@@ -114,7 +114,7 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param listener
 	 *            the new listener to notify
 	 */
-	public void addListener(IPropertiesEditionListener listener);
+	void addListener(IPropertiesEditionListener listener);
 
 	/**
 	 * Listening management - Removing a new listener.
@@ -122,23 +122,23 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param listener
 	 *            the listener to no longer notify
 	 */
-	public void removeListener(IPropertiesEditionListener listener);
+	void removeListener(IPropertiesEditionListener listener);
 
 	/**
-	 * Allows to define editingDomain for live synchronization
+	 * Allows to define editingDomain for live synchronization.
 	 * 
 	 * @param editingDomain
 	 *            the editingDomain to define
 	 */
-	public void setLiveEditingDomain(EditingDomain editingDomain);
+	void setLiveEditingDomain(EditingDomain editingDomain);
 
 	/**
-	 * Dispose the component
+	 * Dispose the component.
 	 */
-	public void dispose();
+	void dispose();
 
 	/**
-	 * Set a part of the Component
+	 * Set a part of the Component.
 	 * 
 	 * @param key
 	 *            the key identifying the part
@@ -147,11 +147,11 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 * @param propertiesEditionPart
 	 *            the part to set
 	 */
-	public void setPropertiesEditionPart(Object key, int kind, IPropertiesEditionPart propertiesEditionPart);
+	void setPropertiesEditionPart(Object key, int kind, IPropertiesEditionPart propertiesEditionPart);
 
 	/**
 	 * In dynamic case, managed PropertiesEditionPart can ask the component do decide if they compose a
-	 * sub-view or not
+	 * sub-view or not.
 	 * 
 	 * @param key
 	 *            the sub-view to check
@@ -159,11 +159,11 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the of the view
 	 * @return <code>true</code> if the sub-view must be composed
 	 */
-	public boolean mustBeComposed(Object key, int kind);
+	boolean mustBeComposed(Object key, int kind);
 
 	/**
 	 * This method allow managed PropertiesEditionPart to ask the component if a elementEditor is required or
-	 * not
+	 * not.
 	 * 
 	 * @param key
 	 *            the key identifying the ElementEditor
@@ -171,11 +171,11 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the kind of the part
 	 * @return <code>true</code> if the given ElementEditor if required
 	 */
-	public boolean isRequired(Object key, int kind);
+	boolean isRequired(Object key, int kind);
 
 	/**
 	 * This method allow managed PropertiesEditionPart to ask the component for an ElementEditor help
-	 * documentation
+	 * documentation.
 	 * 
 	 * @param key
 	 *            the key identifying the ElementEditor
@@ -183,30 +183,31 @@ public interface IPropertiesEditionComponent extends IPropertiesEditionListener 
 	 *            the kind of the part
 	 * @return the help content for the given ElementEditor according the help strategy
 	 */
-	public String getHelpContent(Object key, int kind);
+	String getHelpContent(Object key, int kind);
 
 	/**
-	 * This method translate a Part name into his identifier
+	 * This method translate a Part name into his identifier.
 	 * 
 	 * @param key
 	 *            the part name
 	 * @return the key identifying the part
 	 */
-	public Object translatePart(String key);
+	Object translatePart(String key);
 
 	/**
-	 * Returns the internationalized text for the specified tab ( in wizards )
+	 * Returns the internationalized text for the specified tab ( in wizards ).
 	 * 
 	 * @param key
 	 *            the tab key
 	 * @return the internationalized message
 	 */
-	public String getTabText(String key);
+	String getTabText(String key);
 
 	/**
-	 * @param editorKey key of the editor we searching associated feature.
+	 * @param editorKey
+	 *            key of the editor we searching associated feature.
 	 * @return the associated feature.
 	 * @since 0.9
 	 */
-	public EStructuralFeature associatedFeature(Object editorKey);
+	EStructuralFeature associatedFeature(Object editorKey);
 }

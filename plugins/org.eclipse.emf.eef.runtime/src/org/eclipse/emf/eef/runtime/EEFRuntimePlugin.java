@@ -26,26 +26,29 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
+ * The activator class controls the plug-in life cycle.
+ * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- * The activator class controls the plug-in life cycle
  */
 public class EEFRuntimePlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime"; //$NON-NLS-1$
-
-	// The shared instance
-	private static EEFRuntimePlugin plugin;
-
-	// Shared adapterFactory
-	private static AdapterFactory adapterFactory;
-
-	// Shared diagnostician
-	private static Diagnostician diagnostician;
-
+	/** The icons path. */
 	public static final String ICONS_16x16 = "icons/16x16/"; //$NON-NLS-1$
 
-	private static ImageRegistry registry = null;
+	/** The plug-in ID. */
+	public static final String PLUGIN_ID = "org.eclipse.emf.eef.runtime"; //$NON-NLS-1$
+
+	/** The shared instance. */
+	private static EEFRuntimePlugin plugin;
+
+	/** The shared adapterFactory. */
+	private static AdapterFactory adapterFactory;
+
+	/** The shared diagnostician. */
+	private static Diagnostician diagnostician;
+
+	/** The shared imageRegistry. */
+	private static ImageRegistry imageRegistry = null;
 
 	/**
 	 * @return the Image associated to the key
@@ -65,13 +68,13 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	}
 
 	public ImageRegistry getImageRegistry() {
-		if (registry == null)
-			registry = new ImageRegistry();
-		return registry;
+		if (imageRegistry == null)
+			imageRegistry = new ImageRegistry();
+		return imageRegistry;
 	}
 
 	/**
-	 * The constructor
+	 * The constructor.
 	 */
 	public EEFRuntimePlugin() {
 		plugin = this;
@@ -85,34 +88,37 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 			 *      org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 			 */
 			@Override
-			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics,
+					Map<Object, Object> context) {
 				return true;
 			}
 
 		};
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext )
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext )
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		if (registry != null)
-			registry.dispose();
+		if (imageRegistry != null)
+			imageRegistry.dispose();
 		super.stop(context);
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance.
 	 * 
 	 * @return the shared instance
 	 */
@@ -121,7 +127,7 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared adapterFactory
+	 * Returns the shared adapterFactory.
 	 * 
 	 * @return the shared adapterFactory
 	 */
@@ -156,10 +162,10 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 * @return the Image
 	 */
 	public static Image getImage(String key) {
-		ImageRegistry registry = getDefault().getImageRegistry();
+		final ImageRegistry registry = getDefault().getImageRegistry();
 		Image image = registry.get(key);
 		if (image == null) {
-			ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, key);
+			final ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, key);
 			registry.put(key, desc);
 			image = registry.get(key);
 		}

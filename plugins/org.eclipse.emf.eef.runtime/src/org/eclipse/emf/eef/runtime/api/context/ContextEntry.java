@@ -53,7 +53,7 @@ public class ContextEntry {
 	}
 
 	/**
-	 * Returns the edition component
+	 * Returns the edition component.
 	 * 
 	 * @return the propertiesEditionComponent
 	 */

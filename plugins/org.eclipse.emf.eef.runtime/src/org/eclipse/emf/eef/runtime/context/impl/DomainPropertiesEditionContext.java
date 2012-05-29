@@ -70,7 +70,7 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 	 */
 	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode) {
 		IPropertiesEditionComponent propertiesEditingComponent = super.createPropertiesEditingComponent(mode);
-		if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+		if (IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
 			propertiesEditingComponent.setLiveEditingDomain(editingDomain);
 		}
 		return propertiesEditingComponent;
@@ -82,7 +82,7 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 	 */
 	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part) {
 		IPropertiesEditionComponent propertiesEditingComponent = super.createPropertiesEditingComponent(mode, part);
-		if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+		if (IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
 			propertiesEditingComponent.setLiveEditingDomain(editingDomain);
 		}
 		return propertiesEditingComponent;
@@ -94,7 +94,7 @@ public class DomainPropertiesEditionContext extends EObjectPropertiesEditionCont
 	 */
 	public IPropertiesEditionComponent createPropertiesEditingComponent(String mode, String part, Class<?> refinement) {
 		IPropertiesEditionComponent propertiesEditingComponent = super.createPropertiesEditingComponent(mode, part, refinement);
-		if (mode == IPropertiesEditionComponent.LIVE_MODE) {
+		if (IPropertiesEditionComponent.LIVE_MODE.equals(mode)) {
 			propertiesEditingComponent.setLiveEditingDomain(editingDomain);
 		}
 		return propertiesEditingComponent;

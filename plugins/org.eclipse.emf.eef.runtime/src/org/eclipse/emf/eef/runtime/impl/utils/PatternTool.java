@@ -27,7 +27,7 @@ public class PatternTool {
 		if (text == null) {
 			return false;
 		}
-		if (pattern == null || pattern == "") { //$NON-NLS-1$
+		if (pattern == null || "".equals(pattern)) { //$NON-NLS-1$
 			return true;
 		}
 		PatternMatcher fNameMatcher = new PatternMatcher(pattern, true);
