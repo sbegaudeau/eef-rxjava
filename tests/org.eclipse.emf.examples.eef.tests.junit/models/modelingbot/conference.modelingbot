@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eef-mbot:ModelingBot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-mbot="http://www.eclipse.org/emf/eef/mbot/1.0.0" xmlns:eef-test="http://www.eclipse.org/emf/eef/test/EclipseActions/1.0.0" xmlns:eef-test_1="http://www.eclipse.org/emf/eef/test/EEFActions/1.0.0">
+  <propertiesEditionContext href="../../../org.eclipse.emf.examples.eef.edit/models/conference.components#_KvIaEJkmEd6sxtwdpecy3w"/>
+  <sequences xsi:type="eef-mbot:Scenario" name="setup" documentation="Setup">
+    <processings xsi:type="eef-test:CreateProject" name="Conference_MBot" documentation="create project" projectName="Conference_MBot"/>
+    <processings xsi:type="eef-test:CreateModel" name="conference_mbot" modelName="conference_mbot.conference" path="Conference_MBot">
+      <root href="../../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference"/>
+    </processings>
+    <processings xsi:type="eef-test_1:Check"/>
+  </sequences>
+  <sequences xsi:type="eef-mbot:Scenario" name="Edit Conference">
+    <processings xsi:type="eef-mbot:DetailsPage">
+      <processings xsi:type="eef-test_1:SetAttribute" name="" referenceableObject="//@sequences.0/@processings.1" value="place">
+        <propertiesEditionElement href="../../../org.eclipse.emf.examples.eef.edit/models/conference.components#_OJpU8JktEd6sxtwdpecy3w"/>
+        <eContainingFeature xsi:type="ecore:EAttribute" href="../../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/place"/>
+      </processings>
+      <processings xsi:type="eef-test_1:Check"/>
+      <processings xsi:type="eef-test_1:SetAttribute" name="" referenceableObject="//@sequences.0/@processings.1" value="overview">
+        <propertiesEditionElement href="../../../org.eclipse.emf.examples.eef.edit/models/conference.components#_0lnF8Bi5EeCOk6BuQTSdWA"/>
+        <eContainingFeature xsi:type="ecore:EAttribute" href="../../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/overview"/>
+      </processings>
+      <processings xsi:type="eef-test_1:Check"/>
+      <processings xsi:type="eef-test_1:SetAttribute" referenceableObject="//@sequences.0/@processings.1" value="name">
+        <propertiesEditionElement href="../../../org.eclipse.emf.examples.eef.edit/models/conference.components#_0lme4Bi5EeCOk6BuQTSdWA"/>
+        <eContainingFeature xsi:type="ecore:EAttribute" href="../../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/name"/>
+      </processings>
+      <processings xsi:type="eef-test_1:Check"/>
+    </processings>
+  </sequences>
+  <sequences xsi:type="eef-mbot:Scenario" name="Create Site">
+    <processings xsi:type="eef-mbot:DetailsPage">
+      <processings xsi:type="eef-test_1:Add" name="site" referenceableObject="//@sequences.0/@processings.1">
+        <propertiesEditionElement href="../../../org.eclipse.emf.examples.eef.edit/models/conference.components#_P9i7gJktEd6sxtwdpecy3w"/>
+        <type href="../../../org.eclipse.emf.examples.eef/model/conference.ecore#//Site"/>
+        <eContainingFeature xsi:type="ecore:EReference" href="../../../org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/sites"/>
+      </processings>
+      <processings xsi:type="eef-test_1:Check"/>
+    </processings>
+  </sequences>
+  <sequences xsi:type="eef-mbot:Scenario" name="teardown">
+    <processings xsi:type="eef-test:RemoveProject" name="" projectName="Conference_MBot"/>
+  </sequences>
+</eef-mbot:ModelingBot>
