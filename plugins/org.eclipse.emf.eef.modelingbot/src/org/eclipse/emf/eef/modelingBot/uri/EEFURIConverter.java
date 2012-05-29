@@ -45,11 +45,11 @@ public class EEFURIConverter extends ExtensibleURIConverterImpl {
 	public URI normalize(URI uri) {
 		URI result = super.normalize(uri);
 		if (result.isPlatformResource()) {
-			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(result.toPlatformString(true)));
+			final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(result.toPlatformString(true)));
 			if (!file.isAccessible()) {
-				URI pluginURI = URI.createPlatformPluginURI(uri.toPlatformString(true), true);
+				final URI pluginURI = URI.createPlatformPluginURI(uri.toPlatformString(true), true);
 				try {
-					Resource resource = myResourceSet.getResource(pluginURI, true);
+					final Resource resource = myResourceSet.getResource(pluginURI, true);
 					resource.load(Collections.EMPTY_MAP);
 					if (resource.getContents() != null && !resource.getContents().isEmpty()) {
 						result = pluginURI;

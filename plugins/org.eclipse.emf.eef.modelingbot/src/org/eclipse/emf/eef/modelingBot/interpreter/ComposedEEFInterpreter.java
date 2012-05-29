@@ -10,16 +10,20 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.modelingBot.interpreter;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
@@ -40,18 +44,19 @@ import org.eclipse.emf.eef.modelingBot.swtbot.ComposedEEFBot;
  * Interpreter for a list of modeling bots.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	/**
-	 * Editing domain
+	 * Editing domain.
 	 */
 	private EditingDomain editingDomain;
+
 	/**
-	 * List of modeling bots
+	 * List of modeling bots.
 	 */
 	private Collection<IModelingBot> modelingBots = new ArrayList<IModelingBot>();
+
 	/**
 	 * Map Bot <-> interpreter.
 	 */
@@ -59,7 +64,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	// mapModelingBotInterpreter = new HashMap<IModelingBot,
 	// IModelingBotInterpreter>();
 	/**
-	 * ComposedEEFBot
+	 * ComposedEEFBot.
 	 */
 	private IModelingBot composedEEFBot;
 
@@ -89,52 +94,60 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	}
 
-	/** 
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String, org.eclipse.emf.eef.modelingBot.IModelingBot)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runModelingBot(java.lang.String,
+	 *      org.eclipse.emf.eef.modelingBot.IModelingBot)
 	 */
 	public void runModelingBot(String path) throws CoreException, IOException {
-		Resource modelingBotResource = loadModel(path);
+		final Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
-		ModelingBot mbot = (ModelingBot) modelingBotResource.getContents().get(0);
+		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource.getErrors()
+				.isEmpty());
+		final ModelingBot mbot = (ModelingBot)modelingBotResource.getContents().get(0);
+		final Diagnostic diag = Diagnostician.INSTANCE.validate(mbot);
+		assertTrue("The modeling bot model contains errors, correct them first", diag.getSeverity() == Diagnostic.OK);
+		
 		assertNotNull("The modeling bot resource is empty.", mbot);
 		for (IModelingBot bot : modelingBots) {
 			bot.getModelingBotInterpreter().setPropertiesEditionContext(mbot.getPropertiesEditionContext());
 		}
 		for (Sequence sequence : mbot.getSequences()) {
 			if (sequence instanceof Scenario) {
-				Scenario scenario = (Scenario) sequence;
+				final Scenario scenario = (Scenario)sequence;
 				runSequence(scenario);
 			}
 		}
-
 	}
 
-	/** 
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void runSequence(Sequence sequence) {
 		for (Processing processing : sequence.getProcessings()) {
 			if (processing instanceof Action) {
-				runAction((Action) processing);
+				runAction((Action)processing);
 			} else if (processing instanceof DetailsPage) {
 				setSequenceType(SequenceType.DETAILS_PAGE);
-				runSequence((DetailsPage) processing);
+				runSequence((DetailsPage)processing);
 			} else if (processing instanceof PropertiesView) {
 				setSequenceType(SequenceType.PROPERTIES_VIEW);
-				runSequence((PropertiesView) processing);
+				runSequence((PropertiesView)processing);
 			} else if (processing instanceof Wizard) {
 				setSequenceType(SequenceType.WIZARD);
-				runSequence((Wizard) processing);
+				runSequence((Wizard)processing);
 				finishBatchEditing(processing);
 			}
 		}
 	}
 
-	/** 
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runAction(org.eclipse.emf.eef.modelingBot.Action)
 	 */
 	public void runAction(Action action) {
@@ -147,8 +160,9 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		}
 	}
 
-	/** 
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
 	 */
 	public void finishBatchEditing(Processing processing) {
@@ -173,14 +187,15 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	 * @throws CoreException
 	 */
 	public Resource loadModel(String path) throws IOException, CoreException {
-		URI fileURI = URI.createPlatformPluginURI(path, true);
-		Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
+		final URI fileURI = URI.createPlatformPluginURI(path, true);
+		final Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
 	}
 
-	/** 
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
 	 */
 	public PropertiesEditionContext getPropertiesEditionContext() {
@@ -188,12 +203,12 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	}
 
 	/**
-	 * {@inheritDoc)
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#setPropertiesEditionContext(org.eclipse.emf.eef.components.PropertiesEditionContext)
 	 */
 	public void setPropertiesEditionContext(PropertiesEditionContext context) {
 
 	}
-
 
 }

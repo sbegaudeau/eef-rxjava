@@ -322,13 +322,22 @@ public interface ModelingBotPackage extends EPackage {
 	int WIZARD__PROCESSINGS = SEQUENCE__PROCESSINGS;
 
 	/**
+	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIZARD__REFERENCEABLE_OBJECT = SEQUENCE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Wizard</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WIZARD_FEATURE_COUNT = SEQUENCE_FEATURE_COUNT + 0;
+	int WIZARD_FEATURE_COUNT = SEQUENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.impl.ModelingBotImpl <em>Modeling Bot</em>}' class.
@@ -611,6 +620,17 @@ public interface ModelingBotPackage extends EPackage {
 	EClass getWizard();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.Wizard#getReferenceableObject <em>Referenceable Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Referenceable Object</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.Wizard#getReferenceableObject()
+	 * @see #getWizard()
+	 * @generated
+	 */
+	EReference getWizard_ReferenceableObject();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.DocumentedElement <em>Documented Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -810,6 +830,14 @@ public interface ModelingBotPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WIZARD = eINSTANCE.getWizard();
+
+		/**
+		 * The meta object literal for the '<em><b>Referenceable Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WIZARD__REFERENCEABLE_OBJECT = eINSTANCE.getWizard_ReferenceableObject();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.impl.DocumentedElementImpl <em>Documented Element</em>}' class.

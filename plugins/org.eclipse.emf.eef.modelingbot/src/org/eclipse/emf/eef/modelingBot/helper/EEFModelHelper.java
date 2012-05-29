@@ -32,7 +32,7 @@ public class EEFModelHelper {
 	 * @return the object from the feature.
 	 */
 	public static Object eGet(EObject container, EStructuralFeature eContainingFeature) {
-		Object eGet = container.eGet(container.eClass().getEStructuralFeature(eContainingFeature.getName()));
+		final Object eGet = container.eGet(container.eClass().getEStructuralFeature(eContainingFeature.getName()));
 		if (eGet instanceof EList) {
 			return (EObject) ((EList) eGet).get(((EList) eGet).size() - 1);
 		}
@@ -45,7 +45,7 @@ public class EEFModelHelper {
 	 * @return a list containing the element to expand
 	 */
 	public static List<Object> getExpansionPath(EObject modelElement) {
-		List<Object> result = new ArrayList<Object>();
+		final List<Object> result = new ArrayList<Object>();
 		result.add(modelElement);
 		EObject container = modelElement.eContainer();
 		while (container != null) {

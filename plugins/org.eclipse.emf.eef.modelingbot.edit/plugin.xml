@@ -20,9 +20,6 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.eclipse.org/emf/eef/test/EEFActions/1.0.0"
             class="org.eclipse.emf.eef.modelingBot.EEFActions.provider.EEFActionsItemProviderAdapterFactory"
@@ -32,9 +29,6 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.eclipse.org/emf/eef/test/EclipseActions/1.0.0"
             class="org.eclipse.emf.eef.modelingBot.EclipseActions.provider.EclipseActionsItemProviderAdapterFactory"
@@ -45,29 +39,11 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.eclipse.emf.eef.modelingbot.edit.contribution1"
-            objectClass="org.eclipse.core.resources.IFile">
-         <menu
-               id="org.eclipse.emf.eef.modelingbot.edit.menu1"
-               label="EEF"
-               path="additions">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
-         <action
-               class="org.eclipse.emf.eef.modelingBot.edit.actions.OpenWithEEFAction"
-               enablesFor="1"
-               id="org.eclipse.emf.eef.modelingbot.edit.newAction"
-               label="Open With Interactive EEF Editor"
-               menubarPath="org.eclipse.emf.eef.modelingbot.edit.menu1/group1">
-         </action>
-      </objectContribution>
-   </extension>
+
    <extension point="org.eclipse.ui.newWizards">
+    <category
+            id="org.eclipse.emf.eef.ui.category"
+            name="%_UI_Wizard_category"/>
      <wizard
             id="org.eclipse.emf.eef.modelingBot.EEFActions.presentation.EEFActionsModelWizardID"
             name="%_UI_EEFActionsModelWizard_label"
@@ -78,5 +54,49 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
-
+   
+	<extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.eclipse.emf.eef.modelingBot.edit.commands.OpenWithEEFHandler"
+            id="org.eclipse.emf.eef.modelingbot.commmands.openWithEEF"
+            name="Open With Interactive EEF Editor">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="org.eclipse.emf.eef.modelingbot.commmands.openWithEEF"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+	<extension
+       point="org.eclipse.ui.handlers">
+    <handler
+          class="org.eclipse.emf.eef.modelingBot.edit.commands.OpenWithEEFHandler"
+          commandId="org.eclipse.emf.eef.modelingbot.commmands.openWithEEF">
+       <activeWhen>
+      <with
+            variable="selection">
+         <iterate
+               operator="or">
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </iterate>
+      </with>
+   </activeWhen>
+   <enabledWhen>
+      <with
+            variable="selection">
+         <count
+               value="1">
+         </count>
+      </with>
+   </enabledWhen> 
+    </handler>
+</extension>
 </plugin>

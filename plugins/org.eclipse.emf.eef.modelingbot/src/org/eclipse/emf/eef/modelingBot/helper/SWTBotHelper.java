@@ -34,16 +34,15 @@ import org.hamcrest.Matcher;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public class SWTBotHelper {
 	/**
-	 * SWTWorkbenchBot
+	 * SWTWorkbenchBot.
 	 */
 	private static SWTWorkbenchBot bot = new SWTWorkbenchBot();
 
 	/**
-	 * Press the enter key
+	 * Press the enter key.
 	 * 
 	 * @param widget
 	 * @throws Exception
@@ -68,7 +67,7 @@ public class SWTBotHelper {
 	}
 
 	/**
-	 * Press the enter key
+	 * Press the enter key.
 	 * 
 	 * @param widget
 	 * @throws Exception
@@ -76,13 +75,14 @@ public class SWTBotHelper {
 	public static void pressEnterKeyInTabContainer(final Widget widget) {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				searchTabContainer(widget).notifyListeners(SWT.Traverse, keyEvent(SWT.NONE, SWT.CR, SWT.Selection, widget));
+				searchTabContainer(widget).notifyListeners(SWT.Traverse,
+						keyEvent(SWT.NONE, SWT.CR, SWT.Selection, widget));
 			}
 		});
 	}
 
 	private static Composite searchTabContainer(final Widget wid) {
-		Composite parent = ((Text) wid).getParent();
+		Composite parent = ((Text)wid).getParent();
 		while (parent != null) {
 			if (parent instanceof Composite)
 				return parent;
@@ -115,7 +115,7 @@ public class SWTBotHelper {
 
 	private static Event createEvent(Widget widget) {
 		Event event = new Event();
-		event.time = (int) System.currentTimeMillis();
+		event.time = (int)System.currentTimeMillis();
 		event.widget = widget;
 		event.display = bot.getDisplay();
 		return event;
@@ -128,10 +128,11 @@ public class SWTBotHelper {
 	 *            Label to find.
 	 */
 	// CHECKSTYLE:OFF
-	@SuppressWarnings({ "restriction", "unchecked" })
+	@SuppressWarnings({"restriction", "unchecked"})
 	// CHECKSTYLE:ON
 	public static void selectPropertyTabItem(final String label) {
-		final Matcher<TabbedPropertyList> matcher = WidgetMatcherFactory.allOf(WidgetMatcherFactory.widgetOfType(TabbedPropertyList.class));
+		final Matcher<TabbedPropertyList> matcher = WidgetMatcherFactory.allOf(WidgetMatcherFactory
+				.widgetOfType(TabbedPropertyList.class));
 		final List<TabbedPropertyList> widgets = widget(matcher);
 
 		UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
@@ -139,7 +140,8 @@ public class SWTBotHelper {
 				for (final TabbedPropertyList tabbedProperty : widgets) {
 					final ListElement tabItem = getTabItem(label, tabbedProperty);
 					if (tabItem != null) {
-						final Event mouseEvent = createEvent(tabItem, tabItem.getBounds().x, tabItem.getBounds().y, 1, SWT.BUTTON1, 1);
+						final Event mouseEvent = createEvent(tabItem, tabItem.getBounds().x, tabItem.getBounds().y, 1,
+								SWT.BUTTON1, 1);
 						tabItem.notifyListeners(SWT.MouseUp, mouseEvent);
 					}
 				}
@@ -176,9 +178,10 @@ public class SWTBotHelper {
 	 *            the number of times the mouse was clicked.
 	 * @return an event that encapsulates {@link #widget} and {@link #display}
 	 */
-	private static Event createEvent(final Widget widget, final int x, final int y, final int button, final int stateMask, final int count) {
+	private static Event createEvent(final Widget widget, final int x, final int y, final int button,
+			final int stateMask, final int count) {
 		final Event event = new Event();
-		event.time = (int) System.currentTimeMillis();
+		event.time = (int)System.currentTimeMillis();
 		event.widget = widget;
 		event.display = bot.getDisplay();
 		event.x = x;
@@ -197,17 +200,16 @@ public class SWTBotHelper {
 	@SuppressWarnings("restriction")
 	private static ListElement getTabItem(final String label, final TabbedPropertyList tabbedProperty) {
 		for (final Object listElement : tabbedProperty.getTabList()) {
-			if (listElement instanceof ListElement && ((ListElement) listElement).getTabItem().getText().equals(label)) {
-				return (ListElement) listElement;
+			if (listElement instanceof ListElement && ((ListElement)listElement).getTabItem().getText().equals(label)) {
+				return (ListElement)listElement;
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * WARNING this class should move in SWTBot one day. WARNING if the text is
-	 * not found it will not failed this method to get disposed elements with
-	 * the current click on context menu SWTBot method
+	 * WARNING this class should move in SWTBot one day. WARNING if the text is not found it will not failed
+	 * this method to get disposed elements with the current click on context menu SWTBot method
 	 * 
 	 * @param treeItem
 	 *            the current item
@@ -225,9 +227,8 @@ public class SWTBotHelper {
 	}
 
 	/**
-	 * WARNING this class should move in SWTBot one day. WARNING if the text is
-	 * not found it will not failed this method to get disposed elements with
-	 * the current click on context menu SWTBot method
+	 * WARNING this class should move in SWTBot one day. WARNING if the text is not found it will not failed
+	 * this method to get disposed elements with the current click on context menu SWTBot method
 	 * 
 	 * @param tree
 	 *            the tree

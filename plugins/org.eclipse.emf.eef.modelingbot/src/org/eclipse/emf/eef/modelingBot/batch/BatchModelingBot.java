@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.eef.modelingBot.batch;
+
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 
@@ -40,37 +42,38 @@ import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- * 
  */
 public class BatchModelingBot implements IModelingBot {
 
-	private IProgressMonitor monitor;
 	private EditingDomain editingDomain;
+
 	private AdapterFactory adapterFactory;
+
 	private Resource activeResource;
 
 	private EEFInterpreter interpreter;
 
 	/**
-	 * 
+	 * Constructor.
 	 */
 	public BatchModelingBot() {
-		monitor = new NullProgressMonitor();
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack());
 		interpreter = new EEFInterpreter(this, editingDomain);
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#runModelingBot(java.lang.String)
 	 */
 	public void runModelingBot(String path) throws CoreException, IOException {
 		interpreter.runModelingBot(path);
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createProject(java.lang.String)
 	 */
 	public void createProject(String projectName) {
@@ -84,8 +87,9 @@ public class BatchModelingBot implements IModelingBot {
 
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openProject(java.lang.String)
 	 */
 	public void openProject(String projectName) {
@@ -98,8 +102,9 @@ public class BatchModelingBot implements IModelingBot {
 		// }
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeProject(java.lang.String)
 	 */
 	public void closeProject(String projectName) {
@@ -112,8 +117,9 @@ public class BatchModelingBot implements IModelingBot {
 		// }
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#removeProject(java.lang.String)
 	 */
 	public void removeProject(String projectName) {
@@ -126,26 +132,29 @@ public class BatchModelingBot implements IModelingBot {
 		// }
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openPerspective(java.lang.String)
 	 */
 	public void openPerspective(String name) {
 		// Nothing to do
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openEEFEditor(java.lang.String)
 	 */
 	public void openEEFEditor(String path) {
-		URI uri = URI.createPlatformResourceURI(path, true);
-		Resource activeResource = editingDomain.getResourceSet().getResource(uri, true);
+		final URI uri = URI.createPlatformResourceURI(path, true);
+		final Resource activeResource = editingDomain.getResourceSet().getResource(uri, true);
 		this.activeResource = activeResource;
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#closeEditor(java.lang.String)
 	 */
 	public void closeEditor(String path) {
@@ -154,8 +163,9 @@ public class BatchModelingBot implements IModelingBot {
 		editingDomain.getResourceSet().getResources().remove(activeResource);
 	}
 
-/**
-	 * {@inheritDoc)
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
 	 */
 	public void save() {
@@ -170,78 +180,100 @@ public class BatchModelingBot implements IModelingBot {
 		// }
 	}
 
-/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#add(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EClass)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#add(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
+	 *      org.eclipse.emf.ecore.EClass)
 	 */
-	public EObject add(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type) {
-		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+	public EObject add(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, EClass type) {
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
 		activeResource = eObjectFromReferenceableEObject.eResource();
-		EObject value = EcoreUtil.create(type);
-		Command command = AddCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, value);
+		final EObject value = EcoreUtil.create(type);
+		final Command command = AddCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, value);
 		editingDomain.getCommandStack().execute(command);
 		return value;
 	}
 
-/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
 	public void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject) {
-		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
 		activeResource = eObjectFromReferenceableEObject.eResource();
 		EcoreUtil.remove(eObjectFromReferenceableEObject);
 	}
 
-/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
+	 *      java.lang.String)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, String value) {
-		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, String value) {
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
 		if (eContainingFeature instanceof EAttribute) {
 			activeResource = eObjectFromReferenceableEObject.eResource();
-			Object createFromString = EcoreUtil.createFromString(((EAttribute) eContainingFeature).getEAttributeType(), value);
-			Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, createFromString);
+			final Object createFromString = EcoreUtil.createFromString(((EAttribute)eContainingFeature).getEAttributeType(),
+					value);
+			final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature,
+					createFromString);
 			editingDomain.getCommandStack().execute(command);
 		} else {
-			// TODO: Error !
+			fail("Cannot set without a eContainingFeature attribute");
 		}
 	}
 
-/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.eef.extended.editor.ReferenceableObject)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
+	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, ReferenceableObject value) {
-		EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, ReferenceableObject value) {
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
 		if (eContainingFeature instanceof EReference) {
 			activeResource = eObjectFromReferenceableEObject.eResource();
-			Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, interpreter.getEObjectFromReferenceableEObject(value));
+			final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature,
+					interpreter.getEObjectFromReferenceableEObject(value));
 			editingDomain.getCommandStack().execute(command);
 		} else {
-			// TODO: Error !
+			fail("Cannot set without a eContainingFeature reference");
 		}
 	}
 
-/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#unset(org.eclipse.emf.eef.components.PropertiesEditionElement, org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#unset(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature) {
+	public void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature) {
 		// TODO Auto-generated method stub
 
 	}
 
-/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createModel(java.lang.String, java.lang.String, org.eclipse.emf.ecore.EClass)
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#createModel(java.lang.String, java.lang.String,
+	 *      org.eclipse.emf.ecore.EClass)
 	 */
 	public EObject createModel(String path, String modelName, EClass eClass) {
 		// try {
-		URI uri = URI.createPlatformResourceURI(path + "/" + modelName, true);
-		Resource activeResource = editingDomain.getResourceSet().createResource(uri);
-		EObject create = EcoreUtil.create(eClass);
+		final URI uri = URI.createPlatformResourceURI(path + "/" + modelName, true);
+		final Resource activeResource = editingDomain.getResourceSet().createResource(uri);
+		final EObject create = EcoreUtil.create(eClass);
 		activeResource.getContents().add(create);
 		// activeResource.save(Collections.EMPTY_MAP);
 		this.activeResource = activeResource;

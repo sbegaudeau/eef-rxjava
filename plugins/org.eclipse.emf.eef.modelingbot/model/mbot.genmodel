@@ -20,7 +20,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mbot.ecore#//Sequence/sequences"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mbot.ecore#//Sequence/processings"/>
     </genClasses>
-    <genClasses ecoreClass="mbot.ecore#//Wizard"/>
+    <genClasses ecoreClass="mbot.ecore#//Wizard">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mbot.ecore#//Wizard/referenceableObject"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="mbot.ecore#//DocumentedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//DocumentedElement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//DocumentedElement/documentation"/>

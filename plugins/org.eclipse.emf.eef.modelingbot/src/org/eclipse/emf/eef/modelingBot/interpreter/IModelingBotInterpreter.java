@@ -18,6 +18,9 @@ import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.Processing;
 import org.eclipse.emf.eef.modelingBot.Sequence;
 
+/**
+ * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ */
 public interface IModelingBotInterpreter {
 
 	/**
@@ -30,7 +33,7 @@ public interface IModelingBotInterpreter {
 	void runModelingBot(String path) throws CoreException, IOException;
 
 	/**
-	 * Run an action
+	 * Run an action.
 	 * 
 	 * @param action
 	 *            Action
@@ -38,7 +41,7 @@ public interface IModelingBotInterpreter {
 	void runAction(Action action);
 
 	/**
-	 * Run a sequence
+	 * Run a sequence.
 	 * 
 	 * @param sequence
 	 *            Sequence

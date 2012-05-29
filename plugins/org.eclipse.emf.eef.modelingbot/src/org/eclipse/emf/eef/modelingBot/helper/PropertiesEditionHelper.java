@@ -22,17 +22,16 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public class PropertiesEditionHelper {
 
 	/**
-	 * SWT EEF Bot
+	 * SWT EEF Bot.
 	 */
 	private SWTEEFBot bot;
 
 	/**
-	 * Create a PropertiesEditionHelper
+	 * Create a PropertiesEditionHelper.
 	 * 
 	 * @param bot
 	 *            SWTEEFBot
@@ -49,10 +48,12 @@ public class PropertiesEditionHelper {
 	 * @param value
 	 * @param sequenceType
 	 */
-	public void updateFeature(SWTBotTreeItem selectNode, PropertiesEditionElement propertiesEditionElement, String value, SequenceType sequenceType) {
+	public void updateFeature(SWTBotTreeItem selectNode, PropertiesEditionElement propertiesEditionElement,
+			String value, SequenceType sequenceType) {
 		if (!propertiesEditionElement.getViews().isEmpty()) {
-			ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
-			if (elementEditor.getRepresentation().getName().equals("Text")) {
+			final ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
+			final String representationName = elementEditor.getRepresentation().getName();
+			if ("Text".equals(representationName) || "Textarea".equals(representationName)) {
 				updateText(selectNode, elementEditor, value, sequenceType);
 			}
 		}
@@ -60,31 +61,17 @@ public class PropertiesEditionHelper {
 	}
 
 	/**
-	 * Update widget text
+	 * Update widget text.
 	 * 
 	 * @param selectNode
 	 * @param elementEditor
 	 * @param value
 	 * @param sequenceType
 	 */
-	private void updateText(SWTBotTreeItem selectNode, ElementEditor elementEditor, String value, SequenceType sequenceType) {
-		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
-			updateText(elementEditor, value);
-		} else if (sequenceType.equals(SequenceType.WIZARD)) {
-			if (selectNode != null) {
-				selectNode.doubleClick();
-			}
-			updateText(elementEditor, value);
-		}
-	}
-
-	/**
-	 * @param elementEditor
-	 * @param value
-	 */
-	private void updateText(ElementEditor elementEditor, String value) {
+	private void updateText(SWTBotTreeItem selectNode, ElementEditor elementEditor, String value,
+			SequenceType sequenceType) {
 		SWTBotHelper.waitAllUiEvents();
-		SWTBotText textWithLabel = bot.textWithLabel(StringHelper.toU1Case(elementEditor.getName()) + " : ");
+		final SWTBotText textWithLabel = bot.textWithLabel(StringHelper.toU1Case(elementEditor.getName()) + ": ");
 		textWithLabel.setText(value);
 		SWTBotHelper.pressEnterKey(textWithLabel.widget);
 		SWTBotHelper.sendFocusLost(textWithLabel.widget);
@@ -95,29 +82,24 @@ public class PropertiesEditionHelper {
 		this.bot = bot;
 	}
 
-	public void addFeature(SWTBotTreeItem selectNode, PropertiesEditionElement propertiesEditionElement, SequenceType sequenceType) {
+	public void addFeature(SWTBotTreeItem selectNode, PropertiesEditionElement propertiesEditionElement,
+			SequenceType sequenceType) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
-		ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
-		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
-			bot.addButtonAdvancedTableComposition(elementEditor.getQualifiedIdentifier()).click();
-		} else if (sequenceType.equals(SequenceType.WIZARD)) {
-			bot.addButtonAdvancedTableComposition(elementEditor.getQualifiedIdentifier()).click();
-		}
-
+		final ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
+		bot.addButtonAdvancedTableComposition(elementEditor.getQualifiedIdentifier()).click();
+		bot.button(UIConstants.FINISH_BUTTON).click();
 	}
 
-	public void removeFeature(EObject remove, PropertiesEditionElement propertiesEditionElement, SequenceType sequenceType) {
+	public void removeFeature(EObject remove, PropertiesEditionElement propertiesEditionElement,
+			SequenceType sequenceType) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
-		ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
-		if (sequenceType.equals(SequenceType.DETAILS_PAGE)) {
-			removeFeature(remove, elementEditor);
-		} else if (sequenceType.equals(SequenceType.WIZARD)) {
-			removeFeature(remove, elementEditor);
-		}
+		final ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
+		removeFeature(remove, elementEditor);
 	}
 
 	private void removeFeature(EObject remove, ElementEditor elementEditor) {
-		bot.selectInTableWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY, elementEditor.getQualifiedIdentifier(), remove);
+		bot.selectInTableWithId(org.eclipse.emf.eef.runtime.ui.UIConstants.EEF_WIDGET_ID_KEY,
+				elementEditor.getQualifiedIdentifier(), remove);
 		bot.removeButtonAdvancedTableComposition(elementEditor.getQualifiedIdentifier()).click();
 	}
 

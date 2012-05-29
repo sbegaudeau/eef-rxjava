@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-/**
- * 
- */
 package org.eclipse.emf.eef.modelingBot.edit.wizards;
 
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -88,14 +87,20 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 /**
+ * The wizard for creating modelingBots models.
+ * 
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
- *
  */
 public class ModelCreationWizard extends Wizard implements INewWizard {
 
+	private List<EClass> initialObjects = new ArrayList<EClass>();
+
 	protected static final int CONTROL_OFFSET = 10;
 
-	private List<EClass> initialObjects = new ArrayList<EClass>();
+	/**
+	 * This is the metamodel selection page.
+	 */
+	private MetamodelSelectionWizardPage metamodelSelectionPage;
 
 	/**
 	 * Remember the selection during initialization for populating the default container.
@@ -113,11 +118,6 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 	protected List<String> initialObjectNames;
 
 	/**
-	 * This is the metamodel selection page.
-	 */
-	private MetamodelSelectionWizardPage metamodelSelectionPage;
-
-	/**
 	 * This is the file creation page.
 	 */
 	protected ModelCreationWizardNewFileCreationPage newFileCreationPage;
@@ -128,107 +128,96 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 	protected ModelingBotModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
 	/**
-	 * ResourceSet to use
+	 * ResourceSet to use.
 	 */
 	protected ResourceSet resourceSet = new ResourceSetImpl();
 
 	/**
-	 * {@inheritDoc)
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
 	 */
 	@Override
 	public boolean performFinish() {
 		try {
 			// Remember the file.
-			//
 			final IFile modelFile = getModelFile();
 
 			// Do the work within an operation.
-			//
-			WorkspaceModifyOperation operation =
-				new WorkspaceModifyOperation() {
-					@Override
-					protected void execute(IProgressMonitor progressMonitor) {
-						try {
-							// Create a resource set
-							//
-							ResourceSet resourceSet = new ResourceSetImpl();
+			final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+				@Override
+				protected void execute(IProgressMonitor progressMonitor) {
+					try {
+						// Create a resource set
+						final ResourceSet wResourceSet = new ResourceSetImpl();
 
-							// Get the URI of the model file.
-							//
-							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+						// Get the URI of the model file.
+						final URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-							// Create a resource for this file.
-							//
-							Resource resource = resourceSet.createResource(fileURI);
+						// Create a resource for this file.
+						final Resource resource = wResourceSet.createResource(fileURI);
 
-							// Add the initial model object to the contents.
-							//
-							EObject rootObject = createInitialModel();
-							if (rootObject != null) {
-								resource.getContents().add(rootObject);
-							}
-
-							// Save the contents of the resource to the file system.
-							//
-							Map<Object, Object> options = new HashMap<Object, Object>();
-							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-							resource.save(options);
+						// Add the initial model object to the contents.
+						final EObject rootObject = createInitialModel();
+						if (rootObject != null) {
+							resource.getContents().add(rootObject);
 						}
-						catch (Exception exception) {
-							MbotEditPlugin.INSTANCE.log(exception);
-						}
-						finally {
-							progressMonitor.done();
-						}
+
+						// Save the contents of the resource to the file system.
+						final Map<Object, Object> options = new HashMap<Object, Object>();
+						options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
+						resource.save(options);
+					} catch (IOException exception) {
+						MbotEditPlugin.INSTANCE.log(exception);
+					} finally {
+						progressMonitor.done();
 					}
-				};
+				}
+			};
 
 			getContainer().run(false, false, operation);
 
 			// Select the new file resource in the current view.
-			//
-			IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-			IWorkbenchPage page = workbenchWindow.getActivePage();
+			final IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+			final IWorkbenchPage page = workbenchWindow.getActivePage();
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
-				getShell().getDisplay().asyncExec
-					(new Runnable() {
-						 public void run() {
-							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
-						 }
-					 });
+				getShell().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						((ISetSelectionTarget)activePart).selectReveal(targetSelection);
+					}
+				});
 			}
 
 			// Open an editor on the new file.
-			//
 			try {
-				page.openEditor
-					(new FileEditorInput(modelFile), MbotEditPlugin.INTERACTIVE_EEF_EDITOR_ID);					 	 
+				page.openEditor(new FileEditorInput(modelFile), MbotEditPlugin.INTERACTIVE_EEF_EDITOR_ID);
+				return true;
+			} catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(),
+						MbotEditPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
 			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), MbotEditPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
-				return false;
-			}
-
-			return true;
-		}
-		catch (Exception exception) {
+		} catch (InterruptedException exception) {
 			MbotEditPlugin.INSTANCE.log(exception);
-			return false;
+		} catch (InvocationTargetException exception) {
+			MbotEditPlugin.INSTANCE.log(exception);
 		}
+		return false;
 	}
 
 	/**
-	 * {@inheritDoc)
-	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
+	 *      org.eclipse.jface.viewers.IStructuredSelection)
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(MbotEditPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(MbotEditPlugin.INSTANCE.getImage("full/wizban/NewModelingBot")));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(MbotEditPlugin.INSTANCE
+				.getImage("full/wizban/NewModelingBot")));
 	}
 
 	/**
@@ -242,8 +231,8 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 	 * Create a new model.
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EObject rootObject = EcoreUtil.create(eClass);
+		final EClass eClass = getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		final EObject rootObject = EcoreUtil.create(eClass);
 		return rootObject;
 	}
 
@@ -270,13 +259,15 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * {@inheritDoc)
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.jface.wizard.Wizard#addPages()
 	 */
 	public void addPages() {
 		metamodelSelectionPage = new MetamodelSelectionWizardPage("Whatever0");
 		metamodelSelectionPage.setTitle(MbotEditPlugin.INSTANCE.getString("_UI_EEFActionsModelWizard_label"));
-		metamodelSelectionPage.setDescription(MbotEditPlugin.INSTANCE.getString("_UI_ModelCreationMetamodelSelection_description"));
+		metamodelSelectionPage.setDescription(MbotEditPlugin.INSTANCE
+				.getString("_UI_ModelCreationMetamodelSelection_description"));
 		addPage(metamodelSelectionPage);
 
 		// Create a page, set the title, and the initial model file name.
@@ -292,7 +283,7 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		if (selection != null && !selection.isEmpty()) {
 			// Get the resource...
 			//
-			Object selectedElement = selection.iterator().next();
+			final Object selectedElement = selection.iterator().next();
 			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
@@ -310,7 +301,8 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = MbotEditPlugin.INSTANCE.getString("_UI_ModelingBotEditorFilenameDefaultBase");
+					final String defaultModelBaseFilename = MbotEditPlugin.INSTANCE
+							.getString("_UI_ModelingBotEditorFilenameDefaultBase");
 					String modelFilename = defaultModelBaseFilename;
 					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i;
@@ -321,10 +313,10 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 		initialObjectCreationPage = new ModelingBotModelWizardInitialObjectCreationPage("Whatever2");
 		initialObjectCreationPage.setTitle(MbotEditPlugin.INSTANCE.getString("_UI_EEFActionsModelWizard_label"));
-		initialObjectCreationPage.setDescription(MbotEditPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage.setDescription(MbotEditPlugin.INSTANCE
+				.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}
-
 
 	private void updateObjectField() {
 		initialObjectCreationPage.getInitialObjectField().removeAll();
@@ -349,114 +341,88 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		/**
-		 * {@inheritDoc)
+		 * {@inheritDoc}
+		 * 
 		 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
 		 */
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
-				FormLayout layout = new FormLayout();
-				composite.setLayout(layout);
-
-				GridData data = new GridData();
-				data.verticalAlignment = GridData.FILL;
-				data.grabExcessVerticalSpace = true;
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				if (!EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE)
-				{
-					data.widthHint = 330;
-				}                  
-				composite.setLayoutData(data);        
+			final Composite composite = new Composite(parent, SWT.NONE);
+			final FormLayout layout = new FormLayout();
+			composite.setLayout(layout);
+			final GridData gData = new GridData();
+			gData.verticalAlignment = GridData.FILL;
+			gData.grabExcessVerticalSpace = true;
+			gData.horizontalAlignment = GridData.FILL;
+			gData.grabExcessHorizontalSpace = true;
+			if (!EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {
+				gData.widthHint = 330;
 			}
-
+			composite.setLayoutData(gData);
 			// buttonComposite has to be the first child of composite because subclasses are expecting this.
-			Composite buttonComposite = new Composite(composite, SWT.NONE);
+			final Composite buttonComposite = new Composite(composite, SWT.NONE);
 
-			Label resourceURILabel = new Label(composite, SWT.LEFT);
-			{
-				resourceURILabel.setText(CommonUIPlugin.INSTANCE.getString("_UI_ResourceURI_label"));
-				FormData data = new FormData();
-				data.left = new FormAttachment(0, CONTROL_OFFSET);
-				data.top = new FormAttachment(0, CONTROL_OFFSET);
-				resourceURILabel.setLayoutData(data);        
-			}
-			{
-				FormData data = new FormData();
-				data.top = new FormAttachment(resourceURILabel, CONTROL_OFFSET, SWT.CENTER);
-				data.left = new FormAttachment(resourceURILabel, CONTROL_OFFSET);
-				data.right = new FormAttachment(100, -CONTROL_OFFSET);
-				buttonComposite.setLayoutData(data);        
-
-				buttonComposite.setLayout(new FormLayout());
-			}
-
+			final Label resourceURILabel = new Label(composite, SWT.LEFT);
+			resourceURILabel.setText(CommonUIPlugin.INSTANCE.getString("_UI_ResourceURI_label"));
+			FormData fData = new FormData();
+			fData.left = new FormAttachment(0, CONTROL_OFFSET);
+			fData.top = new FormAttachment(0, CONTROL_OFFSET);
+			resourceURILabel.setLayoutData(fData);
+			fData = new FormData();
+			fData.top = new FormAttachment(resourceURILabel, CONTROL_OFFSET, SWT.CENTER);
+			fData.left = new FormAttachment(resourceURILabel, CONTROL_OFFSET);
+			fData.right = new FormAttachment(100, -CONTROL_OFFSET);
+			buttonComposite.setLayoutData(fData);
+			buttonComposite.setLayout(new FormLayout());
 			uriField = new Text(composite, SWT.BORDER);
-			{
-				FormData data = new FormData();
-				data.top = new FormAttachment(buttonComposite, CONTROL_OFFSET);
-				data.left = new FormAttachment(0, CONTROL_OFFSET);
-				data.right = new FormAttachment(100, -CONTROL_OFFSET);
-				uriField.setLayoutData(data);
-				uriField.addModifyListener(new ModifyListener() {
+			fData = new FormData();
+			fData.top = new FormAttachment(buttonComposite, CONTROL_OFFSET);
+			fData.left = new FormAttachment(0, CONTROL_OFFSET);
+			fData.right = new FormAttachment(100, -CONTROL_OFFSET);
+			uriField.setLayoutData(fData);
+			uriField.addModifyListener(new ModifyListener() {
 
-					public void modifyText(ModifyEvent e) {
-						updateMetamodel();
-						setPageComplete(validatePage());
-					}
+				public void modifyText(ModifyEvent e) {
+					updateMetamodel();
+					setPageComplete(validatePage());
+				}
 
-				});
-			}
-
-			Button browseFileSystemButton = new Button(buttonComposite, SWT.PUSH);
+			});
+			final Button browseFileSystemButton = new Button(buttonComposite, SWT.PUSH);
 			browseFileSystemButton.setText(CommonUIPlugin.INSTANCE.getString("_UI_BrowseFileSystem_label"));
 			prepareBrowseFileSystemButton(browseFileSystemButton);
 
-			if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE)
-			{
-				Button browseWorkspaceButton = new Button(buttonComposite, SWT.PUSH);
-				{
-					FormData data = new FormData();
-					data.right = new FormAttachment(100);
-					browseWorkspaceButton.setLayoutData(data);
-				}
-				{
-					FormData data = new FormData();
-					data.right = new FormAttachment(browseWorkspaceButton, -CONTROL_OFFSET);
-					browseFileSystemButton.setLayoutData(data);
-				}
+			if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {
+				final Button browseWorkspaceButton = new Button(buttonComposite, SWT.PUSH);
+				fData = new FormData();
+				fData.right = new FormAttachment(100);
+				browseWorkspaceButton.setLayoutData(fData);
+				fData = new FormData();
+				fData.right = new FormAttachment(browseWorkspaceButton, -CONTROL_OFFSET);
+				browseFileSystemButton.setLayoutData(fData);
 				browseWorkspaceButton.setText(CommonUIPlugin.INSTANCE.getString("_UI_BrowseWorkspace_label"));
 				prepareBrowseWorkspaceButton(browseWorkspaceButton);
-			}
-			else
-			{
-				FormData data = new FormData();
-				data.right = new FormAttachment(100);
-				browseFileSystemButton.setLayoutData(data);
+			} else {
+				fData = new FormData();
+				fData.right = new FormAttachment(100);
+				browseFileSystemButton.setLayoutData(fData);
 			}
 
-			Label separatorLabel = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
-			{
-				FormData data = new FormData();
-				data.top = new FormAttachment(uriField, (int)(1.5*CONTROL_OFFSET));
-				data.left = new FormAttachment(0, -CONTROL_OFFSET);
-				data.right = new FormAttachment(100, CONTROL_OFFSET);
-				separatorLabel.setLayoutData(data);
-			}      
-
-			composite.setTabList(new Control[]{uriField, buttonComposite});
-			Button browseRegisteredPackagesButton = new Button(buttonComposite, SWT.PUSH);
-			browseRegisteredPackagesButton.setText(MbotEditPlugin.INSTANCE.getString("_UI_BrowseRegisteredPackages_label"));
+			final Label separatorLabel = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
+			fData = new FormData();
+			fData.top = new FormAttachment(uriField, (int)(1.5 * CONTROL_OFFSET));
+			fData.left = new FormAttachment(0, -CONTROL_OFFSET);
+			fData.right = new FormAttachment(100, CONTROL_OFFSET);
+			separatorLabel.setLayoutData(fData);
+			composite.setTabList(new Control[] {uriField, buttonComposite});
+			final Button browseRegisteredPackagesButton = new Button(buttonComposite, SWT.PUSH);
+			browseRegisteredPackagesButton.setText(MbotEditPlugin.INSTANCE
+					.getString("_UI_BrowseRegisteredPackages_label"));
 			prepareBrowseRegisteredPackagesButton(browseRegisteredPackagesButton);
-			{
-				FormData data = new FormData();
-				Control [] children = buttonComposite.getChildren();
-				data.left = new FormAttachment(0, 0);
-				data.right = new FormAttachment(children[0], -CONTROL_OFFSET);
-				browseRegisteredPackagesButton.setLayoutData(data);
-			}
-
-
+			fData = new FormData();
+			Control[] children = buttonComposite.getChildren();
+			fData.left = new FormAttachment(0, 0);
+			fData.right = new FormAttachment(children[0], -CONTROL_OFFSET);
+			browseRegisteredPackagesButton.setLayoutData(fData);
 			setControl(composite);
 			setPageComplete(validatePage());
 		}
@@ -466,24 +432,23 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		private void updateMetamodel() {
-			List<URI> uris = new ArrayList<URI>();
-			for (StringTokenizer stringTokenizer = new StringTokenizer(getURIText()); stringTokenizer.hasMoreTokens(); )
-			{
-				String uri = stringTokenizer.nextToken();
+			final List<URI> uris = new ArrayList<URI>();
+			for (StringTokenizer stringTokenizer = new StringTokenizer(getURIText()); stringTokenizer.hasMoreTokens();) {
+				final String uri = stringTokenizer.nextToken();
 				uris.add(URI.createURI(uri));
 			}
-			List<EClass> newInitialObjects = new ArrayList<EClass>();
+			final List<EClass> newInitialObjects = new ArrayList<EClass>();
 			for (URI uri : uris) {
 				try {
-					Resource resource = resourceSet.getResource(uri, true);
+					final Resource resource = resourceSet.getResource(uri, true);
 					if (resource.getContents() != null) {
-						List<EClass> allClasses = getAllClasses(resource);
+						final List<EClass> allClasses = getAllClasses(resource);
 						if (!allClasses.isEmpty()) {
 							newInitialObjects.addAll(allClasses);
 						}
 					}
 				} catch (Exception e) {
-					//Silent catch malformed protocol
+					// Silent catch malformed protocol
 				}
 			}
 			if (!newInitialObjects.isEmpty()) {
@@ -494,11 +459,11 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		private List<EClass> getAllClasses(Resource resource) {
-			List<EClass> eclasses = new ArrayList<EClass>();
+			final List<EClass> eclasses = new ArrayList<EClass>();
 			for (Iterator<?> iterator = resource.getAllContents(); iterator.hasNext();) {
-				Object next = iterator.next();
+				final Object next = iterator.next();
 				if (next instanceof EClass) {
-					eclasses.add((EClass) next);
+					eclasses.add((EClass)next);
 				}
 			}
 			return eclasses;
@@ -509,24 +474,19 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		/**
-		 * Called to prepare the Browse File System button, this implementation adds a selection listener
-		 * that creates an appropriate {@link FileDialog}.
+		 * Called to prepare the Browse File System button, this implementation adds a selection listener that
+		 * creates an appropriate {@link FileDialog}.
 		 */
-		protected void prepareBrowseFileSystemButton(Button browseFileSystemButton)
-		{
-			browseFileSystemButton.addSelectionListener
-			(new SelectionAdapter()
-			{
+		protected void prepareBrowseFileSystemButton(Button browseFileSystemButton) {
+			browseFileSystemButton.addSelectionListener(new SelectionAdapter() {
 				@Override
-				public void widgetSelected(SelectionEvent event)
-				{
-					FileDialog fileDialog = new FileDialog(getShell(), SWT.NONE);
+				public void widgetSelected(SelectionEvent event) {
+					final FileDialog fileDialog = new FileDialog(getShell(), SWT.NONE);
 					fileDialog.open();
 
-					String filterPath = fileDialog.getFilterPath();
-					String fileName = fileDialog.getFileName();
-					if (fileName != null)
-					{
+					final String filterPath = fileDialog.getFilterPath();
+					final String fileName = fileDialog.getFileName();
+					if (fileName != null) {
 						uriField.setText(URI.createFileURI(filterPath + File.separator + fileName).toString());
 					}
 				}
@@ -534,63 +494,49 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		/**
-		 * Called to prepare the Browse Workspace button, this implementation adds a selection listener
-		 * that creates an appropriate {@link WorkspaceResourceDialog}.  
+		 * Called to prepare the Browse Workspace button, this implementation adds a selection listener that
+		 * creates an appropriate {@link WorkspaceResourceDialog}.
 		 */
-		protected void prepareBrowseWorkspaceButton(Button browseWorkspaceButton)
-		{
-			browseWorkspaceButton.addSelectionListener
-			(new SelectionAdapter()
-			{
+		protected void prepareBrowseWorkspaceButton(Button browseWorkspaceButton) {
+			browseWorkspaceButton.addSelectionListener(new SelectionAdapter() {
 				@Override
-				public void widgetSelected(SelectionEvent event)
-				{
+				public void widgetSelected(SelectionEvent event) {
 					IFile file = null;
-					IFile[] files = WorkspaceResourceDialog.openFileSelection(getShell(), null, null, false, null, null);
-					if (files.length != 0)
-					{
+					final IFile[] files = WorkspaceResourceDialog.openFileSelection(getShell(), null, null, false,
+							null, null);
+					if (files.length != 0) {
 						file = files[0];
 					}
-					if (file != null)
-					{
+					if (file != null) {
 						uriField.setText(URI.createPlatformResourceURI(file.getFullPath().toString(), true).toString());
 					}
 				}
-			});      
+			});
 		}
 
-		protected void prepareBrowseRegisteredPackagesButton(Button browseRegisteredPackagesButton)
-		{
-			browseRegisteredPackagesButton.addSelectionListener
-			(new SelectionAdapter()
-			{
+		protected void prepareBrowseRegisteredPackagesButton(Button browseRegisteredPackagesButton) {
+			browseRegisteredPackagesButton.addSelectionListener(new SelectionAdapter() {
 				@Override
-				public void widgetSelected(SelectionEvent event)
-				{
-					RegisteredPackageDialog registeredPackageDialog = new RegisteredPackageDialog(getShell());
+				public void widgetSelected(SelectionEvent event) {
+					final RegisteredPackageDialog registeredPackageDialog = new RegisteredPackageDialog(getShell());
 					registeredPackageDialog.open();
-					Object [] result = registeredPackageDialog.getResult();
-					if (result != null)
-					{
-						List<?> nsURIs = Arrays.asList(result);
-						if (registeredPackageDialog.isDevelopmentTimeVersion())
-						{
-							ResourceSet resourceSet = new ResourceSetImpl();
+					final Object[] result = registeredPackageDialog.getResult();
+					if (result != null) {
+						final List<?> nsURIs = Arrays.asList(result);
+						if (registeredPackageDialog.isDevelopmentTimeVersion()) {
+							final ResourceSet resourceSet = new ResourceSetImpl();
 							resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap());
-							StringBuffer uris = new StringBuffer();
-							Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap();
-							for (int i = 0, length = result.length; i < length; i++)
-							{
-								URI location = ePackageNsURItoGenModelLocationMap.get(result[i]);
-								Resource resource = resourceSet.getResource(location, true);
+							final StringBuffer uris = new StringBuffer();
+							final Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin
+									.getEPackageNsURIToGenModelLocationMap();
+							for (int i = 0, length = result.length; i < length; i++) {
+								final URI location = ePackageNsURItoGenModelLocationMap.get(result[i]);
+								final Resource resource = resourceSet.getResource(location, true);
 								EcoreUtil.resolveAll(resource);
 							}
-							for (Resource resource : resourceSet.getResources())
-							{
-								for (EPackage ePackage : getAllPackages(resource))
-								{
-									if (nsURIs.contains(ePackage.getNsURI()))
-									{
+							for (Resource resource : resourceSet.getResources()) {
+								for (EPackage ePackage : getAllPackages(resource)) {
+									if (nsURIs.contains(ePackage.getNsURI())) {
 										uris.append(resource.getURI());
 										uris.append("  ");
 										break;
@@ -598,12 +544,9 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 								}
 							}
 							uriField.setText((uriField.getText() + "  " + uris.toString()).trim());
-						}
-						else
-						{
-							StringBuffer uris = new StringBuffer();
-							for (int i = 0, length = result.length; i < length; i++)
-							{
+						} else {
+							final StringBuffer uris = new StringBuffer();
+							for (int i = 0, length = result.length; i < length; i++) {
 								uris.append(result[i]);
 								uris.append("  ");
 							}
@@ -611,39 +554,28 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 						}
 					}
 				}
-			});      
+			});
 		}
 
-		protected Collection<EPackage> getAllPackages(Resource resource)
-		{
-			List<EPackage> result = new ArrayList<EPackage>();
-			for (TreeIterator<?> j = 
-				new EcoreUtil.ContentTreeIterator<Object>(resource.getContents())
-				{
+		protected Collection<EPackage> getAllPackages(Resource resource) {
+			final List<EPackage> result = new ArrayList<EPackage>();
+			for (TreeIterator<?> j = new EcoreUtil.ContentTreeIterator<Object>(resource.getContents()) {
 				private static final long serialVersionUID = 1L;
 
 				@Override
-				protected Iterator<? extends EObject> getEObjectChildren(EObject eObject)
-				{
-					return 
-					eObject instanceof EPackage ? 
-							((EPackage)eObject).getESubpackages().iterator() : 
-								Collections.<EObject>emptyList().iterator();
+				protected Iterator<? extends EObject> getEObjectChildren(EObject eObject) {
+					return eObject instanceof EPackage ? ((EPackage)eObject).getESubpackages().iterator() : Collections
+							.<EObject> emptyList().iterator();
 				}
-				};
-				j.hasNext(); )
-			{
-				Object content = j.next();
-				if (content instanceof EPackage)
-				{
+			}; j.hasNext();) {
+				final Object content = j.next();
+				if (content instanceof EPackage) {
 					result.add((EPackage)content);
 				}
 			}
 			return result;
 		}
 	}
-
-
 
 	/**
 	 * This is the one page of the wizard.
@@ -683,55 +615,39 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE); {
-				GridLayout layout = new GridLayout();
-				layout.numColumns = 1;
-				layout.verticalSpacing = 12;
-				composite.setLayout(layout);
-
-				GridData data = new GridData();
-				data.verticalAlignment = GridData.FILL;
-				data.grabExcessVerticalSpace = true;
-				data.horizontalAlignment = GridData.FILL;
-				composite.setLayoutData(data);
-			}
-
-			Label containerLabel = new Label(composite, SWT.LEFT);
-			{
-				containerLabel.setText(MbotEditPlugin.INSTANCE.getString("_UI_ModelObject"));
-
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				containerLabel.setLayoutData(data);
-			}
-
+			final Composite composite = new Composite(parent, SWT.NONE);
+			GridLayout layout = new GridLayout();
+			layout.numColumns = 1;
+			layout.verticalSpacing = 12;
+			composite.setLayout(layout);
+			GridData gData = new GridData();
+			gData.verticalAlignment = GridData.FILL;
+			gData.grabExcessVerticalSpace = true;
+			gData.horizontalAlignment = GridData.FILL;
+			composite.setLayoutData(gData);
+			final Label containerLabel = new Label(composite, SWT.LEFT);
+			containerLabel.setText(MbotEditPlugin.INSTANCE.getString("_UI_ModelObject"));
+			gData = new GridData();
+			gData.horizontalAlignment = GridData.FILL;
+			containerLabel.setLayoutData(gData);
 			initialObjectField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				initialObjectField.setLayoutData(data);
-			}
-
+			gData = new GridData();
+			gData.horizontalAlignment = GridData.FILL;
+			gData.grabExcessHorizontalSpace = true;
+			initialObjectField.setLayoutData(gData);
 			updateObjectField();
 			initialObjectField.addModifyListener(validator);
 
-			Label encodingLabel = new Label(composite, SWT.LEFT);
-			{
-				encodingLabel.setText(MbotEditPlugin.INSTANCE.getString("_UI_XMLEncoding"));
-
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				encodingLabel.setLayoutData(data);
-			}
+			final Label encodingLabel = new Label(composite, SWT.LEFT);
+			encodingLabel.setText(MbotEditPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+			gData = new GridData();
+			gData.horizontalAlignment = GridData.FILL;
+			encodingLabel.setLayoutData(gData);
 			encodingField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				encodingField.setLayoutData(data);
-			}
-
+			gData = new GridData();
+			gData.horizontalAlignment = GridData.FILL;
+			gData.grabExcessHorizontalSpace = true;
+			encodingField.setLayoutData(gData);
 			for (String encoding : getEncodings()) {
 				encodingField.add(encoding);
 			}
@@ -743,8 +659,7 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 			setControl(composite);
 		}
 
-		protected ModifyListener validator =
-			new ModifyListener() {
+		protected ModifyListener validator = new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				setPageComplete(validatePage());
 			}
@@ -758,7 +673,8 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 
 		protected boolean validatePage() {
-			return getInitialObjectName() != null && !getInitialObjectName().equals("") && getEncodings().contains(encodingField.getText());
+			return getInitialObjectName() != null && !getInitialObjectName().equals("")
+					&& getEncodings().contains(encodingField.getText());
 		}
 
 		@Override
@@ -768,8 +684,7 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 				if (initialObjectField.getItemCount() == 1) {
 					initialObjectField.clearSelection();
 					encodingField.setFocus();
-				}
-				else {
+				} else {
 					encodingField.clearSelection();
 					initialObjectField.setFocus();
 				}
@@ -787,7 +702,8 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(MbotEditPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(
+						MbotEditPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -795,20 +711,15 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 		}
 	}
 
-	public static class RegisteredPackageDialog extends ElementListSelectionDialog
-	{
+	public static class RegisteredPackageDialog extends ElementListSelectionDialog {
 		protected boolean isDevelopmentTimeVersion = true;
 
-		public RegisteredPackageDialog(Shell parent)
-		{
-			super
-			(parent, 
-					new LabelProvider()
-			{
+		public RegisteredPackageDialog(Shell parent) {
+			super(parent, new LabelProvider() {
 				@Override
-				public Image getImage(Object element)
-				{
-					return ExtendedImageRegistry.getInstance().getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EPackage"));
+				public Image getImage(Object element) {
+					return ExtendedImageRegistry.getInstance().getImage(
+							EcoreEditPlugin.INSTANCE.getImage("full/obj16/EPackage"));
 				}
 			});
 
@@ -818,49 +729,43 @@ public class ModelCreationWizard extends Wizard implements INewWizard {
 			setTitle(MbotEditPlugin.INSTANCE.getString("_UI_PackageSelection_label"));
 		}
 
-		public boolean isDevelopmentTimeVersion()
-		{
+		public boolean isDevelopmentTimeVersion() {
 			return isDevelopmentTimeVersion;
 		}
 
-		protected void updateElements()
-		{
-			if (isDevelopmentTimeVersion)
-			{
-				Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap();
-				Object [] result = ePackageNsURItoGenModelLocationMap.keySet().toArray(new Object[ePackageNsURItoGenModelLocationMap.size()]);
+		protected void updateElements() {
+			if (isDevelopmentTimeVersion) {
+				final Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin
+						.getEPackageNsURIToGenModelLocationMap();
+				final Object[] result = ePackageNsURItoGenModelLocationMap.keySet().toArray(
+						new Object[ePackageNsURItoGenModelLocationMap.size()]);
 				Arrays.sort(result);
 				setListElements(result);
-			}
-			else
-			{
-				Object [] result = EPackage.Registry.INSTANCE.keySet().toArray(new Object[EPackage.Registry.INSTANCE.size()]);
+			} else {
+				final Object[] result = EPackage.Registry.INSTANCE.keySet().toArray(
+						new Object[EPackage.Registry.INSTANCE.size()]);
 				Arrays.sort(result);
 				setListElements(result);
 			}
 		}
 
 		@Override
-		protected Control createDialogArea(Composite parent)
-		{
-			Composite result = (Composite)super.createDialogArea(parent);
-			Composite buttonGroup = new Composite(result, SWT.NONE);
-			GridLayout layout = new GridLayout();
+		protected Control createDialogArea(Composite parent) {
+			final Composite result = (Composite)super.createDialogArea(parent);
+			final Composite buttonGroup = new Composite(result, SWT.NONE);
+			final GridLayout layout = new GridLayout();
 			layout.numColumns = 2;
 			buttonGroup.setLayout(layout);
 			final Button developmentTimeVersionButton = new Button(buttonGroup, SWT.RADIO);
-			developmentTimeVersionButton.addSelectionListener
-			(new SelectionAdapter() 
-			{
+			developmentTimeVersionButton.addSelectionListener(new SelectionAdapter() {
 				@Override
-				public void widgetSelected(SelectionEvent event)
-				{
+				public void widgetSelected(SelectionEvent event) {
 					isDevelopmentTimeVersion = developmentTimeVersionButton.getSelection();
 					updateElements();
 				}
 			});
 			developmentTimeVersionButton.setText(MbotEditPlugin.INSTANCE.getString("_UI_DevelopmentTimeVersion_label"));
-			Button runtimeTimeVersionButton = new Button(buttonGroup, SWT.RADIO);
+			final Button runtimeTimeVersionButton = new Button(buttonGroup, SWT.RADIO);
 			runtimeTimeVersionButton.setText(MbotEditPlugin.INSTANCE.getString("_UI_RuntimeVersion_label"));
 			developmentTimeVersionButton.setSelection(true);
 

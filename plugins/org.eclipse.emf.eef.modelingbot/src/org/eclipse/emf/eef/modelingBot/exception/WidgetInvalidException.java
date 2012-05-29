@@ -12,26 +12,25 @@ package org.eclipse.emf.eef.modelingBot.exception;
 
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public class WidgetInvalidException extends Exception {
 
 	/**
-	 * Serialization
+	 * Serialization.
 	 */
 	private static final long serialVersionUID = 5938605662196039272L;
 
 	private String messageInfo;
 
 	/**
-	 * default constructor
+	 * default constructor.
 	 */
 	public WidgetInvalidException() {
 		super();
 	}
 
 	/**
-	 * constructor with info
+	 * constructor with info.
 	 * 
 	 * @param info
 	 *            the info
@@ -48,9 +47,9 @@ public class WidgetInvalidException extends Exception {
 	 */
 	@Override
 	public String getMessage() {
-		String message = "The widget is invalid for test";
+		final String message = "The widget is invalid for test";
 		if (messageInfo != null) {
-			StringBuilder builder = new StringBuilder(message);
+			final StringBuilder builder = new StringBuilder(message);
 			builder.append(" : ");
 			builder.append(messageInfo);
 			return builder.toString();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 Obeo.
+ * Copyright (c) 2008, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,11 +22,9 @@ import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 
 /**
- * Interface for modeling bot : define the actions modelised in modeling bot
- * resource
+ * Interface for modeling bot : define the actions modelised in modeling bot resource.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public interface IModelingBot {
 
@@ -93,7 +91,6 @@ public interface IModelingBot {
 
 	/**
 	 * Save an editor.
-	 * 
 	 */
 	void save();
 
@@ -105,7 +102,8 @@ public interface IModelingBot {
 	 * @param eContainingFeature
 	 * @return
 	 */
-	EObject add(org.eclipse.emf.eef.components.PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type);
+	EObject add(org.eclipse.emf.eef.components.PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type);
 
 	/**
 	 * Remove an element.
@@ -124,7 +122,8 @@ public interface IModelingBot {
 	 * @param eContainingFeature
 	 * @return
 	 */
-	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, String value);
+	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, String value);
 
 	/**
 	 * Set an element.
@@ -133,7 +132,8 @@ public interface IModelingBot {
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, ReferenceableObject value);
+	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, ReferenceableObject value);
 
 	/**
 	 * Unset an element.
@@ -142,7 +142,8 @@ public interface IModelingBot {
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature);
+	void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature);
 
 	/**
 	 * Create a new resource.
@@ -165,17 +166,16 @@ public interface IModelingBot {
 	void setSequenceType(SequenceType sequenceType);
 
 	/**
-	 * Validate batch editing
+	 * Validate batch editing.
 	 */
 	void validateBatchEditing();
 
 	/**
-	 * Check
+	 * Check.
 	 */
 	void check();
 
 	/**
-	 * 
 	 * @return the test model resource.
 	 */
 	Resource getActiveResource();

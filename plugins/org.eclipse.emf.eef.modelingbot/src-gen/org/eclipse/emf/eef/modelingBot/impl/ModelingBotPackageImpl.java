@@ -265,6 +265,15 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getWizard_ReferenceableObject() {
+		return (EReference)wizardEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocumentedElement() {
 		return documentedElementEClass;
 	}
@@ -397,6 +406,7 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 		createEReference(sequenceEClass, SEQUENCE__PROCESSINGS);
 
 		wizardEClass = createEClass(WIZARD);
+		createEReference(wizardEClass, WIZARD__REFERENCEABLE_OBJECT);
 
 		documentedElementEClass = createEClass(DOCUMENTED_ELEMENT);
 		createEAttribute(documentedElementEClass, DOCUMENTED_ELEMENT__NAME);
@@ -443,6 +453,7 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 		// Obtain other dependent packages
 		EEFActionsPackage theEEFActionsPackage = (EEFActionsPackage)EPackage.Registry.INSTANCE.getEPackage(EEFActionsPackage.eNS_URI);
 		EclipseActionsPackage theEclipseActionsPackage = (EclipseActionsPackage)EPackage.Registry.INSTANCE.getEPackage(EclipseActionsPackage.eNS_URI);
+		EditorPackage theEditorPackage = (EditorPackage)EPackage.Registry.INSTANCE.getEPackage(EditorPackage.eNS_URI);
 		ComponentsPackage theComponentsPackage = (ComponentsPackage)EPackage.Registry.INSTANCE.getEPackage(ComponentsPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
@@ -475,6 +486,7 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 		initEReference(getSequence_Processings(), this.getProcessing(), null, "processings", null, 0, -1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(wizardEClass, Wizard.class, "Wizard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWizard_ReferenceableObject(), theEditorPackage.getReferenceableObject(), null, "referenceableObject", null, 1, 1, Wizard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentedElementEClass, DocumentedElement.class, "DocumentedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocumentedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, DocumentedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
