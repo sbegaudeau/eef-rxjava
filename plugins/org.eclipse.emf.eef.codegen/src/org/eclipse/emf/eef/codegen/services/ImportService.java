@@ -58,7 +58,7 @@ public class ImportService {
 	 * @return the EMF genModel (intended to hold the ImportManager)
 	 */
 	private GenModel getGenModel(EObject eo) {
-		if (eo.eResource().getResourceSet() != null) {
+		if (eo.eResource() != null && eo.eResource().getResourceSet() != null) {
 			for (Resource resource : eo.eResource().getResourceSet().getResources()) {
 				if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof GenModel) {
 					return (GenModel)resource.getContents().get(0);
