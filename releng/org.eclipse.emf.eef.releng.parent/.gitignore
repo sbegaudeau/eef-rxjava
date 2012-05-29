@@ -1,4 +1,4 @@
-output.log
-target
-LocalBuild?tycho?+?Sonar.launch
+/output.log
+/LocalBuild tycho + Sonar.launch
 /settings.xml
+/target

@@ -13,7 +13,8 @@
       id="org.eclipse.emf.eef.codegen.ecore-feature"
       label="%featureName"
       version="2.0.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.eef.branding">
 
    <description>
       %description
@@ -42,5 +43,11 @@ http://www.eclipse.org/legal/epl-v10.html
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.eef.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

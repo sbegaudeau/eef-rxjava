@@ -81,7 +81,7 @@
 				<repository>
 					<id>orbit</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120308061416/repository/</url>
+					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</url>
 				</repository>
 				<repository>
 					<id>epf</id>
@@ -126,7 +126,7 @@
 				<repository>
 					<id>orbit</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/tools/orbit/downloads/drops/S20120308061416/repository</url>
+					<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository</url>
 				</repository>
 				<repository>
 					<id>epf</id>
@@ -159,21 +159,26 @@
 		<module>../../plugins/org.eclipse.emf.eef.editor.model</module>
 		<module>../../plugins/org.eclipse.emf.eef.extended.widgets.richtext</module>
 
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot</module>
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot.editor</module>
+
 		<module>../../plugins/org.eclipse.emf.eef.codegen</module>
 		<module>../../plugins/org.eclipse.emf.eef.codegen.launcher</module>
 		<module>../../plugins/org.eclipse.emf.eef.codegen.ecore</module>
 		<module>../../plugins/org.eclipse.emf.eef.codegen.extended</module>
 		<!-- <module>../../plugins/org.eclipse.emf.eef.tests.codegen</module> -->
 
-		<!--<module>../org.eclipse.emf.example.eef</module>
-		<module>../org.eclipse.emf.example.eef.edit</module>
-		<module>../org.eclipse.emf.example.eef.editor</module>
-		<module>../org.eclipse.emf.example.eef.tests.junit</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg</module>
+		<module>../../tests/org.eclipse.emf.examples.eef</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.editor</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.tests.junit</module>
+		<!--<module>../org.eclipse.emf.eef.tests.nonreg</module>
 		<module>../org.eclipse.emf.eef.tests.nonreg.edit</module>
 		<module>../org.eclipse.emf.eef.tests.nonreg.editor</module>
 		<module>../org.eclipse.emf.eef.tests.nonreg.junit</module> -->
 
+		<module>../../plugins/org.eclipse.emf.eef.branding</module>
 		<module>../../features/org.eclipse.emf.eef.runtime-feature</module>
 		<module>../../features/org.eclipse.emf.eef.extended-feature</module>
 		<module>../../features/org.eclipse.emf.eef.richtext-feature</module>
