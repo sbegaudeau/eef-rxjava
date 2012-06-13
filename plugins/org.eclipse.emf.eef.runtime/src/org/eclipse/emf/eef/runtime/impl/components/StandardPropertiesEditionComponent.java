@@ -190,11 +190,6 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 								public void execute() {
 									updateSemanticModel(event);
-									ChangeRecorder changeRecorder = context.getChangeRecorder();
-									if (changeRecorder != null) {
-										description = changeRecorder.endRecording();
-										changeRecorder.dispose();
-									}
 								}
 
 							});
