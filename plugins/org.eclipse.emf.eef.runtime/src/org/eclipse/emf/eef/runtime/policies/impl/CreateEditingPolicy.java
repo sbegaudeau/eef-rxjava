@@ -46,6 +46,7 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 	 * @see org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy#execute()
 	 */
 	public void execute() {
+		editionContext.initializeRecorder();
 		EClassifier eType = editionContext.getEReference().getEType();
 		PropertiesEditionWizard wizard;
 		if (editionContext instanceof TypedEReferencePropertiesEditingContext) {

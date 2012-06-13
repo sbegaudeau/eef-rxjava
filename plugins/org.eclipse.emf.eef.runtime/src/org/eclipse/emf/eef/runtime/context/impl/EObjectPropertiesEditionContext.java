@@ -79,10 +79,6 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.parentPropertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.adapterFactory = adapterFactory;
-		ResourceSet resourceSet = getResourceSet();
-		if (resourceSet != null) {
-			this.changeRecorder = new ChangeRecorder(resourceSet);
-		}
 	}
 
 	/**
@@ -90,6 +86,17 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 */
 	public PropertiesEditingContext getParentContext() {
 		return parentContext;
+	}
+
+	/** 
+	 * (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#initializeRecorder()
+	 */
+	public void initializeRecorder() {
+		ResourceSet resourceSet = getResourceSet();
+		if (resourceSet != null) {
+			this.changeRecorder = new ChangeRecorder(resourceSet);
+		}		
 	}
 
 	/**

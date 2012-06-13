@@ -22,6 +22,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 public interface PropertiesEditingContext {
 
 	/**
+	 * Intialize the ChangeRecorder of the editing session.
+	 */
+	public void initializeRecorder();
+	
+	/**
 	 * @return the changeRecorder of the editing session
 	 */
 	public ChangeRecorder getChangeRecorder();

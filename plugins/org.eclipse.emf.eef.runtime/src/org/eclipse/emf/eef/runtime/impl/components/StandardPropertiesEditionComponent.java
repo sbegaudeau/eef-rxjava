@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -179,6 +180,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				propagateEvent(new PropertiesValidationEditionEvent(event, valueDiagnostic));
 			else {
+				editingContext.initializeRecorder();
 				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 					updateSemanticModel(event);
 				} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -188,8 +190,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 								public void execute() {
 									updateSemanticModel(event);
-									description = context.getChangeRecorder().endRecording();
-									context.getChangeRecorder().dispose();
+									ChangeRecorder changeRecorder = context.getChangeRecorder();
+									if (changeRecorder != null) {
+										description = changeRecorder.endRecording();
+										changeRecorder.dispose();
+									}
 								}
 
 							});
