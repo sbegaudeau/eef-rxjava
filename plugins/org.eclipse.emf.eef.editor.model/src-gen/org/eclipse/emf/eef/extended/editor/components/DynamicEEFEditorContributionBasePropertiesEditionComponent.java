@@ -27,7 +27,9 @@ import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.parts.DynamicEEFEditorContributionPropertiesEditionPart;
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -234,6 +236,20 @@ public class DynamicEEFEditorContributionBasePropertiesEditionComponent extends 
 				basePart.setModel((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			MappingPackage.eINSTANCE.getAbstractElementBinding_Name(),
+			MappingPackage.eINSTANCE.getAbstractElementBinding_Views(),
+			MappingPackage.eINSTANCE.getEMFElementBinding_Model());
+		return new NotificationFilter[] {filter,};
 	}
 
 

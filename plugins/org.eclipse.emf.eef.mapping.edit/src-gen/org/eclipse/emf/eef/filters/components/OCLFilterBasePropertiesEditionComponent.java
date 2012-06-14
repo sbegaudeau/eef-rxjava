@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.mapping.filters.OCLFilter;
 import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.mapping.filters.parts.OCLFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -129,6 +131,20 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
+			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
+			FiltersPackage.eINSTANCE.getOCLFilter_OCLBody());
+		return new NotificationFilter[] {filter,};
 	}
 
 

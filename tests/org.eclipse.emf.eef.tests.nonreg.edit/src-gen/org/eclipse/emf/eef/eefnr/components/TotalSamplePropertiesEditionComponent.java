@@ -33,7 +33,9 @@ import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -697,13 +699,13 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		if (EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				totalSample.getMultivaluededitorRequiredProperty().clear();
-				totalSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+				totalSample.getMultivaluededitorRequiredProperty().addAll(((EList) event.getNewValue()));
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				totalSample.getMultivaluededitorOptionalProperty().clear();
-				totalSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
+				totalSample.getMultivaluededitorOptionalProperty().addAll(((EList) event.getNewValue()));
 			}
 		}
 		if (EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty == event.getAffectedEditor()) {
@@ -932,11 +934,11 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)msg.getNewValue());
 			
 			if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty)) {
-				basePart.setMultivaluededitorRequiredProperty((EList)msg.getNewValue());
+				basePart.setMultivaluededitorRequiredProperty((EList<?>)msg.getNewValue());
 			}
 			
 			if (EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty)) {
-				basePart.setMultivaluededitorOptionalProperty((EList)msg.getNewValue());
+				basePart.setMultivaluededitorOptionalProperty((EList<?>)msg.getNewValue());
 			}
 			
 			if (EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty))
@@ -968,6 +970,43 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_TextOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_CheckboxRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_CheckboxOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_TextareaRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_TextareaOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_ReferencestableRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_ReferencestableOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_MultivaluededitorOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_TablecompositionRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_TablecompositionOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_AdvancedreferencestableOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerRequiredPropery(),
+			EefnrPackage.eINSTANCE.getTotalSample_AdvancedeobjectflatcomboviewerOptionalPropery(),
+			EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(),
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+		return new NotificationFilter[] {filter,};
 	}
 
 

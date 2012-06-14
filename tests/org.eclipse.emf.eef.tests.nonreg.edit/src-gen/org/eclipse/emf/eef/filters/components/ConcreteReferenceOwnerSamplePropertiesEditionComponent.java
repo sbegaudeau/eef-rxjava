@@ -31,7 +31,9 @@ import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -262,6 +264,20 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				basePart.updateStrictTyping();
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			FiltersPackage.eINSTANCE.getAbstractReferenceOwnerSample_AbstractTarget(),
+			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping());
+		return new NotificationFilter[] {filter,};
 	}
 
 

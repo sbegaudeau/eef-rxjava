@@ -13,24 +13,18 @@ package org.eclipse.emf.eef.eefnrext.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
-
 import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.CheckBoxExtendedEditorSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.FlatReferenceExtendedEditorSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnrext.components.FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorSamplePropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -153,7 +147,8 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionProvider extends 
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EefnrextPackage.Literals.FLAT_REFERENCE_EXTENDED_EDITOR_SAMPLE == ((EObject)toTest).eClass();
+			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+			return eObj != null && EefnrextPackage.Literals.FLAT_REFERENCE_EXTENDED_EDITOR_SAMPLE == eObj.eClass();
 		}
 		
 	}

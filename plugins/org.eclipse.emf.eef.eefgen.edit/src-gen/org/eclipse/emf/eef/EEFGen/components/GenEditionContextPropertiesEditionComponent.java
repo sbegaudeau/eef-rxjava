@@ -27,7 +27,9 @@ import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenEditionContextPropertiesEditionPart;
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -281,6 +283,25 @@ public class GenEditionContextPropertiesEditionComponent extends SinglePartPrope
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EEFGenPackage.eINSTANCE.getGenEditionContext_BasePackage(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsContributorID(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_DescriptorsGenericPropertiesViews(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_GmfPropertiesViews(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditionContext(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_GenerateJunitTestCases(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_LeafComponentsSuperClass(),
+			EEFGenPackage.eINSTANCE.getGenEditionContext_PropertiesEditingProvidersSuperClass());
+		return new NotificationFilter[] {filter,};
 	}
 
 

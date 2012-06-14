@@ -22,7 +22,9 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
@@ -142,6 +144,21 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 			//FIXME: Sorry this widget is deprecated for this version.
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty());
+		return new NotificationFilter[] {filter,};
 	}
 
 

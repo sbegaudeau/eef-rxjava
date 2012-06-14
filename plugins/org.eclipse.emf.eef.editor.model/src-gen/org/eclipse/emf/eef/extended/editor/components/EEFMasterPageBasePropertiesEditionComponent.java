@@ -25,7 +25,9 @@ import org.eclipse.emf.eef.extended.editor.EEFMasterPage;
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.parts.EEFMasterPagePropertiesEditionPart;
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -171,6 +173,21 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ViewsPackage.eINSTANCE.getViewElement_Name(),
+			EditorPackage.eINSTANCE.getEEFPage_Title(),
+			EditorPackage.eINSTANCE.getEEFMasterPage_Orientable(),
+			EditorPackage.eINSTANCE.getEEFMasterPage_ShowValidatePage());
+		return new NotificationFilter[] {filter,};
 	}
 
 

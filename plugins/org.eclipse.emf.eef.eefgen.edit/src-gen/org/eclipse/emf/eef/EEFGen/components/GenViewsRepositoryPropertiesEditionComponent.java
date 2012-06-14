@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -247,6 +249,23 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass());
+		return new NotificationFilter[] {filter,};
 	}
 
 

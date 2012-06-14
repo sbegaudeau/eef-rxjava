@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -205,6 +207,23 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ConferencePackage.eINSTANCE.getPerson_Firstname(),
+			ConferencePackage.eINSTANCE.getPerson_Lastname(),
+			ConferencePackage.eINSTANCE.getPerson_Age(),
+			ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(),
+			ConferencePackage.eINSTANCE.getPerson_Gender(),
+			ConferencePackage.eINSTANCE.getPerson_IsRegistered());
+		return new NotificationFilter[] {filter,};
 	}
 
 

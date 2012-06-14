@@ -25,7 +25,9 @@ import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.TreeMasterPage;
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
 import org.eclipse.emf.eef.extended.editor.parts.TreeMasterPagePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -157,6 +159,20 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ViewsPackage.eINSTANCE.getViewElement_Name(),
+			EditorPackage.eINSTANCE.getEEFPage_Title(),
+			EditorPackage.eINSTANCE.getTreeMasterPage_ToolbarVisible());
+		return new NotificationFilter[] {filter,};
 	}
 
 

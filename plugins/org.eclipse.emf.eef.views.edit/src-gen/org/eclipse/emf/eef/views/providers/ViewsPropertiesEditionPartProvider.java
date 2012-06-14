@@ -11,13 +11,9 @@
 package org.eclipse.emf.eef.views.providers;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
-
 import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
-
 import org.eclipse.emf.eef.views.parts.forms.CategoryPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.forms.ContainerPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.forms.CustomElementEditorPropertiesEditionPartForm;
@@ -27,7 +23,6 @@ import org.eclipse.emf.eef.views.parts.forms.ElementEditorPropertiesEditionPartF
 import org.eclipse.emf.eef.views.parts.forms.ViewPropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.forms.ViewReferencePropertiesEditionPartForm;
 import org.eclipse.emf.eef.views.parts.forms.ViewsRepositoryPropertiesEditionPartForm;
-
 import org.eclipse.emf.eef.views.parts.impl.CategoryPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.impl.ContainerPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.views.parts.impl.CustomElementEditorPropertiesEditionPartImpl;

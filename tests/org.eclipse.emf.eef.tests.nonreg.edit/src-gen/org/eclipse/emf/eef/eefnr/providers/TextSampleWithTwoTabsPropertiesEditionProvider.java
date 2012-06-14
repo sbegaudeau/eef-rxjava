@@ -13,22 +13,16 @@ package org.eclipse.emf.eef.eefnr.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
-
 import org.eclipse.emf.eef.eefnr.components.TextSampleWithTwoTabsPropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnr.components.TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent;
 import org.eclipse.emf.eef.eefnr.components.TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -146,7 +140,8 @@ public class TextSampleWithTwoTabsPropertiesEditionProvider extends PropertiesEd
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EefnrPackage.Literals.TEXT_SAMPLE_WITH_TWO_TABS == ((EObject)toTest).eClass();
+			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+			return eObj != null && EefnrPackage.Literals.TEXT_SAMPLE_WITH_TWO_TABS == eObj.eClass();
 		}
 		
 	}

@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.eefnr.navigation.Owner;
 import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.SubtypePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
@@ -354,6 +356,33 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleForTableComposition(),
+			NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleForAdvancedTableComposition(),
+			NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleForReferencesTable(),
+			NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleAdvancedReferencesTable(),
+			NavigationPackage.eINSTANCE.getMultipleReferencer_MultipleSampleForFlatReferencesTable(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleForTableComposition(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleForAdvancedTableComposition(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleForReferencesTable(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleAdvancedReferencesTable(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleSampleForFlatReferencesTable(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForEObjectFlatComboViewer(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForEObjectFlatComboViewer(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer(),
+			NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer(),
+			NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement());
+		return new NotificationFilter[] {filter,};
 	}
 
 

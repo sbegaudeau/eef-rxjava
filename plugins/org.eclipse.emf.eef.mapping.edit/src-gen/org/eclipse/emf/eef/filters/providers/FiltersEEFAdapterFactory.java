@@ -15,12 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 
-import org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.mapping.filters.util.FiltersAdapterFactory;
 
 import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;

@@ -13,20 +13,14 @@ package org.eclipse.emf.eef.eefnrext.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.TableCompositionTargetExtensionEditorSample;
-
 import org.eclipse.emf.eef.eefnrext.components.TableCompositionTargetExtensionEditorSamplePropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -139,7 +133,8 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionProvide
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && EefnrextPackage.Literals.TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE == ((EObject)toTest).eClass();
+			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+			return eObj != null && EefnrextPackage.Literals.TABLE_COMPOSITION_TARGET_EXTENSION_EDITOR_SAMPLE == eObj.eClass();
 		}
 		
 	}

@@ -24,7 +24,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.extended.editor.EEFEditorPages;
 import org.eclipse.emf.eef.extended.editor.parts.EEFEditorPagesPropertiesEditionPart;
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -124,6 +126,18 @@ public class EEFEditorPagesBasePropertiesEditionComponent extends SinglePartProp
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ViewsPackage.eINSTANCE.getCategory_Name());
+		return new NotificationFilter[] {filter,};
 	}
 
 

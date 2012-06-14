@@ -28,7 +28,9 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.mapping.navigation.parts.SimpleModelNavigationPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
@@ -238,6 +240,20 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 				basePart.setDiscriminatorType((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index(),
+			NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature(),
+			NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType());
+		return new NotificationFilter[] {filter,};
 	}
 
 

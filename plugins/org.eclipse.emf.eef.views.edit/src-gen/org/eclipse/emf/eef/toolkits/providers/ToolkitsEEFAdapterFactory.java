@@ -11,10 +11,6 @@
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
-
-import org.eclipse.emf.eef.toolkits.providers.ToolkitPropertiesEditionProvider;
-import org.eclipse.emf.eef.toolkits.providers.WidgetPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory;
 
 /**

@@ -28,7 +28,9 @@ import org.eclipse.emf.eef.components.PropertiesMultiEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
@@ -244,6 +246,21 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(),
+			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(),
+			MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model(),
+			ComponentsPackage.eINSTANCE.getEEFElement_HelpID());
+		return new NotificationFilter[] {filter,};
 	}
 
 

@@ -13,22 +13,16 @@ package org.eclipse.emf.eef.navigation.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.eefnr.navigation.Element;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
-
 import org.eclipse.emf.eef.navigation.components.ElementBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.ElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.navigation.components.NamedElementPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 /**
@@ -146,7 +140,8 @@ public class ElementPropertiesEditionProvider extends PropertiesEditingProviderI
 		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 		 */
 		public boolean select(Object toTest) {
-			return toTest instanceof EObject && NavigationPackage.Literals.ELEMENT == ((EObject)toTest).eClass();
+			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+			return eObj != null && NavigationPackage.Literals.ELEMENT == eObj.eClass();
 		}
 		
 	}

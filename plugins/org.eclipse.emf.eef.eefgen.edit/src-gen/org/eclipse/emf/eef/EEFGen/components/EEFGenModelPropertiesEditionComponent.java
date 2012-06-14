@@ -25,7 +25,9 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -191,6 +193,22 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_Author(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_License(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode());
+		return new NotificationFilter[] {filter,};
 	}
 
 

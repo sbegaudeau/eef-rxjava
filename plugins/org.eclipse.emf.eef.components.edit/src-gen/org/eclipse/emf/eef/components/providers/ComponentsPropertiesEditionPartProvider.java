@@ -11,21 +11,16 @@
 package org.eclipse.emf.eef.components.providers;
 
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
-
 import org.eclipse.emf.eef.components.parts.forms.PropertiesEditionComponentPropertiesEditionPartForm;
 import org.eclipse.emf.eef.components.parts.forms.PropertiesEditionContextPropertiesEditionPartForm;
 import org.eclipse.emf.eef.components.parts.forms.PropertiesEditionElementPropertiesEditionPartForm;
 import org.eclipse.emf.eef.components.parts.forms.PropertiesMultiEditionElementPropertiesEditionPartForm;
-
 import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionComponentPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionContextPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.components.parts.impl.PropertiesEditionElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.components.parts.impl.PropertiesMultiEditionElementPropertiesEditionPartImpl;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**

@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.mapping.filters.OnlyReferenceTypeFilter;
 import org.eclipse.emf.eef.mapping.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.mapping.filters.parts.OnlyReferenceTypeFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -171,6 +173,20 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 				basePart.setReferencedFeature((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
+			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
+			FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference());
+		return new NotificationFilter[] {filter,};
 	}
 
 

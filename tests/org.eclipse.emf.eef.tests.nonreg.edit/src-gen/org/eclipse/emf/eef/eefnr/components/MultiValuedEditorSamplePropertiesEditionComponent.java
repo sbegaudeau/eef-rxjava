@@ -27,7 +27,9 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -116,13 +118,13 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				multiValuedEditorSample.getMultivaluededitorRequiredProperty().clear();
-				multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((List) event.getNewValue()));
+				multiValuedEditorSample.getMultivaluededitorRequiredProperty().addAll(((EList) event.getNewValue()));
 			}
 		}
 		if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				multiValuedEditorSample.getMultivaluededitorOptionalProperty().clear();
-				multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((List) event.getNewValue()));
+				multiValuedEditorSample.getMultivaluededitorOptionalProperty().addAll(((EList) event.getNewValue()));
 			}
 		}
 	}
@@ -135,15 +137,28 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		if (editingPart.isVisible()) {
 			MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty)) {
-				basePart.setMultivaluededitorRequiredProperty((EList)msg.getNewValue());
+				basePart.setMultivaluededitorRequiredProperty((EList<?>)msg.getNewValue());
 			}
 			
 			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty)) {
-				basePart.setMultivaluededitorOptionalProperty((EList)msg.getNewValue());
+				basePart.setMultivaluededitorOptionalProperty((EList<?>)msg.getNewValue());
 			}
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty(),
+			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty());
+		return new NotificationFilter[] {filter,};
 	}
 
 

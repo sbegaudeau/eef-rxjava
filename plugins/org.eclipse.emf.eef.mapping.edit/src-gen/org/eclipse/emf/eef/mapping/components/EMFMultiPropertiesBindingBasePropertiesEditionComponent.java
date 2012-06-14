@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.mapping.EMFMultiPropertiesBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.parts.EMFMultiPropertiesBindingPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
@@ -224,6 +226,20 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 				basePart.updateModel();
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(),
+			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(),
+			MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model());
+		return new NotificationFilter[] {filter,};
 	}
 
 

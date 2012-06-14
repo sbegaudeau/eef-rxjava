@@ -29,7 +29,9 @@ import org.eclipse.emf.eef.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionComponentPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -267,6 +269,22 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			MappingPackage.eINSTANCE.getAbstractElementBinding_Name(),
+			MappingPackage.eINSTANCE.getAbstractElementBinding_Views(),
+			MappingPackage.eINSTANCE.getEMFElementBinding_Model(),
+			ComponentsPackage.eINSTANCE.getEEFElement_HelpID(),
+			ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit());
+		return new NotificationFilter[] {filter,};
 	}
 
 

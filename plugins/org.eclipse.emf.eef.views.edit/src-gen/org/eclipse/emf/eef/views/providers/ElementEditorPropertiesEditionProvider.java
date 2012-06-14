@@ -13,24 +13,16 @@ package org.eclipse.emf.eef.views.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.ViewsPackage;
-
 import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ElementEditorBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.views.components.ElementEditorPropertiesEditionComponent;
-
 import org.eclipse.jface.viewers.IFilter;
 
 /**

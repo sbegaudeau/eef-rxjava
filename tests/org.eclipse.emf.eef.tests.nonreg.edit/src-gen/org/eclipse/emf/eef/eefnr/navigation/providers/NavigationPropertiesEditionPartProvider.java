@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.eefnr.navigation.providers;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
-
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.AnotherSubtypePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.AttributeNavigationSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedFlatReferencesTableSamplePropertiesEditionPartForm;
@@ -20,7 +19,6 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.forms.ElementPropertiesEdition
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm;
-
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.AnotherSubtypePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.AttributeNavigationSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedFlatReferencesTableSamplePropertiesEditionPartImpl;
@@ -29,11 +27,8 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.impl.ElementPropertiesEditionP
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.NamedElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.OwnerPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SubtypePropertiesEditionPartImpl;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**

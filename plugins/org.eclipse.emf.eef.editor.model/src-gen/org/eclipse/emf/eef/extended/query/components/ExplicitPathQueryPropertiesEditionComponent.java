@@ -23,7 +23,9 @@ import org.eclipse.emf.eef.extended.query.QueryPackage;
 import org.eclipse.emf.eef.extended.query.parts.ExplicitPathQueryPropertiesEditionPart;
 import org.eclipse.emf.eef.extended.query.parts.QueryViewsRepository;
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -161,6 +163,18 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 				basePart.setQuery((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			QueryPackage.eINSTANCE.getExplicitPathQuery_Query());
+		return new NotificationFilter[] {filter,};
 	}
 
 
