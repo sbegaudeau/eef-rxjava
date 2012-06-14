@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
@@ -69,10 +70,16 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int executionResult = wDialog.open();
 		result = wizard.getEObject();
-		ChangeDescription change = editionContext.getChangeRecorder().endRecording();
+		ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
+		ChangeDescription change = null;
+		if (changeRecorder != null) {
+			change = changeRecorder.endRecording();
+		}
 		editionContext.dispose();
 		if (executionResult == Window.CANCEL) {
-			change.applyAndReverse();
+			if (change != null) {
+				change.applyAndReverse();
+			}
 			result = null;
 		}
 	}

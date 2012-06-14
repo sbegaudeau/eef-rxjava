@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.change.ChangeDescription;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -52,11 +53,17 @@ public class WizardEditingOperation extends AbstractEMFOperation {
 				editingContext.getAdapterFactory(), editingContext.getEObject());
 		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int open = wDialog.open();
-		ChangeDescription description = editingContext.getChangeRecorder().endRecording();
+		ChangeRecorder changeRecorder = editingContext.getChangeRecorder();
+		ChangeDescription description = null;
+		if (changeRecorder != null) {
+			description = changeRecorder.endRecording();
+		}
 		if (open == Window.OK) {
 			return Status.OK_STATUS;
 		} else {
-			description.applyAndReverse();
+			if (description != null) {
+				description.applyAndReverse();
+			}
 			return Status.CANCEL_STATUS;
 		}
 	}

@@ -12,6 +12,7 @@ package org.eclipse.emf.eef.runtime.impl.command;
 
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.change.ChangeDescription;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
@@ -45,11 +46,16 @@ public class WizardEditingCommand extends AbstractCommand {
 				editionContext.getAdapterFactory(), editionContext.getEObject());
 		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int open = wDialog.open();
-		description = editionContext.getChangeRecorder().endRecording();
+		ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
+		if (changeRecorder != null) {
+			description = changeRecorder.endRecording();
+		}
 		if (open == Window.OK) {
 			return true;
 		} else {
-			description.applyAndReverse();
+			if (description != null) {
+				description.applyAndReverse();
+			}
 			return false;
 		}
 	}
@@ -69,7 +75,9 @@ public class WizardEditingCommand extends AbstractCommand {
 	 */
 	@Override
 	public void undo() {
-		description.applyAndReverse();
+		if (description != null) {
+			description.applyAndReverse();
+		}
 	}
 
 	/**
@@ -78,7 +86,9 @@ public class WizardEditingCommand extends AbstractCommand {
 	 * @see org.eclipse.emf.common.command.Command#redo()
 	 */
 	public void redo() {
-		description.applyAndReverse();
+		if (description != null) {
+			description.applyAndReverse();
+		}
 	}
 
 }

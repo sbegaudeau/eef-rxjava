@@ -12,6 +12,7 @@ package org.eclipse.emf.eef.runtime.policies.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.ChangeDescription;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
@@ -45,9 +46,13 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 				editionContext.getAdapterFactory(), eObject);
 		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
 		int result = wDialog.open();
-		ChangeDescription change = editionContext.getChangeRecorder().endRecording();
+		ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
+		ChangeDescription change = null;
+		if (changeRecorder != null) {
+			change = changeRecorder.endRecording();
+		}
 		editionContext.dispose();
-		if (result == Window.CANCEL) {
+		if (result == Window.CANCEL && change != null) {
 			change.applyAndReverse();
 		}
 	}
