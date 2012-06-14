@@ -11,7 +11,6 @@
 package org.eclipse.emf.eef.runtime.api.notify;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.swt.widgets.Display;
@@ -20,18 +19,20 @@ import org.eclipse.ui.PlatformUI;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
-@Deprecated
-public abstract class PropertiesEditingSemanticLister extends EContentAdapter {
+public abstract class PropertiesEditingSemanticListener {
 
 	private IPropertiesEditionComponent component;
 
 	private IPropertiesEditionPart part;
+	
+	private NotificationFilter[] filters;
 
 	/**
 	 * @param component
 	 */
-	public PropertiesEditingSemanticLister(IPropertiesEditionComponent component) {
+	public PropertiesEditingSemanticListener(IPropertiesEditionComponent component, NotificationFilter... filters) {
 		this.component = component;
+		this.filters = filters;
 	}
 
 	/**
@@ -50,11 +51,17 @@ public abstract class PropertiesEditingSemanticLister extends EContentAdapter {
 	}
 
 	/**
+	 * @return
+	 */
+	public NotificationFilter[] getFilters() {
+		return filters;
+	}
+
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	@Override
 	public void notifyChanged(final Notification notification) {
 		if (part == null)
 			component.dispose();

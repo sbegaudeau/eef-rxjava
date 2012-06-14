@@ -31,7 +31,9 @@ package [pec.componentsPackage()/];[addImports(Sequence{
 	'org.eclipse.emf.common.util.WrappedException',
 	'org.eclipse.emf.common.notify.Notification',
 	'org.eclipse.emf.common.util.BasicDiagnostic',
-	'org.eclipse.emf.common.util.Diagnostic',
+	'org.eclipse.emf.common.util.Diagnostic',	
+	'org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter',
+	'org.eclipse.emf.eef.runtime.api.notify.NotificationFilter',
 	'org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent',
 	'org.eclipse.emf.eef.runtime.context.PropertiesEditingContext',
 	'org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil',
@@ -190,6 +192,21 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 			[view.liveUpdaterForReferencedViews(pec)/]
 			[/if]
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter['['/][']'/] getNotificationFilters() {
+[let allPee : Sequence(PropertiesEditionElement) = view.referencedViews() -> including(view) -> collect(tmp | pec.involvedEditionElementsInView(tmp.oclAsType(View))) -> flatten() ]
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+		[for (pee : PropertiesEditionElement | allPee) separator (',\n')]
+			[pee.metamodelGetter()/][/for]);
+[/let]
+		return new NotificationFilter['['/][']'/] {filter,};
 	}
 
 [if (not pec.properties.oclAsType(PropertiesEditionElement).views->includesAll(view.eAllContents(ElementEditor)))]

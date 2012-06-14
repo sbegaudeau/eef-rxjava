@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.context.impl;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.ResourceSetAdapter;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
@@ -234,4 +236,15 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.helper = helper;
 	}
 
+	public ResourceSetAdapter getResourceSetAdapter() {
+		ResourceSet resourceSet = getResourceSet();
+		for (Adapter adapter : resourceSet.eAdapters()) {
+			if (adapter instanceof ResourceSetAdapter) {
+				return (ResourceSetAdapter)adapter;
+			}
+		}
+		return new ResourceSetAdapter(resourceSet);
+	}
+
+		
 }

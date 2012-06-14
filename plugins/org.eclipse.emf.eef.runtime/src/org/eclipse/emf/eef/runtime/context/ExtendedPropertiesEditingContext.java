@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.context;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.ResourceSetAdapter;
 import org.eclipse.emf.eef.runtime.ui.parts.ViewHelper;
 
 /**
@@ -59,4 +60,8 @@ public interface ExtendedPropertiesEditingContext extends PropertiesEditingConte
 	 */
 	public void setHelper(ViewHelper helper);
 	
+	/**
+	 * @return
+	 */
+	public ResourceSetAdapter getResourceSetAdapter();	
 }

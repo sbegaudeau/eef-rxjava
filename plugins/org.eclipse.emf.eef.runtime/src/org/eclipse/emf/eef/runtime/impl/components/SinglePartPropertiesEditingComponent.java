@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
@@ -70,7 +71,10 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 */
 	public void activate() {
 		if (semanticAdapter != null) {
-			this.semanticObject.eAdapters().add(semanticAdapter);
+			PropertiesEditingContext editingContext = getEditingContext();
+			if (editingContext instanceof ExtendedPropertiesEditingContext) {
+				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().addEditingSemanticListener(semanticAdapter);
+			}
 		}
 	}
 
@@ -81,7 +85,10 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 */
 	public void deactivate() {
 		if (semanticAdapter != null) {
-			this.semanticObject.eAdapters().remove(semanticAdapter);
+			PropertiesEditingContext editingContext = getEditingContext();
+			if (editingContext instanceof ExtendedPropertiesEditingContext) {
+				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().removeEditingSemanticListener(semanticAdapter);
+			}
 		}
 	}
 
