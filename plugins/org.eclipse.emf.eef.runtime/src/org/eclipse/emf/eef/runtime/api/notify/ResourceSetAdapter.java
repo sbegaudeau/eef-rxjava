@@ -49,7 +49,6 @@ public class ResourceSetAdapter extends EContentAdapter {
 	public ResourceSetAdapter(ResourceSet resourceSet) {
 		super();
 		this.resourceSet = resourceSet;
-		activate();
 		eClassifierListeners = new HashMap<EClassifier, List<PropertiesEditingSemanticListener>>();
 		eStructuralFeatureListeners = new HashMap<EStructuralFeature, List<PropertiesEditingSemanticListener>>();
 	}
@@ -59,6 +58,14 @@ public class ResourceSetAdapter extends EContentAdapter {
 	 */
 	public void activate() {
 		resourceSet.eAdapters().add(this);
+	}
+
+
+	/**
+	 * Removes the current adapter from the resource set adapters.
+	 */
+	public void deactivate() {
+		resourceSet.eAdapters().remove(this);
 	}
 
 	/**
@@ -142,14 +149,6 @@ public class ResourceSetAdapter extends EContentAdapter {
 		if (eClassifierListeners.size() + eStructuralFeatureListeners.size() == 0)
 			deactivate();
 	}
-
-	/**
-	 * Removes the current adapter from the resource set adapters.
-	 */
-	private void deactivate() {
-		resourceSet.eAdapters().remove(this);
-	}
-
 	/**
 	 * Removes the given listener from the registered listeners.
 	 * 

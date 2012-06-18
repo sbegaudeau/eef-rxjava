@@ -243,7 +243,9 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 				return (ResourceSetAdapter)adapter;
 			}
 		}
-		return new ResourceSetAdapter(resourceSet);
+		ResourceSetAdapter resourceSetAdapter = new ResourceSetAdapter(resourceSet);
+		resourceSetAdapter.activate();
+		return resourceSetAdapter;
 	}
 
 		
