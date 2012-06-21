@@ -122,9 +122,7 @@ public class [view.pepFormClass()/] extends SectionPropertiesEditingPart impleme
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
+		view = widgetFactory.createComposite(parent)
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);
