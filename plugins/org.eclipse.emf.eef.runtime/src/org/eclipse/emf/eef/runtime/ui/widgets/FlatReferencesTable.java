@@ -130,7 +130,7 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 		listeners = new ArrayList<ISelectionChangedListener>();
 
 		editer.addSelectionListener(getSelectionAdapter());
-		EditingUtils.setEEFtype(selection, "eef::FlatReferencesTable::browsebutton");
+		EditingUtils.setEEFtype(editer, "eef::FlatReferencesTable::browsebutton");
 
 	}
 
