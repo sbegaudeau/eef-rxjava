@@ -44,7 +44,6 @@ public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 	protected StructuredViewer createSectionClientContents(Composite parent, FormToolkit toolkit) {
 		GridLayout containerLayout = new GridLayout();
 		parent.setLayout(containerLayout);
-		parent.setLayoutData(new GridData(GridData.FILL_BOTH));
 		new PropertiesEditionMessageManager() {
 
 			@Override
@@ -58,6 +57,9 @@ public class PropertiesViewerMasterPart extends AbstractEEFMasterPart {
 		PropertiesEditionViewer viewer = new PropertiesEditionViewer(parent, null, SWT.NONE, 1);
 		viewer.setDynamicTabHeader(true);
 		viewer.setToolkit(toolkit);
+		GridData gridData = new GridData(GridData.FILL_BOTH);
+		gridData.widthHint = 80;
+		viewer.getControl().setLayoutData(gridData);
 		return viewer;
 	}
 
