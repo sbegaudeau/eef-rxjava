@@ -89,6 +89,7 @@ public class EEFTreeMasterPart extends AbstractEEFMasterPart {
 		result.setContentProvider(new AdapterFactoryContentProvider(getAdapterFactory()));
 		result.setLabelProvider(new AdapterFactoryLabelProvider(getAdapterFactory()));
 		GridData gd = new GridData(GridData.FILL_BOTH);
+		gd.widthHint = 80;
 		tree.setLayoutData(gd);
 		return result;
 	}
