@@ -156,6 +156,7 @@ Or, to download this automatically, see promoter.xml#thirdPartyDownloadLicenseAc
 	<target name="-publish.build.drops">
 		<property name="build.drop.directory" location="${downloads.area}/downloads/drops/${version}/${build.qualifier}" />
 
+		<echo message="Currently working on the version ${version}"/>
 		<delete dir="${build.drop.directory}" />
 		<mkdir dir="${build.drop.directory}" />
 
