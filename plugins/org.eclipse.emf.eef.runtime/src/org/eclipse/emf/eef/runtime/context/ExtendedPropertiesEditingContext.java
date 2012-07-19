@@ -63,5 +63,10 @@ public interface ExtendedPropertiesEditingContext extends PropertiesEditingConte
 	/**
 	 * @return
 	 */
-	public ResourceSetAdapter getResourceSetAdapter();	
+	public ResourceSetAdapter getResourceSetAdapter();
+	
+	/**
+	 * @return 
+	 */
+	public boolean canReachResourceSetAdapter();
 }

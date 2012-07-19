@@ -60,4 +60,5 @@ public interface PropertiesEditingContext {
 	 * @param eObject
 	 */
 	public abstract void seteObject(EObject eObject);
+
 }

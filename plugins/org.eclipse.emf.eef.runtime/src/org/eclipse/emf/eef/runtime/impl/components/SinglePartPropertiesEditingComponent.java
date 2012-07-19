@@ -86,7 +86,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	public void deactivate() {
 		if (semanticAdapter != null) {
 			PropertiesEditingContext editingContext = getEditingContext();
-			if (editingContext instanceof ExtendedPropertiesEditingContext) {
+			if (editingContext instanceof ExtendedPropertiesEditingContext && ((ExtendedPropertiesEditingContext)editingContext).canReachResourceSetAdapter()) {
 				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().removeEditingSemanticListener(semanticAdapter);
 			}
 		}

@@ -236,6 +236,10 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.helper = helper;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext#getResourceSetAdapter()
+	 */
 	public ResourceSetAdapter getResourceSetAdapter() {
 		ResourceSet resourceSet = getResourceSet();
 		for (Adapter adapter : resourceSet.eAdapters()) {
@@ -248,5 +252,13 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		return resourceSetAdapter;
 	}
 
-		
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext#canReachResourceSetAdapter()
+	 */
+	public boolean canReachResourceSetAdapter() {
+		return eObject != null && eObject.eResource() != null && eObject.eResource().getResourceSet() != null;
+	}
+
+	
 }
