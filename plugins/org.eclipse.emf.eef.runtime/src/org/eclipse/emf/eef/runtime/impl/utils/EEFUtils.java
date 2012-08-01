@@ -388,27 +388,23 @@ public class EEFUtils {
 		IAdaptable adaptable = null;
 		if (object instanceof IAdaptable) {
 			adaptable = (IAdaptable)object;
-		}
-		if (adaptable != null) {
 			Object getAdapter = adaptable.getAdapter(SemanticAdapter.class);
-			SemanticAdapter semanticAdapter = null;
 			if (getAdapter != null) {
-				semanticAdapter = (SemanticAdapter)getAdapter;
-			} else {
-				Object loadAdapter = Platform.getAdapterManager().loadAdapter(adaptable, SemanticAdapter.class.getName());
-				if (loadAdapter != null) {
-					semanticAdapter = (SemanticAdapter) loadAdapter;
-				}
-			}
-			if (semanticAdapter != null) {
-				return semanticAdapter.getEObject();
-			}
+				// 1 - Object is an IAdaptable and we can adapt this object in a SemanticAdapter
+				return ((SemanticAdapter) getAdapter).getEObject();
+			} 
+		}
+		Object loadAdapter = Platform.getAdapterManager().loadAdapter(object, SemanticAdapter.class.getName());
+		if (loadAdapter != null) {
+			// 2 - Platform can adapt Object in a SemanticAdapter
+			return ((SemanticAdapter) loadAdapter).getEObject();
 		}
 		if (object instanceof EObject) {
 			return (EObject)object;
 		}
 		if (adaptable != null) {
 			if (adaptable.getAdapter(EObject.class) != null) {
+				// 3 - we can adapt Object in EObject
 				return (EObject)adaptable.getAdapter(EObject.class);
 			}
 		}
