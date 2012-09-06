@@ -122,12 +122,19 @@ public class EEFEditorSettingsBuilder  {
 						}
 						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result2.size()) {
 							current = result2.get(step.getIndex());
+							// Use init if current == null
 						} else {
 							throw new IllegalStateException();
 						}
 
 					} else {
-						current = (EObject) current.eGet(step.getReference());
+						EObject zeCurrent = current;
+						current = (EObject) zeCurrent.eGet(step.getReference());
+						if (current == null) {
+							if (step.getInit() != null) {
+								current = step.getInit().init(zeCurrent);
+							}
+						}
 					}
 				}
 				significantObject = current;
