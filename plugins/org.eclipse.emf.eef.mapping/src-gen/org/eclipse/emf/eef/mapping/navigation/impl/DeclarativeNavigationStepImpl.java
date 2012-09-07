@@ -305,7 +305,7 @@ public class DeclarativeNavigationStepImpl extends NavigationStepImpl implements
 		result.append(')');
 		return result.toString();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -316,7 +316,8 @@ public class DeclarativeNavigationStepImpl extends NavigationStepImpl implements
 		if (eContainer() instanceof SmartModelNavigation) {
 			SmartModelNavigation modelNavigation = (SmartModelNavigation) eContainer();
 			if (modelNavigation.eContainer() instanceof EMFPropertyBinding) {
-				EMFPropertyBinding propertyBinding = (EMFPropertyBinding) modelNavigation.eContainer();
+				EMFPropertyBinding propertyBinding = (EMFPropertyBinding) modelNavigation
+						.eContainer();
 				if (propertyBinding.eContainer() instanceof EMFElementBinding) {
 					EMFElementBinding elementBinding = (EMFElementBinding) propertyBinding
 							.eContainer();
@@ -325,10 +326,10 @@ public class DeclarativeNavigationStepImpl extends NavigationStepImpl implements
 				}
 			}
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -348,7 +349,7 @@ public class DeclarativeNavigationStepImpl extends NavigationStepImpl implements
 		}
 		return null;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -358,7 +359,8 @@ public class DeclarativeNavigationStepImpl extends NavigationStepImpl implements
 	public EClass evaluate() {
 		if (getSubStep() != null) {
 			return getSubStep().evaluate();
-		} else if (getFeature() != null && getFeature().getEType() instanceof EClass) {
+		} else if (getFeature() != null
+				&& getFeature().getEType() instanceof EClass) {
 			EClass featureType = (EClass) getFeature().getEType();
 			EClassifier discriminatorType = getDiscriminatorType();
 			if (discriminatorType != null

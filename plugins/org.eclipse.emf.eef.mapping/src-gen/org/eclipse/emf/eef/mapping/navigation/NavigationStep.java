@@ -133,13 +133,13 @@ public interface NavigationStep extends EObject {
 	 * @generated NOT
 	 */
 	EClass owningEClass();
-	
+
 	/**
 	 * @return the current EClass
 	 * @generated NOT
 	 */
 	EClass currentEClass();
-	
+
 	/**
 	 * @return the current EClass
 	 * @generated NOT

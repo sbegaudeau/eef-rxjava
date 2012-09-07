@@ -122,13 +122,14 @@ public class DeclarativeNavigationStepItemProvider extends
 					EClass currentClass = null;
 					if (step.eContainer() instanceof SmartModelNavigation) {
 						currentClass = step.owningEClass();
-					} else if (step.eContainer() instanceof NavigationStep 
-							&& NavigationPackage.eINSTANCE.getNavigationStep_SubStep() 
-							== step.eContainingFeature()) {
-						currentClass = ((NavigationStep) step
-								.eContainer()).currentEClass();
+					} else if (step.eContainer() instanceof NavigationStep
+							&& NavigationPackage.eINSTANCE
+									.getNavigationStep_SubStep() == step
+									.eContainingFeature()) {
+						currentClass = ((NavigationStep) step.eContainer())
+								.currentEClass();
 					}
-					
+
 					if (currentClass != null) {
 						EList<EStructuralFeature> allStructuralFeatures = currentClass
 								.getEAllStructuralFeatures();
@@ -146,7 +147,7 @@ public class DeclarativeNavigationStepItemProvider extends
 
 		};
 	}
-	
+
 	/**
 	 * This adds a property descriptor for the Discriminator Type feature.
 	 * <!-- begin-user-doc -->
@@ -155,7 +156,17 @@ public class DeclarativeNavigationStepItemProvider extends
 	 */
 	protected void addDiscriminatorTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(initializeDiscriminatorTypePropertyDescriptor());
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_DeclarativeNavigationStep_discriminatorType_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_DeclarativeNavigationStep_discriminatorType_feature",
+								"_UI_DeclarativeNavigationStep_type"),
+						NavigationPackage.Literals.DECLARATIVE_NAVIGATION_STEP__DISCRIMINATOR_TYPE,
+						true, false, true, null, null, null));
 	}
 
 	/**
@@ -168,7 +179,8 @@ public class DeclarativeNavigationStepItemProvider extends
 						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_DeclarativeNavigationStep_discriminatorType_feature"),
-				getString("_UI_PropertyDescriptor_description",
+				getString(
+						"_UI_PropertyDescriptor_description",
 						"_UI_DeclarativeNavigationStep_discriminatorType_feature",
 						"_UI_DeclarativeNavigationStep_type"),
 				NavigationPackage.Literals.DECLARATIVE_NAVIGATION_STEP__DISCRIMINATOR_TYPE,
@@ -199,7 +211,7 @@ public class DeclarativeNavigationStepItemProvider extends
 
 		};
 	}
-	
+
 	/**
 	 * This returns DeclarativeNavigationStep.gif.
 	 * <!-- begin-user-doc -->

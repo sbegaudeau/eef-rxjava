@@ -105,5 +105,5 @@ public interface DeclarativeNavigationStep extends NavigationStep {
 	 * @generated
 	 */
 	void setDiscriminatorType(EClassifier value);
-	
+
 } // DeclarativeNavigationStep

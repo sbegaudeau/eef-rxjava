@@ -138,7 +138,7 @@ public class EMFPropertyBindingItemProvider extends
 					if (propertyBinding.getNavigation() != null
 							&& propertyBinding.getNavigation() instanceof SmartModelNavigation) {
 						NavigationStep step = ((SmartModelNavigation) propertyBinding
-										.getNavigation()).getStep();
+								.getNavigation()).getStep();
 						if (step != null) {
 							model = step.evaluate();
 						} else {
@@ -146,7 +146,8 @@ public class EMFPropertyBindingItemProvider extends
 									.getElement()).getModel();
 						}
 						if (model instanceof EClass) {
-							Collection<?> comboBoxObjects = super.getComboBoxObjects(object);
+							Collection<?> comboBoxObjects = super
+									.getComboBoxObjects(object);
 							Collection<EStructuralFeature> results = new ArrayList<EStructuralFeature>();
 							for (Object feature : comboBoxObjects) {
 								if (((EClass) model)
