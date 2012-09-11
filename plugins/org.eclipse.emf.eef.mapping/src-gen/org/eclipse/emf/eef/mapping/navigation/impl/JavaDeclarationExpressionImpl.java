@@ -24,7 +24,7 @@ import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.JavaDeclarationExpressionImpl#getQualifiedClass <em>Qualified Class</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.JavaDeclarationExpressionImpl#getMethodFilter <em>Method Filter</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.JavaDeclarationExpressionImpl#getMethodName <em>Method Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.JavaDeclarationExpressionImpl#isStaticMethod <em>Static Method</em>}</li>
  * </ul>
  * </p>
@@ -54,24 +54,24 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 	protected String qualifiedClass = QUALIFIED_CLASS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMethodFilter() <em>Method Filter</em>}' attribute.
+	 * The default value of the '{@link #getMethodName() <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMethodFilter()
+	 * @see #getMethodName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String METHOD_FILTER_EDEFAULT = null;
+	protected static final String METHOD_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMethodFilter() <em>Method Filter</em>}' attribute.
+	 * The cached value of the '{@link #getMethodName() <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMethodFilter()
+	 * @see #getMethodName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String methodFilter = METHOD_FILTER_EDEFAULT;
+	protected String methodName = METHOD_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isStaticMethod() <em>Static Method</em>}' attribute.
@@ -142,8 +142,8 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMethodFilter() {
-		return methodFilter;
+	public String getMethodName() {
+		return methodName;
 	}
 
 	/**
@@ -151,15 +151,13 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMethodFilter(String newMethodFilter) {
-		String oldMethodFilter = methodFilter;
-		methodFilter = newMethodFilter;
+	public void setMethodName(String newMethodName) {
+		String oldMethodName = methodName;
+		methodName = newMethodName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER,
-					oldMethodFilter, methodFilter));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME,
+					oldMethodName, methodName));
 	}
 
 	/**
@@ -197,8 +195,8 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 		switch (featureID) {
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS:
 			return getQualifiedClass();
-		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER:
-			return getMethodFilter();
+		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME:
+			return getMethodName();
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__STATIC_METHOD:
 			return isStaticMethod();
 		}
@@ -216,8 +214,8 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS:
 			setQualifiedClass((String) newValue);
 			return;
-		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER:
-			setMethodFilter((String) newValue);
+		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME:
+			setMethodName((String) newValue);
 			return;
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__STATIC_METHOD:
 			setStaticMethod((Boolean) newValue);
@@ -237,8 +235,8 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS:
 			setQualifiedClass(QUALIFIED_CLASS_EDEFAULT);
 			return;
-		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER:
-			setMethodFilter(METHOD_FILTER_EDEFAULT);
+		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME:
+			setMethodName(METHOD_NAME_EDEFAULT);
 			return;
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__STATIC_METHOD:
 			setStaticMethod(STATIC_METHOD_EDEFAULT);
@@ -258,9 +256,9 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS:
 			return QUALIFIED_CLASS_EDEFAULT == null ? qualifiedClass != null
 					: !QUALIFIED_CLASS_EDEFAULT.equals(qualifiedClass);
-		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER:
-			return METHOD_FILTER_EDEFAULT == null ? methodFilter != null
-					: !METHOD_FILTER_EDEFAULT.equals(methodFilter);
+		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME:
+			return METHOD_NAME_EDEFAULT == null ? methodName != null
+					: !METHOD_NAME_EDEFAULT.equals(methodName);
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__STATIC_METHOD:
 			return staticMethod != STATIC_METHOD_EDEFAULT;
 		}
@@ -280,8 +278,8 @@ public abstract class JavaDeclarationExpressionImpl extends EObjectImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (qualifiedClass: ");
 		result.append(qualifiedClass);
-		result.append(", methodFilter: ");
-		result.append(methodFilter);
+		result.append(", methodName: ");
+		result.append(methodName);
 		result.append(", staticMethod: ");
 		result.append(staticMethod);
 		result.append(')');

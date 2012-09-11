@@ -77,9 +77,6 @@ public class NavigationMessages extends NLS {
 	public static String SimpleModelNavigationPropertiesEditionPart_DiscriminatorTypeLabel;
 
 	
-	public static String DeclarativeNavigationStepPropertiesEditionPart_CreatesIfNotExistsLabel;
-
-	
 	public static String DeclarativeNavigationStepPropertiesEditionPart_IndexLabel;
 
 	

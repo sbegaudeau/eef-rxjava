@@ -62,9 +62,6 @@ public class NavigationViewsRepository {
 		public static class Properties {
 	
 			
-			public static String createsIfNotExists = "navigation::DeclarativeNavigationStep::Properties::createsIfNotExists";
-			
-			
 			public static String index = "navigation::DeclarativeNavigationStep::Properties::index";
 			
 			

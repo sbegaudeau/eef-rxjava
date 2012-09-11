@@ -119,9 +119,6 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/SimpleModelNavigation"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HjuB8PDsEeGwi5CNeA0hsQ" name="DeclarativeNavigationStep" views="_NFQ-8PDsEeGwi5CNeA0hsQ">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LKAlofN9EeGGm4aMmfGb4w" name="createsIfNotExists" views="_y7xqkPN9EeGGm4aMmfGb4w">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/NavigationStep/createsIfNotExists"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_A5TGcPDuEeGwi5CNeA0hsQ" name="index" views="_WAtP8PDsEeGwi5CNeA0hsQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/DeclarativeNavigationStep/index"/>
         </properties>
@@ -375,9 +372,6 @@
       <views xmi:id="_NFQ-8PDsEeGwi5CNeA0hsQ" name="DeclarativeNavigationStep">
         <elements xsi:type="eef-views:Container" xmi:id="_TYDLoPDsEeGwi5CNeA0hsQ" name="Properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_y7xqkPN9EeGGm4aMmfGb4w" name="createsIfNotExists">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_WAtP8PDsEeGwi5CNeA0hsQ" name="index">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>

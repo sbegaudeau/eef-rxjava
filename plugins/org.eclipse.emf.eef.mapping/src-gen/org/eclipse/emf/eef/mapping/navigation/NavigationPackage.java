@@ -243,22 +243,13 @@ public interface NavigationPackage extends EPackage {
 	int NAVIGATION_STEP = 6;
 
 	/**
-	 * The feature id for the '<em><b>Creates If Not Exists</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAVIGATION_STEP__CREATES_IF_NOT_EXISTS = 0;
-
-	/**
 	 * The feature id for the '<em><b>Sub Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAVIGATION_STEP__SUB_STEP = 1;
+	int NAVIGATION_STEP__SUB_STEP = 0;
 
 	/**
 	 * The feature id for the '<em><b>Initializer</b></em>' containment reference.
@@ -267,7 +258,7 @@ public interface NavigationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAVIGATION_STEP__INITIALIZER = 2;
+	int NAVIGATION_STEP__INITIALIZER = 1;
 
 	/**
 	 * The feature id for the '<em><b>Filters</b></em>' containment reference list.
@@ -276,7 +267,7 @@ public interface NavigationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAVIGATION_STEP__FILTERS = 3;
+	int NAVIGATION_STEP__FILTERS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -285,7 +276,7 @@ public interface NavigationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAVIGATION_STEP_FEATURE_COUNT = 4;
+	int NAVIGATION_STEP_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.navigation.impl.DeclarativeNavigationStepImpl <em>Declarative Navigation Step</em>}' class.
@@ -296,15 +287,6 @@ public interface NavigationPackage extends EPackage {
 	 * @generated
 	 */
 	int DECLARATIVE_NAVIGATION_STEP = 7;
-
-	/**
-	 * The feature id for the '<em><b>Creates If Not Exists</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DECLARATIVE_NAVIGATION_STEP__CREATES_IF_NOT_EXISTS = NAVIGATION_STEP__CREATES_IF_NOT_EXISTS;
 
 	/**
 	 * The feature id for the '<em><b>Sub Step</b></em>' containment reference.
@@ -427,13 +409,13 @@ public interface NavigationPackage extends EPackage {
 	int JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Method Filter</b></em>' attribute.
+	 * The feature id for the '<em><b>Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_DECLARATION_EXPRESSION__METHOD_FILTER = 1;
+	int JAVA_DECLARATION_EXPRESSION__METHOD_NAME = 1;
 
 	/**
 	 * The feature id for the '<em><b>Static Method</b></em>' attribute.
@@ -501,13 +483,13 @@ public interface NavigationPackage extends EPackage {
 	int JAVA_DECLARATION_STEP_INITIALIZER__QUALIFIED_CLASS = JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Method Filter</b></em>' attribute.
+	 * The feature id for the '<em><b>Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_DECLARATION_STEP_INITIALIZER__METHOD_FILTER = JAVA_DECLARATION_EXPRESSION__METHOD_FILTER;
+	int JAVA_DECLARATION_STEP_INITIALIZER__METHOD_NAME = JAVA_DECLARATION_EXPRESSION__METHOD_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Static Method</b></em>' attribute.
@@ -692,17 +674,6 @@ public interface NavigationPackage extends EPackage {
 	EClass getNavigationStep();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#isCreatesIfNotExists <em>Creates If Not Exists</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Creates If Not Exists</em>'.
-	 * @see org.eclipse.emf.eef.mapping.navigation.NavigationStep#isCreatesIfNotExists()
-	 * @see #getNavigationStep()
-	 * @generated
-	 */
-	EAttribute getNavigationStep_CreatesIfNotExists();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#getSubStep <em>Sub Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -820,15 +791,15 @@ public interface NavigationPackage extends EPackage {
 	EAttribute getJavaDeclarationExpression_QualifiedClass();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodFilter <em>Method Filter</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodName <em>Method Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Method Filter</em>'.
-	 * @see org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodFilter()
+	 * @return the meta object for the attribute '<em>Method Name</em>'.
+	 * @see org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodName()
 	 * @see #getJavaDeclarationExpression()
 	 * @generated
 	 */
-	EAttribute getJavaDeclarationExpression_MethodFilter();
+	EAttribute getJavaDeclarationExpression_MethodName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#isStaticMethod <em>Static Method</em>}'.
@@ -1030,15 +1001,6 @@ public interface NavigationPackage extends EPackage {
 		EClass NAVIGATION_STEP = eINSTANCE.getNavigationStep();
 
 		/**
-		 * The meta object literal for the '<em><b>Creates If Not Exists</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NAVIGATION_STEP__CREATES_IF_NOT_EXISTS = eINSTANCE
-				.getNavigationStep_CreatesIfNotExists();
-
-		/**
 		 * The meta object literal for the '<em><b>Sub Step</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1144,13 +1106,13 @@ public interface NavigationPackage extends EPackage {
 				.getJavaDeclarationExpression_QualifiedClass();
 
 		/**
-		 * The meta object literal for the '<em><b>Method Filter</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Method Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JAVA_DECLARATION_EXPRESSION__METHOD_FILTER = eINSTANCE
-				.getJavaDeclarationExpression_MethodFilter();
+		EAttribute JAVA_DECLARATION_EXPRESSION__METHOD_NAME = eINSTANCE
+				.getJavaDeclarationExpression_MethodName();
 
 		/**
 		 * The meta object literal for the '<em><b>Static Method</b></em>' attribute feature.

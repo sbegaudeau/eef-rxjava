@@ -35,7 +35,6 @@ import org.eclipse.emf.eef.mapping.navigation.StepInitializer;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.NavigationStepImpl#isCreatesIfNotExists <em>Creates If Not Exists</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.NavigationStepImpl#getSubStep <em>Sub Step</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.NavigationStepImpl#getInitializer <em>Initializer</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.impl.NavigationStepImpl#getFilters <em>Filters</em>}</li>
@@ -46,26 +45,6 @@ import org.eclipse.emf.eef.mapping.navigation.StepInitializer;
  */
 public abstract class NavigationStepImpl extends EObjectImpl implements
 		NavigationStep {
-	/**
-	 * The default value of the '{@link #isCreatesIfNotExists() <em>Creates If Not Exists</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCreatesIfNotExists()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean CREATES_IF_NOT_EXISTS_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isCreatesIfNotExists() <em>Creates If Not Exists</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCreatesIfNotExists()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean createsIfNotExists = CREATES_IF_NOT_EXISTS_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getSubStep() <em>Sub Step</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -113,29 +92,6 @@ public abstract class NavigationStepImpl extends EObjectImpl implements
 	@Override
 	protected EClass eStaticClass() {
 		return NavigationPackage.Literals.NAVIGATION_STEP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isCreatesIfNotExists() {
-		return createsIfNotExists;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCreatesIfNotExists(boolean newCreatesIfNotExists) {
-		boolean oldCreatesIfNotExists = createsIfNotExists;
-		createsIfNotExists = newCreatesIfNotExists;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					NavigationPackage.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS,
-					oldCreatesIfNotExists, createsIfNotExists));
 	}
 
 	/**
@@ -299,8 +255,6 @@ public abstract class NavigationStepImpl extends EObjectImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case NavigationPackage.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS:
-			return isCreatesIfNotExists();
 		case NavigationPackage.NAVIGATION_STEP__SUB_STEP:
 			return getSubStep();
 		case NavigationPackage.NAVIGATION_STEP__INITIALIZER:
@@ -320,9 +274,6 @@ public abstract class NavigationStepImpl extends EObjectImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case NavigationPackage.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS:
-			setCreatesIfNotExists((Boolean) newValue);
-			return;
 		case NavigationPackage.NAVIGATION_STEP__SUB_STEP:
 			setSubStep((NavigationStep) newValue);
 			return;
@@ -345,9 +296,6 @@ public abstract class NavigationStepImpl extends EObjectImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case NavigationPackage.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS:
-			setCreatesIfNotExists(CREATES_IF_NOT_EXISTS_EDEFAULT);
-			return;
 		case NavigationPackage.NAVIGATION_STEP__SUB_STEP:
 			setSubStep((NavigationStep) null);
 			return;
@@ -369,8 +317,6 @@ public abstract class NavigationStepImpl extends EObjectImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case NavigationPackage.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS:
-			return createsIfNotExists != CREATES_IF_NOT_EXISTS_EDEFAULT;
 		case NavigationPackage.NAVIGATION_STEP__SUB_STEP:
 			return subStep != null;
 		case NavigationPackage.NAVIGATION_STEP__INITIALIZER:
@@ -379,23 +325,6 @@ public abstract class NavigationStepImpl extends EObjectImpl implements
 			return filters != null && !filters.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (createsIfNotExists: ");
-		result.append(createsIfNotExists);
-		result.append(')');
-		return result.toString();
 	}
 
 } //NavigationStepImpl

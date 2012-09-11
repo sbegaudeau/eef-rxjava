@@ -112,9 +112,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 			final DeclarativeNavigationStep declarativeNavigationStep = (DeclarativeNavigationStep)elt;
 			final DeclarativeNavigationStepPropertiesEditionPart basePart = (DeclarativeNavigationStepPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists)) {
-				basePart.setCreatesIfNotExists(declarativeNavigationStep.isCreatesIfNotExists());
-			}
 			if (isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index)) {
 				basePart.setIndex(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, declarativeNavigationStep.getIndex()));
 			}
@@ -187,9 +184,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists) {
-			return NavigationPackage.eINSTANCE.getNavigationStep_CreatesIfNotExists();
-		}
 		if (editorKey == NavigationViewsRepository.DeclarativeNavigationStep.Properties.index) {
 			return NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Index();
 		}
@@ -209,9 +203,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DeclarativeNavigationStep declarativeNavigationStep = (DeclarativeNavigationStep)semanticObject;
-		if (NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists == event.getAffectedEditor()) {
-			declarativeNavigationStep.setCreatesIfNotExists((Boolean)event.getNewValue());
-		}
 		if (NavigationViewsRepository.DeclarativeNavigationStep.Properties.index == event.getAffectedEditor()) {
 			declarativeNavigationStep.setIndex((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
@@ -254,9 +245,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			DeclarativeNavigationStepPropertiesEditionPart basePart = (DeclarativeNavigationStepPropertiesEditionPart)editingPart;
-			if (NavigationPackage.eINSTANCE.getNavigationStep_CreatesIfNotExists().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists))
-				basePart.setCreatesIfNotExists((Boolean)msg.getNewValue());
-			
 			if (NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Index().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index)) {
 				if (msg.getNewValue() != null) {
 					basePart.setIndex(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
@@ -280,7 +268,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			NavigationPackage.eINSTANCE.getNavigationStep_CreatesIfNotExists(),
 			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Index(),
 			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Feature(),
 			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_DiscriminatorType());
@@ -295,7 +282,7 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists || key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature;
+		return key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature;
 	}
 
 	/**
@@ -308,13 +295,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(NavigationPackage.eINSTANCE.getNavigationStep_CreatesIfNotExists().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getNavigationStep_CreatesIfNotExists().getEAttributeType(), newValue);
-				}
 				if (NavigationViewsRepository.DeclarativeNavigationStep.Properties.index == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {

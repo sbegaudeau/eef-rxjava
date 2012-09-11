@@ -64,7 +64,6 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
  */
 public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DeclarativeNavigationStepPropertiesEditionPart {
 
-	protected Button createsIfNotExists;
 	protected Text index;
 	protected EObjectFlatComboViewer feature;
 	protected EObjectFlatComboViewer discriminatorType;
@@ -113,7 +112,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence declarativeNavigationStepStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = declarativeNavigationStepStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.class);
-		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists);
 		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index);
 		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature);
 		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.discriminatorType);
@@ -125,9 +123,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists) {
-					return createCreatesIfNotExistsCheckbox(widgetFactory, parent);
 				}
 				if (key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.index) {
 					return createIndexText(widgetFactory, parent);
@@ -161,31 +156,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 	}
 
 	
-	protected Composite createCreatesIfNotExistsCheckbox(FormToolkit widgetFactory, Composite parent) {
-		createsIfNotExists = widgetFactory.createButton(parent, getDescription(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists, NavigationMessages.DeclarativeNavigationStepPropertiesEditionPart_CreatesIfNotExistsLabel), SWT.CHECK);
-		createsIfNotExists.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeclarativeNavigationStepPropertiesEditionPartForm.this, NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(createsIfNotExists.getSelection())));
-			}
-
-		});
-		GridData createsIfNotExistsData = new GridData(GridData.FILL_HORIZONTAL);
-		createsIfNotExistsData.horizontalSpan = 2;
-		createsIfNotExists.setLayoutData(createsIfNotExistsData);
-		EditingUtils.setID(createsIfNotExists, NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists);
-		EditingUtils.setEEFtype(createsIfNotExists, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
-
 	
 	protected Composite createIndexText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeclarativeNavigationStep.Properties.index, NavigationMessages.DeclarativeNavigationStepPropertiesEditionPart_IndexLabel);
@@ -322,30 +292,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeclarativeNavigationStepPropertiesEditionPart#getCreatesIfNotExists()
-	 * 
-	 */
-	public Boolean getCreatesIfNotExists() {
-		return Boolean.valueOf(createsIfNotExists.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeclarativeNavigationStepPropertiesEditionPart#setCreatesIfNotExists(Boolean newValue)
-	 * 
-	 */
-	public void setCreatesIfNotExists(Boolean newValue) {
-		if (newValue != null) {
-			createsIfNotExists.setSelection(newValue.booleanValue());
-		} else {
-			createsIfNotExists.setSelection(false);
-		}
 	}
 
 	/**

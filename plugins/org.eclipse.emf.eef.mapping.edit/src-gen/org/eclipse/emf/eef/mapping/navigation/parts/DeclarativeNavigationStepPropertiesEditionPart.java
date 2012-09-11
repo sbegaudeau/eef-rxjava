@@ -28,19 +28,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface DeclarativeNavigationStepPropertiesEditionPart {
 
-	/**
-	 * @return the createsIfNotExists
-	 * 
-	 */
-	public Boolean getCreatesIfNotExists();
-
-	/**
-	 * Defines a new createsIfNotExists
-	 * @param newValue the new createsIfNotExists to set
-	 * 
-	 */
-	public void setCreatesIfNotExists(Boolean newValue);
-
 
 	/**
 	 * @return the index

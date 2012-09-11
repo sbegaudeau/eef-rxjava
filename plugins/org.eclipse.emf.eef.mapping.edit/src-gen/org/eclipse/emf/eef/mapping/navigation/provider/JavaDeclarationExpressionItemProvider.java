@@ -60,7 +60,7 @@ public class JavaDeclarationExpressionItemProvider extends ItemProviderAdapter
 			super.getPropertyDescriptors(object);
 
 			addQualifiedClassPropertyDescriptor(object);
-			addMethodFilterPropertyDescriptor(object);
+			addMethodNamePropertyDescriptor(object);
 			addStaticMethodPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -89,23 +89,23 @@ public class JavaDeclarationExpressionItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This adds a property descriptor for the Method Filter feature.
+	 * This adds a property descriptor for the Method Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMethodFilterPropertyDescriptor(Object object) {
+	protected void addMethodNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(
 						((ComposeableAdapterFactory) adapterFactory)
 								.getRootAdapterFactory(),
 						getResourceLocator(),
-						getString("_UI_JavaDeclarationExpression_methodFilter_feature"),
+						getString("_UI_JavaDeclarationExpression_methodName_feature"),
 						getString(
 								"_UI_PropertyDescriptor_description",
-								"_UI_JavaDeclarationExpression_methodFilter_feature",
+								"_UI_JavaDeclarationExpression_methodName_feature",
 								"_UI_JavaDeclarationExpression_type"),
-						NavigationPackage.Literals.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER,
+						NavigationPackage.Literals.JAVA_DECLARATION_EXPRESSION__METHOD_NAME,
 						true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
@@ -140,7 +140,7 @@ public class JavaDeclarationExpressionItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((JavaDeclarationExpression) object).getQualifiedClass();
+		String label = ((JavaDeclarationExpression) object).getMethodName();
 		return label == null || label.length() == 0 ? getString("_UI_JavaDeclarationExpression_type")
 				: getString("_UI_JavaDeclarationExpression_type") + " " + label;
 	}
@@ -158,7 +158,7 @@ public class JavaDeclarationExpressionItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(JavaDeclarationExpression.class)) {
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS:
-		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER:
+		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME:
 		case NavigationPackage.JAVA_DECLARATION_EXPRESSION__STATIC_METHOD:
 			fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));

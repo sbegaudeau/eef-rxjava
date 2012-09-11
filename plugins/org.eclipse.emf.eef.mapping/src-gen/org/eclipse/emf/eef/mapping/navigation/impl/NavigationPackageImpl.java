@@ -353,19 +353,9 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNavigationStep_CreatesIfNotExists() {
-		return (EAttribute) navigationStepEClass.getEStructuralFeatures()
-				.get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getNavigationStep_SubStep() {
 		return (EReference) navigationStepEClass.getEStructuralFeatures()
-				.get(1);
+				.get(0);
 	}
 
 	/**
@@ -375,7 +365,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 */
 	public EReference getNavigationStep_Initializer() {
 		return (EReference) navigationStepEClass.getEStructuralFeatures()
-				.get(2);
+				.get(1);
 	}
 
 	/**
@@ -385,7 +375,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 */
 	public EReference getNavigationStep_Filters() {
 		return (EReference) navigationStepEClass.getEStructuralFeatures()
-				.get(3);
+				.get(2);
 	}
 
 	/**
@@ -469,7 +459,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getJavaDeclarationExpression_MethodFilter() {
+	public EAttribute getJavaDeclarationExpression_MethodName() {
 		return (EAttribute) javaDeclarationExpressionEClass
 				.getEStructuralFeatures().get(1);
 	}
@@ -575,8 +565,6 @@ public class NavigationPackageImpl extends EPackageImpl implements
 				SMART_MODEL_NAVIGATION__STEP);
 
 		navigationStepEClass = createEClass(NAVIGATION_STEP);
-		createEAttribute(navigationStepEClass,
-				NAVIGATION_STEP__CREATES_IF_NOT_EXISTS);
 		createEReference(navigationStepEClass, NAVIGATION_STEP__SUB_STEP);
 		createEReference(navigationStepEClass, NAVIGATION_STEP__INITIALIZER);
 		createEReference(navigationStepEClass, NAVIGATION_STEP__FILTERS);
@@ -597,7 +585,7 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		createEAttribute(javaDeclarationExpressionEClass,
 				JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS);
 		createEAttribute(javaDeclarationExpressionEClass,
-				JAVA_DECLARATION_EXPRESSION__METHOD_FILTER);
+				JAVA_DECLARATION_EXPRESSION__METHOD_NAME);
 		createEAttribute(javaDeclarationExpressionEClass,
 				JAVA_DECLARATION_EXPRESSION__STATIC_METHOD);
 
@@ -634,10 +622,10 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
 		FiltersPackage theFiltersPackage = (FiltersPackage) EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
+				.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -729,11 +717,6 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		initEClass(navigationStepEClass, NavigationStep.class,
 				"NavigationStep", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNavigationStep_CreatesIfNotExists(),
-				theEcorePackage.getEBoolean(), "createsIfNotExists", "true", 1,
-				1, NavigationStep.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 		initEReference(getNavigationStep_SubStep(), this.getNavigationStep(),
 				null, "subStep", null, 0, 1, NavigationStep.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
@@ -785,8 +768,8 @@ public class NavigationPackageImpl extends EPackageImpl implements
 				JavaDeclarationExpression.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getJavaDeclarationExpression_MethodFilter(),
-				theEcorePackage.getEString(), "methodFilter", null, 1, 1,
+		initEAttribute(getJavaDeclarationExpression_MethodName(),
+				theEcorePackage.getEString(), "methodName", null, 1, 1,
 				JavaDeclarationExpression.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);

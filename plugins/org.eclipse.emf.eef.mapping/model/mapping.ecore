@@ -118,9 +118,6 @@
           eType="#//navigation/NavigationStep" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="NavigationStep" abstract="true">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="createsIfNotExists" lowerBound="1"
-          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-          defaultValueLiteral="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="subStep" eType="#//navigation/NavigationStep"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="initializer" eType="#//navigation/StepInitializer"
@@ -140,7 +137,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="JavaDeclarationExpression" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedClass" lowerBound="1"
           eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="methodFilter" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="methodName" lowerBound="1"
           eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="staticMethod" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     </eClassifiers>

@@ -84,8 +84,8 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 			if (javaDeclarationStepInitializer.getQualifiedClass() != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass))
 				basePart.setQualifiedClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepInitializer.getQualifiedClass()));
 			
-			if (javaDeclarationStepInitializer.getMethodFilter() != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter))
-				basePart.setMethodFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepInitializer.getMethodFilter()));
+			if (javaDeclarationStepInitializer.getMethodName() != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter))
+				basePart.setMethodFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepInitializer.getMethodName()));
 			
 			if (isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod)) {
 				basePart.setStaticMethod(javaDeclarationStepInitializer.isStaticMethod());
@@ -116,7 +116,7 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass();
 		}
 		if (editorKey == NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter) {
-			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter();
+			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName();
 		}
 		if (editorKey == NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod) {
 			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod();
@@ -135,7 +135,7 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 			javaDeclarationStepInitializer.setQualifiedClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter == event.getAffectedEditor()) {
-			javaDeclarationStepInitializer.setMethodFilter((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+			javaDeclarationStepInitializer.setMethodName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod == event.getAffectedEditor()) {
 			javaDeclarationStepInitializer.setStaticMethod((Boolean)event.getNewValue());
@@ -156,7 +156,7 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 					basePart.setQualifiedClass("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter)) {
+			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter)) {
 				if (msg.getNewValue() != null) {
 					basePart.setMethodFilter(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -179,7 +179,7 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass(),
-			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter(),
+			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName(),
 			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod());
 		return new NotificationFilter[] {filter,};
 	}
@@ -215,9 +215,9 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 				if (NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().getEAttributeType(), newValue);
 				}
 				if (NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

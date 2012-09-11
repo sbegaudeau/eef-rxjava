@@ -565,13 +565,13 @@ public interface FiltersPackage extends EPackage {
 	int JAVA_DECLARATION_STEP_FILTER__QUALIFIED_CLASS = NavigationPackage.JAVA_DECLARATION_EXPRESSION__QUALIFIED_CLASS;
 
 	/**
-	 * The feature id for the '<em><b>Method Filter</b></em>' attribute.
+	 * The feature id for the '<em><b>Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_DECLARATION_STEP_FILTER__METHOD_FILTER = NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_FILTER;
+	int JAVA_DECLARATION_STEP_FILTER__METHOD_NAME = NavigationPackage.JAVA_DECLARATION_EXPRESSION__METHOD_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Static Method</b></em>' attribute.

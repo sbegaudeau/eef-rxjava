@@ -236,7 +236,7 @@ public class DeclarativeNavigationStepItemProvider extends
 	public String getText(Object object) {
 		DeclarativeNavigationStep declarativeNavigationStep = (DeclarativeNavigationStep) object;
 		return getString("_UI_DeclarativeNavigationStep_type") + " "
-				+ declarativeNavigationStep.isCreatesIfNotExists();
+				+ declarativeNavigationStep.getIndex();
 	}
 
 	/**

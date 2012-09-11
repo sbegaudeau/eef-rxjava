@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getQualifiedClass <em>Qualified Class</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodFilter <em>Method Filter</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodName <em>Method Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#isStaticMethod <em>Static Method</em>}</li>
  * </ul>
  * </p>
@@ -54,30 +54,30 @@ public interface JavaDeclarationExpression extends EObject {
 	void setQualifiedClass(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Method Filter</b></em>' attribute.
+	 * Returns the value of the '<em><b>Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Method Filter</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Method Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Method Filter</em>' attribute.
-	 * @see #setMethodFilter(String)
-	 * @see org.eclipse.emf.eef.mapping.navigation.NavigationPackage#getJavaDeclarationExpression_MethodFilter()
+	 * @return the value of the '<em>Method Name</em>' attribute.
+	 * @see #setMethodName(String)
+	 * @see org.eclipse.emf.eef.mapping.navigation.NavigationPackage#getJavaDeclarationExpression_MethodName()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getMethodFilter();
+	String getMethodName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodFilter <em>Method Filter</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.navigation.JavaDeclarationExpression#getMethodName <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Method Filter</em>' attribute.
-	 * @see #getMethodFilter()
+	 * @param value the new value of the '<em>Method Name</em>' attribute.
+	 * @see #getMethodName()
 	 * @generated
 	 */
-	void setMethodFilter(String value);
+	void setMethodName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Static Method</b></em>' attribute.

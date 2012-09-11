@@ -21,7 +21,6 @@ import org.eclipse.emf.eef.mapping.filters.StepFilter;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#isCreatesIfNotExists <em>Creates If Not Exists</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#getSubStep <em>Sub Step</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#getInitializer <em>Initializer</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#getFilters <em>Filters</em>}</li>
@@ -33,33 +32,6 @@ import org.eclipse.emf.eef.mapping.filters.StepFilter;
  * @generated
  */
 public interface NavigationStep extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Creates If Not Exists</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Creates If Not Exists</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Creates If Not Exists</em>' attribute.
-	 * @see #setCreatesIfNotExists(boolean)
-	 * @see org.eclipse.emf.eef.mapping.navigation.NavigationPackage#getNavigationStep_CreatesIfNotExists()
-	 * @model default="true" required="true"
-	 * @generated
-	 */
-	boolean isCreatesIfNotExists();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.navigation.NavigationStep#isCreatesIfNotExists <em>Creates If Not Exists</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Creates If Not Exists</em>' attribute.
-	 * @see #isCreatesIfNotExists()
-	 * @generated
-	 */
-	void setCreatesIfNotExists(boolean value);
-
 	/**
 	 * Returns the value of the '<em><b>Sub Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

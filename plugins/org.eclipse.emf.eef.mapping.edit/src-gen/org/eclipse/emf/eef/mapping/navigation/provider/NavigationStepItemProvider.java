@@ -63,31 +63,8 @@ public class NavigationStepItemProvider extends ItemProviderAdapter implements
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCreatesIfNotExistsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Creates If Not Exists feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCreatesIfNotExistsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_NavigationStep_createsIfNotExists_feature"),
-						getString(
-								"_UI_PropertyDescriptor_description",
-								"_UI_NavigationStep_createsIfNotExists_feature",
-								"_UI_NavigationStep_type"),
-						NavigationPackage.Literals.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -134,9 +111,7 @@ public class NavigationStepItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public String getText(Object object) {
-		NavigationStep navigationStep = (NavigationStep) object;
-		return getString("_UI_NavigationStep_type") + " "
-				+ navigationStep.isCreatesIfNotExists();
+		return getString("_UI_NavigationStep_type");
 	}
 
 	/**
@@ -151,10 +126,6 @@ public class NavigationStepItemProvider extends ItemProviderAdapter implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(NavigationStep.class)) {
-		case NavigationPackage.NAVIGATION_STEP__CREATES_IF_NOT_EXISTS:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
-			return;
 		case NavigationPackage.NAVIGATION_STEP__SUB_STEP:
 		case NavigationPackage.NAVIGATION_STEP__INITIALIZER:
 		case NavigationPackage.NAVIGATION_STEP__FILTERS:

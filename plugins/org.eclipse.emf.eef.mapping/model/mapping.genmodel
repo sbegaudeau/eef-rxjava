@@ -123,7 +123,6 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//navigation/SmartModelNavigation/step"/>
       </genClasses>
       <genClasses image="false" ecoreClass="mapping.ecore#//navigation/NavigationStep">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//navigation/NavigationStep/createsIfNotExists"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//navigation/NavigationStep/subStep"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//navigation/NavigationStep/initializer"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//navigation/NavigationStep/filters"/>
@@ -139,7 +138,7 @@
       <genClasses image="false" ecoreClass="mapping.ecore#//navigation/JavaStepInitializer"/>
       <genClasses image="false" ecoreClass="mapping.ecore#//navigation/JavaDeclarationExpression">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//navigation/JavaDeclarationExpression/qualifiedClass"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//navigation/JavaDeclarationExpression/methodFilter"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//navigation/JavaDeclarationExpression/methodName"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//navigation/JavaDeclarationExpression/staticMethod"/>
       </genClasses>
       <genClasses ecoreClass="mapping.ecore#//navigation/JavaBodyExpression">

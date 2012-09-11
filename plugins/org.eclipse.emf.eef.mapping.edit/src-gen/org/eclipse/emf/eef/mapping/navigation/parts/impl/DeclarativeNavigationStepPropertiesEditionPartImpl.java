@@ -79,7 +79,6 @@ import org.eclipse.swt.widgets.Text;
  */
 public class DeclarativeNavigationStepPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, DeclarativeNavigationStepPropertiesEditionPart {
 
-	protected Button createsIfNotExists;
 	protected Text index;
 	protected EObjectFlatComboViewer feature;
 	protected EObjectFlatComboViewer discriminatorType;
@@ -121,7 +120,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartImpl extends Composit
 	public void createControls(Composite view) { 
 		CompositionSequence declarativeNavigationStepStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = declarativeNavigationStepStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.class);
-		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists);
 		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index);
 		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature);
 		propertiesStep.addStep(NavigationViewsRepository.DeclarativeNavigationStep.Properties.discriminatorType);
@@ -133,9 +131,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartImpl extends Composit
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.class) {
 					return createPropertiesGroup(parent);
-				}
-				if (key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists) {
-					return createCreatesIfNotExistsCheckbox(parent);
 				}
 				if (key == NavigationViewsRepository.DeclarativeNavigationStep.Properties.index) {
 					return createIndexText(parent);
@@ -165,33 +160,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartImpl extends Composit
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		return propertiesGroup;
-	}
-
-	
-	protected Composite createCreatesIfNotExistsCheckbox(Composite parent) {
-		createsIfNotExists = new Button(parent, SWT.CHECK);
-		createsIfNotExists.setText(getDescription(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists, NavigationMessages.DeclarativeNavigationStepPropertiesEditionPart_CreatesIfNotExistsLabel));
-		createsIfNotExists.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DeclarativeNavigationStepPropertiesEditionPartImpl.this, NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(createsIfNotExists.getSelection())));
-			}
-
-		});
-		GridData createsIfNotExistsData = new GridData(GridData.FILL_HORIZONTAL);
-		createsIfNotExistsData.horizontalSpan = 2;
-		createsIfNotExists.setLayoutData(createsIfNotExistsData);
-		EditingUtils.setID(createsIfNotExists, NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists);
-		EditingUtils.setEEFtype(createsIfNotExists, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeclarativeNavigationStep.Properties.createsIfNotExists, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
 	}
 
 	
@@ -297,30 +265,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartImpl extends Composit
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeclarativeNavigationStepPropertiesEditionPart#getCreatesIfNotExists()
-	 * 
-	 */
-	public Boolean getCreatesIfNotExists() {
-		return Boolean.valueOf(createsIfNotExists.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.navigation.parts.DeclarativeNavigationStepPropertiesEditionPart#setCreatesIfNotExists(Boolean newValue)
-	 * 
-	 */
-	public void setCreatesIfNotExists(Boolean newValue) {
-		if (newValue != null) {
-			createsIfNotExists.setSelection(newValue.booleanValue());
-		} else {
-			createsIfNotExists.setSelection(false);
-		}
 	}
 
 	/**

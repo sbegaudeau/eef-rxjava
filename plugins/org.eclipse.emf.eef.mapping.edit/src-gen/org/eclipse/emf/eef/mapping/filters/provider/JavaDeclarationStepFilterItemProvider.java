@@ -80,7 +80,7 @@ public class JavaDeclarationStepFilterItemProvider extends
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((JavaDeclarationStepFilter) object).getQualifiedClass();
+		String label = ((JavaDeclarationStepFilter) object).getMethodName();
 		return label == null || label.length() == 0 ? getString("_UI_JavaDeclarationStepFilter_type")
 				: getString("_UI_JavaDeclarationStepFilter_type") + " " + label;
 	}

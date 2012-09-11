@@ -85,8 +85,8 @@ public class JavaDeclarationStepFilterPropertiesEditionComponent extends SingleP
 			if (javaDeclarationStepFilter.getQualifiedClass() != null && isAccessible(FiltersViewsRepository.JavaDeclarationStepFilter.Properties.qualifiedClass))
 				basePart.setQualifiedClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepFilter.getQualifiedClass()));
 			
-			if (javaDeclarationStepFilter.getMethodFilter() != null && isAccessible(FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter))
-				basePart.setMethodFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepFilter.getMethodFilter()));
+			if (javaDeclarationStepFilter.getMethodName() != null && isAccessible(FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter))
+				basePart.setMethodFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepFilter.getMethodName()));
 			
 			if (isAccessible(FiltersViewsRepository.JavaDeclarationStepFilter.Properties.staticMethod)) {
 				basePart.setStaticMethod(javaDeclarationStepFilter.isStaticMethod());
@@ -117,7 +117,7 @@ public class JavaDeclarationStepFilterPropertiesEditionComponent extends SingleP
 			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass();
 		}
 		if (editorKey == FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter) {
-			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter();
+			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName();
 		}
 		if (editorKey == FiltersViewsRepository.JavaDeclarationStepFilter.Properties.staticMethod) {
 			return NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod();
@@ -136,7 +136,7 @@ public class JavaDeclarationStepFilterPropertiesEditionComponent extends SingleP
 			javaDeclarationStepFilter.setQualifiedClass((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter == event.getAffectedEditor()) {
-			javaDeclarationStepFilter.setMethodFilter((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+			javaDeclarationStepFilter.setMethodName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (FiltersViewsRepository.JavaDeclarationStepFilter.Properties.staticMethod == event.getAffectedEditor()) {
 			javaDeclarationStepFilter.setStaticMethod((Boolean)event.getNewValue());
@@ -157,7 +157,7 @@ public class JavaDeclarationStepFilterPropertiesEditionComponent extends SingleP
 					basePart.setQualifiedClass("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter)) {
+			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter)) {
 				if (msg.getNewValue() != null) {
 					basePart.setMethodFilter(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -180,7 +180,7 @@ public class JavaDeclarationStepFilterPropertiesEditionComponent extends SingleP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass(),
-			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter(),
+			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName(),
 			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod());
 		return new NotificationFilter[] {filter,};
 	}
@@ -216,9 +216,9 @@ public class JavaDeclarationStepFilterPropertiesEditionComponent extends SingleP
 				if (FiltersViewsRepository.JavaDeclarationStepFilter.Properties.methodFilter == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodFilter().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().getEAttributeType(), newValue);
 				}
 				if (FiltersViewsRepository.JavaDeclarationStepFilter.Properties.staticMethod == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
