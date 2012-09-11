@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EObject;
  * @author NLEPINE
  *
  */
-public abstract class EEFInit {
+public abstract class EEFInitializer {
 		
 	protected abstract EObject init(EObject semanticObject);
 }

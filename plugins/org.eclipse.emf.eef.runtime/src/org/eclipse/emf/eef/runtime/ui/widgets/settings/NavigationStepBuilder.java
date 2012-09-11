@@ -25,7 +25,7 @@ public class NavigationStepBuilder {
 	private EReference reference;
 	private int index;
 	private EClassifier discriminator;
-	private EEFInit init;
+	private EEFInitializer init;
 	private List<EEFFilter> filters;
 
 	/**
@@ -56,7 +56,7 @@ public class NavigationStepBuilder {
 		return this;
 	}
 	
-	public NavigationStepBuilder init(EEFInit init) {
+	public NavigationStepBuilder init(EEFInitializer init) {
 		this.init = init;
 		return this;
 	}
@@ -82,7 +82,7 @@ public class NavigationStepBuilder {
 		private EReference reference;
 		private int index;
 		private EClassifier discriminator;
-		private EEFInit init;
+		private EEFInitializer init;
 		private List<EEFFilter> filters;
 		
 		private NavigationStepImpl() {
@@ -122,7 +122,7 @@ public class NavigationStepBuilder {
 		 * 
 		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.NavigationStep#getInit()
 		 */
-		public EEFInit getInit() {
+		public EEFInitializer getInit() {
 			return init;
 		}
 

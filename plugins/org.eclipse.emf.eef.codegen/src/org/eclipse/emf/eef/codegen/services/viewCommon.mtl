@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module viewCommon('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module viewCommon('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0', 'http://www.eclipse.org/emf/eef/mapping/filters/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
@@ -18,6 +18,7 @@
 [import org::eclipse::emf::eef::codegen::services::typeUtils /]
 [import org::eclipse::emf::eef::codegen::services::imports /]
 [import org::eclipse::emf::eef::codegen::services::emfCodeGen /]
+[import org::eclipse::emf::eef::codegen::services::navigationStep /]
 
 [comment]
 Common tools for views generation purpose.
@@ -135,6 +136,58 @@ protected [include('org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSet
 [template public generateNavigation(navigation : ChainedModelNavigation)]
 [navigation.current.generateNavigation()/]
 [navigation.next.generateNavigation()/]
+[/template]
+
+[template public generateNavigation(navigation : navigation::SmartModelNavigation)]
+[navigation.step.generateStep()/]
+[/template]
+
+[template public generateStep(step : NavigationStep)/]
+
+[template public generateStep(step : DeclarativeNavigationStep)]
+.nextStep([include('org.eclipse.emf.eef.runtime.ui.widgets.settings.NavigationStepBuilder')/].create([step.metamodelGetter()/])[if (not step.index.oclIsUndefined())]
+
+.index([step.index/])[/if][if (not step.discriminatorType.oclIsUndefined())]
+
+.discriminator([step.discriminatorType.metamodelGetter()/][addImport(step.discriminatorType.ePackage.qualifiedMetamodelPackage())/])[/if][if (not step.initializer.oclIsUndefined())]
+
+[step.initNavigationStep()/][/if][if (not step.filters->isEmpty())]
+
+[for (filter : StepFilter | step.filters)][step.oclAsType(StepFilter).filterNavigationStep()/][/for][/if].build())[if (not step.subStep.oclIsUndefined())]
+
+[step.subStep.generateStep()/][/if]
+[/template]
+
+[template public filterNavigationStep (filter : StepFilter) ]
+.filter(new EEFFilter() {
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter#select(org.eclipse.emf.ecore.EObject)
+	*/
+	@Override
+	protected boolean select(EObject semanticObject) {
+[filter.filterBody()/]
+	}
+
+})
+[/template]
+
+[template public initNavigationStep(step : DeclarativeNavigationStep)]
+.init(new EEFInitializer() {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFInit#init(org.eclipse.emf.ecore.EObject)
+	*/
+	@Override
+	protected EObject init(EObject semanticObject) {
+[step.initializer.initBody()/]
+	}
+
+})
 [/template]
 
 [comment ====== Widgets getters signature ====== /]

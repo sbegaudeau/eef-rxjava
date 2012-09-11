@@ -45,7 +45,7 @@ public interface NavigationStep {
 	/**
 	 * @return the initialisation for the step
 	 */
-	public EEFInit getInit();
+	public EEFInitializer getInit();
 	
 	/**
 	 * @return the filter for the step

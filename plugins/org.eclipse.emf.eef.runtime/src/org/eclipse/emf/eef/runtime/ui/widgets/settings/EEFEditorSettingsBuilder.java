@@ -107,32 +107,63 @@ public class EEFEditorSettingsBuilder  {
 			if (significantObject == null) {
 				EObject current = source;
 				for (NavigationStep step : EEFEditorSettingsImpl.this.steps) {
+					// reference *
 					if (step.getReference().isMany()) {
 						@SuppressWarnings("unchecked")
 						List<EObject> result = (List<EObject>)source.eGet(step.getReference());
-						List<EObject> result2 = Collections.emptyList();
-						if (step.getDiscriminator() != null) {
-							for (EObject eObject : result) {
-								if (step.getDiscriminator().isInstance(eObject)) {
-									result2.add(eObject);
+						List<EObject> result2 = new ArrayList<EObject>();
+						
+						if (!result.isEmpty() && (!step.getFilters().isEmpty() || step.getDiscriminator() != null)) {
+							// add filters
+							if (!step.getFilters().isEmpty()) {
+								for (EEFFilter eefFilter : step.getFilters()) {
+									for (EObject eObject : result) {
+										if (eefFilter.select(eObject)) {
+											result2.add(eObject);
+										}
+									}
+									result = result2;
+									result2 = new ArrayList<EObject>();
 								}
 							}
+							// add discriminator
+							if (step.getDiscriminator() != null) {
+								for (EObject eObject : result) {
+									if (step.getDiscriminator().isInstance(eObject)) {
+										result2.add(eObject);
+									}
+								}
+							}
+							
+							// no filter and no discriminator -> get step.reference
 						} else {
-							result2 = result;
+								result2 = result;
 						}
+						
+						// Use init if result.isEmpty()
+						if (result2.isEmpty() && step.getInit() != null) {
+							result2 = new ArrayList<EObject>();
+							result2.add(step.getInit().init(current));
+						}
+						
 						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result2.size()) {
 							current = result2.get(step.getIndex());
 							// Use init if current == null
+							if (current == null && step.getInit() != null) {
+								EObject current2 = current;
+								current = step.getInit().init(current2);
+							} 
 						} else {
 							throw new IllegalStateException();
 						}
-
+						
 					} else {
-						EObject zeCurrent = current;
-						current = (EObject) zeCurrent.eGet(step.getReference());
+						// reference 0 or 1
+						EObject current2 = current;
+						current = (EObject) current2.eGet(step.getReference());
 						if (current == null) {
 							if (step.getInit() != null) {
-								current = step.getInit().init(zeCurrent);
+								current = step.getInit().init(current2);
 							}
 						}
 					}

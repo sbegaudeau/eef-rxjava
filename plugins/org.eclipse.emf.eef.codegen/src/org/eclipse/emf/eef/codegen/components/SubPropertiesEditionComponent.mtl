@@ -73,7 +73,7 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 	public static String [view.viewPartConstant(pec)/] = "[view.viewKey(pec).toASCII()/]"; //$NON-NLS-1$
 
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view))][editionElement.additionalComponentField(view, pec)/][/for]
-	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view) -> select(pee : PropertiesEditionElement | pee.canGeneratemodelNavigation()))][editionElement.additionalComponentFieldForModelNavigation(view, pec)/][/for]
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view) -> select(pee : PropertiesEditionElement | pee.canGeneratemodelNavigation()))][addImports(Sequence{'org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFInitializer', 'org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter'})/][editionElement.additionalComponentFieldForModelNavigation(view, pec)/][/for]
 	/**
 	 * Default constructor
 	 * [peContext.associatedGenModel().generationMark()/]

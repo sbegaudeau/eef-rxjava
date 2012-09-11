@@ -502,6 +502,10 @@ NOTE: Imports are managed here because addImport must be called from a model ele
 [s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
 [/template]
 
+[template public metamodelGetter(s : DeclarativeNavigationStep)]
+[s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
 [template public factoryCreator(p : PropertiesEditionElement)]
 [p.model.eType.factoryCreator()/][p.addImport(p.model.eType.getQualifiedFactoryInterfaceName())/]
 [/template]
