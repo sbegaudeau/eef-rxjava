@@ -304,6 +304,21 @@ public class RootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createSmartModelNavigationSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createFirstModelNavigation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createSecondModelNavigation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 FiltersFactory.eINSTANCE.createConcreteReferenceOwnerSample()));
 
 		newChildDescriptors.add

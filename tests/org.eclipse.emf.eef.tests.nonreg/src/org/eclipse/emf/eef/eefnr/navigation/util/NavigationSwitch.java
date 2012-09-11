@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 import org.eclipse.emf.eef.eefnr.NamedElement;
+import org.eclipse.emf.eef.eefnr.navigation.*;
 import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.AttributeDelegate;
 import org.eclipse.emf.eef.eefnr.navigation.AttributeNavigationSample;
@@ -155,6 +156,30 @@ public class NavigationSwitch<T> extends Switch<T> {
 			case NavigationPackage.ATTRIBUTE_DELEGATE: {
 				AttributeDelegate attributeDelegate = (AttributeDelegate)theEObject;
 				T result = caseAttributeDelegate(attributeDelegate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.SMART_MODEL_NAVIGATION_SAMPLE: {
+				SmartModelNavigationSample smartModelNavigationSample = (SmartModelNavigationSample)theEObject;
+				T result = caseSmartModelNavigationSample(smartModelNavigationSample);
+				if (result == null) result = caseNamedElement(smartModelNavigationSample);
+				if (result == null) result = caseAbstractSample(smartModelNavigationSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.FIRST_MODEL_NAVIGATION: {
+				FirstModelNavigation firstModelNavigation = (FirstModelNavigation)theEObject;
+				T result = caseFirstModelNavigation(firstModelNavigation);
+				if (result == null) result = caseNamedElement(firstModelNavigation);
+				if (result == null) result = caseAbstractSample(firstModelNavigation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NavigationPackage.SECOND_MODEL_NAVIGATION: {
+				SecondModelNavigation secondModelNavigation = (SecondModelNavigation)theEObject;
+				T result = caseSecondModelNavigation(secondModelNavigation);
+				if (result == null) result = caseNamedElement(secondModelNavigation);
+				if (result == null) result = caseAbstractSample(secondModelNavigation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -339,6 +364,51 @@ public class NavigationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAttributeDelegate(AttributeDelegate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Smart Model Navigation Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Smart Model Navigation Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSmartModelNavigationSample(SmartModelNavigationSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>First Model Navigation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>First Model Navigation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFirstModelNavigation(FirstModelNavigation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Second Model Navigation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Second Model Navigation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSecondModelNavigation(SecondModelNavigation object) {
 		return null;
 	}
 

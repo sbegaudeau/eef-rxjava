@@ -210,4 +210,67 @@ public class NavigationViewsRepository {
 	
 	}
 
+	/**
+	 * SmartNavigationSample view descriptor
+	 * 
+	 */
+	public static class SmartNavigationSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::SmartNavigationSample::properties::name";
+			
+			
+			public static String firstModelNavigationSingleValue = "navigation::SmartNavigationSample::properties::firstModelNavigationSingleValue";
+			
+			
+			public static String secondModelNavigationSingleValue = "navigation::SmartNavigationSample::properties::secondModelNavigationSingleValue";
+			
+			
+			public static String firstModelNavigationMultiValue = "navigation::SmartNavigationSample::properties::firstModelNavigationMultiValue";
+			
+			
+			public static String secondModelNavigationMultiValue = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValue";
+			
+			
+			public static String secondModelNavigationSingleValue2 = "navigation::SmartNavigationSample::properties::secondModelNavigationSingleValue2";
+			
+			
+			public static String secondModelNavigationMultiValue2 = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValue2";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * FirstNavigationSample view descriptor
+	 * 
+	 */
+	public static class FirstNavigationSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::FirstNavigationSample::properties::name";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * SecondNavigationSample view descriptor
+	 * 
+	 */
+	public static class SecondNavigationSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::SecondNavigationSample::properties::name";
+			
+	
+		}
+	
+	}
+
 }

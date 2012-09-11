@@ -11,7 +11,9 @@
 package org.eclipse.emf.eef.filters.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
+
 import org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory;
+
 import org.eclipse.emf.eef.references.providers.AbstractSamplePropertiesEditionProvider;
 
 /**

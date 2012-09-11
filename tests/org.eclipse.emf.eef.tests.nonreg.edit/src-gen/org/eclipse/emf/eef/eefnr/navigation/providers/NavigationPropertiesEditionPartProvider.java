@@ -11,24 +11,35 @@
 package org.eclipse.emf.eef.eefnr.navigation.providers;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.AnotherSubtypePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.AttributeNavigationSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedFlatReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.DeferedReferencesTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.ElementPropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.FirstNavigationSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SecondNavigationSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SmartNavigationSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.AnotherSubtypePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.AttributeNavigationSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedFlatReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.DeferedReferencesTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.ElementPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.FirstNavigationSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.NamedElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.OwnerPropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SecondNavigationSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SmartNavigationSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SubtypePropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**
@@ -99,6 +110,24 @@ public class NavigationPropertiesEditionPartProvider implements IPropertiesEditi
 				return new AttributeNavigationSamplePropertiesEditionPartImpl(component);
 			if (kind == NavigationViewsRepository.FORM_KIND)
 				return new AttributeNavigationSamplePropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.SmartNavigationSample.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new SmartNavigationSamplePropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new SmartNavigationSamplePropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.FirstNavigationSample.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new FirstNavigationSamplePropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new FirstNavigationSamplePropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.SecondNavigationSample.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new SecondNavigationSamplePropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new SecondNavigationSamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

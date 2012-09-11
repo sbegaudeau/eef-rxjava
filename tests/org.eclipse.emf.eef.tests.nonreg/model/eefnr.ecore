@@ -292,6 +292,28 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="delegate2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SmartModelNavigationSample" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="firstModelNavigation"
+          eType="#//navigation/FirstModelNavigation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="severalFirstModelNavigation"
+          upperBound="-1" eType="#//navigation/FirstModelNavigation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="firstModelNavigation2"
+          eType="#//navigation/FirstModelNavigation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="severalFirstModelNavigation2"
+          upperBound="-1" eType="#//navigation/FirstModelNavigation" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FirstModelNavigation" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="secondModelNavigation"
+          eType="#//navigation/SecondModelNavigation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="severalSecondModelNavigation"
+          upperBound="-1" eType="#//navigation/SecondModelNavigation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filter1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filter2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SecondModelNavigation" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filter3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filter4" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="filters" nsURI="http://www.eclipse.org/emf/eef/nonreg/filters/1.0.0"
       nsPrefix="eefnr-fltr">

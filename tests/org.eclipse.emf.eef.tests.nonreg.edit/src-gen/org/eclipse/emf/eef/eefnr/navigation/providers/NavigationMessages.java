@@ -44,6 +44,15 @@ public class NavigationMessages extends NLS {
 	
 	public static String AttributeNavigationSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String FirstNavigationSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String SecondNavigationSamplePropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String DeferedFlatReferencesTableSample_ReadOnly;
@@ -92,6 +101,24 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String AttributeNavigationSample_Part_Title;
+
+	
+	public static String SmartNavigationSample_ReadOnly;
+
+	
+	public static String SmartNavigationSample_Part_Title;
+
+	
+	public static String FirstNavigationSample_ReadOnly;
+
+	
+	public static String FirstNavigationSample_Part_Title;
+
+	
+	public static String SecondNavigationSample_ReadOnly;
+
+	
+	public static String SecondNavigationSample_Part_Title;
 
 
 	
@@ -177,6 +204,33 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_NameLabel;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_FirstModelNavigationSingleValueLabel;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationSingleValueLabel;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_FirstModelNavigationMultiValueLabel;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueLabel;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationSingleValue2Label;
+
+	
+	public static String SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValue2Label;
+
+	
+	public static String FirstNavigationSamplePropertiesEditionPart_NameLabel;
+
+	
+	public static String SecondNavigationSamplePropertiesEditionPart_NameLabel;
 
 
 	

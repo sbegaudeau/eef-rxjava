@@ -11,8 +11,11 @@
 package org.eclipse.emf.eef.eefnr.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
+
 import org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory;
+
 import org.eclipse.emf.eef.navigation.providers.NamedElementPropertiesEditionProvider;
+
 import org.eclipse.emf.eef.references.providers.AbstractSamplePropertiesEditionProvider;
 
 /**

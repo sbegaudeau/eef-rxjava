@@ -11,8 +11,11 @@
 package org.eclipse.emf.eef.eefnr.interface_.providers;
 
 import org.eclipse.emf.eef.eefnr.interface_.parts.Interface_ViewsRepository;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**

@@ -14,8 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+
 import org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory;
+
 import org.eclipse.emf.eef.navigation.providers.NamedElementPropertiesEditionProvider;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 /**

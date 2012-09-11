@@ -11,14 +11,19 @@
 package org.eclipse.emf.eef.eefnr.references.providers;
 
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractEnabledSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.references.parts.forms.AbstractSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.references.parts.forms.ReferenceEnabledSamplePropertiesEditionPartForm;
+
 import org.eclipse.emf.eef.eefnr.references.parts.impl.AbstractEnabledSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.references.parts.impl.AbstractSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.references.parts.impl.ReferenceEnabledSamplePropertiesEditionPartImpl;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 
 /**

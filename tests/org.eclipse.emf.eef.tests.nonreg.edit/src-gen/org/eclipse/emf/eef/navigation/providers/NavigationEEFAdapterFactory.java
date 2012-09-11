@@ -14,8 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
+
 import org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory;
+
 import org.eclipse.emf.eef.references.providers.AbstractSamplePropertiesEditionProvider;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 /**
@@ -101,6 +104,30 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 	 */
 	public Adapter createAttributeNavigationSampleAdapter() {
 		return new AttributeNavigationSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSmartModelNavigationSampleAdapter()
+	 * 
+	 */
+	public Adapter createSmartModelNavigationSampleAdapter() {
+		return new SmartModelNavigationSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createFirstModelNavigationAdapter()
+	 * 
+	 */
+	public Adapter createFirstModelNavigationAdapter() {
+		return new FirstModelNavigationSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSecondModelNavigationAdapter()
+	 * 
+	 */
+	public Adapter createSecondModelNavigationAdapter() {
+		return new SecondModelNavigationSamplePropertiesEditionProvider();
 	}
 
 }

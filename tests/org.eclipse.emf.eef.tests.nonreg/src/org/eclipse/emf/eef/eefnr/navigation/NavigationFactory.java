@@ -125,6 +125,33 @@ public interface NavigationFactory extends EFactory {
 	AttributeDelegate createAttributeDelegate();
 
 	/**
+	 * Returns a new object of class '<em>Smart Model Navigation Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Smart Model Navigation Sample</em>'.
+	 * @generated
+	 */
+	SmartModelNavigationSample createSmartModelNavigationSample();
+
+	/**
+	 * Returns a new object of class '<em>First Model Navigation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>First Model Navigation</em>'.
+	 * @generated
+	 */
+	FirstModelNavigation createFirstModelNavigation();
+
+	/**
+	 * Returns a new object of class '<em>Second Model Navigation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Second Model Navigation</em>'.
+	 * @generated
+	 */
+	SecondModelNavigation createSecondModelNavigation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

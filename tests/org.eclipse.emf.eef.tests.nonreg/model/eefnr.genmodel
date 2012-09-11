@@ -198,6 +198,22 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/AttributeDelegate/delegate1"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/AttributeDelegate/delegate2"/>
       </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/SmartModelNavigationSample">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation2"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation2"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/FirstModelNavigation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/FirstModelNavigation/secondModelNavigation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//navigation/FirstModelNavigation/severalSecondModelNavigation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/FirstModelNavigation/filter1"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/FirstModelNavigation/filter2"/>
+      </genClasses>
+      <genClasses ecoreClass="eefnr.ecore#//navigation/SecondModelNavigation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/SecondModelNavigation/filter3"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//navigation/SecondModelNavigation/filter4"/>
+      </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Filters" basePackage="org.eclipse.emf.eef.eefnr" disposableProviderFactory="true"
         ecorePackage="eefnr.ecore#//filters">
@@ -213,8 +229,8 @@
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample1"/>
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample2"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="CustomNaming" basePackage="org.eclipse.emf.eef.eefnr" disposableProviderFactory="true"
-        ecorePackage="eefnr.ecore#//naming">
+    <nestedGenPackages prefix="CustomNaming" basePackage="org.eclipse.emf.eef.eefnr"
+        disposableProviderFactory="true" ecorePackage="eefnr.ecore#//naming">
       <genClasses ecoreClass="eefnr.ecore#//naming/Event"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Interface" basePackage="org.eclipse.emf.eef.eefnr"

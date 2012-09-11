@@ -656,6 +656,181 @@ public interface NavigationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SmartModelNavigationSampleImpl <em>Smart Model Navigation Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SmartModelNavigationSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSmartModelNavigationSample()
+	 * @generated
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE__NAME = EefnrPackage.NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>First Model Navigation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE__FIRST_MODEL_NAVIGATION = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Several First Model Navigation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE__SEVERAL_FIRST_MODEL_NAVIGATION = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>First Model Navigation2</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE__FIRST_MODEL_NAVIGATION2 = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Several First Model Navigation2</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE__SEVERAL_FIRST_MODEL_NAVIGATION2 = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Smart Model Navigation Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_MODEL_NAVIGATION_SAMPLE_FEATURE_COUNT = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.FirstModelNavigationImpl <em>First Model Navigation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.FirstModelNavigationImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getFirstModelNavigation()
+	 * @generated
+	 */
+	int FIRST_MODEL_NAVIGATION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_MODEL_NAVIGATION__NAME = EefnrPackage.NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Second Model Navigation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_MODEL_NAVIGATION__SECOND_MODEL_NAVIGATION = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Several Second Model Navigation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_MODEL_NAVIGATION__SEVERAL_SECOND_MODEL_NAVIGATION = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Filter1</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_MODEL_NAVIGATION__FILTER1 = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Filter2</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_MODEL_NAVIGATION__FILTER2 = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>First Model Navigation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_MODEL_NAVIGATION_FEATURE_COUNT = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SecondModelNavigationImpl <em>Second Model Navigation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SecondModelNavigationImpl
+	 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSecondModelNavigation()
+	 * @generated
+	 */
+	int SECOND_MODEL_NAVIGATION = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECOND_MODEL_NAVIGATION__NAME = EefnrPackage.NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Filter3</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECOND_MODEL_NAVIGATION__FILTER3 = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Filter4</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECOND_MODEL_NAVIGATION__FILTER4 = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Second Model Navigation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECOND_MODEL_NAVIGATION_FEATURE_COUNT = EefnrPackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSample <em>Defered Flat Reference Table Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1096,6 +1271,146 @@ public interface NavigationPackage extends EPackage {
 	EAttribute getAttributeDelegate_Delegate2();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample <em>Smart Model Navigation Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Smart Model Navigation Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample
+	 * @generated
+	 */
+	EClass getSmartModelNavigationSample();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getFirstModelNavigation <em>First Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>First Model Navigation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getFirstModelNavigation()
+	 * @see #getSmartModelNavigationSample()
+	 * @generated
+	 */
+	EReference getSmartModelNavigationSample_FirstModelNavigation();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getSeveralFirstModelNavigation <em>Several First Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Several First Model Navigation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getSeveralFirstModelNavigation()
+	 * @see #getSmartModelNavigationSample()
+	 * @generated
+	 */
+	EReference getSmartModelNavigationSample_SeveralFirstModelNavigation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getFirstModelNavigation2 <em>First Model Navigation2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>First Model Navigation2</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getFirstModelNavigation2()
+	 * @see #getSmartModelNavigationSample()
+	 * @generated
+	 */
+	EReference getSmartModelNavigationSample_FirstModelNavigation2();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getSeveralFirstModelNavigation2 <em>Several First Model Navigation2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Several First Model Navigation2</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample#getSeveralFirstModelNavigation2()
+	 * @see #getSmartModelNavigationSample()
+	 * @generated
+	 */
+	EReference getSmartModelNavigationSample_SeveralFirstModelNavigation2();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation <em>First Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>First Model Navigation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation
+	 * @generated
+	 */
+	EClass getFirstModelNavigation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#getSecondModelNavigation <em>Second Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Second Model Navigation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#getSecondModelNavigation()
+	 * @see #getFirstModelNavigation()
+	 * @generated
+	 */
+	EReference getFirstModelNavigation_SecondModelNavigation();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#getSeveralSecondModelNavigation <em>Several Second Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Several Second Model Navigation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#getSeveralSecondModelNavigation()
+	 * @see #getFirstModelNavigation()
+	 * @generated
+	 */
+	EReference getFirstModelNavigation_SeveralSecondModelNavigation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#isFilter1 <em>Filter1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Filter1</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#isFilter1()
+	 * @see #getFirstModelNavigation()
+	 * @generated
+	 */
+	EAttribute getFirstModelNavigation_Filter1();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#isFilter2 <em>Filter2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Filter2</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation#isFilter2()
+	 * @see #getFirstModelNavigation()
+	 * @generated
+	 */
+	EAttribute getFirstModelNavigation_Filter2();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation <em>Second Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Second Model Navigation</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation
+	 * @generated
+	 */
+	EClass getSecondModelNavigation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation#isFilter3 <em>Filter3</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Filter3</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation#isFilter3()
+	 * @see #getSecondModelNavigation()
+	 * @generated
+	 */
+	EAttribute getSecondModelNavigation_Filter3();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation#isFilter4 <em>Filter4</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Filter4</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation#isFilter4()
+	 * @see #getSecondModelNavigation()
+	 * @generated
+	 */
+	EAttribute getSecondModelNavigation_Filter4();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1466,6 +1781,116 @@ public interface NavigationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ATTRIBUTE_DELEGATE__DELEGATE2 = eINSTANCE.getAttributeDelegate_Delegate2();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SmartModelNavigationSampleImpl <em>Smart Model Navigation Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SmartModelNavigationSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSmartModelNavigationSample()
+		 * @generated
+		 */
+		EClass SMART_MODEL_NAVIGATION_SAMPLE = eINSTANCE.getSmartModelNavigationSample();
+
+		/**
+		 * The meta object literal for the '<em><b>First Model Navigation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SMART_MODEL_NAVIGATION_SAMPLE__FIRST_MODEL_NAVIGATION = eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Several First Model Navigation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SMART_MODEL_NAVIGATION_SAMPLE__SEVERAL_FIRST_MODEL_NAVIGATION = eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>First Model Navigation2</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SMART_MODEL_NAVIGATION_SAMPLE__FIRST_MODEL_NAVIGATION2 = eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation2();
+
+		/**
+		 * The meta object literal for the '<em><b>Several First Model Navigation2</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SMART_MODEL_NAVIGATION_SAMPLE__SEVERAL_FIRST_MODEL_NAVIGATION2 = eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation2();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.FirstModelNavigationImpl <em>First Model Navigation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.FirstModelNavigationImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getFirstModelNavigation()
+		 * @generated
+		 */
+		EClass FIRST_MODEL_NAVIGATION = eINSTANCE.getFirstModelNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Second Model Navigation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FIRST_MODEL_NAVIGATION__SECOND_MODEL_NAVIGATION = eINSTANCE.getFirstModelNavigation_SecondModelNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Several Second Model Navigation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FIRST_MODEL_NAVIGATION__SEVERAL_SECOND_MODEL_NAVIGATION = eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter1</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FIRST_MODEL_NAVIGATION__FILTER1 = eINSTANCE.getFirstModelNavigation_Filter1();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter2</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FIRST_MODEL_NAVIGATION__FILTER2 = eINSTANCE.getFirstModelNavigation_Filter2();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.navigation.impl.SecondModelNavigationImpl <em>Second Model Navigation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.SecondModelNavigationImpl
+		 * @see org.eclipse.emf.eef.eefnr.navigation.impl.NavigationPackageImpl#getSecondModelNavigation()
+		 * @generated
+		 */
+		EClass SECOND_MODEL_NAVIGATION = eINSTANCE.getSecondModelNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter3</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SECOND_MODEL_NAVIGATION__FILTER3 = eINSTANCE.getSecondModelNavigation_Filter3();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter4</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SECOND_MODEL_NAVIGATION__FILTER4 = eINSTANCE.getSecondModelNavigation_Filter4();
 
 	}
 
