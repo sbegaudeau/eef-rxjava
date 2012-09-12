@@ -153,7 +153,7 @@ protected [include('org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSet
 
 [step.initNavigationStep()/][/if][if (not step.filters->isEmpty())]
 
-[for (filter : StepFilter | step.filters)][step.oclAsType(StepFilter).filterNavigationStep()/][/for][/if].build())[if (not step.subStep.oclIsUndefined())]
+[for (filter : StepFilter | step.filters)][filter.filterNavigationStep()/][/for][/if].build())[if (not step.subStep.oclIsUndefined())]
 
 [step.subStep.generateStep()/][/if]
 [/template]
@@ -172,6 +172,7 @@ protected [include('org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSet
 	}
 
 })
+
 [/template]
 
 [template public initNavigationStep(step : DeclarativeNavigationStep)]
@@ -188,6 +189,23 @@ protected [include('org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSet
 	}
 
 })
+[/template]
+
+[template public navigationMetamodelGetter(pee : PropertiesEditionElement)]
+[pee.navigation.navigationMetamodelGetter()/]
+[/template]
+
+[template public navigationMetamodelGetter(navigation : ModelNavigation)/]
+
+[template public navigationMetamodelGetter(navigation : SmartModelNavigation)]
+[navigation.step.navigationMetamodelGetter()/]
+[/template]
+
+[template public navigationMetamodelGetter(step : NavigationStep)/]
+
+[template public navigationMetamodelGetter(step : DeclarativeNavigationStep)]
+[step.metamodelGetter()/];
+[step.subStep.navigationMetamodelGetter()/]
 [/template]
 
 [comment ====== Widgets getters signature ====== /]

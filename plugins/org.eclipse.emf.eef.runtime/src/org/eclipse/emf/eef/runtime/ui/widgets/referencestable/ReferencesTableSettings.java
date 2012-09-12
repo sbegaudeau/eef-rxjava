@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -80,6 +81,14 @@ public class ReferencesTableSettings implements EEFEditorSettings {
 	 */
 	public boolean isAffectingFeature(EStructuralFeature feature) {
 		return Arrays.asList(features).contains(feature);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#isAffectingEvent(org.eclipse.emf.common.notify.Notification)
+	 */
+	public boolean isAffectingEvent(Notification notification) {
+		return true;
 	}
 	
 	/**

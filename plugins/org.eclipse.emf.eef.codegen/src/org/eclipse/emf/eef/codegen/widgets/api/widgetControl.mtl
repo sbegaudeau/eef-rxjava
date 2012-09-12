@@ -58,6 +58,11 @@
 [/for]
 [/template]
 
+
+[template public liveUpdaterNavigationCondition (editionElement : PropertiesEditionElement, pec : PropertiesEditionComponent) ]
+[if (editionElement.canGeneratemodelNavigation())][editionElement.name.toJavaIdentifier()/]Settings.isAffectingEvent(msg)[else][pec.metamodelGetter()/].equals(((EObject) msg.getNotifier()).eClass())[/if]
+[/template]
+
 [template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
 		[view.viewIdentifier(pec)/].get[v.name.toJavaClassifier()/]ReferencedView().setContext(elt, allResource);

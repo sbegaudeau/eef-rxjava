@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -39,6 +40,13 @@ public interface EEFEditorSettings {
 	 * @return <code>true</code> if the given feature is processed by these settings
 	 */
 	boolean isAffectingFeature(EStructuralFeature feature);
+	
+	
+	/**
+	 * @param notification Notification
+	 * @return <code>true</code> if the given notification is processed by these settings
+	 */
+	boolean isAffectingEvent(Notification notification);
 
 	/**
 	 * @return the edited object
