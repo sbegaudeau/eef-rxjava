@@ -60,7 +60,11 @@
 
 
 [template public liveUpdaterNavigationCondition (editionElement : PropertiesEditionElement, pec : PropertiesEditionComponent) ]
-[if (editionElement.canGeneratemodelNavigation())][editionElement.name.toJavaIdentifier()/]Settings.isAffectingEvent(msg)[else][pec.metamodelGetter()/].equals(((EObject) msg.getNotifier()).eClass())[/if]
+[if (editionElement.canGeneratemodelNavigation())][editionElement.name.toJavaIdentifier()/]Settings.isAffectingEvent(msg)[else][editionElement.metamodelGetter()/].equals(msg.getFeature()) && [pec.metamodelGetter()/].equals(((EObject) msg.getNotifier()).eClass())[/if]
+[/template]
+
+[template public liveUpdaterNavigationConditionForText (editionElement : PropertiesEditionElement, pec : PropertiesEditionComponent) ]
+[if (editionElement.canGeneratemodelNavigation())]!(msg.getNewValue() instanceof EObject) && [editionElement.name.toJavaIdentifier()/]Settings.isAffectingEvent(msg)[else][editionElement.metamodelGetter()/].equals(msg.getFeature()) && [pec.metamodelGetter()/].equals(((EObject) msg.getNotifier()).eClass())[/if]
 [/template]
 
 [template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]

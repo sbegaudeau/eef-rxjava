@@ -204,8 +204,8 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 [let allPee : Sequence(PropertiesEditionElement) = view.referencedViews() -> including(view) -> collect(tmp | pec.involvedEditionElementsInView(tmp.oclAsType(View))) -> flatten() ]
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 		[for (pee : PropertiesEditionElement | allPee) separator (',\n')]
-			[pee.metamodelGetter()/][if (pee.canGeneratemodelNavigation())]
-			[pee.navigationMetamodelGetter()/][/if][/for]
+			[pee.metamodelGetter()/][if (pee.canGeneratemodelNavigation())][if (pee.navigation.oclIsKindOf(SmartModelNavigation))],[/if]
+			[pee.navigation.navigationMetamodelGetter()/][/if][/for]
 		);
 [/let]
 		return new NotificationFilter['['/][']'/] {filter,};

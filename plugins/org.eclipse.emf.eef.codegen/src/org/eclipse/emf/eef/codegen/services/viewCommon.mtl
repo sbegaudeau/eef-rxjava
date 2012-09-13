@@ -191,21 +191,17 @@ protected [include('org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSet
 })
 [/template]
 
-[template public navigationMetamodelGetter(pee : PropertiesEditionElement)]
-[pee.navigation.navigationMetamodelGetter()/]
-[/template]
-
 [template public navigationMetamodelGetter(navigation : ModelNavigation)/]
 
 [template public navigationMetamodelGetter(navigation : SmartModelNavigation)]
-[navigation.step.navigationMetamodelGetter()/]
+[navigation.step.stepMetamodelGetter()/]
 [/template]
 
-[template public navigationMetamodelGetter(step : NavigationStep)/]
+[template public stepMetamodelGetter(step : NavigationStep)/]
 
-[template public navigationMetamodelGetter(step : DeclarativeNavigationStep)]
-[step.metamodelGetter()/];
-[step.subStep.navigationMetamodelGetter()/]
+[template public stepMetamodelGetter(step : DeclarativeNavigationStep)]
+[step.metamodelGetter()/][if (not step.subStep.oclIsUndefined())],
+		[step.subStep.stepMetamodelGetter()/][/if]
 [/template]
 
 [comment ====== Widgets getters signature ====== /]
