@@ -180,7 +180,7 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EefnrPackage.eINSTANCE.getRoot_Samples());
+			EefnrPackage.eINSTANCE.getRoot_Samples()		);
 		return new NotificationFilter[] {filter,};
 	}
 

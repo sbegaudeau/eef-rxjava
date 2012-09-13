@@ -237,7 +237,7 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(),
-			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty());
+			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

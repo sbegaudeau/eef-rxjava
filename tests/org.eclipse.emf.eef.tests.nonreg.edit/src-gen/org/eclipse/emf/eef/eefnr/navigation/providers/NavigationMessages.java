@@ -227,6 +227,9 @@ public class NavigationMessages extends NLS {
 	public static String SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValue2Label;
 
 	
+	public static String SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueFilterLabel;
+
+	
 	public static String FirstNavigationSamplePropertiesEditionPart_NameLabel;
 
 	

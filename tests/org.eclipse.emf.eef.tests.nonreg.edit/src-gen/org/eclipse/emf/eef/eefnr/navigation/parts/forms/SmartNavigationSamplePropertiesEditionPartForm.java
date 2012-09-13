@@ -69,6 +69,7 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Text secondModelNavigationMultiValue;
 	protected Text secondModelNavigationSingleValue2;
 	protected Text secondModelNavigationMultiValue2;
+	protected Text secondModelNavigationMultiValueFilter;
 
 
 
@@ -121,6 +122,7 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue);
 		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2);
 		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2);
+		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter);
 		
 		
 		composer = new PartComposer(smartNavigationSampleStep) {
@@ -150,6 +152,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 				}
 				if (key == NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2) {
 					return createSecondModelNavigationMultiValue2Text(widgetFactory, parent);
+				}
+				if (key == NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter) {
+					return createSecondModelNavigationMultiValueFilterText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -628,6 +633,71 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
+	
+	protected Composite createSecondModelNavigationMultiValueFilterText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueFilterLabel);
+		secondModelNavigationMultiValueFilter = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		secondModelNavigationMultiValueFilter.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData secondModelNavigationMultiValueFilterData = new GridData(GridData.FILL_HORIZONTAL);
+		secondModelNavigationMultiValueFilter.setLayoutData(secondModelNavigationMultiValueFilterData);
+		secondModelNavigationMultiValueFilter.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							SmartNavigationSamplePropertiesEditionPartForm.this,
+							NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, secondModelNavigationMultiValueFilter.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									SmartNavigationSamplePropertiesEditionPartForm.this,
+									NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, secondModelNavigationMultiValueFilter.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									SmartNavigationSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		secondModelNavigationMultiValueFilter.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmartNavigationSamplePropertiesEditionPartForm.this, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, secondModelNavigationMultiValueFilter.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(secondModelNavigationMultiValueFilter, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter);
+		EditingUtils.setEEFtype(secondModelNavigationMultiValueFilter, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -806,6 +876,30 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 			secondModelNavigationMultiValue2.setText(newValue);
 		} else {
 			secondModelNavigationMultiValue2.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SmartNavigationSamplePropertiesEditionPart#getSecondModelNavigationMultiValueFilter()
+	 * 
+	 */
+	public String getSecondModelNavigationMultiValueFilter() {
+		return secondModelNavigationMultiValueFilter.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SmartNavigationSamplePropertiesEditionPart#setSecondModelNavigationMultiValueFilter(String newValue)
+	 * 
+	 */
+	public void setSecondModelNavigationMultiValueFilter(String newValue) {
+		if (newValue != null) {
+			secondModelNavigationMultiValueFilter.setText(newValue);
+		} else {
+			secondModelNavigationMultiValueFilter.setText(""); //$NON-NLS-1$
 		}
 	}
 

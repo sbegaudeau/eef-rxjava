@@ -136,7 +136,7 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+			EefnrPackage.eINSTANCE.getAbstractSample_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -147,7 +147,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(),
-			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty());
+			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

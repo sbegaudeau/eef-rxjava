@@ -238,6 +238,9 @@ public class NavigationViewsRepository {
 			
 			public static String secondModelNavigationMultiValue2 = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValue2";
 			
+			
+			public static String secondModelNavigationMultiValueFilter = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValueFilter";
+			
 	
 		}
 	

@@ -120,6 +120,20 @@ public interface SmartNavigationSamplePropertiesEditionPart {
 	public void setSecondModelNavigationMultiValue2(String newValue);
 
 
+	/**
+	 * @return the secondModelNavigationMultiValueFilter
+	 * 
+	 */
+	public String getSecondModelNavigationMultiValueFilter();
+
+	/**
+	 * Defines a new secondModelNavigationMultiValueFilter
+	 * @param newValue the new secondModelNavigationMultiValueFilter to set
+	 * 
+	 */
+	public void setSecondModelNavigationMultiValueFilter(String newValue);
+
+
 
 
 

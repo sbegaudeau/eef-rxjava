@@ -276,7 +276,7 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			FiltersPackage.eINSTANCE.getAbstractReferenceOwnerSample_AbstractTarget(),
-			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping());
+			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping()		);
 		return new NotificationFilter[] {filter,};
 	}
 

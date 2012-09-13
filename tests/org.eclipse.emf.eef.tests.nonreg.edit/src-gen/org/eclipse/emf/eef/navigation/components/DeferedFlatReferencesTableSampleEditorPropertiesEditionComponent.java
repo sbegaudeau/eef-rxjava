@@ -192,7 +192,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
-			NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor());
+			NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor()		);
 		return new NotificationFilter[] {filter,};
 	}
 

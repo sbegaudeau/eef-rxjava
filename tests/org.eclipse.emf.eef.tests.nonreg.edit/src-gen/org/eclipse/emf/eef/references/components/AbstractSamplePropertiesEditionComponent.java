@@ -136,7 +136,7 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+			EefnrPackage.eINSTANCE.getAbstractSample_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 

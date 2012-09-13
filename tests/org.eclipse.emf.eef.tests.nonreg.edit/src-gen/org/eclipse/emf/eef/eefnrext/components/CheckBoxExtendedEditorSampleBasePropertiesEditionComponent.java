@@ -136,7 +136,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
-			EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample());
+			EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample()		);
 		return new NotificationFilter[] {filter,};
 	}
 

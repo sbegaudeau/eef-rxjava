@@ -153,7 +153,7 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty(),
-			EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty());
+			EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

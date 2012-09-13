@@ -547,6 +547,23 @@
             </step>
           </navigation>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LmgwIPysEeGJEqQYVg2nYg" name="secondMNMultiValueWithFirstMNMultiValueWithFilter" views="_UmO80PyvEeGJEqQYVg2nYg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_LmgwIfysEeGJEqQYVg2nYg">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_LmgwIvysEeGJEqQYVg2nYg">
+              <subStep xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_LmgwI_ysEeGJEqQYVg2nYg">
+                <initializer xsi:type="eef-mapping-navigation:JavaBodyStepInitializer" xmi:id="_LmgwJPysEeGJEqQYVg2nYg" body="if (semanticObject instanceof FirstModelNavigation) {&#xD;&#xA;SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();&#xD;&#xA;((FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((SecondModelNavigation) result);&#xD;&#xA;result.setFilter3(true);&#xD;&#xA;result.setFilter4(true);&#xD;&#xA;result.setName(&quot;SSM multi with filters&quot;);&#xD;&#xA;return result;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+                <filters xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_fnKbAPysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="filter3FirstModelNavigation" staticMethod="true"/>
+                <filters xsi:type="eef-mapping-filters:JavaBodyStepFilter" xmi:id="_fnKbAfysEeGJEqQYVg2nYg" body="return semanticObject instanceof SecondModelNavigation &amp;&amp; ((SecondModelNavigation) semanticObject).isFilter4();"/>
+                <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/severalSecondModelNavigation"/>
+              </subStep>
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_LmgwJfysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationMultiValueWithFilters" staticMethod="true"/>
+              <filters xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_PW874PysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="filter1FirstModelNavigation"/>
+              <filters xsi:type="eef-mapping-filters:JavaBodyStepFilter" xmi:id="_aXa_sPysEeGJEqQYVg2nYg" body="return semanticObject instanceof FirstModelNavigation &amp;&amp; ((FirstModelNavigation) semanticObject).isFilter2();"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HGlsoPwGEeGL44pIBfzmNw" name="FirstModelNavigationSample" views="_cAiOcPvvEeGL44pIBfzmNw">
@@ -1158,6 +1175,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_L0Gicfv3EeGL44pIBfzmNw" name="secondModelNavigationMultiValue2">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UmO80PyvEeGJEqQYVg2nYg" name="secondModelNavigationMultiValueFilter">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

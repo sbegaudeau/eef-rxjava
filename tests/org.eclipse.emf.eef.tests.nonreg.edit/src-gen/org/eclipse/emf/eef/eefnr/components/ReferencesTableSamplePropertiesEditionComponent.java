@@ -213,7 +213,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(),
-			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
+			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

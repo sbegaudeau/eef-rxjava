@@ -65,6 +65,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Text secondModelNavigationMultiValue;
 	protected Text secondModelNavigationSingleValue2;
 	protected Text secondModelNavigationMultiValue2;
+	protected Text secondModelNavigationMultiValueFilter;
 
 
 
@@ -110,6 +111,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue);
 		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2);
 		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2);
+		propertiesStep.addStep(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter);
 		
 		
 		composer = new PartComposer(smartNavigationSampleStep) {
@@ -139,6 +141,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 				}
 				if (key == NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2) {
 					return createSecondModelNavigationMultiValue2Text(parent);
+				}
+				if (key == NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter) {
+					return createSecondModelNavigationMultiValueFilterText(parent);
 				}
 				return parent;
 			}
@@ -483,6 +488,52 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
+	
+	protected Composite createSecondModelNavigationMultiValueFilterText(Composite parent) {
+		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueFilterLabel);
+		secondModelNavigationMultiValueFilter = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData secondModelNavigationMultiValueFilterData = new GridData(GridData.FILL_HORIZONTAL);
+		secondModelNavigationMultiValueFilter.setLayoutData(secondModelNavigationMultiValueFilterData);
+		secondModelNavigationMultiValueFilter.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmartNavigationSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, secondModelNavigationMultiValueFilter.getText()));
+			}
+
+		});
+		secondModelNavigationMultiValueFilter.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SmartNavigationSamplePropertiesEditionPartImpl.this, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, secondModelNavigationMultiValueFilter.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(secondModelNavigationMultiValueFilter, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter);
+		EditingUtils.setEEFtype(secondModelNavigationMultiValueFilter, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -661,6 +712,30 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 			secondModelNavigationMultiValue2.setText(newValue);
 		} else {
 			secondModelNavigationMultiValue2.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SmartNavigationSamplePropertiesEditionPart#getSecondModelNavigationMultiValueFilter()
+	 * 
+	 */
+	public String getSecondModelNavigationMultiValueFilter() {
+		return secondModelNavigationMultiValueFilter.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.navigation.parts.SmartNavigationSamplePropertiesEditionPart#setSecondModelNavigationMultiValueFilter(String newValue)
+	 * 
+	 */
+	public void setSecondModelNavigationMultiValueFilter(String newValue) {
+		if (newValue != null) {
+			secondModelNavigationMultiValueFilter.setText(newValue);
+		} else {
+			secondModelNavigationMultiValueFilter.setText(""); //$NON-NLS-1$
 		}
 	}
 

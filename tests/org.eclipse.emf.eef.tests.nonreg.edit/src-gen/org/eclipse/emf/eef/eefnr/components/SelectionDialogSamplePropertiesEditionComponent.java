@@ -156,7 +156,7 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty(),
-			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty());
+			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

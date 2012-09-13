@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
 import org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation;
+import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.FirstNavigationSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
@@ -147,7 +148,7 @@ public class FirstModelNavigationSamplePropertiesEditionComponent extends Single
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+			EefnrPackage.eINSTANCE.getAbstractSample_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 

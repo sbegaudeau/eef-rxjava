@@ -145,7 +145,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty(),
-			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty());
+			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

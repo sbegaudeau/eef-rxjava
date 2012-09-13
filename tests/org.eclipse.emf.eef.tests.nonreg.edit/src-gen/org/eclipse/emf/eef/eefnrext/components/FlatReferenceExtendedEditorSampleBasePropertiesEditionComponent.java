@@ -166,7 +166,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample(),
-			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample());
+			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample()		);
 		return new NotificationFilter[] {filter,};
 	}
 

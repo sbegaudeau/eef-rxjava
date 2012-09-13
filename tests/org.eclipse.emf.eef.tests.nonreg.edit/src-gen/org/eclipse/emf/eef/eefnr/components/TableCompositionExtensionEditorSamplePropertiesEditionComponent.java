@@ -237,7 +237,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionRequiredProperty(),
-			EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty());
+			EefnrPackage.eINSTANCE.getTableCompositionExtensionEditorSample_TablecompositionOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

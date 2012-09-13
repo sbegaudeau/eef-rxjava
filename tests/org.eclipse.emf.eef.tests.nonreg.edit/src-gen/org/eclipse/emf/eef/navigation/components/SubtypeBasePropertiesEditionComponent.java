@@ -381,7 +381,7 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 			NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForEObjectFlatComboViewer(),
 			NavigationPackage.eINSTANCE.getSingleReferencer_SingleContainmentForAdvancedEObjectFlatComboViewer(),
 			NavigationPackage.eINSTANCE.getSingleReferencer_SingleReferenceForAdvancedEObjectFlatComboViewer(),
-			NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement());
+			NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement()		);
 		return new NotificationFilter[] {filter,};
 	}
 

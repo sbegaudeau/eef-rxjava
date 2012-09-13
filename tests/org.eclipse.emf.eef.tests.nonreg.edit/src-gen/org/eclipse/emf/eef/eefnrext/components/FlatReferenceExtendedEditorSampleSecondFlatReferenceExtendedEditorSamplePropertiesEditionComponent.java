@@ -156,7 +156,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo(),
-			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size());
+			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size()		);
 		return new NotificationFilter[] {filter,};
 	}
 

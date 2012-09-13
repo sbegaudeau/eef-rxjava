@@ -280,6 +280,104 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 	.build();
 	
 	/**
+	 * Settings for secondMNMultiValueWithFirstMNMultiValueWithFilter editor
+	 */
+	protected EEFEditorSettingsImpl secondMNMultiValueWithFirstMNMultiValueWithFilterSettings = (EEFEditorSettingsImpl) EEFEditorSettingsBuilder.create(semanticObject, EefnrPackage.eINSTANCE.getAbstractSample_Name())
+	.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation())
+	.index(0)
+	.init(new EEFInitializer() {
+	
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFInit#init(org.eclipse.emf.ecore.EObject)
+		*/
+		@Override
+		protected EObject init(EObject semanticObject) {
+			return org.eclipse.emf.eef.eefnr.utils.Utils.initFirstModelNavigationMultiValueWithFilters(semanticObject);
+		}
+	
+	})
+	.filter(new EEFFilter() {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter#select(org.eclipse.emf.ecore.EObject)
+		*/
+		@Override
+		protected boolean select(EObject semanticObject) {
+			return new org.eclipse.emf.eef.eefnr.utils.Utils().filter1FirstModelNavigation(semanticObject);
+		}
+	
+	})
+	.filter(new EEFFilter() {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter#select(org.eclipse.emf.ecore.EObject)
+		*/
+		@Override
+		protected boolean select(EObject semanticObject) {
+	return semanticObject instanceof FirstModelNavigation && ((FirstModelNavigation) semanticObject).isFilter2();
+		}
+	
+	})
+	.build())
+	.nextStep(NavigationStepBuilder.create(NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation())
+	.index(0)
+	.init(new EEFInitializer() {
+	
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFInit#init(org.eclipse.emf.ecore.EObject)
+		*/
+		@Override
+		protected EObject init(EObject semanticObject) {
+	if (semanticObject instanceof FirstModelNavigation) {
+	SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
+	((FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((SecondModelNavigation) result);
+	result.setFilter3(true);
+	result.setFilter4(true);
+	result.setName("SSM multi with filters");
+	return result;
+	}
+	return null;
+		}
+	
+	})
+	.filter(new EEFFilter() {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter#select(org.eclipse.emf.ecore.EObject)
+		*/
+		@Override
+		protected boolean select(EObject semanticObject) {
+			return org.eclipse.emf.eef.eefnr.utils.Utils.filter3FirstModelNavigation(semanticObject);
+		}
+	
+	})
+	.filter(new EEFFilter() {
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter#select(org.eclipse.emf.ecore.EObject)
+		*/
+		@Override
+		protected boolean select(EObject semanticObject) {
+	return semanticObject instanceof SecondModelNavigation && ((SecondModelNavigation) semanticObject).isFilter4();
+		}
+	
+	})
+	.build())
+	.build();
+	
+	/**
 	 * Default constructor
 	 * 
 	 */
@@ -325,7 +423,11 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 			if (secondMNMultiValueWithFirstMNMultiValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2))
 		smartNavigationSamplePart.setSecondModelNavigationMultiValue2(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNMultiValueSettings.getValue()));
 	
+			if (secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter))
+		smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue()));
+	
 			// init filters
+			
 			
 			
 			
@@ -340,6 +442,7 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -372,6 +475,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		}
 		if (event.getAffectedEditor() == NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2) {
 			return (secondMNMultiValueWithFirstMNMultiValueSettings.getValue() == null) ? (event.getNewValue() != null) : (!secondMNMultiValueWithFirstMNMultiValueSettings.getValue().equals(event.getNewValue()));
+		}
+		if (event.getAffectedEditor() == NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter) {
+			return (secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue() == null) ? (event.getNewValue() != null) : (!secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue().equals(event.getNewValue()));
 		}
 		return super.shouldProcess(event);
 	}	
@@ -415,6 +521,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2 == event.getAffectedEditor()) {
 			secondMNMultiValueWithFirstMNMultiValueSettings.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter == event.getAffectedEditor()) {
+			secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
 	}
 
 	/**
@@ -431,46 +540,53 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 			smartNavigationSamplePart.setName("");
 		}
 	}
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue)) {
+			if (!(msg.getNewValue() instanceof EObject) && firstModelNavigationSingleValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setFirstModelNavigationSingleValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {
 			smartNavigationSamplePart.setFirstModelNavigationSingleValue("");
 		}
 	}
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue)) {
+			if (!(msg.getNewValue() instanceof EObject) && firstModelNavigationMultiValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setFirstModelNavigationMultiValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {
 			smartNavigationSamplePart.setFirstModelNavigationMultiValue("");
 		}
 	}
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue)) {
+			if (!(msg.getNewValue() instanceof EObject) && secondMNSingleValueWithFirstMNSingleValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setSecondModelNavigationSingleValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {
 			smartNavigationSamplePart.setSecondModelNavigationSingleValue("");
 		}
 	}
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue)) {
+			if (!(msg.getNewValue() instanceof EObject) && secondMNSingleValueWithFirstMNMultiValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setSecondModelNavigationMultiValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {
 			smartNavigationSamplePart.setSecondModelNavigationMultiValue("");
 		}
 	}
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2)) {
+			if (!(msg.getNewValue() instanceof EObject) && secondMNMultiValueWithFirstMNSingleValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setSecondModelNavigationSingleValue2(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {
 			smartNavigationSamplePart.setSecondModelNavigationSingleValue2("");
 		}
 	}
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2)) {
+			if (!(msg.getNewValue() instanceof EObject) && secondMNMultiValueWithFirstMNMultiValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setSecondModelNavigationMultiValue2(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {
 			smartNavigationSamplePart.setSecondModelNavigationMultiValue2("");
+		}
+	}
+			if (!(msg.getNewValue() instanceof EObject) && secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter)) {
+		if (msg.getNewValue() != null) {
+			smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+		} else {
+			smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter("");
 		}
 	}
 			
@@ -487,11 +603,24 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation2(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation2(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation(),
+			NavigationPackage.eINSTANCE.getFirstModelNavigation_SecondModelNavigation(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation(),
+			NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
-			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation(),
+			NavigationPackage.eINSTANCE.getFirstModelNavigation_SecondModelNavigation(),
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation(),
+			NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation(),
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation(),
+			NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -549,6 +678,13 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 					}
 					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2 == event.getAffectedEditor()) {
+						Object newValue = event.getNewValue();
+						if (newValue instanceof String) {
+							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+						}
+						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+					}
+					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter == event.getAffectedEditor()) {
 						Object newValue = event.getNewValue();
 						if (newValue instanceof String) {
 							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);

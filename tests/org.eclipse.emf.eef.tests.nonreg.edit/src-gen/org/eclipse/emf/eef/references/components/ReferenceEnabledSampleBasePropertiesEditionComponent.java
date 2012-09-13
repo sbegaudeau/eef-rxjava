@@ -169,7 +169,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference());
+			ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference()		);
 		return new NotificationFilter[] {filter,};
 	}
 

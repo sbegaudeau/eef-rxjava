@@ -56,6 +56,18 @@ public class Utils {
 		return null;
 	}
 	
+	public static FirstModelNavigation initFirstModelNavigationMultiValueWithFilters(EObject semanticObject) {
+		if (semanticObject instanceof SmartModelNavigationSample) {
+			FirstModelNavigation result = NavigationFactory.eINSTANCE.createFirstModelNavigation();
+			((SmartModelNavigationSample) semanticObject).getSeveralFirstModelNavigation().add(result);
+			result.setName("FSM multi with filters");
+			result.setFilter1(true);
+			result.setFilter2(true);
+			return result;
+		}
+		return null;
+	}
+	
 	public SecondModelNavigation initSecondModelNavigationSingleValue(EObject semanticObject) {
 		if (semanticObject instanceof FirstModelNavigation) {
 			SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
@@ -84,7 +96,7 @@ public class Utils {
 		return semanticElement instanceof FirstModelNavigation && ((FirstModelNavigation) semanticElement).isFilter2();
 	}
 	
-	public boolean filter3FirstModelNavigation(EObject semanticElement) {
+	public static boolean filter3FirstModelNavigation(EObject semanticElement) {
 		return semanticElement instanceof SecondModelNavigation && ((SecondModelNavigation) semanticElement).isFilter3();
 	}
 	

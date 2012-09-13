@@ -135,7 +135,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
-			ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled());
+			ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled()		);
 		return new NotificationFilter[] {filter,};
 	}
 

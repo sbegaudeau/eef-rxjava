@@ -158,7 +158,7 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerRequiredProperty(),
-			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty());
+			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

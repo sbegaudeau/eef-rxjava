@@ -157,7 +157,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty(),
-			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty());
+			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

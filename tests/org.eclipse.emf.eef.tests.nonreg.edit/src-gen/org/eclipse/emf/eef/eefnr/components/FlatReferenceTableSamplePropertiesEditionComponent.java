@@ -198,7 +198,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(),
-			EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
+			EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

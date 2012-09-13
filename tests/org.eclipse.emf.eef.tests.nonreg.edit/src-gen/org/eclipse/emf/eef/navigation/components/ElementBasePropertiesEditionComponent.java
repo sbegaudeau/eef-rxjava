@@ -135,7 +135,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
-			NavigationPackage.eINSTANCE.getElement_Visible());
+			NavigationPackage.eINSTANCE.getElement_Visible()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -147,7 +147,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty(),
-			EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty());
+			EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

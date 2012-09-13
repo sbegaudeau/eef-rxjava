@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2;
+import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceTargetSample2PropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
@@ -136,7 +137,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionComponent extends Si
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+			EefnrPackage.eINSTANCE.getAbstractSample_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 

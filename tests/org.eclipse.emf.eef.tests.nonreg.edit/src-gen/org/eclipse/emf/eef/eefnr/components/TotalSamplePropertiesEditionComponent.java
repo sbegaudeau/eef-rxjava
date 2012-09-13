@@ -1005,7 +1005,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionRequiredProperty(),
 			EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
-			EefnrPackage.eINSTANCE.getAbstractSample_Name());
+			EefnrPackage.eINSTANCE.getAbstractSample_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 

@@ -155,7 +155,7 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty(),
-			EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty());
+			EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

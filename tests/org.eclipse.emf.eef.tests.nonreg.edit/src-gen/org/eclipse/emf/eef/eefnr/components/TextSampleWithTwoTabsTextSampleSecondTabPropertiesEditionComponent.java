@@ -155,7 +155,7 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab(),
-			EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab());
+			EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab()		);
 		return new NotificationFilter[] {filter,};
 	}
 

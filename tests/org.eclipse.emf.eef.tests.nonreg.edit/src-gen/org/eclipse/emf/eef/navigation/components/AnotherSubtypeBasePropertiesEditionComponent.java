@@ -134,7 +134,7 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			NavigationPackage.eINSTANCE.getSubtype_SpecialisedElement(),
-			NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation());
+			NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation()		);
 		return new NotificationFilter[] {filter,};
 	}
 
