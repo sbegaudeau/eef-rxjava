@@ -98,7 +98,7 @@ public class EEFEditorSettingsBuilder  {
 		 */
 		public Object getValue() {
 			EObject significantObject = getSignificantObject();
-			if (significantObject != null) {
+			if (significantObject != null && significantObject.eResource() != null) {
 				return significantObject.eGet(feature);
 			} else {
 				return null;
@@ -279,7 +279,9 @@ public class EEFEditorSettingsBuilder  {
 		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#isAffectingEvent(org.eclipse.emf.common.notify.Notification)
 		 */
 		public boolean isAffectingEvent(Notification notification) {
-			if (notification.getFeature() instanceof EStructuralFeature && isAffectingFeature((EStructuralFeature) notification.getFeature()) && getSignificantObject()!= null && getSignificantObject().equals(notification.getNotifier())) {
+			if (
+					(notification.getFeature() instanceof EStructuralFeature && isAffectingFeature((EStructuralFeature) notification.getFeature())) 
+					|| (getSignificantObject()!= null && getSignificantObject().equals(notification.getNotifier()))) {
 				return true;
 			}
 			return false;
