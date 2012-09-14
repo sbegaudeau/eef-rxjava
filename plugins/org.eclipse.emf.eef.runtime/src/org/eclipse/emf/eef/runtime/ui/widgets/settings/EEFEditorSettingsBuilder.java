@@ -141,18 +141,15 @@ public class EEFEditorSettingsBuilder  {
 								}
 							}
 							
-							// no filter and no discriminator -> get step.reference
-						} else {
-								result2 = result;
-						}
+						} 
 						
 						// Use init if result.isEmpty()
-						if (result2.isEmpty()) {
+						if (result.isEmpty()) {
 							return null;
 						}
 						
-						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result2.size()) {
-							current = result2.get(step.getIndex());
+						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result.size()) {
+							current = result.get(step.getIndex());
 							// Use init if current == null
 							if (current == null) {
 								return null;
