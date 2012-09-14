@@ -129,7 +129,7 @@ public class SecondModelNavigationSamplePropertiesEditionComponent extends Singl
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			SecondNavigationSamplePropertiesEditionPart secondNavigationSamplePart = (SecondNavigationSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && secondNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SecondNavigationSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && secondNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SecondNavigationSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					secondNavigationSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

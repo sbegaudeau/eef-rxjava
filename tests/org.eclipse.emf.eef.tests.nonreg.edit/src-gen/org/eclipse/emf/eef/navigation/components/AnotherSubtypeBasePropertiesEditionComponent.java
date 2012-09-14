@@ -118,7 +118,7 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			AnotherSubtypePropertiesEditionPart basePart = (AnotherSubtypePropertiesEditionPart)editingPart;
-			if (NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement))
+			if (NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement))
 				basePart.setAnotherSpecialisationElement((Boolean)msg.getNewValue());
 			
 			

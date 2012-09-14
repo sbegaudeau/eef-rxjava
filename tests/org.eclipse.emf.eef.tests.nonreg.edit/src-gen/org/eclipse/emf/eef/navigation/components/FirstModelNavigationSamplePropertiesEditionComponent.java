@@ -129,7 +129,7 @@ public class FirstModelNavigationSamplePropertiesEditionComponent extends Single
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			FirstNavigationSamplePropertiesEditionPart firstNavigationSamplePart = (FirstNavigationSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && firstNavigationSamplePart != null && isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && firstNavigationSamplePart != null && isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					firstNavigationSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

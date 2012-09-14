@@ -118,7 +118,7 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			TableCompositionTargetExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionTargetExtensionEditorSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
