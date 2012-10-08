@@ -210,6 +210,11 @@ public class SequenceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
+				 EEFActionsFactory.eINSTANCE.createUnsetAttribute()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
 				 EEFActionsFactory.eINSTANCE.createUnset()));
 
 		newChildDescriptors.add
@@ -231,6 +236,11 @@ public class SequenceItemProvider
 			(createChildParameter
 				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
 				 EEFActionsFactory.eINSTANCE.createSetReference()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
+				 EEFActionsFactory.eINSTANCE.createUnsetReference()));
 
 		newChildDescriptors.add
 			(createChildParameter

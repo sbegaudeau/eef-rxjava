@@ -6,13 +6,14 @@ Bundle-Version: 1.2.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,
- org.eclipse.emf.eef.runtime.tests,
- org.eclipse.emf.examples.eef.edit,
  org.eclipse.emf.eef.modelingbot.editor,
  org.eclipse.swtbot.go,
  org.apache.log4j,
- org.eclipse.emf.examples.eef.editor
+ org.eclipse.emf.examples.eef.edit,
+ org.eclipse.emf.examples.eef.editor,
+ org.eclipse.emf.eef.tests.nonreg.edit,
+ org.eclipse.emf.eef.tests.nonreg.editor
 Eclipse-RegisterBuddy: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.emf.samples.conference.tests.junit
+Export-Package: org.eclipse.emf.samples.tests.junit

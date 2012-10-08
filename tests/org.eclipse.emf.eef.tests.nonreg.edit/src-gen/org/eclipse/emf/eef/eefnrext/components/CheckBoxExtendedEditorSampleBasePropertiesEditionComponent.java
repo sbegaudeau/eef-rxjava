@@ -120,7 +120,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
-			if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample))
+			if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample))
 				basePart.setCheckboxEditorSample((Boolean)msg.getNewValue());
 			
 			

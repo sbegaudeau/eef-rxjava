@@ -10,13 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.modelingBot.batch;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -29,14 +30,20 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
+import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
+import org.eclipse.emf.eef.modelingBot.Processing;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
+import org.eclipse.emf.eef.modelingBot.Wizard;
+import org.eclipse.emf.eef.modelingBot.helper.EEFModelingBotHelper;
+import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
 import org.eclipse.emf.eef.modelingBot.interpreter.EEFInterpreter;
 import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 
@@ -190,9 +197,13 @@ public class BatchModelingBot implements IModelingBot {
 	public EObject add(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature, EClass type) {
 		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull("the eObjectFromReferenceableEObject is null", eObjectFromReferenceableEObject);
 		activeResource = eObjectFromReferenceableEObject.eResource();
-		final EObject value = EcoreUtil.create(type);
-		final Command command = AddCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature, value);
+		EClass mappedType = EMFHelper.map(EMFHelper.findInRegistry(type.getEPackage()), type);
+		EStructuralFeature mappedContainingFeature = EMFHelper.map(EMFHelper.findInRegistry(type.getEPackage()), eContainingFeature);
+		final EObject value = EcoreUtil.create(mappedType);
+		final Command command = AddCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedContainingFeature, value);
+		assertNotNull("The command is null", command);
 		editingDomain.getCommandStack().execute(command);
 		return value;
 	}
@@ -212,19 +223,30 @@ public class BatchModelingBot implements IModelingBot {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setAttribute(org.eclipse.emf.eef.components.PropertiesEditionElement,
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
 	 *      java.lang.String)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, String value) {
+	@SuppressWarnings("unchecked")
+	public void setAttribute(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, Collection<String> values) {
 		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
-		if (eContainingFeature instanceof EAttribute) {
+		EStructuralFeature mappedFeature = EMFHelper.map(EMFHelper.findInRegistry(((EClass)eContainingFeature.eContainer()).getEPackage()), eContainingFeature);
+		if (mappedFeature instanceof EAttribute) {
 			activeResource = eObjectFromReferenceableEObject.eResource();
-			final Object createFromString = EcoreUtil.createFromString(((EAttribute)eContainingFeature).getEAttributeType(),
-					value);
-			final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature,
+			Object createFromString = null;
+			if (eContainingFeature.isMany()) {
+				createFromString = new ArrayList<Object>();
+				for (String value : values) {
+					((ArrayList<Object>) createFromString).add(EcoreUtil.createFromString(((EAttribute)mappedFeature).getEAttributeType(), value));
+				}
+			} else {
+				createFromString = EcoreUtil.createFromString(((EAttribute)mappedFeature).getEAttributeType(),
+						values.iterator().next());
+			}
+			final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature,
 					createFromString);
+			assertNotNull("The command is null", command);
 			editingDomain.getCommandStack().execute(command);
 		} else {
 			fail("Cannot set without a eContainingFeature attribute");
@@ -238,13 +260,24 @@ public class BatchModelingBot implements IModelingBot {
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, ReferenceableObject value) {
+	@SuppressWarnings("unchecked")
+	public void setReference(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, Collection<ReferenceableObject> values) {
 		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
-		if (eContainingFeature instanceof EReference) {
+		EStructuralFeature mappedFeature = EMFHelper.map(EMFHelper.findInRegistry(((EClass)eContainingFeature.eContainer()).getEPackage()), eContainingFeature);
+		if (mappedFeature instanceof EReference) {
 			activeResource = eObjectFromReferenceableEObject.eResource();
-			final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, eContainingFeature,
-					interpreter.getEObjectFromReferenceableEObject(value));
+			Object refValue = null;
+			if (eContainingFeature.isMany()) {
+				refValue = new ArrayList<EObject>();
+				for (ReferenceableObject ref: values) {
+					((ArrayList<EObject>) refValue).add(interpreter.getEObjectFromReferenceableEObject(ref));
+				}
+			} else {
+				refValue = interpreter.getEObjectFromReferenceableEObject(values.iterator().next());
+			}
+			final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, refValue);
+			assertNotNull("The command is null", command);
 			editingDomain.getCommandStack().execute(command);
 		} else {
 			fail("Cannot set without a eContainingFeature reference");
@@ -259,7 +292,23 @@ public class BatchModelingBot implements IModelingBot {
 	 */
 	public void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature) {
-		// TODO Auto-generated method stub
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		EStructuralFeature mappedFeature = EMFHelper.map(EMFHelper.findInRegistry(((EClass)eContainingFeature.eContainer()).getEPackage()), eContainingFeature);
+		activeResource = eObjectFromReferenceableEObject.eResource();
+		if (mappedFeature instanceof EStructuralFeature) {
+			if (mappedFeature.isMany()) {
+				Collection<Object> valuesToRemove = RemoveCommand.getOwnerList(eObjectFromReferenceableEObject, mappedFeature);
+				final Command command = RemoveCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, valuesToRemove);
+				assertNotNull("The command is null", command);
+				editingDomain.getCommandStack().execute(command);
+			} else {
+				final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, null);
+				assertNotNull("The command is null", command);
+				editingDomain.getCommandStack().execute(command);
+			}
+		} else {
+			fail("Cannot unset without a eContainingFeature attribute/reference");
+		}
 
 	}
 
@@ -273,7 +322,8 @@ public class BatchModelingBot implements IModelingBot {
 		// try {
 		final URI uri = URI.createPlatformResourceURI(path + "/" + modelName, true);
 		final Resource activeResource = editingDomain.getResourceSet().createResource(uri);
-		final EObject create = EcoreUtil.create(eClass);
+		EClass mappedType = EMFHelper.map(EMFHelper.findInRegistry(eClass.getEPackage()), eClass);
+		final EObject create = EcoreUtil.create(mappedType);
 		activeResource.getContents().add(create);
 		// activeResource.save(Collections.EMPTY_MAP);
 		this.activeResource = activeResource;
@@ -284,23 +334,26 @@ public class BatchModelingBot implements IModelingBot {
 		// return null;
 	}
 
-	public void cancel() {
-		// TODO Auto-generated method stub
-
+	public void cancel(Processing processing) {
+		if (processing instanceof Wizard) {
+			int numberOfActionsToCancel = EEFModelingBotHelper.getNumberOfActionToUndo(processing);
+			for (int i = 0; i < numberOfActionsToCancel; i++) {
+				editingDomain.getCommandStack().undo();;
+			}
+		} else {
+			editingDomain.getCommandStack().undo();
+		}
 	}
 
 	public void setSequenceType(SequenceType detailsPage) {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void validateBatchEditing() {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void check() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -310,6 +363,107 @@ public class BatchModelingBot implements IModelingBot {
 
 	public IModelingBotInterpreter getModelingBotInterpreter() {
 		return interpreter;
+	}
+
+	public EObject add(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObjectContainer,
+			ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, EClass type) {
+		if (referenceableObjectContainer == null) {
+			return add(propertiesEditionElement, referenceableObject, eContainingFeature, type);
+		}
+		final EObject container = interpreter.getEObjectFromReferenceableEObject(referenceableObjectContainer);
+		assertNotNull("No container is found.", container);
+		activeResource = container.eResource();
+		EClass mappedType = EMFHelper.map(EMFHelper.findInRegistry(type.getEPackage()), type);
+		EStructuralFeature mappedContainingFeature = EMFHelper.map(EMFHelper.findInRegistry(type.getEPackage()), eContainingFeature);
+		final EObject value = EcoreUtil.create(mappedType);
+		final Command command = AddCommand.create(editingDomain, container, mappedContainingFeature, value);
+		assertNotNull("The command is null", command);
+		editingDomain.getCommandStack().execute(command);
+		return value;
+	}
+
+	public void unsetAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, Collection<String> values) {
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		EStructuralFeature mappedFeature = EMFHelper.map(EMFHelper.findInRegistry(((EClass)eContainingFeature.eContainer()).getEPackage()), eContainingFeature);
+		if (mappedFeature instanceof EAttribute) {
+			activeResource = eObjectFromReferenceableEObject.eResource();
+			if (mappedFeature.isMany()) {
+				final Command command = RemoveCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, values);
+				assertNotNull("The command is null", command);
+				editingDomain.getCommandStack().execute(command);
+			} else {
+				final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, null);
+				assertNotNull("The command is null", command);
+				editingDomain.getCommandStack().execute(command);
+			}
+		} else {
+			fail("Cannot unset without a eContainingFeature attribute");
+		}
+		
+	}
+	
+	public void unsetReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, Collection<ReferenceableObject> values) {
+		final EObject eObjectFromReferenceableEObject = interpreter.getEObjectFromReferenceableEObject(referenceableObject);
+		EStructuralFeature mappedFeature = EMFHelper.map(EMFHelper.findInRegistry(((EClass)eContainingFeature.eContainer()).getEPackage()), eContainingFeature);
+		if (mappedFeature instanceof EReference) {
+			activeResource = eObjectFromReferenceableEObject.eResource();
+			if (mappedFeature.isMany()) {
+				Collection<EObject> valuesToUnset = new ArrayList<EObject>();
+				for (ReferenceableObject value : values) {
+					valuesToUnset.add(interpreter.getEObjectFromReferenceableEObject(value));
+				}
+				final Command command = RemoveCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, valuesToUnset);
+				assertNotNull("The command is null", command);
+				editingDomain.getCommandStack().execute(command);
+			} else {
+				final Command command = SetCommand.create(editingDomain, eObjectFromReferenceableEObject, mappedFeature, null);
+				assertNotNull("The command is null", command);
+				editingDomain.getCommandStack().execute(command);
+			}
+		} else {
+			fail("Cannot unset without a eContainingFeature reference");
+		}
+		
+	}
+
+	public void undo(Action action) {
+		Processing precedingEditActionOrSequence = EEFModelingBotHelper.getPrecedingEditActionOrSequence(action);
+		if (EEFModelingBotHelper.isWizard(precedingEditActionOrSequence)) {
+			int numberOfActionToUndo = EEFModelingBotHelper.getNumberOfActionToUndo(precedingEditActionOrSequence);
+			for (int i = 0; i < numberOfActionToUndo; i++) {
+				editingDomain.getCommandStack().undo();
+			}
+		} else {
+			editingDomain.getCommandStack().undo();
+		}
+		
+	}
+
+	public void redo(Action action) {
+		Processing precedingEditActionOrSequence = EEFModelingBotHelper.getPrecedingEditActionOrSequence(action);
+		if (EEFModelingBotHelper.isWizard(precedingEditActionOrSequence)) {
+			int numberOfActionToRedo = EEFModelingBotHelper.getNumberOfActionToUndo(precedingEditActionOrSequence);
+			for (int i = 0; i < numberOfActionToRedo; i++) {
+				editingDomain.getCommandStack().redo();
+			}
+		} else {
+			editingDomain.getCommandStack().redo();
+		}
+		
+	}
+
+	public void initWizard(Wizard wizard) {
+		// do nothing
+	}
+
+	public void closeWizard(Wizard wizard) {
+		// do nothing
 	}
 
 }

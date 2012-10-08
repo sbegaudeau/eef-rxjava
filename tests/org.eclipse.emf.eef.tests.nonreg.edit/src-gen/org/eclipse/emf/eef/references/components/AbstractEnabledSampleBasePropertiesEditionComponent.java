@@ -119,7 +119,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
-			if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled))
+			if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && basePart != null && isAccessible(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled))
 				basePart.setEnabled((Boolean)msg.getNewValue());
 			
 			

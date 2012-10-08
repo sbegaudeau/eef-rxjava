@@ -101,6 +101,10 @@ public class EEFActionsAdapterFactory extends AdapterFactoryImpl {
 				return createSetAttributeAdapter();
 			}
 			@Override
+			public Adapter caseUnsetAttribute(UnsetAttribute object) {
+				return createUnsetAttributeAdapter();
+			}
+			@Override
 			public Adapter caseUnset(Unset object) {
 				return createUnsetAdapter();
 			}
@@ -119,6 +123,10 @@ public class EEFActionsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSetReference(SetReference object) {
 				return createSetReferenceAdapter();
+			}
+			@Override
+			public Adapter caseUnsetReference(UnsetReference object) {
+				return createUnsetReferenceAdapter();
 			}
 			@Override
 			public Adapter caseDocumentedElement(DocumentedElement object) {
@@ -227,6 +235,20 @@ public class EEFActionsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.UnsetAttribute <em>Unset Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.UnsetAttribute
+	 * @generated
+	 */
+	public Adapter createUnsetAttributeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Unset <em>Unset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -293,6 +315,20 @@ public class EEFActionsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSetReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.UnsetReference <em>Unset Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.UnsetReference
+	 * @generated
+	 */
+	public Adapter createUnsetReferenceAdapter() {
 		return null;
 	}
 
