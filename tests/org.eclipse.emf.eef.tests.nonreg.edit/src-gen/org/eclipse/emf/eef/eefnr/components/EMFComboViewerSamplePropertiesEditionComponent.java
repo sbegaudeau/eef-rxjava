@@ -77,7 +77,11 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 			if (isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty)) {
 				basePart.initEmfcomboviewerOptionalProperty(EEFUtils.choiceOfValues(eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty()), eMFComboViewerSample.getEmfcomboviewerOptionalProperty());
 			}
+			if (isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty)) {
+				basePart.initEmfcomboviewerROProperty(EEFUtils.choiceOfValues(eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty()), eMFComboViewerSample.getEmfcomboviewerROProperty());
+			}
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -87,6 +91,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -102,6 +107,9 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		}
 		if (editorKey == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty) {
+			return EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -128,11 +136,14 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty))
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty))
 				basePart.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty))
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty))
 				basePart.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty))
+				basePart.setEmfcomboviewerROProperty((ENUM_SAMPLE)msg.getNewValue());
 			
 			
 		}
@@ -147,7 +158,8 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(),
-			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(),
+			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -185,6 +197,13 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

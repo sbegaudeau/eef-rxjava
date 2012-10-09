@@ -199,11 +199,6 @@ public class RootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
-				 EefnrFactory.eINSTANCE.createComboSample()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 EefnrFactory.eINSTANCE.createMultiValuedEditorSample()));
 
 		newChildDescriptors.add

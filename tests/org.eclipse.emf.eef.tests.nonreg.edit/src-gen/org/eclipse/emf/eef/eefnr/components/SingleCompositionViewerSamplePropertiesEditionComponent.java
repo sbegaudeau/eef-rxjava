@@ -71,7 +71,9 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
+			//FIXME: Sorry this widget is deprecated for this version.
 			// init filters
+			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
@@ -83,6 +85,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -106,6 +109,9 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		}
 		if (editorKey == EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleROProperty) {
+			return EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -142,6 +148,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
+			//FIXME: Sorry this widget is deprecated for this version.
 			
 		}
 	}
@@ -157,7 +164,8 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty(),
 			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty(),
 			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty(),
-			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

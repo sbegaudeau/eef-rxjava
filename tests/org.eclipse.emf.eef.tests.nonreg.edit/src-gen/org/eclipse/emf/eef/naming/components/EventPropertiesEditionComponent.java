@@ -118,7 +118,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(NamingViewsRepository.Event.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NamingViewsRepository.Event.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

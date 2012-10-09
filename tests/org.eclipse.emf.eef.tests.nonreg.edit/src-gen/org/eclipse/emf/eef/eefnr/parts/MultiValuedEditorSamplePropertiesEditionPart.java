@@ -75,6 +75,32 @@ public interface MultiValuedEditorSamplePropertiesEditionPart {
 	public void removeToMultivaluededitorOptionalProperty(Object newValue);
 
 
+	/**
+	 * @return the multivaluededitorROProperty
+	 * 
+	 */
+	public EList getMultivaluededitorROProperty();
+
+	/**
+	 * Defines a new multivaluededitorROProperty
+	 * @param newValue the new multivaluededitorROProperty to set
+	 * 
+	 */
+	public void setMultivaluededitorROProperty(EList newValue);
+
+	/**
+	 * Add a value to the multivaluededitorROProperty multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToMultivaluededitorROProperty(Object newValue);
+
+	/**
+	 * Remove a value to the multivaluededitorROProperty multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToMultivaluededitorROProperty(Object newValue);
+
+
 
 
 

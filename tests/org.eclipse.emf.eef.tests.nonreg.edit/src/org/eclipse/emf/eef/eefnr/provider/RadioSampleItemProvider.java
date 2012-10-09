@@ -63,6 +63,7 @@ public class RadioSampleItemProvider
 
 			addRadioRequiredPropertyPropertyDescriptor(object);
 			addRadioOptionalPropertyPropertyDescriptor(object);
+			addRadioROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class RadioSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Radio RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRadioROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_RadioSample_radioROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RadioSample_radioROProperty_feature", "_UI_RadioSample_type"),
+				 EefnrPackage.Literals.RADIO_SAMPLE__RADIO_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns RadioSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class RadioSampleItemProvider
 		switch (notification.getFeatureID(RadioSample.class)) {
 			case EefnrPackage.RADIO_SAMPLE__RADIO_REQUIRED_PROPERTY:
 			case EefnrPackage.RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY:
+			case EefnrPackage.RADIO_SAMPLE__RADIO_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

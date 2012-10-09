@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.EMFComboViewerSample#getEmfcomboviewerRequiredProperty <em>Emfcomboviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.EMFComboViewerSample#getEmfcomboviewerOptionalProperty <em>Emfcomboviewer Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.EMFComboViewerSample#getEmfcomboviewerROProperty <em>Emfcomboviewer RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,5 +83,34 @@ public interface EMFComboViewerSample extends AbstractSample {
 	 * @generated
 	 */
 	void setEmfcomboviewerOptionalProperty(ENUM_SAMPLE value);
+
+	/**
+	 * Returns the value of the '<em><b>Emfcomboviewer RO Property</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Emfcomboviewer RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Emfcomboviewer RO Property</em>' attribute.
+	 * @see org.eclipse.emf.eef.eefnr.ENUM_SAMPLE
+	 * @see #setEmfcomboviewerROProperty(ENUM_SAMPLE)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getEMFComboViewerSample_EmfcomboviewerROProperty()
+	 * @model
+	 * @generated
+	 */
+	ENUM_SAMPLE getEmfcomboviewerROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.EMFComboViewerSample#getEmfcomboviewerROProperty <em>Emfcomboviewer RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Emfcomboviewer RO Property</em>' attribute.
+	 * @see org.eclipse.emf.eef.eefnr.ENUM_SAMPLE
+	 * @see #getEmfcomboviewerROProperty()
+	 * @generated
+	 */
+	void setEmfcomboviewerROProperty(ENUM_SAMPLE value);
 
 } // EMFComboViewerSample

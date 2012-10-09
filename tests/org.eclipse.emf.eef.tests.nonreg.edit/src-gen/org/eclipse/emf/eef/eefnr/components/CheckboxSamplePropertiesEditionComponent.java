@@ -75,7 +75,11 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty)) {
 				basePart.setCheckboxOptionalProperty(checkboxSample.isCheckboxOptionalProperty());
 			}
+			if (isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty)) {
+				basePart.setCheckboxROProperty(checkboxSample.isCheckboxROProperty());
+			}
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -85,6 +89,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -100,6 +105,9 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		if (editorKey == EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty) {
+			return EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -126,11 +134,14 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty))
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty))
 				basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty))
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty))
 				basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty))
+				basePart.setCheckboxROProperty((Boolean)msg.getNewValue());
 			
 			
 		}
@@ -145,7 +156,8 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty(),
-			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty(),
+			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -183,6 +195,13 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

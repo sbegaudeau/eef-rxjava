@@ -78,7 +78,12 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 				basePart.initImageviewerOptionalProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerOptionalProperty());
 			}
 			
+			if (imageViewerSample.getImageviewerROProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)) {
+				basePart.initImageviewerROProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerROProperty());
+			}
+			
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -88,6 +93,7 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -103,6 +109,9 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		}
 		if (editorKey == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty) {
+			return EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -145,6 +154,14 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 					basePart.setImageviewerOptionalProperty("");
 				}
 			}
+			if (EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)){
+				if (msg.getNewValue() != null) {
+					basePart.setImageviewerROProperty((String)msg.getNewValue());
+				}
+				else {
+					basePart.setImageviewerROProperty("");
+				}
+			}
 			
 		}
 	}
@@ -158,7 +175,8 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerRequiredProperty(),
-			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty(),
+			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -196,6 +214,13 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

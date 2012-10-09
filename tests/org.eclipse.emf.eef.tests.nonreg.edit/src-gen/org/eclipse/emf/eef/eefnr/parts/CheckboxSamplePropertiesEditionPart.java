@@ -51,6 +51,20 @@ public interface CheckboxSamplePropertiesEditionPart {
 	public void setCheckboxOptionalProperty(Boolean newValue);
 
 
+	/**
+	 * @return the checkboxROProperty
+	 * 
+	 */
+	public Boolean getCheckboxROProperty();
+
+	/**
+	 * Defines a new checkboxROProperty
+	 * @param newValue the new checkboxROProperty to set
+	 * 
+	 */
+	public void setCheckboxROProperty(Boolean newValue);
+
+
 
 
 

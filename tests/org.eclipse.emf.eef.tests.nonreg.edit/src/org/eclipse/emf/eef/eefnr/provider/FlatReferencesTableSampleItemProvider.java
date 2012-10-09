@@ -61,6 +61,7 @@ public class FlatReferencesTableSampleItemProvider
 
 			addFlatreferencestableRequiredPropertyPropertyDescriptor(object);
 			addFlatreferencestableOptionalPropertyPropertyDescriptor(object);
+			addFlatreferencestableROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -101,6 +102,28 @@ public class FlatReferencesTableSampleItemProvider
 				 getString("_UI_FlatReferencesTableSample_flatreferencestableOptionalProperty_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_FlatReferencesTableSample_flatreferencestableOptionalProperty_feature", "_UI_FlatReferencesTableSample_type"),
 				 EefnrPackage.Literals.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Flatreferencestable RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFlatreferencestableROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FlatReferencesTableSample_flatreferencestableROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FlatReferencesTableSample_flatreferencestableROProperty_feature", "_UI_FlatReferencesTableSample_type"),
+				 EefnrPackage.Literals.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY,
 				 true,
 				 false,
 				 true,

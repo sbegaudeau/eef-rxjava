@@ -533,7 +533,7 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			SmartNavigationSamplePropertiesEditionPart smartNavigationSamplePart = (SmartNavigationSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name)) {
 		if (msg.getNewValue() != null) {
 			smartNavigationSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 		} else {

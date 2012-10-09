@@ -24,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.ReferencesTableSampleImpl#getReferencestableRequiredProperty <em>Referencestable Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.ReferencesTableSampleImpl#getReferencestableOptionalProperty <em>Referencestable Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.ReferencesTableSampleImpl#getReferencestableROProperty <em>Referencestable RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +50,16 @@ public class ReferencesTableSampleImpl extends AbstractSampleImpl implements Ref
 	 * @ordered
 	 */
 	protected EList<TotalSample> referencestableOptionalProperty;
+
+	/**
+	 * The cached value of the '{@link #getReferencestableROProperty() <em>Referencestable RO Property</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencestableROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TotalSample> referencestableROProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,6 +109,18 @@ public class ReferencesTableSampleImpl extends AbstractSampleImpl implements Ref
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TotalSample> getReferencestableROProperty() {
+		if (referencestableROProperty == null) {
+			referencestableROProperty = new EObjectResolvingEList<TotalSample>(TotalSample.class, this, EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY);
+		}
+		return referencestableROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -105,6 +128,8 @@ public class ReferencesTableSampleImpl extends AbstractSampleImpl implements Ref
 				return getReferencestableRequiredProperty();
 			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_OPTIONAL_PROPERTY:
 				return getReferencestableOptionalProperty();
+			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY:
+				return getReferencestableROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -126,6 +151,10 @@ public class ReferencesTableSampleImpl extends AbstractSampleImpl implements Ref
 				getReferencestableOptionalProperty().clear();
 				getReferencestableOptionalProperty().addAll((Collection<? extends TotalSample>)newValue);
 				return;
+			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY:
+				getReferencestableROProperty().clear();
+				getReferencestableROProperty().addAll((Collection<? extends TotalSample>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -144,6 +173,9 @@ public class ReferencesTableSampleImpl extends AbstractSampleImpl implements Ref
 			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_OPTIONAL_PROPERTY:
 				getReferencestableOptionalProperty().clear();
 				return;
+			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY:
+				getReferencestableROProperty().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -160,6 +192,8 @@ public class ReferencesTableSampleImpl extends AbstractSampleImpl implements Ref
 				return referencestableRequiredProperty != null && !referencestableRequiredProperty.isEmpty();
 			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_OPTIONAL_PROPERTY:
 				return referencestableOptionalProperty != null && !referencestableOptionalProperty.isEmpty();
+			case EefnrPackage.REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY:
+				return referencestableROProperty != null && !referencestableROProperty.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -61,6 +61,7 @@ public class AdvancedEObjectFlatComboViewerSampleItemProvider
 
 			addAdvancedeobjectflatcomboviewerRequiredPropertyPropertyDescriptor(object);
 			addAdvancedeobjectflatcomboviewerOptionalPropertyPropertyDescriptor(object);
+			addAdvancedeobjectflatcomboviewerROProperyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -101,6 +102,28 @@ public class AdvancedEObjectFlatComboViewerSampleItemProvider
 				 getString("_UI_AdvancedEObjectFlatComboViewerSample_advancedeobjectflatcomboviewerOptionalProperty_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_AdvancedEObjectFlatComboViewerSample_advancedeobjectflatcomboviewerOptionalProperty_feature", "_UI_AdvancedEObjectFlatComboViewerSample_type"),
 				 EefnrPackage.Literals.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Advancedeobjectflatcomboviewer RO Propery feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAdvancedeobjectflatcomboviewerROProperyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AdvancedEObjectFlatComboViewerSample_advancedeobjectflatcomboviewerROPropery_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AdvancedEObjectFlatComboViewerSample_advancedeobjectflatcomboviewerROPropery_feature", "_UI_AdvancedEObjectFlatComboViewerSample_type"),
+				 EefnrPackage.Literals.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY,
 				 true,
 				 false,
 				 true,

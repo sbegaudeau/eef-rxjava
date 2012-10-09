@@ -61,6 +61,11 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 */
 	private EObjectFlatComboSettings eobjectflatcomboviewerOptionalProperySettings;
 	
+	/**
+	 * Settings for eobjectflatcomboviewerROProperty EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings eobjectflatcomboviewerROPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -101,6 +106,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 				// set the button mode
 				basePart.setEobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
 			}
+			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery)) {
+				// init part
+				eobjectflatcomboviewerROPropertySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty());
+				basePart.initEobjectflatcomboviewerROPropery(eobjectflatcomboviewerROPropertySettings);
+				// set the button mode
+				basePart.setEobjectflatcomboviewerROProperyButtonMode(ButtonsModeEnum.BROWSE);
+			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery)) {
 				basePart.addFilterToEobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
@@ -136,6 +148,22 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 				
 				// End of user code
 			}
+			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery)) {
+				basePart.addFilterToEobjectflatcomboviewerROPropery(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
+					}
+					
+				});
+				// Start of user code for additional businessfilters for eobjectflatcomboviewerROProperty
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -143,6 +171,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -158,6 +187,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		}
 		if (editorKey == EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery) {
 			return EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery();
+		}
+		if (editorKey == EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery) {
+			return EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -214,6 +246,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 				basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
 			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery))
 				basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery))
+				basePart.setEobjectflatcomboviewerROPropery((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -227,7 +261,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery(),
-			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery()		);
+			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(),
+			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

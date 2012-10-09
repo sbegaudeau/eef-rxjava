@@ -77,7 +77,11 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty)) {
 				basePart.initRadioOptionalProperty(EEFUtils.choiceOfValues(radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty()), radioSample.getRadioOptionalProperty());
 			}
+			if (isAccessible(EefnrViewsRepository.RadioSample.Properties.radioROProperty)) {
+				basePart.initRadioROProperty(EEFUtils.choiceOfValues(radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty()), radioSample.getRadioROProperty());
+			}
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -87,6 +91,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -102,6 +107,9 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (editorKey == EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.RadioSample.Properties.radioROProperty) {
+			return EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -128,11 +136,14 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty))
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty))
 				basePart.setRadioRequiredProperty((Object)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty))
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty))
 				basePart.setRadioOptionalProperty((Object)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioROProperty))
+				basePart.setRadioROProperty((Object)msg.getNewValue());
 			
 			
 		}
@@ -147,7 +158,8 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty(),
-			EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty(),
+			EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -185,6 +197,13 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.RadioSample.Properties.radioROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

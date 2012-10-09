@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.EMFComboViewerSampleImpl#getEmfcomboviewerRequiredProperty <em>Emfcomboviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.EMFComboViewerSampleImpl#getEmfcomboviewerOptionalProperty <em>Emfcomboviewer Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.EMFComboViewerSampleImpl#getEmfcomboviewerROProperty <em>Emfcomboviewer RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +68,26 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 	 * @ordered
 	 */
 	protected ENUM_SAMPLE emfcomboviewerOptionalProperty = EMFCOMBOVIEWER_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEmfcomboviewerROProperty() <em>Emfcomboviewer RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEmfcomboviewerROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ENUM_SAMPLE EMFCOMBOVIEWER_RO_PROPERTY_EDEFAULT = ENUM_SAMPLE.LITERAL1;
+
+	/**
+	 * The cached value of the '{@link #getEmfcomboviewerROProperty() <em>Emfcomboviewer RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEmfcomboviewerROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected ENUM_SAMPLE emfcomboviewerROProperty = EMFCOMBOVIEWER_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,6 +155,27 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ENUM_SAMPLE getEmfcomboviewerROProperty() {
+		return emfcomboviewerROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEmfcomboviewerROProperty(ENUM_SAMPLE newEmfcomboviewerROProperty) {
+		ENUM_SAMPLE oldEmfcomboviewerROProperty = emfcomboviewerROProperty;
+		emfcomboviewerROProperty = newEmfcomboviewerROProperty == null ? EMFCOMBOVIEWER_RO_PROPERTY_EDEFAULT : newEmfcomboviewerROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY, oldEmfcomboviewerROProperty, emfcomboviewerROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -141,6 +183,8 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 				return getEmfcomboviewerRequiredProperty();
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY:
 				return getEmfcomboviewerOptionalProperty();
+			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY:
+				return getEmfcomboviewerROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,6 +202,9 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 				return;
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY:
 				setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)newValue);
+				return;
+			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY:
+				setEmfcomboviewerROProperty((ENUM_SAMPLE)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -177,6 +224,9 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY:
 				setEmfcomboviewerOptionalProperty(EMFCOMBOVIEWER_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY:
+				setEmfcomboviewerROProperty(EMFCOMBOVIEWER_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -193,6 +243,8 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 				return emfcomboviewerRequiredProperty != EMFCOMBOVIEWER_REQUIRED_PROPERTY_EDEFAULT;
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY:
 				return emfcomboviewerOptionalProperty != EMFCOMBOVIEWER_OPTIONAL_PROPERTY_EDEFAULT;
+			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY:
+				return emfcomboviewerROProperty != EMFCOMBOVIEWER_RO_PROPERTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,6 +263,8 @@ public class EMFComboViewerSampleImpl extends AbstractSampleImpl implements EMFC
 		result.append(emfcomboviewerRequiredProperty);
 		result.append(", emfcomboviewerOptionalProperty: ");
 		result.append(emfcomboviewerOptionalProperty);
+		result.append(", emfcomboviewerROProperty: ");
+		result.append(emfcomboviewerROProperty);
 		result.append(')');
 		return result.toString();
 	}

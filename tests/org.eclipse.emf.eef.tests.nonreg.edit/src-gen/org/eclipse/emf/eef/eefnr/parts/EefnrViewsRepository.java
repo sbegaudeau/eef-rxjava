@@ -140,6 +140,9 @@ public class EefnrViewsRepository {
 			
 			public static String textOptionalProperty = "eefnr::TextSample::properties::textOptionalProperty";
 			
+			
+			public static String textROProperty = "eefnr::TextSample::properties::textROProperty";
+			
 	
 		}
 	
@@ -157,6 +160,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String checkboxOptionalProperty = "eefnr::CheckboxSample::properties::checkboxOptionalProperty";
+			
+			
+			public static String checkboxROProperty = "eefnr::CheckboxSample::properties::checkboxROProperty";
 			
 	
 		}
@@ -176,6 +182,9 @@ public class EefnrViewsRepository {
 			
 			public static String textareaOptionalProperty = "eefnr::TextareaSample::properties::textareaOptionalProperty";
 			
+			
+			public static String textareaROProperty = "eefnr::TextareaSample::properties::textareaROProperty";
+			
 	
 		}
 	
@@ -193,6 +202,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String radioOptionalProperty = "eefnr::RadioSample::properties::radioOptionalProperty";
+			
+			
+			public static String radioROProperty = "eefnr::RadioSample::properties::radioROProperty";
 			
 	
 		}
@@ -212,6 +224,9 @@ public class EefnrViewsRepository {
 			
 			public static String eobjectflatcomboviewerOptionalPropery = "eefnr::EObjectFlatComboViewerSample::properties::eobjectflatcomboviewerOptionalPropery";
 			
+			
+			public static String eobjectflatcomboviewerROPropery = "eefnr::EObjectFlatComboViewerSample::properties::eobjectflatcomboviewerROPropery";
+			
 	
 		}
 	
@@ -229,6 +244,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String referencestableOptionalProperty = "eefnr::ReferencesTableSample::properties::referencestableOptionalProperty";
+			
+			
+			public static String referencestableROProperty = "eefnr::ReferencesTableSample::properties::referencestableROProperty";
 			
 	
 		}
@@ -248,6 +266,9 @@ public class EefnrViewsRepository {
 			
 			public static String emfcomboviewerOptionalProperty = "eefnr::EMFComboViewerSample::properties::emfcomboviewerOptionalProperty";
 			
+			
+			public static String emfcomboviewerROProperty = "eefnr::EMFComboViewerSample::properties::emfcomboviewerROProperty";
+			
 	
 		}
 	
@@ -265,6 +286,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String multivaluededitorOptionalProperty = "eefnr::MultiValuedEditorSample::properties::multivaluededitorOptionalProperty";
+			
+			
+			public static String multivaluededitorROProperty = "eefnr::MultiValuedEditorSample::properties::multivaluededitorROProperty";
 			
 	
 		}
@@ -284,6 +308,9 @@ public class EefnrViewsRepository {
 			
 			public static String tablecompositionOptionalProperty = "eefnr::TableCompositionEditorSample::properties::tablecompositionOptionalProperty";
 			
+			
+			public static String tablecompositionROProperty = "eefnr::TableCompositionEditorSample::properties::tablecompositionROProperty";
+			
 	
 		}
 	
@@ -301,6 +328,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String advancedreferencestableOptionalProperty = "eefnr::AdvancedReferencesTableSample::properties::advancedreferencestableOptionalProperty";
+			
+			
+			public static String advancedreferencestableROProperty = "eefnr::AdvancedReferencesTableSample::properties::advancedreferencestableROProperty";
 			
 	
 		}
@@ -320,6 +350,9 @@ public class EefnrViewsRepository {
 			
 			public static String advancedeobjectflatcomboviewerOptionalProperty = "eefnr::AdvancedEObjectFlatComboViewerSample::properties::advancedeobjectflatcomboviewerOptionalProperty";
 			
+			
+			public static String advancedeobjectflatcomboviewerROProperty = "eefnr::AdvancedEObjectFlatComboViewerSample::properties::advancedeobjectflatcomboviewerROProperty";
+			
 	
 		}
 	
@@ -338,6 +371,9 @@ public class EefnrViewsRepository {
 			
 			public static String advancedtablecompositionOptionalProperty = "eefnr::AdvancedTableCompositionEditorSample::properties::advancedtablecompositionOptionalProperty";
 			
+			
+			public static String advancedtablecompositionROProperty = "eefnr::AdvancedTableCompositionEditorSample::properties::advancedtablecompositionROProperty";
+			
 	
 		}
 	
@@ -355,6 +391,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String flatreferencetableOptionalProperty = "eefnr::FlatReferenceTableSample::properties::flatreferencetableOptionalProperty";
+			
+			
+			public static String flatreferencetableROProperty = "eefnr::FlatReferenceTableSample::properties::flatreferencetableROProperty";
 			
 	
 		}
@@ -449,6 +488,9 @@ public class EefnrViewsRepository {
 			
 			public static String imageviewerOptionalProperty = "eefnr::ImageViewerSample::properties::imageviewerOptionalProperty";
 			
+			
+			public static String imageviewerROProperty = "eefnr::ImageViewerSample::properties::imageviewerROProperty";
+			
 	
 		}
 	
@@ -466,6 +508,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String selectionDialogOptionalProperty = "eefnr::SelectionDialogSample::properties::selectionDialogOptionalProperty";
+			
+			
+			public static String selectionDialogROProperty = "eefnr::SelectionDialogSample::properties::selectionDialogROProperty";
 			
 	
 		}
@@ -490,6 +535,9 @@ public class EefnrViewsRepository {
 			
 			
 			public static String singlecompositionviewerMultiOptionalProperty = "eefnr::SingleCompositionViewerSample::properties::singlecompositionviewerMultiOptionalProperty";
+			
+			
+			public static String singlecompositionviewerSingleROProperty = "eefnr::SingleCompositionViewerSample::properties::singlecompositionviewerSingleROProperty";
 			
 	
 		}

@@ -51,6 +51,20 @@ public interface SelectionDialogSamplePropertiesEditionPart {
 	public void setSelectionDialogOptionalProperty(String newValue);
 
 
+	/**
+	 * @return the selectionDialogROProperty
+	 * 
+	 */
+	public String getSelectionDialogROProperty();
+
+	/**
+	 * Defines a new selectionDialogROProperty
+	 * @param newValue the new selectionDialogROProperty to set
+	 * 
+	 */
+	public void setSelectionDialogROProperty(String newValue);
+
+
 
 
 

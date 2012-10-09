@@ -58,6 +58,11 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	 */
 	private ReferencesTableSettings advancedreferencestableOptionalPropertySettings;
 	
+	/**
+	 * Settings for advancedreferencestableROProperty ReferencesTable
+	 */
+	private ReferencesTableSettings advancedreferencestableROPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -91,6 +96,10 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 			if (isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty)) {
 				advancedreferencestableOptionalPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty());
 				basePart.initAdvancedreferencestableOptionalProperty(advancedreferencestableOptionalPropertySettings);
+			}
+			if (isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty)) {
+				advancedreferencestableROPropertySettings = new ReferencesTableSettings(advancedReferencesTableSample, EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableROProperty());
+				basePart.initAdvancedreferencestableROProperty(advancedreferencestableROPropertySettings);
 			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty)) {
@@ -133,6 +142,25 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 				
 				// End of user code
 			}
+			if (isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty)) {
+				basePart.addFilterToAdvancedreferencestableROProperty(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInAdvancedreferencestableROPropertyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToAdvancedreferencestableROProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for advancedreferencestableROProperty
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -140,6 +168,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -155,6 +184,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 		}
 		if (editorKey == EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty) {
+			return EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -201,6 +233,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 				basePart.updateAdvancedreferencestableRequiredProperty();
 			if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty().equals(msg.getFeature())  && isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty))
 				basePart.updateAdvancedreferencestableOptionalProperty();
+			if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableROProperty().equals(msg.getFeature())  && isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty))
+				basePart.updateAdvancedreferencestableROProperty();
 			
 		}
 	}
@@ -214,7 +248,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty(),
-			EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty(),
+			EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

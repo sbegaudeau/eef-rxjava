@@ -56,6 +56,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 	protected Text multivaluededitorOptionalProperty;
 	protected Button editMultivaluededitorOptionalProperty;
 	private EList multivaluededitorOptionalPropertyList;
+	protected Text multivaluededitorROProperty;
+	protected Button editMultivaluededitorROProperty;
+	private EList multivaluededitorROPropertyList;
 
 
 
@@ -96,6 +99,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		CompositionStep propertiesStep = multiValuedEditorSampleStep.addStep(EefnrViewsRepository.MultiValuedEditorSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty);
 		
 		
 		composer = new PartComposer(multiValuedEditorSampleStep) {
@@ -110,6 +114,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 				}
 				if (key == EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty) {
 					return createMultivaluededitorOptionalPropertyMultiValuedEditor(parent);
+				}
+				if (key == EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty) {
+					return createMultivaluededitorROPropertyMultiValuedEditor(parent);
 				}
 				return parent;
 			}
@@ -212,6 +219,49 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		return parent;
 	}
 
+	protected Composite createMultivaluededitorROPropertyMultiValuedEditor(Composite parent) {
+		multivaluededitorROProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		multivaluededitorROProperty.setEnabled(false);
+		multivaluededitorROProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		GridData multivaluededitorROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		multivaluededitorROPropertyData.horizontalSpan = 2;
+		multivaluededitorROProperty.setLayoutData(multivaluededitorROPropertyData);
+		EditingUtils.setID(multivaluededitorROProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty);
+		EditingUtils.setEEFtype(multivaluededitorROProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+		editMultivaluededitorROProperty = new Button(parent, SWT.NONE);
+		editMultivaluededitorROProperty.setEnabled(false);
+		editMultivaluededitorROProperty.setText(getDescription(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorROPropertyLabel));
+		GridData editMultivaluededitorROPropertyData = new GridData();
+		editMultivaluededitorROProperty.setLayoutData(editMultivaluededitorROPropertyData);
+		editMultivaluededitorROProperty.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						multivaluededitorROProperty.getShell(), "MultiValuedEditorSample", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						multivaluededitorROPropertyList, EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty().getEType(), null,
+						false, true, 
+						null, null);
+				if (dialog.open() == Window.OK) {
+					multivaluededitorROPropertyList = dialog.getResult();
+					if (multivaluededitorROPropertyList == null) {
+						multivaluededitorROPropertyList = new BasicEList();
+					}
+					multivaluededitorROProperty.setText(multivaluededitorROPropertyList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MultiValuedEditorSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(multivaluededitorROPropertyList)));
+					setHasChanged(true);
+				}
+			}
+		});
+		EditingUtils.setID(editMultivaluededitorROProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty);
+		EditingUtils.setEEFtype(editMultivaluededitorROProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -308,6 +358,49 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 			multivaluededitorOptionalProperty.setText(multivaluededitorOptionalPropertyList.toString());
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#getMultivaluededitorROProperty()
+	 * 
+	 */
+	public EList getMultivaluededitorROProperty() {
+		return multivaluededitorROPropertyList;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart#setMultivaluededitorROProperty(EList newValue)
+	 * 
+	 */
+	public void setMultivaluededitorROProperty(EList newValue) {
+		multivaluededitorROPropertyList = newValue;
+		if (newValue != null) {
+			multivaluededitorROProperty.setText(multivaluededitorROPropertyList.toString());
+		} else {
+			multivaluededitorROProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void addToMultivaluededitorROProperty(Object newValue) {
+		multivaluededitorROPropertyList.add(newValue);
+		if (newValue != null) {
+			multivaluededitorROProperty.setText(multivaluededitorROPropertyList.toString());
+		} else {
+			multivaluededitorROProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void removeToMultivaluededitorROProperty(Object newValue) {
+		multivaluededitorROPropertyList.remove(newValue);
+		if (newValue != null) {
+			multivaluededitorROProperty.setText(multivaluededitorROPropertyList.toString());
+		} else {
+			multivaluededitorROProperty.setText(""); //$NON-NLS-1$
 		}
 	}
 

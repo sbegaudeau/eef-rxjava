@@ -51,54 +51,67 @@
     <genClasses ecoreClass="eefnr.ecore#//TextSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSample/textRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSample/textOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextSample/textROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//CheckboxSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//CheckboxSample/checkboxRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//CheckboxSample/checkboxOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//CheckboxSample/checkboxROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//TextareaSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextareaSample/textareaRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextareaSample/textareaOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//TextareaSample/textareaROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//RadioSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//RadioSample/radioRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//RadioSample/radioOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//RadioSample/radioROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//EObjectFlatComboViewerSample">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//EObjectFlatComboViewerSample/eobjectflatcomboviewerRequiredPropery"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//EObjectFlatComboViewerSample/eobjectflatcomboviewerOptionalPropery"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//EObjectFlatComboViewerSample/eobjectflatcomboviewerROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//ReferencesTableSample">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//ReferencesTableSample/referencestableRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//ReferencesTableSample/referencestableOptionalProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//ReferencesTableSample/referencestableROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//EMFComboViewerSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//EMFComboViewerSample/emfcomboviewerRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//EMFComboViewerSample/emfcomboviewerOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//EMFComboViewerSample/emfcomboviewerROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//MultiValuedEditorSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//MultiValuedEditorSample/multivaluededitorRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//MultiValuedEditorSample/multivaluededitorOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//MultiValuedEditorSample/multivaluededitorROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//TableCompositionEditorSample">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TableCompositionEditorSample/tablecompositionRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TableCompositionEditorSample/tablecompositionOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//TableCompositionEditorSample/tablecompositionROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//AdvancedReferencesTableSample">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedReferencesTableSample/advancedreferencestableRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedReferencesTableSample/advancedreferencestableOptionalProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedReferencesTableSample/advancedreferencestableROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//AdvancedEObjectFlatComboViewerSample">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerOptionalProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerROPropery"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//AdvancedTableCompositionEditorSample">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//FlatReferencesTableSample">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableOptionalProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//FlatReferencesTableSample/flatreferencestableROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//Sample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//Sample/textRequiredProperty"/>
@@ -119,16 +132,19 @@
     <genClasses ecoreClass="eefnr.ecore#//ImageViewerSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//ImageViewerSample/imageviewerRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//ImageViewerSample/imageviewerOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//ImageViewerSample/imageviewerROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//SelectionDialogSample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//SelectionDialogSample/selectionDialogRequiredProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//SelectionDialogSample/selectionDialogOptionalProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eefnr.ecore#//SelectionDialogSample/selectionDialogROProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//SingleCompositionViewerSample">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleOptionalProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleROProperty"/>
     </genClasses>
     <nestedGenPackages prefix="References" basePackage="org.eclipse.emf.eef.eefnr"
         disposableProviderFactory="true" ecorePackage="eefnr.ecore#//references">

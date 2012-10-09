@@ -46,6 +46,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	protected RadioViewer radioRequiredPropertyRadioViewer;
 	protected RadioViewer radioOptionalPropertyRadioViewer;
+	protected RadioViewer radioROPropertyRadioViewer;
 
 
 
@@ -86,6 +87,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		CompositionStep propertiesStep = radioSampleStep.addStep(EefnrViewsRepository.RadioSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.RadioSample.Properties.radioROProperty);
 		
 		
 		composer = new PartComposer(radioSampleStep) {
@@ -100,6 +102,9 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 				if (key == EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty) {
 					return createRadioOptionalPropertyRadioViewer(parent);
+				}
+				if (key == EefnrViewsRepository.RadioSample.Properties.radioROProperty) {
+					return createRadioROPropertyRadioViewer(parent);
 				}
 				return parent;
 			}
@@ -161,6 +166,29 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null);
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createRadioROPropertyRadioViewer(Composite parent) {
+		radioROPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
+		radioROPropertyRadioViewer.setEnabled(false);
+		radioROPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		GridData radioROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		radioROPropertyData.horizontalSpan = 2;
+		radioROPropertyRadioViewer.setLayoutData(radioROPropertyData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioROProperty, EefnrViewsRepository.FORM_KIND), null);
+		radioROPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.RadioSample.Properties.radioROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+			}
+		});
+		radioROPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioROProperty);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioROProperty, EefnrViewsRepository.SWT_KIND), null);
 		return parent;
 	}
 
@@ -243,6 +271,40 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#getRadioROProperty()
+	 * 
+	 */
+	public Object getRadioROProperty() {
+		if (radioROPropertyRadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) radioROPropertyRadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#initRadioROProperty(Object input, Enumerator current)
+	 */
+	public void initRadioROProperty(Object input, Enumerator current) {
+		radioROPropertyRadioViewer.setInput(input);
+		radioROPropertyRadioViewer.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#setRadioROProperty(Object newValue)
+	 * 
+	 */
+	public void setRadioROProperty(Object newValue) {
+		radioROPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 	}
 
 

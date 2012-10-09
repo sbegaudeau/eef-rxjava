@@ -74,6 +74,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	protected Button removeReferencestableOptionalProperty;
 	protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer referencestableROProperty;
+	protected Button addReferencestableROProperty;
+	protected Button removeReferencestableROProperty;
+	protected List<ViewerFilter> referencestableROPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencestableROPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -121,6 +126,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		CompositionStep propertiesStep = referencesTableSampleStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
 		
 		
 		composer = new PartComposer(referencesTableSampleStep) {
@@ -135,6 +141,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 				}
 				if (key == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty) {
 					return createReferencestableOptionalPropertyReferencesTable(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty) {
+					return createReferencestableROPropertyReferencesTable(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -472,6 +481,169 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		referencestableOptionalProperty.refresh();
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createReferencestableROPropertyReferencesTable(FormToolkit widgetFactory, Composite parent) {
+		Label referencestableROPropertyLabel = createDescription(parent, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableROPropertyLabel);
+		GridData referencestableROPropertyLabelData = new GridData();
+		referencestableROPropertyLabelData.horizontalSpan = 3;
+		referencestableROPropertyLabel.setLayoutData(referencestableROPropertyLabelData);
+		referencestableROProperty = createReferencestableROPropertyViewer(parent, widgetFactory, adapterFactory);
+		GridData referencestableROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		referencestableROPropertyData.horizontalSpan = 2;
+		referencestableROPropertyData.minimumHeight = 120;
+		referencestableROPropertyData.heightHint = 120;
+		referencestableROProperty.getTable().setLayoutData(referencestableROPropertyData);
+		EditingUtils.setID(referencestableROProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
+		EditingUtils.setEEFtype(referencestableROProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
+		createReferencestableROPropertyControlPanel(parent, widgetFactory);
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected TableViewer createReferencestableROPropertyViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
+		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
+		table.setHeaderVisible(true);
+		table.setEnabled(false);
+		table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		GridData gd = new GridData();
+		gd.grabExcessHorizontalSpace = true;
+		gd.horizontalAlignment = GridData.FILL;
+		gd.grabExcessVerticalSpace = true;
+		gd.verticalAlignment = GridData.FILL;
+		table.setLayoutData(gd);
+		table.setLinesVisible(true);
+		// Start of user code for table referencestableROProperty s columns definition
+				TableColumn name = new TableColumn(table, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
+		
+		// End of user code
+
+		TableViewer result = new TableViewer(table);
+		result.setLabelProvider(new ITableLabelProvider() {
+
+			// Start of user code for table referencestableROProperty label provider
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
+			
+			
+			// End of user code
+
+			public Image getColumnImage(Object element, int columnIndex) {
+				return null;
+			}
+
+			public void addListener(ILabelProviderListener listener) {
+			}
+
+			public void dispose() {
+			}
+
+			public boolean isLabelProperty(Object element, String property) {
+				return false;
+			}
+
+			public void removeListener(ILabelProviderListener listener) {
+			}
+
+		});
+		return result;
+	}
+
+	/**
+	 * 
+	 */
+	protected void createReferencestableROPropertyControlPanel(Composite container, FormToolkit widgetFactory) {
+		Composite result = widgetFactory.createComposite(container, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 1;
+		result.setLayout(layout);
+		addReferencestableROProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		addReferencestableROProperty.setEnabled(false);
+		addReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
+		addReferencestableROProperty.setLayoutData(addData);
+		addReferencestableROProperty.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				addReferencestableROProperty();
+			}
+
+		});
+		EditingUtils.setID(addReferencestableROProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
+		EditingUtils.setEEFtype(addReferencestableROProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
+		removeReferencestableROProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		removeReferencestableROProperty.setEnabled(false);
+		removeReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
+		removeReferencestableROProperty.setLayoutData(removeData);
+		removeReferencestableROProperty.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (referencestableROProperty.getSelection() instanceof IStructuredSelection) {
+					removeReferencestableROProperty((IStructuredSelection) referencestableROProperty.getSelection());
+				}
+			}
+
+		});
+		EditingUtils.setID(removeReferencestableROProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
+		EditingUtils.setEEFtype(removeReferencestableROProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+	}
+
+	/**
+	 * 
+	 */
+	protected void addReferencestableROProperty() {
+
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), referencestableROProperty.getInput(), referencestableROPropertyFilters, referencestableROPropertyBusinessFilters, false, true) {
+			public void process(IStructuredSelection selection) {
+				for (Iterator iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+			}
+
+		};
+		dialog.open();
+		referencestableROProperty.refresh();
+	}
+
+	/**
+	 * @param selection the referencestableROProperty to remove
+	 * 
+	 */
+	protected void removeReferencestableROProperty(IStructuredSelection selection) {
+		for (Iterator iter = selection.iterator(); iter.hasNext();) {
+			EObject elem = (EObject) iter.next();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
+		}
+		referencestableROProperty.refresh();
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -593,6 +765,61 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)referencestableOptionalProperty.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#initReferencestableROProperty(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 */
+	public void initReferencestableROProperty(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		referencestableROProperty.setContentProvider(contentProvider);
+		referencestableROProperty.setInput(settings);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableROProperty()
+	 * 
+	 */
+	public void updateReferencestableROProperty() {
+	referencestableROProperty.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addFilterReferencestableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToReferencestableROProperty(ViewerFilter filter) {
+		referencestableROPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addBusinessFilterReferencestableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToReferencestableROProperty(ViewerFilter filter) {
+		referencestableROPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#isContainedInReferencestableROPropertyTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInReferencestableROPropertyTable(EObject element) {
+		return ((ReferencesTableSettings)referencestableROProperty.getInput()).contains(element);
 	}
 
 

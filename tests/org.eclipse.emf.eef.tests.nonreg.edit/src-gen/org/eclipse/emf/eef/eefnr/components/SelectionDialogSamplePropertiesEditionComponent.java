@@ -78,7 +78,12 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 					basePart.setSelectionDialogOptionalProperty(EEFConverterUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().getEAttributeType(), selectionDialogSample.getSelectionDialogOptionalProperty()));
 				}
 			
+				if (selectionDialogSample.getSelectionDialogROProperty() != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty)) {
+					basePart.setSelectionDialogROProperty(EEFConverterUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty().getEAttributeType(), selectionDialogSample.getSelectionDialogROProperty()));
+				}
+			
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -88,6 +93,7 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -103,6 +109,9 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 		}
 		if (editorKey == EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty) {
+			return EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -129,18 +138,25 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			SelectionDialogSamplePropertiesEditionPart basePart = (SelectionDialogSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty)) {
+			if (EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSelectionDialogRequiredProperty(EcoreUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty().getEAttributeType(), msg.getNewValue()));
 				} else {
 					basePart.setSelectionDialogRequiredProperty("");
 				}
 			}
-			if (EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty)) {
+			if (EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSelectionDialogOptionalProperty(EcoreUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().getEAttributeType(), msg.getNewValue()));
 				} else {
 					basePart.setSelectionDialogOptionalProperty("");
+				}
+			}
+			if (EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty)) {
+				if (msg.getNewValue() != null) {
+					basePart.setSelectionDialogROProperty(EcoreUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty().getEAttributeType(), msg.getNewValue()));
+				} else {
+					basePart.setSelectionDialogROProperty("");
 				}
 			}
 			
@@ -156,7 +172,8 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty(),
-			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty(),
+			EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -194,6 +211,13 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

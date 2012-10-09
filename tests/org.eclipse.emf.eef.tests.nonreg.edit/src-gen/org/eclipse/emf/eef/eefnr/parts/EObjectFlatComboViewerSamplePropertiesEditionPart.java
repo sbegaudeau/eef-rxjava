@@ -120,6 +120,53 @@ public interface EObjectFlatComboViewerSamplePropertiesEditionPart {
 	public void addBusinessFilterToEobjectflatcomboviewerOptionalPropery(ViewerFilter filter);
 
 
+	/**
+	 * @return the eobjectflatcomboviewerROPropery
+	 * 
+	 */
+	public EObject getEobjectflatcomboviewerROPropery();
+
+	/**
+	 * Init the eobjectflatcomboviewerROPropery
+	 * @param settings the combo setting
+	 */
+	public void initEobjectflatcomboviewerROPropery(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new eobjectflatcomboviewerROPropery
+	 * @param newValue the new eobjectflatcomboviewerROPropery to set
+	 * 
+	 */
+	public void setEobjectflatcomboviewerROPropery(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * 
+	 */
+	public void setEobjectflatcomboviewerROProperyButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the eobjectflatcomboviewerROPropery edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToEobjectflatcomboviewerROPropery(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the eobjectflatcomboviewerROPropery edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToEobjectflatcomboviewerROPropery(ViewerFilter filter);
+
+
 
 
 

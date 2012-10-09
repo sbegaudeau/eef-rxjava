@@ -27,6 +27,7 @@ import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionEditorSampleImpl#getTablecompositionRequiredProperty <em>Tablecomposition Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionEditorSampleImpl#getTablecompositionOptionalProperty <em>Tablecomposition Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionEditorSampleImpl#getTablecompositionROProperty <em>Tablecomposition RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +53,16 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 	 * @ordered
 	 */
 	protected EList<Sample> tablecompositionOptionalProperty;
+
+	/**
+	 * The cached value of the '{@link #getTablecompositionROProperty() <em>Tablecomposition RO Property</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTablecompositionROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Sample> tablecompositionROProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +112,18 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Sample> getTablecompositionROProperty() {
+		if (tablecompositionROProperty == null) {
+			tablecompositionROProperty = new EObjectContainmentEList<Sample>(Sample.class, this, EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY);
+		}
+		return tablecompositionROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -108,6 +131,8 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 				return ((InternalEList<?>)getTablecompositionRequiredProperty()).basicRemove(otherEnd, msgs);
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
 				return ((InternalEList<?>)getTablecompositionOptionalProperty()).basicRemove(otherEnd, msgs);
+			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY:
+				return ((InternalEList<?>)getTablecompositionROProperty()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,6 +149,8 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 				return getTablecompositionRequiredProperty();
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
 				return getTablecompositionOptionalProperty();
+			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY:
+				return getTablecompositionROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,6 +172,10 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 				getTablecompositionOptionalProperty().clear();
 				getTablecompositionOptionalProperty().addAll((Collection<? extends Sample>)newValue);
 				return;
+			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY:
+				getTablecompositionROProperty().clear();
+				getTablecompositionROProperty().addAll((Collection<? extends Sample>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -163,6 +194,9 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
 				getTablecompositionOptionalProperty().clear();
 				return;
+			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY:
+				getTablecompositionROProperty().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -179,6 +213,8 @@ public class TableCompositionEditorSampleImpl extends AbstractSampleImpl impleme
 				return tablecompositionRequiredProperty != null && !tablecompositionRequiredProperty.isEmpty();
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
 				return tablecompositionOptionalProperty != null && !tablecompositionOptionalProperty.isEmpty();
+			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY:
+				return tablecompositionROProperty != null && !tablecompositionROProperty.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

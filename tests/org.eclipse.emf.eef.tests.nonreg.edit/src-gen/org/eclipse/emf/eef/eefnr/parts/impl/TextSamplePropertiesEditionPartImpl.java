@@ -47,6 +47,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 
 	protected Text textRequiredProperty;
 	protected Text textOptionalProperty;
+	protected Text textROProperty;
 
 
 
@@ -87,6 +88,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		CompositionStep propertiesStep = textSampleStep.addStep(EefnrViewsRepository.TextSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.TextSample.Properties.textROProperty);
 		
 		
 		composer = new PartComposer(textSampleStep) {
@@ -101,6 +103,9 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 				}
 				if (key == EefnrViewsRepository.TextSample.Properties.textOptionalProperty) {
 					return createTextOptionalPropertyText(parent);
+				}
+				if (key == EefnrViewsRepository.TextSample.Properties.textROProperty) {
+					return createTextROPropertyText(parent);
 				}
 				return parent;
 			}
@@ -215,6 +220,54 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		return parent;
 	}
 
+	
+	protected Composite createTextROPropertyText(Composite parent) {
+		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextROPropertyLabel);
+		textROProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		textROProperty.setEnabled(false);
+		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		GridData textROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		textROProperty.setLayoutData(textROPropertyData);
+		textROProperty.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TextSample.Properties.textROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textROProperty.getText()));
+			}
+
+		});
+		textROProperty.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.TextSample.Properties.textROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textROProperty.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(textROProperty, EefnrViewsRepository.TextSample.Properties.textROProperty);
+		EditingUtils.setEEFtype(textROProperty, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -273,6 +326,30 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 			textOptionalProperty.setText(newValue);
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#getTextROProperty()
+	 * 
+	 */
+	public String getTextROProperty() {
+		return textROProperty.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#setTextROProperty(String newValue)
+	 * 
+	 */
+	public void setTextROProperty(String newValue) {
+		if (newValue != null) {
+			textROProperty.setText(newValue);
+		} else {
+			textROProperty.setText(""); //$NON-NLS-1$
 		}
 	}
 

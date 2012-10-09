@@ -79,7 +79,11 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 			if (multiValuedEditorSample.getMultivaluededitorOptionalProperty() != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty))
 				basePart.setMultivaluededitorOptionalProperty(multiValuedEditorSample.getMultivaluededitorOptionalProperty());
 			
+			if (multiValuedEditorSample.getMultivaluededitorROProperty() != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty))
+				basePart.setMultivaluededitorROProperty(multiValuedEditorSample.getMultivaluededitorROProperty());
+			
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -89,6 +93,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -104,6 +109,9 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		}
 		if (editorKey == EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty) {
+			return EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -136,12 +144,16 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty)) {
+			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty)) {
 				basePart.setMultivaluededitorRequiredProperty((EList<?>)msg.getNewValue());
 			}
 			
-			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty)) {
+			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty)) {
 				basePart.setMultivaluededitorOptionalProperty((EList<?>)msg.getNewValue());
+			}
+			
+			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty)) {
+				basePart.setMultivaluededitorROProperty((EList<?>)msg.getNewValue());
 			}
 			
 			
@@ -157,7 +169,8 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty(),
-			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty(),
+			EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -193,6 +206,13 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 					BasicDiagnostic chain = new BasicDiagnostic();
 					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
 						chain.add(Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().getEAttributeType(), iterator.next()));
+					}
+					ret = chain;
+				}
+				if (EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty == event.getAffectedEditor()) {
+					BasicDiagnostic chain = new BasicDiagnostic();
+					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
+						chain.add(Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty().getEAttributeType(), iterator.next()));
 					}
 					ret = chain;
 				}

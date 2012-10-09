@@ -118,7 +118,7 @@ public class ConcreteReferenceTargetSample1PropertiesEditionComponent extends Si
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			ConcreteReferenceTargetSample1PropertiesEditionPart basePart = (ConcreteReferenceTargetSample1PropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

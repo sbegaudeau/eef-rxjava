@@ -61,6 +61,7 @@ public class EObjectFlatComboViewerSampleItemProvider
 
 			addEobjectflatcomboviewerRequiredProperyPropertyDescriptor(object);
 			addEobjectflatcomboviewerOptionalProperyPropertyDescriptor(object);
+			addEobjectflatcomboviewerROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -101,6 +102,28 @@ public class EObjectFlatComboViewerSampleItemProvider
 				 getString("_UI_EObjectFlatComboViewerSample_eobjectflatcomboviewerOptionalPropery_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EObjectFlatComboViewerSample_eobjectflatcomboviewerOptionalPropery_feature", "_UI_EObjectFlatComboViewerSample_type"),
 				 EefnrPackage.Literals.EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Eobjectflatcomboviewer RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEobjectflatcomboviewerROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EObjectFlatComboViewerSample_eobjectflatcomboviewerROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EObjectFlatComboViewerSample_eobjectflatcomboviewerROProperty_feature", "_UI_EObjectFlatComboViewerSample_type"),
+				 EefnrPackage.Literals.EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_RO_PROPERTY,
 				 true,
 				 false,
 				 true,

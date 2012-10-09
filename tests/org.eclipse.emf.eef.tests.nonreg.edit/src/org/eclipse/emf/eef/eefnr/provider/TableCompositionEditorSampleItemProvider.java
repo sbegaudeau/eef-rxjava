@@ -80,6 +80,7 @@ public class TableCompositionEditorSampleItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY);
 		}
 		return childrenFeatures;
 	}
@@ -136,6 +137,7 @@ public class TableCompositionEditorSampleItemProvider
 		switch (notification.getFeatureID(TableCompositionEditorSample.class)) {
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY:
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY:
+			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -162,6 +164,11 @@ public class TableCompositionEditorSampleItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY,
 				 EefnrFactory.eINSTANCE.createSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSample()));
 	}
 
 	/**
@@ -177,7 +184,8 @@ public class TableCompositionEditorSampleItemProvider
 
 		boolean qualify =
 			childFeature == EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY ||
-			childFeature == EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY;
+			childFeature == EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY ||
+			childFeature == EefnrPackage.Literals.TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY;
 
 		if (qualify) {
 			return getString

@@ -57,6 +57,11 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	 */
 	private ReferencesTableSettings referencestableOptionalPropertySettings;
 	
+	/**
+	 * Settings for referencestableROProperty ReferencesTable
+	 */
+	private ReferencesTableSettings referencestableROPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -90,6 +95,10 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty)) {
 				referencestableOptionalPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty());
 				basePart.initReferencestableOptionalProperty(referencestableOptionalPropertySettings);
+			}
+			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty)) {
+				referencestableROPropertySettings = new ReferencesTableSettings(referencesTableSample, EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableROProperty());
+				basePart.initReferencestableROProperty(referencestableROPropertySettings);
 			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty)) {
@@ -132,6 +141,25 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				
 				// End of user code
 			}
+			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty)) {
+				basePart.addFilterToReferencestableROProperty(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInReferencestableROPropertyTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToReferencestableROProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for referencestableROProperty
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -139,6 +167,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -154,6 +183,9 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 		}
 		if (editorKey == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty) {
+			return EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -200,6 +232,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				basePart.updateReferencestableRequiredProperty();
 			if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty().equals(msg.getFeature())  && isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty))
 				basePart.updateReferencestableOptionalProperty();
+			if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableROProperty().equals(msg.getFeature())  && isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty))
+				basePart.updateReferencestableROProperty();
 			
 		}
 	}
@@ -213,7 +247,8 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty(),
-			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty(),
+			EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

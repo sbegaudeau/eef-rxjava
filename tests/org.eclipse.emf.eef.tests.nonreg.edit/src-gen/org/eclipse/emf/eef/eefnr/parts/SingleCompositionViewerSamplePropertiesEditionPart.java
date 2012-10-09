@@ -143,6 +143,35 @@ public interface SingleCompositionViewerSamplePropertiesEditionPart {
 	public void addSinglecompositionviewerMultiOptionalPropertyControlListener(ControlListener listener);
 
 
+	/**
+	 * @return the singlecompositionviewerSingleROProperty
+	 * 
+	 */
+	public EObject getSinglecompositionviewerSingleROProperty();
+
+	/**
+	 * Init the singlecompositionviewerSingleROProperty
+	 * @param current the current value
+	 * @param containingFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 * @param editingDomain
+	 */
+	public void initSinglecompositionviewerSingleROProperty(EObject current, EReference containingFeature, EReference feature, EditingDomain editingDomain);
+
+	/**
+	 * Defines a new singlecompositionviewerSingleROProperty
+	 * @param newValue the new singlecompositionviewerSingleROProperty to set
+	 * 
+	 */
+	public void setSinglecompositionviewerSingleROProperty(EObject newValue);
+
+	/**
+	 * Add a listener on singlecompositionviewerSingleROProperty widget control.
+	 * @param listener the Control Listener
+	 */
+	public void addSinglecompositionviewerSingleROPropertyControlListener(ControlListener listener);
+
+
 
 
 

@@ -77,7 +77,11 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 			if (textSample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textOptionalProperty))
 				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSample.getTextOptionalProperty()));
 			
+			if (textSample.getTextROProperty() != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textROProperty))
+				basePart.setTextROProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSample.getTextROProperty()));
+			
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -87,6 +91,7 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -102,6 +107,9 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		if (editorKey == EefnrViewsRepository.TextSample.Properties.textOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.TextSample.Properties.textROProperty) {
+			return EefnrPackage.eINSTANCE.getTextSample_TextROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -128,18 +136,25 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			TextSamplePropertiesEditionPart basePart = (TextSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textRequiredProperty)) {
+			if (EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textRequiredProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextRequiredProperty("");
 				}
 			}
-			if (EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textOptionalProperty)) {
+			if (EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textOptionalProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextOptionalProperty("");
+				}
+			}
+			if (EefnrPackage.eINSTANCE.getTextSample_TextROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textROProperty)) {
+				if (msg.getNewValue() != null) {
+					basePart.setTextROProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setTextROProperty("");
 				}
 			}
 			
@@ -155,7 +170,8 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty(),
-			EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTextSample_TextROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -193,6 +209,13 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSample_TextOptionalProperty().getEAttributeType(), newValue);
+				}
+				if (EefnrViewsRepository.TextSample.Properties.textROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getTextSample_TextROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextSample_TextROProperty().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

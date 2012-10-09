@@ -50,6 +50,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 
 	protected EEFImageViewer imageviewerRequiredProperty;
 	protected EEFImageViewer imageviewerOptionalProperty;
+	protected EEFImageViewer imageviewerROProperty;
 
 
 
@@ -97,6 +98,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		CompositionStep propertiesStep = imageViewerSampleStep.addStep(EefnrViewsRepository.ImageViewerSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty);
 		
 		
 		composer = new PartComposer(imageViewerSampleStep) {
@@ -111,6 +113,9 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 				}
 				if (key == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty) {
 					return createImageviewerOptionalPropertyImageViewer(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty) {
+					return createImageviewerROPropertyImageViewer(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -183,6 +188,34 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		});
 		imageviewerOptionalProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createImageviewerROPropertyImageViewer(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerROPropertyLabel);
+		imageviewerROProperty = new EEFImageViewer(parent, SWT.BORDER);
+		imageviewerROProperty.setEnabled(false);
+		imageviewerROProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		GridData imageviewerROPropertyData = new GridData();
+		// Start of user code  for imageviewerROProperty layout data customization
+				imageviewerROPropertyData.widthHint = 200;
+				imageviewerROPropertyData.heightHint = 200;
+				imageviewerROPropertyData.horizontalAlignment = SWT.CENTER;
+				imageviewerROPropertyData.verticalAlignment = SWT.CENTER;
+		
+		// End of user code
+		imageviewerROProperty.setLayoutData(imageviewerROPropertyData);
+		imageviewerROProperty.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ImageViewerSamplePropertiesEditionPartForm.this, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getImageviewerROProperty()));
+			}
+		});
+		imageviewerROProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -278,6 +311,47 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 			imageviewerOptionalProperty.setSelection(new StructuredSelection(newValue));
 		} else {
 			imageviewerOptionalProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ImageViewerSamplePropertiesEditionPart#getImageviewerROProperty()
+	 * 
+	 */
+	public String getImageviewerROProperty() {
+		ISelection selection = imageviewerROProperty.getSelection();
+		if (selection instanceof StructuredSelection && ((StructuredSelection)selection).getFirstElement() instanceof String) {
+			return (String)((StructuredSelection)selection).getFirstElement();
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ImageViewerSamplePropertiesEditionPart#initImageviewerROProperty(String key, String newValue)
+	 */
+	public void initImageviewerROProperty(String key, String newValue) {
+		if (newValue != null) {
+			imageviewerROProperty.initViewer(key, newValue);
+		} else {
+			imageviewerROProperty.initViewer(key, ""); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ImageViewerSamplePropertiesEditionPart#setImageviewerROProperty(String newValue)
+	 * 
+	 */
+	public void setImageviewerROProperty(String newValue) {
+		if (newValue != null) {
+			imageviewerROProperty.setSelection(new StructuredSelection(newValue));
+		} else {
+			imageviewerROProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
 	}
 

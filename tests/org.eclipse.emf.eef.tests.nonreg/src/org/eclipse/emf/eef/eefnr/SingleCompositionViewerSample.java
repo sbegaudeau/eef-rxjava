@@ -19,6 +19,7 @@ package org.eclipse.emf.eef.eefnr;
  *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleOptionalProperty <em>Singlecompositionview Single Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewMultiRequiredProperty <em>Singlecompositionview Multi Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewMultiOptionalProperty <em>Singlecompositionview Multi Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleROProperty <em>Singlecompositionview Single RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,5 +131,31 @@ public interface SingleCompositionViewerSample extends AbstractSample {
 	 * @generated
 	 */
 	void setSinglecompositionviewMultiOptionalProperty(AbstractSample value);
+
+	/**
+	 * Returns the value of the '<em><b>Singlecompositionview Single RO Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Singlecompositionview Single RO Property</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Singlecompositionview Single RO Property</em>' containment reference.
+	 * @see #setSinglecompositionviewSingleROProperty(Sample)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Sample getSinglecompositionviewSingleROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleROProperty <em>Singlecompositionview Single RO Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Singlecompositionview Single RO Property</em>' containment reference.
+	 * @see #getSinglecompositionviewSingleROProperty()
+	 * @generated
+	 */
+	void setSinglecompositionviewSingleROProperty(Sample value);
 
 } // SingleCompositionViewerSample

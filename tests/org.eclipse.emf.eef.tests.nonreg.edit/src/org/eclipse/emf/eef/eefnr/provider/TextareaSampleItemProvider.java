@@ -63,6 +63,7 @@ public class TextareaSampleItemProvider
 
 			addTextareaRequiredPropertyPropertyDescriptor(object);
 			addTextareaOptionalPropertyPropertyDescriptor(object);
+			addTextareaROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class TextareaSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Textarea RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTextareaROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TextareaSample_textareaROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TextareaSample_textareaROProperty_feature", "_UI_TextareaSample_type"),
+				 EefnrPackage.Literals.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns TextareaSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class TextareaSampleItemProvider
 		switch (notification.getFeatureID(TextareaSample.class)) {
 			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_REQUIRED_PROPERTY:
 			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY:
+			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

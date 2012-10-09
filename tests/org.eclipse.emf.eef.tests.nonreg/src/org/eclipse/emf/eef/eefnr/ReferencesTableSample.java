@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.ReferencesTableSample#getReferencestableRequiredProperty <em>Referencestable Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.ReferencesTableSample#getReferencestableOptionalProperty <em>Referencestable Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.ReferencesTableSample#getReferencestableROProperty <em>Referencestable RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +58,21 @@ public interface ReferencesTableSample extends AbstractSample {
 	 * @generated
 	 */
 	EList<TotalSample> getReferencestableOptionalProperty();
+
+	/**
+	 * Returns the value of the '<em><b>Referencestable RO Property</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.TotalSample}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Referencestable RO Property</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Referencestable RO Property</em>' reference list.
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getReferencesTableSample_ReferencestableROProperty()
+	 * @model
+	 * @generated
+	 */
+	EList<TotalSample> getReferencestableROProperty();
 
 } // ReferencesTableSample

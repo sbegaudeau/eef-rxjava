@@ -63,6 +63,7 @@ public class TextSampleItemProvider
 
 			addTextRequiredPropertyPropertyDescriptor(object);
 			addTextOptionalPropertyPropertyDescriptor(object);
+			addTextROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class TextSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Text RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTextROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TextSample_textROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TextSample_textROProperty_feature", "_UI_TextSample_type"),
+				 EefnrPackage.Literals.TEXT_SAMPLE__TEXT_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns TextSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class TextSampleItemProvider
 		switch (notification.getFeatureID(TextSample.class)) {
 			case EefnrPackage.TEXT_SAMPLE__TEXT_REQUIRED_PROPERTY:
 			case EefnrPackage.TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY:
+			case EefnrPackage.TEXT_SAMPLE__TEXT_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

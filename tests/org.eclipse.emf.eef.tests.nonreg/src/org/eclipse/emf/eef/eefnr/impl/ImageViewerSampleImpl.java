@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.eefnr.ImageViewerSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl#getImageviewerRequiredProperty <em>Imageviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl#getImageviewerOptionalProperty <em>Imageviewer Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.ImageViewerSampleImpl#getImageviewerROProperty <em>Imageviewer RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,26 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 	 * @ordered
 	 */
 	protected String imageviewerOptionalProperty = IMAGEVIEWER_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getImageviewerROProperty() <em>Imageviewer RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImageviewerROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IMAGEVIEWER_RO_PROPERTY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getImageviewerROProperty() <em>Imageviewer RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImageviewerROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected String imageviewerROProperty = IMAGEVIEWER_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +154,27 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getImageviewerROProperty() {
+		return imageviewerROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImageviewerROProperty(String newImageviewerROProperty) {
+		String oldImageviewerROProperty = imageviewerROProperty;
+		imageviewerROProperty = newImageviewerROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY, oldImageviewerROProperty, imageviewerROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +182,8 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 				return getImageviewerRequiredProperty();
 			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY:
 				return getImageviewerOptionalProperty();
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY:
+				return getImageviewerROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 				return;
 			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY:
 				setImageviewerOptionalProperty((String)newValue);
+				return;
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY:
+				setImageviewerROProperty((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +223,9 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY:
 				setImageviewerOptionalProperty(IMAGEVIEWER_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY:
+				setImageviewerROProperty(IMAGEVIEWER_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +242,8 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 				return IMAGEVIEWER_REQUIRED_PROPERTY_EDEFAULT == null ? imageviewerRequiredProperty != null : !IMAGEVIEWER_REQUIRED_PROPERTY_EDEFAULT.equals(imageviewerRequiredProperty);
 			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY:
 				return IMAGEVIEWER_OPTIONAL_PROPERTY_EDEFAULT == null ? imageviewerOptionalProperty != null : !IMAGEVIEWER_OPTIONAL_PROPERTY_EDEFAULT.equals(imageviewerOptionalProperty);
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY:
+				return IMAGEVIEWER_RO_PROPERTY_EDEFAULT == null ? imageviewerROProperty != null : !IMAGEVIEWER_RO_PROPERTY_EDEFAULT.equals(imageviewerROProperty);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +262,8 @@ public class ImageViewerSampleImpl extends AbstractSampleImpl implements ImageVi
 		result.append(imageviewerRequiredProperty);
 		result.append(", imageviewerOptionalProperty: ");
 		result.append(imageviewerOptionalProperty);
+		result.append(", imageviewerROProperty: ");
+		result.append(imageviewerROProperty);
 		result.append(')');
 		return result.toString();
 	}

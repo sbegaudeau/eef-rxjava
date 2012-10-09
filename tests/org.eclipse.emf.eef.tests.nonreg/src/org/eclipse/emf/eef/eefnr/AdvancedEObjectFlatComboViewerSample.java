@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerRequiredProperty <em>Advancedeobjectflatcomboviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerOptionalProperty <em>Advancedeobjectflatcomboviewer Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerROPropery <em>Advancedeobjectflatcomboviewer RO Propery</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface AdvancedEObjectFlatComboViewerSample extends AbstractSample {
 	 * @generated
 	 */
 	void setAdvancedeobjectflatcomboviewerOptionalProperty(TotalSample value);
+
+	/**
+	 * Returns the value of the '<em><b>Advancedeobjectflatcomboviewer RO Propery</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Advancedeobjectflatcomboviewer RO Propery</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Advancedeobjectflatcomboviewer RO Propery</em>' reference.
+	 * @see #setAdvancedeobjectflatcomboviewerROPropery(TotalSample)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery()
+	 * @model
+	 * @generated
+	 */
+	TotalSample getAdvancedeobjectflatcomboviewerROPropery();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerROPropery <em>Advancedeobjectflatcomboviewer RO Propery</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Advancedeobjectflatcomboviewer RO Propery</em>' reference.
+	 * @see #getAdvancedeobjectflatcomboviewerROPropery()
+	 * @generated
+	 */
+	void setAdvancedeobjectflatcomboviewerROPropery(TotalSample value);
 
 } // AdvancedEObjectFlatComboViewerSample

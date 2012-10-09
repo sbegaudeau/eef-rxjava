@@ -170,7 +170,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedFlatReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && deferedFlatReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					deferedFlatReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

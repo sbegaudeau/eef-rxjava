@@ -92,7 +92,6 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 			case EefnrPackage.EOBJECT_FLAT_COMBO_VIEWER_SAMPLE: return createEObjectFlatComboViewerSample();
 			case EefnrPackage.REFERENCES_TABLE_SAMPLE: return createReferencesTableSample();
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE: return createEMFComboViewerSample();
-			case EefnrPackage.COMBO_SAMPLE: return createComboSample();
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE: return createMultiValuedEditorSample();
 			case EefnrPackage.TABLE_COMPOSITION_EDITOR_SAMPLE: return createTableCompositionEditorSample();
 			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE: return createAdvancedReferencesTableSample();
@@ -228,16 +227,6 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 	public EMFComboViewerSample createEMFComboViewerSample() {
 		EMFComboViewerSampleImpl emfComboViewerSample = new EMFComboViewerSampleImpl();
 		return emfComboViewerSample;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComboSample createComboSample() {
-		ComboSampleImpl comboSample = new ComboSampleImpl();
-		return comboSample;
 	}
 
 	/**

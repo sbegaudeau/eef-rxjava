@@ -135,10 +135,6 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 				return createEMFComboViewerSampleAdapter();
 			}
 			@Override
-			public Adapter caseComboSample(ComboSample object) {
-				return createComboSampleAdapter();
-			}
-			@Override
 			public Adapter caseMultiValuedEditorSample(MultiValuedEditorSample object) {
 				return createMultiValuedEditorSampleAdapter();
 			}
@@ -351,20 +347,6 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEMFComboViewerSampleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.ComboSample <em>Combo Sample</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.eef.eefnr.ComboSample
-	 * @generated
-	 */
-	public Adapter createComboSampleAdapter() {
 		return null;
 	}
 

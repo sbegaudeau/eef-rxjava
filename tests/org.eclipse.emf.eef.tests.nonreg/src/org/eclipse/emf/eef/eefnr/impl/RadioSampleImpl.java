@@ -22,6 +22,7 @@ import org.eclipse.emf.eef.eefnr.RadioSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.RadioSampleImpl#getRadioRequiredProperty <em>Radio Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.RadioSampleImpl#getRadioOptionalProperty <em>Radio Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.RadioSampleImpl#getRadioROProperty <em>Radio RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +68,26 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 	 * @ordered
 	 */
 	protected ENUM_SAMPLE radioOptionalProperty = RADIO_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRadioROProperty() <em>Radio RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRadioROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ENUM_SAMPLE RADIO_RO_PROPERTY_EDEFAULT = ENUM_SAMPLE.LITERAL1;
+
+	/**
+	 * The cached value of the '{@link #getRadioROProperty() <em>Radio RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRadioROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected ENUM_SAMPLE radioROProperty = RADIO_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,6 +155,27 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ENUM_SAMPLE getRadioROProperty() {
+		return radioROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRadioROProperty(ENUM_SAMPLE newRadioROProperty) {
+		ENUM_SAMPLE oldRadioROProperty = radioROProperty;
+		radioROProperty = newRadioROProperty == null ? RADIO_RO_PROPERTY_EDEFAULT : newRadioROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.RADIO_SAMPLE__RADIO_RO_PROPERTY, oldRadioROProperty, radioROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -141,6 +183,8 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 				return getRadioRequiredProperty();
 			case EefnrPackage.RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY:
 				return getRadioOptionalProperty();
+			case EefnrPackage.RADIO_SAMPLE__RADIO_RO_PROPERTY:
+				return getRadioROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,6 +202,9 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 				return;
 			case EefnrPackage.RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY:
 				setRadioOptionalProperty((ENUM_SAMPLE)newValue);
+				return;
+			case EefnrPackage.RADIO_SAMPLE__RADIO_RO_PROPERTY:
+				setRadioROProperty((ENUM_SAMPLE)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -177,6 +224,9 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 			case EefnrPackage.RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY:
 				setRadioOptionalProperty(RADIO_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.RADIO_SAMPLE__RADIO_RO_PROPERTY:
+				setRadioROProperty(RADIO_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -193,6 +243,8 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 				return radioRequiredProperty != RADIO_REQUIRED_PROPERTY_EDEFAULT;
 			case EefnrPackage.RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY:
 				return radioOptionalProperty != RADIO_OPTIONAL_PROPERTY_EDEFAULT;
+			case EefnrPackage.RADIO_SAMPLE__RADIO_RO_PROPERTY:
+				return radioROProperty != RADIO_RO_PROPERTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,6 +263,8 @@ public class RadioSampleImpl extends AbstractSampleImpl implements RadioSample {
 		result.append(radioRequiredProperty);
 		result.append(", radioOptionalProperty: ");
 		result.append(radioOptionalProperty);
+		result.append(", radioROProperty: ");
+		result.append(radioROProperty);
 		result.append(')');
 		return result.toString();
 	}

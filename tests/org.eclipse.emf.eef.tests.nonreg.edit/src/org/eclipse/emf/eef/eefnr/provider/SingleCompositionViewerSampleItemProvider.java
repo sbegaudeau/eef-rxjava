@@ -91,6 +91,7 @@ public class SingleCompositionViewerSampleItemProvider
 			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY);
 		}
 		return childrenFeatures;
 	}
@@ -149,6 +150,7 @@ public class SingleCompositionViewerSampleItemProvider
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY:
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY:
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY:
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -219,11 +221,6 @@ public class SingleCompositionViewerSampleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY,
-				 EefnrFactory.eINSTANCE.createComboSample()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY,
 				 EefnrFactory.eINSTANCE.createMultiValuedEditorSample()));
 
 		newChildDescriptors.add
@@ -419,11 +416,6 @@ public class SingleCompositionViewerSampleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY,
-				 EefnrFactory.eINSTANCE.createComboSample()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY,
 				 EefnrFactory.eINSTANCE.createMultiValuedEditorSample()));
 
 		newChildDescriptors.add
@@ -575,6 +567,11 @@ public class SingleCompositionViewerSampleItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY,
 				 EefnrextFactory.eINSTANCE.createFlatReferenceExtendedEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSample()));
 	}
 
 	/**
@@ -592,7 +589,8 @@ public class SingleCompositionViewerSampleItemProvider
 			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_REQUIRED_PROPERTY ||
 			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY ||
 			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY ||
-			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY;
+			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY ||
+			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY;
 
 		if (qualify) {
 			return getString

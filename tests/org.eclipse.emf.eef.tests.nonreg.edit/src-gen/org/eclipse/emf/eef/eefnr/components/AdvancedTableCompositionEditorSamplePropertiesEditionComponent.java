@@ -61,6 +61,11 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	 */
 	protected ReferencesTableSettings advancedtablecompositionOptionalPropertySettings;
 	
+	/**
+	 * Settings for advancedtablecompositionROProperty ReferencesTable
+	 */
+	protected ReferencesTableSettings advancedtablecompositionROPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -95,6 +100,10 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 				advancedtablecompositionOptionalPropertySettings = new ReferencesTableSettings(advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty());
 				basePart.initAdvancedtablecompositionOptionalProperty(advancedtablecompositionOptionalPropertySettings);
 			}
+			if (isAccessible(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionROProperty)) {
+				advancedtablecompositionROPropertySettings = new ReferencesTableSettings(advancedTableCompositionEditorSample, EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty());
+				basePart.initAdvancedtablecompositionROProperty(advancedtablecompositionROPropertySettings);
+			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty)) {
 				basePart.addFilterToAdvancedtablecompositionRequiredProperty(new ViewerFilter() {
@@ -128,6 +137,21 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 				
 				// End of user code
 			}
+			if (isAccessible(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionROProperty)) {
+				basePart.addFilterToAdvancedtablecompositionROProperty(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for advancedtablecompositionROProperty
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -135,6 +159,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -150,6 +175,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 		}
 		if (editorKey == EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionROProperty) {
+			return EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -224,6 +252,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 				basePart.updateAdvancedtablecompositionRequiredProperty();
 			if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty))
 				basePart.updateAdvancedtablecompositionOptionalProperty();
+			if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionROProperty))
+				basePart.updateAdvancedtablecompositionROProperty();
 			
 		}
 	}
@@ -237,7 +267,8 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(),
-			EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(),
+			EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

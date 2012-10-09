@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TextSample#getTextRequiredProperty <em>Text Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TextSample#getTextOptionalProperty <em>Text Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.TextSample#getTextROProperty <em>Text RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface TextSample extends AbstractSample {
 	 * @generated
 	 */
 	void setTextOptionalProperty(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Text RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Text RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Text RO Property</em>' attribute.
+	 * @see #setTextROProperty(String)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getTextSample_TextROProperty()
+	 * @model
+	 * @generated
+	 */
+	String getTextROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.TextSample#getTextROProperty <em>Text RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Text RO Property</em>' attribute.
+	 * @see #getTextROProperty()
+	 * @generated
+	 */
+	void setTextROProperty(String value);
 
 } // TextSample

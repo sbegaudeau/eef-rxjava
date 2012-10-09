@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.RadioSample#getRadioRequiredProperty <em>Radio Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.RadioSample#getRadioOptionalProperty <em>Radio Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.RadioSample#getRadioROProperty <em>Radio RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,5 +83,34 @@ public interface RadioSample extends AbstractSample {
 	 * @generated
 	 */
 	void setRadioOptionalProperty(ENUM_SAMPLE value);
+
+	/**
+	 * Returns the value of the '<em><b>Radio RO Property</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Radio RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Radio RO Property</em>' attribute.
+	 * @see org.eclipse.emf.eef.eefnr.ENUM_SAMPLE
+	 * @see #setRadioROProperty(ENUM_SAMPLE)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getRadioSample_RadioROProperty()
+	 * @model
+	 * @generated
+	 */
+	ENUM_SAMPLE getRadioROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.RadioSample#getRadioROProperty <em>Radio RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Radio RO Property</em>' attribute.
+	 * @see org.eclipse.emf.eef.eefnr.ENUM_SAMPLE
+	 * @see #getRadioROProperty()
+	 * @generated
+	 */
+	void setRadioROProperty(ENUM_SAMPLE value);
 
 } // RadioSample

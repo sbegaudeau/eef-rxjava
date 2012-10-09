@@ -161,13 +161,6 @@ public class EefnrSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EefnrPackage.COMBO_SAMPLE: {
-				ComboSample comboSample = (ComboSample)theEObject;
-				T result = caseComboSample(comboSample);
-				if (result == null) result = caseAbstractSample(comboSample);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE: {
 				MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)theEObject;
 				T result = caseMultiValuedEditorSample(multiValuedEditorSample);
@@ -417,21 +410,6 @@ public class EefnrSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEMFComboViewerSample(EMFComboViewerSample object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Combo Sample</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Combo Sample</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComboSample(ComboSample object) {
 		return null;
 	}
 

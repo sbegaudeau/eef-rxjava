@@ -51,6 +51,20 @@ public interface TextSamplePropertiesEditionPart {
 	public void setTextOptionalProperty(String newValue);
 
 
+	/**
+	 * @return the textROProperty
+	 * 
+	 */
+	public String getTextROProperty();
+
+	/**
+	 * Defines a new textROProperty
+	 * @param newValue the new textROProperty to set
+	 * 
+	 */
+	public void setTextROProperty(String newValue);
+
+
 
 
 

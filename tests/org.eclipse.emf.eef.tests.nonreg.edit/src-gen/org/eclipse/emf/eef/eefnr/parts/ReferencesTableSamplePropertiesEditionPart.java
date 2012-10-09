@@ -111,6 +111,48 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 
 
 
+	/**
+	 * Init the referencestableROProperty
+	 * @param settings settings for the referencestableROProperty ReferencesTable 
+	 */
+	public void initReferencestableROProperty(ReferencesTableSettings settings);
+
+	/**
+	 * Update the referencestableROProperty
+	 * @param newValue the referencestableROProperty to update
+	 * 
+	 */
+	public void updateReferencestableROProperty();
+
+	/**
+	 * Adds the given filter to the referencestableROProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToReferencestableROProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the referencestableROProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToReferencestableROProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the referencestableROProperty table
+	 * 
+	 */
+	public boolean isContainedInReferencestableROPropertyTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

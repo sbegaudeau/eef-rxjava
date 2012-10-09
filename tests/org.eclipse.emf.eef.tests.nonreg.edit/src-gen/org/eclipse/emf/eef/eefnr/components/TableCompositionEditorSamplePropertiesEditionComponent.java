@@ -61,6 +61,11 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	 */
 	protected ReferencesTableSettings tablecompositionOptionalPropertySettings;
 	
+	/**
+	 * Settings for tablecompositionROProperty ReferencesTable
+	 */
+	protected ReferencesTableSettings tablecompositionROPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -95,6 +100,10 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 				tablecompositionOptionalPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty());
 				basePart.initTablecompositionOptionalProperty(tablecompositionOptionalPropertySettings);
 			}
+			if (isAccessible(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty)) {
+				tablecompositionROPropertySettings = new ReferencesTableSettings(tableCompositionEditorSample, EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionROProperty());
+				basePart.initTablecompositionROProperty(tablecompositionROPropertySettings);
+			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty)) {
 				basePart.addFilterToTablecompositionRequiredProperty(new ViewerFilter() {
@@ -125,7 +134,21 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 			
 				});
 				// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-				
+				// End of user code
+			}
+			if (isAccessible(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty)) {
+				basePart.addFilterToTablecompositionROProperty(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Sample); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for tablecompositionROProperty
 				// End of user code
 			}
 			// init values for referenced views
@@ -135,6 +158,7 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -150,6 +174,9 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		}
 		if (editorKey == EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty) {
+			return EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -224,6 +251,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 				basePart.updateTablecompositionRequiredProperty();
 			if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty))
 				basePart.updateTablecompositionOptionalProperty();
+			if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionROProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty))
+				basePart.updateTablecompositionROProperty();
 			
 		}
 	}
@@ -237,7 +266,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty(),
-			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty()		);
+			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionROProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

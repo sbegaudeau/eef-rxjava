@@ -63,6 +63,7 @@ public class ImageViewerSampleItemProvider
 
 			addImageviewerRequiredPropertyPropertyDescriptor(object);
 			addImageviewerOptionalPropertyPropertyDescriptor(object);
+			addImageviewerROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class ImageViewerSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Imageviewer RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImageviewerROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ImageViewerSample_imageviewerROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ImageViewerSample_imageviewerROProperty_feature", "_UI_ImageViewerSample_type"),
+				 EefnrPackage.Literals.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns ImageViewerSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class ImageViewerSampleItemProvider
 		switch (notification.getFeatureID(ImageViewerSample.class)) {
 			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_REQUIRED_PROPERTY:
 			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY:
+			case EefnrPackage.IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
