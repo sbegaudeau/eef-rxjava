@@ -120,4 +120,12 @@ public class SelectionDialog extends Composite {
 			this.text.addKeyListener(keyListener);
 	}
 
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		browseButton.setEnabled(enabled);
+		text.setEnabled(enabled);
+	}
+
+	
 }

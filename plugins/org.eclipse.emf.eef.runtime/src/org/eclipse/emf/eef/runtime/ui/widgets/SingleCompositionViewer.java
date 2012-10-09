@@ -482,4 +482,14 @@ public class SingleCompositionViewer<T extends EObject> extends Composite {
 			}
 		}
 	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		comboViewer.setEnabled(enabled);
+		setActiveEEFViewerCheckBox.setEnabled(enabled);
+		label.setEnabled(enabled);
+	}
+	
+	
 }

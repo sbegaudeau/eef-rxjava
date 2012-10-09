@@ -219,4 +219,12 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 	public void setButtonMode(ButtonsModeEnum button_mode) {
 		this.button_mode = button_mode;
 	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		editer.setEnabled(enabled);
+	}
+	
+	
 }

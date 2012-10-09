@@ -493,7 +493,7 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	}
 
 	private void computeRemoveButtonStatus() {
-		if (getSize() > this.lowerBound)
+		if (getTable().getEnabled() && (getSize() > this.lowerBound))
 			removeButton.setEnabled(true);
 		else
 			removeButton.setEnabled(false);
@@ -501,7 +501,7 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	}
 
 	private void computeAddButtonStatus() {
-		if (this.upperBound < 0 || getSize() < this.upperBound)
+		if (getTable().getEnabled() && (this.upperBound < 0 || getSize() < this.upperBound))
 			addButton.setEnabled(true);
 		else
 			addButton.setEnabled(false);
