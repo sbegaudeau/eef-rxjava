@@ -224,6 +224,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 			}
 			
 		});
+		if (isReadOnly(abstractTarget)) {
+			abstractTarget.setEnabled(false);
+			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		}		
+		
 		GridData abstractTargetData = new GridData(GridData.FILL_HORIZONTAL);
 		abstractTargetData.horizontalSpan = 3;
 		this.abstractTarget.setLayoutData(abstractTargetData);

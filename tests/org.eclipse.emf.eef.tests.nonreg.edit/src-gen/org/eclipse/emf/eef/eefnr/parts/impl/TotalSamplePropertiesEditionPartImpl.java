@@ -726,6 +726,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 			
 		});
+		if (isReadOnly(referencestableRequiredProperty)) {
+			referencestableRequiredProperty.setEnabled(false);
+			referencestableRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData referencestableRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		referencestableRequiredPropertyData.horizontalSpan = 3;
 		this.referencestableRequiredProperty.setLayoutData(referencestableRequiredPropertyData);
@@ -808,6 +813,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 			
 		});
+		if (isReadOnly(referencestableOptionalProperty)) {
+			referencestableOptionalProperty.setEnabled(false);
+			referencestableOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData referencestableOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		referencestableOptionalPropertyData.horizontalSpan = 3;
 		this.referencestableOptionalProperty.setLayoutData(referencestableOptionalPropertyData);
@@ -1426,6 +1436,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 			
 		});
+		if (isReadOnly(advancedreferencestableRequiredProperty)) {
+			advancedreferencestableRequiredProperty.setEnabled(false);
+			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData advancedreferencestableRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableRequiredPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableRequiredProperty.setLayoutData(advancedreferencestableRequiredPropertyData);
@@ -1508,6 +1523,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 			
 		});
+		if (isReadOnly(advancedreferencestableOptionalProperty)) {
+			advancedreferencestableOptionalProperty.setEnabled(false);
+			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData advancedreferencestableOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableOptionalPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableOptionalProperty.setLayoutData(advancedreferencestableOptionalPropertyData);

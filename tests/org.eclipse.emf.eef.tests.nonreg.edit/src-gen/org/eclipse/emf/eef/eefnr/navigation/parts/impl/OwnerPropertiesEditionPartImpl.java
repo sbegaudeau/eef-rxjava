@@ -743,6 +743,11 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			}
 			
 		});
+		if (isReadOnly(multipleSampleForAdvancedReferencesTable)) {
+			multipleSampleForAdvancedReferencesTable.setEnabled(false);
+			multipleSampleForAdvancedReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData multipleSampleForAdvancedReferencesTableData = new GridData(GridData.FILL_HORIZONTAL);
 		multipleSampleForAdvancedReferencesTableData.horizontalSpan = 3;
 		this.multipleSampleForAdvancedReferencesTable.setLayoutData(multipleSampleForAdvancedReferencesTableData);
