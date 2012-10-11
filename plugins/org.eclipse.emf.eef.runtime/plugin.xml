@@ -14,6 +14,7 @@
    <extension-point id="PropertiesEditionProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionProvider" schema="schema/PropertiesEditionProvider.exsd"/>
    <extension-point id="PropertiesEditionPolicyProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider" schema="schema/PropertiesEditionPolicyProvider.exsd"/>
    <extension-point id="PropertiesEditionPartProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider" schema="schema/PropertiesEditionPartProvider.exsd"/>
+   <extension-point id="ReadOnlyPolicyProvider" name="ReadOnlyPolicyProvider" schema="schema/ReadOnlyPolicyProvider.exsd"/>
    
      <extension
          point="org.eclipse.emf.validation.constraintBindings">

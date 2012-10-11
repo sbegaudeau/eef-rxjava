@@ -10,13 +10,17 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.parts;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.providers.IReadOnlyPolicy;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.services.ReadOnlyPolicyProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
@@ -222,6 +226,27 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 			return SWTUtils.createPartLabel(parent, alternate,
 					propertiesEditionComponent.isRequired(editor, 0));
 		}
+	}
+
+	/**
+	 * @param control
+	 *            Widget
+	 * 
+	 * @return if the widget is read only
+	 */
+	public boolean isReadOnly(Object control) {
+		EObject eObject = propertiesEditionComponent.getEditingContext()
+				.getEObject();
+		if (eObject != null) {
+			List<IReadOnlyPolicy> policies = ReadOnlyPolicyProviderService
+					.getInstance().getPolicies();
+			for (IReadOnlyPolicy iReadOnlyPolicy : policies) {
+				if (iReadOnlyPolicy.isReadOnly(eObject, control)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }
