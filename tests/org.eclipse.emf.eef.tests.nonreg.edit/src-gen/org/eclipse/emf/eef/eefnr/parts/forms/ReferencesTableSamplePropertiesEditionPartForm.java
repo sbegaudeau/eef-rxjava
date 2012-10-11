@@ -193,6 +193,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	protected TableViewer createReferencestableRequiredPropertyViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -255,6 +260,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		addReferencestableRequiredProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		if (isReadOnly(referencestableRequiredProperty)) {
+			addReferencestableRequiredProperty.setEnabled(false);
+			addReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencestableRequiredProperty.setLayoutData(addData);
 		addReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -273,6 +283,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(addReferencestableRequiredProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		EditingUtils.setEEFtype(addReferencestableRequiredProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencestableRequiredProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		if (isReadOnly(referencestableRequiredProperty)) {
+			removeReferencestableRequiredProperty.setEnabled(false);
+			removeReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableRequiredProperty.setLayoutData(removeData);
 		removeReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -350,6 +365,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 	protected TableViewer createReferencestableOptionalPropertyViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -412,6 +432,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		addReferencestableOptionalProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		if (isReadOnly(referencestableOptionalProperty)) {
+			addReferencestableOptionalProperty.setEnabled(false);
+			addReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencestableOptionalProperty.setLayoutData(addData);
 		addReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -430,6 +455,11 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(addReferencestableOptionalProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
 		EditingUtils.setEEFtype(addReferencestableOptionalProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencestableOptionalProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		if (isReadOnly(referencestableOptionalProperty)) {
+			removeReferencestableOptionalProperty.setEnabled(false);
+			removeReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableOptionalProperty.setLayoutData(removeData);
 		removeReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -509,6 +539,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		table.setHeaderVisible(true);
 		table.setEnabled(false);
 		table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -573,6 +604,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		addReferencestableROProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
 		addReferencestableROProperty.setEnabled(false);
 		addReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencestableROProperty.setLayoutData(addData);
 		addReferencestableROProperty.addSelectionListener(new SelectionAdapter() {
@@ -593,6 +625,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		removeReferencestableROProperty = widgetFactory.createButton(result, EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
 		removeReferencestableROProperty.setEnabled(false);
 		removeReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableROProperty.setLayoutData(removeData);
 		removeReferencestableROProperty.addSelectionListener(new SelectionAdapter() {

@@ -177,6 +177,11 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 			}
 			
 		});
+		if (isReadOnly(advancedreferencestableRequiredProperty)) {
+			advancedreferencestableRequiredProperty.setEnabled(false);
+			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData advancedreferencestableRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableRequiredPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableRequiredProperty.setLayoutData(advancedreferencestableRequiredPropertyData);
@@ -258,6 +263,11 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 			}
 			
 		});
+		if (isReadOnly(advancedreferencestableOptionalProperty)) {
+			advancedreferencestableOptionalProperty.setEnabled(false);
+			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData advancedreferencestableOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableOptionalPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableOptionalProperty.setLayoutData(advancedreferencestableOptionalPropertyData);
@@ -341,6 +351,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		});
 		advancedreferencestableROProperty.setEnabled(false);
 		advancedreferencestableROProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
+		
 		GridData advancedreferencestableROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableROPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableROProperty.setLayoutData(advancedreferencestableROPropertyData);

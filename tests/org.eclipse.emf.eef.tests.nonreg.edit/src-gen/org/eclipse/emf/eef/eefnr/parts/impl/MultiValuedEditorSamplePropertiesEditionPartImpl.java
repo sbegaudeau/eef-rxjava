@@ -141,6 +141,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 
 	protected Composite createMultivaluededitorRequiredPropertyMultiValuedEditor(Composite parent) {
 		multivaluededitorRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		if (isReadOnly(multivaluededitorRequiredProperty)) {
+			multivaluededitorRequiredProperty.setEnabled(false);
+			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		}		
+		
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
@@ -181,6 +186,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 
 	protected Composite createMultivaluededitorOptionalPropertyMultiValuedEditor(Composite parent) {
 		multivaluededitorOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		if (isReadOnly(multivaluededitorOptionalProperty)) {
+			multivaluededitorOptionalProperty.setEnabled(false);
+			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		}		
+		
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
@@ -223,6 +233,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		multivaluededitorROProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		multivaluededitorROProperty.setEnabled(false);
 		multivaluededitorROProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		
 		GridData multivaluededitorROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorROPropertyData.horizontalSpan = 2;
 		multivaluededitorROProperty.setLayoutData(multivaluededitorROPropertyData);

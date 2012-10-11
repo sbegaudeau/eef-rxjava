@@ -166,6 +166,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 		//create widget
 		advancedeobjectflatcomboviewerRequiredProperty = new AdvancedEObjectFlatComboViewer(EefnrMessages.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerRequiredPropertyLabel, resourceSet, advancedeobjectflatcomboviewerRequiredPropertyFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		advancedeobjectflatcomboviewerRequiredProperty.createControls(parent, widgetFactory);
+		if (isReadOnly(advancedeobjectflatcomboviewerRequiredProperty)) {
+			advancedeobjectflatcomboviewerRequiredProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		}		
+		
 		GridData advancedeobjectflatcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerRequiredProperty.setLayoutData(advancedeobjectflatcomboviewerRequiredPropertyData);
 		advancedeobjectflatcomboviewerRequiredProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty);
@@ -197,6 +202,11 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 		//create widget
 		advancedeobjectflatcomboviewerOptionalProperty = new AdvancedEObjectFlatComboViewer(EefnrMessages.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerOptionalPropertyLabel, resourceSet, advancedeobjectflatcomboviewerOptionalPropertyFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		advancedeobjectflatcomboviewerOptionalProperty.createControls(parent, widgetFactory);
+		if (isReadOnly(advancedeobjectflatcomboviewerOptionalProperty)) {
+			advancedeobjectflatcomboviewerOptionalProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		}		
+		
 		GridData advancedeobjectflatcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerOptionalProperty.setLayoutData(advancedeobjectflatcomboviewerOptionalPropertyData);
 		advancedeobjectflatcomboviewerOptionalProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerOptionalProperty);
@@ -230,6 +240,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm exten
 		advancedeobjectflatcomboviewerROProperty.createControls(parent, widgetFactory);
 		advancedeobjectflatcomboviewerROProperty.setEnabled(false);
 		advancedeobjectflatcomboviewerROProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		
 		GridData advancedeobjectflatcomboviewerROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerROProperty.setLayoutData(advancedeobjectflatcomboviewerROPropertyData);
 		advancedeobjectflatcomboviewerROProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty);

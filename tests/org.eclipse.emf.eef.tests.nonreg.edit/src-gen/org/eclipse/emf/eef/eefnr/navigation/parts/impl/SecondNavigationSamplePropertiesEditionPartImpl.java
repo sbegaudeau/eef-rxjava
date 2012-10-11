@@ -135,6 +135,11 @@ public class SecondNavigationSamplePropertiesEditionPartImpl extends CompositePr
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SecondNavigationSample.Properties.name, NavigationMessages.SecondNavigationSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.SecondNavigationSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {

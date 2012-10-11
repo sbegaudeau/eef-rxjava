@@ -147,6 +147,11 @@ public class FirstNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.FirstNavigationSample.Properties.name, NavigationMessages.FirstNavigationSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.FirstNavigationSample_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);

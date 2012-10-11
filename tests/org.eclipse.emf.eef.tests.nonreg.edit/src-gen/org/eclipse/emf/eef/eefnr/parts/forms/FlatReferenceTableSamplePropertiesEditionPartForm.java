@@ -149,7 +149,11 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		createDescription(parent, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableRequiredPropertyLabel);
 		flatreferencetableRequiredProperty = new FlatReferencesTable(parent);
 		flatreferencetableRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
+		if (isReadOnly(flatreferencetableRequiredProperty)) {
+			flatreferencetableRequiredProperty.setEnabled(false);
+			flatreferencetableRequiredProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
+		}		
+		
 		flatreferencetableRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -174,7 +178,11 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		createDescription(parent, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableOptionalPropertyLabel);
 		flatreferencetableOptionalProperty = new FlatReferencesTable(parent);
 		flatreferencetableOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
+		if (isReadOnly(flatreferencetableOptionalProperty)) {
+			flatreferencetableOptionalProperty.setEnabled(false);
+			flatreferencetableOptionalProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
+		}		
+		
 		flatreferencetableOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -201,7 +209,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		flatreferencetableROProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		flatreferencetableROProperty.setEnabled(false);
 		flatreferencetableROProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
-
+		
 		flatreferencetableROProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {

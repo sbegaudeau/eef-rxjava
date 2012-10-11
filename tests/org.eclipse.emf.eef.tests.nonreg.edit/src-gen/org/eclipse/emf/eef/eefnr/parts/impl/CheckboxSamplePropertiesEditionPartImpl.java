@@ -130,6 +130,11 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 	protected Composite createCheckboxRequiredPropertyCheckbox(Composite parent) {
 		checkboxRequiredProperty = new Button(parent, SWT.CHECK);
 		checkboxRequiredProperty.setText(getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel));
+		if (isReadOnly(checkboxRequiredProperty)) {
+			checkboxRequiredProperty.setEnabled(false);
+			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		}		
+		
 		checkboxRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -157,6 +162,11 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 	protected Composite createCheckboxOptionalPropertyCheckbox(Composite parent) {
 		checkboxOptionalProperty = new Button(parent, SWT.CHECK);
 		checkboxOptionalProperty.setText(getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel));
+		if (isReadOnly(checkboxOptionalProperty)) {
+			checkboxOptionalProperty.setEnabled(false);
+			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		}		
+		
 		checkboxOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -186,6 +196,7 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		checkboxROProperty.setText(getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxROPropertyLabel));
 		checkboxROProperty.setEnabled(false);
 		checkboxROProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		
 		checkboxROProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**

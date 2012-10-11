@@ -149,7 +149,11 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		createDescription(parent, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel);
 		flatReferenceEditorSample = new FlatReferencesTable(parent);
 		flatReferenceEditorSample.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
+		if (isReadOnly(flatReferenceEditorSample)) {
+			flatReferenceEditorSample.setEnabled(false);
+			flatReferenceEditorSample.setToolTipText(EefnrextMessages.FlatReferenceExtendedEditorSample_ReadOnly);
+		}		
+		
 		flatReferenceEditorSample.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {

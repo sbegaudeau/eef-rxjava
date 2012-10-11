@@ -154,6 +154,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -316,6 +321,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 			}
 			
 		});
+		if (isReadOnly(strictTyping)) {
+			strictTyping.setEnabled(false);
+			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		}		
+		
 		GridData strictTypingData = new GridData(GridData.FILL_HORIZONTAL);
 		strictTypingData.horizontalSpan = 3;
 		this.strictTyping.setLayoutData(strictTypingData);

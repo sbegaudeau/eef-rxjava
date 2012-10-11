@@ -139,6 +139,11 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 	protected Composite createTextRequiredPropertyInFirstTabText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel);
 		textRequiredPropertyInFirstTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(textRequiredPropertyInFirstTab)) {
+			textRequiredPropertyInFirstTab.setEnabled(false);
+			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		}		
+		
 		textRequiredPropertyInFirstTab.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textRequiredPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
@@ -204,6 +209,11 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 	protected Composite createTextOptionalPropertyInFirstTabText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel);
 		textOptionalPropertyInFirstTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(textOptionalPropertyInFirstTab)) {
+			textOptionalPropertyInFirstTab.setEnabled(false);
+			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		}		
+		
 		textOptionalPropertyInFirstTab.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textOptionalPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);

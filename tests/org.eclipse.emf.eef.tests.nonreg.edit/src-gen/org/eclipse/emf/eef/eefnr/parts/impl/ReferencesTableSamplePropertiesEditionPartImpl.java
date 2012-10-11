@@ -182,6 +182,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	protected TableViewer createReferencestableRequiredPropertyViewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -244,6 +249,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		result.setLayout(layout);
 		addReferencestableRequiredProperty = new Button(result, SWT.NONE);
 		addReferencestableRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_AddListViewerLabel);
+		if (isReadOnly(referencestableRequiredProperty)) {
+			addReferencestableRequiredProperty.setEnabled(false);
+			addReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencestableRequiredProperty.setLayoutData(addData);
 		addReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -263,6 +273,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setEEFtype(addReferencestableRequiredProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencestableRequiredProperty = new Button(result, SWT.NONE);
 		removeReferencestableRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		if (isReadOnly(referencestableRequiredProperty)) {
+			removeReferencestableRequiredProperty.setEnabled(false);
+			removeReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableRequiredProperty.setLayoutData(removeData);
 		removeReferencestableRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -340,6 +355,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	protected TableViewer createReferencestableOptionalPropertyViewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -402,6 +422,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		result.setLayout(layout);
 		addReferencestableOptionalProperty = new Button(result, SWT.NONE);
 		addReferencestableOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_AddListViewerLabel);
+		if (isReadOnly(referencestableOptionalProperty)) {
+			addReferencestableOptionalProperty.setEnabled(false);
+			addReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencestableOptionalProperty.setLayoutData(addData);
 		addReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -421,6 +446,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setEEFtype(addReferencestableOptionalProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencestableOptionalProperty = new Button(result, SWT.NONE);
 		removeReferencestableOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		if (isReadOnly(referencestableOptionalProperty)) {
+			removeReferencestableOptionalProperty.setEnabled(false);
+			removeReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableOptionalProperty.setLayoutData(removeData);
 		removeReferencestableOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -500,6 +530,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		table.setHeaderVisible(true);
 		table.setEnabled(false);
 		table.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -564,6 +595,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		addReferencestableROProperty.setText(EefnrMessages.PropertiesEditionPart_AddListViewerLabel);
 		addReferencestableROProperty.setEnabled(false);
 		addReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencestableROProperty.setLayoutData(addData);
 		addReferencestableROProperty.addSelectionListener(new SelectionAdapter() {
@@ -585,6 +617,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		removeReferencestableROProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
 		removeReferencestableROProperty.setEnabled(false);
 		removeReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencestableROProperty.setLayoutData(removeData);
 		removeReferencestableROProperty.addSelectionListener(new SelectionAdapter() {

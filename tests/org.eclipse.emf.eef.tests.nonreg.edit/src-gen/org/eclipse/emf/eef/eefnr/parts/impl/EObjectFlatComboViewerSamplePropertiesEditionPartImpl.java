@@ -139,6 +139,11 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		createDescription(parent, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery, EefnrMessages.EObjectFlatComboViewerSamplePropertiesEditionPart_EobjectflatcomboviewerRequiredProperyLabel);
 		eobjectflatcomboviewerRequiredPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerRequiredPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(eobjectflatcomboviewerRequiredPropery)) {
+			eobjectflatcomboviewerRequiredPropery.setEnabled(false);
+			eobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
+		}		
+		
 
 		eobjectflatcomboviewerRequiredPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -162,6 +167,11 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		createDescription(parent, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, EefnrMessages.EObjectFlatComboViewerSamplePropertiesEditionPart_EobjectflatcomboviewerOptionalProperyLabel);
 		eobjectflatcomboviewerOptionalPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerOptionalPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(eobjectflatcomboviewerOptionalPropery)) {
+			eobjectflatcomboviewerOptionalPropery.setEnabled(false);
+			eobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
+		}		
+		
 
 		eobjectflatcomboviewerOptionalPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -187,6 +197,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerROPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		eobjectflatcomboviewerROPropery.setEnabled(false);
 		eobjectflatcomboviewerROPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
+		
 
 		eobjectflatcomboviewerROPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 

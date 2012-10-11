@@ -136,6 +136,12 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		textareaRequiredPropertyLabelData.horizontalSpan = 3;
 		textareaRequiredPropertyLabel.setLayoutData(textareaRequiredPropertyLabelData);
 		textareaRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		if (isReadOnly(textareaRequiredProperty)) {
+			textareaRequiredProperty.setEnabled(false);
+			textareaRequiredProperty.setBackground(textareaRequiredProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			textareaRequiredProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		}		
+		
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredPropertyData.horizontalSpan = 2;
 		textareaRequiredPropertyData.heightHint = 80;
@@ -168,6 +174,12 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		textareaOptionalPropertyLabelData.horizontalSpan = 3;
 		textareaOptionalPropertyLabel.setLayoutData(textareaOptionalPropertyLabelData);
 		textareaOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		if (isReadOnly(textareaOptionalProperty)) {
+			textareaOptionalProperty.setEnabled(false);
+			textareaOptionalProperty.setBackground(textareaOptionalProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			textareaOptionalProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		}		
+		
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalPropertyData.horizontalSpan = 2;
 		textareaOptionalPropertyData.heightHint = 80;
@@ -203,6 +215,7 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		textareaROProperty.setEnabled(false);
 		textareaROProperty.setBackground(textareaROProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 		textareaROProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		
 		GridData textareaROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaROPropertyData.horizontalSpan = 2;
 		textareaROPropertyData.heightHint = 80;

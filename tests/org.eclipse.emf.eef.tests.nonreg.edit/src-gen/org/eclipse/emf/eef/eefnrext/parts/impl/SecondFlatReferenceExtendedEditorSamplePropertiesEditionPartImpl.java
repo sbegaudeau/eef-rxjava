@@ -127,6 +127,11 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	protected Composite createDemoText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel);
 		demo = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(demo)) {
+			demo.setEnabled(false);
+			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		}		
+		
 		GridData demoData = new GridData(GridData.FILL_HORIZONTAL);
 		demo.setLayoutData(demoData);
 		demo.addFocusListener(new FocusAdapter() {
@@ -173,6 +178,11 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	protected Composite createSizeText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel);
 		size = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(size)) {
+			size.setEnabled(false);
+			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		}		
+		
 		GridData sizeData = new GridData(GridData.FILL_HORIZONTAL);
 		size.setLayoutData(sizeData);
 		size.addFocusListener(new FocusAdapter() {

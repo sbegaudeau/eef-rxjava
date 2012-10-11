@@ -137,6 +137,11 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogRequiredPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel);
 		selectionDialogRequiredProperty = new SelectionDialog(parent, SWT.NONE);
+		if (isReadOnly(selectionDialogRequiredProperty)) {
+			selectionDialogRequiredProperty.setEnabled(false);
+			selectionDialogRequiredProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		}		
+		
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogRequiredProperty.setLayoutData(generatorData);
 
@@ -194,6 +199,11 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogOptionalPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel);
 		selectionDialogOptionalProperty = new SelectionDialog(parent, SWT.NONE);
+		if (isReadOnly(selectionDialogOptionalProperty)) {
+			selectionDialogOptionalProperty.setEnabled(false);
+			selectionDialogOptionalProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		}		
+		
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogOptionalProperty.setLayoutData(generatorData);
 
@@ -253,6 +263,7 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		selectionDialogROProperty = new SelectionDialog(parent, SWT.NONE);
 		selectionDialogROProperty.setEnabled(false);
 		selectionDialogROProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogROProperty.setLayoutData(generatorData);
 

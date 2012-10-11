@@ -154,6 +154,11 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	
 	protected Composite createSpecialisedElementCheckbox(FormToolkit widgetFactory, Composite parent) {
 		specialisedElement = widgetFactory.createButton(parent, getDescription(NavigationViewsRepository.Subtype.Specialisation.specialisedElement, NavigationMessages.SubtypePropertiesEditionPart_SpecialisedElementLabel), SWT.CHECK);
+		if (isReadOnly(specialisedElement)) {
+			specialisedElement.setEnabled(false);
+			specialisedElement.setToolTipText(NavigationMessages.Subtype_ReadOnly);
+		}		
+		
 		specialisedElement.addSelectionListener(new SelectionAdapter() {
 
 			/**

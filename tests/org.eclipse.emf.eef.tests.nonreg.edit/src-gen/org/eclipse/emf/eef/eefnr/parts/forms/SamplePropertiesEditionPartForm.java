@@ -139,6 +139,11 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createTextRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel);
 		textRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(textRequiredProperty)) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.Sample_ReadOnly);
+		}		
+		
 		textRequiredProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -204,6 +209,11 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createTextOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel);
 		textOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(textOptionalProperty)) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.Sample_ReadOnly);
+		}		
+		
 		textOptionalProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);

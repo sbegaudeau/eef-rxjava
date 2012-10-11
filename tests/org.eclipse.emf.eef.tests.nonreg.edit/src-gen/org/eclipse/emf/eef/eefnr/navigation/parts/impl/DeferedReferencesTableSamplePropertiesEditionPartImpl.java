@@ -152,6 +152,11 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -221,6 +226,11 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 	protected TableViewer createReferencesTableSampleEditorViewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -283,6 +293,11 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		result.setLayout(layout);
 		addReferencesTableSampleEditor = new Button(result, SWT.NONE);
 		addReferencesTableSampleEditor.setText(NavigationMessages.PropertiesEditionPart_AddListViewerLabel);
+		if (isReadOnly(referencesTableSampleEditor)) {
+			addReferencesTableSampleEditor.setEnabled(false);
+			addReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencesTableSampleEditor.setLayoutData(addData);
 		addReferencesTableSampleEditor.addSelectionListener(new SelectionAdapter() {
@@ -302,6 +317,11 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setEEFtype(addReferencesTableSampleEditor, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencesTableSampleEditor = new Button(result, SWT.NONE);
 		removeReferencesTableSampleEditor.setText(NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		if (isReadOnly(referencesTableSampleEditor)) {
+			removeReferencesTableSampleEditor.setEnabled(false);
+			removeReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencesTableSampleEditor.setLayoutData(removeData);
 		removeReferencesTableSampleEditor.addSelectionListener(new SelectionAdapter() {

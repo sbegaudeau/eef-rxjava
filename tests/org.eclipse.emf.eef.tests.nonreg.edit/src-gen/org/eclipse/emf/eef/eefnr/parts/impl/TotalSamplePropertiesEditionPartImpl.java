@@ -319,6 +319,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createTextRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel);
 		textRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(textRequiredProperty)) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
 		textRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -365,6 +370,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createTextOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel);
 		textOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(textOptionalProperty)) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
 		textOptionalProperty.addFocusListener(new FocusAdapter() {
@@ -411,6 +421,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createCheckboxRequiredPropertyCheckbox(Composite parent) {
 		checkboxRequiredProperty = new Button(parent, SWT.CHECK);
 		checkboxRequiredProperty.setText(getDescription(EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel));
+		if (isReadOnly(checkboxRequiredProperty)) {
+			checkboxRequiredProperty.setEnabled(false);
+			checkboxRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		checkboxRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -438,6 +453,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createCheckboxOptionalPropertyCheckbox(Composite parent) {
 		checkboxOptionalProperty = new Button(parent, SWT.CHECK);
 		checkboxOptionalProperty.setText(getDescription(EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel));
+		if (isReadOnly(checkboxOptionalProperty)) {
+			checkboxOptionalProperty.setEnabled(false);
+			checkboxOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		checkboxOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -465,6 +485,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createTextareaRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel);
 		textareaRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(textareaRequiredProperty)) {
+			textareaRequiredProperty.setEnabled(false);
+			textareaRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaRequiredProperty.setLayoutData(textareaRequiredPropertyData);
 		textareaRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -511,6 +536,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createTextareaOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel);
 		textareaOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(textareaOptionalProperty)) {
+			textareaOptionalProperty.setEnabled(false);
+			textareaOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaOptionalProperty.setLayoutData(textareaOptionalPropertyData);
 		textareaOptionalProperty.addFocusListener(new FocusAdapter() {
@@ -559,6 +589,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioRequiredProperty = new EMFComboViewer(parent);
 		radioRequiredProperty.setContentProvider(new ArrayContentProvider());
 		radioRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(radioRequiredProperty)) {
+			radioRequiredProperty.setEnabled(false);
+			radioRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredProperty.getCombo().setLayoutData(radioRequiredPropertyData);
 		radioRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -586,6 +621,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioOptionalProperty = new EMFComboViewer(parent);
 		radioOptionalProperty.setContentProvider(new ArrayContentProvider());
 		radioOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(radioOptionalProperty)) {
+			radioOptionalProperty.setEnabled(false);
+			radioOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalProperty.getCombo().setLayoutData(radioOptionalPropertyData);
 		radioOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -615,6 +655,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerRequiredPropertyLabel);
 		eobjectflatcomboviewerRequiredProperty = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(eobjectflatcomboviewerRequiredProperty)) {
+			eobjectflatcomboviewerRequiredProperty.setEnabled(false);
+			eobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 
 		eobjectflatcomboviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -638,6 +683,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_EobjectflatcomboviewerOptionalPropertyLabel);
 		eobjectflatcomboviewerOptionalProperty = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(eobjectflatcomboviewerOptionalProperty)) {
+			eobjectflatcomboviewerOptionalProperty.setEnabled(false);
+			eobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 
 		eobjectflatcomboviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -823,6 +873,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
 		emfcomboviewerRequiredProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(emfcomboviewerRequiredProperty)) {
+			emfcomboviewerRequiredProperty.setEnabled(false);
+			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData emfcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerRequiredProperty.getCombo().setLayoutData(emfcomboviewerRequiredPropertyData);
 		emfcomboviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -850,6 +905,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
 		emfcomboviewerOptionalProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(emfcomboviewerOptionalProperty)) {
+			emfcomboviewerOptionalProperty.setEnabled(false);
+			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData emfcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerOptionalProperty.getCombo().setLayoutData(emfcomboviewerOptionalPropertyData);
 		emfcomboviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -873,6 +933,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	protected Composite createMultivaluededitorRequiredPropertyMultiValuedEditor(Composite parent) {
 		multivaluededitorRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		if (isReadOnly(multivaluededitorRequiredProperty)) {
+			multivaluededitorRequiredProperty.setEnabled(false);
+			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
@@ -913,6 +978,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	protected Composite createMultivaluededitorOptionalPropertyMultiValuedEditor(Composite parent) {
 		multivaluededitorOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		if (isReadOnly(multivaluededitorOptionalProperty)) {
+			multivaluededitorOptionalProperty.setEnabled(false);
+			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
@@ -965,6 +1035,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableTablecompositionRequiredProperty = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
 		tableTablecompositionRequiredProperty.setHeaderVisible(true);
+		if (isReadOnly(tableTablecompositionRequiredProperty)) {
+			tableTablecompositionRequiredProperty.setEnabled(false);
+			tableTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData gdTablecompositionRequiredProperty = new GridData();
 		gdTablecompositionRequiredProperty.grabExcessHorizontalSpace = true;
 		gdTablecompositionRequiredProperty.horizontalAlignment = GridData.FILL;
@@ -1051,6 +1126,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		tablecompositionRequiredPropertyPanel.setLayout(tablecompositionRequiredPropertyPanelLayout);
 		Button addTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		addTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel);
+		if (isReadOnly(tablecompositionRequiredProperty)) {
+			addTablecompositionRequiredProperty.setEnabled(false);
+			addTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData addTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionRequiredProperty.setLayoutData(addTablecompositionRequiredPropertyData);
 		addTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1070,6 +1150,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setEEFtype(addTablecompositionRequiredProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
 		Button removeTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		removeTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
+		if (isReadOnly(tablecompositionRequiredProperty)) {
+			removeTablecompositionRequiredProperty.setEnabled(false);
+			removeTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData removeTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionRequiredProperty.setLayoutData(removeTablecompositionRequiredPropertyData);
 		removeTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1096,6 +1181,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setEEFtype(removeTablecompositionRequiredProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
 		Button editTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		editTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
+		if (isReadOnly(tablecompositionRequiredProperty)) {
+			editTablecompositionRequiredProperty.setEnabled(false);
+			editTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData editTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionRequiredProperty.setLayoutData(editTablecompositionRequiredPropertyData);
 		editTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1136,6 +1226,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableTablecompositionOptionalProperty = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
 		tableTablecompositionOptionalProperty.setHeaderVisible(true);
+		if (isReadOnly(tableTablecompositionOptionalProperty)) {
+			tableTablecompositionOptionalProperty.setEnabled(false);
+			tableTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData gdTablecompositionOptionalProperty = new GridData();
 		gdTablecompositionOptionalProperty.grabExcessHorizontalSpace = true;
 		gdTablecompositionOptionalProperty.horizontalAlignment = GridData.FILL;
@@ -1222,6 +1317,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		tablecompositionOptionalPropertyPanel.setLayout(tablecompositionOptionalPropertyPanelLayout);
 		Button addTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		addTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel);
+		if (isReadOnly(tablecompositionOptionalProperty)) {
+			addTablecompositionOptionalProperty.setEnabled(false);
+			addTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData addTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionOptionalProperty.setLayoutData(addTablecompositionOptionalPropertyData);
 		addTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -1241,6 +1341,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setEEFtype(addTablecompositionOptionalProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
 		Button removeTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		removeTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
+		if (isReadOnly(tablecompositionOptionalProperty)) {
+			removeTablecompositionOptionalProperty.setEnabled(false);
+			removeTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData removeTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionOptionalProperty.setLayoutData(removeTablecompositionOptionalPropertyData);
 		removeTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -1267,6 +1372,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setEEFtype(removeTablecompositionOptionalProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
 		Button editTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		editTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
+		if (isReadOnly(tablecompositionOptionalProperty)) {
+			editTablecompositionOptionalProperty.setEnabled(false);
+			editTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData editTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionOptionalProperty.setLayoutData(editTablecompositionOptionalPropertyData);
 		editTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -1465,6 +1575,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerRequiredProperyLabel);
 		advancedeobjectflatcomboviewerRequiredPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND));
 		advancedeobjectflatcomboviewerRequiredPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(advancedeobjectflatcomboviewerRequiredPropery)) {
+			advancedeobjectflatcomboviewerRequiredPropery.setEnabled(false);
+			advancedeobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 
 		advancedeobjectflatcomboviewerRequiredPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -1488,6 +1603,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrMessages.TotalSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerOptionalProperyLabel);
 		advancedeobjectflatcomboviewerOptionalPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND));
 		advancedeobjectflatcomboviewerOptionalPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(advancedeobjectflatcomboviewerOptionalPropery)) {
+			advancedeobjectflatcomboviewerOptionalPropery.setEnabled(false);
+			advancedeobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 
 		advancedeobjectflatcomboviewerOptionalPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -1541,6 +1661,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 			
 		});
+		if (isReadOnly(advancedtablecompositionRequiredProperty)) {
+			advancedtablecompositionRequiredProperty.setEnabled(false);
+			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData advancedtablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionRequiredPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionRequiredProperty.setLayoutData(advancedtablecompositionRequiredPropertyData);
@@ -1589,6 +1714,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 			}
 			
 		});
+		if (isReadOnly(advancedtablecompositionOptionalProperty)) {
+			advancedtablecompositionOptionalProperty.setEnabled(false);
+			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData advancedtablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionOptionalPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionOptionalProperty.setLayoutData(advancedtablecompositionOptionalPropertyData);
@@ -1603,6 +1733,11 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.name, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {

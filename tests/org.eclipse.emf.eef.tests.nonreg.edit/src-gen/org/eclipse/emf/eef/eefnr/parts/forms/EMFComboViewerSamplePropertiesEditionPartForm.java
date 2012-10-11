@@ -147,6 +147,11 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
 		emfcomboviewerRequiredProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(emfcomboviewerRequiredProperty)) {
+			emfcomboviewerRequiredProperty.setEnabled(false);
+			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		}		
+		
 		GridData emfcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerRequiredProperty.getCombo().setLayoutData(emfcomboviewerRequiredPropertyData);
 		emfcomboviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -174,6 +179,11 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
 		emfcomboviewerOptionalProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(emfcomboviewerOptionalProperty)) {
+			emfcomboviewerOptionalProperty.setEnabled(false);
+			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		}		
+		
 		GridData emfcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerOptionalProperty.getCombo().setLayoutData(emfcomboviewerOptionalPropertyData);
 		emfcomboviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -203,6 +213,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		emfcomboviewerROProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		emfcomboviewerROProperty.setEnabled(false);
 		emfcomboviewerROProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		
 		GridData emfcomboviewerROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerROProperty.getCombo().setLayoutData(emfcomboviewerROPropertyData);
 		emfcomboviewerROProperty.addSelectionChangedListener(new ISelectionChangedListener() {

@@ -139,6 +139,11 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 	protected Composite createDemoText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel);
 		demo = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(demo)) {
+			demo.setEnabled(false);
+			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		}		
+		
 		demo.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData demoData = new GridData(GridData.FILL_HORIZONTAL);
@@ -204,6 +209,11 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 	protected Composite createSizeText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel);
 		size = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(size)) {
+			size.setEnabled(false);
+			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		}		
+		
 		size.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData sizeData = new GridData(GridData.FILL_HORIZONTAL);

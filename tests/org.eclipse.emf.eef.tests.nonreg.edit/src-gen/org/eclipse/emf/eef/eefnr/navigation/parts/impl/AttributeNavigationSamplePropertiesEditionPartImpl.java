@@ -142,6 +142,11 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -188,6 +193,11 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate1ForSingleValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel);
 		delegate1ForSingleValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(delegate1ForSingleValued)) {
+			delegate1ForSingleValued.setEnabled(false);
+			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		}		
+		
 		GridData delegate1ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForSingleValued.setLayoutData(delegate1ForSingleValuedData);
 		delegate1ForSingleValued.addFocusListener(new FocusAdapter() {
@@ -234,6 +244,11 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate2ForSingleValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel);
 		delegate2ForSingleValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(delegate2ForSingleValued)) {
+			delegate2ForSingleValued.setEnabled(false);
+			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		}		
+		
 		GridData delegate2ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForSingleValued.setLayoutData(delegate2ForSingleValuedData);
 		delegate2ForSingleValued.addFocusListener(new FocusAdapter() {
@@ -280,6 +295,11 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate1ForMultiValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel);
 		delegate1ForMultiValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(delegate1ForMultiValued)) {
+			delegate1ForMultiValued.setEnabled(false);
+			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		}		
+		
 		GridData delegate1ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForMultiValued.setLayoutData(delegate1ForMultiValuedData);
 		delegate1ForMultiValued.addFocusListener(new FocusAdapter() {
@@ -326,6 +346,11 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate2ForMultiValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel);
 		delegate2ForMultiValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(delegate2ForMultiValued)) {
+			delegate2ForMultiValued.setEnabled(false);
+			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		}		
+		
 		GridData delegate2ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForMultiValued.setLayoutData(delegate2ForMultiValuedData);
 		delegate2ForMultiValued.addFocusListener(new FocusAdapter() {

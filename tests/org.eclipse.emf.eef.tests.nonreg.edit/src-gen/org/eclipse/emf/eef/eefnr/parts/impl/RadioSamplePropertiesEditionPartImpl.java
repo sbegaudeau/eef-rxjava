@@ -132,6 +132,11 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	protected Composite createRadioRequiredPropertyRadioViewer(Composite parent) {
 		radioRequiredPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
+		if (isReadOnly(radioRequiredPropertyRadioViewer)) {
+			radioRequiredPropertyRadioViewer.setEnabled(false);
+			radioRequiredPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		}		
+		
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredPropertyData.horizontalSpan = 2;
 		radioRequiredPropertyRadioViewer.setLayoutData(radioRequiredPropertyData);
@@ -153,6 +158,11 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	protected Composite createRadioOptionalPropertyRadioViewer(Composite parent) {
 		radioOptionalPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
+		if (isReadOnly(radioOptionalPropertyRadioViewer)) {
+			radioOptionalPropertyRadioViewer.setEnabled(false);
+			radioOptionalPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		}		
+		
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalPropertyData.horizontalSpan = 2;
 		radioOptionalPropertyRadioViewer.setLayoutData(radioOptionalPropertyData);
@@ -176,6 +186,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		radioROPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
 		radioROPropertyRadioViewer.setEnabled(false);
 		radioROPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		
 		GridData radioROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioROPropertyData.horizontalSpan = 2;
 		radioROPropertyRadioViewer.setLayoutData(radioROPropertyData);

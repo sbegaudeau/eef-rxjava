@@ -166,6 +166,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -249,6 +254,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 			}
 			
 		});
+		if (isReadOnly(abstractTarget)) {
+			abstractTarget.setEnabled(false);
+			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		}		
+		
 		GridData abstractTargetData = new GridData(GridData.FILL_HORIZONTAL);
 		abstractTargetData.horizontalSpan = 3;
 		this.abstractTarget.setLayoutData(abstractTargetData);
@@ -346,6 +356,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 			}
 			
 		});
+		if (isReadOnly(strictTyping)) {
+			strictTyping.setEnabled(false);
+			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		}		
+		
 		GridData strictTypingData = new GridData(GridData.FILL_HORIZONTAL);
 		strictTypingData.horizontalSpan = 3;
 		this.strictTyping.setLayoutData(strictTypingData);

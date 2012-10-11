@@ -144,6 +144,11 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 	protected Composite createTextRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel);
 		textRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(textRequiredProperty)) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		}		
+		
 		textRequiredProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -209,6 +214,11 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 	protected Composite createTextOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel);
 		textOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(textOptionalProperty)) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		}		
+		
 		textOptionalProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -276,6 +286,7 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		textROProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		textROProperty.setEnabled(false);
 		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		
 		textROProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textROPropertyData = new GridData(GridData.FILL_HORIZONTAL);

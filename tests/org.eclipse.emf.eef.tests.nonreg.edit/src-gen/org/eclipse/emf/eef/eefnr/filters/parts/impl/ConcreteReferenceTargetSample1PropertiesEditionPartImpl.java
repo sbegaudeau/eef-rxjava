@@ -122,6 +122,11 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartImpl extends Com
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, FiltersMessages.ConcreteReferenceTargetSample1PropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(FiltersMessages.ConcreteReferenceTargetSample1_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {

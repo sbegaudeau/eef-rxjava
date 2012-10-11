@@ -163,6 +163,11 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			}
 			
 		});
+		if (isReadOnly(samples)) {
+			samples.setEnabled(false);
+			samples.setToolTipText(EefnrMessages.Root_ReadOnly);
+		}		
+		
 		GridData samplesData = new GridData(GridData.FILL_HORIZONTAL);
 		samplesData.horizontalSpan = 3;
 		this.samples.setLayoutData(samplesData);

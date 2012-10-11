@@ -268,6 +268,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.Owner.Properties.name, NavigationMessages.OwnerPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -343,6 +348,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableMultipleSampleForTableComposition = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		tableMultipleSampleForTableComposition.setHeaderVisible(true);
+		if (isReadOnly(tableMultipleSampleForTableComposition)) {
+			tableMultipleSampleForTableComposition.setEnabled(false);
+			tableMultipleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData gdMultipleSampleForTableComposition = new GridData();
 		gdMultipleSampleForTableComposition.grabExcessHorizontalSpace = true;
 		gdMultipleSampleForTableComposition.horizontalAlignment = GridData.FILL;
@@ -429,6 +439,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		multipleSampleForTableCompositionPanelLayout.numColumns = 1;
 		multipleSampleForTableCompositionPanel.setLayout(multipleSampleForTableCompositionPanelLayout);
 		Button addMultipleSampleForTableComposition = widgetFactory.createButton(multipleSampleForTableCompositionPanel, NavigationMessages.PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
+		if (isReadOnly(multipleSampleForTableComposition)) {
+			addMultipleSampleForTableComposition.setEnabled(false);
+			addMultipleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData addMultipleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		addMultipleSampleForTableComposition.setLayoutData(addMultipleSampleForTableCompositionData);
 		addMultipleSampleForTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -447,6 +462,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(addMultipleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(addMultipleSampleForTableComposition, "eef::TableComposition::addbutton"); //$NON-NLS-1$
 		Button removeMultipleSampleForTableComposition = widgetFactory.createButton(multipleSampleForTableCompositionPanel, NavigationMessages.PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
+		if (isReadOnly(multipleSampleForTableComposition)) {
+			removeMultipleSampleForTableComposition.setEnabled(false);
+			removeMultipleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData removeMultipleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		removeMultipleSampleForTableComposition.setLayoutData(removeMultipleSampleForTableCompositionData);
 		removeMultipleSampleForTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -472,6 +492,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(removeMultipleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(removeMultipleSampleForTableComposition, "eef::TableComposition::removebutton"); //$NON-NLS-1$
 		Button editMultipleSampleForTableComposition = widgetFactory.createButton(multipleSampleForTableCompositionPanel, NavigationMessages.PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
+		if (isReadOnly(multipleSampleForTableComposition)) {
+			editMultipleSampleForTableComposition.setEnabled(false);
+			editMultipleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData editMultipleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		editMultipleSampleForTableComposition.setLayoutData(editMultipleSampleForTableCompositionData);
 		editMultipleSampleForTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -536,6 +561,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			}
 			
 		});
+		if (isReadOnly(multipleSampleForAdvancedTableComposition)) {
+			multipleSampleForAdvancedTableComposition.setEnabled(false);
+			multipleSampleForAdvancedTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData multipleSampleForAdvancedTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		multipleSampleForAdvancedTableCompositionData.horizontalSpan = 3;
 		this.multipleSampleForAdvancedTableComposition.setLayoutData(multipleSampleForAdvancedTableCompositionData);
@@ -572,6 +602,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected TableViewer createMultipleSampleForReferencesTableViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -634,6 +669,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		addMultipleSampleForReferencesTable = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		if (isReadOnly(multipleSampleForReferencesTable)) {
+			addMultipleSampleForReferencesTable.setEnabled(false);
+			addMultipleSampleForReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addMultipleSampleForReferencesTable.setLayoutData(addData);
 		addMultipleSampleForReferencesTable.addSelectionListener(new SelectionAdapter() {
@@ -652,6 +692,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(addMultipleSampleForReferencesTable, NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
 		EditingUtils.setEEFtype(addMultipleSampleForReferencesTable, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeMultipleSampleForReferencesTable = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		if (isReadOnly(multipleSampleForReferencesTable)) {
+			removeMultipleSampleForReferencesTable.setEnabled(false);
+			removeMultipleSampleForReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeMultipleSampleForReferencesTable.setLayoutData(removeData);
 		removeMultipleSampleForReferencesTable.addSelectionListener(new SelectionAdapter() {
@@ -725,6 +770,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			}
 			
 		});
+		if (isReadOnly(multipleSampleForAdvancedReferencesTable)) {
+			multipleSampleForAdvancedReferencesTable.setEnabled(false);
+			multipleSampleForAdvancedReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData multipleSampleForAdvancedReferencesTableData = new GridData(GridData.FILL_HORIZONTAL);
 		multipleSampleForAdvancedReferencesTableData.horizontalSpan = 3;
 		this.multipleSampleForAdvancedReferencesTable.setLayoutData(multipleSampleForAdvancedReferencesTableData);
@@ -792,7 +842,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		createDescription(parent, NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_MultipleSampleForFlatReferencesTableLabel);
 		multipleSampleForFlatReferencesTable = new FlatReferencesTable(parent);
 		multipleSampleForFlatReferencesTable.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
+		if (isReadOnly(multipleSampleForFlatReferencesTable)) {
+			multipleSampleForFlatReferencesTable.setEnabled(false);
+			multipleSampleForFlatReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		multipleSampleForFlatReferencesTable.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -823,6 +877,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableSingleSampleForTableComposition = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		tableSingleSampleForTableComposition.setHeaderVisible(true);
+		if (isReadOnly(tableSingleSampleForTableComposition)) {
+			tableSingleSampleForTableComposition.setEnabled(false);
+			tableSingleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData gdSingleSampleForTableComposition = new GridData();
 		gdSingleSampleForTableComposition.grabExcessHorizontalSpace = true;
 		gdSingleSampleForTableComposition.horizontalAlignment = GridData.FILL;
@@ -909,6 +968,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleSampleForTableCompositionPanelLayout.numColumns = 1;
 		singleSampleForTableCompositionPanel.setLayout(singleSampleForTableCompositionPanelLayout);
 		Button addSingleSampleForTableComposition = widgetFactory.createButton(singleSampleForTableCompositionPanel, NavigationMessages.PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForTableComposition)) {
+			addSingleSampleForTableComposition.setEnabled(false);
+			addSingleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData addSingleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		addSingleSampleForTableComposition.setLayoutData(addSingleSampleForTableCompositionData);
 		addSingleSampleForTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -927,6 +991,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(addSingleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(addSingleSampleForTableComposition, "eef::TableComposition::addbutton"); //$NON-NLS-1$
 		Button removeSingleSampleForTableComposition = widgetFactory.createButton(singleSampleForTableCompositionPanel, NavigationMessages.PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForTableComposition)) {
+			removeSingleSampleForTableComposition.setEnabled(false);
+			removeSingleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData removeSingleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		removeSingleSampleForTableComposition.setLayoutData(removeSingleSampleForTableCompositionData);
 		removeSingleSampleForTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -952,6 +1021,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(removeSingleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(removeSingleSampleForTableComposition, "eef::TableComposition::removebutton"); //$NON-NLS-1$
 		Button editSingleSampleForTableComposition = widgetFactory.createButton(singleSampleForTableCompositionPanel, NavigationMessages.PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForTableComposition)) {
+			editSingleSampleForTableComposition.setEnabled(false);
+			editSingleSampleForTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData editSingleSampleForTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		editSingleSampleForTableComposition.setLayoutData(editSingleSampleForTableCompositionData);
 		editSingleSampleForTableComposition.addSelectionListener(new SelectionAdapter() {
@@ -1016,6 +1090,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			}
 			
 		});
+		if (isReadOnly(singleSampleForAdvancedTableComposition)) {
+			singleSampleForAdvancedTableComposition.setEnabled(false);
+			singleSampleForAdvancedTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData singleSampleForAdvancedTableCompositionData = new GridData(GridData.FILL_HORIZONTAL);
 		singleSampleForAdvancedTableCompositionData.horizontalSpan = 3;
 		this.singleSampleForAdvancedTableComposition.setLayoutData(singleSampleForAdvancedTableCompositionData);
@@ -1052,6 +1131,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected TableViewer createSingleSampleForReferencesTableViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -1114,6 +1198,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		addSingleSampleForReferencesTable = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForReferencesTable)) {
+			addSingleSampleForReferencesTable.setEnabled(false);
+			addSingleSampleForReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addSingleSampleForReferencesTable.setLayoutData(addData);
 		addSingleSampleForReferencesTable.addSelectionListener(new SelectionAdapter() {
@@ -1132,6 +1221,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(addSingleSampleForReferencesTable, NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
 		EditingUtils.setEEFtype(addSingleSampleForReferencesTable, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeSingleSampleForReferencesTable = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForReferencesTable)) {
+			removeSingleSampleForReferencesTable.setEnabled(false);
+			removeSingleSampleForReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeSingleSampleForReferencesTable.setLayoutData(removeData);
 		removeSingleSampleForReferencesTable.addSelectionListener(new SelectionAdapter() {
@@ -1209,6 +1303,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected TableViewer createSingleSampleForAdvancedReferencesTableViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
+		if (isReadOnly(table)) {
+			table.setEnabled(false);
+			table.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -1271,6 +1370,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		addSingleSampleForAdvancedReferencesTable = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForAdvancedReferencesTable)) {
+			addSingleSampleForAdvancedReferencesTable.setEnabled(false);
+			addSingleSampleForAdvancedReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addSingleSampleForAdvancedReferencesTable.setLayoutData(addData);
 		addSingleSampleForAdvancedReferencesTable.addSelectionListener(new SelectionAdapter() {
@@ -1289,6 +1393,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(addSingleSampleForAdvancedReferencesTable, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
 		EditingUtils.setEEFtype(addSingleSampleForAdvancedReferencesTable, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeSingleSampleForAdvancedReferencesTable = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
+		if (isReadOnly(singleSampleForAdvancedReferencesTable)) {
+			removeSingleSampleForAdvancedReferencesTable.setEnabled(false);
+			removeSingleSampleForAdvancedReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeSingleSampleForAdvancedReferencesTable.setLayoutData(removeData);
 		removeSingleSampleForAdvancedReferencesTable.addSelectionListener(new SelectionAdapter() {
@@ -1348,7 +1457,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		createDescription(parent, NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationMessages.OwnerPropertiesEditionPart_SingleSampleForFlatReferencesTableLabel);
 		singleSampleForFlatReferencesTable = new FlatReferencesTable(parent);
 		singleSampleForFlatReferencesTable.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
+		if (isReadOnly(singleSampleForFlatReferencesTable)) {
+			singleSampleForFlatReferencesTable.setEnabled(false);
+			singleSampleForFlatReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		singleSampleForFlatReferencesTable.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -1375,6 +1488,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleContainmentForEObjectFlatComboViewer = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
 		widgetFactory.adapt(singleContainmentForEObjectFlatComboViewer);
 		singleContainmentForEObjectFlatComboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(singleContainmentForEObjectFlatComboViewer)) {
+			singleContainmentForEObjectFlatComboViewer.setEnabled(false);
+			singleContainmentForEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData singleContainmentForEObjectFlatComboViewerData = new GridData(GridData.FILL_HORIZONTAL);
 		singleContainmentForEObjectFlatComboViewer.setLayoutData(singleContainmentForEObjectFlatComboViewerData);
 		singleContainmentForEObjectFlatComboViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1405,6 +1523,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleReferencesForEObjectFlatComboViewer = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND));
 		widgetFactory.adapt(singleReferencesForEObjectFlatComboViewer);
 		singleReferencesForEObjectFlatComboViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(singleReferencesForEObjectFlatComboViewer)) {
+			singleReferencesForEObjectFlatComboViewer.setEnabled(false);
+			singleReferencesForEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData singleReferencesForEObjectFlatComboViewerData = new GridData(GridData.FILL_HORIZONTAL);
 		singleReferencesForEObjectFlatComboViewer.setLayoutData(singleReferencesForEObjectFlatComboViewerData);
 		singleReferencesForEObjectFlatComboViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1448,6 +1571,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		//create widget
 		singleContainmentForAdvancedEObjectFlatComboViewer = new AdvancedEObjectFlatComboViewer(NavigationMessages.OwnerPropertiesEditionPart_SingleContainmentForAdvancedEObjectFlatComboViewerLabel, resourceSet, singleContainmentForAdvancedEObjectFlatComboViewerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		singleContainmentForAdvancedEObjectFlatComboViewer.createControls(parent, widgetFactory);
+		if (isReadOnly(singleContainmentForAdvancedEObjectFlatComboViewer)) {
+			singleContainmentForAdvancedEObjectFlatComboViewer.setEnabled(false);
+			singleContainmentForAdvancedEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData singleContainmentForAdvancedEObjectFlatComboViewerData = new GridData(GridData.FILL_HORIZONTAL);
 		singleContainmentForAdvancedEObjectFlatComboViewer.setLayoutData(singleContainmentForAdvancedEObjectFlatComboViewerData);
 		singleContainmentForAdvancedEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer);
@@ -1479,6 +1607,11 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		//create widget
 		singleReferencesForAdvancedEObjectFlatComboViewer = new AdvancedEObjectFlatComboViewer(NavigationMessages.OwnerPropertiesEditionPart_SingleReferencesForAdvancedEObjectFlatComboViewerLabel, resourceSet, singleReferencesForAdvancedEObjectFlatComboViewerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		singleReferencesForAdvancedEObjectFlatComboViewer.createControls(parent, widgetFactory);
+		if (isReadOnly(singleReferencesForAdvancedEObjectFlatComboViewer)) {
+			singleReferencesForAdvancedEObjectFlatComboViewer.setEnabled(false);
+			singleReferencesForAdvancedEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
+		}		
+		
 		GridData singleReferencesForAdvancedEObjectFlatComboViewerData = new GridData(GridData.FILL_HORIZONTAL);
 		singleReferencesForAdvancedEObjectFlatComboViewer.setLayoutData(singleReferencesForAdvancedEObjectFlatComboViewerData);
 		singleReferencesForAdvancedEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer);

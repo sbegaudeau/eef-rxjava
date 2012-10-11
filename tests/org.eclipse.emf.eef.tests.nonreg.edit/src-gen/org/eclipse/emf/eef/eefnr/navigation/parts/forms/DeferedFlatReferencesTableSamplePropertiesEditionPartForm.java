@@ -147,6 +147,11 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name, NavigationMessages.DeferedFlatReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -216,7 +221,11 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		createDescription(parent, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor, NavigationMessages.DeferedFlatReferencesTableSamplePropertiesEditionPart_FlatReferencesTableSampleEditorLabel);
 		flatReferencesTableSampleEditor = new FlatReferencesTable(parent);
 		flatReferencesTableSampleEditor.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
+		if (isReadOnly(flatReferencesTableSampleEditor)) {
+			flatReferencesTableSampleEditor.setEnabled(false);
+			flatReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
+		}		
+		
 		flatReferencesTableSampleEditor.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {

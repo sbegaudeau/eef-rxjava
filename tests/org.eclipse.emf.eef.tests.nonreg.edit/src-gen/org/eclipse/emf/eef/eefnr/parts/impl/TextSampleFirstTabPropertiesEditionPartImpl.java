@@ -127,6 +127,11 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 	protected Composite createTextRequiredPropertyInFirstTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel);
 		textRequiredPropertyInFirstTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(textRequiredPropertyInFirstTab)) {
+			textRequiredPropertyInFirstTab.setEnabled(false);
+			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		}		
+		
 		GridData textRequiredPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredPropertyInFirstTab.setLayoutData(textRequiredPropertyInFirstTabData);
 		textRequiredPropertyInFirstTab.addFocusListener(new FocusAdapter() {
@@ -173,6 +178,11 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 	protected Composite createTextOptionalPropertyInFirstTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel);
 		textOptionalPropertyInFirstTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(textOptionalPropertyInFirstTab)) {
+			textOptionalPropertyInFirstTab.setEnabled(false);
+			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		}		
+		
 		GridData textOptionalPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalPropertyInFirstTab.setLayoutData(textOptionalPropertyInFirstTabData);
 		textOptionalPropertyInFirstTab.addFocusListener(new FocusAdapter() {

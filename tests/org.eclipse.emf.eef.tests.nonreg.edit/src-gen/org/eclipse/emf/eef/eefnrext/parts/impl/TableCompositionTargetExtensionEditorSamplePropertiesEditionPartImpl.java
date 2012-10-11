@@ -122,6 +122,11 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImp
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextMessages.TableCompositionTargetExtensionEditorSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(EefnrextMessages.TableCompositionTargetExtensionEditorSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {

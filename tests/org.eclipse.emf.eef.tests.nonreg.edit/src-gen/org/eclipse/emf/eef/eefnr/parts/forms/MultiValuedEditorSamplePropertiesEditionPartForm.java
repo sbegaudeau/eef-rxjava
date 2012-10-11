@@ -155,6 +155,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 	 */
 	protected Composite createMultivaluededitorRequiredPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorRequiredProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+		if (isReadOnly(multivaluededitorRequiredProperty)) {
+			multivaluededitorRequiredProperty.setEnabled(false);
+			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		}		
+		
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
@@ -198,6 +203,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 	 */
 	protected Composite createMultivaluededitorOptionalPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorOptionalProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+		if (isReadOnly(multivaluededitorOptionalProperty)) {
+			multivaluededitorOptionalProperty.setEnabled(false);
+			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		}		
+		
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
@@ -243,6 +253,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		multivaluededitorROProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
 		multivaluededitorROProperty.setEnabled(false);
 		multivaluededitorROProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
+		
 		GridData multivaluededitorROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorROPropertyData.horizontalSpan = 2;
 		multivaluededitorROProperty.setLayoutData(multivaluededitorROPropertyData);

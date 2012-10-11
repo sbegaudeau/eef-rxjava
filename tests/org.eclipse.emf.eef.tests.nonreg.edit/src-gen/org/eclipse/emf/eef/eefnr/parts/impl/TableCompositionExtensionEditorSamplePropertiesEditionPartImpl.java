@@ -148,6 +148,11 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.name, EefnrMessages.TableCompositionExtensionEditorSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(EefnrMessages.TableCompositionExtensionEditorSample_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -228,6 +233,11 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 			}
 			
 		});
+		if (isReadOnly(tablecompositionRequiredProperty)) {
+			tablecompositionRequiredProperty.setEnabled(false);
+			tablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionExtensionEditorSample_ReadOnly);
+		}		
+		
 		GridData tablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionRequiredPropertyData.horizontalSpan = 3;
 		this.tablecompositionRequiredProperty.setLayoutData(tablecompositionRequiredPropertyData);
@@ -276,6 +286,11 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 			}
 			
 		});
+		if (isReadOnly(tablecompositionOptionalProperty)) {
+			tablecompositionOptionalProperty.setEnabled(false);
+			tablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionExtensionEditorSample_ReadOnly);
+		}		
+		
 		GridData tablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		tablecompositionOptionalPropertyData.horizontalSpan = 3;
 		this.tablecompositionOptionalProperty.setLayoutData(tablecompositionOptionalPropertyData);

@@ -134,6 +134,11 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartFor
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextMessages.TableCompositionTargetExtensionEditorSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(EefnrextMessages.TableCompositionTargetExtensionEditorSample_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);

@@ -182,6 +182,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.name, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -247,6 +252,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createFirstModelNavigationSingleValueText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_FirstModelNavigationSingleValueLabel);
 		firstModelNavigationSingleValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(firstModelNavigationSingleValue)) {
+			firstModelNavigationSingleValue.setEnabled(false);
+			firstModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		firstModelNavigationSingleValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData firstModelNavigationSingleValueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -312,6 +322,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createSecondModelNavigationSingleValueText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationSingleValueLabel);
 		secondModelNavigationSingleValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(secondModelNavigationSingleValue)) {
+			secondModelNavigationSingleValue.setEnabled(false);
+			secondModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		secondModelNavigationSingleValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData secondModelNavigationSingleValueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -377,6 +392,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createFirstModelNavigationMultiValueText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_FirstModelNavigationMultiValueLabel);
 		firstModelNavigationMultiValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(firstModelNavigationMultiValue)) {
+			firstModelNavigationMultiValue.setEnabled(false);
+			firstModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		firstModelNavigationMultiValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData firstModelNavigationMultiValueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -442,6 +462,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createSecondModelNavigationMultiValueText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueLabel);
 		secondModelNavigationMultiValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(secondModelNavigationMultiValue)) {
+			secondModelNavigationMultiValue.setEnabled(false);
+			secondModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		secondModelNavigationMultiValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData secondModelNavigationMultiValueData = new GridData(GridData.FILL_HORIZONTAL);
@@ -507,6 +532,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createSecondModelNavigationSingleValue2Text(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationSingleValue2Label);
 		secondModelNavigationSingleValue2 = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(secondModelNavigationSingleValue2)) {
+			secondModelNavigationSingleValue2.setEnabled(false);
+			secondModelNavigationSingleValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		secondModelNavigationSingleValue2.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData secondModelNavigationSingleValue2Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -572,6 +602,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createSecondModelNavigationMultiValue2Text(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValue2Label);
 		secondModelNavigationMultiValue2 = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(secondModelNavigationMultiValue2)) {
+			secondModelNavigationMultiValue2.setEnabled(false);
+			secondModelNavigationMultiValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		secondModelNavigationMultiValue2.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData secondModelNavigationMultiValue2Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -637,6 +672,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 	protected Composite createSecondModelNavigationMultiValueFilterText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueFilterLabel);
 		secondModelNavigationMultiValueFilter = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(secondModelNavigationMultiValueFilter)) {
+			secondModelNavigationMultiValueFilter.setEnabled(false);
+			secondModelNavigationMultiValueFilter.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		}		
+		
 		secondModelNavigationMultiValueFilter.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData secondModelNavigationMultiValueFilterData = new GridData(GridData.FILL_HORIZONTAL);
