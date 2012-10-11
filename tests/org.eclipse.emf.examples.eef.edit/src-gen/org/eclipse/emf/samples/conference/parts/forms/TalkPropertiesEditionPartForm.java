@@ -173,6 +173,11 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	protected Composite createTitle_Text(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Talk.Properties.title_, ConferenceMessages.TalkPropertiesEditionPart_Title_Label);
 		title_ = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(title_)) {
+			title_.setEnabled(false);
+			title_.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		title_.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
@@ -244,6 +249,11 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		topic = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.FORM_KIND));
 		widgetFactory.adapt(topic);
 		topic.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(topic)) {
+			topic.setEnabled(false);
+			topic.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData topicData = new GridData(GridData.FILL_HORIZONTAL);
 		topic.setLayoutData(topicData);
 		topic.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -270,6 +280,11 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		type = new EMFComboViewer(parent);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(type)) {
+			type.setEnabled(false);
+			type.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		type.getCombo().setLayoutData(typeData);
 		type.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -301,6 +316,11 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		presenter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.FORM_KIND));
 		widgetFactory.adapt(presenter);
 		presenter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(presenter)) {
+			presenter.setEnabled(false);
+			presenter.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData presenterData = new GridData(GridData.FILL_HORIZONTAL);
 		presenter.setLayoutData(presenterData);
 		presenter.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -331,6 +351,11 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		creator = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.FORM_KIND));
 		widgetFactory.adapt(creator);
 		creator.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(creator)) {
+			creator.setEnabled(false);
+			creator.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData creatorData = new GridData(GridData.FILL_HORIZONTAL);
 		creator.setLayoutData(creatorData);
 		creator.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -358,6 +383,12 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		if (isReadOnly(documentation)) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;

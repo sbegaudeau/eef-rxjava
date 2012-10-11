@@ -141,6 +141,11 @@ public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEd
 			}
 			
 		});
+		if (isReadOnly(participants)) {
+			participants.setEnabled(false);
+			participants.setToolTipText(ConferenceMessages.Participants_ReadOnly);
+		}		
+		
 		GridData participantsData = new GridData(GridData.FILL_HORIZONTAL);
 		participantsData.horizontalSpan = 3;
 		this.participants.setLayoutData(participantsData);

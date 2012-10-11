@@ -181,7 +181,7 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			LocalisationPropertiesEditionPart localisationPart = (LocalisationPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && localisationPart != null && isAccessible(ConferenceViewsRepository.Localisation.place)) {
+			if (ConferencePackage.eINSTANCE.getConference_Place().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && localisationPart != null && isAccessible(ConferenceViewsRepository.Localisation.place)) {
 				if (msg.getNewValue() != null) {
 					localisationPart.setPlace(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -203,7 +203,7 @@ public class ConferenceLocalisationPropertiesEditionComponent extends SinglePart
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ConferencePackage.eINSTANCE.getConference_Place(),
-			ConferencePackage.eINSTANCE.getConference_Sites());
+			ConferencePackage.eINSTANCE.getConference_Sites()		);
 		return new NotificationFilter[] {filter,};
 	}
 

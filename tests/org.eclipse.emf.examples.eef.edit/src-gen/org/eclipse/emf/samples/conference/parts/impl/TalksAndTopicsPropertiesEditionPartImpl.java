@@ -148,6 +148,11 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 			}
 			
 		});
+		if (isReadOnly(talks)) {
+			talks.setEnabled(false);
+			talks.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
+		}		
+		
 		GridData talksData = new GridData(GridData.FILL_HORIZONTAL);
 		talksData.horizontalSpan = 3;
 		this.talks.setLayoutData(talksData);
@@ -196,6 +201,11 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 			}
 			
 		});
+		if (isReadOnly(topics)) {
+			topics.setEnabled(false);
+			topics.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
+		}		
+		
 		GridData topicsData = new GridData(GridData.FILL_HORIZONTAL);
 		topicsData.horizontalSpan = 3;
 		this.topics.setLayoutData(topicsData);

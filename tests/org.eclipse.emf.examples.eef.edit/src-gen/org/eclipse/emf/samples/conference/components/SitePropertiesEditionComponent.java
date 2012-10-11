@@ -191,14 +191,14 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.name)) {
+			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -221,7 +221,7 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ConferencePackage.eINSTANCE.getSite_Name(),
 			ConferencePackage.eINSTANCE.getSite_Documentation(),
-			ConferencePackage.eINSTANCE.getSite_Rooms());
+			ConferencePackage.eINSTANCE.getSite_Rooms()		);
 		return new NotificationFilter[] {filter,};
 	}
 

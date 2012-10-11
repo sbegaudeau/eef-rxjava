@@ -139,6 +139,11 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Room.Properties.name, ConferenceMessages.RoomPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(ConferenceMessages.Room_ReadOnly);
+		}		
+		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -204,6 +209,11 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	protected Composite createCapacityText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Room.Properties.capacity, ConferenceMessages.RoomPropertiesEditionPart_CapacityLabel);
 		capacity = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(capacity)) {
+			capacity.setEnabled(false);
+			capacity.setToolTipText(ConferenceMessages.Room_ReadOnly);
+		}		
+		
 		capacity.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData capacityData = new GridData(GridData.FILL_HORIZONTAL);

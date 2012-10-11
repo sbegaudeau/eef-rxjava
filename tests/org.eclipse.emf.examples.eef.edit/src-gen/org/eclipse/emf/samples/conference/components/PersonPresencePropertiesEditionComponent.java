@@ -167,7 +167,7 @@ public class PersonPresencePropertiesEditionComponent extends SinglePartProperti
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ConferencePackage.eINSTANCE.getPerson_Assists());
+			ConferencePackage.eINSTANCE.getPerson_Assists()		);
 		return new NotificationFilter[] {filter,};
 	}
 

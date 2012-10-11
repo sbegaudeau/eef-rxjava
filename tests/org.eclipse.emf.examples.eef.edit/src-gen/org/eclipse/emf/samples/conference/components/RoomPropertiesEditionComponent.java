@@ -129,14 +129,14 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getRoom_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.name)) {
+			if (ConferencePackage.eINSTANCE.getRoom_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getRoom_Capacity().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
+			if (ConferencePackage.eINSTANCE.getRoom_Capacity().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
 				if (msg.getNewValue() != null) {
 					basePart.setCapacity(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
@@ -156,7 +156,7 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ConferencePackage.eINSTANCE.getRoom_Name(),
-			ConferencePackage.eINSTANCE.getRoom_Capacity());
+			ConferencePackage.eINSTANCE.getRoom_Capacity()		);
 		return new NotificationFilter[] {filter,};
 	}
 

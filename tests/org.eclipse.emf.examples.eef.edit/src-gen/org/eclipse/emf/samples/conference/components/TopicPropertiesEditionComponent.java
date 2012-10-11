@@ -146,18 +146,18 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description)) {
+			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDescription("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
+			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
 				basePart.setReferences((EList<?>)msg.getNewValue());
 			}
 			
-			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -178,7 +178,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ConferencePackage.eINSTANCE.getTopic_Description(),
 			ConferencePackage.eINSTANCE.getTopic_References(),
-			ConferencePackage.eINSTANCE.getTopic_Documentation());
+			ConferencePackage.eINSTANCE.getTopic_Documentation()		);
 		return new NotificationFilter[] {filter,};
 	}
 

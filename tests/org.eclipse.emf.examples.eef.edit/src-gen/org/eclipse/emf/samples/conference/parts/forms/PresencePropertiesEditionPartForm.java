@@ -163,6 +163,11 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 			}
 			
 		});
+		if (isReadOnly(assists)) {
+			assists.setEnabled(false);
+			assists.setToolTipText(ConferenceMessages.Presence_ReadOnly);
+		}		
+		
 		GridData assistsData = new GridData(GridData.FILL_HORIZONTAL);
 		assistsData.horizontalSpan = 3;
 		this.assists.setLayoutData(assistsData);

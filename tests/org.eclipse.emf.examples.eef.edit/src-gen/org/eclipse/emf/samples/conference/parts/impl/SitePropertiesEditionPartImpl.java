@@ -147,6 +147,11 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Site.Properties.name, ConferenceMessages.SitePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(ConferenceMessages.Site_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -196,6 +201,12 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		if (isReadOnly(documentation)) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Site_ReadOnly);
+		}		
+		
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -259,6 +270,11 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			}
 			
 		});
+		if (isReadOnly(rooms)) {
+			rooms.setEnabled(false);
+			rooms.setToolTipText(ConferenceMessages.Site_ReadOnly);
+		}		
+		
 		GridData roomsData = new GridData(GridData.FILL_HORIZONTAL);
 		roomsData.horizontalSpan = 3;
 		this.rooms.setLayoutData(roomsData);

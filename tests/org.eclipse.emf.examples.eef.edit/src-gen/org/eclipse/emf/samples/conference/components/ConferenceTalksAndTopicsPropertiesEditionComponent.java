@@ -238,7 +238,7 @@ public class ConferenceTalksAndTopicsPropertiesEditionComponent extends SinglePa
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ConferencePackage.eINSTANCE.getConference_Talks(),
-			ConferencePackage.eINSTANCE.getConference_Topics());
+			ConferencePackage.eINSTANCE.getConference_Topics()		);
 		return new NotificationFilter[] {filter,};
 	}
 

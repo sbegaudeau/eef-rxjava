@@ -175,6 +175,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createFirstnameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.firstname, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel);
 		firstname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(firstname)) {
+			firstname.setEnabled(false);
+			firstname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		firstname.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData firstnameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -240,6 +245,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createLastnameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.lastname, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel);
 		lastname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(lastname)) {
+			lastname.setEnabled(false);
+			lastname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		lastname.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData lastnameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -305,6 +315,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createAgeText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.age, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel);
 		age = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(age)) {
+			age.setEnabled(false);
+			age.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		age.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData ageData = new GridData(GridData.FILL_HORIZONTAL);
@@ -372,6 +387,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		gender = new EMFComboViewer(parent);
 		gender.setContentProvider(new ArrayContentProvider());
 		gender.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(gender)) {
+			gender.setEnabled(false);
+			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		GridData genderData = new GridData(GridData.FILL_HORIZONTAL);
 		gender.getCombo().setLayoutData(genderData);
 		gender.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -413,6 +433,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	
 	protected Composite createEclipseCommiterCheckbox(FormToolkit widgetFactory, Composite parent) {
 		eclipseCommiter = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel), SWT.CHECK);
+		if (isReadOnly(eclipseCommiter)) {
+			eclipseCommiter.setEnabled(false);
+			eclipseCommiter.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -439,6 +464,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	
 	protected Composite createIsRegisteredCheckbox(FormToolkit widgetFactory, Composite parent) {
 		isRegistered = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel), SWT.CHECK);
+		if (isReadOnly(isRegistered)) {
+			isRegistered.setEnabled(false);
+			isRegistered.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		isRegistered.addSelectionListener(new SelectionAdapter() {
 
 			/**

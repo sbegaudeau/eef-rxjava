@@ -298,7 +298,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_)) {
+			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -307,14 +307,14 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 			if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.topic))
 				basePart.setTopic((EObject)msg.getNewValue());
-			if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.type))
+			if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(ConferenceViewsRepository.Talk.Properties.type))
 				basePart.setType((TALK_TYPE)msg.getNewValue());
 			
 			if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.presenter))
 				basePart.setPresenter((EObject)msg.getNewValue());
 			if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.creator))
 				basePart.setCreator((EObject)msg.getNewValue());
-			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -338,7 +338,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			ConferencePackage.eINSTANCE.getTalk_Type(),
 			ConferencePackage.eINSTANCE.getTalk_Presenter(),
 			ConferencePackage.eINSTANCE.getTalk_Creator(),
-			ConferencePackage.eINSTANCE.getTalk_Documentation());
+			ConferencePackage.eINSTANCE.getTalk_Documentation()		);
 		return new NotificationFilter[] {filter,};
 	}
 

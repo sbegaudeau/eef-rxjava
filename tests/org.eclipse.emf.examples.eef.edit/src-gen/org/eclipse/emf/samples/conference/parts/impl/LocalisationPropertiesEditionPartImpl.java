@@ -119,6 +119,11 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Composite createPlaceText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Localisation.place, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel);
 		place = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(place)) {
+			place.setEnabled(false);
+			place.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		}		
+		
 		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
 		place.setLayoutData(placeData);
 		place.addFocusListener(new FocusAdapter() {
@@ -199,6 +204,11 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 			}
 			
 		});
+		if (isReadOnly(sites)) {
+			sites.setEnabled(false);
+			sites.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		}		
+		
 		GridData sitesData = new GridData(GridData.FILL_HORIZONTAL);
 		sitesData.horizontalSpan = 3;
 		this.sites.setLayoutData(sitesData);

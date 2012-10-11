@@ -161,6 +161,11 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	protected Composite createTitle_Text(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Talk.Properties.title_, ConferenceMessages.TalkPropertiesEditionPart_Title_Label);
 		title_ = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(title_)) {
+			title_.setEnabled(false);
+			title_.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData title_Data = new GridData(GridData.FILL_HORIZONTAL);
 		title_.setLayoutData(title_Data);
 		title_.addFocusListener(new FocusAdapter() {
@@ -211,6 +216,11 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createDescription(parent, ConferenceViewsRepository.Talk.Properties.topic, ConferenceMessages.TalkPropertiesEditionPart_TopicLabel);
 		topic = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.SWT_KIND));
 		topic.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(topic)) {
+			topic.setEnabled(false);
+			topic.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 
 		topic.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -232,6 +242,11 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		type = new EMFComboViewer(parent);
 		type.setContentProvider(new ArrayContentProvider());
 		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(type)) {
+			type.setEnabled(false);
+			type.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		type.getCombo().setLayoutData(typeData);
 		type.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -261,6 +276,11 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createDescription(parent, ConferenceViewsRepository.Talk.Properties.presenter, ConferenceMessages.TalkPropertiesEditionPart_PresenterLabel);
 		presenter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.SWT_KIND));
 		presenter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(presenter)) {
+			presenter.setEnabled(false);
+			presenter.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 
 		presenter.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -284,6 +304,11 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		createDescription(parent, ConferenceViewsRepository.Talk.Properties.creator, ConferenceMessages.TalkPropertiesEditionPart_CreatorLabel);
 		creator = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.SWT_KIND));
 		creator.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		if (isReadOnly(creator)) {
+			creator.setEnabled(false);
+			creator.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 
 		creator.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -306,6 +331,12 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		if (isReadOnly(documentation)) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		}		
+		
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;

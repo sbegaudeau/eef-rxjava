@@ -128,6 +128,11 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Conference_.Properties.name, ConferenceMessages.ConferencePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(ConferenceMessages.Conference_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -177,6 +182,12 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		overviewLabelData.horizontalSpan = 3;
 		overviewLabel.setLayoutData(overviewLabelData);
 		overview = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		if (isReadOnly(overview)) {
+			overview.setEnabled(false);
+			overview.setBackground(overview.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			overview.setToolTipText(ConferenceMessages.Conference_ReadOnly);
+		}		
+		
 		GridData overviewData = new GridData(GridData.FILL_HORIZONTAL);
 		overviewData.horizontalSpan = 2;
 		overviewData.heightHint = 80;

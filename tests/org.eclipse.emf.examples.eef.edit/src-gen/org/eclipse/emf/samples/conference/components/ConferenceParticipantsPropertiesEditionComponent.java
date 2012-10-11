@@ -180,7 +180,7 @@ public class ConferenceParticipantsPropertiesEditionComponent extends SinglePart
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ConferencePackage.eINSTANCE.getConference_Participants());
+			ConferencePackage.eINSTANCE.getConference_Participants()		);
 		return new NotificationFilter[] {filter,};
 	}
 

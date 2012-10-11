@@ -163,6 +163,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Composite createFirstnameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.firstname, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel);
 		firstname = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(firstname)) {
+			firstname.setEnabled(false);
+			firstname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		GridData firstnameData = new GridData(GridData.FILL_HORIZONTAL);
 		firstname.setLayoutData(firstnameData);
 		firstname.addFocusListener(new FocusAdapter() {
@@ -209,6 +214,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Composite createLastnameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.lastname, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel);
 		lastname = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(lastname)) {
+			lastname.setEnabled(false);
+			lastname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		GridData lastnameData = new GridData(GridData.FILL_HORIZONTAL);
 		lastname.setLayoutData(lastnameData);
 		lastname.addFocusListener(new FocusAdapter() {
@@ -255,6 +265,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Composite createAgeText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.age, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel);
 		age = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(age)) {
+			age.setEnabled(false);
+			age.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		GridData ageData = new GridData(GridData.FILL_HORIZONTAL);
 		age.setLayoutData(ageData);
 		age.addFocusListener(new FocusAdapter() {
@@ -303,6 +318,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		gender = new EMFComboViewer(parent);
 		gender.setContentProvider(new ArrayContentProvider());
 		gender.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		if (isReadOnly(gender)) {
+			gender.setEnabled(false);
+			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		GridData genderData = new GridData(GridData.FILL_HORIZONTAL);
 		gender.getCombo().setLayoutData(genderData);
 		gender.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -343,6 +363,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Composite createEclipseCommiterCheckbox(Composite parent) {
 		eclipseCommiter = new Button(parent, SWT.CHECK);
 		eclipseCommiter.setText(getDescription(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel));
+		if (isReadOnly(eclipseCommiter)) {
+			eclipseCommiter.setEnabled(false);
+			eclipseCommiter.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -370,6 +395,11 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected Composite createIsRegisteredCheckbox(Composite parent) {
 		isRegistered = new Button(parent, SWT.CHECK);
 		isRegistered.setText(getDescription(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel));
+		if (isReadOnly(isRegistered)) {
+			isRegistered.setEnabled(false);
+			isRegistered.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		}		
+		
 		isRegistered.addSelectionListener(new SelectionAdapter() {
 
 			/**

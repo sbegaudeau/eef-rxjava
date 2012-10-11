@@ -156,6 +156,11 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Topic.Properties.description, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(description)) {
+			description.setEnabled(false);
+			description.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		}		
+		
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -222,6 +227,11 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 */
 	protected Composite createReferencesMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		references = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+		if (isReadOnly(references)) {
+			references.setEnabled(false);
+			references.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		}		
+		
 		GridData referencesData = new GridData(GridData.FILL_HORIZONTAL);
 		referencesData.horizontalSpan = 2;
 		references.setLayoutData(referencesData);
@@ -267,6 +277,12 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		if (isReadOnly(documentation)) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		}		
+		
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;

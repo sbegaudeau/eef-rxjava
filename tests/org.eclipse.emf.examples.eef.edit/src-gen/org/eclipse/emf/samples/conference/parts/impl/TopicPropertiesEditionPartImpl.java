@@ -144,6 +144,11 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	protected Composite createDescriptionText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Topic.Properties.description, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel);
 		description = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(description)) {
+			description.setEnabled(false);
+			description.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		}		
+		
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
 		description.setLayoutData(descriptionData);
 		description.addFocusListener(new FocusAdapter() {
@@ -188,6 +193,11 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 	protected Composite createReferencesMultiValuedEditor(Composite parent) {
 		references = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
+		if (isReadOnly(references)) {
+			references.setEnabled(false);
+			references.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		}		
+		
 		GridData referencesData = new GridData(GridData.FILL_HORIZONTAL);
 		referencesData.horizontalSpan = 2;
 		references.setLayoutData(referencesData);
@@ -233,6 +243,12 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		if (isReadOnly(documentation)) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		}		
+		
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;

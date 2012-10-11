@@ -127,6 +127,11 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Room.Properties.name, ConferenceMessages.RoomPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(name)) {
+			name.setEnabled(false);
+			name.setToolTipText(ConferenceMessages.Room_ReadOnly);
+		}		
+		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -173,6 +178,11 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	protected Composite createCapacityText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Room.Properties.capacity, ConferenceMessages.RoomPropertiesEditionPart_CapacityLabel);
 		capacity = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		if (isReadOnly(capacity)) {
+			capacity.setEnabled(false);
+			capacity.setToolTipText(ConferenceMessages.Room_ReadOnly);
+		}		
+		
 		GridData capacityData = new GridData(GridData.FILL_HORIZONTAL);
 		capacity.setLayoutData(capacityData);
 		capacity.addFocusListener(new FocusAdapter() {

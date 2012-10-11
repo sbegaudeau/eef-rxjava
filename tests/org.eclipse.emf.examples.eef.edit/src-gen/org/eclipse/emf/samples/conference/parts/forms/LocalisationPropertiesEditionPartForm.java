@@ -129,6 +129,11 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createPlaceText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Localisation.place, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel);
 		place = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		if (isReadOnly(place)) {
+			place.setEnabled(false);
+			place.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		}		
+		
 		place.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -228,6 +233,11 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 			}
 			
 		});
+		if (isReadOnly(sites)) {
+			sites.setEnabled(false);
+			sites.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		}		
+		
 		GridData sitesData = new GridData(GridData.FILL_HORIZONTAL);
 		sitesData.horizontalSpan = 3;
 		this.sites.setLayoutData(sitesData);

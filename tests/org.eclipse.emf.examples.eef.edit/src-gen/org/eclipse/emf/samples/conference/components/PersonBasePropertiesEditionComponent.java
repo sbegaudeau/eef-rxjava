@@ -175,34 +175,34 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 	public void updatePart(Notification msg) {
 		if (editingPart.isVisible()) {
 			PersonPropertiesEditionPart basePart = (PersonPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname)) {
+			if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname)) {
 				if (msg.getNewValue() != null) {
 					basePart.setFirstname(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setFirstname("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname)) {
+			if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname)) {
 				if (msg.getNewValue() != null) {
 					basePart.setLastname(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setLastname("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
+			if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
 				if (msg.getNewValue() != null) {
 					basePart.setAge(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setAge("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter))
+			if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter))
 				basePart.setEclipseCommiter((Boolean)msg.getNewValue());
 			
-			if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Person.Identity.gender))
+			if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(ConferenceViewsRepository.Person.Identity.gender))
 				basePart.setGender((GENDER)msg.getNewValue());
 			
-			if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.isRegistered))
+			if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.isRegistered))
 				basePart.setIsRegistered((Boolean)msg.getNewValue());
 			
 			
@@ -222,7 +222,7 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 			ConferencePackage.eINSTANCE.getPerson_Age(),
 			ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(),
 			ConferencePackage.eINSTANCE.getPerson_Gender(),
-			ConferencePackage.eINSTANCE.getPerson_IsRegistered());
+			ConferencePackage.eINSTANCE.getPerson_IsRegistered()		);
 		return new NotificationFilter[] {filter,};
 	}
 
