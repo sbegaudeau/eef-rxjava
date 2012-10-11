@@ -43,10 +43,7 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
 		[editor.elementEditorName()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/]RadioViewer.setEnabled(false);
-		[editor.elementEditorName()/]RadioViewer.setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
+		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/]RadioViewer.setLayoutData([editor.elementEditorName()/]Data);
@@ -62,4 +59,19 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null);
 		return parent;
 	}
+[/template]
+
+[template public setReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'Radio')]
+[editor.elementEditorName()/]RadioViewer.setEnabled(false);
+[editor.elementEditorName()/]RadioViewer.setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public readOnly (editor : ElementEditor) overrides readOnly ? (editor.representation.name = 'Radio')]
+[if (editor.readOnly)]
+[editor.setReadOnly()/]
+[else]
+if (isReadOnly([editor.elementEditorName()/]RadioViewer)) {
+	[editor.setReadOnly()/]
+}		
+[/if]
 [/template]

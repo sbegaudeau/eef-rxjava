@@ -32,6 +32,81 @@
 //FIXME INVALID CASE INTO template public additionalImplementation(editor : ViewElement, pec : PropertiesEditionComponent, inputPEC : PropertiesEditionComponent) in SWT Impl for ViewElement [editor.name/]
 [/template]
 
+[template public setReadOnly (editor : ElementEditor)]
+[editor.elementEditorName()/].setEnabled(false);
+[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public setRemoveButtonReadOnly (editor : ElementEditor) ]
+remove[editor.name.toJavaClassifier()/].setEnabled(false);
+remove[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public setAddButtonReadOnly (editor : ElementEditor) ]
+add[editor.name.toJavaClassifier()/].setEnabled(false);
+add[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public setEditButtonReadOnly (editor : ElementEditor) ]
+edit[editor.name.toJavaClassifier()/].setEnabled(false);
+edit[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public setTableReadOnly (editor : ElementEditor) ]
+table[editor.name.toJavaClassifier()/].setEnabled(false);
+table[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public readOnly (editor : ElementEditor)]
+[if (editor.readOnly)]
+[editor.setReadOnly()/]
+[else]
+if (isReadOnly([editor.elementEditorName()/])) {
+	[editor.setReadOnly()/]
+}		
+[/if]
+[/template]
+
+[template public addButtonReadOnly (editor : ElementEditor) ]
+[if (editor.readOnly)]
+[setAddButtonReadOnly()/]
+[else]
+if (isReadOnly([editor.elementEditorName()/])) {
+	[editor.setAddButtonReadOnly()/]
+}		
+[/if]
+[/template]
+
+[template public removeButtonReadOnly (editor : ElementEditor) ]
+[if (editor.readOnly)]
+[setRemoveButtonReadOnly()/]
+[else]
+if (isReadOnly([editor.elementEditorName()/])) {
+	[editor.setRemoveButtonReadOnly()/]
+}		
+[/if]
+[/template]
+
+[template public editButtonReadOnly (editor : ElementEditor) ]
+[if (editor.readOnly)]
+[setEditButtonReadOnly()/]
+[else]
+if (isReadOnly([editor.elementEditorName()/])) {
+	[editor.setEditButtonReadOnly()/]
+}		
+[/if]
+[/template]
+
+[template public tableReadOnly (editor : ElementEditor) ]
+[if (editor.readOnly)]
+[setTableReadOnly()/]
+[else]
+if (isReadOnly(table[editor.elementEditorName()/])) {
+	[editor.setTableReadOnly()/]
+}		
+[/if]
+[/template]
+
 [comment ===== ViewReference support ===== /]
 [template public widgetDeclaration(reference : ViewReference)]
 	private [include(reference.view.oclAsType(View).pepQualifiedInterface())/] [reference.view.oclAsType(View).pepInterface().toLowerFirst()/];

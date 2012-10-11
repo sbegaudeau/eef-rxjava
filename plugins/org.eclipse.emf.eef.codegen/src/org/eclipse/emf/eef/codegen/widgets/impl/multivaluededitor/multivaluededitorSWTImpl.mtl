@@ -46,10 +46,7 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
 	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
 		[editor.elementEditorName()/] = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
+		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);

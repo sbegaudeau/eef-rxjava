@@ -47,10 +47,7 @@ return create[editor.name.toJavaClassifier()/]ImageViewer(widgetFactory, parent)
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new EEFImageViewer(parent, SWT.BORDER);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
+		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData();
 		[if (editor.owningViewsRepository().associatedGenModel().useJMergeForUserCode)]
 		[editor.defaultLayoutData()/]

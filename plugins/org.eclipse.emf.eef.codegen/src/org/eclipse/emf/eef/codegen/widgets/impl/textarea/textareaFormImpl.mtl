@@ -51,11 +51,7 @@ return create[editor.name.toJavaClassifier()/]Textarea(widgetFactory, parent);
 		[editor.elementEditorName()/]LabelData.horizontalSpan = 3;
 		[editor.elementEditorName()/]Label.setLayoutData([editor.elementEditorName()/]LabelData);
 		[editor.elementEditorName()/] = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setBackground([editor.elementEditorName()/].getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
+		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/]Data.heightHint = 80;
@@ -106,3 +102,8 @@ return create[editor.name.toJavaClassifier()/]Textarea(widgetFactory, parent);
 	}
 [/template]
 
+[template public setReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'Textarea')]
+[editor.elementEditorName()/].setEnabled(false);
+[editor.elementEditorName()/].setBackground([editor.elementEditorName()/].getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
