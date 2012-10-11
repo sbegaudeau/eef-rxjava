@@ -302,7 +302,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * @since 0.9
 	 */
 	protected boolean shouldProcess(IPropertiesEditionEvent event) {
-		return true;
+		return false;
 	}
 
 	/**
