@@ -373,7 +373,7 @@ propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([edi
 [if (editor.readOnly)]
 [setTableReadOnly()/]
 [else]
-if (isReadOnly(table)) {
+if (isReadOnly(table[navigationReadOnly()/])) {
 	[editor.setTableReadOnly()/]
 }		
 [/if]

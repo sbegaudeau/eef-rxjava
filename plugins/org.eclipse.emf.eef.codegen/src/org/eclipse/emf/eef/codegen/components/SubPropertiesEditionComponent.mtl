@@ -251,6 +251,9 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 [/if]
 
 [pec.validateValue(peContext, view)/]
+
+	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view) -> select(pee : PropertiesEditionElement | pee.canGeneratemodelNavigation()))][editionElement.additionalComponentGetterForModelNavigation(view, pec)/][/for]
+
 }
 [/template]
 

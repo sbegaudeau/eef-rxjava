@@ -61,17 +61,27 @@ table[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository(
 [if (editor.readOnly)]
 [editor.setReadOnly()/]
 [else]
-if (isReadOnly([editor.elementEditorName()/])) {
+if (isReadOnly([editor.elementEditorName()/][navigationReadOnly()/])) {
 	[editor.setReadOnly()/]
 }		
 [/if]
+[/template]
+
+[template public navigationReadOnly (editor : ElementEditor) post (trim())]
+[if (editor.involvedPropertiesEditionElement().canGeneratemodelNavigation())]
+	, (([addImports(Sequence{editor.getPecImport()})/][editor.involvedPropertiesEditionElement().eContainer(PropertiesEditionComponent).pecClass()/]) propertiesEditionComponent).get[editor.involvedPropertiesEditionElement().name.toJavaClassifier()/]Settings().getOrCreateSignificantObject()
+[/if]
+[/template]
+
+[template public getPecImport(editor : ElementEditor) post (trim())]
+[editor.involvedPropertiesEditionElement().eContainer(PropertiesEditionComponent).componentsPackage()/].[editor.involvedPropertiesEditionElement().eContainer(PropertiesEditionComponent).pecClass()/]
 [/template]
 
 [template public addButtonReadOnly (editor : ElementEditor) ]
 [if (editor.readOnly)]
 [setAddButtonReadOnly()/]
 [else]
-if (isReadOnly([editor.elementEditorName()/])) {
+if (isReadOnly([editor.elementEditorName()/][navigationReadOnly()/])) {
 	[editor.setAddButtonReadOnly()/]
 }		
 [/if]
@@ -81,7 +91,7 @@ if (isReadOnly([editor.elementEditorName()/])) {
 [if (editor.readOnly)]
 [setRemoveButtonReadOnly()/]
 [else]
-if (isReadOnly([editor.elementEditorName()/])) {
+if (isReadOnly([editor.elementEditorName()/][navigationReadOnly()/])) {
 	[editor.setRemoveButtonReadOnly()/]
 }		
 [/if]
@@ -91,7 +101,7 @@ if (isReadOnly([editor.elementEditorName()/])) {
 [if (editor.readOnly)]
 [setEditButtonReadOnly()/]
 [else]
-if (isReadOnly([editor.elementEditorName()/])) {
+if (isReadOnly([editor.elementEditorName()/][navigationReadOnly()/])) {
 	[editor.setEditButtonReadOnly()/]
 }		
 [/if]
@@ -101,7 +111,7 @@ if (isReadOnly([editor.elementEditorName()/])) {
 [if (editor.readOnly)]
 [setTableReadOnly()/]
 [else]
-if (isReadOnly(table[editor.elementEditorName()/])) {
+if (isReadOnly(table[editor.elementEditorName()/][navigationReadOnly()/])) {
 	[editor.setTableReadOnly()/]
 }		
 [/if]

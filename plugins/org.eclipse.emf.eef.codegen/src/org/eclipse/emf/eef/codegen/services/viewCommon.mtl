@@ -106,6 +106,16 @@ TODO: externalise model/controler reference after Unedic non-reg
 [editor.eContainer().oclAsType(IdentifiedElement).compositionStepName()/].addStep([editor.editorID()/]);
 [/template]
 
+[template public additionalComponentGetterForModelNavigation(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
+
+/**
+ * @ return settings for [editionElement.name/] editor
+ */
+public EEFEditorSettingsImpl get[editionElement.name.toJavaClassifier()/]Settings() {
+		return [editionElement.name.toJavaIdentifier()/]Settings;
+}
+[/template]
+
 [template public additionalComponentFieldForModelNavigation(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 
 /**

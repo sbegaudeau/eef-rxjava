@@ -317,7 +317,7 @@ return create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 [if (editor.readOnly)]
 [setTableReadOnly()/]
 [else]
-if (isReadOnly(table[editor.name.toJavaClassifier()/])) {
+if (isReadOnly(table[editor.name.toJavaClassifier()/][navigationReadOnly()/])) {
 	[editor.setTableReadOnly()/]
 }		
 [/if]

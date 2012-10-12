@@ -69,7 +69,7 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 [if (editor.readOnly)]
 [editor.setReadOnly()/]
 [else]
-if (isReadOnly([editor.elementEditorName()/]RadioViewer)) {
+if (isReadOnly([editor.elementEditorName()/]RadioViewer[navigationReadOnly()/])) {
 	[editor.setReadOnly()/]
 }		
 [/if]
