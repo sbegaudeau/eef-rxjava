@@ -41,7 +41,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
@@ -74,12 +73,12 @@ public class PropertiesEditionHelper {
 	 */
 	public void updateAttribute(SWTBotTreeItem selectNode,
 			PropertiesEditionElement propertiesEditionElement,
-			EObject referenceableObject, EObject container, Collection<String> values,
-			SequenceType sequenceType) {
+			EObject referenceableObject, EObject container,
+			Collection<String> values, SequenceType sequenceType) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
 		assertFalse(values == null);
 		assertFalse(values.isEmpty());
-		
+
 		final ElementEditor elementEditor = propertiesEditionElement.getViews()
 				.get(0);
 		final String representationName = elementEditor.getRepresentation()
@@ -107,7 +106,8 @@ public class PropertiesEditionHelper {
 			}
 			updateCheckbox(elementEditor, value, sequenceType);
 		} else if ("MultiValuedEditor".equals(representationName)) {
-			updateMultiValuedEditor(propertiesEditionElement, values, sequenceType);
+			updateMultiValuedEditor(propertiesEditionElement, values,
+					sequenceType);
 		} else {
 			System.out.println("Case not managed in updateAttribute : "
 					+ representationName);
@@ -144,8 +144,8 @@ public class PropertiesEditionHelper {
 	 */
 	public void updateFeature(SWTBotTreeItem selectNode,
 			PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject, Collection<EObject> values,
-			SequenceType sequenceType) {
+			ReferenceableObject referenceableObject,
+			Collection<EObject> values, SequenceType sequenceType) {
 		assertFalse(propertiesEditionElement.getViews().isEmpty());
 		final ElementEditor elementEditor = propertiesEditionElement.getViews()
 				.get(0);
@@ -227,7 +227,8 @@ public class PropertiesEditionHelper {
 		SWTBotHelper.waitAllUiEvents();
 		String label = ((ElementEditor) propertiesEditionElement.getViews()
 				.get(0)).getQualifiedIdentifier();
-		//TODO manage this case with selectInActiveTree(Collection<EObject>) when EEF will allowed to select multiple elements in a tree
+		// TODO manage this case with selectInActiveTree(Collection<EObject>)
+		// when EEF will allowed to select multiple elements in a tree
 		for (EObject value : values) {
 			bot.addButtonAdvancedReferencesTable(label).click();
 			bot.selectInActiveTree(value);
@@ -255,7 +256,7 @@ public class PropertiesEditionHelper {
 		clickOkOrCancel(propertiesEditionElement);
 		SWTBotHelper.waitAllUiEvents();
 	}
-	
+
 	/**
 	 * Unset widget FlatReferencesTable.
 	 * 
@@ -394,7 +395,8 @@ public class PropertiesEditionHelper {
 	 * @param sequenceType
 	 */
 	private void updateMultiValuedEditor(
-			PropertiesEditionElement propertiesEditionElement, Collection<String> values, SequenceType sequenceType) {
+			PropertiesEditionElement propertiesEditionElement,
+			Collection<String> values, SequenceType sequenceType) {
 		SWTBotHelper.waitAllUiEvents();
 		String label = ((ElementEditor) propertiesEditionElement.getViews()
 				.get(0)).getQualifiedIdentifier();
@@ -403,7 +405,7 @@ public class PropertiesEditionHelper {
 		clickOkOrCancel(propertiesEditionElement);
 		SWTBotHelper.waitAllUiEvents();
 	}
-	
+
 	/**
 	 * Unset values for widget MultiValuedEditor.
 	 * 
@@ -412,7 +414,8 @@ public class PropertiesEditionHelper {
 	 * @param sequenceType
 	 */
 	public void unsetMultiValuedEditor(
-			PropertiesEditionElement propertiesEditionElement, Collection<String> values, SequenceType sequenceType) {
+			PropertiesEditionElement propertiesEditionElement,
+			Collection<String> values, SequenceType sequenceType) {
 		SWTBotHelper.waitAllUiEvents();
 		String label = ((ElementEditor) propertiesEditionElement.getViews()
 				.get(0)).getQualifiedIdentifier();
@@ -448,11 +451,15 @@ public class PropertiesEditionHelper {
 		// Execute the Action of each following siblings of the Add Action in
 		// the Wizard of ModelingBot model
 		if (referenceableObject != null) {
-			if (referenceableObject instanceof Add && referenceableObject.eContainer() instanceof Wizard) {
-				EStructuralFeature feature = ((Add)referenceableObject).getEContainingFeature();
+			if (referenceableObject instanceof Add
+					&& referenceableObject.eContainer() instanceof Wizard) {
+				EStructuralFeature feature = ((Add) referenceableObject)
+						.getEContainingFeature();
 				EClassifier type = feature.getEType();
-				if (type != null && type instanceof EClass && ((EClass) type).isAbstract()) {
-					SWTBotRadio radio = bot.radio(((Add)referenceableObject).getType().getName());
+				if (type != null && type instanceof EClass
+						&& ((EClass) type).isAbstract()) {
+					SWTBotRadio radio = bot.radio(((Add) referenceableObject)
+							.getType().getName());
 					radio.setFocus();
 					bot.button(UIConstants.NEXT_BUTTON).click();
 				}
@@ -499,7 +506,7 @@ public class PropertiesEditionHelper {
 					elementEditor.getQualifiedIdentifier()).click();
 		}
 	}
-	
+
 	public void unsetReference(
 			PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject,
@@ -515,7 +522,7 @@ public class PropertiesEditionHelper {
 		} else if ("FlatReferencesTable".equals(representationName)) {
 			unsetFlatReferencesTable(propertiesEditionElement, objectsToUnset);
 		} else if ("EObjectFlatComboViewer".equals(representationName)) {
-			unsetEObjectFlatComboViewer(elementEditor);
+			unsetEObjectFlatComboViewer(elementEditor, objectsToUnset);
 		} else if ("AdvancedEObjectFlatComboViewer".equals(representationName)) {
 			unsetAdvancedEObjectFlatComboViewer(elementEditor);
 		} else if ("Combo".equals(representationName)) {
@@ -536,10 +543,11 @@ public class PropertiesEditionHelper {
 	 * 
 	 * @param elementEditor
 	 */
-	public void unsetEObjectFlatComboViewer(ElementEditor elementEditor) {
+	public void unsetEObjectFlatComboViewer(ElementEditor elementEditor,
+			Collection<EObject> values) {
 		bot.editButtonEObjectFlatComboViewer(
 				elementEditor.getQualifiedIdentifier()).click();
-		bot.selectInActiveTable("");
+		bot.selectInActiveTable(values);
 		bot.button(UIConstants.OK_BUTTON).click();
 		SWTBotHelper.waitAllUiEvents();
 	}
@@ -611,7 +619,7 @@ public class PropertiesEditionHelper {
 	private void clickOkOrCancel(
 			PropertiesEditionElement propertiesEditionElement) {
 		SWTBotHelper.waitAllUiEvents();
-		//bot.sleep(1000);
+		// bot.sleep(1000);
 		if (((EEFInterpreter) bot.getModelingBotInterpreter())
 				.getActionsToCancel().contains(propertiesEditionElement)) {
 			bot.cancel(null);
@@ -624,7 +632,7 @@ public class PropertiesEditionHelper {
 
 	private void clickCancel(PropertiesEditionElement propertiesEditionElement) {
 		SWTBotHelper.waitAllUiEvents();
-		//bot.sleep(1000);
+		// bot.sleep(1000);
 		if (((EEFInterpreter) bot.getModelingBotInterpreter())
 				.getActionsToCancel().contains(propertiesEditionElement)) {
 			bot.cancel(null);
@@ -635,20 +643,23 @@ public class PropertiesEditionHelper {
 
 	public void unsetAttribute(
 			PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject, EObject container, Collection<String> values,
-			SequenceType sequenceType) {
+			ReferenceableObject referenceableObject, EObject container,
+			Collection<String> values, SequenceType sequenceType) {
 		final ElementEditor elementEditor = propertiesEditionElement.getViews()
 				.get(0);
 		final String representationName = elementEditor.getRepresentation()
 				.getName();
-		if ("Text".equals(representationName) || "Textarea".equals(representationName)) {
-			updateText(propertiesEditionElement, referenceableObject, container, "", sequenceType);
+		if ("Text".equals(representationName)
+				|| "Textarea".equals(representationName)) {
+			updateText(propertiesEditionElement, referenceableObject,
+					container, "", sequenceType);
 		} else if ("MultiValuedEditor".equals(representationName)) {
-			unsetMultiValuedEditor(propertiesEditionElement, values, sequenceType);
+			unsetMultiValuedEditor(propertiesEditionElement, values,
+					sequenceType);
 		} else {
 			System.out.println("Case not managed in unset : "
 					+ representationName);
 		}
-		
+
 	}
 }
