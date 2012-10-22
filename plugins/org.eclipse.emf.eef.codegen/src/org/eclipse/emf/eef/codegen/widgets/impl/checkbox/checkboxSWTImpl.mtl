@@ -44,7 +44,6 @@ return create[editor.name.toJavaClassifier()/]Checkbox(parent);
 	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(Composite parent) {
 		[editor.elementEditorName()/] = new Button(parent, SWT.CHECK);
 		[editor.elementEditorName()/].setText(getDescription([editor.editorID() /], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]));
-		[editor.readOnly()/]
 		[editor.elementEditorName()/].addSelectionListener(new SelectionAdapter() {
 
 			/**

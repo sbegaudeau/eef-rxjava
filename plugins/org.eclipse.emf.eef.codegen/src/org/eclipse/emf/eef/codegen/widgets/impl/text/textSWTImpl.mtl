@@ -48,7 +48,6 @@ return create[editor.name.toJavaClassifier()/]Text(parent);
 		createDescription(parent, [editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].addFocusListener(new FocusAdapter() {

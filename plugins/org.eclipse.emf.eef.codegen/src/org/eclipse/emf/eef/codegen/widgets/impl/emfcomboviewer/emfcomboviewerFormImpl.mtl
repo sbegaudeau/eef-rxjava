@@ -52,7 +52,6 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 		[editor.elementEditorName()/] = new EMFComboViewer(parent);
 		[editor.elementEditorName()/].setContentProvider(new ArrayContentProvider());
 		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].getCombo().setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].addSelectionChangedListener(new ISelectionChangedListener() {

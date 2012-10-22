@@ -42,7 +42,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.metamodelTypeGetter()/], [pec.pecModelClass().toJavaIdentifier()/].[if isBoolean(editionElement.model.oclAsType(EAttribute))]is[else]get[/if][editionElement.model.name.toUpperFirst()/]()));
 }
 [else]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
+if (isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EEFConverterUtil.convertToString([editionElement.metamodelTypeGetter()/], [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [/if]
 [/template]

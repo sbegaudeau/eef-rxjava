@@ -43,6 +43,9 @@
 	protected [include('org.eclipse.jface.viewers.TableViewer')/] [editor.elementEditorName()/];
 	protected [include('java.util.List')/]<[include('org.eclipse.jface.viewers.ViewerFilter')/]> [editor.elementEditorName()/]BusinessFilters = new [include('java.util.ArrayList')/]<ViewerFilter>();
 	protected List<ViewerFilter> [editor.elementEditorName()/]Filters = new ArrayList<ViewerFilter>();
+	protected Button add[editor.name.toJavaClassifier()/];
+	protected Button remove[editor.name.toJavaClassifier()/];
+	protected Button edit[editor.name.toJavaClassifier()/];
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'TableComposition')]
@@ -64,7 +67,6 @@ return create[editor.name.toJavaClassifier()/]TableComposition(parent);
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table table[editor.name.toJavaClassifier()/] = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
 		table[editor.name.toJavaClassifier()/].setHeaderVisible(true);
-		[editor.tableReadOnly()/]
 		GridData gd[editor.name.toJavaClassifier()/] = new GridData();
 		gd[editor.name.toJavaClassifier()/].grabExcessHorizontalSpace = true;
 		gd[editor.name.toJavaClassifier()/].horizontalAlignment = GridData.FILL;
@@ -141,9 +143,8 @@ return create[editor.name.toJavaClassifier()/]TableComposition(parent);
 		GridLayout [editor.elementEditorName()/]PanelLayout = new GridLayout();
 		[editor.elementEditorName()/]PanelLayout.numColumns = 1;
 		[editor.elementEditorName()/]Panel.setLayout([editor.elementEditorName()/]PanelLayout);
-		Button add[editor.name.toJavaClassifier()/] = new Button([editor.elementEditorName()/]Panel, SWT.NONE);
+		add[editor.name.toJavaClassifier()/] = new Button([editor.elementEditorName()/]Panel, SWT.NONE);
 		add[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddTableViewerLabel);
-		[editor.addButtonReadOnly()/]
 		GridData add[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		add[editor.name.toJavaClassifier()/].setLayoutData(add[editor.name.toJavaClassifier()/]Data);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -161,9 +162,8 @@ return create[editor.name.toJavaClassifier()/]TableComposition(parent);
 		});
 		EditingUtils.setID(add[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(add[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::addbutton"); //$NON-NLS-1$
-		Button remove[editor.name.toJavaClassifier()/] = new Button([editor.elementEditorName()/]Panel, SWT.NONE);
+		remove[editor.name.toJavaClassifier()/] = new Button([editor.elementEditorName()/]Panel, SWT.NONE);
 		remove[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveTableViewerLabel);
-		[editor.removeButtonReadOnly()/]
 		GridData remove[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		remove[editor.name.toJavaClassifier()/].setLayoutData(remove[editor.name.toJavaClassifier()/]Data);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -188,9 +188,8 @@ return create[editor.name.toJavaClassifier()/]TableComposition(parent);
 		});
 		EditingUtils.setID(remove[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(remove[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::removebutton"); //$NON-NLS-1$
-		Button edit[editor.name.toJavaClassifier()/] = new Button([editor.elementEditorName()/]Panel, SWT.NONE);
+		edit[editor.name.toJavaClassifier()/] = new Button([editor.elementEditorName()/]Panel, SWT.NONE);
 		edit[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_EditTableViewerLabel);
-		[editor.editButtonReadOnly()/]
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
 		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -301,7 +300,6 @@ return create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 			}
 			
 		});
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 3;
 		this.[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
@@ -312,19 +310,3 @@ return create[editor.name.toJavaClassifier()/]AdvancedTableComposition(parent);
 		return parent;
 	}
 [/template]
-
-[template public tableReadOnly (editor : ElementEditor) overrides tableReadOnly ? (editor.representation.name = 'TableComposition')]
-[if (editor.readOnly)]
-[setTableReadOnly()/]
-[else]
-if (isReadOnly(table[editor.name.toJavaClassifier()/][navigationReadOnly()/])) {
-	[editor.setTableReadOnly()/]
-}		
-[/if]
-[/template]
-
-[template public setTableReadOnly (editor : ElementEditor) overrides setTableReadOnly ? (editor.representation.name = 'TableComposition')]
-table[editor.name.toJavaClassifier()/].setEnabled(false);
-table[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-[/template]
-

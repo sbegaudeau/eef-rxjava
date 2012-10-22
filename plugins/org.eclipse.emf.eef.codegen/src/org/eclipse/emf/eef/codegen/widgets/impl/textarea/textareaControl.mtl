@@ -36,7 +36,7 @@ if ([editionElement.liveUpdaterNavigationConditionForText(pec)/] && [view.viewId
 
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Textarea') and not editionElement.canGeneratemodelNavigation())]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
+if (isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](EcoreUtil.convertToString([editionElement.metamodelTypeGetter()/], [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]()));
 [/template]
 

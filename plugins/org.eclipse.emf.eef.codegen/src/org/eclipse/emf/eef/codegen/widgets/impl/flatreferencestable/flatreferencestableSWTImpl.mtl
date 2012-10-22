@@ -51,7 +51,6 @@ return create[editor.name.toJavaClassifier()/]FlatReferencesTable(parent);
 		[/if]
 		[editor.elementEditorName()/] = new FlatReferencesTable(parent);
 		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		[editor.readOnly()/]
 		[editor.elementEditorName()/].addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {

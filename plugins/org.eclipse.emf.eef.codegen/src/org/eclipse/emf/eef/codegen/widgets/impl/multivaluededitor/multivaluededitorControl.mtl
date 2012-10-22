@@ -36,10 +36,10 @@ if ([editionElement.liveUpdaterNavigationCondition(pec)/] && [view.viewIdentifie
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.many)]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
+if (isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]());
 [else]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
+if (isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/if]
 [/template]

@@ -50,7 +50,6 @@ return create[editor.name.toJavaClassifier()/]Textarea(parent);
 		[editor.elementEditorName()/]LabelData.horizontalSpan = 3;
 		[editor.elementEditorName()/]Label.setLayoutData([editor.elementEditorName()/]LabelData);
 		[editor.elementEditorName()/] = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/]Data.heightHint = 80;
@@ -75,10 +74,4 @@ return create[editor.name.toJavaClassifier()/]Textarea(parent);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
-[/template]
-
-[template public setReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'Textarea')]
-[editor.elementEditorName()/].setEnabled(false);
-[editor.elementEditorName()/].setBackground([editor.elementEditorName()/].getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 [/template]

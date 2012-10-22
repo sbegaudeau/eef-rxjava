@@ -29,5 +29,6 @@
 		} else {
 			[elementEditor.elementEditorName()/].setSelection(false);
 		}
+		[elementEditor.readOnly()/]
 	}
 [/template]

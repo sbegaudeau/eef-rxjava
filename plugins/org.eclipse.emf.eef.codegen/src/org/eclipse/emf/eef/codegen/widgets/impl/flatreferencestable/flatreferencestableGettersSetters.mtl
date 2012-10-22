@@ -110,6 +110,7 @@
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		[elementEditor.elementEditorName()/].setInput(settings);
+		[elementEditor.readOnly()/]
 	}
 [/template]
 

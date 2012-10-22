@@ -85,7 +85,6 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 	protected TableViewer create[editor.name.toJavaClassifier()/]Viewer(Composite container, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
-		[editor.tableReadOnly()/]
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -139,7 +138,6 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 		result.setLayout(layout);
 		add[editor.name.toJavaClassifier()/] = new Button(result, SWT.NONE);
 		add[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel);
-		[editor.addButtonReadOnly()/]
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		add[editor.name.toJavaClassifier()/].setLayoutData(addData);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -159,7 +157,6 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 		EditingUtils.setEEFtype(add[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::addbutton"); //$NON-NLS-1$
 		remove[editor.name.toJavaClassifier()/] = new Button(result, SWT.NONE);
 		remove[editor.name.toJavaClassifier()/].setText([editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel);
-		[editor.removeButtonReadOnly()/]
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		remove[editor.name.toJavaClassifier()/].setLayoutData(removeData);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -292,7 +289,6 @@ return create[editor.name.toJavaClassifier()/]AdvancedReferencesTable(parent);
 			}
 			
 		});
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 3;
 		this.[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
@@ -367,19 +363,4 @@ if (provider != null) {
 [template public defaultRemoveOperation(editor : ElementEditor) ]
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 [editor.elementEditorName()/].refresh();
-[/template]
-
-[template public tableReadOnly (editor : ElementEditor) overrides tableReadOnly ? (editor.representation.name = 'ReferencesTable')]
-[if (editor.readOnly)]
-[setTableReadOnly()/]
-[else]
-if (isReadOnly(table[navigationReadOnly()/])) {
-	[editor.setTableReadOnly()/]
-}		
-[/if]
-[/template]
-
-[template public setTableReadOnly (editor : ElementEditor) overrides setTableReadOnly ? (editor.representation.name = 'ReferencesTable')]
-table.setEnabled(false);
-table.setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
 [/template]

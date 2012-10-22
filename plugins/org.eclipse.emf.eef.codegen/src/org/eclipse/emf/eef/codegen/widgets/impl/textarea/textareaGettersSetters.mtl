@@ -29,5 +29,16 @@
 		} else {
 			[elementEditor.elementEditorName()/].setText(""); //$NON-NLS-1$
 		}
+		[elementEditor.readOnly()/]
 	}
+[/template]
+
+[template public setReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'Textarea')]
+[editor.elementEditorName()/].setEnabled(false);
+[editor.elementEditorName()/].setBackground([editor.elementEditorName()/].getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public unsetReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'Textarea')]
+[editor.elementEditorName()/].setEnabled(true);
 [/template]

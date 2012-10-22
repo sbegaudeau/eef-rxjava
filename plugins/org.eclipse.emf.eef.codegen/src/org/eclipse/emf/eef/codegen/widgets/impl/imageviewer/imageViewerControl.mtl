@@ -41,7 +41,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible
 [comment @Override widgetControl.updater /]
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('ImageViewer') and not editionElement.model.derived and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.oclAsType(EAttribute).isString())]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/])) {
+if (isAccessible([editionElement.views->first().editorID()/])) {
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/](EcoreUtil.getIdentification([pec.pecModelClass().toJavaIdentifier()/]), [pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
 }
 [else]

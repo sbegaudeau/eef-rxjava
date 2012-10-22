@@ -46,7 +46,6 @@ return create[editor.name.toJavaClassifier()/]ImageViewer(parent);
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new EEFImageViewer(parent, SWT.BORDER);
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData();
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
 		[defaultLayoutData()/]

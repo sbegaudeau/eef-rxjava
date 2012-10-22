@@ -49,7 +49,6 @@ return create[editor.name.toJavaClassifier()/]Text(widgetFactory, parent);
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		[editor.readOnly()/]
 		[editor.elementEditorName()/].setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);

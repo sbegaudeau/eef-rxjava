@@ -91,6 +91,7 @@
 		} else {
 			[elementEditor.elementEditorName()/].modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
 		}
+		[elementEditor.readOnly()/]
 	}
 [/template]
 

@@ -54,7 +54,6 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 		[editor.elementEditorName()/] = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		widgetFactory.adapt([editor.elementEditorName()/]);
 		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].addSelectionChangedListener(new ISelectionChangedListener() {
@@ -124,7 +123,6 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 		//create widget
 		[editor.elementEditorName()/] = new AdvancedEObjectFlatComboViewer([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], resourceSet, [editor.elementEditorName()/]Filter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		[editor.elementEditorName()/].createControls(parent, widgetFactory);
-		[editor.readOnly()/]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);

@@ -54,7 +54,6 @@ return create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, par
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new SelectionDialog(parent, SWT.NONE, widgetFactory);
-		[editor.readOnly()/]
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].setLayoutData(generatorData);
 
