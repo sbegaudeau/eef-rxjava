@@ -126,6 +126,7 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty)) {
@@ -202,5 +203,8 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 		}
 		return ret;
 	}
+
+
+	
 
 }

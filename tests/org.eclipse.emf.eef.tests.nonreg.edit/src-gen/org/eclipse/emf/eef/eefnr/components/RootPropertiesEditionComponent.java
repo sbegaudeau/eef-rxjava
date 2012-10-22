@@ -164,6 +164,7 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			RootPropertiesEditionPart basePart = (RootPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getRoot_Samples().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.Root.Properties.samples))
@@ -203,5 +204,8 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		}
 		return ret;
 	}
+
+
+	
 
 }

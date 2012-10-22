@@ -134,6 +134,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty))
@@ -213,5 +214,8 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		return ret;
 	}
+
+
+	
 
 }

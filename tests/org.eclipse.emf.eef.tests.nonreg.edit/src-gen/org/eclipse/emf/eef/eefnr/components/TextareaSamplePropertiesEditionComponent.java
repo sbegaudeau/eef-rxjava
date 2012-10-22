@@ -71,11 +71,11 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 			final TextareaSample textareaSample = (TextareaSample)elt;
 			final TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (textareaSample.getTextareaRequiredProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty))
+			if (isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty))
 				basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaRequiredProperty()));
-			if (textareaSample.getTextareaOptionalProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty))
+			if (isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty))
 				basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaOptionalProperty()));
-			if (textareaSample.getTextareaROProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty))
+			if (isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty))
 				basePart.setTextareaROProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaROProperty()));
 			// init filters
 			
@@ -131,6 +131,7 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty)){
@@ -222,5 +223,8 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }

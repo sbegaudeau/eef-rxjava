@@ -245,6 +245,7 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TableCompositionEditorSamplePropertiesEditionPart basePart = (TableCompositionEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTableCompositionEditorSample_TablecompositionRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty))
@@ -300,5 +301,8 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
+
+
+	
 
 }
