@@ -831,6 +831,15 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 		removeButton.setEnabled(enabled);
 		table.setEnabled(enabled);
 		upButton.setEnabled(enabled);
+		downButton.setEnabled(enabled);
+	}
+	
+
+	/**
+	 * @return if the table is enabled
+	 */
+	public boolean isEnabled() {
+		return table.isEnabled();
 	}
 
 	/**

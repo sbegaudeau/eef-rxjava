@@ -10,16 +10,19 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.components;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionComponentListener;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.notify.EEFLockNotification;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
@@ -76,6 +79,9 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().addEditingSemanticListener(semanticAdapter);
 			}
 		}
+		for (IPropertiesEditionComponentListener listener : EEFRuntimePlugin.getDefault().getPecListeners()) {
+			listener.activate(this);
+		}
 	}
 
 	/**
@@ -89,6 +95,9 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 			if (editingContext instanceof ExtendedPropertiesEditingContext && ((ExtendedPropertiesEditingContext)editingContext).canReachResourceSetAdapter()) {
 				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().removeEditingSemanticListener(semanticAdapter);
 			}
+		}
+		for (IPropertiesEditionComponentListener listener : EEFRuntimePlugin.getDefault().getPecListeners()) {
+			listener.deactivate(this);
 		}
 	}
 
@@ -212,4 +221,13 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		}
 		return false;
 	}
+
+	@Override
+	public void updatePart(Notification msg) {
+		if (msg instanceof EEFLockNotification && editingPart  instanceof CompositePropertiesEditionPart) {
+			((CompositePropertiesEditionPart) editingPart).refresh();
+		}
+	}
+	
+	
 }

@@ -20,24 +20,23 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionComponentListener;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionPartListener;
 
 /**
- * Service that manage all the registered {@link IPropertiesEditionPartListener}.
+ * Service that manage all the registered {@link IPropertiesEditionComponentListener}.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class PropetiesEditionPartListenerProviderService {
+public class PropertiesEditionComponentListenerProviderService {
 
 	/**
 	 * The extension name.
 	 */
-	public static final String EXTENSION_NAME = "PropertiesEditionPartListenerProvider"; //$NON-NLS-1$
+	public static final String EXTENSION_NAME = "PropertiesEditionComponentListenerProvider"; //$NON-NLS-1$
 
 	/**
 	 * The extension's element name.
 	 */
-	private static final String EXTENSION_ELEMENT_NAME = "PropertiesEditionPartListenerProvider"; //$NON-NLS-1$
+	private static final String EXTENSION_ELEMENT_NAME = "PropertiesEditionComponentListenerProvider"; //$NON-NLS-1$
 
 	/**
 	 * The element's attribute name.
@@ -47,18 +46,18 @@ public class PropetiesEditionPartListenerProviderService {
 	/**
 	 * A singleton for the service.
 	 */
-	private static PropetiesEditionPartListenerProviderService instance = new PropetiesEditionPartListenerProviderService();
+	private static PropertiesEditionComponentListenerProviderService instance = new PropertiesEditionComponentListenerProviderService();
 
 	/**
 	 * The factory where the providers are registered.
 	 */
-	private List<IPropertiesEditionPartListener> partListeners;
+	private List<IPropertiesEditionComponentListener> pecListeners;
 
 	/**
 	 * Default constructor.
 	 */
-	private PropetiesEditionPartListenerProviderService() {
-		partListeners = new ArrayList<IPropertiesEditionPartListener>();
+	private PropertiesEditionComponentListenerProviderService() {
+		pecListeners = new ArrayList<IPropertiesEditionComponentListener>();
 		configureService();
 	}
 
@@ -67,25 +66,25 @@ public class PropetiesEditionPartListenerProviderService {
 	 * 
 	 * @return the Singleton instance
 	 */
-	public static PropetiesEditionPartListenerProviderService getInstance() {
+	public static PropertiesEditionComponentListenerProviderService getInstance() {
 		return instance;
 	}
 
 	/**
 	 * @return all the registered policies
 	 */
-	public List<IPropertiesEditionPartListener> getListeners() {
-		return partListeners;
+	public List<IPropertiesEditionComponentListener> getListeners() {
+		return pecListeners;
 	}
 
 
 	/**
 	 * Register a listener.
 	 * 
-	 * @param pecListener IPropertiesEditionPartListener
+	 * @param pecListener IPropertiesEditionComponentListener
 	 */
-	public void register(IPropertiesEditionPartListener pecListener) {
-		partListeners.add(pecListener);
+	public void register(IPropertiesEditionComponentListener pecListener) {
+		pecListeners.add(pecListener);
 	}
 
 	/**
@@ -104,7 +103,7 @@ public class PropetiesEditionPartListenerProviderService {
 
 				if (EXTENSION_ELEMENT_NAME.equals(cfg.getName())) {
 					try {
-						register((IPropertiesEditionPartListener)cfg
+						register((IPropertiesEditionComponentListener)cfg
 								.createExecutableExtension(EXTENSION_ATTRIBUTE_NAME));
 					} catch (CoreException e) {
 						e.printStackTrace();

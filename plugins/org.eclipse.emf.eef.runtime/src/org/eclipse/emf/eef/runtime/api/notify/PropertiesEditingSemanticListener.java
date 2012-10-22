@@ -72,7 +72,7 @@ public abstract class PropertiesEditingSemanticListener {
 				}
 			};
 			if (null == Display.getCurrent()) {
-				PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+				PlatformUI.getWorkbench().getDisplay().asyncExec(updateRunnable);
 			} else {
 				updateRunnable.run();
 			}

@@ -440,6 +440,13 @@ public class AdvancedEObjectFlatComboViewer implements
 		valueText.setEnabled(enabled);
 		removeButton.setEnabled(enabled);
 	}
+	
+	/**
+	 * @return if the table is enabled
+	 */
+	public boolean isEnabled() {
+		return valueText.isEnabled();
+	}
 
 	/**
 	 * Sets the tooltip text on the viewer
