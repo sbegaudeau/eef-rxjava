@@ -531,6 +531,7 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SmartNavigationSamplePropertiesEditionPart smartNavigationSamplePart = (SmartNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name)) {
@@ -700,4 +701,49 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 			return ret;
 		}
 	
+
+	
+	/**
+	 * @ return settings for firstModelNavigationSingleValue editor
+	 */
+	public EEFEditorSettingsImpl getFirstModelNavigationSingleValueSettings() {
+			return firstModelNavigationSingleValueSettings;
+	}
+	/**
+	 * @ return settings for firstModelNavigationMultiValue editor
+	 */
+	public EEFEditorSettingsImpl getFirstModelNavigationMultiValueSettings() {
+			return firstModelNavigationMultiValueSettings;
+	}
+	/**
+	 * @ return settings for secondMNSingleValueWithFirstMNSingleValue editor
+	 */
+	public EEFEditorSettingsImpl getSecondMNSingleValueWithFirstMNSingleValueSettings() {
+			return secondMNSingleValueWithFirstMNSingleValueSettings;
+	}
+	/**
+	 * @ return settings for secondMNSingleValueWithFirstMNMultiValue editor
+	 */
+	public EEFEditorSettingsImpl getSecondMNSingleValueWithFirstMNMultiValueSettings() {
+			return secondMNSingleValueWithFirstMNMultiValueSettings;
+	}
+	/**
+	 * @ return settings for secondMNMultiValueWithFirstMNSingleValue editor
+	 */
+	public EEFEditorSettingsImpl getSecondMNMultiValueWithFirstMNSingleValueSettings() {
+			return secondMNMultiValueWithFirstMNSingleValueSettings;
+	}
+	/**
+	 * @ return settings for secondMNMultiValueWithFirstMNMultiValue editor
+	 */
+	public EEFEditorSettingsImpl getSecondMNMultiValueWithFirstMNMultiValueSettings() {
+			return secondMNMultiValueWithFirstMNMultiValueSettings;
+	}
+	/**
+	 * @ return settings for secondMNMultiValueWithFirstMNMultiValueWithFilter editor
+	 */
+	public EEFEditorSettingsImpl getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings() {
+			return secondMNMultiValueWithFirstMNMultiValueWithFilterSettings;
+	}
+
 }

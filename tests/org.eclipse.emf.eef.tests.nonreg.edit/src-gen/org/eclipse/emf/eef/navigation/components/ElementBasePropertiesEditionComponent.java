@@ -117,6 +117,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ElementPropertiesEditionPart basePart = (ElementPropertiesEditionPart)editingPart;
 			if (NavigationPackage.eINSTANCE.getElement_Visible().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.Element.Properties.isVisible))
@@ -172,5 +173,8 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		return ret;
 	}
+
+
+	
 
 }

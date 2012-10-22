@@ -116,6 +116,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionComponent extends Si
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ConcreteReferenceTargetSample2PropertiesEditionPart basePart = (ConcreteReferenceTargetSample2PropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name)) {
@@ -167,5 +168,8 @@ public class ConcreteReferenceTargetSample2PropertiesEditionComponent extends Si
 		}
 		return ret;
 	}
+
+
+	
 
 }

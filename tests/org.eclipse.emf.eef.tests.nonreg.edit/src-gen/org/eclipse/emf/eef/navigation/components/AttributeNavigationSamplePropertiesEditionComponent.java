@@ -205,6 +205,7 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name)) {
@@ -329,6 +330,33 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			}
 		}
 		return ret;
+	}
+
+
+	
+	/**
+	 * @ return settings for delegate1ForSingleValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate1ForSingleValuedSettings() {
+			return delegate1ForSingleValuedSettings;
+	}
+	/**
+	 * @ return settings for delegate2ForSingleValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate2ForSingleValuedSettings() {
+			return delegate2ForSingleValuedSettings;
+	}
+	/**
+	 * @ return settings for delegate1ForMultiValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate1ForMultiValuedSettings() {
+			return delegate1ForMultiValuedSettings;
+	}
+	/**
+	 * @ return settings for delegate2ForMultiValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate2ForMultiValuedSettings() {
+			return delegate2ForMultiValuedSettings;
 	}
 
 }

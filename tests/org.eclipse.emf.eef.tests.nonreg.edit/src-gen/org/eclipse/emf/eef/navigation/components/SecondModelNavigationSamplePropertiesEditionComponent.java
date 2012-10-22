@@ -127,6 +127,7 @@ public class SecondModelNavigationSamplePropertiesEditionComponent extends Singl
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SecondNavigationSamplePropertiesEditionPart secondNavigationSamplePart = (SecondNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && secondNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SecondNavigationSample.Properties.name)) {
@@ -178,5 +179,8 @@ public class SecondModelNavigationSamplePropertiesEditionComponent extends Singl
 		}
 		return ret;
 	}
+
+
+	
 
 }
