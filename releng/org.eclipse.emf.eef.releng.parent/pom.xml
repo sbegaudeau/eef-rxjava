@@ -71,7 +71,7 @@
 				<repository>
 					<id>ocl</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/4.0.0</url>
+					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.1</url>
 				</repository>
 				<repository>
 					<id>acceleo</id>
