@@ -206,21 +206,22 @@ public class EEFEditorSettingsBuilder  {
 										result2.add(eObject);
 									}
 								}
+								result = result2;
+								result2 = new ArrayList<EObject>();
 							}
 							
 							// no filter and no discriminator -> get step.reference
-						} else {
-								result2 = result;
+//						} else {
+//								result2 = result;
 						}
 						
 						// Use init if result.isEmpty()
-						if (result2.isEmpty() && step.getInit() != null) {
-							result2 = new ArrayList<EObject>();
-							result2.add(step.getInit().init(current));
+						if (result.isEmpty() && step.getInit() != null) {
+							result.add(step.getInit().init(current));
 						}
 						
-						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result2.size()) {
-							current = result2.get(step.getIndex());
+						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result.size()) {
+							current = result.get(step.getIndex());
 							// Use init if current == null
 							if (current == null && step.getInit() != null) {
 								EObject current2 = current;
