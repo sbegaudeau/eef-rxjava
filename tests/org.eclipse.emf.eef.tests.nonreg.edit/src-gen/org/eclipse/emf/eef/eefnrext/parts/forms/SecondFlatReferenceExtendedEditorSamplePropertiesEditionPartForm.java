@@ -139,11 +139,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 	protected Composite createDemoText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel);
 		demo = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(demo)) {
-			demo.setEnabled(false);
-			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
-		}		
-		
 		demo.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData demoData = new GridData(GridData.FILL_HORIZONTAL);
@@ -209,11 +204,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 	protected Composite createSizeText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel);
 		size = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(size)) {
-			size.setEnabled(false);
-			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
-		}		
-		
 		size.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData sizeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -310,6 +300,14 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		} else {
 			demo.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(demo);
+		if (readOnly && demo.isEnabled()) {
+			demo.setEnabled(false);
+			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!readOnly && !demo.isEnabled()) {
+			demo.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -334,6 +332,14 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		} else {
 			size.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(size);
+		if (readOnly && size.isEnabled()) {
+			size.setEnabled(false);
+			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!readOnly && !size.isEnabled()) {
+			size.setEnabled(true);
+		}	
+		
 	}
 
 

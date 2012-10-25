@@ -137,11 +137,6 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogRequiredPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel);
 		selectionDialogRequiredProperty = new SelectionDialog(parent, SWT.NONE);
-		if (isReadOnly(selectionDialogRequiredProperty)) {
-			selectionDialogRequiredProperty.setEnabled(false);
-			selectionDialogRequiredProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
-		}		
-		
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogRequiredProperty.setLayoutData(generatorData);
 
@@ -199,11 +194,6 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogOptionalPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel);
 		selectionDialogOptionalProperty = new SelectionDialog(parent, SWT.NONE);
-		if (isReadOnly(selectionDialogOptionalProperty)) {
-			selectionDialogOptionalProperty.setEnabled(false);
-			selectionDialogOptionalProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
-		}		
-		
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogOptionalProperty.setLayoutData(generatorData);
 
@@ -261,9 +251,6 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogROPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogROPropertyLabel);
 		selectionDialogROProperty = new SelectionDialog(parent, SWT.NONE);
-		selectionDialogROProperty.setEnabled(false);
-		selectionDialogROProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
-		
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogROProperty.setLayoutData(generatorData);
 
@@ -352,6 +339,14 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(selectionDialogRequiredProperty);
+		if (readOnly && selectionDialogRequiredProperty.isEnabled()) {
+			selectionDialogRequiredProperty.setEnabled(false);
+			selectionDialogRequiredProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		} else if (!readOnly && !selectionDialogRequiredProperty.isEnabled()) {
+			selectionDialogRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -376,6 +371,14 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(selectionDialogOptionalProperty);
+		if (readOnly && selectionDialogOptionalProperty.isEnabled()) {
+			selectionDialogOptionalProperty.setEnabled(false);
+			selectionDialogOptionalProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		} else if (!readOnly && !selectionDialogOptionalProperty.isEnabled()) {
+			selectionDialogOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -400,6 +403,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogROProperty.setText(""); //$NON-NLS-1$
 		}
+		selectionDialogROProperty.setEnabled(false);
+		selectionDialogROProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		
 	}
 
 

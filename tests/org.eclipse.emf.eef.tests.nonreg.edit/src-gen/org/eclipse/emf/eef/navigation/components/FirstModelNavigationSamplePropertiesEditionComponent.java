@@ -80,10 +80,11 @@ public class FirstModelNavigationSamplePropertiesEditionComponent extends Single
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FirstModelNavigation firstModelNavigation = (FirstModelNavigation)elt;
 			final FirstNavigationSamplePropertiesEditionPart firstNavigationSamplePart = (FirstNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (firstModelNavigation.getName() != null && isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name))
 				firstNavigationSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, firstModelNavigation.getName()));
 			
 			// init filters

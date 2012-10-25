@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.SmartNavigationSamplePropertie
 
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
 
+import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -170,11 +171,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.name, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -221,11 +217,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createFirstModelNavigationSingleValueText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_FirstModelNavigationSingleValueLabel);
 		firstModelNavigationSingleValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(firstModelNavigationSingleValue)) {
-			firstModelNavigationSingleValue.setEnabled(false);
-			firstModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData firstModelNavigationSingleValueData = new GridData(GridData.FILL_HORIZONTAL);
 		firstModelNavigationSingleValue.setLayoutData(firstModelNavigationSingleValueData);
 		firstModelNavigationSingleValue.addFocusListener(new FocusAdapter() {
@@ -272,11 +263,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSecondModelNavigationSingleValueText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationSingleValueLabel);
 		secondModelNavigationSingleValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(secondModelNavigationSingleValue)) {
-			secondModelNavigationSingleValue.setEnabled(false);
-			secondModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData secondModelNavigationSingleValueData = new GridData(GridData.FILL_HORIZONTAL);
 		secondModelNavigationSingleValue.setLayoutData(secondModelNavigationSingleValueData);
 		secondModelNavigationSingleValue.addFocusListener(new FocusAdapter() {
@@ -323,11 +309,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createFirstModelNavigationMultiValueText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_FirstModelNavigationMultiValueLabel);
 		firstModelNavigationMultiValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(firstModelNavigationMultiValue)) {
-			firstModelNavigationMultiValue.setEnabled(false);
-			firstModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData firstModelNavigationMultiValueData = new GridData(GridData.FILL_HORIZONTAL);
 		firstModelNavigationMultiValue.setLayoutData(firstModelNavigationMultiValueData);
 		firstModelNavigationMultiValue.addFocusListener(new FocusAdapter() {
@@ -374,11 +355,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSecondModelNavigationMultiValueText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueLabel);
 		secondModelNavigationMultiValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(secondModelNavigationMultiValue)) {
-			secondModelNavigationMultiValue.setEnabled(false);
-			secondModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData secondModelNavigationMultiValueData = new GridData(GridData.FILL_HORIZONTAL);
 		secondModelNavigationMultiValue.setLayoutData(secondModelNavigationMultiValueData);
 		secondModelNavigationMultiValue.addFocusListener(new FocusAdapter() {
@@ -425,11 +401,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSecondModelNavigationSingleValue2Text(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationSingleValue2Label);
 		secondModelNavigationSingleValue2 = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(secondModelNavigationSingleValue2)) {
-			secondModelNavigationSingleValue2.setEnabled(false);
-			secondModelNavigationSingleValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData secondModelNavigationSingleValue2Data = new GridData(GridData.FILL_HORIZONTAL);
 		secondModelNavigationSingleValue2.setLayoutData(secondModelNavigationSingleValue2Data);
 		secondModelNavigationSingleValue2.addFocusListener(new FocusAdapter() {
@@ -476,11 +447,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSecondModelNavigationMultiValue2Text(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValue2Label);
 		secondModelNavigationMultiValue2 = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(secondModelNavigationMultiValue2)) {
-			secondModelNavigationMultiValue2.setEnabled(false);
-			secondModelNavigationMultiValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData secondModelNavigationMultiValue2Data = new GridData(GridData.FILL_HORIZONTAL);
 		secondModelNavigationMultiValue2.setLayoutData(secondModelNavigationMultiValue2Data);
 		secondModelNavigationMultiValue2.addFocusListener(new FocusAdapter() {
@@ -527,11 +493,6 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSecondModelNavigationMultiValueFilterText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationMessages.SmartNavigationSamplePropertiesEditionPart_SecondModelNavigationMultiValueFilterLabel);
 		secondModelNavigationMultiValueFilter = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(secondModelNavigationMultiValueFilter)) {
-			secondModelNavigationMultiValueFilter.setEnabled(false);
-			secondModelNavigationMultiValueFilter.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		}		
-		
 		GridData secondModelNavigationMultiValueFilterData = new GridData(GridData.FILL_HORIZONTAL);
 		secondModelNavigationMultiValueFilter.setLayoutData(secondModelNavigationMultiValueFilterData);
 		secondModelNavigationMultiValueFilter.addFocusListener(new FocusAdapter() {
@@ -609,6 +570,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -633,6 +602,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			firstModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(firstModelNavigationSingleValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationSingleValueSettings().getOrCreateSignificantObject());
+		if (readOnly && firstModelNavigationSingleValue.isEnabled()) {
+			firstModelNavigationSingleValue.setEnabled(false);
+			firstModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !firstModelNavigationSingleValue.isEnabled()) {
+			firstModelNavigationSingleValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -657,6 +634,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(secondModelNavigationSingleValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationSingleValue.isEnabled()) {
+			secondModelNavigationSingleValue.setEnabled(false);
+			secondModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationSingleValue.isEnabled()) {
+			secondModelNavigationSingleValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -681,6 +666,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			firstModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(firstModelNavigationMultiValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationMultiValueSettings().getOrCreateSignificantObject());
+		if (readOnly && firstModelNavigationMultiValue.isEnabled()) {
+			firstModelNavigationMultiValue.setEnabled(false);
+			firstModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !firstModelNavigationMultiValue.isEnabled()) {
+			firstModelNavigationMultiValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -705,6 +698,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(secondModelNavigationMultiValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationMultiValue.isEnabled()) {
+			secondModelNavigationMultiValue.setEnabled(false);
+			secondModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationMultiValue.isEnabled()) {
+			secondModelNavigationMultiValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -729,6 +730,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationSingleValue2.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(secondModelNavigationSingleValue2, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationSingleValue2.isEnabled()) {
+			secondModelNavigationSingleValue2.setEnabled(false);
+			secondModelNavigationSingleValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationSingleValue2.isEnabled()) {
+			secondModelNavigationSingleValue2.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -753,6 +762,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValue2.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(secondModelNavigationMultiValue2, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationMultiValue2.isEnabled()) {
+			secondModelNavigationMultiValue2.setEnabled(false);
+			secondModelNavigationMultiValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationMultiValue2.isEnabled()) {
+			secondModelNavigationMultiValue2.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -777,6 +794,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValueFilter.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(secondModelNavigationMultiValueFilter, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationMultiValueFilter.isEnabled()) {
+			secondModelNavigationMultiValueFilter.setEnabled(false);
+			secondModelNavigationMultiValueFilter.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationMultiValueFilter.isEnabled()) {
+			secondModelNavigationMultiValueFilter.setEnabled(true);
+		}	
+		
 	}
 
 

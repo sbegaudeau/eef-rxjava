@@ -174,11 +174,6 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			}
 			
 		});
-		if (isReadOnly(samples)) {
-			samples.setEnabled(false);
-			samples.setToolTipText(EefnrMessages.Root_ReadOnly);
-		}		
-		
 		GridData samplesData = new GridData(GridData.FILL_HORIZONTAL);
 		samplesData.horizontalSpan = 3;
 		this.samples.setLayoutData(samplesData);
@@ -215,6 +210,14 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		samples.setContentProvider(contentProvider);
 		samples.setInput(settings);
+		boolean readOnly = isReadOnly(samples);
+		if (readOnly && samples.isEnabled()) {
+			samples.setEnabled(false);
+			samples.setToolTipText(EefnrMessages.Root_ReadOnly);
+		} else if (!readOnly && !samples.isEnabled()) {
+			samples.setEnabled(true);
+		}	
+		
 	}
 
 	/**

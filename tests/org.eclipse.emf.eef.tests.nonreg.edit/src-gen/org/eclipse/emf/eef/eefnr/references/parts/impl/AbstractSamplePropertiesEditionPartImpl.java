@@ -122,11 +122,6 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesMessages.AbstractSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(ReferencesMessages.AbstractSample_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -204,6 +199,14 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ReferencesMessages.AbstractSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

@@ -166,11 +166,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		}		
-		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -254,11 +249,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 			}
 			
 		});
-		if (isReadOnly(abstractTarget)) {
-			abstractTarget.setEnabled(false);
-			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		}		
-		
 		GridData abstractTargetData = new GridData(GridData.FILL_HORIZONTAL);
 		abstractTargetData.horizontalSpan = 3;
 		this.abstractTarget.setLayoutData(abstractTargetData);
@@ -356,11 +346,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 			}
 			
 		});
-		if (isReadOnly(strictTyping)) {
-			strictTyping.setEnabled(false);
-			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		}		
-		
 		GridData strictTypingData = new GridData(GridData.FILL_HORIZONTAL);
 		strictTypingData.horizontalSpan = 3;
 		this.strictTyping.setLayoutData(strictTypingData);
@@ -406,6 +391,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -421,6 +414,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		abstractTarget.setContentProvider(contentProvider);
 		abstractTarget.setInput(settings);
+		boolean readOnly = isReadOnly(abstractTarget.getTable());
+		if (readOnly && abstractTarget.getTable().isEnabled()) {
+			abstractTarget.setEnabled(false);
+			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		} else if (!readOnly && !abstractTarget.getTable().isEnabled()) {
+			abstractTarget.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -476,6 +477,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		strictTyping.setContentProvider(contentProvider);
 		strictTyping.setInput(settings);
+		boolean readOnly = isReadOnly(strictTyping);
+		if (readOnly && strictTyping.isEnabled()) {
+			strictTyping.setEnabled(false);
+			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		} else if (!readOnly && !strictTyping.isEnabled()) {
+			strictTyping.setEnabled(true);
+		}	
+		
 	}
 
 	/**

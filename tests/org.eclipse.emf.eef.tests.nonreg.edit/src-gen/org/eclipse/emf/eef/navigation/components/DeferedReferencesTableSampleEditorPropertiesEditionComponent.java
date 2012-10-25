@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.jface.viewers.Viewer;
@@ -79,10 +80,14 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(flatReferencesTableSampleEditorSettings);
+				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
+			}
 			final DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)elt;
 			final DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (deferedReferenceTableEditorSample.getName() != null && isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name))
 				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, deferedReferenceTableEditorSample.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor)) {

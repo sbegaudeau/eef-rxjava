@@ -127,11 +127,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	protected Composite createDemoText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_DemoLabel);
 		demo = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(demo)) {
-			demo.setEnabled(false);
-			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
-		}		
-		
 		GridData demoData = new GridData(GridData.FILL_HORIZONTAL);
 		demo.setLayoutData(demoData);
 		demo.addFocusListener(new FocusAdapter() {
@@ -178,11 +173,6 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 	protected Composite createSizeText(Composite parent) {
 		createDescription(parent, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextMessages.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart_SizeLabel);
 		size = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(size)) {
-			size.setEnabled(false);
-			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
-		}		
-		
 		GridData sizeData = new GridData(GridData.FILL_HORIZONTAL);
 		size.setLayoutData(sizeData);
 		size.addFocusListener(new FocusAdapter() {
@@ -260,6 +250,14 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		} else {
 			demo.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(demo);
+		if (readOnly && demo.isEnabled()) {
+			demo.setEnabled(false);
+			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!readOnly && !demo.isEnabled()) {
+			demo.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -284,6 +282,14 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		} else {
 			size.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(size);
+		if (readOnly && size.isEnabled()) {
+			size.setEnabled(false);
+			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!readOnly && !size.isEnabled()) {
+			size.setEnabled(true);
+		}	
+		
 	}
 
 

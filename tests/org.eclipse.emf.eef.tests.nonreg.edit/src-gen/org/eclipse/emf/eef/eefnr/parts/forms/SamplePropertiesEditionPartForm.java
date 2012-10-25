@@ -139,11 +139,6 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createTextRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrMessages.SamplePropertiesEditionPart_TextRequiredPropertyLabel);
 		textRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textRequiredProperty)) {
-			textRequiredProperty.setEnabled(false);
-			textRequiredProperty.setToolTipText(EefnrMessages.Sample_ReadOnly);
-		}		
-		
 		textRequiredProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -209,11 +204,6 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createTextOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrMessages.SamplePropertiesEditionPart_TextOptionalPropertyLabel);
 		textOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textOptionalProperty)) {
-			textOptionalProperty.setEnabled(false);
-			textOptionalProperty.setToolTipText(EefnrMessages.Sample_ReadOnly);
-		}		
-		
 		textOptionalProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -310,6 +300,14 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textRequiredProperty);
+		if (readOnly && textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.Sample_ReadOnly);
+		} else if (!readOnly && !textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -334,6 +332,14 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textOptionalProperty);
+		if (readOnly && textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.Sample_ReadOnly);
+		} else if (!readOnly && !textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 

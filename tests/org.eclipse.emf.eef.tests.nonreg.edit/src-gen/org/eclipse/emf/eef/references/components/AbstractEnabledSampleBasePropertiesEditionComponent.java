@@ -67,6 +67,7 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)elt;
 			final AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
 			// init values

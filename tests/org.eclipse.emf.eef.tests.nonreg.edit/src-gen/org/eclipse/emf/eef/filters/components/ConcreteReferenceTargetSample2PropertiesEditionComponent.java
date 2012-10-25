@@ -69,10 +69,11 @@ public class ConcreteReferenceTargetSample2PropertiesEditionComponent extends Si
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ConcreteReferenceTargetSample2 concreteReferenceTargetSample2 = (ConcreteReferenceTargetSample2)elt;
 			final ConcreteReferenceTargetSample2PropertiesEditionPart basePart = (ConcreteReferenceTargetSample2PropertiesEditionPart)editingPart;
 			// init values
-			if (concreteReferenceTargetSample2.getName() != null && isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name))
+			if (isAccessible(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, concreteReferenceTargetSample2.getName()));
 			
 			// init filters

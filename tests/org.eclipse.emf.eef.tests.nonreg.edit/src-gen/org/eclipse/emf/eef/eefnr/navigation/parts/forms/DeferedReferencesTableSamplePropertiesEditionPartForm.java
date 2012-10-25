@@ -164,11 +164,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationMessages.DeferedReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
-		}		
-		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -256,11 +251,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 	protected TableViewer createReferencesTableSampleEditorViewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
-		if (isReadOnly(table)) {
-			table.setEnabled(false);
-			table.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
-		}		
-		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -323,11 +313,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		addReferencesTableSampleEditor = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
-		if (isReadOnly(referencesTableSampleEditor)) {
-			addReferencesTableSampleEditor.setEnabled(false);
-			addReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
-		}		
-		
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		addReferencesTableSampleEditor.setLayoutData(addData);
 		addReferencesTableSampleEditor.addSelectionListener(new SelectionAdapter() {
@@ -346,11 +331,6 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		EditingUtils.setID(addReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(addReferencesTableSampleEditor, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
 		removeReferencesTableSampleEditor = widgetFactory.createButton(result, NavigationMessages.PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
-		if (isReadOnly(referencesTableSampleEditor)) {
-			removeReferencesTableSampleEditor.setEnabled(false);
-			removeReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
-		}		
-		
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		removeReferencesTableSampleEditor.setLayoutData(removeData);
 		removeReferencesTableSampleEditor.addSelectionListener(new SelectionAdapter() {
@@ -437,6 +417,14 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -452,6 +440,20 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencesTableSampleEditor.setContentProvider(contentProvider);
 		referencesTableSampleEditor.setInput(settings);
+		boolean readOnly = isReadOnly(referencesTableSampleEditor.getTable());
+		if (readOnly && referencesTableSampleEditor.getTable().isEnabled()) {
+			referencesTableSampleEditor.getTable().setEnabled(false);
+			referencesTableSampleEditor.getTable().setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+			addReferencesTableSampleEditor.setEnabled(false);
+			addReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+			removeReferencesTableSampleEditor.setEnabled(false);
+			removeReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
+		} else if (!readOnly && !referencesTableSampleEditor.getTable().isEnabled()) {
+			referencesTableSampleEditor.getTable().setEnabled(true);
+			addReferencesTableSampleEditor.setEnabled(true);
+			removeReferencesTableSampleEditor.setEnabled(true);
+		}
+		
 	}
 
 	/**

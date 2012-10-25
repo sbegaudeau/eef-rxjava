@@ -67,18 +67,19 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ImageViewerSample imageViewerSample = (ImageViewerSample)elt;
 			final ImageViewerSamplePropertiesEditionPart basePart = (ImageViewerSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (imageViewerSample.getImageviewerRequiredProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)) {
+			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)) {
 				basePart.initImageviewerRequiredProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerRequiredProperty());
 			}
 			
-			if (imageViewerSample.getImageviewerOptionalProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty)) {
+			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty)) {
 				basePart.initImageviewerOptionalProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerOptionalProperty());
 			}
 			
-			if (imageViewerSample.getImageviewerROProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)) {
+			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)) {
 				basePart.initImageviewerROProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerROProperty());
 			}
 			

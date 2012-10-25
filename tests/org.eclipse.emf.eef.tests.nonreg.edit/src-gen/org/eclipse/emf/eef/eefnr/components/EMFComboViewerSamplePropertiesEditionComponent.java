@@ -68,6 +68,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EMFComboViewerSample eMFComboViewerSample = (EMFComboViewerSample)elt;
 			final EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values

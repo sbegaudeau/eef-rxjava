@@ -64,6 +64,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final SingleCompositionViewerSample singleCompositionViewerSample = (SingleCompositionViewerSample)elt;
 			final SingleCompositionViewerSamplePropertiesEditionPart basePart = (SingleCompositionViewerSamplePropertiesEditionPart)editingPart;
 			// init values

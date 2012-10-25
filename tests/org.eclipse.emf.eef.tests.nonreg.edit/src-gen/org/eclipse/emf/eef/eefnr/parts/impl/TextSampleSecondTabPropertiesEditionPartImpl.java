@@ -127,11 +127,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	protected Composite createTextRequiredPropertyInSecondTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextRequiredPropertyInSecondTabLabel);
 		textRequiredPropertyInSecondTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(textRequiredPropertyInSecondTab)) {
-			textRequiredPropertyInSecondTab.setEnabled(false);
-			textRequiredPropertyInSecondTab.setToolTipText(EefnrMessages.TextSampleSecondTab_ReadOnly);
-		}		
-		
 		GridData textRequiredPropertyInSecondTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredPropertyInSecondTab.setLayoutData(textRequiredPropertyInSecondTabData);
 		textRequiredPropertyInSecondTab.addFocusListener(new FocusAdapter() {
@@ -178,11 +173,6 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 	protected Composite createTextOptionalPropertyInSecondTabText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, EefnrMessages.TextSampleSecondTabPropertiesEditionPart_TextOptionalPropertyInSecondTabLabel);
 		textOptionalPropertyInSecondTab = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(textOptionalPropertyInSecondTab)) {
-			textOptionalPropertyInSecondTab.setEnabled(false);
-			textOptionalPropertyInSecondTab.setToolTipText(EefnrMessages.TextSampleSecondTab_ReadOnly);
-		}		
-		
 		GridData textOptionalPropertyInSecondTabData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalPropertyInSecondTab.setLayoutData(textOptionalPropertyInSecondTabData);
 		textOptionalPropertyInSecondTab.addFocusListener(new FocusAdapter() {
@@ -260,6 +250,14 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		} else {
 			textRequiredPropertyInSecondTab.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textRequiredPropertyInSecondTab);
+		if (readOnly && textRequiredPropertyInSecondTab.isEnabled()) {
+			textRequiredPropertyInSecondTab.setEnabled(false);
+			textRequiredPropertyInSecondTab.setToolTipText(EefnrMessages.TextSampleSecondTab_ReadOnly);
+		} else if (!readOnly && !textRequiredPropertyInSecondTab.isEnabled()) {
+			textRequiredPropertyInSecondTab.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -284,6 +282,14 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		} else {
 			textOptionalPropertyInSecondTab.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textOptionalPropertyInSecondTab);
+		if (readOnly && textOptionalPropertyInSecondTab.isEnabled()) {
+			textOptionalPropertyInSecondTab.setEnabled(false);
+			textOptionalPropertyInSecondTab.setToolTipText(EefnrMessages.TextSampleSecondTab_ReadOnly);
+		} else if (!readOnly && !textOptionalPropertyInSecondTab.isEnabled()) {
+			textOptionalPropertyInSecondTab.setEnabled(true);
+		}	
+		
 	}
 
 

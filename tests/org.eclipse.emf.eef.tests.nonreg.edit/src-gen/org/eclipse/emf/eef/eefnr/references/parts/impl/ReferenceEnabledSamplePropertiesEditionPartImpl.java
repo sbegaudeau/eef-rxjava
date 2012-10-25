@@ -163,11 +163,6 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 			}
 			
 		});
-		if (isReadOnly(reference)) {
-			reference.setEnabled(false);
-			reference.setToolTipText(ReferencesMessages.ReferenceEnabledSample_ReadOnly);
-		}		
-		
 		GridData referenceData = new GridData(GridData.FILL_HORIZONTAL);
 		referenceData.horizontalSpan = 3;
 		this.reference.setLayoutData(referenceData);
@@ -261,6 +256,14 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		reference.setContentProvider(contentProvider);
 		reference.setInput(settings);
+		boolean readOnly = isReadOnly(reference.getTable());
+		if (readOnly && reference.getTable().isEnabled()) {
+			reference.setEnabled(false);
+			reference.setToolTipText(ReferencesMessages.ReferenceEnabledSample_ReadOnly);
+		} else if (!readOnly && !reference.getTable().isEnabled()) {
+			reference.setEnabled(true);
+		}
+		
 	}
 
 	/**

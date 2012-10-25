@@ -142,11 +142,6 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 	
 	protected Composite createCheckboxEditorSampleCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxEditorSample = widgetFactory.createButton(parent, getDescription(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel), SWT.CHECK);
-		if (isReadOnly(checkboxEditorSample)) {
-			checkboxEditorSample.setEnabled(false);
-			checkboxEditorSample.setToolTipText(EefnrextMessages.CheckBoxExtendedEditorSample_ReadOnly);
-		}		
-		
 		checkboxEditorSample.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -213,6 +208,14 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 		} else {
 			checkboxEditorSample.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(checkboxEditorSample);
+		if (readOnly && checkboxEditorSample.isEnabled()) {
+			checkboxEditorSample.setEnabled(false);
+			checkboxEditorSample.setToolTipText(EefnrextMessages.CheckBoxExtendedEditorSample_ReadOnly);
+		} else if (!readOnly && !checkboxEditorSample.isEnabled()) {
+			checkboxEditorSample.setEnabled(true);
+		}	
+		
 	}
 
 

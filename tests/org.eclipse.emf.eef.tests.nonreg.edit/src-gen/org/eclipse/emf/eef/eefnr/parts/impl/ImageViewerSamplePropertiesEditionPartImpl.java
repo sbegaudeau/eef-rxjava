@@ -133,11 +133,6 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 	protected Composite createImageviewerRequiredPropertyImageViewer(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel);
 		imageviewerRequiredProperty = new EEFImageViewer(parent, SWT.BORDER);
-		if (isReadOnly(imageviewerRequiredProperty)) {
-			imageviewerRequiredProperty.setEnabled(false);
-			imageviewerRequiredProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
-		}		
-		
 		GridData imageviewerRequiredPropertyData = new GridData();
 		// Start of user code for imageviewerRequiredProperty layout data customization
 				imageviewerRequiredPropertyData.widthHint = 200;
@@ -164,11 +159,6 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 	protected Composite createImageviewerOptionalPropertyImageViewer(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel);
 		imageviewerOptionalProperty = new EEFImageViewer(parent, SWT.BORDER);
-		if (isReadOnly(imageviewerOptionalProperty)) {
-			imageviewerOptionalProperty.setEnabled(false);
-			imageviewerOptionalProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
-		}		
-		
 		GridData imageviewerOptionalPropertyData = new GridData();
 		// Start of user code for imageviewerOptionalProperty layout data customization
 				imageviewerOptionalPropertyData.widthHint = 200;
@@ -195,9 +185,6 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 	protected Composite createImageviewerROPropertyImageViewer(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerROPropertyLabel);
 		imageviewerROProperty = new EEFImageViewer(parent, SWT.BORDER);
-		imageviewerROProperty.setEnabled(false);
-		imageviewerROProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
-		
 		GridData imageviewerROPropertyData = new GridData();
 		// Start of user code  for imageviewerROProperty layout data customization
 				imageviewerROPropertyData.widthHint = 200;
@@ -256,6 +243,14 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		} else {
 			imageviewerRequiredProperty.initViewer(key, ""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(imageviewerRequiredProperty);
+		if (readOnly && imageviewerRequiredProperty.isEnabled()) {
+			imageviewerRequiredProperty.setEnabled(false);
+			imageviewerRequiredProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		} else if (!readOnly && !imageviewerRequiredProperty.isEnabled()) {
+			imageviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -270,6 +265,14 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		} else {
 			imageviewerRequiredProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(imageviewerRequiredProperty);
+		if (readOnly && imageviewerRequiredProperty.isEnabled()) {
+			imageviewerRequiredProperty.setEnabled(false);
+			imageviewerRequiredProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		} else if (!readOnly && !imageviewerRequiredProperty.isEnabled()) {
+			imageviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -297,6 +300,14 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		} else {
 			imageviewerOptionalProperty.initViewer(key, ""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(imageviewerOptionalProperty);
+		if (readOnly && imageviewerOptionalProperty.isEnabled()) {
+			imageviewerOptionalProperty.setEnabled(false);
+			imageviewerOptionalProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		} else if (!readOnly && !imageviewerOptionalProperty.isEnabled()) {
+			imageviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -311,6 +322,14 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		} else {
 			imageviewerOptionalProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(imageviewerOptionalProperty);
+		if (readOnly && imageviewerOptionalProperty.isEnabled()) {
+			imageviewerOptionalProperty.setEnabled(false);
+			imageviewerOptionalProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		} else if (!readOnly && !imageviewerOptionalProperty.isEnabled()) {
+			imageviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -338,6 +357,9 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		} else {
 			imageviewerROProperty.initViewer(key, ""); //$NON-NLS-1$
 		}
+		imageviewerROProperty.setEnabled(false);
+		imageviewerROProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		
 	}
 
 	/**
@@ -352,6 +374,9 @@ public class ImageViewerSamplePropertiesEditionPartImpl extends CompositePropert
 		} else {
 			imageviewerROProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
+		imageviewerROProperty.setEnabled(false);
+		imageviewerROProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
+		
 	}
 
 

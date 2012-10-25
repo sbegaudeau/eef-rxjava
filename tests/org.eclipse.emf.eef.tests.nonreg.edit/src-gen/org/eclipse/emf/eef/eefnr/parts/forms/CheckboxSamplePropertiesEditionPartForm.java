@@ -141,11 +141,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 	
 	protected Composite createCheckboxRequiredPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxRequiredProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel), SWT.CHECK);
-		if (isReadOnly(checkboxRequiredProperty)) {
-			checkboxRequiredProperty.setEnabled(false);
-			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
-		}		
-		
 		checkboxRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -172,11 +167,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 	
 	protected Composite createCheckboxOptionalPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxOptionalProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel), SWT.CHECK);
-		if (isReadOnly(checkboxOptionalProperty)) {
-			checkboxOptionalProperty.setEnabled(false);
-			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
-		}		
-		
 		checkboxOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -203,9 +193,6 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 	
 	protected Composite createCheckboxROPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxROProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxROPropertyLabel), SWT.CHECK);
-		checkboxROProperty.setEnabled(false);
-		checkboxROProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
-		
 		checkboxROProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -264,6 +251,14 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxRequiredProperty.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(checkboxRequiredProperty);
+		if (readOnly && checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(false);
+			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		} else if (!readOnly && !checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -288,6 +283,14 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxOptionalProperty.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(checkboxOptionalProperty);
+		if (readOnly && checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(false);
+			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		} else if (!readOnly && !checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -312,6 +315,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxROProperty.setSelection(false);
 		}
+		checkboxROProperty.setEnabled(false);
+		checkboxROProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		
 	}
 
 

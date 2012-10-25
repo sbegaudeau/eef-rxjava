@@ -68,6 +68,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final RadioSample radioSample = (RadioSample)elt;
 			final RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
 			// init values

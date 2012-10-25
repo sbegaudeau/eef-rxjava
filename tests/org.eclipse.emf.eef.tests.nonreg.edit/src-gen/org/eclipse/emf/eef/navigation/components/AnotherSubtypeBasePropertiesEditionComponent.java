@@ -66,6 +66,7 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final AnotherSubType anotherSubType = (AnotherSubType)elt;
 			final AnotherSubtypePropertiesEditionPart basePart = (AnotherSubtypePropertiesEditionPart)editingPart;
 			// init values

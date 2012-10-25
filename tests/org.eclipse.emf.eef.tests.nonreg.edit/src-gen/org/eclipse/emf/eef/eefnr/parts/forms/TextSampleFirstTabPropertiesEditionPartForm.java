@@ -139,11 +139,6 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 	protected Composite createTextRequiredPropertyInFirstTabText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextRequiredPropertyInFirstTabLabel);
 		textRequiredPropertyInFirstTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textRequiredPropertyInFirstTab)) {
-			textRequiredPropertyInFirstTab.setEnabled(false);
-			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
-		}		
-		
 		textRequiredPropertyInFirstTab.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textRequiredPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
@@ -209,11 +204,6 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 	protected Composite createTextOptionalPropertyInFirstTabText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrMessages.TextSampleFirstTabPropertiesEditionPart_TextOptionalPropertyInFirstTabLabel);
 		textOptionalPropertyInFirstTab = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textOptionalPropertyInFirstTab)) {
-			textOptionalPropertyInFirstTab.setEnabled(false);
-			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
-		}		
-		
 		textOptionalPropertyInFirstTab.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textOptionalPropertyInFirstTabData = new GridData(GridData.FILL_HORIZONTAL);
@@ -310,6 +300,14 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		} else {
 			textRequiredPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textRequiredPropertyInFirstTab);
+		if (readOnly && textRequiredPropertyInFirstTab.isEnabled()) {
+			textRequiredPropertyInFirstTab.setEnabled(false);
+			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		} else if (!readOnly && !textRequiredPropertyInFirstTab.isEnabled()) {
+			textRequiredPropertyInFirstTab.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -334,6 +332,14 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		} else {
 			textOptionalPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textOptionalPropertyInFirstTab);
+		if (readOnly && textOptionalPropertyInFirstTab.isEnabled()) {
+			textOptionalPropertyInFirstTab.setEnabled(false);
+			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		} else if (!readOnly && !textOptionalPropertyInFirstTab.isEnabled()) {
+			textOptionalPropertyInFirstTab.setEnabled(true);
+		}	
+		
 	}
 
 

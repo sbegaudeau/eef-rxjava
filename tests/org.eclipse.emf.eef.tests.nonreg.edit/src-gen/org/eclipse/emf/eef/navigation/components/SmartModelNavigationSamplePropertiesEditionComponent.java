@@ -399,10 +399,20 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationSingleValueSettings);
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationMultiValueSettings);
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNSingleValueSettings);
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNMultiValueSettings);
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNSingleValueSettings);
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueSettings);
+		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueWithFilterSettings);
+		editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
+	}
 			final SmartModelNavigationSample smartModelNavigationSample = (SmartModelNavigationSample)elt;
 			final SmartNavigationSamplePropertiesEditionPart smartNavigationSamplePart = (SmartNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (smartModelNavigationSample.getName() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name))
 		smartNavigationSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, smartModelNavigationSample.getName()));
 	
 			if (firstModelNavigationSingleValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue))

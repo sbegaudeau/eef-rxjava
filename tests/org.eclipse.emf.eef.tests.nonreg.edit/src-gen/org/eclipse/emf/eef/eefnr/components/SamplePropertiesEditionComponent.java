@@ -68,13 +68,14 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Sample sample = (Sample)elt;
 			final SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			// init values
-			if (sample.getTextRequiredProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
+			if (isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
 				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextRequiredProperty()));
 			
-			if (sample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
+			if (isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
 				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextOptionalProperty()));
 			
 			// init filters

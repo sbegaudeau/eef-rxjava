@@ -67,6 +67,7 @@ public class ElementBasePropertiesEditionComponent extends SinglePartPropertiesE
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Element element = (Element)elt;
 			final ElementPropertiesEditionPart basePart = (ElementPropertiesEditionPart)editingPart;
 			// init values

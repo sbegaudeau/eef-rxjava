@@ -132,11 +132,6 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected Composite createTextRequiredPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextRequiredPropertyLabel);
 		textRequiredProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(textRequiredProperty)) {
-			textRequiredProperty.setEnabled(false);
-			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
-		}		
-		
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textRequiredProperty.setLayoutData(textRequiredPropertyData);
 		textRequiredProperty.addFocusListener(new FocusAdapter() {
@@ -183,11 +178,6 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected Composite createTextOptionalPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextOptionalPropertyLabel);
 		textOptionalProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(textOptionalProperty)) {
-			textOptionalProperty.setEnabled(false);
-			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
-		}		
-		
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textOptionalProperty.setLayoutData(textOptionalPropertyData);
 		textOptionalProperty.addFocusListener(new FocusAdapter() {
@@ -234,9 +224,6 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected Composite createTextROPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextROPropertyLabel);
 		textROProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		textROProperty.setEnabled(false);
-		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
-		
 		GridData textROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textROProperty.setLayoutData(textROPropertyData);
 		textROProperty.addFocusListener(new FocusAdapter() {
@@ -314,6 +301,14 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textRequiredProperty);
+		if (readOnly && textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!readOnly && !textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -338,6 +333,14 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textOptionalProperty);
+		if (readOnly && textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!readOnly && !textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -362,6 +365,9 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textROProperty.setText(""); //$NON-NLS-1$
 		}
+		textROProperty.setEnabled(false);
+		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		
 	}
 
 
