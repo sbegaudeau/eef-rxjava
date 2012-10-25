@@ -83,7 +83,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			if (editingPart instanceof CompositePropertiesEditionPart) {
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(flatReferencesTableSampleEditorSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(flatReferencesTableSampleEditorSettings);
 				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 			}
 			final DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)elt;

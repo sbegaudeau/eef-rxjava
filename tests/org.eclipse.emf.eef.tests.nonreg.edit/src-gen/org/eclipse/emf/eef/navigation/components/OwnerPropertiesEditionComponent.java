@@ -158,20 +158,20 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			if (editingPart instanceof CompositePropertiesEditionPart) {
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForTableCompositionSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedTableCompositionSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForReferencesTableSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedReferencesTableSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForFlatReferencesTablesSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForTableCompositionSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedTableCompositionSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForReferencesTableSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedReferencesTableSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForFlatReferencesTableSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForEObjectFlatComboViewerSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForEObjectFlatComboViewerSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForAdvancedEObjectFlatComboViewerSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForAdvancedEObjectFlatComboViewerSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForTableCompositionSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedTableCompositionSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForReferencesTableSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedReferencesTableSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForFlatReferencesTablesSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForTableCompositionSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedTableCompositionSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForReferencesTableSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedReferencesTableSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForFlatReferencesTableSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForEObjectFlatComboViewerSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForEObjectFlatComboViewerSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForAdvancedEObjectFlatComboViewerSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForAdvancedEObjectFlatComboViewerSettings);
 				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 			}
 			final Owner owner = (Owner)elt;

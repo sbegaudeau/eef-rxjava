@@ -45,6 +45,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder;
@@ -400,13 +401,13 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			if (editingPart instanceof CompositePropertiesEditionPart) {
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationSingleValueSettings);
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationMultiValueSettings);
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNSingleValueSettings);
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNMultiValueSettings);
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNSingleValueSettings);
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueSettings);
-		CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueWithFilterSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationSingleValueSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationMultiValueSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNSingleValueSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNMultiValueSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNSingleValueSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueSettings);
+		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueWithFilterSettings);
 		editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 	}
 			final SmartModelNavigationSample smartModelNavigationSample = (SmartModelNavigationSample)elt;

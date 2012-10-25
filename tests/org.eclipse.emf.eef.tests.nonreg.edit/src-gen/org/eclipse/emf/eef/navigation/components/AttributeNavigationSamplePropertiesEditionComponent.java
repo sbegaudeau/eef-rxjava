@@ -106,10 +106,10 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			if (editingPart instanceof CompositePropertiesEditionPart) {
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForSingleValuedSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForSingleValuedSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForMultiValuedSettings);
-				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForMultiValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForSingleValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForSingleValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForMultiValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForMultiValuedSettings);
 				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 			}
 			final AttributeNavigationSample attributeNavigationSample = (AttributeNavigationSample)elt;
