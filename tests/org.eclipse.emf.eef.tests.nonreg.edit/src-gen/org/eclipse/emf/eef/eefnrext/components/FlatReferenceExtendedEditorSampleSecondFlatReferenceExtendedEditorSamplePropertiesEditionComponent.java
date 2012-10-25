@@ -68,10 +68,11 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			final SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (flatReferenceExtendedEditorSample.getDemo() != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
+			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
 				secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, flatReferenceExtendedEditorSample.getDemo()));
 			
 			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {

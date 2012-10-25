@@ -177,11 +177,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 			}
 			
 		});
-		if (isReadOnly(advancedtablecompositionRequiredProperty)) {
-			advancedtablecompositionRequiredProperty.setEnabled(false);
-			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
-		}		
-		
 		GridData advancedtablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionRequiredPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionRequiredProperty.setLayoutData(advancedtablecompositionRequiredPropertyData);
@@ -230,11 +225,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 			}
 			
 		});
-		if (isReadOnly(advancedtablecompositionOptionalProperty)) {
-			advancedtablecompositionOptionalProperty.setEnabled(false);
-			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
-		}		
-		
 		GridData advancedtablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionOptionalPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionOptionalProperty.setLayoutData(advancedtablecompositionOptionalPropertyData);
@@ -283,9 +273,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 			}
 			
 		});
-		advancedtablecompositionROProperty.setEnabled(false);
-		advancedtablecompositionROProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
-		
 		GridData advancedtablecompositionROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionROPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionROProperty.setLayoutData(advancedtablecompositionROPropertyData);
@@ -322,6 +309,14 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionRequiredProperty.setContentProvider(contentProvider);
 		advancedtablecompositionRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(advancedtablecompositionRequiredProperty);
+		if (readOnly && advancedtablecompositionRequiredProperty.isEnabled()) {
+			advancedtablecompositionRequiredProperty.setEnabled(false);
+			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
+		} else if (!readOnly && !advancedtablecompositionRequiredProperty.isEnabled()) {
+			advancedtablecompositionRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -380,6 +375,14 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionOptionalProperty.setContentProvider(contentProvider);
 		advancedtablecompositionOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(advancedtablecompositionOptionalProperty);
+		if (readOnly && advancedtablecompositionOptionalProperty.isEnabled()) {
+			advancedtablecompositionOptionalProperty.setEnabled(false);
+			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
+		} else if (!readOnly && !advancedtablecompositionOptionalProperty.isEnabled()) {
+			advancedtablecompositionOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -438,6 +441,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionROProperty.setContentProvider(contentProvider);
 		advancedtablecompositionROProperty.setInput(settings);
+		advancedtablecompositionROProperty.setEnabled(false);
+		advancedtablecompositionROProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
+		
 	}
 
 	/**

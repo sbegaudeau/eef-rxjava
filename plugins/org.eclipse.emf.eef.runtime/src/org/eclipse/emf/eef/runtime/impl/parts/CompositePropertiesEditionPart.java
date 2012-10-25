@@ -167,18 +167,22 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Refresh the part
 	 */
 	public void refresh() {
-		clear();
-		composer.compose(view);
-		view.layout();
+		if (!view.isDisposed()) {
+			clear();
+			composer.compose(view);
+			view.layout();
+		}
 	}
 
 	/**
 	 * Clear all the graphical elements of the view
 	 */
 	protected void clear() {
-		while (view.getChildren().length > 0) {
-			Control next = view.getChildren()[0];
-			next.dispose();
+		if (!view.isDisposed()) {
+				while (view.getChildren().length > 0) {
+					Control next = view.getChildren()[0];
+					next.dispose();
+			}
 		}
 	}
 

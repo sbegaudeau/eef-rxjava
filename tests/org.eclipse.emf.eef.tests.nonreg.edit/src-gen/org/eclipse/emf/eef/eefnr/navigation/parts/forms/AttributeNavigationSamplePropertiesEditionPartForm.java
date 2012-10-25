@@ -14,6 +14,7 @@ package org.eclipse.emf.eef.eefnr.navigation.parts.forms;
 import org.eclipse.emf.eef.eefnr.navigation.parts.AttributeNavigationSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
+import org.eclipse.emf.eef.navigation.components.AttributeNavigationSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -154,11 +155,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -224,11 +220,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 	protected Composite createDelegate1ForSingleValuedText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel);
 		delegate1ForSingleValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(delegate1ForSingleValued)) {
-			delegate1ForSingleValued.setEnabled(false);
-			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		delegate1ForSingleValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData delegate1ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
@@ -294,11 +285,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 	protected Composite createDelegate2ForSingleValuedText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel);
 		delegate2ForSingleValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(delegate2ForSingleValued)) {
-			delegate2ForSingleValued.setEnabled(false);
-			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		delegate2ForSingleValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData delegate2ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
@@ -364,11 +350,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 	protected Composite createDelegate1ForMultiValuedText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel);
 		delegate1ForMultiValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(delegate1ForMultiValued)) {
-			delegate1ForMultiValued.setEnabled(false);
-			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		delegate1ForMultiValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData delegate1ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
@@ -434,11 +415,6 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 	protected Composite createDelegate2ForMultiValuedText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel);
 		delegate2ForMultiValued = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(delegate2ForMultiValued)) {
-			delegate2ForMultiValued.setEnabled(false);
-			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		delegate2ForMultiValued.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData delegate2ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
@@ -535,6 +511,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -559,6 +543,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate1ForSingleValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate1ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForSingleValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate1ForSingleValued.isEnabled()) {
+			delegate1ForSingleValued.setEnabled(false);
+			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate1ForSingleValued.isEnabled()) {
+			delegate1ForSingleValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -583,6 +575,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate2ForSingleValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate2ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForSingleValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate2ForSingleValued.isEnabled()) {
+			delegate2ForSingleValued.setEnabled(false);
+			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate2ForSingleValued.isEnabled()) {
+			delegate2ForSingleValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -607,6 +607,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate1ForMultiValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate1ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForMultiValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate1ForMultiValued.isEnabled()) {
+			delegate1ForMultiValued.setEnabled(false);
+			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate1ForMultiValued.isEnabled()) {
+			delegate1ForMultiValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -631,6 +639,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate2ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForMultiValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate2ForMultiValued.isEnabled()) {
+			delegate2ForMultiValued.setEnabled(false);
+			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate2ForMultiValued.isEnabled()) {
+			delegate2ForMultiValued.setEnabled(true);
+		}	
+		
 	}
 
 

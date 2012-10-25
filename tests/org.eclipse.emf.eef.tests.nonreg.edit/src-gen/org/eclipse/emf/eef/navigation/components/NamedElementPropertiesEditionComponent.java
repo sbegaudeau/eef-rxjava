@@ -68,10 +68,11 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final NamedElement namedElement = (NamedElement)elt;
 			final NamedElementPropertiesEditionPart basePart = (NamedElementPropertiesEditionPart)editingPart;
 			// init values
-			if (namedElement.getName() != null && isAccessible(NavigationViewsRepository.NamedElement.Properties.name))
+			if (isAccessible(NavigationViewsRepository.NamedElement.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, namedElement.getName()));
 			
 			// init filters

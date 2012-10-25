@@ -14,6 +14,7 @@ package org.eclipse.emf.eef.eefnr.navigation.parts.impl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.AttributeNavigationSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
+import org.eclipse.emf.eef.navigation.components.AttributeNavigationSamplePropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
@@ -142,11 +143,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -193,11 +189,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate1ForSingleValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForSingleValuedLabel);
 		delegate1ForSingleValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(delegate1ForSingleValued)) {
-			delegate1ForSingleValued.setEnabled(false);
-			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		GridData delegate1ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForSingleValued.setLayoutData(delegate1ForSingleValuedData);
 		delegate1ForSingleValued.addFocusListener(new FocusAdapter() {
@@ -244,11 +235,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate2ForSingleValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForSingleValuedLabel);
 		delegate2ForSingleValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(delegate2ForSingleValued)) {
-			delegate2ForSingleValued.setEnabled(false);
-			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		GridData delegate2ForSingleValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForSingleValued.setLayoutData(delegate2ForSingleValuedData);
 		delegate2ForSingleValued.addFocusListener(new FocusAdapter() {
@@ -295,11 +281,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate1ForMultiValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate1ForMultiValuedLabel);
 		delegate1ForMultiValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(delegate1ForMultiValued)) {
-			delegate1ForMultiValued.setEnabled(false);
-			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		GridData delegate1ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate1ForMultiValued.setLayoutData(delegate1ForMultiValuedData);
 		delegate1ForMultiValued.addFocusListener(new FocusAdapter() {
@@ -346,11 +327,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 	protected Composite createDelegate2ForMultiValuedText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationMessages.AttributeNavigationSamplePropertiesEditionPart_Delegate2ForMultiValuedLabel);
 		delegate2ForMultiValued = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(delegate2ForMultiValued)) {
-			delegate2ForMultiValued.setEnabled(false);
-			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		}		
-		
 		GridData delegate2ForMultiValuedData = new GridData(GridData.FILL_HORIZONTAL);
 		delegate2ForMultiValued.setLayoutData(delegate2ForMultiValuedData);
 		delegate2ForMultiValued.addFocusListener(new FocusAdapter() {
@@ -428,6 +404,14 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -452,6 +436,14 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate1ForSingleValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate1ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForSingleValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate1ForSingleValued.isEnabled()) {
+			delegate1ForSingleValued.setEnabled(false);
+			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate1ForSingleValued.isEnabled()) {
+			delegate1ForSingleValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -476,6 +468,14 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate2ForSingleValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate2ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForSingleValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate2ForSingleValued.isEnabled()) {
+			delegate2ForSingleValued.setEnabled(false);
+			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate2ForSingleValued.isEnabled()) {
+			delegate2ForSingleValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -500,6 +500,14 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate1ForMultiValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate1ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForMultiValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate1ForMultiValued.isEnabled()) {
+			delegate1ForMultiValued.setEnabled(false);
+			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate1ForMultiValued.isEnabled()) {
+			delegate1ForMultiValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -524,6 +532,14 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(delegate2ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForMultiValuedSettings().getOrCreateSignificantObject());
+		if (readOnly && delegate2ForMultiValued.isEnabled()) {
+			delegate2ForMultiValued.setEnabled(false);
+			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!readOnly && !delegate2ForMultiValued.isEnabled()) {
+			delegate2ForMultiValued.setEnabled(true);
+		}	
+		
 	}
 
 

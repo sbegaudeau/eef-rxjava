@@ -68,6 +68,7 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TextareaSample textareaSample = (TextareaSample)elt;
 			final TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			// init values

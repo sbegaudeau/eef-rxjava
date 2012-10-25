@@ -11,7 +11,7 @@
         Obeo - initial API and implementation
  -->
 <plugin>
-   <extension-point id="CDOPolicyProvider" name="CDOPolicyProvider" schema="schema/CDOPolicyProvider.exsd"/>
+   <extension-point id="CDOLockStrategyProvider" name="CDOLockStrategyProvider" schema="schema/CDOLockStrategyProvider.exsd"/>
 
    <extension
          point="org.eclipse.emf.eef.runtime.ReadOnlyPolicyProvider">
@@ -19,17 +19,11 @@
             policyClass="org.eclipse.emf.eef.cdo.runtime.policies.CDOReadOnlyPolicy">
       </ReadOnlyPolicyProvider>
    </extension>
-   <!--extension
-         point="org.eclipse.emf.eef.cdo.runtime.CDOPolicyProvider">
-      <CDOPolicyProvider
-            policyClass="org.eclipse.emf.eef.cdo.runtime.listener.CDOLockListener">
-      </CDOPolicyProvider>
-   </extension>
    <extension
-         point="org.eclipse.emf.eef.runtime.PropertiesEditionComponentListenerProvider">
-      <PropertiesEditionComponentListenerProvider
-            listenerClass="org.eclipse.emf.eef.cdo.runtime.listener.CDOListener">
-      </PropertiesEditionComponentListenerProvider>
-   </extension-->
-
+         point="org.eclipse.emf.eef.runtime.LockPolicyProvider">
+      <LockPolicyProvider
+            policyClass="org.eclipse.emf.eef.cdo.runtime.policies.EEFWizardLockPolicy">
+      </LockPolicyProvider>
+   </extension>
+   
 </plugin>

@@ -66,6 +66,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final CheckboxSample checkboxSample = (CheckboxSample)elt;
 			final CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
 			// init values

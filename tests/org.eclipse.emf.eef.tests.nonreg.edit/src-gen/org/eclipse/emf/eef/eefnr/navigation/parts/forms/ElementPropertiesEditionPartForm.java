@@ -141,11 +141,6 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	
 	protected Composite createIsVisibleCheckbox(FormToolkit widgetFactory, Composite parent) {
 		isVisible = widgetFactory.createButton(parent, getDescription(NavigationViewsRepository.Element.Properties.isVisible, NavigationMessages.ElementPropertiesEditionPart_IsVisibleLabel), SWT.CHECK);
-		if (isReadOnly(isVisible)) {
-			isVisible.setEnabled(false);
-			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
-		}		
-		
 		isVisible.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -212,6 +207,14 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		} else {
 			isVisible.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(isVisible);
+		if (readOnly && isVisible.isEnabled()) {
+			isVisible.setEnabled(false);
+			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
+		} else if (!readOnly && !isVisible.isEnabled()) {
+			isVisible.setEnabled(true);
+		}	
+		
 	}
 
 

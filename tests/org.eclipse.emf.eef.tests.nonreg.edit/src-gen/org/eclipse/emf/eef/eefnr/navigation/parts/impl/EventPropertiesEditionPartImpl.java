@@ -122,11 +122,6 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NamingViewsRepository.Event.Properties.name, NamingMessages.EventPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NamingMessages.Event_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -204,6 +199,14 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NamingMessages.Event_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

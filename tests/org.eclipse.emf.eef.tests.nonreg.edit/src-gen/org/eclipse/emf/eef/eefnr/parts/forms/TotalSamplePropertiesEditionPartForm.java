@@ -126,9 +126,15 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected TableViewer tablecompositionRequiredProperty;
 	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Button addTablecompositionRequiredProperty;
+	protected Button removeTablecompositionRequiredProperty;
+	protected Button editTablecompositionRequiredProperty;
 	protected TableViewer tablecompositionOptionalProperty;
 	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Button addTablecompositionOptionalProperty;
+	protected Button removeTablecompositionOptionalProperty;
+	protected Button editTablecompositionOptionalProperty;
 	protected ReferencesTable advancedreferencestableRequiredProperty;
 	protected List<ViewerFilter> advancedreferencestableRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedreferencestableRequiredPropertyFilters = new ArrayList<ViewerFilter>();
@@ -332,11 +338,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Composite createTextRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextRequiredPropertyLabel);
 		textRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textRequiredProperty)) {
-			textRequiredProperty.setEnabled(false);
-			textRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		textRequiredProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -402,11 +403,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Composite createTextOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextOptionalPropertyLabel);
 		textOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textOptionalProperty)) {
-			textOptionalProperty.setEnabled(false);
-			textOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		textOptionalProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -471,11 +467,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	
 	protected Composite createCheckboxRequiredPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxRequiredProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel), SWT.CHECK);
-		if (isReadOnly(checkboxRequiredProperty)) {
-			checkboxRequiredProperty.setEnabled(false);
-			checkboxRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		checkboxRequiredProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -502,11 +493,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	
 	protected Composite createCheckboxOptionalPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
 		checkboxOptionalProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel), SWT.CHECK);
-		if (isReadOnly(checkboxOptionalProperty)) {
-			checkboxOptionalProperty.setEnabled(false);
-			checkboxOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		checkboxOptionalProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -534,11 +520,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Composite createTextareaRequiredPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaRequiredPropertyLabel);
 		textareaRequiredProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textareaRequiredProperty)) {
-			textareaRequiredProperty.setEnabled(false);
-			textareaRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		textareaRequiredProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textareaRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -604,11 +585,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Composite createTextareaOptionalPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_TextareaOptionalPropertyLabel);
 		textareaOptionalProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(textareaOptionalProperty)) {
-			textareaOptionalProperty.setEnabled(false);
-			textareaOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		textareaOptionalProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textareaOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -676,11 +652,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		radioRequiredProperty = new EMFComboViewer(parent);
 		radioRequiredProperty.setContentProvider(new ArrayContentProvider());
 		radioRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		if (isReadOnly(radioRequiredProperty)) {
-			radioRequiredProperty.setEnabled(false);
-			radioRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioRequiredProperty.getCombo().setLayoutData(radioRequiredPropertyData);
 		radioRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -708,11 +679,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		radioOptionalProperty = new EMFComboViewer(parent);
 		radioOptionalProperty.setContentProvider(new ArrayContentProvider());
 		radioOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		if (isReadOnly(radioOptionalProperty)) {
-			radioOptionalProperty.setEnabled(false);
-			radioOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioOptionalProperty.getCombo().setLayoutData(radioOptionalPropertyData);
 		radioOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -744,11 +710,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		eobjectflatcomboviewerRequiredProperty = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND));
 		widgetFactory.adapt(eobjectflatcomboviewerRequiredProperty);
 		eobjectflatcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		if (isReadOnly(eobjectflatcomboviewerRequiredProperty)) {
-			eobjectflatcomboviewerRequiredProperty.setEnabled(false);
-			eobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData eobjectflatcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		eobjectflatcomboviewerRequiredProperty.setLayoutData(eobjectflatcomboviewerRequiredPropertyData);
 		eobjectflatcomboviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -779,11 +740,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		eobjectflatcomboviewerOptionalProperty = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.FORM_KIND));
 		widgetFactory.adapt(eobjectflatcomboviewerOptionalProperty);
 		eobjectflatcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		if (isReadOnly(eobjectflatcomboviewerOptionalProperty)) {
-			eobjectflatcomboviewerOptionalProperty.setEnabled(false);
-			eobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData eobjectflatcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		eobjectflatcomboviewerOptionalProperty.setLayoutData(eobjectflatcomboviewerOptionalPropertyData);
 		eobjectflatcomboviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -826,11 +782,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 			
 		});
-		if (isReadOnly(referencestableRequiredProperty)) {
-			referencestableRequiredProperty.setEnabled(false);
-			referencestableRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData referencestableRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		referencestableRequiredPropertyData.horizontalSpan = 3;
 		this.referencestableRequiredProperty.setLayoutData(referencestableRequiredPropertyData);
@@ -912,11 +863,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 			
 		});
-		if (isReadOnly(referencestableOptionalProperty)) {
-			referencestableOptionalProperty.setEnabled(false);
-			referencestableOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData referencestableOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		referencestableOptionalPropertyData.horizontalSpan = 3;
 		this.referencestableOptionalProperty.setLayoutData(referencestableOptionalPropertyData);
@@ -982,11 +928,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		emfcomboviewerRequiredProperty = new EMFComboViewer(parent);
 		emfcomboviewerRequiredProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		if (isReadOnly(emfcomboviewerRequiredProperty)) {
-			emfcomboviewerRequiredProperty.setEnabled(false);
-			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData emfcomboviewerRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerRequiredProperty.getCombo().setLayoutData(emfcomboviewerRequiredPropertyData);
 		emfcomboviewerRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1014,11 +955,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		emfcomboviewerOptionalProperty = new EMFComboViewer(parent);
 		emfcomboviewerOptionalProperty.setContentProvider(new ArrayContentProvider());
 		emfcomboviewerOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		if (isReadOnly(emfcomboviewerOptionalProperty)) {
-			emfcomboviewerOptionalProperty.setEnabled(false);
-			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData emfcomboviewerOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		emfcomboviewerOptionalProperty.getCombo().setLayoutData(emfcomboviewerOptionalPropertyData);
 		emfcomboviewerOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1045,11 +981,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	protected Composite createMultivaluededitorRequiredPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorRequiredProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
-		if (isReadOnly(multivaluededitorRequiredProperty)) {
-			multivaluededitorRequiredProperty.setEnabled(false);
-			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData multivaluededitorRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorRequiredPropertyData.horizontalSpan = 2;
 		multivaluededitorRequiredProperty.setLayoutData(multivaluededitorRequiredPropertyData);
@@ -1093,11 +1024,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	protected Composite createMultivaluededitorOptionalPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorOptionalProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
-		if (isReadOnly(multivaluededitorOptionalProperty)) {
-			multivaluededitorOptionalProperty.setEnabled(false);
-			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData multivaluededitorOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorOptionalPropertyData.horizontalSpan = 2;
 		multivaluededitorOptionalProperty.setLayoutData(multivaluededitorOptionalPropertyData);
@@ -1150,11 +1076,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableTablecompositionRequiredProperty = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		tableTablecompositionRequiredProperty.setHeaderVisible(true);
-		if (isReadOnly(tableTablecompositionRequiredProperty)) {
-			tableTablecompositionRequiredProperty.setEnabled(false);
-			tableTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData gdTablecompositionRequiredProperty = new GridData();
 		gdTablecompositionRequiredProperty.grabExcessHorizontalSpace = true;
 		gdTablecompositionRequiredProperty.horizontalAlignment = GridData.FILL;
@@ -1240,12 +1161,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		GridLayout tablecompositionRequiredPropertyPanelLayout = new GridLayout();
 		tablecompositionRequiredPropertyPanelLayout.numColumns = 1;
 		tablecompositionRequiredPropertyPanel.setLayout(tablecompositionRequiredPropertyPanelLayout);
-		Button addTablecompositionRequiredProperty = widgetFactory.createButton(tablecompositionRequiredPropertyPanel, EefnrMessages.PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
-		if (isReadOnly(tablecompositionRequiredProperty)) {
-			addTablecompositionRequiredProperty.setEnabled(false);
-			addTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
+		addTablecompositionRequiredProperty = widgetFactory.createButton(tablecompositionRequiredPropertyPanel, EefnrMessages.PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
 		GridData addTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionRequiredProperty.setLayoutData(addTablecompositionRequiredPropertyData);
 		addTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1263,12 +1179,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(addTablecompositionRequiredProperty, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(addTablecompositionRequiredProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
-		Button removeTablecompositionRequiredProperty = widgetFactory.createButton(tablecompositionRequiredPropertyPanel, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
-		if (isReadOnly(tablecompositionRequiredProperty)) {
-			removeTablecompositionRequiredProperty.setEnabled(false);
-			removeTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
+		removeTablecompositionRequiredProperty = widgetFactory.createButton(tablecompositionRequiredPropertyPanel, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
 		GridData removeTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionRequiredProperty.setLayoutData(removeTablecompositionRequiredPropertyData);
 		removeTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1293,12 +1204,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(removeTablecompositionRequiredProperty, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(removeTablecompositionRequiredProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
-		Button editTablecompositionRequiredProperty = widgetFactory.createButton(tablecompositionRequiredPropertyPanel, EefnrMessages.PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
-		if (isReadOnly(tablecompositionRequiredProperty)) {
-			editTablecompositionRequiredProperty.setEnabled(false);
-			editTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
+		editTablecompositionRequiredProperty = widgetFactory.createButton(tablecompositionRequiredPropertyPanel, EefnrMessages.PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
 		GridData editTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionRequiredProperty.setLayoutData(editTablecompositionRequiredPropertyData);
 		editTablecompositionRequiredProperty.addSelectionListener(new SelectionAdapter() {
@@ -1339,11 +1245,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableTablecompositionOptionalProperty = widgetFactory.createTable(tableContainer, SWT.FULL_SELECTION | SWT.BORDER);
 		tableTablecompositionOptionalProperty.setHeaderVisible(true);
-		if (isReadOnly(tableTablecompositionOptionalProperty)) {
-			tableTablecompositionOptionalProperty.setEnabled(false);
-			tableTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData gdTablecompositionOptionalProperty = new GridData();
 		gdTablecompositionOptionalProperty.grabExcessHorizontalSpace = true;
 		gdTablecompositionOptionalProperty.horizontalAlignment = GridData.FILL;
@@ -1429,12 +1330,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		GridLayout tablecompositionOptionalPropertyPanelLayout = new GridLayout();
 		tablecompositionOptionalPropertyPanelLayout.numColumns = 1;
 		tablecompositionOptionalPropertyPanel.setLayout(tablecompositionOptionalPropertyPanelLayout);
-		Button addTablecompositionOptionalProperty = widgetFactory.createButton(tablecompositionOptionalPropertyPanel, EefnrMessages.PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
-		if (isReadOnly(tablecompositionOptionalProperty)) {
-			addTablecompositionOptionalProperty.setEnabled(false);
-			addTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
+		addTablecompositionOptionalProperty = widgetFactory.createButton(tablecompositionOptionalPropertyPanel, EefnrMessages.PropertiesEditionPart_AddTableViewerLabel, SWT.NONE);
 		GridData addTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionOptionalProperty.setLayoutData(addTablecompositionOptionalPropertyData);
 		addTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -1452,12 +1348,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(addTablecompositionOptionalProperty, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(addTablecompositionOptionalProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
-		Button removeTablecompositionOptionalProperty = widgetFactory.createButton(tablecompositionOptionalPropertyPanel, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
-		if (isReadOnly(tablecompositionOptionalProperty)) {
-			removeTablecompositionOptionalProperty.setEnabled(false);
-			removeTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
+		removeTablecompositionOptionalProperty = widgetFactory.createButton(tablecompositionOptionalPropertyPanel, EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel, SWT.NONE);
 		GridData removeTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionOptionalProperty.setLayoutData(removeTablecompositionOptionalPropertyData);
 		removeTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -1482,12 +1373,7 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(removeTablecompositionOptionalProperty, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(removeTablecompositionOptionalProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
-		Button editTablecompositionOptionalProperty = widgetFactory.createButton(tablecompositionOptionalPropertyPanel, EefnrMessages.PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
-		if (isReadOnly(tablecompositionOptionalProperty)) {
-			editTablecompositionOptionalProperty.setEnabled(false);
-			editTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
+		editTablecompositionOptionalProperty = widgetFactory.createButton(tablecompositionOptionalPropertyPanel, EefnrMessages.PropertiesEditionPart_EditTableViewerLabel, SWT.NONE);
 		GridData editTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionOptionalProperty.setLayoutData(editTablecompositionOptionalPropertyData);
 		editTablecompositionOptionalProperty.addSelectionListener(new SelectionAdapter() {
@@ -1536,11 +1422,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 			
 		});
-		if (isReadOnly(advancedreferencestableRequiredProperty)) {
-			advancedreferencestableRequiredProperty.setEnabled(false);
-			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData advancedreferencestableRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableRequiredPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableRequiredProperty.setLayoutData(advancedreferencestableRequiredPropertyData);
@@ -1622,11 +1503,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 			
 		});
-		if (isReadOnly(advancedreferencestableOptionalProperty)) {
-			advancedreferencestableOptionalProperty.setEnabled(false);
-			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData advancedreferencestableOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedreferencestableOptionalPropertyData.horizontalSpan = 3;
 		this.advancedreferencestableOptionalProperty.setLayoutData(advancedreferencestableOptionalPropertyData);
@@ -1696,11 +1572,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		advancedeobjectflatcomboviewerRequiredPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.FORM_KIND));
 		widgetFactory.adapt(advancedeobjectflatcomboviewerRequiredPropery);
 		advancedeobjectflatcomboviewerRequiredPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		if (isReadOnly(advancedeobjectflatcomboviewerRequiredPropery)) {
-			advancedeobjectflatcomboviewerRequiredPropery.setEnabled(false);
-			advancedeobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData advancedeobjectflatcomboviewerRequiredProperyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerRequiredPropery.setLayoutData(advancedeobjectflatcomboviewerRequiredProperyData);
 		advancedeobjectflatcomboviewerRequiredPropery.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1731,11 +1602,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		advancedeobjectflatcomboviewerOptionalPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.FORM_KIND));
 		widgetFactory.adapt(advancedeobjectflatcomboviewerOptionalPropery);
 		advancedeobjectflatcomboviewerOptionalPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		if (isReadOnly(advancedeobjectflatcomboviewerOptionalPropery)) {
-			advancedeobjectflatcomboviewerOptionalPropery.setEnabled(false);
-			advancedeobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData advancedeobjectflatcomboviewerOptionalProperyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerOptionalPropery.setLayoutData(advancedeobjectflatcomboviewerOptionalProperyData);
 		advancedeobjectflatcomboviewerOptionalPropery.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -1794,11 +1660,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 			
 		});
-		if (isReadOnly(advancedtablecompositionRequiredProperty)) {
-			advancedtablecompositionRequiredProperty.setEnabled(false);
-			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData advancedtablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionRequiredPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionRequiredProperty.setLayoutData(advancedtablecompositionRequiredPropertyData);
@@ -1847,11 +1708,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 			
 		});
-		if (isReadOnly(advancedtablecompositionOptionalProperty)) {
-			advancedtablecompositionOptionalProperty.setEnabled(false);
-			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		GridData advancedtablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedtablecompositionOptionalPropertyData.horizontalSpan = 3;
 		this.advancedtablecompositionOptionalProperty.setLayoutData(advancedtablecompositionOptionalPropertyData);
@@ -1866,11 +1722,6 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.name, EefnrMessages.TotalSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		}		
-		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -1967,6 +1818,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textRequiredProperty);
+		if (readOnly && textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1991,6 +1850,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textOptionalProperty);
+		if (readOnly && textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2015,6 +1882,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			checkboxRequiredProperty.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(checkboxRequiredProperty);
+		if (readOnly && checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(false);
+			checkboxRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2039,6 +1914,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			checkboxOptionalProperty.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(checkboxOptionalProperty);
+		if (readOnly && checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(false);
+			checkboxOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2063,6 +1946,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			textareaRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textareaRequiredProperty);
+		if (readOnly && textareaRequiredProperty.isEnabled()) {
+			textareaRequiredProperty.setEnabled(false);
+			textareaRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !textareaRequiredProperty.isEnabled()) {
+			textareaRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2087,6 +1978,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(textareaOptionalProperty);
+		if (readOnly && textareaOptionalProperty.isEnabled()) {
+			textareaOptionalProperty.setEnabled(false);
+			textareaOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !textareaOptionalProperty.isEnabled()) {
+			textareaOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2108,6 +2007,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initRadioRequiredProperty(Object input, Enumerator current) {
 		radioRequiredProperty.setInput(input);
 		radioRequiredProperty.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(radioRequiredProperty);
+		if (readOnly && radioRequiredProperty.isEnabled()) {
+			radioRequiredProperty.setEnabled(false);
+			radioRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !radioRequiredProperty.isEnabled()) {
+			radioRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2118,6 +2025,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioRequiredProperty(Enumerator newValue) {
 		radioRequiredProperty.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(radioRequiredProperty);
+		if (readOnly && radioRequiredProperty.isEnabled()) {
+			radioRequiredProperty.setEnabled(false);
+			radioRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !radioRequiredProperty.isEnabled()) {
+			radioRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2139,6 +2054,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initRadioOptionalProperty(Object input, Enumerator current) {
 		radioOptionalProperty.setInput(input);
 		radioOptionalProperty.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(radioOptionalProperty);
+		if (readOnly && radioOptionalProperty.isEnabled()) {
+			radioOptionalProperty.setEnabled(false);
+			radioOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !radioOptionalProperty.isEnabled()) {
+			radioOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2149,6 +2072,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioOptionalProperty(Enumerator newValue) {
 		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(radioOptionalProperty);
+		if (readOnly && radioOptionalProperty.isEnabled()) {
+			radioOptionalProperty.setEnabled(false);
+			radioOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !radioOptionalProperty.isEnabled()) {
+			radioOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2176,6 +2107,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		if (current != null) {
 			eobjectflatcomboviewerRequiredProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(eobjectflatcomboviewerRequiredProperty);
+		if (readOnly && eobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			eobjectflatcomboviewerRequiredProperty.setEnabled(false);
+			eobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !eobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			eobjectflatcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2190,6 +2129,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			eobjectflatcomboviewerRequiredProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(eobjectflatcomboviewerRequiredProperty);
+		if (readOnly && eobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			eobjectflatcomboviewerRequiredProperty.setEnabled(false);
+			eobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !eobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			eobjectflatcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2246,6 +2193,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		if (current != null) {
 			eobjectflatcomboviewerOptionalProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(eobjectflatcomboviewerOptionalProperty);
+		if (readOnly && eobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			eobjectflatcomboviewerOptionalProperty.setEnabled(false);
+			eobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !eobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			eobjectflatcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2260,6 +2215,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			eobjectflatcomboviewerOptionalProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(eobjectflatcomboviewerOptionalProperty);
+		if (readOnly && eobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			eobjectflatcomboviewerOptionalProperty.setEnabled(false);
+			eobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !eobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			eobjectflatcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2304,6 +2267,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableRequiredProperty.setContentProvider(contentProvider);
 		referencestableRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(referencestableRequiredProperty.getTable());
+		if (readOnly && referencestableRequiredProperty.getTable().isEnabled()) {
+			referencestableRequiredProperty.setEnabled(false);
+			referencestableRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !referencestableRequiredProperty.getTable().isEnabled()) {
+			referencestableRequiredProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -2359,6 +2330,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(referencestableOptionalProperty.getTable());
+		if (readOnly && referencestableOptionalProperty.getTable().isEnabled()) {
+			referencestableOptionalProperty.setEnabled(false);
+			referencestableOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !referencestableOptionalProperty.getTable().isEnabled()) {
+			referencestableOptionalProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -2420,6 +2399,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initEmfcomboviewerRequiredProperty(Object input, Enumerator current) {
 		emfcomboviewerRequiredProperty.setInput(input);
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(emfcomboviewerRequiredProperty);
+		if (readOnly && emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(false);
+			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2430,6 +2417,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(emfcomboviewerRequiredProperty);
+		if (readOnly && emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(false);
+			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2451,6 +2446,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	public void initEmfcomboviewerOptionalProperty(Object input, Enumerator current) {
 		emfcomboviewerOptionalProperty.setInput(input);
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(emfcomboviewerOptionalProperty);
+		if (readOnly && emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(false);
+			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2461,6 +2464,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(emfcomboviewerOptionalProperty);
+		if (readOnly && emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(false);
+			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2486,6 +2497,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(multivaluededitorRequiredProperty);
+		if (readOnly && multivaluededitorRequiredProperty.isEnabled()) {
+			multivaluededitorRequiredProperty.setEnabled(false);
+			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !multivaluededitorRequiredProperty.isEnabled()) {
+			multivaluededitorRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	public void addToMultivaluededitorRequiredProperty(Object newValue) {
@@ -2529,6 +2548,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(multivaluededitorOptionalProperty);
+		if (readOnly && multivaluededitorOptionalProperty.isEnabled()) {
+			multivaluededitorOptionalProperty.setEnabled(false);
+			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !multivaluededitorOptionalProperty.isEnabled()) {
+			multivaluededitorOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	public void addToMultivaluededitorOptionalProperty(Object newValue) {
@@ -2562,6 +2589,23 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionRequiredProperty.setContentProvider(contentProvider);
 		tablecompositionRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(tablecompositionRequiredProperty);
+		if (readOnly && tablecompositionRequiredProperty.getTable().isEnabled()) {
+			tablecompositionRequiredProperty.getTable().setEnabled(false);
+			tablecompositionRequiredProperty.getTable().setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+			addTablecompositionRequiredProperty.setEnabled(false);
+			addTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+			removeTablecompositionRequiredProperty.setEnabled(false);
+			removeTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+			editTablecompositionRequiredProperty.setEnabled(false);
+			editTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !tablecompositionRequiredProperty.getTable().isEnabled()) {
+			tablecompositionRequiredProperty.getTable().setEnabled(true);
+			addTablecompositionRequiredProperty.setEnabled(true);
+			removeTablecompositionRequiredProperty.setEnabled(true);
+			editTablecompositionRequiredProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -2620,6 +2664,23 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionOptionalProperty.setContentProvider(contentProvider);
 		tablecompositionOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(tablecompositionOptionalProperty);
+		if (readOnly && tablecompositionOptionalProperty.getTable().isEnabled()) {
+			tablecompositionOptionalProperty.getTable().setEnabled(false);
+			tablecompositionOptionalProperty.getTable().setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+			addTablecompositionOptionalProperty.setEnabled(false);
+			addTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+			removeTablecompositionOptionalProperty.setEnabled(false);
+			removeTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+			editTablecompositionOptionalProperty.setEnabled(false);
+			editTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !tablecompositionOptionalProperty.getTable().isEnabled()) {
+			tablecompositionOptionalProperty.getTable().setEnabled(true);
+			addTablecompositionOptionalProperty.setEnabled(true);
+			removeTablecompositionOptionalProperty.setEnabled(true);
+			editTablecompositionOptionalProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -2678,6 +2739,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableRequiredProperty.setContentProvider(contentProvider);
 		advancedreferencestableRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(advancedreferencestableRequiredProperty.getTable());
+		if (readOnly && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
+			advancedreferencestableRequiredProperty.setEnabled(false);
+			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedreferencestableRequiredProperty.getTable().isEnabled()) {
+			advancedreferencestableRequiredProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -2733,6 +2802,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableOptionalProperty.setContentProvider(contentProvider);
 		advancedreferencestableOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(advancedreferencestableOptionalProperty.getTable());
+		if (readOnly && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
+			advancedreferencestableOptionalProperty.setEnabled(false);
+			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedreferencestableOptionalProperty.getTable().isEnabled()) {
+			advancedreferencestableOptionalProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -2800,6 +2877,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		if (current != null) {
 			advancedeobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(advancedeobjectflatcomboviewerRequiredPropery);
+		if (readOnly && advancedeobjectflatcomboviewerRequiredPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredPropery.setEnabled(false);
+			advancedeobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerRequiredPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredPropery.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2814,6 +2899,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			advancedeobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(advancedeobjectflatcomboviewerRequiredPropery);
+		if (readOnly && advancedeobjectflatcomboviewerRequiredPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredPropery.setEnabled(false);
+			advancedeobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerRequiredPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredPropery.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2870,6 +2963,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		if (current != null) {
 			advancedeobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(advancedeobjectflatcomboviewerOptionalPropery);
+		if (readOnly && advancedeobjectflatcomboviewerOptionalPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalPropery.setEnabled(false);
+			advancedeobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerOptionalPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalPropery.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2884,6 +2985,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			advancedeobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(advancedeobjectflatcomboviewerOptionalPropery);
+		if (readOnly && advancedeobjectflatcomboviewerOptionalPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalPropery.setEnabled(false);
+			advancedeobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerOptionalPropery.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalPropery.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2928,6 +3037,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionRequiredProperty.setContentProvider(contentProvider);
 		advancedtablecompositionRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(advancedtablecompositionRequiredProperty);
+		if (readOnly && advancedtablecompositionRequiredProperty.isEnabled()) {
+			advancedtablecompositionRequiredProperty.setEnabled(false);
+			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedtablecompositionRequiredProperty.isEnabled()) {
+			advancedtablecompositionRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2986,6 +3103,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionOptionalProperty.setContentProvider(contentProvider);
 		advancedtablecompositionOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(advancedtablecompositionOptionalProperty);
+		if (readOnly && advancedtablecompositionOptionalProperty.isEnabled()) {
+			advancedtablecompositionOptionalProperty.setEnabled(false);
+			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !advancedtablecompositionOptionalProperty.isEnabled()) {
+			advancedtablecompositionOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -3053,6 +3178,14 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

@@ -16,6 +16,7 @@
    <extension-point id="PropertiesEditionPartProvider" name="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider" schema="schema/PropertiesEditionPartProvider.exsd"/>
    <extension-point id="ReadOnlyPolicyProvider" name="ReadOnlyPolicyProvider" schema="schema/ReadOnlyPolicyProvider.exsd"/>
    <extension-point id="PropertiesEditionComponentListenerProvider" name="PropertiesEditionComponentListenerProvider" schema="schema/PropertiesEditionComponentListenerProvider.exsd"/>
+   <extension-point id="LockPolicyProvider" name="LockPolicyProvider" schema="schema/LockPolicyProvider.exsd"/>
    
      <extension
          point="org.eclipse.emf.validation.constraintBindings">

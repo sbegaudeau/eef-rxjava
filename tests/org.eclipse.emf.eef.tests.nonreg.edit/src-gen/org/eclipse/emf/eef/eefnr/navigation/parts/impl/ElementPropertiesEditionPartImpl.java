@@ -129,11 +129,6 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected Composite createIsVisibleCheckbox(Composite parent) {
 		isVisible = new Button(parent, SWT.CHECK);
 		isVisible.setText(getDescription(NavigationViewsRepository.Element.Properties.isVisible, NavigationMessages.ElementPropertiesEditionPart_IsVisibleLabel));
-		if (isReadOnly(isVisible)) {
-			isVisible.setEnabled(false);
-			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
-		}		
-		
 		isVisible.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -200,6 +195,14 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			isVisible.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(isVisible);
+		if (readOnly && isVisible.isEnabled()) {
+			isVisible.setEnabled(false);
+			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
+		} else if (!readOnly && !isVisible.isEnabled()) {
+			isVisible.setEnabled(true);
+		}	
+		
 	}
 
 

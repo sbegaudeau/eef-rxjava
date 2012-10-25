@@ -79,6 +79,7 @@ public class RootPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Root root = (Root)elt;
 			final RootPropertiesEditionPart basePart = (RootPropertiesEditionPart)editingPart;
 			// init values

@@ -135,11 +135,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name, NavigationMessages.DeferedFlatReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -190,11 +185,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 		createDescription(parent, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor, NavigationMessages.DeferedFlatReferencesTableSamplePropertiesEditionPart_FlatReferencesTableSampleEditorLabel);
 		flatReferencesTableSampleEditor = new FlatReferencesTable(parent);
 		flatReferencesTableSampleEditor.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		if (isReadOnly(flatReferencesTableSampleEditor)) {
-			flatReferencesTableSampleEditor.setEnabled(false);
-			flatReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
-		}		
-		
 		flatReferencesTableSampleEditor.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -246,6 +236,14 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -259,6 +257,14 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferencesTableSampleEditor.setInput(settings);
+		boolean readOnly = isReadOnly(flatReferencesTableSampleEditor);
+		if (readOnly && flatReferencesTableSampleEditor.isEnabled()) {
+			flatReferencesTableSampleEditor.setEnabled(false);
+			flatReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
+		} else if (!readOnly && !flatReferencesTableSampleEditor.isEnabled()) {
+			flatReferencesTableSampleEditor.setEnabled(true);
+		}	
+		
 	}
 
 	/**

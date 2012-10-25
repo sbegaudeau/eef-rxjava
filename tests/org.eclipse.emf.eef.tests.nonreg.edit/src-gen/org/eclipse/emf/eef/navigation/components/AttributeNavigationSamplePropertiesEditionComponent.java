@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder.EEFEditorSettingsImpl;
@@ -104,10 +105,17 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForSingleValuedSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForSingleValuedSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForMultiValuedSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForMultiValuedSettings);
+				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
+			}
 			final AttributeNavigationSample attributeNavigationSample = (AttributeNavigationSample)elt;
 			final AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (attributeNavigationSample.getName() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, attributeNavigationSample.getName()));
 			
 			if (delegate1ForSingleValuedSettings.getValue() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued))

@@ -77,6 +77,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)elt;
 			final ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
 			// init values

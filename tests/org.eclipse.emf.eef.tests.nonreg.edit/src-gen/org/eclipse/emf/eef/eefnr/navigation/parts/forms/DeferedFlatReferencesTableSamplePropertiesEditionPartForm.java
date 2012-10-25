@@ -147,11 +147,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name, NavigationMessages.DeferedFlatReferencesTableSamplePropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
-		}		
-		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -221,11 +216,6 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		createDescription(parent, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor, NavigationMessages.DeferedFlatReferencesTableSamplePropertiesEditionPart_FlatReferencesTableSampleEditorLabel);
 		flatReferencesTableSampleEditor = new FlatReferencesTable(parent);
 		flatReferencesTableSampleEditor.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		if (isReadOnly(flatReferencesTableSampleEditor)) {
-			flatReferencesTableSampleEditor.setEnabled(false);
-			flatReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
-		}		
-		
 		flatReferencesTableSampleEditor.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -277,6 +267,14 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -290,6 +288,14 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferencesTableSampleEditor.setInput(settings);
+		boolean readOnly = isReadOnly(flatReferencesTableSampleEditor);
+		if (readOnly && flatReferencesTableSampleEditor.isEnabled()) {
+			flatReferencesTableSampleEditor.setEnabled(false);
+			flatReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
+		} else if (!readOnly && !flatReferencesTableSampleEditor.isEnabled()) {
+			flatReferencesTableSampleEditor.setEnabled(true);
+		}	
+		
 	}
 
 	/**

@@ -141,11 +141,6 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 	
 	protected Composite createEnabledCheckbox(FormToolkit widgetFactory, Composite parent) {
 		enabled = widgetFactory.createButton(parent, getDescription(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesMessages.AbstractEnabledSamplePropertiesEditionPart_EnabledLabel), SWT.CHECK);
-		if (isReadOnly(enabled)) {
-			enabled.setEnabled(false);
-			enabled.setToolTipText(ReferencesMessages.AbstractEnabledSample_ReadOnly);
-		}		
-		
 		enabled.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -212,6 +207,14 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			enabled.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(enabled);
+		if (readOnly && enabled.isEnabled()) {
+			enabled.setEnabled(false);
+			enabled.setToolTipText(ReferencesMessages.AbstractEnabledSample_ReadOnly);
+		} else if (!readOnly && !enabled.isEnabled()) {
+			enabled.setEnabled(true);
+		}	
+		
 	}
 
 

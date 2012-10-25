@@ -84,6 +84,7 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionComponent ext
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TableCompositionExtensionEditorSample tableCompositionExtensionEditorSample = (TableCompositionExtensionEditorSample)elt;
 			final TableCompositionExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionExtensionEditorSamplePropertiesEditionPart)editingPart;
 			// init values

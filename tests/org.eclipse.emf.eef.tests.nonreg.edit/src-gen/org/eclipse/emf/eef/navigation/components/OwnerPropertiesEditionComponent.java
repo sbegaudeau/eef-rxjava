@@ -40,6 +40,7 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
@@ -156,10 +157,27 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForTableCompositionSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedTableCompositionSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForReferencesTableSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedReferencesTableSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForFlatReferencesTablesSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForTableCompositionSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedTableCompositionSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForReferencesTableSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedReferencesTableSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForFlatReferencesTableSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForEObjectFlatComboViewerSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForEObjectFlatComboViewerSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForAdvancedEObjectFlatComboViewerSettings);
+				CompositePropertiesEditionPart((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForAdvancedEObjectFlatComboViewerSettings);
+				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
+			}
 			final Owner owner = (Owner)elt;
 			final OwnerPropertiesEditionPart basePart = (OwnerPropertiesEditionPart)editingPart;
 			// init values
-			if (owner.getName() != null && isAccessible(NavigationViewsRepository.Owner.Properties.name))
+			if (isAccessible(NavigationViewsRepository.Owner.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, owner.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition)) {

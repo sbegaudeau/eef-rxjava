@@ -154,11 +154,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersMessages.ConcreteReferenceOwnerSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -224,11 +219,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 			}
 			
 		});
-		if (isReadOnly(abstractTarget)) {
-			abstractTarget.setEnabled(false);
-			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		}		
-		
 		GridData abstractTargetData = new GridData(GridData.FILL_HORIZONTAL);
 		abstractTargetData.horizontalSpan = 3;
 		this.abstractTarget.setLayoutData(abstractTargetData);
@@ -326,11 +316,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 			}
 			
 		});
-		if (isReadOnly(strictTyping)) {
-			strictTyping.setEnabled(false);
-			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		}		
-		
 		GridData strictTypingData = new GridData(GridData.FILL_HORIZONTAL);
 		strictTypingData.horizontalSpan = 3;
 		this.strictTyping.setLayoutData(strictTypingData);
@@ -376,6 +361,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -391,6 +384,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		abstractTarget.setContentProvider(contentProvider);
 		abstractTarget.setInput(settings);
+		boolean readOnly = isReadOnly(abstractTarget.getTable());
+		if (readOnly && abstractTarget.getTable().isEnabled()) {
+			abstractTarget.setEnabled(false);
+			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		} else if (!readOnly && !abstractTarget.getTable().isEnabled()) {
+			abstractTarget.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -446,6 +447,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		strictTyping.setContentProvider(contentProvider);
 		strictTyping.setInput(settings);
+		boolean readOnly = isReadOnly(strictTyping);
+		if (readOnly && strictTyping.isEnabled()) {
+			strictTyping.setEnabled(false);
+			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
+		} else if (!readOnly && !strictTyping.isEnabled()) {
+			strictTyping.setEnabled(true);
+		}	
+		
 	}
 
 	/**

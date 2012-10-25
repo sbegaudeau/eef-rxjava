@@ -89,6 +89,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)elt;
 			final EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values

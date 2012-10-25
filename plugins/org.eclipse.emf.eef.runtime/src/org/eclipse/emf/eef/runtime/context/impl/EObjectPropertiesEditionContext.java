@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.context.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -89,6 +90,7 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.parentPropertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.adapterFactory = adapterFactory;
+		this.allSettings = new ArrayList<EEFEditorSettings>();
 	}
 
 	/**

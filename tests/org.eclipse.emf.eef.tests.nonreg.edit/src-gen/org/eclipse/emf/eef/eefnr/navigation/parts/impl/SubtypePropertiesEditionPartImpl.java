@@ -143,11 +143,6 @@ public class SubtypePropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected Composite createSpecialisedElementCheckbox(Composite parent) {
 		specialisedElement = new Button(parent, SWT.CHECK);
 		specialisedElement.setText(getDescription(NavigationViewsRepository.Subtype.Specialisation.specialisedElement, NavigationMessages.SubtypePropertiesEditionPart_SpecialisedElementLabel));
-		if (isReadOnly(specialisedElement)) {
-			specialisedElement.setEnabled(false);
-			specialisedElement.setToolTipText(NavigationMessages.Subtype_ReadOnly);
-		}		
-		
 		specialisedElement.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -206,6 +201,14 @@ public class SubtypePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			specialisedElement.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(specialisedElement);
+		if (readOnly && specialisedElement.isEnabled()) {
+			specialisedElement.setEnabled(false);
+			specialisedElement.setToolTipText(NavigationMessages.Subtype_ReadOnly);
+		} else if (!readOnly && !specialisedElement.isEnabled()) {
+			specialisedElement.setEnabled(true);
+		}	
+		
 	}
 
 

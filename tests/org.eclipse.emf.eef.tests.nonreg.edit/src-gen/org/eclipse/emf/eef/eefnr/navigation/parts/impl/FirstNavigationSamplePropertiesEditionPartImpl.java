@@ -135,11 +135,6 @@ public class FirstNavigationSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.FirstNavigationSample.Properties.name, NavigationMessages.FirstNavigationSamplePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.FirstNavigationSample_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -217,6 +212,14 @@ public class FirstNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.FirstNavigationSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

@@ -69,10 +69,11 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Event event = (Event)elt;
 			final EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
 			// init values
-			if (event.getName() != null && isAccessible(NamingViewsRepository.Event.Properties.name))
+			if (isAccessible(NamingViewsRepository.Event.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, event.getName()));
 			
 			// init filters

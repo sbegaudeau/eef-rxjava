@@ -130,11 +130,6 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 	protected Composite createCheckboxEditorSampleCheckbox(Composite parent) {
 		checkboxEditorSample = new Button(parent, SWT.CHECK);
 		checkboxEditorSample.setText(getDescription(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextMessages.CheckBoxExtendedEditorSamplePropertiesEditionPart_CheckboxEditorSampleLabel));
-		if (isReadOnly(checkboxEditorSample)) {
-			checkboxEditorSample.setEnabled(false);
-			checkboxEditorSample.setToolTipText(EefnrextMessages.CheckBoxExtendedEditorSample_ReadOnly);
-		}		
-		
 		checkboxEditorSample.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -201,6 +196,14 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			checkboxEditorSample.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(checkboxEditorSample);
+		if (readOnly && checkboxEditorSample.isEnabled()) {
+			checkboxEditorSample.setEnabled(false);
+			checkboxEditorSample.setToolTipText(EefnrextMessages.CheckBoxExtendedEditorSample_ReadOnly);
+		} else if (!readOnly && !checkboxEditorSample.isEnabled()) {
+			checkboxEditorSample.setEnabled(true);
+		}	
+		
 	}
 
 

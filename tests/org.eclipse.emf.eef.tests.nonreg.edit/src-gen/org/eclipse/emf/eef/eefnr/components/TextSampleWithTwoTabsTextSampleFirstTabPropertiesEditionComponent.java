@@ -68,13 +68,14 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)elt;
 			final TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)editingPart;
 			// init values
-			if (textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab() != null && isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab))
+			if (isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab))
 				textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab()));
 			
-			if (textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab() != null && isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab))
+			if (isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab))
 				textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab()));
 			
 			// init filters

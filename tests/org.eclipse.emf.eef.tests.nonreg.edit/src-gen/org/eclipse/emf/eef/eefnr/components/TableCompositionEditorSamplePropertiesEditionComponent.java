@@ -89,6 +89,7 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TableCompositionEditorSample tableCompositionEditorSample = (TableCompositionEditorSample)elt;
 			final TableCompositionEditorSamplePropertiesEditionPart basePart = (TableCompositionEditorSamplePropertiesEditionPart)editingPart;
 			// init values

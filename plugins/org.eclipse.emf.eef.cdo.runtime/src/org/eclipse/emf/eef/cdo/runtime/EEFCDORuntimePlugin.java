@@ -14,12 +14,8 @@ package org.eclipse.emf.eef.cdo.runtime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtension;
-import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.cdo.session.remote.CDORemoteSessionManager;
+import org.eclipse.emf.eef.cdo.runtime.provider.ICDOLockStrategyProvider;
+import org.eclipse.emf.eef.cdo.runtime.service.CDOLockStrategyProviderService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -30,16 +26,6 @@ import org.osgi.framework.BundleContext;
  */
 public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 
-	/**
-	 * The extension name.
-	 */
-	public static final String EXTENSION_NAME = "CDOPolicyProvider"; //$NON-NLS-1$
-
-	/**
-	 * The element's attribute name.
-	 */
-	private static final String EXTENSION_ATTRIBUTE_NAME = "policyClass"; //$NON-NLS-1$
-
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.emf.eef.cdo.runtime"; //$NON-NLS-1$
 
@@ -49,13 +35,13 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	/**
 	 * CDO Listeners
 	 */
-	private List<CDORemoteSessionManager.EventAdapter> cdoListeners;
+	private List<ICDOLockStrategyProvider> lockStrategyProvider;
 
 	/**
 	 * The constructor
 	 */
 	public EEFCDORuntimePlugin() {
-		cdoListeners = new ArrayList<CDORemoteSessionManager.EventAdapter>();
+		lockStrategyProvider = new ArrayList<ICDOLockStrategyProvider>();
 	}
 
 	/**
@@ -66,44 +52,14 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		initCDOListeners();
+		initCDOLockStrategyProvider();
 	}
-
+	
 	/**
-	 * Load all the providers registered by extension point.
+	 * Init Properties Edition Component listeners : find the extension point
 	 */
-	private void initCDOListeners() {
-		IExtensionPoint extensionPoint = Platform.getExtensionRegistry()
-				.getExtensionPoint(EEFCDORuntimePlugin.PLUGIN_ID, EXTENSION_NAME);
-
-		IExtension[] extensions = extensionPoint.getExtensions();
-		for (int extensionIndex = 0; extensionIndex < extensions.length; extensionIndex++) {
-			IExtension extension = extensions[extensionIndex];
-			IConfigurationElement[] configurationElements = extension
-					.getConfigurationElements();
-			for (int i = 0; i < configurationElements.length; i++) {
-				IConfigurationElement cfg = configurationElements[i];
-
-				if (EXTENSION_NAME.equals(cfg.getName())) {
-					try {
-						register((CDORemoteSessionManager.EventAdapter) cfg
-								.createExecutableExtension(EXTENSION_ATTRIBUTE_NAME));
-					} catch (CoreException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * Regiter the cdo policy.
-	 * 
-	 * @param policy
-	 *            CDORemoteSessionManager.EventAdapter
-	 */
-	private void register(CDORemoteSessionManager.EventAdapter policy) {
-		cdoListeners.add(policy);
+	private void initCDOLockStrategyProvider() {
+		lockStrategyProvider.addAll(CDOLockStrategyProviderService.getInstance().getProviders());
 	}
 
 	/**
@@ -112,7 +68,7 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		cdoListeners.clear();
+		lockStrategyProvider.clear();
 		plugin = null;
 		super.stop(context);
 	}
@@ -127,9 +83,9 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * @return the cdo listeners
+	 * @return the cdo lock strategy provider
 	 */
-	public List<CDORemoteSessionManager.EventAdapter> getCDOListeners() {
-		return cdoListeners;
+	public List<ICDOLockStrategyProvider> getLockStrategyProvider() {
+		return lockStrategyProvider;
 	}
 }

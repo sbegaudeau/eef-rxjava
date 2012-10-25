@@ -85,6 +85,7 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ReferencesTableSample referencesTableSample = (ReferencesTableSample)elt;
 			final ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values

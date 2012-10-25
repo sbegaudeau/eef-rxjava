@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 public class EEFLockNotification extends NotificationImpl {
 
 	public EEFLockNotification(EObject value) {
-		super(-1, value, null);
+		super(-1, value, value);
 	}
 
 }

@@ -122,11 +122,6 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, NavigationViewsRepository.NamedElement.Properties.name, NavigationMessages.NamedElementPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.NamedElement_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -204,6 +199,14 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.NamedElement_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

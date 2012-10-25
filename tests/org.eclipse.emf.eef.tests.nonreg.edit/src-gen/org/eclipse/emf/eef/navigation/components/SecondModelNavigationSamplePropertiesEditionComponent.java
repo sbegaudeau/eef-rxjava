@@ -80,10 +80,11 @@ public class SecondModelNavigationSamplePropertiesEditionComponent extends Singl
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final SecondModelNavigation secondModelNavigation = (SecondModelNavigation)elt;
 			final SecondNavigationSamplePropertiesEditionPart secondNavigationSamplePart = (SecondNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (secondModelNavigation.getName() != null && isAccessible(NavigationViewsRepository.SecondNavigationSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.SecondNavigationSample.Properties.name))
 				secondNavigationSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondModelNavigation.getName()));
 			
 			// init filters

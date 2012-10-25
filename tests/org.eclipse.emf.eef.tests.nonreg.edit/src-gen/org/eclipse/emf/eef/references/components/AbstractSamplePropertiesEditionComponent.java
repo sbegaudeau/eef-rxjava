@@ -68,10 +68,11 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final AbstractSample abstractSample = (AbstractSample)elt;
 			final AbstractSamplePropertiesEditionPart basePart = (AbstractSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (abstractSample.getName() != null && isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name))
+			if (isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, abstractSample.getName()));
 			
 			// init filters

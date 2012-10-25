@@ -134,11 +134,6 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersMessages.ConcreteReferenceTargetSample2PropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(FiltersMessages.ConcreteReferenceTargetSample2_ReadOnly);
-		}		
-		
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -235,6 +230,14 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(FiltersMessages.ConcreteReferenceTargetSample2_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
