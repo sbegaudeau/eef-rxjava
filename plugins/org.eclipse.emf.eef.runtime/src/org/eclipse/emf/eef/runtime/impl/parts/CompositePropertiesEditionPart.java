@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.parts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -23,6 +24,7 @@ import org.eclipse.emf.eef.runtime.api.providers.IReadOnlyPolicy;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -75,12 +77,18 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Defines the part visibility.
 	 */
 	protected boolean visibility = true;
+	
+	/**
+	 * EEF editor settings to use.
+	 */
+	private List<EEFEditorSettings> settings;
 
 	/**
 	 * For {@link AbstractPropertySection} use only. Do not use with PropertiesEditingViewer.
 	 */
 	protected CompositePropertiesEditionPart() {
 		super();
+		this.settings = new ArrayList<EEFEditorSettings>();
 	}
 
 	/**
@@ -92,6 +100,7 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	public CompositePropertiesEditionPart(IPropertiesEditionComponent editionComponent) {
 		this.propertiesEditionComponent = editionComponent;
 		this.adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
+		this.settings = new ArrayList<EEFEditorSettings>();
 	}
 
 	/**
@@ -158,18 +167,22 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	 * Refresh the part
 	 */
 	public void refresh() {
-		clear();
-		composer.compose(view);
-		view.layout();
+		if (!view.isDisposed()) {
+			clear();
+			composer.compose(view);
+			view.layout();
+		}
 	}
 
 	/**
 	 * Clear all the graphical elements of the view
 	 */
 	protected void clear() {
-		while (view.getChildren().length > 0) {
-			Control next = view.getChildren()[0];
-			next.dispose();
+		if (!view.isDisposed()) {
+				while (view.getChildren().length > 0) {
+					Control next = view.getChildren()[0];
+					next.dispose();
+			}
 		}
 	}
 
@@ -261,4 +274,10 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 		return isReadOnly(control, null);
 	}
 
+	/**
+	 * @return the settings to use.
+	 */
+	public List<EEFEditorSettings> getSettings() {
+		return settings;
+	}
 }

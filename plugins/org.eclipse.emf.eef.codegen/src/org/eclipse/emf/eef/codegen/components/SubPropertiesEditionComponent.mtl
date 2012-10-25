@@ -96,6 +96,7 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			[initEditorSettings(pec, view)/]
 			final [include(pec.pecModelQualifiedClass())/] [pec.pecModelClass().toJavaIdentifier()/] = ([pec.pecModelClass()/])elt;
 			final [include(view.pepQualifiedInterface())/] [view.viewIdentifier(pec)/] = ([view.pepInterface()/])editingPart;
 			// init values
@@ -256,6 +257,19 @@ public class [pec.subPECClass(view)/] extends [include(pec.pecQualifiedComponent
 	[for (editionElement : PropertiesEditionElement | pec.involvedEditionElementsInView(view) -> select(pee : PropertiesEditionElement | pee.canGeneratemodelNavigation()))][editionElement.additionalComponentGetterForModelNavigation(view, pec)/][/for]
 
 }
+[/template]
+
+[template public initEditorSettings (pec : PropertiesEditionComponent, view : View) ]
+[let pees : OrderedSet(PropertiesEditionElement) = pec.involvedEditionElementsInView(view)->select(pee : PropertiesEditionElement | pee.hasModelNavigation())]
+[if (not pees->isEmpty())]
+if (editingPart instanceof CompositePropertiesEditionPart) {
+[/if]
+[for (pee : PropertiesEditionElement | pees)]
+	[addImports(Sequence{'org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart'})/]((CompositePropertiesEditionPart) editingPart).getSettings().add([pee.name.toJavaIdentifier()/]Settings);
+[/for]
+[if (not pees->isEmpty())]
+	editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
+}[/if][/let]
 [/template]
 
 [template public validateValue (pec : PropertiesEditionComponent, peContext : PropertiesEditionContext, view : View) ]

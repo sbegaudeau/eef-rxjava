@@ -8,19 +8,29 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.eef.runtime.impl.notify;
+package org.eclipse.emf.eef.runtime.policies;
 
-import org.eclipse.emf.common.notify.impl.NotificationImpl;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 /**
+ * Lock Policy.
+ * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- *
  */
-public class EEFLockNotification extends NotificationImpl {
 
-	public EEFLockNotification(EObject value) {
-		super(-1, value, value);
-	}
+public interface ILockPolicy {
+	 /**
+     * Lock.
+     * 
+     * @param propertiesEditingComponent IPropertiesEditionComponent.
+     */
+	void lock(IPropertiesEditionComponent propertiesEditingComponent);
+
+	/**
+	 * Unlock.
+	 * 
+	 * @param propertiesEditingComponent IPropertiesEditionComponent.
+	 */
+	void release(IPropertiesEditionComponent propertiesEditingComponent);
 
 }

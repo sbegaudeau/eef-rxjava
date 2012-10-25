@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.context.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -22,6 +25,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.ViewHelper;
 import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -43,6 +47,11 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 * the EObject to edit
 	 */
 	protected EObject eObject;
+	
+	/**
+	 * EEF editor settings to use.
+	 */
+	private List<EEFEditorSettings> allSettings;
 
 	/**
 	 * 
@@ -81,6 +90,7 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.parentPropertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.adapterFactory = adapterFactory;
+		this.allSettings = new ArrayList<EEFEditorSettings>();
 	}
 
 	/**
@@ -120,6 +130,20 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 */
 	public void seteObject(EObject eObject) {
 		this.eObject = eObject;
+	}
+	
+	/**
+	 * @return the settings to use.
+	 */
+	public List<EEFEditorSettings> getAllSettings() {
+		return allSettings;
+	}
+	
+	/**
+	 * set the settings to use.
+	 */
+	public void setAllSettings(List<EEFEditorSettings> settings) {
+		this.allSettings = settings;
 	}
 
 	/**

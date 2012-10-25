@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.policies.ILockPolicy;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -165,6 +166,7 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performCancel() {
+		release();
 		PropertiesContextService.getInstance().pop();
 		return super.performCancel();
 	}
@@ -176,7 +178,20 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performFinish() {
+		release();
 		return true;
+	}
+	
+	private void release() {
+		Object input = mainPage.viewer.getInput();
+		if (input instanceof EObjectPropertiesEditionContext) {
+			IPropertiesEditionComponent propertiesEditingComponent = ((EObjectPropertiesEditionContext)input).getPropertiesEditingComponent();
+			if (propertiesEditingComponent != null) {
+				for (ILockPolicy lockPolicies : EEFRuntimePlugin.getDefault().getLockPolicies()) {
+					lockPolicies.release(propertiesEditingComponent);
+				}
+			}
+		}
 	}
 
 	/**
@@ -188,6 +203,19 @@ public class PropertiesEditionWizard extends Wizard {
 	public void createPageControls(Composite pageContainer) {
 		super.createPageControls(pageContainer);
 		mainPage.setInput(eObject);
+		lock();
+	}
+
+	private void lock() {
+		Object input = mainPage.viewer.getInput();
+		if (input instanceof EObjectPropertiesEditionContext) {
+			IPropertiesEditionComponent propertiesEditingComponent = ((EObjectPropertiesEditionContext)input).getPropertiesEditingComponent();
+			if (propertiesEditingComponent != null) {
+				for (ILockPolicy lockPolicies : EEFRuntimePlugin.getDefault().getLockPolicies()) {
+					lockPolicies.lock(propertiesEditingComponent);
+				}
+			}
+		}
 	}
 
 	@Override

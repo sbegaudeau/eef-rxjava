@@ -3,10 +3,10 @@
 <schema targetNamespace="org.eclipse.emf.eef.cdo.runtime" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.emf.eef.cdo.runtime" id="CDOPolicyProvider" name="CDOPolicyProvider"/>
+         <meta.schema plugin="org.eclipse.emf.eef.cdo.runtime" id="CDOLockStrategyProvider" name="CDOLockStrategyProvider"/>
       </appinfo>
       <documentation>
-         Declare a EEF CDO Policy Provider
+         Declare a EEF CDO Lock Strategy Provider
       </documentation>
    </annotation>
 
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence>
-            <element ref="CDOPolicyProvider"/>
+            <element ref="CDOLockStrategyProvider"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,7 +47,7 @@
       </complexType>
    </element>
 
-   <element name="CDOPolicyProvider">
+   <element name="CDOLockStrategyProvider">
       <complexType>
          <attribute name="policyClass" type="string" use="required">
             <annotation>
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="org.eclipse.emf.cdo.session.remote.CDORemoteSessionManager$EventAdapter:"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.eef.cdo.runtime.provider.ICDOLockStrategyProvider"/>
                </appinfo>
             </annotation>
          </attribute>
