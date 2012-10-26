@@ -177,7 +177,7 @@ public class EEFEditorSettingsBuilder  {
 		 * @return object to edit.
 		 */
 		public EObject getOrCreateSignificantObject() {
-			if (significantObject == null) {
+			if (significantObject == null || (significantObject != null && significantObject.eResource() == null)) {
 				EObject current = source;
 				for (NavigationStep step : EEFEditorSettingsImpl.this.steps) {
 					// reference *
