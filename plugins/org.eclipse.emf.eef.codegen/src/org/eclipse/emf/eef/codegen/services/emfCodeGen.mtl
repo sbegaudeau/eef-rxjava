@@ -113,7 +113,7 @@ if self.eContainingClass.ePackage.nsURI = 'http://www.eclipse.org/emf/2002/Ecore
 endif/]
 
 [comment]NOTE: in the ecore case, as the metamodel and genmodel cannot be in the same resourceSet, we use a basic name comparison[/comment]
-[query private  (eClass : EClass) : GenClass =
+[query private getGenClass (eClass : EClass) : GenClass =
 if self.ePackage.nsURI = 'http://www.eclipse.org/emf/2002/Ecore'
 	then self.ePackage.getGenPackage().genClasses -> select(ecoreClass.name = eClass.name) -> first()
 	else self.eInverse(GenClass) -> first() 
