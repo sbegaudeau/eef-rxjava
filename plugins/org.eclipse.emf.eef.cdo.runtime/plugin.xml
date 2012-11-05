@@ -25,5 +25,11 @@
             policyClass="org.eclipse.emf.eef.cdo.runtime.policies.EEFWizardLockPolicy">
       </LockPolicyProvider>
    </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.WizardOpeningPolicyProvider">
+      <WizardOpeningPolicyProvider
+            policyClass="org.eclipse.emf.eef.cdo.runtime.policies.CDOWizardOpeningPolicy">
+      </WizardOpeningPolicyProvider>
+   </extension>
    
 </plugin>

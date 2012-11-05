@@ -12,12 +12,10 @@ package org.eclipse.emf.eef.runtime.impl.command;
 
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
+import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
+import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
-import org.eclipse.jface.window.Window;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -44,20 +42,8 @@ public class WizardEditingCommand extends AbstractCommand {
 	protected boolean prepare() {
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
 				editionContext.getAdapterFactory(), editionContext.getEObject());
-		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
-		int open = wDialog.open();
-		ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
-		if (changeRecorder != null) {
-			description = changeRecorder.endRecording();
-		}
-		if (open == Window.OK) {
-			return true;
-		} else {
-			if (description != null) {
-				description.applyAndReverse();
-			}
-			return false;
-		}
+		IWizardOpeningPolicy wizardOpeningPolicy = WizardOpeningPolicyProviderService.provide(editionContext.getEObject());
+		return wizardOpeningPolicy.openWizard(editionContext, wizard);
 	}
 
 	/**

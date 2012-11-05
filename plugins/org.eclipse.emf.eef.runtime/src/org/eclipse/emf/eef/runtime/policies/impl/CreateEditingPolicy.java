@@ -18,10 +18,12 @@ import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
+import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.jface.window.Window;
 
@@ -67,21 +69,14 @@ public class CreateEditingPolicy implements PropertiesEditingPolicyWithResult {
 			}
 			wizard = new PropertiesEditionWizard(editionContext, editionContext.getAdapterFactory(), create);
 		}
-		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
-		int executionResult = wDialog.open();
-		result = wizard.getEObject();
-		ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
-		ChangeDescription change = null;
-		if (changeRecorder != null) {
-			change = changeRecorder.endRecording();
-		}
-		editionContext.dispose();
-		if (executionResult == Window.CANCEL) {
-			if (change != null) {
-				change.applyAndReverse();
-			}
+		IWizardOpeningPolicy wizardOpeningPolicy = WizardOpeningPolicyProviderService.provide(editionContext.getEObject());
+		boolean open = wizardOpeningPolicy.openWizard(editionContext, wizard);
+		if (open) {
+			result = wizard.getEObject();
+		} else{
 			result = null;
 		}
+		editionContext.dispose();
 	}
 
 	/**

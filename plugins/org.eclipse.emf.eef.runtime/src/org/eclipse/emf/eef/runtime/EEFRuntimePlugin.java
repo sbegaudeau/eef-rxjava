@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.runtime.api.providers.IReadOnlyPolicy;
 import org.eclipse.emf.eef.runtime.impl.services.LockPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentListenerProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.ReadOnlyPolicyProviderService;
+import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
 import org.eclipse.emf.eef.runtime.policies.ILockPolicy;
+import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -72,6 +74,11 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 * Lock policies
 	 */
 	private List<ILockPolicy> lockPolicies = null;
+	
+	/**
+	 * Wizard opening policies
+	 */
+	private List<IWizardOpeningPolicy> wizardOpeningPolicies = null;
 
 
 	/**
@@ -121,6 +128,7 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 		readOnlyPolicies = new ArrayList<IReadOnlyPolicy>(1);
 		pecListeners = new ArrayList<IPropertiesEditionComponentListener>(1);
 		lockPolicies = new ArrayList<ILockPolicy>(1);
+		wizardOpeningPolicies = new ArrayList<IWizardOpeningPolicy>(1);
 	}
 
 	/**
@@ -133,6 +141,14 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 		initReadOnlyPolicies();
 		initPECListeners();
 		initLockPolicies();
+		initWizardOpeningPolicies();
+	}
+
+	/**
+	 * Init read only policies : use the service and find the extension point
+	 */
+	private void initWizardOpeningPolicies() {
+		wizardOpeningPolicies.addAll(WizardOpeningPolicyProviderService.getInstance().getPolicies());
 	}
 
 	/**
@@ -165,6 +181,7 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 		plugin = null;
 		if (imageRegistry != null)
 			imageRegistry.dispose();
+		wizardOpeningPolicies.clear();
 		lockPolicies.clear();
 		pecListeners.clear();
 		readOnlyPolicies.clear();
@@ -258,6 +275,13 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 */
 	public List<ILockPolicy> getLockPolicies() {
 		return lockPolicies;
+	}
+
+	/**
+	 * @return the wizard opening policies
+	 */
+	public List<IWizardOpeningPolicy> getWizardOpeningPolicies() {
+		return wizardOpeningPolicies;
 	}
 
 }
