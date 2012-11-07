@@ -142,6 +142,7 @@
 		<module>../../plugins/org.eclipse.emf.eef.runtime</module>
 		<module>../../plugins/org.eclipse.emf.eef.runtime.extended</module>
 		<module>../../plugins/org.eclipse.emf.eef.runtime.tests</module>
+		<module>../../plugins/org.eclipse.emf.eef.cdo.runtime</module>
 
 		<module>../../doc/org.eclipse.emf.eef.doc</module>
 
