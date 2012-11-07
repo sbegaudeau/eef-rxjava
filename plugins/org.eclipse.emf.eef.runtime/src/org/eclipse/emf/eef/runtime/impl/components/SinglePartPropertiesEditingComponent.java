@@ -228,6 +228,13 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 			((CompositePropertiesEditionPart) editingPart).refresh();
 		}
 	}
+
+	/**
+	 * @return IPropertiesEditionPart
+	 */
+	public IPropertiesEditionPart getEditingPart() {
+		return editingPart;
+	}
 	
 	
 }
