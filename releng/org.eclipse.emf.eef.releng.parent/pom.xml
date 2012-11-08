@@ -186,7 +186,7 @@
 
 		<module>../../plugins/org.eclipse.emf.eef.branding</module>
 		<module>../../features/org.eclipse.emf.eef.runtime-feature</module>
-		<module>../../features/org.eclipse.emf.eef.collab.runtime-feature</modules>
+		<module>../../features/org.eclipse.emf.eef.collab.runtime-feature</module>
 		<module>../../features/org.eclipse.emf.eef.extended-feature</module>
 		<module>../../features/org.eclipse.emf.eef.richtext-feature</module>
 		<module>../../features/org.eclipse.emf.eef.edt-feature</module>
