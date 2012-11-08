@@ -37,7 +37,7 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	 */
 	public void lock(IPropertiesEditionComponent propertiesEditingComponent) {
 		lock(propertiesEditingComponent.getEditingContext().getEObject());
-		lock(propertiesEditingComponent.getAllSettings());
+		lock(propertiesEditingComponent.getEditingContext().getAllSettings());
 	}
 
 	private void lock(List<EEFEditorSettings> allSettings) {
