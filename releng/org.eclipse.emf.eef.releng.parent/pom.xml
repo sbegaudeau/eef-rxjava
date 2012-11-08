@@ -179,10 +179,10 @@
 		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
 		<module>../../tests/org.eclipse.emf.examples.eef.editor</module>
 		<module>../../tests/org.eclipse.emf.examples.eef.tests.junit</module>
-		<!--<module>../org.eclipse.emf.eef.tests.nonreg</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg.edit</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg.editor</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg.junit</module> -->
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.edit</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.editor</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.junit</module>
 
 		<module>../../plugins/org.eclipse.emf.eef.branding</module>
 		<module>../../features/org.eclipse.emf.eef.runtime-feature</module>
