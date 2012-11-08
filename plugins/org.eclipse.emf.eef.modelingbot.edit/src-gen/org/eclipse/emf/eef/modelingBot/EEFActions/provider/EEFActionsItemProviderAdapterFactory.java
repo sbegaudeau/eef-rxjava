@@ -310,6 +310,52 @@ public class EEFActionsItemProviderAdapterFactory extends EEFActionsAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.modelingBot.EEFActions.MoveUp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MoveUpItemProvider moveUpItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.modelingBot.EEFActions.MoveUp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMoveUpAdapter() {
+		if (moveUpItemProvider == null) {
+			moveUpItemProvider = new MoveUpItemProvider(this);
+		}
+
+		return moveUpItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.modelingBot.EEFActions.MoveDown} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MoveDownItemProvider moveDownItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.modelingBot.EEFActions.MoveDown}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMoveDownAdapter() {
+		if (moveDownItemProvider == null) {
+			moveDownItemProvider = new MoveDownItemProvider(this);
+		}
+
+		return moveDownItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +464,8 @@ public class EEFActionsItemProviderAdapterFactory extends EEFActionsAdapterFacto
 		if (openEEFEditorItemProvider != null) openEEFEditorItemProvider.dispose();
 		if (setReferenceItemProvider != null) setReferenceItemProvider.dispose();
 		if (unsetReferenceItemProvider != null) unsetReferenceItemProvider.dispose();
+		if (moveUpItemProvider != null) moveUpItemProvider.dispose();
+		if (moveDownItemProvider != null) moveDownItemProvider.dispose();
 	}
 
 }

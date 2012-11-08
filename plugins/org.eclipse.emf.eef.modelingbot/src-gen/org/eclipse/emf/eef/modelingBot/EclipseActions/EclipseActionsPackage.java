@@ -491,6 +491,61 @@ public interface EclipseActionsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.OpenEditorImpl <em>Open Editor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.impl.OpenEditorImpl
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.impl.EclipseActionsPackageImpl#getOpenEditor()
+	 * @generated
+	 */
+	int OPEN_EDITOR = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPEN_EDITOR__NAME = ECLIPSE_ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPEN_EDITOR__DOCUMENTATION = ECLIPSE_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Editor Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPEN_EDITOR__EDITOR_NAME = ECLIPSE_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPEN_EDITOR__ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Open Editor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPEN_EDITOR_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl <em>Create Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -498,7 +553,7 @@ public interface EclipseActionsPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.impl.EclipseActionsPackageImpl#getCreateModel()
 	 * @generated
 	 */
-	int CREATE_MODEL = 10;
+	int CREATE_MODEL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -722,6 +777,38 @@ public interface EclipseActionsPackage extends EPackage {
 	EAttribute getCloseEditor_Path();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor <em>Open Editor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Open Editor</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor
+	 * @generated
+	 */
+	EClass getOpenEditor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor#getEditorName <em>Editor Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Editor Name</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor#getEditorName()
+	 * @see #getOpenEditor()
+	 * @generated
+	 */
+	EAttribute getOpenEditor_EditorName();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Root</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor#getRoot()
+	 * @see #getOpenEditor()
+	 * @generated
+	 */
+	EReference getOpenEditor_Root();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel <em>Create Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -933,6 +1020,32 @@ public interface EclipseActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLOSE_EDITOR__PATH = eINSTANCE.getCloseEditor_Path();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.OpenEditorImpl <em>Open Editor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.impl.OpenEditorImpl
+		 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.impl.EclipseActionsPackageImpl#getOpenEditor()
+		 * @generated
+		 */
+		EClass OPEN_EDITOR = eINSTANCE.getOpenEditor();
+
+		/**
+		 * The meta object literal for the '<em><b>Editor Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPEN_EDITOR__EDITOR_NAME = eINSTANCE.getOpenEditor_EditorName();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPEN_EDITOR__ROOT = eINSTANCE.getOpenEditor_Root();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl <em>Create Model</em>}' class.

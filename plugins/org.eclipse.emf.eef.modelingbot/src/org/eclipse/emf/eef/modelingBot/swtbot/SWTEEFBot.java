@@ -12,6 +12,11 @@
 package org.eclipse.emf.eef.modelingBot.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withMnemonic;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withStyle;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withTooltip;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
@@ -55,15 +60,20 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.ToolItem;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.keyboard.KeyboardFactory;
 import org.eclipse.swtbot.swt.finder.results.IntResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCTabItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
@@ -72,6 +82,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
+import org.hamcrest.Matcher;
 
 /**
  * SWTBot bor for EEF editor.
@@ -260,6 +271,19 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotHelper.clickContextMenu(treeItem, UIConstants.INTERACTIVE_EEF_EDITOR_MENU);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#openEditor(java.lang.String)
+	 */
+	public EObject openEditor(String path) {
+		final SWTBotTreeItem treeItem = selectInProjectExplorer(path);
+		SWTBotHelper.clickContextMenu(treeItem, "Open");
+		String splittedPath[] = path.split("/");
+		editor = editorByTitle(splittedPath[1]);
+		return getRoot(splittedPath[0], splittedPath[1]);
+	}
+
 	private SWTBotTreeItem selectInProjectExplorer(String path) {
 		final SWTBotTree wizardTree = viewByTitle(UIConstants.PACKAGE_EXPLORER_VIEW_NAME).bot().tree();
 		final String[] split = path.split("/");
@@ -330,7 +354,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotHelper.waitAllUiEvents();
 		final SWTBotTreeItem selectNode = selectNode(editor, container);
 		assertNotNull("No element is selected in the editor", selectNode);
-		initTab(propertiesEditionElement);
+		if (sequenceType.equals(SequenceType.PROPERTIES_VIEW))
+			initPropertiesViewTab(propertiesEditionElement, selectNode);
+		else
+			initTab(propertiesEditionElement);
 		assertFalse("The set action must be define in a sequence.", sequenceType == null);
 		propertiesEdition.addFeature(selectNode, propertiesEditionElement, referenceableObject, sequenceType);
 		SWTBotHelper.waitAllUiEvents();
@@ -449,6 +476,28 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 					containerOfcontainer, values, sequenceType);
 		}
 	}
+	
+	/**
+	 * Select the tab defined in the PEE.
+	 * 
+	 * @param propertiesEditionElement
+	 *            PropertiesEditionElement
+	 */
+	protected void initPropertiesViewTab(PropertiesEditionElement propertiesEditionElement,
+				SWTBotTreeItem selectNode) {
+		assertFalse(propertiesEditionElement.getViews().isEmpty());
+		if (EEFModelHelper.getComponent(propertiesEditionElement).getViews().size() > 1) {
+			final ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
+			final View view = EEFModelHelper.getView(elementEditor);
+			if (view.getName() != null) {
+				if (selectNode.getText().equals(view.getName())) {
+					SWTBotHelper.selectPropertyTabItem("Base");
+				} else {
+					SWTBotHelper.selectPropertyTabItem(view.getName());
+				}
+			}
+	 	}
+	}
 
 	/**
 	 * Select the tab defined in the PEE.
@@ -462,8 +511,9 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 			final ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
 			final View view = EEFModelHelper.getView(elementEditor);
 			if (view.getName() != null) {
-				cTabItem(view.getName()).activate();
-				cTabItem(view.getName()).setFocus();
+				SWTBotCTabItem cTabItem = cTabItem(view.getName());
+				cTabItem.activate();
+				cTabItem.setFocus();
 			}
 		}
 	}
@@ -1302,6 +1352,24 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		if (wizard.getReferenceableObject() != null) {
 			button(UIConstants.FINISH_BUTTON).click();
 		}
+	}
+
+	public void moveUp(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
+		assertNotNull(referenceableObject);
+		EObject eObject = getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull(eObject);
+		selectInActiveTable(eObject);
+		buttonWithTooltip(UIConstants.UP_BUTTON).click();
+	}
+
+	public void moveDown(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
+		assertNotNull(referenceableObject);
+		EObject eObject = getEObjectFromReferenceableEObject(referenceableObject);
+		assertNotNull(eObject);
+		selectInActiveTable(eObject);
+		buttonWithTooltip(UIConstants.DOWN_BUTTON).click();
 	}
 
 }

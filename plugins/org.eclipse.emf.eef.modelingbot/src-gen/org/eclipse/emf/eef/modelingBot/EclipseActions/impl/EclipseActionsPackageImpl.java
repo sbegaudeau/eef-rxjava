@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseAction;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsFactory;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
+import org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.OpenPerspective;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.OpenProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.Redo;
@@ -120,6 +121,13 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 	 * @generated
 	 */
 	private EClass closeEditorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass openEditorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -350,6 +358,33 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOpenEditor() {
+		return openEditorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOpenEditor_EditorName() {
+		return (EAttribute)openEditorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOpenEditor_Root() {
+		return (EReference)openEditorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCreateModel() {
 		return createModelEClass;
 	}
@@ -435,6 +470,10 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		closeEditorEClass = createEClass(CLOSE_EDITOR);
 		createEAttribute(closeEditorEClass, CLOSE_EDITOR__PATH);
 
+		openEditorEClass = createEClass(OPEN_EDITOR);
+		createEAttribute(openEditorEClass, OPEN_EDITOR__EDITOR_NAME);
+		createEReference(openEditorEClass, OPEN_EDITOR__ROOT);
+
 		createModelEClass = createEClass(CREATE_MODEL);
 		createEAttribute(createModelEClass, CREATE_MODEL__MODEL_NAME);
 		createEAttribute(createModelEClass, CREATE_MODEL__PATH);
@@ -466,8 +505,8 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 
 		// Obtain other dependent packages
 		ModelingBotPackage theModelingBotPackage = (ModelingBotPackage)EPackage.Registry.INSTANCE.getEPackage(ModelingBotPackage.eNS_URI);
-		EditorPackage theEditorPackage = (EditorPackage)EPackage.Registry.INSTANCE.getEPackage(EditorPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		EditorPackage theEditorPackage = (EditorPackage)EPackage.Registry.INSTANCE.getEPackage(EditorPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -484,6 +523,7 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		openProjectEClass.getESuperTypes().add(this.getEclipseAction());
 		removeProjectEClass.getESuperTypes().add(this.getEclipseAction());
 		closeEditorEClass.getESuperTypes().add(this.getEclipseAction());
+		openEditorEClass.getESuperTypes().add(this.getEclipseAction());
 		createModelEClass.getESuperTypes().add(this.getEclipseAction());
 		createModelEClass.getESuperTypes().add(theEditorPackage.getReferenceableObject());
 
@@ -513,6 +553,10 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 
 		initEClass(closeEditorEClass, CloseEditor.class, "CloseEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCloseEditor_Path(), ecorePackage.getEString(), "path", null, 0, 1, CloseEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(openEditorEClass, OpenEditor.class, "OpenEditor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOpenEditor_EditorName(), theEcorePackage.getEString(), "editorName", null, 0, 1, OpenEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOpenEditor_Root(), theEcorePackage.getEClass(), null, "root", null, 0, 1, OpenEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(createModelEClass, CreateModel.class, "CreateModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCreateModel_ModelName(), ecorePackage.getEString(), "modelName", null, 0, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

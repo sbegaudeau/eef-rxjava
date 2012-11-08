@@ -111,6 +111,15 @@ public interface EclipseActionsFactory extends EFactory {
 	CloseEditor createCloseEditor();
 
 	/**
+	 * Returns a new object of class '<em>Open Editor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Open Editor</em>'.
+	 * @generated
+	 */
+	OpenEditor createOpenEditor();
+
+	/**
 	 * Returns a new object of class '<em>Create Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

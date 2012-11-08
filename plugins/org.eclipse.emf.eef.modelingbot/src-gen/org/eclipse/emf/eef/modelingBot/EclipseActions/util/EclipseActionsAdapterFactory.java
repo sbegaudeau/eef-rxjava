@@ -121,6 +121,10 @@ public class EclipseActionsAdapterFactory extends AdapterFactoryImpl {
 				return createCloseEditorAdapter();
 			}
 			@Override
+			public Adapter caseOpenEditor(OpenEditor object) {
+				return createOpenEditorAdapter();
+			}
+			@Override
 			public Adapter caseCreateModel(CreateModel object) {
 				return createCreateModelAdapter();
 			}
@@ -297,6 +301,20 @@ public class EclipseActionsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCloseEditorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor <em>Open Editor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor
+	 * @generated
+	 */
+	public Adapter createOpenEditorAdapter() {
 		return null;
 	}
 

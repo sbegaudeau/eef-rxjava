@@ -73,6 +73,7 @@ public class EclipseActionsFactoryImpl extends EFactoryImpl implements EclipseAc
 			case EclipseActionsPackage.OPEN_PROJECT: return createOpenProject();
 			case EclipseActionsPackage.REMOVE_PROJECT: return createRemoveProject();
 			case EclipseActionsPackage.CLOSE_EDITOR: return createCloseEditor();
+			case EclipseActionsPackage.OPEN_EDITOR: return createOpenEditor();
 			case EclipseActionsPackage.CREATE_MODEL: return createCreateModel();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -167,6 +168,16 @@ public class EclipseActionsFactoryImpl extends EFactoryImpl implements EclipseAc
 	public CloseEditor createCloseEditor() {
 		CloseEditorImpl closeEditor = new CloseEditorImpl();
 		return closeEditor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OpenEditor createOpenEditor() {
+		OpenEditorImpl openEditor = new OpenEditorImpl();
+		return openEditor;
 	}
 
 	/**

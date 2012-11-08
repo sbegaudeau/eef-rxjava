@@ -65,7 +65,8 @@ public class UIConstants {
 	public static final String ADD_BUTTON = "Add";
 	public static final String CANCEL_BUTTON = "Cancel";
 	public static final String NEXT_BUTTON = "Next >";
-	
+	public static final String UP_BUTTON = "Up";
+	public static final String DOWN_BUTTON = "Down";
 	
 
 }

@@ -245,6 +245,16 @@ public class SequenceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
+				 EEFActionsFactory.eINSTANCE.createMoveUp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
+				 EEFActionsFactory.eINSTANCE.createMoveDown()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
 				 EclipseActionsFactory.eINSTANCE.createCreateProject()));
 
 		newChildDescriptors.add
@@ -286,6 +296,11 @@ public class SequenceItemProvider
 			(createChildParameter
 				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
 				 EclipseActionsFactory.eINSTANCE.createCloseEditor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelingBotPackage.Literals.SEQUENCE__PROCESSINGS,
+				 EclipseActionsFactory.eINSTANCE.createOpenEditor()));
 
 		newChildDescriptors.add
 			(createChildParameter

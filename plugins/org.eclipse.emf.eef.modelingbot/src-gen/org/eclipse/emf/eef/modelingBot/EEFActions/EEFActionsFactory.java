@@ -120,6 +120,24 @@ public interface EEFActionsFactory extends EFactory {
 	UnsetReference createUnsetReference();
 
 	/**
+	 * Returns a new object of class '<em>Move Up</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Move Up</em>'.
+	 * @generated
+	 */
+	MoveUp createMoveUp();
+
+	/**
+	 * Returns a new object of class '<em>Move Down</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Move Down</em>'.
+	 * @generated
+	 */
+	MoveDown createMoveDown();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

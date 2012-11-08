@@ -195,6 +195,16 @@ public class EclipseActionsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EclipseActionsPackage.OPEN_EDITOR: {
+				OpenEditor openEditor = (OpenEditor)theEObject;
+				T result = caseOpenEditor(openEditor);
+				if (result == null) result = caseEclipseAction(openEditor);
+				if (result == null) result = caseAction(openEditor);
+				if (result == null) result = caseDocumentedElement(openEditor);
+				if (result == null) result = caseProcessing(openEditor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EclipseActionsPackage.CREATE_MODEL: {
 				CreateModel createModel = (CreateModel)theEObject;
 				T result = caseCreateModel(createModel);
@@ -357,6 +367,21 @@ public class EclipseActionsSwitch<T> {
 	 * @generated
 	 */
 	public T caseCloseEditor(CloseEditor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Open Editor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Open Editor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOpenEditor(OpenEditor object) {
 		return null;
 	}
 
