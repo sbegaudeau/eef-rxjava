@@ -124,6 +124,8 @@ public class EMFHelper {
 				target = container;
 				
 			}
+		}else if (SequenceType.PROPERTIES_VIEW == sequenceType) {
+			target = container;
 		}
 		assertFalse(target == null);
 		EStructuralFeature model = EMFHelper.map(target.eClass().getEPackage(), propertiesEditionElement.getModel());

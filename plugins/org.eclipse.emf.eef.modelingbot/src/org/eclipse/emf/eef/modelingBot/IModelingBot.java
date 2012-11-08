@@ -83,6 +83,15 @@ public interface IModelingBot {
 	void openEEFEditor(String path);
 
 	/**
+	 * Open an editor.
+	 * 
+	 * @param path
+	 *            editor path from its project.
+	 * @return: {@link EObject}
+	 */
+	EObject openEditor(String path);
+
+	/**
 	 * Close an editor.
 	 * 
 	 * @param path
@@ -104,9 +113,9 @@ public interface IModelingBot {
 	 * @return
 	 */
 	EObject add(org.eclipse.emf.eef.components.PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObjectContainer, ReferenceableObject referenceableObject, 
+			ReferenceableObject referenceableObjectContainer, ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature, EClass type);
-	
+
 	/**
 	 * Remove an element.
 	 * 
@@ -117,6 +126,23 @@ public interface IModelingBot {
 	void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
 
 	/**
+	 * moves up an element.
+	 * 
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 */
+	void moveUp(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
+
+
+	/**
+	 * moves down an element.
+	 * 
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 */
+	void moveDown(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
+
+	/**
 	 * Set an attribute.
 	 * 
 	 * @param propertiesEditionElement
@@ -124,8 +150,9 @@ public interface IModelingBot {
 	 * @param eContainingFeature
 	 * @param values
 	 */
-	void setAttribute(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, Collection<String> values);
+	void setAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<String> values);
 
 	/**
 	 * Set a reference.
@@ -134,8 +161,9 @@ public interface IModelingBot {
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void setReference(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, Collection<ReferenceableObject> values);
+	void setReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<ReferenceableObject> values);
 
 	/**
 	 * Unset all the values of an attribute or a reference.
@@ -154,9 +182,10 @@ public interface IModelingBot {
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void unsetAttribute(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, Collection<String> values);
-	
+	void unsetAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<String> values);
+
 	/**
 	 * Unset a reference.
 	 * 
@@ -164,9 +193,10 @@ public interface IModelingBot {
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void unsetReference(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, Collection<ReferenceableObject> values);
-	
+	void unsetReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<ReferenceableObject> values);
+
 	/**
 	 * Create a new resource.
 	 * 
@@ -201,12 +231,12 @@ public interface IModelingBot {
 	 * Undo.
 	 */
 	void undo(Action action);
-	
+
 	/**
 	 * Redo.
 	 */
 	void redo(Action action);
-	
+
 	/**
 	 * @return the test model resource.
 	 */

@@ -774,6 +774,116 @@ public interface EEFActionsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveUpImpl <em>Move Up</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveUpImpl
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.EEFActionsPackageImpl#getMoveUp()
+	 * @generated
+	 */
+	int MOVE_UP = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__NAME = EDIT_ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__REFERENCEABLE_OBJECT = EDIT_ACTION__REFERENCEABLE_OBJECT;
+
+	/**
+	 * The number of structural features of the '<em>Move Up</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveDownImpl <em>Move Down</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveDownImpl
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.EEFActionsPackageImpl#getMoveDown()
+	 * @generated
+	 */
+	int MOVE_DOWN = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__NAME = EDIT_ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__REFERENCEABLE_OBJECT = EDIT_ACTION__REFERENCEABLE_OBJECT;
+
+	/**
+	 * The number of structural features of the '<em>Move Down</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.EEFAction <em>EEF Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1059,6 +1169,26 @@ public interface EEFActionsPackage extends EPackage {
 	EReference getUnsetReference_Values();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.MoveUp <em>Move Up</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Move Up</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.MoveUp
+	 * @generated
+	 */
+	EClass getMoveUp();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.MoveDown <em>Move Down</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Move Down</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.MoveDown
+	 * @generated
+	 */
+	EClass getMoveDown();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1319,6 +1449,26 @@ public interface EEFActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UNSET_REFERENCE__VALUES = eINSTANCE.getUnsetReference_Values();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveUpImpl <em>Move Up</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveUpImpl
+		 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.EEFActionsPackageImpl#getMoveUp()
+		 * @generated
+		 */
+		EClass MOVE_UP = eINSTANCE.getMoveUp();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveDownImpl <em>Move Down</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.MoveDownImpl
+		 * @see org.eclipse.emf.eef.modelingBot.EEFActions.impl.EEFActionsPackageImpl#getMoveDown()
+		 * @generated
+		 */
+		EClass MOVE_DOWN = eINSTANCE.getMoveDown();
 
 	}
 

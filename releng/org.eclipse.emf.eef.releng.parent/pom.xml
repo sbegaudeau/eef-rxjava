@@ -88,6 +88,11 @@
 					<layout>p2</layout>
 					<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
 				</repository>
+				<repository>
+					<id>cdo</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/emf/cdo/updates/releases/4.0/</url>
+				</repository>
 			</repositories>
 		</profile>
 		<profile>

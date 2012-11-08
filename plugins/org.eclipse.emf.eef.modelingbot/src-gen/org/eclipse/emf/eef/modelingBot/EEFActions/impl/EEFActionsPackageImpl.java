@@ -15,15 +15,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.components.ComponentsPackage;
-
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
-
 import org.eclipse.emf.eef.extended.query.QueryPackage;
-
+import org.eclipse.emf.eef.modelingBot.ModelingBotPackage;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Cancel;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Check;
@@ -31,20 +27,17 @@ import org.eclipse.emf.eef.modelingBot.EEFActions.EEFAction;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsFactory;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
+import org.eclipse.emf.eef.modelingBot.EEFActions.MoveDown;
+import org.eclipse.emf.eef.modelingBot.EEFActions.MoveUp;
 import org.eclipse.emf.eef.modelingBot.EEFActions.OpenEEFEditor;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Remove;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetReference;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Unset;
-
 import org.eclipse.emf.eef.modelingBot.EEFActions.UnsetAttribute;
 import org.eclipse.emf.eef.modelingBot.EEFActions.UnsetReference;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
-
 import org.eclipse.emf.eef.modelingBot.EclipseActions.impl.EclipseActionsPackageImpl;
-
-import org.eclipse.emf.eef.modelingBot.ModelingBotPackage;
-
 import org.eclipse.emf.eef.modelingBot.impl.ModelingBotPackageImpl;
 
 /**
@@ -137,6 +130,20 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * @generated
 	 */
 	private EClass unsetReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moveUpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moveDownEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -459,6 +466,24 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMoveUp() {
+		return moveUpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMoveDown() {
+		return moveDownEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEFActionsFactory getEEFActionsFactory() {
 		return (EEFActionsFactory)getEFactoryInstance();
 	}
@@ -520,6 +545,10 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		unsetReferenceEClass = createEClass(UNSET_REFERENCE);
 		createEReference(unsetReferenceEClass, UNSET_REFERENCE__FEATURE);
 		createEReference(unsetReferenceEClass, UNSET_REFERENCE__VALUES);
+
+		moveUpEClass = createEClass(MOVE_UP);
+
+		moveDownEClass = createEClass(MOVE_DOWN);
 	}
 
 	/**
@@ -569,6 +598,8 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		openEEFEditorEClass.getESuperTypes().add(this.getEEFAction());
 		setReferenceEClass.getESuperTypes().add(this.getEditAction());
 		unsetReferenceEClass.getESuperTypes().add(this.getEditAction());
+		moveUpEClass.getESuperTypes().add(this.getEditAction());
+		moveDownEClass.getESuperTypes().add(this.getEditAction());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eefActionEClass, EEFAction.class, "EEFAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -609,6 +640,10 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		initEClass(unsetReferenceEClass, UnsetReference.class, "UnsetReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnsetReference_Feature(), theEcorePackage.getEStructuralFeature(), null, "feature", null, 0, 1, UnsetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnsetReference_Values(), theEditorPackage.getReferenceableObject(), null, "values", null, 0, -1, UnsetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(moveUpEClass, MoveUp.class, "MoveUp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(moveDownEClass, MoveDown.class, "MoveDown", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //EEFActionsPackageImpl

@@ -287,6 +287,29 @@ public class EclipseActionsItemProviderAdapterFactory extends EclipseActionsAdap
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OpenEditorItemProvider openEditorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.modelingBot.EclipseActions.OpenEditor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOpenEditorAdapter() {
+		if (openEditorItemProvider == null) {
+			openEditorItemProvider = new OpenEditorItemProvider(this);
+		}
+
+		return openEditorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -417,6 +440,7 @@ public class EclipseActionsItemProviderAdapterFactory extends EclipseActionsAdap
 		if (openProjectItemProvider != null) openProjectItemProvider.dispose();
 		if (removeProjectItemProvider != null) removeProjectItemProvider.dispose();
 		if (closeEditorItemProvider != null) closeEditorItemProvider.dispose();
+		if (openEditorItemProvider != null) openEditorItemProvider.dispose();
 		if (createModelItemProvider != null) createModelItemProvider.dispose();
 	}
 
