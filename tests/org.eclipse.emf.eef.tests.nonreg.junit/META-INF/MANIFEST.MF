@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Junit
 Bundle-SymbolicName: org.eclipse.emf.eef.tests.nonreg.junit
-Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.emf.eef.runtime.tests,
- org.eclipse.emf.eef.runtime,
+Bundle-Version: 1.2.0.qualifier
+Require-Bundle: org.eclipse.emf.eef.runtime,
  org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.eef.tests.nonreg.edit,
- org.junit4
+ org.junit4,
+ org.eclipse.emf.eef.modelingbot
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
