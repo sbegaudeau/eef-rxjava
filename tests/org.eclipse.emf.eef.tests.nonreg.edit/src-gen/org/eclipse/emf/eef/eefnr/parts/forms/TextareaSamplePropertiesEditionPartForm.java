@@ -342,7 +342,7 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(textareaRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
 		if (readOnly && textareaRequiredProperty.isEnabled()) {
 			textareaRequiredProperty.setEnabled(false);
 			textareaRequiredProperty.setBackground(textareaRequiredProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
@@ -375,7 +375,7 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(textareaOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
 		if (readOnly && textareaOptionalProperty.isEnabled()) {
 			textareaOptionalProperty.setEnabled(false);
 			textareaOptionalProperty.setBackground(textareaOptionalProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));

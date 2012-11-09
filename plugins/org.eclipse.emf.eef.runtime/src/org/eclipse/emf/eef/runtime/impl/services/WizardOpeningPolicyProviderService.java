@@ -129,7 +129,7 @@ public class WizardOpeningPolicyProviderService {
 	}
 
 	private static IWizardOpeningPolicy getWizardOpeningPolicy(EObject eObject) {
-		for (IWizardOpeningPolicy openingPolicy : EEFRuntimePlugin.getDefault().getWizardOpeningPolicies()) {
+		for (IWizardOpeningPolicy openingPolicy : WizardOpeningPolicyProviderService.getInstance().getPolicies()) {
 			if (openingPolicy.provide(eObject)) {
 				return openingPolicy;
 			}

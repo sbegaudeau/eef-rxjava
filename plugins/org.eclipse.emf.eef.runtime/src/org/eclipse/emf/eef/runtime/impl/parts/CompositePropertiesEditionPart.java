@@ -17,11 +17,11 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IReadOnlyPolicy;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.services.ReadOnlyPolicyProviderService;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
@@ -242,21 +242,21 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	}
 
 	/**
-	 * @param control
-	 *            Widget
+	 * @param editorKey
+	 *            EditorKey
 	 * 
 	 * @return if the widget is read only
 	 */
-	public boolean isReadOnly(Object control, EObject context) {
+	public boolean isReadOnly(Object editorKey, EObject context) {
 		EObject eObject = context;
 		if (eObject == null) {
 			eObject = propertiesEditionComponent.getEditingContext().getEObject();
 		}
 		
 		if (eObject != null) {
-			List<IReadOnlyPolicy> policies = EEFRuntimePlugin.getDefault().getReadOnlyPolicies();
+			List<IReadOnlyPolicy> policies = ReadOnlyPolicyProviderService.getInstance().getPolicies();
 			for (IReadOnlyPolicy iReadOnlyPolicy : policies) {
-				if (iReadOnlyPolicy.isReadOnly(eObject, control)) {
+				if (iReadOnlyPolicy.isReadOnly(eObject,  propertiesEditionComponent.associatedFeature(editorKey))) {
 					return true;
 				}
 			}
@@ -265,13 +265,13 @@ public abstract class CompositePropertiesEditionPart implements IPropertiesEditi
 	}
 	
 	/**
-	 * @param control
-	 *            Widget
+	 * @param editorKey
+	 *            EditorKey
 	 * 
 	 * @return if the widget is read only
 	 */
-	public boolean isReadOnly(Object control) {
-		return isReadOnly(control, null);
+	public boolean isReadOnly(Object editorKey) {
+		return isReadOnly(editorKey, null);
 	}
 
 	/**

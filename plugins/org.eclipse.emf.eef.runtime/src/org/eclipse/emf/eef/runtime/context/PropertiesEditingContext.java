@@ -40,11 +40,6 @@ public interface PropertiesEditingContext {
 	public EObject getEObject();
 	
 	/**
-	 * @return the settings to use.
-	 */
-	public List<EEFEditorSettings> getAllSettings();
-	
-	/**
 	 * @return the resourceSet where to work.
 	 */
 	public ResourceSet getResourceSet();
@@ -69,9 +64,4 @@ public interface PropertiesEditingContext {
 	 */
 	public abstract void seteObject(EObject eObject);
 	
-	/**
-	 * set the settings to use.
-	 */
-	public void setAllSettings(List<EEFEditorSettings> settings);
-
 }

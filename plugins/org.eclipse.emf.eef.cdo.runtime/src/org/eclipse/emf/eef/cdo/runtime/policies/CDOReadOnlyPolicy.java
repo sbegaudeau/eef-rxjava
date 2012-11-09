@@ -27,7 +27,7 @@ public class CDOReadOnlyPolicy implements IReadOnlyPolicy {
 	/** (non-Javadoc)
 	 * @see org.eclipse.emf.eef.runtime.api.providers.IReadOnlyPolicy#isReadOnly(org.eclipse.emf.ecore.EObject, java.lang.Object)
 	 */
-	public boolean isReadOnly(EObject context, Object widget) {
+	public boolean isReadOnly(EObject context, Object eStructuralFeature) {
 		if (context != null) {
 			CDOObject cdoObject = CDOUtil.getCDOObject(context);
 			if (cdoObject != null

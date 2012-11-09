@@ -664,7 +664,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableRequiredProperty.setContentProvider(contentProvider);
 		referencestableRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(referencestableRequiredProperty.getTable());
+		boolean readOnly = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		if (readOnly && referencestableRequiredProperty.getTable().isEnabled()) {
 			referencestableRequiredProperty.getTable().setEnabled(false);
 			referencestableRequiredProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
@@ -733,7 +733,7 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(referencestableOptionalProperty.getTable());
+		boolean readOnly = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
 		if (readOnly && referencestableOptionalProperty.getTable().isEnabled()) {
 			referencestableOptionalProperty.getTable().setEnabled(false);
 			referencestableOptionalProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);

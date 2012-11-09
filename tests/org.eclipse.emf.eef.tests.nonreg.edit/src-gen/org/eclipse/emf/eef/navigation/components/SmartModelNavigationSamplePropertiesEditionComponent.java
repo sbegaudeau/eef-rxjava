@@ -408,7 +408,6 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNSingleValueSettings);
 		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueSettings);
 		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueWithFilterSettings);
-		editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 	}
 			final SmartModelNavigationSample smartModelNavigationSample = (SmartModelNavigationSample)elt;
 			final SmartNavigationSamplePropertiesEditionPart smartNavigationSamplePart = (SmartNavigationSamplePropertiesEditionPart)editingPart;

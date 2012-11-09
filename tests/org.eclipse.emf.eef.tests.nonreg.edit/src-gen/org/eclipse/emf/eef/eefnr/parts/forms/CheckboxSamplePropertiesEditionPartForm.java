@@ -251,7 +251,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxRequiredProperty.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(checkboxRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
 		if (readOnly && checkboxRequiredProperty.isEnabled()) {
 			checkboxRequiredProperty.setEnabled(false);
 			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
@@ -283,7 +283,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxOptionalProperty.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(checkboxOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
 		if (readOnly && checkboxOptionalProperty.isEnabled()) {
 			checkboxOptionalProperty.setEnabled(false);
 			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);

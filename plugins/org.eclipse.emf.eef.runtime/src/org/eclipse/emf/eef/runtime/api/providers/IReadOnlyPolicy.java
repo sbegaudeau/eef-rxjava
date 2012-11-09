@@ -23,10 +23,10 @@ public interface IReadOnlyPolicy {
 	/**
 	 * @param context
 	 *            Semantic EObject
-	 * @param widget
-	 *            Widget
+	 * @param eStructuralFeature
+	 *            EStructuralFeature
 	 * @return if the widget is read only
 	 */
-	boolean isReadOnly(EObject context, Object widget);
+	boolean isReadOnly(EObject context, Object eStructuralFeature);
 
 }

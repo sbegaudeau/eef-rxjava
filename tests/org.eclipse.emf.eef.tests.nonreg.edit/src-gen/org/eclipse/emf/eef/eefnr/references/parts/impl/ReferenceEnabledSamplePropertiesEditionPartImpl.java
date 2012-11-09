@@ -256,7 +256,7 @@ public class ReferenceEnabledSamplePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		reference.setContentProvider(contentProvider);
 		reference.setInput(settings);
-		boolean readOnly = isReadOnly(reference.getTable());
+		boolean readOnly = isReadOnly(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference);
 		if (readOnly && reference.getTable().isEnabled()) {
 			reference.setEnabled(false);
 			reference.setToolTipText(ReferencesMessages.ReferenceEnabledSample_ReadOnly);

@@ -208,7 +208,7 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 		} else {
 			checkboxEditorSample.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(checkboxEditorSample);
+		boolean readOnly = isReadOnly(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample);
 		if (readOnly && checkboxEditorSample.isEnabled()) {
 			checkboxEditorSample.setEnabled(false);
 			checkboxEditorSample.setToolTipText(EefnrextMessages.CheckBoxExtendedEditorSample_ReadOnly);

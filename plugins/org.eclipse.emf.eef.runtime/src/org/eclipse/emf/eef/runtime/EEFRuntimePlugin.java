@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
@@ -21,14 +19,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionComponentListener;
-import org.eclipse.emf.eef.runtime.api.providers.IReadOnlyPolicy;
-import org.eclipse.emf.eef.runtime.impl.services.LockPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentListenerProviderService;
-import org.eclipse.emf.eef.runtime.impl.services.ReadOnlyPolicyProviderService;
-import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
-import org.eclipse.emf.eef.runtime.policies.ILockPolicy;
-import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -60,27 +50,6 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	/** The shared imageRegistry. */
 	private static ImageRegistry imageRegistry = null;
 	
-	/**
-	 * Read only policies
-	 */
-	private List<IReadOnlyPolicy> readOnlyPolicies = null;
-	
-	/**
-	 * Read only policies
-	 */
-	private List<IPropertiesEditionComponentListener> pecListeners = null;
-	
-	/**
-	 * Lock policies
-	 */
-	private List<ILockPolicy> lockPolicies = null;
-	
-	/**
-	 * Wizard opening policies
-	 */
-	private List<IWizardOpeningPolicy> wizardOpeningPolicies = null;
-
-
 	/**
 	 * @return the Image associated to the key
 	 */
@@ -125,10 +94,6 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 			}
 
 		};
-		readOnlyPolicies = new ArrayList<IReadOnlyPolicy>(1);
-		pecListeners = new ArrayList<IPropertiesEditionComponentListener>(1);
-		lockPolicies = new ArrayList<ILockPolicy>(1);
-		wizardOpeningPolicies = new ArrayList<IWizardOpeningPolicy>(1);
 	}
 
 	/**
@@ -138,38 +103,6 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		initReadOnlyPolicies();
-		initPECListeners();
-		initLockPolicies();
-		initWizardOpeningPolicies();
-	}
-
-	/**
-	 * Init read only policies : use the service and find the extension point
-	 */
-	private void initWizardOpeningPolicies() {
-		wizardOpeningPolicies.addAll(WizardOpeningPolicyProviderService.getInstance().getPolicies());
-	}
-
-	/**
-	 * Init read only policies : use the service and find the extension point
-	 */
-	private void initReadOnlyPolicies() {
-		readOnlyPolicies.addAll(ReadOnlyPolicyProviderService.getInstance().getPolicies());
-	}
-	
-	/**
-	 * Init Properties Edition Component listeners : find the extension point
-	 */
-	private void initPECListeners() {
-		pecListeners.addAll(PropertiesEditionComponentListenerProviderService.getInstance().getListeners());
-	}
-	
-	/**
-	 * Init read only policies : use the service and find the extension point
-	 */
-	private void initLockPolicies() {
-		lockPolicies.addAll(LockPolicyProviderService.getInstance().getPolicies());
 	}
 
 	/**
@@ -181,10 +114,6 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 		plugin = null;
 		if (imageRegistry != null)
 			imageRegistry.dispose();
-		wizardOpeningPolicies.clear();
-		lockPolicies.clear();
-		pecListeners.clear();
-		readOnlyPolicies.clear();
 		super.stop(context);
 	}
 
@@ -254,34 +183,6 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String key) {
 		return AbstractUIPlugin.imageDescriptorFromPlugin(PLUGIN_ID, key);
-	}
-	
-	/**
-	 * @return the read only policies
-	 */
-	public List<IReadOnlyPolicy> getReadOnlyPolicies() {
-		return readOnlyPolicies;
-	}
-
-	/**
-	 * @return the properties edition component listeners
-	 */
-	public List<IPropertiesEditionComponentListener> getPecListeners() {
-		return pecListeners;
-	}
-	
-	/**
-	 * @return the lock policies
-	 */
-	public List<ILockPolicy> getLockPolicies() {
-		return lockPolicies;
-	}
-
-	/**
-	 * @return the wizard opening policies
-	 */
-	public List<IWizardOpeningPolicy> getWizardOpeningPolicies() {
-		return wizardOpeningPolicies;
 	}
 
 }

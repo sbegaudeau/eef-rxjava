@@ -1483,7 +1483,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(name);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.name);
 		if (readOnly && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1506,7 +1506,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		multipleSampleForTableComposition.setContentProvider(contentProvider);
 		multipleSampleForTableComposition.setInput(settings);
-		boolean readOnly = isReadOnly(multipleSampleForTableComposition);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		if (readOnly && multipleSampleForTableComposition.getTable().isEnabled()) {
 			multipleSampleForTableComposition.getTable().setEnabled(false);
 			multipleSampleForTableComposition.getTable().setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1581,7 +1581,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		multipleSampleForAdvancedTableComposition.setContentProvider(contentProvider);
 		multipleSampleForAdvancedTableComposition.setInput(settings);
-		boolean readOnly = isReadOnly(multipleSampleForAdvancedTableComposition);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition);
 		if (readOnly && multipleSampleForAdvancedTableComposition.isEnabled()) {
 			multipleSampleForAdvancedTableComposition.setEnabled(false);
 			multipleSampleForAdvancedTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1647,7 +1647,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		multipleSampleForReferencesTable.setContentProvider(contentProvider);
 		multipleSampleForReferencesTable.setInput(settings);
-		boolean readOnly = isReadOnly(multipleSampleForReferencesTable.getTable());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
 		if (readOnly && multipleSampleForReferencesTable.getTable().isEnabled()) {
 			multipleSampleForReferencesTable.getTable().setEnabled(false);
 			multipleSampleForReferencesTable.getTable().setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1716,7 +1716,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		multipleSampleForAdvancedReferencesTable.setContentProvider(contentProvider);
 		multipleSampleForAdvancedReferencesTable.setInput(settings);
-		boolean readOnly = isReadOnly(multipleSampleForAdvancedReferencesTable.getTable());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable);
 		if (readOnly && multipleSampleForAdvancedReferencesTable.getTable().isEnabled()) {
 			multipleSampleForAdvancedReferencesTable.setEnabled(false);
 			multipleSampleForAdvancedReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1777,7 +1777,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		multipleSampleForFlatReferencesTable.setInput(settings);
-		boolean readOnly = isReadOnly(multipleSampleForFlatReferencesTable);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable);
 		if (readOnly && multipleSampleForFlatReferencesTable.isEnabled()) {
 			multipleSampleForFlatReferencesTable.setEnabled(false);
 			multipleSampleForFlatReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1840,7 +1840,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		singleSampleForTableComposition.setContentProvider(contentProvider);
 		singleSampleForTableComposition.setInput(settings);
-		boolean readOnly = isReadOnly(singleSampleForTableComposition);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		if (readOnly && singleSampleForTableComposition.getTable().isEnabled()) {
 			singleSampleForTableComposition.getTable().setEnabled(false);
 			singleSampleForTableComposition.getTable().setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1915,7 +1915,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		singleSampleForAdvancedTableComposition.setContentProvider(contentProvider);
 		singleSampleForAdvancedTableComposition.setInput(settings);
-		boolean readOnly = isReadOnly(singleSampleForAdvancedTableComposition);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition);
 		if (readOnly && singleSampleForAdvancedTableComposition.isEnabled()) {
 			singleSampleForAdvancedTableComposition.setEnabled(false);
 			singleSampleForAdvancedTableComposition.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -1981,7 +1981,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		singleSampleForReferencesTable.setContentProvider(contentProvider);
 		singleSampleForReferencesTable.setInput(settings);
-		boolean readOnly = isReadOnly(singleSampleForReferencesTable.getTable());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
 		if (readOnly && singleSampleForReferencesTable.getTable().isEnabled()) {
 			singleSampleForReferencesTable.getTable().setEnabled(false);
 			singleSampleForReferencesTable.getTable().setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2050,7 +2050,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		singleSampleForAdvancedReferencesTable.setContentProvider(contentProvider);
 		singleSampleForAdvancedReferencesTable.setInput(settings);
-		boolean readOnly = isReadOnly(singleSampleForAdvancedReferencesTable.getTable());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
 		if (readOnly && singleSampleForAdvancedReferencesTable.getTable().isEnabled()) {
 			singleSampleForAdvancedReferencesTable.getTable().setEnabled(false);
 			singleSampleForAdvancedReferencesTable.getTable().setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2117,7 +2117,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		singleSampleForFlatReferencesTable.setInput(settings);
-		boolean readOnly = isReadOnly(singleSampleForFlatReferencesTable);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable);
 		if (readOnly && singleSampleForFlatReferencesTable.isEnabled()) {
 			singleSampleForFlatReferencesTable.setEnabled(false);
 			singleSampleForFlatReferencesTable.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2192,7 +2192,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		if (current != null) {
 			singleContainmentForEObjectFlatComboViewer.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(singleContainmentForEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer);
 		if (readOnly && singleContainmentForEObjectFlatComboViewer.isEnabled()) {
 			singleContainmentForEObjectFlatComboViewer.setEnabled(false);
 			singleContainmentForEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2214,7 +2214,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			singleContainmentForEObjectFlatComboViewer.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(singleContainmentForEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer);
 		if (readOnly && singleContainmentForEObjectFlatComboViewer.isEnabled()) {
 			singleContainmentForEObjectFlatComboViewer.setEnabled(false);
 			singleContainmentForEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2278,7 +2278,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		if (current != null) {
 			singleReferencesForEObjectFlatComboViewer.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(singleReferencesForEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer);
 		if (readOnly && singleReferencesForEObjectFlatComboViewer.isEnabled()) {
 			singleReferencesForEObjectFlatComboViewer.setEnabled(false);
 			singleReferencesForEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2300,7 +2300,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			singleReferencesForEObjectFlatComboViewer.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(singleReferencesForEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer);
 		if (readOnly && singleReferencesForEObjectFlatComboViewer.isEnabled()) {
 			singleReferencesForEObjectFlatComboViewer.setEnabled(false);
 			singleReferencesForEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2359,7 +2359,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		if (current != null) {
 			singleContainmentForAdvancedEObjectFlatComboViewer.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(singleContainmentForAdvancedEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer);
 		if (readOnly && singleContainmentForAdvancedEObjectFlatComboViewer.isEnabled()) {
 			singleContainmentForAdvancedEObjectFlatComboViewer.setEnabled(false);
 			singleContainmentForAdvancedEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2381,7 +2381,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			singleContainmentForAdvancedEObjectFlatComboViewer.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(singleContainmentForAdvancedEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer);
 		if (readOnly && singleContainmentForAdvancedEObjectFlatComboViewer.isEnabled()) {
 			singleContainmentForAdvancedEObjectFlatComboViewer.setEnabled(false);
 			singleContainmentForAdvancedEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2440,7 +2440,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		if (current != null) {
 			singleReferencesForAdvancedEObjectFlatComboViewer.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(singleReferencesForAdvancedEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer);
 		if (readOnly && singleReferencesForAdvancedEObjectFlatComboViewer.isEnabled()) {
 			singleReferencesForAdvancedEObjectFlatComboViewer.setEnabled(false);
 			singleReferencesForAdvancedEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);
@@ -2462,7 +2462,7 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			singleReferencesForAdvancedEObjectFlatComboViewer.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(singleReferencesForAdvancedEObjectFlatComboViewer);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer);
 		if (readOnly && singleReferencesForAdvancedEObjectFlatComboViewer.isEnabled()) {
 			singleReferencesForAdvancedEObjectFlatComboViewer.setEnabled(false);
 			singleReferencesForAdvancedEObjectFlatComboViewer.setToolTipText(NavigationMessages.Owner_ReadOnly);

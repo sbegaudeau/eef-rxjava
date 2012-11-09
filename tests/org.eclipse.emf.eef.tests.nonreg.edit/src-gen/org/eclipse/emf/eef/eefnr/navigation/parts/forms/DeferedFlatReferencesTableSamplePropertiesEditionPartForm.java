@@ -267,7 +267,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(name);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name);
 		if (readOnly && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);
@@ -288,7 +288,7 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferencesTableSampleEditor.setInput(settings);
-		boolean readOnly = isReadOnly(flatReferencesTableSampleEditor);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor);
 		if (readOnly && flatReferencesTableSampleEditor.isEnabled()) {
 			flatReferencesTableSampleEditor.setEnabled(false);
 			flatReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedFlatReferencesTableSample_ReadOnly);

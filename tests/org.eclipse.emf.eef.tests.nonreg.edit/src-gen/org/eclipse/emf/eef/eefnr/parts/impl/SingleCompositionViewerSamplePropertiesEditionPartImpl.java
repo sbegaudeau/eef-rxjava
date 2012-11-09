@@ -395,7 +395,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerSingleRequiredProperty(EObject newValue) {
 		singlecompositionviewerSingleRequiredProperty.update(newValue);
-		boolean readOnly = isReadOnly(singlecompositionviewerSingleRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty);
 		if (readOnly && singlecompositionviewerSingleRequiredProperty.isEnabled()) {
 			singlecompositionviewerSingleRequiredProperty.setEnabled(false);
 			singlecompositionviewerSingleRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
@@ -447,7 +447,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerSingleOptionalProperty(EObject newValue) {
 		singlecompositionviewerSingleOptionalProperty.update(newValue);
-		boolean readOnly = isReadOnly(singlecompositionviewerSingleOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty);
 		if (readOnly && singlecompositionviewerSingleOptionalProperty.isEnabled()) {
 			singlecompositionviewerSingleOptionalProperty.setEnabled(false);
 			singlecompositionviewerSingleOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
@@ -499,7 +499,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerMultiRequiredProperty(EObject newValue) {
 		singlecompositionviewerMultiRequiredProperty.update(newValue);
-		boolean readOnly = isReadOnly(singlecompositionviewerMultiRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty);
 		if (readOnly && singlecompositionviewerMultiRequiredProperty.isEnabled()) {
 			singlecompositionviewerMultiRequiredProperty.setEnabled(false);
 			singlecompositionviewerMultiRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
@@ -551,7 +551,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerMultiOptionalProperty(EObject newValue) {
 		singlecompositionviewerMultiOptionalProperty.update(newValue);
-		boolean readOnly = isReadOnly(singlecompositionviewerMultiOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty);
 		if (readOnly && singlecompositionviewerMultiOptionalProperty.isEnabled()) {
 			singlecompositionviewerMultiOptionalProperty.setEnabled(false);
 			singlecompositionviewerMultiOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);

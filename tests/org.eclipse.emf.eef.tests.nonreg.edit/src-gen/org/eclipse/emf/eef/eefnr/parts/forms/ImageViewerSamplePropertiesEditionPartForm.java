@@ -255,7 +255,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		} else {
 			imageviewerRequiredProperty.initViewer(key, ""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(imageviewerRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty);
 		if (readOnly && imageviewerRequiredProperty.isEnabled()) {
 			imageviewerRequiredProperty.setEnabled(false);
 			imageviewerRequiredProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
@@ -277,7 +277,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		} else {
 			imageviewerRequiredProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(imageviewerRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty);
 		if (readOnly && imageviewerRequiredProperty.isEnabled()) {
 			imageviewerRequiredProperty.setEnabled(false);
 			imageviewerRequiredProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
@@ -312,7 +312,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		} else {
 			imageviewerOptionalProperty.initViewer(key, ""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(imageviewerOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty);
 		if (readOnly && imageviewerOptionalProperty.isEnabled()) {
 			imageviewerOptionalProperty.setEnabled(false);
 			imageviewerOptionalProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);
@@ -334,7 +334,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		} else {
 			imageviewerOptionalProperty.setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(imageviewerOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty);
 		if (readOnly && imageviewerOptionalProperty.isEnabled()) {
 			imageviewerOptionalProperty.setEnabled(false);
 			imageviewerOptionalProperty.setToolTipText(EefnrMessages.ImageViewerSample_ReadOnly);

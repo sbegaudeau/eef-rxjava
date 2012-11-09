@@ -387,7 +387,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(name);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
 		if (readOnly && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
@@ -410,7 +410,7 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencesTableSampleEditor.setContentProvider(contentProvider);
 		referencesTableSampleEditor.setInput(settings);
-		boolean readOnly = isReadOnly(referencesTableSampleEditor.getTable());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		if (readOnly && referencesTableSampleEditor.getTable().isEnabled()) {
 			referencesTableSampleEditor.getTable().setEnabled(false);
 			referencesTableSampleEditor.getTable().setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);

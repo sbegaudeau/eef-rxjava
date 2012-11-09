@@ -238,7 +238,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		if (current != null) {
 			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(eobjectflatcomboviewerRequiredPropery);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery);
 		if (readOnly && eobjectflatcomboviewerRequiredPropery.isEnabled()) {
 			eobjectflatcomboviewerRequiredPropery.setEnabled(false);
 			eobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
@@ -260,7 +260,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(eobjectflatcomboviewerRequiredPropery);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery);
 		if (readOnly && eobjectflatcomboviewerRequiredPropery.isEnabled()) {
 			eobjectflatcomboviewerRequiredPropery.setEnabled(false);
 			eobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
@@ -324,7 +324,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		if (current != null) {
 			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(eobjectflatcomboviewerOptionalPropery);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
 		if (readOnly && eobjectflatcomboviewerOptionalPropery.isEnabled()) {
 			eobjectflatcomboviewerOptionalPropery.setEnabled(false);
 			eobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
@@ -346,7 +346,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(eobjectflatcomboviewerOptionalPropery);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
 		if (readOnly && eobjectflatcomboviewerOptionalPropery.isEnabled()) {
 			eobjectflatcomboviewerOptionalPropery.setEnabled(false);
 			eobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);

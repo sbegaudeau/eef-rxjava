@@ -223,6 +223,7 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
+		selection.setEnabled(enabled);
 		editer.setEnabled(enabled);
 	}
 	

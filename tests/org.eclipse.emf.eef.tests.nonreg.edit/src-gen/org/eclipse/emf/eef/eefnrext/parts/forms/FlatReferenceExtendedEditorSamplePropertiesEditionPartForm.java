@@ -197,7 +197,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferenceEditorSample.setInput(settings);
-		boolean readOnly = isReadOnly(flatReferenceEditorSample);
+		boolean readOnly = isReadOnly(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
 		if (readOnly && flatReferenceEditorSample.isEnabled()) {
 			flatReferenceEditorSample.setEnabled(false);
 			flatReferenceEditorSample.setToolTipText(EefnrextMessages.FlatReferenceExtendedEditorSample_ReadOnly);

@@ -207,7 +207,7 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		} else {
 			isVisible.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(isVisible);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Element.Properties.isVisible);
 		if (readOnly && isVisible.isEnabled()) {
 			isVisible.setEnabled(false);
 			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);

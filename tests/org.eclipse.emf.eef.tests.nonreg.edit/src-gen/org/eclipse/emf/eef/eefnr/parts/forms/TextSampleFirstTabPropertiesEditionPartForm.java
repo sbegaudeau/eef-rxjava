@@ -300,7 +300,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		} else {
 			textRequiredPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(textRequiredPropertyInFirstTab);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
 		if (readOnly && textRequiredPropertyInFirstTab.isEnabled()) {
 			textRequiredPropertyInFirstTab.setEnabled(false);
 			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
@@ -332,7 +332,7 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		} else {
 			textOptionalPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(textOptionalPropertyInFirstTab);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
 		if (readOnly && textOptionalPropertyInFirstTab.isEnabled()) {
 			textOptionalPropertyInFirstTab.setEnabled(false);
 			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);

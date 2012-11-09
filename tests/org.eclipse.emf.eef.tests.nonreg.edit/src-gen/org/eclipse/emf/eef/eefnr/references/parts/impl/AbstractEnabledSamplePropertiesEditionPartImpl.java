@@ -195,7 +195,7 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			enabled.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(enabled);
+		boolean readOnly = isReadOnly(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		if (readOnly && enabled.isEnabled()) {
 			enabled.setEnabled(false);
 			enabled.setToolTipText(ReferencesMessages.AbstractEnabledSample_ReadOnly);

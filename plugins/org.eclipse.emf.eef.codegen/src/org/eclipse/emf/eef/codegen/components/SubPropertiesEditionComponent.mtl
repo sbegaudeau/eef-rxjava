@@ -268,7 +268,6 @@ if (editingPart instanceof CompositePropertiesEditionPart) {
 	[addImports(Sequence{'org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart'})/]((CompositePropertiesEditionPart) editingPart).getSettings().add([pee.name.toJavaIdentifier()/]Settings);
 [/for]
 [if (not pees->isEmpty())]
-	editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 }[/if][/let]
 [/template]
 

@@ -102,7 +102,7 @@
 [if (editor.readOnly)]
 [editor.setReadOnly()/]
 [else]
-boolean readOnly = isReadOnly([editor.elementEditorName()/]RadioViewer[navigationReadOnly()/]);
+boolean readOnly = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
 if (readOnly && [editor.elementEditorName()/]RadioViewer.isEnabled()) {
 	[editor.setReadOnly()/]
 } else if (!readOnly && ![editor.elementEditorName()/]RadioViewer.isEnabled()) {

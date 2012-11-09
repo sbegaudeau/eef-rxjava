@@ -140,7 +140,7 @@
 [if (editor.readOnly)]
 [setReadOnly()/]
 [else]
-boolean readOnly = isReadOnly([editor.elementEditorName()/].getTable()[navigationReadOnly()/]);
+boolean readOnly = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
 if (readOnly && [editor.elementEditorName()/].getTable().isEnabled()) {
 	[editor.setReadOnly()/]
 } else if (!readOnly && ![editor.elementEditorName()/].getTable().isEnabled()) {

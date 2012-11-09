@@ -29,6 +29,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.services.LockPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.policies.ILockPolicy;
@@ -187,7 +188,7 @@ public class PropertiesEditionWizard extends Wizard {
 		if (input instanceof EObjectPropertiesEditionContext) {
 			IPropertiesEditionComponent propertiesEditingComponent = ((EObjectPropertiesEditionContext)input).getPropertiesEditingComponent();
 			if (propertiesEditingComponent != null) {
-				for (ILockPolicy lockPolicies : EEFRuntimePlugin.getDefault().getLockPolicies()) {
+				for (ILockPolicy lockPolicies : LockPolicyProviderService.getInstance().getPolicies()) {
 					lockPolicies.release(propertiesEditingComponent);
 				}
 			}
@@ -211,7 +212,7 @@ public class PropertiesEditionWizard extends Wizard {
 		if (input instanceof EObjectPropertiesEditionContext) {
 			IPropertiesEditionComponent propertiesEditingComponent = ((EObjectPropertiesEditionContext)input).getPropertiesEditingComponent();
 			if (propertiesEditingComponent != null) {
-				for (ILockPolicy lockPolicies : EEFRuntimePlugin.getDefault().getLockPolicies()) {
+				for (ILockPolicy lockPolicies : LockPolicyProviderService.getInstance().getPolicies()) {
 					lockPolicies.lock(propertiesEditingComponent);
 				}
 			}

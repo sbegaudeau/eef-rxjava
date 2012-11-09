@@ -11,11 +11,6 @@
 
 package org.eclipse.emf.eef.cdo.runtime;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.eef.cdo.runtime.provider.ICDOLockStrategyProvider;
-import org.eclipse.emf.eef.cdo.runtime.service.CDOLockStrategyProviderService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -33,15 +28,9 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	private static EEFCDORuntimePlugin plugin;
 
 	/**
-	 * CDO Listeners
-	 */
-	private List<ICDOLockStrategyProvider> lockStrategyProvider;
-
-	/**
 	 * The constructor
 	 */
 	public EEFCDORuntimePlugin() {
-		lockStrategyProvider = new ArrayList<ICDOLockStrategyProvider>();
 	}
 
 	/**
@@ -52,15 +41,8 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		initCDOLockStrategyProvider();
 	}
 	
-	/**
-	 * Init Properties Edition Component listeners : find the extension point
-	 */
-	private void initCDOLockStrategyProvider() {
-		lockStrategyProvider.addAll(CDOLockStrategyProviderService.getInstance().getProviders());
-	}
 
 	/**
 	 * (non-Javadoc)
@@ -68,7 +50,6 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		lockStrategyProvider.clear();
 		plugin = null;
 		super.stop(context);
 	}
@@ -82,10 +63,4 @@ public class EEFCDORuntimePlugin extends AbstractUIPlugin {
 		return plugin;
 	}
 
-	/**
-	 * @return the cdo lock strategy provider
-	 */
-	public List<ICDOLockStrategyProvider> getLockStrategyProvider() {
-		return lockStrategyProvider;
-	}
 }

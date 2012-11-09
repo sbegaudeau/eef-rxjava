@@ -15,9 +15,11 @@ import java.util.List;
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.util.CDOUtil;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.cdo.runtime.EEFCDORuntimePlugin;
 import org.eclipse.emf.eef.cdo.runtime.provider.ICDOLockStrategyProvider;
+import org.eclipse.emf.eef.cdo.runtime.service.CDOLockStrategyProviderService;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.policies.ILockPolicy;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder.EEFEditorSettingsImpl;
@@ -37,7 +39,10 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	 */
 	public void lock(IPropertiesEditionComponent propertiesEditingComponent) {
 		lock(propertiesEditingComponent.getEditingContext().getEObject());
-		lock(propertiesEditingComponent.getEditingContext().getAllSettings());
+		if (propertiesEditingComponent instanceof SinglePartPropertiesEditingComponent  && ((SinglePartPropertiesEditingComponent) propertiesEditingComponent).getEditingPart() instanceof CompositePropertiesEditionPart) {
+			lock(((CompositePropertiesEditionPart) ((SinglePartPropertiesEditingComponent) propertiesEditingComponent).getEditingPart()).getSettings());
+		}
+		
 	}
 
 	private void lock(List<EEFEditorSettings> allSettings) {
@@ -53,10 +58,9 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 		if (eObject != null) {
 			CDOObject cdoObject = CDOUtil.getCDOObject(eObject);
 			if (cdoObject != null) {
-				if (!EEFCDORuntimePlugin.getDefault().getLockStrategyProvider()
+				if (!CDOLockStrategyProviderService.getInstance().getProviders()
 						.isEmpty()) {
-					for (ICDOLockStrategyProvider provider : EEFCDORuntimePlugin
-							.getDefault().getLockStrategyProvider()) {
+					for (ICDOLockStrategyProvider provider : CDOLockStrategyProviderService.getInstance().getProviders()) {
 						provider.lock(cdoObject);
 					}
 				} else if (cdoObject.cdoWriteLock() != null) {
@@ -79,10 +83,9 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 		if (eObject != null) {
 			CDOObject cdoObject = CDOUtil.getCDOObject(eObject);
 			if (cdoObject != null) {
-				if (!EEFCDORuntimePlugin.getDefault().getLockStrategyProvider()
+				if (!CDOLockStrategyProviderService.getInstance().getProviders()
 						.isEmpty()) {
-					for (ICDOLockStrategyProvider provider : EEFCDORuntimePlugin
-							.getDefault().getLockStrategyProvider()) {
+					for (ICDOLockStrategyProvider provider : CDOLockStrategyProviderService.getInstance().getProviders()) {
 						provider.release(cdoObject);
 					}
 				} else if (cdoObject.cdoWriteLock() != null) {
@@ -99,7 +102,9 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	 */
 	public void release(IPropertiesEditionComponent propertiesEditingComponent) {
 		unlock(propertiesEditingComponent.getEditingContext().getEObject());
-		unlock(propertiesEditingComponent.getEditingContext().getAllSettings());
+		if (propertiesEditingComponent instanceof SinglePartPropertiesEditingComponent  && ((SinglePartPropertiesEditingComponent) propertiesEditingComponent).getEditingPart() instanceof CompositePropertiesEditionPart) {
+			unlock(((CompositePropertiesEditionPart) ((SinglePartPropertiesEditingComponent) propertiesEditingComponent).getEditingPart()).getSettings());
+		}
 	}
 
 }

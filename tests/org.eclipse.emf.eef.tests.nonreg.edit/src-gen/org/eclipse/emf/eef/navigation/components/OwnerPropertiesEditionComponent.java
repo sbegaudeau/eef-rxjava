@@ -172,7 +172,6 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForEObjectFlatComboViewerSettings);
 				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForAdvancedEObjectFlatComboViewerSettings);
 				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForAdvancedEObjectFlatComboViewerSettings);
-				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 			}
 			final Owner owner = (Owner)elt;
 			final OwnerPropertiesEditionPart basePart = (OwnerPropertiesEditionPart)editingPart;

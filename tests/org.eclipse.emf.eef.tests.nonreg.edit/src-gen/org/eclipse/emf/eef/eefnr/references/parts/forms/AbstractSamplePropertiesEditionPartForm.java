@@ -230,7 +230,7 @@ public class AbstractSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(name);
+		boolean readOnly = isReadOnly(ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		if (readOnly && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(ReferencesMessages.AbstractSample_ReadOnly);

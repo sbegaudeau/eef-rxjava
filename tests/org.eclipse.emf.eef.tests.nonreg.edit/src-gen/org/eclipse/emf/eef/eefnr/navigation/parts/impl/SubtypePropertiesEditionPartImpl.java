@@ -201,7 +201,7 @@ public class SubtypePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			specialisedElement.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(specialisedElement);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Subtype.Specialisation.specialisedElement);
 		if (readOnly && specialisedElement.isEnabled()) {
 			specialisedElement.setEnabled(false);
 			specialisedElement.setToolTipText(NavigationMessages.Subtype_ReadOnly);

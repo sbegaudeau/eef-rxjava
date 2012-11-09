@@ -320,7 +320,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionRequiredProperty.setContentProvider(contentProvider);
 		advancedtablecompositionRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(advancedtablecompositionRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty);
 		if (readOnly && advancedtablecompositionRequiredProperty.isEnabled()) {
 			advancedtablecompositionRequiredProperty.setEnabled(false);
 			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
@@ -386,7 +386,7 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionOptionalProperty.setContentProvider(contentProvider);
 		advancedtablecompositionOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(advancedtablecompositionOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty);
 		if (readOnly && advancedtablecompositionOptionalProperty.isEnabled()) {
 			advancedtablecompositionOptionalProperty.setEnabled(false);
 			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);

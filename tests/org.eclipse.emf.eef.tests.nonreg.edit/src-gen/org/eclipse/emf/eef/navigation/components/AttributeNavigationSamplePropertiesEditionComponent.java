@@ -110,7 +110,6 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForSingleValuedSettings);
 				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForMultiValuedSettings);
 				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForMultiValuedSettings);
-				editingContext.setAllSettings(((CompositePropertiesEditionPart) editingPart).getSettings());
 			}
 			final AttributeNavigationSample attributeNavigationSample = (AttributeNavigationSample)elt;
 			final AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;

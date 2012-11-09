@@ -424,7 +424,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableRequiredProperty.setContentProvider(contentProvider);
 		advancedreferencestableRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(advancedreferencestableRequiredProperty.getTable());
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
 		if (readOnly && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
 			advancedreferencestableRequiredProperty.setEnabled(false);
 			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
@@ -487,7 +487,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableOptionalProperty.setContentProvider(contentProvider);
 		advancedreferencestableOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(advancedreferencestableOptionalProperty.getTable());
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
 		if (readOnly && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
 			advancedreferencestableOptionalProperty.setEnabled(false);
 			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);

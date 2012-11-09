@@ -244,7 +244,7 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioRequiredProperty(Object newValue) {
 		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(radioRequiredPropertyRadioViewer);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
 		if (readOnly && radioRequiredPropertyRadioViewer.isEnabled()) {
 			radioRequiredPropertyRadioViewer.setEnabled(false);
 			radioRequiredPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
@@ -286,7 +286,7 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(radioOptionalPropertyRadioViewer);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
 		if (readOnly && radioOptionalPropertyRadioViewer.isEnabled()) {
 			radioOptionalPropertyRadioViewer.setEnabled(false);
 			radioOptionalPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);

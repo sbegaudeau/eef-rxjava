@@ -316,7 +316,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(multivaluededitorRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
 		if (readOnly && multivaluededitorRequiredProperty.isEnabled()) {
 			multivaluededitorRequiredProperty.setEnabled(false);
 			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
@@ -367,7 +367,7 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(multivaluededitorOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
 		if (readOnly && multivaluededitorOptionalProperty.isEnabled()) {
 			multivaluededitorOptionalProperty.setEnabled(false);
 			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);

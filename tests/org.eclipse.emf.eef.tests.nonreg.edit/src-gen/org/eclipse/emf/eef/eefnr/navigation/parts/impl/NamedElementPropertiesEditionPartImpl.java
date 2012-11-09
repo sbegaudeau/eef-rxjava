@@ -199,7 +199,7 @@ public class NamedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(name);
+		boolean readOnly = isReadOnly(NavigationViewsRepository.NamedElement.Properties.name);
 		if (readOnly && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(NavigationMessages.NamedElement_ReadOnly);

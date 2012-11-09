@@ -230,7 +230,7 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartForm extends Sec
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(name);
+		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name);
 		if (readOnly && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(FiltersMessages.ConcreteReferenceTargetSample2_ReadOnly);

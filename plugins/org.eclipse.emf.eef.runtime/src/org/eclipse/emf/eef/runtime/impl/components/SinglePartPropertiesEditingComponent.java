@@ -25,6 +25,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.notify.EEFLockNotification;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentListenerProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
 /**
@@ -79,7 +80,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().addEditingSemanticListener(semanticAdapter);
 			}
 		}
-		for (IPropertiesEditionComponentListener listener : EEFRuntimePlugin.getDefault().getPecListeners()) {
+		for (IPropertiesEditionComponentListener listener : PropertiesEditionComponentListenerProviderService.getInstance().getListeners()) {
 			listener.activate(this);
 		}
 	}
@@ -96,7 +97,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().removeEditingSemanticListener(semanticAdapter);
 			}
 		}
-		for (IPropertiesEditionComponentListener listener : EEFRuntimePlugin.getDefault().getPecListeners()) {
+		for (IPropertiesEditionComponentListener listener : PropertiesEditionComponentListenerProviderService.getInstance().getListeners()) {
 			listener.deactivate(this);
 		}
 	}

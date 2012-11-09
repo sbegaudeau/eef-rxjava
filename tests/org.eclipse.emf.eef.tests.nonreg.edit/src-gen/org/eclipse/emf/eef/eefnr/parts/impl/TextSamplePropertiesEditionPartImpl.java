@@ -301,7 +301,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(textRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
 		if (readOnly && textRequiredProperty.isEnabled()) {
 			textRequiredProperty.setEnabled(false);
 			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
@@ -333,7 +333,7 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(textOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
 		if (readOnly && textOptionalProperty.isEnabled()) {
 			textOptionalProperty.setEnabled(false);
 			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);

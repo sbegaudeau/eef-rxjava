@@ -237,7 +237,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(flatreferencetableRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
 		if (readOnly && flatreferencetableRequiredProperty.isEnabled()) {
 			flatreferencetableRequiredProperty.setEnabled(false);
 			flatreferencetableRequiredProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
@@ -298,7 +298,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(flatreferencetableOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
 		if (readOnly && flatreferencetableOptionalProperty.isEnabled()) {
 			flatreferencetableOptionalProperty.setEnabled(false);
 			flatreferencetableOptionalProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);

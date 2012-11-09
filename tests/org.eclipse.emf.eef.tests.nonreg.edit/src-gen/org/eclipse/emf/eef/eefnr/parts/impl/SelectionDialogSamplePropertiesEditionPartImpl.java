@@ -339,7 +339,7 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(selectionDialogRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty);
 		if (readOnly && selectionDialogRequiredProperty.isEnabled()) {
 			selectionDialogRequiredProperty.setEnabled(false);
 			selectionDialogRequiredProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
@@ -371,7 +371,7 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(selectionDialogOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty);
 		if (readOnly && selectionDialogOptionalProperty.isEnabled()) {
 			selectionDialogOptionalProperty.setEnabled(false);
 			selectionDialogOptionalProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);

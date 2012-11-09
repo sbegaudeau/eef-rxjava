@@ -243,7 +243,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	public void initEmfcomboviewerRequiredProperty(Object input, Enumerator current) {
 		emfcomboviewerRequiredProperty.setInput(input);
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(emfcomboviewerRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
 		if (readOnly && emfcomboviewerRequiredProperty.isEnabled()) {
 			emfcomboviewerRequiredProperty.setEnabled(false);
 			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
@@ -261,7 +261,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(emfcomboviewerRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
 		if (readOnly && emfcomboviewerRequiredProperty.isEnabled()) {
 			emfcomboviewerRequiredProperty.setEnabled(false);
 			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
@@ -290,7 +290,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	public void initEmfcomboviewerOptionalProperty(Object input, Enumerator current) {
 		emfcomboviewerOptionalProperty.setInput(input);
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(emfcomboviewerOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
 		if (readOnly && emfcomboviewerOptionalProperty.isEnabled()) {
 			emfcomboviewerOptionalProperty.setEnabled(false);
 			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
@@ -308,7 +308,7 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(emfcomboviewerOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
 		if (readOnly && emfcomboviewerOptionalProperty.isEnabled()) {
 			emfcomboviewerOptionalProperty.setEnabled(false);
 			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);

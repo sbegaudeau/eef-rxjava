@@ -404,7 +404,7 @@ edit[editor.name.toJavaClassifier()/].setEnabled(true);
 [if (editor.readOnly)]
 [editor.setReadOnly()/]
 [else]
-boolean readOnly = isReadOnly([editor.elementEditorName()/][navigationReadOnly()/]);
+boolean readOnly = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
 if (readOnly && [editor.elementEditorName()/].isEnabled()) {
 	[editor.setReadOnly()/]
 } else if (!readOnly && ![editor.elementEditorName()/].isEnabled()) {

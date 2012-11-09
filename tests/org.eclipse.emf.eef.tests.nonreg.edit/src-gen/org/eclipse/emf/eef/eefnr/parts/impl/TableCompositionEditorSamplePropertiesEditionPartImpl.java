@@ -697,7 +697,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionRequiredProperty.setContentProvider(contentProvider);
 		tablecompositionRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(tablecompositionRequiredProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		if (readOnly && tablecompositionRequiredProperty.getTable().isEnabled()) {
 			tablecompositionRequiredProperty.getTable().setEnabled(false);
 			tablecompositionRequiredProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
@@ -772,7 +772,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionOptionalProperty.setContentProvider(contentProvider);
 		tablecompositionOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(tablecompositionOptionalProperty);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		if (readOnly && tablecompositionOptionalProperty.getTable().isEnabled()) {
 			tablecompositionOptionalProperty.getTable().setEnabled(false);
 			tablecompositionOptionalProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);

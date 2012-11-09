@@ -300,7 +300,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		} else {
 			demo.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(demo);
+		boolean readOnly = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
 		if (readOnly && demo.isEnabled()) {
 			demo.setEnabled(false);
 			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
@@ -332,7 +332,7 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		} else {
 			size.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(size);
+		boolean readOnly = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
 		if (readOnly && size.isEnabled()) {
 			size.setEnabled(false);
 			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
