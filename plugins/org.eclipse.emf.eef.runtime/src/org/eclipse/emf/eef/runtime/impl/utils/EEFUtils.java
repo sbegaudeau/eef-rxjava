@@ -228,7 +228,10 @@ public class EEFUtils {
 		List<EPackage> result = new ArrayList<EPackage>();
 		for (Resource resource : resourceSet_p.getResources()) {
 			for (EPackage pkg : allPackageOfResource(resource)) {
-				result.add(getStaticPackage(pkg));
+				EPackage staticPackage = getStaticPackage(pkg);
+				if (staticPackage != null) {
+					result.add(staticPackage);
+				}
 			}
 		}
 		return result;
