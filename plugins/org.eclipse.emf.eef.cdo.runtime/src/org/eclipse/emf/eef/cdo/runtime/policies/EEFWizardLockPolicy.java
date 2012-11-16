@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.cdo.runtime.policies;
 import java.util.List;
 
 import org.eclipse.emf.cdo.CDOObject;
+import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CDOUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.cdo.runtime.provider.ICDOLockStrategyProvider;
@@ -82,7 +83,7 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	private void unlock(EObject eObject) {
 		if (eObject != null) {
 			CDOObject cdoObject = CDOUtil.getCDOObject(eObject);
-			if (cdoObject != null) {
+			if (cdoObject != null && cdoObject.cdoView() instanceof CDOTransaction && !((CDOTransaction)cdoObject.cdoView()).isDirty()) {
 				if (!CDOLockStrategyProviderService.getInstance().getProviders()
 						.isEmpty()) {
 					for (ICDOLockStrategyProvider provider : CDOLockStrategyProviderService.getInstance().getProviders()) {

@@ -179,7 +179,7 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performFinish() {
-		release();
+//		release();
 		return true;
 	}
 	
