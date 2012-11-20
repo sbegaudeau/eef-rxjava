@@ -213,14 +213,6 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			anotherSpecialisationElement.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
-		if (readOnly && anotherSpecialisationElement.isEnabled()) {
-			anotherSpecialisationElement.setEnabled(false);
-			anotherSpecialisationElement.setToolTipText(NavigationMessages.AnotherSubtype_ReadOnly);
-		} else if (!readOnly && !anotherSpecialisationElement.isEnabled()) {
-			anotherSpecialisationElement.setEnabled(true);
-		}	
-		
 	}
 
 

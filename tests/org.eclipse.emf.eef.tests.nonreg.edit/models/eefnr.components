@@ -219,6 +219,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VWCWgBFSEeK9-dPF-WhGng" name="advancedeobjectflatcomboviewerROProperty" views="_0WSXwBEsEeKsDfmeKGw7WA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerROPropery"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6tz3EC8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoRequiredProperty" views="_3eL5YS8TEeK_A82pEPogkw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerCompoRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6tz3ES8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoOptionalProperty" views="_3eL5Yi8TEeK_A82pEPogkw">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerCompoOptionalProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LPgwvEd-uP4lw9e0IMw" name="AdvancedTableCompositionEditorSample" views="_Fx_yMQwvEd-uP4lw9e0IMw">
@@ -957,6 +963,12 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_0WSXwBEsEeKsDfmeKGw7WA" name="advancedeobjectflatcomboviewerROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3eL5YS8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3eL5Yi8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
           </elements>
         </elements>

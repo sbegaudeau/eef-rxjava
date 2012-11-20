@@ -353,6 +353,12 @@ public class EefnrViewsRepository {
 			
 			public static String advancedeobjectflatcomboviewerROProperty = "eefnr::AdvancedEObjectFlatComboViewerSample::properties::advancedeobjectflatcomboviewerROProperty";
 			
+			
+			public static String advancedeobjectflatcomboviewerCompoRequiredProperty = "eefnr::AdvancedEObjectFlatComboViewerSample::properties::advancedeobjectflatcomboviewerCompoRequiredProperty";
+			
+			
+			public static String advancedeobjectflatcomboviewerCompoOptionalProperty = "eefnr::AdvancedEObjectFlatComboViewerSample::properties::advancedeobjectflatcomboviewerCompoOptionalProperty";
+			
 	
 		}
 	

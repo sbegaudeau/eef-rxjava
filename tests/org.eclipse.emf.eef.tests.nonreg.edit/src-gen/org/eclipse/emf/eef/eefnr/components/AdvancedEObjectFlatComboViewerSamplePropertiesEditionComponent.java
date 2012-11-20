@@ -64,6 +64,16 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	 */
 	private EObjectFlatComboSettings advancedeobjectflatcomboviewerROPropertySettings;
 	
+	/**
+	 * Settings for advancedeobjectflatcomboviewerCompoRequiredProperty EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings advancedeobjectflatcomboviewerCompoRequiredPropertySettings;
+	
+	/**
+	 * Settings for advancedeobjectflatcomboviewerCompoOptionalProperty EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings advancedeobjectflatcomboviewerCompoOptionalPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -87,7 +97,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final AdvancedEObjectFlatComboViewerSample advancedEObjectFlatComboViewerSample = (AdvancedEObjectFlatComboViewerSample)elt;
 			final AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart basePart = (AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -112,7 +121,23 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 				// set the button mode
 				basePart.setAdvancedeobjectflatcomboviewerROPropertyButtonMode(ButtonsModeEnum.BROWSE);
 			}
+			if (isAccessible(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty)) {
+				// init part
+				advancedeobjectflatcomboviewerCompoRequiredPropertySettings = new EObjectFlatComboSettings(advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty());
+				basePart.initAdvancedeobjectflatcomboviewerCompoRequiredProperty(advancedeobjectflatcomboviewerCompoRequiredPropertySettings);
+				// set the button mode
+				basePart.setAdvancedeobjectflatcomboviewerCompoRequiredPropertyButtonMode(ButtonsModeEnum.CREATE);
+			}
+			if (isAccessible(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty)) {
+				// init part
+				advancedeobjectflatcomboviewerCompoOptionalPropertySettings = new EObjectFlatComboSettings(advancedEObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty());
+				basePart.initAdvancedeobjectflatcomboviewerCompoOptionalProperty(advancedeobjectflatcomboviewerCompoOptionalPropertySettings);
+				// set the button mode
+				basePart.setAdvancedeobjectflatcomboviewerCompoOptionalPropertyButtonMode(ButtonsModeEnum.CREATE);
+			}
 			// init filters
+			
+			
 			
 			
 			
@@ -123,6 +148,8 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -142,6 +169,12 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		}
 		if (editorKey == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty) {
 			return EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery();
+		}
+		if (editorKey == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty) {
+			return EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty();
+		}
+		if (editorKey == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty) {
+			return EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -185,6 +218,38 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 				advancedeobjectflatcomboviewerOptionalPropertySettings.setToReference(eObject);
 			}
 		}
+		if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				advancedeobjectflatcomboviewerCompoRequiredPropertySettings.setToReference((TotalSample)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				advancedeobjectflatcomboviewerCompoRequiredPropertySettings.setToReference(eObject);
+			}
+		}
+		if (EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				advancedeobjectflatcomboviewerCompoOptionalPropertySettings.setToReference((TotalSample)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				TotalSample eObject = EefnrFactory.eINSTANCE.createTotalSample();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				advancedeobjectflatcomboviewerCompoOptionalPropertySettings.setToReference(eObject);
+			}
+		}
 	}
 
 	/**
@@ -192,7 +257,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart basePart = (AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty))
@@ -201,6 +265,10 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 				basePart.setAdvancedeobjectflatcomboviewerOptionalProperty((EObject)msg.getNewValue());
 			if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty))
 				basePart.setAdvancedeobjectflatcomboviewerROProperty((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty))
+				basePart.setAdvancedeobjectflatcomboviewerCompoRequiredProperty((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty))
+				basePart.setAdvancedeobjectflatcomboviewerCompoOptionalProperty((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -215,7 +283,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(),
 			EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(),
-			EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery()		);
+			EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery(),
+			EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty(),
+			EefnrPackage.eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -227,7 +297,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty;
+		return key == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty || key == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty;
 	}
 
 	/**
@@ -248,8 +318,5 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionComponent exte
 		}
 		return ret;
 	}
-
-
-	
 
 }

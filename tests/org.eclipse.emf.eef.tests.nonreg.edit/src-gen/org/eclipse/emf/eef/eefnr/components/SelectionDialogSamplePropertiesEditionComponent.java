@@ -67,19 +67,18 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final SelectionDialogSample selectionDialogSample = (SelectionDialogSample)elt;
 			final SelectionDialogSamplePropertiesEditionPart basePart = (SelectionDialogSamplePropertiesEditionPart)editingPart;
 			// init values
-				if (isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty)) {
+				if (selectionDialogSample.getSelectionDialogRequiredProperty() != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty)) {
 					basePart.setSelectionDialogRequiredProperty(EEFConverterUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty().getEAttributeType(), selectionDialogSample.getSelectionDialogRequiredProperty()));
 				}
 			
-				if (isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty)) {
+				if (selectionDialogSample.getSelectionDialogOptionalProperty() != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty)) {
 					basePart.setSelectionDialogOptionalProperty(EEFConverterUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty().getEAttributeType(), selectionDialogSample.getSelectionDialogOptionalProperty()));
 				}
 			
-				if (isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty)) {
+				if (selectionDialogSample.getSelectionDialogROProperty() != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty)) {
 					basePart.setSelectionDialogROProperty(EEFConverterUtil.convertToString(EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty().getEAttributeType(), selectionDialogSample.getSelectionDialogROProperty()));
 				}
 			
@@ -137,7 +136,6 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SelectionDialogSamplePropertiesEditionPart basePart = (SelectionDialogSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getSelectionDialogSample_SelectionDialogRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty)) {
@@ -229,8 +227,5 @@ public class SelectionDialogSamplePropertiesEditionComponent extends SinglePartP
 		}
 		return ret;
 	}
-
-
-	
 
 }

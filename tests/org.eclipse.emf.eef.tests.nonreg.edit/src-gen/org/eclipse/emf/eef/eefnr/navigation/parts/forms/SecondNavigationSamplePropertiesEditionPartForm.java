@@ -243,14 +243,6 @@ public class SecondNavigationSamplePropertiesEditionPartForm extends SectionProp
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SecondNavigationSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.SecondNavigationSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
 	}
 
 

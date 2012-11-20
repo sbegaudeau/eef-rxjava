@@ -64,7 +64,6 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final SingleCompositionViewerSample singleCompositionViewerSample = (SingleCompositionViewerSample)elt;
 			final SingleCompositionViewerSamplePropertiesEditionPart basePart = (SingleCompositionViewerSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -143,7 +142,6 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SingleCompositionViewerSamplePropertiesEditionPart basePart = (SingleCompositionViewerSamplePropertiesEditionPart)editingPart;
 			//FIXME: Sorry this widget is deprecated for this version.
@@ -200,8 +198,5 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		}
 		return ret;
 	}
-
-
-	
 
 }

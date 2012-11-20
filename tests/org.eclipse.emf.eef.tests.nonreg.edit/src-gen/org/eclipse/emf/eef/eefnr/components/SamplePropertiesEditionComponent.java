@@ -68,14 +68,13 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final Sample sample = (Sample)elt;
 			final SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
+			if (sample.getTextRequiredProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
 				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextRequiredProperty()));
 			
-			if (isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
+			if (sample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
 				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextOptionalProperty()));
 			
 			// init filters
@@ -127,7 +126,6 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty)) {
@@ -204,8 +202,5 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 		}
 		return ret;
 	}
-
-
-	
 
 }

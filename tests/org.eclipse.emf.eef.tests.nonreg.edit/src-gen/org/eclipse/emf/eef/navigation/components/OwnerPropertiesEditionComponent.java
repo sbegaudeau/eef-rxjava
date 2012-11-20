@@ -157,26 +157,10 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			if (editingPart instanceof CompositePropertiesEditionPart) {
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForTableCompositionSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedTableCompositionSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForReferencesTableSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForAdvancedReferencesTableSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(multipleSampleForFlatReferencesTablesSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForTableCompositionSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedTableCompositionSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForReferencesTableSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForAdvancedReferencesTableSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleSampleForFlatReferencesTableSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForEObjectFlatComboViewerSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForEObjectFlatComboViewerSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleContainmentForAdvancedEObjectFlatComboViewerSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(singleReferenceForAdvancedEObjectFlatComboViewerSettings);
-			}
 			final Owner owner = (Owner)elt;
 			final OwnerPropertiesEditionPart basePart = (OwnerPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(NavigationViewsRepository.Owner.Properties.name))
+			if (owner.getName() != null && isAccessible(NavigationViewsRepository.Owner.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, owner.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition)) {
@@ -768,7 +752,6 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			OwnerPropertiesEditionPart basePart = (OwnerPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.Owner.Properties.name)) {
@@ -864,8 +847,5 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		return ret;
 	}
-
-
-	
 
 }

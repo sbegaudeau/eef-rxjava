@@ -18,6 +18,8 @@ package org.eclipse.emf.eef.eefnr;
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerRequiredProperty <em>Advancedeobjectflatcomboviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerOptionalProperty <em>Advancedeobjectflatcomboviewer Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerROPropery <em>Advancedeobjectflatcomboviewer RO Propery</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoRequiredProperty <em>Advancedeobjectflatcomboviewer Compo Required Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoOptionalProperty <em>Advancedeobjectflatcomboviewer Compo Optional Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,5 +105,57 @@ public interface AdvancedEObjectFlatComboViewerSample extends AbstractSample {
 	 * @generated
 	 */
 	void setAdvancedeobjectflatcomboviewerROPropery(TotalSample value);
+
+	/**
+	 * Returns the value of the '<em><b>Advancedeobjectflatcomboviewer Compo Required Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Advancedeobjectflatcomboviewer Compo Required Property</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Advancedeobjectflatcomboviewer Compo Required Property</em>' containment reference.
+	 * @see #setAdvancedeobjectflatcomboviewerCompoRequiredProperty(TotalSample)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	TotalSample getAdvancedeobjectflatcomboviewerCompoRequiredProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoRequiredProperty <em>Advancedeobjectflatcomboviewer Compo Required Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Advancedeobjectflatcomboviewer Compo Required Property</em>' containment reference.
+	 * @see #getAdvancedeobjectflatcomboviewerCompoRequiredProperty()
+	 * @generated
+	 */
+	void setAdvancedeobjectflatcomboviewerCompoRequiredProperty(TotalSample value);
+
+	/**
+	 * Returns the value of the '<em><b>Advancedeobjectflatcomboviewer Compo Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Advancedeobjectflatcomboviewer Compo Optional Property</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Advancedeobjectflatcomboviewer Compo Optional Property</em>' containment reference.
+	 * @see #setAdvancedeobjectflatcomboviewerCompoOptionalProperty(TotalSample)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TotalSample getAdvancedeobjectflatcomboviewerCompoOptionalProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoOptionalProperty <em>Advancedeobjectflatcomboviewer Compo Optional Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Advancedeobjectflatcomboviewer Compo Optional Property</em>' containment reference.
+	 * @see #getAdvancedeobjectflatcomboviewerCompoOptionalProperty()
+	 * @generated
+	 */
+	void setAdvancedeobjectflatcomboviewerCompoOptionalProperty(TotalSample value);
 
 } // AdvancedEObjectFlatComboViewerSample

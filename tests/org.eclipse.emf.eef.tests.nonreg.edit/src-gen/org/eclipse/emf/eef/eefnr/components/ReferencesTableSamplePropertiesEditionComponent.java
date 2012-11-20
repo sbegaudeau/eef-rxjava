@@ -85,7 +85,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final ReferencesTableSample referencesTableSample = (ReferencesTableSample)elt;
 			final ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -227,7 +226,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ReferencesTableSamplePropertiesEditionPart basePart = (ReferencesTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getReferencesTableSample_ReferencestableRequiredProperty().equals(msg.getFeature())  && isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty))
@@ -283,8 +281,5 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 		}
 		return ret;
 	}
-
-
-	
 
 }

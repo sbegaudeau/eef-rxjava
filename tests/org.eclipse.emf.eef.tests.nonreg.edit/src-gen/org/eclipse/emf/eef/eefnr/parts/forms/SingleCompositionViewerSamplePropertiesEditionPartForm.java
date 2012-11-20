@@ -363,14 +363,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerSingleRequiredProperty(EObject newValue) {
 		singlecompositionviewerSingleRequiredProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty);
-		if (readOnly && singlecompositionviewerSingleRequiredProperty.isEnabled()) {
-			singlecompositionviewerSingleRequiredProperty.setEnabled(false);
-			singlecompositionviewerSingleRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerSingleRequiredProperty.isEnabled()) {
-			singlecompositionviewerSingleRequiredProperty.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -415,14 +407,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerSingleOptionalProperty(EObject newValue) {
 		singlecompositionviewerSingleOptionalProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty);
-		if (readOnly && singlecompositionviewerSingleOptionalProperty.isEnabled()) {
-			singlecompositionviewerSingleOptionalProperty.setEnabled(false);
-			singlecompositionviewerSingleOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerSingleOptionalProperty.isEnabled()) {
-			singlecompositionviewerSingleOptionalProperty.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -467,14 +451,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerMultiRequiredProperty(EObject newValue) {
 		singlecompositionviewerMultiRequiredProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty);
-		if (readOnly && singlecompositionviewerMultiRequiredProperty.isEnabled()) {
-			singlecompositionviewerMultiRequiredProperty.setEnabled(false);
-			singlecompositionviewerMultiRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerMultiRequiredProperty.isEnabled()) {
-			singlecompositionviewerMultiRequiredProperty.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -519,14 +495,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerMultiOptionalProperty(EObject newValue) {
 		singlecompositionviewerMultiOptionalProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty);
-		if (readOnly && singlecompositionviewerMultiOptionalProperty.isEnabled()) {
-			singlecompositionviewerMultiOptionalProperty.setEnabled(false);
-			singlecompositionviewerMultiOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerMultiOptionalProperty.isEnabled()) {
-			singlecompositionviewerMultiOptionalProperty.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -571,9 +539,6 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerSingleROProperty(EObject newValue) {
 		singlecompositionviewerSingleROProperty.update(newValue);
-		singlecompositionviewerSingleROProperty.setEnabled(false);
-		singlecompositionviewerSingleROProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		
 	}
 
 	/**

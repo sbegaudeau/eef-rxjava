@@ -68,14 +68,13 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)elt;
 			final TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab))
+			if (textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab() != null && isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab))
 				textSampleFirstTabPart.setTextOptionalPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextOptionalPropertyInFirstTab()));
 			
-			if (isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab))
+			if (textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab() != null && isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab))
 				textSampleFirstTabPart.setTextRequiredPropertyInFirstTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextRequiredPropertyInFirstTab()));
 			
 			// init filters
@@ -127,7 +126,6 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TextSampleFirstTabPropertiesEditionPart textSampleFirstTabPart = (TextSampleFirstTabPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInFirstTab().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && textSampleFirstTabPart != null && isAccessible(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab)) {
@@ -204,8 +202,5 @@ public class TextSampleWithTwoTabsTextSampleFirstTabPropertiesEditionComponent e
 		}
 		return ret;
 	}
-
-
-	
 
 }

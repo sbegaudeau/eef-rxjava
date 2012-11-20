@@ -69,11 +69,10 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final TableCompositionTargetExtensionEditorSample tableCompositionTargetExtensionEditorSample = (TableCompositionTargetExtensionEditorSample)elt;
 			final TableCompositionTargetExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionTargetExtensionEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name))
+			if (tableCompositionTargetExtensionEditorSample.getName() != null && isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, tableCompositionTargetExtensionEditorSample.getName()));
 			
 			// init filters
@@ -117,7 +116,6 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TableCompositionTargetExtensionEditorSamplePropertiesEditionPart basePart = (TableCompositionTargetExtensionEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name)) {
@@ -169,8 +167,5 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionCompone
 		}
 		return ret;
 	}
-
-
-	
 
 }

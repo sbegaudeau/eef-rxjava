@@ -975,13 +975,31 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Advancedeobjectflatcomboviewer Compo Required Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Advancedeobjectflatcomboviewer Compo Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Advanced EObject Flat Combo Viewer Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedTableCompositionEditorSampleImpl <em>Advanced Table Composition Editor Sample</em>}' class.
@@ -2311,6 +2329,28 @@ public interface EefnrPackage extends EPackage {
 	EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoRequiredProperty <em>Advancedeobjectflatcomboviewer Compo Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Advancedeobjectflatcomboviewer Compo Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoRequiredProperty()
+	 * @see #getAdvancedEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoOptionalProperty <em>Advancedeobjectflatcomboviewer Compo Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Advancedeobjectflatcomboviewer Compo Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerCompoOptionalProperty()
+	 * @see #getAdvancedEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample <em>Advanced Table Composition Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3344,6 +3384,22 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY = eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery();
+
+		/**
+		 * The meta object literal for the '<em><b>Advancedeobjectflatcomboviewer Compo Required Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY = eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Advancedeobjectflatcomboviewer Compo Optional Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY = eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedTableCompositionEditorSampleImpl <em>Advanced Table Composition Editor Sample</em>}' class.

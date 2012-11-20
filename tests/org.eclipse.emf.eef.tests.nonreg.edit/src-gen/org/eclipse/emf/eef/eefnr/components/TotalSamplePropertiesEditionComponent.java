@@ -150,14 +150,13 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final TotalSample totalSample = (TotalSample)elt;
 			final TotalSamplePropertiesEditionPart basePart = (TotalSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty))
+			if (totalSample.getTextRequiredProperty() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty))
 				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, totalSample.getTextRequiredProperty()));
 			
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty))
+			if (totalSample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty))
 				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, totalSample.getTextOptionalProperty()));
 			
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty)) {
@@ -166,10 +165,10 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty)) {
 				basePart.setCheckboxOptionalProperty(totalSample.isCheckboxOptionalProperty());
 			}
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty))
+			if (totalSample.getTextareaRequiredProperty() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty))
 				basePart.setTextareaRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, totalSample.getTextareaRequiredProperty()));
 			
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty))
+			if (totalSample.getTextareaOptionalProperty() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty))
 				basePart.setTextareaOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, totalSample.getTextareaOptionalProperty()));
 			
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty)) {
@@ -206,10 +205,10 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty)) {
 				basePart.initEmfcomboviewerOptionalProperty(EEFUtils.choiceOfValues(totalSample, EefnrPackage.eINSTANCE.getTotalSample_EmfcomboviewerOptionalProperty()), totalSample.getEmfcomboviewerOptionalProperty());
 			}
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty))
+			if (totalSample.getMultivaluededitorRequiredProperty() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty))
 				basePart.setMultivaluededitorRequiredProperty(totalSample.getMultivaluededitorRequiredProperty());
 			
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty))
+			if (totalSample.getMultivaluededitorOptionalProperty() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty))
 				basePart.setMultivaluededitorOptionalProperty(totalSample.getMultivaluededitorOptionalProperty());
 			
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty)) {
@@ -250,7 +249,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 				advancedtablecompositionOptionalPropertySettings = new ReferencesTableSettings(totalSample, EefnrPackage.eINSTANCE.getTotalSample_AdvancedtablecompositionOptionalProperty());
 				basePart.initAdvancedtablecompositionOptionalProperty(advancedtablecompositionOptionalPropertySettings);
 			}
-			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.name))
+			if (totalSample.getName() != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, totalSample.getName()));
 			
 			// Start of user code for custom command update
@@ -877,7 +876,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TotalSamplePropertiesEditionPart basePart = (TotalSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTotalSample_TextRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty)) {
@@ -1137,8 +1135,5 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		return ret;
 	}
-
-
-	
 
 }

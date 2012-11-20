@@ -67,7 +67,6 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final AbstractEnabledSample abstractEnabledSample = (AbstractEnabledSample)elt;
 			final AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -118,7 +117,6 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AbstractEnabledSamplePropertiesEditionPart basePart = (AbstractEnabledSamplePropertiesEditionPart)editingPart;
 			if (ReferencesPackage.eINSTANCE.getAbstractEnabledSample_Enabled().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled))
@@ -174,8 +172,5 @@ public class AbstractEnabledSampleBasePropertiesEditionComponent extends SingleP
 		}
 		return ret;
 	}
-
-
-	
 
 }

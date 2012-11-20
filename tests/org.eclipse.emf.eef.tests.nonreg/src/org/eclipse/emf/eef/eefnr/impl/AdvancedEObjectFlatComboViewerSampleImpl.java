@@ -7,6 +7,7 @@
 package org.eclipse.emf.eef.eefnr.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -24,6 +25,8 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl#getAdvancedeobjectflatcomboviewerRequiredProperty <em>Advancedeobjectflatcomboviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl#getAdvancedeobjectflatcomboviewerOptionalProperty <em>Advancedeobjectflatcomboviewer Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl#getAdvancedeobjectflatcomboviewerROPropery <em>Advancedeobjectflatcomboviewer RO Propery</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl#getAdvancedeobjectflatcomboviewerCompoRequiredProperty <em>Advancedeobjectflatcomboviewer Compo Required Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl#getAdvancedeobjectflatcomboviewerCompoOptionalProperty <em>Advancedeobjectflatcomboviewer Compo Optional Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,6 +62,26 @@ public class AdvancedEObjectFlatComboViewerSampleImpl extends AbstractSampleImpl
 	 * @ordered
 	 */
 	protected TotalSample advancedeobjectflatcomboviewerROPropery;
+
+	/**
+	 * The cached value of the '{@link #getAdvancedeobjectflatcomboviewerCompoRequiredProperty() <em>Advancedeobjectflatcomboviewer Compo Required Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAdvancedeobjectflatcomboviewerCompoRequiredProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected TotalSample advancedeobjectflatcomboviewerCompoRequiredProperty;
+
+	/**
+	 * The cached value of the '{@link #getAdvancedeobjectflatcomboviewerCompoOptionalProperty() <em>Advancedeobjectflatcomboviewer Compo Optional Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAdvancedeobjectflatcomboviewerCompoOptionalProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected TotalSample advancedeobjectflatcomboviewerCompoOptionalProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,6 +221,108 @@ public class AdvancedEObjectFlatComboViewerSampleImpl extends AbstractSampleImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TotalSample getAdvancedeobjectflatcomboviewerCompoRequiredProperty() {
+		return advancedeobjectflatcomboviewerCompoRequiredProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAdvancedeobjectflatcomboviewerCompoRequiredProperty(TotalSample newAdvancedeobjectflatcomboviewerCompoRequiredProperty, NotificationChain msgs) {
+		TotalSample oldAdvancedeobjectflatcomboviewerCompoRequiredProperty = advancedeobjectflatcomboviewerCompoRequiredProperty;
+		advancedeobjectflatcomboviewerCompoRequiredProperty = newAdvancedeobjectflatcomboviewerCompoRequiredProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY, oldAdvancedeobjectflatcomboviewerCompoRequiredProperty, newAdvancedeobjectflatcomboviewerCompoRequiredProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAdvancedeobjectflatcomboviewerCompoRequiredProperty(TotalSample newAdvancedeobjectflatcomboviewerCompoRequiredProperty) {
+		if (newAdvancedeobjectflatcomboviewerCompoRequiredProperty != advancedeobjectflatcomboviewerCompoRequiredProperty) {
+			NotificationChain msgs = null;
+			if (advancedeobjectflatcomboviewerCompoRequiredProperty != null)
+				msgs = ((InternalEObject)advancedeobjectflatcomboviewerCompoRequiredProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY, null, msgs);
+			if (newAdvancedeobjectflatcomboviewerCompoRequiredProperty != null)
+				msgs = ((InternalEObject)newAdvancedeobjectflatcomboviewerCompoRequiredProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY, null, msgs);
+			msgs = basicSetAdvancedeobjectflatcomboviewerCompoRequiredProperty(newAdvancedeobjectflatcomboviewerCompoRequiredProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY, newAdvancedeobjectflatcomboviewerCompoRequiredProperty, newAdvancedeobjectflatcomboviewerCompoRequiredProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TotalSample getAdvancedeobjectflatcomboviewerCompoOptionalProperty() {
+		return advancedeobjectflatcomboviewerCompoOptionalProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAdvancedeobjectflatcomboviewerCompoOptionalProperty(TotalSample newAdvancedeobjectflatcomboviewerCompoOptionalProperty, NotificationChain msgs) {
+		TotalSample oldAdvancedeobjectflatcomboviewerCompoOptionalProperty = advancedeobjectflatcomboviewerCompoOptionalProperty;
+		advancedeobjectflatcomboviewerCompoOptionalProperty = newAdvancedeobjectflatcomboviewerCompoOptionalProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY, oldAdvancedeobjectflatcomboviewerCompoOptionalProperty, newAdvancedeobjectflatcomboviewerCompoOptionalProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAdvancedeobjectflatcomboviewerCompoOptionalProperty(TotalSample newAdvancedeobjectflatcomboviewerCompoOptionalProperty) {
+		if (newAdvancedeobjectflatcomboviewerCompoOptionalProperty != advancedeobjectflatcomboviewerCompoOptionalProperty) {
+			NotificationChain msgs = null;
+			if (advancedeobjectflatcomboviewerCompoOptionalProperty != null)
+				msgs = ((InternalEObject)advancedeobjectflatcomboviewerCompoOptionalProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY, null, msgs);
+			if (newAdvancedeobjectflatcomboviewerCompoOptionalProperty != null)
+				msgs = ((InternalEObject)newAdvancedeobjectflatcomboviewerCompoOptionalProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY, null, msgs);
+			msgs = basicSetAdvancedeobjectflatcomboviewerCompoOptionalProperty(newAdvancedeobjectflatcomboviewerCompoOptionalProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY, newAdvancedeobjectflatcomboviewerCompoOptionalProperty, newAdvancedeobjectflatcomboviewerCompoOptionalProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY:
+				return basicSetAdvancedeobjectflatcomboviewerCompoRequiredProperty(null, msgs);
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY:
+				return basicSetAdvancedeobjectflatcomboviewerCompoOptionalProperty(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -210,6 +335,10 @@ public class AdvancedEObjectFlatComboViewerSampleImpl extends AbstractSampleImpl
 			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY:
 				if (resolve) return getAdvancedeobjectflatcomboviewerROPropery();
 				return basicGetAdvancedeobjectflatcomboviewerROPropery();
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY:
+				return getAdvancedeobjectflatcomboviewerCompoRequiredProperty();
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY:
+				return getAdvancedeobjectflatcomboviewerCompoOptionalProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -230,6 +359,12 @@ public class AdvancedEObjectFlatComboViewerSampleImpl extends AbstractSampleImpl
 				return;
 			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY:
 				setAdvancedeobjectflatcomboviewerROPropery((TotalSample)newValue);
+				return;
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY:
+				setAdvancedeobjectflatcomboviewerCompoRequiredProperty((TotalSample)newValue);
+				return;
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY:
+				setAdvancedeobjectflatcomboviewerCompoOptionalProperty((TotalSample)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,6 +387,12 @@ public class AdvancedEObjectFlatComboViewerSampleImpl extends AbstractSampleImpl
 			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY:
 				setAdvancedeobjectflatcomboviewerROPropery((TotalSample)null);
 				return;
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY:
+				setAdvancedeobjectflatcomboviewerCompoRequiredProperty((TotalSample)null);
+				return;
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY:
+				setAdvancedeobjectflatcomboviewerCompoOptionalProperty((TotalSample)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -270,6 +411,10 @@ public class AdvancedEObjectFlatComboViewerSampleImpl extends AbstractSampleImpl
 				return advancedeobjectflatcomboviewerOptionalProperty != null;
 			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY:
 				return advancedeobjectflatcomboviewerROPropery != null;
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY:
+				return advancedeobjectflatcomboviewerCompoRequiredProperty != null;
+			case EefnrPackage.ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY:
+				return advancedeobjectflatcomboviewerCompoOptionalProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}

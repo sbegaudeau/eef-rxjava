@@ -404,14 +404,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -436,14 +428,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate1ForSingleValued.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForSingleValuedSettings().getOrCreateSignificantObject());
-		if (readOnly && delegate1ForSingleValued.isEnabled()) {
-			delegate1ForSingleValued.setEnabled(false);
-			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		} else if (!readOnly && !delegate1ForSingleValued.isEnabled()) {
-			delegate1ForSingleValued.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -468,14 +452,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate2ForSingleValued.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForSingleValuedSettings().getOrCreateSignificantObject());
-		if (readOnly && delegate2ForSingleValued.isEnabled()) {
-			delegate2ForSingleValued.setEnabled(false);
-			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		} else if (!readOnly && !delegate2ForSingleValued.isEnabled()) {
-			delegate2ForSingleValued.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -500,14 +476,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate1ForMultiValued.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForMultiValuedSettings().getOrCreateSignificantObject());
-		if (readOnly && delegate1ForMultiValued.isEnabled()) {
-			delegate1ForMultiValued.setEnabled(false);
-			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		} else if (!readOnly && !delegate1ForMultiValued.isEnabled()) {
-			delegate1ForMultiValued.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -532,14 +500,6 @@ public class AttributeNavigationSamplePropertiesEditionPartImpl extends Composit
 		} else {
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForMultiValuedSettings().getOrCreateSignificantObject());
-		if (readOnly && delegate2ForMultiValued.isEnabled()) {
-			delegate2ForMultiValued.setEnabled(false);
-			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
-		} else if (!readOnly && !delegate2ForMultiValued.isEnabled()) {
-			delegate2ForMultiValued.setEnabled(true);
-		}	
-		
 	}
 
 

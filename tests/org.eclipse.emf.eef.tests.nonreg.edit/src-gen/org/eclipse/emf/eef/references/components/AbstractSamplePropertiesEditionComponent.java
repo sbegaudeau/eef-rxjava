@@ -68,11 +68,10 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final AbstractSample abstractSample = (AbstractSample)elt;
 			final AbstractSamplePropertiesEditionPart basePart = (AbstractSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name))
+			if (abstractSample.getName() != null && isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, abstractSample.getName()));
 			
 			// init filters
@@ -116,7 +115,6 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AbstractSamplePropertiesEditionPart basePart = (AbstractSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ReferencesViewsRepository.AbstractSample.NameProperties.name)) {
@@ -168,8 +166,5 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
-
-
-	
 
 }

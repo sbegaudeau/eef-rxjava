@@ -96,11 +96,10 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final ConcreteReferenceOwnerSample concreteReferenceOwnerSample = (ConcreteReferenceOwnerSample)elt;
 			final ConcreteReferenceOwnerSamplePropertiesEditionPart basePart = (ConcreteReferenceOwnerSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name))
+			if (concreteReferenceOwnerSample.getName() != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, concreteReferenceOwnerSample.getName()));
 			
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget)) {
@@ -250,7 +249,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ConcreteReferenceOwnerSamplePropertiesEditionPart basePart = (ConcreteReferenceOwnerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name)) {
@@ -308,8 +306,5 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
-
-
-	
 
 }

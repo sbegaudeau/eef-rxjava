@@ -105,16 +105,10 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			if (editingPart instanceof CompositePropertiesEditionPart) {
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForSingleValuedSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForSingleValuedSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForMultiValuedSettings);
-				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForMultiValuedSettings);
-			}
 			final AttributeNavigationSample attributeNavigationSample = (AttributeNavigationSample)elt;
 			final AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
+			if (attributeNavigationSample.getName() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, attributeNavigationSample.getName()));
 			
 			if (delegate1ForSingleValuedSettings.getValue() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued))
@@ -212,7 +206,6 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name)) {
@@ -337,33 +330,6 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			}
 		}
 		return ret;
-	}
-
-
-	
-	/**
-	 * @ return settings for delegate1ForSingleValued editor
-	 */
-	public EEFEditorSettingsImpl getDelegate1ForSingleValuedSettings() {
-			return delegate1ForSingleValuedSettings;
-	}
-	/**
-	 * @ return settings for delegate2ForSingleValued editor
-	 */
-	public EEFEditorSettingsImpl getDelegate2ForSingleValuedSettings() {
-			return delegate2ForSingleValuedSettings;
-	}
-	/**
-	 * @ return settings for delegate1ForMultiValued editor
-	 */
-	public EEFEditorSettingsImpl getDelegate1ForMultiValuedSettings() {
-			return delegate1ForMultiValuedSettings;
-	}
-	/**
-	 * @ return settings for delegate2ForMultiValued editor
-	 */
-	public EEFEditorSettingsImpl getDelegate2ForMultiValuedSettings() {
-			return delegate2ForMultiValuedSettings;
 	}
 
 }

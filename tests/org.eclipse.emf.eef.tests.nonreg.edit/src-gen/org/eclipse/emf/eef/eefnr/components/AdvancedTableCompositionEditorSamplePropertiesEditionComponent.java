@@ -89,7 +89,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final AdvancedTableCompositionEditorSample advancedTableCompositionEditorSample = (AdvancedTableCompositionEditorSample)elt;
 			final AdvancedTableCompositionEditorSamplePropertiesEditionPart basePart = (AdvancedTableCompositionEditorSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -247,7 +246,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AdvancedTableCompositionEditorSamplePropertiesEditionPart basePart = (AdvancedTableCompositionEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty))
@@ -303,8 +301,5 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 		}
 		return ret;
 	}
-
-
-	
 
 }

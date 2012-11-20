@@ -391,14 +391,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
 	}
 
 
@@ -414,14 +406,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		abstractTarget.setContentProvider(contentProvider);
 		abstractTarget.setInput(settings);
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget);
-		if (readOnly && abstractTarget.getTable().isEnabled()) {
-			abstractTarget.setEnabled(false);
-			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		} else if (!readOnly && !abstractTarget.getTable().isEnabled()) {
-			abstractTarget.setEnabled(true);
-		}
-		
 	}
 
 	/**
@@ -477,14 +461,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		strictTyping.setContentProvider(contentProvider);
 		strictTyping.setInput(settings);
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
-		if (readOnly && strictTyping.isEnabled()) {
-			strictTyping.setEnabled(false);
-			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		} else if (!readOnly && !strictTyping.isEnabled()) {
-			strictTyping.setEnabled(true);
-		}	
-		
 	}
 
 	/**

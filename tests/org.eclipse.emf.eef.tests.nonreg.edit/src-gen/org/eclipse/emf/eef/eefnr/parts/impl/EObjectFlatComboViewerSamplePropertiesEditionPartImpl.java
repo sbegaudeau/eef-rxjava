@@ -185,6 +185,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		createDescription(parent, EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery, EefnrMessages.EObjectFlatComboViewerSamplePropertiesEditionPart_EobjectflatcomboviewerROProperyLabel);
 		eobjectflatcomboviewerROPropery = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery, EefnrViewsRepository.SWT_KIND));
 		eobjectflatcomboviewerROPropery.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		eobjectflatcomboviewerROPropery.setEnabled(false);
+		eobjectflatcomboviewerROPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
 
 		eobjectflatcomboviewerROPropery.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -238,14 +240,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		if (current != null) {
 			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery);
-		if (readOnly && eobjectflatcomboviewerRequiredPropery.isEnabled()) {
-			eobjectflatcomboviewerRequiredPropery.setEnabled(false);
-			eobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
-		} else if (!readOnly && !eobjectflatcomboviewerRequiredPropery.isEnabled()) {
-			eobjectflatcomboviewerRequiredPropery.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -260,14 +254,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			eobjectflatcomboviewerRequiredPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery);
-		if (readOnly && eobjectflatcomboviewerRequiredPropery.isEnabled()) {
-			eobjectflatcomboviewerRequiredPropery.setEnabled(false);
-			eobjectflatcomboviewerRequiredPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
-		} else if (!readOnly && !eobjectflatcomboviewerRequiredPropery.isEnabled()) {
-			eobjectflatcomboviewerRequiredPropery.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -324,14 +310,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		if (current != null) {
 			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
-		if (readOnly && eobjectflatcomboviewerOptionalPropery.isEnabled()) {
-			eobjectflatcomboviewerOptionalPropery.setEnabled(false);
-			eobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
-		} else if (!readOnly && !eobjectflatcomboviewerOptionalPropery.isEnabled()) {
-			eobjectflatcomboviewerOptionalPropery.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -346,14 +324,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			eobjectflatcomboviewerOptionalPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
-		if (readOnly && eobjectflatcomboviewerOptionalPropery.isEnabled()) {
-			eobjectflatcomboviewerOptionalPropery.setEnabled(false);
-			eobjectflatcomboviewerOptionalPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
-		} else if (!readOnly && !eobjectflatcomboviewerOptionalPropery.isEnabled()) {
-			eobjectflatcomboviewerOptionalPropery.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -410,9 +380,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		if (current != null) {
 			eobjectflatcomboviewerROPropery.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		eobjectflatcomboviewerROPropery.setEnabled(false);
-		eobjectflatcomboviewerROPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
-		
 	}
 
 	/**
@@ -427,9 +394,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			eobjectflatcomboviewerROPropery.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		eobjectflatcomboviewerROPropery.setEnabled(false);
-		eobjectflatcomboviewerROPropery.setToolTipText(EefnrMessages.EObjectFlatComboViewerSample_ReadOnly);
-		
 	}
 
 	/**

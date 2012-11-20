@@ -146,6 +146,10 @@
         eType="#//TotalSample"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerROPropery"
         eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerCompoRequiredProperty"
+        lowerBound="1" eType="#//TotalSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerCompoOptionalProperty"
+        eType="#//TotalSample" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdvancedTableCompositionEditorSample"
       eSuperTypes="#//AbstractSample">

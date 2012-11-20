@@ -83,7 +83,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)elt;
 			final FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -211,7 +210,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty))
@@ -267,8 +265,5 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		}
 		return ret;
 	}
-
-
-	
 
 }

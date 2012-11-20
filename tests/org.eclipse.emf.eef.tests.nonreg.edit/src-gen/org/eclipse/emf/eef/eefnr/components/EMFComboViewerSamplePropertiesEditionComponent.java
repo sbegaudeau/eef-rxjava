@@ -68,7 +68,6 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final EMFComboViewerSample eMFComboViewerSample = (EMFComboViewerSample)elt;
 			final EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -135,7 +134,6 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty))
@@ -215,8 +213,5 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
-
-
-	
 
 }

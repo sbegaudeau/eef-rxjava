@@ -300,14 +300,6 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		} else {
 			textRequiredPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
-		if (readOnly && textRequiredPropertyInFirstTab.isEnabled()) {
-			textRequiredPropertyInFirstTab.setEnabled(false);
-			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
-		} else if (!readOnly && !textRequiredPropertyInFirstTab.isEnabled()) {
-			textRequiredPropertyInFirstTab.setEnabled(true);
-		}	
-		
 	}
 
 	/**
@@ -332,14 +324,6 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		} else {
 			textOptionalPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
-		if (readOnly && textOptionalPropertyInFirstTab.isEnabled()) {
-			textOptionalPropertyInFirstTab.setEnabled(false);
-			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
-		} else if (!readOnly && !textOptionalPropertyInFirstTab.isEnabled()) {
-			textOptionalPropertyInFirstTab.setEnabled(true);
-		}	
-		
 	}
 
 

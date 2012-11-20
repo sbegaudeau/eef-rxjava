@@ -67,19 +67,18 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final ImageViewerSample imageViewerSample = (ImageViewerSample)elt;
 			final ImageViewerSamplePropertiesEditionPart basePart = (ImageViewerSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)) {
+			if (imageViewerSample.getImageviewerRequiredProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)) {
 				basePart.initImageviewerRequiredProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerRequiredProperty());
 			}
 			
-			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty)) {
+			if (imageViewerSample.getImageviewerOptionalProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty)) {
 				basePart.initImageviewerOptionalProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerOptionalProperty());
 			}
 			
-			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)) {
+			if (imageViewerSample.getImageviewerROProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)) {
 				basePart.initImageviewerROProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerROProperty());
 			}
 			
@@ -137,7 +136,6 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ImageViewerSamplePropertiesEditionPart basePart = (ImageViewerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)){
@@ -232,8 +230,5 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		}
 		return ret;
 	}
-
-
-	
 
 }

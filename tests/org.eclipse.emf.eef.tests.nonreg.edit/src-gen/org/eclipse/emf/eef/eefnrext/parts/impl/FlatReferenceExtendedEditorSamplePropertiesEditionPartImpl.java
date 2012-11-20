@@ -138,6 +138,7 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		createDescription(parent, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel);
 		flatReferenceEditorSample = new FlatReferencesTable(parent);
 		flatReferenceEditorSample.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
 		flatReferenceEditorSample.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -186,14 +187,6 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferenceEditorSample.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
-		if (readOnly && flatReferenceEditorSample.isEnabled()) {
-			flatReferenceEditorSample.setEnabled(false);
-			flatReferenceEditorSample.setToolTipText(EefnrextMessages.FlatReferenceExtendedEditorSample_ReadOnly);
-		} else if (!readOnly && !flatReferenceEditorSample.isEnabled()) {
-			flatReferenceEditorSample.setEnabled(true);
-		}	
-		
 	}
 
 	/**

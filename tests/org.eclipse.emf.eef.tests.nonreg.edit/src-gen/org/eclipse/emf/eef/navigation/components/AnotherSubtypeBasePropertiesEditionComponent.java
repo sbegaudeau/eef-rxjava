@@ -66,7 +66,6 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final AnotherSubType anotherSubType = (AnotherSubType)elt;
 			final AnotherSubtypePropertiesEditionPart basePart = (AnotherSubtypePropertiesEditionPart)editingPart;
 			// init values
@@ -117,7 +116,6 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AnotherSubtypePropertiesEditionPart basePart = (AnotherSubtypePropertiesEditionPart)editingPart;
 			if (NavigationPackage.eINSTANCE.getAnotherSubType_AnotherSpecialisation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement))
@@ -173,8 +171,5 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 		}
 		return ret;
 	}
-
-
-	
 
 }

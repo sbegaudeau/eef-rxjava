@@ -230,14 +230,6 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.NamedElement.Properties.name);
-		if (readOnly && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(NavigationMessages.NamedElement_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
 	}
 
 

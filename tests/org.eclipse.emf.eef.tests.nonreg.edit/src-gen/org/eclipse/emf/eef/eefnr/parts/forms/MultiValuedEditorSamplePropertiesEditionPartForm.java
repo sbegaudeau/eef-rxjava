@@ -241,13 +241,14 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 	 */
 	protected Composite createMultivaluededitorROPropertyMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		multivaluededitorROProperty = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+		multivaluededitorROProperty.setEnabled(false);
+		multivaluededitorROProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
 		GridData multivaluededitorROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		multivaluededitorROPropertyData.horizontalSpan = 2;
 		multivaluededitorROProperty.setLayoutData(multivaluededitorROPropertyData);
 		EditingUtils.setID(multivaluededitorROProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty);
 		EditingUtils.setEEFtype(multivaluededitorROProperty, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
 		editMultivaluededitorROProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty, EefnrMessages.MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorROPropertyLabel), SWT.NONE);
-		editMultivaluededitorROProperty.setEnabled(false);
 		GridData editMultivaluededitorROPropertyData = new GridData();
 		editMultivaluededitorROProperty.setLayoutData(editMultivaluededitorROPropertyData);
 		editMultivaluededitorROProperty.addSelectionListener(new SelectionAdapter() {
@@ -316,14 +317,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
-		if (readOnly && multivaluededitorRequiredProperty.isEnabled()) {
-			multivaluededitorRequiredProperty.setEnabled(false);
-			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
-		} else if (!readOnly && !multivaluededitorRequiredProperty.isEnabled()) {
-			multivaluededitorRequiredProperty.setEnabled(true);
-		}	
-		
 	}
 
 	public void addToMultivaluededitorRequiredProperty(Object newValue) {
@@ -367,14 +360,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
-		if (readOnly && multivaluededitorOptionalProperty.isEnabled()) {
-			multivaluededitorOptionalProperty.setEnabled(false);
-			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
-		} else if (!readOnly && !multivaluededitorOptionalProperty.isEnabled()) {
-			multivaluededitorOptionalProperty.setEnabled(true);
-		}	
-		
 	}
 
 	public void addToMultivaluededitorOptionalProperty(Object newValue) {
@@ -418,9 +403,6 @@ public class MultiValuedEditorSamplePropertiesEditionPartForm extends SectionPro
 		} else {
 			multivaluededitorROProperty.setText(""); //$NON-NLS-1$
 		}
-		multivaluededitorROProperty.setEnabled(false);
-		multivaluededitorROProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
-		
 	}
 
 	public void addToMultivaluededitorROProperty(Object newValue) {

@@ -68,14 +68,13 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
-			
 			final TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)elt;
 			final TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab))
+			if (textSampleWithTwoTabs.getTextOptionalPropertyInSecondTab() != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab))
 				textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextOptionalPropertyInSecondTab()));
 			
-			if (isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab))
+			if (textSampleWithTwoTabs.getTextRequiredPropertyInSecondTab() != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab))
 				textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextRequiredPropertyInSecondTab()));
 			
 			// init filters
@@ -127,7 +126,6 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && textSampleSecondTabPart != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab)) {
@@ -204,8 +202,5 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 		}
 		return ret;
 	}
-
-
-	
 
 }

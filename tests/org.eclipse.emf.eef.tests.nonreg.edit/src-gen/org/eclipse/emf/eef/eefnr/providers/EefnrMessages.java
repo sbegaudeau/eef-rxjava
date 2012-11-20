@@ -401,6 +401,12 @@ public class EefnrMessages extends NLS {
 	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerROPropertyLabel;
 
 	
+	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerCompoRequiredPropertyLabel;
+
+	
+	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerCompoOptionalPropertyLabel;
+
+	
 	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel;
 
 	
