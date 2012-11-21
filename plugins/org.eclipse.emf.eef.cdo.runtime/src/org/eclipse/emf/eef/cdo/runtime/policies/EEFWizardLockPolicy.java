@@ -49,8 +49,11 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	private void lock(List<EEFEditorSettings> allSettings) {
 		for (EEFEditorSettings eefEditorSettings : allSettings) {
 			if (eefEditorSettings instanceof EEFEditorSettingsImpl) {
-				lock(((EEFEditorSettingsImpl) eefEditorSettings)
-						.getOrCreateSignificantObject());
+				EObject significantObject = ((EEFEditorSettingsImpl) eefEditorSettings)
+						.getSignificantObject();
+				if (significantObject != null) {
+					lock(significantObject);
+				}
 			}
 		}
 	}
@@ -74,8 +77,11 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	private void unlock(List<EEFEditorSettings> allSettings) {
 		for (EEFEditorSettings eefEditorSettings : allSettings) {
 			if (eefEditorSettings instanceof EEFEditorSettingsImpl) {
-				unlock(((EEFEditorSettingsImpl) eefEditorSettings)
-						.getOrCreateSignificantObject());
+				EObject significantObject = ((EEFEditorSettingsImpl) eefEditorSettings)
+						.getSignificantObject();
+				if (significantObject != null) {
+					unlock(significantObject);
+				}
 			}
 		}
 	}
