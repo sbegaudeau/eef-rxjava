@@ -207,6 +207,14 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		} else {
 			isVisible.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.Element.Properties.isVisible);
+		if (readOnly && isVisible.isEnabled()) {
+			isVisible.setEnabled(false);
+			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
+		} else if (!readOnly && !isVisible.isEnabled()) {
+			isVisible.setEnabled(true);
+		}	
+		
 	}
 
 

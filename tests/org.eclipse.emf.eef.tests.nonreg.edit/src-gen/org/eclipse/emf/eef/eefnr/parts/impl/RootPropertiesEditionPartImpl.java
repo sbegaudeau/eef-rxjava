@@ -199,6 +199,14 @@ public class RootPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		samples.setContentProvider(contentProvider);
 		samples.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.Root.Properties.samples);
+		if (readOnly && samples.isEnabled()) {
+			samples.setEnabled(false);
+			samples.setToolTipText(EefnrMessages.Root_ReadOnly);
+		} else if (!readOnly && !samples.isEnabled()) {
+			samples.setEnabled(true);
+		}	
+		
 	}
 
 	/**

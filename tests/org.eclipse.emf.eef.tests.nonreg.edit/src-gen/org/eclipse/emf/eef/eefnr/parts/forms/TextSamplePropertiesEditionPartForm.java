@@ -274,8 +274,6 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 	protected Composite createTextROPropertyText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextROPropertyLabel);
 		textROProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		textROProperty.setEnabled(false);
-		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
 		textROProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData textROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
@@ -372,6 +370,14 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
+		if (readOnly && textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!readOnly && !textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -396,6 +402,14 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
+		if (readOnly && textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!readOnly && !textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -420,6 +434,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			textROProperty.setText(""); //$NON-NLS-1$
 		}
+		textROProperty.setEnabled(false);
+		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		
 	}
 
 

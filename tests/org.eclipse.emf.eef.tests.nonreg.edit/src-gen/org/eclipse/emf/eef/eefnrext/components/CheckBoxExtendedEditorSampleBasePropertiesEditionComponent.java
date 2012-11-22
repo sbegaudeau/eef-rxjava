@@ -68,6 +68,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final CheckBoxExtendedEditorSample checkBoxExtendedEditorSample = (CheckBoxExtendedEditorSample)elt;
 			final CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -118,6 +119,7 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			CheckBoxExtendedEditorSamplePropertiesEditionPart basePart = (CheckBoxExtendedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrextPackage.eINSTANCE.getCheckBoxExtendedEditorSample_CheckboxEditorSample().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample))
@@ -173,5 +175,8 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 		}
 		return ret;
 	}
+
+
+	
 
 }

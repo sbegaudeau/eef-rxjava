@@ -550,4 +550,25 @@ public class EefnrViewsRepository {
 	
 	}
 
+	/**
+	 * SingleCompositionEditorSample view descriptor
+	 * 
+	 */
+	public static class SingleCompositionEditorSample {
+		public static class Properties {
+	
+			
+			public static String singlecompositionviewerRequiredProperty = "eefnr::SingleCompositionEditorSample::properties::singlecompositionviewerRequiredProperty";
+			
+			
+			public static String singlecompositionviewerOptionalProperty = "eefnr::SingleCompositionEditorSample::properties::singlecompositionviewerOptionalProperty";
+			
+			
+			public static String singlecompositionviewerROProperty = "eefnr::SingleCompositionEditorSample::properties::singlecompositionviewerROProperty";
+			
+	
+		}
+	
+	}
+
 }

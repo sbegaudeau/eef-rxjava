@@ -86,6 +86,9 @@ public class EefnrMessages extends NLS {
 	
 	public static String SingleCompositionViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String Root_ReadOnly;
@@ -218,6 +221,12 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String SingleCompositionViewerSample_Part_Title;
+
+	
+	public static String SingleCompositionEditorSample_ReadOnly;
+
+	
+	public static String SingleCompositionEditorSample_Part_Title;
 
 
 	
@@ -483,6 +492,15 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleROPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerRequiredPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerOptionalPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerROPropertyLabel;
 
 
 	

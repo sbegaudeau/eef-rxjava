@@ -68,16 +68,17 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TextSample textSample = (TextSample)elt;
 			final TextSamplePropertiesEditionPart basePart = (TextSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (textSample.getTextRequiredProperty() != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textRequiredProperty))
+			if (isAccessible(EefnrViewsRepository.TextSample.Properties.textRequiredProperty))
 				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSample.getTextRequiredProperty()));
 			
-			if (textSample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textOptionalProperty))
+			if (isAccessible(EefnrViewsRepository.TextSample.Properties.textOptionalProperty))
 				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSample.getTextOptionalProperty()));
 			
-			if (textSample.getTextROProperty() != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textROProperty))
+			if (isAccessible(EefnrViewsRepository.TextSample.Properties.textROProperty))
 				basePart.setTextROProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSample.getTextROProperty()));
 			
 			// init filters
@@ -134,6 +135,7 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TextSamplePropertiesEditionPart basePart = (TextSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getTextSample_TextRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextSample.Properties.textRequiredProperty)) {
@@ -225,5 +227,8 @@ public class TextSamplePropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		return ret;
 	}
+
+
+	
 
 }

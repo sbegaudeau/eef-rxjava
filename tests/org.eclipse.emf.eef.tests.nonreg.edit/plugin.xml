@@ -253,6 +253,12 @@
                id="org.eclipse.emf.eef.eefnr.section.TextareaSample"
                tab="Base">
          </propertySection>
+          <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.SingleCompositionEditorSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.SingleCompositionEditorSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.SingleCompositionEditorSample"
+               tab="Base">
+         </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm"
                filter="org.eclipse.emf.eef.eefnr.providers.RadioSamplePropertiesEditionProvider$EditionFilter"
@@ -794,7 +800,7 @@
                   name="sampleGroup">
             </separator>
          </menu>
-         <action
+         <!--action
                class="org.eclipse.emf.eef.tests.nonreg.edit.actions.SampleAction"
                icon="icons/sample.gif"
                id="org.eclipse.emf.eef.tests.nonreg.edit.actions.SampleAction"
@@ -802,6 +808,15 @@
                menubarPath="sampleMenu/sampleGroup"
                toolbarPath="sampleGroup"
                tooltip="Hello, Eclipse world">
+         </action-->
+         <action
+               class="org.eclipse.emf.eef.tests.nonreg.edit.actions.RemoveSingleCompositionEditorAction"
+               icon="icons/sample.gif"
+               id="org.eclipse.emf.eef.tests.nonreg.edit.actions.RemoveSingleCompositionEditorAction"
+               label="&amp;Remove SingleCompositionEditor Action"
+               menubarPath="sampleMenu/sampleGroup"
+               toolbarPath="sampleGroup"
+               tooltip="Remove SingleCompositionEditor Action">
          </action>
       </actionSet>
    </extension>

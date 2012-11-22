@@ -148,6 +148,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiOptionalProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleROProperty"/>
     </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//SingleCompositionEditorSample">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorRequiredProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorOptionalProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorROPropery"/>
+    </genClasses>
     <nestedGenPackages prefix="References" basePackage="org.eclipse.emf.eef.eefnr"
         disposableProviderFactory="true" ecorePackage="eefnr.ecore#//references">
       <genClasses image="false" ecoreClass="eefnr.ecore#//references/AbstractEnabledSample">

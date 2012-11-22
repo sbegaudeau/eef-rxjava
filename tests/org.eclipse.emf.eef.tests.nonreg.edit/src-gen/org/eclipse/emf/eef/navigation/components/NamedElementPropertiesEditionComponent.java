@@ -68,10 +68,11 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final NamedElement namedElement = (NamedElement)elt;
 			final NamedElementPropertiesEditionPart basePart = (NamedElementPropertiesEditionPart)editingPart;
 			// init values
-			if (namedElement.getName() != null && isAccessible(NavigationViewsRepository.NamedElement.Properties.name))
+			if (isAccessible(NavigationViewsRepository.NamedElement.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, namedElement.getName()));
 			
 			// init filters
@@ -115,6 +116,7 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			NamedElementPropertiesEditionPart basePart = (NamedElementPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.NamedElement.Properties.name)) {
@@ -166,5 +168,8 @@ public class NamedElementPropertiesEditionComponent extends SinglePartProperties
 		}
 		return ret;
 	}
+
+
+	
 
 }

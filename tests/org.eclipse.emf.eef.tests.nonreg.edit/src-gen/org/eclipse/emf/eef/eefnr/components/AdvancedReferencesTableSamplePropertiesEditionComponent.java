@@ -86,6 +86,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final AdvancedReferencesTableSample advancedReferencesTableSample = (AdvancedReferencesTableSample)elt;
 			final AdvancedReferencesTableSamplePropertiesEditionPart basePart = (AdvancedReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -227,6 +228,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AdvancedReferencesTableSamplePropertiesEditionPart basePart = (AdvancedReferencesTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty().equals(msg.getFeature())  && isAccessible(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty))
@@ -282,5 +284,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionComponent extends Sin
 		}
 		return ret;
 	}
+
+
+	
 
 }

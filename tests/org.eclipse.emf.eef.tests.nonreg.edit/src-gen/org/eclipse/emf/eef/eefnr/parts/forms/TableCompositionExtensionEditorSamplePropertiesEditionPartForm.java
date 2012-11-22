@@ -352,6 +352,14 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EefnrMessages.TableCompositionExtensionEditorSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -367,6 +375,14 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionRequiredProperty.setContentProvider(contentProvider);
 		tablecompositionRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty);
+		if (readOnly && tablecompositionRequiredProperty.isEnabled()) {
+			tablecompositionRequiredProperty.setEnabled(false);
+			tablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionExtensionEditorSample_ReadOnly);
+		} else if (!readOnly && !tablecompositionRequiredProperty.isEnabled()) {
+			tablecompositionRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -425,6 +441,14 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartForm exte
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionOptionalProperty.setContentProvider(contentProvider);
 		tablecompositionOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty);
+		if (readOnly && tablecompositionOptionalProperty.isEnabled()) {
+			tablecompositionOptionalProperty.setEnabled(false);
+			tablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionExtensionEditorSample_ReadOnly);
+		} else if (!readOnly && !tablecompositionOptionalProperty.isEnabled()) {
+			tablecompositionOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**

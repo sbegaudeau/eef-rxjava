@@ -78,6 +78,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			final FlatReferenceExtendedEditorSamplePropertiesEditionPart basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -149,6 +150,7 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FlatReferenceExtendedEditorSamplePropertiesEditionPart basePart = (FlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_FlatReferenceEditorSample().equals(msg.getFeature()) && isAccessible(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample))
@@ -206,5 +208,8 @@ public class FlatReferenceExtendedEditorSampleBasePropertiesEditionComponent ext
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -243,6 +243,14 @@ public class FirstNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.FirstNavigationSample.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.FirstNavigationSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

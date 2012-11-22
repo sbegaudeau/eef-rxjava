@@ -82,10 +82,13 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(flatReferencesTableSampleEditorSettings);
+			}
 			final DeferedFlatReferenceTableEditorSample deferedFlatReferenceTableEditorSample = (DeferedFlatReferenceTableEditorSample)elt;
 			final DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (deferedFlatReferenceTableEditorSample.getName() != null && isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name))
 				deferedFlatReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, deferedFlatReferenceTableEditorSample.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor)) {
@@ -169,6 +172,7 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			DeferedFlatReferencesTableSamplePropertiesEditionPart deferedFlatReferencesTableSamplePart = (DeferedFlatReferencesTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && deferedFlatReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name)) {
@@ -233,5 +237,8 @@ public class DeferedFlatReferencesTableSampleEditorPropertiesEditionComponent ex
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -63,12 +63,21 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 	protected TableViewer tablecompositionRequiredProperty;
 	protected List<ViewerFilter> tablecompositionRequiredPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> tablecompositionRequiredPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Button addTablecompositionRequiredProperty;
+	protected Button removeTablecompositionRequiredProperty;
+	protected Button editTablecompositionRequiredProperty;
 	protected TableViewer tablecompositionOptionalProperty;
 	protected List<ViewerFilter> tablecompositionOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> tablecompositionOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Button addTablecompositionOptionalProperty;
+	protected Button removeTablecompositionOptionalProperty;
+	protected Button editTablecompositionOptionalProperty;
 	protected TableViewer tablecompositionROProperty;
 	protected List<ViewerFilter> tablecompositionROPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> tablecompositionROPropertyFilters = new ArrayList<ViewerFilter>();
+	protected Button addTablecompositionROProperty;
+	protected Button removeTablecompositionROProperty;
+	protected Button editTablecompositionROProperty;
 
 
 
@@ -247,7 +256,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		GridLayout tablecompositionRequiredPropertyPanelLayout = new GridLayout();
 		tablecompositionRequiredPropertyPanelLayout.numColumns = 1;
 		tablecompositionRequiredPropertyPanel.setLayout(tablecompositionRequiredPropertyPanelLayout);
-		Button addTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
+		addTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		addTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel);
 		GridData addTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionRequiredProperty.setLayoutData(addTablecompositionRequiredPropertyData);
@@ -266,7 +275,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(addTablecompositionRequiredProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(addTablecompositionRequiredProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
-		Button removeTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
+		removeTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		removeTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
 		GridData removeTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionRequiredProperty.setLayoutData(removeTablecompositionRequiredPropertyData);
@@ -292,7 +301,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(removeTablecompositionRequiredProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(removeTablecompositionRequiredProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
-		Button editTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
+		editTablecompositionRequiredProperty = new Button(tablecompositionRequiredPropertyPanel, SWT.NONE);
 		editTablecompositionRequiredProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
 		GridData editTablecompositionRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionRequiredProperty.setLayoutData(editTablecompositionRequiredPropertyData);
@@ -418,7 +427,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		GridLayout tablecompositionOptionalPropertyPanelLayout = new GridLayout();
 		tablecompositionOptionalPropertyPanelLayout.numColumns = 1;
 		tablecompositionOptionalPropertyPanel.setLayout(tablecompositionOptionalPropertyPanelLayout);
-		Button addTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
+		addTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		addTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel);
 		GridData addTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionOptionalProperty.setLayoutData(addTablecompositionOptionalPropertyData);
@@ -437,7 +446,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(addTablecompositionOptionalProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(addTablecompositionOptionalProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
-		Button removeTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
+		removeTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		removeTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
 		GridData removeTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionOptionalProperty.setLayoutData(removeTablecompositionOptionalPropertyData);
@@ -463,7 +472,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(removeTablecompositionOptionalProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(removeTablecompositionOptionalProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
-		Button editTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
+		editTablecompositionOptionalProperty = new Button(tablecompositionOptionalPropertyPanel, SWT.NONE);
 		editTablecompositionOptionalProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
 		GridData editTablecompositionOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionOptionalProperty.setLayoutData(editTablecompositionOptionalPropertyData);
@@ -505,8 +514,6 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		tableContainer.setLayout(tableContainerLayout);
 		org.eclipse.swt.widgets.Table tableTablecompositionROProperty = new org.eclipse.swt.widgets.Table(tableContainer, SWT.FULL_SELECTION);
 		tableTablecompositionROProperty.setHeaderVisible(true);
-		tableTablecompositionROProperty.setEnabled(false);
-		tableTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 		GridData gdTablecompositionROProperty = new GridData();
 		gdTablecompositionROProperty.grabExcessHorizontalSpace = true;
 		gdTablecompositionROProperty.horizontalAlignment = GridData.FILL;
@@ -591,10 +598,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		GridLayout tablecompositionROPropertyPanelLayout = new GridLayout();
 		tablecompositionROPropertyPanelLayout.numColumns = 1;
 		tablecompositionROPropertyPanel.setLayout(tablecompositionROPropertyPanelLayout);
-		Button addTablecompositionROProperty = new Button(tablecompositionROPropertyPanel, SWT.NONE);
+		addTablecompositionROProperty = new Button(tablecompositionROPropertyPanel, SWT.NONE);
 		addTablecompositionROProperty.setText(EefnrMessages.PropertiesEditionPart_AddTableViewerLabel);
-		addTablecompositionROProperty.setEnabled(false);
-		addTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 		GridData addTablecompositionROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		addTablecompositionROProperty.setLayoutData(addTablecompositionROPropertyData);
 		addTablecompositionROProperty.addSelectionListener(new SelectionAdapter() {
@@ -612,10 +617,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(addTablecompositionROProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty);
 		EditingUtils.setEEFtype(addTablecompositionROProperty, "eef::TableComposition::addbutton"); //$NON-NLS-1$
-		Button removeTablecompositionROProperty = new Button(tablecompositionROPropertyPanel, SWT.NONE);
+		removeTablecompositionROProperty = new Button(tablecompositionROPropertyPanel, SWT.NONE);
 		removeTablecompositionROProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveTableViewerLabel);
-		removeTablecompositionROProperty.setEnabled(false);
-		removeTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 		GridData removeTablecompositionROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		removeTablecompositionROProperty.setLayoutData(removeTablecompositionROPropertyData);
 		removeTablecompositionROProperty.addSelectionListener(new SelectionAdapter() {
@@ -640,10 +643,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(removeTablecompositionROProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty);
 		EditingUtils.setEEFtype(removeTablecompositionROProperty, "eef::TableComposition::removebutton"); //$NON-NLS-1$
-		Button editTablecompositionROProperty = new Button(tablecompositionROPropertyPanel, SWT.NONE);
+		editTablecompositionROProperty = new Button(tablecompositionROPropertyPanel, SWT.NONE);
 		editTablecompositionROProperty.setText(EefnrMessages.PropertiesEditionPart_EditTableViewerLabel);
-		editTablecompositionROProperty.setEnabled(false);
-		editTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 		GridData editTablecompositionROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		editTablecompositionROProperty.setLayoutData(editTablecompositionROPropertyData);
 		editTablecompositionROProperty.addSelectionListener(new SelectionAdapter() {
@@ -696,6 +697,23 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionRequiredProperty.setContentProvider(contentProvider);
 		tablecompositionRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
+		if (readOnly && tablecompositionRequiredProperty.getTable().isEnabled()) {
+			tablecompositionRequiredProperty.getTable().setEnabled(false);
+			tablecompositionRequiredProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+			addTablecompositionRequiredProperty.setEnabled(false);
+			addTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+			removeTablecompositionRequiredProperty.setEnabled(false);
+			removeTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+			editTablecompositionRequiredProperty.setEnabled(false);
+			editTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+		} else if (!readOnly && !tablecompositionRequiredProperty.getTable().isEnabled()) {
+			tablecompositionRequiredProperty.getTable().setEnabled(true);
+			addTablecompositionRequiredProperty.setEnabled(true);
+			removeTablecompositionRequiredProperty.setEnabled(true);
+			editTablecompositionRequiredProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -754,6 +772,23 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionOptionalProperty.setContentProvider(contentProvider);
 		tablecompositionOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
+		if (readOnly && tablecompositionOptionalProperty.getTable().isEnabled()) {
+			tablecompositionOptionalProperty.getTable().setEnabled(false);
+			tablecompositionOptionalProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+			addTablecompositionOptionalProperty.setEnabled(false);
+			addTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+			removeTablecompositionOptionalProperty.setEnabled(false);
+			removeTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+			editTablecompositionOptionalProperty.setEnabled(false);
+			editTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+		} else if (!readOnly && !tablecompositionOptionalProperty.getTable().isEnabled()) {
+			tablecompositionOptionalProperty.getTable().setEnabled(true);
+			addTablecompositionOptionalProperty.setEnabled(true);
+			removeTablecompositionOptionalProperty.setEnabled(true);
+			editTablecompositionOptionalProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -812,6 +847,15 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionROProperty.setContentProvider(contentProvider);
 		tablecompositionROProperty.setInput(settings);
+		tablecompositionROProperty.getTable().setEnabled(false);
+		tablecompositionROProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+		addTablecompositionROProperty.setEnabled(false);
+		addTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+		removeTablecompositionROProperty.setEnabled(false);
+		removeTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+		editTablecompositionROProperty.setEnabled(false);
+		editTablecompositionROProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
+		
 	}
 
 	/**

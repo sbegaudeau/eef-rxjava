@@ -68,10 +68,11 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			final SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (flatReferenceExtendedEditorSample.getDemo() != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
+			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
 				secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, flatReferenceExtendedEditorSample.getDemo()));
 			
 			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {
@@ -127,6 +128,7 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo)) {
@@ -203,5 +205,8 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		}
 		return ret;
 	}
+
+
+	
 
 }

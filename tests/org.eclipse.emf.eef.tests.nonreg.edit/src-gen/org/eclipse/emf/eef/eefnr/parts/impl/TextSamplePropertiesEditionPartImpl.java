@@ -224,8 +224,6 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected Composite createTextROPropertyText(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextROPropertyLabel);
 		textROProperty = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		textROProperty.setEnabled(false);
-		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
 		GridData textROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textROProperty.setLayoutData(textROPropertyData);
 		textROProperty.addFocusListener(new FocusAdapter() {
@@ -303,6 +301,14 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
+		if (readOnly && textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!readOnly && !textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -327,6 +333,14 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
+		if (readOnly && textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!readOnly && !textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -351,6 +365,9 @@ public class TextSamplePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			textROProperty.setText(""); //$NON-NLS-1$
 		}
+		textROProperty.setEnabled(false);
+		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		
 	}
 
 

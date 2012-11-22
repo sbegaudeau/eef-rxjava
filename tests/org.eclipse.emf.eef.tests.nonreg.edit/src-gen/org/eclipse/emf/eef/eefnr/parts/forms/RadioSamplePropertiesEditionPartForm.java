@@ -184,8 +184,6 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	protected Composite createRadioROPropertyRadioViewer(Composite parent) {
 		radioROPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
-		radioROPropertyRadioViewer.setEnabled(false);
-		radioROPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
 		GridData radioROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		radioROPropertyData.horizontalSpan = 2;
 		radioROPropertyRadioViewer.setLayoutData(radioROPropertyData);
@@ -246,6 +244,14 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioRequiredProperty(Object newValue) {
 		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
+		if (readOnly && radioRequiredPropertyRadioViewer.isEnabled()) {
+			radioRequiredPropertyRadioViewer.setEnabled(false);
+			radioRequiredPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		} else if (!readOnly && !radioRequiredPropertyRadioViewer.isEnabled()) {
+			radioRequiredPropertyRadioViewer.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -280,6 +286,14 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
+		if (readOnly && radioOptionalPropertyRadioViewer.isEnabled()) {
+			radioOptionalPropertyRadioViewer.setEnabled(false);
+			radioOptionalPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		} else if (!readOnly && !radioOptionalPropertyRadioViewer.isEnabled()) {
+			radioOptionalPropertyRadioViewer.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -314,6 +328,9 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioROProperty(Object newValue) {
 		radioROPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+		radioROPropertyRadioViewer.setEnabled(false);
+		radioROPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		
 	}
 
 

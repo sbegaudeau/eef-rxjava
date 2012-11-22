@@ -77,6 +77,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ReferenceEnabledSample referenceEnabledSample = (ReferenceEnabledSample)elt;
 			final ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -153,6 +154,7 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ReferenceEnabledSamplePropertiesEditionPart basePart = (ReferenceEnabledSamplePropertiesEditionPart)editingPart;
 			if (ReferencesPackage.eINSTANCE.getReferenceEnabledSample_Reference().equals(msg.getFeature())  && isAccessible(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference))
@@ -192,5 +194,8 @@ public class ReferenceEnabledSampleBasePropertiesEditionComponent extends Single
 		}
 		return ret;
 	}
+
+
+	
 
 }

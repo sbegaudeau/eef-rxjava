@@ -69,10 +69,11 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Event event = (Event)elt;
 			final EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
 			// init values
-			if (event.getName() != null && isAccessible(NamingViewsRepository.Event.Properties.name))
+			if (isAccessible(NamingViewsRepository.Event.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, event.getName()));
 			
 			// init filters
@@ -116,6 +117,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NamingViewsRepository.Event.Properties.name)) {
@@ -167,5 +169,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		return ret;
 	}
+
+
+	
 
 }

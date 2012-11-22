@@ -570,6 +570,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -594,6 +602,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			firstModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationSingleValueSettings().getOrCreateSignificantObject());
+		if (readOnly && firstModelNavigationSingleValue.isEnabled()) {
+			firstModelNavigationSingleValue.setEnabled(false);
+			firstModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !firstModelNavigationSingleValue.isEnabled()) {
+			firstModelNavigationSingleValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -618,6 +634,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationSingleValue.isEnabled()) {
+			secondModelNavigationSingleValue.setEnabled(false);
+			secondModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationSingleValue.isEnabled()) {
+			secondModelNavigationSingleValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -642,6 +666,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			firstModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationMultiValueSettings().getOrCreateSignificantObject());
+		if (readOnly && firstModelNavigationMultiValue.isEnabled()) {
+			firstModelNavigationMultiValue.setEnabled(false);
+			firstModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !firstModelNavigationMultiValue.isEnabled()) {
+			firstModelNavigationMultiValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -666,6 +698,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationMultiValue.isEnabled()) {
+			secondModelNavigationMultiValue.setEnabled(false);
+			secondModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationMultiValue.isEnabled()) {
+			secondModelNavigationMultiValue.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -690,6 +730,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationSingleValue2.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationSingleValue2.isEnabled()) {
+			secondModelNavigationSingleValue2.setEnabled(false);
+			secondModelNavigationSingleValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationSingleValue2.isEnabled()) {
+			secondModelNavigationSingleValue2.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -714,6 +762,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValue2.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationMultiValue2.isEnabled()) {
+			secondModelNavigationMultiValue2.setEnabled(false);
+			secondModelNavigationMultiValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationMultiValue2.isEnabled()) {
+			secondModelNavigationMultiValue2.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -738,6 +794,14 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValueFilter.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings().getOrCreateSignificantObject());
+		if (readOnly && secondModelNavigationMultiValueFilter.isEnabled()) {
+			secondModelNavigationMultiValueFilter.setEnabled(false);
+			secondModelNavigationMultiValueFilter.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
+		} else if (!readOnly && !secondModelNavigationMultiValueFilter.isEnabled()) {
+			secondModelNavigationMultiValueFilter.setEnabled(true);
+		}	
+		
 	}
 
 

@@ -70,16 +70,17 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final MultiValuedEditorSample multiValuedEditorSample = (MultiValuedEditorSample)elt;
 			final MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (multiValuedEditorSample.getMultivaluededitorRequiredProperty() != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty))
+			if (isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty))
 				basePart.setMultivaluededitorRequiredProperty(multiValuedEditorSample.getMultivaluededitorRequiredProperty());
 			
-			if (multiValuedEditorSample.getMultivaluededitorOptionalProperty() != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty))
+			if (isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty))
 				basePart.setMultivaluededitorOptionalProperty(multiValuedEditorSample.getMultivaluededitorOptionalProperty());
 			
-			if (multiValuedEditorSample.getMultivaluededitorROProperty() != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty))
+			if (isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty))
 				basePart.setMultivaluededitorROProperty(multiValuedEditorSample.getMultivaluededitorROProperty());
 			
 			// init filters
@@ -142,6 +143,7 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty)) {
@@ -224,5 +226,8 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		}
 		return ret;
 	}
+
+
+	
 
 }

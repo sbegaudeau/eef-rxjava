@@ -55,7 +55,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	private AdvancedEObjectFlatComboViewer advancedeobjectflatcomboviewerROProperty;
 	protected ViewerFilter advancedeobjectflatcomboviewerROPropertyFilter;
 	private SingleCompositionEditor advancedeobjectflatcomboviewerCompoRequiredProperty;
-	protected ViewerFilter advancedeobjectflatcomboviewerCompoRequiredPropertyFilter;
 	private AdvancedEObjectFlatComboViewer advancedeobjectflatcomboviewerCompoOptionalProperty;
 	protected ViewerFilter advancedeobjectflatcomboviewerCompoOptionalPropertyFilter;
 
@@ -120,7 +119,7 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 					return createAdvancedeobjectflatcomboviewerROPropertyAdvancedFlatComboViewer(parent);
 				}
 				if (key == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty) {
-					return createAdvancedeobjectflatcomboviewerCompoRequiredPropertyAdvancedFlatComboViewer(parent);
+					return createAdvancedeobjectflatcomboviewerCompoRequiredPropertySingleCompositionEditor(parent);
 				}
 				if (key == EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty) {
 					return createAdvancedeobjectflatcomboviewerCompoOptionalPropertyAdvancedFlatComboViewer(parent);
@@ -223,8 +222,6 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		//create widget
 		advancedeobjectflatcomboviewerROProperty = new AdvancedEObjectFlatComboViewer(getDescription(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty, EefnrMessages.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerROPropertyLabel), resourceSet, advancedeobjectflatcomboviewerROPropertyFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
 		advancedeobjectflatcomboviewerROProperty.createControls(parent);
-		advancedeobjectflatcomboviewerROProperty.setEnabled(false);
-		advancedeobjectflatcomboviewerROProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
 		GridData advancedeobjectflatcomboviewerROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerROProperty.setLayoutData(advancedeobjectflatcomboviewerROPropertyData);
 		advancedeobjectflatcomboviewerROProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty);
@@ -236,34 +233,21 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * @param parent the parent composite
 	 * 
 	 */
-	protected Composite createAdvancedeobjectflatcomboviewerCompoRequiredPropertyAdvancedFlatComboViewer(Composite parent) {
+	protected Composite createAdvancedeobjectflatcomboviewerCompoRequiredPropertySingleCompositionEditor(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, EefnrMessages.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerCompoRequiredPropertyLabel);
-		// create callback listener
-//		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
-//			public void handleSet(EObject element){
-//				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
-//			}
-//			public void navigateTo(EObject element){ }
-//
-//			public EObject handleCreate() {
-//				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-//				return null;
-//			}
-//		};
 		//create widget
 		advancedeobjectflatcomboviewerCompoRequiredProperty = new SingleCompositionEditor(parent, SWT.NONE);
-//		advancedeobjectflatcomboviewerCompoRequiredProperty.createControls(parent);
 		GridData advancedeobjectflatcomboviewerCompoRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		advancedeobjectflatcomboviewerCompoRequiredProperty.setLayoutData(advancedeobjectflatcomboviewerCompoRequiredPropertyData);
 		advancedeobjectflatcomboviewerCompoRequiredProperty.addEditorListener(new SingleCompositionListener() {
 			
 			public void edit() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, null));				
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this,  EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, null));				
 				advancedeobjectflatcomboviewerCompoRequiredProperty.refresh();
 			}
 			
 			public void clear() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.UNSET, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl.this,  EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.UNSET, null, null));
 				advancedeobjectflatcomboviewerCompoRequiredProperty.refresh();
 			}
 		});
@@ -333,6 +317,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		if (current != null) {
 			advancedeobjectflatcomboviewerRequiredProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty);
+		if (readOnly && advancedeobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -347,6 +339,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		} else {
 			advancedeobjectflatcomboviewerRequiredProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty);
+		if (readOnly && advancedeobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerRequiredProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -398,6 +398,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		if (current != null) {
 			advancedeobjectflatcomboviewerOptionalProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerOptionalProperty);
+		if (readOnly && advancedeobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -412,6 +420,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		} else {
 			advancedeobjectflatcomboviewerOptionalProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerOptionalProperty);
+		if (readOnly && advancedeobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerOptionalProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -463,6 +479,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		if (current != null) {
 			advancedeobjectflatcomboviewerROProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		advancedeobjectflatcomboviewerROProperty.setEnabled(false);
+		advancedeobjectflatcomboviewerROProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		
 	}
 
 	/**
@@ -477,6 +496,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		} else {
 			advancedeobjectflatcomboviewerROProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		advancedeobjectflatcomboviewerROProperty.setEnabled(false);
+		advancedeobjectflatcomboviewerROProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		
 	}
 
 	/**
@@ -526,6 +548,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	public void initAdvancedeobjectflatcomboviewerCompoRequiredProperty(EObjectFlatComboSettings settings) {
 		advancedeobjectflatcomboviewerCompoRequiredProperty.setAdapterFactory(adapterFactory);
 		advancedeobjectflatcomboviewerCompoRequiredProperty.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty);
+		if (readOnly && advancedeobjectflatcomboviewerCompoRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoRequiredProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerCompoRequiredProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerCompoRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -535,40 +565,15 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 	 * 
 	 */
 	public void setAdvancedeobjectflatcomboviewerCompoRequiredProperty(EObject newValue) {
-		if (newValue != null) {
-			advancedeobjectflatcomboviewerCompoRequiredProperty.setSelection(new StructuredSelection(newValue));
-		} else {
-			advancedeobjectflatcomboviewerCompoRequiredProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#setAdvancedeobjectflatcomboviewerCompoRequiredPropertyButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setAdvancedeobjectflatcomboviewerCompoRequiredPropertyButtonMode(ButtonsModeEnum newValue) {
-//		advancedeobjectflatcomboviewerCompoRequiredProperty.setButtonMode(newValue);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#addFilterAdvancedeobjectflatcomboviewerCompoRequiredProperty(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToAdvancedeobjectflatcomboviewerCompoRequiredProperty(ViewerFilter filter) {
-//		advancedeobjectflatcomboviewerCompoRequiredProperty.addFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart#addBusinessFilterAdvancedeobjectflatcomboviewerCompoRequiredProperty(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToAdvancedeobjectflatcomboviewerCompoRequiredProperty(ViewerFilter filter) {
-//		advancedeobjectflatcomboviewerCompoRequiredProperty.addBusinessRuleFilter(filter);
+		advancedeobjectflatcomboviewerCompoRequiredProperty.refresh();
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty);
+		if (readOnly && advancedeobjectflatcomboviewerCompoRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoRequiredProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerCompoRequiredProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerCompoRequiredProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -591,6 +596,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		if (current != null) {
 			advancedeobjectflatcomboviewerCompoOptionalProperty.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty);
+		if (readOnly && advancedeobjectflatcomboviewerCompoOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoOptionalProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerCompoOptionalProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerCompoOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -605,6 +618,14 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		} else {
 			advancedeobjectflatcomboviewerCompoOptionalProperty.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty);
+		if (readOnly && advancedeobjectflatcomboviewerCompoOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoOptionalProperty.setEnabled(false);
+			advancedeobjectflatcomboviewerCompoOptionalProperty.setToolTipText(EefnrMessages.AdvancedEObjectFlatComboViewerSample_ReadOnly);
+		} else if (!readOnly && !advancedeobjectflatcomboviewerCompoOptionalProperty.isEnabled()) {
+			advancedeobjectflatcomboviewerCompoOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**

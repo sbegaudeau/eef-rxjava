@@ -258,8 +258,6 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		textareaROPropertyLabelData.horizontalSpan = 3;
 		textareaROPropertyLabel.setLayoutData(textareaROPropertyLabelData);
 		textareaROProperty = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		textareaROProperty.setEnabled(false);
-		textareaROProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
 		GridData textareaROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
 		textareaROPropertyData.horizontalSpan = 2;
 		textareaROPropertyData.heightHint = 80;
@@ -344,6 +342,15 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
+		if (readOnly && textareaRequiredProperty.isEnabled()) {
+			textareaRequiredProperty.setEnabled(false);
+			textareaRequiredProperty.setBackground(textareaRequiredProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			textareaRequiredProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		} else if (!readOnly && !textareaRequiredProperty.isEnabled()) {
+			textareaRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -368,6 +375,15 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
+		if (readOnly && textareaOptionalProperty.isEnabled()) {
+			textareaOptionalProperty.setEnabled(false);
+			textareaOptionalProperty.setBackground(textareaOptionalProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			textareaOptionalProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		} else if (!readOnly && !textareaOptionalProperty.isEnabled()) {
+			textareaOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -392,6 +408,10 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaROProperty.setText(""); //$NON-NLS-1$
 		}
+		textareaROProperty.setEnabled(false);
+		textareaROProperty.setBackground(textareaROProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+		textareaROProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		
 	}
 
 

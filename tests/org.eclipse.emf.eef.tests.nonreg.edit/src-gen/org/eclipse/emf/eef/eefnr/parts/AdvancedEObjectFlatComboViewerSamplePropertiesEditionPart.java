@@ -186,33 +186,6 @@ public interface AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart {
 	 */
 	public void setAdvancedeobjectflatcomboviewerCompoRequiredProperty(EObject newValue);
 
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setAdvancedeobjectflatcomboviewerCompoRequiredPropertyButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the advancedeobjectflatcomboviewerCompoRequiredProperty edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToAdvancedeobjectflatcomboviewerCompoRequiredProperty(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the advancedeobjectflatcomboviewerCompoRequiredProperty edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToAdvancedeobjectflatcomboviewerCompoRequiredProperty(ViewerFilter filter);
-
 
 	/**
 	 * @return the advancedeobjectflatcomboviewerCompoOptionalProperty

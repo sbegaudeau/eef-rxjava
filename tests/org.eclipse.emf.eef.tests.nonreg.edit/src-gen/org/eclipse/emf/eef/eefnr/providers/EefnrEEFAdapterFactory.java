@@ -208,5 +208,13 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	public Adapter createSingleCompositionViewerSampleAdapter() {
 		return new SingleCompositionViewerSamplePropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createSingleCompositionEditorSampleAdapter()
+	 * 
+	 */
+	public Adapter createSingleCompositionEditorSampleAdapter() {
+		return new SingleCompositionEditorSamplePropertiesEditionProvider();
+	}
 
 }

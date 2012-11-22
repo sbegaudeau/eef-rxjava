@@ -80,10 +80,11 @@ public class FirstModelNavigationSamplePropertiesEditionComponent extends Single
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FirstModelNavigation firstModelNavigation = (FirstModelNavigation)elt;
 			final FirstNavigationSamplePropertiesEditionPart firstNavigationSamplePart = (FirstNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (firstModelNavigation.getName() != null && isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name))
 				firstNavigationSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, firstModelNavigation.getName()));
 			
 			// init filters
@@ -127,6 +128,7 @@ public class FirstModelNavigationSamplePropertiesEditionComponent extends Single
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FirstNavigationSamplePropertiesEditionPart firstNavigationSamplePart = (FirstNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && firstNavigationSamplePart != null && isAccessible(NavigationViewsRepository.FirstNavigationSample.Properties.name)) {
@@ -178,5 +180,8 @@ public class FirstModelNavigationSamplePropertiesEditionComponent extends Single
 		}
 		return ret;
 	}
+
+
+	
 
 }

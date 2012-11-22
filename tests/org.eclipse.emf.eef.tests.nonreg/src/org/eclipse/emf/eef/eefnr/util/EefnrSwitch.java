@@ -259,6 +259,13 @@ public class EefnrSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE: {
+				SingleCompositionEditorSample singleCompositionEditorSample = (SingleCompositionEditorSample)theEObject;
+				T result = caseSingleCompositionEditorSample(singleCompositionEditorSample);
+				if (result == null) result = caseAbstractSample(singleCompositionEditorSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -620,6 +627,21 @@ public class EefnrSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSingleCompositionViewerSample(SingleCompositionViewerSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Composition Editor Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Composition Editor Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSingleCompositionEditorSample(SingleCompositionEditorSample object) {
 		return null;
 	}
 

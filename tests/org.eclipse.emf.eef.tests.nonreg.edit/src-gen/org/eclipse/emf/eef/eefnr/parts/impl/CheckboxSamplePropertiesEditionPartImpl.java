@@ -184,8 +184,6 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 	protected Composite createCheckboxROPropertyCheckbox(Composite parent) {
 		checkboxROProperty = new Button(parent, SWT.CHECK);
 		checkboxROProperty.setText(getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxROPropertyLabel));
-		checkboxROProperty.setEnabled(false);
-		checkboxROProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
 		checkboxROProperty.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -244,6 +242,14 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			checkboxRequiredProperty.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
+		if (readOnly && checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(false);
+			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		} else if (!readOnly && !checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -268,6 +274,14 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			checkboxOptionalProperty.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
+		if (readOnly && checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(false);
+			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		} else if (!readOnly && !checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -292,6 +306,9 @@ public class CheckboxSamplePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			checkboxROProperty.setSelection(false);
 		}
+		checkboxROProperty.setEnabled(false);
+		checkboxROProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		
 	}
 
 
