@@ -12,12 +12,6 @@
 		<maven>3.0</maven>
 	</prerequisites>
 
-	<parent>
-		<groupId>org.eclipse</groupId>
-		<artifactId>eclipse-parent</artifactId>
-		<version>1.0.0</version>
-	</parent>
-
 	<groupId>org.eclipse.emf</groupId>
 	<artifactId>org.eclipse.emf.eef.releng.parent</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
