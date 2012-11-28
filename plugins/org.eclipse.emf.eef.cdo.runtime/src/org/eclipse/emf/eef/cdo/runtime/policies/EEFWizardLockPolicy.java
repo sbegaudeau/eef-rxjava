@@ -89,7 +89,7 @@ public class EEFWizardLockPolicy implements ILockPolicy {
 	private void unlock(EObject eObject) {
 		if (eObject != null) {
 			CDOObject cdoObject = CDOUtil.getCDOObject(eObject);
-			if (cdoObject != null && cdoObject.cdoView() instanceof CDOTransaction && !((CDOTransaction)cdoObject.cdoView()).isDirty()) {
+			if (cdoObject != null && cdoObject.cdoView() instanceof CDOTransaction) {
 				if (!CDOLockStrategyProviderService.getInstance().getProviders()
 						.isEmpty()) {
 					for (ICDOLockStrategyProvider provider : CDOLockStrategyProviderService.getInstance().getProviders()) {
