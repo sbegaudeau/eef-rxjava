@@ -200,6 +200,9 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 				.getErrors().isEmpty());
 		final ModelingBot mbot = (ModelingBot)modelingBotResource.getContents().get(0);
 		final Diagnostic diag = Diagnostician.INSTANCE.validate(mbot);
+		if (diag.getSeverity() != Diagnostic.OK) {
+			displayDiag(diag);
+		}
 		assertTrue("The modeling bot model contains errors, correct them first",
 				diag.getSeverity() == Diagnostic.OK);
 		assertNotNull("The modeling bot resource is empty.", mbot);
@@ -209,6 +212,13 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 				final Scenario scenario = (Scenario)sequence;
 				runSequence(scenario);
 			}
+		}
+	}
+
+	private void displayDiag(final Diagnostic diag) {
+		System.out.println("Source: " + diag.getSource() + " - Message: " + diag.getMessage() + " - Ex:" + diag.getException());
+		for (Diagnostic subDiag : diag.getChildren()) {
+			displayDiag(subDiag);
 		}
 	}
 

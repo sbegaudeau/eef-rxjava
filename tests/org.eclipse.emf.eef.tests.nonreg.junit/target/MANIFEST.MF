@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.emf.eef.runtime,org.eclipse.ui,org.eclipse
+ .core.runtime,org.eclipse.emf.eef.tests.nonreg.edit,org.junit4,org.ec
+ lipse.emf.eef.modelingbot
+Bundle-Version: 1.2.0.201211291625
+Bundle-Name: Junit
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.emf.eef.tests.nonreg.junit
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+

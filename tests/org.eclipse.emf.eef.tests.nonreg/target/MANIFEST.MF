@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;visibil
+ ity:=reexport
+Export-Package: org.eclipse.emf.eef.eefnr,org.eclipse.emf.eef.eefnr.fi
+ lters,org.eclipse.emf.eef.eefnr.filters.impl,org.eclipse.emf.eef.eefn
+ r.filters.util,org.eclipse.emf.eef.eefnr.impl,org.eclipse.emf.eef.eef
+ nr.interface_,org.eclipse.emf.eef.eefnr.interface_.impl,org.eclipse.e
+ mf.eef.eefnr.interface_.util,org.eclipse.emf.eef.eefnr.naming,org.ecl
+ ipse.emf.eef.eefnr.naming.impl,org.eclipse.emf.eef.eefnr.naming.util,
+ org.eclipse.emf.eef.eefnr.navigation,org.eclipse.emf.eef.eefnr.naviga
+ tion.impl,org.eclipse.emf.eef.eefnr.navigation.util,org.eclipse.emf.e
+ ef.eefnr.references,org.eclipse.emf.eef.eefnr.references.impl,org.ecl
+ ipse.emf.eef.eefnr.references.util,org.eclipse.emf.eef.eefnr.util,org
+ .eclipse.emf.eef.eefnrext,org.eclipse.emf.eef.eefnrext.impl,org.eclip
+ se.emf.eef.eefnrext.util
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 1.2.0.201211291625
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.emf.eef.tests.nonreg;singleton:=true
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Test set: org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotUnsetRefTable
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 sec
+testModelingBot(org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotUnsetRefTable)  Time elapsed: 0.124 sec

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Test set: org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotRedoSetReferenceFlatRefTable
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 sec
+testModelingBot(org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotRedoSetReferenceFlatRefTable)  Time elapsed: 0.117 sec

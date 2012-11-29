@@ -36,15 +36,34 @@
 				  <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
 				  <product>org.eclipse.sdk.ide</product>
 		          <application>org.eclipse.ui.ide.workbench</application>
+		          <includes>
+						<include>**/*MBot*.class</include>
+				 </includes>
 		          <dependencies>
 		            <dependency>
 		              <type>p2-installable-unit</type>
 		              <artifactId>org.eclipse.pde.feature.group</artifactId>
+		              <version>0.0.0</version>
 		            </dependency>
 		            <dependency>
-		              <type>p2-installable-unit</type>
-		              <artifactId>org.eclipse.emf.eef.sdk-feature.group</artifactId>
-					  <version>1.2.0</version>
+		              <type>eclipse-feature</type>
+		              <artifactId>org.eclipse.emf.eef.sdk-feature</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+		            <dependency>
+		              <type>eclipse-plugin</type>
+		              <artifactId>org.eclipse.emf.eef.tests.nonreg</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+		            <dependency>
+		              <type>eclipse-plugin</type>
+		              <artifactId>org.eclipse.emf.eef.tests.nonreg.edit</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+		            <dependency>
+		              <type>eclipse-plugin</type>
+		              <artifactId>org.eclipse.emf.eef.tests.nonreg.editor</artifactId>
+		              <version>0.0.0</version>
 		            </dependency>
 		           </dependencies>
 				</configuration>
