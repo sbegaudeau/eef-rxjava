@@ -39,7 +39,13 @@
 		          <dependencies>
 		            <dependency>
 		              <type>p2-installable-unit</type>
-		              <artifactId>org.eclipse.platform.group</artifactId>
+		              <artifactId>org.eclipse.pde.feature.group</artifactId>
+					  <version>4.2.0</version>
+		            </dependency>
+		            <dependency>
+		              <type>p2-installable-unit</type>
+		              <artifactId>org.eclipse.emf.eef.sdk-feature.group</artifactId>
+					  <version>1.2.0</version>
 		            </dependency>
 		           </dependencies>
 				</configuration>
