@@ -34,12 +34,12 @@ public abstract class AbstractSWTBotModelingBotTestCase extends SWTBotEclipseTes
 	 */
 	public void setUp() throws Exception {
 		super.setUp();
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-			public void run() {
-				PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(true);
-			}
-		});
+//		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+//
+//			public void run() {
+//				PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell().setFullScreen(true);
+//			}
+//		});
 		bot.closeWelcomePage();
 		bot.openJavaPerspective();
 		bot.openPropertiesView();
