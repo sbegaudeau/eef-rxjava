@@ -50,21 +50,26 @@
 		              <artifactId>org.eclipse.emf.eef.sdk-feature</artifactId>
 		              <version>0.0.0</version>
 		            </dependency>
-		            <dependency>
-		              <type>eclipse-plugin</type>
-		              <artifactId>org.eclipse.emf.eef.tests.nonreg</artifactId>
-		              <version>0.0.0</version>
-		            </dependency>
-		            <dependency>
-		              <type>eclipse-plugin</type>
-		              <artifactId>org.eclipse.emf.eef.tests.nonreg.edit</artifactId>
-		              <version>0.0.0</version>
-		            </dependency>
-		            <dependency>
-		              <type>eclipse-plugin</type>
-		              <artifactId>org.eclipse.emf.eef.tests.nonreg.editor</artifactId>
-		              <version>0.0.0</version>
-		            </dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.ui.workbench</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.emf.eef.modelingbot</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.emf.eef.modelingbot.edit</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.emf.eef.modelingbot.editor</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
 		           </dependencies>
 				</configuration>
 			</plugin>

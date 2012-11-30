@@ -31,6 +31,7 @@ import org.eclipse.emf.eef.modelingBot.EEFActions.Cancel;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 import org.eclipse.emf.eef.modelingBot.interpreter.EEFInterpreter;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
+import org.eclipse.emf.eef.modelingBot.ui.utils.WrappedSWTBotRadio;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -458,9 +459,9 @@ public class PropertiesEditionHelper {
 				EClassifier type = feature.getEType();
 				if (type != null && type instanceof EClass
 						&& ((EClass) type).isAbstract()) {
-					SWTBotRadio radio = bot.radio(((Add) referenceableObject)
-							.getType().getName());
-					radio.setFocus();
+					SWTBotRadio radio = bot.radio(((Add) referenceableObject).getType().getName());
+					WrappedSWTBotRadio wrappedRadio = new WrappedSWTBotRadio(radio);
+					wrappedRadio.click();
 					bot.button(UIConstants.NEXT_BUTTON).click();
 				}
 				Collection<EObject> settings = EMFHelper

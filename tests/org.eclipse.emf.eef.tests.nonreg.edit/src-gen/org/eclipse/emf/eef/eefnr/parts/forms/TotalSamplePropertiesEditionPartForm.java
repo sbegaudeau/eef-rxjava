@@ -105,8 +105,8 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	protected Button checkboxOptionalProperty;
 	protected Text textareaRequiredProperty;
 	protected Text textareaOptionalProperty;
-	protected EMFComboViewer radioRequiredProperty;
-	protected EMFComboViewer radioOptionalProperty;
+	protected RadioViewer radioRequiredPropertyRadioViewer;
+	protected RadioViewer radioOptionalPropertyRadioViewer;
 	protected EObjectFlatComboViewer eobjectflatcomboviewerRequiredProperty;
 	protected EObjectFlatComboViewer eobjectflatcomboviewerOptionalProperty;
 	protected ReferencesTable referencestableRequiredProperty;
@@ -253,10 +253,10 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 					return createTextareaOptionalPropertyText(widgetFactory, parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty) {
-					return createRadioRequiredPropertyEMFComboViewer(widgetFactory, parent);
+					return createRadioRequiredPropertyRadioViewer(parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty) {
-					return createRadioOptionalPropertyEMFComboViewer(widgetFactory, parent);
+					return createRadioOptionalPropertyRadioViewer(parent);
 				}
 				if (key == EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty) {
 					return createEobjectflatcomboviewerRequiredPropertyFlatComboViewer(parent, widgetFactory);
@@ -646,57 +646,43 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		return parent;
 	}
 
-	
-	protected Composite createRadioRequiredPropertyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrMessages.TotalSamplePropertiesEditionPart_RadioRequiredPropertyLabel);
-		radioRequiredProperty = new EMFComboViewer(parent);
-		radioRequiredProperty.setContentProvider(new ArrayContentProvider());
-		radioRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+	/**
+	 * 
+	 */
+	protected Composite createRadioRequiredPropertyRadioViewer(Composite parent) {
+		radioRequiredPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
 		GridData radioRequiredPropertyData = new GridData(GridData.FILL_HORIZONTAL);
-		radioRequiredProperty.getCombo().setLayoutData(radioRequiredPropertyData);
-		radioRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
+		radioRequiredPropertyData.horizontalSpan = 2;
+		radioRequiredPropertyRadioViewer.setLayoutData(radioRequiredPropertyData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null);
+		radioRequiredPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRadioRequiredProperty()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
 			}
-
 		});
-		radioRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty);
 		return parent;
 	}
 
-	
-	protected Composite createRadioOptionalPropertyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrMessages.TotalSamplePropertiesEditionPart_RadioOptionalPropertyLabel);
-		radioOptionalProperty = new EMFComboViewer(parent);
-		radioOptionalProperty.setContentProvider(new ArrayContentProvider());
-		radioOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+	/**
+	 * 
+	 */
+	protected Composite createRadioOptionalPropertyRadioViewer(Composite parent) {
+		radioOptionalPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
 		GridData radioOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
-		radioOptionalProperty.getCombo().setLayoutData(radioOptionalPropertyData);
-		radioOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
+		radioOptionalPropertyData.horizontalSpan = 2;
+		radioOptionalPropertyRadioViewer.setLayoutData(radioOptionalPropertyData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrViewsRepository.FORM_KIND), null);
+		radioOptionalPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRadioOptionalProperty()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TotalSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
 			}
-
 		});
-		radioOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty);
 		return parent;
 	}
 
@@ -1994,9 +1980,12 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getRadioRequiredProperty()
 	 * 
 	 */
-	public Enumerator getRadioRequiredProperty() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) radioRequiredProperty.getSelection()).getFirstElement();
-		return selection;
+	public Object getRadioRequiredProperty() {
+		if (radioRequiredPropertyRadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) radioRequiredPropertyRadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
 	}
 
 	/**
@@ -2005,33 +1994,25 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#initRadioRequiredProperty(Object input, Enumerator current)
 	 */
 	public void initRadioRequiredProperty(Object input, Enumerator current) {
-		radioRequiredProperty.setInput(input);
-		radioRequiredProperty.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty);
-		if (readOnly && radioRequiredProperty.isEnabled()) {
-			radioRequiredProperty.setEnabled(false);
-			radioRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		} else if (!readOnly && !radioRequiredProperty.isEnabled()) {
-			radioRequiredProperty.setEnabled(true);
-		}	
-		
+		radioRequiredPropertyRadioViewer.setInput(input);
+		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(current));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setRadioRequiredProperty(Enumerator newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setRadioRequiredProperty(Object newValue)
 	 * 
 	 */
-	public void setRadioRequiredProperty(Enumerator newValue) {
-		radioRequiredProperty.modelUpdating(new StructuredSelection(newValue));
+	public void setRadioRequiredProperty(Object newValue) {
+		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 		boolean readOnly = isReadOnly(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty);
-		if (readOnly && radioRequiredProperty.isEnabled()) {
-			radioRequiredProperty.setEnabled(false);
-			radioRequiredProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		} else if (!readOnly && !radioRequiredProperty.isEnabled()) {
-			radioRequiredProperty.setEnabled(true);
-		}	
+		if (readOnly && radioRequiredPropertyRadioViewer.isEnabled()) {
+			radioRequiredPropertyRadioViewer.setEnabled(false);
+			radioRequiredPropertyRadioViewer.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !radioRequiredPropertyRadioViewer.isEnabled()) {
+			radioRequiredPropertyRadioViewer.setEnabled(true);
+		}
 		
 	}
 
@@ -2041,9 +2022,12 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#getRadioOptionalProperty()
 	 * 
 	 */
-	public Enumerator getRadioOptionalProperty() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) radioOptionalProperty.getSelection()).getFirstElement();
-		return selection;
+	public Object getRadioOptionalProperty() {
+		if (radioOptionalPropertyRadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) radioOptionalPropertyRadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
 	}
 
 	/**
@@ -2052,33 +2036,25 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#initRadioOptionalProperty(Object input, Enumerator current)
 	 */
 	public void initRadioOptionalProperty(Object input, Enumerator current) {
-		radioOptionalProperty.setInput(input);
-		radioOptionalProperty.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty);
-		if (readOnly && radioOptionalProperty.isEnabled()) {
-			radioOptionalProperty.setEnabled(false);
-			radioOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		} else if (!readOnly && !radioOptionalProperty.isEnabled()) {
-			radioOptionalProperty.setEnabled(true);
-		}	
-		
+		radioOptionalPropertyRadioViewer.setInput(input);
+		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(current));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setRadioOptionalProperty(Enumerator newValue)
+	 * @see org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart#setRadioOptionalProperty(Object newValue)
 	 * 
 	 */
-	public void setRadioOptionalProperty(Enumerator newValue) {
-		radioOptionalProperty.modelUpdating(new StructuredSelection(newValue));
+	public void setRadioOptionalProperty(Object newValue) {
+		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
 		boolean readOnly = isReadOnly(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty);
-		if (readOnly && radioOptionalProperty.isEnabled()) {
-			radioOptionalProperty.setEnabled(false);
-			radioOptionalProperty.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
-		} else if (!readOnly && !radioOptionalProperty.isEnabled()) {
-			radioOptionalProperty.setEnabled(true);
-		}	
+		if (readOnly && radioOptionalPropertyRadioViewer.isEnabled()) {
+			radioOptionalPropertyRadioViewer.setEnabled(false);
+			radioOptionalPropertyRadioViewer.setToolTipText(EefnrMessages.TotalSample_ReadOnly);
+		} else if (!readOnly && !radioOptionalPropertyRadioViewer.isEnabled()) {
+			radioOptionalPropertyRadioViewer.setEnabled(true);
+		}
 		
 	}
 

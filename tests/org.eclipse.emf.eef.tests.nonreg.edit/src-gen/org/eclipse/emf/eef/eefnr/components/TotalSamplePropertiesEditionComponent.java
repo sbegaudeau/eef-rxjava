@@ -914,11 +914,11 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 					basePart.setTextareaOptionalProperty("");
 				}
 			}
-			if (EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty))
-				basePart.setRadioRequiredProperty((ENUM_SAMPLE)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getTotalSample_RadioRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty))
+				basePart.setRadioRequiredProperty((Object)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty))
-				basePart.setRadioOptionalProperty((ENUM_SAMPLE)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getTotalSample_RadioOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty))
+				basePart.setRadioOptionalProperty((Object)msg.getNewValue());
 			
 			if (EefnrPackage.eINSTANCE.getTotalSample_EobjectflatcomboviewerRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty))
 				basePart.setEobjectflatcomboviewerRequiredProperty((EObject)msg.getNewValue());

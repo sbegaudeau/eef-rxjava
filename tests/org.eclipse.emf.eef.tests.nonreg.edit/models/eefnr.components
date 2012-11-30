@@ -766,10 +766,10 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LTgwvEd-uP4lw9e0IMw" name="radioRequiredProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LTwwvEd-uP4lw9e0IMw" name="radioOptionalProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LUAwvEd-uP4lw9e0IMw" name="eobjectflatcomboviewerRequiredProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>

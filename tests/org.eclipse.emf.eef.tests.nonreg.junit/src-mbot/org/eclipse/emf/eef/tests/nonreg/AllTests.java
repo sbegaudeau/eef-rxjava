@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotUnsetReferenc
 import org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotUnsetReferenceEOFCV;
 import org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotUnsetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.batch.detailsview.BatchMBotUnsetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotAddAdvTableCompoOnAbstractRef;
 
 public class AllTests extends TestCase {
 
@@ -68,6 +69,10 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(BatchMBotUnsetReferenceFlatRefTable.class);
 		suite.addTestSuite(BatchMBotUnsetReferenceRefTable.class);
 		suite.addTestSuite(BatchMBotUnsetRefTable.class);
+		
+		// Details
+		suite.addTestSuite(MBotAddAdvTableCompoOnAbstractRef.class);		
+		
 		//$JUnit-END$
 		return suite;
 	}

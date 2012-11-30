@@ -118,7 +118,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @return the radioRequiredProperty
 	 * 
 	 */
-	public Enumerator getRadioRequiredProperty();
+	public Object getRadioRequiredProperty();
 
 	/**
 	 * Init the radioRequiredProperty
@@ -132,14 +132,14 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the new radioRequiredProperty to set
 	 * 
 	 */
-	public void setRadioRequiredProperty(Enumerator newValue);
+	public void setRadioRequiredProperty(Object newValue);
 
 
 	/**
 	 * @return the radioOptionalProperty
 	 * 
 	 */
-	public Enumerator getRadioOptionalProperty();
+	public Object getRadioOptionalProperty();
 
 	/**
 	 * Init the radioOptionalProperty
@@ -153,7 +153,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the new radioOptionalProperty to set
 	 * 
 	 */
-	public void setRadioOptionalProperty(Enumerator newValue);
+	public void setRadioOptionalProperty(Object newValue);
 
 
 	/**
