@@ -157,7 +157,9 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Open Java Perspective.
 	 */
 	public void openJavaPerspective() {
-		menu(UIConstants.WINDOW_MENU).menu(UIConstants.OPEN_PERSPECTIVE_MENU).menu(UIConstants.OTHER_MENU)
+		menu(UIConstants.WINDOW_MENU)
+				.menu(UIConstants.OPEN_PERSPECTIVE_MENU)
+				.menu(UIConstants.OTHER_MENU)
 				.click();
 		final SWTBotShell openPerspectiveShell = shell(UIConstants.OPEN_PERSPECTIVE_MENU);
 		activateShell(openPerspectiveShell);
