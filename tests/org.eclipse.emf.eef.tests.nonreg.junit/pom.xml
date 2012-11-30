@@ -37,7 +37,7 @@
 				  <product>org.eclipse.sdk.ide</product>
 		          <application>org.eclipse.ui.ide.workbench</application>
 		          <includes>
-						<include>**/*MBot*.class</include>
+						<include>**/AllTests.class</include>
 				 </includes>
 		          <dependencies>
 		            <dependency>

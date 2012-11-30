@@ -16,7 +16,7 @@ Export-Package: org.eclipse.emf.eef.eefnr,org.eclipse.emf.eef.eefnr.fi
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Bundle-Version: 1.2.0.201211291625
+Bundle-Version: 1.2.0.201211300952
 Bundle-Localization: plugin
 Bundle-Name: %pluginName
 Bundle-ManifestVersion: 2

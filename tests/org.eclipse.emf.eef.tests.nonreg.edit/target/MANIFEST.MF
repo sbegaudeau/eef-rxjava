@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.eef.tests.non
  g.eclipse.emf.eef.runtime;visibility:=reexport,org.eclipse.core.resou
  rces,org.eclipse.ui
 Bundle-Vendor: %providerName
-Bundle-Version: 1.2.0.201211291625
+Bundle-Version: 1.2.0.201211300952
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.emf.eef.eefnr.provider.EefnrEditPlugin$I
  mplementation

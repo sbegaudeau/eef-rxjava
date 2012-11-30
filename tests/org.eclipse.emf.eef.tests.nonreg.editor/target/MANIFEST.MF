@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources;vi
  mf.edit.ui;visibility:=reexport,org.eclipse.ui.ide;visibility:=reexpo
  rt,org.eclipse.emf.eef.runtime;bundle-version="1.1.0"
 Bundle-Vendor: %providerName
-Bundle-Version: 1.2.0.201211291625
+Bundle-Version: 1.2.0.201211300952
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.emf.eef.eefnr.presentation.EefnrEditorPl
  ugin$Implementation
