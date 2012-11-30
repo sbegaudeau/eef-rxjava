@@ -46,6 +46,11 @@
 		              <version>0.0.0</version>
 		            </dependency>
 		            <dependency>
+		              <type>p2-installable-unit</type>
+		              <artifactId>org.eclipse.jdt.feature.group</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+		            <dependency>
 		              <type>eclipse-feature</type>
 		              <artifactId>org.eclipse.emf.eef.sdk-feature</artifactId>
 		              <version>0.0.0</version>
