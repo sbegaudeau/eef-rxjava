@@ -148,21 +148,6 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Open Java Perspective.
 	 */
 	public void openJavaPerspective() {
-		waitUntil(new DefaultCondition() {
-			
-			public boolean test() throws Exception {
-				try {
-					menu(UIConstants.WINDOW_MENU);
-				} catch (Exception e) {
-					return false;
-				}
-				return true;
-			}
-			
-			public String getFailureMessage() {
-				return "Unable to find menu.";
-			}
-		});
 		menu(UIConstants.WINDOW_MENU)
 				.menu(UIConstants.OPEN_PERSPECTIVE_MENU)
 				.menu(UIConstants.OTHER_MENU)
