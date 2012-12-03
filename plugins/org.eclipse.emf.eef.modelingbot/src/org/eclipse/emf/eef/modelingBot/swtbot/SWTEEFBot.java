@@ -157,7 +157,6 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Open Java Perspective.
 	 */
 	public void openJavaPerspective() {
-		sleep(5000);
 		menu(UIConstants.WINDOW_MENU)
 				.menu(UIConstants.OPEN_PERSPECTIVE_MENU)
 				.menu(UIConstants.OTHER_MENU)
