@@ -12,11 +12,6 @@
 package org.eclipse.emf.eef.modelingBot.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withMnemonic;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withStyle;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withTooltip;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
@@ -60,18 +55,15 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.views.ElementEditor;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.ToolItem;
-import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.keyboard.KeyboardFactory;
 import org.eclipse.swtbot.swt.finder.results.IntResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCTabItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
@@ -82,7 +74,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
-import org.hamcrest.Matcher;
 
 /**
  * SWTBot bor for EEF editor.
@@ -157,6 +148,21 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Open Java Perspective.
 	 */
 	public void openJavaPerspective() {
+		waitUntil(new DefaultCondition() {
+			
+			public boolean test() throws Exception {
+				try {
+					menu(UIConstants.WINDOW_MENU);
+				} catch (Exception e) {
+					return false;
+				}
+				return true;
+			}
+			
+			public String getFailureMessage() {
+				return "Unable to find menu.";
+			}
+		});
 		menu(UIConstants.WINDOW_MENU)
 				.menu(UIConstants.OPEN_PERSPECTIVE_MENU)
 				.menu(UIConstants.OTHER_MENU)
