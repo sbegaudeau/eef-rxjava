@@ -11,7 +11,7 @@
         <type href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person"/>
         <eContainingFeature xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/participants"/>
       </processings>
-      <processings xsi:type="eef-test_1:SetAttribute" name="first name" referenceableObject="//@sequences.0/@processings.2/@processings.0" value="my first name">
+      <processings xsi:type="eef-test_1:SetAttribute" name="first name" referenceableObject="//@sequences.0/@processings.2/@processings.0" values="my first name">
         <propertiesEditionElement href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBKJkmEd6sxtwdpecy3w"/>
         <eContainingFeature xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/firstname"/>
       </processings>
@@ -19,7 +19,7 @@
     </processings>
     <processings xsi:type="eef-test_1:Check"/>
     <processings xsi:type="eef-mbot:Wizard">
-      <processings xsi:type="eef-test_1:SetAttribute" name="first name" referenceableObject="//@sequences.0/@processings.2/@processings.0" value="my other first name (yes because i have two first names)">
+      <processings xsi:type="eef-test_1:SetAttribute" name="first name" referenceableObject="//@sequences.0/@processings.2/@processings.0" values="my other first name (yes because i have two first names)">
         <propertiesEditionElement href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBKJkmEd6sxtwdpecy3w"/>
         <eContainingFeature xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/firstname"/>
       </processings>
@@ -34,7 +34,7 @@
       <processings xsi:type="eef-test:Save"/>
     </processings>
     <processings xsi:type="eef-mbot:Wizard">
-      <processings xsi:type="eef-test_1:SetAttribute" name="first name" referenceableObject="//@sequences.0/@processings.2/@processings.0" value="my other first name (yes because i have two first names)">
+      <processings xsi:type="eef-test_1:SetAttribute" name="first name" referenceableObject="//@sequences.0/@processings.2/@processings.0" values="my other first name (yes because i have two first names)">
         <propertiesEditionElement href="platform:/resource/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBKJkmEd6sxtwdpecy3w"/>
         <eContainingFeature xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/firstname"/>
       </processings>
