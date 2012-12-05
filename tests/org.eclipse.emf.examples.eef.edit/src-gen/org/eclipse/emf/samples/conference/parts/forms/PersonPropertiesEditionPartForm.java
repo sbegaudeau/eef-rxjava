@@ -12,45 +12,64 @@ package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+
+import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -175,11 +194,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createFirstnameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.firstname, ConferenceMessages.PersonPropertiesEditionPart_FirstnameLabel);
 		firstname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(firstname)) {
-			firstname.setEnabled(false);
-			firstname.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		}		
-		
 		firstname.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData firstnameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -245,11 +259,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createLastnameText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.lastname, ConferenceMessages.PersonPropertiesEditionPart_LastnameLabel);
 		lastname = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(lastname)) {
-			lastname.setEnabled(false);
-			lastname.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		}		
-		
 		lastname.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData lastnameData = new GridData(GridData.FILL_HORIZONTAL);
@@ -315,11 +324,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	protected Composite createAgeText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Person.Identity.age, ConferenceMessages.PersonPropertiesEditionPart_AgeLabel);
 		age = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(age)) {
-			age.setEnabled(false);
-			age.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		}		
-		
 		age.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData ageData = new GridData(GridData.FILL_HORIZONTAL);
@@ -387,11 +391,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		gender = new EMFComboViewer(parent);
 		gender.setContentProvider(new ArrayContentProvider());
 		gender.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		if (isReadOnly(gender)) {
-			gender.setEnabled(false);
-			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		}		
-		
 		GridData genderData = new GridData(GridData.FILL_HORIZONTAL);
 		gender.getCombo().setLayoutData(genderData);
 		gender.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -433,11 +432,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	
 	protected Composite createEclipseCommiterCheckbox(FormToolkit widgetFactory, Composite parent) {
 		eclipseCommiter = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceMessages.PersonPropertiesEditionPart_EclipseCommiterLabel), SWT.CHECK);
-		if (isReadOnly(eclipseCommiter)) {
-			eclipseCommiter.setEnabled(false);
-			eclipseCommiter.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		}		
-		
 		eclipseCommiter.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -464,11 +458,6 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	
 	protected Composite createIsRegisteredCheckbox(FormToolkit widgetFactory, Composite parent) {
 		isRegistered = widgetFactory.createButton(parent, getDescription(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceMessages.PersonPropertiesEditionPart_IsRegisteredLabel), SWT.CHECK);
-		if (isReadOnly(isRegistered)) {
-			isRegistered.setEnabled(false);
-			isRegistered.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		}		
-		
 		isRegistered.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -527,6 +516,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			firstname.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.firstname);
+		if (readOnly && firstname.isEnabled()) {
+			firstname.setEnabled(false);
+			firstname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !firstname.isEnabled()) {
+			firstname.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -551,6 +548,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			lastname.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.lastname);
+		if (readOnly && lastname.isEnabled()) {
+			lastname.setEnabled(false);
+			lastname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !lastname.isEnabled()) {
+			lastname.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -575,6 +580,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			age.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.age);
+		if (readOnly && age.isEnabled()) {
+			age.setEnabled(false);
+			age.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !age.isEnabled()) {
+			age.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -596,6 +609,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	public void initGender(Object input, Enumerator current) {
 		gender.setInput(input);
 		gender.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
+		if (readOnly && gender.isEnabled()) {
+			gender.setEnabled(false);
+			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !gender.isEnabled()) {
+			gender.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -606,6 +627,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	 */
 	public void setGender(Enumerator newValue) {
 		gender.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
+		if (readOnly && gender.isEnabled()) {
+			gender.setEnabled(false);
+			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !gender.isEnabled()) {
+			gender.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -630,6 +659,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			eclipseCommiter.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter);
+		if (readOnly && eclipseCommiter.isEnabled()) {
+			eclipseCommiter.setEnabled(false);
+			eclipseCommiter.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !eclipseCommiter.isEnabled()) {
+			eclipseCommiter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -654,6 +691,14 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			isRegistered.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.isRegistered);
+		if (readOnly && isRegistered.isEnabled()) {
+			isRegistered.setEnabled(false);
+			isRegistered.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!readOnly && !isRegistered.isEnabled()) {
+			isRegistered.setEnabled(true);
+		}	
+		
 	}
 
 

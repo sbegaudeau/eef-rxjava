@@ -12,31 +12,44 @@ package org.eclipse.emf.samples.conference.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
 
 // End of user code
 
@@ -128,11 +141,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 	protected Composite createNameText(Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Conference_.Properties.name, ConferenceMessages.ConferencePropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		if (isReadOnly(name)) {
-			name.setEnabled(false);
-			name.setToolTipText(ConferenceMessages.Conference_ReadOnly);
-		}		
-		
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -182,12 +190,6 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		overviewLabelData.horizontalSpan = 3;
 		overviewLabel.setLayoutData(overviewLabelData);
 		overview = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
-		if (isReadOnly(overview)) {
-			overview.setEnabled(false);
-			overview.setBackground(overview.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-			overview.setToolTipText(ConferenceMessages.Conference_ReadOnly);
-		}		
-		
 		GridData overviewData = new GridData(GridData.FILL_HORIZONTAL);
 		overviewData.horizontalSpan = 2;
 		overviewData.heightHint = 80;
@@ -248,6 +250,14 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Conference_.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ConferenceMessages.Conference_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -272,6 +282,15 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			overview.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Conference_.Properties.overview);
+		if (readOnly && overview.isEnabled()) {
+			overview.setEnabled(false);
+			overview.setBackground(overview.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			overview.setToolTipText(ConferenceMessages.Conference_ReadOnly);
+		} else if (!readOnly && !overview.isEnabled()) {
+			overview.setEnabled(true);
+		}	
+		
 	}
 
 

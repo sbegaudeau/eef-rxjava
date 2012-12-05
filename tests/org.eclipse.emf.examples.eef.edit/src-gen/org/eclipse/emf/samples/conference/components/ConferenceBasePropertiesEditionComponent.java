@@ -12,23 +12,33 @@ package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.samples.conference.Conference;
 import org.eclipse.emf.samples.conference.ConferencePackage;
+
 import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 
@@ -68,13 +78,14 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Conference conference = (Conference)elt;
 			final ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
 			// init values
-			if (conference.getName() != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.name))
+			if (isAccessible(ConferenceViewsRepository.Conference_.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, conference.getName()));
 			
-			if (conference.getOverview() != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.overview))
+			if (isAccessible(ConferenceViewsRepository.Conference_.Properties.overview))
 				basePart.setOverview(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, conference.getOverview()));
 			// init filters
 			
@@ -125,6 +136,7 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ConferencePropertiesEditionPart basePart = (ConferencePropertiesEditionPart)editingPart;
 			if (ConferencePackage.eINSTANCE.getConference_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Conference_.Properties.name)) {
@@ -221,5 +233,8 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }
