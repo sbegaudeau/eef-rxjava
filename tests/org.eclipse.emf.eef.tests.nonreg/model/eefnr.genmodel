@@ -102,8 +102,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerRequiredProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerOptionalProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerROPropery"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerCompoRequiredProperty"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerCompoOptionalProperty"/>
     </genClasses>
     <genClasses ecoreClass="eefnr.ecore#//AdvancedTableCompositionEditorSample">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionRequiredProperty"/>
@@ -152,6 +150,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorRequiredProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorOptionalProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorROPropery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorOnAbstractOptionalProperty"/>
     </genClasses>
     <nestedGenPackages prefix="References" basePackage="org.eclipse.emf.eef.eefnr"
         disposableProviderFactory="true" ecorePackage="eefnr.ecore#//references">

@@ -64,39 +64,59 @@ import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotCancelAddTableCo
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotCancelSetReferenceAEOFCV;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotCancelSetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotCancelSetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotEditSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotEditSetReferenceCombo;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotEditSetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotEditSetReferenceRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotMoveTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRedoAddTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRedoSetAttributeRadio;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRedoSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRedoSetReferenceCombo;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRedoSetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRedoSetReferenceRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotRemoveTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotSetAttributeRadio;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotSetReferenceCombo;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotSetReferenceFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotSetReferenceRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoAddTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetAttributeRadio;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceCombo;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetCombo;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetFlatReferencesTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetReferenceCombo;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetReferenceEOFCV;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetReferenceRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetReferencesTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotAddTableComposition;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotCancelAddTableComposition;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotCancelSetReferenceAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotCancelSetReferenceFlatRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotCancelSetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotEditSetReferenceAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotEditSetReferenceFlatRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotEditSetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotRedoAddTableComposition;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotRedoSetAttributeRadio;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotRedoSetReferenceAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotRedoSetReferenceFlatRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotRedoSetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotRemoveTableComposition;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotSetAttributeRadio;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotSetReferenceAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotSetReferenceFlatRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotSetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUndoAddTableComposition;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUndoSetAttributeRadio;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUndoSetReferenceAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUndoSetReferenceFlatRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUndoSetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetFlatReferencesTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetReferenceAEOFCV;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetReferenceFlatRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetReferenceRefTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetReferencesTable;
+import org.eclipse.emf.eef.tests.nonreg.wizard.WizardMBotUnsetTextArea;
 
 public class AllTests extends TestCase {
 
@@ -133,7 +153,7 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(BatchMBotUnsetReferenceRefTable.class);
 		suite.addTestSuite(BatchMBotUnsetRefTable.class);
 		
-		// Wizards
+		// Details
 		suite.addTestSuite(MBotAddAdvTableCompoOnAbstractRef.class);
 		suite.addTestSuite(MBotAddTableCompo.class);
 		suite.addTestSuite(MBotCancelAddTableCompo.class);
@@ -204,6 +224,43 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(PViewMBotUnsetReferenceFlatRefTable.class);
 		suite.addTestSuite(PViewMBotUnsetReferenceRefTable.class);
 		suite.addTestSuite(PViewMBotUnsetReferencesTable.class);
+		
+		// Wizards
+		
+// It should'nt have never passed !
+//		suite.addTestSuite(WizardMBotAddTableComposition.class);
+//		suite.addTestSuite(WizardMBotCancelAddTableComposition.class);
+		suite.addTestSuite(WizardMBotCancelSetReferenceAEOFCV.class);
+		suite.addTestSuite(WizardMBotCancelSetReferenceFlatRefTable.class);
+		suite.addTestSuite(WizardMBotCancelSetReferenceRefTable.class);
+		suite.addTestSuite(WizardMBotEditSetReferenceAEOFCV.class);
+		suite.addTestSuite(WizardMBotEditSetReferenceFlatRefTable.class);
+		suite.addTestSuite(WizardMBotEditSetReferenceRefTable.class);
+//		suite.addTestSuite(WizardMBotRedoAddTableComposition.class);
+		suite.addTestSuite(WizardMBotRedoSetAttributeRadio.class);
+		suite.addTestSuite(WizardMBotRedoSetReferenceAEOFCV.class);
+		suite.addTestSuite(WizardMBotRedoSetReferenceFlatRefTable.class);
+		suite.addTestSuite(WizardMBotRedoSetReferenceRefTable.class);
+//		suite.addTestSuite(WizardMBotRemoveTableComposition.class);
+		suite.addTestSuite(WizardMBotSetAttributeRadio.class);
+		suite.addTestSuite(WizardMBotSetReferenceAEOFCV.class);
+		suite.addTestSuite(WizardMBotSetReferenceFlatRefTable.class);
+		suite.addTestSuite(WizardMBotSetReferenceRefTable.class);
+//		suite.addTestSuite(WizardMBotUndoAddTableComposition.class);
+		suite.addTestSuite(WizardMBotUndoSetAttributeRadio.class);
+		suite.addTestSuite(WizardMBotUndoSetReferenceAEOFCV.class);
+		suite.addTestSuite(WizardMBotUndoSetReferenceFlatRefTable.class);
+		suite.addTestSuite(WizardMBotUndoSetReferenceRefTable.class);
+		suite.addTestSuite(WizardMBotUnsetAEOFCV.class);
+		suite.addTestSuite(WizardMBotUnsetEOFCV.class);
+		suite.addTestSuite(WizardMBotUnsetFlatReferencesTable.class);
+		suite.addTestSuite(WizardMBotUnsetReferenceAEOFCV.class);
+		suite.addTestSuite(WizardMBotUnsetReferenceFlatRefTable.class);
+		suite.addTestSuite(WizardMBotUnsetReferenceRefTable.class);
+		suite.addTestSuite(WizardMBotUnsetReferencesTable.class);
+		suite.addTestSuite(WizardMBotUnsetTextArea.class);
+		
+		
 		//$JUnit-END$
 		return suite;
 	}

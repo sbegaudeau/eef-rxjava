@@ -84,6 +84,26 @@ public interface SingleCompositionEditorSamplePropertiesEditionPart {
 	public void setSinglecompositionviewerROProperty(EObject newValue);
 
 
+	/**
+	 * @return the singlecompositionviewerOnAbstractOptionalProperty
+	 * 
+	 */
+	public EObject getSinglecompositionviewerOnAbstractOptionalProperty();
+
+	/**
+	 * Init the singlecompositionviewerOnAbstractOptionalProperty
+	 * @param settings the combo setting
+	 */
+	public void initSinglecompositionviewerOnAbstractOptionalProperty(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new singlecompositionviewerOnAbstractOptionalProperty
+	 * @param newValue the new singlecompositionviewerOnAbstractOptionalProperty to set
+	 * 
+	 */
+	public void setSinglecompositionviewerOnAbstractOptionalProperty(EObject newValue);
+
+
 
 
 

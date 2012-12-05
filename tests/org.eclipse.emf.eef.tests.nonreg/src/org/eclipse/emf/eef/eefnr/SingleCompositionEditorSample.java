@@ -18,6 +18,7 @@ package org.eclipse.emf.eef.eefnr;
  *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorRequiredProperty <em>Singlecompositioneditor Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOptionalProperty <em>Singlecompositioneditor Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorROPropery <em>Singlecompositioneditor RO Propery</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOnAbstractOptionalProperty <em>Singlecompositioneditor On Abstract Optional Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,5 +104,31 @@ public interface SingleCompositionEditorSample extends AbstractSample {
 	 * @generated
 	 */
 	void setSinglecompositioneditorROPropery(TextSample value);
+
+	/**
+	 * Returns the value of the '<em><b>Singlecompositioneditor On Abstract Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Singlecompositioneditor On Abstract Optional Property</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Singlecompositioneditor On Abstract Optional Property</em>' containment reference.
+	 * @see #setSinglecompositioneditorOnAbstractOptionalProperty(AbstractSample)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty()
+	 * @model containment="true"
+	 * @generated
+	 */
+	AbstractSample getSinglecompositioneditorOnAbstractOptionalProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOnAbstractOptionalProperty <em>Singlecompositioneditor On Abstract Optional Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Singlecompositioneditor On Abstract Optional Property</em>' containment reference.
+	 * @see #getSinglecompositioneditorOnAbstractOptionalProperty()
+	 * @generated
+	 */
+	void setSinglecompositioneditorOnAbstractOptionalProperty(AbstractSample value);
 
 } // SingleCompositionEditorSample

@@ -219,12 +219,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VWCWgBFSEeK9-dPF-WhGng" name="advancedeobjectflatcomboviewerROProperty" views="_0WSXwBEsEeKsDfmeKGw7WA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerROPropery"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6tz3EC8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoRequiredProperty" views="_3eL5YS8TEeK_A82pEPogkw">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerCompoRequiredProperty"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6tz3ES8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoOptionalProperty" views="_3eL5Yi8TEeK_A82pEPogkw">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerCompoOptionalProperty"/>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LPgwvEd-uP4lw9e0IMw" name="AdvancedTableCompositionEditorSample" views="_Fx_yMQwvEd-uP4lw9e0IMw">
@@ -335,6 +329,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AHMpVDPEEeKeQut77qHbTQ" name="singlecompositioneditorROProperty" views="_SPu8BDPEEeKeQut77qHbTQ">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorROPropery"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IEeZgT6nEeKQ5q1xcsGDyQ" name="singlecompositioneditorOnAbstractOptionalProperty" views="_Oj3e0D6nEeKQ5q1xcsGDyQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorOnAbstractOptionalProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample"/>
       </bindings>
@@ -1118,6 +1115,9 @@
             <representation href="platform:/resource/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_SPu8BDPEEeKeQut77qHbTQ" name="singlecompositionviewerROProperty" readOnly="true">
+            <representation href="platform:/resource/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Oj3e0D6nEeKQ5q1xcsGDyQ" name="singlecompositionviewerOnAbstractOptionalProperty">
             <representation href="platform:/resource/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
           </elements>
         </elements>

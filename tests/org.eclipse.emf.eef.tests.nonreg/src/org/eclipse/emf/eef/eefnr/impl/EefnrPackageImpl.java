@@ -1003,24 +1003,6 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty() {
-		return (EReference)advancedEObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty() {
-		return (EReference)advancedEObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAdvancedTableCompositionEditorSample() {
 		return advancedTableCompositionEditorSampleEClass;
 	}
@@ -1372,6 +1354,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty() {
+		return (EReference)singleCompositionEditorSampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -1492,8 +1483,6 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_REQUIRED_PROPERTY);
 		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY);
 		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY);
-		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_REQUIRED_PROPERTY);
-		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_COMPO_OPTIONAL_PROPERTY);
 
 		advancedTableCompositionEditorSampleEClass = createEClass(ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE);
 		createEReference(advancedTableCompositionEditorSampleEClass, ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
@@ -1544,6 +1533,7 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY);
 		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY);
 		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY);
+		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY);
 
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
@@ -1704,8 +1694,6 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerRequiredProperty", null, 1, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerOptionalProperty", null, 0, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerROPropery", null, 0, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoRequiredProperty(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerCompoRequiredProperty", null, 1, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerCompoOptionalProperty(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerCompoOptionalProperty", null, 0, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(advancedTableCompositionEditorSampleEClass, AdvancedTableCompositionEditorSample.class, "AdvancedTableCompositionEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), this.getSample(), null, "advancedtablecompositionRequiredProperty", null, 1, -1, AdvancedTableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1756,6 +1744,7 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorRequiredProperty(), this.getTextSample(), null, "singlecompositioneditorRequiredProperty", null, 1, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorOptionalProperty(), this.getTextSample(), null, "singlecompositioneditorOptionalProperty", null, 0, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorROPropery(), this.getTextSample(), null, "singlecompositioneditorROPropery", null, 0, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty(), this.getAbstractSample(), null, "singlecompositioneditorOnAbstractOptionalProperty", null, 0, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

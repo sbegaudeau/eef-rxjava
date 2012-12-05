@@ -62,6 +62,7 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 	private SingleCompositionEditor singlecompositionviewerRequiredProperty;
 	private SingleCompositionEditor singlecompositionviewerOptionalProperty;
 	private SingleCompositionEditor singlecompositionviewerROProperty;
+	private SingleCompositionEditor singlecompositionviewerOnAbstractOptionalProperty;
 
 
 
@@ -103,6 +104,7 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOptionalProperty);
 		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty);
+		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty);
 		
 		
 		composer = new PartComposer(singleCompositionEditorSampleStep) {
@@ -120,6 +122,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 				}
 				if (key == EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty) {
 					return createSinglecompositionviewerROPropertySingleCompositionEditor(parent);
+				}
+				if (key == EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty) {
+					return createSinglecompositionviewerOnAbstractOptionalPropertySingleCompositionEditor(parent);
 				}
 				return parent;
 			}
@@ -220,6 +225,33 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		});
 		singlecompositionviewerROProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		return parent;
+	}
+
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createSinglecompositionviewerOnAbstractOptionalPropertySingleCompositionEditor(Composite parent) {
+		createDescription(parent, EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty, EefnrMessages.SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerOnAbstractOptionalPropertyLabel);
+		//create widget
+		singlecompositionviewerOnAbstractOptionalProperty = new SingleCompositionEditor(parent, SWT.NONE);
+		GridData singlecompositionviewerOnAbstractOptionalPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		singlecompositionviewerOnAbstractOptionalProperty.setLayoutData(singlecompositionviewerOnAbstractOptionalPropertyData);
+		singlecompositionviewerOnAbstractOptionalProperty.addEditorListener(new SingleCompositionListener() {
+			
+			public void edit() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionEditorSamplePropertiesEditionPartImpl.this,  EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, null));				
+				singlecompositionviewerOnAbstractOptionalProperty.refresh();
+			}
+			
+			public void clear() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SingleCompositionEditorSamplePropertiesEditionPartImpl.this,  EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.UNSET, null, null));
+				singlecompositionviewerOnAbstractOptionalProperty.refresh();
+			}
+		});
+		singlecompositionviewerOnAbstractOptionalProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		return parent;
 	}
 
@@ -361,6 +393,52 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		singlecompositionviewerROProperty.refresh();
 		singlecompositionviewerROProperty.setEnabled(false);
 		singlecompositionviewerROProperty.setToolTipText(EefnrMessages.SingleCompositionEditorSample_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionEditorSamplePropertiesEditionPart#getSinglecompositionviewerOnAbstractOptionalProperty()
+	 * 
+	 */
+	public EObject getSinglecompositionviewerOnAbstractOptionalProperty() {
+		return (EObject) singlecompositionviewerOnAbstractOptionalProperty.getInput();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionEditorSamplePropertiesEditionPart#initSinglecompositionviewerOnAbstractOptionalProperty(EObjectFlatComboSettings)
+	 */
+	public void initSinglecompositionviewerOnAbstractOptionalProperty(EObjectFlatComboSettings settings) {
+		singlecompositionviewerOnAbstractOptionalProperty.setAdapterFactory(adapterFactory);
+		singlecompositionviewerOnAbstractOptionalProperty.setInput(settings);
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty);
+		if (readOnly && singlecompositionviewerOnAbstractOptionalProperty.isEnabled()) {
+			singlecompositionviewerOnAbstractOptionalProperty.setEnabled(false);
+			singlecompositionviewerOnAbstractOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionEditorSample_ReadOnly);
+		} else if (!readOnly && !singlecompositionviewerOnAbstractOptionalProperty.isEnabled()) {
+			singlecompositionviewerOnAbstractOptionalProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionEditorSamplePropertiesEditionPart#setSinglecompositionviewerOnAbstractOptionalProperty(EObject newValue)
+	 * 
+	 */
+	public void setSinglecompositionviewerOnAbstractOptionalProperty(EObject newValue) {
+		singlecompositionviewerOnAbstractOptionalProperty.refresh();
+		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty);
+		if (readOnly && singlecompositionviewerOnAbstractOptionalProperty.isEnabled()) {
+			singlecompositionviewerOnAbstractOptionalProperty.setEnabled(false);
+			singlecompositionviewerOnAbstractOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionEditorSample_ReadOnly);
+		} else if (!readOnly && !singlecompositionviewerOnAbstractOptionalProperty.isEnabled()) {
+			singlecompositionviewerOnAbstractOptionalProperty.setEnabled(true);
+		}	
 		
 	}
 

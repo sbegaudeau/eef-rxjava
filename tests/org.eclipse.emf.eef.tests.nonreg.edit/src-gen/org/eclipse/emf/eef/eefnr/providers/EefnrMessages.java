@@ -502,6 +502,9 @@ public class EefnrMessages extends NLS {
 	
 	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerROPropertyLabel;
 
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerOnAbstractOptionalPropertyLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

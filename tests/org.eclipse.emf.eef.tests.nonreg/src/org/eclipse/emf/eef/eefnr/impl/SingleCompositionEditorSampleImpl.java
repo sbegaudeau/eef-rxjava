@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.eef.eefnr.AbstractSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.TextSample;
@@ -28,6 +29,7 @@ import org.eclipse.emf.eef.eefnr.TextSample;
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl#getSinglecompositioneditorRequiredProperty <em>Singlecompositioneditor Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl#getSinglecompositioneditorOptionalProperty <em>Singlecompositioneditor Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl#getSinglecompositioneditorROPropery <em>Singlecompositioneditor RO Propery</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl#getSinglecompositioneditorOnAbstractOptionalProperty <em>Singlecompositioneditor On Abstract Optional Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +65,16 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 	 * @ordered
 	 */
 	protected TextSample singlecompositioneditorROPropery;
+
+	/**
+	 * The cached value of the '{@link #getSinglecompositioneditorOnAbstractOptionalProperty() <em>Singlecompositioneditor On Abstract Optional Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSinglecompositioneditorOnAbstractOptionalProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected AbstractSample singlecompositioneditorOnAbstractOptionalProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,6 +229,49 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public AbstractSample getSinglecompositioneditorOnAbstractOptionalProperty() {
+		return singlecompositioneditorOnAbstractOptionalProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSinglecompositioneditorOnAbstractOptionalProperty(AbstractSample newSinglecompositioneditorOnAbstractOptionalProperty, NotificationChain msgs) {
+		AbstractSample oldSinglecompositioneditorOnAbstractOptionalProperty = singlecompositioneditorOnAbstractOptionalProperty;
+		singlecompositioneditorOnAbstractOptionalProperty = newSinglecompositioneditorOnAbstractOptionalProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY, oldSinglecompositioneditorOnAbstractOptionalProperty, newSinglecompositioneditorOnAbstractOptionalProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSinglecompositioneditorOnAbstractOptionalProperty(AbstractSample newSinglecompositioneditorOnAbstractOptionalProperty) {
+		if (newSinglecompositioneditorOnAbstractOptionalProperty != singlecompositioneditorOnAbstractOptionalProperty) {
+			NotificationChain msgs = null;
+			if (singlecompositioneditorOnAbstractOptionalProperty != null)
+				msgs = ((InternalEObject)singlecompositioneditorOnAbstractOptionalProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY, null, msgs);
+			if (newSinglecompositioneditorOnAbstractOptionalProperty != null)
+				msgs = ((InternalEObject)newSinglecompositioneditorOnAbstractOptionalProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY, null, msgs);
+			msgs = basicSetSinglecompositioneditorOnAbstractOptionalProperty(newSinglecompositioneditorOnAbstractOptionalProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY, newSinglecompositioneditorOnAbstractOptionalProperty, newSinglecompositioneditorOnAbstractOptionalProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -226,6 +281,8 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 				return basicSetSinglecompositioneditorOptionalProperty(null, msgs);
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY:
 				return basicSetSinglecompositioneditorROPropery(null, msgs);
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY:
+				return basicSetSinglecompositioneditorOnAbstractOptionalProperty(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -244,6 +301,8 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 				return getSinglecompositioneditorOptionalProperty();
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY:
 				return getSinglecompositioneditorROPropery();
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY:
+				return getSinglecompositioneditorOnAbstractOptionalProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,6 +323,9 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 				return;
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY:
 				setSinglecompositioneditorROPropery((TextSample)newValue);
+				return;
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY:
+				setSinglecompositioneditorOnAbstractOptionalProperty((AbstractSample)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,6 +348,9 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY:
 				setSinglecompositioneditorROPropery((TextSample)null);
 				return;
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY:
+				setSinglecompositioneditorOnAbstractOptionalProperty((AbstractSample)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +369,8 @@ public class SingleCompositionEditorSampleImpl extends AbstractSampleImpl implem
 				return singlecompositioneditorOptionalProperty != null;
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY:
 				return singlecompositioneditorROPropery != null;
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY:
+				return singlecompositioneditorOnAbstractOptionalProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -146,10 +146,6 @@
         eType="#//TotalSample"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerROPropery"
         eType="#//TotalSample"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerCompoRequiredProperty"
-        lowerBound="1" eType="#//TotalSample" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="advancedeobjectflatcomboviewerCompoOptionalProperty"
-        eType="#//TotalSample" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdvancedTableCompositionEditorSample"
       eSuperTypes="#//AbstractSample">
@@ -235,6 +231,8 @@
         eType="#//TextSample" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositioneditorROPropery"
         eType="#//TextSample" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositioneditorOnAbstractOptionalProperty"
+        eType="#//AbstractSample" containment="true"/>
   </eClassifiers>
   <eSubpackages name="references" nsURI="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
       nsPrefix="eefnr-ref">

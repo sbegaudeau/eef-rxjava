@@ -81,6 +81,11 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 	 */
 	private EObjectFlatComboSettings singlecompositioneditorROPropertySettings;
 	
+	/**
+	 * Settings for singlecompositioneditorOnAbstractOptionalProperty SingleCompositionEditor
+	 */
+	private EObjectFlatComboSettings singlecompositioneditorOnAbstractOptionalPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -123,7 +128,13 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 				singlecompositioneditorROPropertySettings = new EObjectFlatComboSettings(singleCompositionEditorSample, EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorROPropery());
 				basePart.initSinglecompositionviewerROProperty(singlecompositioneditorROPropertySettings);
 			}
+			if (isAccessible(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty)) {
+				// init part
+				singlecompositioneditorOnAbstractOptionalPropertySettings = new EObjectFlatComboSettings(singleCompositionEditorSample, EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty());
+				basePart.initSinglecompositionviewerOnAbstractOptionalProperty(singlecompositioneditorOnAbstractOptionalPropertySettings);
+			}
 			// init filters
+			
 			
 			
 			
@@ -134,6 +145,7 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -153,6 +165,9 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 		}
 		if (editorKey == EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty) {
 			return EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorROPropery();
+		}
+		if (editorKey == EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty) {
+			return EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -226,6 +241,37 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 			}
 			
 		}
+		if (EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				if (singlecompositioneditorOnAbstractOptionalPropertySettings.getValue() == "") {
+					EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, singlecompositioneditorOnAbstractOptionalPropertySettings, editingContext.getAdapterFactory());
+					PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(editingContext.getEObject(), PropertiesEditingProvider.class);
+					Object result = null;
+					if (provider != null) {
+						PropertiesEditingPolicy policy = provider.getPolicy(context);
+						if (policy instanceof CreateEditingPolicy) {
+							policy.execute();
+							result = ((CreateEditingPolicy) policy).getResult();
+						}
+					}
+					if (result != null) {
+						singlecompositioneditorOnAbstractOptionalPropertySettings.setToReference(result);
+					}
+				} else {
+					EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) singlecompositioneditorOnAbstractOptionalPropertySettings.getValue(), editingContext.getAdapterFactory());
+					PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(singlecompositioneditorOnAbstractOptionalPropertySettings.getValue(), PropertiesEditingProvider.class);
+					if (provider != null) {
+						PropertiesEditingPolicy policy = provider.getPolicy(context);
+						if (policy != null) {
+							policy.execute();
+						}
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.UNSET) {
+				singlecompositioneditorOnAbstractOptionalPropertySettings.setToReference(null);
+			}
+			
+		}
 	}
 
 	/**
@@ -242,6 +288,8 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 				basePart.setSinglecompositionviewerOptionalProperty((EObject)msg.getNewValue());
 			if (EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorROPropery().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty))
 				basePart.setSinglecompositionviewerROProperty((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty))
+				basePart.setSinglecompositionviewerOnAbstractOptionalProperty((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -256,7 +304,8 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorRequiredProperty(),
 			EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOptionalProperty(),
-			EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorROPropery()		);
+			EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorROPropery(),
+			EefnrPackage.eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty()		);
 		return new NotificationFilter[] {filter,};
 	}
 

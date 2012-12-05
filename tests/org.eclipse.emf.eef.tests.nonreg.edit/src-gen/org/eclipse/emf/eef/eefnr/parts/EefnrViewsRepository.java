@@ -566,6 +566,9 @@ public class EefnrViewsRepository {
 			
 			public static String singlecompositionviewerROProperty = "eefnr::SingleCompositionEditorSample::properties::singlecompositionviewerROProperty";
 			
+			
+			public static String singlecompositionviewerOnAbstractOptionalProperty = "eefnr::SingleCompositionEditorSample::properties::singlecompositionviewerOnAbstractOptionalProperty";
+			
 	
 		}
 	

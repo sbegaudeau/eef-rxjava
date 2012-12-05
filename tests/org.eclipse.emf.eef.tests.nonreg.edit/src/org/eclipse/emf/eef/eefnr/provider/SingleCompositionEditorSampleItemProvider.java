@@ -26,6 +26,11 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample;
+import org.eclipse.emf.eef.eefnr.filters.FiltersFactory;
+import org.eclipse.emf.eef.eefnr.naming.CustomNamingFactory;
+import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
+import org.eclipse.emf.eef.eefnr.references.ReferencesFactory;
+import org.eclipse.emf.eef.eefnrext.EefnrextFactory;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample} object.
@@ -81,6 +86,7 @@ public class SingleCompositionEditorSampleItemProvider
 			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY);
+			childrenFeatures.add(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY);
 		}
 		return childrenFeatures;
 	}
@@ -138,6 +144,7 @@ public class SingleCompositionEditorSampleItemProvider
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY:
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY:
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY:
+			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -169,6 +176,206 @@ public class SingleCompositionEditorSampleItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY,
 				 EefnrFactory.eINSTANCE.createTextSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTotalSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTextSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createCheckboxSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTextareaSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createRadioSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createEObjectFlatComboViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createReferencesTableSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createEMFComboViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createMultiValuedEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTableCompositionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createAdvancedReferencesTableSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createAdvancedEObjectFlatComboViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createAdvancedTableCompositionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createFlatReferencesTableSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTextSampleWithTwoTabs()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createTableCompositionExtensionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createImageViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSelectionDialogSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSingleCompositionViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSingleCompositionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 ReferencesFactory.eINSTANCE.createReferenceEnabledSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 ReferencesFactory.eINSTANCE.createTests()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createDeferedFlatReferenceTableEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createDeferedReferenceTableEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createOwner()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createSubtype()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createAnotherSubType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createElement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createAttributeNavigationSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createSmartModelNavigationSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createFirstModelNavigation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 NavigationFactory.eINSTANCE.createSecondModelNavigation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceOwnerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 CustomNamingFactory.eINSTANCE.createEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrextFactory.eINSTANCE.createTableCompositionTargetExtensionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrextFactory.eINSTANCE.createCheckBoxExtendedEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrextFactory.eINSTANCE.createFlatReferenceExtendedEditorSample()));
 	}
 
 	/**
@@ -185,7 +392,8 @@ public class SingleCompositionEditorSampleItemProvider
 		boolean qualify =
 			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY ||
 			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY ||
-			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY;
+			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY ||
+			childFeature == EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY;
 
 		if (qualify) {
 			return getString
