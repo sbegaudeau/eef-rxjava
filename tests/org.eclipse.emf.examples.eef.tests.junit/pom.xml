@@ -31,9 +31,52 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<useUIHarness>true</useUIHarness>
-					<useUIThread>false</useUIThread>
-					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+				  <useUIHarness>true</useUIHarness>
+				  <useUIThread>false</useUIThread>
+				  <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+				  <product>org.eclipse.sdk.ide</product>
+		          <application>org.eclipse.ui.ide.workbench</application>
+		          <testFailureIgnore>true</testFailureIgnore>
+		          <includes>
+						<include>**/AllTests.class</include>
+				 </includes>
+		          <dependencies>
+		            <dependency>
+		              <type>p2-installable-unit</type>
+		              <artifactId>org.eclipse.pde.feature.group</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+		            <dependency>
+		              <type>p2-installable-unit</type>
+		              <artifactId>org.eclipse.jdt.feature.group</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+		            <dependency>
+		              <type>eclipse-feature</type>
+		              <artifactId>org.eclipse.emf.eef.sdk-feature</artifactId>
+		              <version>0.0.0</version>
+		            </dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.ui.workbench</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.emf.eef.modelingbot</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.emf.eef.modelingbot.edit</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+					<dependency>
+					   <type>eclipse-plugin</type>
+					   <artifactId>org.eclipse.emf.eef.modelingbot.editor</artifactId>
+					    <version>0.0.0</version>
+					</dependency>
+		           </dependencies>
 				</configuration>
 			</plugin>
 		</plugins>
