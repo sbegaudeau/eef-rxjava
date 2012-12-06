@@ -354,6 +354,11 @@ public class ConferenceEditor
 	protected boolean updateProblemIndication = true;
 
 	/**
+	 * @generated NOT
+	 */
+	protected boolean isSaving = false;
+
+	/**
 	 * Adapter used to update the problem indication when resources are demanded loaded.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -524,7 +529,7 @@ public class ConferenceEditor
 	 * @generated
 	 */
 	protected void handleChangedResources() {
-		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+		if (!changedResources.isEmpty() && (!isDirty() || (!isSaving && handleDirtyConflict()))) {
 			if (isDirty()) {
 				changedResources.addAll(editingDomain.getResourceSet().getResources());
 			}
@@ -1453,7 +1458,9 @@ public class ConferenceEditor
 		try {
 			// This runs the options, and shows progress.
 			//
+			isSaving = true;
 			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+			isSaving = false;
 
 			// Refresh the necessary state.
 			//
