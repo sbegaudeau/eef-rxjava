@@ -41,8 +41,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.SingleCompositionEditor.SingleComp
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
-import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.layout.GridData;

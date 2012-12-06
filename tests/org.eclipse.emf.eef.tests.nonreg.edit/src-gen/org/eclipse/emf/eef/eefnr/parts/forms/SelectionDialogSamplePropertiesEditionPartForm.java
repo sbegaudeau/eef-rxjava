@@ -12,39 +12,54 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.core.resources.IFile;
+
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SelectionDialogSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
+
 import org.eclipse.ui.PlatformUI;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -195,8 +210,8 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 			Shell theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 			IFile[] file = WorkspaceResourceDialog.openFileSelection(theShell, "File Selection", "", false, null, null);
 			if(file.length == 1) {
-				selectionDialogROProperty.setText(file[0].getProject().getName() + "/" + file[0].getProjectRelativePath().toString());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartForm.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogROProperty.getText()));
+				selectionDialogRequiredProperty.setText(file[0].getProject().getName() + "/" + file[0].getProjectRelativePath().toString());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartForm.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogRequiredProperty.getText()));
 			}
 		}
 	//End of user code

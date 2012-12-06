@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.parts;
 import org.eclipse.emf.common.util.Enumerator;
 
 
-
 // End of user code
 
 /**

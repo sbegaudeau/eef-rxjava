@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
 import org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation;
-import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.FirstNavigationSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;

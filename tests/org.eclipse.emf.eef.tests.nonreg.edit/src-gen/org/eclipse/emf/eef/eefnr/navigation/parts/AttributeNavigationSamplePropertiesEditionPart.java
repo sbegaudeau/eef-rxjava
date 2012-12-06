@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.navigation.parts;
 
 
 
-
 // End of user code
 
 /**

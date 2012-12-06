@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnrext.parts;
 
 
 
-
 // End of user code
 
 /**
