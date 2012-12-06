@@ -14,8 +14,6 @@ package org.eclipse.emf.eef.eefnrext.parts;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 
 
-
-
 // End of user code
 
 /**

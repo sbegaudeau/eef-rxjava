@@ -12,25 +12,41 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -119,7 +135,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				});
 				basePart.addFilterToReferencestableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for referencestableRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty)) {
@@ -139,7 +154,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 				});
 				basePart.addFilterToReferencestableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for referencestableOptionalProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty)) {

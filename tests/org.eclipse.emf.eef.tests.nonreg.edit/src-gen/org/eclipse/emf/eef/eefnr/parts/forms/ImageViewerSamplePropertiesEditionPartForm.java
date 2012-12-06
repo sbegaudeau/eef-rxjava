@@ -13,32 +13,45 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ImageViewerSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.imageviewer.EEFImageViewer;
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -146,7 +159,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerRequiredPropertyLabel);
 		imageviewerRequiredProperty = new EEFImageViewer(parent, SWT.BORDER);
 		GridData imageviewerRequiredPropertyData = new GridData();
-		// Start of user code for imageviewerRequiredProperty layout data customization
+		// Start of user code  for imageviewerRequiredProperty layout data customization
 				imageviewerRequiredPropertyData.widthHint = 200;
 				imageviewerRequiredPropertyData.heightHint = 200;
 				imageviewerRequiredPropertyData.horizontalAlignment = SWT.CENTER;
@@ -172,7 +185,7 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		createDescription(parent, EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrMessages.ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel);
 		imageviewerOptionalProperty = new EEFImageViewer(parent, SWT.BORDER);
 		GridData imageviewerOptionalPropertyData = new GridData();
-		// Start of user code for imageviewerOptionalProperty layout data customization
+		// Start of user code  for imageviewerOptionalProperty layout data customization
 				imageviewerOptionalPropertyData.widthHint = 200;
 				imageviewerOptionalPropertyData.heightHint = 200;
 				imageviewerOptionalPropertyData.horizontalAlignment = SWT.CENTER;

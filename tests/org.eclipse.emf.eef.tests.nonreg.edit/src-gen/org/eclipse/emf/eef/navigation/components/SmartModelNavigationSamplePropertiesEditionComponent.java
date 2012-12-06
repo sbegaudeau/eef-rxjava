@@ -31,7 +31,6 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
-import org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation;
 import org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample;
 
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
@@ -46,6 +45,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder;
@@ -142,9 +142,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected EObject init(EObject semanticObject) {
-	if (semanticObject instanceof FirstModelNavigation) {
-	SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
-	((FirstModelNavigation) semanticObject).setSecondModelNavigation(result);
+	if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {
+	org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();
+	((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).setSecondModelNavigation(result);
 	result.setName("FSM single");
 	return result;
 	}
@@ -184,9 +184,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected EObject init(EObject semanticObject) {
-	if (semanticObject instanceof FirstModelNavigation) {
-	SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
-	((FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((SecondModelNavigation) result);
+	if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {
+	org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();
+	((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) result);
 	result.setName("SSM multi");
 	return result;
 	}
@@ -226,9 +226,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected EObject init(EObject semanticObject) {
-	if (semanticObject instanceof FirstModelNavigation) {
-	SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
-	((FirstModelNavigation) semanticObject).setSecondModelNavigation(result);
+	if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {
+	org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();
+	((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).setSecondModelNavigation(result);
 	result.setName("SSM single");
 	return result;
 	}
@@ -268,9 +268,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected EObject init(EObject semanticObject) {
-	if (semanticObject instanceof FirstModelNavigation) {
-	SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
-	((FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((SecondModelNavigation) result);
+	if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {
+	org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();
+	((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) result);
 	result.setName("SSM multi");
 	return result;
 	}
@@ -321,7 +321,7 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected boolean select(EObject semanticObject) {
-	return semanticObject instanceof FirstModelNavigation && ((FirstModelNavigation) semanticObject).isFilter2();
+	return semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation && ((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).isFilter2();
 		}
 	
 	})
@@ -337,9 +337,9 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected EObject init(EObject semanticObject) {
-	if (semanticObject instanceof FirstModelNavigation) {
-	SecondModelNavigation result = NavigationFactory.eINSTANCE.createSecondModelNavigation();
-	((FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((SecondModelNavigation) result);
+	if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {
+	org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();
+	((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) result);
 	result.setFilter3(true);
 	result.setFilter4(true);
 	result.setName("SSM multi with filters");
@@ -371,7 +371,7 @@ public class SmartModelNavigationSamplePropertiesEditionComponent extends Single
 		*/
 		@Override
 		protected boolean select(EObject semanticObject) {
-	return semanticObject instanceof SecondModelNavigation && ((SecondModelNavigation) semanticObject).isFilter4();
+	return semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation && ((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) semanticObject).isFilter4();
 		}
 	
 	})

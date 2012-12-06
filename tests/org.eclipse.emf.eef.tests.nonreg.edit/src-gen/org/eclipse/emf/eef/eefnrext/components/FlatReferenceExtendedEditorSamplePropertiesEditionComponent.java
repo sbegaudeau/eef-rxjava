@@ -11,17 +11,24 @@
 package org.eclipse.emf.eef.eefnrext.components;
 
 // Start of user code for imports
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
+
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
+import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
+import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 // End of user code
 

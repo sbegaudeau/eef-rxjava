@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.SmartNavigationSamplePropertie
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
 
 import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;

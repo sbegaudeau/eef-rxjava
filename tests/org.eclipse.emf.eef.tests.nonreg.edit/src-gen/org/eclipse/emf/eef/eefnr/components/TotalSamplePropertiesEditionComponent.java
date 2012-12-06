@@ -15,42 +15,61 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TotalSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -253,7 +272,7 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, totalSample.getName()));
 			
-			// Start of user code for custom command update
+			// Start of user code  for custom command update
 			// End of user code
 			
 			// init filters
@@ -279,7 +298,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 					
 				});
 				// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty)) {
@@ -296,7 +314,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 					
 				});
 				// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty)) {
@@ -316,7 +333,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 				});
 				basePart.addFilterToReferencestableRequiredProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for referencestableRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty)) {
@@ -336,7 +352,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 				});
 				basePart.addFilterToReferencestableOptionalProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for referencestableOptionalProperty
-				
 				// End of user code
 			}
 			
@@ -356,7 +371,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 				});
 				// Start of user code for additional businessfilters for tablecompositionRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty)) {
@@ -372,7 +386,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 				});
 				// Start of user code for additional businessfilters for tablecompositionOptionalProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty)) {
@@ -392,7 +405,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 				});
 				basePart.addFilterToAdvancedreferencestableRequiredProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for advancedreferencestableRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty)) {
@@ -412,7 +424,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 				});
 				basePart.addFilterToAdvancedreferencestableOptionalProperty(new EObjectFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for advancedreferencestableOptionalProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery)) {
@@ -460,7 +471,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 				});
 				// Start of user code for additional businessfilters for advancedtablecompositionRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty)) {
@@ -476,11 +486,10 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			
 				});
 				// Start of user code for additional businessfilters for advancedtablecompositionOptionalProperty
-				
 				// End of user code
 			}
 			
-			// Start of user code for custom filter update
+			// Start of user code  for custom filter update
 			// End of user code
 			
 			// init values for referenced views

@@ -14,24 +14,40 @@ package org.eclipse.emf.eef.eefnr.components;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -117,7 +133,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 				});
 				basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty)) {
@@ -137,7 +152,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 				});
 				basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty)) {
