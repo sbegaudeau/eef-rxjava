@@ -13,6 +13,10 @@ package org.eclipse.emf.eef.modelingBot.testcase;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.batch.BatchModelingBot;
 import org.eclipse.emf.eef.modelingBot.helper.SWTBotHelper;
@@ -73,6 +77,11 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 		swtEEFBot.dispose();
 		SWTBotHelper.waitAllUiEvents();
 
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		IProject[] projects = root.getProjects();
+		for (int i = 0; i < projects.length; i++) {
+			projects[i].delete(true, new NullProgressMonitor());
+		}
 		super.tearDown();
 	}
 
