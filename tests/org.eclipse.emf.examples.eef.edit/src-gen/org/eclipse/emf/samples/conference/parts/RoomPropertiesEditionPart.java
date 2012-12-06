@@ -14,7 +14,6 @@ package org.eclipse.emf.samples.conference.parts;
 
 
 
-
 // End of user code
 
 /**

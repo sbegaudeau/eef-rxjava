@@ -15,30 +15,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TalksAndTopicsPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
 
+import org.eclipse.swt.widgets.Composite;
 
 // End of user code
 
@@ -148,11 +163,6 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 			}
 			
 		});
-		if (isReadOnly(talks)) {
-			talks.setEnabled(false);
-			talks.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
-		}		
-		
 		GridData talksData = new GridData(GridData.FILL_HORIZONTAL);
 		talksData.horizontalSpan = 3;
 		this.talks.setLayoutData(talksData);
@@ -201,11 +211,6 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 			}
 			
 		});
-		if (isReadOnly(topics)) {
-			topics.setEnabled(false);
-			topics.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
-		}		
-		
 		GridData topicsData = new GridData(GridData.FILL_HORIZONTAL);
 		topicsData.horizontalSpan = 3;
 		this.topics.setLayoutData(topicsData);
@@ -242,6 +247,14 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		talks.setContentProvider(contentProvider);
 		talks.setInput(settings);
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.TalksAndTopics.talks);
+		if (readOnly && talks.isEnabled()) {
+			talks.setEnabled(false);
+			talks.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
+		} else if (!readOnly && !talks.isEnabled()) {
+			talks.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -300,6 +313,14 @@ public class TalksAndTopicsPropertiesEditionPartImpl extends CompositeProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		topics.setContentProvider(contentProvider);
 		topics.setInput(settings);
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.TalksAndTopics.topics);
+		if (readOnly && topics.isEnabled()) {
+			topics.setEnabled(false);
+			topics.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
+		} else if (!readOnly && !topics.isEnabled()) {
+			topics.setEnabled(true);
+		}	
+		
 	}
 
 	/**

@@ -15,41 +15,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -129,11 +145,6 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Composite createPlaceText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Localisation.place, ConferenceMessages.LocalisationPropertiesEditionPart_PlaceLabel);
 		place = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(place)) {
-			place.setEnabled(false);
-			place.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
-		}		
-		
 		place.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData placeData = new GridData(GridData.FILL_HORIZONTAL);
@@ -233,11 +244,6 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 			}
 			
 		});
-		if (isReadOnly(sites)) {
-			sites.setEnabled(false);
-			sites.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
-		}		
-		
 		GridData sitesData = new GridData(GridData.FILL_HORIZONTAL);
 		sitesData.horizontalSpan = 3;
 		this.sites.setLayoutData(sitesData);
@@ -283,6 +289,14 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 		} else {
 			place.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Localisation.place);
+		if (readOnly && place.isEnabled()) {
+			place.setEnabled(false);
+			place.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		} else if (!readOnly && !place.isEnabled()) {
+			place.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -298,6 +312,14 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		sites.setContentProvider(contentProvider);
 		sites.setInput(settings);
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Localisation.sites);
+		if (readOnly && sites.isEnabled()) {
+			sites.setEnabled(false);
+			sites.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		} else if (!readOnly && !sites.isEnabled()) {
+			sites.setEnabled(true);
+		}	
+		
 	}
 
 	/**

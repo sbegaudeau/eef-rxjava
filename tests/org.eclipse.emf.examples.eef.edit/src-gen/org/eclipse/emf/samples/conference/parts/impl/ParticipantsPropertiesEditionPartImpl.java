@@ -15,30 +15,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.ParticipantsPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
 
+import org.eclipse.swt.widgets.Composite;
 
 // End of user code
 
@@ -141,11 +156,6 @@ public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEd
 			}
 			
 		});
-		if (isReadOnly(participants)) {
-			participants.setEnabled(false);
-			participants.setToolTipText(ConferenceMessages.Participants_ReadOnly);
-		}		
-		
 		GridData participantsData = new GridData(GridData.FILL_HORIZONTAL);
 		participantsData.horizontalSpan = 3;
 		this.participants.setLayoutData(participantsData);
@@ -182,6 +192,14 @@ public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEd
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		participants.setContentProvider(contentProvider);
 		participants.setInput(settings);
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Participants.participants_);
+		if (readOnly && participants.isEnabled()) {
+			participants.setEnabled(false);
+			participants.setToolTipText(ConferenceMessages.Participants_ReadOnly);
+		} else if (!readOnly && !participants.isEnabled()) {
+			participants.setEnabled(true);
+		}	
+		
 	}
 
 	/**

@@ -13,43 +13,60 @@ package org.eclipse.emf.samples.conference.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TopicPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.window.Window;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -156,11 +173,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, ConferenceViewsRepository.Topic.Properties.description, ConferenceMessages.TopicPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		if (isReadOnly(description)) {
-			description.setEnabled(false);
-			description.setToolTipText(ConferenceMessages.Topic_ReadOnly);
-		}		
-		
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData descriptionData = new GridData(GridData.FILL_HORIZONTAL);
@@ -227,11 +239,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 */
 	protected Composite createReferencesMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		references = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
-		if (isReadOnly(references)) {
-			references.setEnabled(false);
-			references.setToolTipText(ConferenceMessages.Topic_ReadOnly);
-		}		
-		
 		GridData referencesData = new GridData(GridData.FILL_HORIZONTAL);
 		referencesData.horizontalSpan = 2;
 		references.setLayoutData(referencesData);
@@ -277,12 +284,6 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		documentationLabelData.horizontalSpan = 3;
 		documentationLabel.setLayoutData(documentationLabelData);
 		documentation = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		if (isReadOnly(documentation)) {
-			documentation.setEnabled(false);
-			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-			documentation.setToolTipText(ConferenceMessages.Topic_ReadOnly);
-		}		
-		
 		GridData documentationData = new GridData(GridData.FILL_HORIZONTAL);
 		documentationData.horizontalSpan = 2;
 		documentationData.heightHint = 80;
@@ -367,6 +368,14 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Topic.Properties.description);
+		if (readOnly && description.isEnabled()) {
+			description.setEnabled(false);
+			description.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		} else if (!readOnly && !description.isEnabled()) {
+			description.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -392,6 +401,14 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		} else {
 			references.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Topic.Properties.references);
+		if (readOnly && references.isEnabled()) {
+			references.setEnabled(false);
+			references.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		} else if (!readOnly && !references.isEnabled()) {
+			references.setEnabled(true);
+		}	
+		
 	}
 
 	public void addToReferences(Object newValue) {
@@ -434,6 +451,15 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		} else {
 			documentation.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(ConferenceViewsRepository.Topic.Properties.documentation);
+		if (readOnly && documentation.isEnabled()) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Topic_ReadOnly);
+		} else if (!readOnly && !documentation.isEnabled()) {
+			documentation.setEnabled(true);
+		}	
+		
 	}
 
 
