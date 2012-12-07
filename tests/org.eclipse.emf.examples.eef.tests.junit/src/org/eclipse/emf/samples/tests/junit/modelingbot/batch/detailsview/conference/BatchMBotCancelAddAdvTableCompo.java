@@ -16,7 +16,7 @@ package org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.confer
 public class BatchMBotCancelAddAdvTableCompo extends org.eclipse.emf.eef.modelingBot.testcase.AbstractBatchModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
-		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/CancelAddAdvTableCompo.modelingbot");
+		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/cancelAddAdvTableCompo.modelingbot");
 	}
 
 }

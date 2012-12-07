@@ -49,6 +49,14 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 	 */
 	public void setUp() throws Exception {
 		super.setUp();
+		
+		// remove existants projects
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		IProject[] projects = root.getProjects();
+		for (int i = 0; i < projects.length; i++) {
+			projects[i].delete(true, new NullProgressMonitor());
+		}
+		
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
 			public void run() {
