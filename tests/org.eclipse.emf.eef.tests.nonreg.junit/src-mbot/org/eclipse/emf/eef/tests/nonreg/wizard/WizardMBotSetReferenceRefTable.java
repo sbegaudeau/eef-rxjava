@@ -13,7 +13,7 @@ package org.eclipse.emf.eef.tests.nonreg.wizard;
 /**
  * @author arichard
  */
-public class WizardMBotSetReferenceRefTable extends org.eclipse.emf.eef.modelingBot.testcase.AbstractSWTBotModelingBotTestCase {
+public class WizardMBotSetReferenceRefTable extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
 		bot.runModelingBot("org.eclipse.emf.eef.tests.nonreg.junit/models/wizard_nonreg/setReferenceRefTable.modelingbot");

@@ -1,49 +1,15 @@
 package org.eclipse.emf.samples.tests.junit;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import org.eclipse.emf.samples.tests.junit.modelingbot.ComposedBotModelingTestCase;
 import org.eclipse.emf.samples.tests.junit.modelingbot.ConferenceModelingBotTestCase;
 import org.eclipse.emf.samples.tests.junit.modelingbot.SWTBotModelingTestCase;
 import org.eclipse.emf.samples.tests.junit.modelingbot.SWTBotModelingTestCase2;
 import org.eclipse.emf.samples.tests.junit.modelingbot.SWTBotModelingTestCase3;
 import org.eclipse.emf.samples.tests.junit.modelingbot.SiteModelingBotTestCase;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotAddAdvTableCompo;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotCancelAddAdvTableCompo;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotCancelSetAttributeMVE;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotCancelSetReferenceAdvRefTable;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotCancelSetReferenceEOFCV;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoAddAdvTableCompo;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetAttributeCheckbox;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetAttributeEMFComboViewer;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetAttributeMVE;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetAttributeText;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetAttributeTextArea;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetReferenceAdvRefTable;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRedoSetReferenceEOFCV;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotRemoveAdvTableCompo;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetAttributeCheckbox;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetAttributeEMFComboViewer;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetAttributeMVE;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetAttributeText;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetAttributeTextArea;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetReferenceAdvRefTable;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetReferenceAdvRefTable2;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotSetReferenceEOFCV;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoAddAdvTableCompo;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetAttributeCheckbox;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetAttributeEMFComboViewer;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetAttributeMVE;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetAttributeText;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetAttributeTextArea;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetReferenceAdvRefTable;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUndoSetReferenceEOFCV;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetAdvRefTable;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetAttributeMVE;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetAttributeText;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetAttributeTextArea;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetMVE;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetReferenceAdvRefTable;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetText;
-import org.eclipse.emf.samples.tests.junit.modelingbot.batch.detailsview.conference.BatchMBotUnsetTextArea;
 import org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.conference.ComposedMBotAddAdvTableCompo;
 import org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.conference.ComposedMBotCancelAddAdvTableCompo;
 import org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.conference.ComposedMBotCancelSetAttributeMVE;
@@ -197,10 +163,6 @@ import org.eclipse.emf.samples.tests.junit.modelingbot.wizard.conference.WizardM
 import org.eclipse.emf.samples.tests.junit.modelingbot.wizard.conference.WizardMBotUnsetReferenceEOFCV;
 import org.eclipse.emf.samples.tests.junit.modelingbot.wizard.conference.WizardMBotUnsetText;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 public class AllTests extends TestCase {
 
 	public static Test suite() {
@@ -213,46 +175,6 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(SWTBotModelingTestCase.class);
 		suite.addTestSuite(SWTBotModelingTestCase2.class);
 		suite.addTestSuite(SWTBotModelingTestCase3.class);
-		
-		// test batch
-		suite.addTestSuite(BatchMBotAddAdvTableCompo.class);
-		suite.addTestSuite(BatchMBotCancelAddAdvTableCompo.class);
-		suite.addTestSuite(BatchMBotCancelSetAttributeMVE.class);
-		suite.addTestSuite(BatchMBotCancelSetReferenceAdvRefTable.class);
-		suite.addTestSuite(BatchMBotCancelSetReferenceEOFCV.class);
-		suite.addTestSuite(BatchMBotRedoAddAdvTableCompo.class);
-		suite.addTestSuite(BatchMBotRedoSetAttributeCheckbox.class);
-		suite.addTestSuite(BatchMBotRedoSetAttributeEMFComboViewer.class);
-		suite.addTestSuite(BatchMBotRedoSetAttributeMVE.class);
-		suite.addTestSuite(BatchMBotRedoSetAttributeText.class);
-		suite.addTestSuite(BatchMBotRedoSetAttributeTextArea.class);
-		suite.addTestSuite(BatchMBotRedoSetReferenceAdvRefTable.class);
-		suite.addTestSuite(BatchMBotRedoSetReferenceEOFCV.class);
-		suite.addTestSuite(BatchMBotRemoveAdvTableCompo.class);
-		suite.addTestSuite(BatchMBotSetAttributeCheckbox.class);
-		suite.addTestSuite(BatchMBotSetAttributeEMFComboViewer.class);
-		suite.addTestSuite(BatchMBotSetAttributeMVE.class);
-		suite.addTestSuite(BatchMBotSetAttributeText.class);
-		suite.addTestSuite(BatchMBotSetAttributeTextArea.class);
-		suite.addTestSuite(BatchMBotSetReferenceAdvRefTable.class);
-		suite.addTestSuite(BatchMBotSetReferenceAdvRefTable2.class);
-		suite.addTestSuite(BatchMBotSetReferenceEOFCV.class);
-		suite.addTestSuite(BatchMBotUndoAddAdvTableCompo.class);
-		suite.addTestSuite(BatchMBotUndoSetAttributeCheckbox.class);
-		suite.addTestSuite(BatchMBotUndoSetAttributeEMFComboViewer.class);
-		suite.addTestSuite(BatchMBotUndoSetAttributeMVE.class);
-		suite.addTestSuite(BatchMBotUndoSetAttributeText.class);
-		suite.addTestSuite(BatchMBotUndoSetAttributeTextArea.class);
-		suite.addTestSuite(BatchMBotUndoSetReferenceAdvRefTable.class);
-		suite.addTestSuite(BatchMBotUndoSetReferenceEOFCV.class);
-		suite.addTestSuite(BatchMBotUnsetAdvRefTable.class);
-		suite.addTestSuite(BatchMBotUnsetAttributeMVE.class);
-		suite.addTestSuite(BatchMBotUnsetAttributeText.class);
-		suite.addTestSuite(BatchMBotUnsetAttributeTextArea.class);
-		suite.addTestSuite(BatchMBotUnsetMVE.class);
-		suite.addTestSuite(BatchMBotUnsetReferenceAdvRefTable.class);
-		suite.addTestSuite(BatchMBotUnsetText.class);
-		suite.addTestSuite(BatchMBotUnsetTextArea.class);
 		
 		// tests composed
 		suite.addTestSuite(ComposedMBotAddAdvTableCompo.class);

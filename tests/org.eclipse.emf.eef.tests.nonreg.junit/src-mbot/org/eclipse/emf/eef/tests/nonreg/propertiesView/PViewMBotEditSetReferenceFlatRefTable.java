@@ -13,7 +13,7 @@ package org.eclipse.emf.eef.tests.nonreg.propertiesView;
 /**
  * @author <a href="mailto:riadh.hajamor@obeo.fr">Riadh HAJ AMOR</a>
  */
-public class PViewMBotEditSetReferenceFlatRefTable extends org.eclipse.emf.eef.modelingBot.testcase.AbstractSWTBotModelingBotTestCase {
+public class PViewMBotEditSetReferenceFlatRefTable extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
 		bot.runModelingBot("org.eclipse.emf.eef.tests.nonreg.junit/models/propertiesView_nonreg/editSetReferenceFlatRefTable.modelingbot");
