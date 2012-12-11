@@ -16,7 +16,7 @@ package org.eclipse.emf.eef.tests.nonreg.composed.detailsview;
 public class ComposedMBotUnsetEOFCV extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
-		composedBot.runModelingBot("org.eclipse.emf.eef.tests.nonreg.junit/models/details_view_nonreg/unsetEOFCV.modelingbot");
+		bot.runModelingBot("org.eclipse.emf.eef.tests.nonreg.junit/models/details_view_nonreg/unsetEOFCV.modelingbot");
 	}
 
 }

@@ -23,7 +23,7 @@ public class ConferenceModelingBotTestCase extends AbstractComposedModelingBotTe
 	 * @see org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase#testModelingBot()
 	 */
 	public void testModelingBot() throws Exception {
-		composedBot
+		bot
 				.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/conference.modelingbot");
 	}
 

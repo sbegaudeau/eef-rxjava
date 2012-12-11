@@ -16,7 +16,7 @@ package org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.con
 public class ComposedMBotRedoAddAdvTableCompo extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
-		composedBot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/redoAddAdvTableCompo.modelingbot");
+		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/redoAddAdvTableCompo.modelingbot");
 	}
 
 }

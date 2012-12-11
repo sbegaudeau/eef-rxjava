@@ -16,7 +16,7 @@ package org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.con
 public class ComposedMBotUndoSetReferenceEOFCV extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
-		composedBot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/undoSetReferenceEOFCV.modelingbot");
+		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/undoSetReferenceEOFCV.modelingbot");
 	}
 
 }

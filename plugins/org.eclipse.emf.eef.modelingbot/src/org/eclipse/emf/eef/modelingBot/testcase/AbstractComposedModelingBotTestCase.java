@@ -35,7 +35,7 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 	/**
 	 * An instance of composed bot.
 	 */
-	protected ComposedEEFBot composedBot;
+	protected ComposedEEFBot bot;
 
 	/**
 	 * An instance of swt eef bot.
@@ -72,7 +72,7 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 		final BatchModelingBot batchModeling = new BatchModelingBot();
 		bots.add(swtEEFBot);
 		bots.add(batchModeling);
-		composedBot = new ComposedEEFBot(bots);
+		bot = new ComposedEEFBot(bots);
 	}
 
 	@Override
