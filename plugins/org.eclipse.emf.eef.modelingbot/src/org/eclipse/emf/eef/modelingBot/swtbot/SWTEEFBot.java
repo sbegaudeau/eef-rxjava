@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
@@ -63,7 +64,6 @@ import org.eclipse.swtbot.swt.finder.keyboard.KeyboardFactory;
 import org.eclipse.swtbot.swt.finder.results.IntResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCTabItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
@@ -73,6 +73,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 
 /**
@@ -117,6 +118,11 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 * Bot Helper.
 	 */
 	private SWTEEFBotHelper helper;
+	
+	/**
+	 * Editor editing domain
+	 */
+	private EditingDomain editorEditingDomain;
 
 	/**
 	 * Create a SWTEEFBot.
@@ -218,6 +224,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public void closeProject(String projectName) {
 		final SWTBotTreeItem treeItem = selectInProjectExplorer(projectName);
 		SWTBotHelper.clickContextMenu(treeItem, UIConstants.CLOSE_PROJECT_MENU);
+		editorEditingDomain = null;
 	}
 
 	/**
@@ -274,6 +281,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		SWTBotHelper.clickContextMenu(treeItem, "Open");
 		String splittedPath[] = path.split("/");
 		editor = editorByTitle(splittedPath[1]);
+		getEditorEditingDomain();
 		return getRoot(splittedPath[0], splittedPath[1]);
 	}
 
@@ -295,6 +303,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public void closeEditor(String path) {
 		selectInProjectExplorer(path);
 		menu(UIConstants.FILE_MENU).menu(UIConstants.CLOSE_MENU).click();
+		editorEditingDomain = null;
 	}
 
 	/**
@@ -718,7 +727,19 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		openWithEEFEditor(path, modelName);
 
 		editor = editorByTitle(modelName);
+		getEditorEditingDomain();
+		
 		return getRoot(path, modelName);
+	}
+	
+	protected EditingDomain getEditorEditingDomain() {
+		if (editor != null) {
+			IEditorPart editorPart = editor.getReference().getEditor(true);
+			if (editorPart instanceof IEditingDomainProvider) {
+				editorEditingDomain = ((IEditingDomainProvider) editorPart).getEditingDomain();
+			}
+		}
+		return editorEditingDomain;
 	}
 
 	/**
@@ -1310,10 +1331,14 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 */
 	public void undo(Action action) {
 		SWTBotHelper.waitAllUiEvents();
-		// sleep(1000);
-		KeyboardFactory.getSWTKeyboard().pressShortcut(SWT.CTRL, 'z');
+		if (editorEditingDomain != null &&  editorEditingDomain.getCommandStack().getUndoCommand() != null) {
+			String cmdName = editorEditingDomain.getCommandStack().getUndoCommand().getLabel();
+			editor.bot().menu("Edit").menu("Undo " + cmdName ).click();
+		} else {
+			editor.setFocus();
+			KeyboardFactory.getSWTKeyboard().pressShortcut(SWT.CTRL, 'z');
+		}
 		SWTBotHelper.waitAllUiEvents();
-		// sleep(1000);
 	}
 
 	/**
@@ -1323,10 +1348,14 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	 */
 	public void redo(Action action) {
 		SWTBotHelper.waitAllUiEvents();
-		// sleep(1000);
-		KeyboardFactory.getSWTKeyboard().pressShortcut(SWT.CTRL, 'y');
+		if (editorEditingDomain != null &&  editorEditingDomain.getCommandStack().getRedoCommand() != null) {
+			String cmdName = editorEditingDomain.getCommandStack().getRedoCommand().getLabel();
+			editor.bot().menu("Edit").menu("Redo " + cmdName ).click();
+		} else {
+			editor.setFocus();
+			KeyboardFactory.getSWTKeyboard().pressShortcut(SWT.CTRL, 'y');
+		}
 		SWTBotHelper.waitAllUiEvents();
-		// sleep(1000);
 	}
 
 	public void initWizard(Wizard wizard) {
