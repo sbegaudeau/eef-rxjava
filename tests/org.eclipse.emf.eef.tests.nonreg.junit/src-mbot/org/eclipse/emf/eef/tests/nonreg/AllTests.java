@@ -33,35 +33,6 @@ import org.eclipse.emf.eef.tests.nonreg.composed.detailsview.ComposedMBotUnsetRe
 import org.eclipse.emf.eef.tests.nonreg.composed.detailsview.ComposedMBotUnsetReferenceEOFCV;
 import org.eclipse.emf.eef.tests.nonreg.composed.detailsview.ComposedMBotUnsetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.composed.detailsview.ComposedMBotUnsetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotAddAdvTableCompoOnAbstractRef;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotAddTableCompo;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotCancelAddTableCompo;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotCancelSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotCancelSetReferenceFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotCancelSetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotRedoAddTableCompo;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotRedoSetAttributeRadio;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotRedoSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotRedoSetReferenceFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotRedoSetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotRemoveTableCompo;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotSetAttributeRadio;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotSetReferenceFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotSetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUndoAddTableCompo;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUndoSetAttributeRadio;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUndoSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUndoSetReferenceFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUndoSetReferenceRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetReferenceEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetReferenceFlatRefTable;
-import org.eclipse.emf.eef.tests.nonreg.detailsview.MBotUnsetReferenceRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotAddTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotCancelAddTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotCancelSetReferenceAEOFCV;
@@ -131,38 +102,7 @@ public class AllTests extends TestCase {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
-		//$JUnit-BEGIN$
-		// Details
-		suite.addTestSuite(MBotAddAdvTableCompoOnAbstractRef.class);
-		suite.addTestSuite(MBotAddTableCompo.class);
-		suite.addTestSuite(MBotCancelAddTableCompo.class);
-		suite.addTestSuite(MBotCancelSetReferenceAEOFCV.class);
-		suite.addTestSuite(MBotCancelSetReferenceFlatRefTable.class);
-		suite.addTestSuite(MBotCancelSetReferenceRefTable.class);
-		suite.addTestSuite(MBotRedoAddTableCompo.class);
-		suite.addTestSuite(MBotRedoSetAttributeRadio.class);
-		suite.addTestSuite(MBotRedoSetReferenceAEOFCV.class);
-		suite.addTestSuite(MBotRedoSetReferenceFlatRefTable.class);
-		suite.addTestSuite(MBotRedoSetReferenceRefTable.class);
-		suite.addTestSuite(MBotRemoveTableCompo.class);
-		suite.addTestSuite(MBotSetAttributeRadio.class);
-		suite.addTestSuite(MBotSetReferenceAEOFCV.class);
-		suite.addTestSuite(MBotSetReferenceFlatRefTable.class);
-		suite.addTestSuite(MBotSetReferenceRefTable.class);
-		suite.addTestSuite(MBotUndoAddTableCompo.class);
-		suite.addTestSuite(MBotUndoSetAttributeRadio.class);
-		suite.addTestSuite(MBotUndoSetReferenceAEOFCV.class);
-		suite.addTestSuite(MBotUndoSetReferenceFlatRefTable.class);
-		suite.addTestSuite(MBotUndoSetReferenceRefTable.class);
-		suite.addTestSuite(MBotUnsetAEOFCV.class);
-		suite.addTestSuite(MBotUnsetEOFCV.class);
-		suite.addTestSuite(MBotUnsetFlatRefTable.class);
-		suite.addTestSuite(MBotUnsetReferenceAEOFCV.class);
-		suite.addTestSuite(MBotUnsetReferenceEOFCV.class);
-		suite.addTestSuite(MBotUnsetReferenceFlatRefTable.class);
-		suite.addTestSuite(MBotUnsetReferenceRefTable.class);
-		suite.addTestSuite(MBotUnsetRefTable.class);
-		
+		//$JUnit-BEGIN$		
 		
 		// Properties Views
 		suite.addTestSuite(PViewMBotAddTableComposition.class);
