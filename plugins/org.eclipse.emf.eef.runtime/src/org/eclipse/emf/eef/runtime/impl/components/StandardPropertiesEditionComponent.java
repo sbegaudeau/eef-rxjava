@@ -146,7 +146,9 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 			@Override
 			public void runUpdateRunnable(Notification notification) {
-				if (!getPart().getFigure().isDisposed()) {
+				if (getPart() != null 
+						&& getPart().getFigure() != null 
+						&& !getPart().getFigure().isDisposed()) {
 					updatePart(notification);
 				} else {
 					dispose();
