@@ -126,7 +126,8 @@ public class PropertiesEditionHelper {
 		SWTBotHelper.waitAllUiEvents();
 		final SWTBotRadio radio = bot.radioWithIdAndMnemonic(
 				elementEditor.getQualifiedIdentifier(), value);
-		radio.setFocus();
+		WrappedSWTBotRadio wrappedRadio = new WrappedSWTBotRadio(radio);
+		wrappedRadio.click();
 		SWTBotHelper.sendFocusLost(radio.widget);
 		SWTBotHelper.waitAllUiEvents();
 

@@ -64,8 +64,10 @@ import org.eclipse.swtbot.swt.finder.keyboard.KeyboardFactory;
 import org.eclipse.swtbot.swt.finder.results.IntResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCTabItem;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
@@ -1332,8 +1334,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public void undo(Action action) {
 		SWTBotHelper.waitAllUiEvents();
 		if (editorEditingDomain != null &&  editorEditingDomain.getCommandStack().getUndoCommand() != null) {
-			String cmdName = editorEditingDomain.getCommandStack().getUndoCommand().getLabel();
-			editor.bot().menu("Edit").menu("Undo " + cmdName ).click();
+			final String cmdName = editorEditingDomain.getCommandStack().getUndoCommand().getLabel();
+			EditMenuWaiterCondition condition = new EditMenuWaiterCondition(editor, "Undo " + cmdName );
+			waitUntil(condition);
+			condition.getResultMenu().click();
 		} else {
 			editor.setFocus();
 			KeyboardFactory.getSWTKeyboard().pressShortcut(SWT.CTRL, 'z');
@@ -1349,8 +1353,10 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public void redo(Action action) {
 		SWTBotHelper.waitAllUiEvents();
 		if (editorEditingDomain != null &&  editorEditingDomain.getCommandStack().getRedoCommand() != null) {
-			String cmdName = editorEditingDomain.getCommandStack().getRedoCommand().getLabel();
-			editor.bot().menu("Edit").menu("Redo " + cmdName ).click();
+			final String cmdName = editorEditingDomain.getCommandStack().getRedoCommand().getLabel();
+			EditMenuWaiterCondition condition = new EditMenuWaiterCondition(editor, "Redo " + cmdName );
+			waitUntil(condition);
+			condition.getResultMenu().click();
 		} else {
 			editor.setFocus();
 			KeyboardFactory.getSWTKeyboard().pressShortcut(SWT.CTRL, 'y');
@@ -1394,4 +1400,47 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		buttonWithTooltip(UIConstants.DOWN_BUTTON).click();
 	}
 
+	
+	private static class EditMenuWaiterCondition extends DefaultCondition {
+
+		private SWTBotEditor editor;
+		private String menuName;
+		private SWTBotMenu resultMenu;
+		
+		/**
+		 * @param editor
+		 * @param menuName
+		 */
+		public EditMenuWaiterCondition(SWTBotEditor editor, String menuName) {
+			this.editor = editor;
+			this.menuName = menuName;
+		}
+
+		/**
+		 * @return the resultMenu
+		 */
+		public SWTBotMenu getResultMenu() {
+			return resultMenu;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see org.eclipse.swtbot.swt.finder.waits.ICondition#test()
+		 */
+		public boolean test() throws Exception {
+			resultMenu = editor.bot().menu("Edit").menu(menuName);
+			return resultMenu != null;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * @see org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
+		 */
+		public String getFailureMessage() {
+			return "The menu 'Edit > " + menuName + "' never appears.";
+		}
+		
+		
+		
+	}
 }
