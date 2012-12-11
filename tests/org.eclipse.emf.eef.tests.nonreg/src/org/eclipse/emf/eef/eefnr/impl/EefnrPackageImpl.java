@@ -18,7 +18,6 @@ import org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.CheckboxSample;
-import org.eclipse.emf.eef.eefnr.ComboSample;
 import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
