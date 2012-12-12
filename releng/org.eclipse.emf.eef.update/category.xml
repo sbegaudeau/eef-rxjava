@@ -32,7 +32,7 @@
       <category name="eef.extension"/>
    </feature>
    <feature id="org.eclipse.emf.eef.collab.runtime-feature" version="0.0.0">
-      <category name="eef.collab"/>
+      <category name="eef.extension"/>
    </feature>
    <category-def name="eef.sdk" label="EEF SDK">
       <description>
@@ -54,11 +54,6 @@
    <category-def name="eef.extension" label="EEF Extension">
       <description>
          EEF Extensions.
-      </description>
-   </category-def>
-   <category-def name="eef.collab" label="EEF Collab Runtime">
-      <description>
-         EEF Collab Runtime
       </description>
    </category-def>
 </site>
