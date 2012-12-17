@@ -383,39 +383,11 @@ public class OwnerPropertiesEditionComponent extends SinglePartPropertiesEditing
 				// End of user code
 			}
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable)) {
-				basePart.addFilterToSingleSampleForReferencesTable(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInSingleSampleForReferencesTableTable((EObject)element));
-						return element instanceof String && element.equals("");
-					}
-				
-				});
 				basePart.addFilterToSingleSampleForReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
 				// Start of user code for additional businessfilters for singleSampleForReferencesTable
 				// End of user code
 			}
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable)) {
-				basePart.addFilterToSingleSampleForAdvancedReferencesTable(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInSingleSampleForAdvancedReferencesTableTable((EObject)element));
-						return element instanceof String && element.equals("");
-					}
-				
-				});
 				basePart.addFilterToSingleSampleForAdvancedReferencesTable(new EObjectStrictFilter(NavigationPackage.Literals.OWNER));
 				// Start of user code for additional businessfilters for singleSampleForAdvancedReferencesTable
 				// End of user code

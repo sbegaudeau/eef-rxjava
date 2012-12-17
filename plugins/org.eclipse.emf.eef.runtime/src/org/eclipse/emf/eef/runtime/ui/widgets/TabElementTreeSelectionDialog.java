@@ -19,10 +19,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedColorRegistry;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
+import org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.AdvancedEEFEditorContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
+import org.eclipse.jdt.internal.core.ResolvedSourceType;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -31,6 +35,7 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -38,6 +43,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -229,7 +235,19 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 		filters.add(patternFilter);
 		ViewerFilter[] v = filters.toArray(new ViewerFilter[filters.size()]);
 		treeViewer.setFilters(v);
-		treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		treeViewer.setLabelProvider(new EEFLabelProvider() {
+			
+			@Override
+			public Color getForeground(Object element) {
+				if (input instanceof ReferencesTableSettings && element instanceof EObject && ((ReferencesTableSettings) input).contains((EObject) element)) {
+					return getShell().getDisplay()
+							.getSystemColor(SWT.COLOR_WIDGET_NORMAL_SHADOW);
+				}
+				
+				return super.getForeground(element);
+			}
+
+		});
 
 		filteredTree.setLayoutData(new GridData(550, 300));
 		// handle selection change
@@ -245,9 +263,16 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 							Button okButton = getButton(IDialogConstants.OK_ID);
 							if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory))
 									.contains(o)) {
-								selection = structuredSelection;
-								if (okButton != null) {
-									okButton.setEnabled(true);
+								if (input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
+									selection = structuredSelection;
+									if (okButton != null) {
+										okButton.setEnabled(true);
+									}
+								} else {
+									// Reject selection
+									if (okButton != null) {
+										okButton.setEnabled(false);
+									}
 								}
 							} else {
 								// Reject selection
@@ -266,7 +291,7 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 				public void doubleClick(DoubleClickEvent event) {
 					if (selection != null && !selection.isEmpty()) {
 						Object o = selection.getFirstElement();
-						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
+						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o) && input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
 							okPressed();
 						}
 					}

@@ -133,20 +133,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 			// init filters
 			
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget)) {
-				basePart.addFilterToAbstractTarget(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInAbstractTargetTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToAbstractTarget(new EObjectFilter(FiltersPackage.Literals.ABSTRACT_REFERENCE_TARGET_SAMPLE));
 							basePart.addFilterToAbstractTarget(new ViewerFilter() {
 				
