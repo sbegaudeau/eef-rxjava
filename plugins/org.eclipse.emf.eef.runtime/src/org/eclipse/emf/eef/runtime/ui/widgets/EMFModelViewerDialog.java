@@ -35,6 +35,7 @@ import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
@@ -83,6 +84,10 @@ public abstract class EMFModelViewerDialog extends Dialog {
 
 	protected Object input;
 
+	private ViewerComparator comparator;
+
+	private boolean customComparator;
+
 	/**
 	 * Constructor.
 	 * 
@@ -109,6 +114,7 @@ public abstract class EMFModelViewerDialog extends Dialog {
 		this.nullable = nullable;
 		this.isMulti = isMulti;
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL | SWT.RESIZE);
+		customComparator = false;
 	}
 
 	/*
@@ -184,7 +190,10 @@ public abstract class EMFModelViewerDialog extends Dialog {
 			};
 		}
 		elements.setLabelProvider(labelProvider);
-		elements.setComparator(new EMFModelViewerComparator(labelProvider));
+		if (!customComparator) {
+			comparator = new EMFModelViewerComparator(labelProvider);
+		}
+		elements.setComparator(comparator);
 
 		elements.addDoubleClickListener(new IDoubleClickListener() {
 
@@ -418,4 +427,11 @@ public abstract class EMFModelViewerDialog extends Dialog {
 			return StringTools.EMPTY_STRING;
 		return result;
 	}
+
+	public void setComparator(ViewerComparator comparator) {
+		this.comparator = comparator;
+		customComparator = true;
+	}
+	
+	
 }
