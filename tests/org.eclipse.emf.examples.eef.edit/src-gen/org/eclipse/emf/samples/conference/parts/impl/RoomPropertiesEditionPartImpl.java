@@ -179,6 +179,9 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(name, ConferenceViewsRepository.Room.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Room.Properties.name, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -225,6 +228,9 @@ public class RoomPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(capacity, ConferenceViewsRepository.Room.Properties.capacity);
 		EditingUtils.setEEFtype(capacity, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Room.Properties.capacity, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCapacityText
+
+		// End of user code
 		return parent;
 	}
 

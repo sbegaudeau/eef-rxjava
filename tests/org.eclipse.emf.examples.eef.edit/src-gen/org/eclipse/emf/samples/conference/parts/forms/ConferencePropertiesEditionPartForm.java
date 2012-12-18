@@ -211,6 +211,9 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(name, ConferenceViewsRepository.Conference_.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.name, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -267,6 +270,9 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(overview, ConferenceViewsRepository.Conference_.Properties.overview);
 		EditingUtils.setEEFtype(overview, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOverviewTextArea
+
+		// End of user code
 		return parent;
 	}
 

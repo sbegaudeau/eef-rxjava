@@ -210,6 +210,9 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(name, ConferenceViewsRepository.Room.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Room.Properties.name, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -275,6 +278,9 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(capacity, ConferenceViewsRepository.Room.Properties.capacity);
 		EditingUtils.setEEFtype(capacity, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Room.Properties.capacity, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCapacityText
+
+		// End of user code
 		return parent;
 	}
 

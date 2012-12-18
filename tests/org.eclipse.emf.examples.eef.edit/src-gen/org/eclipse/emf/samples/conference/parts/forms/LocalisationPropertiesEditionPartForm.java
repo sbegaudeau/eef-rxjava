@@ -203,6 +203,9 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 		EditingUtils.setID(place, ConferenceViewsRepository.Localisation.place);
 		EditingUtils.setEEFtype(place, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Localisation.place, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPlaceText
+
+		// End of user code
 		return parent;
 	}
 
@@ -251,6 +254,9 @@ public class LocalisationPropertiesEditionPartForm extends SectionPropertiesEdit
 		this.sites.setUpperBound(-1);
 		sites.setID(ConferenceViewsRepository.Localisation.sites);
 		sites.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSitesTableComposition
+
+		// End of user code
 		return parent;
 	}
 

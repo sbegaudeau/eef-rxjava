@@ -180,6 +180,9 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		EditingUtils.setID(name, ConferenceViewsRepository.Conference_.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.name, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -212,6 +215,9 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		EditingUtils.setID(overview, ConferenceViewsRepository.Conference_.Properties.overview);
 		EditingUtils.setEEFtype(overview, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOverviewTextArea
+
+		// End of user code
 		return parent;
 	}
 

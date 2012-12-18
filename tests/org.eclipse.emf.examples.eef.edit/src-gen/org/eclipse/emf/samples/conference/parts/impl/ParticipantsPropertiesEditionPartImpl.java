@@ -163,6 +163,9 @@ public class ParticipantsPropertiesEditionPartImpl extends CompositePropertiesEd
 		this.participants.setUpperBound(-1);
 		participants.setID(ConferenceViewsRepository.Participants.participants_);
 		participants.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createParticipantsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 

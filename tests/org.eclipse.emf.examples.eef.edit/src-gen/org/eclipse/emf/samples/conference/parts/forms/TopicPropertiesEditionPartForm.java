@@ -231,6 +231,9 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(description, ConferenceViewsRepository.Topic.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Topic.Properties.description, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptionText
+
+		// End of user code
 		return parent;
 	}
 
@@ -274,6 +277,9 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		EditingUtils.setID(editReferences, ConferenceViewsRepository.Topic.Properties.references);
 		EditingUtils.setEEFtype(editReferences, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createReferencesMultiValuedEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -330,6 +336,9 @@ public class TopicPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(documentation, ConferenceViewsRepository.Topic.Properties.documentation);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Topic.Properties.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 
