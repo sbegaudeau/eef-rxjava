@@ -215,6 +215,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -280,6 +283,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -345,6 +351,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(textROProperty, EefnrViewsRepository.TextSample.Properties.textROProperty);
 		EditingUtils.setEEFtype(textROProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextROPropertyText
+
+		// End of user code
 		return parent;
 	}
 

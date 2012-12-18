@@ -192,6 +192,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(parent);
 
 		};
 		dialog.open();
+		// [protected ('for add'.concat(editor.name.toJavaClassifier()))]
+
+		// [/protected]
 		[editor.elementEditorName()/].refresh();
 	}
 

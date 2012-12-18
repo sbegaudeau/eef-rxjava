@@ -227,6 +227,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(name, NavigationViewsRepository.AttributeNavigationSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -292,6 +295,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate1ForSingleValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued);
 		EditingUtils.setEEFtype(delegate1ForSingleValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate1ForSingleValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -357,6 +363,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate2ForSingleValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued);
 		EditingUtils.setEEFtype(delegate2ForSingleValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate2ForSingleValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -422,6 +431,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate1ForMultiValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued);
 		EditingUtils.setEEFtype(delegate1ForMultiValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate1ForMultiValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -487,6 +499,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate2ForMultiValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued);
 		EditingUtils.setEEFtype(delegate2ForMultiValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate2ForMultiValuedText
+
+		// End of user code
 		return parent;
 	}
 

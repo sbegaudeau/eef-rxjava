@@ -252,6 +252,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(firstname, ConferenceViewsRepository.Person.Identity.firstname);
 		EditingUtils.setEEFtype(firstname, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.firstname, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFirstnameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -317,6 +320,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(lastname, ConferenceViewsRepository.Person.Identity.lastname);
 		EditingUtils.setEEFtype(lastname, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.lastname, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLastnameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -382,6 +388,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(age, ConferenceViewsRepository.Person.Identity.age);
 		EditingUtils.setEEFtype(age, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.age, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAgeText
+
+		// End of user code
 		return parent;
 	}
 
@@ -409,6 +418,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		});
 		gender.setID(ConferenceViewsRepository.Person.Identity.gender);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.gender, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGenderEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -452,6 +464,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(eclipseCommiter, ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter);
 		EditingUtils.setEEFtype(eclipseCommiter, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEclipseCommiterCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -478,6 +493,9 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(isRegistered, ConferenceViewsRepository.Person.EclipseStatus.isRegistered);
 		EditingUtils.setEEFtype(isRegistered, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIsRegisteredCheckbox
+
+		// End of user code
 		return parent;
 	}
 

@@ -358,6 +358,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(name, NavigationViewsRepository.Owner.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -447,6 +450,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(multipleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(multipleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createMultipleSampleForTableCompositionPanel(widgetFactory, tableContainer);
+		// Start of user code for createMultipleSampleForTableCompositionTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -526,6 +532,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		EditingUtils.setID(editMultipleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(editMultipleSampleForTableComposition, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForTableCompositionPanel
+
+		// End of user code
 		return multipleSampleForTableCompositionPanel;
 	}
 
@@ -574,6 +583,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		this.multipleSampleForAdvancedTableComposition.setUpperBound(1);
 		multipleSampleForAdvancedTableComposition.setID(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition);
 		multipleSampleForAdvancedTableComposition.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForAdvancedTableCompositionTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -594,6 +606,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(multipleSampleForReferencesTable.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
 		EditingUtils.setEEFtype(multipleSampleForReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createMultipleSampleForReferencesTableControlPanel(parent, widgetFactory);
+		// Start of user code for createMultipleSampleForReferencesTableReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -702,6 +717,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		EditingUtils.setID(removeMultipleSampleForReferencesTable, NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
 		EditingUtils.setEEFtype(removeMultipleSampleForReferencesTable, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForReferencesTableControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -718,6 +736,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			}
 
 		};
+		// Start of user code for addMultipleSampleForReferencesTable
+
+		// End of user code
 		dialog.open();
 		multipleSampleForReferencesTable.refresh();
 	}
@@ -762,6 +783,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		this.multipleSampleForAdvancedReferencesTable.disableMove();
 		multipleSampleForAdvancedReferencesTable.setID(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable);
 		multipleSampleForAdvancedReferencesTable.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForAdvancedReferencesTableReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -835,6 +859,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		multipleSampleForFlatReferencesTable.setLayoutData(multipleSampleForFlatReferencesTableData);
 		multipleSampleForFlatReferencesTable.setID(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForFlatReferencesTableFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -925,6 +952,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(singleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(singleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createSingleSampleForTableCompositionPanel(widgetFactory, tableContainer);
+		// Start of user code for createSingleSampleForTableCompositionTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -1004,6 +1034,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		EditingUtils.setID(editSingleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(editSingleSampleForTableComposition, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForTableCompositionPanel
+
+		// End of user code
 		return singleSampleForTableCompositionPanel;
 	}
 
@@ -1052,6 +1085,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		this.singleSampleForAdvancedTableComposition.setUpperBound(-1);
 		singleSampleForAdvancedTableComposition.setID(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition);
 		singleSampleForAdvancedTableComposition.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForAdvancedTableCompositionTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -1072,6 +1108,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(singleSampleForReferencesTable.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
 		EditingUtils.setEEFtype(singleSampleForReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createSingleSampleForReferencesTableControlPanel(parent, widgetFactory);
+		// Start of user code for createSingleSampleForReferencesTableReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -1180,6 +1219,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		EditingUtils.setID(removeSingleSampleForReferencesTable, NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
 		EditingUtils.setEEFtype(removeSingleSampleForReferencesTable, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForReferencesTableControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -1196,6 +1238,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			}
 
 		};
+		// Start of user code for addSingleSampleForReferencesTable
+
+		// End of user code
 		dialog.open();
 		singleSampleForReferencesTable.refresh();
 	}
@@ -1229,6 +1274,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(singleSampleForAdvancedReferencesTable.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
 		EditingUtils.setEEFtype(singleSampleForAdvancedReferencesTable.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createSingleSampleForAdvancedReferencesTableControlPanel(parent, widgetFactory);
+		// Start of user code for createSingleSampleForAdvancedReferencesTableReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -1337,6 +1385,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		EditingUtils.setID(removeSingleSampleForAdvancedReferencesTable, NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
 		EditingUtils.setEEFtype(removeSingleSampleForAdvancedReferencesTable, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForAdvancedReferencesTableControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -1353,6 +1404,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 			}
 
 		};
+		// Start of user code for addSingleSampleForAdvancedReferencesTable
+
+		// End of user code
 		dialog.open();
 		singleSampleForAdvancedReferencesTable.refresh();
 	}
@@ -1389,6 +1443,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleSampleForFlatReferencesTable.setLayoutData(singleSampleForFlatReferencesTableData);
 		singleSampleForFlatReferencesTable.setID(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForFlatReferencesTableFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -1420,6 +1477,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		singleContainmentForEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleContainmentForEObjectFlatComboViewerFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1450,6 +1510,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		});
 		singleReferencesForEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleReferencesForEObjectFlatComboViewerFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1480,6 +1543,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleContainmentForAdvancedEObjectFlatComboViewer.setLayoutData(singleContainmentForAdvancedEObjectFlatComboViewerData);
 		singleContainmentForAdvancedEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleContainmentForAdvancedEObjectFlatComboViewerFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1511,6 +1577,9 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		singleReferencesForAdvancedEObjectFlatComboViewer.setLayoutData(singleReferencesForAdvancedEObjectFlatComboViewerData);
 		singleReferencesForAdvancedEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleReferencesForAdvancedEObjectFlatComboViewerFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

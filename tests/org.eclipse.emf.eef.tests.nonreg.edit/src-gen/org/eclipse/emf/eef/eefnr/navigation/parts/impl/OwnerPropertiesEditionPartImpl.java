@@ -327,6 +327,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		EditingUtils.setID(name, NavigationViewsRepository.Owner.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -416,6 +419,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		EditingUtils.setID(multipleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(multipleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createMultipleSampleForTableCompositionPanel(tableContainer);
+		// Start of user code for createMultipleSampleForTableCompositionTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -498,6 +504,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		});
 		EditingUtils.setID(editMultipleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition);
 		EditingUtils.setEEFtype(editMultipleSampleForTableComposition, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForTableCompositionPanel
+
+		// End of user code
 		return multipleSampleForTableCompositionPanel;
 	}
 
@@ -546,6 +555,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		this.multipleSampleForAdvancedTableComposition.setUpperBound(1);
 		multipleSampleForAdvancedTableComposition.setID(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition);
 		multipleSampleForAdvancedTableComposition.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForAdvancedTableCompositionAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -692,6 +704,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 		};
 		dialog.open();
+		// Start of user code for addMultipleSampleForReferencesTable
+
+		// End of user code
 		multipleSampleForReferencesTable.refresh();
 	}
 
@@ -809,6 +824,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		multipleSampleForFlatReferencesTable.setLayoutData(multipleSampleForFlatReferencesTableData);
 		multipleSampleForFlatReferencesTable.setID(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.multipleSampleForFlatReferencesTable, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMultipleSampleForFlatReferencesTableFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -899,6 +917,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		EditingUtils.setID(singleSampleForTableComposition.getTable(), NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(singleSampleForTableComposition.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createSingleSampleForTableCompositionPanel(tableContainer);
+		// Start of user code for createSingleSampleForTableCompositionTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -981,6 +1002,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		});
 		EditingUtils.setID(editSingleSampleForTableComposition, NavigationViewsRepository.Owner.Properties.singleSampleForTableComposition);
 		EditingUtils.setEEFtype(editSingleSampleForTableComposition, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForTableCompositionPanel
+
+		// End of user code
 		return singleSampleForTableCompositionPanel;
 	}
 
@@ -1029,6 +1053,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		this.singleSampleForAdvancedTableComposition.setUpperBound(-1);
 		singleSampleForAdvancedTableComposition.setID(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedTableComposition);
 		singleSampleForAdvancedTableComposition.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForAdvancedTableCompositionAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -1175,6 +1202,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 		};
 		dialog.open();
+		// Start of user code for addSingleSampleForReferencesTable
+
+		// End of user code
 		singleSampleForReferencesTable.refresh();
 	}
 
@@ -1333,6 +1363,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 		};
 		dialog.open();
+		// Start of user code for addSingleSampleForAdvancedReferencesTable
+
+		// End of user code
 		singleSampleForAdvancedReferencesTable.refresh();
 	}
 
@@ -1368,6 +1401,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		singleSampleForFlatReferencesTable.setLayoutData(singleSampleForFlatReferencesTableData);
 		singleSampleForFlatReferencesTable.setID(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleSampleForFlatReferencesTable, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleSampleForFlatReferencesTableFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -1392,6 +1428,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		singleContainmentForEObjectFlatComboViewer.setLayoutData(singleContainmentForEObjectFlatComboViewerData);
 		singleContainmentForEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleContainmentForEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleContainmentForEObjectFlatComboViewerFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1415,6 +1454,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		singleReferencesForEObjectFlatComboViewer.setLayoutData(singleReferencesForEObjectFlatComboViewerData);
 		singleReferencesForEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleReferencesForEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleReferencesForEObjectFlatComboViewerFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1443,6 +1485,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		singleContainmentForAdvancedEObjectFlatComboViewer.setLayoutData(singleContainmentForAdvancedEObjectFlatComboViewerData);
 		singleContainmentForAdvancedEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleContainmentForAdvancedEObjectFlatComboViewerAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1471,6 +1516,9 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		singleReferencesForAdvancedEObjectFlatComboViewer.setLayoutData(singleReferencesForAdvancedEObjectFlatComboViewerData);
 		singleReferencesForAdvancedEObjectFlatComboViewer.setID(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSingleReferencesForAdvancedEObjectFlatComboViewerAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

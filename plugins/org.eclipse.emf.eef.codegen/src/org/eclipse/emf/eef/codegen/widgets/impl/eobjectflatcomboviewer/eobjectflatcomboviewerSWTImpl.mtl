@@ -63,6 +63,9 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent);
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('FlatComboViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]
@@ -117,6 +120,9 @@ return create[editor.name.toJavaClassifier()/]AdvancedFlatComboViewer(parent);
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('AdvancedFlatComboViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

@@ -176,6 +176,9 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		flatReferenceEditorSample.setLayoutData(flatReferenceEditorSampleData);
 		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatReferenceEditorSampleFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

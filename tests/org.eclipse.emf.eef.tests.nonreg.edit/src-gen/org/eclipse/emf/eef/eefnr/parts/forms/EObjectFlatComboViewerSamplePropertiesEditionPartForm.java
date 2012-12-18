@@ -183,6 +183,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 		});
 		eobjectflatcomboviewerRequiredPropery.setID(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerRequiredProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -213,6 +216,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 		});
 		eobjectflatcomboviewerOptionalPropery.setID(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerOptionalProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -243,6 +249,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartForm extends Secti
 		});
 		eobjectflatcomboviewerROPropery.setID(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerROProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

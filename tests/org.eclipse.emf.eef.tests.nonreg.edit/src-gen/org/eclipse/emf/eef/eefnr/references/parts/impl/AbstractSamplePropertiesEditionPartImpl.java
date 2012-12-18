@@ -174,6 +174,9 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

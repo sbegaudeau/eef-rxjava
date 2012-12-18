@@ -175,6 +175,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		flatreferencetableRequiredProperty.setLayoutData(flatreferencetableRequiredPropertyData);
 		flatreferencetableRequiredProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableRequiredPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -199,6 +202,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		flatreferencetableOptionalProperty.setLayoutData(flatreferencetableOptionalPropertyData);
 		flatreferencetableOptionalProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableOptionalPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -223,6 +229,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		flatreferencetableROProperty.setLayoutData(flatreferencetableROPropertyData);
 		flatreferencetableROProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableROPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

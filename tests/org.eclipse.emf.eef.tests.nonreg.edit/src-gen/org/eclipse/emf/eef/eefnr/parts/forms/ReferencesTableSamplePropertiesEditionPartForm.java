@@ -203,6 +203,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(referencestableRequiredProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		EditingUtils.setEEFtype(referencestableRequiredProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencestableRequiredPropertyControlPanel(parent, widgetFactory);
+		// Start of user code for createReferencestableRequiredPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -311,6 +314,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		});
 		EditingUtils.setID(removeReferencestableRequiredProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		EditingUtils.setEEFtype(removeReferencestableRequiredProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createReferencestableRequiredPropertyControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -327,6 +333,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 			}
 
 		};
+		// Start of user code for addReferencestableRequiredProperty
+
+		// End of user code
 		dialog.open();
 		referencestableRequiredProperty.refresh();
 	}
@@ -360,6 +369,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(referencestableOptionalProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
 		EditingUtils.setEEFtype(referencestableOptionalProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencestableOptionalPropertyControlPanel(parent, widgetFactory);
+		// Start of user code for createReferencestableOptionalPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -468,6 +480,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		});
 		EditingUtils.setID(removeReferencestableOptionalProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
 		EditingUtils.setEEFtype(removeReferencestableOptionalProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createReferencestableOptionalPropertyControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -484,6 +499,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 			}
 
 		};
+		// Start of user code for addReferencestableOptionalProperty
+
+		// End of user code
 		dialog.open();
 		referencestableOptionalProperty.refresh();
 	}
@@ -517,6 +535,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(referencestableROProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
 		EditingUtils.setEEFtype(referencestableROProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencestableROPropertyControlPanel(parent, widgetFactory);
+		// Start of user code for createReferencestableROPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -625,6 +646,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		});
 		EditingUtils.setID(removeReferencestableROProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
 		EditingUtils.setEEFtype(removeReferencestableROProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createReferencestableROPropertyControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -641,6 +665,9 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 			}
 
 		};
+		// Start of user code for addReferencestableROProperty
+
+		// End of user code
 		dialog.open();
 		referencestableROProperty.refresh();
 	}

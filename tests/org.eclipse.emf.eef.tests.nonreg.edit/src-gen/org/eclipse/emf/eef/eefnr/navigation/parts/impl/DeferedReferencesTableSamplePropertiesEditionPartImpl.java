@@ -210,6 +210,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -356,6 +359,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 
 		};
 		dialog.open();
+		// Start of user code for addReferencesTableSampleEditor
+
+		// End of user code
 		referencesTableSampleEditor.refresh();
 	}
 

@@ -70,6 +70,9 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 		});
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('EMFComboViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

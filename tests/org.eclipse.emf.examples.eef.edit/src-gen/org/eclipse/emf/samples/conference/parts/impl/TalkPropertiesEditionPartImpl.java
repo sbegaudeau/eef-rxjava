@@ -219,6 +219,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(title_, ConferenceViewsRepository.Talk.Properties.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.title_, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -242,6 +245,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		topic.setLayoutData(topicData);
 		topic.setID(ConferenceViewsRepository.Talk.Properties.topic);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTopicFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -269,6 +275,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		});
 		type.setID(ConferenceViewsRepository.Talk.Properties.type);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.type, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTypeEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -292,6 +301,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		presenter.setLayoutData(presenterData);
 		presenter.setID(ConferenceViewsRepository.Talk.Properties.presenter);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPresenterFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -315,6 +327,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		creator.setLayoutData(creatorData);
 		creator.setID(ConferenceViewsRepository.Talk.Properties.creator);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCreatorFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -347,6 +362,9 @@ public class TalkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(documentation, ConferenceViewsRepository.Talk.Properties.documentation);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.documentation, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 

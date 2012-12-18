@@ -181,6 +181,9 @@ public class AnotherSubtypePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(anotherSpecialisationElement, NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
 		EditingUtils.setEEFtype(anotherSpecialisationElement, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAnotherSpecialisationElementCheckbox
+
+		// End of user code
 		return parent;
 	}
 

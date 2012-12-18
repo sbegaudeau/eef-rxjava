@@ -233,6 +233,9 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(name, ConferenceViewsRepository.Site.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.Properties.name, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -289,6 +292,9 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(documentation, ConferenceViewsRepository.Site.Properties.documentation);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.Properties.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -337,6 +343,9 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		this.rooms.setUpperBound(-1);
 		rooms.setID(ConferenceViewsRepository.Site.Properties.rooms);
 		rooms.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createRoomsTableComposition
+
+		// End of user code
 		return parent;
 	}
 

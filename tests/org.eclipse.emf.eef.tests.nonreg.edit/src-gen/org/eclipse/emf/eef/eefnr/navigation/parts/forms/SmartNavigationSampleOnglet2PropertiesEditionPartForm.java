@@ -173,6 +173,9 @@ public class SmartNavigationSampleOnglet2PropertiesEditionPartForm extends Secti
 		});
 		secondModelNavigationSingleValueOnglet2.setID(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationSingleValueOnglet2FlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

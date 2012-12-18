@@ -55,6 +55,9 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 			}
 		});
 		[editor.elementEditorName()/]RadioViewer.setID([editor.editorID()/]);
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('RadioViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

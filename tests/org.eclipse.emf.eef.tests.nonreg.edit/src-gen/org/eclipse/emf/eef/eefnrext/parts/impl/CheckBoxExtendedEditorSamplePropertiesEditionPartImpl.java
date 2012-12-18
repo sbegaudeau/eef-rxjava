@@ -166,6 +166,9 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setID(checkboxEditorSample, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample);
 		EditingUtils.setEEFtype(checkboxEditorSample, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxEditorSampleCheckbox
+
+		// End of user code
 		return parent;
 	}
 

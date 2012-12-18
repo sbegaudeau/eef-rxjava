@@ -178,6 +178,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 		this.talks.setUpperBound(-1);
 		talks.setID(ConferenceViewsRepository.TalksAndTopics.talks);
 		talks.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createTalksTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -226,6 +229,9 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 		this.topics.setUpperBound(-1);
 		topics.setID(ConferenceViewsRepository.TalksAndTopics.topics);
 		topics.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createTopicsTableComposition
+
+		// End of user code
 		return parent;
 	}
 

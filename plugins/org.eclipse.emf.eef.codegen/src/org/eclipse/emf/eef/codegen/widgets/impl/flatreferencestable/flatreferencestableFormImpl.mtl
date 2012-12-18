@@ -64,6 +64,9 @@ return create[editor.name.toJavaClassifier()/]FlatReferencesTable(widgetFactory,
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('FlatReferencesTable'))]
+
+		// [/protected]
 		return parent;
 	}
 

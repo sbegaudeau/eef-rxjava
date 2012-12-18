@@ -64,6 +64,9 @@ return create[editor.name.toJavaClassifier()/]Checkbox(parent);
 		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('Checkbox'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

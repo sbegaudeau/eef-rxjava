@@ -160,6 +160,9 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null);
+		// Start of user code for createRadioRequiredPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -181,6 +184,9 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null);
+		// Start of user code for createRadioOptionalPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -202,6 +208,9 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		radioROPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioROProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioROProperty, EefnrViewsRepository.SWT_KIND), null);
+		// Start of user code for createRadioROPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 

@@ -76,6 +76,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		EditingUtils.setID([editor.elementEditorName()/].getTable(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		create[editor.name.toJavaClassifier()/]ControlPanel(parent, widgetFactory);
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ReferencesTable'))]
+
+		// [/protected]
 		return parent;
 	}
 
@@ -179,6 +182,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		});
 		EditingUtils.setID(remove[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(remove[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::removebutton"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ControlPanel'))]
+
+		// [/protected]
 	}
 
 	/**
@@ -195,6 +201,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 			}
 
 		};
+		// [protected ('for add'.concat(editor.name.toJavaClassifier()))]
+
+		// [/protected]
 		dialog.open();
 		[editor.elementEditorName()/].refresh();
 	}
@@ -291,6 +300,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		this.[editor.elementEditorName()/].disableMove();
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		[editor.elementEditorName()/].setEEFType("eef::[editor.representation.name/]"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ReferencesTable'))]
+
+		// [/protected]
 		return parent;
 	}
 

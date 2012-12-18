@@ -166,6 +166,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerRequiredPropery.setLayoutData(eobjectflatcomboviewerRequiredProperyData);
 		eobjectflatcomboviewerRequiredPropery.setID(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerRequiredProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -189,6 +192,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerOptionalPropery.setLayoutData(eobjectflatcomboviewerOptionalProperyData);
 		eobjectflatcomboviewerOptionalPropery.setID(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerOptionalProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -212,6 +218,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionPartImpl extends Compo
 		eobjectflatcomboviewerROPropery.setLayoutData(eobjectflatcomboviewerROProperyData);
 		eobjectflatcomboviewerROPropery.setID(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerROProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

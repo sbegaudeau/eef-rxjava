@@ -187,6 +187,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		advancedeobjectflatcomboviewerRequiredProperty.setLayoutData(advancedeobjectflatcomboviewerRequiredPropertyData);
 		advancedeobjectflatcomboviewerRequiredProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerRequiredPropertyAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -215,6 +218,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		advancedeobjectflatcomboviewerOptionalProperty.setLayoutData(advancedeobjectflatcomboviewerOptionalPropertyData);
 		advancedeobjectflatcomboviewerOptionalProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerOptionalPropertyAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -243,6 +249,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		advancedeobjectflatcomboviewerROProperty.setLayoutData(advancedeobjectflatcomboviewerROPropertyData);
 		advancedeobjectflatcomboviewerROProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerROPropertyAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -270,6 +279,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		});
 		advancedeobjectflatcomboviewerCompoRequiredProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerCompoRequiredPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -298,6 +310,9 @@ public class AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartImpl exten
 		advancedeobjectflatcomboviewerCompoOptionalProperty.setLayoutData(advancedeobjectflatcomboviewerCompoOptionalPropertyData);
 		advancedeobjectflatcomboviewerCompoOptionalProperty.setID(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedEObjectFlatComboViewerSample.Properties.advancedeobjectflatcomboviewerCompoOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerCompoOptionalPropertyAdvancedFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

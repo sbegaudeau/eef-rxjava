@@ -175,6 +175,9 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		});
 		imageviewerRequiredProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createImageviewerRequiredPropertyImageViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -201,6 +204,9 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		});
 		imageviewerOptionalProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createImageviewerOptionalPropertyImageViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -227,6 +233,9 @@ public class ImageViewerSamplePropertiesEditionPartForm extends SectionPropertie
 		});
 		imageviewerROProperty.setID(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createImageviewerROPropertyImageViewer
+
+		// End of user code
 		return parent;
 	}
 

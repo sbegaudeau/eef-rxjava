@@ -205,6 +205,9 @@ public class ConcreteReferenceTargetSample1PropertiesEditionPartForm extends Sec
 		EditingUtils.setID(name, FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceTargetSample1.Properties.name, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

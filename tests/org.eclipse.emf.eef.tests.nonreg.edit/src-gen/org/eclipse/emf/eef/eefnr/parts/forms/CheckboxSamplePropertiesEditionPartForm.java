@@ -174,6 +174,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(checkboxRequiredProperty, EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
 		EditingUtils.setEEFtype(checkboxRequiredProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxRequiredPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -200,6 +203,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(checkboxOptionalProperty, EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
 		EditingUtils.setEEFtype(checkboxOptionalProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxOptionalPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -226,6 +232,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(checkboxROProperty, EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty);
 		EditingUtils.setEEFtype(checkboxROProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxROPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 

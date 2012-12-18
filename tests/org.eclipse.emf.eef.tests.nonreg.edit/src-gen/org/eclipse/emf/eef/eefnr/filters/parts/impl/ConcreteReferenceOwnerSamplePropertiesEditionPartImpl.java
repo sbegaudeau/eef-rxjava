@@ -213,6 +213,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setID(name, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -343,6 +346,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		this.strictTyping.setUpperBound(-1);
 		strictTyping.setID(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
 		strictTyping.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createStrictTypingAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 

@@ -188,6 +188,9 @@ public class PresencePropertiesEditionPartForm extends SectionPropertiesEditingP
 		this.assists.disableMove();
 		assists.setID(ConferenceViewsRepository.Presence.Talks.assists);
 		assists.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAssistsReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

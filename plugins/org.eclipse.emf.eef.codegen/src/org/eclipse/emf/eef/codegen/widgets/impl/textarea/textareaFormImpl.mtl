@@ -97,6 +97,9 @@ return create[editor.name.toJavaClassifier()/]Textarea(widgetFactory, parent);
 		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('TextArea'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

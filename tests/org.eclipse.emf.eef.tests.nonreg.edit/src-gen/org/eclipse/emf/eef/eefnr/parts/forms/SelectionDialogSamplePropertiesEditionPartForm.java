@@ -201,6 +201,9 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 			}
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogRequiredPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 
@@ -258,6 +261,9 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 			}
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogOptionalPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 
@@ -315,6 +321,9 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 			}
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogROPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 

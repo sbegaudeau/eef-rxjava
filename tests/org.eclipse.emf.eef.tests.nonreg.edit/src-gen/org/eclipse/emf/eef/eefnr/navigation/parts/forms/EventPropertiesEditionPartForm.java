@@ -205,6 +205,9 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		EditingUtils.setID(name, NamingViewsRepository.Event.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NamingViewsRepository.Event.Properties.name, NamingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

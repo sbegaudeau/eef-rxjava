@@ -156,6 +156,9 @@ public class SmartNavigationSampleOnglet2PropertiesEditionPartImpl extends Compo
 		secondModelNavigationSingleValueOnglet2.setLayoutData(secondModelNavigationSingleValueOnglet2Data);
 		secondModelNavigationSingleValueOnglet2.setID(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationSingleValueOnglet2FlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 

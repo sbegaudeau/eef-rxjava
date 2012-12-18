@@ -169,6 +169,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		});
 		singlecompositionviewerRequiredProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerRequiredPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -196,6 +199,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		});
 		singlecompositionviewerOptionalProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerOptionalPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -223,6 +229,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		});
 		singlecompositionviewerROProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerROPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -250,6 +259,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartImpl extends Comp
 		});
 		singlecompositionviewerOnAbstractOptionalProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerOnAbstractOptionalPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 

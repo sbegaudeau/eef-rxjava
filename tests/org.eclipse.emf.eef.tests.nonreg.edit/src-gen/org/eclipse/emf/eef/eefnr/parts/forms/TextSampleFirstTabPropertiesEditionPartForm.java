@@ -210,6 +210,9 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		EditingUtils.setID(textRequiredPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
 		EditingUtils.setEEFtype(textRequiredPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyInFirstTabText
+
+		// End of user code
 		return parent;
 	}
 
@@ -275,6 +278,9 @@ public class TextSampleFirstTabPropertiesEditionPartForm extends SectionProperti
 		EditingUtils.setID(textOptionalPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
 		EditingUtils.setEEFtype(textOptionalPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyInFirstTabText
+
+		// End of user code
 		return parent;
 	}
 

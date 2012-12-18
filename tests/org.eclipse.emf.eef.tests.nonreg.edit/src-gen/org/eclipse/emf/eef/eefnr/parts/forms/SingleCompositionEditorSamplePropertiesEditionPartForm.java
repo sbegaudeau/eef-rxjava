@@ -182,6 +182,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartForm extends Sect
 		});
 		singlecompositionviewerRequiredProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerRequiredPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -211,6 +214,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartForm extends Sect
 		});
 		singlecompositionviewerOptionalProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerOptionalPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -240,6 +246,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartForm extends Sect
 		});
 		singlecompositionviewerROProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerROPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -269,6 +278,9 @@ public class SingleCompositionEditorSamplePropertiesEditionPartForm extends Sect
 		});
 		singlecompositionviewerOnAbstractOptionalProperty.setID(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SingleCompositionEditorSample.Properties.singlecompositionviewerOnAbstractOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSinglecompositionviewerOnAbstractOptionalPropertySingleCompositionEditor
+
+		// End of user code
 		return parent;
 	}
 

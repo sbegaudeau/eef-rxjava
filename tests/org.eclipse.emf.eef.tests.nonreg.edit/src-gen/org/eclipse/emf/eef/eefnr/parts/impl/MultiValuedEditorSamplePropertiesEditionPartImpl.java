@@ -193,6 +193,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		});
 		EditingUtils.setID(editMultivaluededitorRequiredProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
 		EditingUtils.setEEFtype(editMultivaluededitorRequiredProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createMultivaluededitorRequiredPropertyMultiValuedEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -233,6 +236,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		});
 		EditingUtils.setID(editMultivaluededitorOptionalProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
 		EditingUtils.setEEFtype(editMultivaluededitorOptionalProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createMultivaluededitorOptionalPropertyMultiValuedEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -274,6 +280,9 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		});
 		EditingUtils.setID(editMultivaluededitorROProperty, EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty);
 		EditingUtils.setEEFtype(editMultivaluededitorROProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createMultivaluededitorROPropertyMultiValuedEditor
+
+		// End of user code
 		return parent;
 	}
 

@@ -177,6 +177,9 @@ public class CheckBoxExtendedEditorSamplePropertiesEditionPartForm extends Secti
 		EditingUtils.setID(checkboxEditorSample, EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample);
 		EditingUtils.setEEFtype(checkboxEditorSample, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.CheckBoxExtendedEditorSample.Properties.checkboxEditorSample, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxEditorSampleCheckbox
+
+		// End of user code
 		return parent;
 	}
 

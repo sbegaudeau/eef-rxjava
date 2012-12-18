@@ -244,6 +244,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		EditingUtils.setID(name, FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -275,6 +278,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		this.abstractTarget.disableMove();
 		abstractTarget.setID(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget);
 		abstractTarget.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAbstractTargetReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -373,6 +379,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		this.strictTyping.setUpperBound(-1);
 		strictTyping.setID(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
 		strictTyping.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createStrictTypingTableComposition
+
+		// End of user code
 		return parent;
 	}
 

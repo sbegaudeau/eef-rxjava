@@ -179,6 +179,9 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		EditingUtils.setID(textRequiredPropertyInSecondTab, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab);
 		EditingUtils.setEEFtype(textRequiredPropertyInSecondTab, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyInSecondTabText
+
+		// End of user code
 		return parent;
 	}
 
@@ -225,6 +228,9 @@ public class TextSampleSecondTabPropertiesEditionPartImpl extends CompositePrope
 		EditingUtils.setID(textOptionalPropertyInSecondTab, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab);
 		EditingUtils.setEEFtype(textOptionalPropertyInSecondTab, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyInSecondTabText
+
+		// End of user code
 		return parent;
 	}
 

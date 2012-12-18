@@ -241,6 +241,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		EditingUtils.setID(name, NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -261,6 +264,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		EditingUtils.setID(referencesTableSampleEditor.getTable(), NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(referencesTableSampleEditor.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createReferencesTableSampleEditorControlPanel(parent, widgetFactory);
+		// Start of user code for createReferencesTableSampleEditorReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -369,6 +375,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		});
 		EditingUtils.setID(removeReferencesTableSampleEditor, NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		EditingUtils.setEEFtype(removeReferencesTableSampleEditor, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createReferencesTableSampleEditorControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -385,6 +394,9 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 			}
 
 		};
+		// Start of user code for addReferencesTableSampleEditor
+
+		// End of user code
 		dialog.open();
 		referencesTableSampleEditor.refresh();
 	}

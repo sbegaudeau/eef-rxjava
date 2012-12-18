@@ -252,6 +252,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(title_, ConferenceViewsRepository.Talk.Properties.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.title_, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -282,6 +285,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		topic.setID(ConferenceViewsRepository.Talk.Properties.topic);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTopicFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -309,6 +315,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		type.setID(ConferenceViewsRepository.Talk.Properties.type);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.type, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTypeEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -339,6 +348,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		presenter.setID(ConferenceViewsRepository.Talk.Properties.presenter);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPresenterFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -369,6 +381,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		creator.setID(ConferenceViewsRepository.Talk.Properties.creator);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCreatorFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -425,6 +440,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(documentation, ConferenceViewsRepository.Talk.Properties.documentation);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 

@@ -69,6 +69,9 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(parent);
 		EditingUtils.setID([editor.elementEditorName()/].getCombo(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/].getCombo(), "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('EMFComboViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

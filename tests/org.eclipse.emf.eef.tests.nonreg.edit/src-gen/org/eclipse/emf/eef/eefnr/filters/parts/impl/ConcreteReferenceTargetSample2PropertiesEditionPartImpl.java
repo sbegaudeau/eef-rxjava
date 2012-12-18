@@ -174,6 +174,9 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 		EditingUtils.setID(name, FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

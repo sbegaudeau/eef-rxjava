@@ -203,6 +203,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(name, ConferenceViewsRepository.Site.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.Properties.name, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -235,6 +238,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		EditingUtils.setID(documentation, ConferenceViewsRepository.Site.Properties.documentation);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Site.Properties.documentation, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -283,6 +289,9 @@ public class SitePropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		this.rooms.setUpperBound(-1);
 		rooms.setID(ConferenceViewsRepository.Site.Properties.rooms);
 		rooms.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createRoomsAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 

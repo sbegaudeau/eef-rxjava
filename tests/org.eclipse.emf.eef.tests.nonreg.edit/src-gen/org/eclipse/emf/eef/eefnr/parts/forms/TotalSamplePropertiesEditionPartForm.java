@@ -420,6 +420,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.TotalSample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -485,6 +488,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.TotalSample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -511,6 +517,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(checkboxRequiredProperty, EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty);
 		EditingUtils.setEEFtype(checkboxRequiredProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.checkboxRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxRequiredPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -537,6 +546,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(checkboxOptionalProperty, EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty);
 		EditingUtils.setEEFtype(checkboxOptionalProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.checkboxOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxOptionalPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -602,6 +614,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty);
 		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textareaRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaRequiredPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -667,6 +682,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty);
 		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.textareaOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaOptionalPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -687,6 +705,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 		});
 		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.TotalSample.Properties.radioRequiredProperty);
+		// Start of user code for createRadioRequiredPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -707,6 +728,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.TotalSample.Properties.radioOptionalProperty);
+		// Start of user code for createRadioOptionalPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -737,6 +761,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		eobjectflatcomboviewerRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerRequiredPropertyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -767,6 +794,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		eobjectflatcomboviewerOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.eobjectflatcomboviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEobjectflatcomboviewerOptionalPropertyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -798,6 +828,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		this.referencestableRequiredProperty.disableMove();
 		referencestableRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty);
 		referencestableRequiredProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createReferencestableRequiredPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -879,6 +912,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		this.referencestableOptionalProperty.disableMove();
 		referencestableOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty);
 		referencestableOptionalProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createReferencestableOptionalPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -956,6 +992,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerRequiredPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -983,6 +1022,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerOptionalPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1026,6 +1068,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(editMultivaluededitorRequiredProperty, EefnrViewsRepository.TotalSample.Properties.multivaluededitorRequiredProperty);
 		EditingUtils.setEEFtype(editMultivaluededitorRequiredProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createMultivaluededitorRequiredPropertyMultiValuedEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -1069,6 +1114,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(editMultivaluededitorOptionalProperty, EefnrViewsRepository.TotalSample.Properties.multivaluededitorOptionalProperty);
 		EditingUtils.setEEFtype(editMultivaluededitorOptionalProperty, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createMultivaluededitorOptionalPropertyMultiValuedEditor
+
+		// End of user code
 		return parent;
 	}
 
@@ -1158,6 +1206,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(widgetFactory, tableContainer);
+		// Start of user code for createTablecompositionRequiredPropertyTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -1237,6 +1288,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(editTablecompositionRequiredProperty, EefnrViewsRepository.TotalSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(editTablecompositionRequiredProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionRequiredPropertyPanel
+
+		// End of user code
 		return tablecompositionRequiredPropertyPanel;
 	}
 
@@ -1326,6 +1380,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(widgetFactory, tableContainer);
+		// Start of user code for createTablecompositionOptionalPropertyTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -1405,6 +1462,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(editTablecompositionOptionalProperty, EefnrViewsRepository.TotalSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(editTablecompositionOptionalProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionOptionalPropertyPanel
+
+		// End of user code
 		return tablecompositionOptionalPropertyPanel;
 	}
 
@@ -1436,6 +1496,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		this.advancedreferencestableRequiredProperty.disableMove();
 		advancedreferencestableRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty);
 		advancedreferencestableRequiredProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAdvancedreferencestableRequiredPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -1517,6 +1580,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		this.advancedreferencestableOptionalProperty.disableMove();
 		advancedreferencestableOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty);
 		advancedreferencestableOptionalProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAdvancedreferencestableOptionalPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -1597,6 +1663,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		advancedeobjectflatcomboviewerRequiredPropery.setID(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerRequiredPropery, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerRequiredProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1627,6 +1696,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		advancedeobjectflatcomboviewerOptionalPropery.setID(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.advancedeobjectflatcomboviewerOptionalPropery, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAdvancedeobjectflatcomboviewerOptionalProperyFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -1675,6 +1747,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		this.advancedtablecompositionRequiredProperty.setUpperBound(-1);
 		advancedtablecompositionRequiredProperty.setID(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionRequiredProperty);
 		advancedtablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAdvancedtablecompositionRequiredPropertyTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -1723,6 +1798,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		this.advancedtablecompositionOptionalProperty.setUpperBound(-1);
 		advancedtablecompositionOptionalProperty.setID(EefnrViewsRepository.TotalSample.Properties.advancedtablecompositionOptionalProperty);
 		advancedtablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAdvancedtablecompositionOptionalPropertyTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -1788,6 +1866,9 @@ public class TotalSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 		EditingUtils.setID(name, EefnrViewsRepository.TotalSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TotalSample.Properties.name, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

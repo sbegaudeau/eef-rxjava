@@ -166,6 +166,9 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		flatReferenceEditorSample.setLayoutData(flatReferenceEditorSampleData);
 		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatReferenceEditorSampleFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

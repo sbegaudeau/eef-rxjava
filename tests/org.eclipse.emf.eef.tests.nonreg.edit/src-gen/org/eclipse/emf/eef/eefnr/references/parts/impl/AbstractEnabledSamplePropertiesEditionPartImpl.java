@@ -164,6 +164,9 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEnabledCheckbox
+
+		// End of user code
 		return parent;
 	}
 

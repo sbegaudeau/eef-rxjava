@@ -205,6 +205,9 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
 		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaRequiredPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -261,6 +264,9 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
 		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaOptionalPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -317,6 +323,9 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(textareaROProperty, EefnrViewsRepository.TextareaSample.Properties.textareaROProperty);
 		EditingUtils.setEEFtype(textareaROProperty, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaROPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 

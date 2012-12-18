@@ -210,6 +210,9 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.Sample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Sample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -275,6 +278,9 @@ public class SamplePropertiesEditionPartForm extends SectionPropertiesEditingPar
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.Sample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.Sample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyText
+
+		// End of user code
 		return parent;
 	}
 
