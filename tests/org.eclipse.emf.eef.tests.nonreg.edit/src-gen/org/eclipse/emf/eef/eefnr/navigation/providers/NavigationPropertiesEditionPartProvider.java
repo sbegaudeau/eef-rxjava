@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.forms.FirstNavigationSamplePro
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.NamedElementPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.OwnerPropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SecondNavigationSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SmartNavigationSampleOnglet2PropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SmartNavigationSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.navigation.parts.forms.SubtypePropertiesEditionPartForm;
 
@@ -33,6 +34,7 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.impl.FirstNavigationSampleProp
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.NamedElementPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.OwnerPropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SecondNavigationSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SmartNavigationSampleOnglet2PropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SmartNavigationSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.impl.SubtypePropertiesEditionPartImpl;
 
@@ -128,6 +130,12 @@ public class NavigationPropertiesEditionPartProvider implements IPropertiesEditi
 				return new SecondNavigationSamplePropertiesEditionPartImpl(component);
 			if (kind == NavigationViewsRepository.FORM_KIND)
 				return new SecondNavigationSamplePropertiesEditionPartForm(component);
+		}
+		if (key == NavigationViewsRepository.SmartNavigationSampleOnglet2.class) {
+			if (kind == NavigationViewsRepository.SWT_KIND)
+				return new SmartNavigationSampleOnglet2PropertiesEditionPartImpl(component);
+			if (kind == NavigationViewsRepository.FORM_KIND)
+				return new SmartNavigationSampleOnglet2PropertiesEditionPartForm(component);
 		}
 		return null;
 	}

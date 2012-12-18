@@ -276,4 +276,19 @@ public class NavigationViewsRepository {
 	
 	}
 
+	/**
+	 * SmartNavigationSampleOnglet2 view descriptor
+	 * 
+	 */
+	public static class SmartNavigationSampleOnglet2 {
+		public static class Properties {
+	
+			
+			public static String secondModelNavigationSingleValueOnglet2 = "navigation::SmartNavigationSampleOnglet2::properties::secondModelNavigationSingleValueOnglet2";
+			
+	
+		}
+	
+	}
+
 }

@@ -18,6 +18,8 @@ import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample;
 
 import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSamplePropertiesEditionComponent;
+import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent;
+import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -68,7 +70,7 @@ public class SmartModelNavigationSamplePropertiesEditionProvider extends Propert
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof SmartModelNavigationSample) && (SmartModelNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part));
+		return (editingContext.getEObject() instanceof SmartModelNavigationSample) && (SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part) || SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.SMARTNAVIGATIONSAMPLEONGLET2_PART.equals(part));
 	}
 
 	/**
@@ -78,7 +80,7 @@ public class SmartModelNavigationSamplePropertiesEditionProvider extends Propert
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof SmartModelNavigationSample) && (refinement == SmartModelNavigationSamplePropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof SmartModelNavigationSample) && (refinement == SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.class || refinement == SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.class);
 	}
 
 	/**
@@ -88,7 +90,7 @@ public class SmartModelNavigationSamplePropertiesEditionProvider extends Propert
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof SmartModelNavigationSample) && ((SmartModelNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part) && refinement == SmartModelNavigationSamplePropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof SmartModelNavigationSample) && ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part) && refinement == SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.class) || (SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.SMARTNAVIGATIONSAMPLEONGLET2_PART.equals(part) && refinement == SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.class));
 	}
 
 	/**
@@ -110,8 +112,10 @@ public class SmartModelNavigationSamplePropertiesEditionProvider extends Propert
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof SmartModelNavigationSample) {
-			if (SmartModelNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part))
-				return new SmartModelNavigationSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part))
+				return new SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.SMARTNAVIGATIONSAMPLEONGLET2_PART.equals(part))
+				return new SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -123,9 +127,12 @@ public class SmartModelNavigationSamplePropertiesEditionProvider extends Propert
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof SmartModelNavigationSample) {
-			if (SmartModelNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part)
-				&& refinement == SmartModelNavigationSamplePropertiesEditionComponent.class)
-				return new SmartModelNavigationSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.SMARTNAVIGATIONSAMPLE_PART.equals(part)
+				&& refinement == SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent.class)
+				return new SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.SMARTNAVIGATIONSAMPLEONGLET2_PART.equals(part)
+				&& refinement == SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent.class)
+				return new SmartModelNavigationSampleSmartNavigationSampleOnglet2PropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

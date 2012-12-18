@@ -536,7 +536,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/AttributeNavigationSample"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_jZsNUPvvEeGL44pIBfzmNw" name="SmartModelNavigationSample" views="_-ld3kPvuEeGL44pIBfzmNw">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_jZsNUPvvEeGL44pIBfzmNw" name="SmartModelNavigationSample" views="_-ld3kPvuEeGL44pIBfzmNw _1kLQYEkVEeKWgJcp6Y4wLg">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jZsNUfvvEeGL44pIBfzmNw" name="name" views="_-ld3kvvuEeGL44pIBfzmNw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
         </properties>
@@ -624,6 +624,15 @@
               <filters xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_PW874PysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="filter1FirstModelNavigation"/>
               <filters xsi:type="eef-mapping-filters:JavaBodyStepFilter" xmi:id="_aXa_sPysEeGJEqQYVg2nYg" body="return semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation &amp;&amp; ((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).isFilter2();"/>
               <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MSKEMEkWEeKWgJcp6Y4wLg" name="secondMNSingleValueOnglet2" views="_1kLQZEkVEeKWgJcp6Y4wLg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/secondModelNavigation"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_MSKEMUkWEeKWgJcp6Y4wLg">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_MSKEMkkWEeKWgJcp6Y4wLg">
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_MSKENUkWEeKWgJcp6Y4wLg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationSingleValue"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation"/>
             </step>
           </navigation>
         </properties>
@@ -1329,6 +1338,14 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_gP0SUvvvEeGL44pIBfzmNw" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_1kLQYEkVEeKWgJcp6Y4wLg" name="SmartNavigationSampleOnglet2">
+        <elements xsi:type="eef-views:Container" xmi:id="_1kLQYUkVEeKWgJcp6Y4wLg" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_1kLQZEkVEeKWgJcp6Y4wLg" name="secondModelNavigationSingleValueOnglet2">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
