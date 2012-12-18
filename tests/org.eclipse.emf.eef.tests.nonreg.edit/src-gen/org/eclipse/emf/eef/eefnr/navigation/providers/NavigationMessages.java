@@ -53,6 +53,9 @@ public class NavigationMessages extends NLS {
 	
 	public static String SecondNavigationSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String SmartNavigationSampleOnglet2PropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String DeferedFlatReferencesTableSample_ReadOnly;
@@ -119,6 +122,12 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String SecondNavigationSample_Part_Title;
+
+	
+	public static String SmartNavigationSampleOnglet2_ReadOnly;
+
+	
+	public static String SmartNavigationSampleOnglet2_Part_Title;
 
 
 	
@@ -234,6 +243,9 @@ public class NavigationMessages extends NLS {
 
 	
 	public static String SecondNavigationSamplePropertiesEditionPart_NameLabel;
+
+	
+	public static String SmartNavigationSampleOnglet2PropertiesEditionPart_SecondModelNavigationSingleValueOnglet2Label;
 
 
 	

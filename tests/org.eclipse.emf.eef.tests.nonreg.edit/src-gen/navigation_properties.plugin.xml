@@ -120,6 +120,13 @@
          </propertyTab>
 
          <propertyTab
+               id="SmartNavigationSampleOnglet2"
+               label="SmartNavigationSampleOnglet2"
+               category="extended"
+               afterTab="SmartNavigationSample">
+         </propertyTab>
+
+         <propertyTab
                id="FirstNavigationSample"
                label="FirstNavigationSample"
                category="default">
@@ -202,6 +209,12 @@
                filter="org.eclipse.emf.eef.navigation.providers.SmartModelNavigationSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.navigation.section.SmartModelNavigationSample"
                tab="SmartNavigationSample">
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.SmartNavigationSampleOnglet2PropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.navigation.providers.SmartModelNavigationSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.navigation.section.SmartModelNavigationSample"
+               tab="SmartNavigationSampleOnglet2">
          </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.navigation.parts.forms.FirstNavigationSamplePropertiesEditionPartForm"

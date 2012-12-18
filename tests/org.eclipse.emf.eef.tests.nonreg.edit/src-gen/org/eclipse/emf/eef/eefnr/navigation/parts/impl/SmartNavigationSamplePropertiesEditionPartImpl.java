@@ -17,6 +17,7 @@ import org.eclipse.emf.eef.eefnr.navigation.parts.SmartNavigationSamplePropertie
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
 
 import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSamplePropertiesEditionComponent;
+import org.eclipse.emf.eef.navigation.components.SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -603,7 +604,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			firstModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationSingleValueSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationSingleValueSettings().getOrCreateSignificantObject());
 		if (readOnly && firstModelNavigationSingleValue.isEnabled()) {
 			firstModelNavigationSingleValue.setEnabled(false);
 			firstModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
@@ -635,7 +636,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
 		if (readOnly && secondModelNavigationSingleValue.isEnabled()) {
 			secondModelNavigationSingleValue.setEnabled(false);
 			secondModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
@@ -667,7 +668,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			firstModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationMultiValueSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationMultiValueSettings().getOrCreateSignificantObject());
 		if (readOnly && firstModelNavigationMultiValue.isEnabled()) {
 			firstModelNavigationMultiValue.setEnabled(false);
 			firstModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
@@ -699,7 +700,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
 		if (readOnly && secondModelNavigationMultiValue.isEnabled()) {
 			secondModelNavigationMultiValue.setEnabled(false);
 			secondModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
@@ -731,7 +732,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationSingleValue2.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
 		if (readOnly && secondModelNavigationSingleValue2.isEnabled()) {
 			secondModelNavigationSingleValue2.setEnabled(false);
 			secondModelNavigationSingleValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
@@ -763,7 +764,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValue2.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
 		if (readOnly && secondModelNavigationMultiValue2.isEnabled()) {
 			secondModelNavigationMultiValue2.setEnabled(false);
 			secondModelNavigationMultiValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
@@ -795,7 +796,7 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			secondModelNavigationMultiValueFilter.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, ((SmartModelNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings().getOrCreateSignificantObject());
+		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings().getOrCreateSignificantObject());
 		if (readOnly && secondModelNavigationMultiValueFilter.isEnabled()) {
 			secondModelNavigationMultiValueFilter.setEnabled(false);
 			secondModelNavigationMultiValueFilter.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
