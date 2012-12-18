@@ -135,7 +135,12 @@ public class EMFHelper {
 	private static String getEditorLabel(AdapterFactory factory, EObject target, EStructuralFeature feature) {
 		IItemPropertySource adapt = (IItemPropertySource) factory.adapt(target, IItemPropertySource.class);
 		IItemPropertyDescriptor propertyDescriptor = adapt.getPropertyDescriptor(target, feature);
-		String displayName = propertyDescriptor.getDisplayName(target);
+		String displayName;
+		if (propertyDescriptor != null) {
+			displayName = propertyDescriptor.getDisplayName(target);
+		} else {
+			displayName = feature.getName();
+		}
 		return displayName;
 	}
 	

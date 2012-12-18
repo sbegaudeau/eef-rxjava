@@ -467,18 +467,18 @@ public class PropertiesEditionHelper {
 				}
 				Collection<EObject> settings = EMFHelper
 						.followingSiblings(referenceableObject);
-				for (EObject setting : settings) {
-					if (setting instanceof Action) {
-						bot.getModelingBotInterpreter().runAction(
-								(Action) setting);
-						if (setting instanceof Cancel) {
-							EditAction prev = EEFModelingBotHelper
-									.getCancelPrecedingAction((Cancel) setting);
-							clickCancel(prev.getPropertiesEditionElement());
-							return;
-						}
-					}
-				}
+//				for (EObject setting : settings) {
+//					if (setting instanceof Action) {
+//						bot.getModelingBotInterpreter().runAction(
+//								(Action) setting);
+//						if (setting instanceof Cancel) {
+//							EditAction prev = EEFModelingBotHelper
+//									.getCancelPrecedingAction((Cancel) setting);
+//							clickCancel(prev.getPropertiesEditionElement());
+//							return;
+//						}
+//					}
+//				}
 			}
 		}
 		bot.button(UIConstants.FINISH_BUTTON).click();
