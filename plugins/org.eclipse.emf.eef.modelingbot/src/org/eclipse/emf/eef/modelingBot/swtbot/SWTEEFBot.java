@@ -240,7 +240,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		checkBox().select();
 		button(UIConstants.OK_BUTTON).click();
 		SWTBotHelper.waitAllUiEvents();
-		// sleep(1000);
+		sleep(1000);
 	}
 
 	/**

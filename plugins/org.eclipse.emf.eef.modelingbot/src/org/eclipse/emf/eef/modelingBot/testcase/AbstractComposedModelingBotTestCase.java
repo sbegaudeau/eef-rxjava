@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -52,9 +53,11 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 		
 		// remove existants projects
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		NullProgressMonitor monitor = new NullProgressMonitor();
+		root.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 		IProject[] projects = root.getProjects();
 		for (int i = 0; i < projects.length; i++) {
-			projects[i].delete(true, new NullProgressMonitor());
+			projects[i].delete(true, monitor);
 		}
 		
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {

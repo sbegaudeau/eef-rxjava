@@ -15,6 +15,14 @@ package org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.con
  */
 public class ComposedMBotUndoSetAttributeEMFComboViewer extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase#setUp()
+	 */
+	public void setUp() throws Exception {
+		super.setUp();
+	}
+	
 	public void testModelingBot() throws Exception {
 		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/details_view_conference/undoSetAttributeEMFComboViewer.modelingbot");
 	}
