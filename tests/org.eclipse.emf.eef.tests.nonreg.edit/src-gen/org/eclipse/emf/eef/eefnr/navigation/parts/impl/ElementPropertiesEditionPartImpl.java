@@ -164,6 +164,9 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		EditingUtils.setID(isVisible, NavigationViewsRepository.Element.Properties.isVisible);
 		EditingUtils.setEEFtype(isVisible, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Element.Properties.isVisible, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIsVisibleCheckbox
+
+		// End of user code
 		return parent;
 	}
 

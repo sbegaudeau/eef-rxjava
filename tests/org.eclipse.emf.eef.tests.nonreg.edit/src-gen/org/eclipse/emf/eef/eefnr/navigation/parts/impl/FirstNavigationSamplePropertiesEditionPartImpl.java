@@ -174,6 +174,9 @@ public class FirstNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(name, NavigationViewsRepository.FirstNavigationSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.FirstNavigationSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

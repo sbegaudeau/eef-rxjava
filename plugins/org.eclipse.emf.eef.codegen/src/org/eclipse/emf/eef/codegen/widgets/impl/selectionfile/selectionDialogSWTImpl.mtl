@@ -90,6 +90,9 @@ return create[editor.name.toJavaClassifier()/]SelectionDialog(parent);
 			}
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('SelectionDialog'))]
+
+		// [/protected]
 		return parent;
 	}
 	

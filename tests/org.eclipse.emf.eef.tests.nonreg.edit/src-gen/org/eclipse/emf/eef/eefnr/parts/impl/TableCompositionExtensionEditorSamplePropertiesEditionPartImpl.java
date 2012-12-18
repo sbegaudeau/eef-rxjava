@@ -204,6 +204,9 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 		EditingUtils.setID(name, EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.name, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -252,6 +255,9 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 		this.tablecompositionRequiredProperty.setUpperBound(-1);
 		tablecompositionRequiredProperty.setID(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionRequiredProperty);
 		tablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionRequiredPropertyAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -300,6 +306,9 @@ public class TableCompositionExtensionEditorSamplePropertiesEditionPartImpl exte
 		this.tablecompositionOptionalProperty.setUpperBound(-1);
 		tablecompositionOptionalProperty.setID(EefnrViewsRepository.TableCompositionExtensionEditorSample.Properties.tablecompositionOptionalProperty);
 		tablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionOptionalPropertyAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 

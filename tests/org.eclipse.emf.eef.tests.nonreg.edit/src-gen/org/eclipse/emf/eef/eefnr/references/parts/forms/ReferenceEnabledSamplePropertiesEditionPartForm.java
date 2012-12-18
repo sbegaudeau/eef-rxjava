@@ -199,6 +199,9 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 		this.reference.disableMove();
 		reference.setID(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference);
 		reference.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createReferenceReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

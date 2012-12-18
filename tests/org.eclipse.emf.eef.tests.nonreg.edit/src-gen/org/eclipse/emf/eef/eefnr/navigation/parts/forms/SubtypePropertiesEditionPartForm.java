@@ -192,6 +192,9 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		EditingUtils.setID(specialisedElement, NavigationViewsRepository.Subtype.Specialisation.specialisedElement);
 		EditingUtils.setEEFtype(specialisedElement, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Subtype.Specialisation.specialisedElement, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSpecialisedElementCheckbox
+
+		// End of user code
 		return parent;
 	}
 

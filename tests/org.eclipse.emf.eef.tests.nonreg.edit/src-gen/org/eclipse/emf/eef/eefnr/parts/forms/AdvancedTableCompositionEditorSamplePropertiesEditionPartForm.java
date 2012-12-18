@@ -209,6 +209,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		this.advancedtablecompositionRequiredProperty.setUpperBound(-1);
 		advancedtablecompositionRequiredProperty.setID(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty);
 		advancedtablecompositionRequiredProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAdvancedtablecompositionRequiredPropertyTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -257,6 +260,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		this.advancedtablecompositionOptionalProperty.setUpperBound(-1);
 		advancedtablecompositionOptionalProperty.setID(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty);
 		advancedtablecompositionOptionalProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAdvancedtablecompositionOptionalPropertyTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -305,6 +311,9 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartForm exten
 		this.advancedtablecompositionROProperty.setUpperBound(-1);
 		advancedtablecompositionROProperty.setID(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionROProperty);
 		advancedtablecompositionROProperty.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAdvancedtablecompositionROPropertyTableComposition
+
+		// End of user code
 		return parent;
 	}
 

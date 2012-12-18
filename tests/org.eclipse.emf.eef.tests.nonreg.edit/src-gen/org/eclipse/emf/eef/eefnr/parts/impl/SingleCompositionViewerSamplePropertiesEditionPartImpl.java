@@ -210,6 +210,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerSingleRequiredPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -258,6 +261,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerSingleOptionalPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -306,6 +312,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerMultiRequiredPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -354,6 +363,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerMultiOptionalPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -365,6 +377,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 		this.singlecompositionviewerSingleROProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 		this.singlecompositionviewerSingleROProperty.setLayoutData(singlecompositionviewerSingleROPropertyData);
 			singlecompositionviewerSingleROProperty.setEnabled(false);
+		// Start of user code for createSinglecompositionviewerSingleROPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 

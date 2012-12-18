@@ -210,6 +210,9 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		EditingUtils.setID(demo, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
 		EditingUtils.setEEFtype(demo, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDemoText
+
+		// End of user code
 		return parent;
 	}
 
@@ -275,6 +278,9 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		EditingUtils.setID(size, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
 		EditingUtils.setEEFtype(size, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSizeText
+
+		// End of user code
 		return parent;
 	}
 

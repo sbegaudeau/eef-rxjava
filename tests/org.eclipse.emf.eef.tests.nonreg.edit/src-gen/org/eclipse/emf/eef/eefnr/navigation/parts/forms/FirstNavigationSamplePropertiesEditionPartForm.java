@@ -205,6 +205,9 @@ public class FirstNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(name, NavigationViewsRepository.FirstNavigationSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.FirstNavigationSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

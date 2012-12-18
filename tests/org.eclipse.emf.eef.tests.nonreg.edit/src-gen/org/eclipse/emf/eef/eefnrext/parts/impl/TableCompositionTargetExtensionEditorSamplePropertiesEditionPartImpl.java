@@ -174,6 +174,9 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImp
 		EditingUtils.setID(name, EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

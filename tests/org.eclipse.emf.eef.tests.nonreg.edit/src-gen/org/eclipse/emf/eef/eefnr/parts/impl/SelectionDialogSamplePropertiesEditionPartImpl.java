@@ -189,6 +189,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			}
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogRequiredPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 	
@@ -246,6 +249,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			}
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogOptionalPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 	
@@ -303,6 +309,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			}
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogROPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 	

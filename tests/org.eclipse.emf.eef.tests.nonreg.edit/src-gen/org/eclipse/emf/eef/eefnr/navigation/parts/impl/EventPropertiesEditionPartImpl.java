@@ -174,6 +174,9 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		EditingUtils.setID(name, NamingViewsRepository.Event.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NamingViewsRepository.Event.Properties.name, NamingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

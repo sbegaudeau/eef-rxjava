@@ -171,6 +171,9 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 		});
 		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
+		// Start of user code for createRadioRequiredPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -191,6 +194,9 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
+		// Start of user code for createRadioOptionalPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -211,6 +217,9 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 			}
 		});
 		radioROPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioROProperty);
+		// Start of user code for createRadioROPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 

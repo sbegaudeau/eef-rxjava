@@ -169,6 +169,9 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
 		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaRequiredPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -201,6 +204,9 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
 		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaOptionalPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -233,6 +239,9 @@ public class TextareaSamplePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(textareaROProperty, EefnrViewsRepository.TextareaSample.Properties.textareaROProperty);
 		EditingUtils.setEEFtype(textareaROProperty, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaROPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 

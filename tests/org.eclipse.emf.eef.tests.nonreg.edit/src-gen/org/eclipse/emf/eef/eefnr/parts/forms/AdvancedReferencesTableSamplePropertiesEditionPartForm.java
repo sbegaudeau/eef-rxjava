@@ -202,6 +202,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		this.advancedreferencestableRequiredProperty.disableMove();
 		advancedreferencestableRequiredProperty.setID(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
 		advancedreferencestableRequiredProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAdvancedreferencestableRequiredPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -283,6 +286,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		this.advancedreferencestableOptionalProperty.disableMove();
 		advancedreferencestableOptionalProperty.setID(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
 		advancedreferencestableOptionalProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAdvancedreferencestableOptionalPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -364,6 +370,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartForm extends Sect
 		this.advancedreferencestableROProperty.disableMove();
 		advancedreferencestableROProperty.setID(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty);
 		advancedreferencestableROProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createAdvancedreferencestableROPropertyReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

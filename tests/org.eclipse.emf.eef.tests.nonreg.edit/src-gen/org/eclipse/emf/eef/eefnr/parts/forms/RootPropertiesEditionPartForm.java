@@ -195,6 +195,9 @@ public class RootPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		this.samples.setUpperBound(-1);
 		samples.setID(EefnrViewsRepository.Root.Properties.samples);
 		samples.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSamplesTableComposition
+
+		// End of user code
 		return parent;
 	}
 

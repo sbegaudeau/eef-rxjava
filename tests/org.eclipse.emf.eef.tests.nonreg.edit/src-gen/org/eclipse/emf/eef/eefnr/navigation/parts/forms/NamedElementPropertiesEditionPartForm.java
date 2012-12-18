@@ -205,6 +205,9 @@ public class NamedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 		EditingUtils.setID(name, NavigationViewsRepository.NamedElement.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.NamedElement.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

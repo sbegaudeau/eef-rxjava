@@ -260,6 +260,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setID(tablecompositionRequiredProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(tablecompositionRequiredProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionRequiredPropertyPanel(tableContainer);
+		// Start of user code for createTablecompositionRequiredPropertyTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -342,6 +345,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(editTablecompositionRequiredProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
 		EditingUtils.setEEFtype(editTablecompositionRequiredProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionRequiredPropertyPanel
+
+		// End of user code
 		return tablecompositionRequiredPropertyPanel;
 	}
 
@@ -431,6 +437,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setID(tablecompositionOptionalProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(tablecompositionOptionalProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionOptionalPropertyPanel(tableContainer);
+		// Start of user code for createTablecompositionOptionalPropertyTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -513,6 +522,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(editTablecompositionOptionalProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
 		EditingUtils.setEEFtype(editTablecompositionOptionalProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionOptionalPropertyPanel
+
+		// End of user code
 		return tablecompositionOptionalPropertyPanel;
 	}
 
@@ -602,6 +614,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		EditingUtils.setID(tablecompositionROProperty.getTable(), EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty);
 		EditingUtils.setEEFtype(tablecompositionROProperty.getTable(), "eef::TableComposition::field"); //$NON-NLS-1$
 		createTablecompositionROPropertyPanel(tableContainer);
+		// Start of user code for createTablecompositionROPropertyTableComposition
+
+		// End of user code
 		return container;
 	}
 
@@ -684,6 +699,9 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		});
 		EditingUtils.setID(editTablecompositionROProperty, EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionROProperty);
 		EditingUtils.setEEFtype(editTablecompositionROProperty, "eef::TableComposition::editbutton"); //$NON-NLS-1$
+		// Start of user code for createTablecompositionROPropertyPanel
+
+		// End of user code
 		return tablecompositionROPropertyPanel;
 	}
 

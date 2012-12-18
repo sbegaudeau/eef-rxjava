@@ -165,6 +165,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		flatreferencetableRequiredProperty.setLayoutData(flatreferencetableRequiredPropertyData);
 		flatreferencetableRequiredProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableRequiredPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -189,6 +192,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		flatreferencetableOptionalProperty.setLayoutData(flatreferencetableOptionalPropertyData);
 		flatreferencetableOptionalProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableOptionalPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -213,6 +219,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		flatreferencetableROProperty.setLayoutData(flatreferencetableROPropertyData);
 		flatreferencetableROProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableROPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

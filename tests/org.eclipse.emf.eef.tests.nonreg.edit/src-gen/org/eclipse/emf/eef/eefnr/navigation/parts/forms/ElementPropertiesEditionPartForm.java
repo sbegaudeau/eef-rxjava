@@ -175,6 +175,9 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		EditingUtils.setID(isVisible, NavigationViewsRepository.Element.Properties.isVisible);
 		EditingUtils.setEEFtype(isVisible, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Element.Properties.isVisible, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIsVisibleCheckbox
+
+		// End of user code
 		return parent;
 	}
 

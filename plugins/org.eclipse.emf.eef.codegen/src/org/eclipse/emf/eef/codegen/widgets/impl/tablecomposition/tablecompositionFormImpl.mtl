@@ -132,6 +132,9 @@ return create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, pa
 		EditingUtils.setID([editor.elementEditorName()/].getTable(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		create[editor.name.toJavaClassifier()/]Panel(widgetFactory, tableContainer);
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('TableComposition'))]
+
+		// [/protected]
 		return container;
 	}
 
@@ -211,6 +214,9 @@ return create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, pa
 		});
 		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::editbutton"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('Panel'))]
+
+		// [/protected]
 		return [editor.elementEditorName()/]Panel;
 	}
 [/template]
@@ -306,6 +312,9 @@ return create[editor.name.toJavaClassifier()/]TableComposition(widgetFactory, pa
 		this.[editor.elementEditorName()/].setUpperBound([editor.involvedPropertiesEditionElement(pec).model.upperBound/]);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		[editor.elementEditorName()/].setEEFType("eef::[editor.representation.name/]"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('TableComposition'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

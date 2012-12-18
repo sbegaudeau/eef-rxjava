@@ -175,6 +175,9 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEnabledCheckbox
+
+		// End of user code
 		return parent;
 	}
 

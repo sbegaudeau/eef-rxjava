@@ -84,6 +84,9 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 		});
 		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::browsebutton"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('MultiValuedEditor'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

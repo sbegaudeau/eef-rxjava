@@ -243,6 +243,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(name, NavigationViewsRepository.SmartNavigationSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -308,6 +311,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(firstModelNavigationSingleValue, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue);
 		EditingUtils.setEEFtype(firstModelNavigationSingleValue, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFirstModelNavigationSingleValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -373,6 +379,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(secondModelNavigationSingleValue, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue);
 		EditingUtils.setEEFtype(secondModelNavigationSingleValue, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationSingleValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -438,6 +447,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(firstModelNavigationMultiValue, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue);
 		EditingUtils.setEEFtype(firstModelNavigationMultiValue, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFirstModelNavigationMultiValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -503,6 +515,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(secondModelNavigationMultiValue, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue);
 		EditingUtils.setEEFtype(secondModelNavigationMultiValue, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationMultiValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -568,6 +583,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(secondModelNavigationSingleValue2, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2);
 		EditingUtils.setEEFtype(secondModelNavigationSingleValue2, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationSingleValue2Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -633,6 +651,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(secondModelNavigationMultiValue2, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2);
 		EditingUtils.setEEFtype(secondModelNavigationMultiValue2, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationMultiValue2Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -698,6 +719,9 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		EditingUtils.setID(secondModelNavigationMultiValueFilter, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter);
 		EditingUtils.setEEFtype(secondModelNavigationMultiValueFilter, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationMultiValueFilterText
+
+		// End of user code
 		return parent;
 	}
 

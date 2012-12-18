@@ -191,6 +191,9 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 		EditingUtils.setID(name, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -214,6 +217,9 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartImpl extends C
 		flatReferencesTableSampleEditor.setLayoutData(flatReferencesTableSampleEditorData);
 		flatReferencesTableSampleEditor.setID(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatReferencesTableSampleEditorFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

@@ -222,6 +222,9 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		EditingUtils.setID(name, NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -245,6 +248,9 @@ public class DeferedFlatReferencesTableSamplePropertiesEditionPartForm extends S
 		flatReferencesTableSampleEditor.setLayoutData(flatReferencesTableSampleEditorData);
 		flatReferencesTableSampleEditor.setID(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeferedFlatReferencesTableSample.Properties.flatReferencesTableSampleEditor, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatReferencesTableSampleEditorFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 

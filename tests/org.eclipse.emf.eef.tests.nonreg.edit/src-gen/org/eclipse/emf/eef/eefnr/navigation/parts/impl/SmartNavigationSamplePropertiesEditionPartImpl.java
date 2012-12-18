@@ -212,6 +212,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(name, NavigationViewsRepository.SmartNavigationSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.name, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -258,6 +261,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(firstModelNavigationSingleValue, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue);
 		EditingUtils.setEEFtype(firstModelNavigationSingleValue, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFirstModelNavigationSingleValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -304,6 +310,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(secondModelNavigationSingleValue, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue);
 		EditingUtils.setEEFtype(secondModelNavigationSingleValue, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationSingleValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -350,6 +359,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(firstModelNavigationMultiValue, NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue);
 		EditingUtils.setEEFtype(firstModelNavigationMultiValue, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFirstModelNavigationMultiValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -396,6 +408,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(secondModelNavigationMultiValue, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue);
 		EditingUtils.setEEFtype(secondModelNavigationMultiValue, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationMultiValueText
+
+		// End of user code
 		return parent;
 	}
 
@@ -442,6 +457,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(secondModelNavigationSingleValue2, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2);
 		EditingUtils.setEEFtype(secondModelNavigationSingleValue2, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationSingleValue2Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -488,6 +506,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(secondModelNavigationMultiValue2, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2);
 		EditingUtils.setEEFtype(secondModelNavigationMultiValue2, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationMultiValue2Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -534,6 +555,9 @@ public class SmartNavigationSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(secondModelNavigationMultiValueFilter, NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter);
 		EditingUtils.setEEFtype(secondModelNavigationMultiValueFilter, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSecondModelNavigationMultiValueFilterText
+
+		// End of user code
 		return parent;
 	}
 

@@ -317,6 +317,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 		};
 		dialog.open();
+		// Start of user code for addReferencestableRequiredProperty
+
+		// End of user code
 		referencestableRequiredProperty.refresh();
 	}
 
@@ -475,6 +478,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 		};
 		dialog.open();
+		// Start of user code for addReferencestableOptionalProperty
+
+		// End of user code
 		referencestableOptionalProperty.refresh();
 	}
 
@@ -633,6 +639,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 		};
 		dialog.open();
+		// Start of user code for addReferencestableROProperty
+
+		// End of user code
 		referencestableROProperty.refresh();
 	}
 

@@ -59,6 +59,9 @@ return create[editor.name.toJavaClassifier()/]ImageViewer(parent);
 		});
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ImageViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

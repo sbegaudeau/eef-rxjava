@@ -205,6 +205,9 @@ public class AbstractSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(name, ReferencesViewsRepository.AbstractSample.NameProperties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractSample.NameProperties.name, ReferencesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 

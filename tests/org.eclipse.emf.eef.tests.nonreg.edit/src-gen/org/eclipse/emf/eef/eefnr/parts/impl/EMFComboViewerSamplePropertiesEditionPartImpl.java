@@ -169,6 +169,9 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		});
 		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerRequiredPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -196,6 +199,9 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		});
 		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerOptionalPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -223,6 +229,9 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 		});
 		emfcomboviewerROProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerROPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
