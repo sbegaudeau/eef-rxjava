@@ -4,12 +4,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.eclipse.emf.samples.tests.junit.modelingbot.ComposedBotModelingTestCase;
-import org.eclipse.emf.samples.tests.junit.modelingbot.ConferenceModelingBotTestCase;
-import org.eclipse.emf.samples.tests.junit.modelingbot.SWTBotModelingTestCase;
-import org.eclipse.emf.samples.tests.junit.modelingbot.SWTBotModelingTestCase2;
-import org.eclipse.emf.samples.tests.junit.modelingbot.SWTBotModelingTestCase3;
-import org.eclipse.emf.samples.tests.junit.modelingbot.SiteModelingBotTestCase;
 import org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.conference.ComposedMBotAddAdvTableCompo;
 import org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.conference.ComposedMBotCancelAddAdvTableCompo;
 import org.eclipse.emf.samples.tests.junit.modelingbot.composed.detailsview.conference.ComposedMBotCancelSetAttributeMVE;
@@ -129,14 +123,6 @@ public class AllTests extends TestCase {
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
-		// tests on modeling bot
-		suite.addTestSuite(ComposedBotModelingTestCase.class);
-		suite.addTestSuite(ConferenceModelingBotTestCase.class);
-		suite.addTestSuite(SiteModelingBotTestCase.class);
-		suite.addTestSuite(SWTBotModelingTestCase.class);
-		suite.addTestSuite(SWTBotModelingTestCase2.class);
-		suite.addTestSuite(SWTBotModelingTestCase3.class);
-		
 		// tests composed
 		suite.addTestSuite(ComposedMBotAddAdvTableCompo.class);
 		suite.addTestSuite(ComposedMBotCancelAddAdvTableCompo.class);
