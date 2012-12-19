@@ -275,9 +275,9 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 
 			if (action instanceof EditAction && EEFModelingBotHelper.isFollowingByCancel(action)) {
 				actionsToCancel.add(((EditAction)action).getPropertiesEditionElement());
-				if (bot instanceof SWTEEFBot) {
-					processedActions.add(EEFModelingBotHelper.getFollowingCancelAction(action));
-				}
+//				if (bot instanceof SWTEEFBot) {
+//					processedActions.add(EEFModelingBotHelper.getFollowingCancelAction(action));
+//				}
 			}
 			if (action instanceof CreateProject) {
 				bot.createProject(((CreateProject)action).getProjectName());
@@ -337,7 +337,11 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 			} else if (action instanceof Cancel) {
 				Sequence eContainerSequence = (Sequence)action.eContainer();
 				mapSequenceToCancel.put(eContainerSequence, true);
-				bot.cancel(((Cancel)action).getProcessing());
+				if (eContainerSequence instanceof Wizard || 
+						((eContainerSequence instanceof DetailsPage 
+								|| eContainerSequence instanceof PropertiesView) && !actionsToCancel.isEmpty())) {					
+					bot.cancel(((Cancel)action).getProcessing());
+				}
 			} else if (action instanceof Unset) {
 				bot.unset(((Unset)action).getPropertiesEditionElement(),
 						((Unset)action).getReferenceableObject(), ((Unset)action).getFeature());

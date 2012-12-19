@@ -1431,6 +1431,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		 * @see org.eclipse.swtbot.swt.finder.waits.ICondition#test()
 		 */
 		public boolean test() throws Exception {
+			editor.bot().sleep(150);
 			resultMenu = editor.bot().menu("Edit").menu(menuName);
 			return resultMenu != null;
 		}

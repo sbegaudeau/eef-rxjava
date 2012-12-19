@@ -465,23 +465,23 @@ public class PropertiesEditionHelper {
 					wrappedRadio.click();
 					bot.button(UIConstants.NEXT_BUTTON).click();
 				}
-				Collection<EObject> settings = EMFHelper
-						.followingSiblings(referenceableObject);
-				for (EObject setting : settings) {
-					if (setting instanceof Action) {
-						bot.getModelingBotInterpreter().runAction(
-								(Action) setting);
-						if (setting instanceof Cancel) {
-							EditAction prev = EEFModelingBotHelper
-									.getCancelPrecedingAction((Cancel) setting);
-							clickCancel(prev.getPropertiesEditionElement());
-							return;
-						}
-					}
-				}
+//				Collection<EObject> settings = EMFHelper
+//						.followingSiblings(referenceableObject);
+//				for (EObject setting : settings) {
+//					if (setting instanceof Action) {
+//						bot.getModelingBotInterpreter().runAction(
+//								(Action) setting);
+//						if (setting instanceof Cancel) {
+//							EditAction prev = EEFModelingBotHelper
+//									.getCancelPrecedingAction((Cancel) setting);
+//							clickCancel(prev.getPropertiesEditionElement());
+//							return;
+//						}
+//					}
+//				}
 			}
 		}
-		bot.button(UIConstants.FINISH_BUTTON).click();
+		//bot.button(UIConstants.FINISH_BUTTON).click();
 		SWTBotHelper.waitAllUiEvents();
 	}
 
