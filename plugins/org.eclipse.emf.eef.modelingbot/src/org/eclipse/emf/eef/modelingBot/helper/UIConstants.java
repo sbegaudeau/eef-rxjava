@@ -57,6 +57,8 @@ public class UIConstants {
 	public static final String WELCOME_LABEL = "Welcome";
 	public static final String NEW = "New";
 
+	public static final String DELETE_RESOURCES_DIALOG = "Delete Resources";
+	
 	/*****************************************************************************
 	 * * UI Buttons * *
 	 *****************************************************************************/

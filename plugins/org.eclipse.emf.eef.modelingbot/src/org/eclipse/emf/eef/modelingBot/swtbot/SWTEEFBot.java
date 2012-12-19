@@ -60,6 +60,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.keyboard.KeyboardFactory;
 import org.eclipse.swtbot.swt.finder.results.IntResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
@@ -237,10 +238,12 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 	public void removeProject(String projectName) {
 		final SWTBotTreeItem treeItem = selectInProjectExplorer(projectName);
 		SWTBotHelper.clickContextMenu(treeItem, UIConstants.DELETE_MENU);
-		checkBox().select();
-		button(UIConstants.OK_BUTTON).click();
-		SWTBotHelper.waitAllUiEvents();
-		sleep(1000);
+		waitUntil(Conditions.shellIsActive(UIConstants.DELETE_RESOURCES_DIALOG));
+		final SWTBotShell deleteResourcesShell = shell(UIConstants.DELETE_RESOURCES_DIALOG);
+		SWTBot deleteResourcesBot = deleteResourcesShell.bot();
+		deleteResourcesBot.checkBox().select();
+		deleteResourcesBot.button(UIConstants.OK_BUTTON).click();
+		waitUntil(Conditions.shellCloses(deleteResourcesShell));
 	}
 
 	/**

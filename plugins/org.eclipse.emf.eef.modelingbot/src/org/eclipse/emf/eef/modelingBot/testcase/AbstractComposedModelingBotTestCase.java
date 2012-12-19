@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.modelingBot.testcase;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
 import org.eclipse.emf.eef.modelingBot.batch.BatchModelingBot;
@@ -52,12 +54,10 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 		super.setUp();
 		
 		// remove existants projects
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		NullProgressMonitor monitor = new NullProgressMonitor();
-		root.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-		IProject[] projects = root.getProjects();
-		for (int i = 0; i < projects.length; i++) {
-			projects[i].delete(true, monitor);
+		clearWorkspaceProjects();
+		File file = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
+		if (file.isDirectory()) {
+			deleteFolder(file);
 		}
 		
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
@@ -78,6 +78,33 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 		bot = new ComposedEEFBot(bots);
 	}
 
+	private void clearWorkspaceProjects() throws CoreException {
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		NullProgressMonitor monitor = new NullProgressMonitor();
+		root.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		IProject[] projects = root.getProjects();
+		for (int i = 0; i < projects.length; i++) {
+			projects[i].delete(true, monitor);
+		}
+	}
+
+	public static void deleteFolder(File folder) {
+		File[] files = folder.listFiles();
+		if (files != null) { // some JVMs return null for empty dirs
+			for (File f : files) {
+				if (f.isDirectory()) {
+					if (f.getName() != null && f.getName().length() > 0) {
+						if (!f.getName().startsWith(".")) {
+							deleteFolder(f);
+						}
+					}
+				} else {
+					f.delete();
+				}
+			}
+		}
+		folder.delete();
+	}
 	@Override
 	protected void tearDown() throws Exception {
 		// Close an eventual popup if the test failed and a popup remain opened
