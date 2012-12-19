@@ -13,7 +13,7 @@ package org.eclipse.emf.samples.tests.junit.modelingbot.wizard.conference;
 /**
  * @author <a href="mailto:riadh.hajamor@obeo.fr">Riadh HAJ AMOR</a>
  */
-public class WizardMBotUnsetAdvancedRefrencesTable extends org.eclipse.emf.eef.modelingBot.testcase.AbstractSWTBotModelingBotTestCase {
+public class WizardMBotUnsetAdvancedRefrencesTable extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {
 
 	public void testModelingBot() throws Exception {
 		bot.runModelingBot("org.eclipse.emf.examples.eef.tests.junit/models/modelingbot/wizard_conference/unsetAdvancedReferencesTable.modelingbot");
