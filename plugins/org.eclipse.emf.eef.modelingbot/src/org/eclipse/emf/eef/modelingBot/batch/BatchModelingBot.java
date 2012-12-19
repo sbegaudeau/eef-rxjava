@@ -11,11 +11,14 @@
 package org.eclipse.emf.eef.modelingBot.batch;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -29,6 +32,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -60,6 +64,8 @@ public class BatchModelingBot implements IModelingBot {
 
 	private EEFInterpreter interpreter;
 
+	private Collection<Resource> resources;
+	
 	/**
 	 * Constructor.
 	 */
@@ -67,6 +73,7 @@ public class BatchModelingBot implements IModelingBot {
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack());
 		interpreter = new EEFInterpreter(this, editingDomain);
+		resources = new HashSet<Resource>();
 	}
 
 	/**
@@ -156,7 +163,35 @@ public class BatchModelingBot implements IModelingBot {
 	public void openEEFEditor(String path) {
 		final URI uri = URI.createPlatformResourceURI(path, true);
 		final Resource activeResource = editingDomain.getResourceSet().getResource(uri, true);
-		this.activeResource = activeResource;
+		if (activeResource == null) {			
+			for (Resource resource : resources) {
+				if (uri.equals(resource.getURI())) {
+					this.activeResource = resource;
+					editingDomain.getResourceSet().getResources().add(resource);
+				}
+			}
+		} else {
+			this.activeResource = activeResource;
+		}
+	}
+	
+	public EObject openEditor(String path) {
+		final URI uri = URI.createPlatformResourceURI(path, true);
+		final Resource activeResource = editingDomain.getResourceSet().getResource(uri, true);
+		if (activeResource == null) {			
+			for (Resource resource : resources) {
+				if (uri.equals(resource.getURI())) {
+					this.activeResource = resource;
+					editingDomain.getResourceSet().getResources().add(resource);
+				}
+			}
+		} else {
+			this.activeResource = activeResource;
+		}
+		Collection<EObject> contents = this.activeResource.getContents();
+		Iterator<EObject> it = contents.iterator();
+		assertTrue("Can't find the active resource in order to simulate the editor openning in batch mode.", it.hasNext());
+		return it.next();
 	}
 
 	/**
@@ -166,6 +201,9 @@ public class BatchModelingBot implements IModelingBot {
 	 */
 	public void closeEditor(String path) {
 		activeResource.unload();
+		if (!resources.contains(activeResource)) {
+			resources.add(activeResource);
+		}
 		activeResource = null;
 		editingDomain.getResourceSet().getResources().remove(activeResource);
 	}
@@ -176,6 +214,9 @@ public class BatchModelingBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#save()
 	 */
 	public void save() {
+		if (!resources.contains(activeResource)) {
+			resources.add(activeResource);
+		}
 		// if (activeResource != null) {
 		// try {
 		// activeResource.save(Collections.EMPTY_MAP);
@@ -348,6 +389,7 @@ public class BatchModelingBot implements IModelingBot {
 		activeResource.getContents().add(create);
 		// activeResource.save(Collections.EMPTY_MAP);
 		this.activeResource = activeResource;
+		resources.add(activeResource);
 		return create;
 		// } catch (IOException e) {
 		// e.printStackTrace();
@@ -495,10 +537,6 @@ public class BatchModelingBot implements IModelingBot {
 
 	}
 
-	public EObject openEditor(String path) {
-		// nothing to do.
-		return null;
-	}
 
 	public void initWizard(Wizard wizard) {
 		// do nothing
