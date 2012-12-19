@@ -215,11 +215,11 @@ public class TableCompositionTargetExtensionEditorSamplePropertiesEditionPartImp
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.TableCompositionTargetExtensionEditorSample.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(EefnrextMessages.TableCompositionTargetExtensionEditorSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		

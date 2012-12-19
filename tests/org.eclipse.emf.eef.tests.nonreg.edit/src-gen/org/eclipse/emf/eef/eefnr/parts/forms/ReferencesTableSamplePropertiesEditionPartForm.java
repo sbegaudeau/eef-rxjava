@@ -710,15 +710,15 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableRequiredProperty.setContentProvider(contentProvider);
 		referencestableRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
-		if (readOnly && referencestableRequiredProperty.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
+		if (eefElementEditorReadOnlyState && referencestableRequiredProperty.getTable().isEnabled()) {
 			referencestableRequiredProperty.getTable().setEnabled(false);
 			referencestableRequiredProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
 			addReferencestableRequiredProperty.setEnabled(false);
 			addReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
 			removeReferencestableRequiredProperty.setEnabled(false);
 			removeReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
-		} else if (!readOnly && !referencestableRequiredProperty.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !referencestableRequiredProperty.getTable().isEnabled()) {
 			referencestableRequiredProperty.getTable().setEnabled(true);
 			addReferencestableRequiredProperty.setEnabled(true);
 			removeReferencestableRequiredProperty.setEnabled(true);
@@ -779,15 +779,15 @@ public class ReferencesTableSamplePropertiesEditionPartForm extends SectionPrope
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
-		if (readOnly && referencestableOptionalProperty.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
+		if (eefElementEditorReadOnlyState && referencestableOptionalProperty.getTable().isEnabled()) {
 			referencestableOptionalProperty.getTable().setEnabled(false);
 			referencestableOptionalProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
 			addReferencestableOptionalProperty.setEnabled(false);
 			addReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
 			removeReferencestableOptionalProperty.setEnabled(false);
 			removeReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
-		} else if (!readOnly && !referencestableOptionalProperty.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !referencestableOptionalProperty.getTable().isEnabled()) {
 			referencestableOptionalProperty.getTable().setEnabled(true);
 			addReferencestableOptionalProperty.setEnabled(true);
 			removeReferencestableOptionalProperty.setEnabled(true);

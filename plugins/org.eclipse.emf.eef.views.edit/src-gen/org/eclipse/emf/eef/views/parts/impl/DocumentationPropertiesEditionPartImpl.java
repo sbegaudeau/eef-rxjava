@@ -146,6 +146,9 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		EditingUtils.setID(documentation, ViewsViewsRepository.Documentation.Documentation_.documentation__);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.Documentation.Documentation_.documentation__, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -184,6 +187,15 @@ public class DocumentationPropertiesEditionPartImpl extends CompositePropertiesE
 		} else {
 			documentation.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.Documentation.Documentation_.documentation__);
+		if (eefElementEditorReadOnlyState && documentation.isEnabled()) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ViewsMessages.Documentation_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !documentation.isEnabled()) {
+			documentation.setEnabled(true);
+		}	
+		
 	}
 
 

@@ -256,11 +256,11 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Conference_.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Conference_.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(ConferenceMessages.Conference_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		
@@ -288,12 +288,12 @@ public class ConferencePropertiesEditionPartImpl extends CompositePropertiesEdit
 		} else {
 			overview.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Conference_.Properties.overview);
-		if (readOnly && overview.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Conference_.Properties.overview);
+		if (eefElementEditorReadOnlyState && overview.isEnabled()) {
 			overview.setEnabled(false);
 			overview.setBackground(overview.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			overview.setToolTipText(ConferenceMessages.Conference_ReadOnly);
-		} else if (!readOnly && !overview.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !overview.isEnabled()) {
 			overview.setEnabled(true);
 		}	
 		

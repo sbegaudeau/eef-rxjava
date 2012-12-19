@@ -233,11 +233,11 @@ public class SubtypePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		} else {
 			specialisedElement.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.Subtype.Specialisation.specialisedElement);
-		if (readOnly && specialisedElement.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Subtype.Specialisation.specialisedElement);
+		if (eefElementEditorReadOnlyState && specialisedElement.isEnabled()) {
 			specialisedElement.setEnabled(false);
 			specialisedElement.setToolTipText(NavigationMessages.Subtype_ReadOnly);
-		} else if (!readOnly && !specialisedElement.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !specialisedElement.isEnabled()) {
 			specialisedElement.setEnabled(true);
 		}	
 		

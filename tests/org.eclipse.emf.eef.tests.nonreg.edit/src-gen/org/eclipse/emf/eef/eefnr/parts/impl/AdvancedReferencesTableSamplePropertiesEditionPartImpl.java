@@ -436,11 +436,11 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableRequiredProperty.setContentProvider(contentProvider);
 		advancedreferencestableRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
-		if (readOnly && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
+		if (eefElementEditorReadOnlyState && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
 			advancedreferencestableRequiredProperty.setEnabled(false);
 			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
-		} else if (!readOnly && !advancedreferencestableRequiredProperty.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !advancedreferencestableRequiredProperty.getTable().isEnabled()) {
 			advancedreferencestableRequiredProperty.setEnabled(true);
 		}
 		
@@ -499,11 +499,11 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableOptionalProperty.setContentProvider(contentProvider);
 		advancedreferencestableOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
-		if (readOnly && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
+		if (eefElementEditorReadOnlyState && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
 			advancedreferencestableOptionalProperty.setEnabled(false);
 			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
-		} else if (!readOnly && !advancedreferencestableOptionalProperty.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !advancedreferencestableOptionalProperty.getTable().isEnabled()) {
 			advancedreferencestableOptionalProperty.setEnabled(true);
 		}
 		

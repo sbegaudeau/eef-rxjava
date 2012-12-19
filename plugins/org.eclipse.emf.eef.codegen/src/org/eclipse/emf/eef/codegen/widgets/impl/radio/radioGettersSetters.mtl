@@ -102,10 +102,10 @@
 [if (editor.readOnly)]
 [editor.setReadOnly()/]
 [else]
-boolean readOnly = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
-if (readOnly && [editor.elementEditorName()/]RadioViewer.isEnabled()) {
+boolean eefElementEditorReadOnlyState = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
+if (eefElementEditorReadOnlyState && [editor.elementEditorName()/]RadioViewer.isEnabled()) {
 	[editor.setReadOnly()/]
-} else if (!readOnly && ![editor.elementEditorName()/]RadioViewer.isEnabled()) {
+} else if (!eefElementEditorReadOnlyState && ![editor.elementEditorName()/]RadioViewer.isEnabled()) {
 	[editor.unsetReadOnly()/]
 }
 [/if]

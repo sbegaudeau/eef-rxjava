@@ -79,6 +79,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EEFGenModelReference eEFGenModelReference = (EEFGenModelReference)elt;
 			final EEFGenModelReferencePropertiesEditionPart basePart = (EEFGenModelReferencePropertiesEditionPart)editingPart;
 			// init values
@@ -159,6 +160,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EEFGenModelReferencePropertiesEditionPart basePart = (EEFGenModelReferencePropertiesEditionPart)editingPart;
 			if (EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel))
@@ -175,7 +177,7 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext());
+			EEFGenPackage.eINSTANCE.getEEFGenModelReference_ReferencedContext()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -208,5 +210,8 @@ public class EEFGenModelReferencePropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
+
+
+	
 
 }

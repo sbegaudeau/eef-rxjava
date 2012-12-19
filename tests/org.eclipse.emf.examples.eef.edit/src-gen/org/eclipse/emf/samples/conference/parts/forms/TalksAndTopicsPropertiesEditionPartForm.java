@@ -261,11 +261,11 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		talks.setContentProvider(contentProvider);
 		talks.setInput(settings);
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.TalksAndTopics.talks);
-		if (readOnly && talks.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.TalksAndTopics.talks);
+		if (eefElementEditorReadOnlyState && talks.isEnabled()) {
 			talks.setEnabled(false);
 			talks.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
-		} else if (!readOnly && !talks.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !talks.isEnabled()) {
 			talks.setEnabled(true);
 		}	
 		
@@ -327,11 +327,11 @@ public class TalksAndTopicsPropertiesEditionPartForm extends SectionPropertiesEd
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		topics.setContentProvider(contentProvider);
 		topics.setInput(settings);
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.TalksAndTopics.topics);
-		if (readOnly && topics.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.TalksAndTopics.topics);
+		if (eefElementEditorReadOnlyState && topics.isEnabled()) {
 			topics.setEnabled(false);
 			topics.setToolTipText(ConferenceMessages.TalksAndTopics_ReadOnly);
-		} else if (!readOnly && !topics.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !topics.isEnabled()) {
 			topics.setEnabled(true);
 		}	
 		

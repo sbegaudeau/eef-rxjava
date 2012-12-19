@@ -88,10 +88,11 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final PropertiesMultiEditionElement propertiesMultiEditionElement = (PropertiesMultiEditionElement)elt;
 			final PropertiesMultiEditionElementPropertiesEditionPart basePart = (PropertiesMultiEditionElementPropertiesEditionPart)editingPart;
 			// init values
-			if (propertiesMultiEditionElement.getName() != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name))
+			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesMultiEditionElement.getName()));
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views)) {
@@ -102,26 +103,12 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				modelSettings = new ReferencesTableSettings(propertiesMultiEditionElement, MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model());
 				basePart.initModel(modelSettings);
 			}
-			if (propertiesMultiEditionElement.getHelpID() != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID))
+			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID))
 				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesMultiEditionElement.getHelpID()));
 			
 			// init filters
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views)) {
-				basePart.addFilterToViews(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInViewsTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 				// Start of user code for additional businessfilters for views
 				
@@ -224,9 +211,10 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PropertiesMultiEditionElementPropertiesEditionPart basePart = (PropertiesMultiEditionElementPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name)) {
+			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -237,7 +225,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 				basePart.updateViews();
 			if (MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model().equals(msg.getFeature())  && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model))
 				basePart.updateModel();
-			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID)) {
+			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID)) {
 				if (msg.getNewValue() != null) {
 					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -259,7 +247,7 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(),
 			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(),
 			MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model(),
-			ComponentsPackage.eINSTANCE.getEEFElement_HelpID());
+			ComponentsPackage.eINSTANCE.getEEFElement_HelpID()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -324,5 +312,8 @@ public class PropertiesMultiEditionElementBasePropertiesEditionComponent extends
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -79,6 +79,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)elt;
 			final PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
 			// init values
@@ -159,6 +160,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
 			if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionContext.Binding.model))
@@ -175,7 +177,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model());
+			ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -220,5 +222,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
+
+
+	
 
 }

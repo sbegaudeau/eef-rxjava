@@ -219,6 +219,9 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(name, ViewsViewsRepository.ElementEditor.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.Properties.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -249,6 +252,9 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		});
 		representation.setID(ViewsViewsRepository.ElementEditor.Properties.representation);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.Properties.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRepresentationFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -275,6 +281,9 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(readOnly, ViewsViewsRepository.ElementEditor.Properties.readOnly);
 		EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.Properties.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReadOnlyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -301,6 +310,9 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(nameAsLabel, ViewsViewsRepository.ElementEditor.Properties.nameAsLabel);
 		EditingUtils.setEEFtype(nameAsLabel, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameAsLabelCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -340,6 +352,14 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ElementEditor.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewsMessages.ElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -367,6 +387,14 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		if (current != null) {
 			representation.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ElementEditor.Properties.representation);
+		if (eefElementEditorReadOnlyState && representation.isEnabled()) {
+			representation.setEnabled(false);
+			representation.setToolTipText(ViewsMessages.ElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !representation.isEnabled()) {
+			representation.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -381,6 +409,14 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			representation.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ElementEditor.Properties.representation);
+		if (eefElementEditorReadOnlyState && representation.isEnabled()) {
+			representation.setEnabled(false);
+			representation.setToolTipText(ViewsMessages.ElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !representation.isEnabled()) {
+			representation.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -434,6 +470,14 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			readOnly.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ElementEditor.Properties.readOnly);
+		if (eefElementEditorReadOnlyState && readOnly.isEnabled()) {
+			readOnly.setEnabled(false);
+			readOnly.setToolTipText(ViewsMessages.ElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !readOnly.isEnabled()) {
+			readOnly.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -458,6 +502,14 @@ public class ElementEditorPropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			nameAsLabel.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ElementEditor.Properties.nameAsLabel);
+		if (eefElementEditorReadOnlyState && nameAsLabel.isEnabled()) {
+			nameAsLabel.setEnabled(false);
+			nameAsLabel.setToolTipText(ViewsMessages.ElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !nameAsLabel.isEnabled()) {
+			nameAsLabel.setEnabled(true);
+		}	
+		
 	}
 
 

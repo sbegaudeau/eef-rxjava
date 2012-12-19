@@ -203,11 +203,11 @@ public class ParticipantsPropertiesEditionPartForm extends SectionPropertiesEdit
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		participants.setContentProvider(contentProvider);
 		participants.setInput(settings);
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Participants.participants_);
-		if (readOnly && participants.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Participants.participants_);
+		if (eefElementEditorReadOnlyState && participants.isEnabled()) {
 			participants.setEnabled(false);
 			participants.setToolTipText(ConferenceMessages.Participants_ReadOnly);
-		} else if (!readOnly && !participants.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !participants.isEnabled()) {
 			participants.setEnabled(true);
 		}	
 		

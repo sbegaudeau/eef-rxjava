@@ -375,11 +375,11 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			selectionDialogRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty);
-		if (readOnly && selectionDialogRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty);
+		if (eefElementEditorReadOnlyState && selectionDialogRequiredProperty.isEnabled()) {
 			selectionDialogRequiredProperty.setEnabled(false);
 			selectionDialogRequiredProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
-		} else if (!readOnly && !selectionDialogRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !selectionDialogRequiredProperty.isEnabled()) {
 			selectionDialogRequiredProperty.setEnabled(true);
 		}	
 		
@@ -407,11 +407,11 @@ public class SelectionDialogSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty);
-		if (readOnly && selectionDialogOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty);
+		if (eefElementEditorReadOnlyState && selectionDialogOptionalProperty.isEnabled()) {
 			selectionDialogOptionalProperty.setEnabled(false);
 			selectionDialogOptionalProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
-		} else if (!readOnly && !selectionDialogOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !selectionDialogOptionalProperty.isEnabled()) {
 			selectionDialogOptionalProperty.setEnabled(true);
 		}	
 		

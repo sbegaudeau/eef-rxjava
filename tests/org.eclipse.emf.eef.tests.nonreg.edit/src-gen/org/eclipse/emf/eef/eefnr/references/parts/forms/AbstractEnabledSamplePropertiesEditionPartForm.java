@@ -224,11 +224,11 @@ public class AbstractEnabledSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			enabled.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
-		if (readOnly && enabled.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
+		if (eefElementEditorReadOnlyState && enabled.isEnabled()) {
 			enabled.setEnabled(false);
 			enabled.setToolTipText(ReferencesMessages.AbstractEnabledSample_ReadOnly);
-		} else if (!readOnly && !enabled.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !enabled.isEnabled()) {
 			enabled.setEnabled(true);
 		}	
 		

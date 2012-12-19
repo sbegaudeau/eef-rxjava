@@ -384,11 +384,11 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Site.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Site.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(ConferenceMessages.Site_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		
@@ -416,12 +416,12 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			documentation.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Site.Properties.documentation);
-		if (readOnly && documentation.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Site.Properties.documentation);
+		if (eefElementEditorReadOnlyState && documentation.isEnabled()) {
 			documentation.setEnabled(false);
 			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			documentation.setToolTipText(ConferenceMessages.Site_ReadOnly);
-		} else if (!readOnly && !documentation.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !documentation.isEnabled()) {
 			documentation.setEnabled(true);
 		}	
 		
@@ -440,11 +440,11 @@ public class SitePropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		rooms.setContentProvider(contentProvider);
 		rooms.setInput(settings);
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Site.Properties.rooms);
-		if (readOnly && rooms.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Site.Properties.rooms);
+		if (eefElementEditorReadOnlyState && rooms.isEnabled()) {
 			rooms.setEnabled(false);
 			rooms.setToolTipText(ConferenceMessages.Site_ReadOnly);
-		} else if (!readOnly && !rooms.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !rooms.isEnabled()) {
 			rooms.setEnabled(true);
 		}	
 		

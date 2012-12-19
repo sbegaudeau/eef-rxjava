@@ -213,11 +213,11 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			isVisible.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.Element.Properties.isVisible);
-		if (readOnly && isVisible.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Element.Properties.isVisible);
+		if (eefElementEditorReadOnlyState && isVisible.isEnabled()) {
 			isVisible.setEnabled(false);
 			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
-		} else if (!readOnly && !isVisible.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !isVisible.isEnabled()) {
 			isVisible.setEnabled(true);
 		}	
 		

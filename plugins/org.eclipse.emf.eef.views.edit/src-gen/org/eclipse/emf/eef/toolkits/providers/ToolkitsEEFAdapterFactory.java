@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.toolkits.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
+
 import org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory;
 
 /**
@@ -21,19 +22,19 @@ public class ToolkitsEEFAdapterFactory extends ToolkitsAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory#createToolkitAdapter()
-	 * 
-	 */
-	public Adapter createToolkitAdapter() {
-		return new ToolkitPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory#createWidgetAdapter()
 	 * 
 	 */
 	public Adapter createWidgetAdapter() {
 		return new WidgetPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.toolkits.util.ToolkitsAdapterFactory#createToolkitAdapter()
+	 * 
+	 */
+	public Adapter createToolkitAdapter() {
+		return new ToolkitPropertiesEditionProvider();
 	}
 
 }

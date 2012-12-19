@@ -217,11 +217,11 @@ public class SmartNavigationSampleOnglet2PropertiesEditionPartForm extends Secti
 		if (current != null) {
 			secondModelNavigationSingleValueOnglet2.setSelection(new StructuredSelection(settings.getValue()));
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2);
-		if (readOnly && secondModelNavigationSingleValueOnglet2.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2);
+		if (eefElementEditorReadOnlyState && secondModelNavigationSingleValueOnglet2.isEnabled()) {
 			secondModelNavigationSingleValueOnglet2.setEnabled(false);
 			secondModelNavigationSingleValueOnglet2.setToolTipText(NavigationMessages.SmartNavigationSampleOnglet2_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationSingleValueOnglet2.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationSingleValueOnglet2.isEnabled()) {
 			secondModelNavigationSingleValueOnglet2.setEnabled(true);
 		}	
 		
@@ -239,11 +239,11 @@ public class SmartNavigationSampleOnglet2PropertiesEditionPartForm extends Secti
 		} else {
 			secondModelNavigationSingleValueOnglet2.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2);
-		if (readOnly && secondModelNavigationSingleValueOnglet2.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSampleOnglet2.Properties.secondModelNavigationSingleValueOnglet2);
+		if (eefElementEditorReadOnlyState && secondModelNavigationSingleValueOnglet2.isEnabled()) {
 			secondModelNavigationSingleValueOnglet2.setEnabled(false);
 			secondModelNavigationSingleValueOnglet2.setToolTipText(NavigationMessages.SmartNavigationSampleOnglet2_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationSingleValueOnglet2.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationSingleValueOnglet2.isEnabled()) {
 			secondModelNavigationSingleValueOnglet2.setEnabled(true);
 		}	
 		

@@ -760,11 +760,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		
@@ -792,11 +792,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			firstModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationSingleValueSettings().getOrCreateSignificantObject());
-		if (readOnly && firstModelNavigationSingleValue.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationSingleValueSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && firstModelNavigationSingleValue.isEnabled()) {
 			firstModelNavigationSingleValue.setEnabled(false);
 			firstModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !firstModelNavigationSingleValue.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !firstModelNavigationSingleValue.isEnabled()) {
 			firstModelNavigationSingleValue.setEnabled(true);
 		}	
 		
@@ -824,11 +824,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			secondModelNavigationSingleValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
-		if (readOnly && secondModelNavigationSingleValue.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && secondModelNavigationSingleValue.isEnabled()) {
 			secondModelNavigationSingleValue.setEnabled(false);
 			secondModelNavigationSingleValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationSingleValue.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationSingleValue.isEnabled()) {
 			secondModelNavigationSingleValue.setEnabled(true);
 		}	
 		
@@ -856,11 +856,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			firstModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationMultiValueSettings().getOrCreateSignificantObject());
-		if (readOnly && firstModelNavigationMultiValue.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getFirstModelNavigationMultiValueSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && firstModelNavigationMultiValue.isEnabled()) {
 			firstModelNavigationMultiValue.setEnabled(false);
 			firstModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !firstModelNavigationMultiValue.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !firstModelNavigationMultiValue.isEnabled()) {
 			firstModelNavigationMultiValue.setEnabled(true);
 		}	
 		
@@ -888,11 +888,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			secondModelNavigationMultiValue.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
-		if (readOnly && secondModelNavigationMultiValue.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNSingleValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && secondModelNavigationMultiValue.isEnabled()) {
 			secondModelNavigationMultiValue.setEnabled(false);
 			secondModelNavigationMultiValue.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationMultiValue.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationMultiValue.isEnabled()) {
 			secondModelNavigationMultiValue.setEnabled(true);
 		}	
 		
@@ -920,11 +920,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			secondModelNavigationSingleValue2.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
-		if (readOnly && secondModelNavigationSingleValue2.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNSingleValueSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && secondModelNavigationSingleValue2.isEnabled()) {
 			secondModelNavigationSingleValue2.setEnabled(false);
 			secondModelNavigationSingleValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationSingleValue2.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationSingleValue2.isEnabled()) {
 			secondModelNavigationSingleValue2.setEnabled(true);
 		}	
 		
@@ -952,11 +952,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			secondModelNavigationMultiValue2.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
-		if (readOnly && secondModelNavigationMultiValue2.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && secondModelNavigationMultiValue2.isEnabled()) {
 			secondModelNavigationMultiValue2.setEnabled(false);
 			secondModelNavigationMultiValue2.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationMultiValue2.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationMultiValue2.isEnabled()) {
 			secondModelNavigationMultiValue2.setEnabled(true);
 		}	
 		
@@ -984,11 +984,11 @@ public class SmartNavigationSamplePropertiesEditionPartForm extends SectionPrope
 		} else {
 			secondModelNavigationMultiValueFilter.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings().getOrCreateSignificantObject());
-		if (readOnly && secondModelNavigationMultiValueFilter.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter, ((SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && secondModelNavigationMultiValueFilter.isEnabled()) {
 			secondModelNavigationMultiValueFilter.setEnabled(false);
 			secondModelNavigationMultiValueFilter.setToolTipText(NavigationMessages.SmartNavigationSample_ReadOnly);
-		} else if (!readOnly && !secondModelNavigationMultiValueFilter.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !secondModelNavigationMultiValueFilter.isEnabled()) {
 			secondModelNavigationMultiValueFilter.setEnabled(true);
 		}	
 		

@@ -333,11 +333,11 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionRequiredProperty.setContentProvider(contentProvider);
 		advancedtablecompositionRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty);
-		if (readOnly && advancedtablecompositionRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionRequiredProperty);
+		if (eefElementEditorReadOnlyState && advancedtablecompositionRequiredProperty.isEnabled()) {
 			advancedtablecompositionRequiredProperty.setEnabled(false);
 			advancedtablecompositionRequiredProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
-		} else if (!readOnly && !advancedtablecompositionRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !advancedtablecompositionRequiredProperty.isEnabled()) {
 			advancedtablecompositionRequiredProperty.setEnabled(true);
 		}	
 		
@@ -399,11 +399,11 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionPartImpl exten
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedtablecompositionOptionalProperty.setContentProvider(contentProvider);
 		advancedtablecompositionOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty);
-		if (readOnly && advancedtablecompositionOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedTableCompositionEditorSample.Properties.advancedtablecompositionOptionalProperty);
+		if (eefElementEditorReadOnlyState && advancedtablecompositionOptionalProperty.isEnabled()) {
 			advancedtablecompositionOptionalProperty.setEnabled(false);
 			advancedtablecompositionOptionalProperty.setToolTipText(EefnrMessages.AdvancedTableCompositionEditorSample_ReadOnly);
-		} else if (!readOnly && !advancedtablecompositionOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !advancedtablecompositionOptionalProperty.isEnabled()) {
 			advancedtablecompositionOptionalProperty.setEnabled(true);
 		}	
 		

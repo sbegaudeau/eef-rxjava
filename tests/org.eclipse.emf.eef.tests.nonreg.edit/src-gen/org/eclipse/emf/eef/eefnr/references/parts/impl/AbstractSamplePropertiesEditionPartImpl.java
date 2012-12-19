@@ -215,11 +215,11 @@ public class AbstractSamplePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ReferencesViewsRepository.AbstractSample.NameProperties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ReferencesViewsRepository.AbstractSample.NameProperties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(ReferencesMessages.AbstractSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		

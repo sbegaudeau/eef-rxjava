@@ -448,11 +448,11 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		
@@ -471,15 +471,15 @@ public class DeferedReferencesTableSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencesTableSampleEditor.setContentProvider(contentProvider);
 		referencesTableSampleEditor.setInput(settings);
-		boolean readOnly = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
-		if (readOnly && referencesTableSampleEditor.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
+		if (eefElementEditorReadOnlyState && referencesTableSampleEditor.getTable().isEnabled()) {
 			referencesTableSampleEditor.getTable().setEnabled(false);
 			referencesTableSampleEditor.getTable().setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
 			addReferencesTableSampleEditor.setEnabled(false);
 			addReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
 			removeReferencesTableSampleEditor.setEnabled(false);
 			removeReferencesTableSampleEditor.setToolTipText(NavigationMessages.DeferedReferencesTableSample_ReadOnly);
-		} else if (!readOnly && !referencesTableSampleEditor.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !referencesTableSampleEditor.getTable().isEnabled()) {
 			referencesTableSampleEditor.getTable().setEnabled(true);
 			addReferencesTableSampleEditor.setEnabled(true);
 			removeReferencesTableSampleEditor.setEnabled(true);

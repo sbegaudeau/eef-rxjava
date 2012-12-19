@@ -11,64 +11,86 @@
 package org.eclipse.emf.eef.components.parts.forms;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
+
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.graphics.Image;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
-
 
 // End of user code
 
@@ -247,6 +269,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		EditingUtils.setID(name, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -312,6 +337,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		EditingUtils.setID(helpID, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID);
 		EditingUtils.setEEFtype(helpID, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createHelpIDText
+
+		// End of user code
 		return parent;
 	}
 
@@ -349,6 +377,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		EditingUtils.setID(model.getTable(), ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
 		EditingUtils.setEEFtype(model.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
 		createModelControlPanel(parent, widgetFactory);
+		// Start of user code for createModelReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -366,26 +397,28 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table model s columns definition
-		TableColumn name = new TableColumn(table, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
+				TableColumn name = new TableColumn(table, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
+		
 		// End of user code
 
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
 
 			// Start of user code for table model label provider
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
 			
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
+			
 			// End of user code
 
 			public Image getColumnImage(Object element, int columnIndex) {
@@ -455,6 +488,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		});
 		EditingUtils.setID(removeModel, ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
 		EditingUtils.setEEFtype(removeModel, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+		// Start of user code for createModelControlPanel
+
+		// End of user code
 	}
 
 	/**
@@ -471,6 +507,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 			}
 
 		};
+		// Start of user code for addModel
+
+		// End of user code
 		dialog.open();
 		model.refresh();
 	}
@@ -515,6 +554,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		this.views.disableMove();
 		views.setID(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views);
 		views.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		// Start of user code for createViewsReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -577,7 +619,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		// Nothing to do
+		
 		// End of user code
 	}
 
@@ -603,6 +645,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -627,6 +677,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		} else {
 			helpID.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID);
+		if (eefElementEditorReadOnlyState && helpID.isEnabled()) {
+			helpID.setEnabled(false);
+			helpID.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !helpID.isEnabled()) {
+			helpID.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -642,6 +700,20 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		model.setContentProvider(contentProvider);
 		model.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
+		if (eefElementEditorReadOnlyState && model.getTable().isEnabled()) {
+			model.getTable().setEnabled(false);
+			model.getTable().setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+			addModel.setEnabled(false);
+			addModel.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+			removeModel.setEnabled(false);
+			removeModel.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.getTable().isEnabled()) {
+			model.getTable().setEnabled(true);
+			addModel.setEnabled(true);
+			removeModel.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -697,6 +769,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		views.setContentProvider(contentProvider);
 		views.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views);
+		if (eefElementEditorReadOnlyState && views.getTable().isEnabled()) {
+			views.setEnabled(false);
+			views.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !views.getTable().isEnabled()) {
+			views.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -755,7 +835,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartForm extends Sect
 	}
 
 	// Start of user code additional methods
- 	
+	
 	// End of user code
 
 

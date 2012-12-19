@@ -394,11 +394,11 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerSingleRequiredProperty(EObject newValue) {
 		singlecompositionviewerSingleRequiredProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty);
-		if (readOnly && singlecompositionviewerSingleRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerSingleRequiredProperty.isEnabled()) {
 			singlecompositionviewerSingleRequiredProperty.setEnabled(false);
 			singlecompositionviewerSingleRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerSingleRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerSingleRequiredProperty.isEnabled()) {
 			singlecompositionviewerSingleRequiredProperty.setEnabled(true);
 		}	
 		
@@ -446,11 +446,11 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerSingleOptionalProperty(EObject newValue) {
 		singlecompositionviewerSingleOptionalProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty);
-		if (readOnly && singlecompositionviewerSingleOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerSingleOptionalProperty.isEnabled()) {
 			singlecompositionviewerSingleOptionalProperty.setEnabled(false);
 			singlecompositionviewerSingleOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerSingleOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerSingleOptionalProperty.isEnabled()) {
 			singlecompositionviewerSingleOptionalProperty.setEnabled(true);
 		}	
 		
@@ -498,11 +498,11 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerMultiRequiredProperty(EObject newValue) {
 		singlecompositionviewerMultiRequiredProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty);
-		if (readOnly && singlecompositionviewerMultiRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerMultiRequiredProperty.isEnabled()) {
 			singlecompositionviewerMultiRequiredProperty.setEnabled(false);
 			singlecompositionviewerMultiRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerMultiRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerMultiRequiredProperty.isEnabled()) {
 			singlecompositionviewerMultiRequiredProperty.setEnabled(true);
 		}	
 		
@@ -550,11 +550,11 @@ public class SingleCompositionViewerSamplePropertiesEditionPartForm extends Sect
 	 */
 	public void setSinglecompositionviewerMultiOptionalProperty(EObject newValue) {
 		singlecompositionviewerMultiOptionalProperty.update(newValue);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty);
-		if (readOnly && singlecompositionviewerMultiOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerMultiOptionalProperty.isEnabled()) {
 			singlecompositionviewerMultiOptionalProperty.setEnabled(false);
 			singlecompositionviewerMultiOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
-		} else if (!readOnly && !singlecompositionviewerMultiOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerMultiOptionalProperty.isEnabled()) {
 			singlecompositionviewerMultiOptionalProperty.setEnabled(true);
 		}	
 		

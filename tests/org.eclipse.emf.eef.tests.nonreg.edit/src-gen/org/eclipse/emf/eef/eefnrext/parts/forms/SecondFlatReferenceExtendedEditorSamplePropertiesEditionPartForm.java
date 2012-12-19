@@ -319,11 +319,11 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		} else {
 			demo.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
-		if (readOnly && demo.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
+		if (eefElementEditorReadOnlyState && demo.isEnabled()) {
 			demo.setEnabled(false);
 			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
-		} else if (!readOnly && !demo.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !demo.isEnabled()) {
 			demo.setEnabled(true);
 		}	
 		
@@ -351,11 +351,11 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartForm ex
 		} else {
 			size.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
-		if (readOnly && size.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
+		if (eefElementEditorReadOnlyState && size.isEnabled()) {
 			size.setEnabled(false);
 			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
-		} else if (!readOnly && !size.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !size.isEnabled()) {
 			size.setEnabled(true);
 		}	
 		

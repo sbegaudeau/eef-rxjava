@@ -267,11 +267,11 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	public void initEmfcomboviewerRequiredProperty(Object input, Enumerator current) {
 		emfcomboviewerRequiredProperty.setInput(input);
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
-		if (readOnly && emfcomboviewerRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerRequiredProperty.isEnabled()) {
 			emfcomboviewerRequiredProperty.setEnabled(false);
 			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
-		} else if (!readOnly && !emfcomboviewerRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerRequiredProperty.isEnabled()) {
 			emfcomboviewerRequiredProperty.setEnabled(true);
 		}	
 		
@@ -285,11 +285,11 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
-		if (readOnly && emfcomboviewerRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerRequiredProperty.isEnabled()) {
 			emfcomboviewerRequiredProperty.setEnabled(false);
 			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
-		} else if (!readOnly && !emfcomboviewerRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerRequiredProperty.isEnabled()) {
 			emfcomboviewerRequiredProperty.setEnabled(true);
 		}	
 		
@@ -314,11 +314,11 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	public void initEmfcomboviewerOptionalProperty(Object input, Enumerator current) {
 		emfcomboviewerOptionalProperty.setInput(input);
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
-		if (readOnly && emfcomboviewerOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerOptionalProperty.isEnabled()) {
 			emfcomboviewerOptionalProperty.setEnabled(false);
 			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
-		} else if (!readOnly && !emfcomboviewerOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerOptionalProperty.isEnabled()) {
 			emfcomboviewerOptionalProperty.setEnabled(true);
 		}	
 		
@@ -332,11 +332,11 @@ public class EMFComboViewerSamplePropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
-		if (readOnly && emfcomboviewerOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerOptionalProperty.isEnabled()) {
 			emfcomboviewerOptionalProperty.setEnabled(false);
 			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
-		} else if (!readOnly && !emfcomboviewerOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerOptionalProperty.isEnabled()) {
 			emfcomboviewerOptionalProperty.setEnabled(true);
 		}	
 		

@@ -83,6 +83,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final View view = (View)elt;
 			final ViewPropertiesEditionPart basePart = (ViewPropertiesEditionPart)editingPart;
 			// init values
@@ -93,7 +94,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 				// set the button mode
 				basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (view.getName() != null && isAccessible(ViewsViewsRepository.View.Properties.name))
+			if (isAccessible(ViewsViewsRepository.View.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, view.getName()));
 			
 			if (isAccessible(ViewsViewsRepository.View.Properties.explicit)) {
@@ -185,18 +186,19 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ViewPropertiesEditionPart basePart = (ViewPropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.representation))
 				basePart.setRepresentation((EObject)msg.getNewValue());
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.explicit))
+			if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.explicit))
 				basePart.setExplicit((Boolean)msg.getNewValue());
 			
 			
@@ -213,7 +215,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ViewsPackage.eINSTANCE.getViewElement_Representation(),
 			ViewsPackage.eINSTANCE.getViewElement_Name(),
-			ViewsPackage.eINSTANCE.getView_Explicit());
+			ViewsPackage.eINSTANCE.getView_Explicit()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -276,5 +278,8 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		return ret;
 	}
+
+
+	
 
 }

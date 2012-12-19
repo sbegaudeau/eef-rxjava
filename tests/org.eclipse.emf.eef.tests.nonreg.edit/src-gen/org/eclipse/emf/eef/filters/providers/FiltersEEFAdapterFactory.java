@@ -24,11 +24,11 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample2Adapter()
 	 * 
 	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
+	public Adapter createConcreteReferenceTargetSample2Adapter() {
+		return new ConcreteReferenceTargetSample2PropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -48,11 +48,11 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample2Adapter()
+	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractSampleAdapter()
 	 * 
 	 */
-	public Adapter createConcreteReferenceTargetSample2Adapter() {
-		return new ConcreteReferenceTargetSample2PropertiesEditionProvider();
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
 	}
 
 }

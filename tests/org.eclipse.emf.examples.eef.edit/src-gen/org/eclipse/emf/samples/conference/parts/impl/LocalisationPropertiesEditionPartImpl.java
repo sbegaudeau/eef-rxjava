@@ -267,11 +267,11 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			place.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Localisation.place);
-		if (readOnly && place.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Localisation.place);
+		if (eefElementEditorReadOnlyState && place.isEnabled()) {
 			place.setEnabled(false);
 			place.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
-		} else if (!readOnly && !place.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !place.isEnabled()) {
 			place.setEnabled(true);
 		}	
 		
@@ -290,11 +290,11 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		sites.setContentProvider(contentProvider);
 		sites.setInput(settings);
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Localisation.sites);
-		if (readOnly && sites.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Localisation.sites);
+		if (eefElementEditorReadOnlyState && sites.isEnabled()) {
 			sites.setEnabled(false);
 			sites.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
-		} else if (!readOnly && !sites.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !sites.isEnabled()) {
 			sites.setEnabled(true);
 		}	
 		

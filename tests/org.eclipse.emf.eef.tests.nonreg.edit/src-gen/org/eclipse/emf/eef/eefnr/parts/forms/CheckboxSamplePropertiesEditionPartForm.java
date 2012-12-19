@@ -273,11 +273,11 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxRequiredProperty.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
-		if (readOnly && checkboxRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
+		if (eefElementEditorReadOnlyState && checkboxRequiredProperty.isEnabled()) {
 			checkboxRequiredProperty.setEnabled(false);
 			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
-		} else if (!readOnly && !checkboxRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !checkboxRequiredProperty.isEnabled()) {
 			checkboxRequiredProperty.setEnabled(true);
 		}	
 		
@@ -305,11 +305,11 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxOptionalProperty.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
-		if (readOnly && checkboxOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
+		if (eefElementEditorReadOnlyState && checkboxOptionalProperty.isEnabled()) {
 			checkboxOptionalProperty.setEnabled(false);
 			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
-		} else if (!readOnly && !checkboxOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !checkboxOptionalProperty.isEnabled()) {
 			checkboxOptionalProperty.setEnabled(true);
 		}	
 		

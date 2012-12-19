@@ -319,11 +319,11 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Room.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Room.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(ConferenceMessages.Room_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		
@@ -351,11 +351,11 @@ public class RoomPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			capacity.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Room.Properties.capacity);
-		if (readOnly && capacity.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Room.Properties.capacity);
+		if (eefElementEditorReadOnlyState && capacity.isEnabled()) {
 			capacity.setEnabled(false);
 			capacity.setToolTipText(ConferenceMessages.Room_ReadOnly);
-		} else if (!readOnly && !capacity.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !capacity.isEnabled()) {
 			capacity.setEnabled(true);
 		}	
 		

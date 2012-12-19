@@ -215,11 +215,11 @@ public class ConcreteReferenceTargetSample2PropertiesEditionPartImpl extends Com
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.ConcreteReferenceTargetSample2.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(FiltersMessages.ConcreteReferenceTargetSample2_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		

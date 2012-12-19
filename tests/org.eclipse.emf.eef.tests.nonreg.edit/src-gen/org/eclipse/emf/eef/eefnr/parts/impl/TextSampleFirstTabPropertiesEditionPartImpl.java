@@ -269,11 +269,11 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			textRequiredPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
-		if (readOnly && textRequiredPropertyInFirstTab.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
+		if (eefElementEditorReadOnlyState && textRequiredPropertyInFirstTab.isEnabled()) {
 			textRequiredPropertyInFirstTab.setEnabled(false);
 			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
-		} else if (!readOnly && !textRequiredPropertyInFirstTab.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !textRequiredPropertyInFirstTab.isEnabled()) {
 			textRequiredPropertyInFirstTab.setEnabled(true);
 		}	
 		
@@ -301,11 +301,11 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			textOptionalPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
-		if (readOnly && textOptionalPropertyInFirstTab.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
+		if (eefElementEditorReadOnlyState && textOptionalPropertyInFirstTab.isEnabled()) {
 			textOptionalPropertyInFirstTab.setEnabled(false);
 			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
-		} else if (!readOnly && !textOptionalPropertyInFirstTab.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !textOptionalPropertyInFirstTab.isEnabled()) {
 			textOptionalPropertyInFirstTab.setEnabled(true);
 		}	
 		

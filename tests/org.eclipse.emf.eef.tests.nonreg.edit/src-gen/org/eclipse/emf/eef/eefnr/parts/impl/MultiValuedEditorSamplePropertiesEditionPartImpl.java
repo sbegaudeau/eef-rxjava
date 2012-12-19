@@ -322,11 +322,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		} else {
 			multivaluededitorRequiredProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
-		if (readOnly && multivaluededitorRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty);
+		if (eefElementEditorReadOnlyState && multivaluededitorRequiredProperty.isEnabled()) {
 			multivaluededitorRequiredProperty.setEnabled(false);
 			multivaluededitorRequiredProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
-		} else if (!readOnly && !multivaluededitorRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !multivaluededitorRequiredProperty.isEnabled()) {
 			multivaluededitorRequiredProperty.setEnabled(true);
 		}	
 		
@@ -373,11 +373,11 @@ public class MultiValuedEditorSamplePropertiesEditionPartImpl extends CompositeP
 		} else {
 			multivaluededitorOptionalProperty.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
-		if (readOnly && multivaluededitorOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty);
+		if (eefElementEditorReadOnlyState && multivaluededitorOptionalProperty.isEnabled()) {
 			multivaluededitorOptionalProperty.setEnabled(false);
 			multivaluededitorOptionalProperty.setToolTipText(EefnrMessages.MultiValuedEditorSample_ReadOnly);
-		} else if (!readOnly && !multivaluededitorOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !multivaluededitorOptionalProperty.isEnabled()) {
 			multivaluededitorOptionalProperty.setEnabled(true);
 		}	
 		

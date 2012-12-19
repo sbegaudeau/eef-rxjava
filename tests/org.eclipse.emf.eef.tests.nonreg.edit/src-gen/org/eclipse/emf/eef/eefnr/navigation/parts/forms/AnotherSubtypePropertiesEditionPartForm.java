@@ -233,11 +233,11 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			anotherSpecialisationElement.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
-		if (readOnly && anotherSpecialisationElement.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
+		if (eefElementEditorReadOnlyState && anotherSpecialisationElement.isEnabled()) {
 			anotherSpecialisationElement.setEnabled(false);
 			anotherSpecialisationElement.setToolTipText(NavigationMessages.AnotherSubtype_ReadOnly);
-		} else if (!readOnly && !anotherSpecialisationElement.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !anotherSpecialisationElement.isEnabled()) {
 			anotherSpecialisationElement.setEnabled(true);
 		}	
 		

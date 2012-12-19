@@ -387,11 +387,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
-		if (readOnly && name.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
 			name.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
 		
@@ -410,11 +410,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		abstractTarget.setContentProvider(contentProvider);
 		abstractTarget.setInput(settings);
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget);
-		if (readOnly && abstractTarget.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget);
+		if (eefElementEditorReadOnlyState && abstractTarget.getTable().isEnabled()) {
 			abstractTarget.setEnabled(false);
 			abstractTarget.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		} else if (!readOnly && !abstractTarget.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !abstractTarget.getTable().isEnabled()) {
 			abstractTarget.setEnabled(true);
 		}
 		
@@ -473,11 +473,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		strictTyping.setContentProvider(contentProvider);
 		strictTyping.setInput(settings);
-		boolean readOnly = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
-		if (readOnly && strictTyping.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping);
+		if (eefElementEditorReadOnlyState && strictTyping.isEnabled()) {
 			strictTyping.setEnabled(false);
 			strictTyping.setToolTipText(FiltersMessages.ConcreteReferenceOwnerSample_ReadOnly);
-		} else if (!readOnly && !strictTyping.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !strictTyping.isEnabled()) {
 			strictTyping.setEnabled(true);
 		}	
 		

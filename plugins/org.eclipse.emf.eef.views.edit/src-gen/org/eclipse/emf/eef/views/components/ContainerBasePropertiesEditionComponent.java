@@ -83,6 +83,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Container container = (Container)elt;
 			final ContainerPropertiesEditionPart basePart = (ContainerPropertiesEditionPart)editingPart;
 			// init values
@@ -93,7 +94,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 				// set the button mode
 				basePart.setRepresentationButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (container.getName() != null && isAccessible(ViewsViewsRepository.Container.Properties.name))
+			if (isAccessible(ViewsViewsRepository.Container.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, container.getName()));
 			
 			// init filters
@@ -174,11 +175,12 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ContainerPropertiesEditionPart basePart = (ContainerPropertiesEditionPart)editingPart;
 			if (ViewsPackage.eINSTANCE.getViewElement_Representation().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.Container.Properties.representation))
 				basePart.setRepresentation((EObject)msg.getNewValue());
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.Container.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.Container.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -198,7 +200,7 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ViewsPackage.eINSTANCE.getViewElement_Representation(),
-			ViewsPackage.eINSTANCE.getViewElement_Name());
+			ViewsPackage.eINSTANCE.getViewElement_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -252,5 +254,8 @@ public class ContainerBasePropertiesEditionComponent extends SinglePartPropertie
 		}
 		return ret;
 	}
+
+
+	
 
 }

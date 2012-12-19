@@ -319,11 +319,11 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			description.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Topic.Properties.description);
-		if (readOnly && description.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Topic.Properties.description);
+		if (eefElementEditorReadOnlyState && description.isEnabled()) {
 			description.setEnabled(false);
 			description.setToolTipText(ConferenceMessages.Topic_ReadOnly);
-		} else if (!readOnly && !description.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !description.isEnabled()) {
 			description.setEnabled(true);
 		}	
 		
@@ -352,11 +352,11 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			references.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Topic.Properties.references);
-		if (readOnly && references.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Topic.Properties.references);
+		if (eefElementEditorReadOnlyState && references.isEnabled()) {
 			references.setEnabled(false);
 			references.setToolTipText(ConferenceMessages.Topic_ReadOnly);
-		} else if (!readOnly && !references.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !references.isEnabled()) {
 			references.setEnabled(true);
 		}	
 		
@@ -402,12 +402,12 @@ public class TopicPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			documentation.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Topic.Properties.documentation);
-		if (readOnly && documentation.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Topic.Properties.documentation);
+		if (eefElementEditorReadOnlyState && documentation.isEnabled()) {
 			documentation.setEnabled(false);
 			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			documentation.setToolTipText(ConferenceMessages.Topic_ReadOnly);
-		} else if (!readOnly && !documentation.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !documentation.isEnabled()) {
 			documentation.setEnabled(true);
 		}	
 		

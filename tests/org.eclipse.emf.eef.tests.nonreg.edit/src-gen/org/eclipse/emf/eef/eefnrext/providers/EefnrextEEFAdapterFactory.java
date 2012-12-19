@@ -29,19 +29,13 @@ public class EefnrextEEFAdapterFactory extends EefnrextAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createAbstractSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createFlatReferenceExtendedEditorSampleAdapter()
 	 * 
 	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createTableCompositionTargetExtensionEditorSampleAdapter()
-	 * 
-	 */
-	public Adapter createTableCompositionTargetExtensionEditorSampleAdapter() {
-		return new TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider();
+	public Adapter createFlatReferenceExtendedEditorSampleAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createCheckBoxExtendedEditorSampleAdapter());
+		return new FlatReferenceExtendedEditorSamplePropertiesEditionProvider(providers);
 	}
 	/**
 	 * {@inheritDoc}
@@ -55,13 +49,19 @@ public class EefnrextEEFAdapterFactory extends EefnrextAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createFlatReferenceExtendedEditorSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createTableCompositionTargetExtensionEditorSampleAdapter()
 	 * 
 	 */
-	public Adapter createFlatReferenceExtendedEditorSampleAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createCheckBoxExtendedEditorSampleAdapter());
-		return new FlatReferenceExtendedEditorSamplePropertiesEditionProvider(providers);
+	public Adapter createTableCompositionTargetExtensionEditorSampleAdapter() {
+		return new TableCompositionTargetExtensionEditorSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnrext.util.EefnrextAdapterFactory#createAbstractSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
 	}
 
 }

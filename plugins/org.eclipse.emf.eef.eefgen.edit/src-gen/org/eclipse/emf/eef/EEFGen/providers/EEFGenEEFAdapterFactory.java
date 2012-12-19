@@ -30,19 +30,19 @@ public class EEFGenEEFAdapterFactory extends EEFGenAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createEEFGenModelReferenceAdapter()
-	 * 
-	 */
-	public Adapter createEEFGenModelReferenceAdapter() {
-		return new EEFGenModelReferencePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createEEFGenModelAdapter()
 	 * 
 	 */
 	public Adapter createEEFGenModelAdapter() {
 		return new EEFGenModelPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.EEFGen.util.EEFGenAdapterFactory#createEEFGenModelReferenceAdapter()
+	 * 
+	 */
+	public Adapter createEEFGenModelReferenceAdapter() {
+		return new EEFGenModelReferencePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

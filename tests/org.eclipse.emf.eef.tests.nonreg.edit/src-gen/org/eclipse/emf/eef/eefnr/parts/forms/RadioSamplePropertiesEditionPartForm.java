@@ -268,11 +268,11 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioRequiredProperty(Object newValue) {
 		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
-		if (readOnly && radioRequiredPropertyRadioViewer.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
+		if (eefElementEditorReadOnlyState && radioRequiredPropertyRadioViewer.isEnabled()) {
 			radioRequiredPropertyRadioViewer.setEnabled(false);
 			radioRequiredPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
-		} else if (!readOnly && !radioRequiredPropertyRadioViewer.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !radioRequiredPropertyRadioViewer.isEnabled()) {
 			radioRequiredPropertyRadioViewer.setEnabled(true);
 		}
 		
@@ -310,11 +310,11 @@ public class RadioSamplePropertiesEditionPartForm extends SectionPropertiesEditi
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
-		if (readOnly && radioOptionalPropertyRadioViewer.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
+		if (eefElementEditorReadOnlyState && radioOptionalPropertyRadioViewer.isEnabled()) {
 			radioOptionalPropertyRadioViewer.setEnabled(false);
 			radioOptionalPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
-		} else if (!readOnly && !radioOptionalPropertyRadioViewer.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !radioOptionalPropertyRadioViewer.isEnabled()) {
 			radioOptionalPropertyRadioViewer.setEnabled(true);
 		}
 		

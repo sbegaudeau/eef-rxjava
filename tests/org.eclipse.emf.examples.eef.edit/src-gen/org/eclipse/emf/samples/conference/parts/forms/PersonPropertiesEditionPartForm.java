@@ -534,11 +534,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			firstname.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.firstname);
-		if (readOnly && firstname.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.firstname);
+		if (eefElementEditorReadOnlyState && firstname.isEnabled()) {
 			firstname.setEnabled(false);
 			firstname.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !firstname.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !firstname.isEnabled()) {
 			firstname.setEnabled(true);
 		}	
 		
@@ -566,11 +566,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			lastname.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.lastname);
-		if (readOnly && lastname.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.lastname);
+		if (eefElementEditorReadOnlyState && lastname.isEnabled()) {
 			lastname.setEnabled(false);
 			lastname.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !lastname.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !lastname.isEnabled()) {
 			lastname.setEnabled(true);
 		}	
 		
@@ -598,11 +598,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			age.setText(""); //$NON-NLS-1$
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.age);
-		if (readOnly && age.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.age);
+		if (eefElementEditorReadOnlyState && age.isEnabled()) {
 			age.setEnabled(false);
 			age.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !age.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !age.isEnabled()) {
 			age.setEnabled(true);
 		}	
 		
@@ -627,11 +627,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	public void initGender(Object input, Enumerator current) {
 		gender.setInput(input);
 		gender.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
-		if (readOnly && gender.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
+		if (eefElementEditorReadOnlyState && gender.isEnabled()) {
 			gender.setEnabled(false);
 			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !gender.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !gender.isEnabled()) {
 			gender.setEnabled(true);
 		}	
 		
@@ -645,11 +645,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	 */
 	public void setGender(Enumerator newValue) {
 		gender.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
-		if (readOnly && gender.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
+		if (eefElementEditorReadOnlyState && gender.isEnabled()) {
 			gender.setEnabled(false);
 			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !gender.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !gender.isEnabled()) {
 			gender.setEnabled(true);
 		}	
 		
@@ -677,11 +677,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			eclipseCommiter.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter);
-		if (readOnly && eclipseCommiter.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter);
+		if (eefElementEditorReadOnlyState && eclipseCommiter.isEnabled()) {
 			eclipseCommiter.setEnabled(false);
 			eclipseCommiter.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !eclipseCommiter.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !eclipseCommiter.isEnabled()) {
 			eclipseCommiter.setEnabled(true);
 		}	
 		
@@ -709,11 +709,11 @@ public class PersonPropertiesEditionPartForm extends SectionPropertiesEditingPar
 		} else {
 			isRegistered.setSelection(false);
 		}
-		boolean readOnly = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.isRegistered);
-		if (readOnly && isRegistered.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.isRegistered);
+		if (eefElementEditorReadOnlyState && isRegistered.isEnabled()) {
 			isRegistered.setEnabled(false);
 			isRegistered.setToolTipText(ConferenceMessages.Person_ReadOnly);
-		} else if (!readOnly && !isRegistered.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !isRegistered.isEnabled()) {
 			isRegistered.setEnabled(true);
 		}	
 		

@@ -161,6 +161,9 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 		EditingUtils.setID(name, ToolkitsViewsRepository.Toolkit.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ToolkitsViewsRepository.Toolkit.Properties.name, ToolkitsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -199,6 +202,14 @@ public class ToolkitPropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ToolkitsViewsRepository.Toolkit.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ToolkitsMessages.Toolkit_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

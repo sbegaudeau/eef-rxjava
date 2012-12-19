@@ -169,6 +169,9 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		EditingUtils.setID(name, ViewsViewsRepository.CustomElementEditor.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -196,6 +199,9 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		EditingUtils.setID(readOnly, ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
 		EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReadOnlyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -234,6 +240,14 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.CustomElementEditor.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewsMessages.CustomElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -258,6 +272,14 @@ public class CustomElementEditorPropertiesEditionPartImpl extends CompositePrope
 		} else {
 			readOnly.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
+		if (eefElementEditorReadOnlyState && readOnly.isEnabled()) {
+			readOnly.setEnabled(false);
+			readOnly.setToolTipText(ViewsMessages.CustomElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !readOnly.isEnabled()) {
+			readOnly.setEnabled(true);
+		}	
+		
 	}
 
 

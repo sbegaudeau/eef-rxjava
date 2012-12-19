@@ -731,8 +731,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionRequiredProperty.setContentProvider(contentProvider);
 		tablecompositionRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
-		if (readOnly && tablecompositionRequiredProperty.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionRequiredProperty);
+		if (eefElementEditorReadOnlyState && tablecompositionRequiredProperty.getTable().isEnabled()) {
 			tablecompositionRequiredProperty.getTable().setEnabled(false);
 			tablecompositionRequiredProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 			addTablecompositionRequiredProperty.setEnabled(false);
@@ -741,7 +741,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			removeTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 			editTablecompositionRequiredProperty.setEnabled(false);
 			editTablecompositionRequiredProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
-		} else if (!readOnly && !tablecompositionRequiredProperty.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !tablecompositionRequiredProperty.getTable().isEnabled()) {
 			tablecompositionRequiredProperty.getTable().setEnabled(true);
 			addTablecompositionRequiredProperty.setEnabled(true);
 			removeTablecompositionRequiredProperty.setEnabled(true);
@@ -806,8 +806,8 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		tablecompositionOptionalProperty.setContentProvider(contentProvider);
 		tablecompositionOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
-		if (readOnly && tablecompositionOptionalProperty.getTable().isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TableCompositionEditorSample.Properties.tablecompositionOptionalProperty);
+		if (eefElementEditorReadOnlyState && tablecompositionOptionalProperty.getTable().isEnabled()) {
 			tablecompositionOptionalProperty.getTable().setEnabled(false);
 			tablecompositionOptionalProperty.getTable().setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 			addTablecompositionOptionalProperty.setEnabled(false);
@@ -816,7 +816,7 @@ public class TableCompositionEditorSamplePropertiesEditionPartImpl extends Compo
 			removeTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
 			editTablecompositionOptionalProperty.setEnabled(false);
 			editTablecompositionOptionalProperty.setToolTipText(EefnrMessages.TableCompositionEditorSample_ReadOnly);
-		} else if (!readOnly && !tablecompositionOptionalProperty.getTable().isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !tablecompositionOptionalProperty.getTable().isEnabled()) {
 			tablecompositionOptionalProperty.getTable().setEnabled(true);
 			addTablecompositionOptionalProperty.setEnabled(true);
 			removeTablecompositionOptionalProperty.setEnabled(true);

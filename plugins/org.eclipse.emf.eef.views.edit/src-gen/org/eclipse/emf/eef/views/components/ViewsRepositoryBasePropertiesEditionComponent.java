@@ -71,11 +71,12 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ViewsRepository viewsRepository = (ViewsRepository)elt;
 			final ViewsRepositoryPropertiesEditionPart basePart = (ViewsRepositoryPropertiesEditionPart)editingPart;
 			// init values
 			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
-			if (viewsRepository.getName() != null && isAccessible(ViewsViewsRepository.ViewsRepository.Properties.name))
+			if (isAccessible(ViewsViewsRepository.ViewsRepository.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewsRepository.getName()));
 			
 			// init filters
@@ -127,10 +128,11 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ViewsRepositoryPropertiesEditionPart basePart = (ViewsRepositoryPropertiesEditionPart)editingPart;
 			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : RepositoryKind, ViewsRepository, ViewsRepository.
-			if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ViewsRepository.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getViewsRepository_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.ViewsRepository.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -150,7 +152,7 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ViewsPackage.eINSTANCE.getViewsRepository_RepositoryKind(),
-			ViewsPackage.eINSTANCE.getViewsRepository_Name());
+			ViewsPackage.eINSTANCE.getViewsRepository_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -211,5 +213,8 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 		}
 		return ret;
 	}
+
+
+	
 
 }

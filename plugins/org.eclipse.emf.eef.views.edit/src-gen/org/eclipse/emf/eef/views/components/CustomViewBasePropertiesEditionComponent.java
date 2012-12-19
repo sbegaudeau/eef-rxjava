@@ -68,10 +68,11 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final CustomView customView = (CustomView)elt;
 			final CustomViewPropertiesEditionPart basePart = (CustomViewPropertiesEditionPart)editingPart;
 			// init values
-			if (customView.getName() != null && isAccessible(ViewsViewsRepository.CustomView.Properties.name))
+			if (isAccessible(ViewsViewsRepository.CustomView.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, customView.getName()));
 			
 			// init filters
@@ -115,9 +116,10 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			CustomViewPropertiesEditionPart basePart = (CustomViewPropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomView.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.CustomView.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -136,7 +138,7 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ViewsPackage.eINSTANCE.getViewElement_Name());
+			ViewsPackage.eINSTANCE.getViewElement_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -188,5 +190,8 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }

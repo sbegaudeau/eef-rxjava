@@ -29,14 +29,6 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractEnabledSampleAdapter()
 	 * 
 	 */
@@ -44,6 +36,14 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createAbstractSampleAdapter());
 		return new AbstractEnabledSamplePropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createNamedElementAdapter()
+	 * 
+	 */
+	public Adapter createNamedElementAdapter() {
+		return new NamedElementPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -57,11 +57,11 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createNamedElementAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractSampleAdapter()
 	 * 
 	 */
-	public Adapter createNamedElementAdapter() {
-		return new NamedElementPropertiesEditionProvider();
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
 	}
 
 }

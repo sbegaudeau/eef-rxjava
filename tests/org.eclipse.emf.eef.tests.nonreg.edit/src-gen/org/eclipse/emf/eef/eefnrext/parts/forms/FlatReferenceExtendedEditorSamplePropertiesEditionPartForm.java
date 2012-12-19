@@ -215,11 +215,11 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartForm extends 
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferenceEditorSample.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
-		if (readOnly && flatReferenceEditorSample.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
+		if (eefElementEditorReadOnlyState && flatReferenceEditorSample.isEnabled()) {
 			flatReferenceEditorSample.setEnabled(false);
 			flatReferenceEditorSample.setToolTipText(EefnrextMessages.FlatReferenceExtendedEditorSample_ReadOnly);
-		} else if (!readOnly && !flatReferenceEditorSample.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !flatReferenceEditorSample.isEnabled()) {
 			flatReferenceEditorSample.setEnabled(true);
 		}	
 		

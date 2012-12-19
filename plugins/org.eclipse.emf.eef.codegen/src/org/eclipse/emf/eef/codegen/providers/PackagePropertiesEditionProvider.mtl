@@ -47,7 +47,7 @@ package [peContext.providersPackage()/];
  */
 public class [ePackage.pecPackageProviderClass()/] extends [includeAdapterFactoryImport(ePackage)/] {
 
-[for (eclass : EClass | ePackage.significantClass())]
+[for (eclass : EClass | ePackage.significantClass()->asSet())]
 	[let pec : PropertiesEditionComponent = eclass.associatedPEC(peContext)]
 		[if (not pec.oclIsUndefined() and pec.mustBeGenerated())]
 	/**

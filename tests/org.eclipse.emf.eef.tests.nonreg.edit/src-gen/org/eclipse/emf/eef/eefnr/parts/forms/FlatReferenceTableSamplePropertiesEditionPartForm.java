@@ -260,11 +260,11 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableRequiredProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
-		if (readOnly && flatreferencetableRequiredProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
+		if (eefElementEditorReadOnlyState && flatreferencetableRequiredProperty.isEnabled()) {
 			flatreferencetableRequiredProperty.setEnabled(false);
 			flatreferencetableRequiredProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
-		} else if (!readOnly && !flatreferencetableRequiredProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !flatreferencetableRequiredProperty.isEnabled()) {
 			flatreferencetableRequiredProperty.setEnabled(true);
 		}	
 		
@@ -321,11 +321,11 @@ public class FlatReferenceTableSamplePropertiesEditionPartForm extends SectionPr
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableOptionalProperty.setInput(settings);
-		boolean readOnly = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
-		if (readOnly && flatreferencetableOptionalProperty.isEnabled()) {
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
+		if (eefElementEditorReadOnlyState && flatreferencetableOptionalProperty.isEnabled()) {
 			flatreferencetableOptionalProperty.setEnabled(false);
 			flatreferencetableOptionalProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
-		} else if (!readOnly && !flatreferencetableOptionalProperty.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !flatreferencetableOptionalProperty.isEnabled()) {
 			flatreferencetableOptionalProperty.setEnabled(true);
 		}	
 		

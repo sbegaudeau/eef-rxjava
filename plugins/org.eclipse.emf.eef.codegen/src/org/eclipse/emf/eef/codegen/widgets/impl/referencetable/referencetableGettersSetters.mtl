@@ -140,10 +140,10 @@
 [if (editor.readOnly)]
 [setReadOnly()/]
 [else]
-boolean readOnly = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
-if (readOnly && [editor.elementEditorName()/].getTable().isEnabled()) {
+boolean eefElementEditorReadOnlyState = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
+if (eefElementEditorReadOnlyState && [editor.elementEditorName()/].getTable().isEnabled()) {
 	[editor.setReadOnly()/]
-} else if (!readOnly && ![editor.elementEditorName()/].getTable().isEnabled()) {
+} else if (!eefElementEditorReadOnlyState && ![editor.elementEditorName()/].getTable().isEnabled()) {
 	[editor.unsetReadOnly()/]
 }
 [/if]
@@ -156,7 +156,7 @@ if (readOnly && [editor.elementEditorName()/].getTable().isEnabled()) {
 [editor.setRemoveButtonReadOnly()/]
 [/template]
 
-[template public unsetReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'ReferencesTable')]
+[template public unsetReadOnly (editor : ElementEditor) overrides unsetReadOnly ? (editor.representation.name = 'ReferencesTable')]
 [editor.elementEditorName()/].getTable().setEnabled(true);
 [editor.unsetAddButtonReadOnly()/]
 [editor.unsetRemoveButtonReadOnly()/]

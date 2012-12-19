@@ -94,10 +94,11 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final PropertiesEditionComponent propertiesEditionComponent = (PropertiesEditionComponent)elt;
 			final PropertiesEditionComponentPropertiesEditionPart basePart = (PropertiesEditionComponentPropertiesEditionPart)editingPart;
 			// init values
-			if (propertiesEditionComponent.getName() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name))
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesEditionComponent.getName()));
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views)) {
@@ -111,7 +112,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 				// set the button mode
 				basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (propertiesEditionComponent.getHelpID() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID))
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID))
 				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesEditionComponent.getHelpID()));
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit)) {
@@ -120,20 +121,6 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			// init filters
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.views)) {
-				basePart.addFilterToViews(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInViewsTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
 				// Start of user code for additional businessfilters for views
 				
@@ -244,9 +231,10 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PropertiesEditionComponentPropertiesEditionPart basePart = (PropertiesEditionComponentPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name)) {
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -257,14 +245,14 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 				basePart.updateViews();
 			if (MappingPackage.eINSTANCE.getEMFElementBinding_Model().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Binding.model))
 				basePart.setModel((EObject)msg.getNewValue());
-			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID)) {
+			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.helpID)) {
 				if (msg.getNewValue() != null) {
 					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setHelpID("");
 				}
 			}
-			if (ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit))
+			if (ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionComponent.Properties.explicit))
 				basePart.setExplicit((Boolean)msg.getNewValue());
 			
 			
@@ -283,7 +271,7 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 			MappingPackage.eINSTANCE.getAbstractElementBinding_Views(),
 			MappingPackage.eINSTANCE.getEMFElementBinding_Model(),
 			ComponentsPackage.eINSTANCE.getEEFElement_HelpID(),
-			ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit());
+			ComponentsPackage.eINSTANCE.getPropertiesEditionComponent_Explicit()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -357,5 +345,8 @@ public class PropertiesEditionComponentBasePropertiesEditionComponent extends Si
 		}
 		return ret;
 	}
+
+
+	
 
 }
