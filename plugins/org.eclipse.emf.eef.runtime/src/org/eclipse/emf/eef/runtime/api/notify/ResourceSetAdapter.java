@@ -199,7 +199,7 @@ public class ResourceSetAdapter extends EContentAdapter {
 			EClass eClass = notifier.eClass();
 			if (eClassifierListeners.get(eClass) != null) {
 				List<PropertiesEditingSemanticListener> listeners = eClassifierListeners.get(eClass);
-				for (PropertiesEditingSemanticListener listener : listeners) {
+				for (PropertiesEditingSemanticListener listener : new ArrayList<PropertiesEditingSemanticListener>(listeners)) {
 					listener.notifyChanged(notification);
 				}
 			}
@@ -208,7 +208,7 @@ public class ResourceSetAdapter extends EContentAdapter {
 			EStructuralFeature feature = (EStructuralFeature)notification.getFeature();
 			if (eStructuralFeatureListeners.get(feature) != null) {
 				List<PropertiesEditingSemanticListener> listeners = eStructuralFeatureListeners.get(feature);
-				for (PropertiesEditingSemanticListener listener : listeners) {
+				for (PropertiesEditingSemanticListener listener : new ArrayList<PropertiesEditingSemanticListener>(listeners)) {
 					listener.notifyChanged(notification);
 				}
 			}
