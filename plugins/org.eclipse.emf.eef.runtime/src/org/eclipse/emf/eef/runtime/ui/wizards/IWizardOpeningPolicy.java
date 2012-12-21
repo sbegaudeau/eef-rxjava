@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 /**
@@ -29,6 +30,11 @@ public interface IWizardOpeningPolicy {
 	 * @return if the wizard is opend or canceled.
 	 */
 	boolean openWizard(PropertiesEditingContext context, PropertiesEditionWizard wizard);
+	
+	/**
+	 * @return the {@link ChangeDescription} of changes perform during editing session.
+	 */
+	ChangeDescription getDescription();
 
 	/**
 	 * @param eObject EObject

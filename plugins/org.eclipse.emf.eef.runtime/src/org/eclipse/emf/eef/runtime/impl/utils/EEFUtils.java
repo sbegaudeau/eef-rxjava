@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -412,6 +413,29 @@ public class EEFUtils {
 			}
 		}
 		return null;
+	}
+
+	
+	/**
+	 * FIXME
+	 * @param src
+	 * @return
+	 */
+	public static Notifier highestNotifier(final EObject src) {
+		if (src.eResource() != null) {
+			Resource resource = src.eResource();
+			if (resource.getResourceSet() != null) {
+				return resource.getResourceSet();
+			} else {
+				return resource;
+			}
+		} else {
+			EObject tmp = src;
+			while (tmp.eContainer() != null) {
+				tmp = tmp.eContainer();
+			}
+			return tmp;
+		}
 	}
 
 }

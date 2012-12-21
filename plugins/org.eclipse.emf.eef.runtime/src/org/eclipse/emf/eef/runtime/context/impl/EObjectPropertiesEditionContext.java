@@ -15,13 +15,16 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.ResourceSetAdapter;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.ViewHelper;
 import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
@@ -105,10 +108,19 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#initializeRecorder()
 	 */
 	public void initializeRecorder() {
-		ResourceSet resourceSet = getResourceSet();
-		if (resourceSet != null) {
-			this.changeRecorder = new ChangeRecorder(resourceSet);
-		}		
+		if (this.changeRecorder == null) {
+			Notifier highestNotifier = EEFUtils.highestNotifier(eObject);
+			if (highestNotifier instanceof ResourceSet) {
+				this.changeRecorder = new ChangeRecorder((ResourceSet) highestNotifier);
+			} else if (highestNotifier instanceof Resource) {
+				this.changeRecorder = new ChangeRecorder((Resource) highestNotifier);
+			} else if (highestNotifier instanceof EObject) {
+				this.changeRecorder = new ChangeRecorder((EObject) highestNotifier);
+			}
+		}
+		if (getParentContext() != null) {
+			getParentContext().initializeRecorder();
+		}
 	}
 
 	/**

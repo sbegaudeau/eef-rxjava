@@ -30,6 +30,8 @@ import org.eclipse.jface.window.Window;
  */
 public class CDOWizardOpeningPolicy implements IWizardOpeningPolicy {
 
+	private ChangeDescription description;
+
 	/**
 	 * (non-Javadoc)
 	 * 
@@ -44,7 +46,6 @@ public class CDOWizardOpeningPolicy implements IWizardOpeningPolicy {
 					EditingUtils.getShell(), wizard);
 			int open = wDialog.open();
 			ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
-			ChangeDescription description = null;
 			if (changeRecorder != null) {
 				description = changeRecorder.endRecording();
 			}
@@ -58,6 +59,14 @@ public class CDOWizardOpeningPolicy implements IWizardOpeningPolicy {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy#getDescription()
+	 */
+	public ChangeDescription getDescription() {
+		return description;
 	}
 
 	/**

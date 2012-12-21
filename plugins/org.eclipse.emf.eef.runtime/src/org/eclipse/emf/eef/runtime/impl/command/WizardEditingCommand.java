@@ -43,7 +43,9 @@ public class WizardEditingCommand extends AbstractCommand {
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
 				editionContext.getAdapterFactory(), editionContext.getEObject());
 		IWizardOpeningPolicy wizardOpeningPolicy = WizardOpeningPolicyProviderService.provide(editionContext.getEObject());
-		return wizardOpeningPolicy.openWizard(editionContext, wizard);
+		boolean openWizard = wizardOpeningPolicy.openWizard(editionContext, wizard);
+		this.description = wizardOpeningPolicy.getDescription();
+		return openWizard;
 	}
 
 	/**
