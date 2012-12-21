@@ -27,7 +27,15 @@
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.oclAsType(EAttribute).many)]
 if ([editionElement.liveUpdaterNavigationCondition(pec)/] && [view.viewIdentifier(pec)/] != null && isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/]((EList<?>)msg.getNewValue());
+	if (msg.getNewValue() instanceof EList<?>) {
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/]((EList<?>)msg.getNewValue());
+	} else if (msg.getNewValue() == null) {
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/](new [include('org.eclipse.emf.common.util.BasicEList')/]<Object>());
+	} else {
+		BasicEList<Object> newValueAsList = new BasicEList<Object>();
+		newValueAsList.add(msg.getNewValue());
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/](newValueAsList);
+	}
 }
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor

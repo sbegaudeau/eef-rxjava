@@ -24,19 +24,19 @@ public class NamingEEFAdapterFactory extends CustomNamingAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.naming.util.CustomNamingAdapterFactory#createEventAdapter()
-	 * 
-	 */
-	public Adapter createEventAdapter() {
-		return new EventPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.naming.util.CustomNamingAdapterFactory#createAbstractSampleAdapter()
 	 * 
 	 */
 	public Adapter createAbstractSampleAdapter() {
 		return new AbstractSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.naming.util.CustomNamingAdapterFactory#createEventAdapter()
+	 * 
+	 */
+	public Adapter createEventAdapter() {
+		return new EventPropertiesEditionProvider();
 	}
 
 }

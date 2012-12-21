@@ -35,6 +35,46 @@ public class ViewsEEFAdapterFactory extends ViewsAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewsRepositoryAdapter()
+	 * 
+	 */
+	public Adapter createViewsRepositoryAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ViewsRepositoryPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createContainerAdapter()
+	 * 
+	 */
+	public Adapter createContainerAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ContainerPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewAdapter()
+	 * 
+	 */
+	public Adapter createViewAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ViewPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createElementEditorAdapter()
+	 * 
+	 */
+	public Adapter createElementEditorAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new ElementEditorPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createCategoryAdapter()
 	 * 
 	 */
@@ -42,6 +82,16 @@ public class ViewsEEFAdapterFactory extends ViewsAdapterFactory {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
 		return new CategoryPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createCustomElementEditorAdapter()
+	 * 
+	 */
+	public Adapter createCustomElementEditorAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new CustomElementEditorPropertiesEditionProvider(providers);
 	}
 	/**
 	 * {@inheritDoc}
@@ -62,56 +112,6 @@ public class ViewsEEFAdapterFactory extends ViewsAdapterFactory {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
 		return new ViewReferencePropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createCustomElementEditorAdapter()
-	 * 
-	 */
-	public Adapter createCustomElementEditorAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new CustomElementEditorPropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewsRepositoryAdapter()
-	 * 
-	 */
-	public Adapter createViewsRepositoryAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new ViewsRepositoryPropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createElementEditorAdapter()
-	 * 
-	 */
-	public Adapter createElementEditorAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new ElementEditorPropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createViewAdapter()
-	 * 
-	 */
-	public Adapter createViewAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new ViewPropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.views.util.ViewsAdapterFactory#createContainerAdapter()
-	 * 
-	 */
-	public Adapter createContainerAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new ContainerPropertiesEditionProvider(providers);
 	}
 
 }

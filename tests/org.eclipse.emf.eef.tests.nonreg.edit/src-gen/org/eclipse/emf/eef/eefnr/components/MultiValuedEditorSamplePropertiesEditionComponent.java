@@ -15,37 +15,25 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
-
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.MultiValuedEditorSamplePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
-import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
 // End of user code
@@ -160,15 +148,39 @@ public class MultiValuedEditorSamplePropertiesEditionComponent extends SinglePar
 		if (editingPart.isVisible()) {
 			MultiValuedEditorSamplePropertiesEditionPart basePart = (MultiValuedEditorSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorRequiredProperty)) {
-				basePart.setMultivaluededitorRequiredProperty((EList<?>)msg.getNewValue());
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setMultivaluededitorRequiredProperty((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setMultivaluededitorRequiredProperty(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setMultivaluededitorRequiredProperty(newValueAsList);
+				}
 			}
 			
 			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorOptionalProperty)) {
-				basePart.setMultivaluededitorOptionalProperty((EList<?>)msg.getNewValue());
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setMultivaluededitorOptionalProperty((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setMultivaluededitorOptionalProperty(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setMultivaluededitorOptionalProperty(newValueAsList);
+				}
 			}
 			
 			if (EefnrPackage.eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.MultiValuedEditorSample.Properties.multivaluededitorROProperty)) {
-				basePart.setMultivaluededitorROProperty((EList<?>)msg.getNewValue());
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setMultivaluededitorROProperty((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setMultivaluededitorROProperty(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setMultivaluededitorROProperty(newValueAsList);
+				}
 			}
 			
 			

@@ -29,13 +29,11 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractEnabledSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractSampleAdapter()
 	 * 
 	 */
-	public Adapter createAbstractEnabledSampleAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createAbstractSampleAdapter());
-		return new AbstractEnabledSamplePropertiesEditionProvider(providers);
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -47,6 +45,16 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractEnabledSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractEnabledSampleAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createAbstractSampleAdapter());
+		return new AbstractEnabledSamplePropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createReferenceEnabledSampleAdapter()
 	 * 
 	 */
@@ -54,14 +62,6 @@ public class ReferencesEEFAdapterFactory extends ReferencesAdapterFactory {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createAbstractSampleAdapter());
 		return new ReferenceEnabledSamplePropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.references.util.ReferencesAdapterFactory#createAbstractSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
 	}
 
 }

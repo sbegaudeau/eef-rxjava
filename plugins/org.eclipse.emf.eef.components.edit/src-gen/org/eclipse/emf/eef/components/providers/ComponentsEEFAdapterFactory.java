@@ -32,13 +32,21 @@ public class ComponentsEEFAdapterFactory extends ComponentsAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createEMFMultiPropertiesBindingAdapter()
+	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createDocumentedElementAdapter()
 	 * 
 	 */
-	public Adapter createEMFMultiPropertiesBindingAdapter() {
+	public Adapter createDocumentedElementAdapter() {
+		return new DocumentedElementPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createPropertiesEditionContextAdapter()
+	 * 
+	 */
+	public Adapter createPropertiesEditionContextAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new EMFMultiPropertiesBindingPropertiesEditionProvider(providers);
+		return new PropertiesEditionContextPropertiesEditionProvider(providers);
 	}
 	/**
 	 * {@inheritDoc}
@@ -72,21 +80,23 @@ public class ComponentsEEFAdapterFactory extends ComponentsAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createPropertiesEditionContextAdapter()
+	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createPropertiesEditionElementAdapter()
 	 * 
 	 */
-	public Adapter createPropertiesEditionContextAdapter() {
+	public Adapter createPropertiesEditionElementAdapter() {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new PropertiesEditionContextPropertiesEditionProvider(providers);
+		return new PropertiesEditionElementPropertiesEditionProvider(providers);
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createDocumentedElementAdapter()
+	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createEMFMultiPropertiesBindingAdapter()
 	 * 
 	 */
-	public Adapter createDocumentedElementAdapter() {
-		return new DocumentedElementPropertiesEditionProvider();
+	public Adapter createEMFMultiPropertiesBindingAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
+		return new EMFMultiPropertiesBindingPropertiesEditionProvider(providers);
 	}
 	/**
 	 * {@inheritDoc}
@@ -97,16 +107,6 @@ public class ComponentsEEFAdapterFactory extends ComponentsAdapterFactory {
 		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
 		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
 		return new PropertiesMultiEditionElementPropertiesEditionProvider(providers);
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.components.util.ComponentsAdapterFactory#createPropertiesEditionElementAdapter()
-	 * 
-	 */
-	public Adapter createPropertiesEditionElementAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
-		return new PropertiesEditionElementPropertiesEditionProvider(providers);
 	}
 
 }

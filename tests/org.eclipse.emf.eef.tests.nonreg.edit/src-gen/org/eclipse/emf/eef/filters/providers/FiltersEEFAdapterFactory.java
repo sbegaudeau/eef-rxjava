@@ -24,14 +24,6 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample2Adapter()
-	 * 
-	 */
-	public Adapter createConcreteReferenceTargetSample2Adapter() {
-		return new ConcreteReferenceTargetSample2PropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceOwnerSampleAdapter()
 	 * 
 	 */
@@ -40,11 +32,11 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample1Adapter()
+	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample2Adapter()
 	 * 
 	 */
-	public Adapter createConcreteReferenceTargetSample1Adapter() {
-		return new ConcreteReferenceTargetSample1PropertiesEditionProvider();
+	public Adapter createConcreteReferenceTargetSample2Adapter() {
+		return new ConcreteReferenceTargetSample2PropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -53,6 +45,14 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 	 */
 	public Adapter createAbstractSampleAdapter() {
 		return new AbstractSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample1Adapter()
+	 * 
+	 */
+	public Adapter createConcreteReferenceTargetSample1Adapter() {
+		return new ConcreteReferenceTargetSample1PropertiesEditionProvider();
 	}
 
 }

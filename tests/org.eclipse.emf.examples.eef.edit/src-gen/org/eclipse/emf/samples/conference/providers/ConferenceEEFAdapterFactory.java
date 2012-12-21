@@ -22,27 +22,11 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTopicAdapter()
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createRoomAdapter()
 	 * 
 	 */
-	public Adapter createTopicAdapter() {
-		return new TopicPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createPersonAdapter()
-	 * 
-	 */
-	public Adapter createPersonAdapter() {
-		return new PersonPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createSiteAdapter()
-	 * 
-	 */
-	public Adapter createSiteAdapter() {
-		return new SitePropertiesEditionProvider();
+	public Adapter createRoomAdapter() {
+		return new RoomPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -54,19 +38,35 @@ public class ConferenceEEFAdapterFactory extends ConferenceAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTopicAdapter()
+	 * 
+	 */
+	public Adapter createTopicAdapter() {
+		return new TopicPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createSiteAdapter()
+	 * 
+	 */
+	public Adapter createSiteAdapter() {
+		return new SitePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createPersonAdapter()
+	 * 
+	 */
+	public Adapter createPersonAdapter() {
+		return new PersonPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createTalkAdapter()
 	 * 
 	 */
 	public Adapter createTalkAdapter() {
 		return new TalkPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.samples.conference.util.ConferenceAdapterFactory#createRoomAdapter()
-	 * 
-	 */
-	public Adapter createRoomAdapter() {
-		return new RoomPropertiesEditionProvider();
 	}
 
 }
