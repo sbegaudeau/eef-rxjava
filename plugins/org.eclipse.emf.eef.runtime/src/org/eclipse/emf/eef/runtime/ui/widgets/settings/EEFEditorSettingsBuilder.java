@@ -278,8 +278,7 @@ public class EEFEditorSettingsBuilder  {
 		 */
 		public boolean isAffectingEvent(Notification notification) {
 			if (
-					(notification.getFeature() instanceof EStructuralFeature && isAffectingFeature((EStructuralFeature) notification.getFeature())) 
-					|| (getSignificantObject()!= null && getSignificantObject().equals(notification.getNotifier()))) {
+					(notification.getFeature() instanceof EStructuralFeature && isAffectingFeature((EStructuralFeature) notification.getFeature()))) {
 				return true;
 			}
 			return false;
