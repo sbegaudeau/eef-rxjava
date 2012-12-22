@@ -127,6 +127,7 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void runSequence(Sequence sequence) {
+		preProcessing(sequence);
 		for (Processing processing : sequence.getProcessings()) {
 			if (processing instanceof Action) {
 				runAction((Action)processing);
@@ -139,9 +140,29 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 			} else if (processing instanceof Wizard) {
 				setSequenceType(SequenceType.WIZARD);
 				runSequence((Wizard)processing);
-				finishBatchEditing(processing);
 			}
 		}
+		postProcessing(sequence);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#preProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
+	 */
+	public void preProcessing(Sequence sequence) {
+		for (IModelingBot iModelingBot : modelingBots) {
+			iModelingBot.getModelingBotInterpreter().preProcessing(sequence);
+		}		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#postProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
+	 */
+	public void postProcessing(Sequence sequence) {
+		for (IModelingBot iModelingBot : modelingBots) {
+			iModelingBot.getModelingBotInterpreter().postProcessing(sequence);
+		}		
 	}
 
 	/**
@@ -156,17 +177,6 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 			} else {
 				iModelingBot.getModelingBotInterpreter().runAction(action);
 			}
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
-	 */
-	public void finishBatchEditing(Processing processing) {
-		for (IModelingBot iModelingBot : modelingBots) {
-			iModelingBot.getModelingBotInterpreter().finishBatchEditing(processing);
 		}
 	}
 

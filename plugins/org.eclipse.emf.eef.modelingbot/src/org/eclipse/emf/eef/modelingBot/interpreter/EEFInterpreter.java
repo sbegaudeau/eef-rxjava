@@ -64,7 +64,6 @@ import org.eclipse.emf.eef.modelingBot.EclipseActions.RemoveProject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.Save;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.Undo;
 import org.eclipse.emf.eef.modelingBot.helper.EEFModelingBotHelper;
-import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 /**
@@ -228,6 +227,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#runSequence(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void runSequence(Sequence sequence) {
+		preProcessing(sequence);
 		for (Processing processing : sequence.getProcessings()) {
 			if (processing instanceof Action) {
 				runAction((Action)processing);
@@ -239,30 +239,39 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 				runSequence((PropertiesView)processing);
 			} else if (processing instanceof Wizard) {
 				bot.setSequenceType(SequenceType.WIZARD);
-				bot.initWizard((Wizard)processing);
 				runSequence((Wizard)processing);
-				bot.closeWizard((Wizard)processing);
-				finishBatchEditing(processing);
 			}
 
+		}
+		postProcessing(sequence);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#preProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
+	 */
+	public void preProcessing(Sequence sequence) {
+		if (sequence instanceof Wizard) {
+			bot.initWizard((Wizard)sequence);			
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#finishBatchEditing(org.eclipse.emf.eef.modelingBot.Processing)
+	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#postProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
-	public void finishBatchEditing(Processing processing) {
-		final Boolean hasCanceled = mapSequenceToCancel.get(processing);
-		if (hasCanceled == null || !hasCanceled) {
-			try {
-				bot.validateBatchEditing();
-			} catch (WidgetNotFoundException e) {
-				// Cancel has been done
+	public void postProcessing(Sequence sequence) {
+		if (sequence instanceof Wizard) {
+			final Boolean hasCanceled = mapSequenceToCancel.get(sequence);
+			if (hasCanceled == null || !hasCanceled) {
+				try {
+					bot.validateBatchEditing();
+				} catch (WidgetNotFoundException e) {
+					// Cancel has been done
+				}
 			}
+			mapSequenceToCancel.remove(sequence);
 		}
-		mapSequenceToCancel.remove(processing);
 	}
 
 	/**
