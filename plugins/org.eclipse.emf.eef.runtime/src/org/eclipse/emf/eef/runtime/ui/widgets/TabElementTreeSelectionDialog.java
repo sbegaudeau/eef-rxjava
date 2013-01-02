@@ -261,17 +261,23 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 							Object o = structuredSelection.getFirstElement();
 							// Check type matching
 							Button okButton = getButton(IDialogConstants.OK_ID);
-							if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory))
-									.contains(o)) {
-								if (input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
+							if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
+								if (input instanceof ReferencesTableSettings) {
+									if (o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
+										selection = structuredSelection;
+										if (okButton != null) {
+											okButton.setEnabled(true);
+										}
+									} else {
+										// Reject selection
+										if (okButton != null) {
+											okButton.setEnabled(false);
+										}
+									}
+								} else {
 									selection = structuredSelection;
 									if (okButton != null) {
 										okButton.setEnabled(true);
-									}
-								} else {
-									// Reject selection
-									if (okButton != null) {
-										okButton.setEnabled(false);
 									}
 								}
 							} else {
