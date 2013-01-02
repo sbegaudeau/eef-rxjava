@@ -549,7 +549,7 @@ public class PropertiesEditionHelper {
 			Collection<EObject> values) {
 		bot.editButtonEObjectFlatComboViewer(
 				elementEditor.getQualifiedIdentifier()).click();
-		bot.selectInActiveTable(values);
+		bot.selectInActiveTable("");
 		bot.button(UIConstants.OK_BUTTON).click();
 		SWTBotHelper.waitAllUiEvents();
 	}
