@@ -22,7 +22,7 @@
       </processings>
       <processings xsi:type="eef-test_1:SetReference" name="required property" referenceableObject="//@sequences.0/@processings.3/@processings.0" values="//@sequences.0/@processings.3/@processings.1">
         <propertiesEditionElement href="platform:/plugin/org.eclipse.emf.eef.tests.nonreg.edit/models/eefnr.components#_Fx_LKgwvEd-uP4lw9e0IMw"/>
-        <eContainingFeature xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TotalSample/eobjectflatcomboviewerRequiredProperty"/>
+        <eContainingFeature xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EObjectFlatComboViewerSample/eobjectflatcomboviewerRequiredPropery"/>
       </processings>
       <processings xsi:type="eef-test_1:SetReference" name="optional property" referenceableObject="//@sequences.0/@processings.3/@processings.0" values="//@sequences.0/@processings.3/@processings.2">
         <propertiesEditionElement href="platform:/plugin/org.eclipse.emf.eef.tests.nonreg.edit/models/eefnr.components#_Fx_LKwwvEd-uP4lw9e0IMw"/>

@@ -23,12 +23,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
-import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.Wizard;
 import org.eclipse.emf.eef.modelingBot.EEFActions.Add;
-import org.eclipse.emf.eef.modelingBot.EEFActions.Cancel;
-import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 import org.eclipse.emf.eef.modelingBot.interpreter.EEFInterpreter;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.emf.eef.modelingBot.ui.utils.WrappedSWTBotRadio;
@@ -252,6 +249,13 @@ public class PropertiesEditionHelper {
 		String label = ((ElementEditor) propertiesEditionElement.getViews()
 				.get(0)).getQualifiedIdentifier();
 		bot.browseButtonFlatReferencesTable(label).click();
+		final SWTBotTable table = bot.table(1);
+		int rowCount = table.rowCount();
+		for (int i = 0; i < rowCount; i++) {
+			SWTBotButton buttonRemove = bot.button(1);
+			buttonRemove.click();
+			SWTBotHelper.waitAllUiEvents();
+		}
 		bot.selectInActiveTable(values);
 		SWTBotButton buttonAdd = bot.button(0);
 		buttonAdd.click();
