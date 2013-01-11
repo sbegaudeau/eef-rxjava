@@ -55,7 +55,6 @@ import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotSetReferenceRefT
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoAddTableComposition;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetAttributeRadio;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceAEOFCV;
-import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceCombo;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceFlatRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUndoSetReferenceRefTable;
 import org.eclipse.emf.eef.tests.nonreg.propertiesView.PViewMBotUnsetAEOFCV;
@@ -126,7 +125,6 @@ public class AllTests extends TestCase {
 		suite.addTestSuite(PViewMBotUndoAddTableComposition.class);
 		suite.addTestSuite(PViewMBotUndoSetAttributeRadio.class);
 		suite.addTestSuite(PViewMBotUndoSetReferenceAEOFCV.class);
-		suite.addTestSuite(PViewMBotUndoSetReferenceCombo.class);
 		suite.addTestSuite(PViewMBotUndoSetReferenceFlatRefTable.class);
 		suite.addTestSuite(PViewMBotUndoSetReferenceRefTable.class);
 		suite.addTestSuite(PViewMBotUnsetAEOFCV.class);
